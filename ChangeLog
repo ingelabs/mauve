@@ -1,3 +1,10 @@
+2003-01-28  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java (diaghashcode): 
+	Removed invalid tests for BigDecimal.hashCode()
+	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java (diaglongvalue):
+	Corrected some tests that accidentally used BigDecimal(double)
+	on (double)(Long.MAX_VALUE)
+
 2003-01-26  C. Brian Jones  <cbj@gnu.org>
 
 	* gnu/testlet/java/io/RandomAccessFile/jdk11.java (test): localize

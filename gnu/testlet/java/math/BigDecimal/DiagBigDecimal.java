@@ -167,6 +167,8 @@ public class DiagBigDecimal implements Testlet {
  private static final int ipos=1;
  private static final long lmin=-9223372036854775808L;
  private static final long lmax=9223372036854775807L;
+ private static final String lminString="-9223372036854775808";
+ private static final String lmaxString="9223372036854775807";
  private static final long lzer=(long)0;
  private static final long lneg=(long)-1;
  private static final long lpos=(long)1;
@@ -1443,7 +1445,7 @@ public class DiagBigDecimal implements Testlet {
    flag=false;
   }while(false);}
   catch (java.lang.ArithmeticException xx34){e=xx34;
-   flag&=checkMessage(e, "Negative scale: -8");
+   flag=checkMessage(e, "Negative scale: -8");
   }/*checkscale*/
   harness.check (flag, "div203");
   
@@ -1948,17 +1950,20 @@ public class DiagBigDecimal implements Testlet {
  /** Test the {@link BigDecimal#hashCode} method. */
  
  public void diaghashcode(TestHarness harness){
-  java.lang.String hs;
-  BigDecimal d;
-  hs="27827817";
-  d=new BigDecimal(hs);
-  harness.check ((d.hashCode())==(hs.hashCode()), "has001");
-  hs="1.265E+200";
-  d=new BigDecimal(hs);
-  harness.check ((d.hashCode())==(hs.hashCode()), "has002");
-  hs="126.5E+200";
-  d=new BigDecimal(hs);
-  harness.check ((d.hashCode())!=(hs.hashCode()), "has003");
+  // These tests are all wrong.  The JDK API for BigDecimal.hashCode()
+  // does not say how the hash values should be calculated.
+  // 
+  //  java.lang.String hs;
+  //  BigDecimal d;
+  //  hs="27827817";
+  //  d=new BigDecimal(hs);
+  //  harness.check ((d.hashCode())==(hs.hashCode()), "has001");
+  //  hs="1.265E+200";
+  //  d=new BigDecimal(hs);
+  //  harness.check ((d.hashCode())==(hs.hashCode()), "has002");
+  //  hs="126.5E+200";
+  //  d=new BigDecimal(hs);
+  //  harness.check ((d.hashCode())!=(hs.hashCode()), "has003");
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -2031,12 +2036,16 @@ public class DiagBigDecimal implements Testlet {
   // longValue --
   
   harness.check (lmin==((new BigDecimal(lmin)).longValue()), "lov001");
+  harness.check (lmin==((new BigDecimal(lminString)).longValue()), "lov001a");
   harness.check ((((long)99))==((new BigDecimal("99")).longValue()), "lov002");
   harness.check ((((long)1))==((new BigDecimal("1")).longValue()), "lov003");
   harness.check ((((long)0))==((new BigDecimal("0")).longValue()), "lov004");
   harness.check ((((long)-1))==((new BigDecimal("-1")).longValue()), "lov005");
   harness.check ((((long)-99))==((new BigDecimal("-99")).longValue()), "lov006");
-  harness.check (lmax==((new BigDecimal(lmax)).longValue()), "lov007");
+  // This version of the test uses the BigDecimal(double) constructor.  
+  // The test fails because ((long)((double) lmax)) != lmax
+  // harness.check (lmax==((new BigDecimal(lmax)).longValue()), "lov007");
+  harness.check (lmax==((new BigDecimal(lmaxString)).longValue()), "lov007a");
   harness.check ((((long)5))==((new BigDecimal("5.0")).longValue()), "lov008");
   harness.check ((((long)5))==((new BigDecimal("5.3")).longValue()), "lov009");
   harness.check ((((long)5))==((new BigDecimal("5.5")).longValue()), "lov010");
@@ -2050,13 +2059,15 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("888888888899999999998")).longValue())==3445173361941522430L, "lov018"); // ugh
   harness.check (((new BigDecimal("-888888888899999999998")).longValue())==(-3445173361941522430L), "lov019"); // ugh
   
-  harness.check (lmin==((new BigDecimal(lmin)).longValue()), "lov101");
+  harness.check (lmin==((new BigDecimal(lminString)).longValue()), "lov101");
   harness.check ((((long)99))==((new BigDecimal("99")).longValue()), "lov102");
   harness.check ((((long)1))==((new BigDecimal("1")).longValue()), "lov103");
   harness.check ((((long)0))==((new BigDecimal("0")).longValue()), "lov104");
   harness.check ((((long)-1))==((new BigDecimal("-1")).longValue()), "lov105");
   harness.check ((((long)-99))==((new BigDecimal("-99")).longValue()), "lov106");
-  harness.check (lmax==((new BigDecimal(lmax)).longValue()), "lov107");
+  // This version of this test is incorrect: see 'lov007'
+  // harness.check (lmax==((new BigDecimal(lmax)).longValue()), "lov107");
+  harness.check (lmax==((new BigDecimal(lmaxString)).longValue()), "lov107a");
   harness.check ((((long)5))==((new BigDecimal("5.0")).longValue()), "lov108");
   harness.check ((((long)-5))==((new BigDecimal("-5.0")).longValue()), "lov109");
   
