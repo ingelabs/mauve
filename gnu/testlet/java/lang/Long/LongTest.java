@@ -372,21 +372,35 @@ public class LongTest implements Testlet
 
 
 		System.setProperties(prop);
+		harness.checkPoint("getLong");
+		try {
+		  harness.check(Long.getLong("longkey1").longValue() == 2345);
+		} catch (NullPointerException npe) { harness.check(false); }
+		try {
+		  harness.check(Long.getLong("longkey2").longValue() == -984);
+		} catch (NullPointerException npe) { harness.check(false); }
+		try {
+		  harness.check(Long.getLong("longkey3").longValue() == 0);
+		} catch (NullPointerException npe) { harness.check(false); }
 
-		harness.check(!( Long.getLong("longkey1").longValue() != 2345 ||
-			 Long.getLong("longkey2").longValue() != -984 ||
-			 Long.getLong("longkey3").longValue() != 0 ), 
-			"Error: test_getLong returned wrong results - 1" );
+		try {
+		  harness.check(Long.getLong("longkey4",new Long(0)).longValue() == 31);
+		} catch (NullPointerException npe) { harness.check(false); }
+		try {
+		  harness.check(Long.getLong("longkey5",new Long(0)).longValue() == 31);
+		} catch (NullPointerException npe) { harness.check(false); }
+		try {
+		  harness.check(Long.getLong("longkey6",new Long(0)).longValue() == 15);
+		} catch (NullPointerException npe) { harness.check(false); }
 
-		harness.check(!( Long.getLong("longkey4", new Long(0)).longValue() != 31 ||
-			 Long.getLong("longkey5",new Long(0)).longValue() != 31 ||
-			 Long.getLong("longkey6",new Long(0)).longValue() != 15 ), 
-			"Error: test_getLong returned wrong results - 2" );
-
-		harness.check(!( Long.getLong("longkey7", new Long(0)).longValue() != 0 ), 
+		try {
+		  harness.check(!( Long.getLong("longkey7", new Long(0)).longValue() != 0 ), 
 			"Error: test_getLong returned wrong results - 3" );
-		harness.check(!( Long.getLong("longkey7", 0).longValue() != 0 ), 
+		} catch (NullPointerException npe) { harness.check(false); }
+		try {
+		  harness.check(!( Long.getLong("longkey7", 0).longValue() != 0 ), 
 			"Error: test_getLong returned wrong results - 4" );
+		} catch (NullPointerException npe) { harness.check(false); }
 
 	}
 

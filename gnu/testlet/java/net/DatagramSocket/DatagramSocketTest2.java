@@ -224,6 +224,10 @@ public class DatagramSocketTest2 implements Testlet
 		{
 			harness.check(true);
 		}
+		catch (IllegalArgumentException iae)
+		{
+			harness.check(false, "Expected IOException");
+		}
 
 		try
 		{

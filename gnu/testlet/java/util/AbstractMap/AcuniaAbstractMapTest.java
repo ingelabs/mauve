@@ -186,7 +186,11 @@ public class AcuniaAbstractMapTest implements Testlet
     ehm.putAll(ht);
     th.check( ehm.equals(ht) , "true -- 2");
     ehm = buildHT();
-    ehm.putAll(ht);
+    try {
+      ehm.putAll(ht);
+      th.check(true, "putAll: " + ht);
+    }
+    catch (NoSuchElementException nse) { th.check(false, "putAll: " + ht); }
     th.check(ehm.size() == 18 , "added three elements");
     th.check("f".equals(ehm.get("a1")) , "overwritten old value");
   }

@@ -1,3 +1,35 @@
+2002-04-02  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/beans/Introspector/jdk11.java (tryone): Catch all
+	Throwables.
+	* gnu/testlet/java/lang/Float/FloatTest.java (test_valueOf): Catch
+	more Exceptions.
+	* gnu/testlet/java/lang/Integer/getInteger.java (test): Catch
+	NullPointerException.
+	* gnu/testlet/java/lang/Long/LongTest.java (test_getLong): Likewise.
+	* gnu/testlet/java/lang/Long/getLong.java (test): Likewise.
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java
+	(invalid_receive_data): Catch IllegalArgumentException.
+	* gnu/testlet/java/net/InetAddress/InetAddressTest.java (test_Basics):
+	Catch NullPointerException.
+	* gnu/testlet/java/util/AbstractMap/AcuniaAbstractMapTest.java
+	(test_putAll): Catch NoSuchElementException.
+	* gnu/testlet/java/util/HashMap/AcuniaHashMapTest.java
+	(test_entrySet): Catch ConcurrentModificationException.
+	* gnu/testlet/java/util/Vector/AcuniaVectorTest.java
+	(test_removeRange): Catch IllegalArgumentException.
+
+2002-04-01  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/BitSet/jdk10.java: remove size() check.
+	* gnu/testlet/java/util/BitSet/AcuniaBitSetTest.java: remove size()
+	checks, extra bits of other BitSet with or/xor are used.
+
+	* gnu/testlet/java/lang/ThreadLocal/simple.java: Make self contained.
+	* gnu/testlet/java/lang/Integer/getInteger.java: Likewise.
+	* gnu/testlet/java/io/File/jdk11.java: Likewise.
+	* gnu/testlet/java/io/File/DocFilter.java: Removed, moved into jdk11.
+
 2002-02-18  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/reflect/Method/equals.java: new file.

@@ -122,16 +122,25 @@ public class InetAddressTest implements Testlet
 			 " Should not throw UnknownHostException here " );
     }
  
- 
-    if ( !(addr3.getHostName().equals("hpjavaux.cup.hp.com") || addr3.getHostName().equals("hpjavaux")))
-      harness.fail("Error : test_Basics failed - 11 " +
-			 " the hostname returned is not correct." );
 
-    String toStr = addr3.toString();
-    String toStr1 = addr3.getHostAddress();
-    if ( !( toStr.equals("hpjavaux.cup.hp.com/"+toStr1)|| toStr.equals("hpjavaux/"+toStr1)))
-      harness.fail("Error : test_Basics failed - 12 " +
+    try {
+      harness.check((addr3.getHostName().equals("hpjavaux.cup.hp.com")
+		    || addr3.getHostName().equals("hpjavaux")),
+		    "test_Basics failed - 11 " +
+		    " the hostname returned is not correct." );
+    } catch (NullPointerException npe) {
+       harness.check(false, "test_Basics failed - 11 - NullPointerException");
+    }
+
+    try {
+      String toStr = addr3.toString();
+      String toStr1 = addr3.getHostAddress();
+      if ( !( toStr.equals("hpjavaux.cup.hp.com/"+toStr1)|| toStr.equals("hpjavaux/"+toStr1)))
+        harness.fail("Error : test_Basics failed - 12 " +
 			 " the host address returned is not correct." );
+    } catch (NullPointerException npe) {
+       harness.check(false, "test_Basics failed - 12 - NullPointerException");
+    }
 
     if (true) {	// 1.1 features not implemented
       //multicast test

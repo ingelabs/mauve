@@ -27,7 +27,7 @@ public class jdk11 implements Testlet {
 			 + b.getMethodDescriptors().length + " ?= " + gmlen);
 	  harness.check (b.getMethodDescriptors().length, gmlen);
 	}
-      catch (IntrospectionException e)
+      catch (Throwable e)
 	{
 	  harness.check (false);
 	  harness.debug (e);

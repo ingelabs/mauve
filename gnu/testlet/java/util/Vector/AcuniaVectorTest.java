@@ -859,6 +859,10 @@ public class AcuniaVectorTest implements Testlet
         th.fail("should throw an IndexOutOfBoundsException -- 3");
         }
     catch(IndexOutOfBoundsException ioobe) { th.check(true); }
+    catch(IllegalArgumentException iae) {
+	th.fail("should throw an IndexOutOfBoundsException, "
+		+ "not IllegalArumentException -- 3");
+    }
     try {
     	th.check(al.equals(xal) , "ArrayList must not be changed -- 3");
     }
@@ -878,6 +882,10 @@ public class AcuniaVectorTest implements Testlet
         th.fail("should throw an IndexOutOfBoundsException -- 5");
         }
     catch(IndexOutOfBoundsException ioobe) { th.check(true); }
+    catch(IllegalArgumentException iae) {
+	th.fail("should throw an IndexOutOfBoundsException, "
+		+ "not IllegalArumentException -- 5");
+    }
     try {
     	th.check(xal.equals(al) , "ArrayList must not be changed -- 5");
     }

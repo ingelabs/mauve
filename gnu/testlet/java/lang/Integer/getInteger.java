@@ -66,7 +66,14 @@ public class getInteger extends SecurityManager implements Testlet
 		     "56789");
       harness.check (Integer.getInteger("junk", null), null);
       harness.check (Integer.getInteger("junk"), null);
-      harness.check (Integer.getInteger(null), null);
+      try
+        {
+          harness.check (Integer.getInteger(null), null);
+	}
+      catch (NullPointerException npe)
+        {
+          harness.check (false);
+        }
       harness.check (Integer.getInteger(""), null);
 
       boolean ok = true;

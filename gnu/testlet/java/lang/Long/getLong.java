@@ -44,24 +44,54 @@ public class getLong implements Testlet
       p.put("e10", " ");
       p.put("e11", "foo");
 
-      harness.check (Long.getLong("e1").toString(), "-9223372036854775808");
-      harness.check (Long.getLong("e2").toString(), "9223372036854775807");
-      harness.check (Long.getLong("e3"), null);
-      harness.check (Long.getLong("e4").toString(), "9223372036854775807");
-      harness.check (Long.getLong("e5", 12345L).toString(), "12345");
-      harness.check (Long.getLong("e6", new Long(56789L)).toString(),
+      try {
+        harness.check (Long.getLong("e1").toString(), "-9223372036854775808");
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e2").toString(), "9223372036854775807");
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e3"), null);
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e4").toString(), "9223372036854775807");
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e5", 12345L).toString(), "12345");
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e6", new Long(56789L)).toString(),
 		     "9223372036854775807");
-      harness.check (Long.getLong("e7", null).toString(),
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e7", null).toString(),
 		     "9223372036854775807");
-      harness.check (Long.getLong("e8", 12345).toString(),
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e8", 12345).toString(),
 		     "9223372036854775807");
-      harness.check (Long.getLong("e9", new Long(56789L)).toString(), "56789");
-      harness.check (Long.getLong("e10", null), null);
-      harness.check (Long.getLong("e11"), null);
-      harness.check (Long.getLong("junk", 12345L).toString(), "12345");
-      harness.check (Long.getLong("junk", new Long(56789L)).toString(),
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e9", new Long(56789L)).toString(), "56789");
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e10", null), null);
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("e11"), null);
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("junk", 12345L).toString(), "12345");
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("junk", new Long(56789L)).toString(),
 		     "56789");
-      harness.check (Long.getLong("junk", null), null);
-      harness.check (Long.getLong("junk"), null);
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("junk", null), null);
+      } catch (NullPointerException npe) { harness.check(false); }
+      try {
+        harness.check (Long.getLong("junk"), null);
+      } catch (NullPointerException npe) { harness.check(false); }
     }
 }

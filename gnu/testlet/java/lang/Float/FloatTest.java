@@ -293,19 +293,32 @@ public class FloatTest implements Testlet
 		try {
 			Float.valueOf(null);
 			harness.fail("Error: test_valueOf returned wrong results - 1" );
-		}catch ( NullPointerException e )
-		{}
+		}
+		catch ( NumberFormatException nfe )
+		  {harness.check(false, "test_valueOf null should throw NullPointerException");}
+		catch ( NullPointerException e )
+		  {harness.check(true, "test_valueOf null");}
+
 
 		try {
 			Float.valueOf("Kona");
 			harness.fail("Error: test_valueOf returned wrong results - 2" );
-		}catch( NumberFormatException e) {}
+		}catch( NumberFormatException e)
+		  {harness.check(true, "test_valueOf Kona");}
 
-		harness.check(!( Float.valueOf( "3.4e+32f" ).floatValue() != 3.4e+32f ),  
-			"Error: test_valueOf returned wrong results - 3" );
 
-		harness.check(!( Float.valueOf(" -23.45f    ").floatValue() != -23.45f ),  
-			"Error: test_longValue returned wrong results - 4" );
+		try {
+			harness.check(!( Float.valueOf( "3.4e+32f" ).floatValue() != 3.4e+32f ),  
+				"Error: test_valueOf returned wrong results - 3" );
+		}catch( NumberFormatException e)
+		  {harness.check(false, "test_valueOf 3.4e+32f");}
+
+		try {
+			harness.check(!( Float.valueOf(" -23.45f    ").floatValue() != -23.45f ),  
+				"Error: test_longValue returned wrong results - 4" );
+		}catch( NumberFormatException e)
+		  {harness.check(false, "test_valueOf \" -23.45f    \"");}
+
 	}
 
 	public void test_floatToIntBits()
