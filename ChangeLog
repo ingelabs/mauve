@@ -1,3 +1,9 @@
+1999-12-23  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/reflect/Method/invoke.java (try_invoke):
+	Compare result class against expected class, not against
+	`expect'.
+
 1999-12-21  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/reflect/Method/invoke.java: New file.
