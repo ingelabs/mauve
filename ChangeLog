@@ -1,4 +1,8 @@
 2002-12-22  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/FileWriter/jdk11.java: complete 
+	constructor tests for class (no other methods defined)
+
+2002-12-22  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/FileReader/jdk11.java: complete 
 	constructor tests for class (no other methods defined)
 
