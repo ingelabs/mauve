@@ -2,6 +2,33 @@
 
 	* gnu/testlet/java/net/InetSocketAddress/InetSocketAddressTest.java:
 	New testcases for java.net.InetSocketAddress.
+
+2004-02-11  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/swing/undo/UndoManager: New directory.
+	
+	* gnu/testlet/javax/swing/undo/UndoManager/addEdit.java,
+	gnu/testlet/javax/swing/undo/UndoManager/canRedo.java,
+	gnu/testlet/javax/swing/undo/UndoManager/canUndo.java,
+	gnu/testlet/javax/swing/undo/UndoManager/canUndoOrRedo.java,
+	gnu/testlet/javax/swing/undo/UndoManager/discardAllEdits.java,
+	gnu/testlet/javax/swing/undo/UndoManager/editToBeRedone.java,
+	gnu/testlet/javax/swing/undo/UndoManager/editToBeUndone.java,
+	gnu/testlet/javax/swing/undo/UndoManager/end.java,
+	gnu/testlet/javax/swing/undo/UndoManager/getLimit.java,
+	gnu/testlet/javax/swing/undo/UndoManager/getRedoPresentationName.java,
+	gnu/testlet/javax/swing/undo/UndoManager/
+	getUndoOrRedoPresentationName.java,
+	gnu/testlet/javax/swing/undo/UndoManager/getUndoPresentationName.java,
+	gnu/testlet/javax/swing/undo/UndoManager/redoTo.java,
+	gnu/testlet/javax/swing/undo/UndoManager/setLimit.java,
+	gnu/testlet/javax/swing/undo/UndoManager/TestUndoManager.java,
+	gnu/testlet/javax/swing/undo/UndoManager/toString.java,
+	gnu/testlet/javax/swing/undo/UndoManager/trimEdits.java,
+	gnu/testlet/javax/swing/undo/UndoManager/undoableEditHappened.java,
+	gnu/testlet/javax/swing/undo/UndoManager/undoTo.java:
+	New files.
+
 2004-01-24  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/Socket/SocketTest.java:
