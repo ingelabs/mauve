@@ -1,3 +1,8 @@
+2000-01-05  Dalibor Topic <robilad@yahoo.com>
+
+	* gnu/testlet/java/lang/reflect/Method/invoke.java: Pass argument
+	to InvocationTargetException constructor.
+
 2000-01-04  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Class/reflect.java: New file.
