@@ -1,3 +1,8 @@
+2002-12-13  David J. King  <david_king@softhome.net>
+
+	* gnu/testlet/java/io/CharArrayWriter/BasicTests.java: New test.
+	* gnu/testlet/java/io/CharArrayWriter/ProtectedVars.java: New test.
+
 2002-12-13  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/SerTest.java: New test.
