@@ -1,5 +1,10 @@
 2004-11-30  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getPath.java:
+	New testcases.
+
+2004-11-30  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/pathFromAncestorEnumeration.java:
 	New testcases.
 
