@@ -1,3 +1,7 @@
+2002-12-26  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/InputStream/Test.java:
+	Added tests for InputStream class
+
 2002-12-25  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/Reader/Test.java:
 	Added tests for Reader class
