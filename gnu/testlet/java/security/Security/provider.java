@@ -60,7 +60,7 @@ public class provider extends Provider implements Testlet
     harness.check(orig_providers.length + 1, new_providers.length);
 
     // In the correct place?
-    harness.check(new_providers[pos1], p1);
+    harness.check(new_providers[pos1-1], p1);
 
     // Add another, should be after 1
     Provider p2 = new provider(2);
@@ -71,8 +71,8 @@ public class provider extends Provider implements Testlet
     new_providers = Security.getProviders();
     harness.check(orig_providers.length + 2, new_providers.length);
     
-    harness.check(new_providers[pos1], p1);
-    harness.check(new_providers[pos2], p2);
+    harness.check(new_providers[pos1-1], p1);
+    harness.check(new_providers[pos2-1], p2);
 
     // Add new one in front, note 1 based.
     Provider p0 = new provider(0);
@@ -84,7 +84,7 @@ public class provider extends Provider implements Testlet
     // All in the correct place?
     new_providers = Security.getProviders();
     harness.check(orig_providers.length + 3, new_providers.length);
-    harness.check(new_providers[pos0], p0);
+    harness.check(new_providers[pos0-1], p0);
 
     // Are they all there?
     harness.check(Security.getProvider(p0.getName()), p0);
@@ -115,7 +115,7 @@ public class provider extends Provider implements Testlet
     // Provider 1 still at original place?
     harness.check(Security.getProvider(p1.getName()), p1);
     new_providers = Security.getProviders();
-    harness.check(new_providers[pos1], p1);
+    harness.check(new_providers[pos1-1], p1);
 
     // Done
     Security.removeProvider(p1.getName());

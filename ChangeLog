@@ -1,5 +1,10 @@
 2002-10-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/security/Security/provider.java: Preference
+	positions are 1 based.
+
+2002-10-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/security/Provider/NameVersionInfo.java: New test.
 	* gnu/testlet/java/security/Security/property.java: New test.
 	* gnu/testlet/java/security/Security/provider.java: New test.
