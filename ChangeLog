@@ -1,7 +1,17 @@
 2005-03-07  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/StringTokenizer/constructors.java: New tests.
+	* gnu/testlet/java/util/StringTokenizer/countTokens.java: Likewise.
+	* gnu/testlet/java/util/StringTokenizer/hasMoreElements.java: Likewise.
+	* gnu/testlet/java/util/StringTokenizer/hasMoreTokens.java: Likewise.
+	* gnu/testlet/java/util/StringTokenizer/nextElement.java: Likewise.
+	* gnu/testlet/java/util/StringTokenizer/nextToken.java: Additional 
+	tests.
+	
+2005-03-07  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Font/decode.java: New tests.
-	* gnu/testlet/java/util/StringTokenizer.java: New tests.
+	* gnu/testlet/java/util/StringTokenizer/nextToken.java: New tests.
 	
 2005-03-03  Jeroen Frijters  <jeroen@frijters.net>
 

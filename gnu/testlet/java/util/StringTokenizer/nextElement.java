@@ -28,72 +28,45 @@ import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
 /**
- * Some checks for the nextToken() method.
-*/
-public class nextToken implements Testlet
+ * Some checks for the nextElement() method.
+ */
+public class nextElement implements Testlet
 {
 
   /**
-   * Runs the test.
+   * Runs the tests.
    * 
    * @param harness  the test harness.
    */
-  public void test(TestHarness harness) 
+  public void test(TestHarness harness)
   {
-    test1(harness);
-    test2(harness);
-  }
-  
-  private void test1(TestHarness harness)
-  {
-    harness.checkPoint("nextToken()");
     StringTokenizer t = new StringTokenizer("one two three");
-    harness.check(t.nextToken(), "one");
-    harness.check(t.nextToken(), "two");
-    harness.check(t.nextToken(), "three");
-    
+    harness.check(t.nextElement(), "one");
+    harness.check(t.nextElement(), "two");
+    harness.check(t.nextElement(), "three");
+ 
     boolean pass = false;
     try
     {
-      t.nextToken();   
+      t.nextElement();   
     }
     catch (NoSuchElementException e) 
     {
       pass = true;   
     }
     harness.check(pass);
-    
+ 
     // try with multiple delimiters
     t = new StringTokenizer("one two-three", "- ");
-    harness.check(t.nextToken(), "one");
-    harness.check(t.nextToken(), "two");
-    harness.check(t.nextToken(), "three");
+    harness.check(t.nextElement(), "one");
+    harness.check(t.nextElement(), "two");
+    harness.check(t.nextElement(), "three");
     pass = false;
     try
     {
       t.nextToken();   
     }
     catch (NoSuchElementException e) 
-    {
-      pass = true;   
-    }
-    harness.check(pass); 
-  }
-  
-  private void test2(TestHarness harness)
-  {
-    harness.checkPoint("nextToken(String)");
-    StringTokenizer t = new StringTokenizer("A BC-DEF GHI-JKL", " ");
-    harness.check(t.nextToken(), "A");
-    harness.check(t.nextToken("-"), " BC");
-    harness.check(t.nextToken(), "DEF GHI");
-    
-    boolean pass = false;
-    try
-    {
-      t.nextToken(null);   
-    }
-    catch (NullPointerException e) 
     {
       pass = true;   
     }
