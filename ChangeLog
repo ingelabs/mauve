@@ -1,3 +1,7 @@
+2001-01-10  Warren Levy  <warrenl@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/setScale.java: New file.
+
 2000-12-20  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/ClassTest.java (test_getInterfaces):

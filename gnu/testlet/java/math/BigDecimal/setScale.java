@@ -1,0 +1,55 @@
+// Test of setScale method of BigDecimal. (PR 1596)
+
+/*************************************************************************
+/* This program is free software; you can redistribute it and/or modify
+/* it under the terms of the GNU General Public License as published 
+/* by the Free Software Foundation, either version 2 of the License, or
+/* (at your option) any later version.
+/*
+/* This program is distributed in the hope that it will be useful, but
+/* WITHOUT ANY WARRANTY; without even the implied warranty of
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+/* GNU General Public License for more details.
+/*
+/* You should have received a copy of the GNU General Public License
+/* along with this program; if not, write to the Free Software Foundation
+/* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
+/*************************************************************************/
+
+// Tags: JDK1.1
+
+package gnu.testlet.java.math.BigDecimal;
+
+import java.math.BigDecimal;
+import gnu.testlet.Testlet;
+import gnu.testlet.TestHarness;
+
+public class setScale implements Testlet
+{
+  public void test (TestHarness harness)
+  {
+    harness.checkPoint ("newScale");
+    BigDecimal amount = new BigDecimal ("12.34");
+    BigDecimal rate = new BigDecimal ("0.06");
+    BigDecimal result = amount.multiply (rate);
+    try
+      {
+        BigDecimal foo = result.setScale(-1, BigDecimal.ROUND_HALF_UP);
+	harness.fail ("Failed to catch ArithmeticException");
+      }
+    catch (ArithmeticException e)
+      {
+        harness.check (true);
+      }
+    harness.check (result.setScale(0, BigDecimal.ROUND_HALF_UP),
+    		   new BigDecimal ("1"));
+    harness.check (result.setScale(1, BigDecimal.ROUND_HALF_UP),
+    		   new BigDecimal ("0.7"));
+    harness.check (result.setScale(2, BigDecimal.ROUND_HALF_UP),
+    		   new BigDecimal ("0.74"));
+    harness.check (result.setScale(3, BigDecimal.ROUND_HALF_UP),
+    		   new BigDecimal ("0.740"));
+    harness.check (result.setScale(4, BigDecimal.ROUND_HALF_UP),
+    		   new BigDecimal ("0.7404"));
+  }
+}
