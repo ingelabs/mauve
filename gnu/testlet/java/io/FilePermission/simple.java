@@ -32,11 +32,124 @@ public class simple implements Testlet
   {
     // Test for a classpath regression.
     Permissions p = new Permissions();
-    p.add(new FilePermission("/tmp/p", "nothing"));
-    p.add(new FilePermission("/tmp/p", "nothing"));
+    // (The following used to use the bogus action "nothing" ... but
+    // the JDK 1.4.2 javadoc makes it clear that only actions "read",
+    // "write", "execute" and "delete" are recognized.  And the JDK
+    // 1.4.2 implementation throws IllegalArgumentException for an
+    // unrecognized action.)
+    p.add(new FilePermission("/tmp/p", "read"));
+    p.add(new FilePermission("/tmp/p", "read"));
 
     // Classpath didn't handle dirs without a file separator correctly
     FilePermission fp1 = new FilePermission("/tmp", "read");
     harness.check(fp1.implies(fp1));
+
+    // Test the constructor's checking of its arguments.
+    harness.checkPoint("constructor file arg checking");
+    try {
+      harness.check(new FilePermission(null, "read") == null);
+    }
+    catch (java.lang.NullPointerException ex) {
+      harness.check(true);
+    }
+
+    harness.checkPoint("constructor action checking (simple)");
+    harness.check(new FilePermission("/tmp/p", "read") != null);
+    harness.check(new FilePermission("/tmp/p", "write") != null);
+    harness.check(new FilePermission("/tmp/p", "execute") != null);
+    harness.check(new FilePermission("/tmp/p", "delete") != null);
+    
+    harness.checkPoint("constructor action checking (lists)");
+    harness.check(new FilePermission("/tmp/p", "read,delete") != null);
+    harness.check(new FilePermission("/tmp/p", "read,read") != null);
+    harness.check(new FilePermission("/tmp/p", "read,read,read") != null);
+
+    harness.checkPoint("constructor action checking (case)");
+    harness.check(new FilePermission("/tmp/p", "Read,DELETE") != null);
+    harness.check(new FilePermission("/tmp/p", "rEAD") != null);
+
+    harness.checkPoint("constructor action checking(underspecified)");
+    harness.check(new FilePermission("/tmp/p", " read ") != null);
+    harness.check(new FilePermission("/tmp/p", "read, read") != null);
+    harness.check(new FilePermission("/tmp/p", "read ,read") != null);
+
+    harness.checkPoint("constructor action checking(bad actions)");
+    try {
+      harness.check(new FilePermission("/tmp/p", null) == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", " ") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "foo") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "nothing") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+
+    harness.checkPoint("constructor action checking(bad action lists)");
+    try {
+      harness.check(new FilePermission("/tmp/p", ",") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    // The following case fails under JDK 1.4.2.  IMO, its a bug.
+    try {
+      harness.check(new FilePermission("/tmp/p", ",read") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "read,") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "read,,read") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+
+    harness.checkPoint("constructor action checking(wierd stuff)");
+    try {
+      harness.check(new FilePermission("/tmp/p", "read read") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "read\nread") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
+    try {
+      harness.check(new FilePermission("/tmp/p", "read;read") == null);
+    }
+    catch (java.lang.IllegalArgumentException ex) {
+      harness.check(true);
+    }
   }
 }

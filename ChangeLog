@@ -1,3 +1,9 @@
+2004-05-12  Stephen Crawley <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/io/FilePermission/simple.java : fixed existing
+	test to work on JDK 1.4.  Added new tests for constructor arg
+	checking (as per the JDK 1.4 javadoc).
+
 2004-05-11  Stephen Crawley <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/io/FilterWriter/MyFilterWriter.java : new file
