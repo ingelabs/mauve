@@ -21,6 +21,7 @@
 
 package gnu.testlet.java.beans.EventHandler;
 
+import java.awt.event.WindowListener;
 import java.beans.EventHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
@@ -29,7 +30,9 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 /**
- * <p>This tests the error behavior of the <code>EventHandler</code></p>
+ * <p>
+ * This tests the error behavior of the <code>EventHandler</code>
+ * </p>
  */
 public class check14c implements Testlet {
 
@@ -54,7 +57,7 @@ public class check14c implements Testlet {
 		public int getIntValue() {
 			return 0xDEADBEEF;
 		}
-		
+
 		public Event getSelf() {
 			return this;
 		}
@@ -65,10 +68,10 @@ public class check14c implements Testlet {
 			throw new PersonalException();
 		}
 	}
-	
-	static class PersonalException extends Exception{
+
+	static class PersonalException extends Exception {
 	}
-	
+
 	public interface Listener2 {
 		public void listen(Event e);
 	}
@@ -76,9 +79,11 @@ public class check14c implements Testlet {
 	private boolean calledSetter;
 
 	public void test(TestHarness harness) {
-		
-		// The first test checks whether a ArrayIndexOutOfBoundsException is thrown
-		// when the targetMethod cannot be found (Especially because of missing access
+
+		// The first test checks whether a ArrayIndexOutOfBoundsException is
+		// thrown
+		// when the targetMethod cannot be found (Especially because of missing
+		// access
 		// rights).
 		Listener l = (Listener) EventHandler.create(Listener.class, this,
 				"targetMethod");
@@ -91,8 +96,10 @@ public class check14c implements Testlet {
 		}
 		harness.check(correctException, true, "missing target method");
 
-		// This checks whether a RuntimeException is thrown when the EventHandler
-		// retrieved a property value from the listener first argument but finds no
+		// This checks whether a RuntimeException is thrown when the
+		// EventHandler
+		// retrieved a property value from the listener first argument but finds
+		// no
 		// suitable method or property to apply the property.
 		Listener2 l2 = (Listener2) EventHandler.create(Listener2.class, this,
 				"targetMethod2", "booleanValue");
@@ -106,7 +113,8 @@ public class check14c implements Testlet {
 		harness.check(correctException, true, "missing property target method");
 
 		// This checks the a similar situation as above. The difference is that
-		// the property is retrieved by a more complex expression. The RuntimeException
+		// the property is retrieved by a more complex expression. The
+		// RuntimeException
 		// is expected because targetMethod2 does not accept an int or Integer.
 		l2 = (Listener2) EventHandler.create(Listener2.class, this,
 				"targetMethod2", "getSelf.getSelf.intValue");
@@ -118,61 +126,68 @@ public class check14c implements Testlet {
 			correctException = e.getClass() == RuntimeException.class;
 		}
 		harness.check(correctException, true);
-		
-		// The list of "."-concatenated method and property names may have a wrong entry. We expect
+
+		// The list of "."-concatenated method and property names may have a
+		// wrong entry. We expect
 		// a RuntimeException then.
-		l2 = (Listener2)
-		EventHandler.create(Listener2.class, this, "not important", "getSelf.self.getSelf.self.HellBrokeOut", null);
+		l2 = (Listener2) EventHandler
+				.create(Listener2.class, this, "not important",
+						"getSelf.self.getSelf.self.HellBrokeOut", null);
 
 		correctException = false;
 		try {
 			l2.listen(new EventSub());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			correctException = e.getClass() == RuntimeException.class;
 		}
 		harness.check(correctException, true, "missing property");
 
-		// One may think that a creation like this will forward the Event instance to the 'setEventProperty'
-		// method but this is wrong and will cause a ArrayIndexOutOfBoundsException to be as if could not
-		// find a method. In other words: If no property is defined action will never be treated as a
-		// property but always like a method name. 
-		l2 = (Listener2)
-		EventHandler.create(Listener2.class, this, "eventProperty");
+		// One may think that a creation like this will forward the Event
+		// instance to the 'setEventProperty'
+		// method but this is wrong and will cause a
+		// ArrayIndexOutOfBoundsException to be as if could not
+		// find a method. In other words: If no property is defined action will
+		// never be treated as a
+		// property but always like a method name.
+		l2 = (Listener2) EventHandler.create(Listener2.class, this,
+				"eventProperty");
 
 		correctException = false;
 		try {
 			l2.listen(new Event());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			correctException = e.getClass() == ArrayIndexOutOfBoundsException.class;
 		}
 		harness.check(correctException, true, "action is method");
 
-		// When the target method throws an Exception it will be wrapped in a RuntimeException.
-		l2 = (Listener2)
-		EventHandler.create(Listener2.class, this, "erroneousTargetMethod");
+		// When the target method throws an Exception it will be wrapped in a
+		// RuntimeException.
+		l2 = (Listener2) EventHandler.create(Listener2.class, this,
+				"erroneousTargetMethod");
 
 		correctException = false;
 		boolean correctException2 = false;
 		try {
 			l2.listen(new Event());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			correctException = e.getClass() == RuntimeException.class;
 			correctException2 = e.getCause().getClass() == PersonalException.class;
 		}
 		harness.check(correctException, true, "erroneous target method");
 		harness.check(correctException2, true);
 
-		// When the property method throws an Exception a RuntimeException will be
+		// When the property method throws an Exception a RuntimeException will
+		// be
 		// thrown.
-		l2 = (Listener2)
-		EventHandler.create(Listener2.class, this, "not important", "erroneousProperty");
+		l2 = (Listener2) EventHandler.create(Listener2.class, this,
+				"not important", "erroneousProperty");
 
 		correctException = false;
 		correctException2 = false;
 		boolean correctException3 = false;
 		try {
 			l2.listen(new EventSub());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			correctException = e.getClass() == RuntimeException.class;
 			correctException2 = e.getCause().getClass() == InvocationTargetException.class;
 			correctException3 = e.getCause().getCause().getClass() == PersonalException.class;
@@ -180,6 +195,29 @@ public class check14c implements Testlet {
 		harness.check(correctException, true, "erroneous property");
 		harness.check(correctException2, true);
 		harness.check(correctException3, true);
+
+		// This tests the exception behavior when creating a new interface implementation.
+		// The create method should throw a NullPointerException if the interface class argument
+		// is null.
+		correctException = false;
+		harness.checkPoint("wrong arguments");
+		try {
+			EventHandler.create(null, harness, "bla", "foo", "baz");
+		} catch(Exception e) {
+			correctException = e.getClass() == NullPointerException.class;
+		}
+		harness.check(correctException, true);
+		correctException = false;
+		
+		// The create method should throw a NullPointerException if the target object is null.
+		try {
+			WindowListener w = (WindowListener) EventHandler.create(WindowListener.class, null, "bla", "foo", "windowClosing");
+		} catch (Exception e) {
+			correctException = e.getClass() == NullPointerException.class;
+		}
+		harness.check(correctException, true);
+		correctException = false;
+
 	}
 
 	void targetMethod() {
@@ -190,10 +228,9 @@ public class check14c implements Testlet {
 
 	public void setEventProperty(Event e) {
 	}
-	
+
 	public void erroneousTargetMethod() throws PersonalException {
-		throw new PersonalException(); 
+		throw new PersonalException();
 	}
-	
 
 }
