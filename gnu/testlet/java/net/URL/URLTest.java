@@ -128,7 +128,7 @@ public class URLTest implements Testlet
 
 			URLConnection conn = url.openConnection();
 
-			harness.check (conn.getHeaderField(2), "Apache/1.3.4 (Unix)");
+			harness.check (conn.getHeaderField(2), "Apache/1.3.9 (Unix)");
 			String conttype	= conn.getContentType();
 			harness.check (conttype, "text/html");
 
@@ -199,12 +199,12 @@ public class URLTest implements Testlet
 			URL url1 = new URL ( "http://sourceware.cygnus.com:80/mauve/testarea/index.html");
 			String str1 = url1.toString();
 
-			URL url2 = new URL ( "http://205.180.83.80/");
+			URL url2 = new URL ( "http://205.180.83.71/");
 			String str2 = url2.toString();
 
 			harness.check (str, "http://sourceware.cygnus.com/index.html");
 			harness.check (str1, "http://sourceware.cygnus.com:80/mauve/testarea/index.html");
-			harness.check (str2, "http://205.180.83.80/");
+			harness.check (str2, "http://205.180.83.71/");
 
 			URL url3 = new URL( "ftp" , "sourceware.cygnus.com" , 21 , "/dir/dir1.lst");
 			String str3 = url3.toString( );

@@ -1,3 +1,10 @@
+2000-03-02  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/net/URL/URLTest.java (test_toString):
+	sourceware.cygnus.com has a new IP address.
+	(test_openConnection): Sourceware is running a newer version of
+	Apache.
+
 2000-01-09  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/lang/String/StringTest.java (test_getChars,
