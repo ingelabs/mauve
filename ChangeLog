@@ -1,3 +1,7 @@
+2002-12-15  Raif Naffah  <raif@fl.net.au>
+
+	* gnu/testlet/java/math/BigInteger/modInverse.java: New test.
+
 2002-12-15  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/CharArrayWriter/ProtectedVars.java: Use try
