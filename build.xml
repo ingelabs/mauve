@@ -25,12 +25,13 @@
 
     <property name="src" value="."/>
     <property name="build" value="build"/>
-    <property name="docs" value="doc"/>
+    <property name="docs" value="docs"/>
 
     <!-- clean up .class and .jar files -->
     <target name="clean" description="Clean out compiled files">
         <!-- call clean from example-buildfile -->
         <delete dir="${build}"/>
+        <delete file="${src}/gnu/testlet/config.java"/>
         <delete dir="${docs}"/>
     </target>
 
@@ -61,7 +62,10 @@
             includes="gnu/**/*.java"
             excludes="gnu/testlet/BinaryCompatibility/**"
             classpathref="myclass.path"
-            debug="on" />
+            target="1.3"
+            source="1.3"
+            debug="on">
+        </javac>
     </target>
 
     <target name="doc" depends="init" description="Build javadoc">
@@ -86,5 +90,26 @@
             <fileset dir="${build}" includes="gnu/testlet/java/**" />
             <fileset dir="${build}" includes="gnu/testlet/javax/**" />
         </mauve>
+    </target>
+
+    <target name="parseSources" description="Create tests lists file">
+        <java classname="gnu.anttask.CreateTags" fork="true">
+            <classpath>
+                <pathelement location="${build}" />
+            </classpath>
+            <arg value="gnu" />
+            <arg value="${build}/testslists" />
+        </java>
+    </target>
+
+    <target name="jars" depends="compile, parseSources" description="Bottle jar">
+        <jar jarfile="alltests.jar" filesonly="true">
+            <fileset dir="build" />
+            <manifest>
+                <attribute name="Main-Class" value="gnu.anttask.Filter" />
+                <attribute name="Built-By" value="${user.name}"/>
+            </manifest>
+
+        </jar>
     </target>
 </project>
