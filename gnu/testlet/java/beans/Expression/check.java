@@ -174,6 +174,7 @@ public class check implements Testlet
       }
     catch (Exception e)
       {
+	harness.debug(e);
 	harness.fail("Expression using new failed");
       }
 
