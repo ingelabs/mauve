@@ -1,3 +1,10 @@
+2004-06-23  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/javax/swing/text/GapContent/GapContentTest.java,
+	gnu/testlet/javax/swing/text/PlainDocument/PlainDocumentTest.java,
+	gnu/testlet/javax/swing/text/AbstractDocument/AbstractDocumentTest.java:
+	New files.
+
 2004-06-21  Ito kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/text/MessageFormat/format.java:
