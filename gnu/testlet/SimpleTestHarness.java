@@ -221,7 +221,7 @@ public class SimpleTestHarness
       boolean debug = false;
       int i;
 
-      for (i = 0; i < args.length - 1; i++) 
+      for (i = 0; i < args.length; i++) 
 	{
 	  if (args[i].equals("-verbose")) 
 	    verbose = true;

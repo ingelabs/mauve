@@ -1,3 +1,8 @@
+1999-03-18  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/SimpleTestHarness.java (main): Examine all
+	arguments.
+
 1999-03-16  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Boolean/BooleanTest.java (test_equals):
