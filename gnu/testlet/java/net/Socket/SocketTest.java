@@ -368,9 +368,9 @@ if (true) // 1.1 features not implemented
   // create a bogus SocketImpl for test coverage
   // and test Socket(SocketImpl)
   MySocketImpl msi = null;
-  try {
+  //try {
    msi = new MySocketImpl();
-  } catch (Exception e) {}
+  //} catch (Exception e) {}
   try {
    MySocket s = new MySocket(msi);
   } catch (Exception se) {
