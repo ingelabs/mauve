@@ -1,3 +1,9 @@
+2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/DataBuffer/constants.java: New test.
+	* gnu/testlet/java/awt/image/DataBuffer/getDataTypeSize.java:
+	Likewise.
+
 2004-08-27  Mark Wielaard  <mark@klomp.org>
 
 	Reported by David Gilbert <david.gilbert@object-refinery.com>
