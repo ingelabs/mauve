@@ -29,7 +29,7 @@ public class max implements Testlet
     {
       harness.check (Double.toString (Math.max (0.0, -0.0)), "0.0");
       harness.check (Double.toString (Math.max (-0.0, -0.0)), "-0.0");
-      harness.check (Double.toString (Math.max (0.0, -0.0)), "0.0");
+      harness.check (Double.toString (Math.max (-0.0, 0.0)), "0.0");
       harness.check (Double.toString (Math.max (0.0, 0.0)), "0.0");
       harness.check (Double.toString (Math.max (1.0, 2.0)), "2.0");
       harness.check (Double.toString (Math.max (2.0, 1.0)), "2.0");
@@ -53,7 +53,7 @@ public class max implements Testlet
 
       harness.check (Float.toString (Math.max (0.0f, -0.0f)), "0.0");
       harness.check (Float.toString (Math.max (-0.0f, -0.0f)), "-0.0");
-      harness.check (Float.toString (Math.max (0.0f, -0.0f)), "0.0");
+      harness.check (Float.toString (Math.max (-0.0f, 0.0f)), "0.0");
       harness.check (Float.toString (Math.max (0.0f, 0.0f)), "0.0");
       harness.check (Float.toString (Math.max (1.0f, 2.0f)), "2.0");
       harness.check (Float.toString (Math.max (2.0f, 1.0f)), "2.0");

@@ -1,3 +1,8 @@
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/lang/Math/max.java: Test all different signs for 0.
+	* gnu/testlet/java/lang/Math/min.java: Likewise.
+
 2004-09-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/DataBufferByte/getDataType.java:

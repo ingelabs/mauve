@@ -30,7 +30,7 @@ public class min implements Testlet
       harness.checkPoint("Small doubles");
       harness.check (Double.toString (Math.min (0.0, -0.0)), "-0.0");
       harness.check (Double.toString (Math.min (-0.0, -0.0)), "-0.0");
-      harness.check (Double.toString (Math.min (0.0, -0.0)), "-0.0");
+      harness.check (Double.toString (Math.min (-0.0, 0.0)), "-0.0");
       harness.check (Double.toString (Math.min (0.0, 0.0)), "0.0");
       harness.check (Double.toString (Math.min (1.0, 2.0)), "1.0");
       harness.check (Double.toString (Math.min (2.0, 1.0)), "1.0");
@@ -73,7 +73,7 @@ public class min implements Testlet
 
       harness.check (Float.toString (Math.min (0.0f, -0.0f)), "-0.0");
       harness.check (Float.toString (Math.min (-0.0f, -0.0f)), "-0.0");
-      harness.check (Float.toString (Math.min (0.0f, -0.0f)), "-0.0");
+      harness.check (Float.toString (Math.min (-0.0f, 0.0f)), "-0.0");
       harness.check (Float.toString (Math.min (0.0f, 0.0f)), "0.0");
       harness.check (Float.toString (Math.min (1.0f, 2.0f)), "1.0");
       harness.check (Float.toString (Math.min (2.0f, 1.0f)), "1.0");
