@@ -1,5 +1,11 @@
 2004-05-11  Stephen Crawley <crawley@dstc.edu.au>
 
+	* gnu/testlet/java/io/FilterWriter/MyFilterWriter.java : new file
+	* gnu/testlet/java/io/FilterWriter/write.java : fixed structure,
+	and added test for documented behaviour of new FilterWriter(null).
+
+2004-05-11  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/util/logging/Logger/TestSecurityManager.java 
 	(checkPermission): include the permission in the message when
 	throwing AccessControlException

@@ -1,4 +1,5 @@
 // Tags: JDK1.1
+// Uses: MyFilterWriter
 
 // Copyright (C) 2002 Free Software Foundation, Inc.
 // Written by Daryl Lee (dolee@sources.redhat.com)
@@ -30,23 +31,13 @@ import java.io.IOException;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class write extends FilterWriter implements Testlet
+public class write implements Testlet
 {
-  
-  public write()
-  {
-    this(null);
-  }
-  
-  write (CharArrayWriter caw)
-  {
-    super((Writer) caw);
-  }
-  
+    
   public void test (TestHarness harness)
   {
     CharArrayWriter caw = new CharArrayWriter();
-    write tfw = new write(caw);
+    FilterWriter tfw = new MyFilterWriter(caw);
     try {
       tfw.write('A');						// A
       harness.check(true, "write(int)");
@@ -61,7 +52,18 @@ public class write extends FilterWriter implements Testlet
       harness.check(true, "close()");
     }
     catch (IOException e) {
+      harness.debug(e);
       harness.fail("IOException unexpected");
+    }
+
+    try {
+      // The documented JDK 1.4 behaviour is to throw NullPointerException
+      // if the constructor arg is null.
+      new MyFilterWriter(null);
+      harness.check(false, "new MyFilterWriter(null) -> no exception");
+    }
+    catch (NullPointerException ex) {
+      harness.check(true, "new MyFilterWriter(null) -> NullPointerException");
     }
   }
 }
