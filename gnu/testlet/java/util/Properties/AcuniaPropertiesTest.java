@@ -191,7 +191,8 @@ public class AcuniaPropertiesTest implements Testlet
     start = count;
     while ( ba[count] !='\n' && count < ba.length) { count++;}
     s = new String(ba , start , count - start);
-    th.check(v.contains(s), "v does not contain:$"+s+"$");
+    if (!s.startsWith("--")) // list() adds a header
+	th.check(v.contains(s), "v does not contain:$"+s+"$");
     v.removeElement(s);
     count++;
     }
@@ -229,7 +230,8 @@ public class AcuniaPropertiesTest implements Testlet
     start = count;
     while ( ba[count] !='\n' && count < ba.length) { count++;}
     s = new String(ba , start , count - start);
-    th.check(v.contains(s), "v does not contain:$"+s+"$");
+    if (!s.startsWith("--")) // list() adds a header
+      th.check(v.contains(s), "v does not contain:$"+s+"$");
     v.removeElement(s);
     count++;
     }
@@ -301,10 +303,20 @@ public class AcuniaPropertiesTest implements Testlet
     Enumeration ek = p.keys();
     boolean ok = true;
     Vector v = new Vector();
-    int i=0;
-    while (ek.hasMoreElements() && en.hasMoreElements()) {
-     v.add(ek.nextElement());
-     if (v.elementAt(i++) != en.nextElement()) ok = false; }
+    Enumeration ek2 = p.keys();
+    while (ek2.hasMoreElements()) {
+      v.add(ek2.nextElement ());
+    }
+    while (ek.hasMoreElements() && en.hasMoreElements())
+    {
+     ek.nextElement();
+     Object next = en.nextElement();
+     if (!v.contains(next))
+     {
+       ok = false;
+       th.debug(next + " not in " + v);
+     }
+    }
     th.check(ok , "all elements are the same");
     th.check( ! ek.hasMoreElements() &&  ! en.hasMoreElements() , "make sure both enumerations are empty");
     p = new Properties(defProps);
@@ -500,12 +512,20 @@ public class AcuniaPropertiesTest implements Testlet
   public void test_loadextra(){
     th.checkPoint("load(java.io.InputStream)void");
     Properties p = new Properties();
-    buffer =new String("   !comment\n \t  \nname = no\r    #morec\tomm\\\nents\r\n  dog=no\\cat   \nburps    :\ntest=\ndate today\n\n\nlong\\\n   value=tryin \\\n gto\n4:vier\nvier     :4").getBytes();
+    buffer =new String("   !comment\n \t  \nname = no\r    #morec\tomm\\\nents\r\n  dog=no\\\\cat   \nburps    :\ntest=\ndate today\n\n\nlong\\\n   value=tryin \\\n gto\n4:vier\nvier     :4").getBytes();
     bin = new ByteArrayInputStream(buffer);   	
     try {p.load(bin);} catch (Exception e) {}
     Enumeration e = p.keys();
     Vector v = new Vector();
+    // Yes, the following is valid.
+    // Names can contain a !, just not whitespace,
+    // and only lines starting with comment chars are ignored.
+    v.add("!comment=");
     v.add("name=no");
+    // Yes, the following is valid
+    // Line starts with whitespace, not a comment
+    // and "\\\n" is a line continuation.
+    v.add("#morec=omments");
     v.add("dog=no\\cat   ");
     v.add("burps=");
     v.add("test=");

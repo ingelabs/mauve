@@ -1,3 +1,12 @@
+2003-03-02  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java
+	(test_list): Skip -- header line.
+	(test_propertyNames): Enumeration of propertyNames() and keys() are
+	not necessarily in the same order.
+	(test_loadextra): Fix double escaped no\\cat. Add explanations for
+	corner cases.
+
 2003-02-22  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/String/surrogate.java: New test.
