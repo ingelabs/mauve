@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 
 <!--
-    test data for gnu.testlet.java.beans.XMLDecoder.SimpleElementsTest
+    test data for simpleElementsTest
     
     Simple elements: primitives or elements that cannot contain child elements
     
