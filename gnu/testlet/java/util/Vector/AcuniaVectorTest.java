@@ -698,18 +698,37 @@ public class AcuniaVectorTest extends Vector implements Testlet
           th.fail("should throw NullPointerException");
     }
     catch (NullPointerException ne) { th.check(true); }
-    v.add("b"); v.add(null);
+    th.debug(v.toString());
+    v.add("b");
+    th.debug(v.toString());
+    v.add(null); 
+    th.debug(v.toString() + " == c");
     Collection c = (Collection) v;
     v = buildknownV();
+    th.debug(v.toString() + " == v");
     th.check(!v.removeAll(c) , "checking returnvalue of removeAll -- 1");
+    th.debug(v.toString());
     th.check(v.equals(buildknownV()) , "v didn't change");
+    th.debug(c.toString() + " == c");
     v.addAll(c);
+    th.debug(v.toString() + " v afet addAll(c)");
     th.check(v.removeAll(c) , "checking returnvalue of removeAll -- 2");
+    th.debug(v.toString() + " v after removeAll(c)");
     th.check(v.equals(buildknownV()) , "v did change to original v");
-    v.add(2,null); v.add(4,"a"); v.add(9,"b");   v.addAll(0,c);
+    v.add(2,null);
+    th.debug(v.toString() + "add(2,null)");
+    v.add(4,"a");
+    th.debug(v.toString() + "add(4,a)");
+    v.add(9,"b");
+    th.debug(v.toString() + "add(9,b)");
+    v.addAll(0,c);
+    th.debug(v.toString());
     v.add(2,null); v.add(4,"a"); v.add(9,"b");   v.addAll(c);
+    th.debug(v.toString());
     th.check(v.removeAll(c) , "checking returnvalue of removeAll -- 3");
-    th.check(v.equals(buildknownV()) , "make sure all elements are removed");
+    th.debug(v.toString());
+    th.check(v, buildknownV(), "make sure all elements are removed");
+    th.debug(v.toString());
   }
 
 /**
@@ -937,8 +956,19 @@ public class AcuniaVectorTest extends Vector implements Testlet
     th.check(v.equals(c) , "extra check on Vector.equals()");
     th.check(v.size() == 3 , "checking new size() -- 1");
     v = buildknownV();
-    v.add(2,null); v.add(4,"a"); v.add(9,"b");   v.addAll(10,c);
-    th.check(v.retainAll(c) , "checking returnvalue of retainAll -- 3");
+    th.debug(v + " == v");
+    v.add(2,null);
+    th.debug(v + " - add(2,null)");
+    v.add(4,"a");
+    th.debug(v + " - add(4,a)");
+    v.add(9,"b");
+    th.debug(v + " - add(9,b)");
+    th.debug(c + " == c");
+    v.addAll(10,c);
+    th.debug(v + " - add(10,c)");
+    boolean b = v.retainAll(c);
+    th.debug(v + " - retainAll(c)");
+    th.check(b , "checking returnvalue of retainAll -- 3");
     th.check(v.get(0)==null && v.get(2)=="b" && v.get(1)=="a" , "multiple copies of an element shouldn't be deleted -- 1"+v);
     th.check(v.get(5)==null && v.get(4)=="b" && v.get(3)=="a" , "multiple copies of an element shouldn't be deleted -- 2"+v);
     th.check(v.size() == 6 , "checking new size() -- 2");
@@ -1507,20 +1537,6 @@ public class AcuniaVectorTest extends Vector implements Testlet
     	th.fail("should throw a ConcurrentModificationException -- retainAll");
     	}
     catch(ConcurrentModificationException cme) { th.check(true, "Ok -- 13"); }
-    it = v.iterator();	
-    v.set(2,"a");
-    try {
-    	it.next();
-    	th.fail("should throw a ConcurrentModificationException -- set");
-    	}
-    catch(ConcurrentModificationException cme) { th.check(true, "Ok -- 14"); }
-    it = v.iterator();	
-    v.setElementAt("a",1);
-    try {
-    	it.next();
-    	th.fail("should throw a ConcurrentModificationException -- setElementAt");
-    	}
-    catch(ConcurrentModificationException cme) { th.check(true, "Ok -- 15"); }
     it = v.iterator();	
     v.setSize(v.size()-2);
     try {

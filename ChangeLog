@@ -1,5 +1,17 @@
 2002-04-05  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/ArrayList/AcuniaArrayListTest.java
+	(test_MC_iterator): Remove ConcurrentModificationException check for
+	set(int,Object).
+	* gnu/testlet/java/util/LinkedList/AcuniaLinkedListTest.java
+	(test_iterator): Likewise.
+	* gnu/testlet/java/util/AbstractSequentialList/AcuniaAbstractSequentialListTest.java
+	(test_iterator): Likewise.
+	* gnu/testlet/java/util/Vector/AcuniaVectorTest.java
+	(test_iterator): Likewise and also for setElementAt(Object,int)
+
+2002-04-05  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/File/jdk11.java (test): Make sure that file
 	exists before calling getCanonicalPath().
 

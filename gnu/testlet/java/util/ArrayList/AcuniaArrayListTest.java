@@ -625,13 +625,6 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
     it = al.iterator();
-    al.set(2,xal);
-    try {
-    	it.next();
-        th.fail("should throw a ConcurrentModificationException -- 7");
-        }
-    catch(ConcurrentModificationException ioobe) { th.check(true); }
-    it = al.iterator();
     al.remove(2);
     try {
     	it.next();
