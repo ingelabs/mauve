@@ -1,3 +1,9 @@
+1999-06-11  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java: Added harness.check
+	calls.
+	(test_Basics): Changed from unreachable host to mothership.
+
 1999-06-10  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/io/DataInputStream/readLine.java (test):

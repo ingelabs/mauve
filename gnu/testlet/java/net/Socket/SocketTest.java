@@ -177,6 +177,7 @@ public class SocketTest implements Testlet
   }
   catch(IOException e)
   {
+   harness.check(true);
   }
 
   // invoke finalize()
@@ -235,6 +236,7 @@ public class SocketTest implements Testlet
    }
    catch ( java.io.IOException e )
    {
+    harness.check(true);
    }
   }
   catch ( Exception e )
@@ -255,6 +257,7 @@ public class SocketTest implements Testlet
      " exception should have been thrown here" );
   }
   catch ( UnknownHostException e ){
+   harness.check(true);
   }
   catch ( IOException e ){
    harness.fail("Error : test_Basics failed - 2 " +
@@ -272,6 +275,7 @@ public class SocketTest implements Testlet
      " Unknown host exception should not have been thrown here" );
   }
   catch ( IOException e ){
+   harness.check(true);
   }
 
   try {
@@ -285,11 +289,12 @@ public class SocketTest implements Testlet
      " Unknown host exception should not have been thrown here" );
   }
   catch ( IOException e ){
+   harness.check(true);
   }
 
   // host inet given
   try {
-   Socket s = new Socket ( "hpjavaux.cup.hp.com" , 13 );
+   Socket s = new Socket ( "mothership.cygnus.com" , 13 );
   }
   catch ( Exception e ){
      e.printStackTrace();
@@ -303,6 +308,7 @@ public class SocketTest implements Testlet
 
   }
   catch ( Exception e ){
+   harness.check(true);
   }
 
   //if (false) // 1.1 features not implemented
@@ -318,6 +324,7 @@ if (true) // 1.1 features not implemented
    System.out.println("Warning: test_Basics failed - 9 EJWcr00676 still fail");
   }
   catch ( UnknownHostException e ){
+   harness.check(true);
   }
   catch ( IOException e ){
    harness.fail("Error : test_Basics failed - 10 " +
@@ -336,8 +343,8 @@ if (true) // 1.1 features not implemented
      harness.fail("Error : test_Basics failed - 12 " +
        " Unknown host exception should not have been thrown here" );
   }
-
   catch ( IOException e ){
+   harness.check(true);
   }
 
   // src socket target socket given( as ip address ).
@@ -353,6 +360,7 @@ if (true) // 1.1 features not implemented
      " Unknown host exception should not have been thrown here" );
   }
   catch ( IOException e ){
+   harness.check(true);
   }
   // create a bogus SocketImpl for test coverage
   // and test Socket(SocketImpl)
