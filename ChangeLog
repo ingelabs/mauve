@@ -1,3 +1,9 @@
+2004-12-25  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/DefaultMetalThemeTest.java,
+	gnu/testlet/javax/swing/plaf/metal/MetalTheme/MetalThemeTest.java:
+	New files.
+
 2004-12-24  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/ResourceBundle/getBundle.java:
