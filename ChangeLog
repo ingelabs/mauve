@@ -1,7 +1,15 @@
+2003-02-07  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/text/CollationElementIterator/jdk11.java (test):
+	Add index to check() message to make it easier to see which test
+	actually fails. Necessary when using xfails file.
+
 2003-02-05  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/util/jar/JarFile/basic.java: compilation error fixed
 
 2003-02-04  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/beans/PropertyDescriptorTest.java: added
 	more tests for the 2 introspective constructors
 	* gnu/testlet/java/lang/Class/ClassTest.java (test_getName):

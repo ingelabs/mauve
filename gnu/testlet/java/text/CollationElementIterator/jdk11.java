@@ -85,22 +85,22 @@ public class jdk11 implements Testlet
       while ((next = iterator.next ())  != CollationElementIterator.NULLORDER)
       {
         harness.debug ("next = " + next);
-        harness.check (next, results[i][NEXT], "next()");
+        harness.check (next, results[i][NEXT], "next() " + i);
   
         // primaryOrder()
         int primaryOrder = CollationElementIterator.primaryOrder(next);
         harness.debug ("  primaryOrder = " + primaryOrder);
-        harness.check (primaryOrder, results[i][PRIMARY], "primaryOrder()");
+        harness.check (primaryOrder, results[i][PRIMARY], "primaryOrder() " + i);
   
         // secondaryOrder()
         int secondaryOrder = (int)CollationElementIterator.secondaryOrder(next);
         harness.debug ("  secondaryOrder = " + secondaryOrder);
-        harness.check (secondaryOrder, results[i][SECONDARY], "secondaryOrder()");
+        harness.check (secondaryOrder, results[i][SECONDARY], "secondaryOrder() " + i);
 
         // tertiaryOrder()
         int tertiaryOrder = (int)CollationElementIterator.tertiaryOrder(next);
         harness.debug ("  tertiaryOrder = " + tertiaryOrder);
-        harness.check (tertiaryOrder, results[i][TERTIARY], "tertiaryOrder()");
+        harness.check (tertiaryOrder, results[i][TERTIARY], "tertiaryOrder() " + i);
         i++;
       }
   
