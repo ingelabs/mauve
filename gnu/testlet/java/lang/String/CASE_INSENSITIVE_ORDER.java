@@ -65,7 +65,7 @@ public class CASE_INSENSITIVE_ORDER implements Testlet
     // claims to be locale independent; which affects comparison performed
     // in the Turkish locale (where 'i' to 'I' map funny).
     Locale l = Locale.getDefault();
-    Locale.setDefault(new Locale("tr"));
+    Locale.setDefault(new Locale("tr", ""));
     harness.check(c.compare("\u0131I", "i\u0130") > 0);
     Locale.setDefault(l);
     harness.check(c.compare("\u0131I", "i\u0130"), 0);
