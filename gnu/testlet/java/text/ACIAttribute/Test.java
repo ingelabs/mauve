@@ -19,7 +19,7 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.1
+// Tags: JDK1.2
 
 package gnu.testlet.java.text.ACIAttribute;
 

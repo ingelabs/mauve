@@ -1,3 +1,13 @@
+1999-03-09  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/text/ACIAttribute/Test.java: Mark as JDK1.2;
+	AttributedCharacterIterator is not in 1.1.
+	* gnu/testlet/java/text/AttributedCharacterIterator/implement.java: 
+	Mark as JDK1.2.
+
+	* gnu/testlet/java/text/DecimalFormat/format.java (test): Added
+	some exponential tests (commented out for now).
+
 1999-03-08  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Catch any

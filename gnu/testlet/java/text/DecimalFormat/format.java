@@ -93,5 +93,16 @@ public class format implements Testlet
 
       apply (harness, df, "#.#");
       harness.check (df.format (0.2), ".2");
+
+      // FIXME: we don't actually know the right result here, because
+      // neither the JCL book nor the JDK 1.2 docs explain what should
+      // happen.  The below represents how I think things ought to
+      // work.  However, Sun has a different (and more confusing)
+      // idea.  E.g., JDK1.1 prints "200000.0000E" in the first case.
+//       apply (harness, df, "0.0000E#");
+//       harness.check (df.format (200000), "2.0000E+5");
+
+//       apply (harness, df, "00.00E00");
+//       harness.check (df.format (200000), "20.00E+04");
     }
 }
