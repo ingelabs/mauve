@@ -38,6 +38,7 @@ public class SocketTest implements Testlet
   harness.checkPoint("BasicServer");
   try {
    SocketServer srv = new SocketServer();
+   srv.harness = harness;
    srv.init();
    srv.start();
    Thread.yield();
@@ -382,6 +383,7 @@ if (true) // 1.1 features not implemented
  {
   harness.checkPoint("BasicBServer");
   SocketBServer srv = new SocketBServer();
+  srv.harness = harness;
   srv.init();
   srv.start();
   Thread.yield();

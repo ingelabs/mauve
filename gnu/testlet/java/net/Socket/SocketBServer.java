@@ -30,7 +30,7 @@ import java.io.*;
 
 class SocketBServer extends Thread {
  ServerSocket srvsock = null;
-  protected static TestHarness harness;
+  static TestHarness harness;
 
  public void init()
  {

@@ -1,3 +1,14 @@
+2000-12-08  Warren Levy  <warrenl@redhat.com>
+
+	* gnu/testlet/java/net/Socket/SocketBServer.java (harness): Made
+	package private.
+	* gnu/testlet/java/net/Socket/SocketServer.java: Restored calls
+	to harness.fail.
+	(harness): Made package private.
+	* gnu/testlet/java/net/Socket/SocketTest.java (test_BasicServer):
+	Set srv.harness.
+	(test_BasicBServer): Set srv.harness.
+
 2000-12-01  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/sql/Connection/TestJdbc10.java: Added tag
