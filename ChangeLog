@@ -1,3 +1,24 @@
+2005-01-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/TableColumn/constants.java,
+	* gnu/testlet/javax/swing/table/TableColumn/constructors.java,
+	* gnu/testlet/javax/swing/table/TableColumn/getCellRenderer.java,
+	* gnu/testlet/javax/swing/table/TableColumn/getHeaderRenderer.java,
+	* gnu/testlet/javax/swing/table/TableColumn/getHeaderValue.java,
+	* gnu/testlet/javax/swing/table/TableColumn/getIdentifier.java,
+	* gnu/testlet/javax/swing/table/TableColumn/getModelIndex.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setCellRenderer.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setHeaderRenderer.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setHeaderValue.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setIdentifier.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setMaxWidth.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setMinWidth.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setModelIndex.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setPreferredWidth.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setResizable.java,
+	* gnu/testlet/javax/swing/table/TableColumn/setWidth.java:
+	New tests.
+	
 2005-01-09  Thomas Zander <zander@kde.org>
 
 	* gnu/testlet/javax/swing/UIDefaults/remove.java: New test
