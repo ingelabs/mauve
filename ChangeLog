@@ -1,3 +1,11 @@
+2005-02-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/font/TransformAttribute/constructor.java,
+	gnu/testlet/java/awt/font/TransformAttribute/getTransform.java,
+	gnu/testlet/java/awt/font/TransformAttribute/isIdentity.java,
+	gnu/testlet/java/awt/font/TransformAttribute/serialization.java:
+	New tests.
+	
 2005-02-18  Robert Schuster <thebohemian@gmx.net>
 
     * gnu/testlet/java/beans/XMLDecoder/jdk14.java: Added
