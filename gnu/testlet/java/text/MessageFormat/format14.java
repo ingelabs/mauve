@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2004 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2004, 2005 David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -201,6 +201,18 @@ public class format14 implements Testlet
     {
       harness.check(true);
     }
+
+    harness.checkPoint("quoting");
+
+    // Note that it is ok to have a right brace in a string or quoted
+    // string.
+    s = MessageFormat.format("new {0}() '{..'}", new Object[] { "bob" });
+    harness.check(s, "new bob() {..}");
+
+    // As a practical matter, unterminated quotes are allowed for
+    // compatibility.
+    s = MessageFormat.format("new {0}() '{..}", new Object[] { "bob" });
+    harness.check(s, "new bob() {..}");
   }
 
 }
