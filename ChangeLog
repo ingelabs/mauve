@@ -1,3 +1,10 @@
+2004-10-19  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/lang/Object/clone.java:
+	Moved OutOfMemoryError test to new file (oom.java)
+	* gnu/testlet/java/lang/Object/oom.java:
+	New file for OutOfMemoryError test.
+
 2004-10-17  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/geom/Arc2D/Double/clone.java: New test.

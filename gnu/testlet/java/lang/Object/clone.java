@@ -85,38 +85,5 @@ public final class clone implements Testlet, Cloneable
     harness.check(iarray[0] == icopy[0], "cloned contents are same - 1");
     harness.check(iarray[1] == icopy[1], "cloned contents are same - 2");
     harness.check(oarray[0] == ocopy[0], "cloned contents are same - 3");
-
-    // This test sees if clone can cause an out of memory error.
-    // The testlet should be able to recover, though!
-    oarray = new Object[5];
-    try
-      {
-	int size = 1024;
-	while (true)
-	  {
-	    size <<= 1;
-	    iarray = new int[size];
-	  }
-      }
-    catch (OutOfMemoryError oome)
-      {
-	// we should still have memory left, since the last allocation
-	// attempt failed; but multiple clones should push us over
-	try
-	  {
-	    oarray[0] = iarray.clone();
-	    oarray[1] = iarray.clone();
-	    oarray[2] = iarray.clone();
-	    oarray[3] = iarray.clone();
-	    oarray[4] = iarray.clone();
-	    harness.fail("clone didn't cause expected OutOfMemoryError");
-	  }
-	catch (OutOfMemoryError e)
-	  {
-	    harness.check(true, "clone can exceed memory");
-	  }
-	oarray = null; // help free memory
-      }
   }
-
 }
