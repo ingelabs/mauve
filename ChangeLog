@@ -1,4 +1,9 @@
 2002-11-16  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/BufferedCharWriter/Test.java:
+	Added tests for remaining methods in BufferedWriter
+	This directory will be renamed to match classname
+
+2002-11-16  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/StringWriter/Test.java:
 	Added tests for remaining methods in StringWriter
 

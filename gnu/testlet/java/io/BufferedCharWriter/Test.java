@@ -46,12 +46,14 @@ test(TestHarness harness)
       char[] buf = new char[str.length()];
       str.getChars(0, str.length(), buf, 0);
 
-      bw.write(buf, 0, 5);
+      bw.write(str.substring(0, 5));   // write(String)
       harness.check(caw.toCharArray().length, 0, "buffering/toCharArray");
       bw.write(buf, 5, 8);
       bw.write(buf, 13, 12);
       bw.write(buf[25]);
-      bw.write(buf, 26, buf.length - 26);
+      bw.write(buf, 26, buf.length - 27);
+	  bw.newLine();					   // newLine()
+	  bw.flush();
       bw.close();
 
       String str2 = new String(caw.toCharArray());
