@@ -32,7 +32,7 @@ import java.io.Serializable;
 
 public class Compat2 implements Testlet
 {
-  static String SERIAL_REFERENCE = "Compat2.serial.bin";
+  static String SERIAL_REFERENCE = "serial.bin";
   static String SERIAL_SCRATCH_FILENAME = "Compat2.tmp";
   static int SERIAL_REF_ID = 0;
 
@@ -91,7 +91,17 @@ public class Compat2 implements Testlet
       {
 	generate (SERIAL_SCRATCH_FILENAME);
 	t.check (true);
-	t.check (readSerial (SERIAL_SCRATCH_FILENAME).equals(new GetTypeMismatch()));
+
+	try
+	  {
+	    readSerial (SERIAL_SCRATCH_FILENAME);
+	    t.check (false);
+	    t.debug ("This should have triggered IllegalArgumentException");
+	  }
+	catch (Exception e)
+	  {
+	    t.check (e instanceof IllegalArgumentException);
+	  }
       }
     catch (Exception e)
       {
@@ -104,12 +114,13 @@ public class Compat2 implements Testlet
 	ObjectInputStream ois = new ObjectInputStream (t.getResourceStream 
 				  (getClass().getName().replace ('.', '#') + "." + SERIAL_REFERENCE));
 
-	t.check(ois.readObject().equals (new GetTypeMismatch()));
+	ois.readObject();
+	t.check (false);
+	t.debug ("This should have triggered IllegalArgumentException");
       }
     catch (Exception e)
       {
-	t.check (false);
-	t.debug (e);
+	t.check (e instanceof IllegalArgumentException);
       }
   }
 

@@ -1,3 +1,8 @@
+2004-03-25  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/Compat2.java: Check the right
+	thing according to classpath policy (this test fails on JDK).
+
 2004-03-24  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/text/SimpleDateFormat/attribute.java: New tests.
