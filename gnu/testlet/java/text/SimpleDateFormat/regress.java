@@ -2,7 +2,7 @@
 
 // Tags: JDK1.1
 
-// Copyright (c) 1999, 2001  Free Software Foundation
+// Copyright (c) 1999, 2001, 2003  Free Software Foundation
 
 // This file is part of Mauve.
 
@@ -81,5 +81,10 @@ public class regress implements Testlet
 	harness.debug (_);
 	harness.check (false, "local timezone");
       }
+
+    DateFormat f = new SimpleDateFormat ("yyyy-MM-dd");
+    GregorianCalendar g = new GregorianCalendar (1, 0, 1, 12, 0, 0);
+    harness.check (f.format(g.getTime()), "0001-01-01",
+		   "4 digit year");
   }
 }
