@@ -1,3 +1,7 @@
+2004-07-13  Jerry Quinn  <jlquinn@optonline.net>
+
+	* gnu/testlet/java/beans/EventHandler/check14.java (test): New test.
+
 2004-07-08  Stephen Crawley  <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/nio/channels/FileChannel/manyopen.java :
