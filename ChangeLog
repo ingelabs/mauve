@@ -1,3 +1,43 @@
+1998-12-07  Anthony Green  <green@cygnus.com>
+
+	* README, gnu/testlet/java/beans/DescriptorTest.java,
+	gnu/testlet/java/beans/IntrospectorTest.java,
+	gnu/testlet/java/lang/Boolean/equals_Boolean.java,
+	gnu/testlet/java/lang/Boolean/get.java,
+	gnu/testlet/java/lang/Boolean/hashcode_Boolean.java,
+	gnu/testlet/java/lang/Boolean/new_Boolean.java,
+	gnu/testlet/java/lang/Boolean/value.java,
+	gnu/testlet/java/lang/Byte/new_Byte.java,
+	gnu/testlet/java/lang/Character/classify.java,
+	gnu/testlet/java/lang/Character/classify12.java,
+	gnu/testlet/java/lang/Character/consts.java,
+	gnu/testlet/java/lang/Character/digit.java,
+	gnu/testlet/java/lang/Character/equals_Character.java,
+	gnu/testlet/java/lang/Character/forDigit.java,
+	gnu/testlet/java/lang/Character/getNumericValue.java,
+	gnu/testlet/java/lang/Character/getType.java,
+	gnu/testlet/java/lang/Character/getType12.java,
+	gnu/testlet/java/lang/Character/hash.java,
+	gnu/testlet/java/lang/Character/to.java,
+	gnu/testlet/java/lang/Integer/getInteger.java,
+	gnu/testlet/java/lang/Integer/new_Integer.java,
+	gnu/testlet/java/lang/Long/getLong.java,
+	gnu/testlet/java/lang/Long/new_Long.java,
+	gnu/testlet/java/lang/Short/hash.java,
+	gnu/testlet/java/lang/String/charAt.java,
+	gnu/testlet/java/lang/String/compareTo.java,
+	gnu/testlet/java/lang/String/decode.java,
+	gnu/testlet/java/lang/String/hash.java,
+	gnu/testlet/java/lang/String/indexOf.java,
+	gnu/testlet/java/lang/String/new_String.java,
+	gnu/testlet/java/lang/String/startsWith.java,
+	gnu/testlet/java/lang/String/substring.java,
+	gnu/testlet/java/lang/String/to.java,
+	gnu/testlet/java/lang/System/arraycopy.java,
+	gnu/testlet/java/util/Hashtable/basic.java,
+	gnu/testlet/java/util/Random/basic.java: Remove constructors.
+	Update README.  These are not necessary.
+
 1998-12-07  Andrew Haley  <aph@cygnus.co.uk>
 
 	* gnu/testlet/java/lang/Float/new_Float.java: new file.
