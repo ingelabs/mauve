@@ -1,3 +1,20 @@
+2004-11-30  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/add.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/breadthFirstEnumeration.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/children.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/constructors.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/DefaultMutableTreeNodeTest.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getAllowsChildren.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getChildAfter.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getChildAt.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getChildBefore.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getChildCount.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/isNodeRelated.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/postorderEnumeration.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/preorderEnumeration.java:
+	New testcases.
+
 2004-11-26  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/io/File/canWrite.java: Explicitly close
