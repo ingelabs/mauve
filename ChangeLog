@@ -1,7 +1,10 @@
 2001-05-14  Tom Tromey  <tromey@redhat.com>
 
-	* gnu/testlet/java/text/SimpleDateFormat/regress.java: Correctly
-	extract timezone.
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (dates):
+	Removed `EST' case as it is simply wrong (and unfixable).
+
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test):
+	Correctly extract timezone.
 
 2001-05-13  Tom Tromey  <tromey@redhat.com>
 
