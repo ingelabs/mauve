@@ -1,5 +1,10 @@
 2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/java/awt/image/ComponentColorModel/
+	createCompatibleSampleModel.java: New tests.
+
+2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/java/awt/image/DataBufferByte/
 	getDataType.java, getElem.java: New tests.
 
