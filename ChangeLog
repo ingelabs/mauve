@@ -1,3 +1,8 @@
+2002-06-18  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/BufferedReader/boundary.java (test): mark()
+	doesn't reset read pointer.
+
 2002-06-13  Tom Tromey  <tromey@redhat.com>
 
 	* Makefile.in: Rebuilt.

@@ -41,7 +41,7 @@ public class boundary implements Testlet
 
 	br.mark(1);
 	char c = (char) br.read();
-	harness.check(c, 'a');
+	harness.check(c, 'e');
 	br.reset();
 
 	// The libgcj/Classpath bug is that BufferedReader gets confused
