@@ -1,5 +1,10 @@
 2004-05-23  Stephen Crawley <crawley@dstc.edu.au>
 
+	* gnu/testlet/java/text/CollationElementIterator/jdk11.java: Ooops
+	... a bug in my little app for converting ruleset strings gave me
+	a broken ruleset.
+
+2004-05-23  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/text/CollationElementIterator/jdk11.java: Use a 
 	hardwired "en_us" collation ruleset (from JDK 1.4) rather than 
 	the ruleset in the Locale.  We are trying to test the collation
