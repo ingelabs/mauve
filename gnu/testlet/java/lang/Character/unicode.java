@@ -1,4 +1,5 @@
 // Tags: JDK1.1
+// Uses: CharInfo
 
 package gnu.testlet.java.lang.Character;
 
@@ -18,17 +19,6 @@ public class unicode implements Testlet
 	public static boolean testDeprecated;
 	public static boolean verbose;
 	public static boolean benchmark;
-
-	public class CharInfo
-	{
-		String name;
-		String category;
-		int digit;
-		int numericValue;
-		char uppercase;
-		char lowercase;
-		char titlecase;
-	}
 
 	public CharInfo[] chars = new CharInfo[0x10000];
 	public int failures;

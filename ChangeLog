@@ -1,3 +1,9 @@
+1999-01-08  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/Character/unicode.java: Moved CharInfo
+	into its own file.
+	* gnu/testlet/java/lang/Character/CharInfo.java: New file.
+
 Thu Jan  7 21:23:46 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/lang/Character/UnicodeData.txt: Added Unicode
