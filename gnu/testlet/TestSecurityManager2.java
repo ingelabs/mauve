@@ -35,8 +35,11 @@ public class TestSecurityManager2 extends SecurityManager
 		     new PropertyPermission("*", "read")};
   private boolean[] checked = new boolean[0];
 
-  public TestSecurityManager2() {
+  private final TestHarness harness;
+
+  public TestSecurityManager2(TestHarness harness) {
     super();
+    this.harness = harness;
   }
 
   public void install()
@@ -60,13 +63,14 @@ public class TestSecurityManager2 extends SecurityManager
   public void checkPermission(Permission perm) 
     throws SecurityException
   {
-    // System.err.println("checkPermission(" + perm + ")");
+    if (harness != null) harness.debug("checkPermission(" + perm + ")");
     checkCheck(perm);
   }
 
   public void checkPermission(Permission perm, Object context)
     throws SecurityException
   {
+    // XXX ???
     checkPermission(perm, null);
   }
 
@@ -97,21 +101,28 @@ public class TestSecurityManager2 extends SecurityManager
   private void checkCheck(Permission perm) 
     throws SecurityException
   {
+    StringBuffer expectedPerms = new StringBuffer("Must check:");
     boolean matched = false;
     for (int i = 0; i < mustCheck.length; i++) {
+      expectedPerms.append(' ').append(mustCheck[i]);
       if (mustCheck[i].implies(perm)) {
 	matched = true;
 	checked[i] = true;
       }
     }
+
+    expectedPerms.append(" May check:");
     if (!matched) {
       for (int i = 0; i < mayCheck.length; i++) {
+        expectedPerms.append(' ').append(mayCheck[i]);
 	if (mayCheck[i].implies(perm)) {
 	  matched = true;
 	}
       }
     }
     if (!matched) {
+      harness.debug("unexpected permissions " + perm);
+      harness.debug("expected permissions - " + expectedPerms.toString());
       throw new SecurityException("Unexpected check: " + perm);
     }
   }

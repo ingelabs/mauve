@@ -46,6 +46,8 @@ public class security implements Testlet
     String tmp = harness.getTempDirectory();
     File tmpdir = new File(tmp + File.separator + "mauve-testdir");
     harness.check(tmpdir.mkdir() || tmpdir.exists(), "temp directory");
+    File tmpdir2 = new File(tmpdir, "nested-dir");
+    harness.check(tmpdir2.mkdir() || tmpdir2.exists(), "temp directory 2");
     File tmpfile = new File(tmpdir, "testfile");
     harness.check(tmpfile.delete() || !tmpfile.exists(), "no temp file");
     File tmpfile2 = new File(tmpdir, "testfile2");
@@ -58,6 +60,11 @@ public class security implements Testlet
       new FilePermission(tmpdir.toString(), "write");
     Permission tmpdirDeletePerm =
       new FilePermission(tmpdir.toString(), "delete");
+
+    Permission tmpdir2WritePerm =
+      new FilePermission(tmpdir2.toString(), "write");
+    Permission tmpdir2DeletePerm =
+      new FilePermission(tmpdir2.toString(), "delete");
 
     Permission tmpfileReadPerm =
       new FilePermission(tmpfile.toString(), "read");
@@ -79,7 +86,7 @@ public class security implements Testlet
     Permission tmpdirPropPerm =
       new PropertyPermission("java.io.tmpdir", "read");
 
-    TestSecurityManager2 sm = new TestSecurityManager2();
+    TestSecurityManager2 sm = new TestSecurityManager2(harness);
     try {
       sm.install();
 	
@@ -209,13 +216,25 @@ public class security implements Testlet
 
       harness.checkPoint("dir.setReadOnly");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
-	tmpdir.setReadOnly();
+	sm.prepareChecks(new Permission[]{tmpdir2WritePerm}, noPerms);
+	tmpdir2.setReadOnly();
 	sm.checkAllChecked(harness);
       }
       catch (Exception ex) {
 	harness.debug(ex);
 	harness.check(false, "dir.setReadOnly - unexpected exception");
+      }
+
+      // Make sure we remove the read only temp dir
+      harness.checkPoint("dir.delete");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdir2DeletePerm}, noPerms);
+	tmpdir2.delete();
+	sm.checkAllChecked(harness);
+      }
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.delete - unexpected exception");
       }
       
       harness.checkPoint("listRoots()");

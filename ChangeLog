@@ -1,3 +1,10 @@
+2004-04-18  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/TestSecurityManager2.java: Add private harness and
+	use it for extra debug output.
+	* gnu/testlet/java/io/File/security.java: Add tmpdir2, write and
+	delete permissions. Use it for setReadOnly() and dir.delete test.
+
 2004-04-16  Mark Wielaard  <mark@klomp.org>
 
 	* README: Add documentation for batch_run and runner scripts.
