@@ -75,7 +75,7 @@ public abstract class TestHarness
   // This returns the top level source directory.  It might be a
   // relative path.  This can be used to locate data files and the
   // like.
-  public abstract File getSourceDirectory ();
+  public abstract String getSourceDirectory ();
 
   // This can be used to mark a known place in a testlet.  It is
   // useful if you have a large number of tests -- it makes it easier

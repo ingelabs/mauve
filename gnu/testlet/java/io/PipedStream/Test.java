@@ -20,6 +20,7 @@
 /*************************************************************************/
 
 // Tags: JDK1.0
+// Uses: PipedStreamTestWriter
 
 package gnu.testlet.java.io.PipedStream;
 
@@ -71,66 +72,4 @@ test(TestHarness harness)
 }
 
 } // class Test
-
-class PipedStreamTestWriter implements Runnable
-{
-
-String str;
-StringBufferInputStream sbis;
-PipedOutputStream out;
-TestHarness harness;
-
-public
-PipedStreamTestWriter(TestHarness harness)
-{
-  this.harness = harness;
-
-  str = "I went to work for Andersen Consulting after I graduated\n" +
-     "from college.  They sent me to their training facility in St. Charles,\n" +
-     "Illinois and tried to teach me COBOL.  I didn't want to learn it.\n" +
-     "The instructors said I had a bad attitude and I got a green sheet\n" +
-     "which is a nasty note in your file saying what a jerk you are.\n";
-
-  sbis = new StringBufferInputStream(str);
-
-  out = new PipedOutputStream();
-}
-
-public PipedOutputStream
-getStream()
-{
-  return(out);
-}
-
-public String
-getStr()
-{
-  return(str);
-}
-
-public void
-run() 
-{
-  byte[] buf = new byte[32];
-
-  int bytes_read;
-
-  try
-    {
-      int b = sbis.read();
-      out.write(b);
-
-      while ((bytes_read = sbis.read(buf)) != -1)
-        out.write(buf, 0, bytes_read);
-
-      out.close();
-    }
-  catch(IOException e)
-    {
-      harness.debug("In writer: " + e);
-      harness.check(false);
-    }
-}
-
-}
 

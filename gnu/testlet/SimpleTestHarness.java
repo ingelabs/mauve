@@ -35,7 +35,7 @@ public class SimpleTestHarness extends TestHarness
   private boolean debug = false;
   private String description;
   private String last_check;
-  private File srcdir;
+  private String srcdir;
 
   public void check (boolean result)
     {
@@ -55,7 +55,7 @@ public class SimpleTestHarness extends TestHarness
       ++total;
     }
 
-  public File getSourceDirectory ()
+  public String getSourceDirectory ()
     {
       return srcdir;
     }
@@ -152,7 +152,7 @@ public class SimpleTestHarness extends TestHarness
 
   protected SimpleTestHarness (String srcdir, boolean verbose, boolean debug)
     {
-      this.srcdir = new File (srcdir);
+      this.srcdir = srcdir;
       this.verbose = verbose;
       this.debug = debug;
     }
@@ -199,11 +199,13 @@ public class SimpleTestHarness extends TestHarness
 	  try
 	    {
 	      cname = r.readLine ();
+	      System.out.println (cname);
 	    }
 	  catch (IOException x)
 	    {
 	      // Nothing.
 	    }
+	  System.out.println ("----");
 	  if (cname == null)
 	    break;
 	  if (cname.endsWith ("~"))
