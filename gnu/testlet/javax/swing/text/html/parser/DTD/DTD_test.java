@@ -54,30 +54,9 @@ public class DTD_test
   {
   }
 
-  /**
-  * Calls the testing methods directly.
-  */
   public void test(TestHarness a_harness)
   {
     harness = a_harness;
-    try
-      {
-      setUp();
-      testGetElement();
-      tearDown();
-      }
-    catch (Throwable exc)
-      {
-      exc.printStackTrace();
-      if (exc != null)
-        harness.fail(exc.getClass().getName() + ":" + exc.getMessage());
-      else
-        harness.fail("exception");
-      }
-  }
-
-  public void testGetElement()
-  {
     D d = new D();
     HTML.Tag tags[] = HTML.getAllTags();
 
@@ -102,13 +81,4 @@ public class DTD_test
     harness.check(prehead, e);
   }
 
-  protected void setUp()
-                throws Exception
-  {
-  }
-
-  protected void tearDown()
-                   throws Exception
-  {
-  }
 }

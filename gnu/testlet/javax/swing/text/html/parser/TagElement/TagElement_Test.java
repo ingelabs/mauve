@@ -29,6 +29,7 @@ import gnu.testlet.Testlet;
 
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.parser.*;
+import java.io.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bluewin.ch)
@@ -42,58 +43,32 @@ public class TagElement_Test
   {
   }
 
-  /**
-  * Calls the testing methods directly.
-  */
   public void test(TestHarness a_harness)
   {
     harness = a_harness;
-    try
-      {
-      setUp();
-      testTagElement();
-      tearDown();
+    try {
+      HTML.Tag tags[] = HTML.getAllTags();
+
+      for (int i = 0; i < tags.length; i++) {
+        HTML.Tag t = tags[i];
+        String tn = t.toString();
+        Element e = DTD.getDTD("test").getElement("e");
+        e.name = tn;
+
+        TagElement te = new TagElement(e, true);
+        harness.check(te.fictional());
+
+        te = new TagElement(e);
+        harness.check(! (te.fictional()));
+
+        harness.check(te.getHTMLTag().toString(), t.toString());
+        harness.check(t.breaksFlow(), te.breaksFlow());
+        harness.check(t.isPreformatted(), te.isPreformatted());
       }
-    catch (Throwable exc)
-      {
-      exc.printStackTrace();
-      if (exc != null)
-        harness.fail(exc.getClass().getName() + ":" + exc.getMessage());
-      else
-        harness.fail("exception");
-      }
+    }
+    catch (IOException ex) {
+      harness.fail(ex.getMessage());
+    }
   }
 
-  public void testTagElement() throws Exception
-  {
-    HTML.Tag tags[] = HTML.getAllTags();
-
-    for (int i = 0; i < tags.length; i++)
-      {
-      HTML.Tag t = tags [ i ];
-      String tn = t.toString();
-      Element e = DTD.getDTD("test").getElement("e");
-      e.name = tn;
-
-      TagElement te = new TagElement(e, true);
-      harness.check(te.fictional());
-
-      te = new TagElement(e);
-      harness.check(!(te.fictional()));
-
-      harness.check(te.getHTMLTag().toString(), t.toString());
-      harness.check(t.breaksFlow(), te.breaksFlow());
-      harness.check(t.isPreformatted(), te.isPreformatted());
-      }
-  }
-
-  protected void setUp()
-                throws Exception
-  {
-  }
-
-  protected void tearDown()
-                   throws Exception
-  {
-  }
 }

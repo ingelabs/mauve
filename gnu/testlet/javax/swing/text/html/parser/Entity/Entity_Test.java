@@ -36,25 +36,21 @@ import javax.swing.text.html.parser.DTDConstants;
 public class Entity_Test
   implements Testlet
 {
-  private Element element = null;
+  private Element element;
   TestHarness harness;
 
   public Entity_Test()
   {
   }
 
-  /**
-  * Calls the testing methods directly.
-  */
   public void test(TestHarness a_harness)
   {
     harness = a_harness;
     try
       {
-      setUp();
       testName2type();
       testPublicSystemGeneralParameter();
-      tearDown();
+      element = null;
       }
     catch (Throwable exc)
       {
@@ -118,16 +114,5 @@ public class Entity_Test
                      );
         }
       }
-  }
-
-  protected void setUp()
-                throws Exception
-  {
-  }
-
-  protected void tearDown()
-                   throws Exception
-  {
-    element = null;
   }
 }

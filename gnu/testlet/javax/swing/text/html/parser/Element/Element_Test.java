@@ -34,25 +34,19 @@ import javax.swing.text.html.parser.DTDConstants;
 public class Element_Test
   implements Testlet
 {
-  private Element element = null;
   TestHarness harness;
 
   public Element_Test()
   {
   }
 
-  /**
-  * Calls the testing methods directly.
-  */
   public void test(TestHarness a_harness)
   {
     harness = a_harness;
     try
       {
-      setUp();
       testName2type();
       testAttributeGetter();
-      tearDown();
       }
     catch (Throwable exc)
       {
@@ -112,14 +106,4 @@ public class Element_Test
     harness.check(Element.name2type("rcdata"), 0);
   }
 
-  protected void setUp()
-                throws Exception
-  {
-  }
-
-  protected void tearDown()
-                   throws Exception
-  {
-    element = null;
-  }
 }

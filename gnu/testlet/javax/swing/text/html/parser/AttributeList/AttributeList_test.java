@@ -28,9 +28,7 @@ import javax.swing.text.html.parser.DTDConstants;
 public class AttributeList_test
   implements Testlet, DTDConstants
 {
-  /**
-  * Calls the testing methods directly.
-  */
+
   public void test(TestHarness a_harness)
   {
     String type;
