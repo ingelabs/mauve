@@ -33,11 +33,44 @@ public class set implements Testlet
 {
   public void test (TestHarness harness)
   {
+    testSimple(harness);
     test_DST(harness);
     test_DAY_OF_MONTH(harness);
     testUnsetFields(harness);
+    testLenience(harness);
+    testConflictingFields(harness);
+    testNormalization(harness);
   }
-  
+
+  private void testSimple(TestHarness harness)
+  {
+    harness.checkPoint("Simple tests");
+    Calendar c = Calendar.getInstance();
+    c.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+    c.clear();
+    c.set(Calendar.YEAR, 1980); 
+    c.set(Calendar.MONTH, Calendar.JULY); 
+    c.set(Calendar.DAY_OF_MONTH, 18); 
+    c.set(Calendar.HOUR_OF_DAY, 22);
+    c.set(Calendar.MINUTE, 13);
+    c.set(Calendar.SECOND, 13);
+    c.set(Calendar.MILLISECOND, 347);
+    harness.check(c.getTime(), new Date(332806393347L));
+
+    // Negative DAY_OF_WEEK_IN_MONTH is somewhat esoteric. Lets test.
+    c.clear();
+    c.set(Calendar.YEAR, 1980);
+    c.set(Calendar.MONTH, Calendar.JULY);
+    c.set(Calendar.DAY_OF_WEEK_IN_MONTH, -3);
+    c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY); 
+    c.set(Calendar.HOUR_OF_DAY, 18);
+    c.set(Calendar.MINUTE, 19);
+    c.set(Calendar.SECOND, 12);
+    c.set(Calendar.MILLISECOND, 519);
+    harness.check(c.getTime(), new Date(332360352519L));
+  }
+
   public void test_DST (TestHarness harness)
   {
     // Create a custom TimeZone with a daylight-time period.
@@ -92,7 +125,6 @@ public class set implements Testlet
     
     String time = df.format(c.getTime());
     harness.check(time, "Friday, 2004-10-01 [275] 12:00:00.0000");
-    harness.check (c.get(Calendar.HOUR), 12);
     
     c.set(Calendar.DAY_OF_MONTH, 31);
     time = df.format(c.getTime());
@@ -105,12 +137,152 @@ public class set implements Testlet
 
   private void testUnsetFields(TestHarness harness)
   {
+    harness.checkPoint("setting only some fields");
+
     Calendar c = Calendar.getInstance();
     c.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+    c.clear();
+    harness.check(c.getTime(), new Date(0)); // 1970-01-01T00:00Z
+
+    c.clear();
+    c.set(Calendar.YEAR, 1982);
+    harness.check(c.getTime(), new Date(378691200000L)); // 1982-01-01T00:00Z
+
+    c.clear();
+    c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+    harness.check(c.getTime(), new Date(259200000L)); // 1970-01-04T00:00Z
+
+    c.clear();
+    c.set(Calendar.DAY_OF_WEEK_IN_MONTH, 3);
+    harness.check(c.getTime(), new Date(1555200000L)); // 1970-01-19T00:00Z
+
+    c.clear();
+    c.set(Calendar.WEEK_OF_YEAR, 2);
+    harness.check(c.getTime(), new Date(345600000L)); // 1970-01-05T00:00Z
+
     c.clear();
     c.set(Calendar.YEAR, 1978);
     c.set(Calendar.MONTH, Calendar.AUGUST);
-    harness.check(c.getTime(), new Date(270777600000L), // 1978-08-01T00:00Z
-		  "A calendar with only YEAR and MONTH set");
+    harness.check(c.getTime(), new Date(270777600000L)); // 1978-08-01T00:00Z
+
+    c.clear();
+    c.set(Calendar.YEAR, 2004);
+    c.set(Calendar.MONTH, Calendar.NOVEMBER);
+    c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+    harness.check(c.getTime(), new Date(1099699200000L)); // 2004-11-06T00:00Z
   }
+
+  private void testLenience(TestHarness harness)
+  {
+    harness.checkPoint("test the setLenient() functionality");
+    Calendar c = Calendar.getInstance();
+    c.setLenient(false);
+    c.set(Calendar.MONTH, 42);
+    boolean b = false;
+    try
+      {
+	c.get(Calendar.MONTH);
+      }
+    catch (IllegalArgumentException e)
+      {
+	b = true;
+      }
+    harness.check(b);
+  }
+  
+  private void testConflictingFields(TestHarness harness)
+  {
+    harness.checkPoint("test setting conflicting values of different fields");
+    Calendar c = Calendar.getInstance();
+    c.setTimeZone(TimeZone.getTimeZone("GMT"));
+    c.clear();
+
+    c.set(Calendar.YEAR, 1997);
+    // first setting day of year using one method
+    c.set(Calendar.DAY_OF_YEAR, 55);
+    // then setting another day with another method
+    c.set(Calendar.DAY_OF_MONTH, 18);
+    c.set(Calendar.MONTH, Calendar.MAY);
+    harness.check(c.getTime(), new Date(863913600000L)); // 1997-05-18T08:00Z
+
+    // the other way around
+    c.clear();
+    c.set(Calendar.HOUR_OF_DAY, 8);
+    c.set(Calendar.YEAR, 1997);
+    c.set(Calendar.HOUR_OF_DAY, 8);
+    c.set(Calendar.DAY_OF_MONTH, 18);
+    c.set(Calendar.MONTH, Calendar.MAY);
+    c.set(Calendar.DAY_OF_YEAR, 55);
+    harness.check(c.getTime(), new Date(856771200000L)); // 1997-02-24T08:00Z
+
+    // trying three methods
+    c.clear();
+    c.set(Calendar.HOUR_OF_DAY, 8);
+    c.set(Calendar.YEAR, 1997);
+    c.set(Calendar.HOUR_OF_DAY, 8);
+    c.set(Calendar.DAY_OF_MONTH, 18);
+    c.set(Calendar.MONTH, Calendar.MAY);
+    c.set(Calendar.DAY_OF_YEAR, 55);
+
+    c.set(Calendar.MONTH, Calendar.AUGUST);
+    c.set(Calendar.DAY_OF_WEEK_IN_MONTH, 3);
+    c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+    harness.check(c.getTime(), new Date(871977600000L)); // 1997-08-19T08:00Z
+
+    // one interesting side effect of the algorithm for interpreting 
+    // conflicting fields is that if not setting all the values in some
+    // of the combinations described under "Calendar Fields Resolution" in
+    // the spec then the value set in the incomplete combination will be
+    // disregarded.
+    c.clear();
+    c.set(Calendar.DAY_OF_YEAR, 55);
+    c.set(Calendar.MONTH, Calendar.AUGUST);
+    harness.check(c.get(Calendar.MONTH), Calendar.FEBRUARY);
+
+    c.clear();
+    c.set(Calendar.HOUR_OF_DAY, 14);
+    c.set(Calendar.HOUR, 8);
+    harness.check(c.get(Calendar.HOUR), 2);
+  }
+
+  private void testNormalization(TestHarness harness)
+  {
+    harness.checkPoint("Normalization");
+    Calendar c = Calendar.getInstance();
+    c.setTimeZone(TimeZone.getTimeZone("GMT"));
+    
+    // negative HOUR_OF_DAY
+    c.clear();
+    c.set(Calendar.YEAR, 1980); 
+    c.set(Calendar.MONTH, Calendar.JULY);
+    c.set(Calendar.DAY_OF_MONTH, 18); 
+    c.set(Calendar.HOUR_OF_DAY, -22);
+    c.set(Calendar.MINUTE, 13);
+    c.set(Calendar.SECOND, 13);
+    harness.check(c.getTime(), new Date(332647993000L)); // 1980-07-17T02:13Z
+
+    // HOUR == 12
+    c.clear();
+    c.set(Calendar.YEAR, 1980);
+    c.set(Calendar.MONTH, Calendar.JULY);
+    c.set(Calendar.DAY_OF_MONTH, 18);
+    c.set(Calendar.HOUR, 12);
+    c.set(Calendar.AM_PM, Calendar.AM);
+    c.set(Calendar.MINUTE, 13);
+    c.set(Calendar.SECOND, 13);
+    harness.check(c.get(Calendar.HOUR), 0);
+    harness.check(c.get(Calendar.AM_PM), Calendar.PM);
+
+    // lets normalize ourselves into the leap day from a different year
+    c.clear();
+    c.set(Calendar.YEAR, 1997);
+    c.set(Calendar.MONTH, Calendar.MARCH);
+    c.set(Calendar.DAY_OF_MONTH, 1);
+    c.set(Calendar.HOUR_OF_DAY, -366 * 24);
+    harness.check(c.getTime(), new Date(825552000000L)); // 1996-02-29T00:00Z
+
+   // XXX could have some fun here with leap seconds
+  }
+
 }
