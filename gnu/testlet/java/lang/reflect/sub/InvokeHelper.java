@@ -1,4 +1,4 @@
-// Tags: JDK1.1
+// Tags: not-a-test
 // shouldn't be a test at all, but...
 
 // Copyright (C) 2004 Red Hat, Inc.
