@@ -1,3 +1,19 @@
+2004-11-07  Robert Schuster <thebohemian@gmx.net>
+	
+	Splits tests:
+	* gnu/testlet/java/beans/DescriptorTest.java:
+	removed, replaced by following 3 files
+	* gnu/testlet/java/beans/MethodDescriptor/constructorTest1.java:
+	new file, added documentation, copyright
+	* gnu/testlet/java/beans/EventSetDescriptor/constructorTest1.java:
+	new file, added documentation, copyright
+	* gnu/testlet/java/beans/PropertyDescriptor/constructorTest1.java:
+	new file, added documentation, copyright
+	* gnu/testlet/java/beans/PropertyDescriptorTest.java:
+	removed, replaced by following file
+	* gnu/testlet/java/beans/PropertyDescriptor/constructorTest2.java:
+	added documentation, copyright, fixed indentation
+
 2004-11-07  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/awt/geom/GeneralPath/contains.java:
