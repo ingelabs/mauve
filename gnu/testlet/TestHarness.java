@@ -24,10 +24,27 @@ import java.io.File;
 import java.io.Reader;
 import java.io.InputStream;
 
+/**
+ * This base class defines the API that test cases can report against.  This
+ * code has been lifted from the Mauve project (and reformatted and 
+ * commented).
+ */
 public abstract class TestHarness
 {
-  // These methods are used to determine whether a test has passed.
+  /**
+   * Records the result of a boolean check.
+   *
+   * @param result  the result.
+   */
   public abstract void check (boolean result);
+
+  /**
+   * Checks the two objects for equality and records the result of
+   * the check.
+   *
+   * @param result  the actual result.
+   * @param expected  the expected result.
+   */
   public void check (Object result, Object expected)
     {
       boolean ok = (result == null
@@ -39,6 +56,13 @@ public abstract class TestHarness
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
     }
+
+  /**
+   * Checks two booleans for equality and records the result of the check.
+   *
+   * @param result  the actual result.
+   * @param expected  the expected result.
+   */
   public void check (boolean result, boolean expected)
     {
       boolean ok = (result == expected);
@@ -46,6 +70,13 @@ public abstract class TestHarness
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
     }
+
+  /**
+   * Checks two ints for equality and records the result of the check.
+   *
+   * @param result  the actual result.
+   * @param expected  the expected result.
+   */
   public void check (int result, int expected)
     {
       boolean ok = (result == expected);
@@ -53,6 +84,13 @@ public abstract class TestHarness
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
     }
+
+  /**
+   * Checks two longs for equality and records the result of the check.
+   *
+   * @param result  the actual result.
+   * @param expected  the expected result.
+   */
   public void check (long result, long expected)
     {
       boolean ok = (result == expected);
@@ -60,6 +98,13 @@ public abstract class TestHarness
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
     }
+
+  /**
+   * Checks two doubles for equality and records the result of the check.
+   *
+   * @param result  the actual result.
+   * @param expected  the expected result.
+   */
   public void check (double result, double expected)
     {
       // This triple check overcomes the fact that == does not
@@ -109,6 +154,13 @@ public abstract class TestHarness
       checkPoint (name);
       check (result, expected);
     }
+
+  /**
+   * A convenience method that sets a checkpoint with the specified name
+   * then records a failed check.
+   *
+   * @param name  the checkpoint name.
+   */
   public void fail (String name)
     {
       checkPoint (name);
@@ -128,21 +180,55 @@ public abstract class TestHarness
   public abstract File getResourceFile (String name) 
     throws ResourceNotFoundException;
 
-  // Provide a directory name for writing temporary files.
+  /**
+   * Provide a directory name for writing temporary files.
+   *
+   * @return The temporary directory name.
+   */
   public abstract String getTempDirectory ();
 
-  // This can be used to mark a known place in a testlet.  It is
-  // useful if you have a large number of tests -- it makes it easier
-  // to find a failing test in the source code.
+  /**
+   * Records a check point.  This can be used to mark a known place in a 
+   * testlet.  It is useful if you have a large number of tests -- it makes 
+   * it easier to find a failing test in the source code. 
+   *
+   * @param name  the check point name.
+   */
   public abstract void checkPoint (String name);
 
-  // This will print a message when in verbose mode.
+  /**
+   * This will print a message when in verbose mode.
+   *
+   * @param message  the message.
+   */
   public abstract void verbose (String message);
 
-  // These will print a message when in debug mode.  In the Throwable
-  // case, what is printed is the stack trace.
+  /**
+   * Writes a message to the debug log.
+   *
+   * @param message  the message.
+   */
   public abstract void debug (String message);
+
+  /**
+   * Writes a message to the debug log with or without a newline.
+   *
+   * @param message  the message.
+   * @param newline  a flag to control whether or not a newline is added.
+   */
   public abstract void debug (String message, boolean newline);
+  /**
+   * Writes a stack trace for the specified exception to a log.
+   *
+   * @param ex  the exception.
+   */
   public abstract void debug (Throwable ex);
+
+  /**
+   * Writes the contents of an array to the log.
+   *
+   * @param o  the array of objects.
+   * @param desc  the description.
+   */
   public abstract void debug (Object[] o, String desc);
 }
