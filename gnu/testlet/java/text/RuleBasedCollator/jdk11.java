@@ -471,8 +471,8 @@ public class jdk11 implements Testlet
 	{"c\u00c6t", "c\u00c6t", "="},	
 	{"c\u00c6t", "c\u00e6t", "<"},
 	{"caet", "cat", "<"},
-	{"c\u00e6t", "cat", "<"},
-	{"C\u00c6T", "CAT", "<"},
+	{"c\u00e6t", "cat", ">"}, // JDK is buggy. It fails here.
+	{"C\u00c6T", "CAT", ">"}, // JDK is buggy. It fails here.
 	{"caet", "cab", ">"},
 	{"c\u00e6t", "cab", ">"},
 	{"C\u00c6T", "CAB", ">"},
@@ -494,8 +494,8 @@ public class jdk11 implements Testlet
 	{"c\u00c6t", "c\u00c6t", "="},	
 	{"c\u00c6t", "c\u00e6t", "<"},
 	{"caet", "cat", "<"},
-	{"c\u00e6t", "cat", "<"},
-	{"C\u00c6T", "CAT", "<"},
+	{"c\u00e6t", "cat", ">"}, // JDK is buggy. It fails here.
+	{"C\u00c6T", "CAT", ">"}, // JDK is buggy. It fails here.
 	{"caet", "cab", ">"},
 	{"c\u00e6t", "cab", ">"},
 	{"C\u00c6T", "CAB", ">"},
