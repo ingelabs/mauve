@@ -1,5 +1,9 @@
 2000-01-07  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Class/ClassTest.java (test_forName): Use
+	`check', not `fail'.  Added check to make sure forName("I")
+	fails.
+
 	* gnu/testlet/java/lang/reflect/Constructor/newInstance.java: New
 	file.
 

@@ -1,4 +1,4 @@
-/* Copyright (C) 1999 Hewlett-Packard Company
+/* Copyright (C) 1999, 2000 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -177,20 +177,30 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 
 	public void test_forName()
 	{
+		harness.checkPoint("forName");
 		try {
 			Object obj = Class.forName("java.lang.Object");
-			if ( obj == null )
-				harness.fail("Error: forName on Class failed - 1");
+			harness.check ( obj != null );
 		}
 		catch ( Exception e ){
-			harness.fail("Error: forName failed - 2 "); 
+			harness.check(false);
 		}
 
 		try {
 			Object obj1 = Class.forName("ab.cd.ef");
-			harness.fail("Error: forName on Class failed - 3");
+			harness.check(false);
 		}
 		catch ( ClassNotFoundException e ){
+			harness.check(true);
+		}
+
+		try {
+			// The docs say that this should fail.
+			Object obj2 = Class.forName("I");
+			harness.check(false);
+		}
+		catch ( ClassNotFoundException e ){
+			harness.check(true);
 		}
 	}
 
@@ -344,9 +354,3 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
   }
 
 }
-
-
-
-
-
-
