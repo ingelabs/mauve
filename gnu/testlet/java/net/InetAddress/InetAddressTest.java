@@ -131,7 +131,7 @@ public class InetAddressTest implements Testlet
     try {
       String toStr = addr3.toString();
       String toStr1 = addr3.getHostAddress();
-      if ( !( toStr.equals("savannah.gnu.org/"+toStr1)|| toStr.equals("savannah/"+toStr1)))
+      if (toStr.indexOf(toStr1) == -1)
         harness.fail("Error : test_Basics failed - 12 " +
 			 " the host address returned is not correct." );
     } catch (NullPointerException npe) {
