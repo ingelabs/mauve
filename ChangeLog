@@ -1,3 +1,9 @@
+2003-10-25  Bryce McKinlay  <bryce@mckinlay.net.nz>
+
+	* gnu/testlet/java/lang/reflect/ReflectAccess.java,
+	gnu/testlet/java/lang/reflect/sub/OtherPkg.java,
+	gnu/testlet/java/lang/reflect/sub/Super.java: New files.
+
 2003-10-24  Sascha Brawer  <brawer@dandelis.ch>
 
 	* gnu/testlet/java/awt/geom/CubicCurve2D/clone.java,
