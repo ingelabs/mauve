@@ -1,3 +1,25 @@
+1999-04-29  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/net/InetAddress/InetAddressTest.java: New file.
+	* gnu/testlet/java/net/ServerSocket/BasicBacklogSocketServer.java:
+	  New file.
+	* gnu/testlet/java/net/ServerSocket/BasicSocketServer.java: New file.
+	* gnu/testlet/java/net/ServerSocket/MyBasicSocketServer.java: New file.
+	* gnu/testlet/java/net/ServerSocket/MyServerSocket.java: New file.
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java: New file.
+	* gnu/testlet/java/net/Socket/MySocket.java: New file.
+	* gnu/testlet/java/net/Socket/MySocketImpl.java: New file.
+	* gnu/testlet/java/net/Socket/SocketBServer.java: New file.
+	* gnu/testlet/java/net/Socket/SocketServer.java: New file.
+	* gnu/testlet/java/net/Socket/SocketTest.java: New file.
+	* gnu/testlet/java/net/URL/MyURLStreamHandler.java: New file.
+	* gnu/testlet/java/net/URL/URLTest.java: New file.
+	* gnu/testlet/java/net/URLConnection/MyHttpURLConnection.java:
+	  New file.
+	* gnu/testlet/java/net/URLConnection/MyURLConnection.java: New file.
+	* gnu/testlet/java/net/URLConnection/URLConnectionTest.java: New file.
+	* gnu/testlet/java/net/URLEncoder/URLEncoderTest.java: New file.
+
 1999-04-21  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/String/getBytes.java: Explicitly use
