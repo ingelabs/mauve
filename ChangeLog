@@ -1,3 +1,8 @@
+2004-09-22  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/FileDescriptor/jdk11.java: Add harness.debug()
+	for thrown exception.
+
 2004-09-21  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/Collections/binarySearch.java: Add more

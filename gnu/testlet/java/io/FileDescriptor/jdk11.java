@@ -56,6 +56,7 @@ public class jdk11 implements Testlet
 			harness.check(true, "sync()");
 		}
 		catch (SyncFailedException e) {
+			harness.debug(e);
 			harness.fail("SyncFailedException thrown");
         }
       }
