@@ -1,5 +1,12 @@
 2001-06-08  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/io/BufferedByteOutputStream/interrupt.java: New
+	file.
+	* gnu/testlet/java/io/BufferedByteOutputStream/helper.java: New
+	file.
+
+2001-06-08  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/text/SimpleDateFormat/regress.java (dates):
 	Added EST case again, reverting yesterday's change.  It turns out
 	to be correct.
