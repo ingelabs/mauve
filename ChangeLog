@@ -1,3 +1,9 @@
+2004-04-15  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/awt/image/ComponentColorModel/
+	createCompatibleSampleModel.java: Remove unneeded import
+	javax.imageio.ImageTypeSpecifier.
+
 2004-04-15  Archie Cobbs  <archie@dellroad.org>
 
 	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java: Give the

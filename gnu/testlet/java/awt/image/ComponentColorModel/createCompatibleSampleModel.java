@@ -28,7 +28,6 @@ import java.awt.Transparency;
 import java.awt.color.ColorSpace;
 import java.awt.image.*;
 import java.util.Arrays;
-import javax.imageio.ImageTypeSpecifier;
 
 
 /**
