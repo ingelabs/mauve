@@ -48,7 +48,7 @@ public class parse implements Testlet
       harness.check (ok);
     }
 
-  public Number parse (DecimalFormat df, String string, ParsePosition pos)
+  public Number parseIt (DecimalFormat df, String string, ParsePosition pos)
     {
       pos.setIndex (0);
       return df.parse (string, pos);
@@ -65,54 +65,54 @@ public class parse implements Testlet
 
       // Some tests taken from JCL book.
       DecimalFormat df = new DecimalFormat ("0.##;-0.##");
-      num = parse (df, "-1234.56", pp);
+      num = parseIt (df, "-1234.56", pp);
       harness.check (num instanceof Double);
       harness.check (num.doubleValue(), -1234.56);
 
       apply (harness, df, "0.#");
-      num = parse (df, "1234.6", pp);
+      num = parseIt (df, "1234.6", pp);
       harness.check (num instanceof Double);
       harness.check (num.doubleValue(), 1234.6);
 
       apply (harness, df, "0");
-      num = parse (df, "-1235", pp);
+      num = parseIt (df, "-1235", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue (), -1235);
 
-      num = parse (df, Long.toString (Long.MIN_VALUE), pp);
+      num = parseIt (df, Long.toString (Long.MIN_VALUE), pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue(), Long.MIN_VALUE);
 
       apply (harness, df, "'#'#.#");
-      num = parse (df, "#30", pp);
+      num = parseIt (df, "#30", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue (), 30);
 
-      num = parse (df, "xx30", pp);
+      num = parseIt (df, "xx30", pp);
       harness.check (num, null);
 
       apply (harness, df, "0.0000E#");
-      num = parse (df, "2.000E+5", pp);
+      num = parseIt (df, "2.000E+5", pp);
       harness.check (num instanceof Double);
       harness.check (num.longValue (), 200000);
 
       apply (harness, df, "###0.#;(###0.#)");
-      num = parse (df, "201.2", pp);
+      num = parseIt (df, "201.2", pp);
       harness.check (num instanceof Double);
       harness.check (num.doubleValue(), 201.2);
-      num = parse (df, "(201.2)", pp);
+      num = parseIt (df, "(201.2)", pp);
       harness.check (num instanceof Double);
       harness.check (num.doubleValue(), -201.2);
 
       apply (harness, df, "0.#;0.#-");
-      num = parse (df, "303", pp);
+      num = parseIt (df, "303", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue (), 303);
-      num = parse (df, "303-", pp);
+      num = parseIt (df, "303-", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue (), -303);
 
-      num = parse (df, "9223372036854775808-", pp);
+      num = parseIt (df, "9223372036854775808-", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue(), Long.MIN_VALUE);
     }
