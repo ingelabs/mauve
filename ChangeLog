@@ -1,3 +1,8 @@
+1999-07-05  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/io/Utf8Encoding/mojo.java: New file.  From
+	"Mojo Jojo" <mojojojo@pacbell.net>.
+
 1999-06-21  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest.java:
