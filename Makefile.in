@@ -319,7 +319,7 @@ FORCE:
 @USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS) $(CHOICES)
-@USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness
+@USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness $(srcdir)
 
 @USE_GCJ_TRUE@recheck:
 @USE_GCJ_TRUE@	test -f .save-keys || : > .save-keys
@@ -327,7 +327,7 @@ FORCE:
 @USE_GCJ_TRUE@	$(MAKE) KEYS="`cat .save-keys`" check
 
 @USE_GCJ_FALSE@check-local: classes.stamp
-@USE_GCJ_FALSE@	cat classes | $(JAVA) gnu.testlet.SimpleTestHarness
+@USE_GCJ_FALSE@	cat classes | $(JAVA) gnu.testlet.SimpleTestHarness $(srcdir)
 
 @USE_GCJ_FALSE@recheck:
 @USE_GCJ_FALSE@	test -f .save-keys || : > .save-keys

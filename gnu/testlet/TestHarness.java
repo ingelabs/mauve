@@ -4,6 +4,8 @@
 
 package gnu.testlet;
 
+import java.io.File;
+
 public abstract class TestHarness
 {
   // These methods are used to determine whether a test has passed.
@@ -20,4 +22,6 @@ public abstract class TestHarness
     {
       check (result == expected);
     }
+
+  public abstract File getSourceDirectory ();
 }

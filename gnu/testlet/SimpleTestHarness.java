@@ -20,6 +20,7 @@ public class SimpleTestHarness extends TestHarness
   private int total = 0;
   private boolean verbose = false; // FIXME: no way to set this.
   private String description;
+  private File srcdir;
 
   public void check (boolean result)
     {
@@ -35,6 +36,11 @@ public class SimpleTestHarness extends TestHarness
 	}
       ++count;
       ++total;
+    }
+
+  public File getSourceDirectory ()
+    {
+      return srcdir;
     }
 
   private void runtest (String name)
@@ -61,7 +67,18 @@ public class SimpleTestHarness extends TestHarness
       if (t != null)
 	{
 	  description = name;
-	  t.test (this);
+	  try
+	    {
+	      t.test (this);
+	    }
+	  catch (Throwable ex)
+	    {
+	      System.out.println ("FAIL: " + description
+				  + ": uncaught exception at number "
+				  + (count + 1));
+	      ++failures;
+	      ++total;
+	    }
 	}
     }
 
@@ -71,14 +88,15 @@ public class SimpleTestHarness extends TestHarness
       return failures > 0 ? 1 : 0;
     }
 
-  private SimpleTestHarness ()
+  private SimpleTestHarness (String srcdir)
     {
+      this.srcdir = new File (srcdir);
     }
 
   // Each argument is the name of a test to run.  FIXME.
   public static void main (String[] args)
     {
-      SimpleTestHarness harness = new SimpleTestHarness ();
+      SimpleTestHarness harness = new SimpleTestHarness (args[0]);
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));
       while (true)

@@ -1,3 +1,15 @@
+1998-12-03  Tom Tromey  <tromey@cygnus.com>
+
+	* Makefile.in: Rebuilt.
+	* Makefile.am (check-local): Pass srcdir to SimpleTestHarness.
+	* gnu/testlet/SimpleTestHarness.java (srcdir): New instance
+	variable.
+	(SimpleTestHarness): Added `srcdir' argument.
+	(main): Assume args[0] is name of source directory.
+	(getSourceDirectory): New method.
+	(runtest): Surround test call in a `try'.
+	* gnu/testlet/TestHarness.java (getSourceDirectory): New method.
+
 1998-12-02  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/beans/IntrospectorTest.java: Don't mention
