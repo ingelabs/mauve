@@ -71,7 +71,7 @@ public class InetAddressTest implements Testlet
 
 
     harness.check ( addr, addr1, "Error : test_Basics failed - 5" +
-			 "Both the addresses should be the same" );
+			 " Both the addresses should be the same" );
 
 
     harness.check ( addr1.getHostAddress(), addr.getHostAddress(),
@@ -104,7 +104,7 @@ public class InetAddressTest implements Testlet
 
 
     harness.check ( addr2[0], addr1, "Error : test_Basics failed - 9" +
-			 "Both the addresses should be the same" );
+			 " Both the addresses should be the same" );
 
     InetAddress addr3 = null;
     try {
