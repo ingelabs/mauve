@@ -20,6 +20,7 @@ verbose=
 spectags=
 tags=
 files=
+exclude_files=
 
 if test "$1" = "-verbose"; then
    verbose=yes
@@ -32,12 +33,28 @@ shift
 # Some tags imply other tags.  For instance, JDK1.2 implies JDK1.1 and
 # JDK1.0.  This makes it easier to keep the tags up to date in the
 # source -- we only have to keep track of differences (as opposed to
-# editing every source file when a new tag is added).
-for i in ${1+"$@"}; do
+# editing every source file when a new tag is added).  If we see an
+# otherwise-unrecognized tag, and the file `mauve-TAG' exists, then we
+# treat the contents of that file as a list of implied tags.
+taglist=${1+"$@"}
+seen_dashdash=
+while test -n "$taglist"; do
+   set $taglist
+   i="$1"
+   shift
+   taglist=${1+"$@"}
+
    case "$i" in
+    X--)
+       seen_dashdash=yes
+       ;;
     java.*)
        file="`echo $i | tr . /`"
        files="$files $file"
+       ;;
+    !java.*)
+       file="`echo $i | tr . / | sed -e 's/!//'`"
+       exclude_files="$exclude_files $file"
        ;;
     not-a-test)
        # You can't specify this.
@@ -45,25 +62,30 @@ for i in ${1+"$@"}; do
        ;;
     JDK1.2)
        tags="$tags JDK1.0 JDK1.1 $i"
-       spectags="$spectags $i"
+       test -z "$seen_dashdash" && spectags="$spectags $i"
        ;;
     JDK1.1)
        tags="$tags JDK1.0 $i"
-       spectags="$spectags $i"
-       ;;
-    libjava)
-       tags="$tags JDK1.0 JDK1.1 $i"
-       spectags="$spectags $i"
+       test -z "$seen_dashdash" && spectags="$spectags $i"
        ;;
     *)
+       if test -f "mauve-$i"; then
+	  # We don't want tags from a file to be treated as specified
+	  # on the command line.  So we add a `X--' before the
+	  # expansion.  We don't use just `--' as this would confuse
+	  # `set'.
+	  taglist="$taglist X-- `sed -e 's/#.*$//g' mauve-$i`"
+       fi
        tags="$tags $i"
-       spectags="$spectags $i"
+       test -z "$seen_dashdash" && spectags="$spectags $i"
        ;;
    esac
 done
 
-test -n "$verbose" && echo "tags are $tags"
-test -n "$verbose" && echo "spectags are $spectags"
+test -n "$verbose" && echo "tags = $tags"
+test -n "$verbose" && echo "spectags = $spectags"
+test -n "$verbose" && echo "files = $files"
+test -n "$verbose" && echo "exclude_files = $exclude_files"
 
 choices=/tmp/choices-$$
 echo -n "CHOICES = " > $choices
@@ -74,7 +96,6 @@ classes=/tmp/classes-$$
 while read file; do
    test -n "$verbose" && echo "Examining $file"
    if test -n "$files"; then
-      echo "X${files}X"
       ok=no
       for pat in $files; do
 	 case $file in
@@ -90,6 +111,21 @@ while read file; do
 
    if test "$ok" = no; then
       test -n "$verbose" && echo " ... not in any file pattern"
+      continue
+   fi
+
+   if test -n "$exclude_files"; then
+      for pat in $exclude_files; do
+	 case $file in
+	  ${pat}*)
+	     test -n "$verbose" && echo " ... excluded by pattern $pat"
+	     ok=no
+	     break
+	     ;;
+	 esac
+      done
+   fi
+   if test "$ok" = no; then
       continue
    fi
 

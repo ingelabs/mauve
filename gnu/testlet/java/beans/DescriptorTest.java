@@ -1,4 +1,4 @@
-// Tags: JDK1.1 !libjava
+// Tags: JDK1.1
 
 package gnu.testlet.java.beans;
 import gnu.testlet.Testlet;
@@ -14,14 +14,6 @@ public class DescriptorTest implements Testlet
       ok = true;
       try {
 	new PropertyDescriptor("class",java.lang.Object.class);
-      } catch(IntrospectionException e) {
-	ok = false;
-      }
-      harness.check (ok);
-
-      ok = true;
-      try {
-	new IndexedPropertyDescriptor("test",TestClass.class);
       } catch(IntrospectionException e) {
 	ok = false;
       }

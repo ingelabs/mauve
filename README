@@ -26,12 +26,28 @@ must be matched by the files to be tested.  Some values:
        If multiple keys of this type, a test file need only match one
        to be included.
 
+     * Any key starting with `!java.' is used to exclude a class
+       hierarchy.
+       E.g., `!java.lang.reflect' can be used to omit all reflection
+       tests, while still including the rest of java.lang.
+
      JDK1.0  Run JDK1.0 tests only
      JDK1.1  Run JDK1.1 tests only
      JDK1.2  Run JDK1.2 tests only
-     libjava Run `libjava' (part of gcj) tests only
-	     libjava is like JDK1.1, but has some 1.2 functionality,
-	     and is also missing some things (e.g., beans)
+
+If an otherwise unrecognized tag QUUX is seen, and the file
+`mauve-QUUX' exists in the mauve source directory, then the contents
+of this file are treated as a list of tags.  For instance, here is the
+current version of `mauve-libjava', which is used by the `libjava'
+library implementation:
+
+	# Config file that tells mauve about the `libjava' tag.
+	JDK1.0
+	JDK1.1
+	!java.beans
+
+Note that anything after a `#' on a line is treated as a comment and
+is stripped.
 
 You can use `make recheck' to re-run `make check' with the key list
 you last used.
@@ -73,6 +89,27 @@ terms of primitive tags, and then we note the exceptions.
 When adding a new tag, change the `choose' program to map the
 specified tag onto the implied tags.  There is some code near the top
 that handles this transformation.
+
+Files should only hold tags describing their prerequisites.  In
+particular, limitations of a given library implementation should not
+be mentioned in file tags (because when the library changes, this
+would necessitate global edits).  Instead, put such limitations in a
+`mauve-QUUX' tag expansion file.
+
+================================================================
+
+You'll notice that each test has a public constructor.  This probably
+seems strange -- why not have the `test' method be static, and just
+call it?
+
+The answer is that this approach would require java.lang.reflect.  The
+test framework gets the class object for a test using Class.forName.
+However, making a call to a static method on a class requires reflect.
+By adding a constructor, we can just call Class.newInstance, and then
+make a simple method call on the resulting object.
+
+This requires a bit less machinery, and more importantly lets us use
+it for libjava, where we haven't yet implemented reflect.
 
 ================================================================
 

@@ -1,5 +1,17 @@
 1998-12-02  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/beans/IntrospectorTest.java: Don't mention
+	libjava tag.
+	(tryone): Renamed from `try' (duh).
+	(test): Fixed all calls to tryone to pass in test harness.
+	* gnu/testlet/java/beans/DescriptorTest.java: Don't mention
+	libjava tag.
+	(test): Removed test that depends on class from Classpath.
+
+	* choose: Recognize `!java.' as file exclusion.  Implement file
+	exclusion.  Read file mauve-TAG if it exists.  Don't hard-code
+	information about `libjava' tag.
+
 	* choose: Added missing `;;'.
 
 	* gnu/testlet/java/beans/DescriptorTest.java: New file, adapted
