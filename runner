@@ -34,7 +34,7 @@ if test "x$RUNTIME" = "x" ; then
 #RUNTIME="gij"
 #RUNTIME="Kissme"
 #RUNTIME="/usr/local/sablevm/bin/sablevm -Y"
-RUNTIME="/usr/local/jamvm/bin/jamvm"
+RUNTIME=jamvm
 #RUNTIME="native"
 fi
 

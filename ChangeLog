@@ -1,6 +1,16 @@
+2004-12-19  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/Beans/instantiate_1.java: New
+	tests
+	* gnu/testlet/java/beans/Beans/TestBean1.java
+	* gnu/testlet/java/beans/Beans/TestBean2.java,
+	* gnu/testlet/java/beans/Beans/TestBean3.java,
+	* gnu/testlet/java/beans/Beans/TestBean4.java:
+	Helper classes for above tests.
+
 2004-12-16  Thomas Zander <zander@kde.org>
 
-	* gny/testlet/java/lang/Class/ClassTest.java: new
+	* gnu/testlet/java/lang/Class/ClassTest.java: new
 	test_getResourceAsStream test.
 
 2004-12-12  Robin Green  <greenrd@greenrd.org>
