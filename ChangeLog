@@ -1,5 +1,10 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/unicode.java (performTests):
+	Fixed definition of ignorable control character for
+	isJavaIdentifierPart and isUnicodeIdentifierPart tests.
+	Characters 0x7f to 0x9f are not identifier ignorable.
+
 	* gnu/testlet/java/lang/Character/unicode.java (unicode): Use
 	getResourceReader method from harness.
 

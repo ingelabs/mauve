@@ -410,8 +410,16 @@ Character.isJavaIdentifierStart(i) ? "javaindetifierstart" : "not-javaidentfiers
 			typeStr.equals("Mc") ||
 			typeStr.equals("Mn") ||
 			typeStr.equals("Cf") ||
-			(typeStr.equals("Cc") &&
-				!range(i,0x0009,0x000D) && !range(i,0x001C,0x001F))
+			(typeStr.equals("Cc")
+			 // This test comes from JCL volume 1.
+			 && (range (i, 0, 8)
+			     || range (i, 0x0e, 0x1b)
+			     || range (i, 0x200c, 0x200f)
+			     // However, the JCL book has a typo which
+			     // we fix on the next line.
+			     || range (i, 0x202a, 0x202e)
+			     || range (i, 0x206a, 0x206f)
+			     || i == 0xfeff))
 			) != Character.isJavaIdentifierPart(i) )
 		{
 			reportError(i,
@@ -440,8 +448,16 @@ Character.isUnicodeIdentifierStart(i) ? "unicodeidentifierstart" : "not-unicodei
 			typeStr.equals("Mc") ||
 			typeStr.equals("Mn") ||
 			typeStr.equals("Cf") ||
-			(typeStr.equals("Cc") &&
-				!range(i,0x0009,0x000D) && !range(i,0x001C,0x001F))
+			(typeStr.equals("Cc")
+			 // This test comes from JCL volume 1.
+			 && (range (i, 0, 8)
+			     || range (i, 0x0e, 0x1b)
+			     || range (i, 0x200c, 0x200f)
+			     // However, the JCL book has a typo which
+			     // we fix on the next line.
+			     || range (i, 0x202a, 0x202e)
+			     || range (i, 0x206a, 0x206f)
+			     || i == 0xfeff))
 			) != Character.isUnicodeIdentifierPart(i) )
 		{
 			reportError(i,
@@ -455,7 +471,6 @@ Character.isUnicodeIdentifierPart(i) ? "unicodeidentifierpart" : "not-unicodeide
 			(
 			range(i,0x0000,0x0008) ||
 			range(i,0x000E,0x001B) ||
-			range(i,0x007F,0x009F) ||
 			range(i,0x200C,0x200F) ||
 			range(i,0x202A,0x202E) ||
 			range(i,0x206A,0x206F) ||
