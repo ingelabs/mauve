@@ -1,3 +1,7 @@
+2005-02-16  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/nio/charset/Charset/UTF8Charset.java: New test.
+
 2005-02-16  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/lang/Class/serialization.java: Remove stray space
