@@ -19,6 +19,7 @@
 */
 
 // Tags: JLS1.2
+// Uses: Entry ESet EIterator
 
 package gnu.testlet.java.util.AbstractMap;
 
@@ -350,19 +351,25 @@ public class AcuniaAbstractMapTest extends AbstractMap implements Testlet
     AcuniaAbstractMapTest ehm = new AcuniaAbstractMapTest();
     th.check("{}".equals(ehm.toString()) , "checking empty Map");
     ehm.put("a","b");	
+    th.debug(ehm.toString());
     th.check("{a=b}".equals(ehm.toString()) , "checking Map with one element");
     ehm.put("c","d");	ehm.put("e","f");
+    th.debug(ehm.toString());
     th.check("{a=b, c=d, e=f}".equals(ehm.toString()) , "checking Map with three elements");
+  }
+
+  public String toString() {
+	  return super.toString();
   }
 
 // The following field and methods are needed to use this class as an
 // implementation test for AbstractMap
 //
-	private Vector keys = new Vector();
-	private Vector values = new Vector();
+	Vector keys = new Vector();
+	Vector values = new Vector();
 	private boolean edit = true;
 	
-	private boolean deleteInAM(Object e) {
+	boolean deleteInAM(Object e) {
 	 	if  (!keys.contains(e)) return false;
 	 	values.remove(keys.indexOf(e));
 	 	return keys.remove(e);
@@ -380,7 +387,7 @@ public class AcuniaAbstractMapTest extends AbstractMap implements Testlet
 	}
 	
 	public Set entrySet() {
-		return  new ESet();
+		return  new ESet(this);
 	}
 
 	public Object put(Object key, Object value) {
@@ -398,84 +405,4 @@ public class AcuniaAbstractMapTest extends AbstractMap implements Testlet
 	public void set_edit(boolean b) {
 		edit = b;
 	}
-	
-  private class ESet extends AbstractSet {
-	
-		public Iterator iterator() {
-			return new EIterator();
-		}
-	
-	        public int size() {
-	        	return keys.size();
-	        }
-	
-
-  }
-	
-  private class Entry implements Map.Entry {
-
-  	private Object key;
-  	private Object value;
-  	
-  	public Entry(Object k, Object v) {
-         	key = k;
-         	value = v;
-        }
-
-        public Object getKey() {
-        	return key;
-        }
-
-        public Object getValue() {
-        	return value;
-        }
-
-        public Object setValue(Object nv) {
-        	Object ov = value;
-        	value = nv;
-        	return ov;
-        }
-
-        public boolean equals(Object o) {
-
-        	if (!(o instanceof Map.Entry))return false;
-        	Map.Entry e = (Map.Entry)o;
-        	if (  e == null ) return false;
-        	return ( (key == null ? e.getKey()==null : key.equals(e.getKey())) &&
-                  (value == null ? e.getValue()==null : key.equals(e.getValue())));
-        }
-
-        public int hashCode() {
-        	int kc = key == null ? 0 : key.hashCode();
-        	int vc = value == null ? 0 : value.hashCode();
-        	return kc ^ vc;
-        }
-
-  }
-
-        private class EIterator implements Iterator {
-        	int pos=0;
-                int status=0;
-
-                public EIterator() {}
-
-                public  boolean hasNext() {
-                	return  pos < size();
-                }
-
-                public Object next() {
-                 	status = 1;
-                 	if (pos>= size()) throw new NoSuchElementException("no elements left");
-                 	pos++;			
-			return new Entry(keys.get(pos-1) ,values.get(pos-1));                 	
-                }
-
-                public void remove() {
-                        if (status != 1 ) throw new IllegalStateException("do a next() operation before remove()");
-                      	deleteInAM(keys.get(pos-1));
-                      	pos--;
-                      	status=-1;
-                }
-        }
-  	
 }

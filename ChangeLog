@@ -1,5 +1,13 @@
 2002-04-15  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/AbstractMap/AcuniaAbstractMapTest.java:
+	Remove inner classes.
+	* gnu/testlet/java/util/AbstractMap/EIterator.java: New class.
+	* gnu/testlet/java/util/AbstractMap/ESet.java: New class.
+	* gnu/testlet/java/util/AbstractMap/Entry.java: New class.
+
+2002-04-15  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/PipedStream/close.java: Use harness.debug().
 
 2002-04-14  Mark Wielaard  <mark@klomp.org>
