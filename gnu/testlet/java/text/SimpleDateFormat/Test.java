@@ -75,6 +75,37 @@ test(TestHarness harness)
 
   sdf.setTimeZone(TimeZone.getDefault());
   harness.debug(sdf.format(new Date(System.currentTimeMillis())));
+
+  // Now do some lenient parsing tests.  These might not all work.
+  dfs = new DateFormatSymbols(Locale.US);
+  sdf = new SimpleDateFormat(pattern, dfs);
+
+  sdf.setLenient(true);
+
+  String[] date_strs = { 
+    "Tue Feb 23 20:15:34 CST 1999",
+    "10/31/69",
+    "1999/02/23",
+    "6.9.98 12:43pm",
+    "Monday, February 22, 1999 10:24:43",
+    "Wed Feb 24 19:35:02 1999 and a bunch more text",
+    "Wed, 24 Feb 1999 05:12:21 GMT"
+  };
+   
+  harness.debug("The following tests are informational only");
+  for (int i = 0; i < date_strs.length; i++)
+    {
+      d = null;
+      try
+        {
+          d = sdf.parse(date_strs[i]);
+        }
+      catch(ParseException e) { ; }
+      if (d == null)
+        harness.debug("Couldn't parse: " + date_strs[i]);
+      else
+        harness.debug("Parsed: " + date_strs[i] + " as: " + d);
+    }
 }
 
 } // class Test

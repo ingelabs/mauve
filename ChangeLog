@@ -1,3 +1,8 @@
+Tue Feb 23 23:29:18 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Added some test
+	cases for lenient date parsing a la Classpath.
+
 1999-02-23  Tom Tromey  <tromey@cygnus.com>
 
 	* choose: Added more verbose output.  If a file pattern is an
