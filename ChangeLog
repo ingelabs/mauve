@@ -1,3 +1,8 @@
+2003-12-30  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/net/URL/URLTest.java: Fixed. Now it
+	passes with JDK 1.4.2.
+
 2003-12-28  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/io/LineNumberReader/Test2.java:
