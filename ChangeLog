@@ -1,5 +1,7 @@
 2001-11-25  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/math/BigDecimal/construct.java: New file.
+
 	* gnu/testlet/java/lang/reflect/Method/invoke.java (try_invoke):
 	Pass both classes to check().
 
