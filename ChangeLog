@@ -1,5 +1,9 @@
 2000-12-20  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/lang/Class/ClassTest.java (test_getInterfaces):
+	Arrays implement two interfaces.
+	(testall): Don't run test_getResource.
+
 	* gnu/testlet/java/lang/StringBuffer/plus.java (test): Fixed
 	null-as-left-operand test to match JDK 1.2.
 
