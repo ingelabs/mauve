@@ -1,5 +1,17 @@
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/geom/Rectangle2D/add.java: New test.
+	* gnu/testlet/java/awt/geom/Rectangle2D/constants.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/contains.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/equals.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/getBounds2D.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/intersect.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/intersects.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/intersectsLine.java: Likewise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/setFrame.java: Likewise.
+
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/geom/RectangularShape/contains.java: New test.
 	* gnu/testlet/java/awt/geom/RectangularShape/getBounds.java: Ditto.
 	* gnu/testlet/java/awt/geom/RectangularShape/getCenterX.java: Ditto.
