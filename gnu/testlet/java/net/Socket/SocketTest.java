@@ -42,7 +42,7 @@ public class SocketTest implements Testlet
       srv.init();
       srv.start();
       Thread.yield();
-      harness.check(true);
+      harness.check(true, "BasicServer");
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 0 " +
@@ -50,26 +50,31 @@ public class SocketTest implements Testlet
       harness.debug(e);
     }
     
+    Socket sock = null;
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 20000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
       harness.check(str.equals("hello buddy"),
 		    "Error : test_BasicServer failed - 1 " +
 		    "string returned is not correct.");
-      sock.close();
-      harness.check(true);
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 2 " +
 		   "exception was thrown :" + e.getMessage());
       harness.debug(e);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
     
     // second iteration
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 20000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
@@ -84,10 +89,16 @@ public class SocketTest implements Testlet
 		   "exception was thrown :" + e.getMessage());
       harness.debug(e);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
     
     // second iteration
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 20000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
    
       byte data[] = new byte[5];
@@ -108,10 +119,16 @@ public class SocketTest implements Testlet
 		   "exception was thrown :" + e.getMessage());
       harness.debug(e);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
 
     // second iteration
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 20000);
       InputStream is = sock.getInputStream();
       byte data[] = new byte[5];
 
@@ -123,7 +140,6 @@ public class SocketTest implements Testlet
 		    "Error : test_BasicServer failed - 8 " +
 		    "string returned is not correct.");
       is.close();
-      sock.close();
       harness.check(true);
       
     }
@@ -132,10 +148,16 @@ public class SocketTest implements Testlet
 		   "exception was thrown :" + e.getMessage());
       harness.debug(e);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
 
     // second iteration
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 20000);
       InputStream is = sock.getInputStream();
       byte data[] = new byte[5];
       is.skip(2);
@@ -153,7 +175,6 @@ public class SocketTest implements Testlet
 		    "Error : test_BasicServer failed - 10 " +
 		    "string returned is not correct.");
       is.close();
-      sock.close();
       harness.check(true);
     }
     catch (Exception e) {
@@ -161,11 +182,17 @@ public class SocketTest implements Testlet
 		   "exception was thrown :" + e.getMessage());
       harness.debug(e);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
 
     // This test is incorrect.  You cannot rely on System.gc() causing
     // the garbage collector to run.
     try {
-      Socket sock = new Socket("127.0.0.1", 7);
+      sock = new Socket("127.0.0.1", 7);
       InputStream sin = null;
       OutputStream sout = null;
 
@@ -180,6 +207,12 @@ public class SocketTest implements Testlet
     catch (IOException e) {
       harness.check(true);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
 
     // invoke finalize()
     System.gc();
@@ -188,10 +221,11 @@ public class SocketTest implements Testlet
   public void test_params()
   {
     harness.checkPoint("params");
+    Socket sock = null;
     try {
       String host = "mail.gnu.org";
       int port = 25;
-      Socket sock = new Socket(host, port);
+      sock = new Socket(host, port);
 
       harness.check(sock.getLocalPort() > 0,
 		    "Error : test_params failed - 1 " +
@@ -228,31 +262,41 @@ public class SocketTest implements Testlet
       harness.check(sock.getPort() == port,
 		    "Error : test_params failed - 6");
       
+      harness.debug("sock.getInetAddress().toString(): " +
+		    sock.getInetAddress().toString());
       harness.check(sock.getInetAddress().toString().indexOf(host) != -1,
 		    "getInetAddress().toString() should contain host " + host);
+      harness.debug("sock.toString(): " + sock.toString());
       harness.check(sock.toString().indexOf(host) != -1,
 		    "toString() should contain host " + host);
 
       try {
 	Socket.setSocketImplFactory(null);
-	harness.check(false);
+	harness.check(false, "setSocketImplFactory(null)");
       }
       catch (java.io.IOException e) {
-	harness.check(true);
+	harness.check(true, "setSocketImplFactory(null)");
       }
     }
     catch (Exception e) {
       harness.fail("Error : test_params failed - 10 exception was thrown" + e);
       harness.debug(e);
     }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch(IOException ignored) {}
+    }
   }
 
   public void test_Basics()
   {
     harness.checkPoint("Basics");
+    Socket s = null;
     // host name given
     try {
-      Socket s = new Socket ("babuspdjflks", 200);
+      s = new Socket ("babuspdjflks.gnu.org", 200);
       harness.fail("Error : test_Basics failed - 1 " +
 		   "exception should have been thrown here");
     }
@@ -264,9 +308,15 @@ public class SocketTest implements Testlet
 		   "Unknown host exception should have been thrown here: " +
 		   e.getMessage());
     }
+    finally {
+      try {
+	if (s != null)
+	  s.close();
+      } catch(IOException ignored) {}
+    }
 
     try {
-      Socket s = new Socket("127.0.0.1", 30001);
+      s = new Socket("127.0.0.1", 30001);
       harness.fail("Error : test_Basics failed - 3 " +
 		   "exception should have been thrown here");
 
@@ -278,9 +328,15 @@ public class SocketTest implements Testlet
     catch (IOException e) {
       harness.check(true);
     }
+    finally {
+      try {
+	if (s != null)
+	  s.close();
+      } catch(IOException ignored) {}
+    }
 
     try {
-      Socket s = new Socket("127.0.0.1", 30001, true);
+      s = new Socket("127.0.0.1", 30001, true);
       harness.fail("Error : test_Basics failed - 5 " +
 		   "exception should have been thrown here");
 
@@ -292,22 +348,33 @@ public class SocketTest implements Testlet
     catch (IOException e) {
       harness.check(true);
     }
+    finally {
+      try {
+	if (s != null)
+	  s.close();
+      } catch(IOException ignored) {}
+    }
 
     // host inet given
     try {
       // This is host / port that is unlikely to be blocked.  (Outgoing
       // port 80 connections are often blocked.)
-      Socket s = new Socket ("mail.gnu.org", 25);
-      s.close();
+      s = new Socket ("mail.gnu.org", 25);
       harness.check(true);
     }
     catch (Exception e) {
       harness.fail("Error : test_Basics failed - 7 " +
 		   "exception should not have been thrown: " + e);
     }
+    finally {
+      try {
+	if (s != null)
+	  s.close();
+      } catch(IOException ignored) {}
+    }
 
     try {
-      Socket s = new Socket(InetAddress.getLocalHost(), 30002);
+      s = new Socket(InetAddress.getLocalHost(), 30002);
       harness.fail("Error : test_Basics failed - 8 " +
 		   "exception should have been thrown here");
 
@@ -315,13 +382,19 @@ public class SocketTest implements Testlet
     catch (Exception e) {
       harness.check(true);
     }
+    finally {
+      try {
+	if (s != null)
+	  s.close();
+      } catch(IOException ignored) {}
+    }
 
     if (true) { // 1.1 features not implemented
       
       // src socket target socket given(as hostname).
       try {
-	Socket s = new Socket ("babuspdjflks", 200,
-			       InetAddress.getLocalHost() ,20000);
+	s = new Socket ("babuspdjflks.gnu.org", 200,
+			InetAddress.getLocalHost() ,20006);
 	harness.fail("Error : test_Basics failed - 9 " +
 		     " exception should have been thrown here");
       }
@@ -333,10 +406,16 @@ public class SocketTest implements Testlet
 		     "UnknownHostException should have been thrown here");
 	harness.debug(e);
       }
+      finally {
+	try {
+	  if (s != null)
+	    s.close();
+	} catch(IOException ignored) {}
+      }
       
       try {
-	Socket s = new Socket("127.0.0.1", 30003,
-			      InetAddress.getLocalHost(), 20000);
+	s = new Socket("127.0.0.1", 30003,
+		       InetAddress.getLocalHost(), 20007);
 	harness.fail("Error : test_Basics failed - 11 " +
 		     " exception should have been thrown here");
       }
@@ -348,11 +427,17 @@ public class SocketTest implements Testlet
       catch (IOException e) {
 	harness.check(true);
       }
+      finally {
+	try {
+	  if (s != null)
+	    s.close();
+	} catch(IOException ignored) {}
+      }
       
       // src socket target socket given (as ip address).
       try {
-	Socket s = new Socket(InetAddress.getLocalHost(), 30004,
-			      InetAddress.getLocalHost(), 20000);
+	s = new Socket(InetAddress.getLocalHost(), 30004,
+		       InetAddress.getLocalHost(), 20008);
 	harness.fail("Error : test_Basics failed - 13 " +
 		     " exception should have been thrown here");
       }
@@ -363,6 +448,12 @@ public class SocketTest implements Testlet
       }
       catch (IOException e) {
 	harness.check(true);
+      }
+      finally {
+	try {
+	  if (s != null)
+	    s.close();
+	} catch(IOException ignored) {}
       }
     }
   }
@@ -376,20 +467,29 @@ public class SocketTest implements Testlet
     srv.start();
     Thread.yield();
 
+    Socket sock = null;
     try {
-      Socket sock = new Socket("127.0.0.1", 20002);
-      DataInputStream dis = new DataInputStream(sock.getInputStream());
+      sock = new Socket("127.0.0.1", 20002);
+      InputStream is = sock.getInputStream();
+
+      DataInputStream dis = new DataInputStream(is);
+
       String str = dis.readLine();
 
       harness.check(str.equals("hello buddy"),
 		    "Error : test_BasicServer failed - 1 " +
 		    "string returned is not correct.");
-      sock.close();
       harness.check(true);
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 2 exception was thrown");
       harness.debug(e);
+    }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch (IOException ignored) {}
     }
   }
 

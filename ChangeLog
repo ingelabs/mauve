@@ -1,3 +1,8 @@
+2002-12-01  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java: Make sure sockets
+	always bind to different local ports and are always closed.
+
 2002-11-29  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/InetAddress/InetAddressTest.java: Make
