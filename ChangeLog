@@ -1,3 +1,8 @@
+1998-12-01  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/lang/Double/new_Double.java: New file.
+	* gnu/testlet/java/lang/Math/rint.java: New file.
+
 1998-12-01  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/util/Random/basic.java: Added tag line.
