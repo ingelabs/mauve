@@ -227,7 +227,7 @@ public class InetSocketAddressTest implements Testlet
     try
       {
 	sa = new InetSocketAddress ("gcc.gnu.org", 80);
-	harness.check (sa.isUnresolved(), "Error : test_Basics failed - 5"
+	harness.check (! sa.isUnresolved(), "Error : test_Basics failed - 5"
 		       + " Resolveable hostname got not resolved");
       }
     catch (Exception e)

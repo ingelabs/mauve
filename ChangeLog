@@ -1,5 +1,10 @@
 2004-11-17  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/net/InetSocketAddress/InetSocketAddressTest.java:
+	Fixed logic of testcase.
+
+2004-11-17  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/net/Socket/SocketTest.java:
 	Make testcase work with SUN JDK too.
 
