@@ -1,4 +1,4 @@
-/* Copyright (C) 1999 Hewlett-Packard Company
+/* Copyright (C) 1999, 2002 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -411,7 +411,9 @@ public class FloatTest implements Testlet
 
 		harness.check(!( d1.byteValue() != 123 ), 
 			"Error: test_shortbyteValue failed - 4" );
-		harness.check(!( d2.byteValue() != (byte)400 ), 
+		// 400 doesn't fit in a byte value, so it is
+		// truncated.
+		harness.check(!( d2.byteValue() != (byte)127 ), 
 			"Error: test_shortbyteValue failed - 5" );
 		harness.check(!( d3.byteValue() != 0 ), 
 			"Error: test_shortbyteValue failed - 6" );

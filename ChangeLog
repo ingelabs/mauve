@@ -1,3 +1,10 @@
+2002-06-13  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Float/FloatTest.java
+	(test_shortbyteValue): Fixed cast to byte of `400'.
+	* gnu/testlet/java/lang/Double/DoubleTest.java
+	(test_shortbyteValue): Fixed cast to byte of `400'.
+
 2002-06-12  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/File/jdk11.java (test): Added test for File
