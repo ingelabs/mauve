@@ -31,16 +31,18 @@ import java.io.*;
 class BasicBacklogSocketServer extends Thread {
   ServerSocket srvsock = null;
 
-  protected static TestHarness harness;
+  private TestHarness harness;
   
-  public void init()
+  public void init(TestHarness harness)
   {
+    this.harness = harness;
     try {
       srvsock = new ServerSocket(21000, 1);
+      harness.check(true);
     }
     catch (Exception e) {
       harness.fail("Error : BasicBacklogSocketServer::init failed " + 
-		   "Exception should not be thrown here " + e);
+		   "exception was thrown: " + e);
     }
   }
   
@@ -62,10 +64,11 @@ class BasicBacklogSocketServer extends Thread {
       DataOutputStream dos = new DataOutputStream(os);
       dos.writeBytes("hello buddy");
       dos.close();
+      harness.check(true);
     }
     catch (Exception e) {
       harness.fail("Error : BasicBacklogSocketServer::run failed - 2" + 
-		   "exception was thrown");
+		   "exception was thrown: " + e);
     }
   }
 }

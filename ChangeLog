@@ -1,3 +1,13 @@
+2002-11-17  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java: 
+	Use harness.check(), pass harness object to threads, and try to
+	kill off the server threads
+	* gnu/testlet/java/net/ServerSocket/BasicBacklogSocketServer.java: ditto
+	* gnu/testlet/java/net/ServerSocket/BasicSocketServer.java: ditto
+	* gnu/testlet/java/net/ServerSocket/MyBasicSocketServer.java: ditto
+
+
+
 2002-11-14  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/SimpleTestHarness.java (getResourceStream): More info

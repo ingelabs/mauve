@@ -33,97 +33,157 @@ public class ServerSocketTest implements Testlet
 {
   
   protected static TestHarness harness;
+
+  private static final boolean USE_JOIN = false;
+
+  /**
+   * Wait (for up to 5 seconds) until a thread has completed.  If
+   * 'USE_JOIN' is true, use join.  Otherwise use sleep and isAlive.
+   * @param thread the thread to wait for,
+   * @return true is the thread ended, false otherwise.
+   */
+  private boolean completed(Thread thread)
+  {
+    try {
+      if (USE_JOIN) {
+	thread.join(5000);
+      }
+      else {
+	for (int i = 0; i < 5 && thread.isAlive(); i++) {
+	  Thread.sleep(1000);
+	}
+      }
+    }
+    catch (Exception e) { /* Squelch exceptions */ }
+    return !thread.isAlive();
+  }
   
   public void test_BasicBacklogServer()
   {
     BasicBacklogSocketServer srv = new BasicBacklogSocketServer();
-    srv.init();
+    srv.init(harness);
     srv.start();
     Thread.yield();
     
     try {
-      Socket sock = new Socket("localhost", 21000);
+      Socket sock = new Socket("127.0.0.1", 21000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
+      harness.check(true);
     }
     catch (Exception e) {
-      harness.fail("Error : test_BasicBacklogServer failed - 1" + 
-		   "exception was thrown");
+      harness.fail("Error : test_BasicBacklogServer failed - 2 " + 
+		   "exception was thrown " + e);
     }
     
     // second iteration
     try {
-      Socket sock = new Socket("localhost", 21000);
+      Socket sock = new Socket("127.0.0.1", 21000);
+      harness.check(true);
     }
-    catch (Exception e) {}
+    catch (Exception e) {
+      harness.fail("Error : test_BasicBacklogServer failed - 3 " + 
+		   "exception was thrown " + e);
+    }
     
-				// third iteration
+    // third iteration
     try {
-      Socket sock = new Socket("localhost", 21000);
+      Socket sock = new Socket("127.0.0.1", 21000);
+      harness.check(true);
     }
-    catch (Exception e) {}
-
+    catch (Exception e) {
+      harness.fail("Error : test_BasicBacklogServer failed - 4 " + 
+		   "exception was thrown " + e);
+    }
+    
+    harness.check(completed(srv), 
+		  "Error : test_BasicBacklogServer failed - 5 " + 
+		  "server didn't end");
   }
   
   public void test_BasicServer()
   {
     harness.checkPoint("BasicServer");
     BasicSocketServer srv = new BasicSocketServer();
-    srv.init();
+    srv.init(harness);
     srv.start();
     Thread.yield();
     
     try {
-      Socket sock = new Socket("localhost", 20000);
+      Socket sock = new Socket("127.0.0.1", 20000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
-      if (!str.equals("hello buddy")) {
-	harness.fail("Error : test_BasicServer failed - 1" + 
-		     "string returned is not correct.");
-      }
+      harness.check(str.equals("hello buddy"),
+		    "Error : test_BasicServer failed - 1 " + 
+		    "string returned is not correct.");
       sock.close();
+      harness.check(true);
     }
     catch (Exception e) {
-      harness.fail("Error : test_BasicServer failed - 2" + 
+      harness.fail("Error : test_BasicServer failed - 2 " + 
 		   "exception was thrown: " + e.getMessage());
     }
-    // System.out.println("BasicServer 5");
     
     // second iteration
     try {
-      Socket sock = new Socket("localhost", 20000);
+      Socket sock = new Socket("127.0.0.1", 20000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
-      if (!str.equals("hello buddy")) {
-	harness.fail("Error : test_BasicServer failed - 3" + 
-		     "string returned is not correct.");
-      }
+      harness.check(str.equals("hello buddy"),
+		    "Error : test_BasicServer failed - 3 " + 
+		    "string returned is not correct.");
       sock.close();
+      harness.check(true);
     }
     catch (Exception e) {
-      harness.fail("Error : test_BasicServer failed - 4" + 
+      harness.fail("Error : test_BasicServer failed - 4 " + 
 		   "exception was thrown: " + e.getMessage());
     }
-    // System.out.println("BasicServer 6");
     
-    try {
-      srv.srvsock.close();
-    } catch (Exception e) {
-      harness.fail("Error : test_BasicServer failed - 5" + 
-		   " should not throw exception in close ");
+    if (!completed(srv)) {
+      harness.fail("Error : test_BasicServer failed - 5 " + 
+		   " server didn't end ");
+      // Attempt to clean up the server thread by 1) closing it's
+      // socket and 2) interrupting it.
+      try {
+	srv.srvsock.close();
+      } catch (Exception e) {
+	harness.fail("Error : test_BasicServer failed - 6 " + 
+		     " exception in close: " + e.getMessage());
+      }
+      
+      if (!completed(srv)) {
+	harness.fail("Error : test_BasicServer failed - 7 " + 
+		     "server didn't end when its socket was closed");
+	// Try to unjam it ...
+	try {
+	  srv.interrupt();
+	}
+	catch (Exception e) {
+	  harness.fail("Error : test_BasicServer failed - 8 " + 
+		       " exception in interrupt: " + e.getMessage());
+	}
+	if (!completed(srv)) {
+	  // The server thread is still alive.  Oh dear ...
+	  harness.fail("Error : test_BasicServer failed - 9 " + 
+		       "server didn't end when interrupted");
+	}
+      }
     }
-    // System.out.println("BasicServer 7");
+    else {
+      harness.check(true);
+    }
   }
   
   public void test_MyBasicServer()
   {
     MyBasicSocketServer srv = new MyBasicSocketServer();
-    srv.init();
+    srv.init(harness);
     srv.start();
     Thread.yield();
     try {
-      Socket sock = new Socket("localhost", 20000);
+      Socket sock = new Socket("127.0.0.1", 20000);
     } catch (IOException e) {}
   }
   
@@ -132,16 +192,15 @@ public class ServerSocketTest implements Testlet
     try {
       ServerSocket sock = new ServerSocket(30000);
       
-      if (sock.getLocalPort() != 30000) {
-	harness.fail("Error : test_params failed - 1" + 
-		     "get port did not return proper values");
-      }
+      harness.check(sock.getLocalPort() == 30000,
+		    "Error : test_params failed - 1 " + 
+		    "get port did not return proper values");
       
       if (false) {  // set/getSoTimeout not there
 	try {
 	  sock.setSoTimeout(100);
 	  if (sock.getSoTimeout() != 100) {
-	    harness.fail("Error : test_params failed - 2" + 
+	    harness.fail("Error : test_params failed - 2 " + 
 			 "get /set timeout did not return proper values");
 	  }
 	}
@@ -154,10 +213,12 @@ public class ServerSocketTest implements Testlet
       
       try {
 	ServerSocket sock1 = new ServerSocket(30000);
-	harness.fail("Error : test_params failed - 3" + 
+	harness.fail("Error : test_params failed - 3 " + 
 		     "should have thrown bind exception here.");
       }
-      catch (Exception e) {}
+      catch (Exception e) {
+	harness.check(true);
+      }
       
       String ip = "0.0.0.0";
       harness.check(sock.toString().indexOf(ip) != -1,
@@ -166,10 +227,10 @@ public class ServerSocketTest implements Testlet
 		    "InetAddress toString() should contain IP");
       
       sock.setSocketFactory(null);
-      
+      harness.check(true);
     }
     catch (Exception e) {
-      harness.fail("Error : test_params failed - 10" + 
+      harness.fail("Error : test_params failed - 10 " + 
 		   "exception was thrown");
       e.printStackTrace(System.out);
     }
@@ -187,7 +248,7 @@ public class ServerSocketTest implements Testlet
   public void test (TestHarness the_harness)
   {
     harness = the_harness;
-    testall ();
+    testall();
   }
 
 }

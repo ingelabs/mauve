@@ -31,24 +31,28 @@ import java.io.*;
 class MyBasicSocketServer extends Thread {
   MyServerSocket srvsock = null;
   
-  protected static TestHarness harness;
+  private TestHarness harness;
   
-  public void init()
+  public void init(TestHarness harness)
   {
+    this.harness = harness;
     try {
       srvsock = new MyServerSocket(10000);
+      srvsock.close();
+      harness.check(true);
     }
     catch (Exception e) {
-      harness.debug("Error - 1 : MyBasicSocketServer::init failed " + 
-		    "Exception should not be thrown here " + e);
+      harness.fail("Error - 1 : MyBasicSocketServer::init failed " + 
+		   "exception in new MyServerSocket(10000): " + e);
     }
     // now do the real one
     try {
       srvsock = new MyServerSocket(20000);
+      harness.check(true);
     }
     catch (Exception e) {
-      harness.debug("Error - 2 : MyBasicSocketServer::init failed " + 
-		    "Exception should not be thrown here " + e);
+      harness.fail("Error - 2 : MyBasicSocketServer::init failed " + 
+		   "exception in new MyServerSocket(20000): " + e);
     }
   }
   

@@ -31,24 +31,27 @@ import java.io.*;
 class BasicSocketServer extends Thread {
   ServerSocket srvsock = null;
   
-  protected static TestHarness harness;
+  private TestHarness harness;
   
-  public void init()
+  public void init(TestHarness harness)
   {
+    this.harness = harness;
     try {
       srvsock = new ServerSocket(20000);
+      harness.check(true);
     }
     catch (Exception e) {
       System.out.println("Error : BasicSocketServer::init failed " + 
-			 "Exception should not be thrown here " + e);
+			 "exception in new ServerSocket(...) " + e);
     }
   }
   
   public void run()
   {
+    harness.check(srvsock != null,
+		  "Error : BasicSocketServer::run failed  - 1 " + 
+		  "server socket creation was not successful");
     if (srvsock == null) {
-      System.out.println("Error : BasicSocketServer::run failed  - 1 " + 
-			 "server socket creation was not successful");
       return;
     }
     
@@ -61,11 +64,20 @@ class BasicSocketServer extends Thread {
 	DataOutputStream dos = new DataOutputStream(os);
 	dos.writeBytes("hello buddy");
 	dos.close();
+	harness.check(true);
       }
       catch (Exception e) {
 	System.out.println("Error : BasicSocketServer::run failed - 2" + 
 			   "exception was thrown");
       }
+    }
+    try {
+      srvsock.close();
+      harness.check(true);
+    }
+    catch (Exception e) {
+      System.out.println("Error : BasicSocketServer::run failed - 3" + 
+			 "exception was thrown");
     }
   }
 }
