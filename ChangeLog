@@ -1,3 +1,10 @@
+2003-11-27  Mark Wielaard  <mark@klomp.org>
+
+	* choose-classes: New script.
+	* uses-list: New script.
+	* runner: New script.
+	* batch_run: New script.
+
 2003-11-25  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/zip/ZipFile/newZipFile.java: New test.
