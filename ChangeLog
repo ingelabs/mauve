@@ -1,3 +1,9 @@
+2004-11-15  Michael Koch  <konqueror@gmx.de>
+
+	* configure.in: Change default mail host from '/tmp' (?) to
+	'mx10.gnu.org'as stated by configure --help.
+	* configure: Regenerated.
+
 2004-11-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/equals.java: 

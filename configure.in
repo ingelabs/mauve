@@ -66,7 +66,7 @@ changequote(<<,>>)
 changequote([,])
 MAIL_HOST="$with_mailhost")
 
-MAIL_HOST=${MAIL_HOST-/tmp}
+MAIL_HOST=${MAIL_HOST-mx10.gnu.org}
 AC_SUBST(MAIL_HOST)
 
 if test ! -d gnu; then
