@@ -64,7 +64,7 @@ public class DatagramSocketTest implements Testlet
 		catch(Exception e )
 		{
 			harness.fail("Error : test_Basics failed - 3b ");
-			e.printStackTrace();
+			harness.debug(e);
 		}
 
 		try {
@@ -93,7 +93,7 @@ public class DatagramSocketTest implements Testlet
 		catch(Exception e )
 		{
 			harness.fail("Error : test_Basics failed - 8 ");
-			e.printStackTrace();
+			harness.debug(e);
 		}
 
 	}
@@ -288,7 +288,7 @@ public class DatagramSocketTest implements Testlet
 		{
 			harness.fail("Error : test_echoWithTimeout failed - 5 " + 
 				    "Exception occured while sending/receiving " );
-			e.printStackTrace();
+			harness.debug(e);
 		}
 						
 		harness.check ( reply.getLength(), 10,

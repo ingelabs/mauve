@@ -26,7 +26,6 @@ package gnu.testlet.java.io.DataOutputStream;
 import java.io.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.java.io.DataInputStream.ReadStream;
 
 public class WriteRead implements Testlet
 {
@@ -71,7 +70,7 @@ test(TestHarness harness)
       DataInputStream dis = new DataInputStream(is); 
 
       harness.debug("Reading data written during write phase.");
-      ReadStream.runReadTest(dis, harness);
+      runReadTest(dis, harness);
 
       dis.close();
     }
@@ -79,6 +78,36 @@ test(TestHarness harness)
     {
       harness.debug(e);
       harness.check(false, "Read data written during write phase");
+    }
+}
+// NOTE: Same function is in gnu.testlet.java.io.DataInputStream.ReadStream
+// Please change that copy when you change this copy
+public static void
+runReadTest(DataInputStream dis, TestHarness harness)
+{
+  try
+    {
+      harness.check(dis.readBoolean(), "readBoolean() true");
+      harness.check(!dis.readBoolean(), "readBoolean() false");
+      harness.check(dis.readByte(), 8, "readByte()");
+      harness.check(dis.readByte(), -122, "readByte()");
+      harness.check(dis.readChar(), 'a', "readChar()");
+      harness.check(dis.readChar(), '\uE2D2', "readChar()");
+      harness.check(dis.readShort(), 32000, "readShort()");
+      harness.check(dis.readInt(), 8675309, "readInt()");
+      harness.check(dis.readLong(), 696969696969L, "readLong()");
+      harness.check(Float.toString(dis.readFloat()), "3.1415", "readFloat()");
+      harness.check(dis.readDouble(), 999999999.999, "readDouble");
+      harness.check((String)dis.readUTF(),
+          "Testing code is such a boring activity but it must be done",
+          "readUTF()");
+      harness.check(dis.readUTF(), "a-->\u01FF\uA000\u6666\u0200RRR",
+                    "readUTF()");
+    }
+  catch (IOException e)
+    {
+      harness.debug(e);
+      harness.check(false, "Reading DataInputStream");
     }
 }
 

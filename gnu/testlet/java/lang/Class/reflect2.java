@@ -117,11 +117,10 @@ public class reflect2 implements Testlet
     help = getClass("gnu.testlet.java.lang.Class.rf_help");
     help2 = getClass("gnu.testlet.java.lang.Class.rf2_help");
 
-    help_inner = (new rf_help.inner()).getClass();
-    help2_inner = ((new rf2_help(1.0)).new inner_class_1()).getClass();
-    help2_inner_inner = 
-      (((new rf2_help(1.0)).new inner_class_1()).
-       new inner_inner_class_1()).getClass();
+    help_inner = getClass("gnu.testlet.java.lang.Class.rf_help$inner");
+    help2_inner = getClass("gnu.testlet.java.lang.Class.rf2_help$inner_class_1");
+    help2_inner_inner = getClass("gnu.testlet.java.lang.Class."
+		           + "rf2_help$inner_class_1$inner_inner_class_1");
 
     test_getClasses();
     test_getDeclaringClass();

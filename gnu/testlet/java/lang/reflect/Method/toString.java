@@ -88,6 +88,5 @@ public class toString implements Testlet
     harness.checkPoint("method with multiple array dims in argument");
     harness.check (mdaa_meth.toString (),
 		   "public int gnu.testlet.java.lang.reflect.Method.toString.multidim_arrayargs(int[][][])");
-    System.out.println("args " + mdaa_meth.toString());
   }
 }

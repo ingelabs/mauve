@@ -34,6 +34,8 @@ import gnu.testlet.TestHarness;
 public class ReadStream2
 {
 
+// NOTE same function is in gnu.testlet.java.io.DataOutputStream.WriteRead2
+// Please change it in that place to if you change it here.
 public static void
 runReadTest(DataInputStream dis, TestHarness harness)
 {
