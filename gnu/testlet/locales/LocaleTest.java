@@ -109,7 +109,7 @@ public class LocaleTest
 			   ExpectedNumberValues expectedNumber4,
 			   ExpectedNumberValues expectedNumber5)
   {
-    h.debug("Locale " + locale);
+    h.checkPoint("Locale " + locale);
 
     // Force GERMAN as default locale.
     Locale.setDefault(Locale.GERMAN);
@@ -118,16 +118,16 @@ public class LocaleTest
     
     if (expected != null)
       {
-	h.check(locale.getLanguage(), expected.language, "");
-	h.check(locale.getCountry(), expected.country, "");
-	h.check(locale.getVariant(), expected.variant, "");
-	h.check(locale.toString(), expected.localeStr, "");
-	h.check(locale.getISO3Language(), expected.iso3language, "");
-	h.check(locale.getISO3Country(), expected.iso3country, "");
-	h.check(locale.getDisplayLanguage(), expected.displayLanguage, "");
-	h.check(locale.getDisplayCountry(), expected.displayCountry, "");
-	h.check(locale.getDisplayVariant(), expected.displayVariant, "");
-	h.check(locale.getDisplayName(), expected.displayName, "");
+	h.check(locale.getLanguage(), expected.language);
+	h.check(locale.getCountry(), expected.country);
+	h.check(locale.getVariant(), expected.variant);
+	h.check(locale.toString(), expected.localeStr);
+	h.check(locale.getISO3Language(), expected.iso3language);
+	h.check(locale.getISO3Country(), expected.iso3country);
+	h.check(locale.getDisplayLanguage(), expected.displayLanguage);
+	h.check(locale.getDisplayCountry(), expected.displayCountry);
+	h.check(locale.getDisplayVariant(), expected.displayVariant);
+	h.check(locale.getDisplayName(), expected.displayName);
       }
 
     // Date and time formats
@@ -142,40 +142,41 @@ public class LocaleTest
 	// Date instance.
 	
 	df = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
-	h.check(df.format(date1), expectedDate.a, "DateFormat.DEFAULT");
+	h.check(df.format(date1), expectedDate.a, "DateFormat.DEFAULT "+ locale);
 
 	df = DateFormat.getDateInstance(DateFormat.SHORT, locale);
-	h.check(df.format(date1), expectedDate.b, "DateFormat.SHORT");
+	h.check(df.format(date1), expectedDate.b, "DateFormat.SHORT "+ locale);
 
 	df = DateFormat.getDateInstance(DateFormat.MEDIUM, locale);
-	h.check(df.format(date1), expectedDate.c, "DateFormat.MEDIUM");
+	h.check(df.format(date1), expectedDate.c, "DateFormat.MEDIUM "+ locale);
 
 	df = DateFormat.getDateInstance(DateFormat.LONG, locale);
-	h.check(df.format(date1), expectedDate.d, "DateFormat.LONG");
+	h.check(df.format(date1), expectedDate.d, "DateFormat.LONG "+ locale);
 
 	// Assume DEFAULT == MEDIUM
 	df = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
-	h.check(df.format(date1), expectedDate.c, "DateFormat.DEFAULT == DateFormat.MEDIUM");
+	h.check(df.format(date1), expectedDate.c, "DateFormat.DEFAULT == DateFormat.MEDIUM "+ locale);
 	
 	// Time instance.
 	
 	df = DateFormat.getTimeInstance(DateFormat.DEFAULT, locale);
-	h.check(df.format(date1), expectedDate.e, "DateFormat.DEFAULT");
+	h.check(df.format(date1), expectedDate.e, "DateFormat.DEFAULT "+ locale);
 
 	df = DateFormat.getTimeInstance(DateFormat.SHORT, locale);
-	h.check(df.format(date1), expectedDate.f, "DateFormat.SHORT");
+	h.check(df.format(date1), expectedDate.f, "DateFormat.SHORT "+ locale);
 
 	df = DateFormat.getTimeInstance(DateFormat.MEDIUM, locale);
-	h.check(df.format(date1), expectedDate.g, "DateFormat.MEDIUM");
+	h.check(df.format(date1), expectedDate.g, "DateFormat.MEDIUM "+ locale);
 
 	df = DateFormat.getTimeInstance(DateFormat.LONG, locale);
-	h.check(df.format(date1), expectedDate.h, "DateFormat.LONG");
+	h.check(df.format(date1), expectedDate.h, "DateFormat.LONG "+ locale);
 
 	// Assume DEFAULT == MEDIUM
 	df = DateFormat.getTimeInstance(DateFormat.DEFAULT, locale);
-	h.check(df.format(date1), expectedDate.g, "DateFormat.DEFAULT == DateFormat.MEDIUM");
+	h.check(df.format(date1), expectedDate.g, "DateFormat.DEFAULT == DateFormat.MEDIUM "+ locale);
       }
 
+    h.checkPoint("numberformats locale: "+ locale);
     // Number formats
     
     NumberFormat nf;
@@ -184,74 +185,75 @@ public class LocaleTest
       {
 	nf = NumberFormat.getInstance(locale);
 
-	h.check(nf.format(1000L), expectedNumber1.a, "");
-	h.check(nf.format(1000000L), expectedNumber1.b, "");
-	h.check(nf.format(100d), expectedNumber1.c, "");
-	h.check(nf.format(100.1234d), expectedNumber1.d, "");
-	h.check(nf.format(10000000.1234d), expectedNumber1.e, "");
+	h.check(nf.format(1000L), expectedNumber1.a);
+	h.check(nf.format(1000000L), expectedNumber1.b);
+	h.check(nf.format(100d), expectedNumber1.c);
+	h.check(nf.format(100.1234d), expectedNumber1.d);
+	h.check(nf.format(10000000.1234d), expectedNumber1.e);
       }
     
     if (expectedNumber2 != null)
       {
 	nf = NumberFormat.getCurrencyInstance(locale);
     
-	h.check(nf.format(1000L), expectedNumber2.a, "");
-	h.check(nf.format(1000000L), expectedNumber2.b, "");
-	h.check(nf.format(100d), expectedNumber2.c, "");
-	h.check(nf.format(100.1234d), expectedNumber2.d, "");
-	h.check(nf.format(10000000.1234d), expectedNumber2.e, "");
+	h.check(nf.format(1000L), expectedNumber2.a);
+	h.check(nf.format(1000000L), expectedNumber2.b);
+	h.check(nf.format(100d), expectedNumber2.c);
+	h.check(nf.format(100.1234d), expectedNumber2.d);
+	h.check(nf.format(10000000.1234d), expectedNumber2.e);
       }
     
     if (expectedNumber3 != null)
       {
 	nf = NumberFormat.getIntegerInstance(locale);
     
-	h.check(nf.format(1000L), expectedNumber3.a, "");
-	h.check(nf.format(1000000L), expectedNumber3.b, "");
-	h.check(nf.format(100d), expectedNumber3.c, "");
-	h.check(nf.format(100.1234d), expectedNumber3.d, "");
-	h.check(nf.format(10000000.1234d), expectedNumber3.e, "");
+	h.check(nf.format(1000L), expectedNumber3.a);
+	h.check(nf.format(1000000L), expectedNumber3.b);
+	h.check(nf.format(100d), expectedNumber3.c);
+	h.check(nf.format(100.1234d), expectedNumber3.d);
+	h.check(nf.format(10000000.1234d), expectedNumber3.e);
       }
     
     if (expectedNumber4 != null)
       {
 	nf = NumberFormat.getNumberInstance(locale);
     
-	h.check(nf.format(1000L), expectedNumber4.a, "");
-	h.check(nf.format(1000000L), expectedNumber4.b, "");
-	h.check(nf.format(100d), expectedNumber4.c, "");
-	h.check(nf.format(100.1234d), expectedNumber4.d, "");
-	h.check(nf.format(10000000.1234d), expectedNumber4.e, "");
+	h.check(nf.format(1000L), expectedNumber4.a);
+	h.check(nf.format(1000000L), expectedNumber4.b);
+	h.check(nf.format(100d), expectedNumber4.c);
+	h.check(nf.format(100.1234d), expectedNumber4.d);
+	h.check(nf.format(10000000.1234d), expectedNumber4.e);
       }
     
     if (expectedNumber5 != null)
       {
 	nf = NumberFormat.getPercentInstance(locale);
     
-	h.check(nf.format(1000L), expectedNumber5.a, "");
-	h.check(nf.format(1000000L), expectedNumber5.b, "");
-	h.check(nf.format(100d), expectedNumber5.c, "");
-	h.check(nf.format(100.1234d), expectedNumber5.d, "");
-	h.check(nf.format(10000000.1234d), expectedNumber5.e, "");
+	h.check(nf.format(1000L), expectedNumber5.a);
+	h.check(nf.format(1000000L), expectedNumber5.b);
+	h.check(nf.format(100d), expectedNumber5.c);
+	h.check(nf.format(100.1234d), expectedNumber5.d);
+	h.check(nf.format(10000000.1234d), expectedNumber5.e);
       }
     
     // Currencies
+    h.checkPoint("Currencies locale: "+ locale);
 
     if (expected != null)
       {
 	Currency currency = Currency.getInstance(locale);
 
-	h.check(currency.getCurrencyCode(), expected.currencyCode, "");
-	h.check(currency.getDefaultFractionDigits(), expected.currencyFractionDigits, "");
-	h.check(currency.getSymbol(), expected.currencySymbol, "");
+	h.check(currency.getCurrencyCode(), expected.currencyCode);
+	h.check(currency.getDefaultFractionDigits(), expected.currencyFractionDigits);
+	h.check(currency.getSymbol(), expected.currencySymbol);
 
 	try
 	  {
 	    Currency byCode = Currency.getInstance(currency.getCurrencyCode());
 
-	    h.check(currency.getCurrencyCode(), byCode.getCurrencyCode(), "");
-	    h.check(currency.getDefaultFractionDigits(), byCode.getDefaultFractionDigits(), "");
-	    h.check(currency.getSymbol(), byCode.getSymbol(), "");
+	    h.check(currency.getCurrencyCode(), byCode.getCurrencyCode());
+	    h.check(currency.getDefaultFractionDigits(), byCode.getDefaultFractionDigits());
+	    h.check(currency.getSymbol(), byCode.getSymbol());
 	  }
 	catch (IllegalArgumentException e)
 	  {
