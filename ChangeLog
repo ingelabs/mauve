@@ -1,3 +1,8 @@
+2002-10-26  Daryl Lee <dol@sources.redhat.com>
+
+	* gnu/testlet/java/io/PushbackInputStream: Added tests for
+	available() and markSupported(), to complete method tests.
+
 2002-10-26  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/URLClassLoader/getResource.java: New test.

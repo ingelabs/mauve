@@ -44,7 +44,12 @@ public class Test implements Testlet
     harness.check (ObjectStreamClass.lookup (cl).getName (), name);
   }
 
-  public void testForClass (Class cl, Class clazz)
+  public void testToString (Class cl, String str)
+  {
+    harness.check (ObjectStreamClass.lookup (cl).toString (), str);
+  }
+
+ public void testForClass (Class cl, Class clazz)
   {
     harness.check (ObjectStreamClass.lookup (cl).forClass (), clazz);
   }
@@ -67,6 +72,10 @@ public class Test implements Testlet
     harness.checkPoint ("getName");
     testGetName (java.lang.String.class, "java.lang.String");
     testGetName (java.util.Hashtable.class, "java.util.Hashtable");
+
+    // toString 
+    harness.checkPoint ("toString");
+    testToString (java.lang.String.class, "java.lang.String");
 
     // forClass
     harness.checkPoint ("forClass");
