@@ -1,5 +1,10 @@
 2001-08-09  Eric Blake  <ebb9@email.byu.edu>
 
+	* gnu/testlet/java/lang/Integer/getInteger.java (SM): fix
+	ExceptionInInitializerError caused by security hole of last commit
+	
+2001-08-09  Eric Blake  <ebb9@email.byu.edu>
+
 	* gnu/testlet/java/lang/Integer/IntegerTest.java
 	(test_toHexString): make more accurate
 	(test_Basics): test Integer.TYPE

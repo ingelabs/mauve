@@ -23,6 +23,8 @@ package gnu.testlet.java.lang.Integer;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.util.Properties;
+import java.security.Permission;
+import java.security.SecurityPermission;
 
 public class getInteger implements Testlet
 {
@@ -105,9 +107,12 @@ class SM extends SecurityManager
   /**
    * Allow restoration of the existing security manager
    */
-  public void checkPermission(java.security.Permission p)
+  public void checkPermission(Permission p)
   {
-    if (! new RuntimePermission("setSecurityManager").implies(p))
-      super.checkPermission(p);
+    if (new RuntimePermission("setSecurityManager").implies(p))
+      return;
+    if (new SecurityPermission("getProperty.networkaddress.*").implies(p))
+      return;
+    super.checkPermission(p);
   }
 }
