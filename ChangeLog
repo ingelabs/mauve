@@ -1,3 +1,7 @@
+2002-12-27  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/FileOutputStream/jdk12.java:
+	Added test for correct Exception thrown from constructor
+
 2002-12-26  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/FilterWriter/write.java:
 	Added tests for FilterWriter class
