@@ -1,3 +1,8 @@
+2002-12-12  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/LineNumberReader.java (check): Add test for
+	streams containing multiple \r and/or \n following each other.
+
 2002-12-07  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/URLClassLoader/getResourceBase.java (check):

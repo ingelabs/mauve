@@ -121,6 +121,26 @@ test(TestHarness harness)
       harness.debug(e);
       harness.check(false);
     }
+
+  // Test for multiple \r or \n in a stream.
+  try
+    {
+      String str = "One\r\r\r\rTwo\n\n\n\nThree\r\n\r\n\r\n";
+      StringReader sbr = new StringReader(str);
+      LineNumberReader lnr = new LineNumberReader(sbr);
+
+      int c = lnr.read();
+      while (c != -1)
+	{
+	  c = lnr.read();
+	}
+      harness.check(lnr.getLineNumber(), 11, "One, Two, Three makes 11");
+    }
+  catch(IOException e)
+    {
+      harness.debug(e);
+      harness.check(false, "One, Two, Three makes 11");
+    }
 }
 
 } // class Test
