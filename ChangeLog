@@ -1,3 +1,7 @@
+2003-08-01  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/math/BigDecimal/divide.java: New tests.
+
 2003-07-28  C. Brian Jones  <cbj@gnu.org>
 
 	* gnu/testlet/java/lang/Thread/stop.java: new tests
