@@ -1,3 +1,8 @@
+2005-03-11  Dalibor Topic  <robilad@kaffe.org>
+
+	* gnu/testlet/java/io/FileInputStream/fileinputstream.java:
+	Fixed typo.
+
 2005-03-11  Robert Schuster <thebohemian@gmx.net>
 
     * gnu/testlet/java/beans/EventHandler/check14c.java: New

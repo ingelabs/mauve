@@ -33,7 +33,7 @@ public class fileinputstream implements Testlet
 {
     /**
      * This test checks for a FileNotFoundException being thrown
-     * when the input paramter tio the constructor is a directory
+     * when the input parameter to the constructor is a directory
      */
   public void test (TestHarness harness)
   {
