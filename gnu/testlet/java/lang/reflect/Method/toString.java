@@ -60,6 +60,6 @@ public class toString implements Testlet
 
     Class[] na_list = new Class[0];
     Method na_meth = getMethod (ic, "no_args", na_list);
-    harness.check (na_meth.toString (), "public void gnu.testlet.java.lang.reflect.Method.toString.no_args(java.lang.String)");
+    harness.check (na_meth.toString (), "public void gnu.testlet.java.lang.reflect.Method.toString.no_args()");
   }
 }

@@ -1,5 +1,8 @@
 2000-08-07  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/reflect/Method/toString.java (test): Fixed
+	bug.
+
 	* gnu/testlet/java/lang/reflect/Method/toString.java: New file.
 
 2000-08-05  Tom Tromey  <tromey@cygnus.com>
