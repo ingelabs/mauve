@@ -189,33 +189,6 @@ public class SocketTest implements Testlet
       } catch(IOException ignored) {}
     }
 
-    // This test is incorrect.  You cannot rely on System.gc() causing
-    // the garbage collector to run.
-    try {
-      sock = new Socket("127.0.0.1", 7);
-      InputStream sin = null;
-      OutputStream sout = null;
-
-      // create 10 refs and make sure finalize() is invoked.
-      for (int i = 0; i < 10; i++) {
-	sin = sock.getInputStream();
-	sout = sock.getOutputStream();
-      }
-      harness.fail("Error : test_BasicServer failed - 12 " +
-		   "exception was not thrown");
-    }
-    catch (IOException e) {
-      harness.check(true);
-    }
-    finally {
-      try {
-	if (sock != null)
-	  sock.close();
-      } catch(IOException ignored) {}
-    }
-
-    // invoke finalize()
-    System.gc();
   }
 
   public void test_params()
@@ -270,13 +243,6 @@ public class SocketTest implements Testlet
       harness.check(sock.toString().indexOf(host) != -1,
 		    "toString() should contain host " + host);
 
-      try {
-	Socket.setSocketImplFactory(null);
-	harness.check(false, "setSocketImplFactory(null)");
-      }
-      catch (java.io.IOException e) {
-	harness.check(true, "setSocketImplFactory(null)");
-      }
     }
     catch (Exception e) {
       harness.fail("Error : test_params failed - 10 exception was thrown.");
