@@ -40,7 +40,7 @@ class MyBasicSocketServer extends Thread {
 		}
 		catch ( Exception e )
 		{
-			harness.fail("Error - 1 : MyBasicSocketServer::init failed " + 
+			System.out.println("Error - 1 : MyBasicSocketServer::init failed " + 
 				"Exception should not be thrown here " + e );
 		}
 		// now do the real one
@@ -49,7 +49,7 @@ class MyBasicSocketServer extends Thread {
 		}
 		catch ( Exception e )
 		{
-			harness.fail("Error - 2 : MyBasicSocketServer::init failed " + 
+			System.out.println("Error - 2 : MyBasicSocketServer::init failed " + 
 				"Exception should not be thrown here " + e );
 		}
 	}

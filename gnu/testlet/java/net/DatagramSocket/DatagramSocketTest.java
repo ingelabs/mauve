@@ -204,8 +204,13 @@ public class DatagramSocketTest implements Testlet
 	{
 		DatagramSocketTestEchoTimeoutServer srv = new DatagramSocketTestEchoTimeoutServer();
 		srv.setDaemon(true);
-		srv.setPriority(6);
+		srv.setPriority(10);
 		srv.start();
+		Thread.yield();
+		try {
+			Thread.sleep(2000);
+		}
+		catch ( Exception e ){}
 		
 		byte buff[] = {(byte)'h' , (byte)'e', (byte)'l',(byte)'l',(byte)'o',(byte)'b',(byte)'u',(byte)'d',(byte)'d',(byte)'y'};
 
@@ -283,6 +288,7 @@ public class DatagramSocketTest implements Testlet
 		{
 			harness.fail("Error : test_echoWithTimeout failed - 5 " + 
 				    "Exception occured while sending/receiving " );
+			e.printStackTrace();
 		}
 						
 		harness.check ( reply.getLength(), 10,

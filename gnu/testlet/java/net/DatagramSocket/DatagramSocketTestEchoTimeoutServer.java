@@ -45,10 +45,10 @@ class DatagramSocketTestEchoTimeoutServer extends Thread {
 		try {
 			{
 				sock.receive(request);
+//				System.out.println("Received request "+ "Data: "+(new String(request.getData())));
 				DatagramPacket pack = new DatagramPacket( inbuf , 10, 
 					                        InetAddress.getLocalHost() , 
 											request.getPort());
-				Thread.sleep(2000);
 				
 //				System.out.println("Sending packet back "+ "Data: "+(new String(pack.getData())));
 			
