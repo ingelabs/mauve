@@ -1,3 +1,7 @@
+2004-08-06  Sven de Marothy  <sven@physto.se>
+
+	* gnu/testlet/java/awt/geom/Line2D/linesIntersect.java: New test.
+
 2004-07-18  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Class/init.java: Allow early initialization of
