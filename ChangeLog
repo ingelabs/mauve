@@ -1,4 +1,9 @@
 2002-12-26  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PipedStream/close.java:
+	Modified test of input stream close() method to match reference
+	behavior.
+
+2002-12-26  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/FilterReader/SimpleRead.java:
 	* gnu/testlet/java/io/FilterReader/MarkReset.java:
 	Added tests for FilterReader class

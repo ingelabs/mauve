@@ -42,9 +42,10 @@ public class close implements Runnable, Testlet {
 			(new Thread(test)).start();
 
 			val = test.in.read();
-		} catch (Throwable t) {
-			harness.debug(t);
+		} catch (InterruptedIOException t) {
+			harness.check(true,"read() interrupted okay");
+		} catch (IOException t) {
+			harness.fail("Unexpected IOException thrown");
 		}
-		harness.check(val, -1);
 	}
 }
