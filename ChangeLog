@@ -1,5 +1,10 @@
 2005-02-06  Mark Wielaard  <mark@klomp.org>
 
+	Based on a suggestion from Timo Lindfors <timo.lindfors@iki.fi>
+	* gnu/testlet/java/util/regex/Pattern/matches.java: New test.
+
+2005-02-06  Mark Wielaard  <mark@klomp.org>
+
 	Based on a suggestion from Amit Jain (amitrjain@hotmail.com)
 	* gnu/testlet/java/lang/String/split.java: New test.
 
