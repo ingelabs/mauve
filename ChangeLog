@@ -1,3 +1,8 @@
+2005-03-11  Roman Kennke  <roman@kennke.org>
+
+	* gnu/testlet/java/awt/Component/properties.java:
+	Added descriptive messages. Fixed 'font' property check.
+
 2005-03-11  Dalibor Topic  <robilad@kaffe.org>
 
 	* gnu/testlet/java/io/FileInputStream/fileinputstream.java:

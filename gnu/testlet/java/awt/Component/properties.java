@@ -66,74 +66,73 @@ public class properties implements Testlet
     // check 'background' property (must be fired)
     propertyName = null;
     comp.setBackground(Color.YELLOW);
-    harness.check(propertyName, "background");
+    harness.check(propertyName, "background", "Property: background");
 
     // check 'bounds' property (must not be fired)
     propertyName = null;
     comp.setBounds(new Rectangle(143, 564, 1200, 2233));
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: bounds");
 
     // check 'componentOrientation' property (should be fired)
     propertyName = null;
     comp.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
     // do second call to assure that the property actually changes
     comp.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-    harness.check(propertyName, "componentOrientation");
+    harness.check(propertyName, "componentOrientation",
+                  "Property: componentOrientation");
 
     // check 'cursor' property (must not be fired)
     propertyName = null;
     comp.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    harness.check(propertyName, null);
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: cursor");
 
     // check 'dropTarget' property (must not be fired)
     propertyName = null;
     comp.setDropTarget(new DropTarget());
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: dropTarget");
 
     // check 'enabled' property (must not be fired)
     propertyName = null;
     comp.setEnabled(true);
     comp.setEnabled(false);
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: enabled");
 
     // check 'font' property (must be fired)
     propertyName = null;
-    comp.setFont(Font.getFont("Monospaced"));
-    comp.setFont(Font.getFont("SansSerif"));
-    harness.check(propertyName, "font");
+    comp.setFont(new Font("Monospaced", Font.PLAIN, 12));
+    harness.check(propertyName, "font", "Property: font");
 
     // check 'foreground' property (must be fired)
     propertyName = null;
     comp.setForeground(Color.CYAN);
-    harness.check(propertyName, "foreground");
+    harness.check(propertyName, "foreground", "Property: foreground");
 
     // check 'locale' property (must be fired)
     propertyName = null;
     comp.setLocale(Locale.CHINESE);
     comp.setLocale(Locale.GERMAN);
-    harness.check(propertyName, "locale");
+    harness.check(propertyName, "locale", "Property: locale");
 
     // check 'location' property (must not be fired)
     propertyName = null;
     comp.setLocation(new Point(123, 456));
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: location");
 
     // check 'name' property (must not be fired)
     propertyName = null;
     comp.setName("Obelix");
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: name");
 
     // check 'size' property (must not be fired)
     propertyName = null;
     comp.setSize(new Dimension(987, 654));
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: size");
 
     // check 'visible' property (must not be fired)
     propertyName = null;
     comp.setVisible(true);
     comp.setVisible(false);
-    harness.check(propertyName, null);
+    harness.check(propertyName, null, "Property: visible");
 
 
   }
