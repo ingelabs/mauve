@@ -1,3 +1,8 @@
+2001-09-27  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/BufferedByteOutputStream/interrupt.java:
+	Added `uses' line.
+
 2001-09-04  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/String/CASE_INSENSITIVE_ORDER.java (test):

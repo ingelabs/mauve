@@ -5,6 +5,7 @@
 // This file is part of Mauve.
 
 // Tags: JDK1.1
+// Uses: helper
 
 package gnu.testlet.java.io.BufferedByteOutputStream;
 
