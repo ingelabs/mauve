@@ -115,6 +115,7 @@ public class solveQuadratic
     double[] solutions = new double[2];
     int numSols, numExpectedSolutions;
     StringBuffer buf = new StringBuffer();
+    boolean ok = false;
 
     if (c2 != 0)
     {
@@ -135,11 +136,14 @@ public class solveQuadratic
     buf.append(" = 0");
     harness.checkPoint(buf.toString());
 
+    // Check #1: Number of actual solutions == number of expected solutions?
     numExpectedSolutions = expected == null ? -1 : expected.length;
     numSols = QuadCurve2D.solveQuadratic(new double[] { c0, c1, c2 },
                                          solutions);
-    harness.check(numSols, numExpectedSolutions);
+    ok = numSols == numExpectedSolutions;
+    harness.check(ok);
 
+    // Check #2: All solutions found?
     for (int i = 0; i < numExpectedSolutions; i++)
     {
       boolean found = false;
@@ -153,9 +157,41 @@ public class solveQuadratic
         }
       }
 
-      harness.check(found);
       if (!found)
+      {
         harness.debug("solution " + expected[i] + " not found");
+        ok = false;
+      }
     }
+    harness.check(ok);
+
+    // Dump the arrays for debugging.
+    if (!ok)
+    {
+      harness.debug("  got " + makeString(solutions));
+      harness.debug("  expected " + makeString(expected));
+    }
+  }
+
+
+  /**
+   * Produces a String representation for a double[].
+   */
+  private static String makeString(double[] arr)
+  {
+    StringBuffer buf = new StringBuffer(50);
+
+    if (arr == null)
+      return "null";
+
+    buf.append('[');
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (i > 0)
+        buf.append(", ");
+      buf.append(arr[i]);
+    }
+    buf.append(']');
+    return buf.toString();
   }
 }

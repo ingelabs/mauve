@@ -1,4 +1,10 @@
 2004-01-07  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/java/awt/geom/QuadCurve2D/solveQuadratic.java: 
+	When debug option is set and the result is not as expected,
+	emit the actual and expected solutions.
+	
+2004-01-07  Sascha Brawer  <brawer@dandelis.ch>
 	
 	* gnu/testlet/javax/swing/undo/CompoundEdit/
 	addEdit.java, canRedo.java, canUndo.java, isInProgress.java,
