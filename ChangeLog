@@ -1,3 +1,13 @@
+Fri Feb 26 23:19:50 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/ACIAttribute/Test.java: Added this test.
+
+	* gnu/testlet/java/text/AttributedCharacterIterator/implement.java: 
+	Added this test.
+
+	* gnu/testlet/java/text/CharacterIterator/implement.java: Added
+	this test.
+
 Tue Feb 23 23:29:18 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Added some test
