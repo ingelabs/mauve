@@ -1,5 +1,10 @@
 2005-03-03  Jeroen Frijters  <jeroen@frijters.net>
 
+	* gnu/testlet/java/io/DataInputStream/readLine.java:
+	Restructured and added more tests.
+
+2005-03-03  Jeroen Frijters  <jeroen@frijters.net>
+
 	* gnu/testlet/java/lang/InheritableThreadLocal/simple.java: New test.
 
 2005-03-02  Daniel Bonniot  <bonniot@users.sf.net>

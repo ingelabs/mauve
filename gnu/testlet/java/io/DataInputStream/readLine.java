@@ -26,41 +26,46 @@ import java.io.*;
 
 public class readLine implements Testlet
 {
+  private static void check(TestHarness harness, String input, String[] expected, int separator)
+  {
+    DataInputStream din = 
+          new DataInputStream(new ByteArrayInputStream(input.getBytes()));
+    for (int i = 0; i < expected.length; i++)
+      {
+        try
+          {
+            harness.check(din.readLine(), expected[i]);
+            if (separator != -1)
+                harness.check(din.read() == separator, "missing separator in: " + input);
+          }
+        catch(Exception x)
+          {
+            harness.fail("unexpected exception " + x);
+          }
+      }
+    try
+      {
+        harness.check(din.readLine(), null);
+      }
+    catch(Exception x)
+      {
+        harness.fail("unexpected exception " + x);
+      }
+  }
+
   public void test (TestHarness harness)
-    {
-	byte[] ib = { };
-
-	DataInputStream din = 
-	    new DataInputStream (new ByteArrayInputStream (ib));
-
-	try {
-	    harness.check (din.readLine(), null);
-	} catch (IOException ex) {
-	    harness.fail ("unexpected exception " + ex);
-	}
-
-	byte[] ib1 = { (byte) '\n' };
-	din = new DataInputStream (new ByteArrayInputStream (ib1));
-	try {
-	    harness.check (din.readLine(), "");
-	} catch (IOException ex) {
-	    harness.fail ("unexpected exception " + ex);
-	}
-
-	byte[] ib2 = { (byte) '\r' };
-	din = new DataInputStream (new ByteArrayInputStream (ib2));
-	try {
-	    harness.check (din.readLine(), "");
-	} catch (IOException ex) {
-	    harness.fail ("unexpected exception " + ex);
-	}
-
-	byte[] ib3 = { (byte) '\r', (byte) '\n' };
-	din = new DataInputStream (new ByteArrayInputStream (ib3));
-	try {
-	    harness.check (din.readLine(), "");
-	} catch (IOException ex) {
-	    harness.fail ("unexpected exception " + ex);
-	}
-    }
+  {
+    check(harness, "", new String[] {}, -1);
+    check(harness, "\n", new String[] { "" }, -1);
+    check(harness, "\r", new String[] { "" }, -1);
+    check(harness, "\r\n", new String[] { "" }, -1);
+    check(harness, "\n\r", new String[] { "", "" }, -1);
+    check(harness, "\r\nfoo", new String[] { "", "foo" }, -1);
+    check(harness, "foo\r\nbar", new String[] { "foo", "bar" }, -1);
+    check(harness, "foo\rbar", new String[] { "foo", "bar" }, -1);
+    check(harness, "foo\nbar", new String[] { "foo", "bar" }, -1);
+    check(harness, "foo\r\n:bar\n:", new String[] { "foo", "bar" }, ':');
+    check(harness, "foo\r\n:bar\r:", new String[] { "foo", "bar" }, ':');
+    check(harness, "foo\r\n:bar\r\n:", new String[] { "foo", "bar" }, ':');
+  }
 }
