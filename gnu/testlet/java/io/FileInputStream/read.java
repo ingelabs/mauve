@@ -1,6 +1,7 @@
-// Test for InputStreamReader exception handling.
+// Tags: JDK1.1
 
-// Written by paul@dawa.demon.co.uk
+// Copyright (C) 2002 Free Software Foundation, Inc.
+// Written by Mark Wielaard (mark@klomp.org)
 
 // This file is part of Mauve.
 
@@ -17,42 +18,40 @@
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// Boston, MA 02111-1307, USA.  */
 
-// Tags: JDK1.1
+package gnu.testlet.java.io.FileInputStream;
 
-package gnu.testlet.java.io.InputStreamReader;
+import java.io.File;
+import java.io.FileInputStream;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import java.io.*;
-
-public class except implements Testlet
+public class read implements Testlet
 {
   public void test (TestHarness harness)
   {
-    boolean ok = false;
+    String tmpfile = harness.getTempDirectory()
+	    + File.separator + "mauve-filein.tst";
+    File f = new File(tmpfile);
+    f.delete();
     try
       {
-	InputStreamReader isr = new InputStreamReader (new StringBufferInputStream ("zardoz has spoken"));
-
-	char[] cbuf = new char[10];
-
-	isr.close ();
-	isr.read (cbuf, 0, 9);
+        harness.check(f.createNewFile(), "Empty file created");
+	harness.check(new FileInputStream(tmpfile).read(new byte[0]), 0,
+			"empty byte[] read");
       }
-    catch (IOException _1)
+    catch(Throwable t)
       {
-	// This is expected.
-	ok = true;
+	harness.fail("Empty file created or empty byte[] read");
+	harness.debug(t);
       }
-    catch (Throwable _2)
+    finally
       {
-	// Failure.
-	harness.debug(_2);
+	// Cleanup
+	f.delete();
       }
-
-    harness.check (ok);
   }
 }
+
