@@ -1,5 +1,15 @@
 2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
 
+	Classpath bug #7107.
+	* gnu/testlet/javax/swing/DefaultBoundedRangeModel/
+	DefaultBoundedRangeModel.java, getChangeListeners.java,
+	getExtent.java, getMaximum.java, getMinimum.java,
+	getValueIsAdjusting.java, getValue.java, setExtent.java,
+	setMaximum.java, setMinimum.java, setRangeProperties.java,
+	setValueIsAdjusting.java, setValue.java, toString.java: New tests.
+
+2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/javax/swing/event/EventListenerList/getListeners.java,
 	gnu/testlet/javax/swing/event/EventListenerList/getListenerCount.java,
 	gnu/testlet/javax/swing/event/EventListenerList/getListenerList.java,
