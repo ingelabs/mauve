@@ -1,3 +1,8 @@
+1998-12-05  Anthony Green  <green@cygnus.com>
+
+	* choose: Add support for "Uses" tag.
+	* README: Updated to mention Uses.
+
 1998-12-04  Tom Tromey  <tromey@cygnus.com>
 
 	* choose: Allow tag file to appear in build directory.
@@ -65,7 +70,6 @@
 
 	* choose: Recognize `libjava' tag.
 
->>>>>>> 1.22
 1998-12-01  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/lang/Double/new_Double.java: New file.
@@ -166,7 +170,6 @@
 	process from stdin.
 	* choose: New file.
 
->>>>>>> 1.16
 1998-11-25  Tom Tromey  <tromey@cygnus.com>
 
 	* README: New file.

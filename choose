@@ -172,6 +172,15 @@ while read file; do
       if test "$istest" = yes; then
 	 echo $class >> $classes
 	 test -n "$verbose" && echo "Chose $class"
+
+	 # Now that we know we're going to use this class, see
+	 # what other support classes this test requires.
+         useslist=" `grep '^// Uses:' gnu/testlet/$file | sed -e 's,^// Uses:,,'` "
+         for used in $useslist; do
+	   usedfile=`dirname $file`/$used.java
+	   echo -n " gnu/testlet/$usedfile" >> $choices
+         done
+
       fi
    fi
 done

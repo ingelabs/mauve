@@ -116,6 +116,17 @@ would necessitate global edits).  Instead, put such limitations in a
 
 ================================================================
 
+Some test cases may require extra utility classes to run.  When the
+choose script selects a test case for running, the framework
+identifies the supporting classes through another magic comment in the
+test source.
+
+Support classes must all appear on a single line beginning with the
+string "// Uses: ".  The framework assumes that all utility classes
+used are found in that same package as the test case.
+
+================================================================
+
 You'll notice that each test has a public constructor.  This probably
 seems strange -- why not have the `test' method be static, and just
 call it?
