@@ -1,4 +1,10 @@
 2002-11-16  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/StreamTokenizer/slashslash.java: removed extra
+	debug statement
+	* gnu/testlet/java/io/StreamTokenizer/commentchar.java: Add file
+	Added test for commentChar() method, to set new comment char, like '#'
+
+2002-11-16  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/StreamTokenizer/slashslash.java: Add file
 	Added test for // comments (method slashSlashComments())
 
