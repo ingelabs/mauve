@@ -1,5 +1,8 @@
 1998-11-24  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/util/Random/basic.java: New file.
+	* gnu/testlet/java/util/Hashtable/basic.java: New file.
+
 	* Makefile.in: Rebuilt.
 	* Makefile.am (CLEANFILES): Added classes.stamp; define in no-gcj
 	case.
