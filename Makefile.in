@@ -1,6 +1,7 @@
-# Makefile.in generated automatically by automake 1.4 from Makefile.am
+# Makefile.in generated automatically by automake 1.5 from Makefile.am.
 
-# Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+# Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
@@ -10,6 +11,7 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
+@SET_MAKE@
 
 SHELL = @SHELL@
 
@@ -31,13 +33,9 @@ infodir = @infodir@
 mandir = @mandir@
 includedir = @includedir@
 oldincludedir = /usr/include
-
-DESTDIR =
-
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
-
 top_builddir = .
 
 ACLOCAL = @ACLOCAL@
@@ -46,26 +44,33 @@ AUTOMAKE = @AUTOMAKE@
 AUTOHEADER = @AUTOHEADER@
 
 INSTALL = @INSTALL@
-INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_HEADER = $(INSTALL_DATA)
 transform = @program_transform_name@
-
 NORMAL_INSTALL = :
 PRE_INSTALL = :
 POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+AMTAR = @AMTAR@
+AWK = @AWK@
+DEPDIR = @DEPDIR@
+EXEEXT = @EXEEXT@
 GCJ = @GCJ@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 JAVA = @JAVA@
 JAVAC = @JAVAC@
-MAKEINFO = @MAKEINFO@
+OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
-SHELL = @SHELL@
 SRCDIR = @SRCDIR@
 TMPDIR = @TMPDIR@
 VERSION = @VERSION@
+am__include = @am__include@
+am__quote = @am__quote@
+install_sh = @install_sh@
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -83,191 +88,182 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 
 KEYS = 
 
-@USE_GCJ_TRUE@@CLASS_FILES_TRUE@STAMP = \
-@USE_GCJ_TRUE@@CLASS_FILES_TRUE@classes.stamp
-@USE_GCJ_FALSE@STAMP = \
-@USE_GCJ_FALSE@classes.stamp
+@CLASS_FILES_TRUE@@USE_GCJ_TRUE@STAMP = classes.stamp
+@USE_GCJ_FALSE@STAMP = classes.stamp
 
-@USE_GCJ_TRUE@java_files = \
-@USE_GCJ_TRUE@$(harness_files) $(CHOICES)
-@USE_GCJ_TRUE@class_files = \
-@USE_GCJ_TRUE@$(patsubst %.java,%.class,$(java_files)) \
+@USE_GCJ_TRUE@java_files = $(harness_files) $(CHOICES)
+@USE_GCJ_TRUE@class_files = $(patsubst %.java,%.class,$(java_files)) \
 @USE_GCJ_TRUE@	gnu/testlet/config.class
-@USE_GCJ_TRUE@harnesso_files = \
-@USE_GCJ_TRUE@$(patsubst %.java,%.o,$(harness_files)) \
+
+@USE_GCJ_TRUE@harnesso_files = $(patsubst %.java,%.o,$(harness_files)) \
 @USE_GCJ_TRUE@	gnu/testlet/config.o
-@USE_GCJ_TRUE@javao_files = \
-@USE_GCJ_TRUE@$(patsubst %.java,%.o,$(CHOICES))
 
-@USE_GCJ_TRUE@check_PROGRAMS = \
-@USE_GCJ_TRUE@SimpleTestHarness
+@USE_GCJ_TRUE@javao_files = $(patsubst %.java,%.o,$(CHOICES))
 
-@USE_GCJ_TRUE@SimpleTestHarness_SOURCES = \
-@USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = \
-@USE_GCJ_TRUE@$(STAMP) $(javao_files)
-@USE_GCJ_TRUE@SimpleTestHarness_LDADD = \
-@USE_GCJ_TRUE@$(harnesso_files) $(javao_files)
-@USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = \
-@USE_GCJ_TRUE@--main=gnu.testlet.SimpleTestHarness
-@USE_GCJ_TRUE@SimpleTestHarness_LINK = \
-@USE_GCJ_TRUE@$(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+@USE_GCJ_TRUE@check_PROGRAMS = SimpleTestHarness
 
-@USE_GCJ_TRUE@MOSTLYCLEANFILES = \
-@USE_GCJ_TRUE@$(javao_files)
+@USE_GCJ_TRUE@SimpleTestHarness_SOURCES = 
+@USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files)
+@USE_GCJ_TRUE@SimpleTestHarness_LDADD = $(harnesso_files) $(javao_files)
+@USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
+@USE_GCJ_TRUE@SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 
-@USE_GCJ_TRUE@CLEANFILES = \
-@USE_GCJ_TRUE@$(class_files) classes.stamp
-@USE_GCJ_FALSE@CLEANFILES = \
-@USE_GCJ_FALSE@classes.stamp
+@USE_GCJ_TRUE@MOSTLYCLEANFILES = $(javao_files)
+
+@USE_GCJ_TRUE@CLEANFILES = $(class_files) classes.stamp
+@USE_GCJ_FALSE@CLEANFILES = classes.stamp
 
 SUFFIXES = .class .java
+subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
-CONFIG_CLEAN_FILES = 
+CONFIG_CLEAN_FILES = gnu/testlet/config.java
+@USE_GCJ_TRUE@check_PROGRAMS = SimpleTestHarness$(EXEEXT)
+@USE_GCJ_FALSE@check_PROGRAMS =
+@USE_GCJ_TRUE@am_SimpleTestHarness_OBJECTS =
+@USE_GCJ_FALSE@am_SimpleTestHarness_OBJECTS =
+SimpleTestHarness_OBJECTS = $(am_SimpleTestHarness_OBJECTS)
+@USE_GCJ_FALSE@SimpleTestHarness_DEPENDENCIES =
 
-DEFS = @DEFS@ -I. -I$(srcdir) 
+DEFS = @DEFS@
+DEFAULT_INCLUDES =  -I. -I$(srcdir)
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-@USE_GCJ_TRUE@SimpleTestHarness_OBJECTS = 
-DIST_COMMON =  README COPYING ChangeLog Makefile.am Makefile.in THANKS \
-aclocal.m4 configure configure.in install-sh missing mkinstalldirs
-
-
-DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
-
-TAR = tar
-GZIP_ENV = --best
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+DIST_SOURCES = $(SimpleTestHarness_SOURCES)
+DIST_COMMON = README COPYING ChangeLog Makefile.am Makefile.in THANKS \
+	aclocal.m4 configure configure.in install-sh missing \
+	mkinstalldirs
 SOURCES = $(SimpleTestHarness_SOURCES)
-OBJECTS = $(SimpleTestHarness_OBJECTS)
 
-all: all-redirect
+all: all-am
+
 .SUFFIXES:
-.SUFFIXES: .S .c .class .java .o .s
-$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile
+.SUFFIXES: .class .java
+$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+	cd $(top_srcdir) && \
+	  $(AUTOMAKE) --foreign  Makefile
+Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) && \
+	  CONFIG_HEADERS= CONFIG_LINKS= \
+	  CONFIG_FILES=$@ $(SHELL) ./config.status
 
-Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
-	cd $(top_builddir) \
-	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
-
-$(ACLOCAL_M4):  configure.in 
-	cd $(srcdir) && $(ACLOCAL)
-
-config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
+$(top_builddir)/config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
-$(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+$(srcdir)/configure:  $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
 	cd $(srcdir) && $(AUTOCONF)
 
-mostlyclean-checkPROGRAMS:
+$(ACLOCAL_M4):  configure.in 
+	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
+gnu/testlet/config.java: $(top_builddir)/config.status $(top_srcdir)/gnu/testlet/config.java.in
+	cd $(top_builddir) && CONFIG_FILES=$@ CONFIG_HEADERS= CONFIG_LINKS= $(SHELL) ./config.status
 
 clean-checkPROGRAMS:
 	-test -z "$(check_PROGRAMS)" || rm -f $(check_PROGRAMS)
 
-distclean-checkPROGRAMS:
-
-maintainer-clean-checkPROGRAMS:
-
-.s.o:
-	$(COMPILE) -c $<
-
-.S.o:
-	$(COMPILE) -c $<
-
 mostlyclean-compile:
-	-rm -f *.o core *.core
-
-clean-compile:
+	-rm -f *.$(OBJEXT) core *.core
 
 distclean-compile:
 	-rm -f *.tab.c
-
-maintainer-clean-compile:
+uninstall-info-am:
 tags: TAGS
 TAGS:
 
 
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+top_distdir = .
+# Avoid unsightly `./'.
 distdir = $(PACKAGE)-$(VERSION)
-top_distdir = $(distdir)
+
+GZIP_ENV = --best
+
+distdir: $(DISTFILES)
+	-chmod -R a+w $(distdir) >/dev/null 2>&1; rm -rf $(distdir)
+	mkdir $(distdir)
+	$(mkinstalldirs) $(distdir)/gnu/testlet
+	@for file in $(DISTFILES); do \
+	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	  fi; \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+	-find $(distdir) -type d ! -perm -777 -exec chmod a+rwx {} \; -o \
+	  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
+	  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
+	  ! -type d ! -perm -444 -exec $(SHELL) $(install_sh) -c -m a+r {} {} \; \
+	|| chmod -R a+r $(distdir)
+dist: distdir
+	$(AMTAR) chof - $(distdir) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz
+	-chmod -R a+w $(distdir) >/dev/null 2>&1; rm -rf $(distdir)
 
 # This target untars the dist file and tries a VPATH configuration.  Then
 # it guarantees that the distribution is self-contained by making another
 # tarfile.
 distcheck: dist
-	-rm -rf $(distdir)
-	GZIP=$(GZIP_ENV) $(TAR) zxf $(distdir).tar.gz
+	-chmod -R a+w $(distdir) > /dev/null 2>&1; rm -rf $(distdir)
+	GZIP=$(GZIP_ENV) gunzip -c $(distdir).tar.gz | $(AMTAR) xf -
+	chmod -R a-w $(distdir); chmod a+w $(distdir)
 	mkdir $(distdir)/=build
 	mkdir $(distdir)/=inst
-	dc_install_base=`cd $(distdir)/=inst && pwd`; \
-	cd $(distdir)/=build \
+	chmod a-w $(distdir)
+	dc_install_base=`CDPATH=: && cd $(distdir)/=inst && pwd` \
+	  && cd $(distdir)/=build \
 	  && ../configure --srcdir=.. --prefix=$$dc_install_base \
 	  && $(MAKE) $(AM_MAKEFLAGS) \
 	  && $(MAKE) $(AM_MAKEFLAGS) dvi \
 	  && $(MAKE) $(AM_MAKEFLAGS) check \
 	  && $(MAKE) $(AM_MAKEFLAGS) install \
 	  && $(MAKE) $(AM_MAKEFLAGS) installcheck \
-	  && $(MAKE) $(AM_MAKEFLAGS) dist
-	-rm -rf $(distdir)
-	@banner="$(distdir).tar.gz is ready for distribution"; \
-	dashes=`echo "$$banner" | sed s/./=/g`; \
-	echo "$$dashes"; \
-	echo "$$banner"; \
-	echo "$$dashes"
-dist: distdir
-	-chmod -R a+r $(distdir)
-	GZIP=$(GZIP_ENV) $(TAR) chozf $(distdir).tar.gz $(distdir)
-	-rm -rf $(distdir)
-dist-all: distdir
-	-chmod -R a+r $(distdir)
-	GZIP=$(GZIP_ENV) $(TAR) chozf $(distdir).tar.gz $(distdir)
-	-rm -rf $(distdir)
-distdir: $(DISTFILES)
-	-rm -rf $(distdir)
-	mkdir $(distdir)
-	-chmod 777 $(distdir)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(distdir) && pwd`; \
-	distdir=`cd $(distdir) && pwd`; \
-	cd $(top_srcdir) \
-	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --foreign Makefile
-	@for file in $(DISTFILES); do \
-	  d=$(srcdir); \
-	  if test -d $$d/$$file; then \
-	    cp -pr $$/$$file $(distdir)/$$file; \
-	  else \
-	    test -f $(distdir)/$$file \
-	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
-	    || cp -p $$d/$$file $(distdir)/$$file || :; \
-	  fi; \
-	done
-info-am:
-info: info-am
-dvi-am:
-dvi: dvi-am
+	  && $(MAKE) $(AM_MAKEFLAGS) uninstall \
+	  && (test `find $$dc_install_base -type f -print | wc -l` -le 1 \
+	     || (echo "Error: files left after uninstall" 1>&2; \
+	         exit 1) ) \
+	  && $(MAKE) $(AM_MAKEFLAGS) dist \
+	  && $(MAKE) $(AM_MAKEFLAGS) distclean \
+	  && rm -f $(distdir).tar.gz \
+	  && (test `find . -type f -print | wc -l` -eq 0 \
+	     || (echo "Error: files left after distclean" 1>&2; \
+	         exit 1) )
+	-chmod -R a+w $(distdir) > /dev/null 2>&1; rm -rf $(distdir)
+	@echo "$(distdir).tar.gz is ready for distribution" | \
+	  sed 'h;s/./=/g;p;x;p;x'
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS) $(check_DATA)
 	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
-installcheck-am:
-installcheck: installcheck-am
-install-exec-am:
-install-exec: install-exec-am
+all-am: Makefile
 
-install-data-am:
+installdirs:
+
+install: install-am
+install-exec: install-exec-am
 install-data: install-data-am
+uninstall: uninstall-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
-install: install-am
-uninstall-am:
-uninstall: uninstall-am
-all-am: Makefile
-all-redirect: all-am
+
+installcheck: installcheck-am
 install-strip:
-	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
-installdirs:
-
-
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+	  `test -z '$(STRIP)' || \
+	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
 mostlyclean-generic:
 	-test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
 
@@ -275,50 +271,66 @@ clean-generic:
 	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
-	-rm -f Makefile $(CONFIG_CLEAN_FILES)
-	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
 
 maintainer-clean-generic:
-mostlyclean-am:  mostlyclean-checkPROGRAMS mostlyclean-compile \
-		mostlyclean-generic
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+clean: clean-am
+
+clean-am: clean-checkPROGRAMS clean-generic mostlyclean-am
+
+dist-all: distdir
+	$(AMTAR) chof - $(distdir) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz
+	-chmod -R a+w $(distdir) >/dev/null 2>&1; rm -rf $(distdir)
+distclean: distclean-am
+	-rm -f config.status config.cache config.log
+distclean-am: clean-am distclean-compile distclean-generic
+
+dvi: dvi-am
+
+dvi-am:
+
+info: info-am
+
+info-am:
+
+install-data-am:
+
+install-exec-am:
+
+install-info: install-info-am
+
+install-man:
+
+installcheck-am:
+
+maintainer-clean: maintainer-clean-am
+
+maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-clean-am:  clean-checkPROGRAMS clean-compile clean-generic \
-		mostlyclean-am
+mostlyclean-am: mostlyclean-compile mostlyclean-generic
 
-clean: clean-am
+uninstall-am: uninstall-info-am
 
-distclean-am:  distclean-checkPROGRAMS distclean-compile \
-		distclean-generic clean-am
-
-distclean: distclean-am
-	-rm -f config.status
-
-maintainer-clean-am:  maintainer-clean-checkPROGRAMS \
-		maintainer-clean-compile maintainer-clean-generic \
-		distclean-am
-	@echo "This command is intended for maintainers to use;"
-	@echo "it deletes files that may require special tools to rebuild."
-
-maintainer-clean: maintainer-clean-am
-	-rm -f config.status
-
-.PHONY: mostlyclean-checkPROGRAMS distclean-checkPROGRAMS \
-clean-checkPROGRAMS maintainer-clean-checkPROGRAMS mostlyclean-compile \
-distclean-compile clean-compile maintainer-clean-compile tags distdir \
-info-am info dvi-am dvi check-local check check-am installcheck-am \
-installcheck install-exec-am install-exec install-data-am install-data \
-install-am install uninstall-am uninstall all-redirect all-am all \
-installdirs mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+.PHONY: all all-am check check-am check-local clean clean-checkPROGRAMS \
+	clean-generic dist dist-all distcheck distclean \
+	distclean-compile distclean-generic distdir dvi dvi-am info \
+	info-am install install-am install-data install-data-am \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic uninstall \
+	uninstall-am uninstall-info-am
 
 
  include choices
 
 classes.stamp: choices $(CHOICES)  gnu/testlet/config.class
 	here=`/bin/pwd`; cd $(srcdir); \
-	  CLASSPATH=$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
+	  CLASSPATH=$$CLASSPATH:$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
 	    $(harness_files) $(CHOICES)
 	touch classes.stamp
 
@@ -337,14 +349,14 @@ choices: FORCE
 
 FORCE:
 
-@USE_GCJ_TRUE@@CLASS_FILES_TRUE@$(javao_files): classes.stamp
+@CLASS_FILES_TRUE@@USE_GCJ_TRUE@$(javao_files): classes.stamp
 
-@USE_GCJ_TRUE@@CLASS_FILES_TRUE@%.o: %.class classes.stamp
-@USE_GCJ_TRUE@@CLASS_FILES_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+@CLASS_FILES_TRUE@@USE_GCJ_TRUE@%.o: %.class classes.stamp
+@CLASS_FILES_TRUE@@USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
-@USE_GCJ_TRUE@@CLASS_FILES_FALSE@%.o: %.java
-@USE_GCJ_TRUE@@CLASS_FILES_FALSE@	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
-@USE_GCJ_TRUE@@CLASS_FILES_FALSE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+@CLASS_FILES_FALSE@@USE_GCJ_TRUE@%.o: %.java
+@CLASS_FILES_FALSE@@USE_GCJ_TRUE@	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
+@CLASS_FILES_FALSE@@USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 @USE_GCJ_TRUE@SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(harnesso_files) $(SimpleTestHarness_DEPENDENCIES)
 @USE_GCJ_TRUE@	@rm -f SimpleTestHarness
@@ -365,7 +377,6 @@ FORCE:
 @USE_GCJ_FALSE@recheck:
 @USE_GCJ_FALSE@	test -f .save-keys || : > .save-keys
 @USE_GCJ_FALSE@	$(MAKE) KEYS="`cat .save-keys`" check
-
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

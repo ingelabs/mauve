@@ -1,3 +1,8 @@
+2002-02-11  C. Brian Jones <cbj@gnu.org>
+
+	* Makefile.am: add user's CLASSPATH to CLASSPATH when attempting to
+	run a javac-type program
+
 2001-11-25  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/math/BigDecimal/construct.java: New file.

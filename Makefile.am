@@ -18,7 +18,7 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 
 classes.stamp: choices $(CHOICES)  gnu/testlet/config.class
 	here=`/bin/pwd`; cd $(srcdir); \
-	  CLASSPATH=$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
+	  CLASSPATH=$$CLASSPATH:$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
 	    $(harness_files) $(CHOICES)
 	touch classes.stamp
 
