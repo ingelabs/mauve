@@ -1,3 +1,8 @@
+2004-12-16  Thomas Zander <zander@kde.org>
+
+	* gny/testlet/java/lang/Class/ClassTest.java: new
+	test_getResourceAsStream test.
+
 2004-12-12  Robin Green  <greenrd@greenrd.org>
 
 	* gnu/testlet/java/util/zip/ZipFile/DirEntryTest.java: New test.

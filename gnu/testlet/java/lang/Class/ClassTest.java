@@ -555,6 +555,20 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
     }
   }
 
+  public void test_getResourceAsStream()
+  {
+    harness.checkPoint("test_getResourceAsStream");
+    // The bootclassloader does this different from most other CLs, so
+    // add a test for it.
+    InputStream in = Class.class.getResourceAsStream("Class.class");
+    harness.check(in != null);
+    in = Class.class.getResourceAsStream("/java/lang/Class.class");
+    harness.check(in != null);
+    // and a last extra check to see if we ever get a null
+    in = InputStream.class.getResourceAsStream("Class.class");
+    harness.check(in == null);
+  }
+
   public void testall()
   {
     test_toString();
@@ -571,6 +585,7 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
     test_isMethods();
     // This one doesn't work so well in Mauve.
     // test_getResource();
+    test_getResourceAsStream();
 
   }
 
