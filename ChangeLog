@@ -1,3 +1,7 @@
+2005-01-18  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/URI/URITest.java: New testcases.
+
 2005-01-17  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/MessageFormat/format14.java (test): Added
