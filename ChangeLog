@@ -1,3 +1,8 @@
+2005-03-29  Guilhem Lavaux  <guilhem@kaffe.org>
+
+	* gnu/testlet/java/nio/channels/SocketChannel/select.java: New test
+	for selection sockets.
+
 2005-03-21  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/Class/newInstance.java: Added test.
