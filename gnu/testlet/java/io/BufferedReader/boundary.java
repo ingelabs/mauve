@@ -48,6 +48,14 @@ public class boundary implements Testlet
 	// and returns "" here.
 	String l2 = br.readLine();
 	harness.check(l2, "efghijklm");
+
+	// check ready() and skip()
+	sr = new StringReader("efghijklm\n");
+	br = new BufferedReader(sr);
+	harness.check(br.ready(), "ready()");
+	br.skip(2L);
+	l2 = br.readLine();
+	harness.check(l2, "ghijklm");
       }
     catch (IOException e)
       {

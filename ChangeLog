@@ -1,3 +1,9 @@
+2002-10-09  Daryl Lee  <dlee@altaregos.com>
+
+	* gnu/testlet/java/io/File/jdk11.java: added test for hashcode()
+	* gnu/testlet/java/io/BufferedReader/boundary.java: added test for
+	skip() and ready()
+
 2002-10-05  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Thread/isAlive.java: Don't hold lock on Thread
@@ -53,8 +59,15 @@
 	Updated to behavior specified in JDK 1.4.1.
 
 2002-09-20  Daryl Lee <dol@sources.redhat.com>
+<<<<<<< ChangeLog
+	* Completed remaing method tests for gnu/testlet/java/io/BufferedReader
+
+2002-09-20  Daryl Lee <dol@sources.redhat.com>
+	* Added remaing java.io.BufferedInputStream method tests to SimpleRead.java
+=======
 	* Added remaing java.io.BufferedInputStream method tests to
 	SimpleRead.java
+>>>>>>> 1.294
 
 2002-09-16  Daryl Lee <dol@sources.redhat.com>
 	* removed gnu/testlet/java/io/RandomAccssFile/raf.java in favor

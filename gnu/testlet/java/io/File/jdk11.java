@@ -274,6 +274,9 @@ public class jdk11 implements Testlet, FilenameFilter
 					  + TMP_FILENAME3), "getPath ()");
 
     // hashCode ();
+	int hc1 = tmp3.hashCode();
+	int hc2 = tmp3.hashCode();
+	harness.check (hc1, hc2, "hashCode()");
     
     // isAbsolute ();
     harness.check (tmp3.isAbsolute (), "isAbsolute ()");
