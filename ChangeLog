@@ -1,5 +1,11 @@
 1998-11-24  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Long/getLong.java: Added import for
+	Properties; fixed typo.
+
+	* gnu/testlet/SimpleTestHarness.java (done): `total', not `count'
+	is total number of tests.
+
 	* gnu/testlet/java/lang/Long/getLong.java: New file.
 
 	* configure, Makefile.in: Rebuilt.

@@ -66,7 +66,7 @@ public class SimpleTestHarness extends TestHarness
 
   private int done ()
     {
-      System.out.println(failures + " of " + count + " tests failed");
+      System.out.println(failures + " of " + total + " tests failed");
       return failures > 0 ? 1 : 0;
     }
 

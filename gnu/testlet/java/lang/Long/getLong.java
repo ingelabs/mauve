@@ -1,6 +1,7 @@
 package gnu.testlet.java.lang.Long;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import java.util.Properties;
 
 public class getLong implements Testlet
 {
@@ -43,7 +44,7 @@ public class getLong implements Testlet
       harness.check (Long.getLong("junk"), null);
     }
 
-  public getLon ()
+  public getLong ()
     {
     }
 }
