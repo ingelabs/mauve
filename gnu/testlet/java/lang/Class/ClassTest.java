@@ -235,16 +235,6 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
   {
     harness.checkPoint("test_getClassloader");
     try {
-      Class obj1 = Class.forName("java.lang.String");
-      ClassLoader ldr = obj1.getClassLoader();
-      harness.check(ldr == null);
-    }
-    catch (Exception e) {
-      harness.debug(e);
-      harness.check(false);
-    }
-	
-    try {
       Class obj2 = Class.forName("gnu.testlet.java.lang.Class.ClassTest");
       ClassLoader ldr1 = obj2.getClassLoader();
       // For compatibility with (at least) JDK 1.3.1 & JDK 1.4.0 ...

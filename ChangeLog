@@ -1,3 +1,9 @@
+2002-12-19  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Class/ClassTest.java
+	(test_getClassloader): getClassLoader is never required to return
+	null; removed test.
+
 2002-12-15  Raif Naffah  <raif@fl.net.au>
 
 	* gnu/testlet/java/math/BigInteger/modInverse.java: New test.
