@@ -1,3 +1,11 @@
+2002-11-14  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/net/ServerSocket/BasicBacklogSocketServer.java:
+	cosmetic changes only - reindented, etc
+	* gnu/testlet/java/net/ServerSocket/BasicSocketServer.java: ditto
+	* gnu/testlet/java/net/ServerSocket/MyBasicSocketServer.java: ditto
+	* gnu/testlet/java/net/ServerSocket/MyServerSocket.java: ditto
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java: ditto
+
 2002-11-13  C. Brian Jones <cbj@gnu.org>
 
 	* gnu/testlet/java/beans/Introspector/jdk11.java (test): add
@@ -38,6 +46,7 @@
 	Test for IndexOutOfBoundException not NullPointerException.
 
 2002-10-28  Stephen Crawley <crawley@dstc.edu.au>
+	
         * gnu/testlet/java/lang/Class/reflect.java: Added tests for
 	getField and getDeclaredField with inherited fields.
 

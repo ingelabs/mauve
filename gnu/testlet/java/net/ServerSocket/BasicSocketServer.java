@@ -29,45 +29,43 @@ import java.io.*;
 
 
 class BasicSocketServer extends Thread {
-	ServerSocket srvsock = null;
-	
+  ServerSocket srvsock = null;
+  
   protected static TestHarness harness;
-	public void init()
-	{
-		try {
-			srvsock = new ServerSocket( 20000 );
-		}
-		catch ( Exception e )
-		{
-			System.out.println("Error : BasicSocketServer::init failed " + 
-				"Exception should not be thrown here " + e );
-		}
-	}
+  
+  public void init()
+  {
+    try {
+      srvsock = new ServerSocket(20000);
+    }
+    catch (Exception e) {
+      System.out.println("Error : BasicSocketServer::init failed " + 
+			 "Exception should not be thrown here " + e);
+    }
+  }
+  
+  public void run()
+  {
+    if (srvsock == null) {
+      System.out.println("Error : BasicSocketServer::run failed  - 1 " + 
+			 "server socket creation was not successful");
+      return;
+    }
+    
+    int i = 0;
+    while (i++ < 2) {
+      try {
+	Socket clnt = srvsock.accept();	
 	
-	public void run()
-	{
-		if ( srvsock == null )
-		{
-			System.out.println("Error : BasicSocketServer::run failed  - 1 " + 
-				"server socket creation was not successful" );
-			return;
-		}
-
-		int i = 0;
-		while( i++ < 2 )
-		{
-			try {
-				Socket clnt = srvsock.accept();	
-
-				OutputStream os = clnt.getOutputStream();
-				DataOutputStream dos = new DataOutputStream( os );
-				dos.writeBytes("hello buddy");
-				dos.close();
-			}
-			catch ( Exception e ){
-				System.out.println("Error : BasicSocketServer::run failed - 2" + 
-				"exception was thrown" );
-			}
-		}
-	}
+	OutputStream os = clnt.getOutputStream();
+	DataOutputStream dos = new DataOutputStream(os);
+	dos.writeBytes("hello buddy");
+	dos.close();
+      }
+      catch (Exception e) {
+	System.out.println("Error : BasicSocketServer::run failed - 2" + 
+			   "exception was thrown");
+      }
+    }
+  }
 }

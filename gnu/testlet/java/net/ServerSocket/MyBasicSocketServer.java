@@ -29,41 +29,39 @@ import java.io.*;
 
 
 class MyBasicSocketServer extends Thread {
-	MyServerSocket srvsock = null;
-	
+  MyServerSocket srvsock = null;
+  
   protected static TestHarness harness;
-
-	public void init()
-	{
-		try {
-			srvsock = new MyServerSocket( 10000 );
-		}
-		catch ( Exception e )
-		{
-			harness.debug("Error - 1 : MyBasicSocketServer::init failed " + 
-				"Exception should not be thrown here " + e );
-		}
-		// now do the real one
-		try {
-			srvsock = new MyServerSocket( 20000 );
-		}
-		catch ( Exception e )
-		{
-			harness.debug("Error - 2 : MyBasicSocketServer::init failed " + 
-				"Exception should not be thrown here " + e );
-		}
-	}
-	
-	public void run()
-	{
- 		try {
-		  Socket clnt = new Socket("localhost" , 20000);
- 		  srvsock.invoke_implAccept(clnt);
- 		} catch (IOException e){}
-		// get finalize to be invoked
-		try {
-			srvsock.finalize();
-		}
-		catch ( Exception e ) {}
-	}
+  
+  public void init()
+  {
+    try {
+      srvsock = new MyServerSocket(10000);
+    }
+    catch (Exception e) {
+      harness.debug("Error - 1 : MyBasicSocketServer::init failed " + 
+		    "Exception should not be thrown here " + e);
+    }
+    // now do the real one
+    try {
+      srvsock = new MyServerSocket(20000);
+    }
+    catch (Exception e) {
+      harness.debug("Error - 2 : MyBasicSocketServer::init failed " + 
+		    "Exception should not be thrown here " + e);
+    }
+  }
+  
+  public void run()
+  {
+    try {
+      Socket clnt = new Socket("localhost", 20000);
+      srvsock.invoke_implAccept(clnt);
+    } catch (IOException e) {}
+    // get finalize to be invoked
+    try {
+      srvsock.finalize();
+    }
+    catch (Exception e) {}
+  }
 }

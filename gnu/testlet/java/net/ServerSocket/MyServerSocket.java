@@ -29,7 +29,21 @@ import java.io.*;
 
 
 class MyServerSocket extends ServerSocket {
-  public MyServerSocket(int port) throws IOException { super(port); }
-  public void invoke_implAccept(Socket s) throws IOException { super.implAccept(s); }
-  public void finalize() { try { super.finalize(); } catch (Throwable t) { System.out.println(t);}}
+
+  public MyServerSocket(int port) throws IOException { 
+    super(port); 
+  }
+  
+  public void invoke_implAccept(Socket s) throws IOException {
+    super.implAccept(s); 
+  }
+  
+  public void finalize() { 
+    try { 
+      super.finalize(); 
+    } 
+    catch (Throwable t) { 
+      System.out.println(t);
+    }
+  }
 }

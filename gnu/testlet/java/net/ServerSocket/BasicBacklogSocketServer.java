@@ -29,45 +29,43 @@ import java.io.*;
 
 
 class BasicBacklogSocketServer extends Thread {
-	ServerSocket srvsock = null;
+  ServerSocket srvsock = null;
 
   protected static TestHarness harness;
-	
-	public void init()
-	{
-		try {
-			srvsock = new ServerSocket( 21000 , 1 );
-		}
-		catch ( Exception e )
-		{
-			harness.fail("Error : BasicBacklogSocketServer::init failed " + 
-				"Exception should not be thrown here " + e );
-		}
-	}
-	
-	public void run()
-	{
-		if ( srvsock == null )
-		{
-			harness.fail("Error : BasicBacklogSocketServer::run failed  - 1 " + 
-				"server socket creation was not successful" );
-			return;
-		}
-
-
-		try {
-			Socket clnt = srvsock.accept();	
-			Socket clnt1 = srvsock.accept();	
-			Socket clnt2 = srvsock.accept();	
-
-			OutputStream os = clnt.getOutputStream();
-			DataOutputStream dos = new DataOutputStream( os );
-			dos.writeBytes("hello buddy");
-			dos.close();
-		}
-		catch ( Exception e ){
-			harness.fail("Error : BasicBacklogSocketServer::run failed - 2" + 
-			"exception was thrown" );
-		}
-	}
+  
+  public void init()
+  {
+    try {
+      srvsock = new ServerSocket(21000, 1);
+    }
+    catch (Exception e) {
+      harness.fail("Error : BasicBacklogSocketServer::init failed " + 
+		   "Exception should not be thrown here " + e);
+    }
+  }
+  
+  public void run()
+  {
+    if (srvsock == null) {
+      harness.fail("Error : BasicBacklogSocketServer::run failed  - 1 " + 
+		   "server socket creation was not successful");
+      return;
+    }
+    
+    
+    try {
+      Socket clnt = srvsock.accept();	
+      Socket clnt1 = srvsock.accept();	
+      Socket clnt2 = srvsock.accept();	
+      
+      OutputStream os = clnt.getOutputStream();
+      DataOutputStream dos = new DataOutputStream(os);
+      dos.writeBytes("hello buddy");
+      dos.close();
+    }
+    catch (Exception e) {
+      harness.fail("Error : BasicBacklogSocketServer::run failed - 2" + 
+		   "exception was thrown");
+    }
+  }
 }
