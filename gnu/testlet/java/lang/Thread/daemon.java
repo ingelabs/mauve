@@ -58,17 +58,19 @@ public class daemon extends Thread implements Testlet
 	illegal_exception = true;
       }
     harness.check(illegal_exception,
-		    "Cannot change daemon state on current Thread");
+		  "Cannot change daemon state on current Thread");
     harness.check(current.isDaemon() == status,
-		    "Daemon status does not change when set on current Thread");
-
-    daemon t  = new daemon();
+		  "Daemon status not changed when set on current Thread");
+    
+    daemon t = new daemon();
     harness.check(t.isDaemon() == status,
-		    "Newly created thread gets daemon status of creator");
-
+		  "Newly created thread gets daemon status of creator");
+    
     t.setDaemon(!status);
     harness.check(t.isDaemon() != status,
-		    "Can change daemon status on unstarted Thread");
+		  "Can change daemon status on an unstarted Thread");
+    status = t.isDaemon();
+
 
     // Make sure we have a running thread.
     t.start();
@@ -78,8 +80,8 @@ public class daemon extends Thread implements Testlet
 	  try { t.wait(); } catch(InterruptedException ignored) { }
       }
 
-    harness.check(t.isDaemon() != status,
-		    "Daemon status does not change when starting Thread");
+    harness.check(t.isDaemon() == status,
+		  "Daemon status does not change when starting a Thread");
 
     illegal_exception = false;
     try
@@ -91,11 +93,12 @@ public class daemon extends Thread implements Testlet
 	illegal_exception = true;
       }
     harness.check(illegal_exception,
-		    "Cannot change daemon state on running Thread");
-    harness.check(t.isDaemon() != status,
-		    "Daemon status does not change when set on running Thread");
-
-    // Make sure we have a stopped thread.
+		  "Cannot change daemon state on a running Thread");
+    harness.check(t.isDaemon() == status,
+		  "Daemon status not changed when set on a running Thread");
+    status = t.isDaemon();
+    
+    // Make sure the thread exits
     synchronized(t)
       {
 	t.please_stop = true;
@@ -103,6 +106,9 @@ public class daemon extends Thread implements Testlet
       }
     try { t.join(); } catch (InterruptedException ignored) { }
 
+    // Note: the Sun Javadoc seems to contradict itself on whether you can
+    // change daemon state on an exitted Thread.  The observed behaviour
+    // (on JDK 1.3.1 & 1.4.0) is that it works.  (But why would you bother?)
     illegal_exception = false;
     try
       {
@@ -112,10 +118,10 @@ public class daemon extends Thread implements Testlet
       {
 	illegal_exception = true;
       }
-    harness.check(illegal_exception,
-      "Cannot change daemon state on started (and stopped) Thread");
+    harness.check(!illegal_exception,
+		  "Can change daemon state on an exitted Thread");
     harness.check(t.isDaemon() != status,
-      "Daemon status does not change when set on started (and stopped Thread");
+		  "Daemon status changed when set on an exitted Thread");
   }
 }
 

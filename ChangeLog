@@ -1,4 +1,10 @@
 2003-07-11  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/lang/Thread/daemon.java
+	fixed tests to match the behaviour of JDKs when setDaemon()
+	is called on an exitted Thread.  Made tests more robust.
+
+2003-07-11  Stephen Crawley  <crawley@dstc.edu.au>
 	
 	* gnu/testlet/java/text/RuleBasedCollator/jdk11.java :
 	more tests for compare with expansions and contractions
