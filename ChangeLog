@@ -1,3 +1,9 @@
+2000-07-14  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/Class/ClassTest.java
+	(test_getClassloader): Use full name of ClassTest class.
+	From sharon wu <lotus_june@yahoo.com>.
+
 2000-07-10  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/io/PipedStream/receive.java: Fixed tag.
