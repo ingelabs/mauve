@@ -35,6 +35,7 @@ public class instantiate_1 implements Testlet
 
     public void test(TestHarness harness)
     {
+	ClassLoader cl = getClass().getClassLoader();
 
         /** Tries to instantiate a Bean with a <code>private</code>
          * constructor and expects an <code>IllegalAccessException</code>
@@ -42,7 +43,7 @@ public class instantiate_1 implements Testlet
          */
         try
         {
-            Beans.instantiate(null, "gnu.testlet.java.beans.Beans.TestBean1");
+            Beans.instantiate(cl, "gnu.testlet.java.beans.Beans.TestBean1");
 
             // If this is called then the instantiation succeeded.
             harness.fail("Private constructor 1");
@@ -63,7 +64,7 @@ public class instantiate_1 implements Testlet
          */
         try
         {
-            Beans.instantiate(null, "gnu.testlet.java.beans.Beans.TestBean2");
+            Beans.instantiate(cl, "gnu.testlet.java.beans.Beans.TestBean2");
 
             // If this is called then the instantiation succeeded.
             harness.fail("Exception in Constructor 1");
@@ -84,7 +85,7 @@ public class instantiate_1 implements Testlet
 	 */
 	try
 	{
-		Beans.instantiate(null, "gnu.testlet.java.beans.Beans.TestBean3");
+		Beans.instantiate(cl, "gnu.testlet.java.beans.Beans.TestBean3");
 
 		// If this is called then the instantiation succeeded.
 		harness.fail("Missing zero-argument constructor 1");
@@ -106,7 +107,7 @@ public class instantiate_1 implements Testlet
 	 */
 	try
 	{
-		Beans.instantiate(null, "gnu.testlet.java.beans.Beans.TestBean4");
+		Beans.instantiate(cl, "gnu.testlet.java.beans.Beans.TestBean4");
 
 		// If this is called then the instantiation succeeded.
 		harness.fail("specific Error in constructor 1");
