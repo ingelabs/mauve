@@ -1,6 +1,7 @@
 // Tags: JDK1.2
+// Uses: Verifyer
 
-// Copyright (C) 2004 Audrius Meskauskas <audriusa@bluewin.ch>
+// Copyright (C) 2004, 2005 Audrius Meskauskas <audriusa@bluewin.ch>
 
 // This file is part of Mauve.
 
