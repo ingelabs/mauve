@@ -1,3 +1,7 @@
+2002-10-28  Stephen Crawley <crawley@dstc.edu.au>
+        * gnu/testlet/java/lang/Class/reflect.java: Added tests for
+	getField and getDeclaredField with inherited fields.
+
 2002-10-26  Daryl Lee <dol@sources.redhat.com>
 
 	* gnu/testlet/java/io/PushbackInputStream: Added tests for

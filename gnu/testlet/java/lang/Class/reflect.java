@@ -1,5 +1,5 @@
 // Tags: JDK1.1
-// Uses: rf_help
+// Uses: rf2_help
 
 // Copyright (C) 2000, 2002 Cygnus Solutions
 
@@ -81,6 +81,7 @@ public class reflect implements Testlet
   {
     Class reflect_class = getClass ("gnu.testlet.java.lang.Class.reflect");
     Class rf_help_class = getClass ("gnu.testlet.java.lang.Class.rf_help");
+    Class rf2_help_class = getClass ("gnu.testlet.java.lang.Class.rf2_help");
     Class aci_class = getClass ("java.text.AttributedCharacterIterator");
     Class i_class = Integer.TYPE;
 
@@ -182,6 +183,8 @@ public class reflect implements Testlet
     f = getField (rf_help_class, "value", true);
     harness.check(f instanceof Field);
     harness.check(((Field) f).getModifiers(), Modifier.STATIC);
+    f = getField (rf2_help_class, "value", true);
+    harness.check(f instanceof NoSuchFieldException);
 
     harness.checkPoint("getField");
     f = getField (rf_help_class, "size", false);
@@ -189,6 +192,10 @@ public class reflect implements Testlet
     f = getField (rf_help_class, "name", false);
     harness.check(f instanceof Field);
     harness.check(((Field) f).getModifiers(), Modifier.PUBLIC);
+    f = getField (rf2_help_class, "name", false);
+    harness.check(f instanceof Field);
+    f = getField (rf2_help_class, "value", false);
+    harness.check(f instanceof NoSuchFieldException);
 
     harness.checkPoint("getDeclaredFields");
     try {
