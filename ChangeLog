@@ -1,5 +1,11 @@
-2002-10-13  Mark Wielaard  <mark@klomp.org>
+2002-10-19  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/lang/Class/reflect2.java: New test for the
+	inner class reflection methods.
+	* gnu/testlet/java/lang/Class/rf2_help.java: Helper for above test.
+	* gnu/testlet/java/lang/Class/ClassTest.java: Tidied up some error
+	reporting and indentation
 
+2002-10-18  Mark Wielaard  <mark@klomp.org>
 	* gnu/testlet/java/net/URL/URLTestjava: change "sourceware.cygnus.com"
 	to "sources.redhat.com".
 
