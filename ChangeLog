@@ -1,3 +1,8 @@
+2001-08-19  John Leuner  <jewel@debian.org>
+
+	* gnu/testlet/java/lang/Math/min.java: added some more tests for min that don't
+	use string comparisons
+
 2001-08-11  John Leuner  <jewel@debian.org>
 
 	* gnu/testlet/java/text/ChoiceFormat/format.java (test): changed format to doformat 

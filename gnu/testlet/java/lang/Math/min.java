@@ -40,14 +40,22 @@ public class min implements Testlet
 
       harness.checkPoint("Double NaNs");
 
+      harness.check (Double.isNaN(Double.NaN));
+      harness.check (Double.isNaN( 0.0d/0.0d ));
+
+      harness.checkPoint("Double NaN comparisons");
+
       harness.check (Double.toString (Math.min (2.0, Double.NaN)), "NaN");
       harness.check (Double.toString (Math.min (Double.NaN, 2.0)), "NaN");
+      //      System.err.println(Double.toString (Math.min (Double.NaN, 2.0)));
+      harness.check (Math.min (Double.NaN, 2.0), Double.NaN);
 
       harness.checkPoint("Double infinities");
 
       harness.check (Double.toString (Math.min (Double.NEGATIVE_INFINITY, 
 			       Double.POSITIVE_INFINITY)), 
 		     "-Infinity");
+      harness.check (Math.min (Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY), Double.NEGATIVE_INFINITY);
       harness.check (Double.toString (Math.min (Double.POSITIVE_INFINITY, 
 			       Double.POSITIVE_INFINITY)), 
 		     "Infinity");
@@ -70,24 +78,30 @@ public class min implements Testlet
       harness.check (Float.toString (Math.min (1.0f, 2.0f)), "1.0");
       harness.check (Float.toString (Math.min (2.0f, 1.0f)), "1.0");
       harness.check (Float.toString (Math.min (-1.0f, -2.0f)), "-2.0");
+      harness.check (Math.min (-1.0f, -2.0f), -2.0);
       harness.check (Float.toString (Math.min (-2.0f, 1.0f)), "-2.0");
       harness.check (Float.toString (Math.min (1.0f, -2.0f)), "-2.0");
 
       harness.checkPoint("Float NaNs");
 
       harness.check (Float.toString (Math.min (2.0f, Float.NaN)), "NaN");
+      harness.check (Math.min (2.0f, Float.NaN), Float.NaN);
       harness.check (Float.toString (Math.min (Float.NaN, 2.0f)), "NaN");
+      harness.check (Math.min (Float.NaN, 2.0f), Float.NaN);
 
       harness.checkPoint("Float infinities");
 
       harness.check (Float.toString (Math.min (Float.NEGATIVE_INFINITY, 
 			       Float.POSITIVE_INFINITY)), 
 		     "-Infinity");
+      harness.check (Math.min (Float.NEGATIVE_INFINITY, 
+			       Float.POSITIVE_INFINITY),Float.NEGATIVE_INFINITY);
       harness.check (Float.toString (Math.min (Float.POSITIVE_INFINITY, 
 			       Float.POSITIVE_INFINITY)), 
 		     "Infinity");
       harness.check (Float.toString (Math.min (Float.NEGATIVE_INFINITY, 0.0f)),
 		     "-Infinity");
+      harness.check (Math.min (Float.NEGATIVE_INFINITY, 0.0f), Float.NEGATIVE_INFINITY);
       harness.check (Float.toString (Math.min (Float.POSITIVE_INFINITY, 0.0f)),
 		     "0.0");
 
