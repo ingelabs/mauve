@@ -68,7 +68,7 @@ public class SimpleTestHarness extends TestHarness
 	ex.printStackTrace(System.out);
     }
 
-  private void runtest (String name)
+  protected void runtest (String name)
     {
       // Try to ensure we start off with a reasonably clean slate.
       System.gc();
@@ -118,13 +118,13 @@ public class SimpleTestHarness extends TestHarness
 	}
     }
 
-  private int done ()
+  protected int done ()
     {
       System.out.println(failures + " of " + total + " tests failed");
       return failures > 0 ? 1 : 0;
     }
 
-  private SimpleTestHarness (String srcdir, boolean verbose, boolean debug)
+  protected SimpleTestHarness (String srcdir, boolean verbose, boolean debug)
     {
       this.srcdir = new File (srcdir);
       this.verbose = verbose;

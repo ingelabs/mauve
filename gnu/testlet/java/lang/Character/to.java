@@ -25,5 +25,6 @@ public class to implements Testlet
       harness.check (Character.toTitleCase ('a'), 'A');
       harness.check (Character.toTitleCase ('\u01f3'), '\u01f2');
       harness.check (Character.toTitleCase ('\u01f1'), '\u01f2');
+      harness.check (Character.toTitleCase ('\u01f2'), '\u01f2');
     }
 }
