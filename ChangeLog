@@ -1,3 +1,9 @@
+1999-02-07  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/util/BitSet/jdk10.java (trulyEquals): Don't
+	pass description to check().
+	(test): Fixed typo.
+
 Thu Feb  4 19:49:42 1999  arenn's Development Account  <devel@larissa.foo.com>
 
 	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc10.java: Added this

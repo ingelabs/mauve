@@ -31,7 +31,7 @@ public class jdk10 implements Testlet
 	{
 		h = harness;
 		BitSet b1, b2, b3, b4, b5;
-		
+
 		h.checkPoint("Clone/Equals");
 		b1 = new BitSet();
 		b2 = (BitSet)b1.clone();
@@ -43,7 +43,7 @@ public class jdk10 implements Testlet
 		b2 = (BitSet)b1.clone();
 		h.check( trulyEquals(b1,b2));
 		h.check(!b2.equals(null));
-		
+
 		h.checkPoint("NegativeSize");
 		try {
 			b1 = new BitSet(-1);
@@ -52,7 +52,7 @@ public class jdk10 implements Testlet
 			{
 				h.check(true);
 			}
-			
+
 		h.checkPoint("Set/Clear/Get");
 		b1 = new BitSet();
 		b1.set(1);
@@ -64,7 +64,7 @@ public class jdk10 implements Testlet
 		h.check(b1.get(200));
 		b1.clear(0);
 		h.check(!b1.get(0));
-		
+
 		h.checkPoint("Set/Clear/Get negative index");
 		try {
 			b1.set(-1);
@@ -89,7 +89,7 @@ public class jdk10 implements Testlet
 		{
 			h.check(true);
 		}
-		
+
 		h.checkPoint("toString");
 		h.check(b1.toString().equals("{1, 200}"));
 		b1.set(2);
@@ -97,11 +97,11 @@ public class jdk10 implements Testlet
 		h.check(b1.toString().equals("{1, 2, 11, 200}"));
 		b2 = new BitSet(100);
 		h.check(b2.toString().equals("{}"));
-		
-		h.checkPoint("Hascode");
+
+		h.checkPoint("Hashcode");
 		h.check(b1.hashCode() == 2260);
 		h.check(b2.hashCode() == 1234);
-		
+
 		h.checkPoint("And/Or/Xor");
 		b3 = new BitSet();
 		b2.and(b1);
@@ -152,10 +152,7 @@ public class jdk10 implements Testlet
 			if ( b1.get(i) !=  b2.get(i) )
 				e2 = false;
 		}
-		if ( e1 != e2 )
-			h.check(false, "BitSet.equals is wrong");
-		else
-			h.check(true);
+		h.check (e1 == e2);
 		return e2;	
 	}
 }
