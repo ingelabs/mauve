@@ -16,13 +16,15 @@ public class IntrospectorTest implements Testlet {
 	    b = Introspector.getBeanInfo (k1);
 	  else
 	    b = Introspector.getBeanInfo (k1, k2);
-	  harness.check (b.getPropertyDescriptors().length == dlen
-			 && b.getEventSetDescriptors().length == evlen
-			 && b.getMethodDescriptors().length == gmlen);
+	  harness.debug(k1 + "/" + k2 + ":");
+	  harness.check (b.getPropertyDescriptors().length, dlen);
+	  harness.check (b.getEventSetDescriptors().length, evlen);
+	  harness.check (b.getMethodDescriptors().length, gmlen);
 	}
       catch (IntrospectionException e)
 	{
 	  harness.check (false);
+	  harness.debug (e);
 	}
     }
 

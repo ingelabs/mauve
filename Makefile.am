@@ -5,6 +5,8 @@ AUTOMAKE_OPTIONS = foreign
 JCFLAGS = -g
 JC1FLAGS = -g
 
+TESTFLAGS =
+
 check_DATA = classes.stamp
 
 harness_files = gnu/testlet/SimpleTestHarness.java \
@@ -52,7 +54,7 @@ SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 check-local: $(check_PROGRAMS) $(CHOICES)
-	cat classes | ./SimpleTestHarness $(srcdir)
+	cat classes | ./SimpleTestHarness $(TESTFLAGS) $(srcdir)
 
 recheck:
 	test -f .save-keys || : > .save-keys
@@ -66,7 +68,8 @@ CLEANFILES = $(class_files) classes.stamp
 else  ## USE_GCJ
 
 check-local: classes.stamp
-	cat classes | $(JAVA) gnu.testlet.SimpleTestHarness $(srcdir)
+	cat classes | \
+	$(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS) $(srcdir)
 
 recheck:
 	test -f .save-keys || : > .save-keys

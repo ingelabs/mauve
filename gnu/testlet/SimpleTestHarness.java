@@ -16,6 +16,7 @@ public class SimpleTestHarness extends TestHarness
   private int failures = 0;
   private int total = 0;
   private boolean verbose = false;
+  private boolean debug = false;
   private String description;
   private String last_check;
   private File srcdir;
@@ -49,6 +50,24 @@ public class SimpleTestHarness extends TestHarness
       count = 0;
     }
 
+  public void verbose (String message)
+    {
+      if (verbose)
+	System.out.println (message);
+    }
+
+  public void debug (String message)
+    {
+      if (debug)
+	System.out.println (message);
+    }
+
+  public void debug (Throwable ex)
+    {
+      if (debug)
+	ex.printStackTrace(System.out);
+    }
+
   private void runtest (String name)
     {
       // Try to ensure we start off with a reasonably clean slate.
@@ -69,6 +88,7 @@ public class SimpleTestHarness extends TestHarness
 	  if (verbose)
 	    d += ": " + ex.toString();
 	  System.out.println (d);
+	  debug (ex);
 	  ++failures;
 	  ++total;
 	}
@@ -91,6 +111,7 @@ public class SimpleTestHarness extends TestHarness
 	      if (verbose)
 		d += ": " + ex.toString();
 	      System.out.println (d);
+	      debug (ex);
 	      ++failures;
 	      ++total;
 	    }
@@ -103,23 +124,46 @@ public class SimpleTestHarness extends TestHarness
       return failures > 0 ? 1 : 0;
     }
 
-  private SimpleTestHarness (String srcdir)
+  private SimpleTestHarness (String srcdir, boolean verbose, boolean debug)
     {
       this.srcdir = new File (srcdir);
+      this.verbose = verbose;
+      this.debug = debug;
     }
 
   public static void main (String[] args)
     {
-      if (args.length < 1 || args.length > 2
-	  || (args.length == 2 && !args[0].equals("-verbose")))
+      String srcdir = null;
+      boolean verbose = false;
+      boolean debug = false;
+      int i;
+
+      for (i = 0; i < args.length - 1; i++) 
 	{
-	  System.err.println ("usage: SimpleTestHarness [-verbose] SRCDIR");
+	  if (args[i].equals("-verbose")) 
+	    {
+	      verbose = true;
+	      continue;
+	    }
+	  else if (args[i].equals("-debug")) 
+	    {
+	      debug = true;
+	      continue;
+	    }
+	  else
+	    break;
+        }
+      if (i == args.length - 1)
+        srcdir = args[i];
+
+      if (srcdir == null) 
+	{
+	  System.err.println ("usage: SimpleTestHarness [-verbose] [-debug] SRCDIR");
 	  System.exit(1);
 	}
 
       SimpleTestHarness harness
-	= new SimpleTestHarness (args[args.length - 1]);
-      harness.verbose = args.length == 2;
+	= new SimpleTestHarness (args[args.length - 1], verbose, debug);
 
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));

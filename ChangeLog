@@ -1,3 +1,24 @@
+1998-12-07  Tom Tromey  <tromey@cygnus.com>
+
+	Modified version of patch from Godmar Back:
+	* gnu/testlet/java/beans/IntrospectorTest.java (tryone): Split
+	`check' call into 3 calls, and use 2-argument form.  Pass caught
+	exception to `debug' method of harness.
+	* gnu/testlet/TestHarness.java (verbose, debug): New methods.
+	(check): Call `debug' with result and expected on failure.
+	* gnu/testlet/SimpleTestHarness.java (debug): New instance
+	variable.
+	(verbose): New methods.
+	(debug): Likewise.
+	(runtest): Call `debug' on exceptions.
+	(main): Accept `-debug' on command line.
+	(SimpleTestHarness): Added verbose and debug arguments.
+
+	From Godmar Back:
+	* Makefile.in: Rebuilt.
+	* Makefile.am (check-local): Pass TESTFLAGS to SimpleTestHarness.
+	(TESTFLAGS): New macro.
+
 1998-12-07  Anthony Green  <green@cygnus.com>
 
 	* README, gnu/testlet/java/beans/DescriptorTest.java,

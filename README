@@ -16,6 +16,10 @@ some environment variables:
 
 GCJ is only used when the `--with-gcj' option is given to configure.
 
+Note that you will need GNU make to use this testsuite.  If your
+installation provides GNU make under a different name, such as gmake,
+replace `make' with `gmake' in the following.
+
 Use `make check' to run the tests.  You can set the make variable
 `KEYS' to select a subset of the tests.  KEYS is a list of keys that
 must be matched by the files to be tested.  Some values:
@@ -65,11 +69,23 @@ directly to the test harness.  Make sure to remember the `gnu.testlet'
 prefix for the test cases.  E.g.:
 
   echo gnu.testlet.java.lang.Character.classify | \
-    java gnu.testlet.SimpleTestHarness -verbose PATH-TO-SRCDIR
+    java gnu.testlet.SimpleTestHarness -verbose -debug PATH-TO-SRCDIR
 
 The optional `-verbose' command-line argument makes the test suite a
 little noisier about what it is doing.  In particular it will print
 information about caught exceptions in this case.
+
+Some tests may provide even more information about failures to aid
+with debugging a particular run-time system.  These messages are enabled
+by specifying the optional command-line argument `-debug'
+
+You may use the environment variable TESTFLAGS to provide these
+flags to the invocation of the SimpleTestHarness in the `check' target.
+For instance,
+
+  make check "TESTFLAGS=-verbose -debug"
+
+will run the testsuite in verbose and debug mode.
 
 ================================================================
 
