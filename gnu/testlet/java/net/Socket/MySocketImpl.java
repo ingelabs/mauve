@@ -2,6 +2,7 @@
 
 /*
    Copyright (C) 1999 Hewlett-Packard Company
+   Copyright (C) 2002 Free Software Foundation, Inc.
 
    This file is part of Mauve.
 
@@ -42,4 +43,7 @@ class MySocketImpl extends SocketImpl {
     protected void close() throws IOException {}
   public void setOption(int optID, Object value) throws SocketException {}
   public Object getOption(int optID) throws SocketException { return null; }
+
+  public void shutdownInput() throws IOException {}
+  public void shutdownOutput() throws IOException {}
 }
