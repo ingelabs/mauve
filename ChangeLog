@@ -1,5 +1,8 @@
 2004-05-12  Stephen Crawley <crawley@dstc.edu.au>
 
+	* gnu/testlet/java/lang/Integer/getInteger.java : fixed the
+	security test to work on JDK 1.4, and to always remove the test
+	security manager.
 	* gnu/testlet/java/io/FilePermission/simple.java : fixed existing
 	test to work on JDK 1.4.  Added new tests for constructor arg
 	checking (as per the JDK 1.4 javadoc).

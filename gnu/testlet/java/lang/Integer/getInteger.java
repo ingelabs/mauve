@@ -23,6 +23,7 @@ package gnu.testlet.java.lang.Integer;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.util.Properties;
+import java.util.PropertyPermission;
 import java.security.Permission;
 import java.security.SecurityPermission;
 
@@ -78,26 +79,34 @@ public class getInteger extends SecurityManager implements Testlet
 
       boolean ok = true;
       SecurityManager old_security_manager = System.getSecurityManager();
-      try
-        {
-	  System.setSecurityManager(this);
-	}
-      catch (SecurityException e)
-        {
-	  ok = false; // can't run this test
-	}
-      if (ok)
+      try 
         {
           try
-	    {
-	      Integer.getInteger("secure");
-	      ok = false;
-	    }
-	  catch (SecurityException se)
-	    {
-	    }
-	  System.setSecurityManager(old_security_manager); // undo our change
-	}
+            {
+              System.setSecurityManager(this);
+            }
+          catch (Throwable e)
+            {
+              harness.debug(e);
+              ok = false; // can't run this test
+            }
+          if (ok)
+            {
+              try
+                {
+                  Integer.getInteger("secure");
+                  ok = false;
+                }
+              catch (SecurityException se)
+                {
+                }
+            }
+        }
+      finally 
+        {
+          // undo our change
+          System.setSecurityManager(old_security_manager); 
+        }
       harness.check(ok);
     }
 
@@ -115,13 +124,16 @@ public class getInteger extends SecurityManager implements Testlet
   }
 
   /**
-   * Allow restoration of the existing security manager
+   * Allow restoration of the existing security manager, and various other
+   * things that happen under the hood in various VMs. (HACK!)
    */
   public void checkPermission(Permission p)
   {
     if (new RuntimePermission("setSecurityManager").implies(p))
       return;
     if (new SecurityPermission("getProperty.networkaddress.*").implies(p))
+      return;
+    if (new PropertyPermission("sun.net.inetaddr.ttl", "read").implies(p))
       return;
     super.checkPermission(p);
   }
