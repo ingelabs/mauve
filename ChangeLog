@@ -1,3 +1,15 @@
+2004-03-24  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/imageio, gnu/testlet/javax/imageio/spi,
+	gnu/testlet/javax/imageio/spi/ServiceRegistry: New directories.
+	
+	* gnu/testlet/javax/imageio/spi/ServiceRegistry/
+	MultiplicationService.java, MultiplierOne.java,
+	MultiplierThree.java, MultiplierTwo.java, TestService.java,
+	deregisterAll.java, getCategories.java,
+	getServiceProviderByClass.java, lookupProviders.java,
+	registerServiceProvider.java, setOrdering.java: New tests.	
+
 2004-03-22  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 	* gnu/testlet/java/util/Properties/load.java: Add tests
 	copied from Kaffe's regression test.
