@@ -54,7 +54,7 @@ run()
 
       while ((bytes_read = sbis.read(buf)) != -1)
         out.write(buf, 0, bytes_read);
-
+	  out.flush();
       out.close();
     }
   catch(IOException e)

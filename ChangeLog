@@ -1,3 +1,8 @@
+2002-12-24  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PipedReaderWriter/Test.java:
+	Added test for connect() method on PipedWriter.  See corresponding
+	patch to PipedWriter class.
+
 2002-12-23  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/OutputStreamWriter/jdk11.java: New file.
 	Completes tests of OutputStreamWriter class

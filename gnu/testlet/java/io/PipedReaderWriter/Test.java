@@ -63,6 +63,15 @@ test(TestHarness harness)
         }
 	  pr.close();   // Make sure close() method is implemented
       harness.check(total_read, str.length(), "total_read");
+	  // Check for connect() method on writer
+       // Set up the thread to write
+      PipedTestWriter ptw2 = new PipedTestWriter(harness);
+      PipedWriter pw2 = ptw2.getWriter();
+
+      // Now set up our reader
+      PipedReader pr2 = new PipedReader();
+	  pw2.connect(pr2);
+	  harness.check(true, "writer.connect()");
     }
   catch (IOException e) 
     {
