@@ -1,3 +1,8 @@
+2002-07-16  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/StreamTokenizer/WordWhiteChars.java: New test for
+	resetting chars.
+
 2002-07-12  Mark Wielaard  <mark@klomp.org>
 
 	* choose: Also check in in/exclusion of javax.* tests, don't look
