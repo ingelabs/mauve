@@ -26,7 +26,7 @@ import java.io.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class SerTest extends SerTestBase implements Testlet
+public class SerTest extends SerBase implements Testlet
 {
   // This is THE field (this shadows the a field in the super class).
   private int a;

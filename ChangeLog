@@ -1,3 +1,8 @@
+2002-12-14  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/SerTest.java: Extend SerBase,
+	not TestSerBase.
+
 2002-12-13  David J. King  <david_king@softhome.net>
 
 	* gnu/testlet/java/io/CharArrayWriter/BasicTests.java: New test.
