@@ -28,6 +28,13 @@ public class newInstance implements Testlet
 {
   static class test1
   {
+    private static class inner 
+    {
+      public inner()
+      {
+      }
+    }
+
     test1()
     {
     }
@@ -139,6 +146,8 @@ public class newInstance implements Testlet
     checkSuccess(harness, test3.class);
     checkSuccess(harness, test4.class);
     checkFail(harness, test5.class);
+
+    checkSuccess(harness, test1.inner.class);
 
     try
       {
