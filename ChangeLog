@@ -1,3 +1,8 @@
+2004-08-06  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/awt/image/Kernel/check.java (test): Always
+	pass argument to getKernelData.  Use "=", not "==".
+
 2004-08-06  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/geom/Line2D/linesIntersect.java: Add

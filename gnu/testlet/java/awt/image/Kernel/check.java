@@ -45,7 +45,7 @@ public class check implements Testlet
     float[] data1;
     try
       {
-	data1 = k.getKernelData();
+	data1 = k.getKernelData(null);
       }
     catch (IllegalArgumentException e)
       {
@@ -58,7 +58,7 @@ public class check implements Testlet
     for (int i=0; i < data1.length; i++)
       if (data[i] != data1[i])
 	{
-	  ok == false;
+	  ok = false;
 	  break;
 	}
     h.check(ok == true);
@@ -78,7 +78,7 @@ public class check implements Testlet
     for (int i=0; i < data1.length; i++)
       if (data[i] != data1[i])
 	{
-	  ok == false;
+	  ok = false;
 	  break;
 	}
     h.check(ok == true);
@@ -110,13 +110,13 @@ public class check implements Testlet
     // Check that only the specified data gets copied
     data = new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
     k = new Kernel(3, 4, data);
-    data1 = k.getKernelData();
+    data1 = k.getKernelData(null);
     h.check(data1.length == 12);
     ok = true;
     for (int i=0; i < data1.length; i++)
       if (data[i] != data1[i])
 	{
-	  ok == false;
+	  ok = false;
 	  break;
 	}
     h.check(ok == true);
