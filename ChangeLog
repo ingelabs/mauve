@@ -1,3 +1,8 @@
+2002-10-13  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/SimpleTestHarness.java: Add -resultsonly flag.
+	* README: Document -resultsonly flag.
+
 2002-10-12  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/Socket/SocketAddress.java: Removed.

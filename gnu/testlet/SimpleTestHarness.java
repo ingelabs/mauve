@@ -39,6 +39,7 @@ public class SimpleTestHarness
   private int total = 0;
   private boolean verbose = false;
   private boolean debug = false;
+  private boolean results_only=false;
   private String description;
   private String last_check;
 
@@ -59,13 +60,13 @@ public class SimpleTestHarness
 	      System.out.println (desc);
 	      ++failures;
 	    }
-	  else if (verbose)
+	  else if (verbose || results_only)
 	    {
 	      System.out.println ("X" + desc);
 	      ++xfailures;
 	    }
 	}
-      else if (verbose)
+      else if (verbose || results_only)
 	{
 	  if (expected_xfails.contains (getDescription ("FAIL")))
 	    {
@@ -235,18 +236,26 @@ public class SimpleTestHarness
 
   protected int done ()
     {
-      System.out.println(failures + " of " + total + " tests failed");
-      if (xpasses > 0)
-        System.out.println(xpasses + " of " + total + " tests unexpectedly passed");
-      if (xfailures > 0)
-        System.out.println(xfailures + " of " + total + " tests expectedly failed");
+      if (!results_only)
+	{
+          System.out.println(failures + " of " + total + " tests failed");
+          if (xpasses > 0)
+            System.out.println(xpasses + " of " + total
+			    + " tests unexpectedly passed");
+          if (xfailures > 0)
+            System.out.println(xfailures + " of " + total
+			    + " tests expectedly failed");
+	}
       return failures > 0 ? 1 : 0;
+
     }
 
-  protected SimpleTestHarness (boolean verbose, boolean debug)
+  protected SimpleTestHarness (boolean verbose, boolean debug,
+		               boolean results_only)
     {
       this.verbose = verbose;
       this.debug = debug;
+      this.results_only= results_only;
 
       try
         {
@@ -269,6 +278,7 @@ public class SimpleTestHarness
     {
       boolean verbose = false;
       boolean debug = false;
+      boolean results_only = false;
       int i;
 
       for (i = 0; i < args.length; i++) 
@@ -277,12 +287,18 @@ public class SimpleTestHarness
 	    verbose = true;
 	  else if (args[i].equals("-debug")) 
 	    debug = true;
+	  else if (args[i].equals("-resultsonly")) 
+	    {
+	      results_only = true;
+	      verbose = false;
+	      debug = false;
+	    }
 	  else
 	    break;
         }
 
       SimpleTestHarness harness
-	= new SimpleTestHarness (verbose, debug);
+	= new SimpleTestHarness (verbose, debug, results_only);
 
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));

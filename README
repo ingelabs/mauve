@@ -79,6 +79,11 @@ Some tests may provide even more information about failures to aid
 with debugging a particular run-time system.  These messages are enabled
 by specifying the optional command-line argument `-debug'
 
+If you are only interested in the results of the tests (not only which
+ones FAIL but also which ones PASS). Then you can use the '-resultsonly'
+command-line argument. This will also suppress the printing of a summary
+at the end.
+
 You may use the environment variable TESTFLAGS to provide these
 flags to the invocation of the SimpleTestHarness in the `check' target.
 For instance,
