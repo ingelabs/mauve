@@ -1,3 +1,47 @@
+2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
+
+	* gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/supplementaryNotifications.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/Parser_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/TagElement_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/HTML_randomTable.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/parameterDefaulter_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/Text.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/Token_locations.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/textPreProcessor_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/Element_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/ParserTest.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/Entity_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/HTML_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/DTD_test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/ParserEntityResolverTest.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/HTML_parsing.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/AttributeList_test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/low/ReaderTokenizer/ReaderTokenizer_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/low/Constants/Constants_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/low/Buffer/Buffer_Test.java: New tests,
+	test the Classpath specific implementation.
+	* gnu/testlet/gnu/javax/swing/text/html/parser/
+	support/Parser/TestCase.java: New helper class.
+
 2005-03-11  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/Class/newInstance.java: New tests.
