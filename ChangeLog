@@ -1,5 +1,9 @@
 2002-02-18  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/IdentityHashMap/simple.java: JDK1.3 -> JDK1.4
+
+2002-02-18  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/String/indexOf.java: Add checks for empty
 	strings.
 

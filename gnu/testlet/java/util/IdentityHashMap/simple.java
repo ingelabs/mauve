@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.  */
 
-// Tags: JDK1.3
+// Tags: JDK1.4
 
 package gnu.testlet.java.util.IdentityHashMap;
 
