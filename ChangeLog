@@ -1,6 +1,11 @@
 1999-05-28  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/net/MulticastSocket/MulticastSocketTest.java
+	(test_Basics): Added harness checks for setTTL & getTTL calls.
+
+1999-05-28  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/net/MulticastSocket/MulticastSocketTest.java
 	(test_Basics): Null argument to joinGrp & leaveGrp cause a
 	NullPointerException.
 

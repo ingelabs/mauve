@@ -150,30 +150,32 @@ public class MulticastSocketTest implements Testlet
 	    socket.close();
 	    harness.check(true);
 	} catch (Exception e) { 
-	    harness.fail("Correct args.");
+	    harness.fail("Correct args. - 8");
 	    e.printStackTrace();
 	}
 	
 	
-	// FIXME: This test has no success or failure checks.
 	try {
 	    //	    System.out.println("getTTL() and setTTL().");
 	    socket = new MulticastSocket(++nPort);
 	    InetAddress address = InetAddress.getByName("230.0.0.1");
 	    socket.joinGroup(address);
 	    byte bTTL = socket.getTTL();
+	    harness.check(bTTL != 0, "getTTL() should never return zero - 9");
 	    
 	    //System.out.println("Default TTL = " + bTTL);
-	    bTTL = (byte)127;
-	    socket.setTTL(bTTL);
+	    byte newbTTL = (byte)127;
+	    socket.setTTL(newbTTL);
 	    bTTL = socket.getTTL();
 	    //System.out.println("New TTL = " + bTTL);
+	    harness.check(bTTL, newbTTL,
+	      "getTTL() should return same value (127) used for setTTL() - 10");
 	    
 	    bTTL = (byte)-56;
 	    socket.setTTL(bTTL);
 	    bTTL = socket.getTTL();
 	    //System.out.println("Newer TTL = " + bTTL);
-	    // Note is unsigned byte is used -56 will roll to a +ve value.
+	    // FIXME: if unsigned byte is used -56 will roll to a +ve value.
 	    // Developer should verify if this is a failure case or not.
 	    //if(bTTL == -56)
 	    //System.out.println("FAIL : TTL cannot be negative");
@@ -181,7 +183,11 @@ public class MulticastSocketTest implements Testlet
 	    socket.setTTL((byte)1);
 	    socket.leaveGroup(address);
 	    socket.close();
-	} catch (Exception e) {}
+	    harness.check(true);
+	} catch (Exception e) {
+	    harness.fail("Should not have thrown any exception - 11");
+	    e.printStackTrace();
+	}
 	
 	    
     }
