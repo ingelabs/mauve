@@ -1,3 +1,8 @@
+1999-04-21  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/String/getBytes.java: New file.
+	From Bryce McKinlay <bryce@albatross.co.nz>.
+
 1999-04-12  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/io/DataInputStream/readLine.java: New file;
