@@ -1,3 +1,9 @@
+2003-02-01  C. Brian Jones  <cbj@gnu.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/Test.java: change output of
+	'<' and '>' to be '(' and ')' respectively.  Avoids having to escape
+	these for HTML output.
+
 2003-01-31  C. Brian Jones <cbj@gnu.org>
 
 	* gnu/testlet/java/net/Socket/SocketTest.java (test_params): 

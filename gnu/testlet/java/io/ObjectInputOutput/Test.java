@@ -92,7 +92,7 @@ public abstract class Test
     {
       Class clazz = getClass ();
       StringBuffer buf = new StringBuffer (clazz.getName ());
-      buf.append ('<');
+      buf.append (" (");
       Field[] fields = clazz.getDeclaredFields ();
       for (int i = 0; i < fields.length; ++ i)
       {
@@ -130,7 +130,7 @@ public abstract class Test
 	if (i != fields.length - 1)
 	  buf.append (", ");
       }
-      buf.append ('>');
+      buf.append (')');
       return buf.toString ();
     }
     catch (IllegalAccessException iae)
@@ -327,8 +327,8 @@ public abstract class Test
 
     void printOneLevel (GraphNode gn)
     {
-      System.out.println ("GraphNode< " + gn + ": " + gn.a + ", " + gn.b
-			  + ", " + gn.c + ", " + gn.d + " >");
+      System.out.println ("GraphNode( " + gn + ": " + gn.a + ", " + gn.b
+			  + ", " + gn.c + ", " + gn.d + " )");
     }
 
     GraphNode A;
@@ -368,7 +368,7 @@ public abstract class Test
 
     public String toString ()
     {
-      return "test<str=" + str + ", x=" + x + ">";
+      return "test(str=" + str + ", x=" + x + ")";
     }
     
     private void writeObject (ObjectOutputStream oo) throws IOException
