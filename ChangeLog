@@ -1,3 +1,44 @@
+2004-08-12  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Rectangle/add.java: New test.
+	* gnu/testlet/java/awt/Rectangle/clone.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/contains.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/equals.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/grow.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/intersection.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/intersects.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/isEmpty.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/outcode.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/setBounds.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/setLocation.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/setRect.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/setSize.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/translate.java: Likewise.
+	* gnu/testlet/java/awt/Rectangle/union.java: Likewise.
+
+2004-08-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/geom/Arc2D/clone.java: New test.
+	* gnu/testlet/java/awt/geom/Arc2D/constants.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/constructors.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/contains.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/containsAngle.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/equals.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/getBounds2D.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/getEndPoint.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/getPathIterator.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/getStartPoint.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/intersects.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/isEmpty.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setAngleExtent.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setAngleStart.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setAngles.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setArc.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setArcByCenter.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setArcByTangent.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setArcType.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/setFrame.java: Likewise.
+
 2004-08-09  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/Dimension/clone.java: New test.
