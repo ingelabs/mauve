@@ -5,7 +5,61 @@
 	gnu/testlet/javax/xml/parsers/DocumentBuilder/
 	Verifyer.java: New test.
 
-2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
+2005-03-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/text/DecimalFormat.applyLocalizedPattern.java:
+	New file;
+	* gnu/testlet/java/text/DecimalFormat/applyPattern.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/clone.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/constructors.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/equals.java (test) added
+	more checks;
+	* gnu/testlet/java/text/DecimalFormat/format.java: moved existing
+	tests into testGeneral() method and added new tests in
+	testRounding() and testMiscellaneous();
+	* gnu/testlet/java/text/DecimalFormat/
+	formatToCharacterIterator.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/getCurrency.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/
+	getDecimalFormatSymbols.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/getGroupingSize.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/getMultiplier.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/getNegativePrefix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/getNegativeSuffix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/getPositivePrefix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/getPositiveSuffix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/
+	isDecimalSeparatorAlwaysShown.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/setCurrency.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/
+	setDecimalFormatSymbols.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/
+	setDecimalSeparatorAlwaysShown.java: New file;
+	* gnu/testlet/java/text/DecimalFormat/setGroupingSize.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/setMultiplier.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/setNegativePrefix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/setNegativeSuffix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/setPositivePrefix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/setPositiveSuffix.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/topattern.java (test): pass
+	modified 'dfs' back to 'df';
+	* gnu/testlet/java/text/DecimalFormat/toLocalizedPattern.java: New
+	file;
+	* gnu/testlet/java/text/DecimalFormat/toPattern.java: New file;
+
+2005-03-12  Audrius Meskauskas  <audriusa@bluewin.ch>
 
 	* gnu/testlet/gnu/javax/swing/text/html/parser/
 	support/Parser/supplementaryNotifications.java,
