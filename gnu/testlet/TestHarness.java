@@ -103,6 +103,9 @@ public abstract class TestHarness
   public abstract InputStream getResourceStream (String name) 
     throws ResourceNotFoundException;
 
+  // Provide a directory name for writing temporary files.
+  public abstract String getTempDirectory ();
+
   // This can be used to mark a known place in a testlet.  It is
   // useful if you have a large number of tests -- it makes it easier
   // to find a failing test in the source code.

@@ -1,6 +1,6 @@
-# Makefile.in generated automatically by automake 1.4 from Makefile.am
+# Makefile.in generated automatically by automake 1.3b from Makefile.am
 
-# Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+# Copyright (C) 1994, 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
@@ -46,7 +46,7 @@ AUTOMAKE = @AUTOMAKE@
 AUTOHEADER = @AUTOHEADER@
 
 INSTALL = @INSTALL@
-INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 transform = @program_transform_name@
@@ -63,6 +63,8 @@ JAVAC = @JAVAC@
 MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 SHELL = @SHELL@
+SRCDIR = @SRCDIR@
+TMPDIR = @TMPDIR@
 VERSION = @VERSION@
 
 AUTOMAKE_OPTIONS = foreign
@@ -70,14 +72,15 @@ AUTOMAKE_OPTIONS = foreign
 JCFLAGS = -g
 JC1FLAGS = -g
 
-TESTFLAGS = 
+TESTFLAGS =
 
 check_DATA = classes.stamp
 
-harness_files = gnu/testlet/SimpleTestHarness.java 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java 	gnu/testlet/ResourceNotFoundException.java
+harness_files = gnu/testlet/SimpleTestHarness.java \
+	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
+	gnu/testlet/ResourceNotFoundException.java
 
-
-KEYS = 
+KEYS =
 
 @USE_GCJ_TRUE@java_files = $(harness_files) $(CHOICES)
 @USE_GCJ_TRUE@class_files = $(patsubst %.java,%.class,$(java_files))
@@ -85,15 +88,15 @@ KEYS =
 
 @USE_GCJ_TRUE@check_PROGRAMS = SimpleTestHarness
 
-@USE_GCJ_TRUE@SimpleTestHarness_SOURCES = 
+@USE_GCJ_TRUE@SimpleTestHarness_SOURCES =
 @USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = classes.stamp $(javao_files)
 @USE_GCJ_TRUE@SimpleTestHarness_LDADD = $(javao_files)
 @USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 @USE_GCJ_TRUE@SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 
 @USE_GCJ_TRUE@MOSTLYCLEANFILES = $(javao_files)
-
 @USE_GCJ_TRUE@CLEANFILES = $(class_files) classes.stamp
+
 @USE_GCJ_FALSE@CLEANFILES = classes.stamp
 
 SUFFIXES = .class .java
@@ -113,14 +116,15 @@ aclocal.m4 configure configure.in install-sh missing mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
-GZIP_ENV = --best
+GZIP = --best
 SOURCES = $(SimpleTestHarness_SOURCES)
 OBJECTS = $(SimpleTestHarness_OBJECTS)
 
-all: all-redirect
+all: Makefile
+
 .SUFFIXES:
 .SUFFIXES: .S .c .class .java .o .s
-$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile
 
 Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
@@ -163,9 +167,31 @@ maintainer-clean-compile:
 SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_DEPENDENCIES)
 	@rm -f SimpleTestHarness
 	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
-tags: TAGS
-TAGS:
 
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP)
+	here=`pwd` && cd $(srcdir) \
+	  && mkid -f$$here/ID $(SOURCES) $(HEADERS) $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || (cd $(srcdir) && etags $(ETAGS_ARGS) $$tags  $$unique $(LISP) -o $$here/TAGS)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	-rm -f TAGS ID
+
+maintainer-clean-tags:
 
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -175,7 +201,7 @@ top_distdir = $(distdir)
 # tarfile.
 distcheck: dist
 	-rm -rf $(distdir)
-	GZIP=$(GZIP_ENV) $(TAR) zxf $(distdir).tar.gz
+	GZIP=$(GZIP) $(TAR) zxf $(distdir).tar.gz
 	mkdir $(distdir)/=build
 	mkdir $(distdir)/=inst
 	dc_install_base=`cd $(distdir)/=inst && pwd`; \
@@ -188,18 +214,16 @@ distcheck: dist
 	  && $(MAKE) $(AM_MAKEFLAGS) installcheck \
 	  && $(MAKE) $(AM_MAKEFLAGS) dist
 	-rm -rf $(distdir)
-	@banner="$(distdir).tar.gz is ready for distribution"; \
-	dashes=`echo "$$banner" | sed s/./=/g`; \
-	echo "$$dashes"; \
-	echo "$$banner"; \
-	echo "$$dashes"
+	@echo "========================"; \
+	echo "$(distdir).tar.gz is ready for distribution"; \
+	echo "========================"
 dist: distdir
 	-chmod -R a+r $(distdir)
-	GZIP=$(GZIP_ENV) $(TAR) chozf $(distdir).tar.gz $(distdir)
+	GZIP=$(GZIP) $(TAR) chozf $(distdir).tar.gz $(distdir)
 	-rm -rf $(distdir)
 dist-all: distdir
 	-chmod -R a+r $(distdir)
-	GZIP=$(GZIP_ENV) $(TAR) chozf $(distdir).tar.gz $(distdir)
+	GZIP=$(GZIP) $(TAR) chozf $(distdir).tar.gz $(distdir)
 	-rm -rf $(distdir)
 distdir: $(DISTFILES)
 	-rm -rf $(distdir)
@@ -212,39 +236,28 @@ distdir: $(DISTFILES)
 	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --foreign Makefile
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
-	  if test -d $$d/$$file; then \
-	    cp -pr $$/$$file $(distdir)/$$file; \
-	  else \
-	    test -f $(distdir)/$$file \
-	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
-	    || cp -p $$d/$$file $(distdir)/$$file || :; \
-	  fi; \
+	  test -f $(distdir)/$$file \
+	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	  || cp -p $$d/$$file $(distdir)/$$file; \
 	done
-info-am:
-info: info-am
-dvi-am:
-dvi: dvi-am
-check-am: all-am
-	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS) $(check_DATA)
+info:
+dvi:
+check: all $(check_PROGRAMS) $(check_DATA)
 	$(MAKE) $(AM_MAKEFLAGS) check-local
-check: check-am
-installcheck-am:
-installcheck: installcheck-am
-install-exec-am:
-install-exec: install-exec-am
+installcheck:
+install-exec: 
+	@$(NORMAL_INSTALL)
 
-install-data-am:
-install-data: install-data-am
+install-data: 
+	@$(NORMAL_INSTALL)
 
-install-am: all-am
-	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
-install: install-am
-uninstall-am:
-uninstall: uninstall-am
-all-am: Makefile
-all-redirect: all-am
+install: install-exec install-data all
+	@:
+
+uninstall: 
+
 install-strip:
-	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
 installdirs:
 
 
@@ -259,39 +272,31 @@ distclean-generic:
 	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
 
 maintainer-clean-generic:
-mostlyclean-am:  mostlyclean-checkPROGRAMS mostlyclean-compile \
-		mostlyclean-generic
+mostlyclean:  mostlyclean-checkPROGRAMS mostlyclean-compile \
+		mostlyclean-tags mostlyclean-generic
 
-mostlyclean: mostlyclean-am
+clean:  clean-checkPROGRAMS clean-compile clean-tags clean-generic \
+		mostlyclean
 
-clean-am:  clean-checkPROGRAMS clean-compile clean-generic \
-		mostlyclean-am
-
-clean: clean-am
-
-distclean-am:  distclean-checkPROGRAMS distclean-compile \
-		distclean-generic clean-am
-
-distclean: distclean-am
+distclean:  distclean-checkPROGRAMS distclean-compile distclean-tags \
+		distclean-generic clean
 	-rm -f config.status
 
-maintainer-clean-am:  maintainer-clean-checkPROGRAMS \
-		maintainer-clean-compile maintainer-clean-generic \
-		distclean-am
+maintainer-clean:  maintainer-clean-checkPROGRAMS \
+		maintainer-clean-compile maintainer-clean-tags \
+		maintainer-clean-generic distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
-
-maintainer-clean: maintainer-clean-am
 	-rm -f config.status
 
 .PHONY: mostlyclean-checkPROGRAMS distclean-checkPROGRAMS \
 clean-checkPROGRAMS maintainer-clean-checkPROGRAMS mostlyclean-compile \
-distclean-compile clean-compile maintainer-clean-compile tags distdir \
-info-am info dvi-am dvi check-local check check-am installcheck-am \
-installcheck install-exec-am install-exec install-data-am install-data \
-install-am install uninstall-am uninstall all-redirect all-am all \
-installdirs mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+distclean-compile clean-compile maintainer-clean-compile tags \
+mostlyclean-tags distclean-tags clean-tags maintainer-clean-tags \
+distdir info dvi check-local installcheck install-exec install-data \
+install uninstall all installdirs mostlyclean-generic distclean-generic \
+clean-generic maintainer-clean-generic clean mostlyclean distclean \
+maintainer-clean
 
 
  include choices
@@ -318,7 +323,7 @@ FORCE:
 @USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS) $(CHOICES)
-@USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness $(TESTFLAGS) $(srcdir)
+@USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness $(TESTFLAGS)
 
 @USE_GCJ_TRUE@recheck:
 @USE_GCJ_TRUE@	test -f .save-keys || : > .save-keys
@@ -327,7 +332,7 @@ FORCE:
 
 @USE_GCJ_FALSE@check-local: classes.stamp
 @USE_GCJ_FALSE@	cat classes | \
-@USE_GCJ_FALSE@	$(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS) $(srcdir)
+@USE_GCJ_FALSE@	$(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
 
 @USE_GCJ_FALSE@recheck:
 @USE_GCJ_FALSE@	test -f .save-keys || : > .save-keys

@@ -23,4 +23,22 @@ AC_PROG_INSTALL
 
 AC_SUBST(SHELL)
 
-AC_OUTPUT(Makefile)
+SRCDIR=`(cd $srcdir; pwd)`
+AC_SUBST(SRCDIR)
+
+dnl Specify the tempdir.
+AC_ARG_WITH(tmpdir,
+[  --with-tmpdir                    Use gcj, not javac, to build class files],
+TMPDIR="$with_tmpdir")
+
+TMPDIR=${TMPDIR-/tmp}
+AC_SUBST(TMPDIR)
+
+if test ! -d gnu; then
+  mkdir gnu
+fi
+if test ! -d gnu/testlet; then
+  mkdir gnu/testlet
+fi
+
+AC_OUTPUT(Makefile gnu/testlet/config.java)

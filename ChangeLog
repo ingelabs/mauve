@@ -1,3 +1,14 @@
+1999-03-16  Anthony Green  <green@cygnus.com>
+
+	* configure.in: Add --with-tmpdir option
+	* configure: Rebuilt.
+	
+	* Makefile.am: Don't pass the source directory to SimpleTestHarness.		* Makefile.in: Rebuilt.
+
+	* gnu/testlet/TestHarness.java: Add getTempDirectory.
+	* gnu/testlet/SimpleTestHarness.java: Use config interface
+	to get srcdir and tmpdir. Add getTempDirectory.
+
 1999-03-14  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/lang/Boolean/BooleanTest.java: Use TestHarness.

@@ -26,7 +26,9 @@
 package gnu.testlet;
 import java.io.*;
 
-public class SimpleTestHarness extends TestHarness
+public class SimpleTestHarness 
+    extends TestHarness 
+    implements gnu.testlet.config
 {
   private int count = 0;
   private int failures = 0;
@@ -35,7 +37,6 @@ public class SimpleTestHarness extends TestHarness
   private boolean debug = false;
   private String description;
   private String last_check;
-  private String srcdir;
 
   private final String getDescription (String pf)
     {
@@ -62,6 +63,11 @@ public class SimpleTestHarness extends TestHarness
   private String getSourceDirectory ()
     {
       return srcdir;
+    }
+
+  public String getTempDirectory ()
+    {
+      return tmpdir;
     }
 
   public Reader getResourceReader (String name) 
@@ -203,16 +209,14 @@ public class SimpleTestHarness extends TestHarness
       return failures > 0 ? 1 : 0;
     }
 
-  protected SimpleTestHarness (String srcdir, boolean verbose, boolean debug)
+  protected SimpleTestHarness (boolean verbose, boolean debug)
     {
-      this.srcdir = srcdir;
       this.verbose = verbose;
       this.debug = debug;
     }
 
   public static void main (String[] args)
     {
-      String srcdir = null;
       boolean verbose = false;
       boolean debug = false;
       int i;
@@ -226,17 +230,9 @@ public class SimpleTestHarness extends TestHarness
 	  else
 	    break;
         }
-      if (i == args.length - 1)
-        srcdir = args[i];
-
-      if (srcdir == null) 
-	{
-	  System.err.println ("usage: SimpleTestHarness [-verbose] [-debug] SRCDIR");
-	  System.exit(1);
-	}
 
       SimpleTestHarness harness
-	= new SimpleTestHarness (args[args.length - 1], verbose, debug);
+	= new SimpleTestHarness (verbose, debug);
 
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));

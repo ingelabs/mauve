@@ -56,7 +56,7 @@ SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 check-local: $(check_PROGRAMS) $(CHOICES)
-	cat classes | ./SimpleTestHarness $(TESTFLAGS) $(srcdir)
+	cat classes | ./SimpleTestHarness $(TESTFLAGS)
 
 recheck:
 	test -f .save-keys || : > .save-keys
@@ -71,7 +71,7 @@ else  ## USE_GCJ
 
 check-local: classes.stamp
 	cat classes | \
-	$(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS) $(srcdir)
+	$(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
 
 recheck:
 	test -f .save-keys || : > .save-keys
