@@ -86,5 +86,26 @@ public class regress implements Testlet
     GregorianCalendar g = new GregorianCalendar (1, 0, 1, 12, 0, 0);
     harness.check (f.format(g.getTime()), "0001-01-01",
 		   "4 digit year");
+
+    long someTime = 1098968427000L; // 04-10-28 14:00:27 GMT
+    SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HHmmss z");
+
+    sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+    String str = sdf.format(new Date(someTime));
+
+    sdf.setTimeZone(TimeZone.getTimeZone("CET"));
+    try
+      {
+        harness.check(sdf.parse(str).getTime(), someTime,
+                      "DST timezone");
+      }
+     catch (ParseException _)
+      {
+        harness.debug (_);
+        harness.check (false, "DST timezone");
+      }
+
+
+
   }
 }
