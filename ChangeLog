@@ -1,3 +1,8 @@
+2002-06-12  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/File/jdk11.java (test): Added test for File
+	with empty path.
+
 2002-05-13  Tom Tromey  <tromey@redhat.com>
 
 	* configure, Makefile.in: Rebuilt.

@@ -1,7 +1,7 @@
 /*************************************************************************
 /* jdk11.java -- java.io.File 1.1 tests
 /*
-/* Copyright (c) 2001 Free Software Foundation, Inc.
+/* Copyright (c) 2001, 2002 Free Software Foundation, Inc.
 /*
 /* This program is free software; you can redistribute it and/or modify
 /* it under the terms of the GNU General Public License as published 
@@ -241,6 +241,20 @@ public class jdk11 implements Testlet, FilenameFilter
       {
 	harness.check (false, "getCanonicalPath () " + ioe);
       }
+
+    // Another getCanonicalPath() test.
+    boolean ok = false;
+    try
+      {
+	File x1 = new File ("").getCanonicalFile ();
+	File x2 = new File (".").getCanonicalFile ();
+	ok = x1.equals(x2);
+      }
+    catch (IOException ioe)
+      {
+	// Nothing.
+      }
+    harness.check (ok, "getCanonicalFile with empty path");
 
     // getName ();
     harness.debug ("tmp3.getName () = " + tmp3.getName ());
