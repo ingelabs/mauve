@@ -1,5 +1,8 @@
 1999-05-07  Tom Tromey  <tromey@cygnus.com>
 
+	* Makefile.in: Rebuilt.
+	* Makefile.am (%.o): Depend on classes.stamp.
+
 	* configure: Rebuilt.
 	* configure.in: Fixed help output for --with-tmpdir.
 

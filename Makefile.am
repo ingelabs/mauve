@@ -56,7 +56,7 @@ SimpleTestHarness_LDADD = $(javao_files)
 SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 
-%.o: %.class
+%.o: %.class classes.stamp
 	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 check-local: $(check_PROGRAMS) $(CHOICES)
