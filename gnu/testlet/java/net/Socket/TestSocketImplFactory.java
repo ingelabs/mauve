@@ -60,11 +60,15 @@ public class TestSocketImplFactory
       }
     catch (IllegalAccessException iae)
       {
-	throw new InternalError("Unable to get default SocketImpl " + iae);
+	Error e = new InternalError("Unable to get default SocketImpl " + iae);
+	e.initCause(iae);
+	throw e;
       }
     catch (ClassNotFoundException cnf)
       {
-	throw new InternalError("Unable to get default SocketImpl " + cnf);
+	Error e = new InternalError("Unable to get default SocketImpl " + cnf);
+	e.initCause(cnf);
+	throw e;
       }
 
     if (impl == null)

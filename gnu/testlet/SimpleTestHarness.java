@@ -40,6 +40,7 @@ public class SimpleTestHarness
   private boolean verbose = false;
   private boolean debug = false;
   private boolean results_only=false;
+  private boolean exceptions=false;
   private String description;
   private String last_check;
   private TestReport report = null;
@@ -249,9 +250,11 @@ public class SimpleTestHarness
       {
 	String d = "FAIL: uncaught exception loading " + name;
 	currentResult.addException(ex, "failed loading class " + name);
-	if (verbose)
+	if (verbose || exceptions)
 	  d += ": " + ex.toString();
 	System.out.println(d);
+	if (exceptions)
+	  ex.printStackTrace(System.out);
 	debug(ex);
 	if (ex instanceof InstantiationException ||
 	    ex instanceof IllegalAccessException)
@@ -276,9 +279,11 @@ public class SimpleTestHarness
                     "\" number " + (count + 1));
 	    String d = "FAIL: " + description + ": uncaught exception" + s;
 	    currentResult.addException(ex, "uncaught exception" + s);
-	    if (verbose)
+	    if (verbose || exceptions)
 	      d += ": " + ex.toString();
 	    System.out.println(d);
+	    if (exceptions)
+	      ex.printStackTrace(System.out);
 	    debug(ex);
 	    ++failures;
 	    ++total;
@@ -306,15 +311,17 @@ public class SimpleTestHarness
   
   protected SimpleTestHarness (boolean verbose, boolean debug)
   {
-    this(verbose, debug, false, null);
+    this(verbose, debug, false, false, null);
   }
   
   protected SimpleTestHarness (boolean verbose, boolean debug,
-		               boolean results_only, TestReport report)
+		               boolean results_only, boolean exceptions,
+			       TestReport report)
   {
     this.verbose = verbose;
     this.debug = debug;
     this.results_only = results_only;
+    this.exceptions = exceptions;
     this.report = report;
     
     try
@@ -340,6 +347,7 @@ public class SimpleTestHarness
     boolean verbose = false;
     boolean debug = false;
     boolean results_only = false;
+    boolean exceptions = false;
     String file = null;
     String xmlfile = null;
     TestReport report = null;
@@ -357,6 +365,8 @@ public class SimpleTestHarness
 	    verbose = false;
 	    debug = false;
 	  }
+	else if (args[i].equals("-exceptions"))
+	  exceptions = true;
 	else if (args[i].equalsIgnoreCase("-file")) {
 	  if (++i >= args.length) 
 	    throw new RuntimeException("No file path after '-file'.  Exit");
@@ -376,7 +386,7 @@ public class SimpleTestHarness
     }
     
     SimpleTestHarness harness =
-      new SimpleTestHarness(verbose, debug, results_only, report);
+      new SimpleTestHarness(verbose, debug, results_only, exceptions, report);
     
     BufferedReader r = null;
     if (file != null)

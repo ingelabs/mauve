@@ -1,3 +1,11 @@
+2005-01-02  Archie Cobbs  <archie@dellroad.org>
+
+	* README, gnu/testlet/java/net/Socket/TestSocketImplFactory.java,
+	gnu/testlet/SimpleTestHarness.java: Add new flag "-exceptions"
+	to SimpleTestHarness to make it print exception traces.
+	*  gnu/testlet/java/net/Socket/TestSocketImplFactory.java:
+	Use exception chaining when re-throwing exceptions.
+
 2005-01-02  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/javax/swing/text/GapContent/GapContentTest.java:
@@ -24,7 +32,7 @@
 	* gnu/testlet/locales/LocaleTest.java: Fixed some expected data and
 	added test data for et_EE (Estonia).
 
-2004-12-30  Archie Cobbs <archie@dellroad.org>
+2004-12-30  Archie Cobbs  <archie@dellroad.org>
 
 	* gnu/testlet/java/lang/Class/init.java: made existing tests
 	more strict and added a few more test cases

@@ -108,6 +108,9 @@ ones FAIL but also which ones PASS). Then you can use the '-resultsonly'
 command-line argument. This will also suppress the printing of a summary
 at the end.
 
+The '-exceptions' command-line argument to causes the display of full
+stack traces when a test fails due to an uncaught exception.
+
 You may use the environment variable TESTFLAGS to provide these
 flags to the invocation of the SimpleTestHarness in the `check' target.
 For instance,
