@@ -1,3 +1,10 @@
+2002-09-14  Stephen Crawley <crawley@dstc.edu.au>
+	* .cvsignore: New file. Tell CVS to ignore various generated
+	files, log files, temporary files and so on.
+	* gnu/testlet/.cvsignore: Ignore config.java - it is generated
+	* gnu/testlet/java/io/RandomAccessFile/raf.java: Avoid going
+	into an infinite loop if seekBytes seeks beyond the end-of-file.
+
 2002-09-11  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/net/Socket/MySocketImpl.java (connect,

@@ -26,39 +26,45 @@ import java.io.*;
 
 public class raf implements Testlet
 {
+
   public void test (TestHarness harness)
   {
     boolean ok = true;
 
-    try
-      {
-	RandomAccessFile raf = new RandomAccessFile("raftmpfile", "rw");
-	raf.writeUTF("foobar");
-	raf.seek(0);
-
-	int skipped;
-	while ((skipped = raf.skipBytes(1)) == 1)
+    try {
+      RandomAccessFile raf = new RandomAccessFile("raftmpfile", "rw");
+      raf.writeUTF("foobar");
+      raf.seek(0);
+      
+      int skipped = 0;
+      // Avoid going into an infinite loop if skipBytes() keeps skipping
+      // beyond the nominal end-of-file.
+      for (int i = 0; i < 20; i++) {
+	skipped = raf.skipBytes(1);
+	if (skipped == 1) {
 	  harness.debug("skipped 1 byte");
-
-	if (skipped != 0)
-	  {
-	    ok = false;
-	    harness.debug("What's going on?  skipped = " + skipped +
-			  ", not 0");
-	  }
-	if (raf.getFilePointer() != raf.length())
-	  {
-	    ok = false;
-	    harness.debug("What's going on?  filePointer != length!");
-	    harness.debug("  filePointer = " + raf.getFilePointer());
-	    harness.debug("  length = " + raf.length());
-	  }
+	}
+	else {
+	  break;
+	}
       }
-    catch (IOException _)
-      {
+      
+      if (skipped != 0) {
 	ok = false;
+	harness.debug("What's going on?  skipped = " + skipped +
+		      ", not 0");
       }
-
+      if (raf.getFilePointer() != raf.length()) {
+	ok = false;
+	harness.debug("What's going on?  filePointer != length!");
+	harness.debug("  filePointer = " + raf.getFilePointer());
+	harness.debug("  length = " + raf.length());
+      }
+    }
+    catch (IOException ex) {
+      ok = false;
+    }
+    
     harness.check(ok);
   }
 }
