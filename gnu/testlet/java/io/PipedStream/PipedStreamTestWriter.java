@@ -12,6 +12,8 @@ StringBufferInputStream sbis;
 PipedOutputStream out;
 TestHarness harness;
 
+private boolean isReady = false;
+
 public
 PipedStreamTestWriter(TestHarness harness)
 {
@@ -40,6 +42,19 @@ getStr()
   return(str);
 }
 
+public synchronized void
+waitTillReady()
+{
+  while (!isReady)
+    {
+      try
+	{
+	  this.wait();
+	}
+      catch (InterruptedException ie) { /* ignore */ }
+    }
+}
+
 public void
 run() 
 {
@@ -51,6 +66,12 @@ run()
     {
       int b = sbis.read();
       out.write(b);
+
+      synchronized(this)
+	{
+	  isReady = true;
+	  this.notify();
+	}
 
       while ((bytes_read = sbis.read(buf)) != -1)
         out.write(buf, 0, bytes_read);

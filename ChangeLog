@@ -1,3 +1,12 @@
+2003-02-14  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/PipedStream/PipedStreamTestWriter.java
+	(ready): New field.
+	(waitTillReady): New method.
+	(run): Set ready field.
+	* gnu/testlet/java/io/PipedStream/Test.java (test): Call waitTillReady
+	before testing available().
+
 2003-02-13  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/InputStreamReader/jdk11.java (test): Just check
