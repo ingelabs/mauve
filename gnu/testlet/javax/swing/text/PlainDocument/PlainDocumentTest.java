@@ -32,41 +32,69 @@ public class PlainDocumentTest
   private void checkElement(TestHarness harness, Element elem,
 			    AttributeSet attributes, int children,
 			    Element parent, int p0, int p1,
-			    boolean leaf)
+			    boolean leaf, String name)
   {
-    //harness.check(elem.getAttributes() == null, "unexpected value for Element.getAttributes()");
-    harness.check(elem.getElementCount() == children, "unexpected number of children: " + elem.getElementCount());
-    harness.check(elem.getParentElement() == parent, "Wrong parent");
-    harness.check(elem.getStartOffset() == p0, "start offset: " + elem.getStartOffset() + " (" + p0 + " expected");
-    harness.check(elem.getEndOffset() == p1, "end offset: " + elem.getEndOffset() + " (" + p1 + " expected");
-    harness.check(elem.isLeaf() == leaf, "element is leaf or branch element");
+    if (elem == null)
+      {
+	harness.debug("element is null");
+	return;
+      }
+    harness.check(elem.getAttributes() != attributes, "unexpected value for Element.getAttributes()");
+    if (elem.getAttributes() != null)
+      harness.check(elem.getAttributes().getAttributeCount(), 0, "number of attributes");
+    harness.check(elem.getElementCount(), children, "number of children");
+    harness.check(elem.getParentElement() == parent, "wrong parent");
+    harness.check(elem.getStartOffset(), p0, "start offset");
+    harness.check(elem.getEndOffset(), p1, "end offset");
+    harness.check(elem.isLeaf(), leaf, "element is leaf element");
+    harness.check(elem.getName(), name, "element name");
   }
 
   public void test(TestHarness harness)
   {
+    Element root, elem;
     PlainDocument doc = new PlainDocument();
 
+    // Check Element tree.
+    root = doc.getDefaultRootElement();
+    checkElement(harness, root, null, 1, null, 0, doc.getLength() + 1, false, "paragraph");
+    
+    elem = root.getElement(0);
+    checkElement(harness, elem, null, 0, root, 0, doc.getLength() + 1, true, "content");
+    
     try
       {
 	doc.insertString(0, "This is a test", null);
 	harness.check(doc.getText(0, doc.getLength()), "This is a test", "insertString");
+	harness.check(doc.getDefaultRootElement().getStartOffset(), 0, "start offset");
+	harness.check(doc.getDefaultRootElement().getEndOffset(), 15, "end offset (insertString)");
 
 	doc.insertString(14, "case", null);
 	harness.check(doc.getText(0, doc.getLength()), "This is a testcase", "insertString");
+	harness.check(doc.getDefaultRootElement().getStartOffset(), 0, "start offset");
+	harness.check(doc.getDefaultRootElement().getEndOffset(), 19, "end offset (insertString)");
 
 	doc.insertString(10, "little ", null);
 	harness.check(doc.getText(0, doc.getLength()), "This is a little testcase", "insertString");
+	harness.check(doc.getDefaultRootElement().getStartOffset(), 0, "start offset");
+	harness.check(doc.getDefaultRootElement().getEndOffset(), 26, "end offset (insertString)");
       }
     catch (Exception e)
       {
-	harness.fail("Unexpected expection");
+	harness.debug(e);
+	harness.fail("unexpected exception");
       }
 
     // Check build Element tree.
-    Element root = doc.getDefaultRootElement();
-    checkElement(harness, root, null, 1, null, 0, doc.getLength() + 1, false);
+    root = doc.getDefaultRootElement();
+    checkElement(harness, root, null, 1, null, 0, doc.getLength() + 1, false, "paragraph");
 
-    Element elem = root.getElement(0);
-    checkElement(harness, elem, null, 0, root, 0, doc.getLength() + 1, true);
+    elem = root.getElement(0);
+    checkElement(harness, elem, null, 0, root, 0, doc.getLength() + 1, true, "content");
+
+    elem = doc.getParagraphElement(0);
+    checkElement(harness, elem, null, 0, root, 0, doc.getLength() + 1, true, "content");
+
+    harness.check(elem.getElement(0) == null, "element is null");
   }
 }

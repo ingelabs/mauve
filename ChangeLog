@@ -1,5 +1,10 @@
 2005-01-06  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/javax/swing/text/PlainDocument/PlainDocumentTest.java:
+	Added more testcases.
+
+2005-01-06  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/util/SimpleTimeZone/equals.java:
 	Reformatted to become readable.
 
