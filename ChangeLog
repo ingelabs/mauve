@@ -1,3 +1,14 @@
+2004-12-30  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/nio/ByteBuffer/compact.java,
+	gnu/testlet/java/nio/CharBuffer/compact.java,
+	gnu/testlet/java/nio/DoubleBuffer/compact.java,
+	gnu/testlet/java/nio/FloatBuffer/compact.java,
+	gnu/testlet/java/nio/IntBuffer/compact.java,
+	gnu/testlet/java/nio/LongBuffer/compact.java,
+	gnu/testlet/java/nio/ShortBuffer/compact.java:
+	New testcases.
+
 2004-12-27  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/nio/ByteBuffer/Allocating.java
