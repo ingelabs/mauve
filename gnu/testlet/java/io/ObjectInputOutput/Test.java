@@ -2,8 +2,8 @@
 
 /* Test.java -- Classes used to test Object Input/Output
 
-   Copyright (c) 1999 by Free Software Foundation, Inc.
-   Written by Geoff Berry <gcb@gnu.org>.
+   Copyright (c) 1999, 2004 by Free Software Foundation, Inc.
+   Written by Geoff Berry <gcb@gnu.org>, Guilhem Lavaux <guilhem@kaffe.org>.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published
@@ -74,7 +74,8 @@ public abstract class Test
 			 new Extern (),
 			 new NoCallDefault (),
 			 new HairyGraph (),
-			 new GetPutField ()};
+			 new GetPutField (),
+                         new FinalField ()};
   }
 
   static Test[] getErrorTests ()
@@ -420,5 +421,29 @@ public abstract class Test
     int x;
     int y;
     NotSerial o;    
+  }
+
+  static class FinalField extends Test implements Serializable
+  {
+    final int a;
+    final String s;
+
+    FinalField() 
+    {
+      s = "C";
+      a = 2;
+    }
+    
+    Object[] getTestObjs ()
+    {
+      return new Object[] { new FinalField () };
+    }
+    
+    public boolean equals (Object o)
+    {
+      FinalField oo = (FinalField)o;
+      return oo.a == a
+	&& oo.s.equals (s);
+    }
   }
 }

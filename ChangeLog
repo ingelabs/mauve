@@ -1,3 +1,11 @@
+2004-04-07  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/io/ObjectInput/Test.java: New test (FinalField) to
+	check that ObjectInputStream is able to set final fields.
+
+	* gnu/testlet/java/io/ObjectInput/Test$FinalField.data: New reference
+	data.
+
 2004-04-05  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/lang/Character/unicode.java: Fixed up crappy 
 	indentation, etc prior to making some real fixes.
