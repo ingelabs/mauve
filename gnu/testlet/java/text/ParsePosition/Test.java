@@ -29,7 +29,6 @@ package gnu.testlet.java.text.ParsePosition;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.text.*;
-import java.util.*;
 
 public class Test implements Testlet
 {

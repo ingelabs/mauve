@@ -8,8 +8,6 @@
 
 package gnu.testlet.java.io.BufferedOutputStream;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 import java.io.*;
 
 public class helper extends OutputStream

@@ -25,7 +25,6 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 import java.awt.geom.FlatteningPathIterator;
-import java.awt.geom.Line2D;
 import java.awt.geom.PathIterator;
 
 

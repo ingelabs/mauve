@@ -41,7 +41,6 @@ package gnu.testlet.java.text.MessageFormat;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.text.*;
-import java.util.Date;
 import java.math.BigInteger;
 import java.util.Map;
 

@@ -22,8 +22,6 @@
 */
 
 package gnu.testlet.java.net.URL;
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 import java.net.*;
 import java.io.IOException; 
 

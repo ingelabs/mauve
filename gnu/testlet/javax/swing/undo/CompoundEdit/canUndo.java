@@ -26,7 +26,6 @@ import gnu.testlet.TestHarness;
 
 import javax.swing.undo.AbstractUndoableEdit;
 import javax.swing.undo.CompoundEdit;
-import javax.swing.undo.UndoableEdit;
 
 
 /**

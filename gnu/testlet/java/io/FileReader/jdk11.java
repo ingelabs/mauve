@@ -25,7 +25,6 @@ package gnu.testlet.java.io.FileReader;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import gnu.testlet.SimpleTestHarness;
-import java.io.FileDescriptor;
 import java.io.FileReader;
 import java.io.FileInputStream;
 import java.io.File;

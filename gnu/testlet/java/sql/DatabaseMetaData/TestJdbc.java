@@ -14,7 +14,6 @@
 
 package gnu.testlet.java.sql.DatabaseMetaData;
 
-import java.sql.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 

@@ -51,11 +51,6 @@ public class DatagramSocketTest implements Testlet
 			harness.fail("Error : test_Basics failed - 2 " + 
 				"Not able to create a socket ");
 		}
-		catch(IOException e )
-		{
-			harness.fail("Error : test_Basics failed - 3 " + 
-				"socket exception is not thrown properly");
-		}
 		catch(IllegalArgumentException e )
 		{
 			harness.fail("Error : test_Basics failed - 3a " + 

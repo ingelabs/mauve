@@ -28,7 +28,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.io.ObjectStreamClass;
 import java.io.ObjectStreamField;
-import java.io.Serializable;
 
 public class ProxyTest implements Testlet, InvocationHandler
 {

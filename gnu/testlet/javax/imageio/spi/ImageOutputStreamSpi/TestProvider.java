@@ -21,9 +21,6 @@
 
 package gnu.testlet.javax.imageio.spi.ImageOutputStreamSpi;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
-
 import java.io.File;
 import java.util.Locale;
 import javax.imageio.spi.ImageOutputStreamSpi;

@@ -27,7 +27,6 @@
 package gnu.testlet.java.net.DatagramPacket;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.io.*;
 import java.net.*;
 
 /**************************************************************

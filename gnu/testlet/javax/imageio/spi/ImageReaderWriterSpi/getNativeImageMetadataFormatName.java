@@ -25,8 +25,6 @@ package gnu.testlet.javax.imageio.spi.ImageReaderWriterSpi;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import javax.imageio.spi.ImageReaderWriterSpi;
-
 
 /**
  * @author <a href="mailto:brawer@dandelis.ch">Sascha Brawer</a>

@@ -25,9 +25,6 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.DataBufferInt;
-import java.awt.image.DataBufferUShort;
 import java.awt.image.SinglePixelPackedSampleModel;
 
 

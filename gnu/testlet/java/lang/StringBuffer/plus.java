@@ -22,7 +22,6 @@
 package gnu.testlet.java.lang.StringBuffer;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.io.UnsupportedEncodingException;
 
 // This test uses the `+' operator to test StringBuffer.
 public class plus implements Testlet

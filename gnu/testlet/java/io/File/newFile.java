@@ -23,8 +23,6 @@
 package gnu.testlet.java.io.File;
 
 import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;

@@ -25,7 +25,6 @@ package gnu.testlet.java.security.Provider;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import java.security.Security;
 import java.security.Provider;
 
 public class NameVersionInfo extends Provider implements Testlet

@@ -23,7 +23,6 @@ package gnu.testlet.java.lang.reflect.Method;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.lang.reflect.Method;
-import java.lang.reflect.InvocationTargetException;
 
 public class toString implements Testlet
 {

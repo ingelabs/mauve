@@ -26,8 +26,6 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 import java.util.Arrays;
-import javax.imageio.spi.ImageReaderWriterSpi;
-
 
 /**
  * @author <a href="mailto:brawer@dandelis.ch">Sascha Brawer</a>

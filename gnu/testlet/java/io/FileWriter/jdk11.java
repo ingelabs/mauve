@@ -25,11 +25,9 @@ package gnu.testlet.java.io.FileWriter;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import gnu.testlet.SimpleTestHarness;
-import java.io.FileDescriptor;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class jdk11 implements Testlet

@@ -23,7 +23,6 @@ package gnu.testlet.java.util.zip.InflaterInputStream;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.ResourceNotFoundException;
 import java.util.zip.*;
 import java.io.*;
 

@@ -24,8 +24,6 @@ package gnu.testlet.javax.swing.undo.UndoableEditSupport;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import javax.swing.event.UndoableEditEvent;
-import javax.swing.event.UndoableEditListener;
 import javax.swing.undo.CompoundEdit;
 import javax.swing.undo.UndoableEditSupport;
 

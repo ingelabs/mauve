@@ -23,13 +23,7 @@ package gnu.testlet.java.io.ObjectStreamClass;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.io.Externalizable;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.io.ObjectStreamClass;
-import java.io.Serializable;
-import java.util.Hashtable;
 import java.util.Vector;
 
 public class Test implements Testlet

@@ -24,7 +24,6 @@ package gnu.testlet.java.awt.geom.RoundRectangle2D;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
 

@@ -22,7 +22,6 @@
 */
 
 package gnu.testlet.java.net.Socket;
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.net.*;
 import java.io.*;

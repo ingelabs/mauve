@@ -22,15 +22,8 @@
 
 package gnu.testlet.java.net.URLClassLoader;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import java.net.URL;
 import java.net.URLClassLoader;
-
-import java.util.jar.JarEntry;
-import java.util.jar.JarOutputStream;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;

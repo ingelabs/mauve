@@ -25,9 +25,6 @@ package gnu.testlet.javax.swing.undo.UndoManager;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import java.util.Vector;
-import javax.swing.undo.AbstractUndoableEdit;
-
 /**
  * @author <a href="mailto:brawer@dandelis.ch">Sascha Brawer</a>
  */

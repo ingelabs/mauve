@@ -1,6 +1,4 @@
 package gnu.testlet.java.lang.Number;
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 
 class NewNumber extends Number
 {

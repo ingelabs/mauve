@@ -23,7 +23,6 @@ package gnu.testlet.java.util.regex;
 
 import gnu.testlet.*;
 import java.nio.CharBuffer;
-import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.regex.*;
 

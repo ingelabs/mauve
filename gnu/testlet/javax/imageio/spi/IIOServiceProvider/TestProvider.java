@@ -21,9 +21,6 @@
 
 package gnu.testlet.javax.imageio.spi.IIOServiceProvider;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
-
 import java.util.Locale;
 import javax.imageio.spi.IIOServiceProvider;
 

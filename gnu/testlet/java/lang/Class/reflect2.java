@@ -24,7 +24,6 @@ package gnu.testlet.java.lang.Class;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.lang.reflect.*;
 
 public class reflect2 implements Testlet
 {

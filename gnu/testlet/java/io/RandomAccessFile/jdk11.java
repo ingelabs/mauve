@@ -31,9 +31,6 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import java.util.Date;
-
-
 public class jdk11
   implements Testlet
 {

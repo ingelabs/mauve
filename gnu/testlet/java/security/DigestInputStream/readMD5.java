@@ -23,7 +23,6 @@
 
 package gnu.testlet.java.security.DigestInputStream;
 
-import java.util.*;
 import java.io.*;
 import java.security.*;
 

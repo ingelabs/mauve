@@ -28,7 +28,6 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 import java.text.ChoiceFormat;
-import java.util.Locale;
 
 /**
  * @author John Leuner

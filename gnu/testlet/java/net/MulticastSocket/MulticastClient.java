@@ -22,10 +22,8 @@
 */
 
 package gnu.testlet.java.net.MulticastSocket;
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.net.*;
-import java.io.*;
 
 
 class MulticastClient extends Thread {

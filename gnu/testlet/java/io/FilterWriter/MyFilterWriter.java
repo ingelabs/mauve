@@ -25,10 +25,6 @@ package gnu.testlet.java.io.FilterWriter;
 import java.io.CharArrayWriter;
 import java.io.FilterWriter;
 import java.io.Writer;
-import java.io.IOException;
-
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 
 public class MyFilterWriter extends FilterWriter
 {

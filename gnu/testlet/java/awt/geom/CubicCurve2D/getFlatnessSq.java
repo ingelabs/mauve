@@ -24,8 +24,6 @@ package gnu.testlet.java.awt.geom.CubicCurve2D;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import java.awt.Point;
-import java.awt.geom.Point2D;
 import java.awt.geom.CubicCurve2D;
 
 

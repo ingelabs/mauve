@@ -23,8 +23,6 @@
 package gnu.testlet.java.nio.channels.FileChannel;
 
 import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;

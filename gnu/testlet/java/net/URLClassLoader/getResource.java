@@ -33,7 +33,6 @@ import java.net.URLClassLoader;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 public class getResource extends getResourceBase

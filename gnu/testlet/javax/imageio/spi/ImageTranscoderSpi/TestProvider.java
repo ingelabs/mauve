@@ -21,9 +21,6 @@
 
 package gnu.testlet.javax.imageio.spi.ImageTranscoderSpi;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
-
 import java.util.Locale;
 import javax.imageio.ImageTranscoder;
 import javax.imageio.spi.ImageTranscoderSpi;

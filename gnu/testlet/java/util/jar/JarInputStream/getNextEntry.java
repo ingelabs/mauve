@@ -23,9 +23,6 @@ package gnu.testlet.java.util.jar.JarInputStream;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.ResourceNotFoundException;
-import java.util.Enumeration;
-import java.util.zip.*;
 import java.util.jar.*;
 import java.io.*;
 

@@ -23,7 +23,6 @@ package gnu.testlet.javax.swing.JLabel;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.util.EventListener;
 import java.awt.*;
 import javax.swing.*;
 

@@ -21,9 +21,6 @@
 
 package gnu.testlet.javax.imageio.spi.ImageReaderWriterSpi;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
-
 import java.util.Locale;
 import javax.imageio.spi.ImageReaderWriterSpi;
 

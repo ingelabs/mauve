@@ -28,7 +28,6 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.IllegalPathStateException;
 import java.awt.geom.Line2D;
 import java.awt.geom.PathIterator;
-import java.awt.geom.Rectangle2D;
 
 
 /**

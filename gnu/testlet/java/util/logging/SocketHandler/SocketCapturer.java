@@ -21,8 +21,6 @@
 
 package gnu.testlet.java.util.logging.SocketHandler;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 import java.io.*;
 import java.net.*;
 

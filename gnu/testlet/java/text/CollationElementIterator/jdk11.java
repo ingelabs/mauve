@@ -25,10 +25,8 @@ package gnu.testlet.java.text.CollationElementIterator;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.text.Collator;
 import java.text.RuleBasedCollator;
 import java.text.CollationElementIterator;
-import java.util.Locale;
 
 public class jdk11 implements Testlet
 {

@@ -24,9 +24,6 @@ package gnu.testlet.java.util.logging.Handler;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
-
 
 /**
  * @author <a href="mailto:brawer@dandelis.ch">Sascha Brawer</a>

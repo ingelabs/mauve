@@ -25,7 +25,6 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.net.ServerSocket;
 import java.util.logging.SocketHandler;
-import java.util.logging.XMLFormatter;
 
 
 /**
