@@ -1,3 +1,12 @@
+2003-03-06  C. Brian Jones  <cbj@gnu.org>
+
+	* gnu/testlet/java/io/OutputStreamWriter/jdk11.java (test): 
+	Changed 8859_3 encoding to a must support encoding of ISO-8859-1
+	and also fixed the test to correctly expect the preferred name
+	when calling getEncoding() as it is not necessarily the same as
+	what the stream is created with.  Added a test against 'latin1' 
+	which is a valid alias for 'ISO-8859-1'.
+
 2003-03-02  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java

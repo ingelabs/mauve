@@ -58,8 +58,15 @@ public class jdk11 implements Testlet
 		harness.check(osw.getEncoding(), null,
 				"null encoding after close");
 		ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
-		OutputStreamWriter osw2 = new OutputStreamWriter(baos2, "8859_3");
-		harness.check(osw2.getEncoding(), "8859_3", "OutputStreamWriter(writer, encoding)");
+		// ISO-8859-1 is a required encoding and this is the 
+                // "preferred" name, latin1 is a legal alias
+                // see also http://www.iana.org/assignments/character-sets
+		OutputStreamWriter osw2 = new OutputStreamWriter(baos2, "ISO-8859-1");
+		harness.check(osw2.getEncoding(), "ISO-8859-1", "OutputStreamWriter(writer, encoding)");
+		osw2.close ();
+		osw2 = new OutputStreamWriter(baos2, "latin1");
+		harness.check(osw2.getEncoding(), "ISO-8859-1", "OutputStreamWriter(writer, encoding) // alias");
+		osw2.close ();
 
       }
     catch (IOException e)
