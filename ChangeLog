@@ -1,5 +1,13 @@
 2002-10-12  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/net/Socket/SocketAddress.java: Removed.
+	* gnu/testlet/java/net/Socket/MySocket.java: Removed.
+	* gnu/testlet/java/net/Socket/MySocketImpl.java: Removed.
+	* gnu/testlet/java/net/Socket/SocketTest.java: Don't use above
+	classes.
+
+2002-10-12  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/net/Socket/SocketAddress.java: New not-a-test.
 	* gnu/testlet/java/net/Socket/SocketTest.java: Uses SocketAddress.
 

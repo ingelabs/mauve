@@ -1,5 +1,5 @@
 // Tags: JDK1.0
-// Uses: MySocket MySocketImpl SocketBServer SocketServer SocketAddress
+// Uses: SocketBServer SocketServer
 
 /*
    Copyright (C) 1999 Hewlett-Packard Company
@@ -362,16 +362,6 @@ if (true) // 1.1 features not implemented
   }
   catch ( IOException e ){
    harness.check(true);
-  }
-  // create a bogus SocketImpl for test coverage
-  // and test Socket(SocketImpl)
-  MySocketImpl msi = null;
-  //try {
-   msi = new MySocketImpl();
-  //} catch (Exception e) {}
-  try {
-   MySocket s = new MySocket(msi);
-  } catch (Exception se) {
   }
 }
 
