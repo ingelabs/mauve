@@ -1,4 +1,4 @@
-// Copyright (c) 1998  Cygnus Solutions
+// Copyright (c) 1998, 1999  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -208,11 +208,6 @@ public class SimpleTestHarness extends TestHarness
 	  System.out.println ("----");
 	  if (cname == null)
 	    break;
-	  if (cname.endsWith ("~"))
-	    {
-	      // This means the file is a helper and not a test.
-	      continue;
-	    }
 	  harness.runtest (cname);
 	}
 
