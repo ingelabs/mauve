@@ -167,6 +167,7 @@ public class Test2 implements Testlet
 
       harness.check(lnr.read(), '\n');
       harness.check(lnr.read(ch, 0, 1), 1);
+      harness.check(ch[0], '\n');
       harness.check(lnr.read(), '\n');
       harness.check(lnr.getLineNumber(), 2);
     }
@@ -181,9 +182,68 @@ public class Test2 implements Testlet
       char[] ch = new char[1];
 
       harness.check(lnr.read(ch, 0, 1), 1);
+      harness.check(ch[0], '\r');
       harness.check(lnr.read(), '\n');
       harness.check(lnr.read(ch, 0, 1), -1);
+      harness.check(ch[0], '\r');
       harness.check(lnr.getLineNumber(), 2);
+    }
+  }
+
+
+  static class LineTest9 extends LineReaderTest
+  {
+    void test(TestHarness harness) throws Exception
+    {
+      StringReader sr = new StringReader("\r\n\r");
+      LineNumberReader lnr = new LineNumberReader(sr);
+      char[] ch = new char[1];
+
+      lnr.read();
+      lnr.mark(5);
+      harness.check(lnr.read(ch, 0, 1), 1);
+      harness.check(ch[0], '\n');
+      harness.check(lnr.read(), '\n');
+      lnr.reset();
+      harness.check(lnr.read(ch, 0, 1), 1);
+      harness.check(ch[0], '\n');
+      harness.check(lnr.read(), '\n');
+      
+      harness.check(lnr.getLineNumber(), 2);
+    }    
+  }
+
+  static class LineTest10 extends LineReaderTest
+  {
+    void test(TestHarness harness) throws Exception
+    {
+      StringReader sr = new StringReader("X");
+      LineNumberReader lnr = new LineNumberReader(sr);
+     
+      try
+	{
+	  lnr.reset();
+	  harness.check(false);
+	}
+      catch (IOException e)
+	{
+	  harness.check(true);
+	}
+    }
+  }
+
+  static class LineTest11 extends LineReaderTest
+  {
+    void test(TestHarness harness) throws Exception
+    {
+      StringReader sr = new StringReader("X");
+      LineNumberReader lnr = new LineNumberReader(sr);
+      int old_linenumber = lnr.getLineNumber();
+      
+      lnr.mark(5);
+      lnr.setLineNumber(10);
+      lnr.reset();
+      harness.check(lnr.getLineNumber(), old_linenumber);
     }
   }
 
@@ -195,21 +255,29 @@ public class Test2 implements Testlet
     new LineTest5(),
     new LineTest6(),
     new LineTest7(),
-    new LineTest8()
+    new LineTest8(),
+    new LineTest9(),
+    new LineTest10(),
+    new LineTest11()
   };
 
   public void test(TestHarness harness)
   {
-    harness.checkPoint("LineNumberReader stress test");
     for (int i = 0; i < tests.length; i++)
-      try
-	{
-	  tests[i].test(harness);
-	}
-      catch (Exception e)
-	{
-	  harness.check(false);
-	  harness.debug(e);
-	}
+      {
+	String name = tests[i].getClass().getName();
+
+	name = name.substring(name.indexOf('$')+1);
+	harness.checkPoint("LineNumberReader stress test (" + name + ")");
+	try
+	  {
+	    tests[i].test(harness);
+	  }
+	catch (Exception e)
+	  {
+	    harness.check(false);
+	    harness.debug(e);
+	  }
+      }
   }  
 }
