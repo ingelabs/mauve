@@ -1,5 +1,9 @@
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
 
+    * gnu/testlet/javax/swing/JFrame/paint5.java: New test.
+	
+2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
+
     * gnu/testlet/javax/swing/Timer/preparatory.java: New test.
 	* gnu/testlet/javax/swing/Timer/basic.java: New test.
 	
