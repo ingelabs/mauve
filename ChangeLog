@@ -1,3 +1,7 @@
+2005-03-03  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/lang/InheritableThreadLocal/simple.java: New test.
+
 2005-03-02  Daniel Bonniot  <bonniot@users.sf.net>
 
 	* gnu/testlet/java/io/Serializable/ParentReadResolve.java: New test.
