@@ -26,5 +26,47 @@ must be matched by the files to be tested.  Some values:
        If multiple keys of this type, a test file need only match one
        to be included.
 
+     JDK1.0  Run JDK1.0 tests only
+     JDK1.1  Run JDK1.1 tests only
+     JDK1.2  Run JDK1.2 tests only
+
 You can use `make recheck' to re-run `make check' with the key list
 you last used.
+
+
+================================================================
+
+Tags in a test are specified a little differently from tags on the
+command line.
+
+Each tag on the command line is first mapped to a list of actual tags.
+E.g., "JDK1.2" implies all the tags "JDK1.0", "JDK1.1", and "JDK1.2".
+
+If any tag from the expanded list is matched by the test case, then
+the test case is chosen.
+
+However, if one of the tags specified on the command line appears in
+the test with a `!' prefix, then the test is rejected.
+
+Tags must all appear on a single line beginning "// Tags: ".
+
+Many files test functionality that has existed since JDK1.0.  The
+corresponding line in the source:
+
+    // Tags: JDK1.0
+
+Here is how you would tag something that first appeared in JDK1.2:
+
+    // Tags: JDK1.2
+
+Here is how you would tag something that was eliminated in JDK1.2:
+
+    // Tags: JDK1.0 !JDK1.2
+
+The idea behind this scheme is that it is undesirable to update all
+the files whenever we add a tag.  So instead most tags are defined in
+terms of primitive tags, and then we note the exceptions.
+
+When adding a new tag, change the `choose' program to map the
+specified tag onto the implied tags.  There is some code near the top
+that handles this transformation.

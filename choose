@@ -17,6 +17,7 @@
 # This is not portable.
 
 verbose=
+spectags=
 tags=
 files=
 
@@ -28,6 +29,10 @@ fi
 outdir="$1"
 shift
 
+# Some tags imply other tags.  For instance, JDK1.2 implies JDK1.1 and
+# JDK1.0.  This makes it easier to keep the tags up to date in the
+# source -- we only have to keep track of differences (as opposed to
+# editing every source file when a new tag is added).
 for i in ${1+"$@"}; do
    case "$i" in
     java.*)
@@ -38,11 +43,23 @@ for i in ${1+"$@"}; do
        # You can't specify this.
        :
        ;;
+    JDK1.2)
+       tags="$tags JDK1.0 JDK1.1 $i"
+       spectags="$spectags $i"
+       ;;
+    JDK1.1)
+       tags="$tags JDK1.0 $i"
+       spectags="$spectags $i"
+       ;;
     *)
        tags="$tags $i"
+       spectags="$spectags $i"
        ;;
    esac
 done
+
+test -n "$verbose" && echo "tags are $tags"
+test -n "$verbose" && echo "spectags are $spectags"
 
 choices=/tmp/choices-$$
 echo -n "CHOICES = " > $choices
@@ -72,26 +89,39 @@ while read file; do
       continue
    fi
 
-   taglist="`grep '^// Tags:' gnu/testlet/$file | sed -e 's,^// Tags:,,'`"
+   # Surround value with spaces so that case statements will work
+   # correctly.
+   taglist=" `grep '^// Tags:' gnu/testlet/$file | sed -e 's,^// Tags:,,'` "
    istest=yes
    case "$taglist" in
-    *not-a-test*)
+    *\ not-a-test\ *)
        istest=no
        ;;
    esac
 
-   ok=yes
+   ok=no
+   # If any tag on the tag list matches, then we are ok.
    for tag in $tags; do
       case "$taglist" in
        *" ${tag} "*)
-          ;;
-       *)
-	  test -n "$verbose" && echo "File $file doesn't have tag $tag"
-	  ok=no
+          ok=yes
 	  break
-	  ;;
+          ;;
       esac
    done
+
+   # If any specified tag hits a `not' tag, then we are not ok.
+   if test "$ok" = yes; then
+      for tag in $spectags; do
+	 case "$taglist" in
+	  *" !${tag} "*)
+	     ok=no
+	     test -n "$verbose" && echo "File $file has tag !$tag"
+	     break
+	     ;;
+	 esac
+      done
+   fi
 
    if test "$ok" = yes; then
       class="gnu.testlet.`echo $file | sed -e 's/\.java$//' | tr / .`"

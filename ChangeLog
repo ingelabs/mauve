@@ -1,5 +1,45 @@
 1998-12-01  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/util/Random/basic.java: Added tag line.
+	* gnu/testlet/java/util/Hashtable/basic.java: Added tag line.
+	* gnu/testlet/java/lang/Long/new_Long.java: Added tag line.
+	* gnu/testlet/java/lang/Long/getLong.java: Added tag line.
+	* gnu/testlet/java/lang/String/to.java: Added tag line.
+	* gnu/testlet/java/lang/String/substring.java: Added tag line.
+	* gnu/testlet/java/lang/String/startsWith.java: Added tag line.
+	* gnu/testlet/java/lang/String/new_String.java: Added tag line.
+	* gnu/testlet/java/lang/String/indexOf.java: Added tag line.
+	* gnu/testlet/java/lang/String/decode.java: Added tag line.
+	* gnu/testlet/java/lang/String/compareTo.java: Added tag line.
+	* gnu/testlet/java/lang/String/charAt.java: Added tag line.
+	* gnu/testlet/java/lang/Short/hash.java: Added tag line.
+	* gnu/testlet/java/lang/Integer/new_Integer.java: Added tag line.
+	* gnu/testlet/java/lang/Integer/getInteger.java: Added tag line.
+	* gnu/testlet/java/lang/System/arraycopy.java: Added tag line.
+	* gnu/testlet/java/lang/Byte/new_Byte.java: Updated tag line.
+	* gnu/testlet/java/lang/Character/to.java: Added tag line.
+	* gnu/testlet/java/lang/Character/hash.java: Added tag line.
+	* gnu/testlet/java/lang/Character/getType.java: Updated tag line.
+	* gnu/testlet/java/lang/Character/getNumericValue.java: Added tag
+	line.
+	* gnu/testlet/java/lang/Character/forDigit.java: Added tag line.
+	* gnu/testlet/java/lang/Character/equals_Character.java: Added tag
+	line.
+	* gnu/testlet/java/lang/Character/digit.java: Added tag line.
+	* gnu/testlet/java/lang/Character/consts.java: Added tag line.
+	* gnu/testlet/java/lang/Character/classify.java: Updated tag
+	line.
+	* gnu/testlet/java/lang/Boolean/value.java: Updated tag line.
+	* gnu/testlet/java/lang/Boolean/new_Boolean.java: Updated tag
+	line.
+	* gnu/testlet/java/lang/Boolean/hashcode_Boolean.java: Updated tag
+	line.
+	* gnu/testlet/java/lang/Boolean/get.java: Updated tag line.
+	* gnu/testlet/java/lang/Boolean/equals_Boolean.java: Added tag
+	line.
+
+	* choose: Changed tag-handling scheme.
+
 	* choose: Explicitly generate dependencies for SimpleTestHarness.
 	* Makefile.in: Rebuilt.
 	* Makefile.am: Use `include', not `-include'.

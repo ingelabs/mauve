@@ -1,3 +1,5 @@
+// Tags: JDK1.0
+
 package gnu.testlet.java.lang.Integer;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;

@@ -1,4 +1,4 @@
-// tags: JDK1.0 JDK1.1 JDK1.2 PersonalJava EmbeddedJava
+// Tags: JDK1.0
 
 package gnu.testlet.java.lang.Boolean;
 import gnu.testlet.Testlet;

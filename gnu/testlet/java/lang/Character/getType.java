@@ -1,4 +1,4 @@
-// Tags: JDK1.0 JDK1.1 JDK1.2
+// Tags: JDK1.0
 
 package gnu.testlet.java.lang.Character;
 import gnu.testlet.Testlet;
