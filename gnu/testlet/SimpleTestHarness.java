@@ -225,9 +225,10 @@ public class SimpleTestHarness
 	    d += ": " + ex.toString();
 	  System.out.println (d);
 	  debug (ex);
-	  if (ex instanceof InstantiationException)
+	  if (ex instanceof InstantiationException ||
+	      ex instanceof IllegalAccessException)
 	    debug("Hint: is the code we just loaded a public non-abstract " +
-		  "class with a public nullary contructor???");
+		  "class with a public nullary constructor???");
 	  ++failures;
 	  ++total;
 	}
