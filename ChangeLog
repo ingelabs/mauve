@@ -1,3 +1,10 @@
+2001-07-31  Eric Blake  <ebb9@email.byu.edu>
+
+	* gnu/testlet/java/lang/Object/clone.java: new file
+	* gnu/testlet/java/lang/Object/wait.java: new file
+	* gnu/testlet/TestHarness.java (check): Remove dependence
+	on possibly buggy Double.toString.
+
 2001-06-08  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/BufferedByteOutputStream/interrupt.java: New

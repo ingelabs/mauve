@@ -1,4 +1,4 @@
-// Copyright (c) 1998, 1999  Cygnus Solutions
+// Copyright (c) 1998, 1999, 2001  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -33,17 +33,26 @@ public abstract class TestHarness
 		    ? expected == null
 		    : result.equals(expected));
       check (ok);
+      // This debug message may be misleading, depending on whether
+      // string conversion produces same results for unequal objects.
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
     }
   public void check (double result, double expected)
     {
-      // We use Double.toString() here because we want all NaNs to
-      // compare equal (which `==' will not give) but we want 0.0 and
-      // -0.0 to be different (which Double.equals will not give).
-      boolean ok = (Double.toString(result).equals(Double.toString(expected)));
+      // This triple check overcomes the fact that == does not
+      // compare NaNs, and cannot tell between 0.0 and -0.0;
+      // and all without relying on java.lang.Double (which may
+      // itself be buggy - else why would we be testing it? ;)
+      // For 0, we switch to infinities, and for NaN, we rely
+      // on the identity in JLS 15.21.1 that NaN != NaN is true.
+      boolean ok = (result == expected
+		    ? (result != 0) || (1/result == 1/expected)
+		    : (result != result) && (expected != expected));
       check (ok);
       if (! ok)
+	// If Double.toString() is buggy, this debug statement may
+	// accidentally show the same string for two different doubles!
 	debug ("got " + result + " but expected " + expected);
     }
   public void check (long result, long expected)
