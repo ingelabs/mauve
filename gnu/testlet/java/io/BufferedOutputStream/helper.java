@@ -6,7 +6,7 @@
 
 // Tags: not-a-test
 
-package gnu.testlet.java.io.BufferedByteOutputStream;
+package gnu.testlet.java.io.BufferedOutputStream;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;

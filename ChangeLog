@@ -1,4 +1,11 @@
-2002-11-16  Daryl Lee <dol@sources.redhat.com>
+2002-11-21  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/BufferedOutputStream/interrupt.java:
+	* gnu/testlet/java/io/BufferedOutputStream/helper.java:
+	* gnu/testlet/java/io/BufferedOutputStream/Test.java:
+	Corrected package names in each source file;
+	Fixed date on ChangeLog entry immediately below	
+
+2002-11-21  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/BufferedOutputByteStream:
 	Renamed directory to BufferedOutputStream to match classname
 
