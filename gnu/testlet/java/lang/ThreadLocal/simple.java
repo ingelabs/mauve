@@ -26,24 +26,22 @@ package gnu.testlet.java.lang.ThreadLocal;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class simple extends Thread implements Testlet
+public class simple extends ThreadLocal implements Testlet, Runnable
 {
-  public static ThreadLocal maude
-    = new ThreadLocal ()
-    {
-      public Object initialValue ()
-      {
-	return "Maude";
-      }
-    };
+
+  // ThreadLocal method
+  public Object initialValue ()
+  {
+    return "Maude";
+  }
 
   public TestHarness myHarness;
 
   public void run ()
   {
-    myHarness.check (maude.get (), "Maude", "Initial value in new thread");
-    maude.set ("Wednesday");
-    myHarness.check (maude.get (), "Wednesday", "Changed value in new thread");
+    myHarness.check (this.get (), "Maude", "Initial value in new thread");
+    this.set ("Wednesday");
+    myHarness.check (this.get (), "Wednesday", "Changed value in new thread");
   }
 
   public simple (TestHarness harness)
@@ -60,21 +58,22 @@ public class simple extends Thread implements Testlet
 
   public void test (TestHarness harness)
   {
-    harness.check (maude.get (), "Maude", "Check initial value");
+    harness.check (this.get (), "Maude", "Check initial value");
 
-    maude.set ("Liver");
-    harness.check (maude.get (), "Liver", "Check changed value");
+    this.set ("Liver");
+    harness.check (this.get (), "Liver", "Check changed value");
 
     try
       {
 	simple s = new simple (harness);
-	s.start ();
-	s.join ();
+	Thread t = new Thread(s);
+	t.start ();
+	t.join ();
       }
     catch (InterruptedException _)
       {
       }
 
-    harness.check (maude.get (), "Liver", "Value didn't change");
+    harness.check (this.get (), "Liver", "Value didn't change");
   }
 }

@@ -26,7 +26,7 @@ import java.util.Properties;
 import java.security.Permission;
 import java.security.SecurityPermission;
 
-public class getInteger implements Testlet
+public class getInteger extends SecurityManager implements Testlet
 {
   public void test (TestHarness harness)
     {
@@ -73,7 +73,7 @@ public class getInteger implements Testlet
       SecurityManager old_security_manager = System.getSecurityManager();
       try
         {
-	  System.setSecurityManager(new SM());
+	  System.setSecurityManager(this);
 	}
       catch (SecurityException e)
         {
@@ -93,9 +93,9 @@ public class getInteger implements Testlet
 	}
       harness.check(ok);
     }
-}
-class SM extends SecurityManager
-{
+
+  // Method needed for SecurityManager
+
   /**
    * Croak on checking a property named "secure"
    */
@@ -115,4 +115,5 @@ class SM extends SecurityManager
       return;
     super.checkPermission(p);
   }
+
 }

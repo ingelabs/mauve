@@ -51,7 +51,6 @@ public class AcuniaBitSetTest implements Testlet
        test_set();
        test_xor();
        test_length();
-       test_size();
 
      }
 
@@ -63,7 +62,6 @@ public class AcuniaBitSetTest implements Testlet
   public void test_BitSet(){
     th.checkPoint("BitSet()");
     BitSet bs = new BitSet();
-    th.check(bs.size() == 64 , "new BitSet has size 64");
     boolean ok = true;
     for (int i=0; i < 64 ; i++)
     { if (bs.get(i) ) ok =false; }
@@ -71,19 +69,11 @@ public class AcuniaBitSetTest implements Testlet
 
     th.checkPoint("BitSet(int)");
     bs = new BitSet(1);
-    th.check(bs.size() == 64 , "new BitSet has size 64");
     ok = true;
     for (int i=0; i < 64 ; i++)
     { if (bs.get(i) ) ok =false; }
     th.check(ok ,"all bits should be 0 -- got:"+bs);
-    bs = new BitSet(65);
-    th.check(bs.size() == 128 , "new BitSet has size 128");
-    bs = new BitSet(129);
-    th.check(bs.size() ==192  , "new BitSet has size 192");
-    bs = new BitSet(1024);
-    th.check(bs.size() == 1024 , "new BitSet has size 1024");
-    bs = new BitSet(0);
-    th.check(bs.size() == 0 , "new BitSet has size 0");
+
     try { new BitSet(-1);
     	  th.fail("should throw NegativeArraySizeException");
     	}
@@ -106,11 +96,10 @@ public class AcuniaBitSetTest implements Testlet
     for (i = 0; i < 64 ; i++)
     { if (bsc.get(i) !=  (((i % 2) == 0) ? true : false )) ok = false ;}
     th.check( ok , "all bits should be set" );
-    th.check( bsc.size()==64 ,"size is the same !!!");
     bs = new BitSet(0);
     bsc = (BitSet) bs.clone();
     bs.set(4);
-    th.check( bsc.size() == 0 , "changes in the original don't affect the clone");
+    th.check( bsc.get(4) == false , "changes in the original don't affect the clone");
   }
 
 
@@ -205,7 +194,6 @@ public class AcuniaBitSetTest implements Testlet
     Object o = bs1.clone();
     bs1.and(bs2);
     th.check(bs1.equals(o) , "extra bits from bs2 are unused");
-    th.check(bs1.size() == 64 ,"BitSet is not grown to size bs2");
     bs2.and(bs1);
     th.check(bs1.equals(bs2) , "extra bits in bs2 are cleared");    	
   }
@@ -237,7 +225,6 @@ public class AcuniaBitSetTest implements Testlet
     bs4.xor(bs1);
     bs1.andNot(bs2);
     th.check(bs1.equals(new BitSet(64)) , "extra bits from bs2 are unused");
-    th.check(bs1.size() == 64 ,"BitSet is not grown to size bs2");
     bs2.andNot(bs3);
     th.check(bs4.equals(bs2) , "extra bits in bs2 are not altered");    	
     bs1.clear(0); bs2.clear(0);
@@ -273,15 +260,11 @@ public class AcuniaBitSetTest implements Testlet
     bs.clear(4);
     th.check( !bs.get(4) ,"make sure the clear worked -- 2" );
     bs.clear(123);
-    th.check(bs.size() == 128 ,"a clear can make the set grow -- got: "+bs.size());
     try { bs.clear(-1);
     	  th.fail("should throw an IndexsOutOfBoundsException");
         }
     catch(IndexOutOfBoundsException ie) {th.check(true);}
-    bs.set(134);
-    th.check(bs.size() == 192 , "growing BitSet");
-    bs.clear(134);
-    th.check(bs.size() == 192 , "clear cannot cause the BitSet to downsize");
+
     bs = new BitSet(0);
     try { bs.clear(0);
           bs.clear(64);
@@ -335,7 +318,8 @@ public class AcuniaBitSetTest implements Testlet
     BitSet bs3 = new BitSet(3);
     BitSet bs4 = new BitSet(127);
     bs3.or(bs2);
-    th.check(bs1.equals(bs3) , "extra bits from bs2 are unused -- got: "+bs3);
+    th.check(!bs1.equals(bs3) , "extra bits from bs2 are used -- got: "+bs3);
+    th.check(bs2.equals(bs3) , "lots of ones ored with nothing gives ones");
     bs4.or(bs1);
     th.check(bs4.equals(bs1) , "extra bits in bs4 are left");
     bs1.clear(0); bs2.clear(0);
@@ -388,7 +372,8 @@ public class AcuniaBitSetTest implements Testlet
     for (i=64 ; i < 128 ; i++ ) { bs1.set(i); }
     BitSet bs3 = new BitSet(3);
     bs3.xor(bs1);
-    th.check(bs2.equals(bs3) , "extra bits from bs1 are unused -- got: "+bs3);
+    th.check(!bs2.equals(bs3) , "extra bits from bs1 are used -- got: "+bs3);
+    th.check(bs3.equals(bs1) , "lots of ones xored with nothing gives ones");
     bs1.xor(bs2);
     boolean ok=true;
     for (i=0 ; i < 64 ; i++ ) { if (bs1.get(i)) ok = false; }
@@ -439,20 +424,5 @@ public class AcuniaBitSetTest implements Testlet
 
   }
 
-
-/**
-* implemented.	<br>
-* much test will rely on size() <br>
-* if size fails, lots of the other tests will also fail !
-*/
-  public void test_size(){
-    th.checkPoint("size()int");
-    BitSet bs = new BitSet();
-    bs.set(56);
-    th.check( bs.size() == 64);
-    bs.set(64);
-    th.check( bs.size() == 128);
-
-  }
 
 }

@@ -29,9 +29,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.util.Date;
 
-public class jdk11 implements Testlet
+public class jdk11 implements Testlet, FilenameFilter
 {
   
   public void test (TestHarness testharness)
@@ -137,7 +138,7 @@ public class jdk11 implements Testlet
     harness.check (compareStringArray (tmpdirlist, expectedlist), "list ()");
     
     // list (FilenameFilter);
-    tmpdirlist = cons.list (new DocFilter ());
+    tmpdirlist = cons.list (this);
     expectedlist = new String[] {TMP_FILENAME2};
 //      for (int ll=0; ll<tmpdirlist.length; ll++)
 //        System.err.println (tmpdirlist[ll]);
@@ -230,7 +231,7 @@ public class jdk11 implements Testlet
       } 
     catch (IOException ioe)
       {
-	harness.check (false, "getCanonicalPath ()");
+	harness.check (false, "getCanonicalPath () " + ioe);
       }
 
     // getName ();
@@ -313,5 +314,16 @@ public class jdk11 implements Testlet
       }
     return true;
   }
+
+  /**
+   * Defined by NameFilter. Only accepts files ending with .doc.
+   */
+  public boolean accept (File dir, String name)
+  {
+    if (name.endsWith (".doc"))
+      return true;
+    return false;
+  }
+
 }
 

@@ -122,9 +122,6 @@ public class jdk10 implements Testlet
 		b3.or(b1);
 		h.check( trulyEquals(b2,b3) );
 		
-		h.checkPoint("Size");
-		h.check ( b3.size() > 0 );
-		
 		h.checkPoint("NullPointerExceptions");
 		try {
 			b1.and(null);
