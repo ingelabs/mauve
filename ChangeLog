@@ -1,3 +1,8 @@
+2005-01-14  Arnaud Vandyck  <avdyk@gnu.org>
+
+	* gnu/testlet/javax/swing/text/StringContent/stickyPosition.java:
+	New testcases.
+
 2005-01-13  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/java/text/SimpleDateFormat/parse.java:
