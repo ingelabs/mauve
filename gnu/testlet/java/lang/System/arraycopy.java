@@ -74,6 +74,7 @@ public class arraycopy implements Testlet
       y = new int[5];
       fill (x);
 
+      harness.checkPoint("Copying integer array");
       harness.check (copy (x, 0, y, 0, x.length), null);
       int[] one = { 0, 1, 2, 3, 4 };
       check (harness, y, one);
@@ -83,18 +84,26 @@ public class arraycopy implements Testlet
       int[] two = { 1, 2, 3, 4, 0 };
       check (harness, y, two);
 
+      harness.checkPoint("Incompatible arrays");
+
       Object[] z = new Object[5];
       harness.check (copy (x, 0, z, 0, x.length),
 		     "caught ArrayStoreException");
 
+      harness.checkPoint("negative length");
+
       harness.check (copy (x, 0, y, 0, -23),
 		     "caught IndexOutOfBoundsException");
+
+      harness.checkPoint("null arrays");
 
       harness.check (copy (null, 0, y, 0, -23),
 		     "caught NullPointerException");
 
       harness.check (copy (x, 0, null, 0, -23),
 		     "caught NullPointerException");
+
+      harness.checkPoint("Non arrays");
 
       String q = "metonymy";
       harness.check (copy (q, 0, y, 0, 19),
@@ -103,15 +112,23 @@ public class arraycopy implements Testlet
       harness.check (copy (x, 0, q, 0, 19),
 		     "caught ArrayStoreException");
 
+      harness.checkPoint("Incompatible arrays 2");
+
       double[] v = new double[5];
       harness.check (copy (x, 0, v, 0, 5),
 		     "caught ArrayStoreException");
 
+      harness.checkPoint("Bad offset");
+
       harness.check (copy (x, -1, y, 0, 1),
 		     "caught IndexOutOfBoundsException");
 
+      harness.checkPoint("Incompatible arrays 3");
+
       harness.check (copy (x, 0, z, 0, x.length),
 		     "caught ArrayStoreException");
+
+      harness.checkPoint("Bad offset 2");
 
       harness.check (copy (x, 0, y, -1, 1),
 		     "caught IndexOutOfBoundsException");
@@ -121,6 +138,8 @@ public class arraycopy implements Testlet
 
       harness.check (copy (x, 0, y, 3, 5),
 		     "caught IndexOutOfBoundsException");
+
+      harness.checkPoint("Object casting");
 
       Object[] w = new Object[5];
       String[] ss = new String[5];

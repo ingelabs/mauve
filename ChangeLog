@@ -10,7 +10,8 @@
 	added more tests
 
 2001-08-09  John Leuner  <jewel@debian.org>
-
+	
+	* gnu/testlet/java/lang/System/arraycopy.java: Added checkPoint()s for various cases
 	* gnu/testlet/java/lang/Object/clone.java: Added check that arrays have same length, type, component type
 
 2001-08-09  John Leuner  <jewel@debian.org>
