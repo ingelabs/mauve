@@ -1,5 +1,16 @@
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/Collections/copy.java: New test.
+	* gnu/testlet/java/util/Collections/fill.java: Likewise.
+	* gnu/testlet/java/util/Collections/max.java: Likewise.
+	* gnu/testlet/java/util/Collections/min.java: Likewise.
+	* gnu/testlet/java/util/Collections/nCopies.java: Likewise.
+	* gnu/testlet/java/util/Collections/reverse.java: Likewise.
+	* gnu/testlet/java/util/Collections/reverseOrder.java: Likewise.
+	* gnu/testlet/java/util/Collections/rotate.java: Likewise.
+
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/math/BigInteger/abs.java: New test.
 	* gnu/testlet/java/math/BigInteger/add.java: Likewise.
 	* gnu/testlet/java/math/BigInteger/compareTo.java: Likewise.
