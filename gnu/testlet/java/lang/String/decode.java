@@ -28,8 +28,11 @@ public class decode implements Testlet
 {
   public void test (TestHarness harness)
     {
-      byte[] bstr = { 'a', 'b', 'c', '\t', 'A', 'B', 'C', ' ', '1', '2', '3' };
       char[] cstr = { 'a', 'b', 'c', '\t', 'A', 'B', 'C', ' ', '1', '2', '3' };
+
+      byte[] bstr = new byte [cstr.length];
+      for (int i = 0; i < cstr.length; ++i)
+	bstr[i] = (byte) cstr[i];
 
       String a = new String(bstr);
       String b = new String(bstr, 3, 3);

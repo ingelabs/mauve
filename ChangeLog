@@ -1,3 +1,8 @@
+1998-12-14  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/String/decode.java (test): Changed
+	initialization of bstr.
+
 1998-12-12  Tom Tromey  <tromey@cygnus.com>
 
 	* configure: Rebuilt.
