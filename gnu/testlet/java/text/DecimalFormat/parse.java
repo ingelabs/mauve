@@ -112,8 +112,7 @@ public class parse implements Testlet
       harness.check (num instanceof Long);
       harness.check (num.longValue (), -303);
 
-      String s = df.format (Long.MIN_VALUE);
-      num = parse (df, Long.toString (Long.MIN_VALUE), pp);
+      num = parse (df, "-9223372036854775808", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue(), Long.MIN_VALUE);
     }

@@ -1,5 +1,11 @@
 1999-03-11  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/DecimalFormat/format.java (test): Add test
+	for Long.MIN_VALUE.
+
+	* gnu/testlet/java/text/DecimalFormat/parse.java (test): Use
+	constant string in edge case.
+
 	* gnu/testlet/java/text/DecimalFormat/parse.java (test): Added
 	some boundary case checks.  Correct bugs in two test cases.
 
