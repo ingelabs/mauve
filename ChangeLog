@@ -1,3 +1,7 @@
+2004-04-29  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/RandomAccessFile/setLength.java: New test.
+
 2004-04-29  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/nio/IntBuffer/compareTo.java,
