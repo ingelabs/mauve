@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 2000 Cygnus Solutions
+// Copyright (C) 2000, 2001 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -137,11 +137,10 @@ public class newInstance implements Testlet
     r = callNew (c2, a1);
     harness.check(r instanceof newInstance);
     harness.check(((newInstance) r).dot == (int) 'j');
-    // Byte and Character are equivalent.
+    // Byte does not widen to Character.
     a1[0] = new Byte ((byte) 93);
     r = callNew (c2, a1);
-    harness.check(r instanceof newInstance);
-    harness.check(((newInstance) r).dot == 93);
+    harness.check(r instanceof IllegalArgumentException);
 
     harness.checkPoint ("String args");
     Constructor c3 = getCons (ni_class, args2);

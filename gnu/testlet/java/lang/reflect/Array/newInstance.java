@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 2000 Red Hat, Inc.
+// Copyright (C) 2000, 2001 Red Hat, Inc.
 
 // This file is part of Mauve.
 
@@ -26,7 +26,7 @@ import java.lang.reflect.Array;
 
 public class newInstance implements Testlet
 {
-  public void test (TestHarness harness)
+  public void test(TestHarness harness)
   {
 
     harness.checkPoint("Void.TYPE");
@@ -34,14 +34,14 @@ public class newInstance implements Testlet
     Object x = null;
     try
       {
-	x = Array.newInstance (Void.TYPE, 10);
+	x = Array.newInstance(Void.TYPE, 10);
 	val = 1;
       }
     catch (IllegalArgumentException iae)
       {
 	val = 2;
       }
-    catch(NullPointerException npe)
+    catch (NullPointerException npe)
       {
 	val = 4;
       }
@@ -49,34 +49,28 @@ public class newInstance implements Testlet
       {
 	val = 3;
       }
-
-    //    System.err.println("val is " + val + " x is null: " + (x == null));
-    harness.check (val, 1);
-    try {
-    harness.check (x, null); //The Sun-based JDKs don't return null here
-    } catch(InternalError ie)
+    harness.check(val, 2);
+    try
+      {
+	harness.check(x, null); //Some Sun-based JDKs don't return null here
+      }
+    catch (InternalError ie)
       {
 	harness.check(null, ie);
       }
-    /*try {
-    System.err.println("x's class: " + x.getClass());
-    } catch(Throwable t)
-      {
-	t.printStackTrace();
-      }*/
 
     harness.checkPoint("Integer.TYPE");
 
     try
       {
-	x = Array.newInstance (Integer.TYPE, 10);
+	x = Array.newInstance(Integer.TYPE, 10);
 	val = 1;
       }
     catch (IllegalArgumentException iae)
       {
 	val = 2;
       }
-    catch(NullPointerException npe)
+    catch (NullPointerException npe)
       {
 	val = 4;
       }
@@ -84,71 +78,295 @@ public class newInstance implements Testlet
       {
 	val = 3;
       }
-
     harness.check(val, 1);
 
     val = 999;
 
-    try {
-      val = ((int[]) x).length;
-    } catch(ClassCastException cce)
+    try
+      {
+	val = ((int[]) x).length;
+      }
+    catch (ClassCastException cce)
       {
 	val = 99;
       }
-
     harness.check(val, 10);
 
     val = 0;
 
-    try {
-      if(x.getClass().getComponentType() == Integer.TYPE)
-	{
+    try
+      {
+	if (x.getClass().getComponentType() == Integer.TYPE)
 	  val = 1;
-	}
-      else
-	{
-	  /*	  System.err.println("x type is " + x.getClass());
-	  System.err.println("Comp type is " + x.getClass().getComponentType());
-	  System.err.println("Compare to " + Integer.TYPE);
-	  */
-	}
-    } catch(Throwable t)
+      }
+    catch (Throwable t)
       {
 	val = 2;
       }
-
     harness.check(val, 1);
 
     harness.checkPoint("NegativeArraySize");
 
     try
       {
-	x = Array.newInstance (String.class, -101);
+	x = Array.newInstance(String.class, -101);
 	val = 1;
       }
-    catch(NegativeArraySizeException nas)
+    catch (NegativeArraySizeException nas)
       {
 	val = 2;
       }
-    catch(Throwable t)
+    catch (Throwable t)
       {
 	val = 3;
       }
-
     harness.check(val, 2);
 
-    harness.checkPoint("String");
+    harness.checkPoint("multi-dimensional");
+    val = 0;
+    try
+      {
+	x = Array.newInstance(String.class, null);
+	val = 1;
+      }
+    catch (NullPointerException e)
+      {
+	val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    val = 0;
+    try
+      {
+	x = Array.newInstance(String.class, new int[0]);
+	val = 1;
+      }
+    catch (IllegalArgumentException e)
+      {
+	val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    val = 0;
+    try
+      {
+	x = Array.newInstance(String.class, new int[256]);
+	val = 1;
+      }
+    catch (IllegalArgumentException e)
+      {
+	val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    val = 0;
+    try
+      {
+	// Some Sun JDKs croak, even though this is legal
+	x = Array.newInstance(String.class, new int[255]);
+	val = 1;
+      }
+    catch (Throwable t)
+      {
+	val = 2;
+      }
+    harness.check(val, 1);    
+
+    val = 0;
+    try
+      {
+	// Note that the non-reflective version, new String[0][-1], should
+	// also fail, but does not on certain VMs; hence an additional test
+	x = Array.newInstance(String.class, new int[] {0, -1});
+	val = 1;
+      }
+    catch (NegativeArraySizeException e)
+      {
+	val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    val = 0;
+    try
+      {
+	x = new int[0][-1];
+	val = 1;
+      }
+    catch (NegativeArraySizeException e)
+      {
+	val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    val = 0;
+    try
+      {
+	x = Array.newInstance(String.class, new int[]
+	  {Integer.MAX_VALUE, Integer.MAX_VALUE});
+	val = 1;
+      }
+    catch (OutOfMemoryError e)
+      {
+	val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    harness.checkPoint("array");
+    val = 0;
+    Class c = null;
+    try
+      {
+	// see above for why this is not 255
+	x = Array.newInstance(String.class, new int[254]);
+	c = x.getClass(); // faster than writing String[]...[].class
+      }
+    catch (Throwable t)
+      {
+	val = 1;
+      }
+    try
+      {
+	x = Array.newInstance(c, new int[] {1, 1});
+	val = 2;
+      }
+    catch (IllegalArgumentException e)
+      {
+	val = 3;
+      }
+    catch (Throwable t)
+      {
+	val = 4;
+      }
+    harness.check(val, 3);
 
     try
       {
-	x = Array.newInstance (String.class, 100);
+	x = Array.newInstance(c, 1);
+	val = 5;
+      }
+    catch (Throwable t)
+      {
+	val = 6;
+      }
+    harness.check(val, 5);
+
+    try
+      {
+	x = Array.newInstance(x.getClass(), 1);
+	val = 7;
+      }
+    catch (IllegalArgumentException e)
+      {
+	val = 8;
+      }
+    catch (Throwable t)
+      {
+	val = 9;
+      }
+    harness.check(val, 8);
+
+    try
+      {
+	x = Array.newInstance(x.getClass(), new int[] {1, 1});
+	val = 10;
+      }
+    catch (IllegalArgumentException e)
+      {
+	val = 11;
+      }
+    catch (Throwable t)
+      {
+	val = 12;
+      }
+    harness.check(val, 11);
+    
+    val = 0;
+    try
+      {
+	x = Array.newInstance(int[].class, 1);
+	val = 1;
+	if (((int[][]) x).length == 1)
+	  val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    harness.checkPoint("interface");
+    val = 0;
+    try
+      {
+	x = Array.newInstance(Runnable.class, 5);
+	val = 1;
+      }
+    catch (Throwable t)
+      {
+	val = 2;
+      }
+    harness.check(val, 1);
+
+    try
+      {
+	val = ((Runnable[]) x).length;
+      }
+    catch (ClassCastException cce)
+      {
+	val = 3;
+      }
+    harness.check(val, 5);
+
+    val = 0;
+    try
+      {
+	if (x.getClass().getComponentType() == Runnable.class)
+	  val = 1;
+	if (((Runnable[]) x)[0] == null)
+	  val = 2;
+      }
+    catch (Throwable t)
+      {
+	val = 3;
+      }
+    harness.check(val, 2);
+
+    harness.checkPoint("String");
+    val = 0;
+    try
+      {
+	x = Array.newInstance(String.class, 100);
 	val = 1;
       }
     catch (IllegalArgumentException iae)
       {
 	val = 2;
       }
-    catch(NullPointerException npe)
+    catch (NullPointerException npe)
       {
 	val = 4;
       }
@@ -156,30 +374,29 @@ public class newInstance implements Testlet
       {
 	val = 3;
       }
-
     harness.check(val, 1);
 
-    try {
-      val = ((String[]) x).length;
-    } catch(ClassCastException cce)
+    try
+      {
+	val = ((String[]) x).length;
+      }
+    catch (ClassCastException cce)
       {
 	val = 99;
       }
-
     harness.check(val, 100);
 
     val = 0;
-
-    try {
-      if( x.getClass().getComponentType() == String.class)
-	{
+    try
+      {
+	if (x.getClass().getComponentType() == String.class
+	    && ((String[]) x)[0] == null)
 	  val = 1;
-	}
-    } catch(Throwable t)
+      }
+    catch (Throwable t)
       {
 	val = 2;
       }
-
     harness.check(val, 1);
     
   }

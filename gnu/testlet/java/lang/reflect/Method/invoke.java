@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 1999, 2000 Cygnus Solutions
+// Copyright (C) 1999, 2000, 2001 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -166,7 +166,7 @@ public class invoke implements Testlet
 		new IllegalArgumentException ());
     args1[0] = null;
     try_invoke (harness, ti_meth, null, args1,
-		new IllegalArgumentException ());
+		new NullPointerException ());
     args1[0] = new Integer (-5);
     try_invoke (harness, ti_meth, null, args1,
 		new InvocationTargetException (new IllegalArgumentException ()));
