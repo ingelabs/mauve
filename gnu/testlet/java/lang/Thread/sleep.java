@@ -205,6 +205,25 @@ public class sleep implements Testlet, Runnable
     harness.check(present - past > 5);
     harness.check(present - past < 500);
 
+
+    // A thread in interrupted state that goes to sleep gets
+    // InterruptedException.
+    harness.checkPoint("Interrupted state sleep");
+    past = System.currentTimeMillis();
+    interruptedSleep(0);
+    interruptedSleep(1);
+    interruptedSleep(5000);
+    interruptedSleep(0, 0);
+    interruptedSleep(1, 0);
+    interruptedSleep(0, 1);
+    interruptedSleep(1, 1);
+    interruptedSleep(5000, 0);
+    interruptedSleep(5000, 5000);
+
+    // The thread should not actually have slept (much) since it was always
+    // immediately waken up by the InterrupedException.
+    present = System.currentTimeMillis();
+    harness.check(present - past < 5000);
   }
 
   private void invalid(long milli)
@@ -330,6 +349,38 @@ public class sleep implements Testlet, Runnable
 	harness.fail("InterruptedException in nearZero("
 		     + milli + ", " + nano + ")");
       }
+  }
+
+  private void interruptedSleep(long milli)
+  {
+    boolean interrupted_exception = false;
+    Thread.currentThread().interrupt();
+    try
+      {
+	Thread.sleep(milli);
+      }
+    catch(InterruptedException ie)
+      {
+	interrupted_exception = true;
+      }
+    harness.check(interrupted_exception);
+    harness.check(!Thread.interrupted());
+  }
+
+  private void interruptedSleep(long milli, int nano)
+  {
+    boolean interrupted_exception = false;
+    Thread.currentThread().interrupt();
+    try
+      {
+	Thread.sleep(milli, nano);
+      }
+    catch(InterruptedException ie)
+      {
+	interrupted_exception = true;
+      }
+    harness.check(interrupted_exception);
+    harness.check(!Thread.interrupted());
   }
 }
 

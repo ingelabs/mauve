@@ -1,3 +1,8 @@
+2004-12-31  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/Thread/sleep.java: Add tests for (pre)
+	interrupted sleep.
+
 2004-12-31  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/util/Currency/getInstance.java: New test.
