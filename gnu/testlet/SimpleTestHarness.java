@@ -167,15 +167,9 @@ public class SimpleTestHarness extends TestHarness
       for (i = 0; i < args.length - 1; i++) 
 	{
 	  if (args[i].equals("-verbose")) 
-	    {
-	      verbose = true;
-	      continue;
-	    }
+	    verbose = true;
 	  else if (args[i].equals("-debug")) 
-	    {
-	      debug = true;
-	      continue;
-	    }
+	    debug = true;
 	  else
 	    break;
         }
@@ -199,13 +193,15 @@ public class SimpleTestHarness extends TestHarness
 	  try
 	    {
 	      cname = r.readLine ();
-	      System.out.println (cname);
+	      if (verbose)
+		System.out.println (cname);
 	    }
 	  catch (IOException x)
 	    {
 	      // Nothing.
 	    }
-	  System.out.println ("----");
+	  if (verbose)
+	    System.out.println ("----");
 	  if (cname == null)
 	    break;
 	  harness.runtest (cname);

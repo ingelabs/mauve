@@ -1,5 +1,9 @@
 1999-01-04  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/SimpleTestHarness.java (main): Removed extraneous
+	`continue' statements.  Only print class name and separator if
+	`verbose'.
+
 	* gnu/testlet/SimpleTestHarness.java (main): Removed `~' test of
 	file names.
 
