@@ -34,9 +34,11 @@ import java.lang.UnsupportedOperationException;
 *  <br>
 *
 */
-public class AcuniaVectorTest implements Testlet
+public class AcuniaVectorTest extends Vector implements Testlet
 {
   protected TestHarness th;
+
+  public AcuniaVectorTest() { /* Public Constructor needed for Testlet */ }
 
   public void test (TestHarness harness)
     {
@@ -838,7 +840,7 @@ public class AcuniaVectorTest implements Testlet
 */
   public void test_removeRange(){
     th.checkPoint("removeRange(int,int)void");
-    AcuniaExVector xal = new AcuniaExVector(buildAL());
+    AcuniaVectorTest xal = new AcuniaVectorTest(buildAL());
     ArrayList al = buildAL();
     xal.ensureCapacity(40);
     try {
@@ -867,7 +869,7 @@ public class AcuniaVectorTest implements Testlet
     	th.check(al.equals(xal) , "ArrayList must not be changed -- 3");
     }
     catch(Exception e) { th.debug("bad operations messed up the Vector");}
-    xal = new AcuniaExVector(buildAL());
+    xal = new AcuniaVectorTest(buildAL());
     xal.ensureCapacity(40);
     try {
     	xal.removeRange(3,15);
@@ -875,7 +877,7 @@ public class AcuniaVectorTest implements Testlet
         }
     catch(IndexOutOfBoundsException ioobe) { th.check(true); }
     th.check(xal.equals(al) , "ArrayList must not be changed -- 4");
-    xal = new AcuniaExVector(buildAL());
+    xal = new AcuniaVectorTest(buildAL());
     xal.ensureCapacity(40);
     try {
     	xal.removeRange(15,13);
@@ -890,7 +892,7 @@ public class AcuniaVectorTest implements Testlet
     	th.check(xal.equals(al) , "ArrayList must not be changed -- 5");
     }
     catch(Exception e) { th.debug("bad operations messed up the Vector");}
-    xal = new AcuniaExVector(buildAL());
+    xal = new AcuniaVectorTest(buildAL());
     xal.ensureCapacity(40);
     xal.removeRange(14,14);
     th.check(xal.size() == 14 , "no elements should have been removed -- 6, size = "+xal.size());
@@ -1572,6 +1574,36 @@ public class AcuniaVectorTest implements Testlet
     v.add("a");     v.add("c");   v.add("u");   v.add("n");   v.add("i");   v.add("a");  v.add(null);
     return new ArrayList(v);
 
+  }
+
+// The following fields and method are necessary for extending and Vector.
+
+  private boolean didRemoveRange=false;
+  private int from = -1;
+  private int to   = -1;
+
+  public AcuniaVectorTest(Collection c){
+          super(c);
+  }
+
+  public void removeRange(int fidx, int tidx) {
+          didRemoveRange=true;
+          to   = tidx;
+          from = fidx;
+          super.removeRange(fidx, tidx);
+  }
+
+  public boolean get_dRR() {
+          return didRemoveRange;
+  }
+  public void set_dRR(boolean b) {
+          didRemoveRange = b;
+  }
+  public int get_to() {
+          return to;
+  }
+  public int get_from() {
+          return from;
   }
 
 }

@@ -34,9 +34,11 @@ import java.util.*;
 *  It might be usefull to find out how the capacity evolves <br>
 *  --> this must be done with reflection ... (not done yet)
 */
-public class AcuniaArrayListTest implements Testlet
+public class AcuniaArrayListTest extends ArrayList implements Testlet
 {
   protected TestHarness th;
+
+  public AcuniaArrayListTest() { /* Empty constructor needed for TestLet */}
 
   public void test (TestHarness harness)
     {
@@ -502,7 +504,7 @@ public class AcuniaArrayListTest implements Testlet
 */
   public void test_removeRange(){
     th.checkPoint("removeRange(int,int)void");
-    AcuniaExArrayList xal = new AcuniaExArrayList(buildAL());
+    AcuniaArrayListTest xal = new AcuniaArrayListTest(buildAL());
     ArrayList al = buildAL();
     xal.ensureCapacity(40);
     try {
@@ -527,7 +529,7 @@ public class AcuniaArrayListTest implements Testlet
     	th.check(al.equals(xal) , "ArrayList must not be changed -- 3");
     }
     catch (Exception e) { th.debug("bad operations messed up ArrayList"); }
-    xal = new AcuniaExArrayList(buildAL());
+    xal = new AcuniaArrayListTest(buildAL());
     xal.ensureCapacity(40);
     try {
     	xal.removeRange(3,15);
@@ -535,7 +537,7 @@ public class AcuniaArrayListTest implements Testlet
         }
     catch(IndexOutOfBoundsException ioobe) { th.check(true); }
     th.check(xal.equals(al) , "ArrayList must not be changed -- 4");
-    xal = new AcuniaExArrayList(buildAL());
+    xal = new AcuniaArrayListTest(buildAL());
     xal.ensureCapacity(40);
     try {
     	xal.removeRange(15,13);
@@ -546,7 +548,7 @@ public class AcuniaArrayListTest implements Testlet
     	th.check(xal.equals(al) , "ArrayList must not be changed -- 5");
     }
     catch (Exception e) { th.debug("bad operations messed up ArrayList"); }
-    xal = new AcuniaExArrayList(buildAL());
+    xal = new AcuniaArrayListTest(buildAL());
     xal.ensureCapacity(40);
     xal.removeRange(14,14);
     th.check(xal.size() == 14 , "no elements should have been removed -- 6, size = "+xal.size());
@@ -568,7 +570,7 @@ public class AcuniaArrayListTest implements Testlet
 */
   public void test_MC_iterator(){
     th.checkPoint("ModCount(in)iterator");
-    AcuniaExArrayList xal = new AcuniaExArrayList(buildAL());
+    AcuniaArrayListTest xal = new AcuniaArrayListTest(buildAL());
     Iterator it = xal.iterator();
     xal.removeRange(1,10);
     try {
@@ -644,5 +646,34 @@ public class AcuniaArrayListTest implements Testlet
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
   }
+
+// The following fields and methods are used in tests that need an ArrayList.
+
+        private boolean didRemoveRange=false;
+        private int from = -1;
+        private int to   = -1;
+        public AcuniaArrayListTest(Collection c){
+                super(c);
+        }
+
+        public void removeRange(int fidx, int tidx) {
+                didRemoveRange=true;
+                to   = tidx;
+                from = fidx;
+                super.removeRange(fidx, tidx);
+        }
+
+        public boolean get_dRR() {
+                return didRemoveRange;
+        }
+        public void set_dRR(boolean b) {
+                didRemoveRange = b;
+        }
+        public int get_to() {
+                return to;
+        }
+        public int get_from() {
+                return from;
+        }
 
 }

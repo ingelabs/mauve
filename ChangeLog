@@ -1,5 +1,16 @@
 2002-04-02  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/ArrayList/AcuniaArrayListTest.java: Make self
+	contained, extend ArrayList.
+	* gnu/testlet/java/util/ArrayList/AcuniaExArrayList.java: Removed,
+	moved into AcuniaArrayListTest.
+	* gnu/testlet/java/util/Vector/AcuniaVectorTest.java: Make self
+	contained, extend Vector.
+	* gnu/testlet/java/util/Vector/AcuniaExVector.java: Removed, moved
+	into AcuniaVectorTest.
+
+2002-04-02  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/beans/Introspector/jdk11.java (tryone): Catch all
 	Throwables.
 	* gnu/testlet/java/lang/Float/FloatTest.java (test_valueOf): Catch
