@@ -1,5 +1,7 @@
 2005-01-05  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/util/zip/ZipEntry/Size.java: New file.
+
 	* gnu/testlet/locales/LocaleTest.java: Fixed more Latin-1
 	characters.
 
