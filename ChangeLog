@@ -1,3 +1,11 @@
+2004-03-24  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/text/SimpleDateFormat/attribute.java: New tests.
+
+	* gnu/testlet/java/text/DecimalFormat/parse.java: Fixed test to be
+	spec compliant (Long is just a guess, it may change with
+	implementation).
+
 2004-03-24  Sascha Brawer  <brawer@dandelis.ch>
 
 	* gnu/testlet/javax/imageio, gnu/testlet/javax/imageio/spi,

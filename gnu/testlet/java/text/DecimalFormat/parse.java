@@ -91,9 +91,9 @@ public class parse implements Testlet
       num = parseIt (df, "xx30", pp);
       harness.check (num, null);
 
-      apply (harness, df, "0.0000E#");
-      num = parseIt (df, "2.000E+5", pp);
-      harness.check (num instanceof Double);
+      apply (harness, df, "0.0000E0");
+      num = parseIt (df, "2.000E5", pp);
+      harness.check (num instanceof Long);
       harness.check (num.longValue (), 200000);
 
       apply (harness, df, "###0.#;(###0.#)");
