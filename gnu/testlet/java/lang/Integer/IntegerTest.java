@@ -1,4 +1,4 @@
-/* Copyright (C) 1999 Hewlett-Packard Company
+/* Copyright (C) 1999, 2001 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -33,6 +33,10 @@ public class IntegerTest implements Testlet
 		harness.check(!( Integer.MIN_VALUE != 0x80000000 || 
 			 Integer.MAX_VALUE != 0x7fffffff ), 
 			"Error: test_Basics failed - 1" );
+
+		harness.check(Integer.TYPE
+			      == new int[0].getClass().getComponentType(),
+			      "Error: test_Basics failed - 1a");
 
 		Integer i1 = new Integer(100);
 
@@ -212,10 +216,10 @@ public class IntegerTest implements Testlet
 		str = Integer.toHexString(8375);
 		str1 = Integer.toHexString( -5361 ); 
 
-		harness.check(!( !str.equalsIgnoreCase("20B7")), 
+		harness.check( "20b7".equals(str), 
 			"Error: test_toHexString returned wrong results - 1" );
 
-		harness.check(!( !str1.equalsIgnoreCase("FFFFEB0F")), 
+		harness.check( "ffffeb0f".equals(str1),
 			"Error: test_toHexString returned wrong results - 2" );	
 	}
 

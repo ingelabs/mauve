@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 2001 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -43,6 +43,7 @@ public class getInteger implements Testlet
       p.put("e9", "");
       p.put("e10", " ");
       p.put("e11", "foo");
+      p.put("e12", "-#1");
 
       harness.check (Integer.getInteger("e1").toString(), "-2147483648");
       harness.check (Integer.getInteger("e2").toString(), "2147483647");
@@ -57,10 +58,56 @@ public class getInteger implements Testlet
 		     "56789");
       harness.check (Integer.getInteger("e10", null), null);
       harness.check (Integer.getInteger("e11"), null);
+      harness.check (Integer.getInteger("e12"), new Integer(-1));
       harness.check (Integer.getInteger("junk", 12345).toString(), "12345");
       harness.check (Integer.getInteger("junk", new Integer(56789)).toString(),
 		     "56789");
       harness.check (Integer.getInteger("junk", null), null);
       harness.check (Integer.getInteger("junk"), null);
+      harness.check (Integer.getInteger(null), null);
+      harness.check (Integer.getInteger(""), null);
+
+      boolean ok = true;
+      SecurityManager old_security_manager = System.getSecurityManager();
+      try
+        {
+	  System.setSecurityManager(new SM());
+	}
+      catch (SecurityException e)
+        {
+	  ok = false; // can't run this test
+	}
+      if (ok)
+        {
+	  try
+	    {
+	      Integer.getInteger("secure");
+	      ok = false;
+	    }
+	  catch (SecurityException se)
+	    {
+	    }
+	  System.setSecurityManager(old_security_manager); // undo our change
+	}
+      harness.check(ok);
     }
+}
+class SM extends SecurityManager
+{
+  /**
+   * Croak on checking a property named "secure"
+   */
+  public void checkPropertyAccess(String s)
+  {
+    if ("secure".equals(s))
+      super.checkPropertyAccess(s);
+  }
+  /**
+   * Allow restoration of the existing security manager
+   */
+  public void checkPermission(java.security.Permission p)
+  {
+    if (! new RuntimePermission("setSecurityManager").implies(p))
+      super.checkPermission(p);
+  }
 }

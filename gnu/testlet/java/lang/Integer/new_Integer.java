@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998, 1999 Cygnus Solutions
+// Copyright (C) 1998, 1999, 2001 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -80,6 +80,8 @@ public class new_Integer implements Testlet
 		     "-zik0zk");
       harness.check (Integer.toString(Integer.MAX_VALUE, 36),
 		     "zik0zj");
+      harness.check (Integer.toString(12345, 1), "12345");
+      harness.check (Integer.toString(12345, 37), "12345");
 
       harness.checkPoint ("exceptions");
       Integer bad = null;
@@ -132,6 +134,30 @@ public class new_Integer implements Testlet
 	}
       harness.check (bad, null);
 
+      bad = null;
+      try
+	{
+	  bad = new Integer(null);
+	}
+      catch (NullPointerException npe)
+        {
+	  harness.fail("wrong exception");
+	}
+      catch (NumberFormatException ex)
+	{
+	}
+      harness.check (bad, null);
+
+      bad = null;
+      try
+	{
+	  bad = new Integer(" ");
+	}
+      catch (NumberFormatException ex)
+	{
+	}
+      harness.check (bad, null);
+
       harness.checkPoint ("hashCode");
       harness.check (a.hashCode(), 0);
       harness.check (b.hashCode(), 1);
@@ -151,11 +177,16 @@ public class new_Integer implements Testlet
       harness.check (Integer.decode("0x1234FF"), new Integer (1193215));
       harness.check (Integer.decode("#1234FF"), new Integer (1193215));
       harness.check (Integer.decode("-123456789"), new Integer (-123456789));
-      harness.check (Integer.decode("-01234567"), new Integer (-1234567));
+      harness.check (Integer.decode("-01234567"), new Integer (-01234567));
       harness.check (Integer.decode("-0"), new Integer (0));
       harness.check (Integer.decode("0"), new Integer (0));
       harness.check (Integer.decode(Integer.toString(Integer.MIN_VALUE)),
 		     new Integer (-2147483648));
+      harness.check (Integer.decode("-01"), new Integer(-1));
+      harness.check (Integer.decode("-0x1"), new Integer(-1));
+      harness.check (Integer.decode("-#1"), new Integer(-1));
+      // \\u0660 is a Unicode digit, value 0, but does not trigger octal or hex
+      harness.check (Integer.decode("\u06609"), new Integer(9));
 
       harness.checkPoint ("decode exceptions");
       boolean ok = false;
@@ -183,7 +214,22 @@ public class new_Integer implements Testlet
       ok = false;
       try
 	{
-	  Integer.decode("0X1234");
+	  Integer.decode(null);
+	}
+      catch (NullPointerException npe)
+	{
+	  ok = true;
+	}
+      catch (NumberFormatException ex)
+	{
+	  // not ok
+	}
+      harness.check (ok);
+
+      ok = false;
+      try
+	{
+	  Integer.decode("X1234");
 	}
       catch (NumberFormatException ex)
 	{
@@ -228,17 +274,6 @@ public class new_Integer implements Testlet
       try
 	{
 	  Integer.decode("#");
-	}
-      catch (NumberFormatException ex)
-	{
-	  ok = true;
-	}
-      harness.check (ok);
-
-      ok = false;
-      try
-	{
-	  Integer.decode("-0x1234FF");
 	}
       catch (NumberFormatException ex)
 	{
@@ -311,6 +346,8 @@ public class new_Integer implements Testlet
 		     -1865);
       harness.check (Integer.parseInt("-abcdef", 16),
 		     -11259375);
+      harness.check (Integer.parseInt("0", 25),
+		     0);
 
       ok = false;
       try
