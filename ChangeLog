@@ -1,3 +1,14 @@
+2005-02-14  Audrius Meskauskas <audriusa@bluewin.ch>    
+    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Text.java: New test.
+    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/eolnNorification.java:
+	New test.
+    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/randomTables.java:
+    New test.
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/tokenLocations.java:
+	New test case on position of SGML insertion.
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
+	New test cases with valueless unknown argument and nested tables.
+	
 2005-02-13  Thomas Zander <zander@kde.org>
     * gnu/testlet/javax/swing/KeyStroke/getKeyStroke.java: new test
 

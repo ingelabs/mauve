@@ -1,18 +1,24 @@
 // Tags: JDK1.2
+
 // Copyright (C) 2005 Audrius Meskauskas, AudriusA@Bluewin.ch
+
 // // This file is part of Mauve.
+
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2, or (at your option)
 // any later version.
+
 // Mauve is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
+
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.  */
+
 package gnu.testlet.javax.swing.text.html.parser.ParserDelegator;
 
 import gnu.testlet.TestHarness;
@@ -133,6 +139,14 @@ public class parsingTester
            "Attributes without value"
           );
 
+   // Test unknown attribute without value.
+   verify("<hr audrius title=\"tit\">",
+            "<html _implied_='true'><head _implied_='true'>"+
+            "</head><body _implied_='true'><hr audrius='#DEFAULT' "+
+            "title='tit'/></body></html>",
+            "surely unknown attribute 'audrius' without value"
+           );
+
     // Table tests:
     verify("<table><tr><td>a</td><tr><td>a</td>",
            "<html _implied_='true'><head _implied_='true'></head>" +
@@ -176,6 +190,17 @@ public class parsingTester
            "<html _implied_='true'><head _implied_='true'>" +
            "</head><body _implied_='true'><table><tr><td>'x'</td>" +
            "<td>'y'</td><td>'z'</td></tr></table></body></html>", "Simple table"
+          );
+
+   // Test nested table.
+   verify("<table><tr><td><table>nested</table>x</td><td>"+
+           "y</td><td>z</td></table>",
+           "<html _implied_='true'><head _implied_='true'></head>"+
+           "<body _implied_='true'><table>"+
+           "<tr><td><table><tr _implied_='true'>"+
+           "<td _implied_='true'>'nested'</td></tr></table>'x'"+
+           "</td><td>'y'</td><td>'z'</td></tr></table></body></html>",
+           "nested table"
           );
 
     // Test simple nested list.
