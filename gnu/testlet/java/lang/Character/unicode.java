@@ -248,8 +248,14 @@ public class unicode implements Testlet
 
 // isLowerCase
 			char i = (char)x;
-			if (  ("Ll".equals(chars[i].category)
-			       && (i < 0x2000 || i > 0x2fff)
+			// NOTE: JLS doesn't say anything about `Ll'
+			// category.  And Unicode 2.1.8 has some
+			// characters which might be considered
+			// lowercase by all the other rules, but which
+			// are not marked Ll -- e.g., 0x0345.  So we
+			// don't check for this.
+			if (  ( // "Ll".equals(chars[i].category) &&
+			       (i < 0x2000 || i > 0x2fff)
 			       && chars[i].lowercase == 0
 			       && (chars[i].uppercase != 0
 				   || (chars[i].name.indexOf("SMALL LETTER")
@@ -265,8 +271,21 @@ public class unicode implements Testlet
 			else checkPassed();
 
 // isUpperCase
-			if (  "Lu".equals(chars[i].category) !=
-				Character.isUpperCase((char)i) )
+			// NOTE: JLS doesn't say anything about `Lu'
+			// category.  And Unicode 2.1.8 has some
+			// characters which might be considered
+			// uppercase by all the other rules, but which
+			// are not marked Lu -- e.g., 0x03d2.  So we
+			// don't check for this.
+			if (  // "Lu".equals(chars[i].category)
+			    ( (i < 0x2000 || i > 0x2ffff)
+			      && chars[i].uppercase == 0
+			      && (chars[i].lowercase != 0
+				  || (chars[i].name.indexOf("CAPITAL LETTER")
+				      != -1)
+				  || (chars[i].name.indexOf("CAPITAL LIGATURE")
+				      != -1)))
+			    != Character.isUpperCase((char)i) )
 			{
 				reportError(i,
 (Character.isUpperCase((char)i) ? "uppercase" : "not-uppercase" ) );

@@ -1,5 +1,12 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/unicode.java (performTests):
+	Fixed recognition of upper case characters to match Java
+	documentation.
+
+	* gnu/testlet/java/lang/Character/unicode.java (performTests):
+	Lower case letters don't necessarily have to be marked `Ll'.
+
 	* gnu/testlet/java/lang/Character/UnicodeData.txt: Updated to
 	version 2.1.8.
 
