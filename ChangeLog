@@ -1,3 +1,8 @@
+2004-06-06  Jerry Quinn  <jlquinn@optonline.net>
+
+	* gnu/testlet/java/util/SimpleTimeZone/check14.java: Fix uses of
+	SimpleTimeZone.getOffset.
+
 2004-06-05  Jerry Quinn  <jlquinn@optonline.net>
 
 	* gnu/testlet/java/util/zip/ZipEntry/time.java: New test.
