@@ -1,3 +1,7 @@
+2002-11-06  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/InputStreamReader/jdk11:
+	Added tests to complete testing of all methods
+
 2002-11-03  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Class/reflect.java: Add array class checks.
