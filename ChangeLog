@@ -1,5 +1,8 @@
 1999-05-19  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/util/zip/ZipInputStream/reference.zip: New file.
+	* gnu/testlet/java/util/zip/ZipInputStream/basic.java: New file.
+
 	* gnu/testlet/java/util/zip/basic.java: New file.
 	* gnu/testlet/java/util/zip/reference.data: Likewise.
 	* gnu/testlet/java/util/zip/reference.gz: Likewise.
