@@ -1,5 +1,10 @@
 2005-01-18  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/util/SimpleTimeZone/constructors.java:
+	Simplified checks for boolean values.
+
+2005-01-18  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/net/URI/URITest.java: New testcases.
 
 2005-01-17  Tom Tromey  <tromey@redhat.com>

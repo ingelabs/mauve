@@ -70,7 +70,7 @@ public class constructors implements Testlet {
       Calendar.NOVEMBER, 22, 0, 2*60*60*1000);
     harness.check(z.getRawOffset(), 1234);
     harness.check(z.getID(), "Z1");
-    harness.check(z.useDaylightTime(), true);
+    harness.check(z.useDaylightTime());
     harness.check(z.getDSTSavings(), 60*60*1000);
 
     // null id should throw exception
@@ -191,7 +191,7 @@ public class constructors implements Testlet {
       Calendar.NOVEMBER, 22, 0, 2*60*60*1000, 123456);
     harness.check(z.getRawOffset(), 1234);
     harness.check(z.getID(), "Z1");
-    harness.check(z.useDaylightTime(), true);
+    harness.check(z.useDaylightTime());
     harness.check(z.getDSTSavings(), 123456);
     
     // null id should throw exception
@@ -312,7 +312,7 @@ public class constructors implements Testlet {
       123456);
     harness.check(z.getRawOffset(), 1234);
     harness.check(z.getID(), "Z1");
-    harness.check(z.useDaylightTime(), true);
+    harness.check(z.useDaylightTime());
     harness.check(z.getDSTSavings(), 123456);
 
     // null id should throw exception
