@@ -90,4 +90,5 @@ public abstract class TestHarness
   public abstract void debug (String message);
   public abstract void debug (String message, boolean newline);
   public abstract void debug (Throwable ex);
+  public abstract void debug (Object[] o, String desc);
 }

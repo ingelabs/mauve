@@ -94,6 +94,23 @@ public class SimpleTestHarness extends TestHarness
 	ex.printStackTrace(System.out);
     }
 
+  public void
+  debug(Object[] o, String desc)
+  {
+    debug("Dumping Object Array: " + desc);
+    if (o == null)
+      {
+        debug("null");
+        return;
+      }
+
+    for (int i = 0; i < o.length; i++)
+      if (o[i] instanceof Object[])
+        debug((Object[])o[i], desc + " element " + i);
+      else
+        debug("  Element " + i + ": " + o[i]);
+  }
+
   protected void runtest (String name)
     {
       // Try to ensure we start off with a reasonably clean slate.
