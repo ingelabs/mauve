@@ -1,3 +1,9 @@
+1999-01-14  Andrew Haley  <aph@cygnus.com>
+
+	* gnu/testlet/java/lang/Math/cos.java,
+	gnu/testlet/java/lang/Math/min.java,
+	gnu/testlet/java/lang/Math/max.java: new files.
+
 1999-01-11  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/text/ParsePosition/Test.java: Tag testlet with
