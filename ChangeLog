@@ -1,11 +1,18 @@
 2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
 
-	* gnu/testlet/java/util/logging/Logger/getLogger.java (TestResourceBundle):
-	Moved into separate file.
+	* gnu/testlet/java/util/logging/Logger/getName.java,
+	gnu/testlet/java/util/logging/Logger/hierarchyChecks.java:
+	New files.
+
+2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/java/util/logging/Logger/getLogger.java
+	(TestResourceBundle): Moved into separate file.
 
 	* gnu/testlet/java/util/logging/Logger/getAnonymousLogger.java,
 	gnu/testlet/java/util/logging/Logger/TestFilter.java,
-	gnu/testlet/java/util/logging/Logger/TestResourceBundle.java: New files.
+	gnu/testlet/java/util/logging/Logger/TestResourceBundle.java:
+	New files.
 
 2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
 
