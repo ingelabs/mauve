@@ -4,7 +4,7 @@ dnl Modified by Brian Jones <cbj@gnu.org> for Mauve
 dnl acx_check_pathname_style.m4 
 dnl http://research.cys.de/autoconf-archive/
 
-AC_DEFUN(ACX_CHECK_PATHNAME_STYLE_DOS,
+AC_DEFUN([ACX_CHECK_PATHNAME_STYLE_DOS],
 [AC_MSG_CHECKING(for Windows and DOS and OS/2 style pathnames)
 AC_CACHE_VAL(acx_cv_pathname_style_dos, 
   [AC_REQUIRE([AC_CANONICAL_HOST])
