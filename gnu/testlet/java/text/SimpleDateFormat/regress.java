@@ -54,7 +54,7 @@ public class regress implements Testlet
     cdf.setTimeZone (TimeZone.getTimeZone ("GMT"));
     for (int i = 0; i < dates.length; ++i)
       {
-	String tz = dates[i].substring (dates[i].lastIndexOf (' '),
+	String tz = dates[i].substring (dates[i].lastIndexOf (' ') + 1,
 					dates[i].length ());
 	try
 	  {
