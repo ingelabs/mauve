@@ -1,4 +1,4 @@
-// Tags: JDK1.2	
+// Tags: JDK1.2
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
