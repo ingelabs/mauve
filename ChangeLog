@@ -1,3 +1,7 @@
+2004-12-30  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/Thread/sleep.java: New test.
+
 2004-12-30  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/nio/ByteBuffer/compact.java,
