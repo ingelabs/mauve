@@ -1,5 +1,9 @@
 2003-02-21  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/zip/ZipEntry/setComment.java: New test.
+
+2003-02-21  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/util/zip/ZipEntry/newZipEntry.java: New test.
 
 2003-02-18  Raif S. Naffah  <raif@fl.net.au>
