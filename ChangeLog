@@ -1,5 +1,21 @@
 2004-10-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/SimpleTimeZone/clone.java,
+	gnu/testlet/java/util/SimpleTimeZone/constants.java, 
+	gnu/testlet/java/util/SimpleTimeZone/constructors.java, 
+	gnu/testlet/java/util/SimpleTimeZone/equals.java, 
+	gnu/testlet/java/util/SimpleTimeZone/getDSTSavings.java, 
+	gnu/testlet/java/util/SimpleTimeZone/getOffset.java, 
+	gnu/testlet/java/util/SimpleTimeZone/getRawOffset.java, 
+	gnu/testlet/java/util/SimpleTimeZone/hashCode.java, 
+	gnu/testlet/java/util/SimpleTimeZone/hasSameRules.java, 
+	gnu/testlet/java/util/SimpleTimeZone/inDaylightTime.java, 
+	gnu/testlet/java/util/SimpleTimeZone/setDSTSavings.java,
+	gnu/testlet/java/util/SimpleTimeZone/setRawOffset.java,
+	gnu/testlet/java/util/SimpleTimeZone/setStartYear.java: New tests.
+	
+2004-10-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/SimpleTimeZone/check12.java,
 	gnu/testlet/java/util/SimpleTimeZone/check14.java: fixed bugs in
 	various checks. 
