@@ -49,7 +49,7 @@ public class jdk11 implements Testlet
       }
 
 	String fname = "raftmpfile";
-	RandomAccessFile raf, raf2;
+	RandomAccessFile raf;
 	int rdcnt;
 	byte[] buf = { 0, 0, 0, 0 };
 
@@ -60,16 +60,6 @@ public class jdk11 implements Testlet
 	if (f.exists()) {
 		f.delete();
 	}
-
-	// new RandomAccessFile(fname, mode)
-    try {
-    	raf2 = new RandomAccessFile(f, "rw");
-	}
-	catch (IOException e) {
-		harness.fail("new RandomAccessFile(File, mode): Can't open file " + fname);
-		return;  // can't proceed without open file
-	}
-
 
 	// new RandomAccessFile(filename, mode);
 	try {

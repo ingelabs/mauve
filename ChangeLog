@@ -1,3 +1,7 @@
+2002-11-14  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/RandomAccessFile/jdk11.java
+	Cleaned up unused code that was offending VMS.
+
 2002-11-13  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/SequenceInputStream.java
 	Added tests to complete testing of all methods
