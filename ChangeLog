@@ -1,5 +1,9 @@
 2002-12-24  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/PipedReaderWriter/Test.java:
+	Changed parameters to read() method call to match API
+
+2002-12-24  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PipedReaderWriter/Test.java:
 	Added test for connect() method on PipedWriter.  See corresponding
 	patch to PipedWriter class.
 

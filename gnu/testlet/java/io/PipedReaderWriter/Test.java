@@ -55,7 +55,7 @@ test(TestHarness harness)
 
       char[] buf = new char[12];
       int chars_read, total_read = 0;
-      while((chars_read = pr.read(buf)) != -1)
+      while((chars_read = pr.read(buf,0,buf.length)) != -1)
         {
           harness.debug(new String(buf, 0, chars_read), false);
           System.gc(); // A short delay
