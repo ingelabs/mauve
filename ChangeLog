@@ -1,3 +1,10 @@
+2005-03-17  Audrius Meskauskas  <audriusa@bluewin.ch>
+        
+	* gnu/testlet/javax/xml/parsers/DocumentBuilder/
+	parseSimpleXML.java,
+	gnu/testlet/javax/xml/parsers/DocumentBuilder/
+	Verifyer.java: New test.
+
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
 
 	* gnu/testlet/gnu/javax/swing/text/html/parser/
