@@ -19,7 +19,9 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.1
+// Tags: JDK1.2
+
+// FIXME: there should be a 1.1 version of this test.
 
 package gnu.testlet.java.text.FieldPosition;
 

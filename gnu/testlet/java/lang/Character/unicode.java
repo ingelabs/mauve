@@ -6,6 +6,7 @@ package gnu.testlet.java.lang.Character;
 import java.io.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.ResourceNotFoundException;
 
 /*
 MISSING:
@@ -28,14 +29,13 @@ public class unicode implements Testlet
 	{
 	}
 
-	public unicode(TestHarness harness, String filename) throws IOException
+	public unicode(TestHarness harness, String filename) throws IOException, ResourceNotFoundException
 	{
-			BufferedReader bir = new BufferedReader(
-				new FileReader(harness.getSourceDirectory() +
-                                    File.separator + 
-                                    "gnu/testlet/java/lang/Character/" +
-                                    filename));
-			harness.debug("Reading unicode database...");
+	  Reader bir = 
+	    harness.getResourceReader ("gnu#testlet#java#lang#Character#"
+				       + filename);
+	  harness.debug("Reading unicode database...");
+
 			while ( bir.ready() )
 			{
 				String str;
@@ -177,8 +177,6 @@ public class unicode implements Testlet
 			chars[i].digit = i - 0xFF41 + 10;
 			chars[i].numericValue = chars[i].digit; // ??
 		}
-
-		System.out.println("done");
 	}
 
 	private String getNext( Reader r ) throws IOException

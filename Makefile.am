@@ -10,7 +10,8 @@ TESTFLAGS =
 check_DATA = classes.stamp
 
 harness_files = gnu/testlet/SimpleTestHarness.java \
-	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java
+	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
+	gnu/testlet/ResourceNotFoundException.java
 
 include choices
 

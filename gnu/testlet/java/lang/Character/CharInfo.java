@@ -1,7 +1,8 @@
 // Tags: not-a-test
 
-// This is sad, but we need this class in its own file because gcj
-// currently doesn't support inner classes.
+// Originally, this was implemented as an inner-class.  However, we
+// have resolved, to the extent that is possible, to restrict
+// ourselves to JLS 1.0 features.
 
 package gnu.testlet.java.lang.Character;
 

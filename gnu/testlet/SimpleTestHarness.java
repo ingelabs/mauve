@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// Boston, MA 02111-1307, USA.
 
 // KNOWN BUGS:
 //   - should look for /*{ ... }*/ and treat contents as expected
@@ -55,9 +55,29 @@ public class SimpleTestHarness extends TestHarness
       ++total;
     }
 
-  public String getSourceDirectory ()
+  private String getSourceDirectory ()
     {
       return srcdir;
+    }
+
+  public Reader getResourceReader (String name) 
+    throws ResourceNotFoundException
+    {
+      // The following code assumes File.separator is a single character.
+      if (File.separator.length () > 1)
+	throw new Error ("File.separator length is greater than 1");
+      String realName = name.replace ('#', File.separator.charAt (0));
+      try 
+	{
+	  return 
+	    new BufferedReader (new FileReader (getSourceDirectory () 
+						+ File.separator 
+						+ realName ));
+	}
+      catch (FileNotFoundException ex)
+	{
+	  throw new ResourceNotFoundException (ex.getLocalizedMessage ());
+	}
     }
 
   public void checkPoint (String name)

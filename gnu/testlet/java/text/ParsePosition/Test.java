@@ -19,7 +19,10 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.1
+// Tags: JDK1.2
+
+// FIXME: This test should be split into two.
+// getErrorIndex is a JDK1.2 method.  The rest were present in 1.1.
 
 package gnu.testlet.java.text.ParsePosition;
 

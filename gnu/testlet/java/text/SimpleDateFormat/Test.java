@@ -46,13 +46,6 @@ test(TestHarness harness)
   sdf.setDateFormatSymbols(dfs);
   harness.check(sdf.getDateFormatSymbols(), dfs, "set/getDateFormatSymbols()");
   
-  // This unusual value seems to be what the JDK outputs.
-  harness.check(sdf.get2DigitYearStart(), new Date(-1608614014805L), 
-                "get2DigitYearStart() initial");
-  Date d = new Date(System.currentTimeMillis());
-  sdf.set2DigitYearStart(d);
-  harness.check(sdf.get2DigitYearStart(), d, "set/get2DigitYearStart()");
-
   harness.check(sdf.toPattern(), pattern, "toPattern init");
   String new_pattern = "EMdyH";
   sdf.applyPattern(new_pattern);
@@ -63,7 +56,7 @@ test(TestHarness harness)
   harness.check(sdf.clone().equals(sdf) == true, "clone()");
 
   sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-  d = new Date(0);
+  Date d = new Date(0);
   String formatted_date = sdf.format(d);
   harness.debug(formatted_date);
   harness.check(formatted_date.equals(

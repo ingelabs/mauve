@@ -1,3 +1,35 @@
+1999-01-11  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/text/ParsePosition/Test.java: Tag testlet with
+	JDK1.2.
+
+	* gnu/testlet/java/text/FieldPosition/Test.java: Tag testlet with
+	JDK1.2.
+
+	* gnu/testlet/java/text/SimpleDateFormat/getAndSet2DigitYearStart.java:
+	New file.
+	
+	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Extracted
+	get2DigitYearStart and set2DigitYearStart tests.
+
+	* gnu/testlet/java/lang/Character/unicode.java (unicode): Use
+	TestHarness.getResourceReader instead of direct File usage.
+
+	* gnu/testlet/java/lang/Character/unicode.java: Removed
+	System.out.println output.
+
+	* Makefile.in: Rebuilt.
+	* Makefile.am (harness_files): Add ResourceNotFoundException.
+	* gnu/testlet/ResourceNotFoundException.java: New file.
+
+	* gnu/testlet/SimpleTestHarness.java: Add getResourceReader.
+
+	* gnu/testlet/TestHarness.java: Remove getSourceDirectory.
+	Add getResourceReader.
+
+	* gnu/testlet/java/lang/Character/CharInfo.java: Clarified
+	inner-class comment.
+
 Sun Jan 10 21:18:32 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Added this test

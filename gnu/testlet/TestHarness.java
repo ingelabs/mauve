@@ -1,4 +1,4 @@
-// Copyright (c) 1998  Cygnus Solutions
+// Copyright (c) 1998, 1999  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -16,11 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// Boston, MA 02111-1307, USA.
 
 package gnu.testlet;
 
-import java.io.File;
+import java.io.Reader;
 
 public abstract class TestHarness
 {
@@ -72,10 +72,12 @@ public abstract class TestHarness
       check (result, expected);
     }
 
-  // This returns the top level source directory.  It might be a
-  // relative path.  This can be used to locate data files and the
-  // like.
-  public abstract String getSourceDirectory ();
+  // Given a resource name, return a Reader on it.  Resource names are
+  // just like file names.  They are relative to the top level Mauve
+  // directory, but '#' characters are used in place of directory
+  // separators.
+  public abstract Reader getResourceReader (String name) 
+    throws ResourceNotFoundException;
 
   // This can be used to mark a known place in a testlet.  It is
   // useful if you have a large number of tests -- it makes it easier
