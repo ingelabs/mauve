@@ -48,7 +48,7 @@ public class first implements Testlet
   private void testYears(int startYear)
   {
     for (int year = startYear; year <= startYear + 5; year++)
-      for (int month = 0; month <= 12; month++)
+      for (int month = 0; month < 12; month++)
 	{
 	  GregorianCalendar cal = new GregorianCalendar(year, month, 1);
 	  harness.check(cal.get(Calendar.DAY_OF_MONTH), 1,

@@ -1,3 +1,8 @@
+2003-09-02  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/GregorianCalendar/first.java: Months are
+	numbered from 0 till 11.
+
 2003-09-01  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/GregorianCalendar/first.java: New file.
