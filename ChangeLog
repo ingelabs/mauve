@@ -1,3 +1,7 @@
+2002-04-30  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/BufferedReader/boundary.java: New file.
+
 2002-04-17  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/InetAddress/InetAddressTest.java (test_Basics):
