@@ -58,5 +58,66 @@ public class setScale implements Testlet
     harness.check (x.toString(), "0.20562");
     x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN); // to x.xx
     harness.check (x.toString(), "0.21");
+
+    x = new BigDecimal("0.20499");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "0.20");
+
+    x = new BigDecimal("0.20500");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "0.20");
+
+    x = new BigDecimal("0.20501");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "0.21");
+
+    x = new BigDecimal("0.21499");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "0.21");
+
+    x = new BigDecimal("0.21500");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "0.22");
+
+    x = new BigDecimal("0.21501");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "0.22");
+
+    // And now the negative versions.
+    harness.checkPoint ("quinneg");
+    x = new BigDecimal("-0.20562");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN); // to x.xx
+    harness.check (x.toString(), "-0.21");
+
+    x = new BigDecimal("-0.20499");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "-0.20");
+
+    x = new BigDecimal("-0.20500");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "-0.20");
+
+    x = new BigDecimal("-0.20501");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "-0.21");
+
+    x = new BigDecimal("-0.21499");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "-0.21");
+
+    x = new BigDecimal("-0.21500");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "-0.22");
+
+    x = new BigDecimal("-0.21501");
+    harness.verbose(x.toString());
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    harness.check (x.toString(), "-0.22");
   }
 }
