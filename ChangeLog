@@ -1,3 +1,30 @@
+1998-12-06  Anthony Green  <green@cygnus.com>
+
+	* ResourceBundle/getBundle.java,
+	ResourceBundle/Resource4_en_CA.java
+	ResourceBundle/Resource4_jp.java ResourceBundle/Resource1.java
+	ResourceBundle/Resource2_en.java ResourceBundle/Resource4.java
+	ResourceBundle/Resource3_bo.java
+	ResourceBundle/Resource4_jp_JA_WIN_95.java
+	ResourceBundle/Resource4_jp_JA_WIN.java
+	ResourceBundle/Resource4_jp_JA.java
+	ResourceBundle/Resource5_en.java ResourceBundle/Resource4_en.java
+	ResourceBundle/Resource5_en_CA.java ResourceBundle/Resource5.java
+	ResourceBundle/Resource5_jp.java
+	ResourceBundle/Resource5_jp_JA.java
+	ResourceBundle/Resource5_jp_JA_WIN.java
+	ResourceBundle/Resource6_en.java
+	ResourceBundle/Resource6_en_CA.java ResourceBundle/Resource6.java
+	ResourceBundle/Resource6_jp.java
+	ResourceBundle/Resource6_jp_JA.java
+	ResourceBundle/Resource7_en.java
+	ResourceBundle/Resource7_en_CA.java ResourceBundle/Resource7.java
+	ResourceBundle/Resource7_jp.java ResourceBundle/Resource8_en.java
+	ResourceBundle/Resource8_en_CA.java ResourceBundle/Resource8.java
+	ResourceBundle/Resource9_en.java
+	ResourceBundle/Resource9_en_CA.java
+	ResourceBundle/Resource10_en.java: New files.
+
 1998-12-05  Anthony Green  <green@cygnus.com>
 
 	* choose: Add support for "Uses" tag.
