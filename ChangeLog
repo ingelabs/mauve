@@ -1,3 +1,7 @@
+2003-11-27  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/Calendar/ampm.java: New test.
+
 2003-11-27  Mark Wielaard  <mark@klomp.org>
 
 	* choose-classes: New script.
