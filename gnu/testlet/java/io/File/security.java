@@ -87,6 +87,10 @@ public class security implements Testlet
       new PropertyPermission("java.io.tmpdir", "read");
 
     TestSecurityManager2 sm = new TestSecurityManager2(harness);
+
+    // Keep a record of created temp files so we can delete them later.
+    File tf1 = null;
+    File tf2 = null;
     try {
       sm.install();
 	
@@ -195,7 +199,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpallWritePerm},
 			 new Permission[]{tmpdirPropPerm});
-	File.createTempFile("pfx", "sfx");
+	tf1 = File.createTempFile("pfx", "sfx");
 	sm.checkAllChecked(harness);
       }
       catch (Exception ex) {
@@ -206,7 +210,7 @@ public class security implements Testlet
       harness.checkPoint("createTempFile(3-args)");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirallWritePerm}, noPerms);
-	File.createTempFile("pfx", "sfx", tmpdir);
+	tf2 = File.createTempFile("pfx", "sfx", tmpdir);
 	sm.checkAllChecked(harness);
       }
       catch (Exception ex) {
@@ -291,6 +295,12 @@ public class security implements Testlet
     }
     finally {
       sm.uninstall();
+
+      if (tmpfile != null) tmpfile.delete();
+      if (tmpfile2 != null) tmpfile2.delete();
+      if (tf1 != null) tf1.delete();
+      if (tf2 != null) tf2.delete();
+      if (tmpdir != null) tmpdir.delete();
     }
   }
 }

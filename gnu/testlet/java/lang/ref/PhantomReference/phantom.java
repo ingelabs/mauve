@@ -56,7 +56,7 @@ public class phantom implements Testlet
 
     // Give the runtime some hints that it should really garbage collect.
     System.gc ();
-    System.yield ();
+    Thread.yield ();
     System.gc ();
 
     Reference r = q.poll ();

@@ -33,7 +33,7 @@ public class jdk14 implements Testlet
 {
   public void test (TestHarness harness)
   {
-    String host = "mail.gnu.org";
+    String host = "mx10.gnu.org";
     int port = 25;
     Socket sock = null;
     try 

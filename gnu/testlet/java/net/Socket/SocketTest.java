@@ -193,7 +193,7 @@ public class SocketTest implements Testlet
 
   public void test_params()
   {
-    String host = "mail.gnu.org";
+    String host = "mx10.gnu.org";
     int port = 25;
 
     harness.checkPoint("params");
@@ -329,7 +329,7 @@ public class SocketTest implements Testlet
     try {
       // This is host / port that is unlikely to be blocked.  (Outgoing
       // port 80 connections are often blocked.)
-      s = new Socket ("mail.gnu.org", 25);
+      s = new Socket ("mx10.gnu.org", 25);
       harness.check(true);
     }
     catch (Exception e) {

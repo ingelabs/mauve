@@ -1,5 +1,19 @@
 2004-04-18  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java: Call
+	Thread.yield().
+
+	* gnu/testlet/java/io/File/security.java: Delete all temporary files
+	and directories in the finally block.
+
+	* gnu/testlet/java/net/Socket/SocketTest.java: mail.gnu.org was
+	renamed mx10.gnu.org.
+	* gnu/testlet/java/net/Socket/jdk12.java: Likewise.
+	* gnu/testlet/java/net/Socket/jdk13.java: Likewise.
+	* gnu/testlet/java/net/Socket/jdk14.java: Likewise.
+
+2004-04-18  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/TestSecurityManager2.java: Add private harness and
 	use it for extra debug output.
 	* gnu/testlet/java/io/File/security.java: Add tmpdir2, write and
