@@ -14,16 +14,18 @@ public class close implements Runnable, Testlet {
 	Thread main;
 	PipedInputStream in;
 	PipedOutputStream out;
+	TestHarness harness;
 
 	public void run() {
 		try {
 			Thread.sleep(1000);
-			System.out.println("Closing pipe input stream:");
+			harness.debug("Closing pipe input stream:");
 			in.close();
 			Thread.sleep(1000);
-			System.out.println("Interrupting pipe reader:");
+			harness.debug("Interrupting pipe reader:");
 			main.interrupt();
 		} catch (Throwable t) {
+			harness.debug(t);
 		}
 	}
 
@@ -31,6 +33,7 @@ public class close implements Runnable, Testlet {
 		int val = 23;
 		try {
 			close test = new close();
+			test.harness = harness;
 
 			test.main = Thread.currentThread();
 			test.out = new PipedOutputStream();
@@ -40,6 +43,7 @@ public class close implements Runnable, Testlet {
 
 			val = test.in.read();
 		} catch (Throwable t) {
+			harness.debug(t);
 		}
 		harness.check(val, -1);
 	}

@@ -1,3 +1,7 @@
+2002-04-15  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/PipedStream/close.java: Use harness.debug().
+
 2002-04-14  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/URLConnection/URLConnectionTest.java:
