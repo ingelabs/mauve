@@ -578,6 +578,50 @@ public class URLTest implements Testlet
 	      }
 	}
 
+    public void test_contextResolution() {
+	harness.checkPoint("contextResolution");
+	try {
+	    String[][] testData = new String[][] {
+		{"file://www.example.com/foo/bar.txt",
+		 "../test.txt",
+		 "file://www.example.com/test.txt"
+		},
+		{"file://www.example.com/foo/bar.txt",
+		 "./test.txt",
+		 "file://www.example.com/foo/test.txt"
+		},
+		{"http://www.example.com/foo/bar.txt",
+		 "../test.txt",
+		 "http://www.example.com/test.txt"
+		},
+		{"http://www.example.com/foo/bar.txt",
+		 "./test.txt",
+		 "http://www.example.com/foo/test.txt"
+		},
+		{"jar:file://www.example.com/test.jar!/foo/bar.txt",
+		 "../test.txt",
+		 "jar:file://www.example.com/test.jar!/test.txt"
+		},
+		{"jar:file://www.example.com/test.jar!/foo/bar.txt",
+		 "./test.txt",
+		 "jar:file://www.example.com/test.jar!/foo/test.txt"
+		},
+	    };
+	    
+	    for (int count = 0; count < testData.length; count++) {
+		URL base = new URL(testData[count][0]);
+		String relative = testData[count][1];
+		URL resolved = new URL(base, relative);
+		harness.check(resolved.toString(), testData[count][2]);
+	    }
+	}
+	catch (Exception e) {
+	    harness.debug(e);
+	    harness.fail("Should not have thrown exception");
+	}
+    }
+
+
 	public void testall()
 	{
 		harness.debug("Running: test_Basics");
@@ -598,6 +642,8 @@ public class URLTest implements Testlet
                 test_cr601b();
 		harness.debug("Running: authority");
 		test_authority();
+		harness.debug("Running: test_contextResolution");
+		test_contextResolution();
 	}
 
   public void test (TestHarness the_harness)

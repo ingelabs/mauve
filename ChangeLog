@@ -1,3 +1,8 @@
+2005-01-12  Bryn Cooke  <BrynCooke@myrealbox.com>
+
+	* gnu/testlet/java/net/URL/URLTest.java:
+	Added new testcases for URLs with given context.
+
 2005-01-12  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/nio/channels/Channels/ChannelsTest.java:
