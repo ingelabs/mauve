@@ -1,5 +1,7 @@
 1998-12-04  Tom Tromey  <tromey@cygnus.com>
 
+	* choose: Allow tag file to appear in build directory.
+
 	* gnu/testlet/SimpleTestHarness.java: Removed erroneous comment.
 
 	* gnu/testlet/SimpleTestHarness.java (runtest): Only (and always)

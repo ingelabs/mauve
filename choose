@@ -68,12 +68,21 @@ while test -n "$taglist"; do
        test -z "$seen_dashdash" && spectags="$spectags $i"
        ;;
     *)
-       if test -f "mauve-$i"; then
+       file=
+       # Always prefer a tag file in the build directory.
+       if test -f "$outdir/mauve-$i"; then
+	  file="$outdir/mauve-$i"
+       else
+	  if test -f "mauve-$i"; then
+	     file="mauve-$i"
+	  fi
+       fi
+       if test -n "$file"; then
 	  # We don't want tags from a file to be treated as specified
 	  # on the command line.  So we add a `X--' before the
 	  # expansion.  We don't use just `--' as this would confuse
 	  # `set'.
-	  taglist="$taglist X-- `sed -e 's/#.*$//g' mauve-$i`"
+	  taglist="$taglist X-- `sed -e 's/#.*$//g' $file`"
        fi
        tags="$tags $i"
        test -z "$seen_dashdash" && spectags="$spectags $i"
