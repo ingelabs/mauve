@@ -54,7 +54,7 @@ if test ! -z "$NATIVE"; then
 fi
 
 # Create Mauve Framwork
-framework_sources="gnu/testlet/SimpleTestHarness.java gnu/testlet/TestHarness.java gnu/testlet/Testlet.java gnu/testlet/ResourceNotFoundException.java gnu/testlet/TestSecurityManager.java gnu/testlet/config.java"
+framework_sources="gnu/testlet/SimpleTestHarness.java gnu/testlet/TestHarness.java gnu/testlet/Testlet.java gnu/testlet/ResourceNotFoundException.java gnu/testlet/TestSecurityManager.java gnu/testlet/config.java gnu/testlet/TestResult.java gnu/testlet/TestReport.java"
 
 if test -z "$NATIVE"; then
     $COMPILER $COMPILER_FLAGS $framework_sources
