@@ -1,3 +1,8 @@
+2004-12-22  Arnaud Vandyck  <arnaud.vandyck@ulg.ac.be>
+
+	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java:
+	New file.
+
 2004-12-20  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/javax/swing/JComboBox/SimpleSelectionTest.java:
