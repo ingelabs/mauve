@@ -50,6 +50,28 @@ public abstract class TestHarness
 	debug ("got " + result + " but expected " + expected);
     }
 
+  // These methods are like the above, but checkpoint first.
+  public void check (boolean result, String name)
+    {
+      checkPoint (name);
+      check (result);
+    }
+  public void check (Object result, Object expected, String name)
+    {
+      checkPoint (name);
+      check (result, expected);
+    }
+  public void check (int result, int expected, String name)
+    {
+      checkPoint (name);
+      check (result, expected);
+    }
+  public void check (long result, long expected, String name)
+    {
+      checkPoint (name);
+      check (result, expected);
+    }
+
   // This returns the top level source directory.  It might be a
   // relative path.  This can be used to locate data files and the
   // like.

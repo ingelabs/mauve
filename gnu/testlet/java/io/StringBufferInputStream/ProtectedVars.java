@@ -36,7 +36,14 @@ ProtectedVars(String b)
   super(b);
 }
 
-public static void
+// The constructor for the test suite.
+public
+ProtectedVars ()
+{
+  super("");
+}
+
+public void
 test(TestHarness harness)
 {
   String str = "Between my freshman and sophomore years of high school\n" +

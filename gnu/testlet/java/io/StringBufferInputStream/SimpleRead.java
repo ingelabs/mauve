@@ -30,7 +30,7 @@ import java.io.*;
 public class SimpleRead implements Testlet
 {
 
-public static void
+public void
 test(TestHarness harness)
 {
   String str = "Between my freshman and sophomore years of high school\n" +

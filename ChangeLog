@@ -1,3 +1,16 @@
+1998-12-16  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/io/StringBufferInputStream/SimpleRead.java
+	(test): Not static.
+	* gnu/testlet/java/io/StringBufferInputStream/ProtectedVars.java
+	(ProtectedVars): New no-arg constructor.
+	(test): Not static.
+	* gnu/testlet/java/io/StringBufferInputStream/MarkReset.java
+	(test): Not static.
+
+	* gnu/testlet/TestHarness.java (check): Added variants with
+	checkpoint string argument.
+
 1998-12-14  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/String/decode.java (test): Changed
