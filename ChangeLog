@@ -1,3 +1,8 @@
+2002-12-22  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/StringBuffer/StringBufferTest.java (getChars):
+	Add big offsets test.
+
 2002-12-19  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/ClassTest.java

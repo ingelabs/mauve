@@ -1,4 +1,5 @@
 /* Copyright (C) 1999 Hewlett-Packard Company
+   Copyright (C) 2002 Free Software Foundation, Inc.
 
    This file is part of Mauve.
 
@@ -220,6 +221,11 @@ public class StringBufferTest implements Testlet
 		harness.check(!( dst[0] != 'a' || dst[1] != ' ' || dst[2] != ' ' ||
 			 				  dst[3] != ' ' || dst[4] != ' ' ), 
 			"Error : test_getChars failed - 10");
+
+		dst = new char[25];
+		str.getChars(3,14,dst,12);
+		harness.check(dst[12], 'd', "getChars starting src offset 3");
+		harness.check(dst[22], 'n', "getChars ending dst offset 22");
 	}
 
 	public void test_append( )
