@@ -91,6 +91,16 @@ public class equals implements Testlet
     );
     harness.check(m1.equals(m2));
 
+    // scanline stride
+    m1 = new SinglePixelPackedSampleModel(
+      DataBuffer.TYPE_INT, 5, 10, 99, new int[] {224, 24, 7 }
+    );
+    harness.check(!m1.equals(m2));
+    m2 = new SinglePixelPackedSampleModel(
+      DataBuffer.TYPE_INT, 5, 10, 99, new int[] {224, 24, 7 }
+    );
+    harness.check(m1.equals(m2));  
   }
+  
 }
 

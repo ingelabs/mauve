@@ -1,3 +1,8 @@
+2004-11-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/equals.java: 
+	added check for scanlineStride.
+	
 2004-11-14  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/parse.java:
@@ -5,7 +10,7 @@
 
 2004-11-11  David Gilbert  <david.gilbert@object-refinery.com>
 
-	*
+	* 
 	gnu/testlet/java/text/SimpleDateFormat/getDateFormatSymbols.java,
 	gnu/testlet/java/text/SimpleDateFormat/setDateFormatSymbols.java:
 	New tests;
