@@ -1,3 +1,6 @@
+2002-09-20  Daryl Lee <dol@sources.redhat.com>
+	* Added remaing java.io.BufferedInputStream method tests to SimpleRead.java
+
 2002-09-16  Daryl Lee <dol@sources.redhat.com>
 	* removed gnu/testlet/java/io/RandomAccssFile/raf.java in favor
 	of jdk11.java
