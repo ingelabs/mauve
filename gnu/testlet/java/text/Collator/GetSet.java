@@ -1,5 +1,5 @@
 /*************************************************************************
-/* Constants.java -- Test get/set methods in java.text.Collator
+/* GetSet.java -- Test get/set methods in java.text.Collator
 /*
 /* Copyright (c) 1999 Aaron M. Renn (arenn@urbanophile.com)
 /*
