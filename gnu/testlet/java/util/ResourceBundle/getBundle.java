@@ -21,6 +21,7 @@
 // Boston, MA 02111-1307, USA.  */
 
 package gnu.testlet.java.util.ResourceBundle;
+import gnu.testlet.ResourceNotFoundException;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.util.Locale;

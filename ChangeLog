@@ -1,3 +1,9 @@
+2004-10-21  Dalibor Topic  <robilad@kaffe.org>
+
+	* gnu/testlet/java/util/zip/InflaterInputStream/basic.java,
+	gnu/testlet/java/util/ResourceBundle/getBundle.java:
+	Fixed imports.
+
 2004-10-21  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/zip/InflaterInputStream/basic.java (test):
