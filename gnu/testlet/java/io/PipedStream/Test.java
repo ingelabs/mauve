@@ -69,6 +69,26 @@ test(TestHarness harness)
       harness.debug("In input: " + e);
       harness.check(false);
     }
+
+
+  try		// repeat just enough to test connect() on output stream
+    {
+      // Set up the thread to write
+      PipedStreamTestWriter pstw2 = new PipedStreamTestWriter(harness);
+      String str2 = pstw2.getStr();
+      PipedOutputStream pos2 = pstw2.getStream();
+
+      // Now set up our reader
+      PipedInputStream pis2 = new PipedInputStream();
+      pos2.connect(pis2); 		// check outputstream's connect() method
+	  harness.check(true, "output.connect(input)");
+    }
+  catch (IOException e) 
+    {
+      harness.check(false);
+    }
+
+
 }
 
 } // class Test

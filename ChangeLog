@@ -1,4 +1,9 @@
 2002-12-25  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PipedStream/Test.java:
+	Added test of PipedOutputStream's connect() method.  See
+	corresponding patch to PipedOutputStream class.
+
+2002-12-25  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/StringReader/Test.java:
 	Added tests for StringReader class
 
