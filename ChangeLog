@@ -1,3 +1,12 @@
+2005-02-06 Audrius Meskauskas <audriusa@bluewin.ch>
+	* gnu/testlet/javax/swing/text/html/HTML/HTML_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/AttributeList/AttributeList_test.java 
+	gnu/testlet/javax/swing/text/html/parser/DTD/DTD_test.java,
+	gnu/testlet/javax/swing/text/html/parser/Element/Element_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/Entity/Entity_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/TagElement/TagElement_Test.java:
+	Code optimizations only.
+	
 2005-02-07  David Gilbert  <david.gilbert@object-refinery.com>
 	* gnu/testlet/java/text/SimpleDateFormat/constructors.java, 
 	gnu/testlet/java/text/SimpleDateFormat.java: New tests.
