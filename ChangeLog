@@ -1,3 +1,8 @@
+2005-01-05  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/locales/LocaleTest.java: Fixed more Latin-1
+	characters.
+
 2005-01-04  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* batch_run: Allow NATIVE to be set on the command line.  Set WM

@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 2004 Michael Koch <konqueror@gmx.de>
+// Copyright (C) 2004, 2005 Michael Koch <konqueror@gmx.de>
 
 // This file is part of Mauve.
 
@@ -437,12 +437,12 @@ public class LocaleTest
 		new ExpectedValues("et", "EE", "", "et_EE", "est", "EST",
 				   "Estnisch", "Estland", "", "Estnisch (Estland)",
 				   "EEK", 2, "kr"),
-		new ExpectedDateValues("18.03.1974", "18.03.74", "18.03.1974", "esmaspäev, 18. Märts 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 CET"),
-		new ExpectedNumberValues("1 000", "1 000 000", "100", "100,123", "10 000 000,123"),
-		new ExpectedNumberValues("1 000 kr", "1 000 000 kr", "100 kr", "100,12 kr", "10 000 000,12 kr"),
-		new ExpectedNumberValues("1 000", "1 000 000", "100", "100", "10 000 000"),
-		new ExpectedNumberValues("1 000", "1 000 000", "100", "100,123", "10 000 000,123"),
-		new ExpectedNumberValues("100 000%", "100 000 000%", "10 000%", "10 012%", "1 000 000 012%"));
+		new ExpectedDateValues("18.03.1974", "18.03.74", "18.03.1974", "esmasp\u00e4ev, 18. M\u0034rts 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 CET"),
+		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100,123", "10\u00a0000\u00a0000,123"),
+		new ExpectedNumberValues("1\u00a0000 kr", "1\u00a0000\u00a0000 kr", "100 kr", "100,12 kr", "10\u00a0000\u00a0000,12 kr"),
+		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100", "10\u00a0000\u00a0000"),
+		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100,123", "10\u00a0000\u00a0000,123"),
+		new ExpectedNumberValues("100\u00a0000%", "100\u00a0000\u00a0000%", "10\u00a0000%", "10\u00a0012%", "1\u00a0000\u00a0000\u00a0012%"));
   }
 }
 
