@@ -1,3 +1,22 @@
+2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/java/util/logging/LogRecord: New directory.
+
+	* gnu/testlet/java/util/logging/LogRecord/getMillis.java,
+	gnu/testlet/java/util/logging/LogRecord/getThreadID.java,
+	gnu/testlet/java/util/logging/LogRecord/setLevel.java,
+	gnu/testlet/java/util/logging/LogRecord/setLoggerName.java,
+	gnu/testlet/java/util/logging/LogRecord/setMessage.java,
+	gnu/testlet/java/util/logging/LogRecord/setMillis.java,
+	gnu/testlet/java/util/logging/LogRecord/setParameters.java,
+	gnu/testlet/java/util/logging/LogRecord/setResourceBundle.java,
+	gnu/testlet/java/util/logging/LogRecord/setSequenceNumber.java,
+	gnu/testlet/java/util/logging/LogRecord/setSourceClassName.java,
+	gnu/testlet/java/util/logging/LogRecord/setSourceMethodName.java,
+	gnu/testlet/java/util/logging/LogRecord/setThreadID.java,
+	gnu/testlet/java/util/logging/LogRecord/setThrown.java:
+	New file.
+
 2004-02-26  Sascha Brawer  <brawer@dandelis.ch>
 
 	* THANKS: Adding myself.
