@@ -1,3 +1,7 @@
+2003-08-09  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/Thread/contextClassLoader.java: New file.
+
 2003-08-07  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/FilePermission/simple.java: New file.
