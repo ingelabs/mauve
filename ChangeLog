@@ -1,3 +1,15 @@
+2002-11-13  C. Brian Jones <cbj@gnu.org>
+
+	* gnu/testlet/java/beans/Introspector/jdk11.java (test): add
+	checks for other 1.1 member functions of Introspector; remove
+	failing checks against classes that change often and use new
+	checks against A, B, and C in this package.  
+	* gnu/testlet/java/beans/Introspector/A.java: new file
+	* gnu/testlet/java/beans/Introspector/B.java: new file
+	* gnu/testlet/java/beans/Introspector/C.java: new file
+	* gnu/testlet/java/beans/Introspector/jdk12.java (test): check 
+	values of static final fields to match the specification
+
 2002-11-06  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/Random/basic.java (test): Added regression

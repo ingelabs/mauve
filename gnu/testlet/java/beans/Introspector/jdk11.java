@@ -1,5 +1,5 @@
 // Tags: JDK1.1
-
+// Uses: A B C
 package gnu.testlet.java.beans.Introspector;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
@@ -55,17 +55,25 @@ public class jdk11 implements Testlet {
       harness.check (Introspector.decapitalize ("BAR"), "BAR");
 
       harness.checkPoint ("getBeanInfo");
-      tryone (harness, java.awt.Component.class, 6, 5, 128);
-      tryone (harness, java.util.BitSet.class, 2, 0, 17);
-      tryone (harness, java.lang.Object.class, 1, 0, 9);
-      tryone (harness, java.applet.Applet.class, 24, 6, 168);
-      tryone (harness, java.awt.Button.class, 8, 6, 134);
-      tryone (harness, java.applet.Applet.class, 8, 0, 22);
-      tryone (harness, java.applet.Applet.class, java.awt.Component.class,
-	      18, 1, 65);
-      tryone (harness, java.applet.Applet.class, java.lang.Object.class,
-	      24, 6, 160);
-      tryone (harness, java.applet.Applet.class, null, true, 24, 6, 168);
-      tryone (harness, java.applet.Applet.class, 24, 6, 168);
+      tryone (harness, gnu.testlet.java.beans.Introspector.jdk11.class, 1, 0, 13);
+      tryone (harness, gnu.testlet.java.beans.Introspector.A.class, 1, 0, 11);
+      tryone (harness, gnu.testlet.java.beans.Introspector.B.class, 1, 0, 11);
+      tryone (harness, gnu.testlet.java.beans.Introspector.C.class, 1, 0, 12);
+      tryone (harness, gnu.testlet.java.beans.Introspector.C.class,
+	      gnu.testlet.java.beans.Introspector.B.class, 0, 0, 1);
+
+      harness.checkPoint ("getBeanInfoSearchPath");
+      String search[] = Introspector.getBeanInfoSearchPath ();
+      for (int i = 0; i < search.length; i++)
+	harness.debug ("getBeanInfoSearchPath value[" + i + "]: " + search[i]);
+      harness.check (search.length > 0);
+ 
+      harness.checkPoint ("setBeanInfoSearchPath");
+      String path[] = {"a.b.c", "d.e.f"};
+      Introspector.setBeanInfoSearchPath (path);
+      harness.check (path.length == Introspector.getBeanInfoSearchPath().length);
+
+      Introspector.setBeanInfoSearchPath (search);
+      
     }
 }

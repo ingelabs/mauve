@@ -11,12 +11,14 @@ public class jdk12 implements Testlet
   {
     harness.checkPoint ("USE_ALL_BEANINFO");
     harness.debug ("USE_ALL_BEANINFO value: " + Introspector.USE_ALL_BEANINFO);
-    
+    harness.check (Introspector.USE_ALL_BEANINFO, 1);
+
     harness.checkPoint ("IGNORE_IMMEDIATE_BEANINFO");
     harness.debug ("IGNORE_IMMEDIATE_BEANINFO value: " + Introspector.IGNORE_IMMEDIATE_BEANINFO);
+    harness.check (Introspector.IGNORE_IMMEDIATE_BEANINFO, 2);
     
     harness.checkPoint ("IGNORE_ALL_BEANINFO");
     harness.debug ("IGNORE_ALL_BEANINFO value: " + Introspector.IGNORE_ALL_BEANINFO);
-
+    harness.check (Introspector.IGNORE_ALL_BEANINFO, 3);
   }
 }
