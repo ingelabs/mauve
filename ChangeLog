@@ -1,5 +1,10 @@
 2004-10-14  Michael Koch  <konqueror@gmx.de>
 
+	* .cvsignore: Ignore SImpleTestHarness (generated when compiling to
+	native).
+
+2004-10-14  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/net/InetAddress/InetAddressTest.java:
 	Made output more nice.
 
