@@ -58,7 +58,7 @@ public class URLTest implements Testlet
 
 
 		try {
-;			URL url = new URL("http://sourceware.cygnus.com/index.html" );
+;			URL url = new URL("http://sources.redhat.com/index.html" );
 			harness.check(true);
 		}
 		catch ( MalformedURLException e ){
@@ -69,7 +69,7 @@ public class URLTest implements Testlet
 		// URL with individual arguments.
 		harness.checkPoint("get Methods");
 		try {
-			URL baseurl = new URL("http://sourceware.cygnus.com/");
+			URL baseurl = new URL("http://sources.redhat.com/");
 			URL url = new URL ( baseurl, "index.html");
 			url.hashCode();
 			baseurl.hashCode();
@@ -77,9 +77,9 @@ public class URLTest implements Testlet
 			baseurl.setURLStreamHandlerFactory( null );
 			harness.check (url.getProtocol(), "http");
 			harness.check (url.getPort(), -1);
-			harness.check (url.getHost(), "sourceware.cygnus.com");
+			harness.check (url.getHost(), "sources.redhat.com");
 			harness.check (url.getFile(), "/index.html");
-			harness.check (url.equals(new URL("http://sourceware.cygnus.com/index.html")));
+			harness.check (url.equals(new URL("http://sources.redhat.com/index.html")));
 			harness.check (url.hashCode() != 0);
 		}
 		catch ( MalformedURLException e ){
@@ -89,15 +89,15 @@ public class URLTest implements Testlet
 
 
 		try {
-			URL url = new URL ( "http", "sourceware.cygnus.com", "/index.html");
+			URL url = new URL ( "http", "sources.redhat.com", "/index.html");
 
 			harness.check (url.getProtocol(), "http");
 			harness.check (url.getPort(), -1);
-			harness.check (url.getHost(), "sourceware.cygnus.com");
+			harness.check (url.getHost(), "sources.redhat.com");
 			harness.check (url.getFile(), "/index.html");
-			harness.check (url.equals(new URL("http://sourceware.cygnus.com/index.html")));
+			harness.check (url.equals(new URL("http://sources.redhat.com/index.html")));
 
-			URL url1 = new URL ( "http", "sourceware.cygnus.com", 80,  "index.html");
+			URL url1 = new URL ( "http", "sources.redhat.com", 80,  "index.html");
 			harness.check (url1.getPort(), 80);
 		}
 		catch ( MalformedURLException e ){
@@ -107,11 +107,11 @@ public class URLTest implements Testlet
 
 
 		try {
-			URL url = new URL ( "http://sourceware.cygnus.com:80/mauve/testarea/index.html");
+			URL url = new URL ( "http://sources.redhat.com:80/mauve/testarea/index.html");
 
 			harness.check (url.getProtocol(), "http");
 			harness.check (url.getPort(), 80);
-			harness.check (url.getHost(), "sourceware.cygnus.com");
+			harness.check (url.getHost(), "sources.redhat.com");
 			harness.check (url.getFile(), "/mauve/testarea/index.html");
 		}
 		catch ( MalformedURLException e ){
@@ -124,7 +124,7 @@ public class URLTest implements Testlet
 	{
 		harness.checkPoint("openConnection");
 		try {
-			URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+			URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 
 			URLConnection conn = url.openConnection();
 
@@ -136,7 +136,7 @@ public class URLTest implements Testlet
 
 			Object obj = url.getContent();
 			harness.check (url.toExternalForm(),
-				"http://sourceware.cygnus.com/mauve/testarea/index.html");
+				"http://sources.redhat.com/mauve/testarea/index.html");
 			harness.check (url.getRef(), null);
 
 			URL url2 = new URL("http://www.hhp.com/index.html#help");
@@ -155,7 +155,7 @@ public class URLTest implements Testlet
 	{
 		harness.checkPoint("openStream");
 		try {
-			URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+			URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 			java.io.InputStream conn = url.openStream();
 
 			byte b [] = new byte[256];
@@ -168,6 +168,7 @@ public class URLTest implements Testlet
 		}catch ( Exception e ){
 			harness.fail(" Error in test_openStream  - 2 " + 
 					" exception should not be thrown here");
+			harness.debug(e);
 		}		
 
 	}
@@ -177,11 +178,11 @@ public class URLTest implements Testlet
 	{
 		harness.checkPoint("sameFile");
 		try {
-			URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
-			URL url1 = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+			URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
+			URL url1 = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 			harness.check (url.sameFile(url1));
 
-			URL url2 = new URL ( "http://sourceware.cygnus.com:80/mauve/testarea/index.html");
+			URL url2 = new URL ( "http://sources.redhat.com:80/mauve/testarea/index.html");
 			harness.check (url.sameFile(url2));
 
 		}catch ( Exception e ){
@@ -196,23 +197,23 @@ public class URLTest implements Testlet
 	{
 		harness.checkPoint("toString");
 		try {
-			URL url = new URL ( "http://sourceware.cygnus.com/index.html");
+			URL url = new URL ( "http://sources.redhat.com/index.html");
 			String str = url.toString();
 
-			URL url1 = new URL ( "http://sourceware.cygnus.com:80/mauve/testarea/index.html");
+			URL url1 = new URL ( "http://sources.redhat.com:80/mauve/testarea/index.html");
 			String str1 = url1.toString();
 
 			URL url2 = new URL ( "http://205.180.83.71/");
 			String str2 = url2.toString();
 
-			harness.check (str, "http://sourceware.cygnus.com/index.html");
-			harness.check (str1, "http://sourceware.cygnus.com:80/mauve/testarea/index.html");
+			harness.check (str, "http://sources.redhat.com/index.html");
+			harness.check (str1, "http://sources.redhat.com:80/mauve/testarea/index.html");
 			harness.check (str2, "http://205.180.83.71/");
 
-			URL url3 = new URL( "ftp" , "sourceware.cygnus.com" , 21 , "/dir/dir1.lst");
+			URL url3 = new URL( "ftp" , "sources.redhat.com" , 21 , "/dir/dir1.lst");
 			String str3 = url3.toString( );
 
-			harness.check (str3, "ftp://sourceware.cygnus.com:21/dir/dir1.lst");
+			harness.check (str3, "ftp://sources.redhat.com:21/dir/dir1.lst");
 		}catch ( Exception e ){
 			harness.fail(" Error in test_toString  - 5 " + 
 					" exception should not be thrown here");
@@ -223,12 +224,12 @@ public class URLTest implements Testlet
 	{
 		harness.checkPoint("URLStreamHandler");
 		try {
-		  URL url = new URL ( "http://sourceware.cygnus.com/index.html");
+		  URL url = new URL ( "http://sources.redhat.com/index.html");
 		// test URLStreamHandler
  		MyURLStreamHandler sh = new MyURLStreamHandler();
- 		sh.invoke_setURL(url, "http", "sourceware.cygnus.com", 80, "/index.html", "#ref");
+ 		sh.invoke_setURL(url, "http", "sources.redhat.com", 80, "/index.html", "#ref");
 		harness.check(true);
- 		sh.invoke_parseURL(url, "http://sourceware.cygnus.com/index.html", 0, 20);
+ 		sh.invoke_parseURL(url, "http://sources.redhat.com/index.html", 0, 20);
 		harness.check(true);
 		}catch ( MalformedURLException e ){
 			harness.fail(" Error in test_URLStreamHandler  - 1 " + 

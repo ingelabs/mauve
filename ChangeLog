@@ -1,3 +1,8 @@
+2002-10-13  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/URL/URLTestjava: change "sourceware.cygnus.com"
+	to "sources.redhat.com".
+
 2002-10-16  Daryl Lee <dol@sources.redhat.com>
 
 	* gnu/testlet/java/io/LineNumberReader/Test.java: completed
@@ -11,7 +16,7 @@
 	* gnu/testlet/java/io/DataInputStream/ReadStream2.java
 	* gnu/testlet/java/io/DataInputStream/ReadReference22.java
 	* gnu/testlet/java/io/DataInputStream/reference2.data
-	
+
 2002-10-13  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/security/Security/provider.java: Preference
