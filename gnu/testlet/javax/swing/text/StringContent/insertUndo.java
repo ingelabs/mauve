@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 Arnaud Vandyck <avdyk@gnu.org>
+// Copyright (C) 2004, 2005 Arnaud Vandyck <avdyk@gnu.org>
 
 // This file is part of Mauve.
 
@@ -43,18 +43,13 @@ public class insertUndo implements Testlet
         UndoableEdit ue = sc.insertString(0, "path");
         h.check("path\n", sc.getString(0, sc.length()),
                 "StringContent.insertString(): insert 'path' at 0");
-        /* it depends on locale! how can I test this?
-         * do I have to test all the locales?
-         */
-        /*
+        java.util.Locale.setDefault(java.util.Locale.US);
         String presentationName = ue.getPresentationName();
-        h.check("blah", presentationName, "PresentationName should be blah and is: " + presentationName);
+        h.check("", presentationName, "PresentationName should be '' and is: " + presentationName);
         String redoPresentationName = ue.getRedoPresentationName();
-        h.check("blah", redoPresentationName, "RedoPresentationName should be blah and is: " + redoPresentationName);
+        h.check("Redo", redoPresentationName, "RedoPresentationName should be Redo and is: " + redoPresentationName);
         String undoPresentationName = ue.getUndoPresentationName();
-        h.check("blah", undoPresentationName, "UndoPresentationName should be blah and is: " + undoPresentationName);
-        */
-
+        h.check("Undo", undoPresentationName, "UndoPresentationName should be Undo and is: " + undoPresentationName);
         h.check(false, ue.canRedo(), "canRedo? () (" + ue.canRedo() + ")");
         h.check(true, ue.canUndo(), "canUndo? () (" + ue.canUndo() + ")");
         ue.undo();

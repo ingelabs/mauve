@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 Arnaud Vandyck <avdyk@gnu.org>
+// Copyright (C) 2004, 2005 Arnaud Vandyck <avdyk@gnu.org>
 
 // This file is part of Mauve.
 

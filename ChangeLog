@@ -1,3 +1,11 @@
+2005-01-09  Arnaud Vandyck  <avdyk@ressource-toi.org>
+
+	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java,
+	gnu/testlet/javax/swing/text/StringContent/insertUndo.java,
+	gnu/testlet/javax/swing/text/StringContent/removeUndo.java,
+	gnu/testlet/javax/swing/text/StringContent/stickyPosition.java:
+	New testcases.
+
 2005-01-09  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/javax/swing/text/StringContent/insertUndo.java,
