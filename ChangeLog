@@ -1,3 +1,9 @@
+2004-07-08  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/nio/channels/FileChannel/manyopen.java :
+	Don't call the GC after each iteration.  If the VM under test
+	pays attention, it just makes the test SLOW.
+
 2004-07-04  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/awt/Choice/getSelected.java: New test.

@@ -53,9 +53,6 @@ public class manyopen implements Testlet
 
 	    f = new File(tmpfile + i + ".raf");
 	    RandomAccessFile raf = new RandomAccessFile(f, "rw");
-
-	    // Help the runtime a bit to clean up.
-	    runtime.gc();
 	  }
 	harness.check(true);
       }
