@@ -353,7 +353,7 @@ public class parsingTester
 
   protected void dumpAttributes(AttributeSet atts)
   {
-    Enumeration enum = atts.getAttributeNames();
+    Enumeration enumeration = atts.getAttributeNames();
 
     // Sort them to ensure the same order every time:
     TreeSet t =
@@ -365,8 +365,8 @@ public class parsingTester
           }
           }
                  );
-    while (enum.hasMoreElements())
-      t.add(enum.nextElement());
+    while (enumeration.hasMoreElements())
+      t.add(enumeration.nextElement());
 
     Iterator iter = t.iterator();
 

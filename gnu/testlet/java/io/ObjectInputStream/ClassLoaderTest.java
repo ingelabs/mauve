@@ -36,13 +36,9 @@ public class ClassLoaderTest implements Testlet
 {
   static class MyClassLoader extends ClassLoader
   {    
-    public Class defineClass(File cls, String name)
+    public Class defineClass(InputStream is, String name)
       throws ClassNotFoundException, IOException
     {
-      if (!cls.exists())
-        throw new ClassNotFoundException();
-      
-      FileInputStream is = new FileInputStream(cls);
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       byte[] buf = new byte[512];
       int len, written;
@@ -61,7 +57,7 @@ public class ClassLoaderTest implements Testlet
 	
       byte[] classData = os.toByteArray();
 
-      return super.defineClass(name, classData, 0, classData.length);      
+      return defineClass(name, classData, 0, classData.length);      
     }
   }
 
@@ -85,24 +81,25 @@ public class ClassLoaderTest implements Testlet
    * 
    * @param harness  the test harness (<code>null</code> not permitted).
    */
-  public void test(TestHarness harness) throws Exception
+  public void test(TestHarness harness)
   {
     MyClassLoader loader = new MyClassLoader();
-    ClassLoader sysLoader = this.getClass().getClassLoader();
-    
-    // FIXME: This assumes that mauve is run from its base directory, and
-    // the test classes are not in a .jar or something. Might be better to use
-    // a URL or something to find this?
-    File classFile = new File(
-      "gnu/testlet/java/io/ObjectInputStream/ClassLoaderTest$MyClass.class");
-    harness.check(classFile.exists(), "class file exists");
-    String className =
-      "gnu.testlet.java.io.ObjectInputStream.ClassLoaderTest$MyClass";
+    ClassLoader sysLoader = getClass().getClassLoader();
 
-    Class cl = loader.defineClass(classFile, className);
+    Class cl;
+    harness.checkPoint("read the file");
+    try {
+        cl = loader.defineClass(getClass()
+                .getResourceAsStream("ClassLoaderTest$MyClass.class"),
+                "gnu.testlet.java.io.ObjectInputStream.ClassLoaderTest$MyClass");
+        harness.check(true);
+    } catch(Exception e) {
+        harness.debug(e);
+        harness.check(false);
+        return;
+    }
 
-    harness.check(cl.getClassLoader() == loader, 
-      "Class has correct classloader");
+    harness.check(cl.getClassLoader() == loader, "Class has correct classloader");
 
     // Now the fun part. Pipe an instance of MyClass through an Object 
     // stream. Depending on which class-context we deserialize it in, the 
@@ -110,22 +107,35 @@ public class ClassLoaderTest implements Testlet
 
     harness.checkPoint ("Deserialized objects have correct ClassLoader");
 
-    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    ObjectOutputStream oos = new ObjectOutputStream(bos);
-    oos.writeObject(cl.newInstance());
-    oos.close();    
-    byte[] serData = bos.toByteArray();
+    final byte[] serData;
+    final Object obj;
+    try {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(cl.newInstance());
+        oos.close();
+        serData = bos.toByteArray();
 
-    Object obj = MyClass.deserialize(serData);
+        obj = MyClass.deserialize(serData);
+        harness.check(obj.getClass().getClassLoader() == sysLoader);
+    } catch(Exception e) {
+        harness.debug(e);
+        harness.check(false);
+        return;
+    }
+    //System.out.println (obj.getClass().getClassLoader() == loader);
 
-    harness.check (obj.getClass().getClassLoader() == sysLoader);
-    System.out.println (obj.getClass().getClassLoader() == loader);
+    harness.checkPoint("Class equality (==)");
+    try {
+        Method m = cl.getMethod("deserialize", new Class[] {byte[].class});
+        Object obj2 = m.invoke(null, new Object[] {serData});
+        harness.check(obj2.getClass().getClassLoader() == loader);
+        //System.out.println (obj2.getClass().getClassLoader() == loader);
 
-    Method m = cl.getMethod("deserialize", new Class[] {byte[].class});
-    Object obj2 = m.invoke(null, new Object[] {serData});
-    harness.check(obj2.getClass().getClassLoader() == loader);
-    System.out.println (obj2.getClass().getClassLoader() == loader);
-
-    harness.check (obj.getClass() != obj2.getClass(), "Class equality");
-  }  
+        harness.check (obj.getClass() != obj2.getClass());
+    } catch(Exception e) {
+        harness.debug(e);
+        harness.check(false);
+    }
+  }
 }

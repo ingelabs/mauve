@@ -1,3 +1,10 @@
+2005-02-17  Thomas Zander <zander@kde.org>
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
+	rename variable named 'enum' to avoid conflicting with java 1.5 reserved keyword
+	with the same name
+	* gnu/testlet/java/io/ObjectInputStream/ClassLoaderTest.java:
+	Fix the way the inner class was located and fix the class to actually compile on javac
+
 2005-02-16  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/io/ObjectOutputStream/StreamDataTest.java: New test.
