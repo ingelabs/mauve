@@ -1,3 +1,9 @@
+2004-08-13  Bryce McKinlay  <mckinlay@redhat.com>
+
+	* gnu/testlet/java/net/InetAddress/getByName.java: New test.
+	* gnu/testlet/java/net/InetAddress/getAllByName.java: New test.
+	* gnu/testlet/java/net/InetAddress/getLocalhost.java: New test.
+
 2004-08-12  Stephen Crawley  <crawley@dstc.edu.au>	
 
 	* configure.in : added --with-mailhost option
