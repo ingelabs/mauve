@@ -25,7 +25,7 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 import java.io.*;
-// import java.net.*;
+import java.net.*;
 
 public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 {
@@ -124,28 +124,22 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 		if ( clss == null )
 			harness.fail("Error: getInterfaces returned wrong values - 1");
 		else
-		if ( clss.length != 3 ) // CYGNUS: was 2
+		if ( clss.length != 3 )
 			harness.fail("Error: getInterfaces returned wrong values - 2");
 		else
 		  if (!( clss[0] == clclass  && clss[1] == clclass1))
 		      {
 			harness.fail("Error: getInterfaces returned wrong values - 3");
-			// CYGNUS: Added debugging
 			for (int i = 0; i < clss.length; i++)
 			  {
-			    System.out.print (clss[i]);
-			    System.out.print (" ");
+			    harness.debug ("" + clss[i], false);
+			    harness.debug (" ", false);
 			  }
-			System.out.println ();
-			// CYGNUS
+			harness.debug ("");
 		      }
 		try {	
 		   Class clsss = Class.forName("[[I");
-		   // CYGNUS: Arrays implement Cloneable!
-//		   if ( clsss.getInterfaces().length  != 0 )
-		   if ( clsss.getInterfaces().length  != 1 )
-		   harness.fail(" Error : getInterfaces  " +
-		        		" failed - 4 " );
+		   harness.check ( clsss.getInterfaces().length,  1 );
 		}
 		catch ( Exception e ){
 		   harness.fail(" Error: getInterfaces failed - 5");
@@ -153,11 +147,7 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 
 		try {	
 		   Class clsss = Class.forName("[D");
-		   // CYGNUS: Arrays implement Cloneable!
-//		   if ( clsss.getInterfaces().length  != 0 )
-		   if ( clsss.getInterfaces().length  != 1 )
-		   harness.fail(" Error : getInterfaces  " +
-		        		" failed - 6 " );
+		   harness.check ( clsss.getInterfaces().length, 1 );
 		}
 		catch ( Exception e ){
 		   harness.fail(" Error: getInterfaces failed - 7");
@@ -220,7 +210,7 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 			harness.fail("Error: test_getClassLoader failed - 2");
 		}	
 	}
-/*
+
         public void test_ComponentType()
 	{
 	        try {
@@ -243,7 +233,7 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 		}	
 		
 	}
-*/ 
+
         public void test_isMethods()
         {
 	        try {
@@ -291,44 +281,44 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
         public void test_getResource()
         {
 	  // this test assume the classpath setting include current directory
-// 	  try {
-// 	    FileInputStream is = new FileInputStream("ClassTest.class");
-// 	    URL url = getClass().getResource("ClassTest.class");
-// 	    if (url == null)
-// 	      harness.fail("Error : test_getResource Failed - 1");
+ 	  try {
+ 	    FileInputStream is = new FileInputStream("ClassTest.class");
+ 	    URL url = getClass().getResource("ClassTest.class");
+ 	    if (url == null)
+ 	      harness.fail("Error : test_getResource Failed - 1");
 
-// 	    InputStream uis = url.openStream();
-// 	    byte[] b1 = new byte[100];
-// 	    byte[] b2 = new byte[100];
-// 	    int ret = is.read(b1);
-// 	    if (ret != 100)
-// 	      harness.fail("Error : test_getResource Failed - 2");
-// 	    ret = uis.read(b2);
-// 	    if (ret != 100)
-// 	      harness.fail("Error : test_getResource Failed - 3");
-// 	    for (int i=0; i < 100; i++){
-// 	      if (b1[i] != b2[i]){
-// 		harness.fail("Error : test_getResource Failed - 4");
-// 		break;
-// 	      }
-// 	    }
+ 	    InputStream uis = url.openStream();
+ 	    byte[] b1 = new byte[100];
+ 	    byte[] b2 = new byte[100];
+ 	    int ret = is.read(b1);
+ 	    if (ret != 100)
+ 	      harness.fail("Error : test_getResource Failed - 2");
+ 	    ret = uis.read(b2);
+ 	    if (ret != 100)
+ 	      harness.fail("Error : test_getResource Failed - 3");
+ 	    for (int i=0; i < 100; i++){
+ 	      if (b1[i] != b2[i]){
+ 		harness.fail("Error : test_getResource Failed - 4");
+ 		break;
+ 	      }
+ 	    }
 
-// 	    uis = getClass().getResourceAsStream("ClassTest.class");
-// 	    if (uis == null)
-// 	      harness.fail("Error : test_getResource Failed - 5");
-// 	    ret = uis.read(b2);
-// 	    if (ret != 100)
-// 	      harness.fail("Error : test_getResource Failed - 6");
-// 	    for (int i=0; i < 100; i++){
-// 	      if (b1[i] != b2[i]){
-// 		harness.fail("Error : test_getResource Failed - 7");
-// 		break;
-// 	      }
-// 	    }
+ 	    uis = getClass().getResourceAsStream("ClassTest.class");
+ 	    if (uis == null)
+ 	      harness.fail("Error : test_getResource Failed - 5");
+ 	    ret = uis.read(b2);
+ 	    if (ret != 100)
+ 	      harness.fail("Error : test_getResource Failed - 6");
+ 	    for (int i=0; i < 100; i++){
+ 	      if (b1[i] != b2[i]){
+ 		harness.fail("Error : test_getResource Failed - 7");
+ 		break;
+ 	      }
+ 	    }
 
-// 	  }catch (Throwable e){
-// 	    harness.fail("Error : test_getResource Failed - 0");
-// 	  }
+ 	  }catch (Throwable e){
+ 	    harness.fail("Error : test_getResource Failed - 0");
+ 	  }
 	}
 
 	public void testall()
@@ -340,9 +330,8 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 		test_getInterfaces();
 		test_newInstance();
 		test_forName();
-//                test_ComponentType();
-		// CYGNUS: Don't test Classloader
-                // test_getClassloader();
+                test_ComponentType();
+                test_getClassloader();
                 test_isMethods();
                 test_getResource();
 

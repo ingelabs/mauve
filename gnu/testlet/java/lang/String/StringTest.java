@@ -44,10 +44,8 @@ public class StringTest implements Testlet
 
 		
 		try {
-		  /* CYGNUS: Disable for now to allow other tests to run.
 			String str = null;
 			String str3 = new String(str);
-		  */		  
 			harness.fail("Error : test_Basics failed - 5");
 		}
 		catch ( NullPointerException e ){}	

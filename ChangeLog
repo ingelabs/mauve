@@ -1,3 +1,15 @@
+1999-07-07  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/StringBuffer/StringBufferTest.java
+	(test_append): Run null tests.
+	* gnu/testlet/java/lang/String/StringTest.java (test_Basics):
+	Don't disable null String test.
+	* gnu/testlet/java/lang/Class/ClassTest.java: Removed `CYGNUS'
+	comments.  Fixed debugging prints to use test harness.
+	(test_ComponentType): Uncommented.
+	(testall): Call test_ComponentType and test_getClassloader.
+	(test_getResource): Uncommented body.
+
 1999-07-05  Tom Tromey  <tromey@cygnus.com>
 
 	* Makefile.am (harnesso_files): New macro.

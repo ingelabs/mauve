@@ -249,9 +249,7 @@ public class StringBufferTest implements Testlet
 		StringBuffer str3 = new StringBuffer();
 
 		try {
-		  /* CYGNUS: We know this will fail.
 			str3 = str3.append( carr );
-		  */
 			harness.fail("Error : test_append failed - 4");
 		}
 		catch ( NullPointerException e ){}
@@ -263,9 +261,7 @@ public class StringBufferTest implements Testlet
 
 
 		try {
-		  /* CYGNUS: We know this will fail.
 			str3 = str3.append( carr , 0 , 3);
-		  */
 			harness.fail("Error : test_append failed - 6");
 		}
 		catch ( NullPointerException e ){}
@@ -345,9 +341,7 @@ public class StringBufferTest implements Testlet
 		buf = new StringBuffer("1234567");
 		char cdata[] = null;
 		try {
-		  /* CYGNUS: We know this will fail.
 			buf = buf.insert(4 , cdata );
-		  */
 			harness.fail("Error : test_insert failed - 5");
 		}catch ( NullPointerException e ) {}
 
