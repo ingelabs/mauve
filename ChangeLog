@@ -1,5 +1,13 @@
 1998-12-06  Anthony Green  <green@cygnus.com>
 
+	* gnu/testlet/java/util/ResourceBundle/getBundle.java: Add null
+	pointer tests.
+
+	* gnu/testlet/SimpleTestHarness.java: Add more descriptive
+	uncaught exception message.
+
+1998-12-06  Anthony Green  <green@cygnus.com>
+
 	* ResourceBundle/getBundle.java,
 	ResourceBundle/Resource4_en_CA.java
 	ResourceBundle/Resource4_jp.java ResourceBundle/Resource1.java

@@ -83,7 +83,10 @@ public class SimpleTestHarness extends TestHarness
 	  catch (Throwable ex)
 	    {
 	      String d = ("FAIL: " + description
-			  + ": uncaught exception at number "
+			  + ": uncaught exception at "
+			  + ((last_check == null) ? "" : 
+			     ("\"" + last_check + "\""))
+			  +" number "
 			  + (count + 1));
 	      if (verbose)
 		d += ": " + ex.toString();

@@ -112,6 +112,49 @@ public class getBundle implements Testlet
       harness.check (loadCheck (c ("Resource10"), testLocale), 
 		     c ("Resource10_en"));
 
+      // Null pointer checks
+      harness.checkPoint ("null pointers");
+
+      try 
+	{
+	  ResourceBundle.getBundle (null);
+	  harness.check (false);
+	}
+      catch (NullPointerException ex)
+	{
+	  harness.check (true);
+	}
+
+      try 
+	{
+	  ResourceBundle.getBundle (c ("Resource1"), null);
+	  harness.check (false);
+	}
+      catch (NullPointerException ex)
+	{
+	  harness.check (true);
+	}
+
+      try 
+	{
+	  ResourceBundle.getBundle ("no such resource", null);
+	  harness.check (false);
+	}
+      catch (NullPointerException ex)
+	{
+	  harness.check (true);
+	}
+
+      try 
+	{
+	  ResourceBundle.getBundle (null, Locale.JAPAN);
+	  harness.check (false);
+	}
+      catch (NullPointerException ex)
+	{
+	  harness.check (true);
+	}
+
       // Restore the default locale.
       Locale.setDefault (defaultLocale);
     }
