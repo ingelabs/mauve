@@ -23,7 +23,7 @@ package gnu.testlet.java.lang.Math;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class cos implements Testlet
+public class sin implements Testlet
 {
   public void test (TestHarness harness)
   {
