@@ -1,3 +1,9 @@
+1999-05-28  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/net/MulticastSocket/MulticastSocketTest.java
+	(test_Basics): Null argument to joinGrp & leaveGrp cause a
+	NullPointerException.
+
 1999-05-19  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/util/zip/ZipInputStream/reference.zip: New file.

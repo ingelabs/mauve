@@ -103,11 +103,12 @@ public class MulticastSocketTest implements Testlet
 	    socket.joinGroup(null);
 	    harness.fail("joinGroup() with incorrect params. - 5");
 	} catch (NullPointerException e) {
-	    harness.fail("joinGroup() with incorrect params. should have " +
-		"thrown an IOException - 5a");
-	}
-	catch(IOException e){
 	    harness.check(true);
+	}
+	catch(Exception e) {
+	    harness.fail("joinGroup() with incorrect params. should have " +
+		"thrown a NullPointerException - 5a");
+	    e.printStackTrace();
 	}
 	
 
@@ -116,6 +117,7 @@ public class MulticastSocketTest implements Testlet
 	    InetAddress address = InetAddress.getByName("230.0.0.1");
 	    socket.joinGroup(address);
 	    socket.leaveGroup(address);
+	    harness.check(true);
 	    socket.leaveGroup(address);
 	    harness.fail("leaveGroup() twice. - 6");
 	    socket.close();
@@ -131,8 +133,12 @@ public class MulticastSocketTest implements Testlet
 	    socket.leaveGroup(null);
 	    harness.fail("leaveGroup() with incorrect params - 7");
 	    socket.close();
-	} catch (Exception e) {
+	} catch (NullPointerException e) {
 	    harness.check(true);
+	} catch (Exception e) {
+	    harness.fail("leaveGroup() with incorrect params. should have " +
+		"thrown a NullPointerException - 7a");
+	    e.printStackTrace();
 	}
 	
 
@@ -145,6 +151,7 @@ public class MulticastSocketTest implements Testlet
 	    harness.check(true);
 	} catch (Exception e) { 
 	    harness.fail("Correct args.");
+	    e.printStackTrace();
 	}
 	
 	
