@@ -1,3 +1,8 @@
+2003-05-24  Daniel Bonniot  <bonniot@users.sf.net>
+
+	* gnu/testlet/java/util/Arrays/equals.java: New file.
+	* gnu/testlet/java/util/LinkedList/SubListTest.java: New file.
+
 2003-05-23  Daniel Bonniot  <bonniot@users.sf.net>
 
 	* gnu/testlet/java/awt/color/ColorSpace/isCS_sRGB.java: New file.
