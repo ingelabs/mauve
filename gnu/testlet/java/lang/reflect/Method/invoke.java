@@ -133,11 +133,15 @@ public class invoke implements Testlet
 
     harness.checkPoint ("no_args");
     Object[] args0 = new Object[0];
+    // Successful invocation.
     try_invoke (harness, na_meth, this, args0, "zardoz");
-    try_invoke (harness, ti_meth, null, args0, new NullPointerException ());
+    // Null `this' should fail.
+    try_invoke (harness, na_meth, null, args0, new NullPointerException ());
+    // Too few arguments.
     try_invoke (harness, ti_meth, this, args0,
 		new IllegalArgumentException ());
-    try_invoke (harness, ti_meth, new NullPointerException (),
+    // Wrong class for `this'.
+    try_invoke (harness, na_meth, new NullPointerException (),
 		args0, new IllegalArgumentException ());
 
     harness.checkPoint ("takes_int");

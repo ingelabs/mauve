@@ -1,3 +1,9 @@
+2000-01-06  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/reflect/Method/invoke.java (test): Use
+	`na_meth' and not `ti_meth' in null pointer test.  Added some
+	comments.
+
 2000-01-05  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/reflect/Method/invoke.java: Create Integer
