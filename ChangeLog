@@ -1,5 +1,7 @@
 1998-12-04  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/SimpleTestHarness.java: Removed erroneous comment.
+
 	* gnu/testlet/SimpleTestHarness.java (runtest): Only (and always)
 	print exception information if verbose.
 	(main): Allow `-verbose' option to be used to set verbose flag.

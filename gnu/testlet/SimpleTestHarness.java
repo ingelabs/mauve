@@ -105,7 +105,6 @@ public class SimpleTestHarness extends TestHarness
       this.srcdir = new File (srcdir);
     }
 
-  // Each argument is the name of a test to run.  FIXME.
   public static void main (String[] args)
     {
       if (args.length < 1 || args.length > 2
