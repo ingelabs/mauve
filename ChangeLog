@@ -1,3 +1,8 @@
+1999-03-10  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/text/MessageFormat/format.java (test): Added
+	`choice' test and quoted `#' test.
+
 1999-03-09  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/DecimalFormat/format.java (test): Added a

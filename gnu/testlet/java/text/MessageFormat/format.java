@@ -97,5 +97,14 @@ public class format implements Testlet
       mf.applyPattern ("the disk is {0,number,percent} full");
       harness.check (format (mf, args, buf),
 		     "the disk is 99% full");
+
+      harness.checkPoint ("choice format");
+      args[0] = new Long (5);
+      mf.applyPattern ("There {0,choice,0#are no files|1#is one file|1<are {0, number, integer} files}.");
+      harness.check (format (mf, args, buf), "There are 5 files.");
+
+      args[0] = new Double (10.23);
+      mf.applyPattern ("Got {0,number,'#'.##}");
+      harness.check (format (mf, args, buf), "Got #10.23");
     }
 }
