@@ -1,3 +1,7 @@
+2004-09-20  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/util/Collections/binarySearch.java: New test.
+
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/Collections/copy.java: New test.
