@@ -32,15 +32,16 @@ import java.util.Locale;
 
 public class worditer implements Testlet
 {
-  public void check (String in, String[] out, BreakIterator bi,
+  public void check (String name, String in, String[] out, BreakIterator bi,
 		     TestHarness harness)
   {
+    harness.checkPoint (name);
     bi.setText (in);
-    harness.checkPoint (in);
 
     int index = 0;
     int from = bi.current();
     harness.check (from, 0);
+
     while (true)
       {
 	int to = bi.next();
@@ -52,6 +53,25 @@ public class worditer implements Testlet
       }
 
     harness.check (index, out.length);
+
+
+    harness.checkPoint ("backwards " + name);
+    bi.last();
+    index = out.length - 1;
+    from = bi.current ();
+    harness.check (from, in.length());
+
+    while (true)
+      {
+	int to = bi.previous();
+	if (to == BreakIterator.DONE)
+	  break;
+	harness.check (in.substring (to, from), out[index]);
+	--index;
+	from = to;
+      }
+
+    harness.check (index, -1);
   }
 
   public void test (TestHarness harness)
@@ -65,13 +85,13 @@ public class worditer implements Testlet
     String[] r1 = { "How", " ", "much", " ", "time", " ", "is", " ",
 		    "left", "?", "  ", "We", " ", "don't", " ",
 		    "know", "." };
-    check ("How much time is left?  We don't know.", r1,
+    check ("How much", "How much time is left?  We don't know.", r1,
 	   bi, harness);
 
     String[] r2 = { "I", " ", "am", " ", "not", "!" };
-    check ("I am not!", r2, bi, harness);
+    check ("I'm not", "I am not!", r2, bi, harness);
 
     String[] r3 = { "\u2029", "X" };
-    check ("\u2029X", r3, bi, harness);
+    check ("Paragraph separator", "\u2029X", r3, bi, harness);
   }
 }

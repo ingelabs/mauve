@@ -1,5 +1,8 @@
 1999-03-22  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/BreakIterator/worditer.java (check): Added
+	`name' argument.  Now do checks of previous() method as well.
+
 	* gnu/testlet/java/text/BreakIterator/worditer.java: New file.
 
 1999-03-21  Artur Biesiadowski <abies@pg.gda.pl>
