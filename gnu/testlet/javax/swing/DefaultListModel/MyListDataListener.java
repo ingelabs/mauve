@@ -1,3 +1,5 @@
+// Tags: not-a-test
+
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.

@@ -1,5 +1,22 @@
 2005-02-09  Bryce McKinlay  <mckinlay@redhat.com>
 
+	* gnu/testlet/javax/swing/DefaultListModel/MyListDataListener.java:
+	Add 'not-a-test' tag.
+	* gnu/testlet/javax/swing/DefaultListModel/add.java,
+	gnu/testlet/javax/swing/DefaultListModel/addElement.java,
+	gnu/testlet/javax/swing/DefaultListModel/clear.java,
+	gnu/testlet/javax/swing/DefaultListModel/insertElementAt.java,
+	gnu/testlet/javax/swing/DefaultListModel/remove.java,
+	gnu/testlet/javax/swing/DefaultListModel/removeElement.java,
+	gnu/testlet/javax/swing/DefaultListModel/removeElementAt.java,
+	gnu/testlet/javax/swing/DefaultListModel/removeRange.java,
+	gnu/testlet/javax/swing/DefaultListModel/set.java,
+	gnu/testlet/javax/swing/DefaultListModel/setElementAt.java,
+	gnu/testlet/javax/swing/DefaultListModel/setSize.java: Add 'Uses:
+	MyListDataListener' tag.
+
+2005-02-09  Bryce McKinlay  <mckinlay@redhat.com>
+
 	* gnu/testlet/java/net/Socket/ServerThread.java: New file.
 	* gnu/testlet/java/net/Socket/jdk12.java: Use ServerThread instead
 	of trying to connect to external server.
