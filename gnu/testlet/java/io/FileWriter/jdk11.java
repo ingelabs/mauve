@@ -24,7 +24,6 @@ package gnu.testlet.java.io.FileWriter;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.SimpleTestHarness;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.File;
@@ -33,18 +32,8 @@ import java.io.IOException;
 public class jdk11 implements Testlet
 {
   
-  public void test (TestHarness testharness)
+  public void test (TestHarness harness)
   {
-    SimpleTestHarness harness = null;
-    try 
-      {
-		harness = (SimpleTestHarness)testharness;
-      } 
-    catch (ClassCastException cce)
-      {
-		harness.fail ("Harness not an instance of SimpleTestHarness");
-		return;
-      }
     try {
       FileWriter fr1 = new FileWriter("tmpfile");
 	  harness.check(true, "FileWriter(string)");

@@ -24,7 +24,6 @@ package gnu.testlet.java.io.FileReader;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.SimpleTestHarness;
 import java.io.FileReader;
 import java.io.FileInputStream;
 import java.io.File;
@@ -34,19 +33,8 @@ import java.io.IOException;
 public class jdk11 implements Testlet
 {
   
-  public void test (TestHarness testharness)
+  public void test (TestHarness harness)
   {
-    SimpleTestHarness harness = null;
-    try 
-      {
-		harness = (SimpleTestHarness)testharness;
-      } 
-    catch (ClassCastException cce)
-      {
-		harness.fail ("Harness not an instance of SimpleTestHarness");
-		return;
-      }
-
     String tmpfile = harness.getTempDirectory()
       + File.separator + "mauve-jdk11.tst";
     File f = new File(tmpfile);

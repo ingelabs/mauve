@@ -21,7 +21,6 @@
 // Tags: JDK1.1
 package gnu.testlet.java.io.RandomAccessFile;
 
-import gnu.testlet.SimpleTestHarness;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -34,21 +33,8 @@ import java.io.RandomAccessFile;
 public class jdk11
   implements Testlet
 {
-  public void test (TestHarness testharness)
+  public void test (TestHarness harness)
   {
-    SimpleTestHarness harness = null;
-
-    try
-    {
-      harness = (SimpleTestHarness) testharness;
-    }
-    catch (ClassCastException cce)
-    {
-      harness.fail("Harness not an instance of SimpleTestHarness");
-
-      return;
-    }
-
     String fname = "raftmpfile";
     RandomAccessFile raf;
     int rdcnt;

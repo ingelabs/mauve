@@ -1,3 +1,9 @@
+2005-02-07  Thomas Zander <zander@kde.org>
+	* gnu/testlet/java/io/FileDescriptor/jdk11.java,
+	gnu/testlet/java/io/FileReader/jdk11.java, gnu/testlet/java/io/FileWriter/jdk11.java,
+	gnu/testlet/java/io/RandomAccessFile/jdk11.java:
+	Remove useless upcast to SimpleTestHarness
+
 2005-02-07  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/java/nio/charset/Charset/forName2.java:

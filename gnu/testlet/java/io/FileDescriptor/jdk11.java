@@ -24,7 +24,6 @@ package gnu.testlet.java.io.FileDescriptor;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.SimpleTestHarness;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
@@ -34,19 +33,9 @@ import java.io.SyncFailedException;
 public class jdk11 implements Testlet
 {
   
-  public void test (TestHarness testharness)
+  public void test (TestHarness harness)
   {
-    SimpleTestHarness harness = null;
-    try 
-      {
-		harness = (SimpleTestHarness)testharness;
-      } 
-    catch (ClassCastException cce)
-      {
-		harness.fail ("Harness not an instance of SimpleTestHarness");
-		return;
-      }
-    try {
+   try {
       FileOutputStream fos = new FileOutputStream("tmpfile");
       try {
         FileDescriptor fd = fos.getFD();
