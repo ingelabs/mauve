@@ -13,7 +13,8 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
 	gnu/testlet/ResourceNotFoundException.java
 
-include choices
+## FIXME: leading space makes automake ignore this.  Bleah.
+ include choices
 
 classes.stamp: choices $(CHOICES)
 	here=`/bin/pwd`; cd $(srcdir); \

@@ -1,3 +1,11 @@
+1999-02-27  Tom Tromey  <tromey@cygnus.com>
+
+	* Makefile.in, configure: Rebuilt.
+	* Makefile.am: Added space before `include'; hack to work around
+	weirdness in latest automake.
+	* configure.in: Don't create config/gcj-tool; the `.in' file does
+	not exist.
+
 Fri Feb 26 23:19:50 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/ACIAttribute/Test.java: Added this test.

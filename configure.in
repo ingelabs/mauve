@@ -23,4 +23,4 @@ AC_PROG_INSTALL
 
 AC_SUBST(SHELL)
 
-AC_OUTPUT(Makefile config/gcj-tool)
+AC_OUTPUT(Makefile)
