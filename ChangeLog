@@ -1,6 +1,11 @@
 2005-03-10  Dalibor Topic  <robilad@kaffe.org>
 
-	* gnu/testlet/java/io/FileInputStream/fileinputstream.java (fileinputstream): 
+	* gnu/testlet/java/io/FileOutputStream/fileoutputstream.java: 
+	New test.
+	
+2005-03-10  Dalibor Topic  <robilad@kaffe.org>
+
+	* gnu/testlet/java/io/FileInputStream/fileinputstream.java: 
 	New test.
 
 2005-03-09  Robert Schuster <thebohemian@gmx.net>
