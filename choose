@@ -54,6 +54,7 @@ for i in ${1+"$@"}; do
     libjava)
        tags="$tags JDK1.0 JDK1.1 $i"
        spectags="$spectags $i"
+       ;;
     *)
        tags="$tags $i"
        spectags="$spectags $i"
