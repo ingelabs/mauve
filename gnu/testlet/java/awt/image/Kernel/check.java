@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-package gnu.testlet.java.awt.image.DataBufferByte;
+package gnu.testlet.java.awt.image.Kernel;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
@@ -49,6 +49,7 @@ public class check implements Testlet
       }
     catch (IllegalArgumentException e)
       {
+	data1 = new float[0];
 	h.fail("Kernel.getKernelData");
       }
 

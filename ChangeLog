@@ -1,3 +1,10 @@
+2004-08-14  Mark Wielaard  <mark@klomp.org>
+
+	Reported by David Gilbert <david.gilbert@object-refinery.com>
+	* gnu/testlet/java/awt/image/Kernel/check.java:
+	Set package to gnu.testlet.java.awt.image.Kernel.
+	Make sure data1 is always initialized.
+
 2004-08-13  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/net/InetAddress/getByName.java: New test.
