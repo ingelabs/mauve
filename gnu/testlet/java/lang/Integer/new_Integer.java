@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 1999 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -41,6 +41,7 @@ public class new_Integer implements Testlet
       Integer l = new Integer("012345");
       Integer m = new Integer("0012345");
 
+      harness.checkPoint ("toString");
       harness.check (a + " " + b + " " + c + " " + d + " " + e,
 		     "0 1 -1 2147483647 -2147483648");
       harness.check (f + " " + g + " " + h + " " + i + " " + j,
@@ -80,6 +81,7 @@ public class new_Integer implements Testlet
       harness.check (Integer.toString(Integer.MAX_VALUE, 36),
 		     "zik0zj");
 
+      harness.checkPoint ("exceptions");
       Integer bad = null;
       try
 	{
@@ -130,6 +132,7 @@ public class new_Integer implements Testlet
 	}
       harness.check (bad, null);
 
+      harness.checkPoint ("hashCode");
       harness.check (a.hashCode(), 0);
       harness.check (b.hashCode(), 1);
       harness.check (c.hashCode(), -1);
@@ -142,6 +145,7 @@ public class new_Integer implements Testlet
     // harness.check (d.compareTo(e));
     // harness.check (e.compareTo(d));
 
+      harness.checkPoint ("decode");
       harness.check (Integer.decode("123456789"), new Integer (123456789));
       harness.check (Integer.decode("01234567"), new Integer (342391));
       harness.check (Integer.decode("0x1234FF"), new Integer (1193215));
@@ -153,6 +157,7 @@ public class new_Integer implements Testlet
       harness.check (Integer.decode(Integer.toString(Integer.MIN_VALUE)),
 		     new Integer (-2147483648));
 
+      harness.checkPoint ("decode exceptions");
       boolean ok = false;
       try
 	{
@@ -241,6 +246,7 @@ public class new_Integer implements Testlet
 	}
       harness.check (ok);
 
+      harness.checkPoint ("toBinaryString");
       harness.check (Integer.toBinaryString(0),
 		     "0");
       harness.check (Integer.toBinaryString(1),
@@ -256,6 +262,7 @@ public class new_Integer implements Testlet
       harness.check (Integer.toBinaryString(Integer.MAX_VALUE + 1),
 		     "10000000000000000000000000000000");
 
+      harness.checkPoint ("toOctalString");
       harness.check (Integer.toOctalString(0),
 		     "0");
       harness.check (Integer.toOctalString(1),
@@ -271,6 +278,7 @@ public class new_Integer implements Testlet
       harness.check (Integer.toOctalString(Integer.MAX_VALUE + 1),
 		     "20000000000");
 
+      harness.checkPoint ("toHexString");
       harness.check (Integer.toHexString(0),
 		     "0");
       harness.check (Integer.toHexString(1),
@@ -286,6 +294,7 @@ public class new_Integer implements Testlet
       harness.check (Integer.toHexString(Integer.MAX_VALUE + 1),
 		     "80000000");
 
+      harness.checkPoint ("parseInt");
       harness.check (Integer.parseInt("0012345", 8),
 		     5349);
       harness.check (Integer.parseInt("xyz", 36),
