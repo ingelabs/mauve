@@ -3,6 +3,12 @@ AC_INIT(gnu/testlet/Testlet.java)
 AM_INIT_AUTOMAKE(mauve, 0.0)
 AM_MAINTAINER_MODE
 
+dnl See if the user prefers to build .class files with gcj, or whether
+dnl javac will be used.
+AC_ARG_ENABLE(gcj-classes,
+[  --enable-gcj-classes             Use gcj, not javac, to build class files],
+  JAVAC='$(GCJ) -C')
+
 JAVA=${JAVA-java}
 AC_SUBST(JAVA)
 JAVAC=${JAVAC-javac}
