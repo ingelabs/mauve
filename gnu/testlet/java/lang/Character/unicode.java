@@ -278,7 +278,7 @@ public class unicode implements Testlet
 			// are not marked Lu -- e.g., 0x03d2.  So we
 			// don't check for this.
 			if (  // "Lu".equals(chars[i].category)
-			    ( (i < 0x2000 || i > 0x2ffff)
+			    ( (i < 0x2000 || i > 0x2fff)
 			      && chars[i].uppercase == 0
 			      && (chars[i].lowercase != 0
 				  || (chars[i].name.indexOf("CAPITAL LETTER")
