@@ -1,5 +1,12 @@
 2002-10-09  Daryl Lee  <dol@sources.redhat.com>
 
+	* Renamed gnu/testlet/java/io/DataInputOutput to .../DataOutputStream
+	to make directory name align with java.io package class names
+	* Moved read-oriented tests to .../DataInputStream
+	* Fixed associated package and paths
+	
+2002-10-09  Daryl Lee  <dol@sources.redhat.com>
+
 	* Corrected conflict in this file in 2002-09-20 comments
 	* Added hashcode() test to gnu/testlet/java/io/File/jdk11.java
 	* Added ready() and skip() test to 

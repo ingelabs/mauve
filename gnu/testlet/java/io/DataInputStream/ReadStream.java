@@ -21,7 +21,7 @@
 
 // Tags: not-a-test
 
-package gnu.testlet.java.io.DataInputOutput;
+package gnu.testlet.java.io.DataInputStream;
 
 import java.io.*;
 import gnu.testlet.TestHarness;
