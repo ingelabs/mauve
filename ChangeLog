@@ -1,5 +1,7 @@
 1999-03-10  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/ChoiceFormat/parse.java: New file.
+
 	* gnu/testlet/java/text/MessageFormat/format.java (test): Added
 	`choice' test and quoted `#' test.
 
