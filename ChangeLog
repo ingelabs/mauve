@@ -1,3 +1,16 @@
+2004-05-02  Thomas Zander  <zander@kde.org>
+
+	* gnu/anttask/RunTests: Add javadoc, add setSrcdir, setTestJDK, 
+	setTestJDBC.
+	* build.xml: fix typo, use new flags srcdir, testjdk, testjdbc.
+
+	* gnu/testlet/java/beans/Introspector/jdk12.java: Remove duplicate tag.
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java
+	gnu/testlet/java/security/AlgorithmParameterGenerator/MauveAlgorithm.java
+	gnu/testlet/java/security/AlgorithmParameters/MauveAlgorithm.java
+	gnu/testlet/java/security/KeyFactory/MauveAlgorithm.java
+	gnu/testlet/java/security/KeyPairGenerator/MauveAlgorithm.java: Fix tag.
+
 2004-05-02  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/nio/channels/FileChannel/manyopen.java: New test.

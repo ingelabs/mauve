@@ -28,12 +28,64 @@ import org.apache.tools.ant.*;
 import org.apache.tools.ant.taskdefs.*;
 import org.apache.tools.ant.types.*;
 
+/**
+ * Ant task to run Mauve test-suite.
+ * <p>Before asking questions; always refer to the <a href="http://jakarta.apache.org/ant/manual/index.html">ant manual</a> first.</p>
+    <p>Test classes are passed as child fileset tags, typically you simply pass the build
+        dir for the project</p>
+    <h3>Parameters</h3>
+    <table border="1" cellpadding="2" cellspacing="0">
+      <tr>
+        <td valign="top"><b>Attribute</b></td>
+        <td valign="top"><b>Description</b></td>
+        <td align="center" valign="top"><b>Required</b></td>
+      </tr>
+      <tr>
+        <td valign="top">debug</td>
+        <td valign="top">Prints additional debug info for the tests</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+      <tr>
+        <td valign="top">verbose</td>
+        <td valign="top">Lets the test suite be more verbose; also showing passed-tests for example</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+      <tr>
+        <td valign="top">haltonfailure</td>
+        <td valign="top">make the testrun halt as soon as a failure is failed (see also failonerror)</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+      <tr>
+        <td valign="top">srcdir</td>
+        <td valign="top">provide the sources directory allowing the parsing of a "Tags:" comment in the header of the file.  If the testJDK or testJDBC are also supplied then tests that have tags specifying that their API comatibility are incompatible with the testJDK/testJDBC version will be skipped.</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+      <tr>
+        <td valign="top">testJDK</td>
+        <td valign="top">The version of the JDK you are running/simulating. Only tests that are compatible with this version will be run.</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+      <tr>
+        <td valign="top">testJDBC</td>
+        <td valign="top">The version of the JDBC API you are running/simulating. Only tests that are compatible with this version will be run.</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+      <tr>
+        <td valign="top">failonerror</td>
+        <td valign="top">If a test fails, should that be flagged as an error? Setting this and haltonfailure to true will stop the run as soon as a failure is found.</td>
+        <td align="center" valign="top">No</td>
+      </tr>
+    </table>
+ */
 public class RunTests extends MatchingTask {
     private boolean verbose=false, debug=false, haltOnFailure=false, failOnError=true;
-    private Path sourceDir=null;
+    private File sourceDir=null;
     private Vector filesets=new Vector();
+    private double javaVersion=0d, JDBCVersion=0d;
 
     public void execute() throws BuildException {
+        if(sourceDir == null)
+            System.err.println("Warning; without 'srcdir' element no Tag checking will be done");
         MyTestHarness harness = new MyTestHarness (verbose, debug, haltOnFailure);
 
         Iterator iter = filesets.iterator();
@@ -50,8 +102,11 @@ public class RunTests extends MatchingTask {
                         continue; // no inner classeS
                     filename=filename.substring(0, filename.length()-6);
                     filename=filename.replace(File.separatorChar, '.');
-
-                    harness.runTest(filename);
+                    if(shouldRunTest(filename)) {
+                        if(!verbose)
+                            System.out.println("Run: "+ filename);
+                        harness.runTest(filename);
+                    }
                 }
             } catch (BuildException be) {
                 // directory doesn't exist or is not readable
@@ -83,6 +138,70 @@ public class RunTests extends MatchingTask {
         filesets.add(set);
     }
 
+    public void setSrcdir(File sourceDir) {
+        this.sourceDir = sourceDir;
+    }
+
+    public void setTestJDK(String jdk) {
+        jdk=jdk.toLowerCase().trim();
+        if(jdk.startsWith("jdk")) {
+            try {
+                javaVersion = Double.parseDouble(jdk.substring(3));
+                return;
+            } catch(NumberFormatException e) {
+            }
+        }
+        System.err.println("Failed to parse the testJDK argument; format is: 'JDK1.4'");
+    }
+
+    public void setTestJDBC(String jdbc) {
+        jdbc=jdbc.toLowerCase().trim();
+        if(jdbc.startsWith("jdbc")) {
+            try {
+                javaVersion = Double.parseDouble(jdbc.substring(4));
+                return;
+            } catch(NumberFormatException e) {
+            }
+        }
+        System.err.println("Failed to parse the testJDBC argument; format is: 'JDBC2.0'");
+    }
+
+    private boolean shouldRunTest(String filename) {
+        if(sourceDir == null)
+            return true;
+        File sourceFile = new File(sourceDir, filename.replace('.', File.separatorChar)+".java");
+        if(! sourceFile.exists())
+            return false;
+        try {
+            Reader reader = new FileReader(sourceFile);
+            StringBuffer buf = new StringBuffer();
+            int maxLines=20;
+            while(true) {
+                int character = reader.read();
+                if(character == -1)
+                    break;
+                if(character == '\n') {
+                    int index = buf.indexOf("Tags:") + 5; // 5 == length of string
+                    if(index > 5 && buf.length() > index) {
+                        String tags = buf.substring(index).trim().toLowerCase();
+                        if("not-a-test".equals(tags))
+                            return false;
+                        try {
+                            return new Tags(tags).isValid(javaVersion, JDBCVersion);
+                        } catch(NumberFormatException e) {
+                            System.err.println("Unreadable tags in class: "+ filename);
+                            return false;
+                        }
+                    }
+                    buf = new StringBuffer();
+                }
+                else
+                    buf.append((char) character);
+            }
+        } catch(IOException e) { }
+        return false;
+    }
+
 
     private static class MyTestHarness extends SimpleTestHarness {
         private boolean haltOnFailure;
@@ -96,6 +215,58 @@ public class RunTests extends MatchingTask {
             super.runtest(name);
             if(haltOnFailure && getFailures() > 0)
                 throw new BuildException("Failures");
+        }
+    }
+
+    private static class Tags {
+        String fromJDK="1.0", toJDK="99.0";
+        String fromJDBC="1.0", toJDBC="99.0";
+        public Tags(String line) {
+//System.out.println("tagLine: '"+ line +"'");
+            int start=0;
+            for(int i=0; i <= line.length();i++) {
+                if(i == line.length() || line.charAt(i) == ' ') {
+                    if(start < i)
+                        process(line.substring(start, i));
+                    start = i+1;
+                }
+            }
+
+        }
+        public void process(String token) {
+//System.out.println("     +-- '"+ token +"'");
+            boolean end = token.startsWith("!");
+            if(end)
+                token = token.substring(1);
+            if(token.startsWith("jls") || token.startsWith("jdk")) {
+                String value = token.substring(3);
+                if(end)
+                    toJDK = value;
+                else
+                    fromJDK = value;
+            }
+            else if(token.startsWith("jdbc")) {
+                String value = token.substring(4);
+                if(end)
+                    toJDBC = value;
+                else
+                    fromJDBC = value;
+            }
+        }
+        public boolean isValid(double javaVersion, double JDBCVersion) throws NumberFormatException {
+            if(javaVersion != 0d) {
+                double from = Double.parseDouble(fromJDK);
+                if(from > javaVersion)  return false;
+                double end = Double.parseDouble(toJDK);
+                if(end < javaVersion)  return false;
+            }
+            if(JDBCVersion != 0d) {
+                double from = Double.parseDouble(fromJDBC);
+                if(from < JDBCVersion)  return false;
+                double end = Double.parseDouble(toJDBC);
+                if(end > JDBCVersion)  return false;
+            }
+            return true;
         }
     }
 }

@@ -59,7 +59,7 @@
     <target name="compile" depends="init" description="Compile all files">
         <javac srcdir="${src}" destdir="${build}"
             includes="gnu/**/*.java"
-            exlucdes="gnu/testlet/BinaryCompatibility/**"
+            excludes="gnu/testlet/BinaryCompatibility/**"
             classpathref="myclass.path"
             debug="on" />
     </target>
@@ -79,6 +79,9 @@
         <mauve debug="false"
             verbose="false"
             haltonfailure="false"
+            srcdir="${src}"
+            testJDK="JDK1.4"
+            testJDBC="JDBC2.0"
             failonerror="true">
             <fileset dir="${build}" includes="gnu/testlet/java/**" />
             <fileset dir="${build}" includes="gnu/testlet/javax/**" />

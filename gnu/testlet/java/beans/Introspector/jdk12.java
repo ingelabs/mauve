@@ -1,4 +1,4 @@
-// Tags: JDK1.2 JAVA2
+// Tags: JDK1.2
 
 package gnu.testlet.java.beans.Introspector;
 import gnu.testlet.Testlet;
