@@ -32,36 +32,36 @@ import gnu.testlet.TestHarness;
 
 public class write extends FilterWriter implements Testlet
 {
-
+  
   public write()
   {
     this(null);
   }
-
+  
   write (CharArrayWriter caw)
   {
     super((Writer) caw);
   }
-
+  
   public void test (TestHarness harness)
   {
-	CharArrayWriter caw = new CharArrayWriter();
-	write tfw = new write(caw);
-	try {
-		tfw.write('A');						// A
-		harness.check(true, "write(int)");
-		char[] ba = {'A', 'B', 'C', 'D'};
-		tfw.write(ba, 1, 2);				// ABC
-		harness.check(true, "write(buf,off,len)");
-		tfw.write("CDEF", 1, 3);			// ABCDEF
-		harness.check(caw.toString(), "ABCDEF", "wrote all characters okay");
-		tfw.flush();
-		harness.check(true, "flush()");
-		tfw.close();
-		harness.check(true, "close()");
-	}
-	catch (IOException e) {
-		harness.fail("IOException unexpected");
-	}
+    CharArrayWriter caw = new CharArrayWriter();
+    write tfw = new write(caw);
+    try {
+      tfw.write('A');						// A
+      harness.check(true, "write(int)");
+      char[] ba = {'A', 'B', 'C', 'D'};
+      tfw.write(ba, 1, 2);				// ABC
+      harness.check(true, "write(buf,off,len)");
+      tfw.write("CDEF", 1, 3);			// ABCDEF
+      harness.check(caw.toString(), "ABCDEF", "wrote all characters okay");
+      tfw.flush();
+      harness.check(true, "flush()");
+      tfw.close();
+      harness.check(true, "close()");
+    }
+    catch (IOException e) {
+      harness.fail("IOException unexpected");
+    }
   }
 }
