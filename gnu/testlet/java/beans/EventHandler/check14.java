@@ -1,4 +1,5 @@
 // Test EventHandler.check14().
+// Uses: TestSecurityManager2
 
 // Written by Jerry Quinn <jlquinn@optonline.net>
 
@@ -62,8 +63,8 @@ public class check14 implements Testlet
 
   public interface Listener
   {
-    public void listen1(Event x);
-    public void listen2(Event x);
+    public void listen1(check14.Event x);
+    public void listen2(check14.Event x);
   }
 
 

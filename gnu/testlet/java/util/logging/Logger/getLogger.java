@@ -1,5 +1,5 @@
 // Tags: JDK1.4
-// Uses: TestResourceBundle TestSecurityManager
+// Uses: TestLogger TestResourceBundle TestSecurityManager
 
 // Copyright (C) 2004 Sascha Brawer <brawer@dandelis.ch>
 

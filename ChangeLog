@@ -1,3 +1,11 @@
+2004-07-16  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/beans/EventHandler/check14.java,
+	gnu/testlet/java/nio/Buffer/PlainBufferTest.java,
+	gnu/testlet/java/nio/Buffer/WrappedWithOffsetBufferTest.java,
+	gnu/testlet/java/util/logging/Logger/getLogger.java:
+	Fixed for native compilation with gcj CVS HEAD.
+
 2004-07-15  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/sql/Timestamp/TimestampTest.java: New toString()

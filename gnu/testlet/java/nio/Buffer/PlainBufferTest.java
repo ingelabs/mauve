@@ -1,4 +1,5 @@
 // Tags: JDK1.4
+// Uses: ByteBufferFactory
 
 // Copyright (C) 2004 Max Gilead <gilead@yellowhedgehog.com>
 
