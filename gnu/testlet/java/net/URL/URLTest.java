@@ -150,6 +150,19 @@ public class URLTest implements Testlet
                                              " exception should not be thrown here");
                 }
                 
+		try {
+			URL u1 = new URL("http://domain.com");
+			URL u2 = new URL(u1, "/redir?http://domain2.com/index.html");
+
+			harness.check (u2.getProtocol(), "http");
+			harness.check (u2.getHost(), "domain.com");
+			harness.check (u2.getPath(), "/redir");
+			harness.check (u2.getQuery(), "http://domain2.com/index.html");
+                }
+                catch ( MalformedURLException e ){
+				harness.fail(" Error in test_Basics  - 35 " + 
+                                             " exception should not be thrown here");
+                }
 	}
 
 	public void test_openConnection()
