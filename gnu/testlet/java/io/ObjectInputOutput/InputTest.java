@@ -1,4 +1,4 @@
-// Tags: JDK1.1
+// Tags: JDK1.2
 // Uses: Test
 
 /* InputTest.java -- Tests ObjectInputStream class

@@ -1,4 +1,4 @@
-// Tags: JDK1.1
+// Tags: JDK1.2
 // Uses: Test
 
 /* OutputTest.java -- Tests ObjectOutputStream class

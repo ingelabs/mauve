@@ -1,3 +1,10 @@
+1999-11-09  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/io/ObjectInputOutput/OutputTest.java: Tag as
+	JDK1.2.
+	* gnu/testlet/java/io/ObjectInputOutput/InputTest.java: Tag as
+	JDK1.2; the `Test' class uses a 1.2-specific feature.
+
 Sun Jul 25 01:26:40 1999  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/io/ObjectStreamClass/Test.java: New file.  All
