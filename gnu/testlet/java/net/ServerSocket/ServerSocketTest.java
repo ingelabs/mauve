@@ -144,19 +144,19 @@ public class ServerSocketTest implements Testlet
 				harness.fail("Error : test_params failed - 1" + 
 					"get port did not return proper values" );
 
-			if(false) { // set/getSoTimeout not there
-			try {
-			sock.setSoTimeout( 100 );
-			if ( sock.getSoTimeout() != 100 )
-				harness.fail("Error : test_params failed - 2" + 
-					"get /set timeout did not return proper values" );
-			}
-                        catch ( Exception e )
-                        {
-                                harness.fail("Error : setSoTimeout fails since vxWorks do not support the feature" );
-                                e.printStackTrace(System.out);
-                        }
-			}
+//			if(false) { // set/getSoTimeout not there
+//			try {
+//			sock.setSoTimeout( 100 );
+//			if ( sock.getSoTimeout() != 100 )
+//				harness.fail("Error : test_params failed - 2" + 
+//					"get /set timeout did not return proper values" );
+//			}
+//                      catch ( Exception e )
+//                      {
+//                              harness.fail("Error : setSoTimeout fails since vxWorks do not support the feature" );
+//                              e.printStackTrace(System.out);
+//                      }
+//			}
 		    
 			try {
 				ServerSocket sock1 = new ServerSocket( 30000 );

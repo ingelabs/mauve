@@ -1,5 +1,8 @@
 1999-07-12  Warren Levy  <warrenl@cygnus.com>
 
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java (test_params):
+	Commented out dead code.
+	* gnu/testlet/java/net/Socket/SocketTest.java (test_params): ditto.
 	* gnu/testlet/java/net/URLConnection/MyURLConnection.java (connect):
 	Removed unnecessary imports and unreachable code.
 

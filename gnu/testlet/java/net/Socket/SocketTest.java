@@ -194,18 +194,18 @@ public class SocketTest implements Testlet
     harness.fail("Error : test_params failed - 1 " +
      "get port did not return proper values" );
 
-   if(false) { // set/getSoTimeout not there
-   try {
-   sock.setSoTimeout( 100 );
-   if ( sock.getSoTimeout() != 100 )
-    harness.fail("Error : test_params failed - 2 " +
-     "get /set timeout did not return proper values" );
-   } catch ( Exception e )
-   {
-     e.printStackTrace();
-     harness.fail("Error : setSoTimeout fails since vxWorks do not support the feature" );
-   }
-   }
+// if(false) { // set/getSoTimeout not there
+// try {
+// sock.setSoTimeout( 100 );
+// if ( sock.getSoTimeout() != 100 )
+//  harness.fail("Error : test_params failed - 2 " +
+//   "get /set timeout did not return proper values" );
+// } catch ( Exception e )
+// {
+//   e.printStackTrace();
+//   harness.fail("Error : setSoTimeout fails since vxWorks do not support the feature" );
+// }
+// }
 
    sock.setTcpNoDelay (true);
    if ( !sock.getTcpNoDelay ())
@@ -261,7 +261,8 @@ public class SocketTest implements Testlet
   }
   catch ( IOException e ){
    harness.fail("Error : test_Basics failed - 2 " +
-     " Unknown host exception should have been thrown here" );
+     " Unknown host exception should have been thrown here: " +
+     e.getMessage() );
   }
 
   try {
@@ -328,7 +329,8 @@ if (true) // 1.1 features not implemented
   }
   catch ( IOException e ){
    harness.fail("Error : test_Basics failed - 10 " +
-     " Unknown host exception should have been thrown here" );
+     " Unknown host exception should have been thrown here: " +
+     e.getMessage() );
   }
 
   try {
