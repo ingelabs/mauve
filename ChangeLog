@@ -1,3 +1,7 @@
+2004-10-15  Sven de Marothy  <sven@physto.se>
+
+	* gnu/testlet/java/nio/ByteBuffer/putDouble.java: New test.
+
 2004-10-15  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/java/beans/XMLDecoder/jdk14.java:	New testcase set
