@@ -25,6 +25,7 @@ package gnu.testlet.javax.imageio.spi.ImageReaderWriterSpi;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+import java.util.Arrays;
 import javax.imageio.spi.ImageReaderWriterSpi;
 
 
@@ -40,7 +41,7 @@ public class getFileSuffixes
     h.check(new TestProvider().getFileSuffixes(), null);
 
     // Check #2.
-    h.check(TestProvider.createProvider().getFileSuffixes()
-            == TestProvider.SUFFIXES);
+    h.check(Arrays.equals(TestProvider.createProvider().getFileSuffixes(),
+                          TestProvider.SUFFIXES));
   }
 }

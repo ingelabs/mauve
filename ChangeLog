@@ -1,5 +1,19 @@
 2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/javax/imageio/spi/ImageReaderWriterSpi/
+	getFormatNames.java: Check for NullPointerException when
+	instance was created with no-argument constructor.
+
+	* gnu/testlet/javax/imageio/spi/ImageReaderWriterSpi/
+	getFormatNames.java,
+	getFileSuffixes.java,
+	getMIMETypes.java,
+	getExtraStreamMetadataFormatNames.java,
+	getExtraImageMetadataFormatNames.java:
+	Also accept a clone of the expected value.
+
+2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/java/awt/color/ColorSpace/getInstance.java:
 	New file.
 

@@ -25,6 +25,7 @@ package gnu.testlet.javax.imageio.spi.ImageReaderWriterSpi;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+import java.util.Arrays;
 import javax.imageio.spi.ImageReaderWriterSpi;
 
 
@@ -40,8 +41,8 @@ public class getExtraImageMetadataFormatNames
     h.check(new TestProvider().getExtraImageMetadataFormatNames(), null);
 
     // Check #2.
-    h.check(TestProvider.createProvider()
-            .getExtraImageMetadataFormatNames()
-            == TestProvider.EXTRA_IMAGE_METADATA_FORMAT_NAMES);
+    h.check(Arrays.equals(TestProvider.createProvider()
+                          .getExtraImageMetadataFormatNames(),
+                          TestProvider.EXTRA_IMAGE_METADATA_FORMAT_NAMES));
   }
 }

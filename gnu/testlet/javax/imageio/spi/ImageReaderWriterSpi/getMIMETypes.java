@@ -25,6 +25,7 @@ package gnu.testlet.javax.imageio.spi.ImageReaderWriterSpi;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+import java.util.Arrays;
 import javax.imageio.spi.ImageReaderWriterSpi;
 
 
@@ -40,7 +41,7 @@ public class getMIMETypes
     h.check(new TestProvider().getMIMETypes(), null);
 
     // Check #2.
-    h.check(TestProvider.createProvider().getMIMETypes()
-            == TestProvider.MIME_TYPES);
+    h.check(Arrays.equals(TestProvider.createProvider().getMIMETypes(),
+                          TestProvider.MIME_TYPES));
   }
 }

@@ -25,6 +25,7 @@ package gnu.testlet.javax.imageio.spi.ImageReaderWriterSpi;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+import java.util.Arrays;
 import javax.imageio.spi.ImageReaderWriterSpi;
 
 
@@ -37,10 +38,23 @@ public class getFormatNames
   public void test(TestHarness h)
   {
     // Check #1.
-    h.check(new TestProvider().getFormatNames(), null);
+    Throwable caught = null;
+    try
+      {
+        new TestProvider().getFormatNames();
+      }
+    catch (Exception ex)
+      {
+        caught = ex;
+      }
+    h.check(caught instanceof NullPointerException);
 
     // Check #2.
+    h.check(Arrays.equals(TestProvider.createProvider().getFormatNames(),
+                          TestProvider.NAMES));
+
+    // Check #3.
     h.check(TestProvider.createProvider().getFormatNames()
-            == TestProvider.NAMES);
+            != TestProvider.NAMES);
   }
 }
