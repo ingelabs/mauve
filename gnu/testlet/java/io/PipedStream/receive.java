@@ -39,6 +39,10 @@ public class receive extends PipedInputStream implements Runnable, Testlet
     super(x);
   }
 
+  public receive ()
+  {
+  }
+
   public void run() {
     try {
       Thread.sleep(1000);
