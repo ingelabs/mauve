@@ -42,7 +42,15 @@ public class applyLocalizedPattern implements Testlet
   public void test(TestHarness harness)
   {
     SimpleDateFormat f = new SimpleDateFormat("yyyy", Locale.CHINA);
-    f.applyLocalizedPattern("j-nnn-aaaa");
+    try
+      {
+	f.applyLocalizedPattern("j-nnn-aaaa");
+      }
+    catch (IllegalArgumentException iae)
+      {
+	harness.debug(iae);
+	harness.check(false);
+      }
     harness.check(f.toPattern(), "d-MMM-yyyy");
  
     // try invalid argument

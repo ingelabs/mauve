@@ -1,3 +1,8 @@
+2005-02-20  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/text/SimpleDateFormat/applyLocalizedPattern.java:
+	Catch IllegalArgumentException when calling f.applyLocalizedPattern().
+
 2005-02-19  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/font/TextAttribute/constants.java,
