@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Test.java -- Tests PrintWriter
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 2003 Free Software Foundation, Inc.
 /* Written by Daryl Lee (dolee@sources.redhat.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,7 @@ public class jdk11 extends PrintWriter implements Testlet
 
 public jdk11()
 {
-  this(null);
+  this(new ByteArrayOutputStream());
 }
 
 jdk11(OutputStream os)
@@ -120,6 +120,11 @@ test(TestHarness harness)
 	harness.check(!tpw.checkError(), "checkError");
 	tpw.print(3, true);   // forces call to setError
 	harness.check(tpw.checkError(), "setError");
+
+	// Check for (no) error after close
+	PrintWriter p = new PrintWriter(baos3);
+	p.close();
+	harness.check(!p.checkError(), "checkError() after close()");
 }
 
 } // class Test
