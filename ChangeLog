@@ -1,4 +1,9 @@
 2005-02-07  David Gilbert <david.gilbert@object-refinery.com>
+	* gnu/testlet/java/io/Serializable/readResolve.java, 
+	gnu/testlet/java/io/Serializable/MySerializable.java: 
+	New test and support class.
+
+2005-02-07  David Gilbert <david.gilbert@object-refinery.com>
 	* gnu/testlet/java/text/DecimalFormat/equals.java: New tests.
 	
 2005-02-07  Thomas Zander <zander@kde.org>
