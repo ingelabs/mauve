@@ -1,3 +1,7 @@
+1999-03-19  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/text/BreakIterator/chariter.java: New file.
+
 1999-03-18  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/SimpleTestHarness.java (main): Examine all
