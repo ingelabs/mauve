@@ -1,3 +1,7 @@
+2003-08-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/InputStreamReader/utf8.java: New test.
+
 2003-08-23  Stephen Crawley  <crawley@dstc.edu.au>
 
 	* Makefile.am : put quotes around GCJ, JAVAC and JAVA when passing
