@@ -1,5 +1,10 @@
 2004-10-15  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/javax/imageio/spi/IIORegistry/getDefaultInstance.java:
+	New testcase.
+
+2004-10-15  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/lang/reflect/sub/InvokeHelper.java:
 	Tagged as "not-a-test".
 
