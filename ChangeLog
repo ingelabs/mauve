@@ -1,3 +1,10 @@
+2004-11-05  Noa Resare  <noa@resare.com>
+
+	* gnu/testlet/java/beans/PropertyEditorSupport/getSource.java:
+        Removed compatibility workaround for 1.4.
+	Marked as JDK1.5 as the getSource() method came then.
+	Change indentation to follow GNUish coding style.
+
 2004-11-03  Stephen Crawley  <crawley@dstc.edu.au>
 	* gnu/testlet/java/util/Vector/VectorSerialization.java: remove
 	spurious "// Uses: Test" - there is no such Java class.

@@ -1,4 +1,4 @@
-//Tags: JDK1.4
+//Tags: JDK1.5
 
 //Copyright (C) 2004 Robert Schuster <theBohemian@gmx.net>
 
@@ -24,34 +24,31 @@ import java.beans.PropertyEditorSupport;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-/** Very simple tests that check whether the (event) source of a PropertyEditorSupport
- * instance is set correctly.
+/**
+ * Very simple tests that check whether the (event) source of a
+ * PropertyEditorSupport instance is set correctly.
  *  
  * @author Robert Schuster
  */
 public class getSource implements Testlet
 {
-
-    public void test(TestHarness harness)
-    {
-    	PropertyEditorSupport pes;
-    	
-		// for 1.4 compatibility it is needed to subclass PropertyEditorSupport because the constructors are
-		// 'protected' (they are 'public' in 1.5)
-    	pes = new PropertyEditorSupport() {
-		};
-
-		// pes-non argument: using the non-argument form of PropertyEditorSupport the event source should be the 
-		// PropertyEditorSupport instance itself
-		harness.check(pes.getSource(), pes, "pes-non argument");
-		
-		// pes-single argument: using the single argument constructor of PropertyEditorSupport the event source
-		// should be set to the given Object instance.
-		Object eventSource = new Object();
-		pes = new PropertyEditorSupport(eventSource) {
-		};
-
-		harness.check(pes.getSource(), eventSource, "pes-single argument");		
-    }
+  public void test(TestHarness harness)
+  {
+    PropertyEditorSupport pes;
     
+    pes = new PropertyEditorSupport();
+
+    // pes-non argument: using the non-argument form of
+    // PropertyEditorSupport the event source should be the 
+    // PropertyEditorSupport instance itself
+    harness.check(pes.getSource(), pes, "pes-non argument");
+    
+    // pes-single argument: using the single argument constructor of
+    // PropertyEditorSupport the event source should be set to the given
+    // Object instance.
+    Object eventSource = new Object();
+    pes = new PropertyEditorSupport(eventSource);
+
+    harness.check(pes.getSource(), eventSource, "pes-single argument");
+  }
 }
