@@ -73,6 +73,15 @@ public final class clone implements Testlet, Cloneable
 
     harness.check(iarray != icopy, "cloned arrays are distinct - 1");
     harness.check(oarray != ocopy, "cloned arrays are distinct - 2");
+    harness.check(iarray.length == icopy.length, "cloned arrays have same length - 1");
+    harness.check(oarray.length == ocopy.length, "cloned arrays have same length - 2");
+
+    harness.check(iarray.getClass() == icopy.getClass(), "cloned arrays have same type - 1");
+    harness.check(oarray.getClass() == ocopy.getClass(), "cloned arrays have same type - 2");
+
+    harness.check(iarray.getClass().getComponentType() == icopy.getClass().getComponentType(), "cloned arrays have same component type - 1");
+    harness.check(oarray.getClass().getComponentType() == ocopy.getClass().getComponentType(), "cloned arrays have same component type - 2");
+
     harness.check(iarray[0] == icopy[0], "cloned contents are same - 1");
     harness.check(iarray[1] == icopy[1], "cloned contents are same - 2");
     harness.check(oarray[0] == ocopy[0], "cloned contents are same - 3");
