@@ -53,7 +53,12 @@ public class parse implements Testlet
     doParse(harness, sdf, toTest);
     sdf.applyPattern("EEEE MMMM");
     doParse(harness, sdf, toTest);
-    
+
+    /* Test case from bug #11583 */
+    SimpleDateFormat sdf1 = new SimpleDateFormat("MMM dd, yyyy");
+    toTest = new HashMap();
+    toTest.put("dec 31, 2004", new Date(1104451200000L));
+    doParse(harness, sdf1, toTest);
   }
 
   /**
