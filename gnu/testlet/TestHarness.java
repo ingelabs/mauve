@@ -21,6 +21,7 @@
 package gnu.testlet;
 
 import java.io.Reader;
+import java.io.InputStream;
 
 public abstract class TestHarness
 {
@@ -31,6 +32,13 @@ public abstract class TestHarness
       boolean ok = (result == null
 		    ? expected == null
 		    : result.equals(expected));
+      check (ok);
+      if (! ok)
+	debug ("got " + result + " but expected " + expected);
+    }
+  public void check (double result, double expected)
+    {
+      boolean ok = (result == expected);
       check (ok);
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
@@ -71,6 +79,11 @@ public abstract class TestHarness
       checkPoint (name);
       check (result, expected);
     }
+  public void check (double result, double expected, String name)
+    {
+      checkPoint (name);
+      check (result, expected);
+    }
   public void fail (String name)
     {
       checkPoint (name);
@@ -82,6 +95,9 @@ public abstract class TestHarness
   // directory, but '#' characters are used in place of directory
   // separators.
   public abstract Reader getResourceReader (String name) 
+    throws ResourceNotFoundException;
+
+  public abstract InputStream getResourceStream (String name) 
     throws ResourceNotFoundException;
 
   // This can be used to mark a known place in a testlet.  It is

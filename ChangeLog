@@ -1,10 +1,43 @@
+Mon Feb 15 21:04:24 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/DataInputOutput/WriteRead.java: Added file.
+
+	* gnu/testlet/java/io/DataInputOutput/ReadStream.java: Added file.
+
+	* gnu/testlet/java/io/DataInputOutput/ReadReference.java: Added file.
+
+Mon Feb 15 20:16:12 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/Utf8Encoding/WriteRead.java: Added this test
+	case.
+
+	* gnu/testlet/java/io/Utf8Encoding/ReadReference.java: Added this
+	test case.
+
+Mon Feb 15 19:57:17 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/TestHarness.java (check(double, double)): New method
+
+	* gnu/testlet/TestHarness.java (check(double, double, String)): 
+        New method
+
+	* gnu/testlet/TestHarness.java (getResourceStream): New method
+	
+	* gnu/testlet/SimpleTestHarness.java (getResourceStream): New method
+	
+	* gnu/testlet/SimpleTestHarness.java (getResourceReader): Use
+	getResourceStream
+
+	* gnu/testlet/SimpleTestHarness.java (runtest): Return if not
+	instanceof Testlet
+
 1999-02-07  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/util/BitSet/jdk10.java (trulyEquals): Don't
 	pass description to check().
 	(test): Fixed typo.
 
-Thu Feb  4 19:49:42 1999  arenn's Development Account  <devel@larissa.foo.com>
+Thu Feb  4 19:49:42 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc10.java: Added this
 	test case.

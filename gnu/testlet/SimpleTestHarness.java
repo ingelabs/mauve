@@ -67,6 +67,13 @@ public class SimpleTestHarness extends TestHarness
   public Reader getResourceReader (String name) 
     throws ResourceNotFoundException
     {
+      return(new BufferedReader(new InputStreamReader(
+		getResourceStream(name))));
+    }
+
+  public InputStream getResourceStream (String name) 
+    throws ResourceNotFoundException
+    {
       // The following code assumes File.separator is a single character.
       if (File.separator.length () > 1)
 	throw new Error ("File.separator length is greater than 1");
@@ -74,9 +81,9 @@ public class SimpleTestHarness extends TestHarness
       try 
 	{
 	  return 
-	    new BufferedReader (new FileReader (getSourceDirectory () 
-						+ File.separator 
-						+ realName ));
+	    new FileInputStream (getSourceDirectory () 
+				+ File.separator 
+				+ realName );
 	}
       catch (FileNotFoundException ex)
 	{
@@ -147,7 +154,12 @@ public class SimpleTestHarness extends TestHarness
       try
 	{
 	  Class k = Class.forName (name);
-	  t = (Testlet) (k.newInstance());
+
+          Object o = k.newInstance();
+          if (!(o instanceof Testlet))
+            return;
+
+	  t = (Testlet)o;
 	}
       catch (Throwable ex)
 	{
