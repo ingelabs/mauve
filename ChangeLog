@@ -1,3 +1,20 @@
+2002-11-14  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/SimpleTestHarness.java (getResourceStream): More info
+	on a ResourceNotFoundException.
+
+	* gnu/testlet/java/io/ObjectStreamClass/Test.java: Removed non-inner
+	classes and use correct // Uses: idiom.
+	(testToString): Test either class name or suid.
+	* gnu/testlet/java/io/ObjectStreamClass/A.java: New class from Test.
+	* gnu/testlet/java/io/ObjectStreamClass/B.java: Likewise.
+	* gnu/testlet/java/io/ObjectStreamClass/C.java: Likewise.
+	* gnu/testlet/java/io/ObjectStreamClass/Defined.java: Likewise.
+	* gnu/testlet/java/io/ObjectStreamClass/DefinedNotFinal.java: Likewise.
+	* gnu/testlet/java/io/ObjectStreamClass/DefinedNotStatic.java: Likewise.
+	* gnu/testlet/java/io/ObjectStreamClass/NotSerial.java: Likewise.
+	* gnu/testlet/java/io/ObjectStreamClass/Serial.java: Likewise.
+
 2002-11-14  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/RandomAccessFile/jdk11.java
 	Cleaned up unused code that was offending VMS.
@@ -39,6 +56,11 @@
 2002-11-06  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/InputStreamReader/jdk11:
 	Added tests to complete testing of all methods
+
+2002-11-03  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/ArrayList/serial.java: New test.
+	* gnu/testlet/java/util/ArrayList/ArrayList.ser: New file.
 
 2002-11-03  Mark Wielaard  <mark@klomp.org>
 

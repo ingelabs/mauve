@@ -125,7 +125,9 @@ public class SimpleTestHarness
 	}
       catch (FileNotFoundException ex)
 	{
-	  throw new ResourceNotFoundException (ex.getLocalizedMessage ());
+	  throw new ResourceNotFoundException (ex.getLocalizedMessage ()
+			  	+ ": " + getSourceDirectory ()
+				+ File.separator + realName);
 	}
     }
 

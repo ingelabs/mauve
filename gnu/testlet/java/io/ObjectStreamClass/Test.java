@@ -1,8 +1,9 @@
 // Tags: JDK1.1
+// Uses: A B C Defined DefinedNotFinal DefinedNotStatic NotSerial Serial
 
 /* Test.java -- Tests ObjectStreamClass class
 
-   Copyright (c) 1998 by Free Software Foundation, Inc.
+   Copyright (c) 1998, 2002 by Free Software Foundation, Inc.
    Written by Geoff Berry <gcb@gnu.org>.
 
    This program is free software; you can redistribute it and/or modify
@@ -44,9 +45,12 @@ public class Test implements Testlet
     harness.check (ObjectStreamClass.lookup (cl).getName (), name);
   }
 
-  public void testToString (Class cl, String str)
+  public void testToString (Class cl, String str, long uid)
   {
-    harness.check (ObjectStreamClass.lookup (cl).toString (), str);
+    String s = ObjectStreamClass.lookup (cl).toString (); 
+    harness.check (s.indexOf(str) != -1
+		   || s.indexOf(Long.toString(uid)) != -1,
+		   "Should contain '" + str + "' or '" + uid + "'");
   }
 
  public void testForClass (Class cl, Class clazz)
@@ -75,7 +79,8 @@ public class Test implements Testlet
 
     // toString 
     harness.checkPoint ("toString");
-    testToString (java.lang.String.class, "java.lang.String");
+    testToString (java.lang.String.class,
+		  "java.lang.String", -6849794470754667710L);
 
     // forClass
     harness.checkPoint ("forClass");
@@ -103,57 +108,3 @@ public class Test implements Testlet
 
   TestHarness harness;
 }
-
-class NotSerial {}
-
-class A implements Serializable
-{
-  int b;
-  int a;
-
-  public int f () { return 0; }
-  float g () { return 3; }
-
-  private float c;
-}
-
-abstract class B extends A
-{
-  private B (int[] ar) {}
-  public B () {}
-  public static void foo () {}
-  public abstract void absfoo ();
-
-  private static String s;
-  public int[] a;
-
-  static
-  {
-    s = "hello";
-  }
-}
-
-class C extends B implements Cloneable, Externalizable
-{
-  public void absfoo () {}
-  public void readExternal (ObjectInput i) {}
-  public void writeExternal (ObjectOutput o) {}
-}
-
-
-class Defined implements Serializable
-{
-  static final long serialVersionUID = 17;
-}
-
-class DefinedNotStatic implements Serializable
-{
-  final long serialVersionUID = 17;
-}
-
-class DefinedNotFinal implements Serializable
-{
-  static long serialVersionUID = 17;
-}
-
-class Serial implements Serializable {}
