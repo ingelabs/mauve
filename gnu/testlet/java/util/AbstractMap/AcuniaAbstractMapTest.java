@@ -33,7 +33,7 @@ import java.util.*;
 *  this file contains test for java.util.AbstractMap   <br>
 *
 */
-public class AcuniaAbstractMapTest implements Testlet
+public class AcuniaAbstractMapTest extends AbstractMap implements Testlet
 {
   protected TestHarness th;
 
@@ -57,8 +57,8 @@ public class AcuniaAbstractMapTest implements Testlet
        test_toString();
   }
 
-  protected AcuniaExAbstractMap buildHT() {
-   	AcuniaExAbstractMap t = new AcuniaExAbstractMap();
+  protected AcuniaAbstractMapTest buildHT() {
+   	AcuniaAbstractMapTest t = new AcuniaAbstractMapTest();
    	String s;
    	for (int i=0 ; i < 15 ; i++) {
    	 	s = "a"+i;
@@ -74,7 +74,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_get(){
     th.checkPoint("get(java.lang.Object)java.lang.Object");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     Object o;
     String s="a1";
     o = ehm.get(s);
@@ -95,13 +95,13 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_containsKey(){
     th.checkPoint("containsKey(java.lang.Object)boolean");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     th.check(!ehm.containsKey(null) , "null not there");
     ehm.put(null,"test");
     th.check(ehm.containsKey(null) , "null is in there");
     th.check(ehm.containsKey("a1") , "object is in there");
     th.check(!ehm.containsKey("a1 value") , "object is not in there -- 1");
-    th.check(!ehm.containsKey(this) , "object is not in there -- 2");
+    th.check(!ehm.containsKey(new Object()) , "object is not in there -- 2");
 
   }
 
@@ -111,13 +111,13 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_containsValue(){
     th.checkPoint("containsValue(java.lang.Object)boolean");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     th.check(!ehm.containsValue(null) , "null not there");
     ehm.put(null,null);
     th.check(ehm.containsValue(null) , "null is in there");
     th.check(!ehm.containsValue("a1") , "object is not in there -- 1");
     th.check(ehm.containsValue("a1 value") , "object is in there -- 1");
-    th.check(!ehm.containsValue(this) , "object is not in there -- 2");
+    th.check(!ehm.containsValue(new Object()) , "object is not in there -- 2");
 
   }
 
@@ -127,7 +127,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_isEmpty(){
     th.checkPoint("isEmpty()boolean");
-    AcuniaExAbstractMap ehm = new AcuniaExAbstractMap();
+    AcuniaAbstractMapTest ehm = new AcuniaAbstractMapTest();
     th.check(ehm.isEmpty() , "true");
     ehm = buildHT();
     th.check(!ehm.isEmpty() , "false");
@@ -149,7 +149,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_clear(){
     th.checkPoint("clear()void");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     ehm.clear();
     th.check(ehm.isEmpty() , "true");
   }
@@ -160,7 +160,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_put(){
     th.checkPoint("put(java.lang.Object,java.lang.Object)java.lang.Object");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     ehm.set_edit(false);
     try {
     	ehm.put("a","b");
@@ -176,7 +176,7 @@ public class AcuniaAbstractMapTest implements Testlet
   public void test_putAll(){
     th.checkPoint("putAll(java.util.Map)void");
     Hashtable ht = new Hashtable();
-    AcuniaExAbstractMap ehm = new AcuniaExAbstractMap();
+    AcuniaAbstractMapTest ehm = new AcuniaAbstractMapTest();
     th.check( ehm.equals(ht) , "true -- both empty");
     ht.put("a","b");	ht.put("c","d");	ht.put("e","f");
     ehm.putAll(ht);
@@ -201,7 +201,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_remove(){
     th.checkPoint("remove(java.lang.Object)java.lang.Object");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     ehm.remove("a1");
     th.check(!ehm.containsKey("a1") , "key removed -- 1");
     th.check(!ehm.containsValue("a1 value") , "value removed -- 1");
@@ -229,14 +229,14 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_keySet(){
     th.checkPoint("keySet()java.util.Set");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     Set s = ehm.keySet();
     th.check(s.size() == 15);
     ehm.put(null,"test");
     th.check(s.size() == 16);
     th.check(s.contains("a1"),"does contain a1");
     th.check(s.contains(null),"does contain null");
-    th.check(!s.contains(this),"does contain this");
+    th.check(!s.contains(new Object()),"does contain new Object");
     th.check(!s.contains("test"),"does contain test");
     th.check( s == ehm.keySet() , "same Set is returned");
     Iterator it = s.iterator();
@@ -267,7 +267,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_values(){
     th.checkPoint("values()java.util.Collection");
-    AcuniaExAbstractMap ehm = buildHT();
+    AcuniaAbstractMapTest ehm = buildHT();
     Collection s = ehm.values();
     th.check(s.size() == 15);
     ehm.put(null,"test");
@@ -275,7 +275,7 @@ public class AcuniaAbstractMapTest implements Testlet
     th.check(s.size() == 16);
     th.check(s.contains("a1 value"),"does contain a1 value");
     th.check(s.contains(null),"does contain null");
-    th.check(!s.contains(this),"does contain this");
+    th.check(!s.contains(new Object()),"does contain new Object");
     th.check(s.contains("test"),"does contain test");
     th.check(!s.contains("a1"),"does not contain a1");
     th.check( s == ehm.values() , "same Set is returned");
@@ -309,7 +309,7 @@ public class AcuniaAbstractMapTest implements Testlet
   public void test_equals(){
     th.checkPoint("equals(java.lang.Object)boolean");
     Hashtable ht = new Hashtable();
-    AcuniaExAbstractMap ehm = new AcuniaExAbstractMap();
+    AcuniaAbstractMapTest ehm = new AcuniaAbstractMapTest();
     th.check( ehm.equals(ht) , "true -- both empty");
     ht.put("a","b");	ht.put("c","d");	ht.put("e","f");
     ehm.put("a","b");	ehm.put("c","d");	ehm.put("e","f");
@@ -319,7 +319,7 @@ public class AcuniaAbstractMapTest implements Testlet
     ht.put("e","b");
     th.check(! ehm.equals(ht) , "false --  key with diff values");
     th.check(! ehm.equals(ht.entrySet()) , "false --  no Map");
-    th.check(! ehm.equals(this) , "false -- Object is no Map");
+    th.check(! ehm.equals(new Object()) , "false -- Object is no Map");
     th.check(! ehm.equals(null) , "false -- Object is null");
 
 
@@ -332,7 +332,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_hashCode(){
     th.checkPoint("hashCode()int");
-    AcuniaExAbstractMap ehm = new AcuniaExAbstractMap();
+    AcuniaAbstractMapTest ehm = new AcuniaAbstractMapTest();
     th.check( ehm.hashCode() == 0 , "hashCode of Empty Map is 0, got "+ehm.hashCode());
     int hash = 0;
     Iterator s = ehm.entrySet().iterator();
@@ -347,7 +347,7 @@ public class AcuniaAbstractMapTest implements Testlet
 */
   public void test_toString(){
     th.checkPoint("toString()java.lang.String");
-    AcuniaExAbstractMap ehm = new AcuniaExAbstractMap();
+    AcuniaAbstractMapTest ehm = new AcuniaAbstractMapTest();
     th.check("{}".equals(ehm.toString()) , "checking empty Map");
     ehm.put("a","b");	
     th.check("{a=b}".equals(ehm.toString()) , "checking Map with one element");
@@ -355,4 +355,127 @@ public class AcuniaAbstractMapTest implements Testlet
     th.check("{a=b, c=d, e=f}".equals(ehm.toString()) , "checking Map with three elements");
   }
 
+// The following field and methods are needed to use this class as an
+// implementation test for AbstractMap
+//
+	private Vector keys = new Vector();
+	private Vector values = new Vector();
+	private boolean edit = true;
+	
+	private boolean deleteInAM(Object e) {
+	 	if  (!keys.contains(e)) return false;
+	 	values.remove(keys.indexOf(e));
+	 	return keys.remove(e);
+	}
+	
+	public Vector getKeyV() {
+		return (Vector)keys.clone();
+	}
+	public Vector getValuesV() {
+		return (Vector)values.clone();
+	}
+	
+	public AcuniaAbstractMapTest(){
+		super();
+	}
+	
+	public Set entrySet() {
+		return  new ESet();
+	}
+
+	public Object put(Object key, Object value) {
+		if (edit) {
+			if (keys.contains(key)) {
+				return values.set(keys.indexOf(key),value);
+			}
+			values.add(value);
+			keys.add(key);
+			return null;
+		}
+		return super.put(key,value);
+	}
+	
+	public void set_edit(boolean b) {
+		edit = b;
+	}
+	
+  private class ESet extends AbstractSet {
+	
+		public Iterator iterator() {
+			return new EIterator();
+		}
+	
+	        public int size() {
+	        	return keys.size();
+	        }
+	
+
+  }
+	
+  private class Entry implements Map.Entry {
+
+  	private Object key;
+  	private Object value;
+  	
+  	public Entry(Object k, Object v) {
+         	key = k;
+         	value = v;
+        }
+
+        public Object getKey() {
+        	return key;
+        }
+
+        public Object getValue() {
+        	return value;
+        }
+
+        public Object setValue(Object nv) {
+        	Object ov = value;
+        	value = nv;
+        	return ov;
+        }
+
+        public boolean equals(Object o) {
+
+        	if (!(o instanceof Map.Entry))return false;
+        	Map.Entry e = (Map.Entry)o;
+        	if (  e == null ) return false;
+        	return ( (key == null ? e.getKey()==null : key.equals(e.getKey())) &&
+                  (value == null ? e.getValue()==null : key.equals(e.getValue())));
+        }
+
+        public int hashCode() {
+        	int kc = key == null ? 0 : key.hashCode();
+        	int vc = value == null ? 0 : value.hashCode();
+        	return kc ^ vc;
+        }
+
+  }
+
+        private class EIterator implements Iterator {
+        	int pos=0;
+                int status=0;
+
+                public EIterator() {}
+
+                public  boolean hasNext() {
+                	return  pos < size();
+                }
+
+                public Object next() {
+                 	status = 1;
+                 	if (pos>= size()) throw new NoSuchElementException("no elements left");
+                 	pos++;			
+			return new Entry(keys.get(pos-1) ,values.get(pos-1));                 	
+                }
+
+                public void remove() {
+                        if (status != 1 ) throw new IllegalStateException("do a next() operation before remove()");
+                      	deleteInAM(keys.get(pos-1));
+                      	pos--;
+                      	status=-1;
+                }
+        }
+  	
 }

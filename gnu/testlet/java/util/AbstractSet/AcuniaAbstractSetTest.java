@@ -33,7 +33,7 @@ import java.util.*;
 *  this file contains test for java.util.AbstractSet   <br>
 *
 */
-public class AcuniaAbstractSetTest implements Testlet
+public class AcuniaAbstractSetTest extends AbstractSet implements Testlet
 {
   protected TestHarness th;
 
@@ -51,11 +51,11 @@ public class AcuniaAbstractSetTest implements Testlet
 */
   public void test_equals(){
     th.checkPoint("equals(java.lang.Object)boolean");
-    AcuniaExAbstractSet xas1 = new AcuniaExAbstractSet();
-    AcuniaExAbstractSet xas2 = new AcuniaExAbstractSet();
+    AcuniaAbstractSetTest xas1 = new AcuniaAbstractSetTest();
+    AcuniaAbstractSetTest xas2 = new AcuniaAbstractSetTest();
     th.check( xas1.equals(xas2) , "checking equality -- 1");
     th.check(!xas1.equals(null) , "checking equality -- 2");
-    th.check(!xas1.equals(this) , "checking equality -- 3");
+    th.check(!xas1.equals(new Object()) , "checking equality -- 3");
     th.check( xas1.equals(xas1) , "checking equality -- 4");
     xas1.v.add(null);
     xas1.v.add("a");
@@ -74,7 +74,7 @@ public class AcuniaAbstractSetTest implements Testlet
 */
   public void test_hashCode(){
     th.checkPoint("hashCode()int");
-    AcuniaExAbstractSet xas = new AcuniaExAbstractSet();
+    AcuniaAbstractSetTest xas = new AcuniaAbstractSetTest();
     th.check(xas.hashCode() == 0 ,"checking hc-algorithm -- 1");
     xas.v.add(null);
     th.check(xas.hashCode() == 0 ,"checking hc-algorithm -- 2");
@@ -90,10 +90,23 @@ public class AcuniaAbstractSetTest implements Testlet
     hash += "d".hashCode();
     xas.v.add("d");
     th.check(xas.hashCode() == hash ,"checking hc-algorithm -- 6");
-
-
-
-
   }
+
+// The following methods aand field are needed to use this class as
+// Set implementation.
+
+    public Vector v = new Vector();
+
+    public AcuniaAbstractSetTest(){
+    	super();
+    }
+
+    public int size() {
+    	return v.size();
+    }
+
+    public Iterator iterator() {
+    	return v.iterator();
+    }
 
 }

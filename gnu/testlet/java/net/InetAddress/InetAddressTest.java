@@ -113,7 +113,7 @@ public class InetAddressTest implements Testlet
     // hpjavux
     InetAddress addr3 = null;
     try {
-      addr3 = InetAddress.getByName("hpjavaux.cup.hp.com");
+      addr3 = InetAddress.getByName("savannah.gnu.org");
       harness.check(true);
     }
     catch ( UnknownHostException e ){
@@ -124,8 +124,8 @@ public class InetAddressTest implements Testlet
  
 
     try {
-      harness.check((addr3.getHostName().equals("hpjavaux.cup.hp.com")
-		    || addr3.getHostName().equals("hpjavaux")),
+      harness.check((addr3.getHostName().equals("savannah.gnu.org")
+		    || addr3.getHostName().equals("savannah")),
 		    "test_Basics failed - 11 " +
 		    " the hostname returned is not correct." );
     } catch (NullPointerException npe) {
@@ -135,7 +135,7 @@ public class InetAddressTest implements Testlet
     try {
       String toStr = addr3.toString();
       String toStr1 = addr3.getHostAddress();
-      if ( !( toStr.equals("hpjavaux.cup.hp.com/"+toStr1)|| toStr.equals("hpjavaux/"+toStr1)))
+      if ( !( toStr.equals("savannah.gnu.org/"+toStr1)|| toStr.equals("savannah/"+toStr1)))
         harness.fail("Error : test_Basics failed - 12 " +
 			 " the host address returned is not correct." );
     } catch (NullPointerException npe) {

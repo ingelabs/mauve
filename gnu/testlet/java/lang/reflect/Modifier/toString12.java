@@ -29,8 +29,25 @@ public class toString12 implements Testlet
   public void test (TestHarness harness)
     {
       harness.check (Modifier.toString (Modifier.STRICT),
-		     "strict");
+		     "strictfp");
       harness.check (Modifier.toString (Modifier.FINAL | Modifier.STRICT),
-		     "final strict");
+		     "final strictfp");
+
+      int allFlags = Modifier.PUBLIC |
+                     Modifier.PRIVATE |
+                     Modifier.PROTECTED |
+                     Modifier.STATIC |
+                     Modifier.FINAL |
+                     Modifier.SYNCHRONIZED |
+                     Modifier.VOLATILE |
+                     Modifier.TRANSIENT |
+                     Modifier.NATIVE |
+                     Modifier.INTERFACE |
+                     Modifier.ABSTRACT |
+                     Modifier.STRICT;
+      // Note that order matters.
+      harness.check (Modifier.toString (allFlags),
+		     "public protected private abstract static final transient volatile synchronized native strictfp interface",
+		     "check order of all flags");
     }
 }

@@ -33,14 +33,14 @@ import java.util.*;
 *  this file contains tests for java.util.AbstractCollection   <br>
 *
 */
-public class AcuniaAbstractCollectionTest implements Testlet
+public class AcuniaAbstractCollectionTest extends AbstractCollection
+                                          implements Testlet
 {
   protected TestHarness th;
 
   public void test (TestHarness harness)
     {
        th = harness;
-       test_add();
        test_addAll();
        test_clear();
        test_remove();
@@ -56,21 +56,6 @@ public class AcuniaAbstractCollectionTest implements Testlet
 
      }
 
-
-/**
-*  implemented. <br>
-*
-*/
-  public void test_add(){
-    th.checkPoint("add(java.lang.Object)boolean");
-    AcuniaExAbstractCollection eac = new AcuniaExAbstractCollection();
-    try {
-    	eac.add(this);
-    	th.fail("should throw an UnsupportedOperationException");
-    	}
-    catch (UnsupportedOperationException uoe) { th.check(true);}
-  }
-
 /**
 * implemented. <br>
 *
@@ -80,7 +65,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
     Vector v = new Vector();
     v.add("a"); 	v.add("b");
     v.add("c");         v.add("d");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     th.check( ac.addAll(v) , "should return true, v is modified");
     th.check( ac.v.equals(v) , "check everything is added");
     ac.setRA(false);
@@ -99,7 +84,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_clear(){
     th.checkPoint("clear()void");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     ac.v.add("a"); 	ac.v.add("b");
     ac.v.add("c");      ac.v.add("d");
     ac.clear();
@@ -114,7 +99,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_remove(){
     th.checkPoint("remove(java.lang.Object)boolean");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     ac.v.add("a"); 	ac.v.add(null);
     ac.v.add("c");      ac.v.add("a");
     th.check(ac.remove("a"), "returns true if removed -- 1");
@@ -137,7 +122,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_removeAll(){
     th.checkPoint("removeAll(java.util.Collection)boolean");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     ac.v.add("a"); 	ac.v.add(null);
     ac.v.add("c");      ac.v.add("a");
     try {
@@ -161,7 +146,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_retainAll(){
     th.checkPoint("retainAll(java.util.Collection)boolean");
-    AcuniaAddCollection ac = new  AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new  AcuniaAbstractCollectionTest();
     ac.v.add("a"); 	ac.v.add(null);
     ac.v.add("c");      ac.v.add("a");
     try {
@@ -184,7 +169,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_contains(){
     th.checkPoint("contains(java.lang.Object)boolean");
-    AcuniaAddCollection ac = new  AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new  AcuniaAbstractCollectionTest();
     ac.v.add("a"); 	ac.v.add(null);
     ac.v.add("c");      ac.v.add("a");
     th.check(ac.contains("a") , "true -- 1");
@@ -203,7 +188,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_containsAll(){
     th.checkPoint("containsAll(java.util.Collection)boolean");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     ac.v.add("a"); 	ac.v.add(null);
     ac.v.add("c");      ac.v.add("a");
     try {
@@ -231,7 +216,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_isEmpty(){
     th.checkPoint("isEmpty()boolean");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     th.check(ac.isEmpty() , "should return true -- 1");
     th.check(ac.isEmpty() , "should return true -- 2");
     ac.v.add(null);
@@ -262,7 +247,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_toArray(){
    th.checkPoint("toArray()[java.lang.Object");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     Object [] oa = ac.toArray();
     th.check( oa != null , "returning null is not allowed");
     if (oa != null) th.check(oa.length == 0 , "empty array");
@@ -303,7 +288,7 @@ public class AcuniaAbstractCollectionTest implements Testlet
 */
   public void test_toString(){
     th.checkPoint("toString()java.lang.String");
-    AcuniaAddCollection ac = new AcuniaAddCollection();
+    AcuniaAbstractCollectionTest ac = new AcuniaAbstractCollectionTest();
     ac.v.add("smartmove"); 	ac.v.add(null);
     ac.v.add("rules");      	ac.v.add("cars");
     String s = ac.toString();
@@ -314,5 +299,34 @@ public class AcuniaAbstractCollectionTest implements Testlet
     th.debug(s);
   }
 
+// The following fields and methods are needed to use this class as a
+// AbstractCollection implementation.
 
+	public Vector v;
+	private boolean retadd=true;
+	
+
+	public AcuniaAbstractCollectionTest(){
+		super();
+		v=new Vector();
+	}
+	
+	public int size() {
+		return v.size();
+	}
+		
+	
+	public boolean add(Object o) {
+		if (retadd)v.add(o);
+		return retadd;
+	}
+
+	
+	public Iterator iterator() {
+		return v.iterator();
+	}
+	
+	public void setRA(boolean b) {
+		retadd=b;
+	}
 }

@@ -33,7 +33,7 @@ import java.util.*;
 *  this file contains test for java.util.AbstractList   <br>
 *
 */
-public class AcuniaAbstractListTest implements Testlet
+public class AcuniaAbstractListTest extends AbstractList implements Testlet
 {
   protected TestHarness th;
 
@@ -74,7 +74,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_indexOf(){
     th.checkPoint("indexOf(java.lang.Object)int");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     eal.v.add("ab");    eal.v.add("bc");    eal.v.add(null);
     eal.v.add("ab");    eal.v.add("cd");    eal.v.add(this);
     th.check( eal.indexOf(this) == 5 , "checking return value -- 1");
@@ -95,7 +95,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_lastIndexOf(){
     th.checkPoint("lastIndexOf(java.lang.Object)int");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     eal.v.add("ab");    eal.v.add("bc");    eal.v.add(null);
     eal.v.add("ab");    eal.v.add(null);    eal.v.add(this);
     th.check( eal.lastIndexOf(this) == 5 , "checking return value -- 1");
@@ -116,7 +116,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_add(){
    th.checkPoint("add(java.lang.Object)boolean");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     int mc = eal.getMC();
     th.check(eal.add(this), "checking return value -- 1");
 //    we should change the modCount if we add, remove or set!
@@ -153,7 +153,7 @@ public class AcuniaAbstractListTest implements Testlet
     //inherited from AbstractCollection ...
 
    th.checkPoint("addAll(int,java.util.Collection)boolean");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     try {	
     	eal.addAll(0, null);
     	th.fail("should throw a NullPointerException");
@@ -190,12 +190,12 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_clear(){
     th.checkPoint("clear()void");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     eal.set_updateMC(true);
     eal.clear();
     th.check(eal.get_dRR() , "check if removeRange was called");
     th.check(eal.get_from() == 0 && eal.get_to() == 0);
-    eal = new AcuniaExAbstractList();
+    eal = new AcuniaAbstractListTest();
     eal.v.add("a"); eal.v.add("b"); eal.v.add("c"); eal.v.add("d");	
     eal.clear();
     th.check(eal.get_dRR() , "check if removeRange was called");
@@ -209,7 +209,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_remove(){
     th.checkPoint("remove(int)java.lang.Object");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     eal.set_edit(false);
     eal.v.add("a");
     try {
@@ -226,7 +226,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_removeRange(){
     th.checkPoint("removeRange(int,int)void");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     for (int i=0 ; i < 20 ; i++) { eal.v.add("a"+i); }
     try {
     	eal.removeRange(10,25);
@@ -261,7 +261,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_set(){
     th.checkPoint("set(int,java.lang.Object)java.lang.Object");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     eal.set_edit(false);
     eal.v.add("a");
     try {
@@ -281,7 +281,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_iterator(){
     th.checkPoint("iterator()java.util.Iterator");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     eal.set_updateMC(true);
     eal.v.add("a");   eal.v.add("b");	eal.v.add("c");
     Iterator it = eal.iterator();
@@ -348,7 +348,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_listIterator(){
     th.checkPoint("listIterator()java.util.ListIterator");
-    AcuniaExAbstractList ll = new AcuniaExAbstractList();
+    AcuniaAbstractListTest ll = new AcuniaAbstractListTest();
     ll.set_updateMC(true);
     ListIterator li = ll.listIterator();
     try {
@@ -448,7 +448,7 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_hashCode(){
     th.checkPoint("hashCode()int");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     th.check( eal.hashCode() == 1 , "hashCode of empty list is 1");
     int hash=1;
     hash = hash*31+ "a".hashCode();
@@ -472,10 +472,10 @@ public class AcuniaAbstractListTest implements Testlet
 */
   public void test_equals(){
     th.checkPoint("equals(java.lang.Object)boolean");
-    AcuniaExAbstractList eal = new AcuniaExAbstractList();
+    AcuniaAbstractListTest eal = new AcuniaAbstractListTest();
     Vector v = new Vector();
     th.check(! eal.equals(null) , "null is allowed");
-    th.check(! eal.equals(this) , "not equal to an non-List Object");
+    th.check(! eal.equals(new Object()) , "not equal to an non-List Object");
     th.check( eal.equals(v) , "equal == true -- 1");
     eal.v.add(null);	v.add(null);
     th.check( eal.equals(v) , "equal == true -- 2");
@@ -490,4 +490,90 @@ public class AcuniaAbstractListTest implements Testlet
 
   }
 
+// The following fields and methods are needed to use this class as a test
+// for AbstractList.
+//
+	private boolean edit=true;
+	private boolean didRemoveRange=false;
+	private boolean updateMC=false;
+	private boolean sleepy=false;
+	private int from = -1;
+	private int to   = -1;
+	
+	public Vector v = new Vector();
+	
+	public AcuniaAbstractListTest(){
+		super();
+	}
+	
+	public int size() {
+		if (sleepy){
+			try { Thread.sleep(150L); }
+			catch(Exception e) {}
+		}
+		return v.size();
+	}
+		
+	public Object get(int idx) {
+		return v.get(idx);
+	}
+	
+	public int getMC() {
+		return modCount;
+	}	
+	
+	public void set_edit(boolean b) {
+	 	edit = b;
+	}
+	public void set_sleepy(boolean b) {
+	 	sleepy = b;
+	}
+	public void set_updateMC(boolean b) {
+	 	updateMC = b;
+	}
+	
+	public void add(int idx, Object o) {
+		if (edit) {
+		 	v.add(idx , o);
+		}
+		else super.add(idx,o);
+		if (updateMC) modCount++;
+	}
+
+	public Object remove(int idx) {
+		if (edit) {
+			if (updateMC) modCount++;
+			return v.remove(idx);
+		}
+		System.out.println("calling remove from AbstractList");	
+		return super.remove(idx);
+	}
+	
+	public Object set(int idx , Object o) {
+		if (edit) {
+			if (updateMC) modCount++;
+			return v.set(idx , o);
+		}
+		return super.set(idx , o);
+	}
+	
+	public void removeRange(int fidx, int tidx) {
+		didRemoveRange=true;
+		to   = tidx;
+		from = fidx;
+		super.removeRange(fidx, tidx);
+	}
+	
+	public boolean get_dRR() {
+		return didRemoveRange;
+	}
+	public void set_dRR(boolean b) {
+		didRemoveRange = b;
+	}
+	public int get_to() {
+		return to;
+	}
+	public int get_from() {
+		return from;
+	}
 }

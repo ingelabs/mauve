@@ -1,3 +1,41 @@
+2002-04-03  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/AbstractCollection/AcuniaAbstractCollectionTest.java:
+	Make self contained, extend AbstractCollection, removed test_add().
+	* gnu/testlet/java/util/AbstractCollection/AcuniaAddCollection.java:
+	Removed, moved into AcuniaAbstractCollectionTest.
+	* gnu/testlet/java/util/AbstractCollection/AcuniaAddCollectionTest.java:
+	New file, self contained testlet based on AcuniaAddCollection and
+	test_ad().
+	* gnu/testlet/java/util/AbstractCollection/AcuniaExAbstractCollection.java:
+	Removed, moved into AcuniaAddCollectionTest.
+
+	* gnu/testlet/java/util/AbstractList/AcuniaAbstractListTest.java: Make
+	self contained, extends AbstractList.
+	* gnu/testlet/java/util/AbstractList/AcuniaExAbstractList.java:
+	Removed, moved into AcuniaAbstractListTest.
+
+	* gnu/testlet/java/util/AbstractMap/AcuniaAbstractMapTest.java: Make
+	self contained, extends AbstractMap.
+	* gnu/testlet/java/util/AbstractMap/AcuniaExAbstractMap.java: Removed,
+	moved into AcuniaAbstractMapTest.
+
+	* gnu/testlet/java/util/AbstractSequentialList/AcuniaAbstractSequentialListTest.java:
+	Make self contained, extends AbstractSequentialList.
+	* gnu/testlet/java/util/AbstractSequentialList/AcuniaExASList.java:
+	Removed, moved into AcuniaAbstractSequentialListTest.
+
+	* gnu/testlet/java/util/AbstractSet/AcuniaAbstractSetTest.java: Make
+	self contained, extends AbstractSet.
+	* gnu/testlet/java/util/AbstractSet/AcuniaExAbstractSet.java: Removed,
+	moved into AcuniaAbstractSetTest.
+
+	* gnu/testlet/java/net/InetAddress/InetAddressTest.java: Use
+	savannah.gnu.org since hpjavaux.cup.hp.com does no longer exist.
+
+	* gnu/testlet/java/lang/reflect/Modifier/toString12.java: Check for
+	strictfp not just strict. Add check for full ordering.
+
 2002-04-02  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/ArrayList/AcuniaArrayListTest.java: Make self

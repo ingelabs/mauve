@@ -33,7 +33,8 @@ import java.util.*;
 *  this file contains test for AbstractSequentialList   <br>
 *  <br>
 */
-public class AcuniaAbstractSequentialListTest implements Testlet
+public class AcuniaAbstractSequentialListTest extends AbstractSequentialList
+                                              implements Testlet
 {
   protected TestHarness th;
 
@@ -52,11 +53,11 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 
      }
 
-  protected AcuniaExASList buildAL() {
+  protected AcuniaAbstractSequentialListTest buildAL() {
     Vector v = new Vector();
     v.add("a");     v.add("c");   v.add("u");   v.add("n");   v.add("i");   v.add("a");  v.add(null);
     v.add("a");     v.add("c");   v.add("u");   v.add("n");   v.add("i");   v.add("a");  v.add(null);
-    return new AcuniaExASList(v);
+    return new AcuniaAbstractSequentialListTest(v);
 
   }
 
@@ -75,7 +76,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_add(){
     th.checkPoint("add(int,java.lang.Object)void");
-    AcuniaExASList al = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al = new AcuniaAbstractSequentialListTest();
     try {
         al.add(-1,"a");
         th.fail("should throw an IndexOutOfBoundsException -- 1");
@@ -94,7 +95,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
     th.check("a".equals(al.get(0))&& null==al.get(1) && "c".equals(al.get(2)) && "u".equals(al.get(3)) , "checking add ...");
 
     th.checkPoint("add(java.lang.Object)boolean");
-    al = new AcuniaExASList();
+    al = new AcuniaAbstractSequentialListTest();
     th.check(al.add("a") , "checking return value -- 1");
     th.check(al.add("c") , "checking return value -- 2");
     th.check(al.add("u") , "checking return value -- 3");
@@ -113,7 +114,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_addAll(){
     th.checkPoint("addAll(java.util.Collection)boolean");
-    AcuniaExASList al =new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al =new AcuniaAbstractSequentialListTest();
     try { al.addAll(null);
           th.fail("should throw NullPointerException");
         }
@@ -128,7 +129,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
     th.check(al.get(14)=="a" && al.get(15)=="b" && al.get(16)=="c", "checking added on right positions");
     th.debug(al.toString());
     th.checkPoint("addAll(int,java.util.Collection)boolean");
-    al =new AcuniaExASList();
+    al =new AcuniaAbstractSequentialListTest();
     c = (Collection) al;
     th.check(!al.addAll(0,c) ,"checking returnvalue -- 1");
     al.add("a"); al.add("b"); al.add("c");
@@ -160,7 +161,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_remove(){
     th.checkPoint("remove(int)java.lang.Object");
-    AcuniaExASList al = buildAL();
+    AcuniaAbstractSequentialListTest al = buildAL();
     try {
     	al.remove(-1);
 	th.fail("should throw an IndexOutOfBoundsException -- 1" );
@@ -193,7 +194,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
     al.remove(0);
     th.check(al.size() == 0 , "checking new size -- 4");   	
 
-    al = new AcuniaExASList();
+    al = new AcuniaAbstractSequentialListTest();
     try {
     	al.remove(0);
 	th.fail("should throw an IndexOutOfBoundsException -- 3" );
@@ -208,7 +209,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_set(){
     th.checkPoint("set(int,java.lang.Object)java.lang.Object");
-    AcuniaExASList al = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al = new AcuniaAbstractSequentialListTest();
     try {
     	al.set(-1,"a");
 	th.fail("should throw an IndexOutOfBoundsException -- 1" );
@@ -246,14 +247,14 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_contains(){
     th.checkPoint("contains(java.lang.Object)boolean");
-    AcuniaExASList al = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al = new AcuniaAbstractSequentialListTest();
     th.check(!al.contains(null),"checking empty List -- 1");
     th.check(!al.contains(al)  ,"checking empty List -- 2");
     al = buildAL();
     th.check( al.contains(null), "check contains ... -- 1");
     th.check( al.contains("a") , "check contains ... -- 2");
     th.check( al.contains("c") , "check contains ... -- 3");
-    th.check(!al.contains(this), "check contains ... -- 4");
+    th.check(!al.contains(new Object()), "check contains ... -- 4");
     al.remove(6);
     th.check( al.contains(null), "check contains ... -- 5");
     al.remove(12);
@@ -267,7 +268,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_get(){
     th.checkPoint("get(int)java.lang.Object");
-    AcuniaExASList al = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al = new AcuniaAbstractSequentialListTest();
     try {
      	al.get(0);
      	th.fail("should throw an IndexOutOfBoundsException -- 1");
@@ -300,7 +301,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_indexOf(){
     th.checkPoint("indexOf(java.lang.Object)int");
-    AcuniaExASList al = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al = new AcuniaAbstractSequentialListTest();
     th.check( al.indexOf(null)== -1,"checks on empty list -- 1");
     th.check( al.indexOf(al)== -1 , "checks on empty list -- 2");
     Object o = new Object();
@@ -334,7 +335,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_lastIndexOf(){
     th.checkPoint("lastIndexOf(java.lang.Object)int");
-    AcuniaExASList al = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest al = new AcuniaAbstractSequentialListTest();
     th.check( al.lastIndexOf(null)== -1,"checks on empty list -- 1");
     th.check( al.lastIndexOf(al)== -1 , "checks on empty list -- 2");
     Object o = new Object();
@@ -361,7 +362,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_toArray(){
    th.checkPoint("toArray()[java.lang.Object");
-    AcuniaExASList v = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest v = new AcuniaAbstractSequentialListTest();
     Object o[] = v.toArray();
     th.check(o.length == 0 , "checking size Object array");
     v.add("a"); v.add(null); v.add("b");
@@ -370,7 +371,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
     th.check(o.length == 3 , "checking size Object array");
 
   th.checkPoint("toArray([java.lang.Object)[java.lang.Object");
-    v = new AcuniaExASList();
+    v = new AcuniaAbstractSequentialListTest();
     try { v.toArray(null);
           th.fail("should throw NullPointerException -- 1");
         }
@@ -405,7 +406,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_iterator(){
     th.checkPoint("ModCount(in)iterator");
-    AcuniaExASList al = buildAL();
+    AcuniaAbstractSequentialListTest al = buildAL();
     Iterator it = al.iterator();
     al.get(0);
     al.contains(null);
@@ -477,7 +478,7 @@ public class AcuniaAbstractSequentialListTest implements Testlet
 */
   public void test_ListIterator(){
     th.checkPoint("listIterator()java.util.ListIterator");
-    AcuniaExASList ll = new AcuniaExASList();
+    AcuniaAbstractSequentialListTest ll = new AcuniaAbstractSequentialListTest();
     ListIterator li = ll.listIterator();
     try {
      	li.next();
@@ -562,4 +563,24 @@ public class AcuniaAbstractSequentialListTest implements Testlet
     catch(Exception e) { th.fail("wrong exception thrown"); }
   }
 
+
+  // The following fields and methods are needed to use this class as a test
+  // implementation of AbstractSequentialList.
+
+	public LinkedList v = new LinkedList();
+	
+	public AcuniaAbstractSequentialListTest(){
+		super();
+	}
+	public AcuniaAbstractSequentialListTest(List l){
+		super();
+		v.addAll(l);
+	}
+	
+	public int size() {
+		return v.size();
+	}
+	public ListIterator listIterator(int idx) {
+	 	return v.listIterator(idx);
+	}
 }
