@@ -31,9 +31,9 @@ import java.util.zip.*;
 public class newZipFile implements Testlet
 {
   private TestHarness harness;
-  private String zipname;
+  private String zipname, nozipname;
 
-  private File tmpdir, tmpfile;
+  private File tmpdir, tmpfile, tmpfile2;
 
   private void setup() throws IOException
   {
@@ -52,6 +52,17 @@ public class newZipFile implements Testlet
     zos.close();
 
     zipname = tmpfile.toString();
+
+    tmpfile2 = new File(tmpdir, "test.tmp");
+    if (!tmpfile2.delete() && tmpfile2.exists())
+      throw new IOException("Could not remove (old): " + tmpfile2);
+    tmpfile2.createNewFile();
+
+    FileOutputStream fos = new FileOutputStream(tmpfile2);
+    fos.write(new byte [] { (byte) 0, (byte) 1, (byte) 2, (byte) 3, (byte) 4 });
+    fos.close();
+
+    nozipname = tmpfile2.toString();
   }
 
   private void tearDown()
@@ -60,6 +71,8 @@ public class newZipFile implements Testlet
       {
         if (tmpfile != null && tmpfile.exists())
           tmpfile.delete();
+        if (tmpfile2 != null && tmpfile2.exists())
+          tmpfile2.delete();
 	tmpdir.delete();
       }
   }
@@ -99,6 +112,16 @@ public class newZipFile implements Testlet
 	  }
 	harness.check(exception, "name is null");
 	
+	try
+	  {
+	    new ZipFile(nozipname);
+	    exception = false;
+	  }
+	catch (ZipException _)
+	  {
+	    exception = true;
+	  }
+	harness.check(exception, "non-zipfile gets rejected");
       }
     catch (IOException ioe)
       {

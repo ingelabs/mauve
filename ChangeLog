@@ -1,3 +1,8 @@
+2005-01-27  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/util/zip/ZipFile/newZipFile.java:
+	Added new testcase for non-zip files.
+
 2005-01-22  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/java/beans/Introspector/getBeanInfoTestClass.java,
