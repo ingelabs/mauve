@@ -1,5 +1,44 @@
 2004-10-15  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	constructors.java: New test.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	createCompatibleSampleModel.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	createSubsetSampleModel.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/equals.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getBitMasks.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getBitOffsets.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getDataElements.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getNumDataElements.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getOffset.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getPixel.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getPixels.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getSample.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getSamples.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	getScanlineStride.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	hashCode.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	setDataElements.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	setPixel.java: Likewise.
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	setSample.java: Likewise.
+
+2004-10-15  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/lang/Double/parseDouble.java: New tests.
 	* gnu/testlet/java/lang/Double/valueOf.java: Likewise.
 	* gnu/testlet/java/lang/Float/parseFloat.java: Likewise.
