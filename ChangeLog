@@ -1,3 +1,25 @@
+1998-12-22  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/io/StringBufferInputStream/SimpleRead.java:
+	Mark as JDK 1.0, not 1.2.
+	* gnu/testlet/java/io/StringBufferInputStream/ProtectedVars.java:
+	Mark as JDK 1.0, not 1.2.
+	* gnu/testlet/java/io/StringBufferInputStream/MarkReset.java: Mark
+	as JDK 1.0, not 1.2.
+
+	* gnu/testlet/java/io/StringBufferInputStream/ChangeLog: Removed.
+
+Thu Dec 17 18:49:12 1998  arenn's Development Account  <devel@larissa.foo.com>
+
+	* gnu/testlet/java/io/StringBufferInputStream/MarkReset.java:
+	Declare read_buf, sbis correctly. Misc syntax error fixes.
+
+	* gnu/testlet/java/io/StringBufferInputStream/SimpleRead.java:
+	Declare read_buf, sbis correctly. Misc syntax error fixes.
+
+	* gnu/testlet/java/io/StringBufferInputStream/ProtectedVars.java:
+	Eliminate useless debug message, fix misc syntax errors.
+
 1998-12-16  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/io/StringBufferInputStream/SimpleRead.java
