@@ -42,6 +42,8 @@ public class SimpleTestHarness
   private boolean results_only=false;
   private String description;
   private String last_check;
+  private TestReport report = null;
+  private TestResult currentResult = null;
 
   private final String getDescription (String pf)
   {
@@ -60,6 +62,8 @@ public class SimpleTestHarness
     if (!result)
       {
 	String desc;
+	currentResult.addFail((last_check == null ? "" : last_check) +
+		" (number " + (count + 1) + ")");
 	if (!expected_xfails.contains(desc = getDescription("FAIL")))
 	  {
 	    System.out.println(desc);
@@ -71,17 +75,21 @@ public class SimpleTestHarness
 	    ++xfailures;
 	  }
       }
-    else if (verbose || results_only)
+    else
       {
-	if (expected_xfails.contains(getDescription("FAIL")))
+	currentResult.addPass();
+        if (verbose || results_only)
 	  {
-	    System.out.println(getDescription("XPASS"));
-	    ++xpasses;
-	  }
-	else
-	  {
-	    System.out.println(getDescription("PASS"));
-	  }
+	    if (expected_xfails.contains(getDescription("FAIL")))
+	      {
+		System.out.println(getDescription("XPASS"));
+		++xpasses;
+	      }
+	    else
+	      {
+		System.out.println(getDescription("PASS"));
+	      }
+          }
       }
     ++count;
     ++total;
@@ -221,6 +229,8 @@ public class SimpleTestHarness
     // Try to ensure we start off with a reasonably clean slate.
     System.gc();
     System.runFinalization();
+
+    currentResult = new TestResult(name);
     
     checkPoint(null);
     
@@ -238,6 +248,7 @@ public class SimpleTestHarness
     catch (Throwable ex)
       {
 	String d = "FAIL: uncaught exception loading " + name;
+	currentResult.addException(ex, "failed loading class " + name);
 	if (verbose)
 	  d += ": " + ex.toString();
 	System.out.println(d);
@@ -261,10 +272,11 @@ public class SimpleTestHarness
 	catch (Throwable ex)
 	  {
 	    removeSecurityManager();
+            String s = (last_check == null ? "" : "\"" + last_check +
+                    "\" number " + (count + 1));
 	    String d = ("FAIL: " + description + ": uncaught exception at " +
-		        ((last_check == null) ? "" :
-			 ("\"" + last_check + "\"")) +
-			" number " + (count + 1));
+                    s);
+	    currentResult.addException(ex, "uncaught exception at " + s);
 	    if (verbose)
 	      d += ": " + ex.toString();
 	    System.out.println(d);
@@ -273,6 +285,8 @@ public class SimpleTestHarness
 	    ++total;
 	  }
       }
+    if (report != null)
+      report.addTestResult(currentResult);
   }
   
   protected int done ()
@@ -293,15 +307,16 @@ public class SimpleTestHarness
   
   protected SimpleTestHarness (boolean verbose, boolean debug)
   {
-    this(verbose, debug, false);
+    this(verbose, debug, false, null);
   }
   
   protected SimpleTestHarness (boolean verbose, boolean debug,
-		               boolean results_only)
+		               boolean results_only, TestReport report)
   {
     this.verbose = verbose;
     this.debug = debug;
     this.results_only = results_only;
+    this.report = report;
     
     try
       {
@@ -327,6 +342,8 @@ public class SimpleTestHarness
     boolean debug = false;
     boolean results_only = false;
     String file = null;
+    String xmlfile = null;
+    TestReport report = null;
     int i;
     
     for (i = 0; i < args.length; i++)
@@ -346,12 +363,21 @@ public class SimpleTestHarness
 	    throw new RuntimeException("No file path after '-file'.  Exit");
           file = args[i];
 	}
+	else if (args[i].equals("-xmlout"))
+	  {
+	    if (++i >= args.length)
+	      throw new RuntimeException("No file path after '-xmlout'.");
+	    xmlfile = args[i];
+          }
 	else
 	  break;
       }
+    if (xmlfile != null) {
+      report = new TestReport(System.getProperties());
+    }
     
     SimpleTestHarness harness =
-      new SimpleTestHarness(verbose, debug, results_only);
+      new SimpleTestHarness(verbose, debug, results_only, report);
     
     BufferedReader r = null;
     if (file != null)
@@ -385,9 +411,22 @@ public class SimpleTestHarness
 	  System.out.println("----");
 	harness.runtest(cname);
       }
+
+    int retval = harness.done();
     
-    System.exit(harness.done());
+    if (report != null)
+      {
+	File f = new File(xmlfile);
+	try
+	  {
+	    report.writeXml(f);
+	  }
+	catch (IOException e)
+	  {
+	    throw new Error("Failed to write data to xml file: " + 
+		    e.getMessage());
+	  }
+      }
+    System.exit(retval);
   }
 }
-
-

@@ -1,5 +1,13 @@
 2004-11-05  Noa Resare  <noa@resare.com>
 
+	* gnu/testlet/TestResult.java: New file.
+	* gnu/testlet/TestReport.java: New file.
+	* gnu/testlet/SimpleTestHarness.java:
+	added support for xmloutput with the -xmlout option
+	* Makefile.in: add new files to harness_file
+
+2004-11-05  Noa Resare  <noa@resare.com>
+
 	* gnu/testlet/java/beans/PropertyEditorSupport/getSource.java:
         Removed compatibility workaround for 1.4.
 	Marked as JDK1.5 as the getSource() method came then.
