@@ -88,6 +88,38 @@ test(TestHarness harness)
     {
       harness.debug(e);
       harness.check(false);
+	}
+
+   // test for mark, reset, skip, read(buf, off, len) and readLine
+   try
+    {
+      String str = "Exiting off the expressway in Chicago is not an easy\n" +
+        "thing to do.  For example, at Fullerton you have to run a\n" +
+        "gauntlet of people selling flowers, begging for money, or trying\n" +
+        "to 'clean' your windshield for tips.";
+
+      StringReader sbr = new StringReader(str);
+      LineNumberReader lnr = new LineNumberReader(sbr);
+
+      char[] buf = new char[80];
+      int chars_read; 
+	  String line = lnr.readLine();
+	  lnr.mark(80);
+	  lnr.skip(14);
+	  char[] buf2 = new char[3];
+	  lnr.read(buf2, 0, 3);
+	  String b2 = new String(buf2);
+	  harness.check(b2, "For", "skip(), read(buf, off, len)");
+	  lnr.reset();
+	  char[] buf3 = new char[5];
+	  lnr.read(buf3, 0, 5);
+	  String b3 = new String(buf3);
+	  harness.check(b3, "thing", "mark(), reset()");
+    }
+  catch(IOException e)
+    {
+      harness.debug(e);
+      harness.check(false);
     }
 }
 

@@ -1,5 +1,10 @@
 2002-10-16  Daryl Lee <dol@sources.redhat.com>
 
+	* gnu/testlet/java/io/LineNumberReader/Test.java: completed
+	remaining method tests
+
+2002-10-16  Daryl Lee <dol@sources.redhat.com>
+
 	* the following four files complete remaining methods for
 	java.io.DataInputStream and java.io.DataOutputStream (JDK 1.1)
 	* gnu/testlet/java/io/DataOutputStream/WriteRead2.java
