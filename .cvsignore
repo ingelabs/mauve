@@ -5,8 +5,14 @@ config.log
 choices
 classes
 classes.stamp
+test_classes
+tmpfile
+raftmpfile
+uses_files
 config.status
+Compat2.tmp
 dataoutput.out
+dataoutput2.out
 utf8test.out
 todos.txt
 build

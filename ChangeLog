@@ -1,5 +1,9 @@
 2004-05-28  Michael Koch  <konqueror@gmx.de>
 
+	* .cvsignore: Ingore more files.
+
+2004-05-28  Michael Koch  <konqueror@gmx.de>
+
 	* runner, batch_run: Fixed shell variable usage.
 
 2004-05-26  Michael Koch  <konqueror@gmx.de>
