@@ -1,5 +1,9 @@
 2004-07-04  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/awt/Choice/getSelected.java: New test.
+
+2004-07-04  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/beans/Expression/check.java: Add extra debug.
 
 2004-06-29  Stephen Crawley  <crawley@dstc.edu.au>
