@@ -1,3 +1,7 @@
+2004-03-22  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+	* gnu/testlet/java/util/Properties/load.java: Add tests
+	copied from Kaffe's regression test.
+
 2004-03-21  Michael Koch  <konqueror@gmx.de>
 
 	* choose, choose-classes: Added handling for suppression testcases in
