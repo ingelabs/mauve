@@ -1,3 +1,10 @@
+2001-08-09  John Leuner  <jewel@debian.org>
+
+	* gnu/testlet/java/lang/reflect/Array/newInstance.java: Fixed original test
+	Added test for Integer.TYPE
+	Added test for String.class
+	Added test for NegativeArraySizeException
+
 2001-08-09  Eric Blake  <ebb9@email.byu.edu>
 
 	* gnu/testlet/java/lang/Integer/getInteger.java (SM): fix
