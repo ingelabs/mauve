@@ -1,7 +1,7 @@
 // Tags: JDK1.1
 // Uses: iface
 
-// Copyright (C) 1999, 2000, 2001, 2003 Cygnus Solutions
+// Copyright (C) 1999, 2000, 2001, 2003, 2004 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -21,8 +21,10 @@
 // Boston, MA 02111-1307, USA.  */
 
 package gnu.testlet.java.lang.reflect.Method;
+
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.java.lang.reflect.sub.InvokeHelper;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
@@ -48,6 +50,17 @@ public class invoke implements Testlet, iface
   public String no_args ()
   {
     return "zardoz";
+  }
+
+  private String private_method ()
+  {
+    return "ok";
+  }
+
+  // Note that this is not overridden by InvokeHelper.p().
+  String p ()
+  {
+    return "ppm";
   }
 
   public static int takes_int (int val)
@@ -99,6 +112,20 @@ public class invoke implements Testlet, iface
     return m;
   }
 
+  public Method getDeclaredMethod (Class ic, String name, Class[] list)
+  {
+    Method m = null;
+    try
+      {
+	m = ic.getDeclaredMethod(name, list);
+      }
+    catch (Throwable _)
+      {
+	// Nothing.
+      }
+    return m;
+  }
+
   public void test (TestHarness harness)
   {
     // Don't use `.class' because gcj doesn't handle it yet.
@@ -140,7 +167,8 @@ public class invoke implements Testlet, iface
 	// Successful invocation.
 	try_invoke (harness, na_meth, this, args0, "zardoz");
 	// Null `this' should fail.
-	try_invoke (harness, na_meth, null, args0, new NullPointerException ());
+	try_invoke (harness, na_meth, null, args0,
+		    new NullPointerException ());
 	if (! ic[i].isInterface())
 	  {
 	    // Too few arguments.
@@ -188,6 +216,15 @@ public class invoke implements Testlet, iface
 	args2[1] = new Integer (8);
 	try_invoke (harness, rv_meth, this, args2, null);
 	harness.check(save, 15);
+
+	harness.checkPoint("invoke private method");
+	Method pvm = getDeclaredMethod(ic[0], "private_method", null);
+	try_invoke (harness, pvm, this, null, "ok");
+
+	harness.checkPoint("invoke package-private method");
+	Method ppvm = getDeclaredMethod(ic[0], "p", null);
+	invoke sub = new InvokeHelper();
+	try_invoke (harness, ppvm, sub, null, "ppm");
       }
   }
 }

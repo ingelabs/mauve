@@ -1,3 +1,12 @@
+2004-09-01  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/reflect/sub/InvokeHelper.java: New file.
+	* gnu/testlet/java/lang/reflect/Method/invoke.java
+	(private_method): New method.
+	(p): New method.
+	(test): Try to invoke new methods.
+	(getDeclaredMethod): New method.
+
 2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/Arrays/asList.java: New tests.
