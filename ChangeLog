@@ -1,5 +1,18 @@
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/math/BigInteger/abs.java: New test.
+	* gnu/testlet/java/math/BigInteger/add.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/compareTo.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/divide.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/equals.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/multiply.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/serialization.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/signum.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/toString.java: Likewise.
+	* gnu/testlet/java/math/BigInteger/valueOf.java: Likewise.
+
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/TreeMap/serialization.java: New test.
 
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
