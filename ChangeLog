@@ -1,3 +1,15 @@
+2004-12-20  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/javax/swing/JComboBox/SimpleSelectionTest.java:
+	New tests mainly for GNU Classpath bug #11255.
+	* gnu/testlet/javax/swing/JComboBox/MutableTest1.java,
+	  gnu/testlet/javax/swing/JComboBox/MutableTest2.java:
+	New tests for JComboBox.	
+	* gnu/testlet/javax/swing/JComboBox/TestModel1.java:
+	Helper class for SimpleSelectionTest and MutableTest1.
+	* gnu/testlet/javax/swing/JComboBox/TestModel2.java:
+	Helper class for MutableTest2.
+
 2004-12-19  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/java/beans/Beans/TestBean1.java
