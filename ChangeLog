@@ -1,5 +1,10 @@
 2002-12-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/ObjectInputOutput/SerTest.java: New test.
+	* gnu/testlet/java/io/ObjectInputOutput/SerBase.java: New helper.
+
+2002-12-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/DataInputStream/ReadStream.java: Add comment
 	about copied methods in DataOutputStream tests since braindead Uses
 	doesn't handle packages.
