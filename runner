@@ -30,11 +30,13 @@
 # Usage: runner test_class_name
 # Run in the source directory.
 
+if test "x$(RUNTIME)" = "x" ; then
 #RUNTIME="gij"
 #RUNTIME="Kissme"
 #RUNTIME="/usr/local/sablevm/bin/sablevm -Y"
 RUNTIME="/usr/local/jamvm/bin/jamvm"
 #RUNTIME="native"
+fi
 
 # Number of seconds to wait for the test to finish
 WAIT=60
