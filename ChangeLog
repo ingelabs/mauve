@@ -1,3 +1,10 @@
+2005-01-09  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/java/text/NumberFormat/UK.java:
+	(test): Test numbers, integers, currencies and percentiles
+	in the UK locale.
+	(setOptions): helper method to set up the number format instance
+	
 2005-01-08  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Package/getPackage.java (test): Check
