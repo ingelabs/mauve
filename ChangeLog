@@ -1,4 +1,69 @@
+2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/imageio/stream/,
+	gnu/testlet/javax/imageio/stream/IIOByteBuffer: New directories.
+
+	* gnu/testlet/javax/imageio/stream/IIOByteBuffer/
+	setData.java,
+	setLength.java,
+	setOffset.java: New tests.
+
+2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/imageio/spi/IIOServiceProvider: New directory.
+
+	* gnu/testlet/javax/imageio/spi/IIOServiceProvider/
+	getVendorName.java,
+	getVersion.java: New tests.
+	TestProvider.java: New helper for use by tests.
+
+2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
+	
+	* gnu/testlet/javax/imageio/spi/ImageInputStreamSpi: New directory.
+
+	* gnu/testlet/javax/imageio/spi/ImageInputStreamSpi/
+	ImageInputStreamSpi.java,
+	canUseCacheFile.java,
+	needsCacheFile.java: New tests.
+	TestProvider.java: New helper for use by tests.
+
+2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
+	
+	* gnu/testlet/javax/imageio/spi/ImageOutputStreamSpi: New directory.
+	
+	* gnu/testlet/javax/imageio/spi/ImageOutputStreamSpi/
+	ImageOutputStreamSpi.java,
+	canUseCacheFile.java,
+	needsCacheFile.java: New tests.
+	TestProvider.java: New helper for use by tests.
+
+2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/imageio/spi/ImageReaderWriterSpi: New directory.
+
+	* gnu/testlet/javax/imageio/spi/ImageReaderWriterSpi/
+	getExtraImageMetadataFormatNames.java,
+	getExtraStreamMetadataFormatNames.java,
+	getFileSuffixes.java,
+	getFormatNames.java,
+	getMIMETypes.java,
+	getNativeImageMetadataFormatName.java,
+	getNativeStreamMetadataFormatName.java,
+	getPluginClassName.java,
+	isStandardImageMetadataFormatSupported.java,
+	isStandardStreamMetadataFormatSupported.java: New tests.
+	TestProvider.java: New helper for use by tests.
+
+2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
+	
+	* gnu/testlet/javax/imageio/spi/ImageTranscoderSpi: New directory.
+
+	* gnu/testlet/javax/imageio/spi/ImageTranscoderSpi/
+	ImageTranscoderSpi.java: New test.
+	TestProvider.java: New helper for use by test.
+
 2004-04-13  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Character/CharInfo.java : Added an extra
 	field used by the unicode testcase.  (Sorry folks ...)
 
