@@ -1,3 +1,8 @@
+Tue Mar 30 19:57:19 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/AttributedString/Test.java: Added this
+	test case.
+
 Thu Mar 25 22:27:11 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc10.java: Add
