@@ -72,36 +72,36 @@ public class check14 implements Testlet
     std = tzstd.getOffset(GregorianCalendar.AD, 2000, Calendar.MAY, 10, Calendar.WEDNESDAY, 41400000);
     utc = tzutc.getOffset(GregorianCalendar.AD, 2000, Calendar.MAY, 10, Calendar.WEDNESDAY, 41400000);
 
-    harness.check(wall, rawOff);
-    harness.check(std, rawOff);
-    harness.check(utc, rawOff);
+    harness.check(wall, rawOff);  // check 1
+    harness.check(std, rawOff);   // check 2
+    harness.check(utc, rawOff);   // check 3
     
     // test 1/2 hour into dst
     wall = tzwall.getOffset(GregorianCalendar.AD, 2000, Calendar.MAY, 10, Calendar.WEDNESDAY, 45000000);
     std = tzstd.getOffset(GregorianCalendar.AD, 2000, Calendar.MAY, 10, Calendar.WEDNESDAY, 45000000);
     utc = tzutc.getOffset(GregorianCalendar.AD, 2000, Calendar.MAY, 10, Calendar.WEDNESDAY, 45000000);
 
-    harness.check(wall, rawOff + dstOff);
-    harness.check(std, rawOff + dstOff);
-    harness.check(utc, rawOff + dstOff);
+    harness.check(wall, rawOff + dstOff);  // check 4
+    harness.check(std, rawOff + dstOff);   // check 5
+    harness.check(utc, rawOff + dstOff);   // check 6
     
     // test 1/2 hour before fall back to standard time
-    wall = tzwall.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 41400000);
-    std = tzstd.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 41400000);
-    utc = tzutc.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 41400000);
+    wall = tzwall.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 41400000 - dstOff);
+    std = tzstd.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 41400000 - dstOff);
+    utc = tzutc.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 41400000 - dstOff);
 
-    harness.check(wall, rawOff + dstOff);
-    harness.check(std, rawOff + dstOff);
-    harness.check(utc, rawOff + dstOff);
+    harness.check(wall, rawOff + dstOff);  // check 7
+    harness.check(std, rawOff + dstOff);   // check 8
+    harness.check(utc, rawOff + dstOff);   // check 9
     
     // test 1/2 hour after fall back to standard time
-    wall = tzwall.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 45000000);
-    std = tzstd.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 45000000);
-    utc = tzutc.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 45000000);
+    wall = tzwall.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 45000000 - dstOff);
+    std = tzstd.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 45000000 - dstOff);
+    utc = tzutc.getOffset(GregorianCalendar.AD, 2000, Calendar.OCTOBER, 10, Calendar.TUESDAY, 45000000 - dstOff);
 
-    harness.check(wall, rawOff);
-    harness.check(std, rawOff);
-    harness.check(utc, rawOff);
+    harness.check(wall, rawOff);           // check 10
+    harness.check(std, rawOff);            // check 11
+    harness.check(utc, rawOff);            // check 12
 
   }
 }
