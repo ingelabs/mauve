@@ -1,3 +1,8 @@
+2004-01-03  Per Bothner  <per@bothner.com>
+
+	* gnu/testlet/java/util/Date/parse.java (parse): New testcases
+	for Date.parse.
+
 2003-12-30  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/net/URL/URLTest.java: Fixed. Now it
