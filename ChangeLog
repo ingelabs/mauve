@@ -1,3 +1,9 @@
+2003-07-22  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/net/URLEncoder/URLEncoderTest.java
+	(test_basics): Added test for encoding of \n.  Require upper case
+	encoding.
+
 2003-07-20  Tom Tromey  <tromey@redhat.com>
 
 	* Makefile.am (harness_files): Added TestSecurityManager.java.

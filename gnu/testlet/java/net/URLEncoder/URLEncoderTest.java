@@ -1,7 +1,7 @@
 // Tags: JDK1.0
 
 /*
-   Copyright (C) 1999 Hewlett-Packard Company
+   Copyright (C) 1999, 2003 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -49,9 +49,12 @@ public class URLEncoderTest implements Testlet
 			" String returned is not encoded properly");
 
 		String str4 = URLEncoder.encode("0123456789:;<");
-		harness.check (str4, "0123456789%3a%3b%3c",
+		harness.check (str4, "0123456789%3A%3B%3C",
 			"Error : test_Basics - 4 " + 
 			" String returned is not encoded properly");
+
+		String str5 = URLEncoder.encode("\n");
+		harness.check (str5, "%0A", "test encoding of \\n");
 	}
 
 	public void testall()
