@@ -215,12 +215,16 @@ public class reflect implements Testlet
     harness.check (((Method) m).getName (), "do_nothing");
     // FIXME: replace `==' with `,' and libgcj will segv.
     harness.check (((Method) m).getDeclaringClass () == reflect_class);
+    // See if we can get something that is inherited.
+    m = getMethod (rf_help_class, "hashCode", ptz, false);
+    harness.check (m instanceof Method);
 
     harness.checkPoint("getMethods");
     try
       {
 	Method[] ms = rf_help_class.getMethods();
-	harness.check (ms.length, 0);
+	// There are 9 public methods in Object.
+	harness.check (ms.length, 9);
       }
     catch (SecurityException se)
       {
@@ -231,7 +235,12 @@ public class reflect implements Testlet
     try
       {
 	Method[] ms = reflect_class.getMethods();
-	harness.check (ms.length, 6);
+	int expected =
+	  (6 /* from reflect.java; note that Testlet's method is also
+		declared here and should only be counted once.  */
+	   + 9 /* from Object */
+	   );
+	harness.check (ms.length, expected);
       }
     catch (SecurityException se)
       {
@@ -248,11 +257,14 @@ public class reflect implements Testlet
     harness.check (m instanceof NoSuchMethodException);
     m = getMethod (reflect_class, "do_nothing", pt1, false);
     harness.check (m instanceof Method);
+    // See if we can get something that is inherited.
+    m = getMethod (rf_help_class, "hashCode", ptz, true);
+    harness.check (m instanceof NoSuchMethodException);
 
-    harness.checkPoint("getMethods");
+    harness.checkPoint("getDeclaredMethods");
     try
       {
-	Method[] ms = rf_help_class.getMethods();
+	Method[] ms = rf_help_class.getDeclaredMethods();
 	harness.check (ms.length, 1);
       }
     catch (SecurityException se)
@@ -263,7 +275,7 @@ public class reflect implements Testlet
 
     try
       {
-	Method[] ms = reflect_class.getMethods();
+	Method[] ms = reflect_class.getDeclaredMethods();
 	harness.check (ms.length, 6);
       }
     catch (SecurityException se)
@@ -271,5 +283,10 @@ public class reflect implements Testlet
 	// One per check above.
 	harness.check (false);
       }
+
+    harness.checkPoint("getDeclaringClass");
+    // Neither of these classes has a declaring class.
+    harness.check(rf_help_class.getDeclaringClass(), null);
+    harness.check(reflect_class.getDeclaringClass(), null);
   }
 }

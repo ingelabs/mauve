@@ -1,5 +1,12 @@
 2000-01-05  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Class/reflect.java (test): Check for
+	inherited method lookup.  Fixed checkpoint name for
+	getDeclaredMethods.  Added getDeclaringClass test.  Make
+	getMethods test aware of methods in Testlet and Object.
+	Actually call getDeclaredMethods and not getMethods in
+	getDeclaredMethods check.
+
 	* gnu/testlet/java/lang/Class/reflect.java (test): Added tests for
 	getField, getDeclaredFields, getFields, getMethod, getMethods,
 	getDeclaredMethod, getDeclaredMethods.
