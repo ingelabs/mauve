@@ -1,5 +1,11 @@
 2004-10-13  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/awt/image/ByteLookupTable/lookupPixel.java,
+	gnu/testlet/java/awt/image/ShortLookupTable/lookupPixel.java:
+	Overwrite with David Gilbert's versions.
+
+2004-10-13  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/awt/image/ByteLookupTable/lookupPixel.java
 	gnu/testlet/java/awt/image/ShortLookupTable/lookupPixel.java:
 	Two new testcases.
