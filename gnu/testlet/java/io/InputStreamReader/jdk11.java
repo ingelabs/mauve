@@ -37,14 +37,18 @@ public class jdk11 implements Testlet
       {
 		InputStreamReader isr = new InputStreamReader (new StringBufferInputStream ("zardoz has spoken"));
 		harness.check(isr.ready(), "ready()");   // deprecated post-1.1
-		harness.check(isr.getEncoding(), "8859_1", "getEncoding");
+
+		harness.check(isr.getEncoding() != null,
+				"non-null getEncoding");
+
 		char[] cbuf = new char[10];
 		isr.read (cbuf, 0, cbuf.length);
 		String tst = new String(cbuf);
 		harness.check(tst, "zardoz has", "read(buf[], off, len)");
 		harness.check(isr.read(), ' ', "read()");	
 		isr.close ();
-		harness.check(true, "close()");
+		harness.check(isr.getEncoding(), null,
+				"null encoding after close");
       }
     catch (IOException e)
       {

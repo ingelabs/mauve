@@ -1,5 +1,11 @@
 2003-02-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/InputStreamReader/jdk11.java (test): Just check
+	that encoding is non-null when opened and null when closed. Checking
+	the actual encoding name is as good as impossible pre 1.4.
+
+2003-02-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/util/jar/JarFile/basic.java: Don't test order,
 	only test that all entries have the correct content.
 
