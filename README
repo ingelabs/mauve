@@ -63,6 +63,21 @@ If no tags are given, "JDK1.0 JDK1.1" are assumed.
 You can use `make recheck' to re-run `make check' with the key list
 you last used.
 
+An alternative way to compiling and running all tests is the batch_run
+script.  This makes it easy to run all test in one batch without worrying
+wheter all tests compile and/or running them crashes or hangs the runtime.
+
+batch_run and the runner helper script aren't integrated with the configure
+setup yet so you will have to edit them by hand to explicitly set the
+COMPILER variable in batch_run and the RUNTIME variable in runner.
+Optionally you can also change the KEYS setting in batch_run if you don't
+want to run all tests.  You can also set the variable NATIVE=true in
+batch_run when you want to use gcj (without -C) in native mode.
+
+When a test cannot be compiled with the given COMPILER batch_run will
+output FAIL: <testname> COMPILE FAILED and go on with the next test.
+If the runner detects a runtime crash or timeout (runner variable
+WAIT=60 seconds) it will output FAIL: <testname> CRASH or TIMEOUT.
 
 If you want to run a single test by hand, you can feed its name
 directly to the test harness.  Make sure to remember the `gnu.testlet'

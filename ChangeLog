@@ -1,3 +1,7 @@
+2004-04-16  Mark Wielaard  <mark@klomp.org>
+
+	* README: Add documentation for batch_run and runner scripts.
+
 2004-04-15  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/awt/image/ComponentColorModel/
