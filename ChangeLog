@@ -1,5 +1,10 @@
 1999-03-09  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Long/new_Long.java (test): Added some
+	checkPoint calls.
+
+	* gnu/testlet/java/text/ChoiceFormat/format.java: New file.
+
 	* gnu/testlet/java/text/ACIAttribute/Test.java: Mark as JDK1.2;
 	AttributedCharacterIterator is not in 1.1.
 	* gnu/testlet/java/text/AttributedCharacterIterator/implement.java: 

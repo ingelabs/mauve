@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 1999 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -222,6 +222,7 @@ public class new_Long implements Testlet
 	}
       harness.check (ok);
 
+      harness.checkPoint ("toBinaryString");
       harness.check (Long.toBinaryString(0L),
 		     "0");
       harness.check (Long.toBinaryString(1L),
@@ -237,6 +238,7 @@ public class new_Long implements Testlet
       harness.check (Long.toBinaryString(Long.MAX_VALUE + 1),
 		     "1000000000000000000000000000000000000000000000000000000000000000");
 
+      harness.checkPoint ("toOctalString");
       harness.check (Long.toOctalString(0L),
 		     "0");
       harness.check (Long.toOctalString(1L),
@@ -252,6 +254,7 @@ public class new_Long implements Testlet
       harness.check (Long.toOctalString(Long.MAX_VALUE + 1),
 		     "1000000000000000000000");
 
+      harness.checkPoint ("toHexString");
       harness.check (Long.toHexString(0L),
 		     "0");
       harness.check (Long.toHexString(1L),
@@ -267,6 +270,7 @@ public class new_Long implements Testlet
       harness.check (Long.toHexString(Long.MAX_VALUE + 1),
 		     "8000000000000000");
 
+      harness.checkPoint ("parseLong");
       harness.check (Long.parseLong("0012345", 8),
 		     5349);
       harness.check (Long.parseLong("xyz", 36),
