@@ -1,3 +1,29 @@
+2005-01-04  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/DefaultTableModel/addColumn.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/addRow.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/constructors.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/convertToVector.java, 
+	* gnu/testlet/javax/swing/table/DefaultTableModel/getColumnCount.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/getColumnName.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/getDataVector.java, 
+	* gnu/testlet/javax/swing/table/DefaultTableModel/getRowCount.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/getValueAt.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/insertRow.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/isCellEditable.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/moveRow.java, 
+	* gnu/testlet/javax/swing/table/DefaultTableModel/MyDefaultTableModel.java, 
+	* gnu/testlet/javax/swing/table/DefaultTableModel/MyTableModelListener.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/newDataAvailable.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/removeRow.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/rowsRemoved.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setColumnCount.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setColumnIdentifiers.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setDataVector.java, 
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setRowCount.java,
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setValueAt.java: 
+	New tests.
+	
 2005-01-03  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* batch_run: Invoke Xvfb and metacity if GUI key is specified.
