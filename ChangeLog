@@ -1,5 +1,8 @@
 2003-11-16  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/io/StreamTokenizer/commentchar.java: Expect
+	EOL, not EOF.
+
 	* gnu/testlet/java/io/StreamTokenizer/commentchar.java
 	(tokenize): New overloaded method.
 	(make_tokenizer): New method.

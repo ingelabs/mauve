@@ -82,7 +82,7 @@ public class commentchar implements Testlet
     tokenize (harness, "alpha # bleh", x2);
 
     // Classpath regression test.
-    x2[0] = StreamTokenizer.TT_EOF;
+    x2[0] = StreamTokenizer.TT_EOL;
     String input = "  %foo,bar baz\n";
     StreamTokenizer st = make_tokenizer(input);
     st.resetSyntax();
