@@ -43,7 +43,7 @@ test(TestHarness harness)
 
   StringReader sr = new StringReader(str);
   harness.check(true, "StringReader(String)");
-  try {		// 1.1 API does not correctly document this exception
+  try {		// 1.2 API adds this exception, not in 1.1
     harness.check(sr.ready(), "ready()");
   }
   catch (IOException e) {
