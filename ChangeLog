@@ -1,3 +1,10 @@
+2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/java/awt/image/PixelInterleavedSampleModel:
+	New directory.
+	* gnu/testlet/java/awt/image/PixelInterleavedSampleModel/
+	createSubsetSampleModel.java: New file.
+
 2004-04-13  Thomas Zander <zander@kde.org>
 
 	* build.xml: New file.
