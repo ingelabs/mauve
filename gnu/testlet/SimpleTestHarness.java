@@ -59,7 +59,7 @@ public class SimpleTestHarness extends TestHarness
 
       if (t != null)
 	{
-	  description = t.description();
+	  description = name;
 	  t.test (this);
 	}
     }

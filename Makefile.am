@@ -38,12 +38,13 @@ SimpleTestHarness_SOURCES =
 SimpleTestHarness_DEPENDENCIES = classes.stamp $(javao_files)
 SimpleTestHarness_LDADD = $(javao_files)
 SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
+SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 ## FIXME: this hack pulls in the LINK definition.  (This is a
 ## workaround for an automake bug.)
 EXTRA_SimpleTestHarness_SOURCES = no-such-file.c
 
 .class.o:
-	CLASSPATH=.:$(srcdir) $(CC) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 check-local: $(check_PROGRAMS)
 	./SimpleTestHarness $(test_names)

@@ -1,3 +1,38 @@
+1998-11-24  Tom Tromey  <tromey@cygnus.com>
+
+	* configure, Makefile.in: Rebuilt.
+	* configure.in (CC): Don't set.
+	(GCJ): Subst.
+	* Makefile.am (.class.o): Use $(GCJ), not $(CC).
+	(SimpleTestHarness_LINK): New macro.
+
+	* gnu/testlet/java/lang/System/arraycopy.java: New file.
+	* gnu/testlet/java/lang/String/indexOf.java: New file.
+	* gnu/testlet/java/lang/String/startsWith.java: New file.
+	* gnu/testlet/java/lang/String/charAt.java: New file.
+	* gnu/testlet/java/lang/String/compareTo.java: New file.
+	* gnu/testlet/java/lang/String/substring.java: New file.
+	* gnu/testlet/java/lang/String/to.java: New file.
+	* gnu/testlet/java/lang/String/decode.java: New file.
+	* gnu/testlet/java/lang/String/hash.java: New file.
+	* gnu/testlet/java/lang/Short/hash.java: New file.
+	* gnu/testlet/java/lang/Integer/getInteger.java: New file.
+	* gnu/testlet/java/lang/Integer/new_Integer.java: New file.
+	* gnu/testlet/java/lang/Character/to.java: New file.
+	* gnu/testlet/java/lang/Character/classify.java: New file.
+	* gnu/testlet/java/lang/Character/getType.java: New file.
+	* gnu/testlet/java/lang/Character/getNumericValue.java: New file.
+	* gnu/testlet/java/lang/Character/forDigit.java: New file.
+	* gnu/testlet/java/lang/Character/hash.java: New file.
+	* gnu/testlet/java/lang/Character/equals_Character.java: New file.
+	* gnu/testlet/java/lang/Byte/new_Byte.java: New file.
+	* gnu/testlet/java/lang/Boolean/get.java: New file.
+	* gnu/testlet/java/lang/Boolean/value.java: New file.
+
+	* gnu/testlet/Testlet.java (description): Removed.
+	* gnu/testlet/SimpleTestHarness.java (runtest): Don't call
+	description method on test.
+
 1998-11-23  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Character/digit.java: New file.

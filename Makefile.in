@@ -58,6 +58,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 CC = @CC@
+GCJ = @GCJ@
 JAVA = @JAVA@
 JAVAC = @JAVAC@
 MAINT = @MAINT@
@@ -87,6 +88,7 @@ test_names := $(subst /,.,$(subst .java,,$(test_files)))
 @USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = classes.stamp $(javao_files)
 @USE_GCJ_TRUE@SimpleTestHarness_LDADD = $(javao_files)
 @USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
+@USE_GCJ_TRUE@SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 @USE_GCJ_TRUE@EXTRA_SimpleTestHarness_SOURCES = no-such-file.c
 
 @USE_GCJ_TRUE@MOSTLYCLEANFILES = $(javao_files)
@@ -163,7 +165,7 @@ maintainer-clean-compile:
 
 SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_DEPENDENCIES)
 	@rm -f SimpleTestHarness
-	$(LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
+	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
 
 tags: TAGS
 
@@ -330,7 +332,7 @@ classes.stamp: $(java_files)
 	touch classes.stamp
 
 @USE_GCJ_TRUE@.class.o:
-@USE_GCJ_TRUE@	CLASSPATH=$(here) $(CC) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+@USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS)
 @USE_GCJ_TRUE@	./SimpleTestHarness $(test_names)

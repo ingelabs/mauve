@@ -23,11 +23,6 @@ public class digit implements Testlet
       harness.check (Character.digit ('\u2070', 36), -1);
     }
 
-  public String description ()
-    {
-      return "Character.digit()";
-    }
-
   public digit ()
     {
     }

@@ -4,18 +4,20 @@ package gnu.testlet.java.lang.Boolean;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class hashcode_Boolean implements Testlet
+public class value implements Testlet
 {
   public void test (TestHarness harness)
     {
       Boolean a = new Boolean("true");
       Boolean b = new Boolean("false");
 
-      harness.check (a.hashCode(), 1231);
-      harness.check (b.hashCode(), 1237);
+      harness.check (a.booleanValue());
+      harness.check (! b.booleanValue());
+      harness.check (a.equals(Boolean.valueOf("TrUE")));
+      harness.check (! b.equals(Boolean.valueOf("TrUE")));
     }
 
-  public hashcode_Boolean ()
+  public value ()
     {
     }
 }

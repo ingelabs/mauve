@@ -18,11 +18,6 @@ public class equals_Boolean implements Testlet
       harness.check (! b.equals(i));
     }
 
-  public String description ()
-    {
-      return "Boolean.equals()";
-    }
-
   public equals_Boolean ()
     {
     }

@@ -27,11 +27,6 @@ public class new_Boolean implements Testlet
       harness.check(! h.booleanValue());
     }
 
-  public String description ()
-    {
-      return "creating Boolean objects";
-    }
-
   public new_Boolean ()
     {
     }

@@ -5,14 +5,16 @@ AM_MAINTAINER_MODE
 
 JAVA=${JAVA-java}
 JAVAC=${JAVAC-javac}
+GCJ=${GCJ-gcj}
 AC_SUBST(JAVA)
 AC_SUBST(JAVAC)
+AC_SUBST(GCJ)
 
 AC_PROG_INSTALL
 
-dnl FIXME: for now, we just assume gcj.
-CC=gcj
 AC_PROG_CC
+
+dnl FIXME: for now, we just assume gcj.
 AM_CONDITIONAL(USE_GCJ, :)
 
 AC_OUTPUT(Makefile)

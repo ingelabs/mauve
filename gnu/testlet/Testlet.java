@@ -8,7 +8,4 @@ public interface Testlet
 {
   // This runs the test.
   public abstract void test (TestHarness harness);
-
-  // This must return a description of the test.
-  public abstract String description ();
 }
