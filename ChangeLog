@@ -1,7 +1,12 @@
+2003-01-25  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java: fixed some
+	error case tests to catch the correct exceptions, and only to 
+	test the exception messages if CHECK_EXCEPTION_MESSAGES is true.
+
 2003-01-24  Raif Naffah <raif@fl.net.au>
-   * gnu/testlet/SimpleTestHarness.java (main): added a -file
-   option as an alternative to stdin for reading selected test
-   classes.
+        * gnu/testlet/SimpleTestHarness.java (main): added a -file
+	option as an alternative to stdin for reading selected test
+	classes.
 
 2003-01-21  Tom Tromey  <tromey@redhat.com>
 

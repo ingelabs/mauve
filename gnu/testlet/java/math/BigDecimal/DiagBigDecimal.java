@@ -133,7 +133,9 @@ import gnu.testlet.TestHarness;
  */
 
 public class DiagBigDecimal implements Testlet {
- private static final java.lang.String $0="DiagBigDecimal.nrx";
+ private final boolean CHECK_EXCEPTION_MESSAGES = false;
+
+ private static final java.lang.String xx0="DiagBigDecimal.nrx";
  
  /* properties shared */
  java.util.Vector Tests=new java.util.Vector(100); // scaffolding
@@ -210,14 +212,14 @@ public class DiagBigDecimal implements Testlet {
    try{
     dotest(harness, num);
    }
-   catch (RuntimeException $1){de=$1;
+   catch (RuntimeException xx1){de=xx1;
     say(harness);
     harness.verbose("**** Failed:"+" "+de.getMessage()+" "+"****");
     say(harness);
    }
   }
   }
-  catch (java.lang.RuntimeException $2){e=$2; // any other exception is total failure; just show trace and quit
+  catch (java.lang.RuntimeException xx2){e=xx2; // any other exception is total failure; just show trace and quit
    say(harness);
    harness.verbose("**** Failed: unexpected exception ****");
    e.printStackTrace();
@@ -405,7 +407,7 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal((java.math.BigInteger)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $4){
+  catch (java.lang.NullPointerException xx4){
    flag=true;
   }/*checknull*/
   harness.check (flag, "cbi004");
@@ -433,7 +435,7 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal((java.math.BigInteger)null,1);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $5){
+  catch (java.lang.NullPointerException xx5){
    flag=true;
   }/*checknull*/
   harness.check (flag, "cbs004");
@@ -441,8 +443,8 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal(bip,-8);
    flag=false;
   }while(false);}
-  catch (java.lang.RuntimeException $6){e=$6;
-   flag=(e.getMessage()).equals("Negative scale: -8");
+  catch (java.lang.RuntimeException xx6){e=xx6;
+   flag=checkMessage(e, "Negative scale: -8");
   }/*checkscale*/
   harness.check (flag, "cbs005");
   
@@ -502,7 +504,7 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal(java.lang.Double.POSITIVE_INFINITY);
    flag=false;
   }while(false);}
-  catch (java.lang.NumberFormatException $13){
+  catch (java.lang.NumberFormatException xx13){
    flag=true;
   }/*checkpin*/
   harness.check (flag, "cdo101");
@@ -510,7 +512,7 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal(java.lang.Double.NEGATIVE_INFINITY);
    flag=false;
   }while(false);}
-  catch (java.lang.NumberFormatException $14){
+  catch (java.lang.NumberFormatException xx14){
    flag=true;
   }/*checknin*/
   harness.check (flag, "cdo102");
@@ -518,7 +520,7 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal(java.lang.Double.NaN);
    flag=false;
   }while(false);}
-  catch (java.lang.NumberFormatException $15){
+  catch (java.lang.NumberFormatException xx15){
    flag=true;
   }/*checknan*/
   harness.check (flag, "cdo103");
@@ -1168,13 +1170,13 @@ public class DiagBigDecimal implements Testlet {
   
   // watch out for commas on continuation lines
   
-  {int $16=badstrings.length;i=0;i:for(;$16>0;$16--,i++){
+  {int xx16=badstrings.length;i=0;i:for(;xx16>0;xx16--,i++){
    try{
     new BigDecimal(badstrings[i]);
     say(">>> cst"+(200+i)+":"+" "+badstrings[i]+" "+(new BigDecimal(badstrings[i])).toString(), harness);
     flag=false;
    }
-   catch (java.lang.NumberFormatException $17){
+   catch (java.lang.NumberFormatException xx17){
     flag=true;
    }
    harness.check (flag, "cst"+(200+i));
@@ -1185,7 +1187,7 @@ public class DiagBigDecimal implements Testlet {
    new BigDecimal((java.lang.String)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $18){
+  catch (java.lang.NullPointerException xx18){
    flag=true;
   }/*checknull*/
   harness.check (flag, "cst301");
@@ -1356,7 +1358,7 @@ public class DiagBigDecimal implements Testlet {
    ten.add((BigDecimal)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $22){
+  catch (java.lang.NullPointerException xx22){
    flag=true;
   }/*checknull*/
   harness.check (flag, "add200");
@@ -1381,7 +1383,7 @@ public class DiagBigDecimal implements Testlet {
    ten.compareTo((BigDecimal)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $28){
+  catch (java.lang.NullPointerException xx28){
    flag=true;
   }/*checknull*/
   harness.check (flag, "cpt100");
@@ -1440,8 +1442,8 @@ public class DiagBigDecimal implements Testlet {
    (new BigDecimal("1")).divide(new BigDecimal("3"),-8,0);
    flag=false;
   }while(false);}
-  catch (java.lang.RuntimeException $34){e=$34;
-   flag=flag&(e.getMessage()).equals("Negative scale: -8");
+  catch (java.lang.ArithmeticException xx34){e=xx34;
+   flag&=checkMessage(e, "Negative scale: -8");
   }/*checkscale*/
   harness.check (flag, "div203");
   
@@ -1449,8 +1451,8 @@ public class DiagBigDecimal implements Testlet {
    (new BigDecimal("5")).divide(new BigDecimal("0.00"), BigDecimal.ROUND_HALF_UP);
    flag=false;
   }while(false);}
-  catch (java.lang.ArithmeticException $40){ae=$40;
-   flag=(ae.getMessage()).equals("Divide by 0");
+  catch (java.lang.ArithmeticException xx40){ae=xx40;
+   flag=checkMessage(ae, "Divide by 0");
   }/*div0*/
   harness.check (flag, "div204");
 
@@ -1475,7 +1477,7 @@ public class DiagBigDecimal implements Testlet {
    ten.max((BigDecimal)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $47){
+  catch (java.lang.NullPointerException xx47){
    flag=true;
   }/*checknull*/
   harness.check (flag, "max010");
@@ -1500,7 +1502,7 @@ public class DiagBigDecimal implements Testlet {
    minx.min((BigDecimal)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $51){
+  catch (java.lang.NullPointerException xx51){
    flag=true;
   }/*checknull*/
   harness.check (flag, "min010");
@@ -1608,7 +1610,7 @@ public class DiagBigDecimal implements Testlet {
    ten.multiply((BigDecimal)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $55){
+  catch (java.lang.NullPointerException xx55){
    flag=true;
   }/*checknull*/
   harness.check (flag, "mul200");
@@ -1773,7 +1775,7 @@ public class DiagBigDecimal implements Testlet {
    ten.subtract((BigDecimal)null);
    flag=false;
   }while(false);}
-  catch (java.lang.NullPointerException $83){
+  catch (java.lang.NullPointerException xx83){
    flag=true;
   }/*checknull*/
   harness.check (flag, "sub200");
@@ -1864,7 +1866,7 @@ public class DiagBigDecimal implements Testlet {
    d.compareTo((java.lang.Object)null);
    flag=false;
   }
-  catch (java.lang.NullPointerException $92){
+  catch (java.lang.NullPointerException xx92){
    flag=true; // should get here
   }
   harness.check (flag, "cto101");
@@ -1872,7 +1874,7 @@ public class DiagBigDecimal implements Testlet {
    d.compareTo((java.lang.Object)"foo");
    flag=false;
   }
-  catch (java.lang.ClassCastException $93){
+  catch (java.lang.ClassCastException xx93){
    flag=true; // should get here
   }
   harness.check (flag, "cto102");
@@ -2182,24 +2184,24 @@ public class DiagBigDecimal implements Testlet {
    (new BigDecimal(1)).setScale(-8);
    flag=false;
   }while(false);}
-  catch (java.lang.RuntimeException $117){e=$117;
-   flag=(e.getMessage()).equals("Negative scale: -8");
+  catch (java.lang.ArithmeticException xx117){e=xx117;
+   flag=checkMessage(e, "Negative scale: -8");
   }/*checkscale*/
   harness.check (flag, "ssc100");
   try{checkrunn:do{
    (new BigDecimal(1.0001D)).setScale(3);
    flag=false;
   }while(false);}
-  catch (java.lang.RuntimeException $118){e=$118;
-   flag=(e.getMessage()).equals("Rounding necessary");
+  catch (java.lang.ArithmeticException xx118){e=xx118;
+   flag=checkMessage(e, "Rounding necessary");
   }/*checkrunn*/
   harness.check (flag, "ssc101");
   try{checkrunn:do{
    (new BigDecimal(1E-8D)).setScale(3);
    flag=false;
   }while(false);}
-  catch (java.lang.RuntimeException $119){e=$119;
-   flag=(e.getMessage()).equals("Rounding necessary");
+  catch (java.lang.ArithmeticException xx119){e=xx119;
+   flag=checkMessage(e, "Rounding necessary");
   }/*checkrunn*/
   harness.check (flag, "ssc102");
   return;}
@@ -2380,8 +2382,8 @@ public class DiagBigDecimal implements Testlet {
    BigDecimal.valueOf((long)23,-8);
    flag=false;
   }while(false);}
-  catch (java.lang.NumberFormatException $127){e=$127;
-   flag=(e.getMessage()).equals("Negative scale: -8");
+  catch (java.lang.NumberFormatException xx127){e=xx127;
+   flag=checkMessage(e, "Negative scale: -8");
   }/*checkscale*/
   harness.check (flag, "val100");
   
@@ -2436,10 +2438,14 @@ public class DiagBigDecimal implements Testlet {
   if (s==null) 
    s="  ";
   harness.verbose(s);
-  return;}
-  public void test (TestHarness harness)
-  {
-    diagrun (harness);
-  }
-
+  return;
  }
+
+ private boolean checkMessage(Throwable ex, String msg){
+   return !CHECK_EXCEPTION_MESSAGES || ex.getMessage().equals(msg);
+ }
+
+ public void test (TestHarness harness){
+  diagrun (harness);
+ }
+}
