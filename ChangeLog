@@ -5,6 +5,7 @@
 	* gnu/testlet/BinaryCompatibility: New tests.
 	* Makefile.in: Regenerate.
 	* configure: Regenerate.
+	* aclocal.m4: Regenerate.
 
 2003-08-16  Mark Wielaard  <mark@klomp.org>
 
