@@ -1,5 +1,8 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/getType.java (test): 0x0ad0 is
+	now other-letter.  Added 0b70 as other-symbol.
+
 	* gnu/testlet/java/lang/Character/unicode.java (unicode): Ignore
 	full width characters.
 

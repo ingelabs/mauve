@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 1999 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -150,7 +150,8 @@ public class getType implements Testlet
       p (harness, '\u2202', "math_symbol");
       p (harness, '\u20ab', "currency_symbol");
       p (harness, '\u02c2', "modifier_symbol");
-      p (harness, '\u0ad0', "other_symbol");
+      p (harness, '\u0ad0', "other_letter");
+      p (harness, '\u0b70', "other_symbol");
       p (harness, '\u009f', "control");
       p (harness, '\ufeff', "format");
       p (harness, '\uffff', "unassigned");
