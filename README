@@ -1,0 +1,20 @@
+This is Mauve, a free test suite for the Java Class Libraries.
+
+Mauve is intended to test several different varieties of the
+libraries.  For instance, it will contain tests that are specific to a
+particular JDK version.  Tags in the test files help the test
+framework decide which tests should or should not be run against a
+given runtime.
+
+
+To build, first run configure.  You can control the configuration with
+some environment variables:
+
+     JAVA   Name of Java interpreter to use
+     JAVAC  Name of Java (to class) compiler to use
+     GCJ    Name of Java (to object) compiler to use
+
+GCJ is only used when the `--with-gcj' option is given to configure.
+
+Use `make check' to run the tests.  (This will change a little once
+the tag code has been written.)
