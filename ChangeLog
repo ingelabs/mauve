@@ -1,3 +1,18 @@
+1999-05-12  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/net/DatagramPacket/DatagramPacketTest.java:
+	  New file.
+	* gnu/testlet/java/net/DatagramPacket/DatagramPacketTest2.java:
+	  New file.
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest.java:
+	  New file.
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java:
+	  New file.
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTestEchoServer.java:
+	  New file.
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTestEchoTimeoutServer.java:
+	  New file.
+
 1999-05-07  Tom Tromey  <tromey@cygnus.com>
 
 	* Makefile.in: Rebuilt.
