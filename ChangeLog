@@ -1,5 +1,15 @@
 2002-10-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/security/Provider/NameVersionInfo.java: New test.
+	* gnu/testlet/java/security/Security/property.java: New test.
+	* gnu/testlet/java/security/Security/provider.java: New test.
+	* gnu/testlet/java/security/MessageDigest/Instance.java: New test.
+	* gnu/testlet/java/security/MessageDigest/MauveDigest.java: New file.
+	* gnu/testlet/java/security/Signature/Instance.java: New test.
+	* gnu/testlet/java/security/Signature/MauveSignature.java: New file.
+
+2002-10-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/SimpleTestHarness.java: Add two argument constructor.
 
 2002-10-13  Mark Wielaard  <mark@klomp.org>
