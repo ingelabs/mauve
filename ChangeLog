@@ -1,3 +1,8 @@
+2004-01-10  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/text/MessageFormat/attribute.java:
+	New testcase for MessageFormat.formatToCharacterIterator.
+
 2004-01-08  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/regex/CharacterClasses.java: New file.
