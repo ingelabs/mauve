@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2004 Mark Wielaard
+// Copyright (C) 2004, 2005 Mark Wielaard
 
 // This file is part of Mauve.
 
@@ -56,6 +56,8 @@ public class PatternSplit implements Testlet
     test("[a-c]$", "abc", new String[] { "ab", "" });
 
     test("(?=[a-z])", "123abc", new String[] { "123", "a", "b", "c" });
+
+    test(",", "a,,,b", new String[] { "a", "", "", "b" });
 
     // No match
     test("waku", "", new String[] { "" });
