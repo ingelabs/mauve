@@ -1,5 +1,8 @@
 2002-06-13  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/io/PrintStream/subclass.java (subclass): Don't
+	pass `null' to superclass constructor.  From Dalibor Topic.
+
 	* gnu/testlet/java/lang/Float/FloatTest.java
 	(test_shortbyteValue): Fixed cast to byte of `400'.
 	* gnu/testlet/java/lang/Double/DoubleTest.java

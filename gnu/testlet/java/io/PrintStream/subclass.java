@@ -1,6 +1,6 @@
 // Test simple forms of MessageFormat formatting.
 
-// Copyright (c) 2001  Red Hat, Inc.
+// Copyright (c) 2001, 2002  Red Hat, Inc.
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -33,7 +33,7 @@ public class subclass extends PrintStream implements Testlet
 {
   public subclass ()
   {
-    super (null);
+    super (System.out);
   }
 
   public void setOutput (OutputStream x)
