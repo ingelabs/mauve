@@ -1,5 +1,8 @@
 1999-01-04  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/io/ByteArrayInputStream/MarkReset.java (test):
+	Commented out print to System.out.
+
 	* gnu/testlet/java/io/PushbackInputStream/Unread.java (test): Use
 	`debug' instead of printing string to System.out.
 

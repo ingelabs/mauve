@@ -1,7 +1,7 @@
 /*************************************************************************
 /* MarkReset.java -- ByteArrayInputStream mark/reset test
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 1999 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ test(TestHarness harness)
       harness.check(bais.available(), (str_bytes.length - read_buf.length),
                     "available() 1");
       harness.check(bais.skip(5), 5, "skip()");
-          System.out.println("skip() didn't work");
+      // System.out.println("skip() didn't work");
       harness.check(bais.available(), (str_bytes.length - 
                    (read_buf.length + 5)), "available() 2");
       harness.check(bais.markSupported(), "markSupported()");
