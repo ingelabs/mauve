@@ -1,3 +1,10 @@
+2005-03-09  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/EventHandler/check.java: Added new
+	tests and try-catch-blocks for known problems.
+	* gnu/testlet/java/beans/EventHandler/check14.java: Added
+	new tests.
+	
 2005-03-08  David Daney  <ddaney@avtrex.com>
 
 	* gnu/testlet/java/io/BufferedInputStream/MarkReset.java (marktest):

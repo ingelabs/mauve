@@ -44,6 +44,7 @@ public class check14 implements Testlet
 
     // Test that null eventPropertyName activates this
     public void action1() { flag = true; }
+	
     // Test that moving whole objects works
     public void action(Event e) { str =  e.getD(); flag = e.isB(); }
     // To test that wrapper handling works
@@ -133,12 +134,25 @@ public class check14 implements Testlet
     // Static create tests
     Listener o1 = (Listener) EventHandler.create(Listener.class,
 						 target, "action");
-	
+	try 
+	  {
     o1.listen1(ev);
+	  }
+	catch(Exception e)
+      {
+		harness.fail("Invoke listen1 failed " + e.toString());
+	  }
     harness.check(target.flag == true, "Test null event property");
     target.reset();
 
+	try 
+	  {
     o1.listen2(ev);
+	  }
+	catch(Exception e)
+      {
+		harness.fail("Invoke listen1 failed " + e.toString());
+	  }
     harness.check(target.flag == true);
     harness.check(target.str == "yes");
     target.reset();
@@ -148,11 +162,11 @@ public class check14 implements Testlet
 	 */
 	Listener2 l2 = (Listener2) EventHandler.create(Listener2.class, target, "action1");
 	l2.listen1();
-	harness.check(target.flag, true, "no argument listener method 1");
+	harness.check(target.flag, true, "no argument listener method");
 	target.reset();
 	
 	l2.listen2();
-	harness.check(target.flag, true, "no argument listener method 2");
+	harness.check(target.flag, true);
 	target.reset();
 
     Listener o2 = (Listener) EventHandler.create(Listener.class,
@@ -166,7 +180,7 @@ public class check14 implements Testlet
     harness.check(target.flag == true);
     harness.check(target.str == null);
     target.reset();
-
+	
 
     Listener o3 = (Listener) EventHandler.create(Listener.class, target,
 					       "action", "a.c.d");
