@@ -117,6 +117,23 @@ public class URLTest implements Testlet
 				harness.fail(" Error in test_Basics  - 21 " + 
 					" exception should not be thrown here");
 		}
+
+                try {
+                        URL u1 = new URL("http://foo@some.nice.place/bar/");
+                        URL u2 = new URL("http://some.nice.place/bar/");
+                        URL u3 = new URL(u1, "more/path", null);
+
+                        harness.check (u1.getUserInfo(), "foo");
+                        harness.check (u2.getUserInfo(), null);
+                        harness.check (u3.getUserInfo(), "foo");
+                        harness.check (u3.getProtocol(), "http");
+                        harness.check (u3.getHost(), "some.nice.place");
+                }
+                catch ( MalformedURLException e ){
+				harness.fail(" Error in test_Basics  - 27 " + 
+                                             " exception should not be thrown here");
+                }
+                
 	}
 
 	public void test_openConnection()

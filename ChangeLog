@@ -1,3 +1,7 @@
+2004-09-23  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/net/URL/URLTest.java: Add tests for getUserInfo().
+
 2004-09-22  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/FileDescriptor/jdk11.java: Add harness.debug()
