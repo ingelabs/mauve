@@ -135,6 +135,7 @@ public class newInstance implements Testlet
       }
     catch (Throwable t)
       {
+        harness.debug(t);
 	val = 3;
       }
     harness.check(val, 2);
@@ -151,6 +152,7 @@ public class newInstance implements Testlet
       }
     catch (Throwable t)
       {
+        harness.debug(t);
 	val = 3;
       }
     harness.check(val, 2);
@@ -182,6 +184,7 @@ public class newInstance implements Testlet
       }
     catch (Throwable t)
       {
+        harness.debug(t);
 	val = 2;
       }
     harness.check(val, 1);    
@@ -200,6 +203,7 @@ public class newInstance implements Testlet
       }
     catch (Throwable t)
       {
+        harness.debug(t);
 	val = 3;
       }
     harness.check(val, 2);
@@ -216,6 +220,7 @@ public class newInstance implements Testlet
       }
     catch (Throwable t)
       {
+        harness.debug(t);
 	val = 3;
       }
     harness.check(val, 2);
@@ -233,6 +238,7 @@ public class newInstance implements Testlet
       }
     catch (Throwable t)
       {
+        harness.debug(t);
 	val = 3;
       }
     harness.check(val, 2);

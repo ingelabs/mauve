@@ -31,46 +31,49 @@ import java.io.*;
 class MulticastServer extends Thread {
 
   protected static TestHarness harness;
+  
+  private int serverPort;
+  private MulticastSocket socket;
+  private InetAddress address;
+  private DatagramPacket packet;
 
-    public MulticastServer(int nPort) {
-	try {
-            serverPort = nPort;
-            socket = new MulticastSocket();
-            address = InetAddress.getByName("230.0.0.1");
-        }catch(Exception e){
-	    System.out.println("Server constructor");
-	    e.printStackTrace();
-	}
+  public MulticastServer(int nPort) {
+    try {
+      serverPort = nPort;
+      socket = new MulticastSocket();
+      address = InetAddress.getByName("230.0.0.1");
+    } 
+    catch (Exception e) {
+      System.out.println("Server constructor");
+      e.printStackTrace();
     }
+  }
+  
+  public void run() {
+    //System.out.println("Starting Server");
     
-    public void run() {
-        //System.out.println("Starting Server");
-
-
-	try {
- String[] cmd = new String[5];
-
-                        cmd[0] = "hello";
-                        cmd[1] = "there";
-                        cmd[2] = "this is";
-                        cmd[3] = "multicast";
-                        cmd[4] = "bye";
-
-                        for(int i = 0; i < 5; i++){
-                           packet = new 
-			       DatagramPacket(cmd[i].getBytes(), cmd[i].length(),address, serverPort);
-			   //	   System.out.println("Sent: " + cmd[i]);
-                           socket.send(packet);
-                        }
-                        socket.close();
-	}catch(Exception e){
-	    System.out.println("Server run failed");
-	    e.printStackTrace();
-	}
+    
+    try {
+      String[] cmd = new String[5];
+      
+      cmd[0] = "hello";
+      cmd[1] = "there";
+      cmd[2] = "this is";
+      cmd[3] = "multicast";
+      cmd[4] = "bye";
+      
+      for(int i = 0; i < 5; i++){
+        packet = new DatagramPacket(cmd[i].getBytes(), cmd[i].length(),
+                                    address, serverPort);
+        // System.out.println("Sent: " + cmd[i]);
+        socket.send(packet);
+      }
+      socket.close();
+    } 
+    catch (Exception e) {
+      System.out.println("Server run failed");
+      e.printStackTrace();
     }
-    
-    private int serverPort;
-    private MulticastSocket socket;
-    private InetAddress address;
-    private DatagramPacket packet;
+  }
+  
 }
