@@ -1,5 +1,6 @@
 2003-01-25  C. Brian Jones  <cbj@gnu.org>
 
+	* gnu/testlet/java/text/CollationElementIterator: new directory
 	* gnu/testlet/java/text/CollationElementIterator/jdk11.java: new tests
 
 2003-01-24  Mark Wielaard  <mark@klomp.org>
