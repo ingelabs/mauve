@@ -1,4 +1,5 @@
 // Tags: JDK1.1
+// Uses: sub/OtherPkg sub/Super Other
 
 // Test reflection member accessibility checks.
 
@@ -239,23 +240,4 @@ public class ReflectAccess extends Super implements Testlet
   private char d = 'd';
   private static char e = 'e';
   protected char f = 'f';
-}
-
-class Other
-{
-  static void m()
-  {
-  }
-  
-  void n()
-  {
-  }
-  
-  private void o()
-  {
-  }
-  
-  static char p = 'p';
-  char q = 'q';
-  private char r = 'r';
 }
