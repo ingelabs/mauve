@@ -41,9 +41,9 @@ public class range implements Testlet
     check(104, 9, 12, 12, 34, 56, 1097584496000L);
     check(104, -1, 0, 0, 0, 0, 1070150400000L);
     check(104, 99, 99, 99, 99, 99, 1342068039000L);
-    check(104, 999, 999, 999, 999, 999, 3785583171704L);
+    check(104, 999, 999, 999, 999, 999, 3789878139000L);
     check(104, -1, -1, -1, -1, -1, 1070060339000L);
-    check(104, -999, -999, -999, -999, -999, -1640011971704L);
+    check(104, -999, -999, -999, -999, -999, -1644306939000L);
   }
 
   private void check(int year, int month, int day, int hours, int mins, int secs, long l)

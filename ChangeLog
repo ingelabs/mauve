@@ -1,3 +1,8 @@
+2004-10-17  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/util/Date/range.java
+	(test): Corrected two reference values.
+
 2004-10-16  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/javax/swing/SpinnerListModel/
