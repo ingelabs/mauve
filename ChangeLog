@@ -41,7 +41,6 @@
 	(do_nothing): New method.
 	(getMethod): Likewise.
 
->>>>>>> 1.162
 2000-01-05  Dalibor Topic <robilad@yahoo.com>
 
 	* gnu/testlet/java/lang/reflect/Method/invoke.java: Pass argument
