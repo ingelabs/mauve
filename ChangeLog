@@ -1,3 +1,8 @@
+2003-08-05  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/reflect/AccessibleObject/accessible.java:
+	New tests.
+
 2003-08-01  David P Grove  <groved@us.ibm.com>
 
 	* gnu/testlet/java/text/DecimalFormat/format.java (test):
