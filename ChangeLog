@@ -1,3 +1,8 @@
+2004-11-19  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/nio/charset/Charset/forName.java:
+	New testcases.
+
 2004-11-19  Casey Marshall  <csm@gnu.org>
 
 	* gnu/testlet/java/util/Timer/taskException.java:
