@@ -1,5 +1,26 @@
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/geom/Rectangle2D/Double/clone.java: New test.
+	*
+	gnu/testlet/java/awt/geom/Rectangle2D/Double/createIntersection.java:
+	Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Double/createUnion.java:
+	Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Double/isEmpty.java: Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Double/outcode.java: Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Double/setRect.java: Likwise.
+
+	* gnu/testlet/java/awt/geom/Rectangle2D/Float/clone.java: New test.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Float/createIntersection.java:
+	Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Float/createUnion.java:
+	Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Float/isEmpty.java: Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Float/outcode.java: Likwise.
+	* gnu/testlet/java/awt/geom/Rectangle2D/Float/setRect.java: Likwise.
+
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/geom/Rectangle2D/add.java: New test.
 	* gnu/testlet/java/awt/geom/Rectangle2D/constants.java: Likewise.
 	* gnu/testlet/java/awt/geom/Rectangle2D/contains.java: Likewise.
