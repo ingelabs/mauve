@@ -75,17 +75,17 @@ SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 
 ## Explicitly writing this works around an apparent GNU make bug.
 ## Sigh.
-SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(harnesso_files) $(SimpleTestHarness_DEPENDENCIES)
-	@rm -f SimpleTestHarness
+SimpleTestHarness$(EXEEXT): $(SimpleTestHarness_OBJECTS) $(harnesso_files) $(SimpleTestHarness_DEPENDENCIES)
+	@rm -f SimpleTestHarness$(EXEEXT)
 	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
 
 check-local: $(check_PROGRAMS) $(CHOICES)
-	cat classes | ./SimpleTestHarness $(TESTFLAGS)
+	cat classes | ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)
 
 recheck:
 	test -f .save-keys || : > .save-keys
 ## Always remove the test program to force a relink.
-	@rm -f SimpleTestHarness
+	@rm -f SimpleTestHarness$(EXEEXT)
 	$(MAKE) KEYS="`cat .save-keys`" check
 
 MOSTLYCLEANFILES = $(javao_files)

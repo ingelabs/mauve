@@ -1,7 +1,12 @@
 2002-02-11  C. Brian Jones <cbj@gnu.org>
 
 	* Makefile.am: add user's CLASSPATH to CLASSPATH when attempting to
-	run a javac-type program
+	run a javac-type program.
+	Fix rules for SimpleTestHarness to use $(EXEEXT), works with 
+	automake 1.5 this way.
+	* aclocal.m4: updated
+	* configure: updated
+	* Makefile.in: updated
 
 2001-11-25  Tom Tromey  <tromey@redhat.com>
 
