@@ -1,6 +1,7 @@
 // Tags: JDK1.0
 
 // Copyright (C) 1999 Cygnus Solutions
+// Copyright (C) 2002 Free Software Foundation, Inc.
 
 // This file is part of Mauve.
 
@@ -33,6 +34,12 @@ public class getBytes implements Testlet
       {
 	byte[] b = s.getBytes("8859_1");
 	harness.check (b.length, s.length());
+
+	b = s.substring(0, 4).getBytes("8859_1");
+	harness.check (b.length, 4);
+
+	b = s.substring(5, 7).getBytes("8859_1");
+	harness.check (b.length, 2);
       }
     catch (UnsupportedEncodingException _)
       {
