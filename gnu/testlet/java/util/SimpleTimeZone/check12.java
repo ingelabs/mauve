@@ -28,7 +28,7 @@ package gnu.testlet.java.util.SimpleTimeZone;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.util.*;
-
+import java.text.*;
 public class check12 implements Testlet
 {
   public void test (TestHarness harness)
@@ -50,44 +50,99 @@ public class check12 implements Testlet
 
     int off;
 
-    // test 1/2 hour before dst
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 10, 0, 41400000);
+    // Test 1/2 hour before dst
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 10, Calendar.SATURDAY, 41400000);
     harness.check(off, rawOff);
     
-    // test 1/2 hour into dst
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 10, 0, 45000000);
-    harness.check(off, rawOff + dstOff);
-    
-    // test that nth dayofweek works with day of month rules
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, Calendar.MONDAY, 41400000);
-    harness.check(off, rawOff);
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, Calendar.MONDAY, 45000000);
-    harness.check(off, rawOff + dstOff);
-    
-    // test that -nth dayofweek works with day of month rules
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, -3, Calendar.MONDAY, 41400000);
-    harness.check(off, rawOff);
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, -3, Calendar.MONDAY, 45000000);
+    // Test 1/2 hour into dst
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 10, Calendar.SATURDAY, 45000000);
     harness.check(off, rawOff + dstOff);
 
-    // Sunday on or before April 4, 2000 is April 2
+    // Test end rule
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 41400000);
+    harness.check(off, rawOff + dstOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 45000000);
+    harness.check(off, rawOff);
+
+    // Test that Nth dayofweek works with day of month rules
+    tz.setStartRule(Calendar.APRIL, 2, Calendar.SATURDAY, 43200000);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 10, Calendar.SATURDAY, 41400000);
+    harness.check(off, rawOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 10, Calendar.SATURDAY, 45000000);
+    harness.check(off, rawOff + dstOff);
+
+    tz.setEndRule(Calendar.SEPTEMBER, 2, Calendar.FRIDAY, 43200000);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 41400000);
+    harness.check(off, rawOff + dstOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 45000000);
+    harness.check(off, rawOff);
+
+    // Test that -Nth dayofweek works with day of month rules
+    tz.setStartRule(Calendar.APRIL, -3, Calendar.SATURDAY, 43200000);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 10, Calendar.SATURDAY, 41400000);
+    harness.check(off, rawOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 10, Calendar.SATURDAY, 45000000);
+    harness.check(off, rawOff + dstOff);
+
+    tz.setEndRule(Calendar.SEPTEMBER, -3, Calendar.FRIDAY, 43200000);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 41400000);
+    harness.check(off, rawOff + dstOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 45000000);
+    harness.check(off, rawOff);
+
+    // Friday on or before April 5, 2004 is April 2
     // Test arguments get overidden and perform correctly
-    tz.setStartRule(Calendar.APRIL, 4, -Calendar.SUNDAY, 43200000, false);
+    tz.setStartRule(Calendar.APRIL, -5, -Calendar.FRIDAY, 43200000, false);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, 0, 41400000);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 2, Calendar.FRIDAY, 41400000);
     harness.check(off, rawOff);
-
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, 0, 45000000);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 2, Calendar.FRIDAY, 45000000);
     harness.check(off, rawOff + dstOff);
     
-    // Sunday on or after April 4, 2000 is April 9
-    // Test arguments get overidden and perform correctly
-    tz.setStartRule(Calendar.APRIL, 4, -Calendar.SUNDAY, 43200000, true);
+    tz.setEndRule(Calendar.SEPTEMBER, -15, -Calendar.FRIDAY, 43200000);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 9, 0, 41400000);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 41400000);
+    harness.check(off, rawOff + dstOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 45000000);
     harness.check(off, rawOff);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 9, 0, 45000000);
+    // Sunday on or after April 5, 2004 is April 11
+    // Test arguments get overidden and perform correctly
+    tz.setStartRule(Calendar.APRIL, 5, -Calendar.SATURDAY, 43200000, true);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 11, Calendar.SATURDAY, 41400000);
+    harness.check(off, rawOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.APRIL, 11, Calendar.SATURDAY, 45000000);
     harness.check(off, rawOff + dstOff);
+
+    tz.setEndRule(Calendar.SEPTEMBER, 6, -Calendar.FRIDAY, 43200000);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 41400000);
+    harness.check(off, rawOff + dstOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.SEPTEMBER, 10, Calendar.FRIDAY, 45000000);
+    harness.check(off, rawOff);
+
+    // Currently broken in GCJ
+    tz.setEndRule(Calendar.SEPTEMBER, -6, -Calendar.TUESDAY, 43200000);
+
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.AUGUST, 31, Calendar.TUESDAY, 41400000);
+    harness.check(off, rawOff + dstOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2004, Calendar.AUGUST, 31, Calendar.TUESDAY, 45000000);
+    harness.check(off, rawOff);
+
+    // This looks like a Date or DateFormat test, but is here because there was a bug in SimpleTimeZone
+    // PR libgcj/8321
+    Date date = new Date(1034705556525l);
+    TimeZone zone  = TimeZone.getTimeZone("EST");
+    DateFormat dateFormat = DateFormat.getDateTimeInstance(
+                        DateFormat.SHORT,
+                        DateFormat.LONG,
+                        Locale.getDefault());
+    dateFormat.setTimeZone(zone);
+    harness.check("10/15/2002 2:12:36 PM EDT", dateFormat.format(date));
   }
 }

@@ -1,3 +1,8 @@
+2004-05-21  Jerry Quinn  <jlquinn@optonline.net>
+
+	* gnu/testlet/java/util/SimpleTimeZone/check12.java: Fix test to
+	correctly use getOffset.  Add testcase for PR libgcj/8321.
+
 2004-05-19  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Class/init.java: New test.
