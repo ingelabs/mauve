@@ -1,5 +1,9 @@
 2002-11-29  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/File/canWrite.java: New test.
+
+2002-11-29  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/File/list.java: New test.
 	* gnu/testlet/java/io/File/newFile.java: New test.
 
