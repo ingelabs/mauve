@@ -1,3 +1,6 @@
+2005-02-21  Audrius Meskauskas  <audriusa@bluewin.ch>
+    gnu/testlet/javax/swing/JTextArea/text.java: new test
+
 2005-02-21  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* batch_run: Remove mention of JLS1.0, JLS1.2, and JAVA2 tags.
