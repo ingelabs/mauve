@@ -67,7 +67,7 @@ public class BooleanTest implements Testlet
       
       harness.check (! b1.equals( b2 ));
       
-      harness.check (! b1.equals( new Boolean(true) ));
+      harness.check (b1.equals( new Boolean(true) ));
     }
   
   public void test_hashCode(TestHarness harness)

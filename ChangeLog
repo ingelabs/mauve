@@ -1,5 +1,8 @@
 1999-03-16  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Boolean/BooleanTest.java (test_equals):
+	Fixed incorrect test.
+
 	* Makefile.in: Rebuilt.
 	* Makefile.am (harness_files): Added config.java.
 
