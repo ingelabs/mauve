@@ -1,3 +1,12 @@
+2005-02-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/util/Date/after.java, 
+	gnu/testlet/java/util/Date/before.java, 
+	gnu/testlet/java/util/Date/clone.java, 
+	gnu/testlet/java/util/Date/compareTo.java,
+	gnu/testlet/java/util/Date/equals.java,
+	gnu/testlet/java/util/Date/serialization.java: New tests.
+	
 2005-02-18  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/util/LinkedHashMap/LinkedHashMapTest: Fix tag typo.
