@@ -27,6 +27,11 @@ import java.lang.reflect.*;
 
 public class reflect implements Testlet
 {
+  public int do_nothing (int arg)
+  {
+    return ++arg;
+  }
+
   public Class getClass (String name)
   {
     // gcj can't handle `.class' notation yet.
@@ -49,6 +54,20 @@ public class reflect implements Testlet
 	return (decl
 		? k.getDeclaredConstructor (types)
 		: k.getConstructor (types));
+      }
+    catch (Throwable _)
+      {
+	return _;
+      }
+  }
+
+  public Object getMethod (Class k, String name, Class[] types, boolean decl)
+  {
+    try
+      {
+	return (decl
+		? k.getDeclaredMethod (name, types)
+		: k.getMethod (name, types));
       }
     catch (Throwable _)
       {
@@ -156,5 +175,101 @@ public class reflect implements Testlet
     f = getField (rf_help_class, "value", true);
     harness.check(f instanceof Field);
     harness.check(((Field) f).getModifiers(), Modifier.STATIC);
+
+    harness.checkPoint("getField");
+    f = getField (rf_help_class, "size", false);
+    harness.check(f instanceof NoSuchFieldException);
+    f = getField (rf_help_class, "name", false);
+    harness.check(f instanceof Field);
+    harness.check(((Field) f).getModifiers(), Modifier.PUBLIC);
+
+    harness.checkPoint("getDeclaredFields");
+    try
+      {
+	Field[] flds = rf_help_class.getDeclaredFields();
+	harness.check(flds.length, 3);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check(false);
+      }
+
+    harness.checkPoint("getFields");
+    try
+      {
+	Field[] flds = rf_help_class.getFields();
+	harness.check(flds.length, 1);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check(false);
+      }
+
+    harness.checkPoint("getMethod");
+    Object m = getMethod (rf_help_class, "doit", ptz, false);
+    harness.check (m instanceof NoSuchMethodException);
+    m = getMethod (reflect_class, "do_nothing", pt1, false);
+    harness.check (m instanceof Method);
+    harness.check (((Method) m).getName (), "do_nothing");
+    // FIXME: replace `==' with `,' and libgcj will segv.
+    harness.check (((Method) m).getDeclaringClass () == reflect_class);
+
+    harness.checkPoint("getMethods");
+    try
+      {
+	Method[] ms = rf_help_class.getMethods();
+	harness.check (ms.length, 0);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check (false);
+      }
+
+    try
+      {
+	Method[] ms = reflect_class.getMethods();
+	harness.check (ms.length, 6);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check (false);
+      }
+
+    harness.checkPoint("getDeclaredMethod");
+    m = getMethod (rf_help_class, "doit", ptz, true);
+    harness.check (m instanceof Method);
+    harness.check (((Method) m).getName (), "doit");
+    // Make sure we can't fetch a constructor this way.
+    m = getMethod (rf_help_class, "rf_help", ptz, true);
+    harness.check (m instanceof NoSuchMethodException);
+    m = getMethod (reflect_class, "do_nothing", pt1, false);
+    harness.check (m instanceof Method);
+
+    harness.checkPoint("getMethods");
+    try
+      {
+	Method[] ms = rf_help_class.getMethods();
+	harness.check (ms.length, 1);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check (false);
+      }
+
+    try
+      {
+	Method[] ms = reflect_class.getMethods();
+	harness.check (ms.length, 6);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check (false);
+      }
   }
 }
