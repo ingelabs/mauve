@@ -1,3 +1,8 @@
+2004-11-17  Noa Resare  <noa@resare.com>
+
+	* gnu/testlet/java/util/Calendar/set.java:
+	New testcase.
+
 2004-11-17  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/SwingUtilities/computeIntersection.java,

@@ -35,6 +35,7 @@ public class set implements Testlet
   {
     test_DST(harness);
     test_DAY_OF_MONTH(harness);
+    testUnsetFields(harness);
   }
   
   public void test_DST (TestHarness harness)
@@ -100,5 +101,15 @@ public class set implements Testlet
     c.set(Calendar.MONTH, Calendar.JANUARY);
     time = df.format(c.getTime());
     harness.check(time, "Saturday, 2004-01-31 [031] 12:00:00.0000");
+  }
+
+  private void testUnsetFields(TestHarness harness)
+  {
+    Calendar c = Calendar.getInstance();
+    c.clear();
+    c.set(Calendar.YEAR, 1978);
+    c.set(Calendar.MONTH, Calendar.AUGUST);
+    harness.check(c.getTime(), new Date(270777600000L), // 1978-08-01T00:00Z
+		  "A calendar with only YEAR and MONTH set");
   }
 }
