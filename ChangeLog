@@ -1,3 +1,24 @@
+2005-02-21  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* .cvsignore: Add testfilename.txt.
+	* batch_run (COMPILER_FLAGS): Set to -g -O0 if COMPILER is gcj.
+	(NATIVE): Set to true if COMPILER is gcj.
+	Try to use metacity as window manager.  Default to /bin/true if
+	metacity is not found.
+	Add COMPILER_FLAGS to native compilation.
+	* runner: Run with -file option in native case.  Elide
+	kill-on-timeout code.
+	* gnu/testlet/TestHarness.java (createRobot): New method.
+	* gnu/testlet/java/awt/Robot/createScreenCapture.java: Use
+	waitForIdle instead of arbitrary delay.
+	* gnu/testlet/java/awt/Robot/getPixelColor.java: Likewise.
+	* gnu/testlet/java/awt/Robot/keyPress.java: Likewise.
+	* gnu/testlet/java/awt/Robot/keyRelease.java: Likewise.
+	* gnu/testlet/java/awt/Robot/mouseMove.java: Likewise.
+	* gnu/testlet/java/awt/Robot/mousePress.java: Likewise.
+	* gnu/testlet/java/awt/Robot/mouseRelease.java: Likewise.
+	* gnu/testlet/java/awt/Robot/mouseWheel.java: Likewise.
+
 2005-02-20  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/awt/font/TextAttribute/constants.java:

@@ -88,7 +88,7 @@ public class mouseWheel implements Testlet
     r.mouseWheel (2);
     r.mouseWheel (-3);
 
-    r.delay (100);
+    r.waitForIdle ();
 
     harness.check (mouseWheelUpCount == -8);
     harness.check (mouseWheelDownCount == 10);

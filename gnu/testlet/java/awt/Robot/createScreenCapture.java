@@ -65,7 +65,7 @@ public class createScreenCapture implements Testlet
     f.setLocation (0, 0);
     f.show ();
 
-    r.delay (1000);
+    r.waitForIdle ();
 
     BufferedImage screenshot = r.createScreenCapture (new Rectangle (50, 50, 100, 100));
 

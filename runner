@@ -58,8 +58,9 @@ TIMEOUT=$!
 
 testclass=$1
 # Run process
-if test "$RUNTIME" = "native"; then
-    echo $testclass | ./SimpleTestHarness -resultsonly &
+if test "x$RUNTIME" = "xnative"; then
+    echo $testclass > testfilename.txt
+    ./SimpleTestHarness -debug -verbose -file testfilename.txt &
 else
     echo $testclass | $RUNTIME gnu.testlet.SimpleTestHarness -debug -verbose &
 fi
@@ -68,10 +69,11 @@ wait $PID
 result=$?
 
 # cleanup timeout
-trap '' SIGALRM
-if test $KILLED != 1; then
-    kill -9 $TIMEOUT > /dev/null 2>&1
-fi
+# FIXME: this kills tests too early:
+# trap '' SIGALRM
+# if test $KILLED != 1; then
+#     kill -9 $TIMEOUT > /dev/null 2>&1
+# fi
 
 # Test terminated unexpectedly?
 if test $result != 0 -a $result != 1; then

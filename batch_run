@@ -42,11 +42,16 @@ if test "x$COMPILER" = "x"; then
 COMPILER="jikes -bootclasspath /usr/local/classpath/share/classpath/glibj.zip"
 fi
 
+if test "x$COMPILER" = "xgcj"; then
+COMPILER_FLAGS="-g -O0"
+else
 COMPILER_FLAGS="-g"
+fi
 
-if test "x$NATIVE" = "x"; then
+if test "x$COMPILER" = "xgcj"; then
+NATIVE="true"
+else
 NATIVE=
-#NATIVE="true"
 fi
 
 # Cleanup
@@ -68,16 +73,16 @@ fi
 case $KEYS in
     *GUI*)
 
-        XVFB=`which Xvfb`
-        if test "x$WM" = "x"; then
-            WM=`which metacity`
-	    # check if we found metacity
-            if test "x$WM" = "x"; then
-                WM=`which true`
-            fi
-        fi
-
         if test -z "$SHOW_GUI_TESTS"; then
+            XVFB=`which Xvfb`
+            if test "x$WM" = "x"; then
+                WM=`which metacity`
+	        # check if we found metacity
+                if test "x$WM" = "x"; then
+                    WM=`which true`
+                fi
+            fi
+
             if test -z $XVFB; then
 		echo "warning: Xvfb not found on PATH.  Showing GUI tests on main desktop..."
 	    elif test -z $WM; then
@@ -104,7 +109,7 @@ for testclass in `cat test_classes`; do
     if test -z "$NATIVE"; then
         $COMPILER $COMPILER_FLAGS @uses_files
     else
-        $COMPILER -o SimpleTestHarness --main=gnu.testlet.SimpleTestHarness \
+        $COMPILER $COMPILER_FLAGS -o SimpleTestHarness --main=gnu.testlet.SimpleTestHarness \
 	          $framework_sources `cat uses_files`
     fi
     if test $?  == 0; then

@@ -81,7 +81,7 @@ public class mouseMove implements Testlet
     r.mousePress (InputEvent.BUTTON1_MASK);
     r.mouseRelease (InputEvent.BUTTON1_MASK);
 
-    r.delay (100);
+    r.waitForIdle ();
 
     Insets i = f.getInsets ();
 

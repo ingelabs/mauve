@@ -93,7 +93,7 @@ public class keyPress implements Testlet
     r.keyPress (KeyEvent.VK_A);
     r.keyRelease (KeyEvent.VK_A);
 
-    r.delay (100);
+    r.waitForIdle ();
 
     harness.check (pressChar == 'a');
     harness.check (pressCount == 1);

@@ -85,7 +85,7 @@ public class keyRelease implements Testlet
     r.keyPress (KeyEvent.VK_A);
     r.keyRelease (KeyEvent.VK_A);
 
-    r.delay (100);
+    r.waitForIdle ();
 
     harness.check (releaseChar == 'a');
     harness.check (releaseCount == 1);

@@ -79,7 +79,7 @@ public class mousePress implements Testlet
     r.mousePress (InputEvent.BUTTON1_MASK);
     r.mouseRelease (InputEvent.BUTTON1_MASK);
 
-    r.delay (100);
+    r.waitForIdle ();
 
     harness.check (mousePressCount == 1);
   }

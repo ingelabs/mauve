@@ -64,11 +64,11 @@ public class getPixelColor implements Testlet
     f.setLocation (250, 250);
     f.show ();
 
-    r.delay (100);
+    r.waitForIdle ();
 
     Color c = r.getPixelColor (300, 300);
 
-    r.delay (100);
+    r.waitForIdle ();
 
     // check that pixel is red
     harness.check (c.getRed () == 255
