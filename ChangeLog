@@ -1,3 +1,8 @@
+2005-03-10  Dalibor Topic  <robilad@kaffe.org>
+
+	* gnu/testlet/java/io/FileInputStream/fileinputstream.java (fileinputstream): 
+	New test.
+
 2005-03-09  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/java/lang/reflect/Proxy/check13.java: New
