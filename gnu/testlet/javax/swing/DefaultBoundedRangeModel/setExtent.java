@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: setRangeProperties
 
 // Copyright (C) 2003 Sascha Brawer <brawer@dandelis.ch>
 

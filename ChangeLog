@@ -1,3 +1,9 @@
+2004-01-07  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/javax/swing/DefaultBoundedRangeModel/
+	DefaultBoundedRangeModel.java, setExtent.java, setMaximum.java,
+	setMinimum.java, setValue.java: Added "// Uses: setRangeProperties".
+
 2004-01-07  Sascha Brawer  <brawer@dandelis.ch>
 
 	* gnu/testlet/java/awt/geom/QuadCurve2D/solveQuadratic.java: 
