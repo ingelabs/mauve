@@ -1,3 +1,13 @@
+2000-09-06  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/reflect/Method/toString.java: Correctly
+	return result for method is `java.lang.String'.
+
+	* gnu/testlet/java/lang/reflect/Constructor/newInstance.java:
+	Allow null argument list for constructor with no arguments.
+	* gnu/testlet/java/lang/reflect/Method/invoke.java: Allow null
+	argument list for method with no arguments.
+
 2000-08-09  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/io/StreamTokenizer/Test.java: New file.

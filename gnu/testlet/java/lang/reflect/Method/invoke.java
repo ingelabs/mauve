@@ -144,6 +144,10 @@ public class invoke implements Testlet
     try_invoke (harness, na_meth, new NullPointerException (),
 		args0, new IllegalArgumentException ());
 
+    // null argument list is ok, at least according to JDK
+    // implementation.
+    try_invoke (harness, na_meth, this, null, "zardoz");
+
     harness.checkPoint ("takes_int");
     Object[] args1 = new Object[1];
     args1[0] = new Integer (5);
