@@ -207,7 +207,7 @@ public class RunTests extends MatchingTask {
         private boolean haltOnFailure;
         // extend it b/cause someone thought it should not have public constructors.
         public MyTestHarness(boolean verbose, boolean debug, boolean haltOnFailure) {
-            super(verbose, debug, false);
+            super(verbose, debug, false, null);
             this.haltOnFailure = haltOnFailure;
         }
 
