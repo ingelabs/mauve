@@ -28,15 +28,15 @@ import gnu.testlet.TestHarness;
 import java.io.Reader;
 import java.io.IOException;
 
-public class Test implements Testlet
+public class Test extends Reader implements Testlet
 {
 
-class TestReader extends Reader
-{
 	private int index;
 	private String s;
 
-	TestReader(String str)
+	public Test() { }
+
+	Test(String str)
 	{
 		super();
 		s = str;
@@ -57,7 +57,6 @@ class TestReader extends Reader
 	{
 		// nothing to do
 	}
-}
 
 public void 
 test(TestHarness harness)
@@ -67,7 +66,7 @@ test(TestHarness harness)
     "Bottle, and even the dreaded Metro with their sometimes asshole\n" +
     "bouncers.\n";
 
-  TestReader sr = new TestReader(str);
+  Test sr = new Test(str);
   harness.check(true, "StringReader(String)");
   try {		// 1.1 API does not correctly document this exception
     harness.check(!sr.ready(), "ready()");

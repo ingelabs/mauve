@@ -30,31 +30,30 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.CharArrayWriter;
 
-public class jdk11 implements Testlet
+public class jdk11 extends PrintWriter implements Testlet
 {
 
-class TestPrintWriter extends PrintWriter
+public jdk11()
 {
-	TestPrintWriter(OutputStream os)
-	{
-		super(os);
-	}
-
-	public void print(int i, boolean err)
-	{
-		if (err)
-		{
-			this.setError();
-		}
-	}
+  this(null);
 }
 
-class TestObject
+jdk11(OutputStream os)
 {
-	public String toString()
-	{
-		return ("ObjectString");
-	}
+  super(os);
+}
+
+public void print(int i, boolean err)
+{
+  if (err)
+    {
+      this.setError();
+    }
+}
+
+public String toString()
+{
+  return ("ObjectString");
 }
 
 public void
@@ -87,7 +86,7 @@ test(TestHarness harness)
 	pw1.print(i);
 	long l = 65537L;
 	pw1.print(l);
-	pw1.print(new TestObject());
+	pw1.print(new jdk11());
 	pw1.print("XYZ");
 	pw1.write(ca);
 	pw1.write(ca,0,2);
@@ -103,7 +102,7 @@ test(TestHarness harness)
 	pw1.println(y);
 	pw1.println(i);
 	pw1.println(l);
-	pw1.println(new TestObject());
+	pw1.println(new jdk11());
 	pw1.println("XYZ");
 	
 	pw1.flush();
@@ -117,7 +116,7 @@ test(TestHarness harness)
 
 	// Set up to test setError() and checkError()	
 	ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
-	TestPrintWriter tpw = new TestPrintWriter(baos3);
+	jdk11 tpw = new jdk11(baos3);
 	harness.check(!tpw.checkError(), "checkError");
 	tpw.print(3, true);   // forces call to setError
 	harness.check(tpw.checkError(), "setError");

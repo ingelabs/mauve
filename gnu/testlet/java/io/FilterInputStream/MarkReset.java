@@ -30,15 +30,17 @@ import java.io.ByteArrayInputStream;
 import java.io.FilterInputStream;
 import java.io.IOException;
 
-public class MarkReset implements Testlet
+public class MarkReset extends FilterInputStream implements Testlet
 {
 
-class TestInputStream extends FilterInputStream
+public MarkReset()
 {
-	public TestInputStream(ByteArrayInputStream is)
-	{
-		super(is);
-	}
+  this(null);
+}
+
+public MarkReset(ByteArrayInputStream is)
+{
+  super(is);
 }
 
 public void
@@ -51,7 +53,7 @@ test(TestHarness harness)
 
   byte[] str_bytes = str.getBytes();  
   ByteArrayInputStream bais = new ByteArrayInputStream(str_bytes);
-  TestInputStream fis = new TestInputStream(bais);
+  MarkReset fis = new MarkReset(bais);
   byte[] read_buf = new byte[12];
 
   try

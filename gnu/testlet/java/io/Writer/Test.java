@@ -28,16 +28,14 @@ import gnu.testlet.TestHarness;
 import java.io.Writer;
 import java.io.IOException;
 
-public class Test implements Testlet
+public class Test extends Writer implements Testlet
 {
 
-class TestWriter extends Writer
-{
 	private static final int LEN = 100;
 	private int index;
 	private char[] buf;
 
-	TestWriter()
+	public Test()
 	{
 		super();
 		buf = new char[LEN];
@@ -66,12 +64,11 @@ class TestWriter extends Writer
 	{
 		return new String(buf, 0, index);
 	}
-}
 
 public void 
 test(TestHarness harness)
 {
-  TestWriter tw = new TestWriter();
+  Test tw = new Test();
   char[] buff = {'A', 'B', 'C', 'D'};
   try {  // Just one block for all possible IOExceptions
 	tw.write('X');						// X

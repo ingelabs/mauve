@@ -1,5 +1,15 @@
 2003-01-02  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/FilterInputStream/MarkReset.java: Don't use
+	inner classes to help gcj.
+	* gnu/testlet/java/io/FilterWriter/write.java: Likewise.
+	* gnu/testlet/java/io/InputStream/Test.java: Likewise.
+	* gnu/testlet/java/io/PrintWriter/jdk11.java: Likewise.
+	* gnu/testlet/java/io/Reader/Test.java: Likewise.
+	* gnu/testlet/java/io/Writer/Test.java: Likewise.
+
+2003-01-02  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/BufferedInputStream/SimpleRead.java (test):
 	Removed wrong check(false).
 

@@ -29,30 +29,30 @@ import gnu.testlet.TestHarness;
 import java.io.InputStream;
 import java.io.IOException;
 
-public class Test implements Testlet
+public class Test extends InputStream implements Testlet
 {
-  class TestInputStream extends InputStream 
-  {
-	private String s;
-	private int index;
-	TestInputStream (String str)
-	{
-		super();
-		s = str;
-		index = 0;
-	}
+  private String s;
+  private int index;
 
-	public int read() throws IOException
-	{
-		return(index == s.length() ? -1 : s.charAt(index++));
-	}
+  public Test() { }
+
+  Test (String str)
+  {
+    super();
+    s = str;
+    index = 0;
+  }
+
+  public int read() throws IOException
+  {
+    return(index == s.length() ? -1 : s.charAt(index++));
   }
 
   public void test (TestHarness harness)
   {
     try
       {
-		TestInputStream tis = new TestInputStream ("zardoz has spoken");
+		Test tis = new Test ("zardoz has spoken");
 		byte[] cbuf = new byte[10];
 		tis.read (cbuf, 0, cbuf.length);
 		String tst = new String(cbuf);

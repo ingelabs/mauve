@@ -30,19 +30,23 @@ import java.io.IOException;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class write implements Testlet
+public class write extends FilterWriter implements Testlet
 {
-	class TestFilterWriter extends FilterWriter
-	{
-		TestFilterWriter (CharArrayWriter caw)
-		{
-			super((Writer) caw);
-		}
-	}
+
+  public write()
+  {
+    this(null);
+  }
+
+  write (CharArrayWriter caw)
+  {
+    super((Writer) caw);
+  }
+
   public void test (TestHarness harness)
   {
 	CharArrayWriter caw = new CharArrayWriter();
-	TestFilterWriter tfw = new TestFilterWriter(caw);
+	write tfw = new write(caw);
 	try {
 		tfw.write('A');						// A
 		harness.check(true, "write(int)");
