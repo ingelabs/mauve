@@ -27,8 +27,8 @@ package gnu.testlet;
 import java.io.*;
 import java.util.Vector;
 
-public class SimpleTestHarness 
-    extends TestHarness 
+public class SimpleTestHarness
+    extends TestHarness
     implements gnu.testlet.config
 {
   private int count = 0;
@@ -102,24 +102,24 @@ public class SimpleTestHarness
       return separator;
     }
 
-  public Reader getResourceReader (String name) 
+  public Reader getResourceReader (String name)
     throws ResourceNotFoundException
     {
       return (new BufferedReader (new InputStreamReader (
 		getResourceStream (name))));
     }
 
-  public InputStream getResourceStream (String name) 
+  public InputStream getResourceStream (String name)
     throws ResourceNotFoundException
     {
       // The following code assumes File.separator is a single character.
       if (File.separator.length () > 1)
 	throw new Error ("File.separator length is greater than 1");
       String realName = name.replace ('#', File.separator.charAt (0));
-      try 
+      try
 	{
-	  return 
-	    new FileInputStream (getSourceDirectory () 
+	  return
+	    new FileInputStream (getSourceDirectory ()
 				+ File.separator
 				+ realName);
 	}
@@ -222,7 +222,7 @@ public class SimpleTestHarness
 	    {
 	      String d = ("FAIL: " + description
 			  + ": uncaught exception at "
-			  + ((last_check == null) ? "" : 
+			  + ((last_check == null) ? "" :
 			     ("\"" + last_check + "\""))
 			  +" number "
 			  + (count + 1));
@@ -286,20 +286,30 @@ public class SimpleTestHarness
       boolean verbose = false;
       boolean debug = false;
       boolean results_only = false;
+      String file = null;
       int i;
 
-      for (i = 0; i < args.length; i++) 
+      for (i = 0; i < args.length; i++)
 	{
-	  if (args[i].equals("-verbose")) 
+	  if (args[i].equals("-verbose"))
 	    verbose = true;
-	  else if (args[i].equals("-debug")) 
+	  else if (args[i].equals("-debug"))
 	    debug = true;
-	  else if (args[i].equals("-resultsonly")) 
+	  else if (args[i].equals("-resultsonly"))
 	    {
 	      results_only = true;
 	      verbose = false;
 	      debug = false;
 	    }
+          else if (args[i].equalsIgnoreCase("-file"))
+            try
+            {
+              file = args[++i];
+            }
+            catch (Exception x)
+            {
+              throw new RuntimeException ("Missing file path after '-file'. Exit");
+            }
 	  else
 	    break;
         }
@@ -307,8 +317,18 @@ public class SimpleTestHarness
       SimpleTestHarness harness
 	= new SimpleTestHarness (verbose, debug, results_only);
 
-      BufferedReader r
-	= new BufferedReader (new InputStreamReader (System.in));
+      BufferedReader r = null;
+      if (file != null)
+        try
+        {
+          r = new BufferedReader (new FileReader (file));
+        }
+        catch (FileNotFoundException x)
+        {
+          throw new RuntimeException ("Unable to find \""+file+"\". Exit");
+        }
+      else
+        r = new BufferedReader (new InputStreamReader (System.in));
       while (true)
 	{
 	  String cname = null;
@@ -332,3 +352,5 @@ public class SimpleTestHarness
       System.exit(harness.done());
     }
 }
+
+
