@@ -1,3 +1,7 @@
+2004-06-20  Jerry Quinn  <jlquinn@optonline.net>
+
+	* gnu/testlet/java/beans/Statement/check.java: New test.
+
 2004-06-09  Anthony Green  <green@redhat.com>
 
 	* gnu/testlet/java/util/zip/ZipFile/NoEntryTest.java: New test.
