@@ -32,7 +32,7 @@ public class TestSocketImplFactory
 {
   private Constructor implConstructor = null;
   
-  TestSocketImplFactory()
+  public TestSocketImplFactory()
   {
     // We better make sure we can actually return something in case
     // this factory is actually used later.  The trick we use is to
