@@ -1,3 +1,8 @@
+2003-12-27  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/io/CharArrayReader/OutOfBounds.java:
+	New testcase to check exception thrown by CharArrayReader.read(X).
+
 2003-12-22  Michael Koch <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/DatagramPacket/DatagramPacketOffset.java,
