@@ -1,5 +1,25 @@
 2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/java/awt/image/DataBufferByte/
+	getDataType.java, getElem.java: New tests.
+
+	* gnu/testlet/java/awt/image/DataBufferDouble/
+	getDataType.java, getElem.java: New tests.
+
+	* gnu/testlet/java/awt/image/DataBufferFloat/
+	getDataType.java, getElem.java: New tests.
+
+	* gnu/testlet/java/awt/image/DataBufferInt/
+	getDataType.java, getElem.java: New tests.
+
+	* gnu/testlet/java/awt/image/DataBufferShort/
+	getDataType.java, getElem.java: New tests.
+	
+	* gnu/testlet/java/awt/image/DataBufferUShort/
+	getDataType.java, getElem.java: New tests.
+
+2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/javax/imageio/spi/ImageReaderWriterSpi/
 	getFormatNames.java: Check for NullPointerException when
 	instance was created with no-argument constructor.
