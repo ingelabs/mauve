@@ -175,6 +175,17 @@ used are found in that same package as the test case.
 
 ================================================================
 
+Graphical tests that display windows and accept input are marked with
+the GUI tag.  GUI tests are not included in the default list of tags.
+If the GUI tag does appear in KEYS, batch_run will spawn an Xvfb
+process, set DISPLAY to that X server and run the
+graphical/interactive tests there.  By default, metacity is run in
+Xvfb; use the WM environment variable to run a different window
+manager.  If you'd rather run the tests directly on your desktop, set
+SHOW_GUI_TESTS=1.
+
+================================================================
+
 The test harness can also ignore known failures.  Simply create a
 file 'xfails' in the directory where the tests are being run which
 contains 'FAIL:' entries from previous test runs.  The order of the

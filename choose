@@ -69,6 +69,10 @@ while test -n "$taglist"; do
        # You can't specify this.
        :
        ;;
+    GUI)
+       tags="$tags GUI $i"
+       test -z "$seen_dashdash" && spectags="$spectags $i"
+       ;;
     JAVA2)
        tags="$tags JDK1.0 JDK1.1 JDK1.2 $i"
        test -z "$seen_dashdash" && spectags="$spectags $i"

@@ -63,6 +63,32 @@ fi
 # Generate test classes list
 ./choose-classes . "$KEYS"
 
+case $KEYS in
+    *GUI*)
+
+        XVFB=`which Xvfb`
+        if test "x$WM" = "x"; then
+            WM=`which metacity`
+        fi
+
+        if test -z "$SHOW_GUI_TESTS"; then
+            if test -z $XVFB; then
+		echo "warning: Xvfb not found on PATH.  Showing GUI tests on main desktop..."
+	    elif test -z $WM; then
+		echo "warning: metacity not found on PATH.  Showing GUI tests on main desktop..."
+            else
+		export DISPLAY=:57
+		echo localhost > Xvfb.cfg
+		$XVFB :57 -auth Xvfb.cfg > /dev/null 2>&1 &
+		XVFB_PID=$!
+		$WM > /dev/null 2>&1 &
+		WM_PID=$!
+		rm -f Xvfb.cfg
+	    fi
+	fi
+	;;
+esac
+
 # Compile and run all the tests
 for testclass in `cat test_classes`; do
     # Get all needed java sources
@@ -81,3 +107,13 @@ for testclass in `cat test_classes`; do
         echo "FAIL: $testclass COMPILE FAILED"
     fi
 done
+
+case $KEYS in
+    *GUI*)
+
+        # killing Xvfb also kills the window manager process
+        if test ! -z "$XVFB_PID"; then
+            kill $XVFB_PID > /dev/null 2>&1
+        fi
+	;;
+esac

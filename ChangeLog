@@ -1,3 +1,9 @@
+2005-01-03  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* batch_run: Invoke Xvfb and metacity if GUI key is specified.
+	* choose: Handle GUI tag.
+	* README: Add section on GUI tests.
+
 2005-01-03  Arnaud Vandyck  <avdyk@ressource-toi.org>
 
 	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java:
