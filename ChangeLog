@@ -1,3 +1,20 @@
+
+2004-10-31  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/XMLDecoder/data/boolean.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/byte.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/short.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/int.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/long.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/float.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/double.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/simpleElements.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/intArray.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/growableIntArray.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/pointArray.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/growablePointArray.xml: Fixed comment
+	* gnu/testlet/java/beans/XMLDecoder/data/list.xml: Fixed comment
+	
 2004-10-29  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/regress.java:
