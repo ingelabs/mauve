@@ -167,17 +167,20 @@ public class unicode implements Testlet
 		/*
 			Following two ranges are not clearly stated in
 			spec, but they are reasonable;
+			Still, since they aren't explicitly mentioned,
+			and since the Unicode table says nothing about
+			them, we just ignore them.
 		*/
-		for ( int i = 0xFF21; i <= 0xFF3A; i++ )
-		{
-			chars[i].digit = i - 0xFF21 + 10;
-			chars[i].numericValue = chars[i].digit; // ??
-		}
-		for ( int i = 0xFF41; i <= 0xFF5A; i++ )
-		{
-			chars[i].digit = i - 0xFF41 + 10;
-			chars[i].numericValue = chars[i].digit; // ??
-		}
+// 		for ( int i = 0xFF21; i <= 0xFF3A; i++ )
+// 		{
+// 			chars[i].digit = i - 0xFF21 + 10;
+// 			chars[i].numericValue = chars[i].digit; // ??
+// 		}
+// 		for ( int i = 0xFF41; i <= 0xFF5A; i++ )
+// 		{
+// 			chars[i].digit = i - 0xFF41 + 10;
+// 			chars[i].numericValue = chars[i].digit; // ??
+// 		}
 
 		harness.debug("done");
 	}
