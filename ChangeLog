@@ -1,5 +1,10 @@
 2004-05-26  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/BinaryCompatibility/.cvsignore:
+	Ignore the right files.
+
+2004-05-26  Michael Koch  <konqueror@gmx.de>
+
 	* batch_run: Don't set KEYS and COMPILER if already set.
 	* runner: Don't set RUNTIME if already set.
 
