@@ -24,18 +24,19 @@ public class unicode implements Testlet
 	public CharInfo[] chars = new CharInfo[0x10000];
 	public int failures;
 	public int tests;
+	TestHarness harness;
 
 	public unicode() 
 	{
 	}
 
-	public unicode(TestHarness harness, String filename) throws IOException, ResourceNotFoundException
+	public unicode(TestHarness aHarness, String filename) throws IOException, ResourceNotFoundException
 	{
-	  Reader bir = 
-	    harness.getResourceReader ("gnu#testlet#java#lang#Character#"
-				       + filename);
-	  harness.debug("Reading unicode database...");
-
+			harness = aHarness;
+			Reader bir = 
+			  harness.getResourceReader ("gnu#testlet#java#lang#Character#"
+						     + filename);
+			harness.debug("Reading unicode database...");
 			while ( bir.ready() )
 			{
 				String str;
@@ -177,6 +178,8 @@ public class unicode implements Testlet
 			chars[i].digit = i - 0xFF41 + 10;
 			chars[i].numericValue = chars[i].digit; // ??
 		}
+
+		harness.debug("done");
 	}
 
 	private String getNext( Reader r ) throws IOException
@@ -204,6 +207,22 @@ public class unicode implements Testlet
 		return 	"Character " + Integer.toString(ch,16) + ":"
 				+ chars[ch].name;
 	}
+	
+	private void reportError(  String what )
+	{
+		harness.check(false,what);
+	}
+	
+	private void reportError(  int ch, String what )
+	{
+		harness.check(false,stringChar(ch) +" incorectly reported as " + what);	
+	}
+	
+	private void checkPassed()
+	{
+		harness.check(true);
+	}
+		
 
 	public boolean range( int mid, int low, int high )
 	{
@@ -211,7 +230,7 @@ public class unicode implements Testlet
 	}
 
 
-	public void performTests(TestHarness harness)
+	public void performTests()
 	{
 		for ( int x =0; x <= 0xffff; x++ )
 		{
@@ -221,29 +240,29 @@ public class unicode implements Testlet
 			if (  "Ll".equals(chars[i].category) !=
 				Character.isLowerCase((char)i) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isLowerCase((char)i) ? "lowercase" : "not-lowercase" ));
 
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isUpperCase
 			if (  "Lu".equals(chars[i].category) !=
 				Character.isUpperCase((char)i) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isUpperCase((char)i) ? "uppercase" : "not-uppercase" ) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isTitleCase
 			if (  "Lt".equals(chars[i].category) !=
 				Character.isTitleCase((char)i) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isTitleCase((char)i) ? "titlecase" : "not-titlecase" ) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isDigit
 //			if ( (chars[i].category.charAt(0) == 'N') !=
@@ -253,10 +272,10 @@ public class unicode implements Testlet
 					!range(i,0x2000,0x2FFF)
 				) !=Character.isDigit((char)i) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isDigit((char)i) ? "digit" : "not-digit" ) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isDefined
 /*			if ( ((chars[i] != null) ||
@@ -264,39 +283,39 @@ public class unicode implements Testlet
 				if ( !chars[i].category.equals("Cn")
 				 != Character.isDefined((char)i) )
 			{
-				harness.check(false, i + " " + 
+				reportError(i,
 					(Character.isDefined((char)i) ? "defined" : "not-defined" ) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isLetter
 			if ( (
 			(chars[i].category.charAt(0) == 'L')) !=
 				Character.isLetter((char)i) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isLetter((char)i) ? "letter" : "not-letter" ) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isLetterOrDigit
 			if ( Character.isLetterOrDigit(i) !=
 				(Character.isLetter(i) || Character.isDigit(i)) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isLetterOrDigit(i) ? "letterordigit" : "not-letterordigit") );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isSpaceChar
 			if ( (
 			(chars[i].category.charAt(0) == 'Z')) !=
 				Character.isSpaceChar(i) )
 			{
-				harness.check(false, i + " " +
+				reportError(i,
 (Character.isSpaceChar(i) ? "spacechar" : "not-spacechar" ) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // isWhiteSpace
 		boolean t = false;
@@ -309,20 +328,20 @@ public class unicode implements Testlet
 
 		if ( t != Character.isWhitespace(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isWhitespace(i) ? "whitespace" : "not-whitespace" );
 		}
-		else harness.check(true);
+		else checkPassed();
 
 // isISOControl
 		if (  ((i <= 0x001F)
 		|| range(i,0x007F,0x009F) ) !=
 			Character.isISOControl(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isISOControl(i) ? "isocontrol" : "not-isocontrol");
 		}
-		else harness.check(true);
+		else checkPassed();
 
 		int type = Character.getType(i);
 		String typeStr = null;
@@ -361,11 +380,11 @@ Character.isISOControl(i) ? "isocontrol" : "not-isocontrol");
 
 		if ( !chars[i].category.equals(typeStr) )
 		{
-			harness.check(false, 
+			reportError( 
 				stringChar(i) + " is reported to be type " + typeStr +
 					" instead of " + chars[i].category);
 		}
-		else harness.check(true);
+		else checkPassed();
 
 // isJavaIdentifierStart
 		if ( ( (chars[i].category.charAt(0) == 'L') ||
@@ -373,10 +392,10 @@ Character.isISOControl(i) ? "isocontrol" : "not-isocontrol");
 				chars[i].category.equals("Pc") ) !=
 			Character.isJavaIdentifierStart(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isJavaIdentifierStart(i) ? "javaindetifierstart" : "not-javaidentfierstart");
 		}
-		else harness.check(true);
+		else checkPassed();
 
 // isJavaIdentifierPart
 		boolean shouldbe = false;
@@ -395,19 +414,19 @@ Character.isJavaIdentifierStart(i) ? "javaindetifierstart" : "not-javaidentfiers
 				!range(i,0x0009,0x000D) && !range(i,0x001C,0x001F))
 			) != Character.isJavaIdentifierPart(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isJavaIdentifierPart(i) ? "javaidentifierpart" : "not-javaidentifierpart" );
 		}
-		else harness.check(true);
+		else checkPassed();
 
 //isUnicodeIdentifierStart
 		if ( (chars[i].category.charAt(0) == 'L') !=
 			Character.isUnicodeIdentifierStart(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isUnicodeIdentifierStart(i) ? "unicodeidentifierstart" : "not-unicodeidentifierstart" );
 		}
-		else harness.check(true);
+		else checkPassed();
 
 //isUnicodeIdentifierPart
 		shouldbe = false;
@@ -425,10 +444,10 @@ Character.isUnicodeIdentifierStart(i) ? "unicodeidentifierstart" : "not-unicodei
 				!range(i,0x0009,0x000D) && !range(i,0x001C,0x001F))
 			) != Character.isUnicodeIdentifierPart(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isUnicodeIdentifierPart(i) ? "unicodeidentifierpart" : "not-unicodeidentifierpart" );
 		}
-		else harness.check(true);
+		else checkPassed();
 
 
 //isIdentifierIgnorable
@@ -443,32 +462,32 @@ Character.isUnicodeIdentifierPart(i) ? "unicodeidentifierpart" : "not-unicodeide
 				i == 0xFEFF
 			) != Character.isIdentifierIgnorable(i) )
 		{
-			harness.check(false, 
+			reportError(i,
 Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignorable");
 		}
-		else harness.check(true);
+		else checkPassed();
 
 // toLowerCase
 			char cs = (chars[i].lowercase != 0 ? chars[i].lowercase : i);
 			if ( Character.toLowerCase(i) != cs )
 			{
-				harness.check(false, stringChar(i) + " has wrong lowercase form of " +
+				reportError(stringChar(i) + " has wrong lowercase form of " +
 				stringChar(Character.toLowerCase(i)) +" instead of " +
 				stringChar(cs) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // toUpperCase
 			cs =(chars[i].uppercase != 0 ? chars[i].uppercase : i);
 			if ( Character.toUpperCase(i) != cs )
 			{
-				harness.check(false, stringChar(i) +
+				reportError( stringChar(i) +
 				" has wrong uppercase form of " +
 				stringChar(Character.toUpperCase(i)) +
 				" instead of " +
 				stringChar(cs) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // toTitleCase
 			cs = (chars[i].titlecase != 0 ? chars[i].titlecase :
@@ -481,13 +500,13 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 
 			if ( Character.toTitleCase(i) != cs )
 			{
-				harness.check(false, stringChar(i) +
+				reportError( stringChar(i) +
 				" has wrong titlecase form of " +
 				stringChar(Character.toTitleCase(i)) +
 				" instead of " + 
 				stringChar(cs) );
 			}
-			else harness.check(true);
+			else checkPassed();
 
 // digit
 			int	digit = chars[i].digit;
@@ -497,18 +516,18 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 				int sb = digit < radix ? digit : -1;
 				if ( Character.digit(i,radix) != sb )
 				{
-					harness.check(false, stringChar(i) + " has wrong digit form of "
+					reportError( stringChar(i) + " has wrong digit form of "
 						+ Character.digit(i,radix) + " for radix " + radix + " instead of "
 						+ sb );
 				}
-				else harness.check(true);
+				else checkPassed();
 			}
 
 // getNumericValue
 			if ( chars[i].numericValue !=
 				Character.getNumericValue(i) )
 			{
-				harness.check(false, stringChar(i) + " has wrong numeric value of " +
+				reportError( stringChar(i) + " has wrong numeric value of " +
 					Character.getNumericValue(i) + " instead of " + chars[i].numericValue);
 			}
 
@@ -521,10 +540,10 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 				if ( (i == '$' || i == '_' || Character.isLetter(i)) !=
 					Character.isJavaLetter(i) )
 				{
-					harness.check(false, i + " " +
+					reportError(i,
 (Character.isJavaLetter(i)? "javaletter" : "not-javaletter"));
 				}
-				else harness.check(true);
+				else checkPassed();
 
 // isJavaLetterOrDigit
 				if ((Character.isJavaLetter(i) || Character.isDigit(i) ||
@@ -532,19 +551,19 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 					Character.isJavaLetterOrDigit(i)
 					 )
 				{
-					harness.check(false, i + " " +
+					reportError(i,
 (Character.isJavaLetterOrDigit(i) ? "javaletterordigit" : "not-javaletterordigit") );
 				}
-				else harness.check(true);
+				else checkPassed();
 
 // isSpace
 				if (((i == ' ' || i == '\t' || i == '\n' || i == '\r' ||
 						i == '\f')) != Character.isSpace(i) )
 				{
-					harness.check(false, i + " " +
+					reportError(i,
 (Character.isSpace(i) ? "space" : "non-space" ) );
 				}
-				else harness.check(true);
+				else checkPassed();
 			} // testDeprecated
 
 		} // for
@@ -571,16 +590,17 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 
 			if ( dch != wantch )
 			{
-				harness.check(false, "Error in forDigit(" + d +
+				reportError( "Error in forDigit(" + d +
 					"," + r + "), got " + dch + " wanted " +
 					wantch );
 			}
-			else harness.check(true);
+			else checkPassed();
 		}
 	}
 
 
 	}
+
 
 	public void test(TestHarness harness)
 	{
@@ -588,7 +608,7 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 			long start = System.currentTimeMillis();
 			unicode t = new unicode(harness, "UnicodeData.txt");
 			long midtime = System.currentTimeMillis();
-			t.performTests(harness);
+			t.performTests();
 			harness.debug("Bechmark : load:" + (midtime-start) + 
 				"ms   tests:" +  (System.currentTimeMillis() - midtime) + "ms");
 		}

@@ -37,19 +37,23 @@ public class SimpleTestHarness extends TestHarness
   private String last_check;
   private String srcdir;
 
+  private final String getDescription (String pf)
+    {
+      return (pf + ": " + description
+	      + ((last_check == null) ? "" : (": " + last_check))
+	      + " (number " + (count + 1) + ")");
+    }
+
   public void check (boolean result)
     {
-      String d = (description
-		  + ((last_check == null) ? "" : (": " + last_check))
-		  + " (number " + (count + 1) + ")");
       if (! result)
 	{
-	  System.out.println("FAIL: " + d);
+	  System.out.println (getDescription ("FAIL"));
 	  ++failures;
 	}
       else if (verbose)
 	{
-	  System.out.println("PASS: " + d);
+	  System.out.println (getDescription ("PASS"));
 	}
       ++count;
       ++total;

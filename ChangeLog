@@ -1,5 +1,18 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/unicode.java (unicode): Use
+	getResourceReader method from harness.
+
+	* gnu/testlet/java/lang/Character/unicode.java: New version from
+	Artur Biesiadowski.
+
+	* THANKS: New file.
+
+	Variant of patch from Artur Biesiadowski:
+	* gnu/testlet/SimpleTestHarness.java (getDescription): New
+	method.
+	(check): Use it.
+
 	* gnu/testlet/java/lang/Integer/new_Integer.java (test): Added
 	checkpoints.
 
