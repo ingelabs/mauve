@@ -1,3 +1,9 @@
+2004-10-20  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/BasicStroke/constants.java: New test.
+	* gnu/testlet/java/awt/BasicStroke/constructors.java: Likewise.
+	* gnu/testlet/java/awt/BasicStroke/equals.java: Likewise.
+	
 2004-10-19  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/Object/clone.java:
