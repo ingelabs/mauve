@@ -1,4 +1,8 @@
 2002-12-26  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/FilterWriter/write.java:
+	Added tests for FilterWriter class
+
+2002-12-26  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/PipedStream/close.java:
 	Modified test of input stream close() method to match reference
 	behavior.
