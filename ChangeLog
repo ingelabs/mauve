@@ -1,3 +1,8 @@
+2003-06-27  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/text/CollationElementIterator/jdk11.java :
+	added tests that 'a'<'A' at tertiary level, etcetera
+
 2003-06-24  Stephen Crawley  <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/text/CollationElementIterator/jdk11.java :
