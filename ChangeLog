@@ -1,5 +1,7 @@
 1999-03-23  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/BreakIterator/sentiter.java: New file.
+
 	* gnu/testlet/java/text/BreakIterator/lineiter.java: New file.
 
 1999-03-22  Tom Tromey  <tromey@cygnus.com>
