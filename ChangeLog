@@ -1,4 +1,10 @@
+2004-04-12  Mark Wielaar  <mark@klomp.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/Compat1.java: Use check with
+	two argument, not equals(), to show what is actually different.
+
 2004-04-09  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Character/unicode.java: Numerous fixes.
 	Use Unicode 3.0.0 code tables.  Reimplemented various tests to
 	match the javadoc for java.lang.Character in JDK 1.4.  Refactored
@@ -16,6 +22,7 @@
 	data.
 
 2004-04-05  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Character/unicode.java: Fixed up crappy 
 	indentation, etc prior to making some real fixes.
 

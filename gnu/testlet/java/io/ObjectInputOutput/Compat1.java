@@ -68,7 +68,7 @@ public class Compat1 implements Testlet
       {
 	generate (SERIAL_SCRATCH_FILENAME, rand_id);
 	t.check (true);
-	t.check(readSerial (SERIAL_SCRATCH_FILENAME).equals (getBigInt (rand_id)));
+	t.check(readSerial (SERIAL_SCRATCH_FILENAME), getBigInt (rand_id));
       }
     catch (Exception e)
       {
@@ -81,7 +81,7 @@ public class Compat1 implements Testlet
 	ObjectInputStream ois = new ObjectInputStream (t.getResourceStream 
 				  (getClass().getName().replace ('.', '#') + "." + SERIAL_REFERENCE));
 
-	t.check(ois.readObject().equals (getBigInt (SERIAL_REF_ID)));
+	t.check(ois.readObject(), getBigInt (SERIAL_REF_ID));
       }
     catch (Exception e)
       {
