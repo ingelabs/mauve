@@ -1,3 +1,6 @@
+2005-02-07  David Gilbert <david.gilbert@object-refinery.com>
+	* gnu/testlet/java/text/DecimalFormat/equals.java: New tests.
+	
 2005-02-07  Thomas Zander <zander@kde.org>
 	* gnu/testlet/java/io/FileDescriptor/jdk11.java,
 	gnu/testlet/java/io/FileReader/jdk11.java, gnu/testlet/java/io/FileWriter/jdk11.java,
