@@ -1,3 +1,9 @@
+2005-03-08  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/EventHandler/check.java: New test.
+	* gnu/testlet/java/beans/EventHandler/check14.java: Added
+	new test.
+
 2005-03-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/Font/serialization.java: New test.

@@ -65,9 +65,18 @@ public class check14 implements Testlet
     public void listen1(check14.Event x);
     public void listen2(check14.Event x);
   }
-
+  
+  /* A Listener interface without arguments in the methods. */
+  public interface Listener2
+  {
+	  public void listen1();
+	  public void listen2();
+  }
 
   public static int x = 0;
+  
+  /* A variable that has to be set by calling itself. */
+  public boolean called;
 
   public void test (TestHarness harness)
   {
@@ -77,6 +86,7 @@ public class check14 implements Testlet
     // Basic event handler value tests
     EventHandler eh = new EventHandler(target, "action", "a.c.b", "listen1");
 
+	// Note: Referential equality works because all String instances where available at compilation time
     harness.check(eh.getAction() == "action", "Check basic settings");
     harness.check(eh.getEventPropertyName() == "a.c.b");
     harness.check(eh.getListenerMethodName() == "listen1");
@@ -123,6 +133,7 @@ public class check14 implements Testlet
     // Static create tests
     Listener o1 = (Listener) EventHandler.create(Listener.class,
 						 target, "action");
+	
     o1.listen1(ev);
     harness.check(target.flag == true, "Test null event property");
     target.reset();
@@ -131,7 +142,18 @@ public class check14 implements Testlet
     harness.check(target.flag == true);
     harness.check(target.str == "yes");
     target.reset();
-
+	
+	/* Listener methods may have no arguments, too. This tests whether these methods
+	 * are properly implemented when calling the static create methods of EventHandler. 
+	 */
+	Listener2 l2 = (Listener2) EventHandler.create(Listener2.class, target, "action1");
+	l2.listen1();
+	harness.check(target.flag, true, "no argument listener method 1");
+	target.reset();
+	
+	l2.listen2();
+	harness.check(target.flag, true, "no argument listener method 2");
+	target.reset();
 
     Listener o2 = (Listener) EventHandler.create(Listener.class,
 						 target, "action1");
@@ -182,6 +204,11 @@ public class check14 implements Testlet
 	found = true;
     
     harness.check(found == true, "Proxy implements Listener");
+	
   }
 
+  public void targetMethod() {
+	  called = true;
+  }
+  
 }
