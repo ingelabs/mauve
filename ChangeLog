@@ -1,3 +1,38 @@
+2005-01-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/DefaultListModel/addElement.java,
+	* gnu/testlet/javax/swing/DefaultListModel/add.java,
+	* gnu/testlet/javax/swing/DefaultListModel/capacity.java,
+	* gnu/testlet/javax/swing/DefaultListModel/clear.java,
+	* gnu/testlet/javax/swing/DefaultListModel/constructor.java,
+	* gnu/testlet/javax/swing/DefaultListModel/contains.java,
+	* gnu/testlet/javax/swing/DefaultListModel/copyInto.java,
+	* gnu/testlet/javax/swing/DefaultListModel/elementAt.java,
+	* gnu/testlet/javax/swing/DefaultListModel/elements.java,
+	* gnu/testlet/javax/swing/DefaultListModel/ensureCapacity.java,
+	* gnu/testlet/javax/swing/DefaultListModel/firstElement.java,
+	* gnu/testlet/javax/swing/DefaultListModel/getElementAt.java,
+	* gnu/testlet/javax/swing/DefaultListModel/get.java,
+	* gnu/testlet/javax/swing/DefaultListModel/getSize.java,
+	* gnu/testlet/javax/swing/DefaultListModel/indexOf.java,
+	* gnu/testlet/javax/swing/DefaultListModel/insertElementAt.java,
+	* gnu/testlet/javax/swing/DefaultListModel/isEmpty.java,
+	* gnu/testlet/javax/swing/DefaultListModel/lastElement.java,
+	* gnu/testlet/javax/swing/DefaultListModel/lastIndexOf.java,
+	* gnu/testlet/javax/swing/DefaultListModel/MyListDataListener.java,
+	* gnu/testlet/javax/swing/DefaultListModel/removeAllElements.java,
+	* gnu/testlet/javax/swing/DefaultListModel/removeElementAt.java,
+	* gnu/testlet/javax/swing/DefaultListModel/removeElement.java,
+	* gnu/testlet/javax/swing/DefaultListModel/remove.java,
+	* gnu/testlet/javax/swing/DefaultListModel/removeRange.java,
+	* gnu/testlet/javax/swing/DefaultListModel/setElementAt.java,
+	* gnu/testlet/javax/swing/DefaultListModel/set.java,
+	* gnu/testlet/javax/swing/DefaultListModel/setSize.java,
+	* gnu/testlet/javax/swing/DefaultListModel/size.java,
+	* gnu/testlet/javax/swing/DefaultListModel/toArray.java,
+	* gnu/testlet/javax/swing/DefaultListModel/trimToSize.java:
+	New tests.
+	
 2005-01-18  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/util/SimpleTimeZone/constructors.java:
