@@ -229,6 +229,17 @@ public class unicode implements Testlet
 		return (mid >= low && mid <= high);
 	}
 
+	public boolean ignorable(int i)
+	{
+	  return (range(i,0x0000,0x0008) ||
+		  range(i,0x000E,0x001B) ||
+		  // According to JDK 1.2 docs, 7f-9f are ignorable.
+		  range(i,0x007f,0x009f) ||
+		  range(i,0x200C,0x200F) ||
+		  range(i,0x202A,0x202E) ||
+		  range(i,0x206A,0x206F) ||
+		  i == 0xFEFF);
+	}
 
 	public void performTests()
 	{
@@ -410,16 +421,7 @@ Character.isJavaIdentifierStart(i) ? "javaindetifierstart" : "not-javaidentfiers
 			typeStr.equals("Mc") ||
 			typeStr.equals("Mn") ||
 			typeStr.equals("Cf") ||
-			(typeStr.equals("Cc")
-			 // This test comes from JCL volume 1.
-			 && (range (i, 0, 8)
-			     || range (i, 0x0e, 0x1b)
-			     || range (i, 0x200c, 0x200f)
-			     // However, the JCL book has a typo which
-			     // we fix on the next line.
-			     || range (i, 0x202a, 0x202e)
-			     || range (i, 0x206a, 0x206f)
-			     || i == 0xfeff))
+			(typeStr.equals("Cc") && ignorable (i))
 			) != Character.isJavaIdentifierPart(i) )
 		{
 			reportError(i,
@@ -448,16 +450,7 @@ Character.isUnicodeIdentifierStart(i) ? "unicodeidentifierstart" : "not-unicodei
 			typeStr.equals("Mc") ||
 			typeStr.equals("Mn") ||
 			typeStr.equals("Cf") ||
-			(typeStr.equals("Cc")
-			 // This test comes from JCL volume 1.
-			 && (range (i, 0, 8)
-			     || range (i, 0x0e, 0x1b)
-			     || range (i, 0x200c, 0x200f)
-			     // However, the JCL book has a typo which
-			     // we fix on the next line.
-			     || range (i, 0x202a, 0x202e)
-			     || range (i, 0x206a, 0x206f)
-			     || i == 0xfeff))
+			(typeStr.equals("Cc") && ignorable (i))
 			) != Character.isUnicodeIdentifierPart(i) )
 		{
 			reportError(i,
@@ -469,12 +462,7 @@ Character.isUnicodeIdentifierPart(i) ? "unicodeidentifierpart" : "not-unicodeide
 //isIdentifierIgnorable
 		if (
 			(
-			range(i,0x0000,0x0008) ||
-			range(i,0x000E,0x001B) ||
-			range(i,0x200C,0x200F) ||
-			range(i,0x202A,0x202E) ||
-			range(i,0x206A,0x206F) ||
-				i == 0xFEFF
+			 ignorable (i)
 			) != Character.isIdentifierIgnorable(i) )
 		{
 			reportError(i,

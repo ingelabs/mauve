@@ -1,5 +1,9 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/unicode.java (ignorable): New
+	method.  Partially reverts previous change (JDK 1.2 says that
+	7f-95 are ignorable).
+
 	* gnu/testlet/java/lang/Character/unicode.java (performTests):
 	Fixed definition of ignorable control character for
 	isJavaIdentifierPart and isUnicodeIdentifierPart tests.
