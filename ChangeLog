@@ -13,6 +13,25 @@
 	Based on a suggestion from Amit Jain (amitrjain@hotmail.com)
 	* gnu/testlet/java/lang/String/split.java: New test.
 
+2005-02-05 Audrius Meskauskas <audriusa@bluewin.ch>
+
+	* gnu/testlet/javax/swing/text/html/HTML/HTML_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/AttributeList/AttributeList_test.java 
+	gnu/testlet/javax/swing/text/html/parser/DTD/DTD_test.java,
+	gnu/testlet/javax/swing/text/html/parser/Element/Element_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/Entity/Entity_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/TagElement/TagElement_Test.java:
+	Changed JDK tag to 1.2.
+
+2005-02-05 Audrius Meskauskas <audriusa@bluewin.ch>
+
+	* gnu/testlet/javax/swing/text/html/parser/AttributeList/AttributeList_test.java ,
+	gnu/testlet/javax/swing/text/html/parser/DTD/DTD_test.java,
+	gnu/testlet/javax/swing/text/html/parser/Element/Element_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/Entity/Entity_Test.java,
+	gnu/testlet/javax/swing/text/html/parser/TagElement/TagElement_Test.java:
+	New tests.
+	
 2005-02-02  David Daney <ddaney@avtrex.com>
 
 	* gnu/testlet/java/net/InetAddress/getByAddress.java:
