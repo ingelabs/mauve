@@ -27,6 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.SimpleTimeZone;
 import java.util.TimeZone;
+import java.util.Locale;
 
 public class set implements Testlet
 {
@@ -84,7 +85,7 @@ public class set implements Testlet
   {
     harness.checkPoint("setting DAY_OF_MONTH etc shouldn't effect other fields");
     Calendar c = Calendar.getInstance();
-    SimpleDateFormat df = new SimpleDateFormat("EEEEEEEEEEEEE, yyyy-MM-dd [DDD] HH:mm:ss.SSSS");
+    SimpleDateFormat df = new SimpleDateFormat("EEEEEEEEEEEEE, yyyy-MM-dd [DDD] HH:mm:ss.SSSS", Locale.US);
     c.set(2004, 9, 1, 12, 0, 0);
     c.set(Calendar.MILLISECOND, 0);
     
