@@ -1,3 +1,8 @@
+2003-09-09  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/reflect/Array/set.java: Check IllegalArgument
+	and ArrayIndexOutOfBoundsException.
+
 2003-09-07  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/text/DecimalFormat/digits.java: New test.
