@@ -61,9 +61,16 @@ public class solveQuadratic
     // -x^2 + 4x = 0 --> x = {0, 4}
     checkSolutions(-1, 4, 0, new double[]{0, 4});
 
-    // -(x^3)/10 + 20x + 1000 = 0
+    // (x^2)/10 + 20x + 1000 = 0
+    //
     // Sun J2SE 1.4.1_01 (GNU/Linux i386) reports the result -100
-    // twice.
+    // twice, which is not correct.
+    //
+    // The GNU Classpath implementation of 2004-01-07 seems to have a
+    // numeric stability problem that manifests with some VMs (such as
+    // gcj on IA-32), but not with others (such as jamvm, or Sun J2SE
+    // 1.4.1_01 executing the Classpath implementation).
+    // See Classpath bug #7123.
     checkSolutions(.1, 20, 1000, new double[]{-100});
 
     // Test case for b^2 >> 4ac

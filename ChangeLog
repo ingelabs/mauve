@@ -1,3 +1,10 @@
+2004-01-07  Sascha Brawer  <brawer@dandelis.ch>
+
+	Classpath bug #7123.
+	* gnu/testlet/java/awt/geom/QuadCurve2D/solveQuadratic.java
+	((x^2)/10 + 20x + 1000 = 0): Add a comment explaining the situation
+	on various VMs.
+
 2004-01-07  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/javax/swing/DefaultBoundedRangeModel/
