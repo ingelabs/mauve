@@ -43,33 +43,31 @@ public class basic implements Testlet
 	   But it would seem likely that someone will write a program expecting the files to be enumerated the same way every time
 	*/
 
-	int item = 1;
+	int item = 0;
 	Enumeration e = jarfile.entries();
 	while(e.hasMoreElements())
 	    {
 		JarEntry je = (JarEntry) e.nextElement();
+		String n = je.getName();
 		String s = new BufferedReader(new InputStreamReader(jarfile.getInputStream(je))).readLine();
-		switch(item)
-		    {
-		    case 1:
-			harness.check(s == null);
-			break;
-		    case 2:
-			harness.check(s.equals("Manifest-Version: 1.0"));
-			break;
-		    case 3:
-			harness.check(s.equals("this jar file was created with the jar tool for IBM JDK 1.3"));
-			break;
-		    case 4:
-			harness.check(s.equals("We seek peace. We strive for peace. And sometimes peace must be defended. A future lived at the mercy of terrible threats is no peace at all. If war is forced upon us, we will fight in a just cause and by just means -- sparing, in every way we can, the innocent. And if war is forced upon us, we will fight with the full force and might of the United States military -- and we will prevail."));
-			break;
-		    case 5:
-			harness.check(s.equals("I am he as you are he as you are me and we are all together."));
-			break;
-		    }
-		//		System.out.println("item " + item + " and string '" + s + "'");
+
+		if ("META-INF/".equals(n))
+		  harness.check(s == null);
+		else if ("META-INF/MANIFEST.MF".equals(n))
+		  harness.check(s.equals("Manifest-Version: 1.0"));
+		else if ("file1".equals(n))
+		  harness.check(s.equals("this jar file was created with the jar tool for IBM JDK 1.3"));
+		else if ("file2".equals(n))
+		  harness.check(s.equals("We seek peace. We strive for peace. And sometimes peace must be defended. A future lived at the mercy of terrible threats is no peace at all. If war is forced upon us, we will fight in a just cause and by just means -- sparing, in every way we can, the innocent. And if war is forced upon us, we will fight with the full force and might of the United States military -- and we will prevail."));
+		else if ("file3".equals(n))
+		  harness.check(s.equals("I am he as you are he as you are me and we are all together."));
+		else
+		  harness.check(false, "Unexpected entry: " + n);
+
 		item++;
 	    }
+
+	harness.check(item, 5);
 
 	jarfile.close();
 

@@ -1,5 +1,10 @@
 2003-02-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/jar/JarFile/basic.java: Don't test order,
+	only test that all entries have the correct content.
+
+2003-02-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/BufferedOutputStream/interrupt.java (test): In
 	theory what happens when a InterruptedIOException is thrown should be
 	in the specification, in practice it is never defined.
