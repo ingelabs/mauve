@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Unread.java -- PushbackInputStream basic unread tests.
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 1999 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -62,7 +62,7 @@ test(TestHarness harness)
       int bytes_read, total_read = 0;
       while ((bytes_read = pist.read(read_buf1)) != -1)
         {
-          System.out.print(new String(read_buf1, 0, bytes_read));
+          harness.debug(new String(read_buf1, 0, bytes_read), false);
           total_read += bytes_read;
         }
 
