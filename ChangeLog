@@ -1,3 +1,7 @@
+1999-01-27  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/StringBuffer/plus.java: New file.
+
 Mon Jan 25 18:31:26 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/sql/Connection/TestJdbc10.java: Added this test
