@@ -1,5 +1,8 @@
 1999-01-08  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/UnicodeData.txt: Updated to
+	version 2.1.5.
+
 	* gnu/testlet/java/lang/Character/unicode.java: Moved CharInfo
 	into its own file.
 	* gnu/testlet/java/lang/Character/CharInfo.java: New file.
