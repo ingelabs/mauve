@@ -1,5 +1,19 @@
 2005-02-18  Robert Schuster <thebohemian@gmx.net>
 
+    * gnu/testlet/java/beans/XMLDecoder/jdk14.java: Added
+    new subtest.
+    * gnu/testlet/java/beans/XMLDecoder/DoubleArrayChecker.java: New
+    file.
+    * gnu/testlet/java/beans/XMLDecoder/DecoderTestHelper.java: Added
+    constructor copying name argument to field.
+    * gnu/testlet/java/beans/XMLDecoder/PointArrayChecker.java: Fixed
+    equality check.
+    * gnu/testlet/java/beans/XMLDecoder/data/GrowableDoubleArray.xml,
+    gnu/testlet/java/beans/XMLDecoder/GrowableIntArray2.xml: New
+    testdata.
+
+2005-02-18  Robert Schuster <thebohemian@gmx.net>
+
     * gnu/testlet/java/nio/charset/Charset/forName.java: Added
     a subtest.    
 

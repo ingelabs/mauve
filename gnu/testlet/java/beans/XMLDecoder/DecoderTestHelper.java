@@ -61,6 +61,8 @@ class DecoderTestHelper
   {
     if (name == null || name.length() == 0)
       throw new IllegalArgumentException("Please provide a name for this test.");
+    
+    this.name = name;
 
     if (xmlResourceFilename == null)
       throw new IllegalArgumentException("No filename to a XML resource file provided.");
@@ -180,8 +182,6 @@ class DecoderTestHelper
       {
 	// this exception is expected
 	decoder.close();
-
-	harness.verbose(name + " - finished without problems.");
 
 	return;
       }

@@ -20,37 +20,30 @@
 
 package gnu.testlet.java.beans.XMLDecoder;
 
-import java.awt.Point;
 
-/** Simply expects two java.awt.Point arrays and compares their content
- * for equality.
- * This is used for the pointArrayTest and the growablePointArrayTest.
- * See <code>IntArrayChecker</code> for a reason why this
- * <code>EqualityChecker</code> implementation is neccessary.
- *
- * Note: This implementation assumes that the array contains <b>only</b>
- * non-null values.
+/** Simply expects two double arrays and compares their content for equality.
+ * This is used for the growableDoubleArrayTest and is needed because the
+ * following comparison results to <code>false</code> in Java
+ * <code>new double[] { 1, 2, 3 }.equals(new double[] { 1, 2, 3 })</code>.
  *
  * @author Robert Schuster
  */
-class PointArrayChecker implements EqualityChecker
+class DoubleArrayChecker implements EqualityChecker
 {
   public boolean areEqual(Object firstObject, Object secondObject)
   {
     try
       {
-	// assure that the decoded object is really a java.awt.Point array
-	// using reflection alchemy :) 
-	if (! Class.forName("[Ljava.awt.Point;").isInstance(firstObject))
+	if (! Class.forName("[D").isInstance(firstObject))
 	  return false;
       }
     catch (ClassNotFoundException cnfe)
       {
-	throw new InternalError("VM was unable to return the class representing an java.awt.Point array.");
+	throw new InternalError("VM was unable to return the class representing an double array.");
       }
 
-    Point[] decodedArray = (Point[]) firstObject;
-    Point[] expectedArray = (Point[]) secondObject;
+    double[] decodedArray = (double[]) firstObject;
+    double[] expectedArray = (double[]) secondObject;
 
     if (decodedArray.length != expectedArray.length)
       return false;
@@ -58,8 +51,7 @@ class PointArrayChecker implements EqualityChecker
     int size = decodedArray.length;
     for (int i = 0; i < size; i++)
       {
-    	
-	if (!decodedArray[i].equals(expectedArray[i]))
+	if (decodedArray[i] != expectedArray[i])
 	  return false;
       }
 

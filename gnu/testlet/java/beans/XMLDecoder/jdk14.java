@@ -1,6 +1,6 @@
 //Tags: JDK1.4
 
-//Uses: DecoderTestHelper EqualityChecker IntArrayChecker PointArrayChecker
+//Uses: DecoderTestHelper EqualityChecker IntArrayChecker PointArrayChecker DoubleArrayChecker
 
 //Copyright (C) 2004 Robert Schuster <theBohemian@gmx.net>
 
@@ -220,6 +220,24 @@ public class jdk14 implements Testlet
 
     // keep the following synchronized with the XML file!
     testHelper.addObject(new int[] { 0, 1, 2, 3, 4, 5 }, new IntArrayChecker());
+    addHelper(testHelper);
+
+    /* Tests decoding a growable int array that has non-int subelements (that is byte and
+     * short).
+     */
+    testHelper = new DecoderTestHelper("growableIntArray2",
+                                       "gnu#testlet#java#beans#XMLDecoder#data#growableIntArray2.xml");
+    
+    // keep the following synchronized with the XML file!
+    testHelper.addObject(new int[] { 0, 1, 2 }, new IntArrayChecker());
+    addHelper(testHelper);
+
+    // Tests decoding a growable int array (the growing is performed while decoding).
+    testHelper = new DecoderTestHelper("growableDoubleArray",
+                                       "gnu#testlet#java#beans#XMLDecoder#data#growableDoubleArray.xml");
+
+    // keep the following synchronized with the XML file!
+    testHelper.addObject(new double[] { 0, 1, 2, 3, 4, 5 }, new DoubleArrayChecker());
     addHelper(testHelper);
 
     // Tests decoding a fixed-size java.awt.Point array.
