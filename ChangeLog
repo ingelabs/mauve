@@ -1,3 +1,8 @@
+1999-03-08  Andrew Haley  <aph@cygnus.com>
+
+	* gnu/testlet/java/lang/Long/new_Long.java: Add boundary checks
+	for Long.parseLong.
+
 1999-03-05  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/MessageFormat/format.java: New file.

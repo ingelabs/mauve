@@ -283,6 +283,10 @@ public class new_Long implements Testlet
 		     -1865);
       harness.check (Long.parseLong("-abcdef", 16),
 		     -11259375);
+      harness.check (Long.parseLong("-8000000000000000", 16),
+		     Long.MIN_VALUE);
+      harness.check (Long.parseLong("7fffffffffffffff", 16),
+		     Long.MAX_VALUE);
 
       ok = false;
       try
@@ -299,6 +303,28 @@ public class new_Long implements Testlet
       try
 	{
 	  Long.parseLong("0", 37);
+	}
+      catch (NumberFormatException ex)
+	{
+	  ok = true;
+	}
+      harness.check (ok);
+
+      ok = false;
+      try
+	{
+	  Long.parseLong("8000000000000000", 16);
+	}
+      catch (NumberFormatException ex)
+	{
+	  ok = true;
+	}
+      harness.check (ok);
+
+      ok = false;
+      try
+	{
+	  Long.parseLong("-8000000000000001", 16);
 	}
       catch (NumberFormatException ex)
 	{
