@@ -68,5 +68,18 @@ public class regress implements Testlet
 	    harness.check (false, tz);
 	  }
       }
+
+    cdf = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss"); 
+    try
+      {
+	d = cdf.parse ("03-22-2001 15:54:27");
+	harness.check (cdf.format (d), "03-22-2001 15:54:27",
+		       "local timezone");
+      }
+    catch (ParseException _)
+      {
+	harness.debug (_);
+	harness.check (false, "local timezone");
+      }
   }
 }

@@ -1,3 +1,8 @@
+2001-05-13  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test):
+	Added regression test for local timezone.
+
 2001-05-11  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test):
