@@ -1,3 +1,8 @@
+2003-06-08  Mark Wielaard  <mark@klomp.org>
+
+	* choose: Add all classes first to usesfile to uniqify them later
+	before adding them to choises.
+
 2003-06-05  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Added

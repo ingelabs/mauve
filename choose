@@ -210,7 +210,7 @@ while read file; do
    if test "$ok" = yes; then
       class="gnu.testlet.`echo $file | sed -e 's/\.java$//' | tr / .`"
       dirpart="`echo $file | sed -e 's,/[^/]*$,,'`"
-      echo " gnu/testlet/$file" >> $choices
+      echo "gnu/testlet/$file" >> $usesfile
       if test "$istest" = yes; then
 	 echo $class >> $classes
 	 test -n "$verbose" && echo "Chose $class"
