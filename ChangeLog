@@ -1,5 +1,10 @@
 2004-10-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/AWTEvent/constants.java: New test.
+	* gnu/testlet/java/awt/Event/constants.java: Likewise.
+	
+2004-10-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/net/MessageFormat/format14.java: New test.
 	
 2004-10-26  Michael Koch  <konqueror@gmx.de>
