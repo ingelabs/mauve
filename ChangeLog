@@ -1,3 +1,9 @@
+2003-01-30  C. Brian Jones <cbj@gnu.org>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java (test_params): 
+	Change error message when failing getSoTimeout(), do not fail
+	harness, just a test.
+
 2003-01-29  C. Brian Jones <cbj@gnu.org>
 
 	* gnu/testlet/java/net/Socket/SocketTest.java (test_params): 

@@ -213,8 +213,7 @@ public class SocketTest implements Testlet
 	  harness.check(true);
 	} 
 	catch (Exception e) {
-	  harness.fail("Error : setSoTimeout fails since vxWorks " +
-		       "do not support the feature");
+	  harness.check(false, "Error : setSoTimeout fails since some OSes do not support the feature");
 	  harness.debug(e);
 	}
       }
