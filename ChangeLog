@@ -1,3 +1,7 @@
+2004-02-25  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/InetSocketAddress/InetSocketAddressTest.java:
+	New testcases for java.net.InetSocketAddress.
 2004-01-24  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/Socket/SocketTest.java:
