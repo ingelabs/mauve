@@ -1,3 +1,24 @@
+2004-09-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/geom/Area/add.java: New test.
+	* gnu/testlet/java/awt/geom/Area/clone.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/constructors.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/contains.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/createTransformedArea.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/equals.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/exclusiveOr.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/getBounds.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/getBounds2D.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/intersect.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/intersects.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/isEmpty.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/isPolygonal.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/isRectangular.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/isSingular.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/reset.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/subtract.java: Likewise.
+	* gnu/testlet/java/awt/geom/Area/transform.java: Likewise.
+
 2004-09-01  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/reflect/sub/InvokeHelper.java: New file.
