@@ -34,8 +34,4 @@ public class charAt implements Testlet
 	}
       harness.check (ok);
     }
-
-  public charAt ()
-    {
-    }
 }

@@ -14,8 +14,4 @@ public class hash implements Testlet
       harness.check (a.hashCode(), 65498);
       harness.check (b.hashCode(), 90);
     }
-
-  public hash ()
-    {
-    }
 }

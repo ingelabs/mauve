@@ -59,8 +59,4 @@ public class substring implements Testlet
 	}
       harness.check (ok);
     }
-
-  public substring ()
-    {
-    }
 }

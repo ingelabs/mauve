@@ -16,8 +16,4 @@ public class value implements Testlet
       harness.check (a.equals(Boolean.valueOf("TrUE")));
       harness.check (! b.equals(Boolean.valueOf("TrUE")));
     }
-
-  public value ()
-    {
-    }
 }

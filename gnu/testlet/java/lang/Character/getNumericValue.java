@@ -17,8 +17,4 @@ public class getNumericValue implements Testlet
       harness.check (Character.getNumericValue('\u2155'), -2);
       harness.check (Character.getNumericValue('\u221e'), -1);
     }
-
-  public getNumericValue ()
-    {
-    }
 }

@@ -141,8 +141,4 @@ public class getType implements Testlet
       p (harness, '\u249f', "other_symbol");
       p (harness, '\u2102', "uppercase_letter");
     }
-
-  public getType ()
-    {
-    }
 }

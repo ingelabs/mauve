@@ -20,8 +20,4 @@ public class new_Byte implements Testlet
       harness.check (d.hashCode(), -1);
       harness.check (e.hashCode(), -128);
     }
-
-  public new_Byte ()
-    {
-    }
 }

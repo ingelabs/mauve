@@ -37,8 +37,4 @@ public class consts implements Testlet
       harness.check (Character.PRIVATE_USE, 18);
       harness.check (Character.SURROGATE, 19);
     }
-
-  public consts ()
-    {
-    }
 }

@@ -22,8 +22,4 @@ public class new_String implements Testlet
       harness.check (d, "abc	ABC 123");
       harness.check (e, "	AB");
     }
-
-  public new_String ()
-    {
-    }
 }

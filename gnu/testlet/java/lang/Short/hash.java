@@ -20,8 +20,4 @@ public class hash implements Testlet
       harness.check (d.hashCode(), 32767);
       harness.check (e.hashCode(), -32768);
     }
-
-  public hash ()
-    {
-    }
 }

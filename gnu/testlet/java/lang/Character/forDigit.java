@@ -16,8 +16,4 @@ public class forDigit implements Testlet
       harness.check (Character.forDigit(12, 16), 'c');
       harness.check (Character.forDigit(34,36), 'y');
     }
-
-  public forDigit ()
-    {
-    }
 }

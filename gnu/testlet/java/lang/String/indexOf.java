@@ -31,8 +31,4 @@ public class indexOf implements Testlet
       harness.check (b.lastIndexOf("abc", 1), 1);
       harness.check (b.lastIndexOf("abc", 10), 1);
     }
-
-  public indexOf ()
-    {
-    }
 }

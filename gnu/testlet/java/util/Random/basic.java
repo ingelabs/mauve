@@ -63,8 +63,4 @@ public class basic implements Testlet
       harness.check (b[4], 61);
       harness.check (rand.nextInt(), -270809961);
     }
-
-  public basic ()
-    {
-    }
 }

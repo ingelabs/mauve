@@ -30,8 +30,4 @@ public class compareTo implements Testlet
 
       harness.check (b.charAt(7), 'C');
     }
-
-  public compareTo ()
-    {
-    }
 }

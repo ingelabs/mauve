@@ -44,8 +44,4 @@ public class getInteger implements Testlet
       harness.check (Integer.getInteger("junk", null), null);
       harness.check (Integer.getInteger("junk"), null);
     }
-
-  public getInteger ()
-    {
-    }
 }

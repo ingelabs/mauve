@@ -63,8 +63,4 @@ public class decode implements Testlet
       harness.check (String.copyValueOf(cstr), "abc	ABC 123");
       harness.check (String.copyValueOf(cstr, 3, 3), "	AB");
     }
-
-  public decode ()
-    {
-    }
 }

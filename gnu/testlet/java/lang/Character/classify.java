@@ -56,8 +56,4 @@ public class classify implements Testlet
       harness.check (! Character.isWhitespace('\u00a0'));
       harness.check (Character.isWhitespace('\u2000'));
     }
-
-  public classify ()
-    {
-    }
 }

@@ -53,8 +53,4 @@ public class IntrospectorTest implements Testlet {
       tryone (harness, java.applet.Applet.class, null, true, 24, 6, 168);
       tryone (harness, java.applet.Applet.class, 24, 6, 168);
     }
-
-  public IntrospectorTest () 
-    {
-    }
 }

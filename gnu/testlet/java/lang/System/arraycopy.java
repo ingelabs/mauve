@@ -120,8 +120,4 @@ public class arraycopy implements Testlet
       harness.check (ss[3], "26");
       harness.check (ss[4], "27");
     }
-
-  public arraycopy ()
-    {
-    }
 }

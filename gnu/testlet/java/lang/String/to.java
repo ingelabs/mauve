@@ -13,8 +13,4 @@ public class to implements Testlet
       harness.check (b.toLowerCase(), " abc	abc 123	");
       harness.check (b.toUpperCase(), " ABC	ABC 123	");
     }
-
-  public to ()
-    {
-    }
 }

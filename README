@@ -127,21 +127,6 @@ used are found in that same package as the test case.
 
 ================================================================
 
-You'll notice that each test has a public constructor.  This probably
-seems strange -- why not have the `test' method be static, and just
-call it?
-
-The answer is that this approach would require java.lang.reflect.  The
-test framework gets the class object for a test using Class.forName.
-However, making a call to a static method on a class requires reflect.
-By adding a constructor, we can just call Class.newInstance, and then
-make a simple method call on the resulting object.
-
-This requires a bit less machinery, and more importantly lets us use
-it for libjava, where we haven't yet implemented reflect.
-
-================================================================
-
 There are still a few things to do in the test framework.
 
 

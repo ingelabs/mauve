@@ -287,8 +287,4 @@ public class new_Long implements Testlet
 	}
       harness.check (ok);
     }
-
-  public new_Long ()
-    {
-    }
 }

@@ -14,8 +14,4 @@ public class hashcode_Boolean implements Testlet
       harness.check (a.hashCode(), 1231);
       harness.check (b.hashCode(), 1237);
     }
-
-  public hashcode_Boolean ()
-    {
-    }
 }

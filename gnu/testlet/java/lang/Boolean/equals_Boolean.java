@@ -19,8 +19,4 @@ public class equals_Boolean implements Testlet
       harness.check (b.equals(Boolean.FALSE));
       harness.check (! b.equals(i));
     }
-
-  public equals_Boolean ()
-    {
-    }
 }

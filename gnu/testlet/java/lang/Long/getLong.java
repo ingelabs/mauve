@@ -45,8 +45,4 @@ public class getLong implements Testlet
       harness.check (Long.getLong("junk", null), null);
       harness.check (Long.getLong("junk"), null);
     }
-
-  public getLong ()
-    {
-    }
 }

@@ -22,8 +22,4 @@ public class startsWith implements Testlet
       harness.check (! b.startsWith("abc", -1));
       harness.check (! b.startsWith("abc", b.length()));
     }
-
-  public startsWith ()
-    {
-    }
 }

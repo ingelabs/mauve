@@ -62,8 +62,5 @@ public class basic implements Testlet
       // harness.check (copy.toString());
       harness.check (copy.size(), 14);
     }
-
-  public basic ()
-    {
-    }
 }
+

@@ -20,8 +20,4 @@ public class get implements Testlet
       harness.check (! Boolean.getBoolean("e2"));
       harness.check (! Boolean.getBoolean("e3"));
     }
-
-  public get ()
-    {
-    }
 }

@@ -19,8 +19,4 @@ public class equals_Character implements Testlet
       harness.check (a.equals(a));
       harness.check (! b.equals(d));
     }
-
-  public equals_Character ()
-    {
-    }
 }

@@ -35,8 +35,4 @@ public class DescriptorTest implements Testlet
       }
       harness.check (ok);
     }
-
-  public DescriptorTest ()
-    {
-    }
 }

@@ -306,8 +306,4 @@ public class new_Integer implements Testlet
 	}
       harness.check (ok);
     }
-
-  public new_Integer ()
-    {
-    }
 }

@@ -107,8 +107,4 @@ public class getType12 implements Testlet
     {
       p (harness, '\u20ac', "currency_symbol");
     }
-
-  public getType12 ()
-    {
-    }
 }

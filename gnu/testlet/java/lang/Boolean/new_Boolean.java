@@ -26,8 +26,4 @@ public class new_Boolean implements Testlet
       harness.check(g.booleanValue());
       harness.check(! h.booleanValue());
     }
-
-  public new_Boolean ()
-    {
-    }
 }
