@@ -1,3 +1,9 @@
+2004-11-02  Guilhem Lavaux  <guilhem@kaffe.org>
+
+	* gnu/testlet/java/util/Vector/VectorSerialization.java,
+	gnu/testlet/java/util/Vector/TestVector.ser:
+	New tests.
+	
 2004-10-31  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/SimpleTimeZone/clone.java,
