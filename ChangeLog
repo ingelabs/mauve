@@ -1,5 +1,9 @@
 2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Polygon/contains.java: New test.
+
+2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/geom/AffineTransform/clone.java: New test.
 	* gnu/testlet/java/awt/geom/AffineTransform/concatenate.java:
 	Likewise.
