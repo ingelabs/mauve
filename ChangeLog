@@ -1,6 +1,14 @@
 2004-11-07  Robert Schuster <thebohemian@gmx.net>
 
-	* gnu/testlet/java/beans/jdk12.java:
+	Tests for bug #10908 
+	* gnu/testlet/java/beans/Introspector/getBeanInfo.java:
+	New tests
+	* gnu/testlet/java/beans/Introspector/getBeanInfoTestClass.java:
+	Helper class for tests above
+
+2004-11-07  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/Introspector/jdk12.java:
 	Added documentation, copyright statements and license
 
 2004-11-06  Noa Resare  <noa@resare.com>
