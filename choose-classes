@@ -70,6 +70,10 @@ while test -n "$taglist"; do
        file="`echo $i | tr . /`"
        file_specs="$file_specs $file"
        ;;
+    GUI)
+       tags="$tags GUI $i"
+       test -z "$seen_dashdash" && spectags="$spectags $i"
+       ;;
     JAVA2)
        tags="$tags JDK1.0 JDK1.1 JDK1.2 $i"
        test -z "$seen_dashdash" && spectags="$spectags $i"
@@ -118,7 +122,7 @@ while test -n "$taglist"; do
 done
 
 # By default, use JDK1.1.
-test -z "$tags" && tags="JDK1.0 JDK1.1"
+test -z "$tags" && tags="JDK1.0 JDK1.1 GUI"
 
 test -n "$verbose" && echo "tags = $tags"
 test -n "$verbose" && echo "spectags = $spectags"

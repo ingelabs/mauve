@@ -1,3 +1,19 @@
+2005-01-04  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* batch_run: Allow NATIVE to be set on the command line.  Set WM
+	to /bin/true if metacity is not found.
+	* choose: Include GUI tests by default.
+	* choose-classes: Likewise.
+	* gnu/testlet/java/awt/Robot/mouseMove.java: New test.
+	* gnu/testlet/java/awt/Robot/mousePress.java: Likewise.
+	* gnu/testlet/java/awt/Robot/constructors.java: Likewise.
+	* gnu/testlet/java/awt/Robot/createScreenCapture.java: Likewise.
+	* gnu/testlet/java/awt/Robot/getPixelColor.java: Likewise.
+	* gnu/testlet/java/awt/Robot/keyPress.java: Likewise.
+	* gnu/testlet/java/awt/Robot/keyRelease.java: Likewise.
+	* gnu/testlet/java/awt/Robot/mouseRelease.java: Likewise.
+	* gnu/testlet/java/awt/Robot/mouseWheel.java: Likewise.
+
 2005-01-04  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/DefaultTableModel/addColumn.java,
@@ -23,7 +39,7 @@
 	* gnu/testlet/javax/swing/table/DefaultTableModel/setRowCount.java,
 	* gnu/testlet/javax/swing/table/DefaultTableModel/setValueAt.java: 
 	New tests.
-	
+
 2005-01-03  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* batch_run: Invoke Xvfb and metacity if GUI key is specified.

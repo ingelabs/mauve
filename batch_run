@@ -44,8 +44,10 @@ fi
 
 COMPILER_FLAGS="-g"
 
+if test "x$NATIVE" = "x"; then
 NATIVE=
 #NATIVE="true"
+fi
 
 # Cleanup
 find gnu/testlet -name "*.class" | xargs rm -f
@@ -69,6 +71,10 @@ case $KEYS in
         XVFB=`which Xvfb`
         if test "x$WM" = "x"; then
             WM=`which metacity`
+	    # check if we found metacity
+            if test "x$WM" = "x"; then
+                WM=`which true`
+            fi
         fi
 
         if test -z "$SHOW_GUI_TESTS"; then
