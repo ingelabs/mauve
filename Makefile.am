@@ -11,17 +11,19 @@ check_DATA = classes.stamp
 
 harness_files = gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
-	gnu/testlet/ResourceNotFoundException.java \
-	gnu/testlet/config.java
+	gnu/testlet/ResourceNotFoundException.java
 
 ## FIXME: leading space makes automake ignore this.  Bleah.
  include choices
 
-classes.stamp: choices $(CHOICES)
+classes.stamp: choices $(CHOICES)  gnu/testlet/config.class
 	here=`/bin/pwd`; cd $(srcdir); \
 	  CLASSPATH=$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
 	    $(harness_files) $(CHOICES)
 	touch classes.stamp
+
+gnu/testlet/config.class: gnu/testlet/config.java
+	$(JAVAC) $(JCFLAGS) gnu/testlet/config.java
 
 KEYS =
 choices: FORCE
@@ -40,7 +42,8 @@ FORCE:
 if USE_GCJ
 
 java_files = $(harness_files) $(CHOICES)
-class_files = $(patsubst %.java,%.class,$(java_files))
+class_files = $(patsubst %.java,%.class,$(java_files)) \
+	gnu/testlet/config.class
 javao_files = $(patsubst %.class,%.o,$(class_files))
 
 check_PROGRAMS = SimpleTestHarness

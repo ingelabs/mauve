@@ -60,7 +60,7 @@ public class SimpleTestHarness
       ++total;
     }
 
-  private String getSourceDirectory ()
+  public String getSourceDirectory ()
     {
       return srcdir;
     }

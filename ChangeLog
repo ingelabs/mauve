@@ -1,3 +1,17 @@
+1999-03-30  Tom Tromey  <tromey@cygnus.com>
+
+	Change to make it easier to subclass SimpleTestHarness:
+	* gnu/testlet/SimpleTestHarness.java (getSourceDirectory): Now
+	public.
+	* gnu/testlet/config.java.in (getSourceDirectory,
+	getTempDirectory): New methods.
+
+	Allow srcdir != builddir again:
+	* Makefile.am (harness_files): Removed config.java.
+	(gnu/testlet/config.class): New target.
+	(classes.stamp): Depend on config.class.
+	(class_files): Added config.class.
+
 Tue Mar 30 19:57:19 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/AttributedString/Test.java: Added this

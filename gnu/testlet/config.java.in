@@ -24,4 +24,7 @@ public interface config
 {	
   public static final String srcdir = "@SRCDIR@";
   public static final String tmpdir = "@TMPDIR@";
+
+  public abstract String getSourceDirectory ();
+  public abstract String getTempDirectory ();
 }
