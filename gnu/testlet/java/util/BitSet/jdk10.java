@@ -97,19 +97,27 @@ public class jdk10 implements Testlet
 		h.check(b1.toString().equals("{1, 2, 11, 200}"));
 		b2 = new BitSet(100);
 		h.check(b2.toString().equals("{}"));
+		b2.set(1);
+		h.check(b2.toString().equals("{1}"));
 
 		h.checkPoint("Hashcode");
 		h.check(b1.hashCode() == 2260);
-		h.check(b2.hashCode() == 1234);
+		b3 = new BitSet();
+		h.check(b3.hashCode() == 1234);
 
 		h.checkPoint("And/Or/Xor");
-		b3 = new BitSet();
+		b2.set(1);
+		b2.set(3);
+		b2.set(200);
+		b2.set(300);
 		b2.and(b1);
-		h.check( trulyEquals(b2,b3) );
+		h.check( b2.toString().equals("{1, 200}") );
+		b1.set(17);
+		b2.set(15);
 		b2.or(b1);
-		h.check( trulyEquals(b2,b1) );
+		h.check( b2.toString().equals("{1, 2, 11, 15, 17, 200}") );
 		b2.xor(b2);
-		h.check( trulyEquals(b2,b3) );
+		h.check( b2.toString().equals("{}") );
 		b2.xor(b1);
 		b3.or(b1);
 		h.check( trulyEquals(b2,b3) );

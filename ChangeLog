@@ -1,3 +1,8 @@
+1999-03-21  Artur Biesiadowski <abies@pg.gda.pl>
+
+	* gnu/testlet/java/util/BitSet/jdk10.java: Made `and' test more
+	robust.
+
 1999-03-19  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/BreakIterator/chariter.java: New file.
