@@ -88,5 +88,6 @@ public abstract class TestHarness
   // These will print a message when in debug mode.  In the Throwable
   // case, what is printed is the stack trace.
   public abstract void debug (String message);
+  public abstract void debug (String message, boolean newline);
   public abstract void debug (Throwable ex);
 }

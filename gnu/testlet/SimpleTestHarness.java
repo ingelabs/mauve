@@ -74,8 +74,18 @@ public class SimpleTestHarness extends TestHarness
 
   public void debug (String message)
     {
+      debug(message, true);
+    }
+
+  public void debug (String message, boolean newline)
+    {
       if (debug)
-	System.out.println (message);
+        {
+          if (newline)
+	    System.out.println (message);
+          else
+	    System.out.print (message);
+        }
     }
 
   public void debug (Throwable ex)
