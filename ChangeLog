@@ -1,5 +1,7 @@
 2005-02-21  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
+	* gnu/testlet/java/awt/Frame/size1.java: New test.
+
 	* .cvsignore: Add testfilename.txt.
 	* batch_run (COMPILER_FLAGS): Set to -g -O0 if COMPILER is gcj.
 	(NATIVE): Set to true if COMPILER is gcj.
