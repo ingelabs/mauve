@@ -1,3 +1,8 @@
+2005-02-07  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/nio/charset/Charset/forName2.java:
+	New test.
+
 2005-02-06  Mark Wielaard  <mark@klomp.org>
 
 	Based on a suggestion from Timo Lindfors <timo.lindfors@iki.fi>
