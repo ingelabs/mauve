@@ -36,57 +36,45 @@ public class reflect implements Testlet
   {
     // gcj can't handle `.class' notation yet.
     Class k = null;
-    try
-      {
-	k = Class.forName (name);
-      }
-    catch (Throwable _)
-      {
-	// Nothing.
-      }
+    try {
+      k = Class.forName(name);
+    }
+    catch (Throwable _) {
+      // Nothing.
+    }
     return k;
   }
 
   public Object getCons (Class k, Class[] types, boolean decl)
   {
-    try
-      {
-	return (decl
-		? k.getDeclaredConstructor (types)
-		: k.getConstructor (types));
-      }
-    catch (Throwable _)
-      {
-	return _;
-      }
+    try {
+      return decl ? k.getDeclaredConstructor(types) : k.getConstructor(types);
+    }
+    catch (Throwable _) {
+      return _;
+    }
   }
 
   public Object getMethod (Class k, String name, Class[] types, boolean decl)
   {
-    try
-      {
-	return (decl
-		? k.getDeclaredMethod (name, types)
-		: k.getMethod (name, types));
-      }
-    catch (Throwable _)
-      {
-	return _;
-      }
+    try {
+      return (decl ?
+	      k.getDeclaredMethod(name, types) : 
+	      k.getMethod(name, types));
+    }
+    catch (Throwable _) {
+      return _;
+    }
   }
 
   public Object getField (Class k, String name, boolean decl)
   {
-    try
-      {
-	return (decl
-		? k.getDeclaredField (name)
-		: k.getField (name));
-      }
-    catch (Throwable _)
-      {
-	return _;
-      }
+    try {
+      return decl ? k.getDeclaredField(name) : k.getField(name);
+    }
+    catch (Throwable _) {
+      return _;
+    }
   }
 
   public void test (TestHarness harness)
@@ -116,41 +104,35 @@ public class reflect implements Testlet
     harness.check(cons instanceof NoSuchMethodException);
 
     harness.checkPoint("getConstructors");
-    try
-      {
-	Constructor[] cls = reflect_class.getConstructors();
-	harness.check(cls.length, 1);
-	harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.reflect");
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-	harness.check(false);
-      }
+    try {
+      Constructor[] cls = reflect_class.getConstructors();
+      harness.check(cls.length, 1);
+      harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.reflect");
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+      harness.check(false);
+    }
+    
+    try {
+      Constructor[] cls = rf_help_class.getConstructors();
+      harness.check(cls.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
-    try
-      {
-	Constructor[] cls = rf_help_class.getConstructors();
-	harness.check(cls.length, 0);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-      }
-
-    try
-      {
-	Constructor[] cls = i_class.getConstructors();
-	harness.check(cls.length, 0);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-      }
-
+    try {
+      Constructor[] cls = i_class.getConstructors();
+      harness.check(cls.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
+    
     harness.checkPoint ("getDeclaredConstructor");
     cons = getCons (rf_help_class, ptz, true);
     harness.check(cons instanceof Constructor);
@@ -160,43 +142,37 @@ public class reflect implements Testlet
     harness.check(cons instanceof NoSuchMethodException);
 
     harness.checkPoint("getDeclaredConstructors");
-    try
-      {
-	Constructor[] cls = reflect_class.getDeclaredConstructors();
-	harness.check(cls.length, 1);
-	harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.reflect");
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-	harness.check(false);
-      }
-
-    try
-      {
-	Constructor[] cls = rf_help_class.getDeclaredConstructors();
-	harness.check(cls.length, 1);
-	harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.rf_help");
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-	harness.check(false);
-      }
-
-    try
-      {
-	Constructor[] cls = i_class.getDeclaredConstructors();
-	harness.check(cls.length, 0);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-      }
-
+    try {
+      Constructor[] cls = reflect_class.getDeclaredConstructors();
+      harness.check(cls.length, 1);
+      harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.reflect");
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+      harness.check(false);
+    }
+    
+    try {
+      Constructor[] cls = rf_help_class.getDeclaredConstructors();
+      harness.check(cls.length, 1);
+      harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.rf_help");
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+      harness.check(false);
+    }
+    
+    try {
+      Constructor[] cls = i_class.getDeclaredConstructors();
+      harness.check(cls.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
+    
     harness.checkPoint ("getDeclaredField");
     Object f = getField (rf_help_class, "size", true);
     harness.check(f instanceof Field);
@@ -213,138 +189,120 @@ public class reflect implements Testlet
     harness.check(((Field) f).getModifiers(), Modifier.PUBLIC);
 
     harness.checkPoint("getDeclaredFields");
-    try
-      {
-	Field[] flds = rf_help_class.getDeclaredFields();
-	harness.check(flds.length, 3);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-      }
-
+    try {
+      Field[] flds = rf_help_class.getDeclaredFields();
+      harness.check(flds.length, 3);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
+    
     harness.checkPoint("getFields");
-    try
-      {
-	Field[] flds = rf_help_class.getFields();
-	harness.check(flds.length, 1);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-      }
-
-    try
-      {
-	Field[] flds = i_class.getFields();
-	harness.check(flds.length, 0);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check(false);
-      }
+    try {
+      Field[] flds = rf_help_class.getFields();
+      harness.check(flds.length, 1);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
+    
+    try {
+      Field[] flds = i_class.getFields();
+      harness.check(flds.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
     harness.checkPoint("getMethod");
-    Object m = getMethod (rf_help_class, "doit", ptz, false);
-    harness.check (m instanceof NoSuchMethodException);
-    m = getMethod (reflect_class, "do_nothing", pt1, false);
-    harness.check (m instanceof Method);
-    harness.check (((Method) m).getName (), "do_nothing");
+    Object m = getMethod(rf_help_class, "doit", ptz, false);
+    harness.check(m instanceof NoSuchMethodException);
+    m = getMethod(reflect_class, "do_nothing", pt1, false);
+    harness.check(m instanceof Method);
+    harness.check(((Method) m).getName(), "do_nothing");
     // FIXME: replace `==' with `,' and libgcj will segv.
-    harness.check (((Method) m).getDeclaringClass () == reflect_class);
+    harness.check(((Method) m).getDeclaringClass() == reflect_class);
     // See if we can get something that is inherited.
-    m = getMethod (rf_help_class, "hashCode", ptz, false);
-    harness.check (m instanceof Method);
+    m = getMethod(rf_help_class, "hashCode", ptz, false);
+    harness.check(m instanceof Method);
 
     harness.checkPoint("getMethods");
-    try
-      {
-	Method[] ms = rf_help_class.getMethods();
-	// There are 9 public methods in Object.
-	harness.check (ms.length, 9);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check (false);
-      }
+    try {
+      Method[] ms = rf_help_class.getMethods();
+      // There are 9 public methods in Object.
+      harness.check(ms.length, 9);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
-    try
-      {
-	Method[] ms = reflect_class.getMethods();
-	int expected =
-	  (6 /* from reflect.java; note that Testlet's method is also
-		declared here and should only be counted once.  */
-	   + 9 /* from Object */
-	   );
-	harness.check (ms.length, expected);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check (false);
-      }
+    try {
+      Method[] ms = reflect_class.getMethods();
+      int expected =
+	(6 /* from reflect.java; note that Testlet's method is also
+	      declared here and should only be counted once.  */
+	 + 9 /* from Object */
+	 );
+      harness.check(ms.length, expected);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
-    try
-      {
-	Method[] ms = i_class.getMethods();
-	harness.check (ms.length, 0);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check (false);
-      }
+    try {
+      Method[] ms = i_class.getMethods();
+      harness.check(ms.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
     harness.checkPoint("getDeclaredMethod");
-    m = getMethod (rf_help_class, "doit", ptz, true);
-    harness.check (m instanceof Method);
-    harness.check (((Method) m).getName (), "doit");
+    m = getMethod(rf_help_class, "doit", ptz, true);
+    harness.check(m instanceof Method);
+    harness.check(((Method) m).getName(), "doit");
     // Make sure we can't fetch a constructor this way.
-    m = getMethod (rf_help_class, "rf_help", ptz, true);
-    harness.check (m instanceof NoSuchMethodException);
-    m = getMethod (reflect_class, "do_nothing", pt1, false);
-    harness.check (m instanceof Method);
+    m = getMethod(rf_help_class, "rf_help", ptz, true);
+    harness.check(m instanceof NoSuchMethodException);
+    m = getMethod(reflect_class, "do_nothing", pt1, false);
+    harness.check(m instanceof Method);
     // See if we can get something that is inherited.
-    m = getMethod (rf_help_class, "hashCode", ptz, true);
-    harness.check (m instanceof NoSuchMethodException);
+    m = getMethod(rf_help_class, "hashCode", ptz, true);
+    harness.check(m instanceof NoSuchMethodException);
 
     harness.checkPoint("getDeclaredMethods");
-    try
-      {
-	Method[] ms = rf_help_class.getDeclaredMethods();
-	harness.check (ms.length, 1);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check (false);
-      }
+    try {
+      Method[] ms = rf_help_class.getDeclaredMethods();
+      harness.check(ms.length, 1);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
+    
+    try {
+      Method[] ms = reflect_class.getDeclaredMethods();
+      harness.check(ms.length, 6);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
-    try
-      {
-	Method[] ms = reflect_class.getDeclaredMethods();
-	harness.check (ms.length, 6);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check (false);
-      }
-
-    try
-      {
-	Method[] ms = i_class.getDeclaredMethods();
-	harness.check (ms.length, 0);
-      }
-    catch (SecurityException se)
-      {
-	// One per check above.
-	harness.check (false);
-      }
+    try {
+      Method[] ms = i_class.getDeclaredMethods();
+      harness.check(ms.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
 
     harness.checkPoint("getDeclaringClass");
     // None of these classes has a declaring class.
@@ -353,7 +311,7 @@ public class reflect implements Testlet
     harness.check(i_class.getDeclaringClass(), null);
 
     harness.checkPoint("getMethod with superinterface");
-    m = getMethod (aci_class, "current", ptz, false);
-    harness.check (((Method) m).getName (), "current");
+    m = getMethod(aci_class, "current", ptz, false);
+    harness.check(((Method) m).getName(), "current");
   }
 }

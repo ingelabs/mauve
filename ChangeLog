@@ -1,3 +1,8 @@
+2002-10-20  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/lang/Class/ClassTest.java: Rejigged to use
+	'harness.check(...)' rather than 'if (!...) { harness.fail(...) }
+	* gnu/testlet/java/lang/Class/reflect.java: Cosmetic tidyups.
+
 2002-10-19  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/lang/Class/reflect2.java: New test for the
 	inner class reflection methods.
