@@ -89,9 +89,10 @@ public class canWrite implements Testlet
 	harness.check(tmpfile.canWrite(), "file.canWrite() after recreation");
 
 	boolean write;
+	OutputStream os = null;
 	try
 	  {
-	    OutputStream os = new FileOutputStream(tmpfile);
+	    os = new FileOutputStream(tmpfile);
 	    os.write(0);
 	    write = true;
 	  }
@@ -100,19 +101,43 @@ public class canWrite implements Testlet
 	    write = false;
 	    harness.debug(ioe);
 	  }
+	finally
+	  {
+	    try
+	      {
+		if (os != null)
+		    os.close();
+		os = null;
+	      }
+	    catch(IOException _)
+	      {
+	      }
+	  }
 	harness.check(write, "Actually write to new file");
 
 	harness.check(tmpfile.setReadOnly(), "file.setReadOnly()");
 
 	try
 	  {
-	    OutputStream os = new FileOutputStream(tmpfile);
+	    os = new FileOutputStream(tmpfile);
 	    os.write(0);
 	    write = true;
 	  }
 	catch(IOException ioe)
 	  {
 	    write = false;
+	  }
+	finally
+	  {
+	    try
+	      {
+		if (os != null)
+		    os.close();
+		os = null;
+	      }
+	    catch(IOException _)
+	      {
+	      }
 	  }
 	harness.check(!write, "Write to file after setReadOnly()");
       }

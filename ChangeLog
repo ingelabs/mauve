@@ -1,3 +1,9 @@
+2004-11-26  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/io/File/canWrite.java: Explicitly close
+	files after we're done with them. Open files prevent directory
+	deletion on Windows.
+
 2004-11-25  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/Socket/jdk14.java: Add host name to debug
