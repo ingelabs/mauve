@@ -344,5 +344,20 @@ public class new_Integer implements Testlet
 	  ok = true;
 	}
       harness.check (ok);
+
+      ok = false;
+      try
+	{
+	  // This should fail, but won't if you are using a naive
+	  // overflow detection scheme.  `429496730' is chosen because
+	  // when multiplied by 10 it overflows but the result is
+	  // positive.
+	  Integer.parseInt ("4294967309", 10);
+	}
+      catch (NumberFormatException ex)
+	{
+	  ok = true;
+	}
+      harness.check (ok);
     }
 }
