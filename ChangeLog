@@ -1,3 +1,8 @@
+2004-09-21  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/util/Collections/binarySearch.java: Add more
+	generic tests for ArrayList, LinkedList and Vector.
+
 2004-09-21  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java

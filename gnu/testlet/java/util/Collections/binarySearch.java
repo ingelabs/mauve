@@ -28,23 +28,123 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class binarySearch implements Testlet
 {
 
   public void test(TestHarness harness) 
   {
-    // a simple test
-    List list1 = new ArrayList();
-    list1.add("B"); list1.add("C"); list1.add("D"); 
-    int i = Collections.binarySearch(list1, "C");
-    harness.check(i == 1);
-    i = Collections.binarySearch(list1, "E");
-    harness.check(i == -4);
-    i = Collections.binarySearch(list1, "A");
-    harness.check(i == -1);
+    // run tests on ArrayList
+    harness.checkPoint("ArrayList");
+    genericTest(new ArrayList(), harness);
+    
+    // run tests on LinkedList
+    harness.checkPoint("LinkedList");
+    genericTest(new LinkedList(), harness);
+    
+    // run tests on Vector
+    harness.checkPoint("Vector");
+    genericTest(new Vector(), harness);
+    
     // test for a known bug (10447)
+    harness.checkPoint("10447");
     testBug10447(harness);
+  }
+  
+  private void genericTest(List list, TestHarness harness) 
+  {
+    // search an empty list...
+    list.clear();
+    int index = Collections.binarySearch(list, "A");
+    harness.check(index, -1);
+    
+    // search a list with one item...
+    list.add("B");
+    index = Collections.binarySearch(list, "B");
+    harness.check(index, 0);
+    index = Collections.binarySearch(list, "A");  // item that would go before "B"
+    harness.check(index, -1);
+    index = Collections.binarySearch(list, "C");  // item that would go after "B"
+    harness.check(index, -2);
+    
+    // search a list with two items...
+    list.add("D");
+    index = Collections.binarySearch(list, "A");
+    harness.check(index, -1);
+    index = Collections.binarySearch(list, "B");
+    harness.check(index, 0);
+    index = Collections.binarySearch(list, "C");
+    harness.check(index, -2);
+    index = Collections.binarySearch(list, "D");  
+    harness.check(index, 1);
+    index = Collections.binarySearch(list, "E");  
+    harness.check(index, -3);
+    
+    // search a list with three items...
+    list.add("F");
+    index = Collections.binarySearch(list, "A");
+    harness.check(index, -1);
+    index = Collections.binarySearch(list, "B");
+    harness.check(index, 0);
+    index = Collections.binarySearch(list, "C");
+    harness.check(index, -2);
+    index = Collections.binarySearch(list, "D");  
+    harness.check(index, 1);
+    index = Collections.binarySearch(list, "E");  
+    harness.check(index, -3);
+    index = Collections.binarySearch(list, "F");  
+    harness.check(index, 2);
+    index = Collections.binarySearch(list, "G");  
+    harness.check(index, -4);
+    
+    // search some larger lists
+    fillList(list, 1024);
+    index = Collections.binarySearch(list, "00000");  
+    harness.check(index, 0);
+    index = Collections.binarySearch(list, "00123");  
+    harness.check(index, 123);
+    index = Collections.binarySearch(list, "00511");  
+    harness.check(index, 511);
+    index = Collections.binarySearch(list, "00512");  
+    harness.check(index, 512);
+    index = Collections.binarySearch(list, "00513");  
+    harness.check(index, 513);
+    index = Collections.binarySearch(list, "00789");  
+    harness.check(index, 789);
+    index = Collections.binarySearch(list, "01023");  
+    harness.check(index, 1023);
+    index = Collections.binarySearch(list, "01024");  
+    harness.check(index, -1025);
+
+    fillList(list, 12345);
+    index = Collections.binarySearch(list, "00000");  
+    harness.check(index, 0);
+    index = Collections.binarySearch(list, "00123");  
+    harness.check(index, 123);
+    index = Collections.binarySearch(list, "00511");  
+    harness.check(index, 511);
+    index = Collections.binarySearch(list, "00512");  
+    harness.check(index, 512);
+    index = Collections.binarySearch(list, "00513");  
+    harness.check(index, 513);
+    index = Collections.binarySearch(list, "00789");  
+    harness.check(index, 789);
+    index = Collections.binarySearch(list, "01023");  
+    harness.check(index, 1023);
+    index = Collections.binarySearch(list, "12345");  
+    harness.check(index, -12346);
+
+  }
+
+  private void fillList(List list, int itemCount) 
+  {
+    list.clear();
+    for (int i = 0; i < itemCount; i++)
+    {
+      String s = String.valueOf(i);
+      list.add("00000".substring(s.length()) + s);
+    }
   }
   
   /**
@@ -62,7 +162,7 @@ public class binarySearch implements Testlet
     
     // this works
     int i = Collections.binarySearch(list, "E");
-    harness.check(i == 4);
+    harness.check(i, 4);
     
     // this doesn't (bug seems to need at least 17 items to trigger)    
     list.add("Q"); 
@@ -78,12 +178,12 @@ public class binarySearch implements Testlet
     
     // this works
     i = Collections.binarySearch(list2, "E");
-    harness.check(i == 4);
+    harness.check(i, 4);
     
     // and this does too   
     list2.add("Q"); 
     i = Collections.binarySearch(list2, "E");
-    harness.check(i == 4);
+    harness.check(i, 4);
   }
   
 }
