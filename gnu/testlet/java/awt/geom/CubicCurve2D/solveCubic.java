@@ -60,6 +60,18 @@ public class solveCubic
     checkSolutions(0, 0.5, 0, -2, new double[]{-2, 2});
     checkSolutions(0, 10, 3, 5, new double[0]);
     checkSolutions(0, 4, 0, 0, new double[]{0}); // Classpath bug #6095.
+
+    // The subsequent six tests are taken from test code in the
+    // GNU Scientific Library (GSL), which is licensed under the
+    // GNU General Public License version 2 or later.
+    // See file "gsl/poly/test.c", revision 1.16 of 2003-07-26.
+    // Original author: Brian Gough <bjg@network-theory.co.uk>
+    checkSolutions(1, 0, 0, -27, new double[]{3});
+    checkSolutions(1, -51, 867, -4913, new double[]{17});
+    checkSolutions(1, -57, 1071, -6647, new double[]{17, 23});
+    checkSolutions(1, -11, -493, +6647, new double[]{17, -23});
+    checkSolutions(1, -143, 5087, -50065, new double[]{17, 31, 95});
+    checkSolutions(1, -109, 803, 50065, new double[]{-17, 31, 95});
   }
 
   

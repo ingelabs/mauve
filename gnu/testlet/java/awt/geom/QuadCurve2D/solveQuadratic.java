@@ -82,6 +82,17 @@ public class solveQuadratic
 
     // 123 = 0
     checkSolutions(0, 0, 123, null);
+
+    // The subsequent five tests are taken from test code in the
+    // GNU Scientific Library (GSL), which is licensed under the
+    // GNU General Public License version 2 or later.
+    // See file "gsl/poly/test.c", revision 1.16 of 2003-07-26.
+    // Original author: Brian Gough <bjg@network-theory.co.uk>
+    checkSolutions(4, -20, 26, new double[0]);
+    checkSolutions(4, -20, 25, new double[]{ 2.5 });
+    checkSolutions(4, -20, 21, new double[]{ 1.5, 3.5 });
+    checkSolutions(4, 7, 0, new double[]{ -1.75, 0 });
+    checkSolutions(5, 0, -20, new double[]{ -2, 2 });
   }
 
 
