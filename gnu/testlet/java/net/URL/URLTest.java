@@ -474,7 +474,13 @@ public class URLTest implements Testlet
                  "file://hpjavaux/home/bgee/foobar.txt",
                  "hpjavaux",
                  "/home/bgee/foobar.txt"},
-            };
+		
+		 // 68..71
+		{"hpjavaux", "c:\\foobar.txt",
+		 "file://hpjavauxc:\\foobar.txt",
+		 "hpjavaux",
+		 "c:\\foobar.txt"},
+	    };
             harness.checkPoint("new URL(protocol, host, file)");
             for (int i = 0; i < s.length; ++i) {
                try {
@@ -497,6 +503,36 @@ public class URLTest implements Testlet
             }
         }
 
+        public void test_authority()
+        {
+	    String[][] s = {
+		{ "http://sources.redhat.com/",
+		  "sources.redhat.com"
+		},
+		{ "http://user:passwd@sources.redhat.com/",
+		  "user:passwd@sources.redhat.com"
+		},
+		{ "http://sources.redhat.com:90/",
+		  "sources.redhat.com:90"
+		}
+	    };
+
+	    harness.checkPoint("Check for authority support");
+	    for (int i = 0; i < s.length; i++)
+	      {
+		try {
+		  URL url = new URL(s[i][0]);
+		  
+		  harness.check(url.getAuthority(), s[i][1]);
+		}
+		catch (Throwable t)
+		  {
+		    harness.fail("Should not have thrown exception");
+		    t.printStackTrace(System.out);
+		  }
+	      }
+	}
+
 	public void testall()
 	{
 		harness.debug("Running: test_Basics");
@@ -515,6 +551,8 @@ public class URLTest implements Testlet
                 test_cr601a();
 		harness.debug("Running: cr601b");
                 test_cr601b();
+		harness.debug("Running: authority");
+		test_authority();
 	}
 
   public void test (TestHarness the_harness)
