@@ -29,15 +29,17 @@ import java.io.ByteArrayInputStream;
 import java.io.FilterInputStream;
 import java.io.IOException;
 
-public class SimpleRead implements Testlet
+public class SimpleRead extends FilterInputStream implements Testlet
 {
 
-class TestInputStream extends FilterInputStream
+public SimpleRead()
 {
-	public TestInputStream(ByteArrayInputStream is)
-	{
-		super(is);
-	}
+  this(null);
+}
+
+public SimpleRead(ByteArrayInputStream is)
+{
+  super(is);
 }
 
 public void
@@ -50,7 +52,7 @@ test(TestHarness harness)
 
   byte[] str_bytes = str.getBytes();  
   ByteArrayInputStream bais = new ByteArrayInputStream(str_bytes);
-  TestInputStream fis = new TestInputStream(bais);
+  SimpleRead fis = new SimpleRead(bais);
   byte[] read_buf = new byte[12];
 
   try

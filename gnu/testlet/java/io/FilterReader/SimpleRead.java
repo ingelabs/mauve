@@ -31,15 +31,17 @@ import java.io.Reader;
 import java.io.FilterReader;
 import java.io.IOException;
 
-public class SimpleRead implements Testlet
+public class SimpleRead extends FilterReader implements Testlet
 {
 
-class TestReader extends FilterReader
+public SimpleRead()
 {
-	TestReader(CharArrayReader car)
-	{
-		super((Reader) car);
-	}
+  this(new CharArrayReader(new char[0]));
+}
+
+SimpleRead(CharArrayReader car)
+{
+  super((Reader) car);
 }
 
 public void
@@ -55,7 +57,7 @@ test(TestHarness harness)
   char[] read_buf = new char[12];
 
   CharArrayReader car = new CharArrayReader(str_chars);
-  TestReader fr = new TestReader(car);
+  SimpleRead fr = new SimpleRead(car);
 
   try
     {

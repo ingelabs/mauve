@@ -28,15 +28,13 @@ import gnu.testlet.TestHarness;
 import java.io.OutputStream;
 import java.io.IOException;
 
-public class Test implements Testlet
+public class Test extends OutputStream implements Testlet
 {
-  class TestStream extends OutputStream
-  {
 	private static final int LEN = 100;
 	private byte[] buf;
 	private int index;
 
-	TestStream()
+	public Test()
 	{
 		super();
 		buf = new byte[LEN];
@@ -53,14 +51,13 @@ public class Test implements Testlet
 	{
 		return new String(buf, 0, index);
 	}
-  }
 		
   public void test (TestHarness harness)
   {
     try
       {
 		String tstr = "ABCDEFGH";
-		TestStream ts = new TestStream();
+		Test ts = new Test();
 		ts.write(tstr.charAt(0));					// 'A'
 		harness.check(true,"write(int)");
 		byte[] cbuf = new byte[8];

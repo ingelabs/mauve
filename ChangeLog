@@ -1,5 +1,12 @@
 2003-01-02  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/FilterInputStream/SimpleRead.java: Don't use
+	inner classes to help gcj.
+	* gnu/testlet/java/io/FilterReader/SimpleRead.java: Likewise.
+	* gnu/testlet/java/io/OutputStream/Test.java: Likewise.
+
+2003-01-02  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/FilterInputStream/MarkReset.java: Don't use
 	inner classes to help gcj.
 	* gnu/testlet/java/io/FilterWriter/write.java: Likewise.
