@@ -1,3 +1,7 @@
+2002-09-16  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/RandomAccessFile/jdk11.java: Full test
+	of all methods and constructors in class.  Supersedes raf.java
+
 2002-09-14  Stephen Crawley <crawley@dstc.edu.au>
 	* .cvsignore: New file. Tell CVS to ignore various generated
 	files, log files, temporary files and so on.
