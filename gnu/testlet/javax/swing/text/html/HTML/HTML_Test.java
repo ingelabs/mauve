@@ -1,6 +1,6 @@
 //Tags: JDK1.4
 
-// Copyright (C) 2004 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
