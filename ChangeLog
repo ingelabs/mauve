@@ -1,5 +1,45 @@
 2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/geom/AffineTransform/clone.java: New test.
+	* gnu/testlet/java/awt/geom/AffineTransform/concatenate.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/constants.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/createInverse.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/createTransformedShape.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/deltaTransform.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/equals.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/getDeterminant.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/getMatrix.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/getRotateInstance.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/getScaleInstance.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/getShearInstance.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/getTranslateInstance.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/inverseTransform.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/isIdentity.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/preConcatenate.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/setTransform.java:
+	Likewise.
+	* gnu/testlet/java/awt/geom/AffineTransform/transform.java:
+	Likewise.
+
+2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/image/DataBuffer/constants.java: New test.
 	* gnu/testlet/java/awt/image/DataBuffer/getDataTypeSize.java:
 	Likewise.
