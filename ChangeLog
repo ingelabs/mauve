@@ -1,3 +1,8 @@
+2004-03-26  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/Compat2.java: Explicitly set
+	serialVersionUID. Make debug messages more clear.
+
 2004-03-25  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/Compat2.java: Check the right

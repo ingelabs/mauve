@@ -1,7 +1,7 @@
 // Tags: JDK1.2
 // Uses: SerBase
 
-/* SerTest.java -- Test class that "overrides" private field 'a'.
+/* Compat2.java -- Test for Put/GetField.
 
    Copyright (c) 2003 by Free Software Foundation, Inc.
    Written by Guilhem Lavaux (guilhem@kaffe.org).
@@ -19,7 +19,9 @@
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software Foundation
    Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA */
+
 package gnu.testlet.java.io.ObjectInputOutput;
+
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.io.ObjectInputStream;
@@ -39,6 +41,10 @@ public class Compat2 implements Testlet
   private static class GetTypeMismatch // object typemismatch in get
     implements Serializable
   {
+    // Explicitly set serialVersionUID for different compilers handling
+    // of inner classes.
+    private static final long serialVersionUID = -2330048339523627109L;
+
     private Integer x = new Integer(17);
     private Integer y = new Integer(27);
     
@@ -100,7 +106,13 @@ public class Compat2 implements Testlet
 	  }
 	catch (Exception e)
 	  {
-	    t.check (e instanceof IllegalArgumentException);
+	    if (e instanceof IllegalArgumentException)
+	      t.check(true);
+	    else
+	      {
+		t.check(false);
+		t.debug("Expected IllegalArgumentException, not: " + e);
+	      }
 	  }
       }
     catch (Exception e)
@@ -120,7 +132,13 @@ public class Compat2 implements Testlet
       }
     catch (Exception e)
       {
-	t.check (e instanceof IllegalArgumentException);
+	if (e instanceof IllegalArgumentException)
+	  t.check(true);
+	else
+	  {
+	    t.check(false);
+	    t.debug("Expected IllegalArgumentException, not: " + e);
+	  }
       }
   }
 
