@@ -1,4 +1,8 @@
 2002-11-16  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/StringWriter/Test.java:
+	Added tests for remaining methods in StringWriter
+
+2002-11-16  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/StreamTokenizer/misc.java: Add file
 	Added tests for remaining methods in StreamTokenizer
 
