@@ -135,6 +135,7 @@ usesfile=/tmp/uses-$$
 
 (cd gnu/testlet; find java -name '*.java' -print) |
 while read file; do
+   exact_match=no
    test -n "$verbose" && echo "Examining $file"
    if test -n "$file_specs"; then
       ok=yes
@@ -148,6 +149,13 @@ while read file; do
 	  ${pat}*)
 	     ok=no
 	     test -n "$verbose" && echo "  ... excluded by $pat"
+	     ;;
+	  !${pat}.java)
+	     # If the tag list includes an exact match, then we
+	     # unconditionally accept it.
+	     ok=yes
+	     exact_match=yes
+	     test -n "$verbose" && echo "  ... included by $pat (exact match)"
 	     ;;
 	  !${pat}*)
 	     ok=yes
@@ -173,28 +181,33 @@ while read file; do
        ;;
    esac
 
-   ok=no
-   # If any tag on the tag list matches, then we are ok.
-   for tag in $tags; do
-      case "$taglist" in
-       *" ${tag} "*)
-          ok=yes
-	  break
-          ;;
-      esac
-   done
-
-   # If any specified tag hits a `not' tag, then we are not ok.
-   if test "$ok" = yes; then
-      for tag in $spectags; do
+   # For an exact match, we don't look at the tags.
+   if test "$exact_match" = no; then
+      ok=no
+      # If any tag on the tag list matches, then we are ok.
+      for tag in $tags; do
 	 case "$taglist" in
-	  *" !${tag} "*)
-	     ok=no
-	     test -n "$verbose" && echo "File $file has tag !$tag"
-	     break
-	     ;;
+	    *" ${tag} "*)
+	    ok=yes
+	    break
+	    ;;
 	 esac
       done
+
+      # If any specified tag hits a `not' tag, then we are not ok.
+      if test "$ok" = yes; then
+	 for tag in $spectags; do
+	    case "$taglist" in
+	       *" !${tag} "*)
+	         ok=no
+		 test -n "$verbose" && echo "File $file has tag !$tag"
+		 break
+		 ;;
+	    esac
+	 done
+      else
+	 test -n "$verbose" && echo "  ... excluded because no tag matched"
+      fi
    fi
 
    if test "$ok" = yes; then

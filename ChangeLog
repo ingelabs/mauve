@@ -1,3 +1,13 @@
+1999-02-23  Tom Tromey  <tromey@cygnus.com>
+
+	* choose: Added more verbose output.  If a file pattern is an
+	exact match, then it is accepted without examining the tags.
+
+	* gnu/testlet/java/text/StringCharacterIterator/iter.java: New
+	file.
+	* gnu/testlet/java/text/StringCharacterIterator/constructor.java:
+	New file.
+
 1999-02-22  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/TestHarness.java (check): Use Double.toString to
