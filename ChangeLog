@@ -1,3 +1,9 @@
+2004-11-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/AWTKeyStroke/equals.java,
+	gnu/testlet/java/awt/AWTKeyStroke/getAWTKeyStroke.java,
+	gnu/testlet/java/awt/AWTKeyStroke/serialization.java: New tests.
+	
 2004-11-08  Robert Schuster <thebohemian@gmx.net>
 
 	gnu/testlet/java/beans/Introspector/getBeanInfo2_2.java:
