@@ -463,6 +463,28 @@ public class SocketTest implements Testlet
     }
   }
 
+  public void test_closed()
+  {
+    harness.checkPoint("closed");
+    Socket sock = null;
+    
+    try
+      {
+	sock = new Socket();
+	sock.close();
+	sock.setSoTimeout(1000);
+	harness.fail("exception expected");
+      }
+    catch (SocketException e)
+      {
+	harness.check(e.getMessage(), "socket is closed", "wrong SocketException error message");
+      }
+    catch (Exception e)
+      {
+	harness.fail("wrong exception thrown");
+      }
+  }
+
 
   public void testall()
   {
@@ -470,6 +492,7 @@ public class SocketTest implements Testlet
     test_params();
     test_BasicServer();
     test_BasicBServer();
+    test_closed();
   }
 
   public void test (TestHarness the_harness)

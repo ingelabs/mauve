@@ -1,3 +1,8 @@
+2004-01-24  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java:
+	Added testcase for PR libgcj/13102.
+
 2004-01-12  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/lang/reflect/Other.java: New file.
