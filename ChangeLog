@@ -1,3 +1,7 @@
+2005-02-10  Thomas Zander <zander@kde.org>
+
+	* gnu/testlet/javax/swing/JTabbedPane/Mnemonic.java: new test
+
 2005-02-09  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/javax/swing/DefaultListModel/MyListDataListener.java:
