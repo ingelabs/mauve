@@ -101,6 +101,14 @@ public class parsingTester
 
   public void testHTMLParsing()
   {
+
+    // Test subsequent tags.
+    verify("<b><i><u>text</b><i></u>",
+      "<html _implied_='true'><head _implied_='true'></head>"+
+      "<body _implied_='true'><b><i><u>[text]</b><i></u></i>"+
+      "</i></body></html>", "subseqent tags");
+
+
     // Test entities.
     verify("eqdec: &#61; ampnamed: &amp;",
            "<html _implied_='true'><head _implied_='true'></head>" +
