@@ -112,7 +112,7 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 
 		try {	
 		   Class clss = Class.forName("java.lang.Cloneable");
-		   if ( clss.getSuperclass() != null))
+		   if ( clss.getSuperclass() != null)
 		   harness.fail(" Error : getSuperclass  " +
 		        		" failed - 6 " );
 		}
@@ -122,7 +122,7 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 
 		try {	
 		   Class clss = Void.TYPE;
-		   if ( clss.getSuperclass() != null))
+		   if ( clss.getSuperclass() != null)
 		   harness.fail(" Error : getSuperclass  " +
 		        		" failed - 8 " );
 		}
@@ -132,7 +132,7 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 
 		try {	
 		   Class clss = Double.TYPE;
-		   if ( clss.getSuperclass() != null))
+		   if ( clss.getSuperclass() != null)
 		   harness.fail(" Error : getSuperclass  " +
 		        		" failed - 10 " );
 		}
