@@ -1,5 +1,11 @@
 2003-12-27  Guilhem Lavaux <guilhem@kaffe.org>
 
+	* gnu/testlet/java/net/URLConnection/Http.java:
+	New really slightly improved HTTP connection testcase. We really check
+	the presence of the null header in URLConnection.
+
+2003-12-27  Guilhem Lavaux <guilhem@kaffe.org>
+
 	* gnu/testlet/java/io/CharArrayReader/OutOfBounds.java:
 	New testcase to check exception thrown by CharArrayReader.read(X).
 
