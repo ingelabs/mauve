@@ -1,3 +1,7 @@
+2004-06-24  Jerry Quinn  <jlquinn@optonline.net>
+
+	* gnu/testlet/java/beans/Expression/check.java: New test.
+
 2004-06-23  Max Gilead  <gilead@yellowhedgehog.com>
 
 	* gnu/testlet/java/nio/Buffer/PlainBufferTest.java,
