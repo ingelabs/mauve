@@ -1,3 +1,9 @@
+2002-12-06  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java: Only show stack traces
+	with harness.debug(). Make sure non-existing hosts really don't exist.
+	Enable get/setSoTimeOut tests.
+
 2002-12-04  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/reflect.java: Uses rf_help.

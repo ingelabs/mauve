@@ -46,7 +46,7 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 0 " +
-		   "exception was thrown :" + e.getMessage());
+		   "exception was thrown.");
       harness.debug(e);
     }
     
@@ -62,7 +62,7 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 2 " +
-		   "exception was thrown :" + e.getMessage());
+		   "exception was thrown.");
       harness.debug(e);
     }
     finally {
@@ -86,7 +86,7 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 4 " +
-		   "exception was thrown :" + e.getMessage());
+		   "exception was thrown.");
       harness.debug(e);
     }
     finally {
@@ -116,7 +116,7 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 6 " +
-		   "exception was thrown :" + e.getMessage());
+		   "exception was thrown.");
       harness.debug(e);
     }
     finally {
@@ -145,7 +145,7 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 9 " +
-		   "exception was thrown :" + e.getMessage());
+		   "exception was thrown.");
       harness.debug(e);
     }
     finally {
@@ -179,7 +179,7 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_BasicServer failed - 11 " +
-		   "exception was thrown :" + e.getMessage());
+		   "exception was thrown.");
       harness.debug(e);
     }
     finally {
@@ -231,7 +231,7 @@ public class SocketTest implements Testlet
 		    "Error : test_params failed - 1 " +
 		    "get port did not return proper values");
 
-      if (false) { // set/getSoTimeout not there
+      if (true) {
 	try {
 	  sock.setSoTimeout(100);
 	  harness.check(sock.getSoTimeout() == 100,
@@ -279,7 +279,7 @@ public class SocketTest implements Testlet
       }
     }
     catch (Exception e) {
-      harness.fail("Error : test_params failed - 10 exception was thrown" + e);
+      harness.fail("Error : test_params failed - 10 exception was thrown.");
       harness.debug(e);
     }
     finally {
@@ -296,7 +296,7 @@ public class SocketTest implements Testlet
     Socket s = null;
     // host name given
     try {
-      s = new Socket ("babuspdjflks.gnu.org", 200);
+      s = new Socket ("babuspdjflks.gnu.org.", 200);
       harness.fail("Error : test_Basics failed - 1 " +
 		   "exception should have been thrown here");
     }
@@ -305,8 +305,8 @@ public class SocketTest implements Testlet
     }
     catch (IOException e) {
       harness.fail("Error : test_Basics failed - 2 " +
-		   "Unknown host exception should have been thrown here: " +
-		   e.getMessage());
+		   "Unknown host exception should have been thrown here.");
+      harness.debug(e);
     }
     finally {
       try {
@@ -319,11 +319,11 @@ public class SocketTest implements Testlet
       s = new Socket("127.0.0.1", 30001);
       harness.fail("Error : test_Basics failed - 3 " +
 		   "exception should have been thrown here");
-
     }
     catch (UnknownHostException e) {
       harness.fail("Error : test_Basics failed - 4 " +
 		   "Unknown host exception should not have been thrown here");
+      harness.debug(e);
     }
     catch (IOException e) {
       harness.check(true);
@@ -344,6 +344,7 @@ public class SocketTest implements Testlet
     catch (UnknownHostException e) {
       harness.fail("Error : test_Basics failed - 6 " +
 		   "Unknown host exception should not have been thrown here");
+      harness.debug(e);
     }
     catch (IOException e) {
       harness.check(true);
@@ -364,7 +365,8 @@ public class SocketTest implements Testlet
     }
     catch (Exception e) {
       harness.fail("Error : test_Basics failed - 7 " +
-		   "exception should not have been thrown: " + e);
+		   "exception should not have been thrown.");
+      harness.debug(e);
     }
     finally {
       try {
@@ -377,7 +379,6 @@ public class SocketTest implements Testlet
       s = new Socket(InetAddress.getLocalHost(), 30002);
       harness.fail("Error : test_Basics failed - 8 " +
 		   "exception should have been thrown here");
-
     }
     catch (Exception e) {
       harness.check(true);
@@ -393,7 +394,7 @@ public class SocketTest implements Testlet
       
       // src socket target socket given(as hostname).
       try {
-	s = new Socket ("babuspdjflks.gnu.org", 200,
+	s = new Socket ("babuspdjflks.gnu.org.", 200,
 			InetAddress.getLocalHost() ,20006);
 	harness.fail("Error : test_Basics failed - 9 " +
 		     " exception should have been thrown here");
