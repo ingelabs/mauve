@@ -1,3 +1,8 @@
+2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/swing/event/EventListenerList/add.java: New test,
+	passes with JDK 1.4.1_01 but not with Classpath. Classpath bug #7104.
+
 2004-01-03  Per Bothner  <per@bothner.com>
 
 	* gnu/testlet/java/util/Date/parse.java (parse): New testcases
