@@ -1,3 +1,7 @@
+2004-04-13  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/lang/Character/CharInfo.java : Added an extra
+	field used by the unicode testcase.  (Sorry folks ...)
+
 2004-04-12  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Thread/contextClassLoader.java: Use three
