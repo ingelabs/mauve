@@ -1,3 +1,8 @@
+2005-03-08  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/io/BufferedInputStream/MarkReset.java (marktest):
+	Two testcases added for PR libgcj/20389.
+
 2005-03-08  Robert Schuster <thebohemian@gmx.net>
 
 	* gnu/testlet/java/beans/EventHandler/check.java: New test.

@@ -1,7 +1,7 @@
 /*************************************************************************
 /* MarkReset.java -- Tests BufferedInputStream mark/reset functionality
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 2005 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -93,6 +93,16 @@ marktest(InputStream ins, TestHarness harness) throws IOException
 
   return(total_read);
 }
+  private static void readFully(InputStream in, int len) throws java.io.IOException
+  {
+    int nr;
+    byte[] buf = new byte[len];
+    while (len > 0) {
+      if ((nr = in.read(buf, 0, len)) <= 0)
+        throw new java.io.IOException("Unexpected EOF");
+      len -= nr;
+    }
+  }
 
 public void
 test(TestHarness harness)
@@ -141,6 +151,38 @@ test(TestHarness harness)
       int total_read = marktest(sbis, harness);
       harness.check(total_read, str.length(), "total_read");
 
+    }
+  catch (IOException e)
+    {
+      harness.debug(e);
+      harness.check(false);
+    }
+
+  try
+    {
+      harness.checkPoint("Third BufferedInputStream mark/reset series");
+      ByteArrayInputStream bais = new ByteArrayInputStream(new byte[100000]);
+      BufferedInputStream bis = new BufferedInputStream(bais, 2048);
+      bis.mark(2048);
+      readFully(bis, 2049);
+      harness.check(true);
+    }
+  catch (IOException e)
+    {
+      harness.debug(e);
+      harness.check(false);
+    }
+
+  try
+    {
+      harness.checkPoint("Forth BufferedInputStream mark/reset series");
+      ByteArrayInputStream bais = new ByteArrayInputStream(new byte[100000]);
+      BufferedInputStream bis = new BufferedInputStream(bais, 2048);
+      bis.mark(2050);
+      readFully(bis, 2050);
+      bis.mark(2052);
+      readFully(bis, 2052);
+      harness.check(true);
     }
   catch (IOException e)
     {
