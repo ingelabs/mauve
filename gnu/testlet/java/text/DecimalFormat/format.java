@@ -94,6 +94,9 @@ public class format implements Testlet
       apply (harness, df, "#.#");
       harness.check (df.format (0.2), ".2");
 
+      apply (harness, df, "'#'#.#");
+      harness.check (df.format (30), "#30");
+
       // FIXME: we don't actually know the right result here, because
       // neither the JCL book nor the JDK 1.2 docs explain what should
       // happen.  The below represents how I think things ought to

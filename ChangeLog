@@ -1,5 +1,10 @@
 1999-03-09  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/DecimalFormat/format.java (test): Added a
+	new case.
+
+	* gnu/testlet/java/text/DecimalFormat/position.java: New file.
+
 	* gnu/testlet/java/lang/Long/new_Long.java (test): Added some
 	checkPoint calls.
 
