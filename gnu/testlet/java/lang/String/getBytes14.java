@@ -31,6 +31,14 @@ public class getBytes14 extends getBytes13 implements Testlet
   {
     harness.checkPoint("getBytes14");
 
-    test1Encoding (harness, "ISO8859_15", "abc", ABC1);
+    // New canonical names in 1.4
+    test1Encoding (harness, "US-ASCII",     "abc", ABC1);
+    test1Encoding (harness, "windows-1252", "abc", ABC1);
+    test1Encoding (harness, "ISO-8859-1",   "abc", ABC1);
+    test1Encoding (harness, "ISO-8859-15",  "abc", ABC1);
+    test1Encoding (harness, "ISO8859_15",   "abc", ABC1);
+    test1Encoding (harness, "UTF-8",        "abc", ABC1);
+    test1Encoding (harness, "UTF-16BE",     "abc", ABC3);
+    test1Encoding (harness, "UTF-16LE",     "abc", ABC5);
   }
 }
