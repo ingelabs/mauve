@@ -1,5 +1,13 @@
 2004-04-18  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/net/Socket/setSocketImplFactory.java: Add debug
+	when an unexpected exception occurs.
+	* gnu/testlet/java/net/Socket/TestSocketImplFactory.java: Use
+	reflection to get a class/constructor for the SocketImpl that we
+	need to return in createSocketImpl().
+
+2004-04-18  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java: Call
 	Thread.yield().
 

@@ -1,7 +1,8 @@
-// Tags: JDK1.0
+// Tags: JDK1.1
 
 /*
   Copyright (C) 2003 C. Brian Jones
+  Copyright (C) 2004 Mark J. Wielaard
   
   This file is part of Mauve.
   
@@ -22,10 +23,93 @@
 */
 
 package gnu.testlet.java.net.Socket;
+
 import java.net.*;
+import java.lang.reflect.*;
 
 public class TestSocketImplFactory
   implements SocketImplFactory
 {
-  public SocketImpl createSocketImpl () { return null; }
+  private Constructor implConstructor = null;
+  
+  TestSocketImplFactory()
+  {
+    // We better make sure we can actually return something in case
+    // this factory is actually used later.  The trick we use is to
+    // create a Socket with the empty constructor (which is defined as
+    // returning an unconnected Socket with the default SocketImpl).
+    // Then we use reflection to scoop out this object.
+    SocketImpl impl = null;
+    try
+      {
+	Class sic = Class.forName("java.net.SocketImpl");
+	Socket s = new Socket();
+	Field[] fields = s.getClass().getDeclaredFields();
+	int i = 0;
+	while (impl == null && i < fields.length)
+	  {
+	    Field f = fields[i];
+	    Class fc = f.getType();
+	    if (sic.isAssignableFrom(fc))
+	      {
+		f.setAccessible(true);
+		impl = (SocketImpl) f.get(s);
+	      }
+	    i++;
+	  }
+      }
+    catch (IllegalAccessException iae)
+      {
+	throw new InternalError("Unable to get default SocketImpl " + iae);
+      }
+    catch (ClassNotFoundException cnf)
+      {
+	throw new InternalError("Unable to get default SocketImpl " + cnf);
+      }
+
+    if (impl == null)
+      throw new InternalError("Couldn't determine default SocketImpl");
+
+    // Now hope that there is a non-argument constructor.
+    int i = 0;
+    Constructor[] cons = impl.getClass().getDeclaredConstructors();
+    while (implConstructor == null && i < cons.length)
+      {
+	Constructor c = cons[i];
+	if (c.getParameterTypes().length == 0)
+	  implConstructor = c;
+	i++;
+      }
+    
+    if (implConstructor == null)
+      throw new InternalError("Couldn't get SocketImpl Constructor");
+    else
+      implConstructor.setAccessible(true);
+  }
+
+  public SocketImpl createSocketImpl ()
+  {
+    try
+      {
+	return (SocketImpl) implConstructor.newInstance(new Object[0]);
+      }
+    catch (InstantiationException ie)
+      {
+	ie.printStackTrace();
+	// Null is better then nothing?
+	return null;
+      }
+    catch (IllegalAccessException iae)
+      {
+	iae.printStackTrace();
+	// Null is better then nothing?
+	return null;
+      }
+    catch(InvocationTargetException ite)
+      {
+	ite.printStackTrace();
+	// Null is better then nothing?
+	return null;
+      }
+  }
 }

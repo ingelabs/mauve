@@ -40,6 +40,7 @@ public class setSocketImplFactory implements Testlet
       }
     catch (Throwable t)
       {
+	harness.debug(t);
 	harness.check (false, "setSocketImplFactory() - 1");
       }
 
@@ -54,6 +55,7 @@ public class setSocketImplFactory implements Testlet
       }
     catch (Throwable t)
       {
+	harness.debug(t);
 	harness.check (false, "setSocketImplFactory() - 3");
       }
 
