@@ -30,9 +30,14 @@ import gnu.testlet.TestHarness;
 import java.text.ChoiceFormat;
 import java.util.Locale;
 
+/**
+ * @author John Leuner
+ * @author Tom Tromey
+ */
+
 public class format implements Testlet
 {
-  public final String format (ChoiceFormat cf, double d, StringBuffer buf)
+  public final String doformat (ChoiceFormat cf, double d, StringBuffer buf)
     {
       buf.setLength (0);
       cf.format (d, buf, null);
@@ -46,27 +51,27 @@ public class format implements Testlet
       ChoiceFormat cf = new ChoiceFormat ("1.0#Sun|2.0#Mon|3.0#Tue|4.0#Wed|5.0#Thu|6.0#Fri|7.0#Sat");
       harness.check (cf.getFormats ().length, 7);
       harness.check (cf.getLimits ().length, 7);
-      harness.check (format (cf, -9, buf), "Sun");
-      harness.check (format (cf, 1.5, buf), "Sun");
-      harness.check (format (cf, 5.5, buf), "Thu");
-      harness.check (format (cf, 7.0, buf), "Sat");
-      harness.check (format (cf, 99.5, buf), "Sat");
+      harness.check (doformat (cf, -9, buf), "Sun");
+      harness.check (doformat (cf, 1.5, buf), "Sun");
+      harness.check (doformat (cf, 5.5, buf), "Thu");
+      harness.check (doformat (cf, 7.0, buf), "Sat");
+      harness.check (doformat (cf, 99.5, buf), "Sat");
 
       cf.applyPattern ("-1.0#Less than one|1.0#One|1.0<One to two, exclusive|2.0#Two to three, inclusive|3.0<Over three, up to four|4.0<Four to five, exclusive|5.0#Five and above");
-      harness.check (format (cf, -23, buf), "Less than one");
-      harness.check (format (cf, -.5, buf), "Less than one");
-      harness.check (format (cf, ChoiceFormat.previousDouble (1.0), buf),
+      harness.check (doformat (cf, -23, buf), "Less than one");
+      harness.check (doformat (cf, -.5, buf), "Less than one");
+      harness.check (doformat (cf, ChoiceFormat.previousDouble (1.0), buf),
 		     "Less than one");
-      harness.check (format (cf, 1.0, buf), "One");
-      harness.check (format (cf, ChoiceFormat.nextDouble (1.0), buf),
+      harness.check (doformat (cf, 1.0, buf), "One");
+      harness.check (doformat (cf, ChoiceFormat.nextDouble (1.0), buf),
 		     "One to two, exclusive");
-      harness.check (format (cf, 1.5, buf), "One to two, exclusive");
-      harness.check (format (cf, 2.0, buf), "Two to three, inclusive");
-      harness.check (format (cf, 3.5, buf), "Over three, up to four");
-      harness.check (format (cf, 4.0, buf), "Over three, up to four");
-      harness.check (format (cf, 5.0, buf), "Five and above");
-      harness.check (format (cf, Double.POSITIVE_INFINITY, buf),
+      harness.check (doformat (cf, 1.5, buf), "One to two, exclusive");
+      harness.check (doformat (cf, 2.0, buf), "Two to three, inclusive");
+      harness.check (doformat (cf, 3.5, buf), "Over three, up to four");
+      harness.check (doformat (cf, 4.0, buf), "Over three, up to four");
+      harness.check (doformat (cf, 5.0, buf), "Five and above");
+      harness.check (doformat (cf, Double.POSITIVE_INFINITY, buf),
 		     "Five and above");
-      harness.check (format (cf, Double.NaN, buf), "Less than one");
+      harness.check (doformat (cf, Double.NaN, buf), "Less than one");
     }
 }
