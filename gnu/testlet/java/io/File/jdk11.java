@@ -25,6 +25,8 @@ package gnu.testlet.java.io.File;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import gnu.testlet.SimpleTestHarness;
+import gnu.testlet.config;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -196,11 +198,11 @@ public class jdk11 implements Testlet, FilenameFilter
     harness.check (cons.delete (), "delete () of a directory");
     harness.check (!cons.exists (), "delete () of a directory");
 
-    harness.check (File.pathSeparator.equals (harness.pathSeparator), "pathSeparator");
-    harness.check (new Character (File.pathSeparatorChar).toString ().equals (harness.pathSeparator), "pathSeparatorChar");
+    harness.check (File.pathSeparator.equals (config.pathSeparator), "pathSeparator");
+    harness.check (new Character (File.pathSeparatorChar).toString ().equals (config.pathSeparator), "pathSeparatorChar");
 
-    harness.check (File.separator.equals (harness.separator), "separator");
-    harness.check (new Character (File.separatorChar).toString ().equals (harness.separator), "separatorChar");
+    harness.check (File.separator.equals (config.separator), "separator");
+    harness.check (new Character (File.separatorChar).toString ().equals (config.separator), "separatorChar");
     
     // getAbsolutePath ();
     harness.debug ("tmp3.getAbsolutePath () = " + tmp3.getAbsolutePath ());

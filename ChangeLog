@@ -1,3 +1,25 @@
+2004-05-02  C. Brian Jones  <cbj@gnu.org>
+	
+	* gnu/testlet/java/io/File/jdk11.java 
+	(test): access static field in config in a static way
+	* gnu/testlet/java/text/CollationElementIterator/jdk11.java 
+	(test): access static field harness in a static way
+	* gnu/testlet/java/net/Socket/SocketTest.java 
+	(test_BasicBServer): access static field harness in a static way
+	* gnu/testlet/java/net/URLConnection/URLConnectionTest.java 
+	(test_URLConnection): access static method in URLConnection in a 
+	static way
+	* gnu/testlet/java/net/SocketTest.java 
+	(test_BasicServer): access static field harness in SocketServer 
+	in a static way
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java 
+	(test_params): access static method setSocketFactory in a static way
+	* gnu/testlet/java/net/URL/URLTest.java 
+	(test_Basics): access static method setURLStreamHandlerFactory 
+	in a static way
+	* gnu/testlet/java/lang/Thread/interrupt.java 
+	(test): access static method sleep in a static way
+
 2004-05-02  Thomas Zander  <zander@kde.org>
 
 	* gnu/anttask/RunTests: Add javadoc, add setSrcdir, setTestJDK, 

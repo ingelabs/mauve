@@ -73,7 +73,7 @@ public class interrupt implements Testlet
     interrupted_exception = false;
     try
       {
-	current.sleep(50);
+	Thread.sleep(50);
       }
     catch(InterruptedException ie)
       {

@@ -73,8 +73,8 @@ public class URLTest implements Testlet
 			URL url = new URL ( baseurl, "index.html");
 			url.hashCode();
 			baseurl.hashCode();
-			url.setURLStreamHandlerFactory( null );
-			baseurl.setURLStreamHandlerFactory( null );
+			URL.setURLStreamHandlerFactory( null );
+			URL.setURLStreamHandlerFactory( null );
 			harness.check (url.getProtocol(), "http");
 			harness.check (url.getPort(), -1);
 			harness.check (url.getHost(), "sources.redhat.com");

@@ -233,7 +233,7 @@ public class ServerSocketTest implements Testlet
 	harness.check(addr.toString().indexOf(ip) != -1,
 		      "InetAddress toString() should contain IP");
       }
-      sock.setSocketFactory(null);
+      ServerSocket.setSocketFactory(null);
       harness.check(true);
     }
     catch (Exception e) {

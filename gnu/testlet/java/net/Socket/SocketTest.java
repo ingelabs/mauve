@@ -38,7 +38,7 @@ public class SocketTest implements Testlet
     harness.checkPoint("BasicServer");
     try {
       SocketServer srv = new SocketServer();
-      srv.harness = harness;
+      SocketServer.harness = harness;
       srv.init();
       srv.start();
       Thread.yield();
@@ -432,7 +432,7 @@ public class SocketTest implements Testlet
   {
     harness.checkPoint("BasicBServer");
     SocketBServer srv = new SocketBServer();
-    srv.harness = harness;
+    SocketBServer.harness = harness;
     srv.init();
     srv.start();
     Thread.yield();

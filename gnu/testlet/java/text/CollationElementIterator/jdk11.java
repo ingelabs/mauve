@@ -197,7 +197,7 @@ public class jdk11 implements Testlet
       TERTIARY,
     };
     
-    this.harness = harness;
+    jdk11.harness = harness;
     try
     {
       // -------- constants -------- 

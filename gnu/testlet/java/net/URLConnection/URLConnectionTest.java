@@ -396,8 +396,8 @@ public class URLConnectionTest implements Testlet
       conn.setAllowUserInteraction(true);
       harness.check(conn.getAllowUserInteraction(),
 	"Error in test_URLConnection - 15 ");
-      conn.setDefaultAllowUserInteraction(true);
-      harness.check(conn.getDefaultAllowUserInteraction(),
+      URLConnection.setDefaultAllowUserInteraction(true);
+      harness.check(URLConnection.getDefaultAllowUserInteraction(),
 	"Error in test_URLConnection - 16 ");
       conn.setUseCaches(true);
       harness.check(conn.getUseCaches(), "Error in test_URLConnection - 17 ");
