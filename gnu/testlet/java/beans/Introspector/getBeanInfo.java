@@ -30,20 +30,27 @@ import java.lang.reflect.Method;
  * <br/>
  * See {@link getBeanInfoTestClass} for details on what is
  * expected.<br/>
- * The test goes like this:
- * There is a test class having a number of certain methods. Some of them should
+ * <br/>
+ * The property test goes like this:
+ * There is a test class having a number of well-known methods. Some of them should
  * make a property other should not. At first <code>Method</code> instances for
  * the properties are retrieved using reflection. Then the <code>BeanInfo</code>
  * instance of the test class is retrieved. Finally the test checks whether the
  * <code>BeanInfo</code> contains the right <code>PropertyDescription</code>
  * by testing their read and write methods against the methods that were retrieved
- * in the beginning.
- *
+ * in the beginning.<br/>
+ * <br/>
+ * 
  * @author Robert Schuster <theBohemian@gmx.net>
  */
 public class getBeanInfo implements Testlet
 {
-    public void test(TestHarness harness)
+	
+	public void test(TestHarness harness) {
+		propertyTest(harness);
+	}
+	
+    void propertyTest(TestHarness harness)
     {
         BeanInfo bi = null;
         Class testClass = getBeanInfoTestClass.class;
@@ -98,11 +105,10 @@ public class getBeanInfo implements Testlet
         }
         catch (IntrospectionException ie)
         {
-            harness.fail("ACCESS_BEANINFO_INTROSPECTION_EXCEPTION");
-            return;
+            harness.fail("TEST_PREPARATION_INTROSPECTION_EXCEPTION");
         }
 
-        harness.check(bi != null, "ACCESS_BEANINFO_RETURNED");
+        harness.check(bi != null, "TEST_PREPARATION_VALID_BEANINFO");
 
         PropertyDescriptor[] propertyDescriptors = bi.getPropertyDescriptors();
 

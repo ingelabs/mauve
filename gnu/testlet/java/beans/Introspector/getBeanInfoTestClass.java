@@ -17,17 +17,19 @@ package gnu.testlet.java.beans.Introspector;
 
 
 /** This class is used to test the Introspector in the test:
- * <code>gnu.testlet.java.beans.getBeanInfo</code>.
+ * <code>gnu.testlet.java.beans.getBeanInfo</code> and
+ * <code>gnu.testlet.java.beans.getBeanInfo2</code>.
  *
- * See each method's documentation to see what is expected in the
- * test.
+ * See each method's documentation to see what is expected for the
+ * tests.
  *
  * @author Robert Schuster <theBohemian@gmx.net>
  */
 public class getBeanInfoTestClass
 {
   /** This method is expected to be the read method of the property
-   * 'correctProperty'.
+   * 'correctProperty' and should show up as in the method descriptors.
+   * 
    *
    * @param i Unused.
    */
@@ -36,7 +38,7 @@ public class getBeanInfoTestClass
   }
 
   /** This method is expected to be the write method of the property
-   * 'correctProperty'.
+   * 'correctProperty' and should show up in the method descriptors.
    *
    * @return 0
    */
@@ -46,7 +48,8 @@ public class getBeanInfoTestClass
   }
 
   /** This method is expected to be the read method of the read-only
-   * property 'correctReadOnlyProperty'.
+   * property 'correctReadOnlyProperty'  and should show up in the
+   * method descriptors.
    *
    * @return 0.
    */
@@ -56,7 +59,8 @@ public class getBeanInfoTestClass
   }
 
   /** This method is expected to be the write method of the write-only
-   * property 'correctWriteOnlyProperty'.
+   * property 'correctWriteOnlyProperty' and should show up in the
+   * method descriptors.
    *
    * @param i Unused.
    */
@@ -64,8 +68,8 @@ public class getBeanInfoTestClass
   {
   }
 
-  /** This method should not show up as part of a property because
-   * the method is not public.
+  /** This method should not show up as part of a property or method
+   * descriptor because the method is not public.
    *
    * @param i Unused.
    */
@@ -73,8 +77,8 @@ public class getBeanInfoTestClass
   {
   }
 
-  /** This method should not show up as part of a property because the
-   * method is not public.
+  /** This method should not show up as part of a property or method
+   * descriptor because the method is not public.
    *
    * @return 0.
    */
@@ -84,7 +88,8 @@ public class getBeanInfoTestClass
   }
 
   /** This method should not show up as part of a property because the
-   * method is <code>static</code>.
+   * method is <code>static</code> but it should show up in the
+   * method descriptors.
    *
    * @param i Unused.
    */
@@ -93,12 +98,14 @@ public class getBeanInfoTestClass
   }
 
   /** This method should not show up as part of a property because the
-   * method is <code>static</code>.
-   *
+   * method is <code>static</code> but it should show up in the
+   * method descriptors.
+   * 
    * @return 0.
    */
   public static int getSomeStaticValue()
   {
     return 0;
   }
+  
 }

@@ -1,4 +1,16 @@
 2004-11-07  Robert Schuster <thebohemian@gmx.net>
+
+	Tests for bug #10938:
+	gnu/testlet/java/beans/Introspector/getBeanInfo2.java:
+	new file
+
+	gnu/testlet/java/beans/Introspector/getBeanInfoTestClass.java:
+	extended documentation for getBeanInfo2 test
+
+	gnu/testlet/java/beans/Introspector/getBeanInfo.java:
+	unified checkpoint labels
+
+2004-11-07  Robert Schuster <thebohemian@gmx.net>
 	
 	Splits tests:
 	* gnu/testlet/java/beans/DescriptorTest.java:
