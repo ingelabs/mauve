@@ -1,3 +1,22 @@
+1999-03-14  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/lang/Boolean/BooleanTest.java,
+	gnu/testlet/java/lang/Byte/ByteTest.java,
+	gnu/testlet/java/lang/Character/CharacterTest.java,
+	gnu/testlet/java/lang/Class/ClassTest.java,
+	gnu/testlet/java/lang/Cloneable/CloneableTest.java,
+	gnu/testlet/java/lang/Double/DoubleTest.java,
+	gnu/testlet/java/lang/Float/FloatTest.java,
+	gnu/testlet/java/lang/Integer/IntegerTest.java,
+	gnu/testlet/java/lang/Long/LongTest.java,
+	gnu/testlet/java/lang/Math/MathTest.java,
+	gnu/testlet/java/lang/Number/NewNumber.java,
+	gnu/testlet/java/lang/Number/NumberTest.java,
+	gnu/testlet/java/lang/Object/ObjectTest.java,
+	gnu/testlet/java/lang/Short/ShortTest.java,
+	gnu/testlet/java/lang/String/StringTest.java,
+	gnu/testlet/java/lang/StringBuffer/StringBufferTest.java: New files.
+
 1999-03-12  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/MessageFormat/parse.java: New file.
