@@ -81,6 +81,9 @@ while test -n "$taglist"; do
    esac
 done
 
+# By default, use JDK1.1.
+test -z "$tags" && tags="JDK1.0 JDK1.1"
+
 test -n "$verbose" && echo "tags = $tags"
 test -n "$verbose" && echo "spectags = $spectags"
 test -n "$verbose" && echo "file_specs = $file_specs"

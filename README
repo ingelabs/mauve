@@ -52,7 +52,9 @@ instance, specifying `!java.lang java.lang.System' will omit all
 java.lang tests except for System.  Every file starts off in the
 `included' state; an explicit exclusion is needed to reject it.  (So,
 e.g., specifying just `java.lang' is insufficient to select only
-java.lang.  You must specify `!java java.lang'.)
+java.lang.  You must specify `!java. java.lang'.  Note the `.'!)
+
+If no tags are given, "JDK1.0 JDK1.1" are assumed.
 
 You can use `make recheck' to re-run `make check' with the key list
 you last used.

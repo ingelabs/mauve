@@ -1,3 +1,7 @@
+1998-12-04  Tom Tromey  <tromey@cygnus.com>
+
+	* choose: Default tags are `JDK1.0 JDK1.1'.
+
 1998-12-03  Tom Tromey  <tromey@cygnus.com>
 
 	* choose: `continue' if file excluded by file tests.
