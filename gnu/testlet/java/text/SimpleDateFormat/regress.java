@@ -22,6 +22,7 @@ public class regress implements Testlet
   {
     "Fri, 18 May 2001 12:18:06 CDT",
     "Fri, 18 May 2001 13:18:06 EDT",
+    "Fri, 18 May 2001 12:18:06 EST",
     "Fri, 18 May 2001 17:18:06 GMT",
     "Fri, 18 May 2001 10:18:06 PDT"
   };

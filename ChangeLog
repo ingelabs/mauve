@@ -1,3 +1,9 @@
+2001-06-08  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (dates):
+	Added EST case again, reverting yesterday's change.  It turns out
+	to be correct.
+
 2001-05-14  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/regress.java (dates):
