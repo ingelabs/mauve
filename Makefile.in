@@ -92,7 +92,9 @@ test_names := $(subst /,.,$(subst .java,,$(test_files)))
 @USE_GCJ_TRUE@EXTRA_SimpleTestHarness_SOURCES = no-such-file.c
 
 @USE_GCJ_TRUE@MOSTLYCLEANFILES = $(javao_files)
-@USE_GCJ_TRUE@CLEANFILES = $(class_files)
+@USE_GCJ_TRUE@CLEANFILES = $(class_files) classes.stamp
+
+@USE_GCJ_FALSE@CLEANFILES = classes.stamp
 
 SUFFIXES = .class .java
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -337,7 +339,7 @@ classes.stamp: $(java_files)
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS)
 @USE_GCJ_TRUE@	./SimpleTestHarness $(test_names)
 
-@USE_GCJ_FALSE@check-local: $(check_PROGRAMS)
+@USE_GCJ_FALSE@check-local: classes.stamp
 @USE_GCJ_FALSE@	$(JAVA) gnu.testlet.SimpleTestHarness $(test_names)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

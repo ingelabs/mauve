@@ -50,12 +50,14 @@ check-local: $(check_PROGRAMS)
 	./SimpleTestHarness $(test_names)
 
 MOSTLYCLEANFILES = $(javao_files)
-CLEANFILES = $(class_files)
+CLEANFILES = $(class_files) classes.stamp
 
 else  ## USE_GCJ
 
-check-local: $(check_PROGRAMS)
+check-local: classes.stamp
 	$(JAVA) gnu.testlet.SimpleTestHarness $(test_names)
+
+CLEANFILES = classes.stamp
 
 endif ## USE_GCJ
 

@@ -1,6 +1,13 @@
 1998-11-24  Tom Tromey  <tromey@cygnus.com>
 
 	* Makefile.in: Rebuilt.
+	* Makefile.am (CLEANFILES): Added classes.stamp; define in no-gcj
+	case.
+	(check-local): Depend on classes.stamp, not $(check_PROGRAMS).
+
+	* gnu/testlet/java/lang/Long/new_Long.java: New file.
+
+	* Makefile.in: Rebuilt.
 	* Makefile.am (check-local): Use correct name for
 	SimpleTestHarness class.
 
