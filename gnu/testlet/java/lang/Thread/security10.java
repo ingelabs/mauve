@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 2004 Free Software Foundation, Inc.
+// Copyright (C) 2004, 2005 Free Software Foundation, Inc.
 // Written by Michael Koch (konqueror@gmx.de)
 
 // This file is part of Mauve.
@@ -24,6 +24,7 @@ package gnu.testlet.java.lang.Thread;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import java.security.Permission;
 
 public class security10 implements Testlet
 {
@@ -32,6 +33,14 @@ public class security10 implements Testlet
     public void checkAccess(Thread thread)
     {
       throw new SecurityException();
+    }
+
+    public void checkPermission(Permission perm)
+    {
+      RuntimePermission p = new RuntimePermission("setSecurityManager");
+      if (p.implies(perm))
+        return;
+      super.checkPermission(perm);
     }
   }
   
