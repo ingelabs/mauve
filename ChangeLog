@@ -1,3 +1,8 @@
+Mon Jan  4 18:58:11 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/DateFormatSymbols/Test.java: Added this
+	test case.
+
 1999-01-04  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/io/ByteArrayInputStream/MarkReset.java (test):
