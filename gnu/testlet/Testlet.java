@@ -4,12 +4,11 @@
 
 package gnu.testlet;
 
-public abstract class Testlet
+public interface Testlet
 {
-  public abstract void test ();
+  // This runs the test.
+  public abstract void test (TestHarness harness);
 
-  public String description ()
-    {
-      return "A testlet with no description.";
-    }
+  // This must return a description of the test.
+  public abstract String description ();
 }

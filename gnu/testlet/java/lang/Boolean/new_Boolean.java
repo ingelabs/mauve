@@ -1,22 +1,12 @@
 // tags: JDK1.0 JDK1.1 JDK1.2 PersonalJava EmbeddedJava
 
-/*{
-true
-true
-true
-false
-false
-false
-true
-false
-}*/
-
 package gnu.testlet.java.lang.Boolean;
 import gnu.testlet.Testlet;
+import gnu.testlet.TestHarness;
 
-class new_Boolean extends Testlet
+public class new_Boolean implements Testlet
 {
-  public void test ()
+  public void test (TestHarness harness)
     {
       Boolean a = new Boolean("true");
       Boolean b = new Boolean("TRUE");
@@ -26,19 +16,23 @@ class new_Boolean extends Testlet
       Boolean f = new Boolean("");
       Boolean g = new Boolean(true);
       Boolean h = new Boolean(false);
-      
-      System.out.println(a);
-      System.out.println(b);
-      System.out.println(c);
-      System.out.println(d);
-      System.out.println(e);
-      System.out.println(f);
-      System.out.println(g);
-      System.out.println(h);
+
+      harness.check(a.booleanValue());
+      harness.check(b.booleanValue());
+      harness.check(c.booleanValue());
+      harness.check(! d.booleanValue());
+      harness.check(! e.booleanValue());
+      harness.check(! f.booleanValue());
+      harness.check(g.booleanValue());
+      harness.check(! h.booleanValue());
     }
-  
+
   public String description ()
     {
       return "creating Boolean objects";
+    }
+
+  public new_Boolean ()
+    {
     }
 }

@@ -1,3 +1,38 @@
+1998-11-23  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/Character/digit.java: New file.
+	* gnu/testlet/java/lang/Boolean/hashcode_Boolean.java: New file.
+	* gnu/testlet/java/lang/Character/consts.java: New file.
+	* gnu/testlet/java/lang/Boolean/equals_Boolean.java: New file.
+
+	* configure, Makefile.in: Rebuilt.
+	* configure.in: Create USE_GCJ conditional.
+	* aclocal.m4: New file.
+	* Makefile.am (check_DATA): New macro.
+	(class_files): New macro.
+	(BUILT_SOURCES): Likewise.
+	(SimpleTestHarness_SOURCES): Likewise.
+	(SimpleTestHarness_DEPENDENCIES): Likewise.
+	(SimpleTestHarness_LDADD): Likewise.
+	(SUFFIXES): Likewise.
+	(.class.o): New target.
+	(SimpleTestHarness_LDFLAGS): New macro.
+	(MOSTLYCLEANFILES): Likewise.
+	(CLEANFILES): Likewise.
+	(EXTRA_SimpleTestHarness_SOURCES): Likewise.
+	(JCFLAGS): Set to -g.
+	(JC1FLAGS): New macro.
+	(test_files): Likewise.
+	(JAVAC): Removed.
+	(check-local): New target.
+
+	* gnu/testlet/java/lang/Boolean/new_Boolean.java: Updated to
+	follow Testlet.
+	* gnu/testlet/SimpleTestHarness.java: New file.
+	* gnu/testlet/TestHarness.java: New file.
+	* gnu/testlet/Testlet.java (Testlet): Now an interface.  Removed
+	some methods.
+
 Fri Nov  6 09:06:10 1998  Anthony Green  <green@hoser.cygnus.com>
 
 	* Makefile.am, Makefile.in, configure, configure.in,
