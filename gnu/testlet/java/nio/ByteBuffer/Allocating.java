@@ -38,12 +38,8 @@ public class Allocating implements Testlet
   	//
   	// allocate(int)
   	//
-  	System.out.println();
-  	System.out.println();
     h.checkPoint("allocate(int)");
   	h.check(true);
-  	System.out.println();
-  	System.out.println();
     ByteBufferFactory allocateFactory = new ByteBufferFactory()
     {
       public ByteBuffer newInstance()
@@ -64,12 +60,8 @@ public class Allocating implements Testlet
   	//
   	// allocateDirect(int)
   	//
-  	System.out.println();
-  	System.out.println();
   	h.checkPoint("allocateDirect(int)");
   	h.check(true);
-  	System.out.println();
-  	System.out.println();
   	ByteBufferFactory allocateDirectFactory = new ByteBufferFactory()
 	{
   	  public ByteBuffer newInstance()
@@ -93,12 +85,8 @@ public class Allocating implements Testlet
   	//
   	// wrap(byte[])
   	//
-  	System.out.println();
-  	System.out.println();
   	h.checkPoint("wrap(byte[])");
   	h.check(true);
-  	System.out.println();
-  	System.out.println();
   	ByteBufferFactory wrapFactory = new ByteBufferFactory()
 	{
   	  public ByteBuffer newInstance()
@@ -120,12 +108,8 @@ public class Allocating implements Testlet
   	//
   	// wrap(byte[], int, int)
   	//
-  	System.out.println();
-  	System.out.println();
   	h.checkPoint("wrap(byte[], int, int)");
   	h.check(true);
-  	System.out.println();
-  	System.out.println();
   	ByteBufferFactory wrapWithOffsetFactory = new ByteBufferFactory()
 	{
   	  public ByteBuffer newInstance()
@@ -137,17 +121,12 @@ public class Allocating implements Testlet
     ByteBuffer bufWrapOff = ByteBuffer.wrap(arrWrapOff, 1, 1);
     h.check(bufWrapOff.isDirect(), false, "isDirect()");
     h.check(bufWrapOff.hasArray(), true, "hasArray()");
-    h.check(bufWrapOff.arrayOffset(), 1, "arrayOffset()");
+    h.check(bufWrapOff.arrayOffset(), 0, "arrayOffset()");
     h.check(bufWrapOff.array(), arrWrapOff, "array()");
 
     overflow(h, wrapWithOffsetFactory, 15);
     underflow(h, wrapWithOffsetFactory, 15);
     compact(h, wrapWithOffsetFactory, 20);
-
-  	System.out.println();
-  	System.out.println();
-  	System.out.println();
-  	System.out.println();
 
     array(h);
     synchWrappedBufferWithArray(h);
