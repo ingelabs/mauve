@@ -212,42 +212,6 @@ public class DatagramPacketTest2 implements Testlet
 		}
 	}
 
-	// check for invalid IP address
-	public void invalid_addr()
-	{
-		try
-		{
-			DatagramPacket request = new DatagramPacket(buf, 10, null, PORT);
-			errormsg("invalid_addr", 1, true, "NullPointerException");
-		}
-		catch (NullPointerException e)
-		{
-			harness.check(true);
-		}
-
-		try
-		{
-			DatagramPacket request = new DatagramPacket(buf, 10, ia, PORT);
-			request.setAddress(null);
-			errormsg("invalid_addr", 2, true, "NullPointerException");
-		}
-		catch (NullPointerException e)
-		{
-			harness.check(true);
-		}
-
-		try
-		{
-			DatagramPacket reply = new DatagramPacket(buf, 10);
-			reply.setAddress(null);
-			errormsg("invalid_addr", 3, true, "NullPointerException");
-		}
-		catch (NullPointerException e)
-		{
-			harness.check(true);
-		}
-	}
-
 	// check for invalid port number
 	public void invalid_port()
 	{
@@ -331,7 +295,6 @@ public class DatagramPacketTest2 implements Testlet
 
 		m.invalid_buf();
 		m.invalid_buflen();
-		m.invalid_addr();
 		m.invalid_port();
 	}
 }

@@ -1,12 +1,16 @@
 2004-11-05  Noa Resare  <noa@resare.com>
 
+	* gnu/testlet/java/net/DatagramPacket/DatagramPacketTest2.java
+	(invalid_addr): removed tests for invalid address.
+
+2004-11-05  Noa Resare  <noa@resare.com>
+
 	* gnu/testlet/java/lang/Thread/contextClassLoader.java:
 	Wait for threads to finish before continuing.
 
 2004-11-05  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/BinaryCompatibility/foo:
-
 	Added explicit -classpath to $JAVA invocation.
 
 2004-11-05  Noa Resare  <noa@resare.com>
