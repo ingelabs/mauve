@@ -1,3 +1,8 @@
+2004-10-08  Bryce McKinlay  <mckinlay@redhat.com>
+
+	* gnu/testlet/java/util/Calendar/set.java: New test.
+	* gnu/testlet/java/util/TimeZone/setDefault.java: New test.
+
 2004-09-29  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java
