@@ -106,6 +106,7 @@ public class set implements Testlet
   private void testUnsetFields(TestHarness harness)
   {
     Calendar c = Calendar.getInstance();
+    c.setTimeZone(TimeZone.getTimeZone("GMT"));
     c.clear();
     c.set(Calendar.YEAR, 1978);
     c.set(Calendar.MONTH, Calendar.AUGUST);
