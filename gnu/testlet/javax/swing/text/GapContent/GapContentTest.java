@@ -24,38 +24,58 @@ package gnu.testlet.javax.swing.text.GapContent;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import javax.swing.text.GapContent;
+import javax.swing.text.*;
 
 public class GapContentTest
   implements Testlet
 {
   private void testContent(TestHarness harness, GapContent content)
   {
-    //harness.check(content.length() == 0, "length == 0: " + content.length());
+    boolean ok;
+    
+    harness.check(content.length(), 1, "content length");
 
+    ok = false;
+    try
+      {
+	String text = content.getString(0, 1);
+	
+	if (text.equals("\n"))
+	  ok = true;
+      }
+    catch (BadLocationException e)
+      {
+      }
+    
+    harness.check(ok, "default content");
+
+    ok = false;
     try
       {
 	content.insertString(0, "This is a testcase");
-	harness.check(true, "insertString");
+	ok = true;
       }
     catch (Exception e)
       {
-	harness.fail("unexpected excpetion");
       }
+    
+    harness.check(ok, "insertString");
 
-    //harness.check(content.length() == 18, "length == 18:" + content.length());
+    harness.check(content.length(), 19, "content length");
 
+    ok = false;
     try
       {
 	content.insertString(10, "little ");
-	harness.check(true, "insertString");
+	ok = true;
       }
     catch (Exception e)
       {
-	harness.fail("unexpected excpetion");
       }
 
-    //harness.check(content.length() == 25, "length == 25:" + content.length());
+    harness.check(ok, "insertString");
+    
+    harness.check(content.length(), 26, "content length");
   }
   
   public void test(TestHarness harness)

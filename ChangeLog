@@ -1,3 +1,8 @@
+2005-01-02  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/javax/swing/text/GapContent/GapContentTest.java:
+	Fixed testcases.
+
 2004-12-31  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/Thread/sleep.java: Minor change to make
