@@ -1,5 +1,8 @@
 2001-09-27  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/javax/naming/CompositeName/composite.java: New file.
+	* gnu/testlet/javax/naming/CompoundName/simple.java: New file.
+
 	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java: New file.
 	* gnu/testlet/java/lang/ref/WeakReference/weakref.java: New file.
 
