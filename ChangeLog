@@ -1,3 +1,8 @@
+2003-03-15  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/OutputStreamWriter/jdk11.java (test): 
+	getEncoding() should return the "historical" name.
+
 2003-03-06  C. Brian Jones  <cbj@gnu.org>
 
 	* gnu/testlet/java/io/OutputStreamWriter/jdk11.java (test): 

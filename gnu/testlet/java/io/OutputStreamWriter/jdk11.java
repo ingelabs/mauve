@@ -62,10 +62,12 @@ public class jdk11 implements Testlet
                 // "preferred" name, latin1 is a legal alias
                 // see also http://www.iana.org/assignments/character-sets
 		OutputStreamWriter osw2 = new OutputStreamWriter(baos2, "ISO-8859-1");
-		harness.check(osw2.getEncoding(), "ISO-8859-1", "OutputStreamWriter(writer, encoding)");
+		// Note that for java.io the canonical name as returned by
+		// getEncoding() must be the "historical" name. ISO8859_1.
+		harness.check(osw2.getEncoding(), "ISO8859_1", "OutputStreamWriter(writer, encoding)");
 		osw2.close ();
 		osw2 = new OutputStreamWriter(baos2, "latin1");
-		harness.check(osw2.getEncoding(), "ISO-8859-1", "OutputStreamWriter(writer, encoding) // alias");
+		harness.check(osw2.getEncoding(), "ISO8859_1", "OutputStreamWriter(writer, encoding) // alias");
 		osw2.close ();
 
       }
