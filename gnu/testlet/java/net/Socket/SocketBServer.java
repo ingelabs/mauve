@@ -68,5 +68,7 @@ class SocketBServer extends Thread {
 		     "exception was thrown");
       }
     }
+
+    try { srvsock.close(); } catch (IOException ignored) {}
   }
 }

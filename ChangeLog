@@ -1,5 +1,17 @@
 2002-12-01  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/net/Socket/SocketTest.java: Make sure server
+	sockets are always closed and different tests use different ports to
+	listen on.
+	* gnu/testlet/java/net/ServerSocket/BasicBacklogSocketServer.java:
+	Likewise.
+	* gnu/testlet/java/net/ServerSocket/BasicSocketServer.java: Likewise.
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java: Likewise.
+	* gnu/testlet/java/net/Socket/SocketBServer.java: Likewise.
+	* gnu/testlet/java/net/Socket/SocketServer.java: Likewise.
+
+2002-12-01  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/net/Socket/SocketTest.java: Make sure sockets
 	always bind to different local ports and are always closed.
 

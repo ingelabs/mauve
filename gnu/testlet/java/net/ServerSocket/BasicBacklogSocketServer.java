@@ -70,5 +70,10 @@ class BasicBacklogSocketServer extends Thread {
       harness.fail("Error : BasicBacklogSocketServer::run failed - 2" + 
 		   "exception was thrown: " + e);
     }
+    finally {
+      try {
+	srvsock.close();
+      } catch (IOException ignored) {}
+    }
   }
 }

@@ -37,7 +37,7 @@ class SocketServer extends Thread {
   public void init()
   {
     try {
-      srvsock = new ServerSocket(20000);
+      srvsock = new ServerSocket(23000);
       harness.check(true);
     }
     catch (Exception e) {
@@ -79,5 +79,7 @@ class SocketServer extends Thread {
 	e.printStackTrace();
       }
     }
+
+    try { srvsock.close(); } catch (IOException ignored) {}
   }
 }

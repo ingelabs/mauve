@@ -109,7 +109,7 @@ public class ServerSocketTest implements Testlet
     Thread.yield();
     
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      Socket sock = new Socket("127.0.0.1", 12000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
@@ -126,7 +126,7 @@ public class ServerSocketTest implements Testlet
     
     // second iteration
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      Socket sock = new Socket("127.0.0.1", 12000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
@@ -183,14 +183,15 @@ public class ServerSocketTest implements Testlet
     srv.start();
     Thread.yield();
     try {
-      Socket sock = new Socket("127.0.0.1", 20000);
+      Socket sock = new Socket("127.0.0.1", 12000);
     } catch (IOException e) {}
   }
   
   public void test_params()
   {
+    ServerSocket sock = null;
     try {
-      ServerSocket sock = new ServerSocket(30000);
+      sock = new ServerSocket(30000);
       
       harness.check(sock.getLocalPort() == 30000,
 		    "Error : test_params failed - 1 " + 
@@ -233,6 +234,12 @@ public class ServerSocketTest implements Testlet
       harness.fail("Error : test_params failed - 10 " + 
 		   "exception was thrown");
       harness.debug(e);
+    }
+    finally {
+      try {
+	if (sock != null)
+	  sock.close();
+      } catch (IOException ignored) {}
     }
     
   }

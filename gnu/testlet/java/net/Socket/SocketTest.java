@@ -52,7 +52,7 @@ public class SocketTest implements Testlet
     
     Socket sock = null;
     try {
-      sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 23000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
@@ -74,7 +74,7 @@ public class SocketTest implements Testlet
     
     // second iteration
     try {
-      sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 23000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
       String str = dis.readLine();
       
@@ -98,7 +98,7 @@ public class SocketTest implements Testlet
     
     // second iteration
     try {
-      sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 23000);
       DataInputStream dis = new DataInputStream(sock.getInputStream());
    
       byte data[] = new byte[5];
@@ -128,7 +128,7 @@ public class SocketTest implements Testlet
 
     // second iteration
     try {
-      sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 23000);
       InputStream is = sock.getInputStream();
       byte data[] = new byte[5];
 
@@ -157,7 +157,7 @@ public class SocketTest implements Testlet
 
     // second iteration
     try {
-      sock = new Socket("127.0.0.1", 20000);
+      sock = new Socket("127.0.0.1", 23000);
       InputStream is = sock.getInputStream();
       byte data[] = new byte[5];
       is.skip(2);

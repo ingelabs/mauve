@@ -37,7 +37,7 @@ class BasicSocketServer extends Thread {
   {
     this.harness = harness;
     try {
-      srvsock = new ServerSocket(20000);
+      srvsock = new ServerSocket(12000);
       harness.check(true);
     }
     catch (Exception e) {
