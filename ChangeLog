@@ -1,5 +1,8 @@
 1999-04-05  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Integer/new_Integer.java: Added another
+	overflow detection test.
+
 	* gnu/testlet/java/lang/Integer/new_Integer.java: Added a new
 	overflow detection test.
 
