@@ -1,6 +1,25 @@
 // Tags: JDK1.1
 // Uses: Resource1 Resource2_en Resource3_bo Resource4_en Resource4_en_CA Resource4 Resource4_jp Resource4_jp_JA Resource4_jp_JA_WIN Resource4_jp_JA_WIN_95 Resource5_en Resource5_en_CA Resource5 Resource5_jp Resource5_jp_JA Resource5_jp_JA_WIN Resource6_en Resource6_en_CA Resource6 Resource6_jp Resource6_jp_JA Resource7_en Resource7_en_CA Resource7 Resource7_jp Resource8_en Resource8_en_CA Resource8 Resource9_en Resource9_en_CA Resource10_en
 
+// Copyright (C) 1998 Cygnus Solutions
+
+// This file is part of Mauve.
+
+// Mauve is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+
+// Mauve is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with Mauve; see the file COPYING.  If not, write to
+// the Free Software Foundation, 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.  */
+
 package gnu.testlet.java.util.ResourceBundle;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;

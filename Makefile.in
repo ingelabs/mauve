@@ -107,8 +107,8 @@ CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 @USE_GCJ_TRUE@SimpleTestHarness_OBJECTS = 
-DIST_COMMON =  README ChangeLog Makefile.am Makefile.in aclocal.m4 \
-configure configure.in install-sh missing mkinstalldirs
+DIST_COMMON =  README COPYING ChangeLog Makefile.am Makefile.in \
+aclocal.m4 configure configure.in install-sh missing mkinstalldirs
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
