@@ -23,7 +23,7 @@ public class regress implements Testlet
     "Fri, 18 May 2001 12:18:06 CDT",
     "Fri, 18 May 2001 13:18:06 EDT",
     "Fri, 18 May 2001 12:18:06 EST",
-    "Fri, 18 May 2001 18:18:06 GMT",
+    "Fri, 18 May 2001 17:18:06 GMT",
     "Fri, 18 May 2001 10:18:06 PDT"
   };
 
@@ -50,6 +50,7 @@ public class regress implements Testlet
     harness.check (k.get(Calendar.HOUR),        8, "check hour");
     harness.check (k.get(Calendar.HOUR_OF_DAY), 20, "check hour-of-day");
 
+    cdf = new SimpleDateFormat ("EEE, dd MMM yyyy HH:mm:ss zzz");
     cdf.setTimeZone (TimeZone.getTimeZone ("GMT"));
     for (int i = 0; i < dates.length; ++i)
       {
@@ -58,7 +59,7 @@ public class regress implements Testlet
 	try
 	  {
 	    d = cdf.parse (dates[i]);
-	    harness.check (cdf.format (d), "Fri, 18 May 2001 18:18:06 GMT",
+	    harness.check (cdf.format (d), "Fri, 18 May 2001 17:18:06 GMT",
 			   tz);
 	  }
 	catch (ParseException _)

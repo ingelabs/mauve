@@ -1,5 +1,8 @@
 2001-05-11  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test):
+	Fixed buglet in new tests.
+
 	* gnu/testlet/java/text/SimpleDateFormat/regress.java (dates): New
 	field.
 	(test): Added timezone tests.
