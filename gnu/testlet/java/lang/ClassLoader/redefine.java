@@ -30,7 +30,7 @@ public class redefine extends ClassLoader implements Testlet
   public static class Inner { }
 
   public static final String INNER_NAME
-    = "gnu.testlet.java.lang.ClassLoader$Inner";
+    = "gnu.testlet.java.lang.ClassLoader.redefine$Inner";
 
   public void test (TestHarness harness)
   {
