@@ -1,5 +1,14 @@
 2005-02-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/font/TextAttribute/constants.java,
+	gnu/testlet/java/awt/font/TextAttribute/constants13.java,
+	gnu/testlet/java/awt/font/TextAttribute/serialization.java,
+	gnu/testlet/java/awt/font/TextAttribute/toString.java,
+	gnu/testlet/java/awt/font/TextAttribute/toString13.java:
+	New tests.
+	
+2005-02-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/lang/Float/compareTo.java,
 	gnu/testlet/java/lang/Double/compareTo.java: New tests.
 	
