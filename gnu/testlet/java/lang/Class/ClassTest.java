@@ -214,7 +214,7 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 	cls = java.lang.Boolean.TYPE;
 	harness.check((cls.getModifiers() & 
 		       (ACC_PUBLIC | ACC_PROTECTED | ACC_PRIVATE | 
-			ACC_FINAL | ACC_INTERFACE)) == 
+			ACC_FINAL | ACC_INTERFACE)), 
 		      (ACC_PUBLIC | ACC_FINAL));
 
 	harness.checkPoint("test_Modifiers java.lang.Boolean modifiers");
@@ -222,7 +222,7 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 	    cls = Class.forName("java.lang.Boolean");
 	    harness.check((cls.getModifiers() & 
 			   (ACC_PUBLIC | ACC_PROTECTED | ACC_PRIVATE | 
-			    ACC_FINAL | ACC_INTERFACE)) == 
+			    ACC_FINAL | ACC_INTERFACE)),
 			  (ACC_PUBLIC | ACC_FINAL));
 	} catch(Exception e)
 	    {
@@ -234,7 +234,7 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 	    cls = Class.forName("[I");
 	    harness.check((cls.getModifiers() & 
 			   (ACC_PUBLIC | ACC_PROTECTED | ACC_PRIVATE | 
-			    ACC_FINAL | ACC_INTERFACE)) == 
+			    ACC_FINAL | ACC_INTERFACE)), 
 			  (ACC_PUBLIC | ACC_FINAL));
 	} catch(Exception e)
 	    {
@@ -244,7 +244,7 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 	harness.checkPoint("test_Modifiers private modifier");
 	PrivateType foo = new PrivateType(); //new Cloneable() { int d; };
 	cls = foo.getClass();
-	harness.check((cls.getModifiers() & (ACC_PRIVATE)) == (ACC_PRIVATE));
+	harness.check((cls.getModifiers() & (ACC_PRIVATE)), (ACC_PRIVATE));
 
 	harness.checkPoint("test_Modifiers array modifiers");
 	/*	PrivateType[] array = new PrivateType[2];

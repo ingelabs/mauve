@@ -1,5 +1,10 @@
 2004-04-12  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/Class/ClassTest.java: Use check with
+	two argument, not equals(), to show what is actually different.
+
+2004-04-12  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/RandomAccessFile/jdk11.java: Show IOException in
 	debug mode.
 
