@@ -46,15 +46,31 @@ public class jdk11 implements Testlet
 		harness.fail ("Harness not an instance of SimpleTestHarness");
 		return;
       }
+
+    String tmpfile = harness.getTempDirectory()
+      + File.separator + "mauve-jdk11.tst";
+    File f = new File(tmpfile);
+
+    // Make sure the file exists.
+    try
+      {
+	f.createNewFile();
+      }
+    catch (IOException ioe)
+      {
+	harness.debug(ioe);
+      }
+
     try {
-      FileReader fr1 = new FileReader("choices");
+      FileReader fr1 = new FileReader(tmpfile);
 	  harness.check(true, "FileReader(string)");
     }
     catch (FileNotFoundException e) {
-      harness.fail("Can't open file 'choices'");
+      harness.fail("Can't open file " + tmpfile);
     } 
+
     try {
-	  File f2 = new File("choices");
+      File f2 = new File(tmpfile);
       FileReader fr2 = new FileReader(f2);
 	  harness.check(true, "FileReader(File)");
 	  FileInputStream fis = new FileInputStream(f2);
@@ -67,8 +83,11 @@ public class jdk11 implements Testlet
       }
     }
     catch (FileNotFoundException e) {
-      harness.fail("Can't open file 'choices'");
+      harness.fail("Can't open file " + tmpfile);
     } 
+
+    // Cleanup
+    f.delete();
  }
 }
 

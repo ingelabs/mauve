@@ -1,3 +1,8 @@
+2004-06-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/FileReader/jdk11.java: Don't depend on the
+	choices file being present.
+
 2004-06-24  Jerry Quinn  <jlquinn@optonline.net>
 
 	* gnu/testlet/java/beans/Expression/check.java: New test.
