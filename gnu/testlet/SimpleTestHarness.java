@@ -85,7 +85,8 @@ public class SimpleTestHarness extends TestHarness
 	    {
 	      System.out.println ("FAIL: " + description
 				  + ": uncaught exception at number "
-				  + (count + 1));
+				  + (count + 1)
+				  + ": " + ex.toString());
 	      ++failures;
 	      ++total;
 	    }
