@@ -1,3 +1,12 @@
+2001-04-25  Jeff Sturm  <jsturm@one-point.com>
+
+	* gnu/testlet/java/util/Calendar/simple.java: New file.
+
+2001-04-25  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/getAndSet2DigitYearStart.java
+	(Test): Removed `get' test.
+	
 2001-04-24  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/Test.java (test): Added

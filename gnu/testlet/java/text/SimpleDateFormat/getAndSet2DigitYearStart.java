@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (c) 1999  Free Software Foundation
+// Copyright (c) 1999, 2001  Free Software Foundation
 
 // This file is part of Mauve.
 
@@ -20,9 +20,11 @@ public class getAndSet2DigitYearStart implements Testlet
       DateFormatSymbols dfs = new DateFormatSymbols(Locale.US);
       SimpleDateFormat sdf = new SimpleDateFormat(pattern, dfs);
 
+      // I removed this test as it relied on the year never changing.
+      // -tromey
       // This unusual value seems to be what the JDK outputs.
-      harness.check(sdf.get2DigitYearStart(), new Date(-1608614014805L), 
-		    "get2DigitYearStart() initial");
+      // harness.check(sdf.get2DigitYearStart(), new Date(-1608614014805L), 
+      // "get2DigitYearStart() initial");
       Date d = new Date(System.currentTimeMillis());
       sdf.set2DigitYearStart(d);
       harness.check(sdf.get2DigitYearStart(), d, "set/get2DigitYearStart()");
