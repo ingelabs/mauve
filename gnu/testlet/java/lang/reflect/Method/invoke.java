@@ -78,7 +78,7 @@ public class invoke implements Testlet
       {
 	// We're expecting an exception, so just make sure the types
 	// match.
-	harness.check(result.getClass() == expect.getClass());
+	harness.check(result.getClass(), expect.getClass());
       }
     else
       harness.check(result, expect);
