@@ -1,3 +1,9 @@
+2004-04-28  Jerry Quinn  <jlquinn@optonline.net>
+
+	* gnu/testlet/java/util/SimpleTimeZone: New directory.
+	* gnu/testlet/java/util/SimpleTimeZone/
+	check12.java, check14.java: New tests.
+
 2004-04-25  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java: Remove
