@@ -1,3 +1,7 @@
+2004-06-28  Anthony Green  <green@redhat.com>
+
+	* gnu/testlet/java/util/zip/ZipFile/NoEntryTest.java: Fix comment.
+
 2004-06-25  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/File/security.java: Allow RuntimePermission

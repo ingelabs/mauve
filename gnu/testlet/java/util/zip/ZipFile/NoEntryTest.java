@@ -1,7 +1,7 @@
 // Tags: JDK1.1
 
-// Copyright (C) 2003 Free Software Foundation
-// Contributed by Mark Wielaard (mark@klomp.org)
+// Copyright (C) 2004 Free Software Foundation
+// Contributed by Anthony Green <green@redhat.com>
 
 // This file is part of Mauve.
 
