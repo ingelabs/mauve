@@ -1,3 +1,8 @@
+2004-05-16  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/text/CollationElementIterator/offset.java: New test
+	to check the get/setOffset() abilities of CollationElementIterator.
+
 2004-05-16  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/Socket/TestSocketImplFactory.java: Make
