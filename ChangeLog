@@ -1,5 +1,10 @@
 2004-03-21  Sven de Marothy  <sven@physto.se>
 
+	* gnu/testlet/java/util/Calendar/ampm.java: Remove bad out-of-range
+	checkTime() tests.
+
+2004-03-21  Sven de Marothy  <sven@physto.se>
+
 	* gnu/testlet/java/util/Calendar/set.java: Explicitly set Calendar
 	locale to Locale.FRANCE.
 

@@ -25,18 +25,20 @@ public class ampm implements Testlet
     // According to the API document of java.util.Calendar,
     // midnight belongs to "am", and noon belongs to "pm".
 
-    checkTime(12, 0, Calendar.AM, "12:00 AM");
+    // NOTE: Calendar uses a 0-11 time, 
+    // I.e. 0 AM (midnight), 1 AM, .. , 11 AM, midday = 0 PM, 1 PM .. 11 PM
+
+    // Whereas the 'h' flag is 1-12 time
+    // I.e. 12 AM (midnight), 1 AM, .. , 12 PM (midday), 1 PM, .. 11 PM
+
     checkTime("12:00 AM", "12:00 AM");
-    checkTime(12, 10, Calendar.AM, "12:10 AM");
     checkTime("12:10 AM", "12:10 AM");
     checkTime(0, 0, Calendar.AM, "12:00 AM");
     checkTime("0:00 AM", "12:00 AM");
     checkTime(0, 10, Calendar.AM, "12:10 AM");
     checkTime("0:10 AM", "12:10 AM");
 
-    checkTime(12, 0, Calendar.PM, "12:00 PM");
     checkTime("12:00 PM", "12:00 PM");
-    checkTime(12, 10, Calendar.PM, "12:10 PM");
     checkTime("12:10 PM", "12:10 PM");
     checkTime(0, 0, Calendar.PM, "12:00 PM");
     checkTime("0:00 PM", "12:00 PM");
