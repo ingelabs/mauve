@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Test.java -- Test {Buffered,CharArray}Writer
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 1999 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -61,7 +61,7 @@ test(TestHarness harness)
   catch(IOException e)
     {
       harness.debug(e);
-      harness.check(false);
+      harness.check(false, "Caught unexpected exception");
     }
 }
 

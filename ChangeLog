@@ -1,5 +1,8 @@
 1999-01-04  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/io/BufferedCharWriter/Test.java (test): Added
+	checkpoint name to exception check.
+
 	* gnu/testlet/SimpleTestHarness.java (main): Removed extraneous
 	`continue' statements.  Only print class name and separator if
 	`verbose'.
