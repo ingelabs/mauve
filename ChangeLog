@@ -1,3 +1,9 @@
+2001-05-11  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (dates): New
+	field.
+	(test): Added timezone tests.
+
 2001-05-10  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/Calendar/roll.java: New file.
