@@ -1,3 +1,12 @@
+2004-07-18  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/awt/Choice/getSelected.java: Tweaked to avoid
+	uncaught NullPointerExceptions when getSelectedObjects() returns null
+	* gnu/testlet/java/beans/EventHandler/check14.java : removed 'Uses:'
+	marker comment for a non-existent class.
+	* gnu/testlet/java/nio/Buffer/PlainBufferTest.java : ditto
+	* gnu/testlet/java/nio/Buffer/WrappedWithOffsetBufferTest : ditto
+
 2004-07-16  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/nio/channels/FileChannel/manyopen.java:

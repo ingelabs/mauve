@@ -1,5 +1,4 @@
 // Test EventHandler.check14().
-// Uses: TestSecurityManager2
 
 // Written by Jerry Quinn <jlquinn@optonline.net>
 

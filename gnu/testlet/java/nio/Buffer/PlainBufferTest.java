@@ -1,5 +1,4 @@
 // Tags: JDK1.4
-// Uses: ByteBufferFactory
 
 // Copyright (C) 2004 Max Gilead <gilead@yellowhedgehog.com>
 
@@ -11,7 +10,7 @@
 // any later version.
 
 // Mauve is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// but WITHOUT ANY WARRANTY; without even the implied warrant of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 

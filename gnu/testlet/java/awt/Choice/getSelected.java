@@ -46,8 +46,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 0);
     harness.check(c.getSelectedItem(), gnu);
     Object[] objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("addItem");
     String fsf = "FSF";
@@ -57,8 +57,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 0);
     harness.check(c.getSelectedItem(), gnu);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("removeAll");
     c.removeAll();
@@ -76,8 +76,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 0);
     harness.check(c.getSelectedItem(), mauve);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], mauve);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(mauve));
 
     harness.checkPoint("insert-gnu");
     c.insert(gnu, 1);
@@ -86,8 +86,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 0);
     harness.check(c.getSelectedItem(), mauve);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], mauve);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(mauve));
 
     harness.checkPoint("select-1");
     c.select(1);
@@ -96,8 +96,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 1);
     harness.check(c.getSelectedItem(), gnu);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("insert-fsf");
     c.insert(fsf, 1);
@@ -106,8 +106,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 0);
     harness.check(c.getSelectedItem(), mauve);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], mauve);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(mauve));
 
     harness.checkPoint("select-gnu");
     c.select(new String(gnu)); // Create a different fsf string
@@ -116,8 +116,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 2);
     harness.check(c.getSelectedItem(), gnu);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("insert classpath");
     String classpath = "classpath";
@@ -127,8 +127,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 2);
     harness.check(c.getSelectedItem(), gnu);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("add-remove-dummy");
     c.add("dummy");
@@ -138,8 +138,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 2);
     harness.check(c.getSelectedItem(), gnu);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("remove-0");
     c.remove(0);
@@ -148,8 +148,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 1);
     harness.check(c.getSelectedItem(), gnu);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], gnu);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(gnu));
 
     harness.checkPoint("remove-gnu");
     c.remove(new String(gnu));
@@ -158,8 +158,8 @@ public class getSelected implements Testlet
     harness.check(c.getSelectedIndex(), 0);
     harness.check(c.getSelectedItem(), fsf);
     objects = c.getSelectedObjects();
-    harness.check(objects.length, 1);
-    harness.check(objects[0], fsf);
+    harness.check(objects != null && objects.length == 1);
+    harness.check(objects != null && objects[0].equals(fsf));
 
     harness.checkPoint("remove-1-remove-0");
     c.remove(1);
