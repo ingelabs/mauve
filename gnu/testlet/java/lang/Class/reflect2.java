@@ -1,5 +1,5 @@
 // Tags: JDK1.1
-// Uses: rf2_help
+// Uses: rf_help rf2_help
 
 // Copyright (C) 2002 Stephen Crawley <crawley@dstc.edu.au>
 
@@ -117,7 +117,7 @@ public class reflect2 implements Testlet
     help = getClass("gnu.testlet.java.lang.Class.rf_help");
     help2 = getClass("gnu.testlet.java.lang.Class.rf2_help");
 
-    help_inner = ((new rf_help(1.0)).new inner()).getClass();
+    help_inner = (new rf_help.inner()).getClass();
     help2_inner = ((new rf2_help(1.0)).new inner_class_1()).getClass();
     help2_inner_inner = 
       (((new rf2_help(1.0)).new inner_class_1()).

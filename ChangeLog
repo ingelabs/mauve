@@ -1,3 +1,10 @@
+2002-11-03  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/Class/reflect.java: Add array class checks.
+	* mauve/gnu/testlet/java/lang/Class/reflect2.java: Uses rf_help.
+	* gnu/testlet/java/lang/Class/rf_help.java: Prevent creation of
+	synthetic methods.
+
 2002-10-28  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/FileInputStream/read.java: New test.

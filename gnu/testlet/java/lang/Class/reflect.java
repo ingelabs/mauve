@@ -84,6 +84,7 @@ public class reflect implements Testlet
     Class rf2_help_class = getClass ("gnu.testlet.java.lang.Class.rf2_help");
     Class aci_class = getClass ("java.text.AttributedCharacterIterator");
     Class i_class = Integer.TYPE;
+    Class array_class = (new Number[5][2]).getClass();
 
     Class[] ptz = new Class[0];
     Class[] pt1 = new Class[1];
@@ -134,6 +135,14 @@ public class reflect implements Testlet
       harness.check(false);
     }
     
+    try {
+      Constructor[] cls = array_class.getConstructors();
+      harness.check(cls.length, 0);
+    }
+    catch (SecurityException se) {
+      harness.check(false);
+    }
+    
     harness.checkPoint ("getDeclaredConstructor");
     cons = getCons (rf_help_class, ptz, true);
     harness.check(cons instanceof Constructor);
@@ -173,6 +182,14 @@ public class reflect implements Testlet
     }
     catch (SecurityException se) {
       // One per check above.
+      harness.check(false);
+    }
+    
+    try {
+      Constructor[] cls = array_class.getDeclaredConstructors();
+      harness.check(cls.length, 0);
+    }
+    catch (SecurityException se) {
       harness.check(false);
     }
     
@@ -227,6 +244,7 @@ public class reflect implements Testlet
     }
 
     harness.checkPoint("getMethod");
+
     Object m = getMethod(rf_help_class, "doit", ptz, false);
     harness.check(m instanceof NoSuchMethodException);
     m = getMethod(reflect_class, "do_nothing", pt1, false);
@@ -239,10 +257,18 @@ public class reflect implements Testlet
     harness.check(m instanceof Method);
 
     harness.checkPoint("getMethods");
+    int oms = 9; // Reasonable guess.
+    try {
+      oms = (new Object()).getClass().getMethods().length;
+      harness.check(true);
+    } catch (Throwable t) {
+      harness.debug(t);
+      harness.check(false);
+    }
+
     try {
       Method[] ms = rf_help_class.getMethods();
-      // There are 9 public methods in Object.
-      harness.check(ms.length, 9);
+      harness.check(ms.length, oms);
     }
     catch (SecurityException se) {
       // One per check above.
@@ -254,7 +280,7 @@ public class reflect implements Testlet
       int expected =
 	(6 /* from reflect.java; note that Testlet's method is also
 	      declared here and should only be counted once.  */
-	 + 9 /* from Object */
+	 + oms /* from Object */
 	 );
       harness.check(ms.length, expected);
     }
@@ -313,6 +339,15 @@ public class reflect implements Testlet
       harness.check(false);
     }
 
+    try {
+      Method[] ms = array_class.getDeclaredMethods();
+      harness.check(ms.length, 0);
+    }
+    catch (SecurityException se) {
+      // One per check above.
+      harness.check(false);
+    }
+
     harness.checkPoint("getDeclaringClass");
     // None of these classes has a declaring class.
     harness.check(rf_help_class.getDeclaringClass(), null);
@@ -321,6 +356,9 @@ public class reflect implements Testlet
 
     harness.checkPoint("getMethod with superinterface");
     m = getMethod(aci_class, "current", ptz, false);
-    harness.check(((Method) m).getName(), "current");
+    if (m instanceof Method)
+      harness.check(((Method) m).getName(), "current");
+    else
+      harness.check(false);
   }
 }
