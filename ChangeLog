@@ -1,4 +1,14 @@
 2002-09-28  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/lang/Double/DoubleTest.java (test_valueOf):
+	Tidied up test; message strings etcetera.
+	* gnu/testlet/java/lang/Float/FloatTest.java (test_valueOf): ditto
+
+	* gnu/testlet/java/lang/Double/DoubleTest.java (test_parseDouble):
+	Added subtests for Double.parseDouble
+	* gnu/testlet/java/lang/Float/FloatTest.java (test_parseFloat): ditto
+	Added subtests for Float.parseFloat
+	
+2002-09-28  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/lang/Double/DoubleTest.java (test_toString):
 	Added comment to subtest #10 about failure on Sun JDKs.
 	* gnu/testlet/java/lang/Float/FloatTest.java (test_toString): ditto

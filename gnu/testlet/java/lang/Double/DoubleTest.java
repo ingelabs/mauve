@@ -362,8 +362,11 @@ public class DoubleTest implements Testlet
 		try {
 			Double.valueOf(null);
 			harness.fail("Error: test_valueOf returned wrong results - 1" );
-		}catch ( NullPointerException e )
-		{}
+		} 
+		catch ( NumberFormatException nfe )
+		  {harness.check(false, "test_valueOf null should throw NullPointerException");}
+                catch ( NullPointerException e )
+		  {harness.check(true, "test_valueOf null");}
 
 		try {
 			Double.valueOf("Kona");
@@ -374,7 +377,30 @@ public class DoubleTest implements Testlet
 			"Error: test_valueOf returned wrong results - 3" );
 
 		harness.check(!( Double.valueOf(" -23.45    ").doubleValue() != -23.45 ),  
-			"Error: test_longValue returned wrong results - 4" );
+			"Error: test_valueOf returned wrong results - 4" );
+	}
+
+	public void test_parseDouble( )
+	{
+		try {
+			Double.parseDouble(null);
+			harness.fail("Error: test_parseDouble returned wrong results - 1" );
+		} 
+		catch ( NumberFormatException nfe )
+		  {harness.check(false, "test_parseDouble null should throw NullPointerException");}
+                catch ( NullPointerException e )
+		  {harness.check(true, "test_parseDouble null");}
+
+		try {
+			Double.parseDouble("Kona");
+			harness.fail("Error: test_parseDouble returned wrong results - 2" );
+		}catch( NumberFormatException e) {}
+
+		harness.check(!( Double.parseDouble( "3.4e+32" ) != 3.4e+32 ),  
+			"Error: test_parseDouble returned wrong results - 3" );
+
+		harness.check(!( Double.parseDouble(" -23.45    ") != -23.45 ),  
+			"Error: test_parseDouble returned wrong results - 4" );
 	}
 
 	public void test_doubleToLongBits()
@@ -593,6 +619,7 @@ public class DoubleTest implements Testlet
 		test_floatValue();
 		test_shortbyteValue();
 		test_valueOf();
+		test_parseDouble();
 		test_doubleToLongBits();
 		test_longBitsToDouble();
 		test_neg();
