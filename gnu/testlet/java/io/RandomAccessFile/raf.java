@@ -38,7 +38,7 @@ public class raf implements Testlet
 
 	int skipped;
 	while ((skipped = raf.skipBytes(1)) == 1)
-	  System.out.println("skipped 1 byte");
+	  harness.debug("skipped 1 byte");
 
 	if (skipped != 0)
 	  {

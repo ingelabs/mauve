@@ -1,5 +1,8 @@
 2002-08-13  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/io/RandomAccessFile/raf.java (test): Don't use
+	System.out.
+
 	* gnu/testlet/java/io/RandomAccessFile/raf.java: New file.
 	Derived from test by Jesse Rosenstock <jmr@fulcrummicro.com>.
 
