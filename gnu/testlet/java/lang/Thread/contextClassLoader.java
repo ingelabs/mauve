@@ -51,6 +51,14 @@ public class contextClassLoader implements Testlet, Runnable
 	checkClassLoader = t_cl;
 	check_msg = "Run with default contextClassLoader";
 	t.start();
+	try
+	  {
+	    t.join();
+	  }
+	catch (InterruptedException e)
+	  {
+	    throw new Error(e);
+	  }
 	
 	current.setContextClassLoader(null);
 	harness.check(current.getContextClassLoader() == null,
@@ -62,6 +70,14 @@ public class contextClassLoader implements Testlet, Runnable
 	checkClassLoader = null;
 	check_msg = "run with null classloader";
 	t.start();
+	try
+	  {
+	    t.join();
+	  }
+	catch (InterruptedException e)
+	  {
+	    throw new Error(e);
+	  }
       }
     finally
       {

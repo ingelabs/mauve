@@ -1,15 +1,21 @@
 2004-11-05  Noa Resare  <noa@resare.com>
 
+	* gnu/testlet/java/lang/Thread/contextClassLoader.java:
+	Wait for threads to finish before continuing.
+
+2004-11-05  Noa Resare  <noa@resare.com>
+
 	* gnu/testlet/BinaryCompatibility/foo:
-	Added explicit -classpath to $JAVA invocation
+
+	Added explicit -classpath to $JAVA invocation.
 
 2004-11-05  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/TestResult.java: New file.
 	* gnu/testlet/TestReport.java: New file.
 	* gnu/testlet/SimpleTestHarness.java:
-	added support for xmloutput with the -xmlout option
-	* Makefile.in: add new files to harness_file
+	added support for xmloutput with the -xmlout option.
+	* Makefile.in: add new files to harness_file.
 
 2004-11-05  Noa Resare  <noa@resare.com>
 
