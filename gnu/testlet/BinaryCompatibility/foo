@@ -33,7 +33,7 @@ for src in altered/$1*.java; do
 	if test "$verbose" = "true" ; then
 	    echo $JAVAC $src -classpath altered:.
 	fi
-	$JAVAC $src -classpath altered:. || echo FAIL "$JAVAC $1: "
+	$JAVAC -classpath altered:. $src || echo FAIL "$JAVAC $1: "
     else
 	if test "$verbose" = "true" ; then
 	    echo $GCJ -c $src -Ialtered/

@@ -30,7 +30,11 @@ import java.lang.reflect.*;
 public class init implements Testlet
 {
   static boolean initI = false;
-  static boolean initC = false;
+  static boolean initC1 = false;
+  static boolean initC2 = false;
+  static boolean initC3 = false;
+  static boolean initC4 = false;
+  static boolean initC5 = false;
   static boolean invokedM = false;
 
   interface I
@@ -39,48 +43,78 @@ public class init implements Testlet
     void m();
   }
 
-  static class C implements I
+  static class C1 implements I
   {
-    static long l = init.initC();
+    static long l = init.initC1();
     public void m()
     {
       invokedM = true;
     }
   }
 
+  static class C2 implements I
+  {
+    static long l = init.initC2();
+    public void m() { }
+  }
+
+  static class C3 extends C2
+  {
+    static long l = init.initC3();
+  }
+
+  static class C4 extends C2
+  {
+    static long l = init.initC4();
+    static boolean m2() {
+      return true;
+    }
+  }
+
+  static class C5 extends C4
+  {
+    static long l = init.initC5();
+    public static int i;
+  }
+
   public void test(TestHarness h)
   {
     try
       {
-	// Sanity checks.
-	// h.check(!initI); - A runtime may initialize an interface immediatly
-	// h.check(!initC); - Likewise for the class
-	//                    (this is probably inefficient though)
-	
-	h.check(!invokedM);
-	
-	// Should no initialize any class.
+	// None of this should initialize anything
 	Class i = new I[0].getClass().getComponentType();
-
-	// Although not recommended for efficiency reason, the
-	// interface may be initialized.
-	// h.check(!initC);
-	// h.check(!initI);
-
-	h.check(!invokedM);
-	
-	// Still should not initialize anything
 	Method m = i.getDeclaredMethod("m", null);
-	// h.check(!initC); - See above
-	// h.check(!initI); - Likewise
+	Field f = Class.forName(getClass().getName() + "$C5",
+	  false, getClass().getClassLoader()).getField("i");
+
+	// Static field access should initialize C3 and superclass C2 but not I
+	h.check(!initC2);
+	h.check(!initC3);
+	if (C3.l == 123)
+	    hashCode();
+	h.check(initC2);
+	h.check(initC3);
+
+	// Static method invocation should initialize C4 but not I
+	h.check(!initC4);
+	if (C4.m2())
+		hashCode();
+	h.check(initC4);
+
+	// Static field access should initialize C5
+	h.check(!initC5);
+	f.set(null, new Character((char)0xffff));
+	h.check(C5.i == 0xffff);
+	h.check(initC5);
+
+	// Instantiation of a C should initialize C but not I
+	h.check(!initC1);
+	Object o = new C1();
+	h.check(initC1);
+
+	// Apparently, invocation of interface method initializes I
+	h.check(!initI);
 	h.check(!invokedM);
-	
-	// After this at least C must now be initialized
-	Object o = new C();
-	h.check(initC);
-	// h.check(!initI); - And the interface may also be initialized.
-	
-	// And finally also I must be initialized and m gets invoked.
 	m.invoke(o, null);
 	h.check(initI);
 	h.check(invokedM);
@@ -88,6 +122,11 @@ public class init implements Testlet
     catch (NoSuchMethodException nsme)
       {
 	h.debug(nsme);
+	h.check(false);
+      }
+    catch (NoSuchFieldException e)
+      {
+	h.debug(e);
 	h.check(false);
       }
     catch (InvocationTargetException ite)
@@ -100,6 +139,11 @@ public class init implements Testlet
 	h.debug(iae);
 	h.check(false);
       }
+    catch (ClassNotFoundException e)
+      {
+	h.debug(e);
+	h.check(false);
+      }
   }
 
   static long initI()
@@ -108,9 +152,33 @@ public class init implements Testlet
     return 5;
   }
 
-  static long initC()
+  static long initC1()
   {
-    initC = true;
+    initC1 = true;
+    return 5;
+  }
+
+  static long initC2()
+  {
+    initC2 = true;
+    return 5;
+  }
+
+  static long initC3()
+  {
+    initC3 = true;
+    return 5;
+  }
+
+  static long initC4()
+  {
+    initC4 = true;
+    return 5;
+  }
+
+  static long initC5()
+  {
+    initC5 = true;
     return 5;
   }
 }

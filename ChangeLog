@@ -1,3 +1,10 @@
+2004-12-30  Archie Cobbs <archie@dellroad.org>
+
+	* gnu/testlet/java/lang/Class/init.java: made existing tests
+	more strict and added a few more test cases
+	* gnu/testlet/BinaryCompatibility/foo: put -classpath flag
+	before class name(s) when invoking the Java compiler
+
 2004-12-30  Thomas Zander  <zander@kde.org>
 
 	* gnu/testlet/locales/LocaleTest.java: altered file to all ASCII
