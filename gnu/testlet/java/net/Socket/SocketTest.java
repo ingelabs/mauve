@@ -478,7 +478,8 @@ public class SocketTest implements Testlet
       }
     catch (SocketException e)
       {
-	harness.check(e.getMessage(), "socket is closed", "wrong SocketException error message");
+	harness.check(e.getMessage().compareToIgnoreCase("socket is closed") == 0,
+		      "wrong SocketException error message: " + e.getMessage());
       }
     catch (Exception e)
       {

@@ -1,5 +1,10 @@
 2004-11-17  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/net/Socket/SocketTest.java:
+	Make testcase work with SUN JDK too.
+
+2004-11-17  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/net/URL/URLTest.java: Rewrote some testcase and add
 	one new for Classpath bug #10157.
 
