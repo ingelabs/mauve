@@ -2,6 +2,7 @@
 	* gnu/testlet/java/net/Socket/SocketBServer.java: fixed indentation
 	* gnu/testlet/java/net/Socket/SocketServer.java: ditto
 	* gnu/testlet/java/net/Socket/SocketTest.java: ditto
+	* Makefile.in, aclocal.m4, configure: removed from CVS
 
 2002-11-16  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/BufferedCharWriter/Test.java:
