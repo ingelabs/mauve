@@ -1,6 +1,7 @@
 // Tags: JDK1.1
+// Uses: iface
 
-// Copyright (C) 1999, 2000, 2001 Cygnus Solutions
+// Copyright (C) 1999, 2000, 2001, 2003 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -25,7 +26,7 @@ import gnu.testlet.TestHarness;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
-public class invoke implements Testlet
+public class invoke implements Testlet, iface
 {
   int save = 0;
 
@@ -101,81 +102,92 @@ public class invoke implements Testlet
   public void test (TestHarness harness)
   {
     // Don't use `.class' because gcj doesn't handle it yet.
-    Class ic = null;
+    Class[] ic = new Class[2];
     try
       {
-	ic = Class.forName("gnu.testlet.java.lang.reflect.Method.invoke");
+	ic[0] = Class.forName("gnu.testlet.java.lang.reflect.Method.invoke");
+	ic[1] = Class.forName("gnu.testlet.java.lang.reflect.Method.iface");
       }
     catch (Throwable _)
       {
 	// Just lose.
       }
 
-    Class[] na_list = new Class[0];
-    Method na_meth = getMethod (ic, "no_args", na_list);
-
-    Class[] ti_list = new Class[1];
-    ti_list[0] = Integer.TYPE;
-    Method ti_meth = getMethod (ic, "takes_int", ti_list);
-
-    Class[] rv_list = new Class[2];
-    rv_list[0] = null;
-    try
+    for (int i = 0; i < ic.length; ++i)
       {
-	rv_list[0] = Class.forName("java.lang.Integer");
+	Class[] na_list = new Class[0];
+	Method na_meth = getMethod (ic[i], "no_args", na_list);
+
+	Class[] ti_list = new Class[1];
+	ti_list[0] = Integer.TYPE;
+	Method ti_meth = getMethod (ic[i], "takes_int", ti_list);
+
+	Class[] rv_list = new Class[2];
+	rv_list[0] = null;
+	try
+	  {
+	    rv_list[0] = Class.forName("java.lang.Integer");
+	  }
+	catch (Throwable _)
+	  {
+	    // Just lose.
+	  }
+	rv_list[1] = rv_list[0];
+	Method rv_meth = getMethod (ic[i], "returns_void", rv_list);
+
+	harness.checkPoint ("no_args for " + ic[i]);
+	Object[] args0 = new Object[0];
+	// Successful invocation.
+	try_invoke (harness, na_meth, this, args0, "zardoz");
+	// Null `this' should fail.
+	try_invoke (harness, na_meth, null, args0, new NullPointerException ());
+	if (! ic[i].isInterface())
+	  {
+	    // Too few arguments.
+	    try_invoke (harness, ti_meth, this, args0,
+			new IllegalArgumentException ());
+	  }
+
+	// Wrong class for `this'.
+	try_invoke (harness, na_meth, new NullPointerException (),
+		    args0, new IllegalArgumentException ());
+
+	// null argument list is ok, at least according to JDK
+	// implementation.
+	try_invoke (harness, na_meth, this, null, "zardoz");
+
+	if (! ic[i].isInterface())
+	  {
+	    harness.checkPoint ("takes_int for " + ic[i]);
+	    Object[] args1 = new Object[1];
+	    args1[0] = new Integer (5);
+	    try_invoke (harness, na_meth, this, args1,
+			new IllegalArgumentException ());
+	    try_invoke (harness, ti_meth, this, args1, new Integer (8));
+	    // null should work for object as this is a static method.
+	    try_invoke (harness, ti_meth, null, args1, new Integer (8));
+	    args1[0] = "joe louis";
+	    try_invoke (harness, ti_meth, null, args1,
+			new IllegalArgumentException ());
+	    args1[0] = new Short ((short) 3);
+	    try_invoke (harness, ti_meth, null, args1, new Integer (6));
+	    args1[0] = new Long (72);
+	    try_invoke (harness, ti_meth, null, args1,
+			new IllegalArgumentException ());
+	    args1[0] = null;
+	    try_invoke (harness, ti_meth, null, args1,
+			new IllegalArgumentException ());
+	    args1[0] = new Integer (-5);
+	    try_invoke (harness, ti_meth, null, args1,
+			new InvocationTargetException (new IllegalArgumentException ()));
+	  }
+
+	harness.checkPoint ("returns_void for " + ic[i]);
+	Object[] args2 = new Object[2];
+	args2[0] = new Integer (7);
+	args2[1] = new Integer (8);
+	try_invoke (harness, rv_meth, this, args2, null);
+	harness.check(save, 15);
       }
-    catch (Throwable _)
-      {
-	// Just lose.
-      }
-    rv_list[1] = rv_list[0];
-    Method rv_meth = getMethod (ic, "returns_void", rv_list);
-
-    harness.checkPoint ("no_args");
-    Object[] args0 = new Object[0];
-    // Successful invocation.
-    try_invoke (harness, na_meth, this, args0, "zardoz");
-    // Null `this' should fail.
-    try_invoke (harness, na_meth, null, args0, new NullPointerException ());
-    // Too few arguments.
-    try_invoke (harness, ti_meth, this, args0,
-		new IllegalArgumentException ());
-    // Wrong class for `this'.
-    try_invoke (harness, na_meth, new NullPointerException (),
-		args0, new IllegalArgumentException ());
-
-    // null argument list is ok, at least according to JDK
-    // implementation.
-    try_invoke (harness, na_meth, this, null, "zardoz");
-
-    harness.checkPoint ("takes_int");
-    Object[] args1 = new Object[1];
-    args1[0] = new Integer (5);
-    try_invoke (harness, na_meth, this, args1,
-		new IllegalArgumentException ());
-    try_invoke (harness, ti_meth, this, args1, new Integer (8));
-    // null should work for object as this is a static method.
-    try_invoke (harness, ti_meth, null, args1, new Integer (8));
-    args1[0] = "joe louis";
-    try_invoke (harness, ti_meth, null, args1,
-		new IllegalArgumentException ());
-    args1[0] = new Short ((short) 3);
-    try_invoke (harness, ti_meth, null, args1, new Integer (6));
-    args1[0] = new Long (72);
-    try_invoke (harness, ti_meth, null, args1,
-		new IllegalArgumentException ());
-    args1[0] = null;
-    try_invoke (harness, ti_meth, null, args1,
-		new IllegalArgumentException ());
-    args1[0] = new Integer (-5);
-    try_invoke (harness, ti_meth, null, args1,
-		new InvocationTargetException (new IllegalArgumentException ()));
-
-    harness.checkPoint ("returns_void");
-    Object[] args2 = new Object[2];
-    args2[0] = new Integer (7);
-    args2[1] = new Integer (8);
-    try_invoke (harness, rv_meth, this, args2, null);
-    harness.check(save, 15);
   }
 }
