@@ -1,5 +1,11 @@
 2003-10-29  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java:
+	DatagramPacket contsructors throw IllegalArgumentException if illegal
+	buffer size is given.
+
+2003-10-29  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/BinaryCompatibility/.cvsignore:
 	Ignore generated files.
 

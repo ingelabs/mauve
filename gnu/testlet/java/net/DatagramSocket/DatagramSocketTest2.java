@@ -217,16 +217,15 @@ public class DatagramSocketTest2 implements Testlet
 		{
 			// invalid data buffer length
 			DatagramPacket pkt = new DatagramPacket(buf, -1);
-			sock.receive(pkt);
 			errormsg("invalid_receive_data", 4, true, "IOException");
 		}
-		catch (IOException e)
+		catch (IllegalArgumentException e)
 		{
 			harness.check(true);
 		}
-		catch (IllegalArgumentException iae)
+		catch (Exception e)
 		{
-			harness.check(false, "Expected IOException");
+			harness.check(false, "Expected IllegalArgumentException");
 		}
 
 		sock.close();
@@ -352,10 +351,9 @@ public class DatagramSocketTest2 implements Testlet
 		{
 			// invalid data buffer length
 			DatagramPacket pkt = new DatagramPacket(buf, -1, ia, ECHO_PORT);
-			sock.send(pkt);
-			errormsg("invalid_send_data", 4, true, "IOException");
+			errormsg("invalid_send_data", 4, true, "IllegalArgumentException");
 		}
-		catch (IOException e)
+		catch (IllegalArgumentException e)
 		{
 			harness.check(true);
 		}
