@@ -1,7 +1,14 @@
 2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
 
+	Classpath bug #7105.
+	* gnu/testlet/javax/swing/event/EventListenerList/remove.java: New
+	test, passes with JDK 1.4.1_01 but not with Classpath.
+
+2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
+
+	Classpath bug #7104.
 	* gnu/testlet/javax/swing/event/EventListenerList/add.java: New test,
-	passes with JDK 1.4.1_01 but not with Classpath. Classpath bug #7104.
+	passes with JDK 1.4.1_01 but not with Classpath.
 
 2004-01-03  Per Bothner  <per@bothner.com>
 
