@@ -45,7 +45,16 @@ test(TestHarness harness)
    */
   String str = "Here is a test string";
   ProtectedVars writer = new ProtectedVars();
-  writer.write(str, 0, str.length());
+  try
+    {
+      // Inside try-catch block since some implementations throw IOException.
+      writer.write(str, 0, str.length());
+    }
+  catch (Throwable t)
+    {
+      harness.debug(t);
+      harness.check(false, "Unexpected exception");
+    }
   harness.check(writer.count, str.length(), "count");
   /*
    * Then see if the stored buffer is correct.

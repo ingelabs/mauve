@@ -1,3 +1,9 @@
+2002-12-15  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/CharArrayWriter/ProtectedVars.java: Use try
+	catch block for implementations that (wrongly) declare
+	ArrayWriter.write() throws IOException.
+
 2002-12-14  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/SerTest.java: Extend SerBase,
