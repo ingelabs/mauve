@@ -1,3 +1,7 @@
+2001-04-02  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/PrintStream/subclass.java: New file.
+
 2001-03-23  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/ClassTest.java (test_forName): Added
