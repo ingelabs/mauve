@@ -25,6 +25,7 @@ package gnu.testlet.java.text.RuleBasedCollator;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.text.RuleBasedCollator;
+import java.text.Collator;
 import java.text.ParseException;
 
 public class jdk11 implements Testlet
@@ -103,7 +104,7 @@ public class jdk11 implements Testlet
   {
     harness.checkPoint("constructor rule parsing");
     RuleBasedCollator r;
-    String[] GOOD_RULES = {
+    final String[] GOOD_RULES = {
       // Examples from the Sun javadocs
       "< a < b < c < d",
       ("< a,A< b,B< c,C< d,D< e,E< f,F< g,G< h,H< i,I< j,J < k,K< l,L< m,M" +
@@ -161,7 +162,7 @@ public class jdk11 implements Testlet
     }
     
     harness.checkPoint("constructor rule parsing errors");
-    String[] BAD_RULES = {
+    final String[] BAD_RULES = {
       // Empty rule list
       "", 
       // No relation
@@ -187,42 +188,210 @@ public class jdk11 implements Testlet
     }
   }
 
+  private void doComparisons(RuleBasedCollator r, String[][] tests) 
+  {
+    for (int i = 0; i < tests.length; i++) {
+      int res = r.compare(tests[i][0], tests[i][1]);
+      if (res < 0) {
+	harness.check(tests[i][2].equals("<"));
+      }
+      else if (res == 0) {
+	harness.check(tests[i][2].equals("="));
+      }
+      else {
+	harness.check(tests[i][2].equals(">"));
+      }
+    }
+  }
+
   private void ignoreTests() 
   {
     harness.checkPoint("ignorable characters");
-    String TEST_RULES = "='-'<a,A<b,B<c,C";
-    String[][] TESTS = {
+    final String TEST_RULES = "=Z<a,A<b,B<c,C";
+    final String[][] TESTS = {
       {"abc", "ABC", "<"},
       {"abc", "abc", "="},
       {"Abc", "abc", ">"},
-      {"a-b-c", "abc", "="},
-      {"a-b-c", "a-b-c", "="},
-      {"abc", "a-b-c", "="},
-      {"a-b-c", "ABC", "<"},
-      {"-", "-", "="},
-      {"Abc", "a-b-c", ">"},
+      {"aZbZc", "abc", "="},
+      {"aZbZc", "aZbZc", "="},
+      {"abc", "aZbZc", "="},
+      {"aZbZc", "ABC", "<"},
+      {"Z", "Z", "="},
+      {"Abc", "aZbZc", ">"},
+    };
+
+    try {
+      RuleBasedCollator r = new RuleBasedCollator(TEST_RULES);
+      doComparisons(r, TESTS);
+    }
+    catch (ParseException ex) {
+      harness.debug(ex);
+      harness.fail("ignorable characters: ParseException (offset is " +
+		   ex.getErrorOffset() + ")");
+    }
+  }
+
+  private void oneCharTests() 
+  {
+    checkStrengths();
+    harness.checkPoint("single character ordering");
+    final String TEST_RULES = "<a;A=0<b,B=1<c;C,d=2";
+    final String[][][] TESTS = {
+      { // PRIMARY
+	{"", "", "="},
+	{"abc", "abc", "="},
+	{"abc", "ab", ">"},
+	{"ab", "abc", "<"},
+	{"abc", "Abc", "="},
+	{"abc", "aBc", "="},
+	{"abc", "abd", "="},
+	{"abc", "abC", "="},
+	{"abC", "abd", "="},
+	{"Abc", "abc", "="},
+	{"aBc", "abc", "="},
+	{"abd", "abc", "="},
+	{"abC", "abc", "="},
+	{"abd", "abC", "="},
+	{"abc", "012", "="},
+	{"ABd", "012", "="},
+      },
+      { // SECONDARY
+	{"", "", "="},
+	{"abc", "abc", "="},
+	{"abc", "ab", ">"},
+	{"ab", "abc", "<"},
+	{"abc", "Abc", "<"},
+	{"abc", "aBc", "="},
+	{"abc", "abd", "<"},
+	{"abc", "abC", "<"},
+	{"abC", "abd", "="},
+	{"Abc", "abc", ">"},
+	{"aBc", "abc", "="},
+	{"abd", "abc", ">"},
+	{"abC", "abc", ">"},
+	{"abd", "abC", "="},
+	{"abc", "012", "<"},
+	{"ABd", "012", "="},
+      },
+      { // TERTIARY
+	{"", "", "="},
+	{"abc", "abc", "="},
+	{"abc", "ab", ">"},
+	{"ab", "abc", "<"},
+	{"abc", "Abc", "<"},
+	{"abc", "aBc", "<"},
+	{"abc", "abd", "<"},
+	{"abc", "abC", "<"},
+	{"abC", "abd", "<"},
+	{"Abc", "abc", ">"},
+	{"aBc", "abc", ">"},
+	{"abd", "abc", ">"},
+	{"abC", "abc", ">"},
+	{"abd", "abC", ">"},
+	{"abc", "012", "<"},
+	{"ABd", "012", "="},
+      },
+      { // IDENTICAL
+	{"", "", "="},
+	{"abc", "abc", "="},
+	{"abc", "ab", ">"},
+	{"ab", "abc", "<"},
+	{"abc", "Abc", "<"},
+	{"abc", "aBc", "<"},
+	{"abc", "abd", "<"},
+	{"abc", "abC", "<"},
+	{"abC", "abd", "<"},
+	{"Abc", "abc", ">"},
+	{"aBc", "abc", ">"},
+	{"abd", "abc", ">"},	
+	{"abC", "abc", ">"},
+	{"abd", "abC", ">"},
+	{"abc", "012", "<"},
+	{"ABd", "012", ">"},  /* It appears that Sun JDKs fall back on the
+				 raw character values when characters 
+				 are defined as equivalent by the rules. */
+      },
     };
 
     try {
       RuleBasedCollator r = new RuleBasedCollator(TEST_RULES);
       for (int i = 0; i < TESTS.length; i++) {
-	int res = r.compare(TESTS[i][0], TESTS[i][1]);
-	if (res < 0) {
-	  harness.check(TESTS[i][2].equals("<"));
-	}
-	else if (res == 0) {
-	  harness.check(TESTS[i][2].equals("="));
-	}
-	else {
-	  harness.check(TESTS[i][2].equals(">"));
-	}
+	r.setStrength(i);
+	doComparisons(r, TESTS[i]);
       }
     }
     catch (ParseException ex) {
       harness.debug(ex);
-      harness.fail("unexpected ParseException (offset is " +
+      harness.fail("single character ordering: ParseException (offset is " +
 		   ex.getErrorOffset() + ")");
     }
+  }
+
+  private void contractionTests() 
+  {
+    checkStrengths();
+    harness.checkPoint("contraction ordering");
+    final String OLD_SPANISH_RULES = "<c,C<ch,cH,Ch,CH<d,D";
+    final String[][][] TESTS = {
+      {
+	// PRIMARY
+	{"cat", "cat", "="},
+	{"cat", "Cat", "="},
+	{"cat", "chat", "<"},
+	{"cot", "chat", "<"},
+	{"chat", "chit", "<"},
+	{"chat", "dog", "<"},
+      },
+      {
+	// SECONDARY
+	{"cat", "cat", "="},
+	{"cat", "Cat", "="},
+	{"cat", "chat", "<"},
+	{"cot", "chat", "<"},
+	{"chat", "chit", "<"},
+	{"chat", "dog", "<"},
+      },
+      {
+	// TERTIARY
+	{"cat", "cat", "="},
+	{"cat", "Cat", "<"},
+	{"cat", "chat", "<"},
+	{"cot", "chat", "<"},
+	{"chat", "chit", "<"},
+	{"chat", "dog", "<"},
+      },
+      {
+	// IDENTICAL
+	{"cat", "cat", "="},
+	{"cat", "Cat", "<"},
+	{"cat", "chat", "<"},
+	{"cot", "chat", "<"},
+	{"chat", "chit", "<"},
+	{"chat", "dog", "<"},
+      },
+    };
+    
+    try {
+      RuleBasedCollator r = new RuleBasedCollator(OLD_SPANISH_RULES);
+      for (int i = 0; i < TESTS.length; i++) {
+	r.setStrength(i);
+	doComparisons(r, TESTS[i]);
+      }
+    }
+    catch (ParseException ex) {
+      harness.debug(ex);
+      harness.fail("contraction ordering: ParseException (offset is " +
+		   ex.getErrorOffset() + ")");
+    }
+  }
+
+  private void checkStrengths() 
+  {
+    harness.checkPoint("collator strengths");
+    harness.check(Collator.PRIMARY == 0);
+    harness.check(Collator.SECONDARY == 1);
+    harness.check(Collator.TERTIARY == 2);
+    harness.check(Collator.IDENTICAL == 3);
   }
 
   public void test(TestHarness harness)
@@ -230,6 +399,8 @@ public class jdk11 implements Testlet
     this.harness = harness;
     constructorTests();
     ignoreTests();
+    oneCharTests();
+    contractionTests();
     // More tests in the pipeline
   }
   

@@ -30,23 +30,22 @@ import java.util.Locale;
 public class VeryBasic implements Testlet
 {
 
-public void 
-test(TestHarness harness)
-{
-  // This should be an instance of RuleBasedCollator
-  // It should also be set to TERIARY strength and decomp doesn't matter
-  // for good ol' English
-  Collator col = Collator.getInstance(Locale.US);
-
-  harness.debug("foo bar" + col.compare("foo", "bar"));
-  harness.check(col.compare("foo", "bar") > 0, "foo and bar");
-  harness.check(col.compare("bar", "baz") < 0, "bar and baz");
-  harness.check(col.compare("FOO", "FOO") == 0, "FOO and FOO");
-  harness.check(col.compare("foo", "foobar") < 0, "foo and foobar");
-
-  col.setStrength(Collator.SECONDARY); // Ignore case
-  harness.check(col.compare("Foo", "foo") == 0, "Foo and foo");
-}
-
+  public void test(TestHarness harness)
+  {
+    // This should be an instance of RuleBasedCollator
+    // It should also be set to TERIARY strength and decomp doesn't matter
+    // for good ol' English
+    Collator col = Collator.getInstance(Locale.US);
+    
+    harness.debug("foo bar" + col.compare("foo", "bar"));
+    harness.check(col.compare("foo", "bar") > 0, "foo and bar");
+    harness.check(col.compare("bar", "baz") < 0, "bar and baz");
+    harness.check(col.compare("FOO", "FOO") == 0, "FOO and FOO");
+    harness.check(col.compare("foo", "foobar") < 0, "foo and foobar");
+    
+    col.setStrength(Collator.SECONDARY); // Ignore case
+    harness.check(col.compare("Foo", "foo") == 0, "Foo and foo");
+  }
+  
 } // class VeryBasic
 
