@@ -1,4 +1,5 @@
 // Copyright (C) 2003, Red Hat, Inc.
+// Copyright (C) 2004, Mark Wielaard <mark@klomp.org>
 //
 // This file is part of Mauve.
 //
@@ -33,5 +34,9 @@ public class simple implements Testlet
     Permissions p = new Permissions();
     p.add(new FilePermission("/tmp/p", "nothing"));
     p.add(new FilePermission("/tmp/p", "nothing"));
+
+    // Classpath didn't handle dirs without a file separator correctly
+    FilePermission fp1 = new FilePermission("/tmp", "read");
+    harness.check(fp1.implies(fp1));
   }
 }
