@@ -37,46 +37,57 @@ public class check12 implements Testlet
     int dstOff = 3600000;	// 1 hour
 
     // Create a timezone for UTC-5 with daylight savings starting on
-    // April 10 at 12 noon, ending September 10, 12 noon in daylight
-    // savings, 1 hour shift.
+    // the second Monday, April 10 at 12 noon, ending the second
+    // Sunday, September 10, 12 noon in daylight savings, 1 hour
+    // shift.
 
     // All three should represent the same period
     SimpleTimeZone tz =
       new SimpleTimeZone(rawOff, "Z1",
-			 4, 10, 0, 43200000,
-			 9, 10, 0, 43200000,
+			 Calendar.APRIL, 10, 0, 43200000,
+			 Calendar.SEPTEMBER, 10, 0, 43200000,
 			 dstOff);
 
     int off;
 
     // test 1/2 hour before dst
-    off = tz.getOffset(GregorianCalendar.AD, 2000, 4, 10, 0, 41400000);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 10, 0, 41400000);
     harness.check(off, rawOff);
     
     // test 1/2 hour into dst
-    off = tz.getOffset(GregorianCalendar.AD, 2000, 4, 10, 0, 45000000);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 10, 0, 45000000);
     harness.check(off, rawOff + dstOff);
     
-    System.out.println(tz.toString());
+    // test that nth dayofweek works with day of month rules
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, Calendar.MONDAY, 41400000);
+    harness.check(off, rawOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, Calendar.MONDAY, 45000000);
+    harness.check(off, rawOff + dstOff);
+    
+    // test that -nth dayofweek works with day of month rules
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, -3, Calendar.MONDAY, 41400000);
+    harness.check(off, rawOff);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, -3, Calendar.MONDAY, 45000000);
+    harness.check(off, rawOff + dstOff);
 
     // Sunday on or before April 4, 2000 is April 2
     // Test arguments get overidden and perform correctly
-    tz.setStartRule(4, 4, Calendar.SUNDAY, 43200000, false);
+    tz.setStartRule(Calendar.APRIL, 4, -Calendar.SUNDAY, 43200000, false);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, 4, 2, 0, 41400000);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, 0, 41400000);
     harness.check(off, rawOff);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, 4, 2, 0, 45000000);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 2, 0, 45000000);
     harness.check(off, rawOff + dstOff);
     
     // Sunday on or after April 4, 2000 is April 9
     // Test arguments get overidden and perform correctly
-    tz.setStartRule(4, -4, -Calendar.SUNDAY, 43200000, true);
+    tz.setStartRule(Calendar.APRIL, 4, -Calendar.SUNDAY, 43200000, true);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, 4, 9, 0, 41400000);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 9, 0, 41400000);
     harness.check(off, rawOff);
 
-    off = tz.getOffset(GregorianCalendar.AD, 2000, 4, 9, 0, 45000000);
+    off = tz.getOffset(GregorianCalendar.AD, 2000, Calendar.APRIL, 9, 0, 45000000);
     harness.check(off, rawOff + dstOff);
   }
 }
