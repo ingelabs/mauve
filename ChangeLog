@@ -1,3 +1,8 @@
+2003-10-26  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/jar/JarInputStream/getNextEntry.java: New
+	test.
+
 2003-10-25  Bryce McKinlay  <bryce@mckinlay.net.nz>
 
 	* gnu/testlet/java/lang/reflect/ReflectAccess.java,
