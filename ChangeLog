@@ -1,3 +1,7 @@
+2000-03-05  Anthony Green  <green@redhat.com>
+
+	* gnu/testlet/java/lang/Math/sin.java: New file.
+
 2000-03-02  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/net/URL/URLTest.java (test_toString):
