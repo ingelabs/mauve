@@ -34,14 +34,21 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.Externalizable;
+import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Vector;
+import java.util.Set;
+import java.util.SortedSet;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -58,6 +65,13 @@ public class serialization implements Testlet
    */
   public void test(TestHarness harness)      
   {
+    testClass(Cloneable.class, harness);
+    testClass(Comparable.class, harness);
+    testClass(Serializable.class, harness);
+    testClass(Externalizable.class, harness);
+    testClass(String.class, harness);
+    testClass(Number.class, harness);
+    testClass(Boolean.class, harness);
     testClass(Integer.class, harness);
     testClass(Float.class, harness);
     testClass(Double.class, harness);
@@ -75,6 +89,25 @@ public class serialization implements Testlet
     testClass(DefaultTableModel.class, harness);
     testClass(LayoutManager.class, harness);
     testClass(Array.class, harness);
+    testClass(Object.class, harness);
+    testClass(Class.class, harness);
+    testClass(Throwable.class, harness);
+    testClass(IOException.class, harness);
+    testClass(Void.class, harness);
+    testClass(ObjectStreamClass.class, harness);
+    testClass(Collection.class, harness);
+    testClass(Set.class, harness);
+    testClass(SortedSet.class, harness);
+
+    testClass(boolean.class, harness);
+    testClass(byte.class, harness);
+    testClass(short.class, harness);
+    testClass(char.class, harness);
+    testClass(int.class, harness);
+    testClass(long.class, harness);
+    testClass(float.class, harness);
+    testClass(double.class, harness);
+    testClass(void.class, harness);
   }
   
   private void testClass(Class c1, TestHarness harness) 
@@ -95,7 +128,7 @@ public class serialization implements Testlet
     catch (Exception e) {
       harness.debug(e);
     }
-    harness.check(c1.equals(c2));
+    harness.check(c1.equals(c2), c1.toString());
   }
   
 }
