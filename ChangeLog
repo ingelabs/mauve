@@ -1,3 +1,11 @@
+2002-04-07  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/HashMap/AcuniaHashMapTest.java
+	(test_HashMap(): new HashMap(10,1.5f) has a loadFactor of 1.5f.
+	(test_entrySet): it.hasNext after hm.remove should throw
+	ConcurrentModificationException. setValue through iterator of
+	entrySet on a HashMap should succeed.
+
 2002-04-06  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/AbstractList/AcuniaAbstractListTest.java

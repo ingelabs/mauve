@@ -83,14 +83,14 @@ public class AcuniaHashMapTest implements Testlet
    th.checkPoint("HashMap()");
     hm = new HashMap();
     try {
-        th.check( lf.getFloat(hm) == 0.75f, "checking value of loadFactor");
+        th.check(lf.getFloat(hm), 0.75f);
         }
     catch (Exception e) { th.fail("no exception wanted !!!, got "+e); }
    th.checkPoint("HashMap(java.util.Map)");
     HashMap hm1 = buildHM();
     hm = new HashMap(hm1);
     try {
-        th.check( lf.getFloat(hm) == 0.75f, "checking value of loadFactor");
+        th.check(lf.getFloat(hm), 0.75f);
         }
     catch (Exception e) { th.fail("no exception wanted !!!, got "+e); }
     th.check(hm.size() == 16 , "all elements are put, got "+hm.size());
@@ -109,7 +109,7 @@ public class AcuniaHashMapTest implements Testlet
    th.checkPoint("HashMap(int)");
     hm = new HashMap(1);
     try {
-        th.check( lf.getFloat(hm) == 0.75f, "checking value of loadFactor");
+        th.check(lf.getFloat(hm), 0.75f);
         }
     catch (Exception e) { th.fail("no exception wanted !!!, got "+e); }
     try { new HashMap(-1);
@@ -120,12 +120,12 @@ public class AcuniaHashMapTest implements Testlet
    th.checkPoint("HashMap(int,int)");
     hm = new HashMap(10,0.5f);
     try {
-        th.check( lf.getFloat(hm) == 0.5f, "checking value of loadFactor, got "+lf.getFloat(hm));
+        th.check(lf.getFloat(hm), 0.5f);
         }
     catch (Exception e) { th.fail("no exception wanted !!!, got "+e); }
     hm = new HashMap(10,1.5f);
     try {
-        th.check( lf.getFloat(hm) == 0.75f, "checking value of loadFactor, got "+lf.getFloat(hm));
+        th.check(lf.getFloat(hm), 1.5f);
         }
     catch (Exception e) { th.fail("no exception wanted !!!, got "+e); }
     try {new HashMap(-1,0.1f);
@@ -318,7 +318,7 @@ public class AcuniaHashMapTest implements Testlet
     it.next();
     try {
     	s.add("ADDING");
-    	th.fail("should throw an UnsupportedOperationException");
+    	th.fail("add should throw an UnsupportedOperationException");
     }
     catch (UnsupportedOperationException uoe) { th.check(true); }
     th.check( s.size() == 16 );
@@ -326,9 +326,10 @@ public class AcuniaHashMapTest implements Testlet
     th.check( s.size() == 15 );
     try {
     	th.check(it.hasNext());
+	th.fail("it.hasNext after hm.remove should throw ConcurrentModificationException");
     }
     catch(ConcurrentModificationException cme) {
-	th.fail("it.hasNext should not throw ConcurrentModificationException");
+	th.check(true);
     }
     try {
     	it.next();
@@ -354,11 +355,11 @@ public class AcuniaHashMapTest implements Testlet
     	th.debug("got ME key = "+me+" and value = "+me.getKey());}
 
     try {
-//    	th.debug("got ME key = "+me.getKey()+" and value = "+me.getValue());
-    	me.setValue(this);
-    	th.fail("should throw an UnsupportedOperationException");
+//     th.debug("got ME key = "+me.getKey()+" and value = "+me.getValue());
+    	me.setValue("alpha");
+    	th.check(hm.get(me.getKey()), "alpha", "setValue through iterator of entrySet");
     	}
-    catch(UnsupportedOperationException uoe) { th.check(true);}
+    catch(UnsupportedOperationException uoe) { th.fail("setValue should be supported");}
     it= s.iterator();
     Vector v = new Vector();
     Object ob;
@@ -427,7 +428,7 @@ public class AcuniaHashMapTest implements Testlet
     catch (Exception e) { th.fail("got bad Exception -- got "+e); }
     try {
     	s.add("ADDING");
-    	th.fail("should throw an UnsupportedOperationException");
+    	th.fail("add should throw an UnsupportedOperationException");
     }
     catch (UnsupportedOperationException uoe) { th.check(true); }
 
@@ -471,7 +472,7 @@ public class AcuniaHashMapTest implements Testlet
     catch (Exception e) { th.fail("got bad Exception -- got "+e); }
     try {
     	s.add("ADDING");
-    	th.fail("should throw an UnsupportedOperationException");
+    	th.fail("add should throw an UnsupportedOperationException");
     }
     catch (UnsupportedOperationException uoe) { th.check(true); }
 
