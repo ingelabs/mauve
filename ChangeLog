@@ -1,3 +1,16 @@
+1999-06-10  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/io/DataInputStream/readLine.java (test):
+	Add casts to byte for instances of '\n', '\r'.
+	* gnu/testlet/java/net/Socket/SocketServer.java (init): Revert
+	harness.fail instances to println's per original.
+	(run): ditto.
+	* gnu/testlet/java/net/URL/MyURLStreamHandler.java (MyURLStreamHandler):
+	Added null constructor.
+	* gnu/testlet/java/net/URL/URLTest.java: Added Uses: tag.
+	* gnu/testlet/java/text/Collator/Constants.java (test): Omit
+	redundant instances of fully qualified class name 'java.text.'.
+
 1999-05-28  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/net/MulticastSocket/MulticastSocketTest.java

@@ -42,8 +42,9 @@ class SocketServer extends Thread {
   }
   catch ( Exception e )
   {
-   harness.fail("Error : BasicSocketServer::init failed " +
+   System.out.println("Error : BasicSocketServer::init failed " +
     "Exception should not be thrown here " + e );
+    e.printStackTrace();
   }
  }
 
@@ -51,7 +52,7 @@ class SocketServer extends Thread {
  {
   if ( srvsock == null )
   {
-   harness.fail("Error : BasicSocketServer::run failed  - 1 " +
+   System.out.println("Error : BasicSocketServer::run failed  - 1 " +
     "server socket creation was not successful" );
    return;
   }
@@ -76,7 +77,7 @@ class SocketServer extends Thread {
 
    }
    catch ( Exception e ){
-    harness.fail("Error : BasicSocketServer::run failed - 2" +
+    System.out.println("Error : BasicSocketServer::run failed - 2" +
     "exception was thrown" );
    }
   }

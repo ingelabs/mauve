@@ -32,14 +32,14 @@ public class Constants implements Testlet
 public void 
 test(TestHarness harness)
 {
-  harness.check(java.text.Collator.PRIMARY, 0, "PRIMARY");
-  harness.check(java.text.Collator.SECONDARY, 1, "SECONDARY");
-  harness.check(java.text.Collator.TERTIARY, 2, "TERTIARY");
-  harness.check(java.text.Collator.IDENTICAL, 3, "IDENTICAL");
-  harness.check(java.text.Collator.NO_DECOMPOSITION, 0, "NO_DECOMPOSITION");
-  harness.check(java.text.Collator.CANONICAL_DECOMPOSITION, 1, 
+  harness.check(Collator.PRIMARY, 0, "PRIMARY");
+  harness.check(Collator.SECONDARY, 1, "SECONDARY");
+  harness.check(Collator.TERTIARY, 2, "TERTIARY");
+  harness.check(Collator.IDENTICAL, 3, "IDENTICAL");
+  harness.check(Collator.NO_DECOMPOSITION, 0, "NO_DECOMPOSITION");
+  harness.check(Collator.CANONICAL_DECOMPOSITION, 1, 
                 "CANONICAL_DECOMPOSITION");
-  harness.check(java.text.Collator.FULL_DECOMPOSITION, 2, "FULL_DECOMPOSITION");
+  harness.check(Collator.FULL_DECOMPOSITION, 2, "FULL_DECOMPOSITION");
 }
 
 } // class Constants

@@ -29,6 +29,7 @@ import java.io.IOException;
 
 
 class MyURLStreamHandler extends URLStreamHandler {
+  public MyURLStreamHandler() {}
   public void invoke_parseURL(URL u, String spec, int start, int limit) { parseURL(u, spec, start, limit); }
   public void invoke_setURL(URL u,
                        String protocol,

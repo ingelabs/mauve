@@ -39,7 +39,7 @@ public class readLine implements Testlet
 	    harness.fail ("unexpected exception " + ex);
 	}
 
-	byte[] ib1 = { '\n' };
+	byte[] ib1 = { (byte) '\n' };
 	din = new DataInputStream (new ByteArrayInputStream (ib1));
 	try {
 	    harness.check (din.readLine(), "");
@@ -47,7 +47,7 @@ public class readLine implements Testlet
 	    harness.fail ("unexpected exception " + ex);
 	}
 
-	byte[] ib2 = { '\r' };
+	byte[] ib2 = { (byte) '\r' };
 	din = new DataInputStream (new ByteArrayInputStream (ib2));
 	try {
 	    harness.check (din.readLine(), "");
@@ -55,7 +55,7 @@ public class readLine implements Testlet
 	    harness.fail ("unexpected exception " + ex);
 	}
 
-	byte[] ib3 = { '\r', '\n' };
+	byte[] ib3 = { (byte) '\r', (byte) '\n' };
 	din = new DataInputStream (new ByteArrayInputStream (ib3));
 	try {
 	    harness.check (din.readLine(), "");

@@ -1,4 +1,5 @@
 // Tags: JDK1.0
+// Uses: MyURLStreamHandler
 
 /*
    Copyright (C) 1999 Hewlett-Packard Company
