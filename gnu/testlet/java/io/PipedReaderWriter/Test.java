@@ -61,7 +61,7 @@ test(TestHarness harness)
           System.gc(); // A short delay
           total_read += chars_read;
         }
-
+	  pr.close();   // Make sure close() method is implemented
       harness.check(total_read, str.length(), "total_read");
     }
   catch (IOException e) 
