@@ -1,5 +1,10 @@
 2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/java/awt/color/ColorSpace/getInstance.java:
+	New file.
+
+2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/java/awt/image/PixelInterleavedSampleModel:
 	New directory.
 	* gnu/testlet/java/awt/image/PixelInterleavedSampleModel/
