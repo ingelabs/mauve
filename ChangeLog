@@ -1,4 +1,10 @@
+2003-07-11  Stephen Crawley  <crawley@dstc.edu.au>
+	
+	* gnu/testlet/java/text/RuleBasedCollator/jdk11.java :
+	more tests for compare with expansions and contractions
+
 2003-07-09  Stephen Crawley  <crawley@dstc.edu.au>
+	
 	* gnu/testlet/java/text/RuleBasedCollator/jdk11.java : 
 	tests for compare with simple rules and contraction rules
 	* gnu/testlet/java/text/RuleBasedCollator/VeryBasic.java :

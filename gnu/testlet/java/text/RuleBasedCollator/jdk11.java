@@ -254,6 +254,13 @@ public class jdk11 implements Testlet
 	{"abd", "abC", "="},
 	{"abc", "012", "="},
 	{"ABd", "012", "="},
+	{"abc", "xyz", "<"}, 
+	{"xyz", "abc", ">"},
+	{"pqr", "xyz", "<"}, /* While the Sun Javadoc simply says that
+				unmentioned characters appear at the end
+				of the collation, the Sun JDK impl'ns 
+				appears to order them by raw char value. */
+				
       },
       { // SECONDARY
 	{"", "", "="},
@@ -272,6 +279,9 @@ public class jdk11 implements Testlet
 	{"abd", "abC", "="},
 	{"abc", "012", "<"},
 	{"ABd", "012", "="},
+	{"abc", "xyz", "<"},
+	{"xyz", "abc", ">"},
+	{"pqr", "xyz", "<"},
       },
       { // TERTIARY
 	{"", "", "="},
@@ -290,6 +300,9 @@ public class jdk11 implements Testlet
 	{"abd", "abC", ">"},
 	{"abc", "012", "<"},
 	{"ABd", "012", "="},
+	{"abc", "xyz", "<"},
+	{"xyz", "abc", ">"},
+	{"pqr", "xyz", "<"},
       },
       { // IDENTICAL
 	{"", "", "="},
@@ -310,6 +323,9 @@ public class jdk11 implements Testlet
 	{"ABd", "012", ">"},  /* It appears that Sun JDKs fall back on the
 				 raw character values when characters 
 				 are defined as equivalent by the rules. */
+	{"abc", "xyz", "<"},
+	{"xyz", "abc", ">"},
+	{"pqr", "xyz", "<"},
       },
     };
 
@@ -385,6 +401,121 @@ public class jdk11 implements Testlet
     }
   }
 
+  private void expansionTests() 
+  {
+    checkStrengths();
+    harness.checkPoint("expansion ordering");
+    final String OLD_ENGLISH_RULES = ("<a,A<b,B<c,C<d,D<e,E<f,F" +
+				      " &AE,'\u00e6' &AE,'\u00c6'");
+    final String[][][] TESTS = {
+      {
+	// PRIMARY
+	{"ae", "\u00e6", "="},
+	{"AE", "\u00e6", "="},
+	{"ae", "\u00c6", "="},
+	{"AE", "\u00c6", "="},
+	{"cat", "cat", "="},
+	{"cat", "Cat", "="},
+	{"caet", "caet", "="},
+	{"caet", "c\u00e6t", "="},
+	{"c\u00e6t", "caet", "="},
+	{"c\u00e6t", "c\u00e6t", "="},
+	{"caet", "c\u00c6t", "="},         
+	{"c\u00c6t", "caet", "="},
+	{"c\u00c6t", "c\u00c6t", "="},	
+	{"c\u00c6t", "c\u00e6t", "="},
+	{"caet", "cat", "<"},
+	{"c\u00e6t", "cat", "<"},
+	{"C\u00c6T", "CAT", "<"},
+	{"caet", "cab", ">"},
+	{"c\u00e6t", "cab", ">"},
+	{"C\u00c6T", "CAB", ">"},
+      },
+      {
+	// SECONDARY
+	{"ae", "\u00e6", "="},
+	{"AE", "\u00e6", "="},
+	{"ae", "\u00c6", "="},
+	{"AE", "\u00c6", "="},
+	{"cat", "cat", "="},
+	{"cat", "Cat", "="},
+	{"caet", "caet", "="},
+	{"caet", "c\u00e6t", "="},
+	{"c\u00e6t", "caet", "="},
+	{"c\u00e6t", "c\u00e6t", "="},
+	{"caet", "c\u00c6t", "="},        
+	{"c\u00c6t", "caet", "="},
+	{"c\u00c6t", "c\u00c6t", "="},	
+	{"c\u00c6t", "c\u00e6t", "="},
+	{"caet", "cat", "<"},
+	{"c\u00e6t", "cat", "<"},
+	{"C\u00c6T", "CAT", "<"},
+	{"caet", "cab", ">"},
+	{"c\u00e6t", "cab", ">"},
+	{"C\u00c6T", "CAB", ">"},
+      },
+      {
+	// TERTIARY
+	{"ae", "\u00e6", "<"},
+	{"AE", "\u00e6", "<"},            
+	{"ae", "\u00c6", "<"},
+	{"AE", "\u00c6", "<"},
+	{"cat", "cat", "="},
+	{"cat", "Cat", "<"},
+	{"caet", "caet", "="},
+	{"caet", "c\u00e6t", "<"},
+	{"c\u00e6t", "caet", ">"},
+	{"c\u00e6t", "c\u00e6t", "="},
+	{"caet", "c\u00c6t", "<"},
+	{"c\u00c6t", "caet", ">"},    
+	{"c\u00c6t", "c\u00c6t", "="},	
+	{"c\u00c6t", "c\u00e6t", "<"},
+	{"caet", "cat", "<"},
+	{"c\u00e6t", "cat", "<"},
+	{"C\u00c6T", "CAT", "<"},
+	{"caet", "cab", ">"},
+	{"c\u00e6t", "cab", ">"},
+	{"C\u00c6T", "CAB", ">"},
+      },
+      {
+	// IDENTICAL
+	{"ae", "\u00e6", "<"},
+	{"AE", "\u00e6", "<"},   
+	{"ae", "\u00c6", "<"},
+	{"AE", "\u00c6", "<"},
+	{"cat", "cat", "="},
+	{"cat", "Cat", "<"},
+	{"caet", "caet", "="},
+	{"caet", "c\u00e6t", "<"},
+	{"c\u00e6t", "caet", ">"},
+	{"c\u00e6t", "c\u00e6t", "="},
+	{"caet", "c\u00c6t", "<"},
+	{"c\u00c6t", "caet", ">"},    
+	{"c\u00c6t", "c\u00c6t", "="},	
+	{"c\u00c6t", "c\u00e6t", "<"},
+	{"caet", "cat", "<"},
+	{"c\u00e6t", "cat", "<"},
+	{"C\u00c6T", "CAT", "<"},
+	{"caet", "cab", ">"},
+	{"c\u00e6t", "cab", ">"},
+	{"C\u00c6T", "CAB", ">"},
+      },
+    };
+    
+    try {
+      RuleBasedCollator r = new RuleBasedCollator(OLD_ENGLISH_RULES);
+      for (int i = 0; i < TESTS.length; i++) {
+	r.setStrength(i);
+	doComparisons(r, TESTS[i]);
+      }
+    }
+    catch (ParseException ex) {
+      harness.debug(ex);
+      harness.fail("expansion ordering: ParseException (offset is " +
+		   ex.getErrorOffset() + ")");
+    }
+  }
+
   private void checkStrengths() 
   {
     harness.checkPoint("collator strengths");
@@ -401,6 +532,7 @@ public class jdk11 implements Testlet
     ignoreTests();
     oneCharTests();
     contractionTests();
+    expansionTests();
     // More tests in the pipeline
   }
   
