@@ -311,6 +311,18 @@ public class sleep implements Testlet, Runnable
       {
 	interrupted_exception = true;
       }
+    catch (Exception x)
+      {
+        harness.debug(x);
+        try
+          {
+            // wait for the interrupt from the helper
+            Thread.sleep(1000);
+          }
+        catch (InterruptedException _)
+          {
+          }
+      }
     harness.check(interrupted_exception);
 
     try
