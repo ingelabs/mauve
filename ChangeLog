@@ -1,3 +1,8 @@
+2004-10-15  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/util/GregorianCalendar/getMinimalDaysInFirstWeek.java:
+	New testcase from David Gilbert.
+
 2004-10-14  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/lang/reflect/Method/invoke.java:
