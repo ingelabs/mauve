@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2002 Free Software Foundation, Inc.
+# Copyright (c) 2002, 2004 Free Software Foundation, Inc.
 # Written by Mark Wielaard <mark@klomp.org>
 
 # This file is part of Mauve.
@@ -34,9 +34,9 @@
 KEYS="JDK1.0 JDK1.1 JDK1.2 JDK1.3 JDK1.4 JLS1.0 JLS1.2 JDBC1.0 JDBC2.0 JAVA2"
 KEYS="$KEYS !java.lang.Character.unicode"
 
-COMPILER="gcj -C"
+#COMPILER="gcj -C"
 #COMPILER="gcj"
-#COMPILER="jikes"
+COMPILER="jikes -bootclasspath /usr/local/classpath/share/classpath/glibj.zip"
 
 COMPILER_FLAGS="-g"
 
@@ -72,7 +72,7 @@ for testclass in `cat test_classes`; do
 	          $framework_sources `cat uses_files`
     fi
     if test $?  == 0; then
-        ./runner $testclass
+        ./runner $testclass 2>&1 | egrep '^(PASS|FAIL): '
     else
         echo "FAIL: $testclass COMPILE FAILED"
     fi

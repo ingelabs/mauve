@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2002 Free Software Foundation, Inc.
+# Copyright (c) 2002, 2004 Free Software Foundation, Inc.
 # Written by Mark Wielaard <mark@klomp.org>
 
 # This file is part of Mauve.
@@ -32,21 +32,26 @@
 
 #RUNTIME="gij"
 #RUNTIME="Kissme"
-RUNTIME="sablevm -Y"
+#RUNTIME="/usr/local/sablevm/bin/sablevm -Y"
+RUNTIME="/usr/local/jamvm/bin/jamvm"
 #RUNTIME="native"
 
 # Number of seconds to wait for the test to finish
 WAIT=60
 
+# Whether the test was killed by a timeout
+KILLED=0
+
 # Called when timeout occurs
 timeout()
 {
-    kill -9 $PID 2>&1 > /dev/null
+    kill -9 $PID > /dev/null 2>&1
+    KILLED=1
 }
 
 # Install timeout
 trap timeout SIGALRM
-sleep $WAIT && kill -s SIGALRM $$ 2>&1 > /dev/null &
+(sleep $WAIT && kill -s SIGALRM $$) > /dev/null 2>&1 &
 TIMEOUT=$!
 
 testclass=$1
@@ -60,11 +65,13 @@ PID=$!
 wait $PID
 result=$?
 
-# Terminated unexpectedly?
+# cleanup timeout
+trap '' SIGALRM
+if test $KILLED != 1; then
+    kill -9 $TIMEOUT > /dev/null 2>&1
+fi
+
+# Test terminated unexpectedly?
 if test $result != 0 -a $result != 1; then
     echo "FAIL: $testclass abnormal termination $result CRASH or TIMEOUT"
 fi
-
-# cleanup timeout
-trap '' SIGALRM
-kill $TIMEOUT 2>&1 > /dev/null
