@@ -33,7 +33,8 @@ public class subclass extends PrintStream implements Testlet
 {
   public subclass ()
   {
-    super (System.out);
+    // Use dummy OutputStream
+    super (new ByteArrayOutputStream ());
   }
 
   public void setOutput (OutputStream x)

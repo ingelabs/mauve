@@ -31,7 +31,8 @@ public class newline implements Testlet
 			       int[] expected,
 			       StreamTokenizer st)
   {
-    harness.checkPoint ("Test of input: " + input);
+    String checkpointName = "URLEncoded " + java.net.URLEncoder.encode(input);
+    harness.checkPoint ("Test of input: " + checkpointName);
     try
       {
 	int tt;

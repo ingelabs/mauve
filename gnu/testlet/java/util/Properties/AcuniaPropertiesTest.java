@@ -460,7 +460,8 @@ public class AcuniaPropertiesTest implements Testlet
     catch (Exception e) {th.fail("shouldn't throw any Exception, but got: "+e); }
     byte ba[] = bout.toByteArray();
     th.check( (ba[0]== (byte) '#') && (ba[1]!= (byte) '#'), "just date should be written");
-    th.check(ba.length < 50 , "default properties are never printed out -- got:"+new String(ba)+"\n"+ba[ba.length-1]);
+    th.debug(ba.length + " -- got: " +new String(ba));
+    th.check(ba.length < 50 , "default properties are never printed out");
     resetStreams();
     try { p.load(bin); }
     catch (Exception e) {}

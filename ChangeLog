@@ -1,3 +1,14 @@
+2002-07-20  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/PrintStream/subclass.java: Use dummy
+	ByteArrayOutputStream, System.out may interfere with test results.
+	* gnu/testlet/java/net/ServerSocket/MyBasicSocketServer.java: Use
+	harness.debug() not System.err.println().
+	* gnu/testlet/java/io/StreamTokenizer/newline.java: Use URLEncoder to
+	keep newlines and returns out of the results.
+	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java: Remove
+	explicit '\n' in test result output, add th.debug().
+
 2002-07-18  Mark Wielaard  <mark@klomp.org>
 
 	* java/text/DecimalFormat/parse.java: rename parse() to parseIt() to
