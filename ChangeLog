@@ -1,3 +1,8 @@
+2004-12-01  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/URLConnection/getHeaderFields.java:
+	New testcases.
+
 2004-11-30  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getNextPreviousNode.java:
