@@ -1,5 +1,26 @@
 2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/RenderingHints/add.java: New test.
+	* gnu/testlet/java/awt/RenderingHints/clear.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/clone.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/constructors.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/containsKey.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/containsValue.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/entrySet.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/equals.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/get.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/isEmpty.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/keySet.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/put.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/putAll.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/remove.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/size.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/values.java: Likewise.
+	* gnu/testlet/java/awt/RenderingHints/Key/isCompatibleValue.java:
+	Likewise.
+
+2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Polygon/contains.java: New test.
 
 2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
