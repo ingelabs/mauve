@@ -1,5 +1,10 @@
 2005-03-09  Robert Schuster <thebohemian@gmx.net>
 
+	* gnu/testlet/java/lang/reflect/Proxy/check13.java: New
+	test.
+	
+2005-03-09  Robert Schuster <thebohemian@gmx.net>
+
 	* gnu/testlet/java/beans/EventHandler/check.java: Added new
 	tests and try-catch-blocks for known problems.
 	* gnu/testlet/java/beans/EventHandler/check14.java: Added
