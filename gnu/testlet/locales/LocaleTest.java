@@ -394,7 +394,7 @@ public class LocaleTest
     checkLocale(h, Locale.US,
 		new ExpectedValues("en", "US", "", "en_US", "eng", "USA",
 				   "Englisch", "Vereinigte Staaten von Amerika", "", "Englisch (Vereinigte Staaten von Amerika)",
-				   "USD", 2, "USD"),
+				   "USD", 2, "US$"),
 		new ExpectedDateValues("Mar 18, 1974", "3/18/74", "Mar 18, 1974", "March 18, 1974", "5:20:30 PM", "5:20 PM", "5:20:30 PM", "5:20:30 PM CET"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("$1,000.00", "$1,000,000.00", "$100.00", "$100.12", "$10,000,000.12"),
@@ -416,10 +416,10 @@ public class LocaleTest
     checkLocale(h, new Locale("tr", "TR"),
 		new ExpectedValues("tr", "TR", "", "tr_TR", "tur", "TUR",
 				   "T\u00fcrkisch", "T\u00fcrkei", "", "T\u00fcrkisch (T\u00fcrkei)",
-				   "TRL", 2, "TRL"),
+				   "TRL", 0, "TRL"),
 		new ExpectedDateValues("18.Mar.1974", "18.03.1974", "18.Mar.1974", "18 Mart 1974 Pazartesi", "17:20:30", "17:20", "17:20:30", "17:20:30 CET"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
-		new ExpectedNumberValues("1.000 TL", "1.000.000 TL", "100 TL", "100 TL", "10.000.000 TL"),
+		new ExpectedNumberValues("1.000 TRL", "1.000.000 TRL", "100 TRL", "100 TRL", "10.000.000 TRL"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
@@ -432,6 +432,17 @@ public class LocaleTest
 		null,
 		null,
 		null);
+    // Locale: Estonia
+    checkLocale(h, new Locale("et", "EE"),
+		new ExpectedValues("et", "EE", "", "et_EE", "est", "EST",
+				   "Estnisch", "Estland", "", "Estnisch (Estland)",
+				   "EEK", 2, "kr"),
+		new ExpectedDateValues("18.03.1974", "18.03.74", "18.03.1974", "esmaspäev, 18. Märts 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 CET"),
+		new ExpectedNumberValues("1 000", "1 000 000", "100", "100,123", "10 000 000,123"),
+		new ExpectedNumberValues("1 000 kr", "1 000 000 kr", "100 kr", "100,12 kr", "10 000 000,12 kr"),
+		new ExpectedNumberValues("1 000", "1 000 000", "100", "100", "10 000 000"),
+		new ExpectedNumberValues("1 000", "1 000 000", "100", "100,123", "10 000 000,123"),
+		new ExpectedNumberValues("100 000%", "100 000 000%", "10 000%", "10 012%", "1 000 000 012%"));
   }
 }
 

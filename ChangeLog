@@ -1,3 +1,8 @@
+2004-12-30  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/locales/LocaleTest.java: Fixed some expected data and
+	added test data for et_EE (Estonia).
+
 2004-12-30  Archie Cobbs <archie@dellroad.org>
 
 	* gnu/testlet/java/lang/Class/init.java: made existing tests
