@@ -1,3 +1,22 @@
+2004-11-07  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/java/util/Currency/
+	(Canada.java): New class of tests for the Canadian currency.
+	(CanadaFrench.java): New class of tests for the French Canadian currency.
+	(China.java): New class of tests for the Chinese currency.
+	(Constructors.java): New class of tests for the currency constructors (getInstance())
+	(France.java): New class of tests for the French currency.
+	(Germany.java): New class of tests for the German currency.
+	(Italy.java): New class of tests for the Italian currency.
+	(Japan.java): New class of tests for the Japanese currency.
+	(Korea.java): New class of tests for the Korean currency.
+	(PRC.java): New class of tests for the People's Republic of China's currency.
+	(ReferenceEquality.java): New class of tests to check that there is only one instance
+                                  of the Currency class for each locale.
+        (Taiwan.java): New class of tests for the Taiwanese currency.
+	(UK.java): New class of tests for the UK's currency.
+	(US.java): New class of tests for the American currency.
+
 2004-11-07  Robert Schuster <thebohemian@gmx.net>
 
 	Tests for bug #10908 
