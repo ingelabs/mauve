@@ -137,21 +137,6 @@ test(TestHarness harness)
       harness.debug(e);
       harness.check(false);
     }
-
-  // Now test failure
-  harness.checkPoint ("invalid locale");
-  try
-    {
-      // Hmm.  Need a way to make this fail.  Which I'm not sure we
-      // can do easily in the JDK.
-      Locale l = new Locale("yi", "yi");
-      new DateFormatSymbols(l);
-      harness.check(false);
-    }
-  catch(MissingResourceException e)
-    {
-      harness.check(true); // We passed.
-    }
 }
 
 } // class Test

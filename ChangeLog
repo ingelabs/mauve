@@ -1,3 +1,8 @@
+2005-01-20  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/java/text/DateFormatSymbols/Test:
+	Removed the invalid locale test.
+	
 2005-01-18  Thomas Zander <zander@kde.org>
 
 	* gnu/testlet/javax/swing/JFrame/SetSize.java: New (gui) test
