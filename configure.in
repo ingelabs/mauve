@@ -1,0 +1,14 @@
+dnl Process this with autoconf to create configure
+AC_INIT(gnu/testlet/Testlet.java)
+
+JAVA=${JAVA-java}
+JAVAC=${JAVAC-javac}
+AC_SUBST(JAVA)
+AC_SUBST(JAVAC)
+
+AC_PROG_INSTALL
+
+AC_OUTPUT(Makefile)
+
+
+
