@@ -272,11 +272,10 @@ public class SimpleTestHarness
 	catch (Throwable ex)
 	  {
 	    removeSecurityManager();
-            String s = (last_check == null ? "" : "\"" + last_check +
+            String s = (last_check == null ? "" : " at \"" + last_check +
                     "\" number " + (count + 1));
-	    String d = ("FAIL: " + description + ": uncaught exception at " +
-                    s);
-	    currentResult.addException(ex, "uncaught exception at " + s);
+	    String d = "FAIL: " + description + ": uncaught exception" + s;
+	    currentResult.addException(ex, "uncaught exception" + s);
 	    if (verbose)
 	      d += ": " + ex.toString();
 	    System.out.println(d);
