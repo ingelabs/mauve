@@ -69,32 +69,12 @@ while test -n "$taglist"; do
        # You can't specify this.
        :
        ;;
-    GUI)
-       tags="$tags GUI $i"
-       test -z "$seen_dashdash" && spectags="$spectags $i"
-       ;;
-    JAVA2)
-       tags="$tags JDK1.0 JDK1.1 JDK1.2 $i"
-       test -z "$seen_dashdash" && spectags="$spectags $i"
-       ;;
     JDK1.2)
-       tags="$tags JDK1.0 JDK1.1 JAVA2 $i"
+       tags="$tags JDK1.0 JDK1.1 $i"
        test -z "$seen_dashdash" && spectags="$spectags $i"
        ;;
     JDK1.1)
-       tags="$tags JDK1.0 JLS1.1 $i"
-       test -z "$seen_dashdash" && spectags="$spectags $i"
-       ;;
-    JDK1.0)
-       tags="$tags JLS1.0"
-       test -z "$seen_dashdash" && spectags="$spectags $i"
-       ;;
-    JLS1.1)
-       tags="$tags JDK1.0 JDK1.1"
-       test -z "$seen_dashdash" && spectags="$spectags $i"
-       ;;
-    JLS1.0)
-       tags="$tags JDK1.0"
+       tags="$tags JDK1.0 $i"
        test -z "$seen_dashdash" && spectags="$spectags $i"
        ;;
     *)

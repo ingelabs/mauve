@@ -32,13 +32,12 @@
 
 # Include every key/tag we can think of but always exclude the unicode test.
 if test "x$KEYS" = "x"; then
-KEYS="JDK1.0 JDK1.1 JDK1.2 JDK1.3 JDK1.4 JLS1.0 JLS1.2 JDBC1.0 JDBC2.0 JAVA2"
+KEYS="JDK1.0 JDK1.1 JDK1.2 JDK1.3 JDK1.4 JDBC1.0 JDBC2.0"
 KEYS="$KEYS !java.lang.Character.unicode"
 fi
 
 if test "x$COMPILER" = "x"; then
-#COMPILER="gcj -C"
-#COMPILER="gcj"
+#COMPILER="gcj -C -Wno-deprecated"
 COMPILER="jikes -bootclasspath /usr/local/classpath/share/classpath/glibj.zip"
 fi
 

@@ -18,7 +18,7 @@
    Boston, MA 02111-1307, USA.
 */
 
-// Tags: JLS1.2
+// Tags: JDK1.2
 // Uses: Entry ESet EIterator
 
 package gnu.testlet.java.util.AbstractMap;

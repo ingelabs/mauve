@@ -1,3 +1,42 @@
+2005-02-21  Bryce McKinlay  <mckinlay@redhat.com>
+
+	* batch_run: Remove mention of JLS1.0, JLS1.2, and JAVA2 tags.
+	* choose: Likewise.
+	* gnu/testlet/java/lang/Boolean/BooleanTest.java,
+	gnu/testlet/java/lang/Byte/ByteTest.java,
+	gnu/testlet/java/lang/Character/CharacterTest.java,
+	gnu/testlet/java/lang/Class/ClassTest.java,
+	gnu/testlet/java/lang/Cloneable/CloneableTest.java,
+	gnu/testlet/java/lang/Double/DoubleTest.java,
+	gnu/testlet/java/lang/Float/FloatTest.java,
+	gnu/testlet/java/lang/Integer/IntegerTest.java,
+	gnu/testlet/java/lang/Long/LongTest.java,
+	gnu/testlet/java/lang/Math/MathTest.java,
+	gnu/testlet/java/lang/Number/NumberTest.java,
+	gnu/testlet/java/lang/Object/ObjectTest.java,
+	gnu/testlet/java/lang/Object/clone.java,
+	gnu/testlet/java/lang/Object/oom.java,
+	gnu/testlet/java/lang/Object/wait.java,
+	gnu/testlet/java/lang/Short/ShortTest.java,
+	gnu/testlet/java/lang/String/StringTest.java,
+	gnu/testlet/java/lang/StringBuffer/StringBufferTest.java,
+	gnu/testlet/java/util/AbstractCollection/AcuniaAbstractCollectionTest.java,
+	gnu/testlet/java/util/AbstractCollection/AcuniaAddCollectionTest.java,
+	gnu/testlet/java/util/AbstractList/AcuniaAbstractListTest.java,
+	gnu/testlet/java/util/AbstractMap/AcuniaAbstractMapTest.java,
+	gnu/testlet/java/util/AbstractSequentialList/AcuniaAbstractSequentialListTest.java,
+	gnu/testlet/java/util/AbstractSet/AcuniaAbstractSetTest.java,
+	gnu/testlet/java/util/ArrayList/AcuniaArrayListTest.java,
+	gnu/testlet/java/util/ArrayList/serial.java,
+	gnu/testlet/java/util/BitSet/AcuniaBitSetTest.java,
+	gnu/testlet/java/util/HashMap/AcuniaHashMapTest.java,
+	gnu/testlet/java/util/Hashtable/AcuniaHashtableTest.java,
+	gnu/testlet/java/util/LinkedList/AcuniaLinkedListTest.java,
+	gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java,
+	gnu/testlet/java/util/Stack/AcuniaStackTest.java,
+	gnu/testlet/java/util/Vector/AcuniaVectorTest.java: Change 'JLS' tags
+	to 'JDK'.
+
 2005-02-21  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* gnu/testlet/java/awt/Frame/size1.java: New test.

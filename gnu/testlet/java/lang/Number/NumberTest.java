@@ -18,7 +18,7 @@
    Boston, MA 02111-1307, USA.
 */
 
-// Tags: JLS1.0
+// Tags: JDK1.0
 // Uses: NewNumber
 
 package gnu.testlet.java.lang.Number;

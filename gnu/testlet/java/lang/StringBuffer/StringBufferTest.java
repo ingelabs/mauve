@@ -19,7 +19,7 @@
    Boston, MA 02111-1307, USA.
 */
 
-// Tags: JLS1.0
+// Tags: JDK1.0
 
 package gnu.testlet.java.lang.StringBuffer;
 import gnu.testlet.Testlet;
