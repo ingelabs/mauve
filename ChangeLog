@@ -1,5 +1,10 @@
 2004-11-17  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/net/URL/URLTest.java: Rewrote some testcase and add
+	one new for Classpath bug #10157.
+
+2004-11-17  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/net/InetAddress/IPv6.java: New testcases.
 
 2004-11-15  Michael Koch  <konqueror@gmx.de>

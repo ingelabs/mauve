@@ -33,37 +33,53 @@ public class URLTest implements Testlet
   protected static TestHarness harness;
 	public void test_Basics()
 	{
+		boolean ok;
+		
 		// see whether malformed exception is thrown or not.
 
 		harness.checkPoint("Constructors");
+
+		ok = false;
 		try {
 			URL url = new URL("hithleksjf" );
-			harness.fail("Error in test_Basics  - 1 " + 
-				" should have raised malformed URL exception here");
-
 		}
 		catch ( MalformedURLException e ){
+			ok = true;
 			harness.check(true);
 		}
+		harness.check(ok, "Error in test_Basics - 1 " + 
+			" should have raised malformed URL exception here");
 
+		ok = false;
 		try {
 			URL url = new URL("http://////://" );
-			harness.check(true);
+			ok = true;
 		}
 		catch ( MalformedURLException e ){
-			harness.fail("Error in test_Basics  - 2 " + 
-				" should not have raised malformed URL exception here");
 		}
+		harness.check(ok, "Error in test_Basics  - 2 " + 
+			" should not have raised malformed URL exception here");
 
 
+		ok = false;
 		try {
-;			URL url = new URL("http://sources.redhat.com/index.html" );
-			harness.check(true);
+			URL url = new URL("http://sources.redhat.com/index.html" );
+			ok = true;
 		}
 		catch ( MalformedURLException e ){
-			harness.fail("Error in test_Basics  - 3 " + 
-				" should not have raised malformed URL exception here");
 		}
+		harness.check(ok, "Error in test_Basics  - 3 " +
+			" should not have raised malformed URL exception here");
+
+		ok = false;
+		try {
+			URL url = new URL((String) null);
+		}
+		catch (MalformedURLException e) {
+			ok = true;
+		}
+		harness.check(ok, "Error in test_Basics  - 4 " +
+			" should have raised malformed URL exception here");
 
 		// URL with individual arguments.
 		harness.checkPoint("get Methods");
