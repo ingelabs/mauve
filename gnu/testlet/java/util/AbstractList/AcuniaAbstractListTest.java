@@ -310,12 +310,6 @@ public class AcuniaAbstractListTest extends AbstractList implements Testlet
     	th.fail("should throw a ConcurrentModificationException -- 2");
     	}
     catch(ConcurrentModificationException cme) { th.check(true, "next"); }
-    try  {
-    	th.check(it.hasNext());
-    	}
-    catch(ConcurrentModificationException cme) {     	
-    	th.fail("should not throw a ConcurrentModificationException -- 3");
-    }
     it = eal.iterator();
     try {
     	it.remove();	
@@ -534,10 +528,10 @@ public class AcuniaAbstractListTest extends AbstractList implements Testlet
 	
 	public void add(int idx, Object o) {
 		if (edit) {
+			if (updateMC) modCount++;
 		 	v.add(idx , o);
 		}
 		else super.add(idx,o);
-		if (updateMC) modCount++;
 	}
 
 	public Object remove(int idx) {
@@ -545,13 +539,11 @@ public class AcuniaAbstractListTest extends AbstractList implements Testlet
 			if (updateMC) modCount++;
 			return v.remove(idx);
 		}
-		System.out.println("calling remove from AbstractList");	
 		return super.remove(idx);
 	}
 	
 	public Object set(int idx , Object o) {
 		if (edit) {
-			if (updateMC) modCount++;
 			return v.set(idx , o);
 		}
 		return super.set(idx , o);

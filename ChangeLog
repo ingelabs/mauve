@@ -1,3 +1,11 @@
+2002-04-06  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/AbstractList/AcuniaAbstractListTest.java
+	(test_iterator): Second hasNext() ConcurrentModificationException
+	check removed.
+	(add): Only update modCount when edit == true.
+	(set): Never update modCount.
+
 2002-04-05  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/ArrayList/AcuniaArrayListTest.java
