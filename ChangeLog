@@ -1,5 +1,7 @@
 1999-12-21  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/reflect/Method/invoke.java: New file.
+
 	* gnu/testlet/java/lang/reflect/Modifier/toString12.java: New
 	file.
 
