@@ -96,13 +96,9 @@ public class InetAddressTest implements Testlet
     }
 
 		
-    if ( addr2.length  != 1 ) {
+    if ( addr2.length < 1 ) {
       harness.fail("Error : test_Basics failed - 8 " +
-			 "the address array should of length 1" );
-      System.out.println("addr2.length is " + addr2.length);
-      for (int i = 0; i < addr2.length; ++i) {
-	System.out.println("addr2[" + i + "] is " + addr2[i]);
-      }
+			 "the address array should be of length 1 or larger" );
     } else
       harness.check(true);
 

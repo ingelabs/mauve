@@ -1,3 +1,11 @@
+2002-04-17  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/InetAddress/InetAddressTest.java (test_Basics):
+	If machine has multiple interfaces address array can have multiple
+	entries.
+
+	* gnu/testlet/java/lang/System/getProperty.java: New class.
+
 2002-04-15  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/text/AttributedCharacterIterator/CharItImpl.java:
