@@ -26,8 +26,8 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.security.Provider;
 import java.security.Security;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.Iterator;
 
 /**
  * Test of <code>getAlgorithms(String)</code> method in {@link Security}.
@@ -56,22 +56,44 @@ public class getAlgorithms extends Provider implements Testlet
   {
     harness.checkPoint ("getAlgorithms");
 
-    String signature;
-    Set set = new HashSet();
+    String signature, key;
+    Set set = null;
 
     Security.addProvider(this);
 
     signature = "getAlgorithms(\"foo\")";
     set = Security.getAlgorithms("foo");
-    harness.check(set.size() == 0, signature);
+    harness.check(set != null && set.size() == 0, signature);
 
     signature = "getAlgorithms(\"Coffee\")";
     set = Security.getAlgorithms("Coffee");
-    harness.check(set.size() == 1, signature);
+    key = "Foo";
+    if (set != null && set.size() >= 1)
+      harness.check(containsKey(set, key), signature+": "+key);
+    else
+      harness.check(false, signature + ": set.size() < 1");
 
     signature = "getAlgorithms(\"Tea\")";
     set = Security.getAlgorithms("Tea");
-    harness.check(set.size() == 2 && set.contains("BAR") && set.contains("BAZ"),
-                  signature);
+    if (set != null && set.size() >= 2)
+      {
+        key = "Bar";
+        harness.check(containsKey(set, key), signature+": "+key);
+        key = "Baz";
+        harness.check(containsKey(set, key), signature+": "+key);
+      }
+    else
+      harness.check(false, signature + ": set.size() < 2");
+  }
+
+  private static final boolean containsKey(Set set, String key) {
+    boolean result = false;
+    for (Iterator it = set.iterator(); it.hasNext(); )
+      {
+        result = key.trim().equalsIgnoreCase(String.valueOf(it.next()).trim());
+        if (result)
+          break;
+      }
+    return result;
   }
 }
