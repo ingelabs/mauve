@@ -1,3 +1,8 @@
+2003-07-05  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/text/RuleBasedCollator/jdk11.java : 
+	more new rule parsing tests
+	
 2003-07-01  Stephen Crawley  <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/text/RuleBasedCollator/jdk11.java : new tests

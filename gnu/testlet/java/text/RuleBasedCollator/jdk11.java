@@ -104,7 +104,32 @@ public class jdk11 implements Testlet
     harness.checkPoint("constructor rule parsing");
     RuleBasedCollator r;
     String[] GOOD_RULES = {
-      EN_US_RULES, FR_CA_RULES
+      // Examples from the Sun javadocs
+      "< a < b < c < d",
+      ("< a,A< b,B< c,C< d,D< e,E< f,F< g,G< h,H< i,I< j,J < k,K< l,L< m,M" +
+       "< n,N< o,O< p,P< q,Q< r,R< s,S< t,T < u,U< v,V< w,W< x,X< y,Y< z,Z " +
+       "< \u00E5=a\u030A,\u00C5=A\u030A ;aa,AA< \u00E6,\u00C6< \u00F8,\u00D8"),
+      ("=\u0301;\u0300;\u0302;\u0308;\u0327;\u0303;\u0304;\u0305" +
+       ";\u0306;\u0307;\u0309;\u030A;\u030B;\u030C;\u030D;\u030E" +
+       ";\u030F;\u0310;\u0311;\u0312< a , A ; ae, AE ; \u00e6 , \u00c6" +
+       "< b , B < c, C < e, E & C < d, D & \u0300 ; \u0308 ; \u0302"),
+      // Real collation rules
+      EN_US_RULES, FR_CA_RULES,
+      // Cases involving non-significant white-space
+      "=A ", "=A\t", "=A\n", 
+      "=A B", "=A\tB", "=A\nB", 
+      "= A", "=\tA", "=\nA", 
+      " =A", "\t=A", "\n=A",
+      // Dodgy cases that JDKs accept
+      " ",
+      "='\n''\n'",
+      "='\n'\n'\n'",
+      // Dodgy cases with unbalanced quotes.  JDKs allow these (though a 
+      // couple result in IndexOutOfBoundsExceptions).  However, the spec
+      // does not say what they mean.
+      "='", /* <- JDK 1.4.0 exception */ "=' ", "='=A", "='=A'", 
+      "=''", "='' ","=''=A", "=''=A'", 
+      "=''''", /* <- JDK 1.4.0 exception */ "=''''=A", "=''''=A'", 
     };
     
     for (int i = 0; i < GOOD_RULES.length; i++) {
@@ -116,6 +141,10 @@ public class jdk11 implements Testlet
 	harness.debug(ex);
 	harness.debug("unexpected ParseException (offset is " +
 		      ex.getErrorOffset() + ")");
+	harness.check(false);
+      }
+      catch (Throwable ex) {
+	harness.debug(ex);
 	harness.check(false);
       }
     }
@@ -131,7 +160,7 @@ public class jdk11 implements Testlet
       harness.check(true);
     }
     
-    harness.checkPoint("constructor rule errors");
+    harness.checkPoint("constructor rule parsing errors");
     String[] BAD_RULES = {
       // Empty rule list
       "", 
@@ -145,12 +174,15 @@ public class jdk11 implements Testlet
 
     for (int i = 0; i < BAD_RULES.length; i++) {
       try {
-	// Special chars should be quoted
 	r = new RuleBasedCollator(BAD_RULES[i]);
 	harness.check(false);
       }
       catch (ParseException ex) {
 	harness.check(true);
+      }
+      catch (Throwable ex) {
+	harness.debug(ex);
+	harness.check(false);
       }
     }
   }
