@@ -1,3 +1,8 @@
+2003-09-07  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/text/DecimalFormat/digits.java: New test.
+	* gnu/testlet/java/text/DecimalFormat/formatExp.java: New test.
+
 2003-09-02  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/GregorianCalendar/first.java: Months are
