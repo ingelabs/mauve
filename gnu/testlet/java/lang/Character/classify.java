@@ -1,3 +1,5 @@
+// Tags: JDK1.0 JDK1.1 JDK1.2
+
 package gnu.testlet.java.lang.Character;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
@@ -38,7 +40,6 @@ public class classify implements Testlet
       harness.check (! Character.isLowerCase('\u249f'));
 
       harness.check (Character.isUpperCase('Q'));
-      harness.check (! Character.isUpperCase('\u2102'));
       harness.check (! Character.isUpperCase('\u01c5'));
 
       harness.check (Character.isWhitespace('\u0009'));

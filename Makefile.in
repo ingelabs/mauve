@@ -78,7 +78,7 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 
 KEYS =
 
-@USE_GCJ_TRUE@java_files := $(harness_files) $(shell test -f choices && cat choices)
+@USE_GCJ_TRUE@java_files := $(harness_files) $(CHOICES)
 @USE_GCJ_TRUE@class_files := $(patsubst %.java,%.class,$(java_files))
 @USE_GCJ_TRUE@javao_files := $(patsubst %.class,%.o,$(class_files))
 
@@ -295,10 +295,12 @@ clean-generic maintainer-clean-generic clean mostlyclean distclean \
 maintainer-clean
 
 
-classes.stamp: choices
+-include choices
+
+classes.stamp: choices $(CHOICES)
 	here=`/bin/pwd`; cd $(srcdir); \
 	  CLASSPATH=$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
-	    $(harness_files) `cat $$here/choices`
+	    $(harness_files) $(CHOICES)
 	touch classes.stamp
 choices: FORCE
 	ok=no; \
@@ -316,7 +318,7 @@ FORCE:
 @USE_GCJ_TRUE@.class.o:
 @USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
-@USE_GCJ_TRUE@check-local: $(check_PROGRAMS) choices
+@USE_GCJ_TRUE@check-local: $(check_PROGRAMS) $(CHOICES)
 @USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness
 
 @USE_GCJ_TRUE@recheck:

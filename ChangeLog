@@ -1,5 +1,21 @@
 1998-11-30  Tom Tromey  <tromey@cygnus.com>
 
+	* Makefile.in: Rebuilt.
+	* Makefile.am: Removed now-incorrect comment.
+	Include `choices' file.
+	(classes.stamp): Depend on and use CHOICES macro.
+	(java_files): Use CHOICES.
+	(check-local): Depend on CHOICES.
+
+	* choose: More output when verbose.  Only tags starting with
+	`java.' are considered to be class selectors.  Define macro in
+	choices file.
+
+	* gnu/testlet/java/lang/Character/getType.java: Added Tags line
+	* gnu/testlet/java/lang/Character/classify12.java: New file.
+	* gnu/testlet/java/lang/Character/classify.java: Added Tags line;
+	removed JDK1.2-specific test.
+
 	* README: Updated to mention keys.
 	* Makefile.in: Rebuilt.
 	* Makefile.am (recheck): Actually run `check' target.

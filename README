@@ -20,7 +20,8 @@ Use `make check' to run the tests.  You can set the make variable
 `KEYS' to select a subset of the tests.  KEYS is a list of keys that
 must be matched by the files to be tested.  Some values:
 
-     * Any key with a `.' is taken to be the name of a class hierarchy.
+     * Any key starting with `java.' is taken to be the name of a
+       class hierarchy.
        E.g., the key `java.lang' matches only test classes in java.lang.*.
        If multiple keys of this type, a test file need only match one
        to be included.

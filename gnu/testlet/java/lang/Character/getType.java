@@ -1,3 +1,5 @@
+// Tags: JDK1.0 JDK1.1 JDK1.2
+
 package gnu.testlet.java.lang.Character;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
