@@ -1,3 +1,31 @@
+2004-02-26  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/java/util/logging/Level: New directory.
+
+	* gnu/testlet/java/util/logging/Level/equals.java,
+	gnu/testlet/java/util/logging/Level/getName.java,
+	gnu/testlet/java/util/logging/Level/hashCode.java,
+	gnu/testlet/java/util/logging/Level/intValue.java,
+	gnu/testlet/java/util/logging/Level/parse.java,
+	gnu/testlet/java/util/logging/Level/TestUtils.java,
+	gnu/testlet/java/util/logging/Level/toString.java: New file.
+
+	* gnu/testlet/java/util/logging/SocketHandler: New directory.
+	
+	* gnu/testlet/java/util/logging/SocketHandler/getFilter.java,
+	gnu/testlet/java/util/logging/SocketHandler/getFormatter.java,
+	gnu/testlet/java/util/logging/SocketHandler/publish.java,
+	gnu/testlet/java/util/logging/SocketHandler/SocketCapturer.java,
+	gnu/testlet/java/util/logging/SocketHandler/SocketHandler.java:
+	New file.
+
+	* gnu/testlet/java/util/logging/XMLFormatter: New directory.
+	
+	* gnu/testlet/java/util/logging/XMLFormatter/formatMessage.java,
+	gnu/testlet/java/util/logging/XMLFormatter/getHead.java,
+	gnu/testlet/java/util/logging/XMLFormatter/getTail.java:
+	New files.
+
 2004-02-25  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/InetSocketAddress/InetSocketAddressTest.java:
