@@ -1,3 +1,7 @@
+2005-01-09  Thomas Zander <zander@kde.org>
+
+	* gnu/testlet/javax/swing/UIDefaults/remove.java: New test
+
 2005-01-09  Arnaud Vandyck  <avdyk@ressource-toi.org>
 
 	* gnu/testlet/javax/swing/text/StringContent/BadLocationExceptionTest.java:
