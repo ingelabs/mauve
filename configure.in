@@ -58,6 +58,17 @@ TMPDIR="$with_tmpdir")
 TMPDIR=${TMPDIR-/tmp}
 AC_SUBST(TMPDIR)
 
+dnl Specify a mail server host for socket testing.  This allows you to
+dnl choose a different server if 'mx10.gnu.org' is blocked by your firewall
+AC_ARG_WITH(mailhost,
+changequote(<<,>>)
+<<  --with-mailhost=hostname         Server for socket tests [mx10.gnu.org]>>,
+changequote([,])
+MAIL_HOST="$with_mailhost")
+
+MAIL_HOST=${MAIL_HOST-/tmp}
+AC_SUBST(MAIL_HOST)
+
 if test ! -d gnu; then
   mkdir gnu
 fi

@@ -27,13 +27,14 @@ import java.io.IOException;
 import java.net.*;
 
 import gnu.testlet.Testlet;
+import gnu.testlet.SimpleTestHarness;
 import gnu.testlet.TestHarness;
 
 public class jdk12 implements Testlet
 {
   public void test (TestHarness harness)
   {
-    String host = "mx10.gnu.org";
+    String host = ((SimpleTestHarness) harness).getMailHost();
     int port = 25;
     Socket sock = null;
     try 

@@ -107,6 +107,11 @@ public class SimpleTestHarness
     return separator;
   }
   
+  public String getMailHost ()
+  {
+    return mailHost;
+  }
+  
   public Reader getResourceReader (String name)
     throws ResourceNotFoundException
   {

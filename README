@@ -16,6 +16,15 @@ some environment variables:
 
 GCJ is only used when the `--with-gcj' option is given to configure.
 
+The configure script also supports the following `--with' options:
+
+     --with-tmpdir=DIR          Put temporary files in DIR
+                                defaults to `/tmp'
+     --with-mailhost=HOSTNAME   Use mail server at HOSTNAME for socket tests 
+                                defaults to `mx10.gnu.org'
+                                (Use this option if your local firewall
+                                 blocks outgoing connections on port 25.)
+
 Note that you will need GNU make to use this testsuite.  If your
 installation provides GNU make under a different name, such as gmake,
 replace `make' with `gmake' in the following.

@@ -1,3 +1,18 @@
+2004-08-12  Stephen Crawley  <crawley@dstc.edu.au>	
+
+	* configure.in : added --with-mailhost option
+	* Makefile.in : ditto
+	* aclocal.m4 : regenerated
+	* configure : ditto
+	* README : documented the new configure option
+	* gnu/testlet/config.java.in : added new config attribute & getter
+	for the selected mailhost
+	* gnu/testlet/SimpleTestHarness.java : added new config getter
+	* gnu/testlet/java/net/Socket/SocketTest.java : use selected mailhost
+	* gnu/testlet/java/net/Socket/jdk12.java : ditto
+	* gnu/testlet/java/net/Socket/jdk13.java : ditto
+	* gnu/testlet/java/net/Socket/jdk14.java : ditto
+
 2004-08-12  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/Rectangle/add.java: New test.

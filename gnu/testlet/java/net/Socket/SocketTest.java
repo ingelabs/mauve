@@ -25,13 +25,14 @@
 package gnu.testlet.java.net.Socket;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.SimpleTestHarness;
 import java.net.*;
 import java.io.*;
 
 
 public class SocketTest implements Testlet
 {
-  protected static TestHarness harness;
+  protected static SimpleTestHarness harness;
   
   public void test_BasicServer()
   {
@@ -193,7 +194,7 @@ public class SocketTest implements Testlet
 
   public void test_params()
   {
-    String host = "mx10.gnu.org";
+    String host = harness.getMailHost();
     int port = 25;
 
     harness.checkPoint("params");
@@ -329,7 +330,7 @@ public class SocketTest implements Testlet
     try {
       // This is host / port that is unlikely to be blocked.  (Outgoing
       // port 80 connections are often blocked.)
-      s = new Socket ("mx10.gnu.org", 25);
+      s = new Socket (harness.getMailHost(), 25);
       harness.check(true);
     }
     catch (Exception e) {
@@ -497,7 +498,7 @@ public class SocketTest implements Testlet
 
   public void test (TestHarness the_harness)
   {
-    harness = the_harness;
+    harness = (SimpleTestHarness) the_harness;
     testall ();
   }
 }
