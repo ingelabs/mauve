@@ -1,6 +1,6 @@
 2002-02-18  Mark Wielaard  <mark@klomp.org>
 
-	* gnu/testlet/java/lang/reflect/Method.java: new file.
+	* gnu/testlet/java/lang/reflect/Method/equals.java: new file.
 
 2002-02-18  C. Brian Jones <cbj@gnu.org>
 
