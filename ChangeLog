@@ -1,3 +1,7 @@
+2003-01-29  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/beans/DescriptorTest.java: fixed test cases to
+	work under JDK1.3/1.4
+
 2003-01-28  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java (diaghashcode): 
 	Removed invalid tests for BigDecimal.hashCode()
