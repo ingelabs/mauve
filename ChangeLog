@@ -1,5 +1,10 @@
 2004-10-15  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/nio/charset/Charset/utf16.java:
+	New testcase.
+
+2004-10-15  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/util/GregorianCalendar/getMinimalDaysInFirstWeek.java:
 	New testcase from David Gilbert.
 
