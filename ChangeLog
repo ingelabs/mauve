@@ -1,5 +1,10 @@
 2004-10-20  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/geom/Ellipse2D/contains.java: New test.
+	* gnu/testlet/java/awt/geom/Ellipse2D/intersects.java: Likewise.
+	
+2004-10-20  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Point/clone.java: New test.
 	* gnu/testlet/java/awt/Point/constructors.java: Likewise.
 	* gnu/testlet/java/awt/Point/equals.java: Likewise.
