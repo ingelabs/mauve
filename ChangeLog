@@ -1,4 +1,9 @@
 2002-12-26  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/FilterReader/SimpleRead.java:
+	* gnu/testlet/java/io/FilterReader/MarkReset.java:
+	Added tests for FilterReader class
+
+2002-12-26  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/OutputStream/Test.java:
 	Added tests for OutputStream class
 
