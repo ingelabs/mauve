@@ -1,5 +1,8 @@
 1999-03-11  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/DecimalFormat/parse.java (test): Added
+	trailing `-' case.
+
 	* gnu/testlet/java/text/DecimalFormat/parse.java: New file.
 
 	* gnu/testlet/java/lang/Integer/new_Integer.java (test): Added

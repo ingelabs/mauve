@@ -99,5 +99,13 @@ public class parse implements Testlet
       num = parse (df, "(201.2)", pp);
       harness.check (num instanceof Double);
       harness.check (num.doubleValue(), -201.2);
+
+      apply (harness, df, "0.#;0.#-");
+      num = parse (df, "303", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue (), 303);
+      num = parse (df, "303-", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue (), -303);
     }
 }
