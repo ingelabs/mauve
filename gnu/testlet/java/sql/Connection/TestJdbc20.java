@@ -9,15 +9,16 @@
  * of this file.
  */
 
-// Tags: JDK1.1 !JDK1.2 JDBC1.0 !JDBC2.0
+// Tags: JDK1.2 JDBC2.0
 
 package gnu.testlet.java.sql.Connection;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.sql.*;
+import java.util.Map;
 
-public class TestJdbc10 implements Connection, Testlet {
+public class TestJdbc20 implements Connection, Testlet {
 
 public void
 test(TestHarness harness)
@@ -35,7 +36,19 @@ public Statement createStatement() throws SQLException
   return(null);
 }
 
+public Statement createStatement(int resultSetType, int resultSetConcurrency)
+  throws SQLException
+{
+  return(null);
+}
+
 public PreparedStatement prepareStatement(String sql) throws SQLException
+{
+  return(null);
+}
+
+public PreparedStatement prepareStatement(String sql, int resultSetType,
+  int resultSetConcurrency) throws SQLException
 {
   return(null);
 }
@@ -44,6 +57,13 @@ public CallableStatement prepareCall(String sql) throws SQLException
 {
   return(null);
 }
+
+public CallableStatement prepareCall(String sql, int resultSetType,
+  int resultSetConcurrency) throws SQLException
+{
+  return(null);
+}
+
 public String nativeSQL(String sql) throws SQLException
 {
   return(null);
@@ -120,6 +140,16 @@ public SQLWarning getWarnings() throws SQLException
 }
 
 public void clearWarnings() throws SQLException
+{
+  return;
+}
+
+public Map getTypeMap() throws SQLException
+{
+  return(null);
+}
+
+public void setTypeMap(Map map) throws SQLException
 {
   return;
 }

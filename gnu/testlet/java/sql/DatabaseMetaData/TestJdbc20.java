@@ -9,7 +9,7 @@
  * of this file.
  */
 
-// Tags: JDK1.1 !JDK1.2 JDBC1.0 !JDBC2.0
+// Tags: JDK1.2 JDBC2.0
 
 package gnu.testlet.java.sql.DatabaseMetaData;
 
@@ -17,7 +17,7 @@ import java.sql.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class TestJdbc10 implements Testlet, DatabaseMetaData
+public class TestJdbc20 implements Testlet, DatabaseMetaData
 {
 
 public void
@@ -614,6 +614,63 @@ public ResultSet getTypeInfo() throws SQLException
   return(null);
 }
 public ResultSet getIndexInfo(String catalog, String schema, String table, boolean unique, boolean approximate) throws SQLException
+{
+  return(null);
+}
+public boolean supportsResultSetType(int type) throws SQLException
+{
+  return(false);
+}
+public boolean supportsResultSetConcurrency(int type, int concurrency) throws SQLException
+{
+  return(false);
+}
+public boolean ownUpdatesAreVisible(int type) throws SQLException
+{
+  return(false);
+}
+public boolean ownDeletesAreVisible(int type) throws SQLException
+{
+  return(false);
+}
+public boolean ownInsertsAreVisible(int type) throws SQLException
+{
+  return(false);
+}
+public boolean othersUpdatesAreVisible(int type) throws SQLException
+{
+  return(false);
+}
+public boolean othersDeletesAreVisible(int type) throws SQLException
+{
+  return(false);
+}
+public boolean othersInsertsAreVisible(int type) throws SQLException
+{
+  return(false);
+}
+public boolean updatesAreDetected(int type) throws SQLException
+{
+  return(false);
+}
+public boolean deletesAreDetected(int type) throws SQLException
+{
+  return(false);
+}
+public boolean insertsAreDetected(int type) throws SQLException
+{
+  return(false);
+}
+public boolean supportsBatchUpdates() throws SQLException
+{
+  return(false);
+}
+public ResultSet getUDTs(String catalog, String schemaPattern,
+  String typeNamePattern, int[] types) throws SQLException
+{
+  return(null);
+}
+public Connection getConnection() throws SQLException
 {
   return(null);
 }
