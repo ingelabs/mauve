@@ -1,5 +1,28 @@
 2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/Arrays/asList.java: New tests.
+	* gnu/testlet/java/util/Arrays/binarySearch.java: Likewise.
+	* gnu/testlet/java/util/Arrays/fill.java: Likewise.
+	* gnu/testlet/java/util/Arrays/equals.java (testBoolean): New test.
+	(testByte): Likewise.
+	(testChar): Likewise.
+	(testDouble): Likewise.
+	(testFloat): Likewise.
+	(testInt): Likewise.
+	(testLong): Likewise.
+	(testObject): Likewise.
+	(testShort): Likewise.
+	* gnu/testlet/java/util/Arrays/sort.java (testByte): New test.
+	(testChar): Likewise.
+	(testDouble): likewise.
+	(testFloat): Likewise.
+	(testInt): Likewise.
+	(testLong): Likewise.
+	(testObject): Likewise.
+	(testShort): Likewise.
+
+2004-08-27  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/lang/Double/compare.java: New test.
 	* gnu/testlet/java/lang/Float/compare.java: New test.
 

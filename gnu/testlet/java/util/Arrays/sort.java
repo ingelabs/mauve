@@ -1,5 +1,12 @@
 // Tags: JDK1.1
 
+// Copyright (C) 2004 David Gilbert <david.gilbert@object-refinery.com>
+//
+// [Note: original file had no copyright notice - I've added the following
+//  methods: testByte(), testChar(), testDouble(), testFloat(), testInt(),
+//  testLong(), testObject() and testShort(). The original was written by
+//  Tom Tromey, with extra tests added by John Leuner]
+
 // This file is part of Mauve.
 
 // Mauve is free software; you can redistribute it and/or modify
@@ -18,9 +25,12 @@
 // Boston, MA 02111-1307, USA.  */
 
 package gnu.testlet.java.util.Arrays;
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import java.util.*;
+import gnu.testlet.Testlet;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 
 public class sort implements Testlet
 {
@@ -63,7 +73,17 @@ public class sort implements Testlet
 	    }
 
 	test_quicksort(harness);
-    }
+	
+	// these methods added by DG
+	testByte(harness);
+	testChar(harness);
+	testDouble(harness);
+	testFloat(harness);
+	testInt(harness);
+	testLong(harness);
+	testObject(harness);
+	testShort(harness);
+  }
 
     public void test_quicksort(TestHarness harness)
     {
@@ -87,4 +107,635 @@ public class sort implements Testlet
 	java.util.Arrays.sort(iarray3);
 	harness.check(isSorted(iarray3));
     }
+    
+  private void testByte(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(byte[])");
+    byte[] a1 = new byte[] {3, 1, 2};
+    Arrays.sort(a1);
+    harness.check(a1[0] == 1);
+    harness.check(a1[1] == 2);
+    harness.check(a1[2] == 3);
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((byte[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(byte[], int, int)");  
+    byte[] a2 = new byte[] {4, 3, 1, 2, 0};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == 4);
+    harness.check(a2[1] == 1);
+    harness.check(a2[2] == 2);
+    harness.check(a2[3] == 3);
+    harness.check(a2[4] == 0);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((byte[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+
+  private void testChar(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(char[])");
+    char[] a1 = new char[] {'3', '1', '2'};
+    Arrays.sort(a1);
+    harness.check(a1[0] == '1');
+    harness.check(a1[1] == '2');
+    harness.check(a1[2] == '3');
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((char[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(char[], int, int)");  
+    char[] a2 = new char[] {'4', '3', '1', '2', '0'};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == '4');
+    harness.check(a2[1] == '1');
+    harness.check(a2[2] == '2');
+    harness.check(a2[3] == '3');
+    harness.check(a2[4] == '0');
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((char[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+  
+  private void testDouble(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(double[])");
+    double[] a1 = new double[] {3, 1, 2};
+    Arrays.sort(a1);
+    harness.check(a1[0] == 1);
+    harness.check(a1[1] == 2);
+    harness.check(a1[2] == 3);
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((double[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(double[], int, int)");  
+    double[] a2 = new double[] {4, 3, 1, 2, 0};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == 4);
+    harness.check(a2[1] == 1);
+    harness.check(a2[2] == 2);
+    harness.check(a2[3] == 3);
+    harness.check(a2[4] == 0);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((double[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+
+  private void testFloat(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(float[])");
+    float[] a1 = new float[] {3, 1, 2};
+    Arrays.sort(a1);
+    harness.check(a1[0] == 1);
+    harness.check(a1[1] == 2);
+    harness.check(a1[2] == 3);
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((float[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(float[], int, int)");  
+    float[] a2 = new float[] {4, 3, 1, 2, 0};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == 4);
+    harness.check(a2[1] == 1);
+    harness.check(a2[2] == 2);
+    harness.check(a2[3] == 3);
+    harness.check(a2[4] == 0);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((float[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+
+  private void testInt(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(int[])");
+    int[] a1 = new int[] {3, 1, 2};
+    Arrays.sort(a1);
+    harness.check(a1[0] == 1);
+    harness.check(a1[1] == 2);
+    harness.check(a1[2] == 3);
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((int[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(int[], int, int)");  
+    int[] a2 = new int[] {4, 3, 1, 2, 0};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == 4);
+    harness.check(a2[1] == 1);
+    harness.check(a2[2] == 2);
+    harness.check(a2[3] == 3);
+    harness.check(a2[4] == 0);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((int[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+
+  private void testLong(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(long[])");
+    long[] a1 = new long[] {3, 1, 2};
+    Arrays.sort(a1);
+    harness.check(a1[0] == 1);
+    harness.check(a1[1] == 2);
+    harness.check(a1[2] == 3);
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((long[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(long[], int, int)");  
+    long[] a2 = new long[] {4, 3, 1, 2, 0};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == 4);
+    harness.check(a2[1] == 1);
+    harness.check(a2[2] == 2);
+    harness.check(a2[3] == 3);
+    harness.check(a2[4] == 0);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((long[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+
+  private void testObject(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(Object[])");
+    Object[] a1 = new Object[] {"3", "1", "2"};
+    Arrays.sort(a1);
+    harness.check(a1[0].equals("1"));
+    harness.check(a1[1].equals("2"));
+    harness.check(a1[2].equals("3"));
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((Object[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(Object[], int, int)");  
+    Object[] a2 = new Object[] {"4", "3", "1", "2", "0"};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0].equals("4"));
+    harness.check(a2[1].equals("1"));
+    harness.check(a2[2].equals("2"));
+    harness.check(a2[3].equals("3"));
+    harness.check(a2[4].equals("0"));
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((Object[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+    
+    harness.checkPoint("Arrays.sort(Object[], Comparator)");
+    Object[] a3 = new Object[] {"4", "5", "3", "1", "2"};
+    Arrays.sort(a3, (Comparator) null);
+    harness.check(a3[0].equals("1"));
+    harness.check(a3[1].equals("2"));
+    harness.check(a3[2].equals("3"));
+    harness.check(a3[3].equals("4"));
+    harness.check(a3[4].equals("5"));
+    Arrays.sort(a3, new ReverseComparator());
+    harness.check(a3[0].equals("5"));
+    harness.check(a3[1].equals("4"));
+    harness.check(a3[2].equals("3"));
+    harness.check(a3[3].equals("2"));
+    harness.check(a3[4].equals("1"));
+    
+    harness.checkPoint("Arrays.sort(Object[], int, int, Comparator)");
+    Object[] a4 = new Object[] {"4", "5", "3", "1", "2"};
+    Arrays.sort(a4, 1, 4, (Comparator) null);
+    harness.check(a4[0].equals("4"));
+    harness.check(a4[1].equals("1"));
+    harness.check(a4[2].equals("3"));
+    harness.check(a4[3].equals("5"));
+    harness.check(a4[4].equals("2"));
+    Arrays.sort(a4, 1, 4, new ReverseComparator());
+    harness.check(a4[0].equals("4"));
+    harness.check(a4[1].equals("5"));
+    harness.check(a4[2].equals("3"));
+    harness.check(a4[3].equals("1"));
+    harness.check(a4[4].equals("2"));
+  }
+  
+  private void testShort(TestHarness harness) 
+  {
+    harness.checkPoint("Arrays.sort(short[])");
+    short[] a1 = new short[] {3, 1, 2};
+    Arrays.sort(a1);
+    harness.check(a1[0] == 1);
+    harness.check(a1[1] == 2);
+    harness.check(a1[2] == 3);
+    
+    boolean pass = false;
+    try
+    {
+      Arrays.sort((short[]) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    harness.checkPoint("Arrays.sort(short[], int, int)");  
+    short[] a2 = new short[] {4, 3, 1, 2, 0};
+    Arrays.sort(a2, 1, 4);
+    harness.check(a2[0] == 4);
+    harness.check(a2[1] == 1);
+    harness.check(a2[2] == 2);
+    harness.check(a2[3] == 3);
+    harness.check(a2[4] == 0);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort((short[]) null, 1, 4);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 1, 0);
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, -1, 0);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      Arrays.sort(a2, 0, 6);
+    }
+    catch (ArrayIndexOutOfBoundsException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);    
+  }
+
+  static class ReverseComparator implements Comparator {
+    public int compare(Object o1, Object o2) {
+      int i1 = Integer.valueOf(o1.toString()).intValue();
+      int i2 = Integer.valueOf(o2.toString()).intValue();
+      return (i2 - i1);
+    }
+  }
+
 }
