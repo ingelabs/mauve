@@ -1,3 +1,7 @@
+2003-11-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/zip/ZipFile/newZipFile.java: New test.
+
 2003-11-22  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/Hashtable/ContainsHash.java: New test.
