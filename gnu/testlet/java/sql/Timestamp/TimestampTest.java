@@ -29,10 +29,9 @@ import java.sql.*;
 
 public class TimestampTest implements Testlet
 {
-
-public void
-test(TestHarness harness)
-{
+  public void
+  test(TestHarness harness)
+  {
     try {
       Timestamp.valueOf("NoSuchTime");
       harness.check(false, "valueOf");
@@ -40,5 +39,25 @@ test(TestHarness harness)
     catch (IllegalArgumentException e) {
       harness.check(true, "valueOf");
     }
-}
+
+    Timestamp ts = new Timestamp(1099999999333L);
+    harness.check(ts.getNanos() == 333000000, "getNanos");
+    harness.check(ts.toString().equals("2004-11-09 06:33:19.333"),
+                  "toString");
+
+    ts.setNanos(42);
+    harness.check(ts.getNanos() == 42, "getNanos");
+    harness.check(ts.toString().equals("2004-11-09 06:33:19.000000042"),
+                  "toString");
+
+    ts.setNanos(0);
+    harness.check(ts.getNanos() == 0, "getNanos");
+    harness.check(ts.toString().equals("2004-11-09 06:33:19.0"),
+                  "toString");
+    
+    Timestamp ts2 = new Timestamp(1099999999999L);
+    harness.check(ts.equals(ts2) == false, "equals");
+    ts.setNanos(999000000);
+    harness.check(ts.equals(ts2), "equals");
+  }
 }
