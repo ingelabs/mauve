@@ -51,8 +51,11 @@ public class jdk11 implements Testlet
         en_USCollator.getCollationElementIterator("This is a test");
 
       // -------- methods -------- 
-      int[][] results = new int[][]{{1179649,18,0,1}, {1245185,19,0,1},
-                                    {1900545,29,0,1}};
+      int[][] results = new int[][]{
+        {6684673,102,0,1}, {5898240,90,0,0}, {5963776,91,0,0}, 
+        {6619136,101,0,0}, {256,0,1,0}, {5963776,91,0,0}, {6619136,101,0,0}, 
+        {256,0,1,0}, {5373952,82,0,0}, {256,0,1,0}, {6684672,102,0,0}, 
+        {5701632,87,0,0}, {6619136,101,0,0}, {6684672,102,0,0}};
 
       checkOrder (iterator, results);
 
@@ -90,12 +93,12 @@ public class jdk11 implements Testlet
         harness.check (primaryOrder, results[i][PRIMARY], "primaryOrder()");
   
         // secondaryOrder()
-        int secondaryOrder = CollationElementIterator.secondaryOrder(next);
+        int secondaryOrder = (int)CollationElementIterator.secondaryOrder(next);
         harness.debug ("  secondaryOrder = " + secondaryOrder);
         harness.check (secondaryOrder, results[i][SECONDARY], "secondaryOrder()");
 
         // tertiaryOrder()
-        int tertiaryOrder = CollationElementIterator.tertiaryOrder(next);
+        int tertiaryOrder = (int)CollationElementIterator.tertiaryOrder(next);
         harness.debug ("  tertiaryOrder = " + tertiaryOrder);
         harness.check (tertiaryOrder, results[i][TERTIARY], "tertiaryOrder()");
         i++;
