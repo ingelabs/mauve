@@ -1,6 +1,6 @@
 // Test simple forms of MessageFormat formatting.
 
-// Copyright (c) 1999, 2001  Cygnus Solutions
+// Copyright (c) 1999, 2001, 2002  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -115,5 +115,14 @@ public class format implements Testlet
       args[0] = "a jolly string";
       harness.check (mf.format ((Object) args),
 		     "test Message = a jolly string");
+
+      harness.checkPoint("choice format in message format");
+      mf.applyPattern("{0,choice,0#0 tasks|1#{0,number,integer} task|1<{0,number,integer} tasks}, {1,choice,0#0 errors|1#{1,number,integer} error|1<{1,number,integer} errors}");
+      args = new Object[2];
+      args[0] = new Integer(0);
+      args[1] = new Integer(1);
+      buf = new StringBuffer();
+      mf.format(args, buf, null);
+      harness.check(buf.toString(), "0 tasks, 1 error");
     }
 }

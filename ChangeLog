@@ -1,3 +1,8 @@
+2002-07-02  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/MessageFormat/format.java: Added new test
+	for Classpath bug.  From David Hovemeyer <daveho@cs.umd.edu>.
+
 2002-06-18  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/ClassTest.java (test_getSuperclass):
