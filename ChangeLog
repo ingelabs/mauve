@@ -1,5 +1,8 @@
 1999-03-11  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Integer/new_Integer.java (test): Added
+	check for overflow case.
+
 	* gnu/testlet/java/text/ChoiceFormat/next.java: New file.
 
 1999-03-10  Tom Tromey  <tromey@cygnus.com>

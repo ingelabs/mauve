@@ -333,5 +333,16 @@ public class new_Integer implements Testlet
 	  ok = true;
 	}
       harness.check (ok);
+
+      ok = false;
+      try
+	{
+	  Integer.parseInt ("-80000001", 16);
+	}
+      catch (NumberFormatException ex)
+	{
+	  ok = true;
+	}
+      harness.check (ok);
     }
 }
