@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class format implements Testlet
 {
-  private final String format (MessageFormat mf, Object[] args,
+  private final String myformat (MessageFormat mf, Object[] args,
 			       StringBuffer buf)
     {
       try
@@ -73,39 +73,39 @@ public class format implements Testlet
 
       harness.checkPoint ("quoted brace");
       mf.applyPattern ("no '{' variables");
-      harness.check (format (mf, args, buf), "no { variables");
+      harness.check (myformat (mf, args, buf), "no { variables");
       harness.check (mf.toPattern (), "no '{' variables");
 
       harness.checkPoint ("one variable");
       mf.applyPattern ("the disk contains {0} files");
       args = new Object[1];
       args[0] = new Long (23);
-      harness.check (format (mf, args, buf), "the disk contains 23 files");
+      harness.check (myformat (mf, args, buf), "the disk contains 23 files");
 
       // Check to make sure excess args are ignored.
       args = new Object[10];
       args[0] = new Long (27);
-      harness.check (format (mf, args, buf), "the disk contains 27 files");
+      harness.check (myformat (mf, args, buf), "the disk contains 27 files");
 
       mf.applyPattern ("the disk contains {0,number} files");
-      harness.check (format (mf, args, buf), "the disk contains 27 files");
+      harness.check (myformat (mf, args, buf), "the disk contains 27 files");
       args[0] = "zap";
-      harness.check (format (mf, args, buf),
+      harness.check (myformat (mf, args, buf),
 		     "caught IllegalArgumentException");
 
       args[0] = new Double (.99);
       mf.applyPattern ("the disk is {0,number,percent} full");
-      harness.check (format (mf, args, buf),
+      harness.check (myformat (mf, args, buf),
 		     "the disk is 99% full");
 
       harness.checkPoint ("choice format");
       args[0] = new Long (5);
       mf.applyPattern ("There {0,choice,0#are no files|1#is one file|1<are {0, number, integer} files}.");
-      harness.check (format (mf, args, buf), "There are 5 files.");
+      harness.check (myformat (mf, args, buf), "There are 5 files.");
 
       args[0] = new Double (10.23);
       mf.applyPattern ("Got {0,number,'#'.##}");
-      harness.check (format (mf, args, buf), "Got #10.23");
+      harness.check (myformat (mf, args, buf), "Got #10.23");
 
       // This tests for JDK compatibility.  Pointed out by libgcj
       // user.

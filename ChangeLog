@@ -1,3 +1,32 @@
+2002-02-16  C. Brian Jones <cbj@gnu.org>
+
+	* missing: updated to automake 1.5
+	* gnu/testlet/java/io/File/jdk11.java: new file
+	* gnu/testlet/java/io/File/DocFilter.java: new file
+	* gnu/testlet/java/text/MessageFormat/format.java (format): renamed 
+	myformat because a class cannot have a method that has a return
+	type, i.e. is not a constructor, of the same name as the class.
+	(test): method name change handled
+	* gnu/testlet/java/sql/Connection/TestJdbc10.java: import java.util.Map
+	* gnu/testlet/java/sql/Types/TestJdbc10.java: added !JDK1.2 and 
+	!JDBC2.0 tags
+	* gnu/testlet/config.java.in (getPathSeparator): new method
+	(getSeparator): new method
+	New field pathSeparator is similar to File pathSeparator, used to
+	test File class.
+	New field separator is similar to File separator, used to test
+	File class.
+	* gnu/testlet/SimpleTestHarness.java (getPathSeparator): new method
+	(getSeparator): new method
+	* acinclude.m4: macro include file for aclocal.m4
+	* config.guess: from automake, now required
+	* config.sub: from automake, now required
+	* aclocal.m4: updated
+	* configure.in: added call to ACX_CHECK_PATHNAME_STYLE_DOS
+	* configure: updated
+	* Makefile.in: updated
+	* choose: search com java javax instead of just java
+
 2002-02-11  C. Brian Jones <cbj@gnu.org>
 
 	* Makefile.am: add user's CLASSPATH to CLASSPATH when attempting to

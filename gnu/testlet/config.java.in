@@ -24,7 +24,11 @@ public interface config
 {	
   public static final String srcdir = "@SRCDIR@";
   public static final String tmpdir = "@TMPDIR@";
+  public static final String pathSeparator = "@CHECK_PATH_SEPARATOR@";
+  public static final String separator =     "@CHECK_FILE_SEPARATOR@";
 
   public abstract String getSourceDirectory ();
   public abstract String getTempDirectory ();
+  public abstract String getPathSeparator ();
+  public abstract String getSeparator ();
 }

@@ -58,12 +58,16 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
 
 EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
 AWK = @AWK@
+CHECK_FILE_SEPARATOR = @CHECK_FILE_SEPARATOR@
+CHECK_PATH_SEPARATOR = @CHECK_PATH_SEPARATOR@
 DEPDIR = @DEPDIR@
 GCJ = @GCJ@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
@@ -141,8 +145,8 @@ CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 DIST_SOURCES = $(SimpleTestHarness_SOURCES)
 DIST_COMMON = README COPYING ChangeLog Makefile.am Makefile.in THANKS \
-	aclocal.m4 configure configure.in install-sh missing \
-	mkinstalldirs
+	acinclude.m4 aclocal.m4 config.guess config.sub configure \
+	configure.in install-sh missing mkinstalldirs
 SOURCES = $(SimpleTestHarness_SOURCES)
 
 all: all-am
@@ -160,7 +164,7 @@ $(top_builddir)/config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 $(srcdir)/configure:  $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
 	cd $(srcdir) && $(AUTOCONF)
 
-$(ACLOCAL_M4):  configure.in 
+$(ACLOCAL_M4):  configure.in acinclude.m4
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 gnu/testlet/config.java: $(top_builddir)/config.status $(top_srcdir)/gnu/testlet/config.java.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@

@@ -91,6 +91,16 @@ public class SimpleTestHarness
       return tmpdir;
     }
 
+  public String getPathSeparator ()
+    {
+      return pathSeparator;
+    }
+
+  public String getSeparator ()
+    {
+      return separator;
+    }
+
   public Reader getResourceReader (String name) 
     throws ResourceNotFoundException
     {

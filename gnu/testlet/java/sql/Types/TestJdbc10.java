@@ -19,7 +19,7 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.1 JDBC1.0
+// Tags: JDK1.1 JDBC1.0 !JDK1.2 !JDBC2.0
 
 package gnu.testlet.java.sql.Types;
 

@@ -16,6 +16,7 @@ package gnu.testlet.java.sql.Connection;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.sql.*;
+import java.util.Map;
 
 public class TestJdbc10 implements Connection, Testlet {
 
@@ -44,6 +45,7 @@ public CallableStatement prepareCall(String sql) throws SQLException
 {
   return(null);
 }
+
 public String nativeSQL(String sql) throws SQLException
 {
   return(null);

@@ -2,6 +2,9 @@ dnl Process this with autoconf to create configure
 AC_INIT(gnu/testlet/Testlet.java)
 AM_INIT_AUTOMAKE(mauve, 0.0)
 
+dnl Check path and file separator types
+ACX_CHECK_PATHNAME_STYLE_DOS
+
 AC_ARG_WITH(gcj,
 [  --with-gcj                       Use gcj to compile .class files])
 AM_CONDITIONAL(USE_GCJ, test "$with_gcj" = yes)
