@@ -1,5 +1,9 @@
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/TreeMap/serialization.java: New test.
+
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/geom/Rectangle2D/Double/clone.java: New test.
 	*
 	gnu/testlet/java/awt/geom/Rectangle2D/Double/createIntersection.java:
