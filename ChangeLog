@@ -1,3 +1,8 @@
+1999-02-16  Tom Tromey  <tromey@cygnus.com>
+
+	* choose: Don't use `dirname'.  Sort and uniquify the list of used
+	(auxiliary) files.
+
 1999-02-15  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/SimpleTestHarness.java: Test for null cname before
