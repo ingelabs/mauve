@@ -27,6 +27,12 @@
 	* gnu/testlet/java/lang/Thread/security10.java:
 	Added code to save and restore security manager.
 
+2005-01-28  Bryce McKinlay  <mckinlay@redhat.com>
+
+        * gnu/testlet/java/util/Date/getTimezoneOffset.java: New test. 
+        * gnu/testlet/java/util/Date/range.java: Remove DOS CRLF chars.
+        * Makefile.in, aclocal.m4, configure: Rebuilt.
+
 2005-01-27  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/util/zip/ZipFile/newZipFile.java:
