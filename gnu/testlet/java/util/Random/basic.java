@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 2002 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -81,5 +81,17 @@ public class basic implements Testlet
       harness.check (b[3], -54);
       harness.check (b[4], 61);
       harness.check (rand.nextInt(), -270809961);
+
+      // Spot check for negative numbers.  This is a regression test
+      // an old Classpath bug.
+      boolean ok = true;
+      rand = new Random (0);
+      for (int i=0; i < 1000000; ++i)
+	{
+	  int x = rand.nextInt (1000);
+	  if (x < 0 || x >= 1000)
+	    ok = false;
+	}
+      harness.check (ok);
     }
 }

@@ -1,3 +1,8 @@
+2002-11-06  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/Random/basic.java (test): Added regression
+	test for Classpath bug.
+
 2002-11-06  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/InputStreamReader/jdk11:
 	Added tests to complete testing of all methods
