@@ -94,7 +94,7 @@ public class stop extends Thread implements Testlet
 	    harness.check(tgroup != null, "Running thread has non-null thread group");
 	  }
 	t.stop();
-	t.join(0);
+	t.join(2000, 0);
 	x = group.activeCount() + 10;
 	thread_list = new Thread[x];
 	stopped_thread_count = group.enumerate(thread_list, true);
@@ -109,8 +109,13 @@ public class stop extends Thread implements Testlet
 	harness.check(tgroup == null, "Stopped thread has null thread group");
 
       }
+    catch (InterruptedException e) 
+      {
+	harness.fail("Thread not joined - Thread.stop() unimplemented?");
+      }
     catch (Exception e)
       {
+        harness.debug(e);
 	harness.fail("Unexpected exception during test()");
       }
   }

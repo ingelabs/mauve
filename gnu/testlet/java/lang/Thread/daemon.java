@@ -27,6 +27,7 @@ import gnu.testlet.TestHarness;
 
 public class daemon extends Thread implements Testlet
 {
+  TestHarness harness;
 
   boolean started = false;
   boolean please_stop = false;
@@ -38,13 +39,19 @@ public class daemon extends Thread implements Testlet
 	started = true;
 	notify();
 
-	while (!please_stop)
-	  try { wait(); } catch(InterruptedException ignored) { }
+	while (!please_stop) 
+	  {
+	    try 
+	      { 
+		wait(); 
+	      } catch(InterruptedException ignored) { }
+	  }
       }
   }
 
   public void test (TestHarness harness)
   {
+    this.harness = harness;
     Thread current = Thread.currentThread();
 
     boolean status = current.isDaemon();
@@ -77,7 +84,11 @@ public class daemon extends Thread implements Testlet
     synchronized(t)
       {
 	while (!t.started)
-	  try { t.wait(); } catch(InterruptedException ignored) { }
+	  try {
+	    t.wait(); 
+	  } 
+	  catch (InterruptedException ignored) {
+	  }
       }
 
     harness.check(t.isDaemon() == status,
@@ -104,7 +115,11 @@ public class daemon extends Thread implements Testlet
 	t.please_stop = true;
 	t.notify();
       }
-    try { t.join(); } catch (InterruptedException ignored) { }
+    try { 
+      t.join();
+    }
+    catch (InterruptedException ignored) { 
+    }
 
     // Note: the Sun Javadoc seems to contradict itself on whether you can
     // change daemon state on an exitted Thread.  The observed behaviour
@@ -124,4 +139,3 @@ public class daemon extends Thread implements Testlet
 		  "Daemon status changed when set on an exitted Thread");
   }
 }
-

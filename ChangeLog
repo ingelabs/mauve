@@ -1,3 +1,9 @@
+2003-09-25  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/lang/Thread/stop.java: avoid hanging forever
+	  if java.lang.Thread.stop does nothing.
+	* gnu/testlet/java/lang/Thread/daemon.java: reindented, etc
+
 2003-09-09  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/reflect/Array/set.java: Check IllegalArgument
