@@ -29,6 +29,9 @@ must be matched by the files to be tested.  Some values:
      JDK1.0  Run JDK1.0 tests only
      JDK1.1  Run JDK1.1 tests only
      JDK1.2  Run JDK1.2 tests only
+     libjava Run `libjava' (part of gcj) tests only
+	     libjava is like JDK1.1, but has some 1.2 functionality,
+	     and is also missing some things (e.g., beans)
 
 You can use `make recheck' to re-run `make check' with the key list
 you last used.

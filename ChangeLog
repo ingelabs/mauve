@@ -1,3 +1,12 @@
+1998-12-02  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/beans/DescriptorTest.java: New file, adapted
+	from Classpath.
+	* gnu/testlet/java/beans/IntrospectorTest.java: New file, adapted
+	from Classpath.
+
+	* choose: Recognize `libjava' tag.
+
 1998-12-01  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/lang/Double/new_Double.java: New file.
