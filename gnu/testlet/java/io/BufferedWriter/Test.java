@@ -21,7 +21,7 @@
 
 // Tags: JDK1.1
 
-package gnu.testlet.java.io.BufferedCharWriter;
+package gnu.testlet.java.io.BufferedWriter;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
