@@ -1,5 +1,3 @@
-// Tags: JDK1.4
-
 // Copyright (C) 2004 Max Gilead <gilead@yellowhedgehog.com>
 
 // This file is part of Mauve.

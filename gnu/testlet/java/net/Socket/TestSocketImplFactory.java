@@ -1,5 +1,3 @@
-// Tags: JDK1.1
-
 /*
   Copyright (C) 2003 C. Brian Jones
   Copyright (C) 2004 Mark J. Wielaard

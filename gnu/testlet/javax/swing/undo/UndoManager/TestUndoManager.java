@@ -1,5 +1,3 @@
-// Tags: JDK1.2
-
 // Copyright (C) 2004 Sascha Brawer <brawer@dandelis.ch>
 
 // This file is part of Mauve.

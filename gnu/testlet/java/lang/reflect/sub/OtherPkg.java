@@ -1,5 +1,3 @@
-// Tags: JDK1.1
-
 package gnu.testlet.java.lang.reflect.sub;
 
 public class OtherPkg
