@@ -105,7 +105,6 @@ test(TestHarness harness)
       arrayDump(harness, dfs.getAmPmStrings(), "am/pm strings"); 
       arrayDump(harness, dfs.getZoneStrings(), "zone string array"); 
       harness.debug("local pattern chars: " + dfs.getLocalPatternChars()); 
-      System.out.println ("Hello!");
 
       dfs.setEras(my_eras);
       harness.check(arrayEquals(dfs.getEras(), my_eras), "eras");
@@ -140,6 +139,7 @@ test(TestHarness harness)
     }
 
   // Now test failure
+  harness.checkPoint ("invalid locale");
   try
     {
       // Hmm.  Need a way to make this fail.  Which I'm not sure we
