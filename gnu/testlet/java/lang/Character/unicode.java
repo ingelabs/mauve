@@ -527,7 +527,16 @@ Character.isIdentifierIgnorable(i)? "identifierignorable": "not-identifierignora
 
 			for ( int radix = Character.MIN_RADIX; radix <= Character.MAX_RADIX; radix++)
 			{
-				int sb = digit < radix ? digit : -1;
+				int sb = digit;
+				if ( (chars[i].name.indexOf("DIGIT") == -1)
+				     || range(i,0x2000,0x2FFF))
+				  sb = -1;
+				if (i >= 'A' && i <= 'Z')
+				  sb = i - 'A' + 10;
+				if (i >= 'a' && i <= 'z')
+				  sb = i - 'a' + 10;
+				if (sb >= radix)
+				  sb = -1;
 				if ( Character.digit(i,radix) != sb )
 				{
 					reportError( stringChar(i) + " has wrong digit form of "

@@ -1,5 +1,9 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/unicode.java: (performTests):
+	When testing digit(), make sure the character is actually a
+	digit according to the correct rules.
+
 	* gnu/testlet/java/lang/Character/unicode.java (performTests):
 	Handle Ps and Pf character categories.
 
