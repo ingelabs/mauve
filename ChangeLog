@@ -1,3 +1,8 @@
+2003-05-06  Stephen Crawley  <crawley@dstc.edu.au>
+
+        * gnu/testlet/java/lang/Class/ClassTest.java: removed duplicate
+	  tests for isPrimitive(), and enhanced getModifiers() tests
+
 2003-04-13  Dalibor Topic  <robilad@yahoo.com>
 
 	* gnu/testlet/java/sql/Date/DateTest.java: new file

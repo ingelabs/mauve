@@ -29,6 +29,14 @@ import java.net.*;
 
 public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 {
+  final int ACC_PUBLIC =  0x0001; //Marked or implicitly public in source. 
+  final int ACC_PRIVATE = 0x0002; // Marked private in source. 
+  final int ACC_PROTECTED = 0x0004; // Marked protected in source.
+  final int ACC_STATIC = 0x0008; // Marked or implicitly static in source. 
+  final int ACC_FINAL = 0x0010; // Marked final in source. 
+  final int ACC_INTERFACE = 0x0200; // Was an interface in source. 
+  final int ACC_ABSTRACT = 0x0400; // Marked or implicitly abstract in source.
+  
   protected static TestHarness harness;
   public void test_toString()
   {
@@ -115,7 +123,7 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
     try {	
       Class clss = Class.forName("[D");
       harness.check(clss.getSuperclass() == Class.forName("java.lang.Object"));
-      System.out.println("is " + clss.getSuperclass());
+      harness.debug("superclass of " + clss + " is " + clss.getSuperclass());
     }
     catch (Exception e) {
       harness.debug(e);
@@ -194,29 +202,28 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 	    }
     }  
 
-    private class privatetype {
+    private class PrivateType {
 	int foo;
     }
+
     public void test_Modifiers()
     {
 	Class cls;
 
-	final int ACC_PUBLIC =  0x0001; //Marked or implicitly public in source. 
-	final int ACC_PRIVATE = 0x0002; // Marked private in source. 
-	final int ACC_PROTECTED = 0x0004; // Marked protected in source.
-	final int ACC_STATIC = 0x0008; // Marked or implicitly static in source. 
-	final int ACC_FINAL = 0x0010; // Marked final in source. 
-	final int ACC_INTERFACE = 0x0200; // Was an interface in source. 
-	final int ACC_ABSTRACT = 0x0400; // Marked or implicitly abstract in source.
-
-	harness.checkPoint("test_primitiveTypes java.lang.Boolean.TYPE modifiers");
+	harness.checkPoint("test_Modifiers java.lang.Boolean.TYPE modifiers");
 	cls = java.lang.Boolean.TYPE;
-	harness.check((cls.getModifiers() & (ACC_PUBLIC | ACC_FINAL)) == (ACC_PUBLIC | ACC_FINAL));
+	harness.check((cls.getModifiers() & 
+		       (ACC_PUBLIC | ACC_PROTECTED | ACC_PRIVATE | 
+			ACC_FINAL | ACC_INTERFACE)) == 
+		      (ACC_PUBLIC | ACC_FINAL));
 
 	harness.checkPoint("test_Modifiers java.lang.Boolean modifiers");
 	try {
 	    cls = Class.forName("java.lang.Boolean");
-	    harness.check((cls.getModifiers() & (ACC_PUBLIC)) != 0);
+	    harness.check((cls.getModifiers() & 
+			   (ACC_PUBLIC | ACC_PROTECTED | ACC_PRIVATE | 
+			    ACC_FINAL | ACC_INTERFACE)) == 
+			  (ACC_PUBLIC | ACC_FINAL));
 	} catch(Exception e)
 	    {
 		harness.check(false);
@@ -225,64 +232,32 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
 	harness.checkPoint("test_Modifiers [I modifiers");
 	try {
 	    cls = Class.forName("[I");
-	    harness.check((cls.getModifiers() & (ACC_PUBLIC | ACC_FINAL)) == (ACC_PUBLIC | ACC_FINAL));
-	    harness.check((cls.getModifiers() & (ACC_INTERFACE)) == 0);
+	    harness.check((cls.getModifiers() & 
+			   (ACC_PUBLIC | ACC_PROTECTED | ACC_PRIVATE | 
+			    ACC_FINAL | ACC_INTERFACE)) == 
+			  (ACC_PUBLIC | ACC_FINAL));
 	} catch(Exception e)
 	    {
 		harness.check(false);
 	    }
 
 	harness.checkPoint("test_Modifiers private modifier");
-	privatetype foo = new privatetype(); //new Cloneable() { int d; };
+	PrivateType foo = new PrivateType(); //new Cloneable() { int d; };
 	cls = foo.getClass();
-	System.out.println("is " + cls.getModifiers());
 	harness.check((cls.getModifiers() & (ACC_PRIVATE)) == (ACC_PRIVATE));
 
 	harness.checkPoint("test_Modifiers array modifiers");
-	/*	privatetype[] array = new privatetype[2];
+	/*	PrivateType[] array = new PrivateType[2];
 	cls = array.getClass();
 	harness.check((cls.getModifiers() & (ACC_PRIVATE)) == (ACC_PRIVATE));
 	harness.check((cls.getModifiers() & (ACC_FINAL)) == (ACC_FINAL));
 	harness.check((cls.getModifiers() & (ACC_INTERFACE)) == 0);
 	*/
-	harness.checkPoint("test_primitiveTypes java.lang.Boolean modifiers");
+
+	harness.checkPoint("test_Modifiers java.lang.Boolean modifiers");
 	cls = java.lang.Boolean.TYPE;
 	harness.check((cls.getModifiers() & (ACC_PUBLIC | ACC_FINAL)) != 0);
 
-	harness.checkPoint("test_primitiveTypes java.lang.Double.TYPE is primitive");
-	cls = java.lang.Double.TYPE;
-	harness.check(cls.isPrimitive() == true);
-
-	harness.checkPoint("test_primitiveTypes java.lang.Void.TYPE is primitive");
-	cls = java.lang.Void.TYPE;
-	harness.check(cls.isPrimitive() == true);
-
-	harness.checkPoint("test_primitiveTypes java.lang.Object is not primitive");
-	try {
-	    cls = Class.forName("java.lang.Object");
-	    harness.check(cls.isPrimitive() == false);
-	} catch(Exception e)
-	    {
-		harness.check(false);
-	    }
-
-	harness.checkPoint("test_primitiveTypes java.lang.Integer is not primitive");
-	try {
-	    cls = Class.forName("java.lang.Integer");
-	    harness.check(cls.isPrimitive() == false);
-	} catch(Exception e)
-	    {
-		harness.check(false);
-	    }
-
-	try {
-	    harness.checkPoint("test_primitiveTypes [I is not primitive");
-	    cls = Class.forName("[I");
-	    harness.check(cls.isPrimitive() == false);
-	} catch(Exception e)
-	    {
-		harness.check(false);
-	    }
     }  
 
   public void test_getInterfaces()
