@@ -61,10 +61,10 @@ test(TestHarness harness)
     {
       sw.close();
     }
-  catch(IOException e)
+  catch(Throwable t)
     {
-      harness.debug("Caught unexpected exception: " + e);
-      harness.fail("Unexpected IOException");
+      harness.debug("Caught unexpected exception: " + t);
+      harness.fail("Unexpected Throwable");
       return;
     }
 

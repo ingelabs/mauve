@@ -1,3 +1,9 @@
+2002-12-27  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/StringWriter/Test.java (test): Catch Throwable
+	when testing close to make it compile against libraries that don't
+	declare IOException for close.
+
 2002-12-27  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/StringWriter/Test.java:
 	Modified close() test to catch IOException explicitly
