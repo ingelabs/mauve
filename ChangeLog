@@ -1,5 +1,68 @@
 2004-09-18  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/DataBufferByte/getDataType.java:
+	Clean up imports.
+	* gnu/testlet/java/awt/image/DataBufferByte/getElem.java:
+	Likewise. Add testGetElem1() and testGetElem2() tests.
+	* gnu/testlet/java/awt/image/DataBufferDouble/getDataType.java:
+	Clean up imports.
+	* gnu/testlet/java/awt/image/DataBufferDouble/getElem.java:
+	Likewise. Add testGetElem1() and testGetElem2() tests.
+	* gnu/testlet/java/awt/image/DataBufferFloat/getElem.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferInt/getDataType.java
+	Clean up imports.
+	* gnu/testlet/java/awt/image/DataBufferInt/getElem.java:
+	Likewise. Add testGetElem1() and testGetElem2() tests.
+	* gnu/testlet/java/awt/image/DataBufferShort/getDataType.java:
+	Clean up imports.
+	* gnu/testlet/java/awt/image/DataBufferShort/getElem.java:
+	Likewise. Add testGetElem1() and testGetElem2() tests.
+	* gnu/testlet/java/awt/image/DataBufferUShort/getDataType.java:
+	Clean up imports.
+	* gnu/testlet/java/awt/image/DataBufferUShort/getElem.java:
+	Likewise. Add testGetElem1() and testGetElem2() tests.
+
+	* gnu/testlet/java/awt/image/DataBuffer/getOffset.java: New test.
+	* gnu/testlet/java/awt/image/DataBuffer/getOffsets.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferByte/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferByte/getBankData.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferByte/getData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferByte/setElem.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferDouble/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferDouble/getBankData.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferDouble/getData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferDouble/setElem.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferFloat/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferFloat/getBankData.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferFloat/getData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferFloat/setElem.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferInt/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferInt/getBankData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferInt/getData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferInt/setElem.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferShort/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferShort/getBankData.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferShort/getData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferShort/setElem.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferUShort/constructors.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferUShort/getBankData.java:
+	Likewise.
+	* gnu/testlet/java/awt/image/DataBufferUShort/getData.java: Likewise.
+	* gnu/testlet/java/awt/image/DataBufferUShort/setElem.java: Likewise.
+
+2004-09-18  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/geom/Area/add.java: New test.
 	* gnu/testlet/java/awt/geom/Area/clone.java: Likewise.
 	* gnu/testlet/java/awt/geom/Area/constructors.java: Likewise.

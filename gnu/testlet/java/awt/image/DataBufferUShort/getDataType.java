@@ -21,8 +21,8 @@
 
 package gnu.testlet.java.awt.image.DataBufferUShort;
 
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
 import java.awt.image.DataBuffer;
 import java.awt.image.DataBufferUShort;
