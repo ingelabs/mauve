@@ -119,10 +119,10 @@ public class getResource extends getResourceBase
 	harness.debug(u != null ? u.toString() : null);
 	harness.check(u == null, "no ..");
 
-	check("testfile");
-	check("testdir/test");
-	check("jresource");
-	check("path/in/jar/file");
+	check("testfile", true);
+	check("testdir/test", true);
+	check("jresource", false);
+	check("path/in/jar/file", false);
       }
     catch(IOException ioe)
       {

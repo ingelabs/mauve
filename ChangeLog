@@ -1,3 +1,12 @@
+2002-12-07  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/URLClassLoader/getResourceBase.java (check):
+	Add noncanonical flag.
+	* gnu/testlet/java/net/URLClassLoader/getResource.java (test): Use
+	noncanonical flag when appropriate.
+	* gnu/testlet/java/net/URLClassLoader/getResourceRemote.java (test):
+	Likewise.
+
 2002-12-06  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/Socket/SocketTest.java: Only show stack traces
