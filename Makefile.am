@@ -90,7 +90,7 @@ STAMP = classes.stamp
 
 check-local: classes.stamp
 	cat classes | \
-	$(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
+	CLASSPATH=$$CLASSPATH:`/bin/pwd` $(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
 
 recheck:
 	test -f .save-keys || : > .save-keys

@@ -1,5 +1,9 @@
 2002-06-13  Tom Tromey  <tromey@redhat.com>
 
+	* Makefile.in: Rebuilt.
+	* Makefile.am (check-local): Set CLASSPATH.
+	From Guillame Audeon.
+
 	From Timothy Stack:
 	* gnu/testlet/java/io/BufferedByteOutputStream/interrupt.java
 	(getCount): New method
