@@ -152,6 +152,13 @@ public class getBundle implements Testlet
       harness.check (loadCheck (c ("Resource10"), testLocale), 
 		     c ("Resource10_en"));
 
+      // Based on a bug that change the case of the variant of a Locale.
+      // Note lower case "win".
+      harness.checkPoint ("low case locale");
+      testLocale = new Locale("jp", "JA", "win");
+      harness.check (loadCheck (c ("Resource4"), testLocale),
+		     c ("Resource4_jp_JA"));
+
       // Null pointer checks
       harness.checkPoint ("null pointers");
 

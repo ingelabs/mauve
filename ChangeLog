@@ -1,3 +1,8 @@
+2004-12-24  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/ResourceBundle/getBundle.java:
+	Add low case locale test.
+
 2004-12-22  Arnaud Vandyck  <arnaud.vandyck@ulg.ac.be>
 
 	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java:
