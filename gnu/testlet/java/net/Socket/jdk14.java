@@ -43,6 +43,7 @@ public class jdk14 implements Testlet
 	harness.check (sock.getPort (), 0, "unconnected socket getPort() should return 0");
 	harness.check (sock.getLocalPort (), -1, "unbound socket getLocalPort() should return -1");
 
+	harness.debug(host);
 	sock = new Socket (host, port);
 
 	harness.checkPoint("connect()");

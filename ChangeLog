@@ -1,3 +1,8 @@
+2004-11-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/Socket/jdk14.java: Add host name to debug
+	output.
+
 2004-11-22  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/util/Calendar/set.java: New testcases.
