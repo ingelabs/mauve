@@ -1,5 +1,10 @@
 2004-10-14  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/lang/reflect/Method/invoke.java:
+	Added "Uses: ../sub/InvokeHelper".
+
+2004-10-14  Michael Koch  <konqueror@gmx.de>
+
 	* choose, choose-classes: Make it less strict about "Tags:" in
 	testcases.
 

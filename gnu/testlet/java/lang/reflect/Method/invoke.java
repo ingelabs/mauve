@@ -1,5 +1,5 @@
 // Tags: JDK1.1
-// Uses: iface
+// Uses: ../sub/InvokeHelper iface
 
 // Copyright (C) 1999, 2000, 2001, 2003, 2004 Cygnus Solutions
 
