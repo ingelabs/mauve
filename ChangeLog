@@ -1,5 +1,10 @@
 2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
+	createDataBuffer, getSampleSize.java: New tests.
+
+2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
+
 	Classpath bug #7107.
 	* gnu/testlet/javax/swing/DefaultBoundedRangeModel/
 	DefaultBoundedRangeModel.java, getChangeListeners.java,
