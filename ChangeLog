@@ -1,3 +1,7 @@
+2004-11-10  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/SimpleTestHarness.java : minor tweak to a diagnostic
+
 2004-11-09  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/AWTKeyStroke/equals.java,
