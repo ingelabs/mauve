@@ -1,5 +1,10 @@
 2005-02-20  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/awt/font/TextAttribute/constants.java:
+	Fix TextAttribute import.
+
+2005-02-20  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/text/SimpleDateFormat/applyLocalizedPattern.java:
 	Catch IllegalArgumentException when calling f.applyLocalizedPattern().
 

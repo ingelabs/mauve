@@ -19,7 +19,7 @@
 
 package gnu.testlet.java.awt.font.TextAttribute;
 
-import org.jfree.TextAttribute;
+import java.awt.font.TextAttribute;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
