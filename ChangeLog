@@ -1,5 +1,15 @@
 2004-10-20  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Point/clone.java: New test.
+	* gnu/testlet/java/awt/Point/constructors.java: Likewise.
+	* gnu/testlet/java/awt/Point/equals.java: Likewise.
+	* gnu/testlet/java/awt/Point/getLocation.java: Likewise.
+	* gnu/testlet/java/awt/Point/move.java: Likewise.
+	* gnu/testlet/java/awt/Point/setLocation.java: Likewise.
+	* gnu/testlet/java/awt/Point/translate.java: Likewise.
+	
+2004-10-20  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/BasicStroke/constants.java: New test.
 	* gnu/testlet/java/awt/BasicStroke/constructors.java: Likewise.
 	* gnu/testlet/java/awt/BasicStroke/equals.java: Likewise.
