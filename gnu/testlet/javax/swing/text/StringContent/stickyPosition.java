@@ -40,6 +40,7 @@ public class stickyPosition implements Testlet
         sc.insertString(0, "classpath");
         Position position = sc.createPosition(1);
         Position position2 = sc.createPosition(4);
+        Position position3 = sc.createPosition(sc.length());
         h.check(1, position.getOffset(), "createPosition(1): Position.getOffset() should be 1 and is: " + position.getOffset());
         sc.insertString(2, "-");
         h.check(1, position.getOffset(), "Position.getOffset() should be 1 and is: " + position.getOffset());
@@ -47,10 +48,16 @@ public class stickyPosition implements Testlet
         h.check(2, position.getOffset(), "Position.getOffset() should be 2 and is: " + position.getOffset());
         sc.remove(0, 2);
         h.check(0, position.getOffset(), "Position.getOffset() should be 0 and is: " + position.getOffset());
+        h.check(10, position3.getOffset(), "Position3 should be 10 and is: " + position3.getOffset());
         sc.remove(0, 5);
         h.check(0, position.getOffset(), "Position.getOffset() should be 0 and is: " + position.getOffset());
-        h.check("path\n", sc.getString(0, sc.length()), "getString(0, length()) should be 'path' and is: " + sc.getString(0, sc.length()));
+        h.check("path\n", sc.getString(0, sc.length()), "getString(0, length()) should be 'path\\n' and is: " + sc.getString(0, sc.length()));
         h.check(0, position2.getOffset(), "Position.getOffset() should be 0 and is: " + position2.getOffset());
+        sc.insertString(0, "class");
+        h.check(0, position.getOffset(), "Position.getOffset() should be 0 and is: " + position.getOffset());
+        h.check("classpath\n", sc.getString(0, sc.length()), "getString(0, length()) should be 'classpath\\n' and is: " + sc.getString(0, sc.length()));
+        h.check(0, position2.getOffset(), "Position.getOffset() should be 0 and is: " + position2.getOffset());
+        h.check(sc.length(), position3.getOffset(), "Position3 should be 10 and is: " + position3.getOffset());
       }
     catch (BadLocationException ble)
       {
