@@ -69,7 +69,7 @@ public class MulticastSocketTest implements Testlet
 	    harness.check(true);
 	} catch (Exception e) {   
 	    harness.fail("Correct args. - 3"); 
-	    e.printStackTrace();
+	    harness.debug(e);
 	}
 	
 
@@ -83,7 +83,7 @@ public class MulticastSocketTest implements Testlet
 	    harness.check(true);
 	} catch (Exception e) { 
 	    harness.fail("Correct args. different constructor. - 4");
-	    e.printStackTrace();
+	    harness.debug(e);
 	}
 	
 	
@@ -108,7 +108,7 @@ public class MulticastSocketTest implements Testlet
 	catch(Exception e) {
 	    harness.fail("joinGroup() with incorrect params. should have " +
 		"thrown a NullPointerException - 5a");
-	    e.printStackTrace();
+	    harness.debug(e);
 	}
 	
 
@@ -138,7 +138,7 @@ public class MulticastSocketTest implements Testlet
 	} catch (Exception e) {
 	    harness.fail("leaveGroup() with incorrect params. should have " +
 		"thrown a NullPointerException - 7a");
-	    e.printStackTrace();
+	    harness.debug(e);
 	}
 	
 
@@ -151,7 +151,7 @@ public class MulticastSocketTest implements Testlet
 	    harness.check(true);
 	} catch (Exception e) { 
 	    harness.fail("Correct args. - 8");
-	    e.printStackTrace();
+	    harness.debug(e);
 	}
 	
 	
@@ -186,7 +186,7 @@ public class MulticastSocketTest implements Testlet
 	    harness.check(true);
 	} catch (Exception e) {
 	    harness.fail("Should not have thrown any exception - 11");
-	    e.printStackTrace();
+	    harness.debug(e);
 	}
 	
 	    
@@ -201,7 +201,7 @@ public class MulticastSocketTest implements Testlet
 			harness.check(true);
 	}catch(Exception e){
 			harness.fail("test_Comm failed");
-			e.printStackTrace();
+			harness.debug(e);
 	}
     }
 	

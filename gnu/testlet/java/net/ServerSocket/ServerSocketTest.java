@@ -207,7 +207,7 @@ public class ServerSocketTest implements Testlet
 	catch (Exception e) {
 	  harness.fail("Error : setSoTimeout fails since vxWorks do " +
 		       "not support the feature");
-	  e.printStackTrace(System.out);
+	  harness.debug(e);
 	}
       }
       
@@ -232,7 +232,7 @@ public class ServerSocketTest implements Testlet
     catch (Exception e) {
       harness.fail("Error : test_params failed - 10 " + 
 		   "exception was thrown");
-      e.printStackTrace(System.out);
+      harness.debug(e);
     }
     
   }

@@ -1,4 +1,9 @@
-2002-11-17  Stephen Crawley <crawley@dstc.edu.au>
+2002-11-20  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java:
+	replace e.printStackTrace() with harness.debug(e)
+	* gnu/testlet/java/net/ServerSocket/MulticastSocketTest.java: ditto
+	
+2002-11-17  Stephen Crawley <crawley@dstc.edu.au>	
 	* gnu/testlet/java/net/Socket/SocketBServer.java: fixed indentation
 	* gnu/testlet/java/net/Socket/SocketServer.java: ditto
 	* gnu/testlet/java/net/Socket/SocketTest.java: ditto
@@ -34,8 +39,6 @@
 	* gnu/testlet/java/net/ServerSocket/BasicBacklogSocketServer.java: ditto
 	* gnu/testlet/java/net/ServerSocket/BasicSocketServer.java: ditto
 	* gnu/testlet/java/net/ServerSocket/MyBasicSocketServer.java: ditto
-
-
 
 2002-11-14  Mark Wielaard  <mark@klomp.org>
 
