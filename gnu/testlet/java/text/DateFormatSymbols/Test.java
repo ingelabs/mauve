@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Test.java -- Test java.text.DateFormatSymbols
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 2001 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -105,11 +105,9 @@ test(TestHarness harness)
       arrayDump(harness, dfs.getAmPmStrings(), "am/pm strings"); 
       arrayDump(harness, dfs.getZoneStrings(), "zone string array"); 
       harness.debug("local pattern chars: " + dfs.getLocalPatternChars()); 
-      System.out.println ("Hello!");
 
       dfs.setEras(my_eras);
       harness.check(arrayEquals(dfs.getEras(), my_eras), "eras");
-      System.out.println ("Hello!");
 
       dfs.setMonths(my_months);
       harness.check(arrayEquals(dfs.getMonths(), my_months), "months");
