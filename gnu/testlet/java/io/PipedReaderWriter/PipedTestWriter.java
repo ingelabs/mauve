@@ -57,7 +57,7 @@ run()
 
       while ((chars_read = sbr.read(buf)) != -1)
         out.write(buf, 0, chars_read);
-
+	  out.flush();
       out.close();
     }
   catch(IOException e)

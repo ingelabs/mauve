@@ -1,6 +1,10 @@
 2002-11-23  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PipedReaderWriter/PipedWriterTest.java: Added flush() to
+	complete method tests for PipedWriter
+
+2002-11-23  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/PipedReaderWriter/Test.java: Added close() to
-	complete method tsts for PipedReader
+	complete method tests for PipedReader
 
 2002-11-23  Mark Wielaard  <mark@klomp.org>
 
