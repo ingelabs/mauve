@@ -26,9 +26,6 @@
 # Run in the source directory.
 # See README for information on tags.
 
-# FIXME: we assume `echo -n' won't print a newline.
-# This is not portable.
-
 verbose=
 spectags=
 tags=
@@ -127,7 +124,7 @@ test -n "$verbose" && echo "spectags = $spectags"
 test -n "$verbose" && echo "file_specs = $file_specs"
 
 choices=/tmp/choices-$$
-echo -n "CHOICES = " > $choices
+echo "CHOICES =" > $choices
 classes=/tmp/classes-$$
 : > $classes
 usesfile=/tmp/uses-$$
@@ -213,7 +210,7 @@ while read file; do
    if test "$ok" = yes; then
       class="gnu.testlet.`echo $file | sed -e 's/\.java$//' | tr / .`"
       dirpart="`echo $file | sed -e 's,/[^/]*$,,'`"
-      echo -n " gnu/testlet/$file" >> $choices
+      echo " gnu/testlet/$file" >> $choices
       if test "$istest" = yes; then
 	 echo $class >> $classes
 	 test -n "$verbose" && echo "Chose $class"
@@ -231,17 +228,20 @@ while read file; do
 done
 
 # Now uniquify the list of auxiliary files we used, and add them to
-# the list of choices.  I think `sort -u' is not portable, so we do it
-# by hand.
+# the list of choices.  I think neither `uniq' nor `sort -u' is
+# portable, so we do it by hand.
 previous=
 sort $usesfile |
 while read next; do
    if test "$previous" != "$next"; then
-      echo -n " $next" >> $choices
+      echo " $next" >> $choices
       previous=$next
    fi
 done
 
+# Add a backslash to the end of every line except the last one.
+sed -e '$ !s/$/ \\/' < $choices > /tmp/x-$$
+mv /tmp/x-$$ $choices
 echo >> $choices
 
 # Due to a weirdness in GNU make, we want to list the dependencies

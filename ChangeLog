@@ -1,3 +1,9 @@
+1999-04-08  Tom Tromey  <tromey@cygnus.com>
+
+	* choose: Generate multi-line text in choices file.  Otherwise sed
+	might break when converting CHOICES into the SimpleTestHarness
+	target.
+
 Thu Apr  8 21:15:50 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/DecimalFormatSymbols/GetSet12.java: 
