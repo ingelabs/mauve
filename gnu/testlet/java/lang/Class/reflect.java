@@ -353,7 +353,7 @@ public class reflect implements Testlet
     harness.check(i_class.getDeclaringClass(), null);
 
     harness.checkPoint("getMethod with superinterface");
-    m = getMethod (aci_class, "current", ptz, true);
+    m = getMethod (aci_class, "current", ptz, false);
     harness.check (((Method) m).getName (), "current");
   }
 }
