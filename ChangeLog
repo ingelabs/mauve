@@ -1,3 +1,11 @@
+2003-08-23  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* Makefile.am : put quotes around GCJ, JAVAC and JAVA when passing
+	as environment variables
+	* Makefile.in: Regenerate.
+	* configure: Regenerate.
+	* aclocal.m4: Regenerate.
+	
 2003-08-19  Andrew Haley  <aph@redhat.com>
 
 	* choose: Check BinaryCompatibility as well as java and javax.

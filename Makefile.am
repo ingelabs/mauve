@@ -74,7 +74,7 @@ SimpleTestHarness_LDADD = $(javao_files)
 SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 
 check-local: $(check_PROGRAMS) $(CHOICES)
-	cat classes | GCJ=$(GCJ) JAVA= ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)
+	cat classes | GCJ="$(GCJ)" JAVA= ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)
 
 recheck:
 	test -f .save-keys || : > .save-keys
@@ -91,7 +91,7 @@ STAMP = classes.stamp
 
 check-local: classes.stamp
 	cat classes | \
-	CLASSPATH=$$CLASSPATH:`/bin/pwd` JAVAC=$(JAVAC) JAVA=$(JAVA) $(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
+	CLASSPATH=$$CLASSPATH:`/bin/pwd` JAVAC="$(JAVAC)" JAVA="$(JAVA)" $(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
 
 recheck:
 	test -f .save-keys || : > .save-keys
