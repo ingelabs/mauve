@@ -111,13 +111,15 @@ public class getBundle implements Testlet
       Locale.setDefault (Locale.CANADA);
 
       // Create a test Locale
-      Locale testLocale = new Locale("jp", "JA", "WIN_95");
+      Locale testLocale = new Locale("jp", "JA", "WIN");
 
       // These are based on a sample from "The Java Class Libraries,
       // Second Edition", page 1437
+      // Note that child variant (e.g. WIN_95) seem not to be supported
+      // anymore so these tests are disabled now.
       harness.checkPoint ("book sample");
       harness.check (loadCheck (c ("Resource4"), testLocale), 
-		     c ("Resource4_jp_JA_WIN_95"));
+		     c ("Resource4_jp_JA_WIN"));
       harness.check (loadCheck (c ("Resource5"), testLocale), 
 		     c ("Resource5_jp_JA_WIN"));
       harness.check (loadCheck (c ("Resource6"), testLocale), 
@@ -125,7 +127,7 @@ public class getBundle implements Testlet
       harness.check (loadCheck (c ("Resource7"), testLocale), 
 		     c ("Resource7_jp"));
       harness.check (loadCheck (c ("Resource8"), testLocale), 
-		     c ("Resource8"));
+		     c ("Resource8_en_CA"));
       harness.check (loadCheck (c ("Resource9"), testLocale), 
 		     c ("Resource9_en_CA"));
       harness.check (loadCheck (c ("Resource10"), testLocale), 
