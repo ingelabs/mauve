@@ -1,5 +1,9 @@
 2003-11-22  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/util/Hashtable/ContainsHash.java: New test.
+
+2003-11-22  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/text/DecimalFormatSymbols/serial.java: New test.
 
 2003-11-22  Mark Wielaard  <mark@klomp.org>
