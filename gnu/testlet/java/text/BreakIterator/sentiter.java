@@ -1,6 +1,7 @@
 // Test sentence iteration of BreakIterator.
 
 // Copyright (c) 1999  Cygnus Solutions
+// Copyright (c) 2002  Free Software Foundation, Inc.
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -86,5 +87,10 @@ public class sentiter implements Testlet
 		    "We don't know." };
     check ("How much", "How much time is left?  We don't know.", r1,
 	   bi, harness);
+
+    String[] r2 = { "Having a sentence end with a dot.return.\n",
+		    "Should also work." };
+    check ("dot.return", "Having a sentence end with a dot.return.\n" +
+	    "Should also work.", r2, bi, harness);
   }
 }

@@ -1,3 +1,11 @@
+2002-05-11  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/text/BreakIterator/sentiter.java: Add test for
+	dot.return.
+	* gnu/testlet/java/util/AbstractMap/EIterator.java: Mark not-a-test.
+	* gnu/testlet/java/util/AbstractMap/ESet.java: Likewise.
+	* gnu/testlet/java/util/AbstractMap/Entry.java: Likewise.
+
 2002-05-01  John Leuner  <jewel@debian.org>
 
 	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java:

@@ -1,3 +1,5 @@
+// Tags: not-a-test
+
 package gnu.testlet.java.util.AbstractMap;
 
 import java.util.*;
