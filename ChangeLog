@@ -1,6 +1,10 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Character/unicode.java (performTests):
+	Fixed test to determine when character is a digit.  Now follows
+	JCL volume 1.
+
+	* gnu/testlet/java/lang/Character/unicode.java (performTests):
 	Fixed recognition of upper case characters to match Java
 	documentation.
 

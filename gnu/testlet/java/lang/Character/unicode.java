@@ -304,10 +304,25 @@ public class unicode implements Testlet
 // isDigit
 //			if ( (chars[i].category.charAt(0) == 'N') !=
 //				Character.isDigit((char)i) )
-			if ((
-					(chars[i].name.indexOf("DIGIT") > -1) &&
-					!range(i,0x2000,0x2FFF)
-				) !=Character.isDigit((char)i) )
+//			if (( (chars[i].name.indexOf("DIGIT") > -1) &&
+//			      !range(i,0x2000,0x2FFF)
+			if ( (range (i, 0x0030, 0x0039)
+			      || range (i, 0x0660, 0x0669)
+			      || range (i, 0x6f0, 0x06f9)
+			      || range (i, 0x0966, 0x096f)
+			      || range (i, 0x09e6, 0x09ef)
+			      || range (i, 0x0a66, 0x0a6f)
+			      || range (i, 0x0ae6, 0x0aef)
+			      || range (i, 0x0b66, 0x0b6f)
+			      || range (i, 0x0be7, 0x0bef)
+			      || range (i, 0x0c66, 0x0c6f)
+			      || range (i, 0x0ce6, 0x0cef)
+			      || range (i, 0x0d66, 0x0d6f)
+			      || range (i, 0x0e50, 0x0e59)
+			      || range (i, 0x0ed0, 0x0ed9)
+			      || range (i, 0x0f20, 0x0f29)
+			      || range (i, 0xff10, 0xff19)
+			      ) !=Character.isDigit((char)i) )
 			{
 				reportError(i,
 (Character.isDigit((char)i) ? "digit" : "not-digit" ) );
