@@ -1,3 +1,11 @@
+2005-03-11  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/lang/Class/newInstance.java: New tests.
+	* gnu/testlet/java/lang/Class/pkg/test1.java,
+	gnu/testlet/java/lang/Class/pkg/test2.java,
+	gnu/testlet/java/lang/Class/pkg/test3.java,
+	gnu/testlet/java/lang/Class/pkg/test4.java: New support classes.
+
 2005-03-11  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/java/awt/Component/properties.java:
