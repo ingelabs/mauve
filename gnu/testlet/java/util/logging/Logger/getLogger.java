@@ -1,4 +1,5 @@
 // Tags: JDK1.4
+// Uses: TestResourceBundle TestSecurityManager
 
 // Copyright (C) 2004 Sascha Brawer <brawer@dandelis.ch>
 
@@ -25,7 +26,6 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 import java.util.logging.Logger;
-import java.util.ListResourceBundle;
 import java.util.MissingResourceException;
 
 
@@ -132,22 +132,4 @@ public class getLogger
         sec.uninstall();
       }
   }
-
-
-  /**
-   * @author <a href="mailto:brawer@dandelis.ch">Sascha Brawer</a>
-   */
-  public static class TestResourceBundle
-    extends ListResourceBundle
-  {
-    private final Object[][] contents = new Object[][]
-      {
-	{ "test", "foo-bar-baz" }
-      };
-
-    protected Object[][] getContents()
-    {
-      return contents;
-    }
-  };
 }
