@@ -1,3 +1,10 @@
+Sat Apr  3 19:28:11 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/Collator/GetSet.java: Added this test case.
+
+	* gnu/testlet/java/text/Collator/Constants.java: Added this test
+	case.
+
 1999-04-01  Andrew Haley  <aph@cygnus.com>
 
 	* gnu/testlet/java/lang/Boolean/BooleanTest.java,
