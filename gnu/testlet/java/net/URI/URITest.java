@@ -30,499 +30,487 @@ import java.net.*;
 
 public class URITest implements Testlet
 {
-  public void test(TestHarness h)
+  public void testOne(TestHarness h, String uriname,
+		      String authority, // 1
+		      String fragment, // 2
+		      String host, // 3
+		      String path, // 4
+		      int port, // 5
+		      String query, // 6
+		      String rawauthority, // 7
+		      String rawfragment, // 8
+		      String rawpath, // 9
+		      String rawquery, // 10
+		      String rawschemespecificpart, // 11
+		      String rawuserinfo, // 12
+		      String scheme, // 13
+		      String schemespecificpart, // 14
+		      String userinfo, // 15
+		      String result) // 16
   {
     try
       {
-	URI uri;
-	
-	h.checkPoint("mauve://user:passwd@hostname:1234/path/to/file?query=value#fragment");
-	
-	uri = new URI("mauve://user:passwd@hostname:1234/path/to/file?query=value#fragment");
+	h.checkPoint(uriname);
+	URI uri = new URI(uriname);
 
-	h.check(uri.getAuthority(), "user:passwd@hostname:1234"); // 1
-	h.check(uri.getFragment(), "fragment"); // 2
-	h.check(uri.getHost(), "hostname"); // 3
-	h.check(uri.getPath(), "/path/to/file"); // 4
-	h.check(uri.getPort(), 1234); // 5
-	h.check(uri.getQuery(), "query=value"); // 6
-	h.check(uri.getRawAuthority(), "user:passwd@hostname:1234"); // 7
-	h.check(uri.getRawFragment(), "fragment"); // 8
-	h.check(uri.getRawPath(), "/path/to/file"); // 9
-	h.check(uri.getRawQuery(), "query=value"); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "//user:passwd@hostname:1234/path/to/file?query=value"); // 11
-	h.check(uri.getRawUserInfo(), "user:passwd"); // 12
-	h.check(uri.getScheme(), "mauve"); // 13
-	h.check(uri.getSchemeSpecificPart(), "//user:passwd@hostname:1234/path/to/file?query=value"); // 14
-	h.check(uri.getUserInfo(), "user:passwd"); // 15
-	h.check(uri.toString(), "mauve://user:passwd@hostname:1234/path/to/file?query=value#fragment"); // 16
-
-	h.checkPoint("g:h");
-	
-	uri = new URI("g:h");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), null); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), null); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "h"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), "g"); // 13
-	h.check(uri.getSchemeSpecificPart(), "h"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g:h"); // 16
-	
-	h.checkPoint("g");
-	
-	uri = new URI("g");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "g"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g"); // 16
-	
-	h.checkPoint("./g");
-	
-	uri = new URI("./g");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "./g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "./g"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "./g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "./g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "./g"); // 16
-	
-	h.checkPoint("g/");
-	
-	uri = new URI("g/");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g/"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "g/"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g/"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g/"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g/"); // 16
-	
-	h.checkPoint("/g");
-	
-	uri = new URI("/g");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "/g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "/g"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "/g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "/g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "/g"); // 16
-	
-	h.checkPoint("//g");
-	
-	uri = new URI("//g");
-
-	h.check(uri.getAuthority(), "g"); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), "g"); // 3
-	h.check(uri.getPath(), ""); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), "g"); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), ""); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "//g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "//g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "//g"); // 16
-	
-	h.checkPoint("?y");
-	
-	uri = new URI("?y");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), ""); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), "y"); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), ""); // 9
-	h.check(uri.getRawQuery(), "y"); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "?y"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "?y"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "?y"); // 16
-	
-	h.checkPoint("g?y");
-	
-	uri = new URI("g?y");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), "y"); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "g"); // 9
-	h.check(uri.getRawQuery(), "y"); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g?y"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g?y"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g?y"); // 16
-	
-	h.checkPoint("#s");
-	
-	uri = new URI("#s");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), "s"); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), ""); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), "s"); // 8
-	h.check(uri.getRawPath(), ""); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), ""); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), ""); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "#s"); // 16
-	
-	h.checkPoint("g#s");
-	
-	uri = new URI("g#s");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), "s"); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), "s"); // 8
-	h.check(uri.getRawPath(), "g"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g#s"); // 16
-	
-	h.checkPoint("g?y#s");
-	
-	uri = new URI("g?y#s");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), "s"); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), "y"); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), "s"); // 8
-	h.check(uri.getRawPath(), "g"); // 9
-	h.check(uri.getRawQuery(), "y"); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g?y"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g?y"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g?y#s"); // 16
-	
-	h.checkPoint(";x");
-	
-	uri = new URI(";x");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), ";x"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), ";x"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), ";x"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), ";x"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), ";x"); // 16
-	
-	h.checkPoint("g;x");
-	
-	uri = new URI("g;x");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g;x"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "g;x"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g;x"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g;x"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g;x"); // 16
-	
-	h.checkPoint("g;x?y#s");
-	
-	uri = new URI("g;x?y#s");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), "s"); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "g;x"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), "y"); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), "s"); // 8
-	h.check(uri.getRawPath(), "g;x"); // 9
-	h.check(uri.getRawQuery(), "y"); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "g;x?y"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "g;x?y"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "g;x?y#s"); // 16
-	
-	h.checkPoint(".");
-	
-	uri = new URI(".");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "."); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "."); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "."); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "."); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "."); // 16
-	
-	h.checkPoint("./");
-	
-	uri = new URI("./");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "./"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "./"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "./"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "./"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "./"); // 16
-	
-	h.checkPoint("..");
-	
-	uri = new URI("..");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), ".."); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), ".."); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), ".."); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), ".."); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), ".."); // 16
-	
-	h.checkPoint("../");
-	
-	uri = new URI("../");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "../"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "../"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "../"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "../"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "../"); // 16
-	
-	h.checkPoint("../g");
-	
-	uri = new URI("../g");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "../g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "../g"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "../g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "../g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "../g"); // 16
-	
-	h.checkPoint("../..");
-	
-	uri = new URI("../..");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "../.."); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "../.."); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "../.."); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "../.."); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "../.."); // 16
-	
-	h.checkPoint("../../");
-	
-	uri = new URI("../../");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "../../"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "../../"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "../../"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "../../"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "../../"); // 16
-	
-	h.checkPoint("../../g");
-	
-	uri = new URI("../../g");
-
-	h.check(uri.getAuthority(), null); // 1
-	h.check(uri.getFragment(), null); // 2
-	h.check(uri.getHost(), null); // 3
-	h.check(uri.getPath(), "../../g"); // 4
-	h.check(uri.getPort(), -1); // 5
-	h.check(uri.getQuery(), null); // 6
-	h.check(uri.getRawAuthority(), null); // 7
-	h.check(uri.getRawFragment(), null); // 8
-	h.check(uri.getRawPath(), "../../g"); // 9
-	h.check(uri.getRawQuery(), null); // 10
-	h.check(uri.getRawSchemeSpecificPart(), "../../g"); // 11
-	h.check(uri.getRawUserInfo(), null); // 12
-	h.check(uri.getScheme(), null); // 13
-	h.check(uri.getSchemeSpecificPart(), "../../g"); // 14
-	h.check(uri.getUserInfo(), null); // 15
-	h.check(uri.toString(), "../../g"); // 16
+	h.check(uri.getAuthority(), authority); // 1
+	h.check(uri.getFragment(), fragment); // 2
+	h.check(uri.getHost(), host); // 3
+	h.check(uri.getPath(), path); // 4
+	h.check(uri.getPort(), port); // 5
+	h.check(uri.getQuery(), query); // 6
+	h.check(uri.getRawAuthority(), rawauthority); // 7
+	h.check(uri.getRawFragment(), rawfragment); // 8
+	h.check(uri.getRawPath(), rawpath); // 9
+	h.check(uri.getRawQuery(), rawquery); // 10
+	h.check(uri.getRawSchemeSpecificPart(), rawschemespecificpart); // 11
+	h.check(uri.getRawUserInfo(), rawuserinfo); // 12
+	h.check(uri.getScheme(), scheme); // 13
+	h.check(uri.getSchemeSpecificPart(), schemespecificpart); // 14
+	h.check(uri.getUserInfo(), userinfo); // 15
+	h.check(uri.toString(), result); // 16
       }
     catch (URISyntaxException e)
       {
 	h.debug(e);
 	h.fail("unexpected exception");
       }
+  }
+
+  public void test(TestHarness h)
+  {
+    testOne(h, "mauve://user:passwd@hostname:1234/path/to/file?query=value#fragment",
+	    "user:passwd@hostname:1234", // 1
+	    "fragment", // 2
+	    "hostname", // 3
+	    "/path/to/file", // 4
+	    1234, // 5
+	    "query=value", // 6
+	    "user:passwd@hostname:1234", // 7
+	    "fragment", // 8
+	    "/path/to/file", // 9
+	    "query=value", // 10
+	    "//user:passwd@hostname:1234/path/to/file?query=value", // 11
+	    "user:passwd", // 12
+	    "mauve", // 13
+	    "//user:passwd@hostname:1234/path/to/file?query=value", // 14
+	    "user:passwd", // 15
+	    "mauve://user:passwd@hostname:1234/path/to/file?query=value#fragment"); // 16
+
+    testOne(h, "g:h",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    null, // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    null, // 9
+	    null, // 10
+	    "h", // 11
+	    null, // 12
+	    "g", // 13
+	    "h", // 14
+	    null, // 15
+	    "g:h"); // 16
+
+    testOne(h, "g",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "g", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "g", // 9
+	    null, // 10
+	    "g", // 11
+	    null, // 12
+	    null, // 13
+	    "g", // 14
+	    null, // 15
+	    "g"); // 16
+	
+    testOne(h, "./g",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "./g", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "./g", // 9
+	    null, // 10
+	    "./g", // 11
+	    null, // 12
+	    null, // 13
+	    "./g", // 14
+	    null, // 15
+	    "./g"); // 16
+
+    testOne(h, "g/",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "g/", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "g/", // 9
+	    null, // 10
+	    "g/", // 11
+	    null, // 12
+	    null, // 13
+	    "g/", // 14
+	    null, // 15
+	    "g/"); // 16
+
+    testOne(h, "/g",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "/g", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "/g", // 9
+	    null, // 10
+	    "/g", // 11
+	    null, // 12
+	    null, // 13
+	    "/g", // 14
+	    null, // 15
+	    "/g"); // 16
+
+    testOne(h, "//g",
+	    "g", // 1
+	    null, // 2
+	    "g", // 3
+	    "", // 4
+	    -1, // 5
+	    null, // 6
+	    "g", // 7
+	    null, // 8
+	    "", // 9
+	    null, // 10
+	    "//g", // 11
+	    null, // 12
+	    null, // 13
+	    "//g", // 14
+	    null, // 15
+	    "//g"); // 16
+
+    testOne(h, "?y",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "", // 4
+	    -1, // 5
+	    "y", // 6
+	    null, // 7
+	    null, // 8
+	    "", // 9
+	    "y", // 10
+	    "?y", // 11
+	    null, // 12
+	    null, // 13
+	    "?y", // 14
+	    null, // 15
+	    "?y"); // 16
+
+    testOne(h, "g?y",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "g", // 4
+	    -1, // 5
+	    "y", // 6
+	    null, // 7
+	    null, // 8
+	    "g", // 9
+	    "y", // 10
+	    "g?y", // 11
+	    null, // 12
+	    null, // 13
+	    "g?y", // 14
+	    null, // 15
+	    "g?y"); // 16
+
+    testOne(h, "#s",
+	    null, // 1
+	    "s", // 2
+	    null, // 3
+	    "", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    "s", // 8
+	    "", // 9
+	    null, // 10
+	    "", // 11
+	    null, // 12
+	    null, // 13
+	    "", // 14
+	    null, // 15
+	    "#s"); // 16
+
+    testOne(h, "g#s",
+	    null, // 1
+	    "s", // 2
+	    null, // 3
+	    "g", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    "s", // 8
+	    "g", // 9
+	    null, // 10
+	    "g", // 11
+	    null, // 12
+	    null, // 13
+	    "g", // 14
+	    null, // 15
+	    "g#s"); // 16
+
+    testOne(h, "g?y#s",
+	    null, // 1
+	    "s", // 2
+	    null, // 3
+	    "g", // 4
+	    -1, // 5
+	    "y", // 6
+	    null, // 7
+	    "s", // 8
+	    "g", // 9
+	    "y", // 10
+	    "g?y", // 11
+	    null, // 12
+	    null, // 13
+	    "g?y", // 14
+	    null, // 15
+	    "g?y#s"); // 16
+
+    testOne(h, ";x",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    ";x", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    ";x", // 9
+	    null, // 10
+	    ";x", // 11
+	    null, // 12
+	    null, // 13
+	    ";x", // 14
+	    null, // 15
+	    ";x"); // 16
+
+    testOne(h, "g;x",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "g;x", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "g;x", // 9
+	    null, // 10
+	    "g;x", // 11
+	    null, // 12
+	    null, // 13
+	    "g;x", // 14
+	    null, // 15
+	    "g;x"); // 16
+
+    testOne(h, "g;x?y#s",
+	    null, // 1
+	    "s", // 2
+	    null, // 3
+	    "g;x", // 4
+	    -1, // 5
+	    "y", // 6
+	    null, // 7
+	    "s", // 8
+	    "g;x", // 9
+	    "y", // 10
+	    "g;x?y", // 11
+	    null, // 12
+	    null, // 13
+	    "g;x?y", // 14
+	    null, // 15
+	    "g;x?y#s"); // 16
+
+    testOne(h, ".",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    ".", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    ".", // 9
+	    null, // 10
+	    ".", // 11
+	    null, // 12
+	    null, // 13
+	    ".", // 14
+	    null, // 15
+	    "."); // 16
+
+    testOne(h, "./",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "./", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "./", // 9
+	    null, // 10
+	    "./", // 11
+	    null, // 12
+	    null, // 13
+	    "./", // 14
+	    null, // 15
+	    "./"); // 16
+
+    testOne(h, "..",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "..", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "..", // 9
+	    null, // 10
+	    "..", // 11
+	    null, // 12
+	    null, // 13
+	    "..", // 14
+	    null, // 15
+	    ".."); // 16
+
+    testOne(h, "../",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "../", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "../", // 9
+	    null, // 10
+	    "../", // 11
+	    null, // 12
+	    null, // 13
+	    "../", // 14
+	    null, // 15
+	    "../"); // 16
+
+    testOne(h, "../g",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "../g", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "../g", // 9
+	    null, // 10
+	    "../g", // 11
+	    null, // 12
+	    null, // 13
+	    "../g", // 14
+	    null, // 15
+	    "../g"); // 16
+
+    testOne(h, "../..",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "../..", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "../..", // 9
+	    null, // 10
+	    "../..", // 11
+	    null, // 12
+	    null, // 13
+	    "../..", // 14
+	    null, // 15
+	    "../.."); // 16
+
+    testOne(h, "../../",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "../../", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "../../", // 9
+	    null, // 10
+	    "../../", // 11
+	    null, // 12
+	    null, // 13
+	    "../../", // 14
+	    null, // 15
+	    "../../"); // 16
+
+    testOne(h, "../../g",
+	    null, // 1
+	    null, // 2
+	    null, // 3
+	    "../../g", // 4
+	    -1, // 5
+	    null, // 6
+	    null, // 7
+	    null, // 8
+	    "../../g", // 9
+	    null, // 10
+	    "../../g", // 11
+	    null, // 12
+	    null, // 13
+	    "../../g", // 14
+	    null, // 15
+	    "../../g"); // 16
+
+    // Classpath regression when running jonas.
+    h.checkPoint("jrmi://localhost:2000");
+    testOne(h, "jrmi://localhost:2000",
+	    "localhost:2000", // 1
+	    null, // 2
+	    "localhost", // 3
+	    "", // 4
+	    2000, // 5
+	    null, // 6
+	    "localhost:2000", // 7
+	    null, // 8
+	    "", // 9
+	    null, // 10
+	    "//localhost:2000", // 11
+	    null, // 12
+	    "jrmi", // 13
+	    "//localhost:2000", // 14
+	    null, // 15
+	    "jrmi://localhost:2000"); // 16
   }
 }

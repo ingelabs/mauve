@@ -1,5 +1,11 @@
 2005-02-08  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/net/URI/URITest.java (test): Added Classpath
+	regression test.  Use 'testOne' method.
+	(testOne): New method.
+
+2005-02-08  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/io/Serializable/MySerializable.java: Added
 	tag.
 	* gnu/testlet/java/io/Serializable/readResolve.java: Added Uses.
