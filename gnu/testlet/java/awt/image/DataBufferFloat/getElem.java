@@ -1,4 +1,4 @@
-// Tags: JDK1.2
+// Tags: JDK1.4
 
 // Copyright (C) 2004 Sascha Brawer <brawer@dandelis.ch>
 
