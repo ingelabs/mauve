@@ -25,6 +25,7 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 import java.util.zip.*;
 import java.io.*;
+import java.util.Properties;
 
 public class basic implements Testlet
 {
@@ -60,23 +61,40 @@ public class basic implements Testlet
 
     try
       {
-	harness.checkPoint("three lines");
+	harness.checkPoint("Eclipse example");
 	ByteArrayOutputStream bos = new ByteArrayOutputStream();
 	DeflaterOutputStream dos = new DeflaterOutputStream(bos);
-	new PrintStream(dos).print("line one\nline two\nline three");
-	dos.close();
+
+	InputStream is = harness.getResourceStream("gnu#testlet#java#util#zip#InflaterInputStream#messages.properties");
+	byte[] buffer = new byte[1024];
+	int n;
+	while (true)
+	  {
+	    n = is.read(buffer);
+	    if (n < 0)
+	      break;
+	    dos.write(buffer, 0, n);
+	  }
+	is.close ();
+	dos.close ();
 
 	byte[] deflated_data = bos.toByteArray();
 
-	InflaterInputStream iis = new InflaterInputStream(new ByteArrayInputStream(deflated_data));
+	InflaterInputStream iis = new InflaterInputStream(new BufferedInputStream (new ByteArrayInputStream(deflated_data), 1));
 
-	byte[] reinflated_data = new byte[1024];
-	harness.check(iis.read(reinflated_data), 30);
-	harness.check(iis.read(reinflated_data), -1);
+	Properties p = new Properties();
+	p.load(iis);
+	harness.check(true);
       }
     catch(IOException e)
       {
-	harness.check(false, "deflation tests fail");
+	harness.debug(e);
+	harness.check(false);
+      }
+    catch(ResourceNotFoundException _)
+      {
+	harness.debug(_);
+	harness.check(false);
       }
 
     // There are apparently programs out there that depend on this behaviour.

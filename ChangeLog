@@ -1,3 +1,10 @@
+2004-10-21  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/zip/InflaterInputStream/basic.java (test):
+	Added test derived from Eclipse.
+	* gnu/testlet/java/util/zip/InflaterInputStream/messages.properties:
+	New file.
+
 2004-10-20  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/ResourceBundle/getBundle.java
