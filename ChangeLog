@@ -1,3 +1,7 @@
+2005-03-01  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+    * gnu/testlet/java/text/DecimalFormat/parse.java: New test cases.
+
 2005-02-27  Audrius Meskauskas  <audriusa@bluewin.ch>
 
     * gnu/testlet/java/util/TreeSet/basic.java: New test.

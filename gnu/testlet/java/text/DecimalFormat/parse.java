@@ -126,5 +126,20 @@ public class parse implements Testlet
       num = parseIt (df, "3,110.00", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue(), 3110);
+
+      apply (harness, df, "#,##0X");
+      num = parseIt (df, "3,110X", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue(), 3110);
+
+      apply (harness, df, "#,##0X");
+      num = parseIt (df, "3,110", pp);
+      harness.check (num == null);
+      harness.check (pp.getErrorIndex() == 5);
+
+      apply (harness, df, "#,##0X");
+      num = parseIt (df, "3,110Y", pp);
+      harness.check (num == null);
+      harness.check (pp.getErrorIndex() == 5);
     }
 }
