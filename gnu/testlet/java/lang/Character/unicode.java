@@ -396,7 +396,11 @@ Character.isISOControl(i) ? "isocontrol" : "not-isocontrol");
 			default: typeStr = "ERROR"; break;
 		}
 
-		if ( !chars[i].category.equals(typeStr) )
+		if ( ! (chars[i].category.equals(typeStr)
+			|| (typeStr.equals("Ps")
+			    && chars[i].category.equals("Pi"))
+			|| (typeStr.equals("Pe")
+			    && chars[i].category.equals("Pf"))))
 		{
 			reportError( 
 				stringChar(i) + " is reported to be type " + typeStr +

@@ -1,5 +1,8 @@
 1999-01-14  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/unicode.java (performTests):
+	Handle Ps and Pf character categories.
+
 	* gnu/testlet/java/lang/Character/unicode.java (performTests): Use
 	correct rule for determining when character is lower case.
 
