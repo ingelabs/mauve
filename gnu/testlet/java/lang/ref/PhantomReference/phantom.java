@@ -56,14 +56,17 @@ public class phantom implements Testlet
 
     // Give the runtime some hints that it should really garbage collect.
     System.gc ();
-    Thread.yield ();
+    System.runFinalization();
     System.gc ();
+    System.runFinalization();
 
     Reference r = q.poll ();
     harness.check (r, null, "live reference");
     harness.check (final_count, 0);
 
-    // Must keep the PhantomReference live.
+    // Must keep the phantom object live.
+    System.out.println(twt);
+
     return wr;
   }
 
@@ -73,6 +76,9 @@ public class phantom implements Testlet
 
     PhantomReference wr = try1 (q, harness);
     System.gc ();
+    System.runFinalization();
+    System.gc ();
+    System.runFinalization();
 
     Reference r = null;
     try
@@ -86,5 +92,8 @@ public class phantom implements Testlet
 
     harness.check (r, wr, "unreachable");
     harness.check (final_count, 1, "object finalized");
+
+    // Make sure we're not GCed while running the test.
+    System.out.println(this);
   }
 }

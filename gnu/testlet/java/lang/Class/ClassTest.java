@@ -341,30 +341,41 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
       harness.debug(e);
       harness.check(false);
     }
-    
-    try {
-      Object obj1 = Class.forName("ab.cd.ef");
-      harness.check(false);
-    }
-    catch (ClassNotFoundException e) {
-      harness.check(true);
-    }
-    
-    try {
-      // The docs say that this should fail.
-      Object obj2 = Class.forName("I");
-      harness.check(false);
-    }
-    catch (ClassNotFoundException e) {
-      harness.check(true);
-    }
 
+    // A non-existing class.
+    checkClassNotFoundException("ab.cd.ef");
+
+    // You can't use Class.forName() to get a primitive.
+    checkClassNotFoundException("I");
+    checkClassNotFoundException("int");
+
+    // Some malformed array types.
+    checkClassNotFoundException("[");
+    checkClassNotFoundException("[int");
+    checkClassNotFoundException("[II");
+    checkClassNotFoundException("[L");
+    checkClassNotFoundException("[L;");
+    checkClassNotFoundException("[L[I;");
+    checkClassNotFoundException("[Ljava.lang.Object");
+    checkClassNotFoundException("[Ljava.lang.Objectx");
+    checkClassNotFoundException("[Ljava.lang.Object;x");
+
+    // Using slashes isn't allowed.
+    checkClassNotFoundException("java/lang/Object");
+  }
+
+  private void checkClassNotFoundException(String className)
+  {
     try {
-      Object obj2 = Class.forName("[int");
+      Class.forName(className);
       harness.check(false);
     }
     catch (ClassNotFoundException e) {
       harness.check(true);
+    }
+    catch (Exception x) {
+      harness.debug(x);
+      harness.check(false);
     }
   }
 

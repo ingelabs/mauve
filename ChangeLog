@@ -1,3 +1,10 @@
+2004-12-03  Jeroen Frijters  <jeroen@frijters>
+
+	* gnu/testlet/java/lang/Class/ClassTest.java:
+	A couple more Class.forName tests.
+	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java:
+	Made a little more robust.
+
 2004-12-01  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/URLConnection/getHeaderFields.java:
