@@ -1,5 +1,9 @@
 2004-12-26  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/javax/imageio/ImageIO/ImageIOTest.java: New testcases.
+
+2004-12-26  Michael Koch  <konqueror@gmx.de>
+
 	* choose, choose-classes: Support 'locales' package.
 	* gnu/testlet/locales/LocaleTest.java: New locale testcases.
 
