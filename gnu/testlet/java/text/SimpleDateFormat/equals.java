@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
-//B oston, MA 02111-1307, USA.  */
+// Boston, MA 02111-1307, USA.  */
 
 package gnu.testlet.java.text.SimpleDateFormat;
 
@@ -45,29 +45,32 @@ public class equals implements Testlet
   {
     SimpleDateFormat f1 = new SimpleDateFormat();
     SimpleDateFormat f2 = new SimpleDateFormat();
-    harness.check(f1.equals(f2));
+    harness.check(f1.equals(f2));                  // check 1
     
     f1 = new SimpleDateFormat("yyyy");
-    harness.check(!f1.equals(f2));
+    harness.check(!f1.equals(f2));                 // check 2
     f2 = new SimpleDateFormat("yyyy");
-    harness.check(f1.equals(f2));
+    harness.check(f1.equals(f2));                  // check 3
     
     DateFormatSymbols dfs1 = new DateFormatSymbols(Locale.GERMAN);
     DateFormatSymbols dfs2 = new DateFormatSymbols(Locale.ENGLISH);
     f1 = new SimpleDateFormat("yyyy", dfs1);
     f2 = new SimpleDateFormat("yyyy", dfs2);
-    harness.check(!f1.equals(f2));
+    harness.check(!f1.equals(f2));                 // check 4
     f2.setDateFormatSymbols(dfs1);
-    harness.check(f1.equals(f2));
+    harness.check(f1.equals(f2));                  // check 5
     
     Date d1 = new Date();
     f1.set2DigitYearStart(d1);
-    harness.check(!f1.equals(f2));
+    harness.check(!f1.equals(f2));                 // check 6
     f2.set2DigitYearStart(d1);
-    harness.check(f1.equals(f2));
+    harness.check(f1.equals(f2));                  // check 7
     
     // check null argument
-    harness.check(!d1.equals(null));
+    harness.check(!d1.equals(null));               // check 8
+    
+    // check arbitrary argument
+    harness.check(!d1.equals("Not a SimpleDateFormat"));  // check 9
   }
 
 }
