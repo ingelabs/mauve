@@ -117,7 +117,7 @@ public class BooleanTest implements Testlet
 		      && Boolean.getBoolean("booleankey3") == false );
     }
 
-  public void test (TestHarness the_harness)
+  public void test (TestHarness harness)
     {
       test_Basics (harness);
       test_equals (harness);
