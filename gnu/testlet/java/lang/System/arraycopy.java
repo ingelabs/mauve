@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 2003 Red Hat, Inc.
 
 // This file is part of Mauve.
 
@@ -137,6 +137,10 @@ public class arraycopy implements Testlet
 		     "caught IndexOutOfBoundsException");
 
       harness.check (copy (x, 0, y, 3, 5),
+		     "caught IndexOutOfBoundsException");
+
+      // Regression test for missing check in libgcj.
+      harness.check (copy (x, 4, y, 4, Integer.MAX_VALUE),
 		     "caught IndexOutOfBoundsException");
 
       harness.checkPoint("Object casting");

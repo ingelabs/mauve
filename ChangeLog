@@ -1,3 +1,8 @@
+2003-07-23  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/System/arraycopy.java (test): Added
+	libgcj regression test.
+
 2003-07-22  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/net/URLEncoder/URLEncoderTest.java
