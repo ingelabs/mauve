@@ -51,7 +51,10 @@ public class getAnonymousLogger
     try
       {
         sec.install();
-        sec.setGrantLoggingControl(false);
+        // This used to be 'sec.setGrantLoggingControl(false)', but that
+        // causes Logger.getAnonymousLogger() to fail on JDK 1.4.2.  
+        // Stephen Crawley: 2004-05-11
+        sec.setGrantLoggingControl(true);
 
         // Check #1.
         al = Logger.getAnonymousLogger();

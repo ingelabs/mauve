@@ -45,7 +45,7 @@ public class TestSecurityManager
   public void checkPermission(Permission perm)
   {
     if (controlPermission.implies(perm) && !grantLogging)
-      throw new AccessControlException("access denied", perm);
+      throw new AccessControlException("access denied: " + perm, perm);
   }
 
 
