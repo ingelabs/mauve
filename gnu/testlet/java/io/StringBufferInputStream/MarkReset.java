@@ -37,21 +37,22 @@ test(TestHarness harness)
     "we moved into a brand new building.  The old high school was turned\n" +
     "into an elementary school.\n";
 
-  sbis = new StringBufferInputStream(str);
+  StringBufferInputStream sbis = new StringBufferInputStream(str);
 
   try
     {
       boolean passed = true;
 
+      byte[] read_buf = new byte[12];
       sbis.read(read_buf);      
-      harness.check(sbis.available(), str.legnth() - read_buf.length, 
+      harness.check(sbis.available(), str.length() - read_buf.length, 
                     "available pre skip");
       harness.check(sbis.skip(5), 5, "skip");
-      harness.check(sbis.available(), str.legnth() - (read_buf.length + 5), 
+      harness.check(sbis.available(), str.length() - (read_buf.length + 5), 
                     "available post skip");
-      harness.check(sbis.markSupported(), false, "markSupported")
+      harness.check(!sbis.markSupported(), "markSupported");
       sbis.reset();
-      harness.check(sbis.pos, 0, "reset()"); 
+      harness.check(sbis.available(), str.length(), "reset()"); 
     }
   catch(IOException e)
     {

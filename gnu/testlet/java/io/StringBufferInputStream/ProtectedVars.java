@@ -50,8 +50,6 @@ test(TestHarness harness)
     "we moved into a brand new building.  The old high school was turned\n" +
     "into an elementary school.\n";
 
-  System.out.debug("Test 1: Protected Variables"); 
-
   ProtectedVars sbis = new ProtectedVars(str);
   byte[] read_buf = new byte[12];
 
@@ -67,7 +65,7 @@ test(TestHarness harness)
     }
   catch (IOException e)
     {
-      debug(e);
+      harness.debug(e);
       harness.check(false);
     }
 }

@@ -37,18 +37,19 @@ test(TestHarness harness)
     "we moved into a brand new building.  The old high school was turned\n" +
     "into an elementary school.\n";
 
-  sbis = new StringBufferInputStream(str);
+  StringBufferInputStream sbis = new StringBufferInputStream(str);
 
   try
     {
       int bytes_read, total_read = 0;
       StringBuffer sb = new StringBuffer("");
+      byte[] read_buf = new byte[12];
       while ((bytes_read = sbis.read(read_buf, 0, read_buf.length)) != -1)
         {
           sb.append(new String(read_buf, 0, bytes_read));
           total_read += bytes_read;
         }
-      harness.debug(sb.toString();
+      harness.debug(sb.toString());
 
       sbis.close();
       harness.check(total_read, str.length(), "Bytes read");
@@ -56,7 +57,7 @@ test(TestHarness harness)
     }
   catch (IOException e)
     {
-      debug(e)
+      harness.debug(e);
       harness.check(false);
     }
 }
