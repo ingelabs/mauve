@@ -1,3 +1,11 @@
+2003-12-14  Guilhem Lavaux <guilem@kaffe.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/Compat1.java,
+	gnu/testlet/java/io/ObjectInputOutput/Compat2.java,
+	gnu/testlet/java/io/ObjectInputOutput/Compat1.serial.bin,
+	gnu/testlet/java/io/ObjectInputOutput/Compat2.serial.bin:
+	New tests
+
 2003-12-08  Bryce McKinlay  <bryce@mckinlay.net.nz>
 
 	* gnu/testlet/java/util/Hashtable/NullValue.java: New test.
