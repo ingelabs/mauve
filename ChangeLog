@@ -1,3 +1,7 @@
+2002-11-24  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PipedStream/Test.java: Added available() to
+	complete method tests for PipedInputStream
+
 2002-11-23  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/PipedReaderWriter/PipedTestWriter.java: Added flush() to
 	complete method tests for PipedWriter

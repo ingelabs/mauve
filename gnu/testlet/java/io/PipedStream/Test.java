@@ -52,7 +52,7 @@ test(TestHarness harness)
       PipedInputStream pis = new PipedInputStream();
       pis.connect(pos); 
       new Thread(pstw).start();
-
+	  harness.check(pis.available() > 0, "available()");
       byte[] buf = new byte[12];
       int bytes_read, total_read = 0;
       while((bytes_read = pis.read(buf)) != -1)
