@@ -31,16 +31,16 @@ public class StringTest implements Testlet
 	public void test_Basics()
 	{
 		String str1 = new String();
-		if ( str1.length() != 0 ) 
-			harness.fail("Error : test_Basics failed - 1");
-		if ( !str1.toString().equals(""))
-			harness.fail("Error : test_Basics failed - 2");
+		harness.check(!( str1.length() != 0 ),  
+			"Error : test_Basics failed - 1");
+		harness.check(!( !str1.toString().equals("")), 
+			"Error : test_Basics failed - 2");
 
 		String str2 = new String("testing" );
-		if ( str2.length() != 7 ) 
-			harness.fail("Error : test_Basics failed - 3");
-		if ( !str2.toString().equals("testing"))
-			harness.fail("Error : test_Basics failed - 4");
+		harness.check(!( str2.length() != 7 ),  
+			"Error : test_Basics failed - 3");
+		harness.check(!( !str2.toString().equals("testing")), 
+			"Error : test_Basics failed - 4");
 
 		
 		try {
@@ -53,17 +53,17 @@ public class StringTest implements Testlet
 		catch ( NullPointerException e ){}	
 
 		String str4 = new String( new StringBuffer("hi there"));
-		if ( str4.length () != 8 ) 
-			harness.fail("Error : test_Basics failed - 6");
-		if ( !str4.toString().equals("hi there"))
-			harness.fail("Error : test_Basics failed - 7");
+		harness.check(!( str4.length () != 8 ),  
+			"Error : test_Basics failed - 6");
+		harness.check(!( !str4.toString().equals("hi there")), 
+			"Error : test_Basics failed - 7");
 
 		char cdata[] = { 'h' , 'e' , 'l' , 'l' , 'o' };
 		String str5 = new String( cdata );
-		if ( str5.length () != 5 ) 
-			harness.fail("Error : test_Basics failed - 8");
-		if ( !str5.toString().equals("hello"))
-			harness.fail("Error : test_Basics failed - 9");
+		harness.check(!( str5.length () != 5 ),  
+			"Error : test_Basics failed - 8");
+		harness.check(!( !str5.toString().equals("hello")), 
+			"Error : test_Basics failed - 9");
 
 		try {
 			String str6 = new String( cdata , 0 , 10 );
@@ -81,8 +81,8 @@ public class StringTest implements Testlet
 		{}
 
 		String str8 = new String( cdata , 0 , 4 );
-		if ( !str8.equals("hell"))
-			harness.fail("Error : test_Basics failed - 12");
+		harness.check(!( !str8.equals("hell")), 
+			"Error : test_Basics failed - 12");
 
 		try {
 			String str10 = new String( null , 10 );
@@ -98,8 +98,8 @@ public class StringTest implements Testlet
 		int i = (ch & 0xff00 ) >> 8 ;
 		byte b = (byte)(ch & 0x00ff );
 
-		if ( i != 10 ||  b != 'a' )
-			harness.fail("Error : test_Basics failed - 14");
+		harness.check(!( i != 10 ||  b != 'a' ), 
+			"Error : test_Basics failed - 14");
 		
 
 		byte bnull [] = null;
@@ -118,12 +118,12 @@ public class StringTest implements Testlet
 		i = (ch & 0xff00 ) >> 8 ;
 		b = (byte)(ch & 0x00ff );
 
-		if ( i != 10 ||  b != 'a' )
-			harness.fail("Error : test_Basics failed - 17");
+		harness.check(!( i != 10 ||  b != 'a' ), 
+			"Error : test_Basics failed - 17");
 
 		String str14 = new String( bdata);
-		if ( !str14.equals("dancing"))
-			harness.fail("Error : test_Basics failed - 18");
+		harness.check(!( !str14.equals("dancing")), 
+			"Error : test_Basics failed - 18");
 
 		// EJWcr00461
 		byte arr[]={(byte)'a'};
@@ -155,34 +155,34 @@ public class StringTest implements Testlet
 	{
 		String str1 = "218943289";
 
-		if ( !str1.toString().equals("218943289"))
-			harness.fail("Error : test_toString failed - 1");
+		harness.check(!( !str1.toString().equals("218943289")), 
+			"Error : test_toString failed - 1");
 
-		if ( str1 != "218943289" )
-			harness.fail("Error : test_toString failed - 2");
+		harness.check(!( str1 != "218943289" ), 
+			"Error : test_toString failed - 2");
 
-		if ( !str1.equals(str1.toString()))
-			harness.fail("Error : test_toString failed - 3");		
+		harness.check(!( !str1.equals(str1.toString())), 
+			"Error : test_toString failed - 3");		
 	}
 
 	public void test_equals()
 	{
 		String str2 = new String("Nectar");
 
-		if ( str2.equals( null ))
-			harness.fail("Error : test_equals failed - 1");		
+		harness.check(!( str2.equals( null )), 
+			"Error : test_equals failed - 1");		
 
-		if ( !str2.equals("Nectar"))
-			harness.fail("Error : test_equals failed - 2");		
+		harness.check(!( !str2.equals("Nectar")), 
+			"Error : test_equals failed - 2");		
 
-		if ( str2.equals(""))
-			harness.fail("Error : test_equals failed - 3");		
+		harness.check(!( str2.equals("")), 
+			"Error : test_equals failed - 3");		
 
-		if ( str2.equals("nectar"))
-			harness.fail("Error : test_equals failed - 4");		
+		harness.check(!( str2.equals("nectar")), 
+			"Error : test_equals failed - 4");		
 
-		if ( !"".equals(""))
-			harness.fail("Error : test_equals failed - 5");		
+		harness.check(!( !"".equals("")), 
+			"Error : test_equals failed - 5");		
 
 	}
 
@@ -194,24 +194,24 @@ public class StringTest implements Testlet
 		int hash1 = 'h' * 31 + 'p';
 		int acthash1 = str1.hashCode(); 
 
-		if ( hash1 != acthash1 )
-			harness.fail("Error : test_hashCode failed - 1");		
+		harness.check(!( hash1 != acthash1 ), 
+			"Error : test_hashCode failed - 1");		
 	}
 
 	public void test_length()
 	{
-		if ( "".length() != 0 ) 
-			harness.fail("Error : test_length failed - 1");
+		harness.check(!( "".length() != 0 ),  
+			"Error : test_length failed - 1");
 		
-		if ( "pentium".length() != 7 ) 
-			harness.fail("Error : test_length failed - 2");
+		harness.check(!( "pentium".length() != 7 ),  
+			"Error : test_length failed - 2");
 	}
 
 	public void test_charAt()
 	{
-		if ( "abcd".charAt(0) != 'a' || "abcd".charAt(1) != 'b' ||
-			 "abcd".charAt(2) != 'c' || "abcd".charAt(3) != 'd'	)
-			harness.fail("Error : test_charAt failed - 1");
+		harness.check(!( "abcd".charAt(0) != 'a' || "abcd".charAt(1) != 'b' ||
+			 "abcd".charAt(2) != 'c' || "abcd".charAt(3) != 'd'	), 
+			"Error : test_charAt failed - 1");
 
 		try {
 			char ch = "abcd".charAt(4);
@@ -271,21 +271,21 @@ public class StringTest implements Testlet
                 }
 
 		str.getChars(0,5,dst, 0 );
-		if ( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
-			 				  dst[3] != 'd' || dst[4] != 'e' )
-			harness.fail("Error : test_getChars failed - 7");
+		harness.check(!( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
+			 				  dst[3] != 'd' || dst[4] != 'e' ), 
+			"Error : test_getChars failed - 7");
 
 		dst[0] = dst[1] = dst[2] = dst[3] = dst[4] = ' ';
 		str.getChars(0,0,dst, 0 );
-		if ( dst[0] != ' ' || dst[1] != ' ' || dst[2] != ' ' ||
-			 				  dst[3] != ' ' || dst[4] != ' ' )
-			harness.fail("Error : test_getChars failed - 9");
+		harness.check(!( dst[0] != ' ' || dst[1] != ' ' || dst[2] != ' ' ||
+			 				  dst[3] != ' ' || dst[4] != ' ' ), 
+			"Error : test_getChars failed - 9");
 
 		dst[0] = dst[1] = dst[2] = dst[3] = dst[4] = ' ';
 		str.getChars(0,1,dst, 0 );
-		if ( dst[0] != 'a' || dst[1] != ' ' || dst[2] != ' ' ||
-			 				  dst[3] != ' ' || dst[4] != ' ' )
-			harness.fail("Error : test_getChars failed - 10");
+		harness.check(!( dst[0] != 'a' || dst[1] != ' ' || dst[2] != ' ' ||
+			 				  dst[3] != ' ' || dst[4] != ' ' ), 
+			"Error : test_getChars failed - 10");
 	}
 
 
@@ -334,45 +334,45 @@ public class StringTest implements Testlet
                 }
 
 		str.getBytes(0,5,dst, 0 );
-		if ( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
-			 				  dst[3] != 'd' || dst[4] != 'e' )
-			harness.fail("Error : test_getBytes failed - 7");
+		harness.check(!( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
+			 				  dst[3] != 'd' || dst[4] != 'e' ), 
+			"Error : test_getBytes failed - 7");
 
 		byte [] dst1 = new byte[40];
 		dst1 = str.getBytes();
-		if ( dst1[0] != 'a' || dst1[1] != 'b' || dst1[2] != 'c' ||
-			 				  dst1[3] != 'd' || dst1[4] != 'e' )
-			harness.fail("Error : test_getBytes failed - 8");
+		harness.check(!( dst1[0] != 'a' || dst1[1] != 'b' || dst1[2] != 'c' ||
+			 				  dst1[3] != 'd' || dst1[4] != 'e' ), 
+			"Error : test_getBytes failed - 8");
 	}
 
 	public void test_toCharArray()
 	{
 		char[] charr = "abcde".toCharArray();
 
-		if ( charr[0] != 'a' || charr[1] != 'b' ||
+		harness.check(!( charr[0] != 'a' || charr[1] != 'b' ||
 			charr[2] != 'c' || charr[3] != 'd' ||
-			charr[4] != 'e' )
-			harness.fail("Error : test_toCharArray failed - 1");
+			charr[4] != 'e' ), 
+			"Error : test_toCharArray failed - 1");
 
 		char [] charr1 = "".toCharArray();
 
-		if ( charr1.length  > 0 )
-			harness.fail("Error : test_toCharArray failed - 2");
+		harness.check(!( charr1.length  > 0 ), 
+			"Error : test_toCharArray failed - 2");
 	}
 
 	public void test_equalsIgnoreCase()
 	{
-		if ( "hi".equalsIgnoreCase(null))
-			harness.fail("Error : test_equalsIgnoreCase failed - 1");
+		harness.check(!( "hi".equalsIgnoreCase(null)), 
+			"Error : test_equalsIgnoreCase failed - 1");
 
-		if ( !"hi".equalsIgnoreCase("HI"))
-			harness.fail("Error : test_equalsIgnoreCase failed - 2");
+		harness.check(!( !"hi".equalsIgnoreCase("HI")), 
+			"Error : test_equalsIgnoreCase failed - 2");
 
-		if ( "hi".equalsIgnoreCase("pq"))
-			harness.fail("Error : test_equalsIgnoreCase failed - 3");
+		harness.check(!( "hi".equalsIgnoreCase("pq")), 
+			"Error : test_equalsIgnoreCase failed - 3");
 
-		if ( "hi".equalsIgnoreCase("HI "))
-			harness.fail("Error : test_equalsIgnoreCase failed - 4");
+		harness.check(!( "hi".equalsIgnoreCase("HI ")), 
+			"Error : test_equalsIgnoreCase failed - 4");
 
 	}
 
@@ -384,20 +384,20 @@ public class StringTest implements Testlet
 		}
 		catch ( NullPointerException e ){}
 
-		if ( "abc".compareTo("bcdef") >= 0  )
-			harness.fail("Error : test_compareTo failed - 2");
+		harness.check(!( "abc".compareTo("bcdef") >= 0  ), 
+			"Error : test_compareTo failed - 2");
 
-		if ( "abc".compareTo("abc") != 0 )
-			harness.fail("Error : test_compareTo failed - 3");
+		harness.check(!( "abc".compareTo("abc") != 0 ), 
+			"Error : test_compareTo failed - 3");
 
-		if ( "abc".compareTo("aabc") <= 0 )
-			harness.fail("Error : test_compareTo failed - 4");
+		harness.check(!( "abc".compareTo("aabc") <= 0 ), 
+			"Error : test_compareTo failed - 4");
 
-		if ( "abcd".compareTo("abc") <= 0 )
-			harness.fail("Error : test_compareTo failed - 5");
+		harness.check(!( "abcd".compareTo("abc") <= 0 ), 
+			"Error : test_compareTo failed - 5");
 
-		if ( "".compareTo("abc") >= 0 )
-			harness.fail("Error : test_compareTo failed - 6");
+		harness.check(!( "".compareTo("abc") >= 0 ), 
+			"Error : test_compareTo failed - 6");
 	}
 
 	public void test_regionMatches()
@@ -408,23 +408,23 @@ public class StringTest implements Testlet
 		}
 		catch ( NullPointerException e ){}
 
-		if ( "abcd".regionMatches(-1 , "abcd" , 0 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 2");
-		if ( "abcd".regionMatches(0 , "abcd" , - 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 3");
-		if ( "abcd".regionMatches(0 , "abcd" , 0 , 10 ))
-			harness.fail("Error : test_regionMatches failed - 4");
-		if ( "abcd".regionMatches(0 , "ab" , 0 , 3 ))
-			harness.fail("Error : test_regionMatches failed - 5");
+		harness.check(!( "abcd".regionMatches(-1 , "abcd" , 0 , 2 )), 
+			"Error : test_regionMatches failed - 2");
+		harness.check(!( "abcd".regionMatches(0 , "abcd" , - 1 , 2 )), 
+			"Error : test_regionMatches failed - 3");
+		harness.check(!( "abcd".regionMatches(0 , "abcd" , 0 , 10 )), 
+			"Error : test_regionMatches failed - 4");
+		harness.check(!( "abcd".regionMatches(0 , "ab" , 0 , 3 )), 
+			"Error : test_regionMatches failed - 5");
 
-		if ( !"abcd".regionMatches(1 , "abc" , 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 6");
+		harness.check(!( !"abcd".regionMatches(1 , "abc" , 1 , 2 )), 
+			"Error : test_regionMatches failed - 6");
 
-		if ( !"abcd".regionMatches(1 , "abc" , 1 , 0 ))
-			harness.fail("Error : test_regionMatches failed - 7");
+		harness.check(!( !"abcd".regionMatches(1 , "abc" , 1 , 0 )), 
+			"Error : test_regionMatches failed - 7");
 
-		if ( "abcd".regionMatches(1 , "ABC" , 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 8");
+		harness.check(!( "abcd".regionMatches(1 , "ABC" , 1 , 2 )), 
+			"Error : test_regionMatches failed - 8");
 		
 
 		try {
@@ -433,146 +433,146 @@ public class StringTest implements Testlet
 		}
 		catch ( NullPointerException e ){}
 
-		if ( "abcd".regionMatches(true , -1 , "abcd" , 0 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 12");
-		if ( "abcd".regionMatches(true , 0 , "abcd" , - 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 13");
-		if ( "abcd".regionMatches(true , 0 , "abcd" , 0 , 10 ))
-			harness.fail("Error : test_regionMatches failed - 14");
-		if ( "abcd".regionMatches(true , 0 , "ab" , 0 , 3 ))
-			harness.fail("Error : test_regionMatches failed - 15");
+		harness.check(!( "abcd".regionMatches(true , -1 , "abcd" , 0 , 2 )), 
+			"Error : test_regionMatches failed - 12");
+		harness.check(!( "abcd".regionMatches(true , 0 , "abcd" , - 1 , 2 )), 
+			"Error : test_regionMatches failed - 13");
+		harness.check(!( "abcd".regionMatches(true , 0 , "abcd" , 0 , 10 )), 
+			"Error : test_regionMatches failed - 14");
+		harness.check(!( "abcd".regionMatches(true , 0 , "ab" , 0 , 3 )), 
+			"Error : test_regionMatches failed - 15");
 
-		if ( !"abcd".regionMatches(true , 1 , "abc" , 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 16");
+		harness.check(!( !"abcd".regionMatches(true , 1 , "abc" , 1 , 2 )), 
+			"Error : test_regionMatches failed - 16");
 
-		if ( !"abcd".regionMatches(true , 1 , "abc" , 1 , 0 ))
-			harness.fail("Error : test_regionMatches failed - 17");
+		harness.check(!( !"abcd".regionMatches(true , 1 , "abc" , 1 , 0 )), 
+			"Error : test_regionMatches failed - 17");
 
-		if ( !"abcd".regionMatches(true , 1 , "ABC" , 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 18");
-		if ( "abcd".regionMatches(false , 1 , "ABC" , 1 , 2 ))
-			harness.fail("Error : test_regionMatches failed - 19");
+		harness.check(!( !"abcd".regionMatches(true , 1 , "ABC" , 1 , 2 )), 
+			"Error : test_regionMatches failed - 18");
+		harness.check(!( "abcd".regionMatches(false , 1 , "ABC" , 1 , 2 )), 
+			"Error : test_regionMatches failed - 19");
 	}
 
 	public void test_startsWith()
 	{
-		if( !"abcdef".startsWith( "abc"))
-			harness.fail("Error : test_startsWith failed - 1");
+		harness.check(!( !"abcdef".startsWith( "abc")), 
+			"Error : test_startsWith failed - 1");
 
 		try {
 			boolean b = "abcdef".startsWith( null );
 			harness.fail("Error : test_startsWith failed - 2");
 		} catch ( NullPointerException e ){}
 
-		if( "abcdef".startsWith( "ABC"))
-			harness.fail("Error : test_startsWith failed - 3");
+		harness.check(!( "abcdef".startsWith( "ABC")), 
+			"Error : test_startsWith failed - 3");
 
-		if( !"abcdef".startsWith( ""))
-			harness.fail("Error : test_startsWith failed - 4");
+		harness.check(!( !"abcdef".startsWith( "")), 
+			"Error : test_startsWith failed - 4");
 
-		if( "abc".startsWith( "abcd"))
-			harness.fail("Error : test_startsWith failed - 5");
+		harness.check(!( "abc".startsWith( "abcd")), 
+			"Error : test_startsWith failed - 5");
 
 
-		if( !"abcdef".startsWith( "abc" , 0 ))
-			harness.fail("Error : test_startsWith failed - 6");
+		harness.check(!( !"abcdef".startsWith( "abc" , 0 )), 
+			"Error : test_startsWith failed - 6");
 
 		try {
 			boolean b = "abcdef".startsWith( null ,0);
 			harness.fail("Error : test_startsWith failed - 7");
 		} catch ( NullPointerException e ){}
 
-		if( "abcdef".startsWith( "ABC", 2))
-			harness.fail("Error : test_startsWith failed - 8");
+		harness.check(!( "abcdef".startsWith( "ABC", 2)), 
+			"Error : test_startsWith failed - 8");
 
-		if( !"abcdef".startsWith( "", 0 ))
-			harness.fail("Error : test_startsWith failed - 9");
+		harness.check(!( !"abcdef".startsWith( "", 0 )), 
+			"Error : test_startsWith failed - 9");
 
-		if( "abc".startsWith( "abcd" , 3))
-			harness.fail("Error : test_startsWith failed - 10");
+		harness.check(!( "abc".startsWith( "abcd" , 3)), 
+			"Error : test_startsWith failed - 10");
 
-		if( "abc".startsWith( "abc" , 10))
-			harness.fail("Error : test_startsWith failed - 11");
+		harness.check(!( "abc".startsWith( "abc" , 10)), 
+			"Error : test_startsWith failed - 11");
 	}
 
 	public void test_endsWith()
 	{
-		if( !"abcdef".endsWith( "def"))
-			harness.fail("Error : test_endsWith failed - 1");
+		harness.check(!( !"abcdef".endsWith( "def")), 
+			"Error : test_endsWith failed - 1");
 
 		try {
 			boolean b = "abcdef".endsWith( null );
 			harness.fail("Error : test_endsWith failed - 2");
 		} catch ( NullPointerException e ){}
 
-		if( "abcdef".endsWith( "DEF"))
-			harness.fail("Error : test_endsWith failed - 3");
+		harness.check(!( "abcdef".endsWith( "DEF")), 
+			"Error : test_endsWith failed - 3");
 
-		if( !"abcdef".endsWith( ""))
-			harness.fail("Error : test_endsWith failed - 4");
+		harness.check(!( !"abcdef".endsWith( "")), 
+			"Error : test_endsWith failed - 4");
 
-		if( "bcde".endsWith( "abcd"))
-			harness.fail("Error : test_endsWith failed - 5");
+		harness.check(!( "bcde".endsWith( "abcd")), 
+			"Error : test_endsWith failed - 5");
 
 	}
 
 	public void test_indexOf()
 	{
-		if ( "a".indexOf('a') != 0 )
-			harness.fail("Error : test_indexOf failed - 1");
+		harness.check(!( "a".indexOf('a') != 0 ), 
+			"Error : test_indexOf failed - 1");
 
-		if ( "aabc".indexOf('c') != 3 )
-			harness.fail("Error : test_indexOf failed - 2");
+		harness.check(!( "aabc".indexOf('c') != 3 ), 
+			"Error : test_indexOf failed - 2");
 
-		if ( "a".indexOf('c') != -1 )
-			harness.fail("Error : test_indexOf failed - 3");
+		harness.check(!( "a".indexOf('c') != -1 ), 
+			"Error : test_indexOf failed - 3");
 
-		if ( "".indexOf('a') != -1 )
-			harness.fail("Error : test_indexOf failed - 4");
-
-
-		if ( "abcde".indexOf('b', 3) != -1 )
-			harness.fail("Error : test_indexOf failed - 5");
-		if ( "abcde".indexOf('b', 0) != 1 )
-			harness.fail("Error : test_indexOf failed - 6");
-		if ( "abcdee".indexOf('e', 3) != 4 )
-			harness.fail("Error : test_indexOf failed - 7");
-		if ( "abcdee".indexOf('e', 5) != 5 )
-			harness.fail("Error : test_indexOf failed - 8");
-
-		if ( "abcdee".indexOf('e', -5) != 4 )
-			harness.fail("Error : test_indexOf failed - 9");
-		if ( "abcdee".indexOf('e', 15) != -1 )
-			harness.fail("Error : test_indexOf failed - 10");
+		harness.check(!( "".indexOf('a') != -1 ), 
+			"Error : test_indexOf failed - 4");
 
 
-		if ( "abcdee".indexOf("babu") != -1 )
-			harness.fail("Error : test_indexOf failed - 11");
+		harness.check(!( "abcde".indexOf('b', 3) != -1 ), 
+			"Error : test_indexOf failed - 5");
+		harness.check(!( "abcde".indexOf('b', 0) != 1 ), 
+			"Error : test_indexOf failed - 6");
+		harness.check(!( "abcdee".indexOf('e', 3) != 4 ), 
+			"Error : test_indexOf failed - 7");
+		harness.check(!( "abcdee".indexOf('e', 5) != 5 ), 
+			"Error : test_indexOf failed - 8");
+
+		harness.check(!( "abcdee".indexOf('e', -5) != 4 ), 
+			"Error : test_indexOf failed - 9");
+		harness.check(!( "abcdee".indexOf('e', 15) != -1 ), 
+			"Error : test_indexOf failed - 10");
+
+
+		harness.check(!( "abcdee".indexOf("babu") != -1 ), 
+			"Error : test_indexOf failed - 11");
 		try {
 			int x = "abcdee".indexOf(null);
 		   	harness.fail("Error : test_indexOf failed - 12");
 		}catch ( NullPointerException e ){} 
 	
-		if ( "abcdee".indexOf("") != 0 )
-			harness.fail("Error : test_indexOf failed - 13");
-		if ( "abcdee".indexOf("ee") != 4 )
-			harness.fail("Error : test_indexOf failed - 14");
-		if ( "abcbcbc".indexOf("cbc") != 2 )
-			harness.fail("Error : test_indexOf failed - 15");
+		harness.check(!( "abcdee".indexOf("") != 0 ), 
+			"Error : test_indexOf failed - 13");
+		harness.check(!( "abcdee".indexOf("ee") != 4 ), 
+			"Error : test_indexOf failed - 14");
+		harness.check(!( "abcbcbc".indexOf("cbc") != 2 ), 
+			"Error : test_indexOf failed - 15");
 
-		if ( "abcdee".indexOf("babu", 3) != -1 )
-			harness.fail("Error : test_indexOf failed - 16");
+		harness.check(!( "abcdee".indexOf("babu", 3) != -1 ), 
+			"Error : test_indexOf failed - 16");
 		try {
 			int x = "abcdee".indexOf(null,0);
 		   	harness.fail("Error : test_indexOf failed - 17");
 		}catch ( NullPointerException e ){} 
 	
-		if ( "abcdee".indexOf("", 0) != 0 )
-			harness.fail("Error : test_indexOf failed - 18");
-		if ( "abcdee".indexOf("ee", 4) != 4 )
-			harness.fail("Error : test_indexOf failed - 19");
-		if ( "abcbcbc".indexOf("cbc",4 ) != 4 )
-			harness.fail("Error : test_indexOf failed - 20");
+		harness.check(!( "abcdee".indexOf("", 0) != 0 ), 
+			"Error : test_indexOf failed - 18");
+		harness.check(!( "abcdee".indexOf("ee", 4) != 4 ), 
+			"Error : test_indexOf failed - 19");
+		harness.check(!( "abcbcbc".indexOf("cbc",4 ) != 4 ), 
+			"Error : test_indexOf failed - 20");
 		// EJWcr00463
 		if ( "hello \u5236 world".indexOf('\u5236') != 6 ) {
 			harness.fail("Error : test_indexOf failed - 21");
@@ -587,72 +587,72 @@ public class StringTest implements Testlet
 
 	public void test_lastIndexOf()
 	{
-		if ( "a".lastIndexOf('a') != 0 )
-			harness.fail("Error : test_lastIndexOf failed - 1");
+		harness.check(!( "a".lastIndexOf('a') != 0 ), 
+			"Error : test_lastIndexOf failed - 1");
 
-		if ( "aabc".lastIndexOf('c') != 3 )
-			harness.fail("Error : test_lastIndexOf failed - 2");
+		harness.check(!( "aabc".lastIndexOf('c') != 3 ), 
+			"Error : test_lastIndexOf failed - 2");
 
-		if ( "a".lastIndexOf('c') != -1 )
-			harness.fail("Error : test_lastIndexOf failed - 3");
+		harness.check(!( "a".lastIndexOf('c') != -1 ), 
+			"Error : test_lastIndexOf failed - 3");
 
-		if ( "".lastIndexOf('a') != -1 )
-			harness.fail("Error : test_lastIndexOf failed - 4");
-
-
-		if ( "abcde".lastIndexOf('b', 0) != -1 )
-			harness.fail("Error : test_lastIndexOf failed - 5");
-		if ( "abcde".lastIndexOf('b', 4) != 1 )
-			harness.fail("Error : test_lastIndexOf failed - 6");
-		if ( "abcdee".lastIndexOf('e', 7) != 5 )
-			harness.fail("Error : test_lastIndexOf failed - 7");
-		if ( "abcdee".lastIndexOf('e', 5) != 5 )
-			harness.fail("Error : test_lastIndexOf failed - 8");
-
-		if ( "abcdee".lastIndexOf('e', -5) != -1 )
-			harness.fail("Error : test_lastIndexOf failed - 9");
-		if ( "abcdee".lastIndexOf('e', 15) != 5 )
-			harness.fail("Error : test_lastIndexOf failed - 10");
+		harness.check(!( "".lastIndexOf('a') != -1 ), 
+			"Error : test_lastIndexOf failed - 4");
 
 
-		if ( "abcdee".lastIndexOf("babu") != -1 )
-			harness.fail("Error : test_lastIndexOf failed - 11");
+		harness.check(!( "abcde".lastIndexOf('b', 0) != -1 ), 
+			"Error : test_lastIndexOf failed - 5");
+		harness.check(!( "abcde".lastIndexOf('b', 4) != 1 ), 
+			"Error : test_lastIndexOf failed - 6");
+		harness.check(!( "abcdee".lastIndexOf('e', 7) != 5 ), 
+			"Error : test_lastIndexOf failed - 7");
+		harness.check(!( "abcdee".lastIndexOf('e', 5) != 5 ), 
+			"Error : test_lastIndexOf failed - 8");
+
+		harness.check(!( "abcdee".lastIndexOf('e', -5) != -1 ), 
+			"Error : test_lastIndexOf failed - 9");
+		harness.check(!( "abcdee".lastIndexOf('e', 15) != 5 ), 
+			"Error : test_lastIndexOf failed - 10");
+
+
+		harness.check(!( "abcdee".lastIndexOf("babu") != -1 ), 
+			"Error : test_lastIndexOf failed - 11");
 		try {
 			int x = "abcdee".lastIndexOf(null);
 		   	harness.fail("Error : test_lastIndexOf failed - 12");
 		}catch ( NullPointerException e ){} 
 	
-		if ( "abcdee".lastIndexOf("") != 6 )
-			harness.fail("Error : test_lastIndexOf failed - 13");
-		if ( "abcdee".lastIndexOf("ee") != 4 )
-			harness.fail("Error : test_lastIndexOf failed - 14");
-		if ( "abcbcbc".lastIndexOf("cbc") != 4 )
-			harness.fail("Error : test_lastIndexOf failed - 15");
+		harness.check(!( "abcdee".lastIndexOf("") != 6 ), 
+			"Error : test_lastIndexOf failed - 13");
+		harness.check(!( "abcdee".lastIndexOf("ee") != 4 ), 
+			"Error : test_lastIndexOf failed - 14");
+		harness.check(!( "abcbcbc".lastIndexOf("cbc") != 4 ), 
+			"Error : test_lastIndexOf failed - 15");
 
-		if ( "abcdee".lastIndexOf("babu", 3) != -1 )
-			harness.fail("Error : test_lastIndexOf failed - 16");
+		harness.check(!( "abcdee".lastIndexOf("babu", 3) != -1 ), 
+			"Error : test_lastIndexOf failed - 16");
 
 		try {
 			int x = "abcdee".lastIndexOf(null,0);
 		   	harness.fail("Error : test_lastIndexOf failed - 17");
 		}catch ( NullPointerException e ){} 
 	
-		if ( "abcdee".lastIndexOf("", 0) != 0 )
-			harness.fail("Error : test_lastIndexOf failed - 18");
-		if ( "abcdee".lastIndexOf("ee", 4) != 4 )
-			harness.fail("Error : test_lastIndexOf failed - 19");
-		if ( "abcbcbc".lastIndexOf("cbc",3 ) != 2 )
-			harness.fail("Error : test_lastIndexOf failed - 20");
+		harness.check(!( "abcdee".lastIndexOf("", 0) != 0 ), 
+			"Error : test_lastIndexOf failed - 18");
+		harness.check(!( "abcdee".lastIndexOf("ee", 4) != 4 ), 
+			"Error : test_lastIndexOf failed - 19");
+		harness.check(!( "abcbcbc".lastIndexOf("cbc",3 ) != 2 ), 
+			"Error : test_lastIndexOf failed - 20");
 	}
 
 	public void test_substring()
 	{
-		if( !"unhappy".substring(2).equals("happy"))
-			harness.fail("Error : test_substring failed - 1");
-		if( !"Harbison".substring(3).equals("bison"))
-			harness.fail("Error : test_substring failed - 2");
-		if( !"emptiness".substring(9).equals(""))
-			harness.fail("Error : test_substring failed - 3");
+		harness.check(!( !"unhappy".substring(2).equals("happy")), 
+			"Error : test_substring failed - 1");
+		harness.check(!( !"Harbison".substring(3).equals("bison")), 
+			"Error : test_substring failed - 2");
+		harness.check(!( !"emptiness".substring(9).equals("")), 
+			"Error : test_substring failed - 3");
 
 		try {
 			String str = "hi there".substring(-1);
@@ -665,12 +665,12 @@ public class StringTest implements Testlet
 		}catch( IndexOutOfBoundsException e ){}
 
 
-		if( !"hamburger".substring(4,8).equals("urge"))
-			harness.fail("Error : test_substring failed - 6");
-		if( !"smiles".substring(1,5).equals("mile"))
-			harness.fail("Error : test_substring failed - 7");
-		if( !"emptiness".substring(2,2).equals(""))
-			harness.fail("Error : test_substring failed - 8");
+		harness.check(!( !"hamburger".substring(4,8).equals("urge")), 
+			"Error : test_substring failed - 6");
+		harness.check(!( !"smiles".substring(1,5).equals("mile")), 
+			"Error : test_substring failed - 7");
+		harness.check(!( !"emptiness".substring(2,2).equals("")), 
+			"Error : test_substring failed - 8");
 
 		try {
 			String str = "hi there".substring(-1, 3);
@@ -697,18 +697,18 @@ public class StringTest implements Testlet
 			harness.fail("Error : test_concat failed - 1");
 		}catch ( NullPointerException e){}
 
-		if ( !"help".concat("me").equals("helpme"))
-			harness.fail("Error : test_concat failed - 2");
+		harness.check(!( !"help".concat("me").equals("helpme")), 
+			"Error : test_concat failed - 2");
 
-		if( ! "to".concat("get").concat("her").equals("together"))
-			harness.fail("Error : test_concat failed - 3");
+		harness.check(!( ! "to".concat("get").concat("her").equals("together")), 
+			"Error : test_concat failed - 3");
 
-		if( "hi".concat("") != "hi")
-			harness.fail("Error : test_concat failed - 4");
+		harness.check(!( "hi".concat("") != "hi"), 
+			"Error : test_concat failed - 4");
 
 		String str1 = "".concat("there");
-		if( !str1.equals("there"))
-			harness.fail("Error : test_concat failed - 5");
+		harness.check(!( !str1.equals("there")), 
+			"Error : test_concat failed - 5");
 
 		// EJWcr00467
 		String str2 = new String();
@@ -725,72 +725,72 @@ public class StringTest implements Testlet
 
 	public void test_replace()
 	{
-		if ( !"mesquite in your cellar".replace('e' , 'o' ).equals(
-			          "mosquito in your collar" ))
-			harness.fail("Error : test_replace failed - 1");
+		harness.check(!( !"mesquite in your cellar".replace('e' , 'o' ).equals(
+			          "mosquito in your collar" )), 
+			"Error : test_replace failed - 1");
 
-		if ( !"the war of baronets".replace('r' , 'y' ).equals(
-			          "the way of bayonets" ))
-			harness.fail("Error : test_replace failed - 2");
+		harness.check(!( !"the war of baronets".replace('r' , 'y' ).equals(
+			          "the way of bayonets" )), 
+			"Error : test_replace failed - 2");
 
-		if ( !"sparring with a purple porpoise".replace('p' , 't' ).equals(
-			          "starring with a turtle tortoise" ))
-			harness.fail("Error : test_replace failed - 3");
+		harness.check(!( !"sparring with a purple porpoise".replace('p' , 't' ).equals(
+			          "starring with a turtle tortoise" )), 
+			"Error : test_replace failed - 3");
 
-		if ( !"JonL".replace('q' , 'x' ).equals("JonL" ))
-			harness.fail("Error : test_replace failed - 4");
+		harness.check(!( !"JonL".replace('q' , 'x' ).equals("JonL" )), 
+			"Error : test_replace failed - 4");
 
-		if( !"ppppppppppppp".replace('p' , 'p' ).equals("ppppppppppppp"))
-			harness.fail("Error : test_replace failed - 5");
+		harness.check(!( !"ppppppppppppp".replace('p' , 'p' ).equals("ppppppppppppp")), 
+			"Error : test_replace failed - 5");
 
-		if( !"ppppppppppppp".replace('p' , '1' ).equals("1111111111111"))
-			harness.fail("Error : test_replace failed - 6");
-		if( !"hp".replace('c' , 'd' ).equals("hp"))
-			harness.fail("Error : test_replace failed - 7");
-		if( !"vmhere".replace('a' , 'd' ).equals("vmhere"))
-			harness.fail("Error : test_replace failed - 8");
+		harness.check(!( !"ppppppppppppp".replace('p' , '1' ).equals("1111111111111")), 
+			"Error : test_replace failed - 6");
+		harness.check(!( !"hp".replace('c' , 'd' ).equals("hp")), 
+			"Error : test_replace failed - 7");
+		harness.check(!( !"vmhere".replace('a' , 'd' ).equals("vmhere")), 
+			"Error : test_replace failed - 8");
 
 
 	}
 
 	public void test_toLowerCase()
 	{
-		if( !"".toLowerCase().equals(""))
-			harness.fail("Error : test_toLowerCase failed - 1");
+		harness.check(!( !"".toLowerCase().equals("")), 
+			"Error : test_toLowerCase failed - 1");
 
-		if( !"French Fries".toLowerCase().equals("french fries"))
-			harness.fail("Error : test_toLowerCase failed - 2");
+		harness.check(!( !"French Fries".toLowerCase().equals("french fries")), 
+			"Error : test_toLowerCase failed - 2");
 
 
-		if( !"SMALL-VM".toLowerCase().equals("small-vm"))
-			harness.fail("Error : test_toLowerCase failed - 3");
+		harness.check(!( !"SMALL-VM".toLowerCase().equals("small-vm")), 
+			"Error : test_toLowerCase failed - 3");
 	}
 
 	public void test_toUpperCase()
 	{
-		if( !"".toUpperCase().equals(""))
-			harness.fail("Error : test_toUpperCase failed - 1");
+		harness.check(!( !"".toUpperCase().equals("")), 
+			"Error : test_toUpperCase failed - 1");
 
-		if( !"French Fries".toUpperCase().equals("FRENCH FRIES"))
-			harness.fail("Error : test_toUpperCase failed - 2");
+		harness.check(!( !"French Fries".toUpperCase().equals("FRENCH FRIES")), 
+			"Error : test_toUpperCase failed - 2");
 
 
-		if( !"SMALL-VM".toUpperCase().equals("SMALL-VM"))
-			harness.fail("Error : test_toUpperCase failed - 3");
+		harness.check(!( !"SMALL-VM".toUpperCase().equals("SMALL-VM")), 
+			"Error : test_toUpperCase failed - 3");
 
-		if( !"small-jvm".toUpperCase().equals("SMALL-JVM"))
-			harness.fail("Error : test_toUpperCase failed - 4");
+		harness.check(!( !"small-jvm".toUpperCase().equals("SMALL-JVM")), 
+			"Error : test_toUpperCase failed - 4");
 	}
 
 
 	public void test_valueOf()
 	{
-		if ( !String.valueOf((Object)null).equals("null"))
-			harness.fail("Error : test_valueOf failed - 1");
+		harness.check(!( !String.valueOf((Object)null).equals("null")), 
+			"Error : test_valueOf failed - 1");
 
 		Object obj = new Object();
-		if ( !String.valueOf(obj).equals(obj.toString()))
-			harness.fail("Error : test_valueOf failed - 2");
+		harness.check(!( !String.valueOf(obj).equals(obj.toString())), 
+			"Error : test_valueOf failed - 2");
 
 
 		try {
@@ -799,11 +799,11 @@ public class StringTest implements Testlet
 		}catch ( NullPointerException e ){}
 
 		char [] data = { 'h' , 'e' , 'l' , 'l' , 'o' };
-		if( !String.valueOf( data ).equals("hello"))
-			harness.fail("Error : test_valueOf failed - 3");
+		harness.check(!( !String.valueOf( data ).equals("hello")), 
+			"Error : test_valueOf failed - 3");
 
-		if( !String.copyValueOf( data ).equals("hello"))
-			harness.fail("Error : test_valueOf failed - 3a");
+		harness.check(!( !String.copyValueOf( data ).equals("hello")), 
+			"Error : test_valueOf failed - 3a");
 
 		try {
 			String str = String.valueOf(data , -1 , 4 );
@@ -825,60 +825,60 @@ public class StringTest implements Testlet
 			harness.fail("Error : test_valueOf failed - 7");
 		}catch ( NullPointerException e ){}
 
-		if( !String.valueOf(data , 2 , 2 ).equals("ll"))
-			harness.fail("Error : test_valueOf failed - 8");
+		harness.check(!( !String.valueOf(data , 2 , 2 ).equals("ll")), 
+			"Error : test_valueOf failed - 8");
 
-		if( !String.copyValueOf(data , 2 , 2 ).equals("ll"))
-			harness.fail("Error : test_valueOf failed - 8a");
+		harness.check(!( !String.copyValueOf(data , 2 , 2 ).equals("ll")), 
+			"Error : test_valueOf failed - 8a");
 
-		if( !String.valueOf(true).equals("true"))
-			harness.fail("Error : test_valueOf failed - 9");
+		harness.check(!( !String.valueOf(true).equals("true")), 
+			"Error : test_valueOf failed - 9");
 
-		if( !String.valueOf(false).equals("false"))
-			harness.fail("Error : test_valueOf failed - 10");
+		harness.check(!( !String.valueOf(false).equals("false")), 
+			"Error : test_valueOf failed - 10");
 
-		if( !String.valueOf('c').equals("c"))
-			harness.fail("Error : test_valueOf failed - 11");
+		harness.check(!( !String.valueOf('c').equals("c")), 
+			"Error : test_valueOf failed - 11");
 
-		if( !String.valueOf(' ').equals(" "))
-			harness.fail("Error : test_valueOf failed - 12");
+		harness.check(!( !String.valueOf(' ').equals(" ")), 
+			"Error : test_valueOf failed - 12");
 
-		if( !String.valueOf(234).equals("234"))
-			harness.fail("Error : test_valueOf failed - 13");
+		harness.check(!( !String.valueOf(234).equals("234")), 
+			"Error : test_valueOf failed - 13");
 
-		if( !String.valueOf(234L).equals("234"))
-			harness.fail("Error : test_valueOf failed - 14");
+		harness.check(!( !String.valueOf(234L).equals("234")), 
+			"Error : test_valueOf failed - 14");
 
-		if( !String.valueOf(23.45f).equals("23.45"))
-			harness.fail("Error : test_valueOf failed - 15");
+		harness.check(!( !String.valueOf(23.45f).equals("23.45")), 
+			"Error : test_valueOf failed - 15");
 
-		if( !String.valueOf(23.4).equals("23.4"))
-			harness.fail("Error : test_valueOf failed - 16");
+		harness.check(!( !String.valueOf(23.4).equals("23.4")), 
+			"Error : test_valueOf failed - 16");
 	}
         
         public void test_intern()
 	{
  	 	String hp = "hp";
 		String nullstr = "";
-		if ( "hp".intern() != hp.intern())
-			harness.fail("Error : test_intern failed - 1");
-		if ( "pqr".intern() == hp.intern())
-			harness.fail("Error : test_intern failed - 2");
-		if ( "".intern() != nullstr.intern())
-			harness.fail("Error : test_intern failed - 3");
-		if ( "".intern() == hp.intern())
-			harness.fail("Error : test_intern failed - 4");
+		harness.check(!( "hp".intern() != hp.intern()), 
+			"Error : test_intern failed - 1");
+		harness.check(!( "pqr".intern() == hp.intern()), 
+			"Error : test_intern failed - 2");
+		harness.check(!( "".intern() != nullstr.intern()), 
+			"Error : test_intern failed - 3");
+		harness.check(!( "".intern() == hp.intern()), 
+			"Error : test_intern failed - 4");
 		hp = "";
-		if ( "".intern() != hp.intern())
-			harness.fail("Error : test_intern failed - 5");
+		harness.check(!( "".intern() != hp.intern()), 
+			"Error : test_intern failed - 5");
 		StringBuffer buff= new StringBuffer();
 		buff.append('a');
 		buff.append('b');
-		if ( "ab".intern() != buff.toString().intern())
-			harness.fail("Error : test_intern failed - 6");
+		harness.check(!( "ab".intern() != buff.toString().intern()), 
+			"Error : test_intern failed - 6");
 		StringBuffer buff1 = new StringBuffer();
-		if ( "".intern() != buff1.toString().intern())
-			harness.fail("Error : test_intern failed - 7");
+		harness.check(!( "".intern() != buff1.toString().intern()), 
+			"Error : test_intern failed - 7");
 
 	}
 	public void test_trim()

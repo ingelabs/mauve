@@ -35,16 +35,16 @@ public class StringBufferTest implements Testlet
 		}catch ( NegativeArraySizeException e ){}
 
 		StringBuffer str1 = new StringBuffer();
-		if ( str1.length() != 0 || str1.capacity() != 16 ) 
-			harness.fail("Error : test_Basics failed - 1");
-		if ( !str1.toString().equals(""))
-			harness.fail("Error : test_Basics failed - 2");
+		harness.check(!( str1.length() != 0 || str1.capacity() != 16 ),  
+			"Error : test_Basics failed - 1");
+		harness.check(!( !str1.toString().equals("")), 
+			"Error : test_Basics failed - 2");
 
 		StringBuffer str2 = new StringBuffer( "testing" );
-		if ( str2.length() != 7 ) 
-			harness.fail("Error : test_Basics failed - 3");
-		if ( !str2.toString().equals("testing"))
-			harness.fail("Error : test_Basics failed - 4");
+		harness.check(!( str2.length() != 7 ),  
+			"Error : test_Basics failed - 3");
+		harness.check(!( !str2.toString().equals("testing")), 
+			"Error : test_Basics failed - 4");
 
 		
 		try {
@@ -66,18 +66,18 @@ public class StringBufferTest implements Testlet
 		catch ( NullPointerException e ){}	
 
 		StringBuffer str4 =  new StringBuffer("hi there");
-		if ( str4.length () != 8 || str4.capacity () != 24 ) 
-			harness.fail("Error : test_Basics failed - 6");
-		if ( !str4.toString().equals("hi there"))
-			harness.fail("Error : test_Basics failed - 7");
+		harness.check(!( str4.length () != 8 || str4.capacity () != 24 ),  
+			"Error : test_Basics failed - 6");
+		harness.check(!( !str4.toString().equals("hi there")), 
+			"Error : test_Basics failed - 7");
 
 		StringBuffer strbuf = new StringBuffer(0);
-		if ( ! strbuf.append("hiii").toString().equals("hiii"))
-			harness.fail("Error : test_Basics failed - 8");
+		harness.check(!( ! strbuf.append("hiii").toString().equals("hiii")), 
+			"Error : test_Basics failed - 8");
 
 		strbuf = new StringBuffer(10);
-		if ( strbuf.capacity() != 10 )
-			harness.fail("Error : test_Basics failed - 9");
+		harness.check(!( strbuf.capacity() != 10 ), 
+			"Error : test_Basics failed - 9");
 
 
 	}
@@ -86,12 +86,12 @@ public class StringBufferTest implements Testlet
 	{
 		StringBuffer str1 = new StringBuffer("218943289");
 
-		if ( !str1.toString().equals("218943289"))
-			harness.fail("Error : test_toString failed - 1");
+		harness.check(!( !str1.toString().equals("218943289")), 
+			"Error : test_toString failed - 1");
 
 		str1 = new StringBuffer();
-		if ( !str1.toString().equals(""))
-			harness.fail("Error : test_toString failed - 2");
+		harness.check(!( !str1.toString().equals("")), 
+			"Error : test_toString failed - 2");
 	}
 
 	public void test_length()
@@ -99,11 +99,11 @@ public class StringBufferTest implements Testlet
 		StringBuffer buf1 = new StringBuffer("");
 		StringBuffer buf2 = new StringBuffer("pentium");
 
-		if ( buf1.length() != 0 ) 
-			harness.fail("Error : test_length failed - 1");
+		harness.check(!( buf1.length() != 0 ),  
+			"Error : test_length failed - 1");
 		
-		if ( buf2.length() != 7 ) 
-			harness.fail("Error : test_length failed - 2");
+		harness.check(!( buf2.length() != 7 ),  
+			"Error : test_length failed - 2");
 	}
 
 	public void test_capacity()
@@ -111,19 +111,19 @@ public class StringBufferTest implements Testlet
 		StringBuffer buf1 = new StringBuffer("");
 		StringBuffer buf2 = new StringBuffer("pentiumpentiumpentium");
 		
-		if ( buf1.capacity() != 16 ) 
-			harness.fail("Error : test_capacity failed - 1");
+		harness.check(!( buf1.capacity() != 16 ),  
+			"Error : test_capacity failed - 1");
 
 		int cap = buf2.capacity();
-		if ( cap != 37 )
-			harness.fail("Error : test_capacity failed - 2");
+		harness.check(!( cap != 37 ), 
+			"Error : test_capacity failed - 2");
 
 
 		buf1.ensureCapacity( 17);
 		
 		// CYGNUS: This is a test for JDK 1.2 conformance
-		if ( buf1.capacity() != 34 )
-			harness.fail("Error : test_capacity failed - 3");
+		harness.check(!( buf1.capacity() != 34 ), 
+			"Error : test_capacity failed - 3");
 	}
 
 	public void test_setLength()
@@ -137,22 +137,22 @@ public class StringBufferTest implements Testlet
 		catch ( IndexOutOfBoundsException e ){}
 
 		strbuf.setLength( 4 );
-		if (strbuf.length() != 4 )
-			harness.fail("Error : test_setLength failed - 2");
+		harness.check(!(strbuf.length() != 4 ), 
+			"Error : test_setLength failed - 2");
 
-		if ( strbuf.charAt(0 ) != 'b' || strbuf.charAt(1 ) != 'a' ||
-			  strbuf.charAt(2 ) != '\u0000' || strbuf.charAt(3 ) != '\u0000' )
-			harness.fail("Error : test_setLength failed - 3");
+		harness.check(!( strbuf.charAt(0 ) != 'b' || strbuf.charAt(1 ) != 'a' ||
+			  strbuf.charAt(2 ) != '\u0000' || strbuf.charAt(3 ) != '\u0000' ), 
+			"Error : test_setLength failed - 3");
 	}
 
 	public void test_charAt()
 	{
-		if ( (new StringBuffer("abcd")).charAt(0) != 'a' || 
+		harness.check(!( (new StringBuffer("abcd")).charAt(0) != 'a' || 
 			 (new StringBuffer("abcd")).charAt(1) != 'b' ||
 			 (new StringBuffer("abcd")).charAt(2) != 'c' || 
-			 (new StringBuffer("abcd")).charAt(3) != 'd'	)
+			 (new StringBuffer("abcd")).charAt(3) != 'd'	), 
 			
-			harness.fail("Error : test_charAt failed - 1");
+			"Error : test_charAt failed - 1");
 
 		try {
 			char ch = (new StringBuffer("abcd")).charAt(4);
@@ -205,45 +205,45 @@ public class StringBufferTest implements Testlet
 		}catch ( IndexOutOfBoundsException e ){}
 
 		str.getChars(0,5,dst, 0 );
-		if ( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
-			 				  dst[3] != 'd' || dst[4] != 'e' )
-			harness.fail("Error : test_getChars failed - 7");
+		harness.check(!( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
+			 				  dst[3] != 'd' || dst[4] != 'e' ), 
+			"Error : test_getChars failed - 7");
 
 		dst[0] = dst[1] = dst[2] = dst[3] = dst[4] = ' ';
 		str.getChars(0,0,dst, 0 );
-		if ( dst[0] != ' ' || dst[1] != ' ' || dst[2] != ' ' ||
-			 				  dst[3] != ' ' || dst[4] != ' ' )
-			harness.fail("Error : test_getChars failed - 9");
+		harness.check(!( dst[0] != ' ' || dst[1] != ' ' || dst[2] != ' ' ||
+			 				  dst[3] != ' ' || dst[4] != ' ' ), 
+			"Error : test_getChars failed - 9");
 
 		dst[0] = dst[1] = dst[2] = dst[3] = dst[4] = ' ';
 		str.getChars(0,1,dst, 0 );
-		if ( dst[0] != 'a' || dst[1] != ' ' || dst[2] != ' ' ||
-			 				  dst[3] != ' ' || dst[4] != ' ' )
-			harness.fail("Error : test_getChars failed - 10");
+		harness.check(!( dst[0] != 'a' || dst[1] != ' ' || dst[2] != ' ' ||
+			 				  dst[3] != ' ' || dst[4] != ' ' ), 
+			"Error : test_getChars failed - 10");
 	}
 
 	public void test_append( )
 	{
 		StringBuffer str = new StringBuffer();
 		Object nullobj = null;
-		if ( !str.append( nullobj ).toString().equals("null"))
-			harness.fail("Error : test_append failed - 1");
+		harness.check(!( !str.append( nullobj ).toString().equals("null")), 
+			"Error : test_append failed - 1");
 
-		if ( !str.append( new Integer(100) ).toString().equals("null100"))
-			harness.fail("Error : test_append failed - 2");
+		harness.check(!( !str.append( new Integer(100) ).toString().equals("null100")), 
+			"Error : test_append failed - 2");
 
 		StringBuffer str1 = new StringBuffer("hi");
 		str1 = str1.append( " there" );
 		str1 = str1.append( " buddy");
 
-		if( !str1.toString().equals("hi there buddy"))
-			harness.fail("Error : test_append failed - 2");
+		harness.check(!( !str1.toString().equals("hi there buddy")), 
+			"Error : test_append failed - 2");
 
 		StringBuffer str2 = new StringBuffer();
 		str2 = str2.append("sdljfksdjfklsdjflksdjflkjsdlkfjlsdkjflksdjfklsd");
-		if ( !str2.toString().equals(
-							"sdljfksdjfklsdjflksdjflkjsdlkfjlsdkjflksdjfklsd"))
-			harness.fail("Error : test_append failed - 3");
+		harness.check(!( !str2.toString().equals(
+							"sdljfksdjfklsdjflksdjflkjsdlkfjlsdkjflksdjfklsd")), 
+			"Error : test_append failed - 3");
 
 		char carr[] = null;
 		StringBuffer str3 = new StringBuffer();
@@ -258,8 +258,8 @@ public class StringBufferTest implements Testlet
 
 		char carr1[] = {'h','i','t','h','e','r'};
 		StringBuffer  str4 = new StringBuffer("!");
-		if ( !str4.append( carr1 ).toString().equals("!hither"))
-			harness.fail("Error : test_append failed - 5");
+		harness.check(!( !str4.append( carr1 ).toString().equals("!hither")), 
+			"Error : test_append failed - 5");
 
 
 		try {
@@ -284,36 +284,36 @@ public class StringBufferTest implements Testlet
 
 		StringBuffer str5 = new StringBuffer("!");
 		str5 = str5.append(carr1 , 2 , 3 );
-		if ( !str5.toString().equals("!the"))
-			harness.fail("Error : test_append failed - 7");
+		harness.check(!( !str5.toString().equals("!the")), 
+			"Error : test_append failed - 7");
 
 		str5 = new StringBuffer();
 		str5 = str5.append( true );
-		if ( !str5.toString().equals("true"))
-			harness.fail("Error : test_append failed - 8");
+		harness.check(!( !str5.toString().equals("true")), 
+			"Error : test_append failed - 8");
 
 		str5 = str5.append( false );
-		if ( !str5.toString().equals("truefalse"))
-			harness.fail("Error : test_append failed - 9");
+		harness.check(!( !str5.toString().equals("truefalse")), 
+			"Error : test_append failed - 9");
 
 		str5 = str5.append( 20);
-		if ( !str5.toString().equals("truefalse20"))
-			harness.fail("Error : test_append failed - 10");
+		harness.check(!( !str5.toString().equals("truefalse20")), 
+			"Error : test_append failed - 10");
 
 		str5 = new StringBuffer();
 		str5 = str5.append( 2034L );
-		if ( !str5.toString().equals("2034"))
-			harness.fail("Error : test_append failed - 11");
+		harness.check(!( !str5.toString().equals("2034")), 
+			"Error : test_append failed - 11");
 
 		str5 = new StringBuffer();
 		str5 = str5.append( 34.45f );
-		if ( !str5.toString().equals("34.45"))
-			harness.fail("Error : test_append failed - 12");
+		harness.check(!( !str5.toString().equals("34.45")), 
+			"Error : test_append failed - 12");
 
 		str5 = new StringBuffer();
 		str5 = str5.append( 34.46 );
-		if ( !str5.toString().equals("34.46"))
-			harness.fail("Error : test_append failed - 13");
+		harness.check(!( !str5.toString().equals("34.46")), 
+			"Error : test_append failed - 13");
 	}
 
 	public void test_insert()
@@ -321,8 +321,8 @@ public class StringBufferTest implements Testlet
 		StringBuffer buf = new StringBuffer("1234567");
 		Object obj = null;
 		buf = buf.insert(5 , obj);
-		if ( !buf.toString().equals("12345null67"))
-			harness.fail("Error : test_insert failed - 1");
+		harness.check(!( !buf.toString().equals("12345null67")), 
+			"Error : test_insert failed - 1");
 
 		try {
 			buf = buf.insert(-1 , new Object());
@@ -338,8 +338,8 @@ public class StringBufferTest implements Testlet
 		
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(4 , "inserted" );
-		if ( !buf.toString().equals("1234inserted567"))
-			harness.fail("Error : test_insert failed - 4");
+		harness.check(!( !buf.toString().equals("1234inserted567")), 
+			"Error : test_insert failed - 4");
 
 
 		buf = new StringBuffer("1234567");
@@ -366,50 +366,50 @@ public class StringBufferTest implements Testlet
 		buf = new StringBuffer("1234567");
 		char cdata1[] = {'h','e','l','l','o'};
 		buf = buf.insert(4 , cdata1 );
-		if ( !buf.toString().equals("1234hello567"))
-			harness.fail("Error : test_insert failed - 8");
+		harness.check(!( !buf.toString().equals("1234hello567")), 
+			"Error : test_insert failed - 8");
 
 
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(0 , true );
-		if ( !buf.toString().equals("true1234567"))
-			harness.fail("Error : test_insert failed - 9");
+		harness.check(!( !buf.toString().equals("true1234567")), 
+			"Error : test_insert failed - 9");
 
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(7 , false );
-		if ( !buf.toString().equals("1234567false"))
-			harness.fail("Error : test_insert failed - 10");
+		harness.check(!( !buf.toString().equals("1234567false")), 
+			"Error : test_insert failed - 10");
 
 
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(0 , 'c' );
-		if ( !buf.toString().equals("c1234567"))
-			harness.fail("Error : test_insert failed - 11");
+		harness.check(!( !buf.toString().equals("c1234567")), 
+			"Error : test_insert failed - 11");
 
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(7 , 'b' );
-		if ( !buf.toString().equals("1234567b"))
-			harness.fail("Error : test_insert failed - 12");
+		harness.check(!( !buf.toString().equals("1234567b")), 
+			"Error : test_insert failed - 12");
 			
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(7 , 999 );
-		if ( !buf.toString().equals("1234567999"))
-			harness.fail("Error : test_insert failed - 13");
+		harness.check(!( !buf.toString().equals("1234567999")), 
+			"Error : test_insert failed - 13");
 
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(0, 99.9f );
-		if ( !buf.toString().equals("99.91234567"))
-			harness.fail("Error : test_insert failed - 14");
+		harness.check(!( !buf.toString().equals("99.91234567")), 
+			"Error : test_insert failed - 14");
 
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(3, 34.46 );
-		if ( !buf.toString().equals("12334.464567"))
-			harness.fail("Error : test_insert failed - 15 "
+		harness.check(!( !buf.toString().equals("12334.464567")), 
+			"Error : test_insert failed - 15 "
 			   + buf.toString());
 		buf = new StringBuffer("1234567");
 		buf = buf.insert(3, (long)1230 );
-		if ( !buf.toString().equals("12312304567"))
-			harness.fail("Error : test_insert failed - 16 "
+		harness.check(!( !buf.toString().equals("12312304567")), 
+			"Error : test_insert failed - 16 "
 			   + buf.toString());
 
 	}
@@ -417,24 +417,24 @@ public class StringBufferTest implements Testlet
 	public void test_reverse()
 	{
 		StringBuffer buff = new StringBuffer();
-		if ( !buff.reverse().toString().equals(""))
-			harness.fail("Error : test_reverse failed - 1");
+		harness.check(!( !buff.reverse().toString().equals("")), 
+			"Error : test_reverse failed - 1");
 
 		buff = new StringBuffer("babu");
-		if ( !buff.reverse().toString().equals("ubab"))
-			harness.fail("Error : test_reverse failed - 2");
+		harness.check(!( !buff.reverse().toString().equals("ubab")), 
+			"Error : test_reverse failed - 2");
 
 		buff = new StringBuffer("malayalam");
-		if ( !buff.reverse().toString().equals("malayalam"))
-			harness.fail("Error : test_reverse failed - 3");
+		harness.check(!( !buff.reverse().toString().equals("malayalam")), 
+			"Error : test_reverse failed - 3");
 
 		buff = new StringBuffer("cnbcbnc");
-		if ( !buff.reverse().toString().equals("cnbcbnc"))
-			harness.fail("Error : test_reverse failed - 4");
+		harness.check(!( !buff.reverse().toString().equals("cnbcbnc")), 
+			"Error : test_reverse failed - 4");
 
 		buff = new StringBuffer("vinod");
-		if ( !buff.reverse().toString().equals("doniv"))
-			harness.fail("Error : test_reverse failed - 5");
+		harness.check(!( !buff.reverse().toString().equals("doniv")), 
+			"Error : test_reverse failed - 5");
 	}
 
 	public void testall()

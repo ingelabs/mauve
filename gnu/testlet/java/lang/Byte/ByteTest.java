@@ -29,21 +29,21 @@ public class ByteTest implements Testlet
   protected static TestHarness harness;
 	public void test_Basics()
 	{
-		if ( Byte.MIN_VALUE != -128 )
-			harness.fail("Error: test_Basics failed - 1" );
-		if ( Byte.MAX_VALUE != 127 )
-			harness.fail("Error: test_Basics failed - 2" );
+		harness.check(!( Byte.MIN_VALUE != -128 ), 
+			"Error: test_Basics failed - 1" );
+		harness.check(!( Byte.MAX_VALUE != 127 ), 
+			"Error: test_Basics failed - 2" );
 
 		Byte ch = new Byte((byte)'b');
-		if ( ch.byteValue() != (byte)'b' )
-			harness.fail("Error: test_Basics failed - 3" );
+		harness.check(!( ch.byteValue() != (byte)'b' ), 
+			"Error: test_Basics failed - 3" );
 		Byte ch1 = new Byte("122");
-		if ( ch1.byteValue() != 122 )
-			harness.fail("Error: test_Basics failed - 4" );
-		if ( (Byte.valueOf( "120")).byteValue() != 120 )
-			harness.fail("Error: test_Basics failed - 5" );
-		if ( (Byte.valueOf( "120")).byteValue() != 120 )
-			harness.fail("Error: test_Basics failed - 6" );
+		harness.check(!( ch1.byteValue() != 122 ), 
+			"Error: test_Basics failed - 4" );
+		harness.check(!( (Byte.valueOf( "120")).byteValue() != 120 ), 
+			"Error: test_Basics failed - 5" );
+		harness.check(!( (Byte.valueOf( "120")).byteValue() != 120 ), 
+			"Error: test_Basics failed - 6" );
 
 	}
 
@@ -51,8 +51,8 @@ public class ByteTest implements Testlet
 	{
 		Byte ch = new Byte((byte)'a');
 		String str = ch.toString();
-		if ( str.length() != 2 || !str.equals("97"))
-			harness.fail("Error: test_toString failed " );
+		harness.check(!( str.length() != 2 || !str.equals("97")), 
+			"Error: test_toString failed " );
 	}
 
 
@@ -62,16 +62,16 @@ public class ByteTest implements Testlet
 		Byte ch2 = new Byte((byte)'+');
 		Byte ch3 = new Byte((byte)'-');
 
-		if ( !ch1.equals(ch2) || ch1.equals(ch3) || ch1.equals(null))
-			harness.fail("Error: test_equals failed - 1" );
+		harness.check(!( !ch1.equals(ch2) || ch1.equals(ch3) || ch1.equals(null)), 
+			"Error: test_equals failed - 1" );
 	}
 
 	public void test_hashCode( )
 	{
 		Byte ch1 = new Byte((byte)'a');
 
-		if ( ch1.hashCode() != (int) 'a' )
-			harness.fail("Error: test_hashCode returned wrong results" );
+		harness.check(!( ch1.hashCode() != (int) 'a' ), 
+			"Error: test_hashCode returned wrong results" );
 	}
 
 	public void test_decode()
@@ -82,8 +82,8 @@ public class ByteTest implements Testlet
 		}
 		catch ( NumberFormatException e ){}
 
-		if ( Byte.decode("34").intValue() != 34 )
-			harness.fail("Error : test_decode failed - 2" );
+		harness.check(!( Byte.decode("34").intValue() != 34 ), 
+			"Error : test_decode failed - 2" );
 
 		try {
 			Byte.decode("123.34");
@@ -102,31 +102,31 @@ public class ByteTest implements Testlet
 	{
 		Byte b = new Byte( (byte)100 );
 		Byte b1 = new Byte((byte) -123 );
-		if ( b.intValue () != 100 )
-			harness.fail("Error : test_values failed - 1" );
-		if ( b1.intValue () != -123 )
-			harness.fail("Error : test_values failed - 2" );
+		harness.check(!( b.intValue () != 100 ), 
+			"Error : test_values failed - 1" );
+		harness.check(!( b1.intValue () != -123 ), 
+			"Error : test_values failed - 2" );
 
-		if ( b.longValue () != 100 )
-			harness.fail("Error : test_values failed - 3" );
-		if ( b1.longValue () != -123 )
-			harness.fail("Error : test_values failed - 4" );
-		if ( b.floatValue () != 100.0f )
-			harness.fail("Error : test_values failed - 5" );
-		if ( b1.floatValue () != -123.0f )
-			harness.fail("Error : test_values failed - 6" );
-		if ( b.doubleValue () != 100.0 )
-			harness.fail("Error : test_values failed - 7" );
-		if ( b1.doubleValue () != -123.0 )
-			harness.fail("Error : test_values failed - 8" );
-		if ( b.shortValue () != 100 )
-			harness.fail("Error : test_values failed - 9" );
-		if ( b1.shortValue () != -123 )
-			harness.fail("Error : test_values failed - 10" );
-		if ( b.byteValue () != 100 )
-			harness.fail("Error : test_values failed - 11" );
-		if ( b1.byteValue () != -123 )
-			harness.fail("Error : test_values failed - 12" );
+		harness.check(!( b.longValue () != 100 ), 
+			"Error : test_values failed - 3" );
+		harness.check(!( b1.longValue () != -123 ), 
+			"Error : test_values failed - 4" );
+		harness.check(!( b.floatValue () != 100.0f ), 
+			"Error : test_values failed - 5" );
+		harness.check(!( b1.floatValue () != -123.0f ), 
+			"Error : test_values failed - 6" );
+		harness.check(!( b.doubleValue () != 100.0 ), 
+			"Error : test_values failed - 7" );
+		harness.check(!( b1.doubleValue () != -123.0 ), 
+			"Error : test_values failed - 8" );
+		harness.check(!( b.shortValue () != 100 ), 
+			"Error : test_values failed - 9" );
+		harness.check(!( b1.shortValue () != -123 ), 
+			"Error : test_values failed - 10" );
+		harness.check(!( b.byteValue () != 100 ), 
+			"Error : test_values failed - 11" );
+		harness.check(!( b1.byteValue () != -123 ), 
+			"Error : test_values failed - 12" );
 	}
 
 	public void testall()

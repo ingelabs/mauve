@@ -69,13 +69,13 @@ public class DoubleTest implements Testlet
 
 		Double i1 = new Double(100.5);
 
-		if ( i1.doubleValue() != 100.5 )
-			harness.fail("Error: test_Basics failed - 2" );
+		harness.check(!( i1.doubleValue() != 100.5 ), 
+			"Error: test_Basics failed - 2" );
 
 
 		try {
-		if ( (new Double("234.34")).doubleValue() != 234.34 )
-			harness.fail("Error: test_Basics failed - 3" );
+		harness.check(!( (new Double("234.34")).doubleValue() != 234.34 ), 
+			"Error: test_Basics failed - 3" );
 		}
 		catch ( NumberFormatException e )
 		{
@@ -83,8 +83,8 @@ public class DoubleTest implements Testlet
 		}
 
 		try {
-		if ( (new Double("1.4e-45")).doubleValue() != 1.4e-45 )
-			harness.fail("Error: test_Basics failed - 4" );
+		harness.check(!( (new Double("1.4e-45")).doubleValue() != 1.4e-45 ), 
+			"Error: test_Basics failed - 4" );
 		}
 		catch ( NumberFormatException e )
 		{
@@ -99,81 +99,81 @@ public class DoubleTest implements Testlet
 		{
 		}
 
-		if ( (new Double(3.4)).doubleValue() != 3.4 )
-			harness.fail("Error: test_Basics failed - 6" );
+		harness.check(!( (new Double(3.4)).doubleValue() != 3.4 ), 
+			"Error: test_Basics failed - 6" );
 
 
 		Double nan = new Double(Double.NaN );
-		if ( !nan.isNaN())
-			harness.fail("Error: test_Basics failed - 7" );
+		harness.check(!( !nan.isNaN()), 
+			"Error: test_Basics failed - 7" );
 		
-		if ( (new Double(10.0f)).isNaN())
-			harness.fail("Error: test_Basics failed - 8" );
+		harness.check(!( (new Double(10.0f)).isNaN()), 
+			"Error: test_Basics failed - 8" );
 
-		if ( !Double.isNaN( Double.NaN ))
-			harness.fail("Error: test_Basics failed - 9" );
+		harness.check(!( !Double.isNaN( Double.NaN )), 
+			"Error: test_Basics failed - 9" );
 
-		if ( !(new Double(Double.POSITIVE_INFINITY)).isInfinite())
-			harness.fail("Error: test_Basics failed - 10" );
+		harness.check(!( !(new Double(Double.POSITIVE_INFINITY)).isInfinite()), 
+			"Error: test_Basics failed - 10" );
 
-		if ( !(new Double(Double.NEGATIVE_INFINITY)).isInfinite())
-			harness.fail("Error: test_Basics failed - 11" );
-		if ( !( Double.isInfinite( Double.NEGATIVE_INFINITY)))
-			harness.fail("Error: test_Basics failed - 12" );
-		if ( !( Double.isInfinite( Double.POSITIVE_INFINITY)))
-			harness.fail("Error: test_Basics failed - 13" );
-		if ( 0.0 - 0.0 != 0.0)
-			harness.fail("Error: test_Basics failed - 14" );
-		if ( 0.0 + 0.0 != 0.0)
-			harness.fail("Error: test_Basics failed - 15" );
-		if ( 0.0 + -0.0 != 0.0)
-			harness.fail("Error: test_Basics failed - 16" );
-		if ( 0.0 - -0.0 != 0.0)
-			harness.fail("Error: test_Basics failed - 17" );
-		if ( -0.0 - 0.0 != -0.0)
-			harness.fail("Error: test_Basics failed - 18" );
-		if ( -0.0 + 0.0 != 0.0)
-			harness.fail("Error: test_Basics failed - 19" );
-		if ( -0.0 + -0.0 != -0.0)
-			harness.fail("Error: test_Basics failed - 20" );
-		if ( -0.0 - -0.0 != 0.0)
-			harness.fail("Error: test_Basics failed - 21" );
+		harness.check(!( !(new Double(Double.NEGATIVE_INFINITY)).isInfinite()), 
+			"Error: test_Basics failed - 11" );
+		harness.check(!( !( Double.isInfinite( Double.NEGATIVE_INFINITY))), 
+			"Error: test_Basics failed - 12" );
+		harness.check(!( !( Double.isInfinite( Double.POSITIVE_INFINITY))), 
+			"Error: test_Basics failed - 13" );
+		harness.check(!( 0.0 - 0.0 != 0.0), 
+			"Error: test_Basics failed - 14" );
+		harness.check(!( 0.0 + 0.0 != 0.0), 
+			"Error: test_Basics failed - 15" );
+		harness.check(!( 0.0 + -0.0 != 0.0), 
+			"Error: test_Basics failed - 16" );
+		harness.check(!( 0.0 - -0.0 != 0.0), 
+			"Error: test_Basics failed - 17" );
+		harness.check(!( -0.0 - 0.0 != -0.0), 
+			"Error: test_Basics failed - 18" );
+		harness.check(!( -0.0 + 0.0 != 0.0), 
+			"Error: test_Basics failed - 19" );
+		harness.check(!( -0.0 + -0.0 != -0.0), 
+			"Error: test_Basics failed - 20" );
+		harness.check(!( -0.0 - -0.0 != 0.0), 
+			"Error: test_Basics failed - 21" );
 
-		if ( !"0.0".equals(0.0 - 0.0 +"" ))
-			harness.fail("Error: test_Basics failed - 22" );
+		harness.check(!( !"0.0".equals(0.0 - 0.0 +"" )), 
+			"Error: test_Basics failed - 22" );
 
 	}
 
 	public void test_toString()
 	{
-		if ( !( new Double(123.0)).toString().equals("123.0"))
-			harness.fail("Error: test_toString failed - 1" );
-		if ( !( new Double(-44.5343)).toString().equals("-44.5343"))
-			harness.fail("Error: test_toString failed - 2" );
+		harness.check(!( !( new Double(123.0)).toString().equals("123.0")), 
+			"Error: test_toString failed - 1" );
+		harness.check(!( !( new Double(-44.5343)).toString().equals("-44.5343")), 
+			"Error: test_toString failed - 2" );
 
-		if ( !Double.toString( 23.04 ).equals ("23.04" ))
-			harness.fail("Error: test_toString failed - 3" );
+		harness.check(!( !Double.toString( 23.04 ).equals ("23.04" )), 
+			"Error: test_toString failed - 3" );
 
-		if ( !Double.toString( Double.NaN ).equals ("NaN" ))
-			harness.fail("Error: test_toString failed - 4" );
+		harness.check(!( !Double.toString( Double.NaN ).equals ("NaN" )), 
+			"Error: test_toString failed - 4" );
 
-		if ( !Double.toString( Double.POSITIVE_INFINITY ).equals ("Infinity" ))
-			harness.fail("Error: test_toString failed - 5" );
-		if ( !Double.toString( Double.NEGATIVE_INFINITY ).equals ("-Infinity" ))
-			harness.fail("Error: test_toString failed - 6" );
+		harness.check(!( !Double.toString( Double.POSITIVE_INFINITY ).equals ("Infinity" )), 
+			"Error: test_toString failed - 5" );
+		harness.check(!( !Double.toString( Double.NEGATIVE_INFINITY ).equals ("-Infinity" )), 
+			"Error: test_toString failed - 6" );
 
-		if ( !Double.toString( 0.0 ).equals ("0.0" ))
-			harness.fail("Error: test_toString failed - 7" );
+		harness.check(!( !Double.toString( 0.0 ).equals ("0.0" )), 
+			"Error: test_toString failed - 7" );
 
 		String str;
 
 		str = Double.toString( -0.0 );
-		if ( !str.equals ("-0.0" ))
-			harness.fail("Error: test_toString failed - 8" );
+		harness.check(!( !str.equals ("-0.0" )), 
+			"Error: test_toString failed - 8" );
 
 		str = Double.toString( -9412128.34 );
-		if ( !str.equals ("-9412128.34" ))
-			harness.fail("Error: test_toString failed - 9" );
+		harness.check(!( !str.equals ("-9412128.34" )), 
+			"Error: test_toString failed - 9" );
 
 		str = Double.toString( 0.001 );
 		if ( !Double.toString( 0.001 ).equals ("0.001" )) {
@@ -226,36 +226,36 @@ public class DoubleTest implements Testlet
 		Double i1 = new Double(2334.34E4);
 		Double i2 = new Double(-2334.34E4);
 
-		if ( !i1.equals( new Double(2334.34E4)))
-			harness.fail("Error: test_equals failed - 1" );
-		if ( !i2.equals( new Double(-2334.34E4)))
-			harness.fail("Error: test_equals failed - 2" );
+		harness.check(!( !i1.equals( new Double(2334.34E4))), 
+			"Error: test_equals failed - 1" );
+		harness.check(!( !i2.equals( new Double(-2334.34E4))), 
+			"Error: test_equals failed - 2" );
 
 		
-		if ( i1.equals( i2 ))
-			harness.fail("Error: test_equals failed - 3" );
+		harness.check(!( i1.equals( i2 )), 
+			"Error: test_equals failed - 3" );
 
-		if ( i1.equals(null))
-			harness.fail("Error: test_equals failed - 4" );
+		harness.check(!( i1.equals(null)), 
+			"Error: test_equals failed - 4" );
 
 		double n1 = Double.NaN;
 		double n2 = Double.NaN;
-		if ( n1 == n2 )
-			harness.fail("Error: test_equals failed - 5" );
+		harness.check(!( n1 == n2 ), 
+			"Error: test_equals failed - 5" );
 
 		Double flt1 = new Double( Double.NaN);
 		Double flt2 = new Double( Double.NaN);
-		if ( !flt1.equals(flt2))
-			harness.fail("Error: test_equals failed CYGNUS: NaN.equals - 6" );
+		harness.check(!( !flt1.equals(flt2)), 
+			"Error: test_equals failed CYGNUS: NaN.equals - 6" );
 
-		if ( 0.0 != -0.0 )
-			harness.fail("Error: test_equals failed - 7" );
+		harness.check(!( 0.0 != -0.0 ), 
+			"Error: test_equals failed - 7" );
 
 		Double pzero = new Double( 0.0 );
 		Double nzero = new Double( -0.0 );
 
-		if ( pzero.equals(nzero) )
-			harness.fail("Error: test_equals failed CYGNUS: Double.equals - 8" );
+		harness.check(!( pzero.equals(nzero) ), 
+			"Error: test_equals failed CYGNUS: Double.equals - 8" );
 
 	}
 
@@ -265,14 +265,14 @@ public class DoubleTest implements Testlet
 		Double flt1 = new Double(3.4028235e+38);
 		long lng1 = Double.doubleToLongBits( 3.4028235e+38);
 
-		if  ( flt1.hashCode() != (int) ( lng1^(lng1>>>32)) )
-			harness.fail("Error: test_hashCode returned wrong results - 1");
+		harness.check(!( flt1.hashCode() != (int) ( lng1^(lng1>>>32)) ), 
+			"Error: test_hashCode returned wrong results - 1");
 
 		Double flt2 = new Double( -2343323354.0 );
 		long lng2 = Double.doubleToLongBits( -2343323354.0 );
 
-		if  ( flt2.hashCode() != (int) ( lng2^(lng2>>>32)) )
-			harness.fail("Error: test_hashCode returned wrong results - 2");
+		harness.check(!( flt2.hashCode() != (int) ( lng2^(lng2>>>32)) ), 
+			"Error: test_hashCode returned wrong results - 2");
 	}
 
 	public void test_intValue( )
@@ -283,26 +283,26 @@ public class DoubleTest implements Testlet
 		int i1 = b1.intValue();
 		int i2 = b2.intValue();
 
-		if ( i1 != (int) 3.4e+32) 
-			harness.fail("Error: test_intValue returned wrong results CYGNUS: Float to int conversions - 1" );
+		harness.check(!( i1 != (int) 3.4e+32),  
+			"Error: test_intValue returned wrong results CYGNUS: Float to int conversions - 1" );
 
-		if ( i2 != (int) -23.45 ) 
-			harness.fail("Error: test_intValue returned wrong results - 2" );
+		harness.check(!( i2 != (int) -23.45 ),  
+			"Error: test_intValue returned wrong results - 2" );
 		Double b3 = new Double(3000.54);
-		if ( b3.intValue() != 3000  ) 
-			harness.fail("Error: test_intValue returned wrong results - 3" );
+		harness.check(!( b3.intValue() != 3000  ),  
+			"Error: test_intValue returned wrong results - 3" );
 		Double b4 = new Double(32735.3249);
-		if ( b4.intValue() != 32735  ) 
-			harness.fail("Error: test_intValue returned wrong results - 4" );
+		harness.check(!( b4.intValue() != 32735  ),  
+			"Error: test_intValue returned wrong results - 4" );
 		Double b5 = new Double(-32735.3249);
-		if ( b5.intValue() != -32735  ) 
-			harness.fail("Error: test_intValue returned wrong results - 5" );
+		harness.check(!( b5.intValue() != -32735  ),  
+			"Error: test_intValue returned wrong results - 5" );
 		Double b6 = new Double(-32735.3249);
-		if ( b6.intValue() != -32735  ) 
-			harness.fail("Error: test_intValue returned wrong results - 6" );
+		harness.check(!( b6.intValue() != -32735  ),  
+			"Error: test_intValue returned wrong results - 6" );
 		Double b7 = new Double(0.0);
-		if ( b7.intValue() != 0  ) 
-			harness.fail("Error: test_intValue returned wrong results - 7" );
+		harness.check(!( b7.intValue() != 0  ),  
+			"Error: test_intValue returned wrong results - 7" );
 	}
 
 	public void test_longValue( )
@@ -310,11 +310,11 @@ public class DoubleTest implements Testlet
 		Double b1 = new Double(3.4e+32);
 		Double b2 = new Double(-23.45);
 
-		if ( b1.longValue() != (long) 3.4e+32) 
-			harness.fail("Error: test_longValue returned wrong results CYGNUS: Float to int conversions - 1" );
+		harness.check(!( b1.longValue() != (long) 3.4e+32),  
+			"Error: test_longValue returned wrong results CYGNUS: Float to int conversions - 1" );
 
-		if ( b2.longValue() != (long) -23.45 ) 
-			harness.fail("Error: test_longValue returned wrong results - 2" );
+		harness.check(!( b2.longValue() != (long) -23.45 ),  
+			"Error: test_longValue returned wrong results - 2" );
 	}
 
 	public void test_DoubleValue( )
@@ -322,11 +322,11 @@ public class DoubleTest implements Testlet
 		Double b1 = new Double(3276.34);
 		Double b2 = new Double(-3276.32);
 
-		if ( b1.doubleValue() != 3276.34 ) 
-			harness.fail("Error: test_DoubleValue returned wrong results - 1" );
+		harness.check(!( b1.doubleValue() != 3276.34 ),  
+			"Error: test_DoubleValue returned wrong results - 1" );
 
-		if ( b2.doubleValue() != -3276.32 ) 
-			harness.fail("Error: test_DoubleValue returned wrong results - 2" );
+		harness.check(!( b2.doubleValue() != -3276.32 ),  
+			"Error: test_DoubleValue returned wrong results - 2" );
 	}
 
 	public void test_doubleValue( )
@@ -334,11 +334,11 @@ public class DoubleTest implements Testlet
 		Double b1 = new Double(0.0);
 		Double b2 = new Double(30.0);
 
-		if ( b1.doubleValue() != 0.0 ) 
-			harness.fail("Error: test_doubleValue returned wrong results - 1" );
+		harness.check(!( b1.doubleValue() != 0.0 ),  
+			"Error: test_doubleValue returned wrong results - 1" );
 
-		if ( b2.doubleValue() != 30.0 ) 
-			harness.fail("Error: test_doubleValue returned wrong results - 2" );
+		harness.check(!( b2.doubleValue() != 30.0 ),  
+			"Error: test_doubleValue returned wrong results - 2" );
 	}
 
 	public void test_floatValue( )
@@ -346,11 +346,11 @@ public class DoubleTest implements Testlet
 		Double b1 = new Double(0.0);
 		Double b2 = new Double(30.0);
 
-		if ( b1.floatValue() != 0.0f ) 
-			harness.fail("Error: test_floatValue returned wrong results - 1" );
+		harness.check(!( b1.floatValue() != 0.0f ),  
+			"Error: test_floatValue returned wrong results - 1" );
 
-		if ( b2.floatValue() != 30.0f ) 
-			harness.fail("Error: test_floatValue returned wrong results - 2" );
+		harness.check(!( b2.floatValue() != 30.0f ),  
+			"Error: test_floatValue returned wrong results - 2" );
 	}
 
 	public void test_valueOf( )
@@ -366,23 +366,23 @@ public class DoubleTest implements Testlet
 			harness.fail("Error: test_valueOf returned wrong results - 2" );
 		}catch( NumberFormatException e) {}
 
-		if ( Double.valueOf( "3.4e+32" ).doubleValue() != 3.4e+32 ) 
-			harness.fail("Error: test_valueOf returned wrong results - 3" );
+		harness.check(!( Double.valueOf( "3.4e+32" ).doubleValue() != 3.4e+32 ),  
+			"Error: test_valueOf returned wrong results - 3" );
 
-		if ( Double.valueOf(" -23.45    ").doubleValue() != -23.45 ) 
-			harness.fail("Error: test_longValue returned wrong results - 4" );
+		harness.check(!( Double.valueOf(" -23.45    ").doubleValue() != -23.45 ),  
+			"Error: test_longValue returned wrong results - 4" );
 	}
 
 	public void test_doubleToLongBits()
 	{
-		if ( Double.doubleToLongBits( Double.POSITIVE_INFINITY ) != 0x7ff0000000000000L )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 1" );
-		if ( Double.doubleToLongBits( Double.NEGATIVE_INFINITY ) != 0xfff0000000000000L )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 2" );
+		harness.check(!( Double.doubleToLongBits( Double.POSITIVE_INFINITY ) != 0x7ff0000000000000L ), 
+			"Error: test_doubleToLongBits returned wrong results - 1" );
+		harness.check(!( Double.doubleToLongBits( Double.NEGATIVE_INFINITY ) != 0xfff0000000000000L ), 
+			"Error: test_doubleToLongBits returned wrong results - 2" );
 		
 		long nanval = Double.doubleToLongBits( Double.NaN ); 
-		if ( nanval != 0x7ff8000000000000L )
-			harness.fail("Error: test_doubleToLongBits CYGNUS: NaN.doubleToLongBits" );
+		harness.check(!( nanval != 0x7ff8000000000000L ), 
+			"Error: test_doubleToLongBits CYGNUS: NaN.doubleToLongBits" );
 
 		long i1 = Double.doubleToLongBits(3.4e+32f);
 		long i2 = Double.doubleToLongBits(-34.56f);
@@ -396,45 +396,45 @@ public class DoubleTest implements Testlet
 		long man1 = i1 & 0x000fffffffffffffL ;
 		long man2 = i2 & 0x000fffffffffffffL ;
 
-		if (sign1 != 0 )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 4" );
+		harness.check(!(sign1 != 0 ), 
+			"Error: test_doubleToLongBits returned wrong results - 4" );
 
-		if ( sign2 != 0x8000000000000000L )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 5" );
+		harness.check(!( sign2 != 0x8000000000000000L ), 
+			"Error: test_doubleToLongBits returned wrong results - 5" );
 
-		if ( exp1 != 5093571178556030976L )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 6" );
+		harness.check(!( exp1 != 5093571178556030976L ), 
+			"Error: test_doubleToLongBits returned wrong results - 6" );
 
-		if ( exp2 != 4629700416936869888L )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 7" );
+		harness.check(!( exp2 != 4629700416936869888L ), 
+			"Error: test_doubleToLongBits returned wrong results - 7" );
 
-		if ( man1 != 214848222789632L  )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 8" );
+		harness.check(!( man1 != 214848222789632L  ), 
+			"Error: test_doubleToLongBits returned wrong results - 8" );
 
-		if ( man2 != 360288163463168L )
-			harness.fail("Error: test_doubleToLongBits returned wrong results - 9" );
+		harness.check(!( man2 != 360288163463168L ), 
+			"Error: test_doubleToLongBits returned wrong results - 9" );
 
 	}
 
 	public void test_longBitsToDouble( )
 	{
-		if ( Double.longBitsToDouble( 0x7ff0000000000000L) != Double.POSITIVE_INFINITY )
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 1" );
-		if ( Double.longBitsToDouble( 0xfff0000000000000L ) != Double.NEGATIVE_INFINITY )
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 2" );
+		harness.check(!( Double.longBitsToDouble( 0x7ff0000000000000L) != Double.POSITIVE_INFINITY ), 
+			"Error: test_longBitsToDouble returned wrong results - 1" );
+		harness.check(!( Double.longBitsToDouble( 0xfff0000000000000L ) != Double.NEGATIVE_INFINITY ), 
+			"Error: test_longBitsToDouble returned wrong results - 2" );
 
 
-		if ( !Double.isNaN(Double.longBitsToDouble( 0xfff8000000000000L  )))
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 3" );
+		harness.check(!( !Double.isNaN(Double.longBitsToDouble( 0xfff8000000000000L  ))), 
+			"Error: test_longBitsToDouble returned wrong results - 3" );
 
-		if ( !Double.isNaN(Double.longBitsToDouble( 0x7ffffff000000000L )))
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 4" );
+		harness.check(!( !Double.isNaN(Double.longBitsToDouble( 0x7ffffff000000000L ))), 
+			"Error: test_longBitsToDouble returned wrong results - 4" );
 
-		if	( !Double.isNaN(Double.longBitsToDouble( 0xfff8000020000001L )))
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 5" );
+		harness.check(!( !Double.isNaN(Double.longBitsToDouble( 0xfff8000020000001L ))), 
+			"Error: test_longBitsToDouble returned wrong results - 5" );
 
-		if  ( !Double.isNaN(Double.longBitsToDouble( 0xfffffffffffffff1L )))
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 6" );
+		harness.check(!( !Double.isNaN(Double.longBitsToDouble( 0xfffffffffffffff1L ))), 
+			"Error: test_longBitsToDouble returned wrong results - 6" );
 
 		double fl1 = Double.longBitsToDouble( 0x34343f33 );
 		
@@ -444,16 +444,16 @@ public class DoubleTest implements Testlet
 			System.out.println("Got: " + Long.toHexString(Double.doubleToLongBits(fl1)));
 		}
 
-		if ( Double.doubleToLongBits( Double.longBitsToDouble(0x33439943)) != 0x33439943 )
-			harness.fail("Error: test_longBitsToDouble returned wrong results - 8");
+		harness.check(!( Double.doubleToLongBits( Double.longBitsToDouble(0x33439943)) != 0x33439943 ), 
+			"Error: test_longBitsToDouble returned wrong results - 8");
 	}
 
 	public void check_remainder( double val, double val1 , 
 					double ret , int errno )
 	{
 		double res = val % val1;
-		if ( res < ret - 0.001 || res > ret + 0.001 )
-			harness.fail("Error: test_remainder failed " +  errno );
+		harness.check(!( res < ret - 0.001 || res > ret + 0.001 ), 
+			"Error: test_remainder failed " +  errno );
 	}
 
 	public void check_remainder_NaN( double val, double val1 , 
@@ -521,19 +521,19 @@ public class DoubleTest implements Testlet
 		Double d2 = new Double( 400.35 );
 		Double d3 = new Double(0.0 );
 		
-		if ( d1.shortValue() != 123 )
-			harness.fail("Error: test_shortbyteValue failed - 1" );
-		if ( d2.shortValue() != 400 )
-			harness.fail("Error: test_shortbyteValue failed - 2" );
-		if ( d3.shortValue() != 0 )
-			harness.fail("Error: test_shortbyteValue failed - 3" );
+		harness.check(!( d1.shortValue() != 123 ), 
+			"Error: test_shortbyteValue failed - 1" );
+		harness.check(!( d2.shortValue() != 400 ), 
+			"Error: test_shortbyteValue failed - 2" );
+		harness.check(!( d3.shortValue() != 0 ), 
+			"Error: test_shortbyteValue failed - 3" );
 
-		if ( d1.byteValue() != 123 )
-			harness.fail("Error: test_shortbyteValue failed - 4" );
-		if ( d2.byteValue() != (byte)400 )
-			harness.fail("Error: test_shortbyteValue failed - 5" );
-		if ( d3.byteValue() != 0 )
-			harness.fail("Error: test_shortbyteValue failed - 6" );
+		harness.check(!( d1.byteValue() != 123 ), 
+			"Error: test_shortbyteValue failed - 4" );
+		harness.check(!( d2.byteValue() != (byte)400 ), 
+			"Error: test_shortbyteValue failed - 5" );
+		harness.check(!( d3.byteValue() != 0 ), 
+			"Error: test_shortbyteValue failed - 6" );
 		
 	}
 

@@ -1,3 +1,20 @@
+1999-04-01  Andrew Haley  <aph@cygnus.com>
+
+	* gnu/testlet/java/lang/Boolean/BooleanTest.java,
+	gnu/testlet/java/lang/Byte/ByteTest.java,
+	gnu/testlet/java/lang/Character/CharacterTest.java,
+	gnu/testlet/java/lang/Double/DoubleTest.java,
+	gnu/testlet/java/lang/Float/FloatTest.java,
+	gnu/testlet/java/lang/Integer/IntegerTest.java,
+	gnu/testlet/java/lang/Long/LongTest.java,
+	gnu/testlet/java/lang/Math/MathTest.java,
+	gnu/testlet/java/lang/Short/ShortTest.java,
+	gnu/testlet/java/lang/String/StringTest.java,
+	gnu/testlet/java/lang/StringBuffer/StringBufferTest.java,
+	All instances of "if (condition) harness.fail (failure)" replaced
+	with "harness.check (!(condition), failure);
+	
+
 1999-03-30  Tom Tromey  <tromey@cygnus.com>
 
 	Change to make it easier to subclass SimpleTestHarness:

@@ -35,17 +35,17 @@ public class LongTest implements Testlet
 		long max1 = Long.MAX_VALUE;
 		long max2 = 0x7fffffffffffffffL;
 
-		if ( min1 != min2 || max1 != max2 )
-			harness.fail("Error: test_Basics failed - 1" );
+		harness.check(!( min1 != min2 || max1 != max2 ), 
+			"Error: test_Basics failed - 1" );
 
 		Long i1 = new Long(100);
 
-		if ( i1.longValue() != 100 )
-			harness.fail("Error: test_Basics failed - 2" );
+		harness.check(!( i1.longValue() != 100 ), 
+			"Error: test_Basics failed - 2" );
 
 		try {
-		if ( (new Long("234")).longValue() != 234 )
-			harness.fail("Error: test_Basics failed - 3" );
+		harness.check(!( (new Long("234")).longValue() != 234 ), 
+			"Error: test_Basics failed - 3" );
 		}
 		catch ( NumberFormatException e )
 		{
@@ -53,8 +53,8 @@ public class LongTest implements Testlet
 		}
 
 		try {
-		if ( (new Long("-FF")).longValue() != -255 )
-			harness.fail("Error: test_Basics failed - 4" );
+		harness.check(!( (new Long("-FF")).longValue() != -255 ), 
+			"Error: test_Basics failed - 4" );
 		}
 		catch ( NumberFormatException e )
 		{
@@ -71,42 +71,42 @@ public class LongTest implements Testlet
 
 	public void test_toString()
 	{
-		if ( !( new Long(123)).toString().equals("123"))
-			harness.fail("Error: test_toString failed - 1" );
-		if ( !( new Long(-44)).toString().equals("-44"))
-			harness.fail("Error: test_toString failed - 2" );
+		harness.check(!( !( new Long(123)).toString().equals("123")), 
+			"Error: test_toString failed - 1" );
+		harness.check(!( !( new Long(-44)).toString().equals("-44")), 
+			"Error: test_toString failed - 2" );
 
-		if ( !Long.toString( 234 ).equals ("234" ))
-			harness.fail("Error: test_toString failed - 3" );
-		if ( !Long.toString( -34 ).equals ("-34" ))
-			harness.fail("Error: test_toString failed - 4" );
-		if ( !Long.toString( -34 ).equals ("-34" ))
-			harness.fail("Error: test_toString failed - 5" );
+		harness.check(!( !Long.toString( 234 ).equals ("234" )), 
+			"Error: test_toString failed - 3" );
+		harness.check(!( !Long.toString( -34 ).equals ("-34" )), 
+			"Error: test_toString failed - 4" );
+		harness.check(!( !Long.toString( -34 ).equals ("-34" )), 
+			"Error: test_toString failed - 5" );
 
-		if ( !Long.toString(99 , 1 ).equals("99"))
-			harness.fail("Error: test_toString failed - 6" );
-		if ( !Long.toString(99 , 37 ).equals("99"))
-			harness.fail("Error: test_toString failed - 7" );
+		harness.check(!( !Long.toString(99 , 1 ).equals("99")), 
+			"Error: test_toString failed - 6" );
+		harness.check(!( !Long.toString(99 , 37 ).equals("99")), 
+			"Error: test_toString failed - 7" );
 
-		if ( !Long.toString(15 , 2 ).equals("1111"))
-			harness.fail("Error: test_toString failed - 8" );
-		if ( !Long.toString(37 , 36 ).equals("11"))
-			harness.fail("Error: test_toString failed - 9" );
-		if ( !Long.toString(31 , 16 ).equals("1f"))
-			harness.fail("Error: test_toString failed - 10" );
+		harness.check(!( !Long.toString(15 , 2 ).equals("1111")), 
+			"Error: test_toString failed - 8" );
+		harness.check(!( !Long.toString(37 , 36 ).equals("11")), 
+			"Error: test_toString failed - 9" );
+		harness.check(!( !Long.toString(31 , 16 ).equals("1f")), 
+			"Error: test_toString failed - 10" );
 
 
-		if ( !Long.toString(-99 , 1 ).equals("-99"))
-			harness.fail("Error: test_toString failed - 11" );
-		if ( !Long.toString(-99 , 37 ).equals("-99"))
-			harness.fail("Error: test_toString failed - 12" );
+		harness.check(!( !Long.toString(-99 , 1 ).equals("-99")), 
+			"Error: test_toString failed - 11" );
+		harness.check(!( !Long.toString(-99 , 37 ).equals("-99")), 
+			"Error: test_toString failed - 12" );
 
-		if ( !Long.toString(-15 , 2 ).equals("-1111"))
-			harness.fail("Error: test_toString failed - 13" );
-		if ( !Long.toString(-37 , 36 ).equals("-11"))
-			harness.fail("Error: test_toString failed - 14" );
-		if ( !Long.toString(-31 , 16 ).equals("-1f"))
-			harness.fail("Error: test_toString failed - 15" );
+		harness.check(!( !Long.toString(-15 , 2 ).equals("-1111")), 
+			"Error: test_toString failed - 13" );
+		harness.check(!( !Long.toString(-37 , 36 ).equals("-11")), 
+			"Error: test_toString failed - 14" );
+		harness.check(!( !Long.toString(-31 , 16 ).equals("-1f")), 
+			"Error: test_toString failed - 15" );
 	}
 
 	public void test_equals()
@@ -114,26 +114,26 @@ public class LongTest implements Testlet
 		Long i1 = new Long(23);
 		Long i2 = new Long(-23);
 
-		if ( !i1.equals( new Long(23)))
-			harness.fail("Error: test_equals failed - 1" );
-		if ( !i2.equals( new Long(-23)))
-			harness.fail("Error: test_equals failed - 2" );
+		harness.check(!( !i1.equals( new Long(23))), 
+			"Error: test_equals failed - 1" );
+		harness.check(!( !i2.equals( new Long(-23))), 
+			"Error: test_equals failed - 2" );
 
 		
-		if ( i1.equals( i2 ))
-			harness.fail("Error: test_equals failed - 3" );
+		harness.check(!( i1.equals( i2 )), 
+			"Error: test_equals failed - 3" );
 
-		if ( i1.equals(null))
-			harness.fail("Error: test_equals failed - 4" );
+		harness.check(!( i1.equals(null)), 
+			"Error: test_equals failed - 4" );
 	}
 
 	public void test_hashCode( )
 	{
 		Long b1 = new Long(34395555);
 		Long b2 = new Long(-34395555);
-		if ( b1.hashCode() != ((int)(b1.longValue()^(b1.longValue()>>>32)))  
-			|| b2.hashCode() != ((int)(b2.longValue()^(b2.longValue()>>>32))) )
-			harness.fail("Error: test_hashCode returned wrong results" );
+		harness.check(!( b1.hashCode() != ((int)(b1.longValue()^(b1.longValue()>>>32)))  
+			|| b2.hashCode() != ((int)(b2.longValue()^(b2.longValue()>>>32))) ), 
+			"Error: test_hashCode returned wrong results" );
 	}
 
 	public void test_intValue( )
@@ -141,27 +141,27 @@ public class LongTest implements Testlet
 		Long b1 = new Long(32767);
 		Long b2 = new Long(-32767);
 
-		if ( b1.intValue() != 32767 ) 
-			harness.fail("Error: test_intValue returned wrong results - 1" );
+		harness.check(!( b1.intValue() != 32767 ),  
+			"Error: test_intValue returned wrong results - 1" );
 
-		if ( b2.intValue() != -32767 ) 
-			harness.fail("Error: test_intValue returned wrong results - 2" );
+		harness.check(!( b2.intValue() != -32767 ),  
+			"Error: test_intValue returned wrong results - 2" );
 	}
 	public void test_shortbyteValue( )
 	{
 		Long b1 = new Long(32767);
 		Long b2 = new Long(-32767);
 
-		if ( b1.byteValue() != (byte)32767 ) 
-			harness.fail("Error: test_shortbyteValue returned wrong results - 1" );
+		harness.check(!( b1.byteValue() != (byte)32767 ),  
+			"Error: test_shortbyteValue returned wrong results - 1" );
 
-		if ( b2.byteValue() != (byte)-32767 ) 
-			harness.fail("Error: test_shortbyteValue returned wrong results - 2" );
-		if ( b1.shortValue() != (short)32767 ) 
-			harness.fail("Error: test_shortbyteValue returned wrong results - 3" );
+		harness.check(!( b2.byteValue() != (byte)-32767 ),  
+			"Error: test_shortbyteValue returned wrong results - 2" );
+		harness.check(!( b1.shortValue() != (short)32767 ),  
+			"Error: test_shortbyteValue returned wrong results - 3" );
 
-		if ( b2.shortValue() != (short)-32767 ) 
-			harness.fail("Error: test_shortbyteValue returned wrong results - 4" );
+		harness.check(!( b2.shortValue() != (short)-32767 ),  
+			"Error: test_shortbyteValue returned wrong results - 4" );
 	}
 
 	public void test_longValue( )
@@ -169,33 +169,33 @@ public class LongTest implements Testlet
 		Long b1 = new Long(-9223372036854775807L);
 		Long b2 = new Long(9223372036854775807L);
 
-		if ( b1.longValue() != (long)-9223372036854775807L ) 
-			harness.fail("Error: test_longValue returned wrong results - 1" );
+		harness.check(!( b1.longValue() != (long)-9223372036854775807L ),  
+			"Error: test_longValue returned wrong results - 1" );
 
-		if ( b2.longValue() != 9223372036854775807L ) 
-			harness.fail("Error: test_longValue returned wrong results - 2" );
+		harness.check(!( b2.longValue() != 9223372036854775807L ),  
+			"Error: test_longValue returned wrong results - 2" );
 	}
 	public void test_floatValue( )
 	{
 		Long b1 = new Long(3276);
 		Long b2 = new Long(-3276);
 
-		if ( b1.floatValue() != 3276.0f ) 
-			harness.fail("Error: test_floatValue returned wrong results - 1" );
+		harness.check(!( b1.floatValue() != 3276.0f ),  
+			"Error: test_floatValue returned wrong results - 1" );
 
-		if ( b2.floatValue() != -3276.0f ) 
-			harness.fail("Error: test_floatValue returned wrong results - 2" );
+		harness.check(!( b2.floatValue() != -3276.0f ),  
+			"Error: test_floatValue returned wrong results - 2" );
 	}
 	public void test_doubleValue( )
 	{
 		Long b1 = new Long(0);
 		Long b2 = new Long(30);
 
-		if ( b1.doubleValue() != 0.0 ) 
-			harness.fail("Error: test_doubleValue returned wrong results - 1" );
+		harness.check(!( b1.doubleValue() != 0.0 ),  
+			"Error: test_doubleValue returned wrong results - 1" );
 
-		if ( b2.doubleValue() != 30.0 ) 
-			harness.fail("Error: test_doubleValue returned wrong results - 2" );
+		harness.check(!( b2.doubleValue() != 30.0 ),  
+			"Error: test_doubleValue returned wrong results - 2" );
 	}
 
 	public void test_toHexString()
@@ -205,11 +205,11 @@ public class LongTest implements Testlet
 		str = Long.toHexString(8375);
 		str1 = Long.toHexString( -5361 ); 
 
-		if ( !str.equalsIgnoreCase("20B7"))
-			harness.fail("Error: test_toHexString returned wrong results - 1" );
+		harness.check(!( !str.equalsIgnoreCase("20B7")), 
+			"Error: test_toHexString returned wrong results - 1" );
 
-		if ( !str1.equalsIgnoreCase("ffffffffffffeb0f"))
-			harness.fail("Error: test_toHexString returned wrong results - 2" );	
+		harness.check(!( !str1.equalsIgnoreCase("ffffffffffffeb0f")), 
+			"Error: test_toHexString returned wrong results - 2" );	
 	}
 
 	public void test_toOctalString()
@@ -218,43 +218,43 @@ public class LongTest implements Testlet
 		str = Long.toOctalString(5847);
 		str1= Long.toOctalString(-9863 );
 
-		if ( !str.equals("13327"))
-			harness.fail("Error: test_toOctalString returned wrong results - 1" );
+		harness.check(!( !str.equals("13327")), 
+			"Error: test_toOctalString returned wrong results - 1" );
 
-		if ( !str1.equals("1777777777777777754571"))
-			harness.fail("Error: test_toOctalString returned wrong results - 2" );	
+		harness.check(!( !str1.equals("1777777777777777754571")), 
+			"Error: test_toOctalString returned wrong results - 2" );	
 	}
 
 	public void test_toBinaryString()
 	{
 		String str1 = Long.toBinaryString( -5478 ); 
-		if ( !Long.toBinaryString(358).equals("101100110"))
-			harness.fail("Error: test_toBinaryString returned wrong results - 1" );
+		harness.check(!( !Long.toBinaryString(358).equals("101100110")), 
+			"Error: test_toBinaryString returned wrong results - 1" );
 
-		if ( !str1.equals("1111111111111111111111111111111111111111111111111110101010011010"))
-			harness.fail("Error: test_toBinaryString returned wrong results - 2" );	
+		harness.check(!( !str1.equals("1111111111111111111111111111111111111111111111111110101010011010")), 
+			"Error: test_toBinaryString returned wrong results - 2" );	
 	}
 
 	public void test_parseLong()
 	{
-		if ( Long.parseLong("473") != Long.parseLong("473" , 10 ))
-			harness.fail("Error: test_parseLong returned wrong results - 1" );	
+		harness.check(!( Long.parseLong("473") != Long.parseLong("473" , 10 )), 
+			"Error: test_parseLong returned wrong results - 1" );	
 
-		if ( Long.parseLong("0" , 10 ) != 0L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 2" );	
+		harness.check(!( Long.parseLong("0" , 10 ) != 0L ),  
+			"Error: test_parseLong returned wrong results - 2" );	
 
-		if ( Long.parseLong("473" , 10 ) != 473L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 3" );	
-		if ( Long.parseLong("-0" , 10 ) != 0L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 4" );	
-		if ( Long.parseLong("-FF" , 16 ) != -255L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 5" );	
-		if ( Long.parseLong("1100110" , 2 ) != 102L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 6" );	
-		if ( Long.parseLong("2147483647" , 10 )  !=  2147483647L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 7" );	
-		if ( Long.parseLong("-2147483647" , 10 ) != -2147483647L ) 
-			harness.fail("Error: test_parseLong returned wrong results - 8" );	
+		harness.check(!( Long.parseLong("473" , 10 ) != 473L ),  
+			"Error: test_parseLong returned wrong results - 3" );	
+		harness.check(!( Long.parseLong("-0" , 10 ) != 0L ),  
+			"Error: test_parseLong returned wrong results - 4" );	
+		harness.check(!( Long.parseLong("-FF" , 16 ) != -255L ),  
+			"Error: test_parseLong returned wrong results - 5" );	
+		harness.check(!( Long.parseLong("1100110" , 2 ) != 102L ),  
+			"Error: test_parseLong returned wrong results - 6" );	
+		harness.check(!( Long.parseLong("2147483647" , 10 )  !=  2147483647L ),  
+			"Error: test_parseLong returned wrong results - 7" );	
+		harness.check(!( Long.parseLong("-2147483647" , 10 ) != -2147483647L ),  
+			"Error: test_parseLong returned wrong results - 8" );	
 
 		try {
 			Long.parseLong("99" , 8 );
@@ -266,8 +266,8 @@ public class LongTest implements Testlet
 			harness.fail("Error: test_parseLong returned wrong results - 11" );	
 		}catch ( NumberFormatException e ){}
 
-        	if ( Long.parseLong("Hazelnut" , 36 ) != 1356099454469L )
-			harness.fail("Error: test_parseLong returned wrong results - 12" );	
+        	harness.check(!( Long.parseLong("Hazelnut" , 36 ) != 1356099454469L ), 
+			"Error: test_parseLong returned wrong results - 12" );	
 
 
         	long_hex_ok("-8000000000000000", -0x8000000000000000L);
@@ -350,10 +350,10 @@ public class LongTest implements Testlet
 
 	public void test_valueOf( )
 	{
-		if ( Long.valueOf("21234").longValue() != Long.parseLong("21234"))
-			harness.fail("Error: test_valueOf returned wrong results - 1" );	
-		if ( Long.valueOf("Kona", 27).longValue() != Long.parseLong("Kona", 27))
-			harness.fail("Error: test_valueOf returned wrong results - 2" );	
+		harness.check(!( Long.valueOf("21234").longValue() != Long.parseLong("21234")), 
+			"Error: test_valueOf returned wrong results - 1" );	
+		harness.check(!( Long.valueOf("Kona", 27).longValue() != Long.parseLong("Kona", 27)), 
+			"Error: test_valueOf returned wrong results - 2" );	
 	}
 
 	public void test_getLong( )
@@ -373,20 +373,20 @@ public class LongTest implements Testlet
 
 		System.setProperties(prop);
 
-		if ( Long.getLong("longkey1").longValue() != 2345 ||
+		harness.check(!( Long.getLong("longkey1").longValue() != 2345 ||
 			 Long.getLong("longkey2").longValue() != -984 ||
-			 Long.getLong("longkey3").longValue() != 0 )
-			harness.fail("Error: test_getLong returned wrong results - 1" );
+			 Long.getLong("longkey3").longValue() != 0 ), 
+			"Error: test_getLong returned wrong results - 1" );
 
-		if ( Long.getLong("longkey4", new Long(0)).longValue() != 31 ||
+		harness.check(!( Long.getLong("longkey4", new Long(0)).longValue() != 31 ||
 			 Long.getLong("longkey5",new Long(0)).longValue() != 31 ||
-			 Long.getLong("longkey6",new Long(0)).longValue() != 15 )
-			harness.fail("Error: test_getLong returned wrong results - 2" );
+			 Long.getLong("longkey6",new Long(0)).longValue() != 15 ), 
+			"Error: test_getLong returned wrong results - 2" );
 
-		if ( Long.getLong("longkey7", new Long(0)).longValue() != 0 )
-			harness.fail("Error: test_getLong returned wrong results - 3" );
-		if ( Long.getLong("longkey7", 0).longValue() != 0 )
-			harness.fail("Error: test_getLong returned wrong results - 4" );
+		harness.check(!( Long.getLong("longkey7", new Long(0)).longValue() != 0 ), 
+			"Error: test_getLong returned wrong results - 3" );
+		harness.check(!( Long.getLong("longkey7", 0).longValue() != 0 ), 
+			"Error: test_getLong returned wrong results - 4" );
 
 	}
 
