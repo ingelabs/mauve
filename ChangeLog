@@ -1,3 +1,15 @@
+1999-05-18  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java
+	  (invalid_port): Catch NullPointerException.
+	  (invalid_receive_data): Print stack trace after failure msg.
+	* gnu/testlet/java/net/MulticastSocket/MulticastClient.java:
+	  New file.
+	* gnu/testlet/java/net/MulticastSocket/MulticastServer.java:
+	  New file.
+	* gnu/testlet/java/net/MulticastSocket/MulticastSocketTest.java:
+	  New file.
+
 1999-05-12  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/net/DatagramPacket/DatagramPacketTest.java:

@@ -106,6 +106,11 @@ public class DatagramSocketTest2 implements Testlet
 		{
 			errormsg("invalid_port", 1, false, "SocketException");
 		}
+		catch (NullPointerException e)
+		{
+			errormsg("invalid_port", 1, false, "NullPointerException");
+			e.printStackTrace();
+		}
 
 		try
 		{
@@ -171,8 +176,8 @@ public class DatagramSocketTest2 implements Testlet
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
 			errormsg("invalid_receive_data", 1, false, "Exception");
+			e.printStackTrace();
 			return;
 		}
 
