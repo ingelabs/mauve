@@ -1,3 +1,10 @@
+2004-10-15  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/lang/Double/parseDouble.java: New tests.
+	* gnu/testlet/java/lang/Double/valueOf.java: Likewise.
+	* gnu/testlet/java/lang/Float/parseFloat.java: Likewise.
+	* gnu/testlet/java/lang/Float/valueOf.java: Likewise.
+
 2004-10-15  Sven de Marothy  <sven@physto.se>
 
 	* gnu/testlet/java/nio/ByteBuffer/putDouble.java: New test.
