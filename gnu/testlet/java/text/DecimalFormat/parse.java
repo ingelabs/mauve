@@ -76,8 +76,12 @@ public class parse implements Testlet
 
       apply (harness, df, "0");
       num = parse (df, "-1235", pp);
-      harness.check (num instanceof Double);
+      harness.check (num instanceof Long);
       harness.check (num.longValue (), -1235);
+
+      num = parse (df, Long.toString (Long.MIN_VALUE), pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue(), Long.MIN_VALUE);
 
       apply (harness, df, "'#'#.#");
       num = parse (df, "#30", pp);
@@ -89,7 +93,7 @@ public class parse implements Testlet
 
       apply (harness, df, "0.0000E#");
       num = parse (df, "2.000E+5", pp);
-      harness.check (num instanceof Long);
+      harness.check (num instanceof Double);
       harness.check (num.longValue (), 200000);
 
       apply (harness, df, "###0.#;(###0.#)");
@@ -107,5 +111,10 @@ public class parse implements Testlet
       num = parse (df, "303-", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue (), -303);
+
+      String s = df.format (Long.MIN_VALUE);
+      num = parse (df, Long.toString (Long.MIN_VALUE), pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue(), Long.MIN_VALUE);
     }
 }

@@ -1,6 +1,9 @@
 1999-03-11  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/DecimalFormat/parse.java (test): Added
+	some boundary case checks.  Correct bugs in two test cases.
+
+	* gnu/testlet/java/text/DecimalFormat/parse.java (test): Added
 	trailing `-' case.
 
 	* gnu/testlet/java/text/DecimalFormat/parse.java: New file.
