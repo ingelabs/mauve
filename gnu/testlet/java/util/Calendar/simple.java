@@ -47,7 +47,11 @@ public class simple implements Testlet
     date = calendar.getTime();
     harness.check (format.format(date), "06/01/2001");
 
-    harness.check ("weekday = " + calendar.get(Calendar.DAY_OF_WEEK),
-		   "weekday = 6");
+    // Although this looks reasonable, and it does work in the JDK, it
+    // isn't actually guaranteed to work.  In fact, incrementing MONTH
+    // and then looking at DAY_OF_WEEK is the example in the 1.2
+    // online docs which shows that this may not work.
+    // harness.check ("weekday = " + calendar.get(Calendar.DAY_OF_WEEK),
+    // "weekday = 6");
   }
 }
