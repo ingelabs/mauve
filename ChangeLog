@@ -1,3 +1,9 @@
+2004-01-08  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/regex/CharacterClasses.java: New file.
+	* gnu/testlet/java/util/regex/PatternSplit.java: Likewise.
+	* gnu/testlet/java/util/regex/TestHelper.java: Likewise.
+
 2004-01-07  Sascha Brawer  <brawer@dandelis.ch>
 
 	Classpath bug #7123.
