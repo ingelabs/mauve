@@ -27,11 +27,18 @@ import gnu.testlet.TestHarness;
 
 import java.sql.*;
 
+import java.util.SimpleTimeZone;
+import java.util.TimeZone;
+
 public class TimestampTest implements Testlet
 {
   public void
   test(TestHarness harness)
   {
+     // Set a common timezone to get the same result everywhere.
+    SimpleTimeZone stz = new SimpleTimeZone(-5 * 1000 * 3600, "GMT");
+    TimeZone.setDefault(stz);
+
     try {
       Timestamp.valueOf("NoSuchTime");
       harness.check(false, "valueOf");
@@ -40,24 +47,35 @@ public class TimestampTest implements Testlet
       harness.check(true, "valueOf");
     }
 
+
     Timestamp ts = new Timestamp(1099999999333L);
     harness.check(ts.getNanos() == 333000000, "getNanos");
     harness.check(ts.toString().equals("2004-11-09 06:33:19.333"),
                   "toString");
+    harness.debug(ts.toString());
 
     ts.setNanos(42);
     harness.check(ts.getNanos() == 42, "getNanos");
     harness.check(ts.toString().equals("2004-11-09 06:33:19.000000042"),
                   "toString");
 
+    harness.debug(ts.toString());
+
     ts.setNanos(0);
     harness.check(ts.getNanos() == 0, "getNanos");
     harness.check(ts.toString().equals("2004-11-09 06:33:19.0"),
                   "toString");
-    
+
+    harness.debug(ts.toString());
+
     Timestamp ts2 = new Timestamp(1099999999999L);
     harness.check(ts.equals(ts2) == false, "equals");
     ts.setNanos(999000000);
     harness.check(ts.equals(ts2), "equals");
+
+    harness.debug(ts.toString());
+    
+    // Restore Timezone
+    TimeZone.setDefault(null);
   }
 }

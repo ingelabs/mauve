@@ -1,3 +1,8 @@
+2004-10-10  Andreas Tobler <toa@pop.agri.ch>
+
+	* gnu/testlet/java/sql/Timestamp/TimestampTest.java: Set default
+	TimeZone before the tests.
+
 2004-10-08  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/util/Calendar/set.java: New test.
