@@ -1,8 +1,14 @@
+2002-10-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/File/listFiles.java: New test.
+
 2002-10-23  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Class/ClassTest.java: fix subtest #2
 	for Class.getClassLoader() to check for JDK 1.3/1.4 behaviour
 
 2002-10-21  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Class/reflect2.java: Completed tests for
 	inner class introspection methods.  (No testing of security yet)
 	* gnu/testlet/java/lang/Class/reflect.java: ditto
@@ -10,11 +16,13 @@
 	* gnu/testlet/java/lang/Class/rf_help.java: ditto
 
 2002-10-20  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Class/ClassTest.java: Rejigged to use
 	'harness.check(...)' rather than 'if (!...) { harness.fail(...) }
 	* gnu/testlet/java/lang/Class/reflect.java: Cosmetic tidyups.
 
 2002-10-19  Stephen Crawley <crawley@dstc.edu.au>
+
 	* gnu/testlet/java/lang/Class/reflect2.java: New test for the
 	inner class reflection methods.
 	* gnu/testlet/java/lang/Class/rf2_help.java: Helper for above test.
@@ -22,6 +30,7 @@
 	reporting and indentation
 
 2002-10-18  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/net/URL/URLTestjava: change "sourceware.cygnus.com"
 	to "sources.redhat.com".
 
