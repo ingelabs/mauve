@@ -1,3 +1,8 @@
+2003-06-05  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Added
+	regression test including "." in format; from Scott Gilbertson.
+
 2003-06-03  Stephen Crawley  <crawley@dstc.edu.au>
         * gnu/testlet/java/math/BigDecimal/setScale.java: added new
 	  setScale testcase from Jerry Quinn <jlquinn@optonline.net>

@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Test.java -- Test java.text.SimpleDateFormat
 /*
-/* Copyright (c) 1998, 1999, 2001 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 1999, 2001, 2003 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -106,6 +106,21 @@ test(TestHarness harness)
       else
         harness.debug("Parsed: " + date_strs[i] + " as: " + d);
     }
+
+  sdf = new SimpleDateFormat("MM'/'dd'/'yyyy' 'H':'m':'s'.'SSS");
+  boolean ok = true;
+  try
+    {
+      d = sdf.parse("05/24/2002 14:30:53.700");
+      // For the time being only check to make sure something
+      // happened.
+      ok = d != null;
+    }
+  catch (Exception _)
+    {
+      ok = false;
+    }
+  harness.check(ok, "format includes '.'");
 }
 
 } // class Test
