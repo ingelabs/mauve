@@ -93,6 +93,7 @@ public class reflect implements Testlet
   {
     Class reflect_class = getClass ("gnu.testlet.java.lang.Class.reflect");
     Class rf_help_class = getClass ("gnu.testlet.java.lang.Class.rf_help");
+    Class i_class = Integer.TYPE;
 
     Class[] ptz = new Class[0];
     Class[] pt1 = new Class[1];
@@ -108,6 +109,9 @@ public class reflect implements Testlet
     harness.check(cons instanceof NoSuchMethodException);
 
     cons = getCons (rf_help_class, ptz, false);
+    harness.check(cons instanceof NoSuchMethodException);
+
+    cons = getCons (i_class, ptz, false);
     harness.check(cons instanceof NoSuchMethodException);
 
     harness.checkPoint("getConstructors");
@@ -135,10 +139,23 @@ public class reflect implements Testlet
 	harness.check(false);
       }
 
+    try
+      {
+	Constructor[] cls = i_class.getConstructors();
+	harness.check(cls.length, 0);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check(false);
+      }
+
     harness.checkPoint ("getDeclaredConstructor");
     cons = getCons (rf_help_class, ptz, true);
     harness.check(cons instanceof Constructor);
     cons = getCons (rf_help_class, pt1, true);
+    harness.check(cons instanceof NoSuchMethodException);
+    cons = getCons (i_class, ptz, true);
     harness.check(cons instanceof NoSuchMethodException);
 
     harness.checkPoint("getDeclaredConstructors");
@@ -165,6 +182,17 @@ public class reflect implements Testlet
       {
 	// One per check above.
 	harness.check(false);
+	harness.check(false);
+      }
+
+    try
+      {
+	Constructor[] cls = i_class.getDeclaredConstructors();
+	harness.check(cls.length, 0);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
 	harness.check(false);
       }
 
@@ -200,6 +228,17 @@ public class reflect implements Testlet
       {
 	Field[] flds = rf_help_class.getFields();
 	harness.check(flds.length, 1);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check(false);
+      }
+
+    try
+      {
+	Field[] flds = i_class.getFields();
+	harness.check(flds.length, 0);
       }
     catch (SecurityException se)
       {
@@ -248,6 +287,17 @@ public class reflect implements Testlet
 	harness.check (false);
       }
 
+    try
+      {
+	Method[] ms = i_class.getMethods();
+	harness.check (ms.length, 0);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check (false);
+      }
+
     harness.checkPoint("getDeclaredMethod");
     m = getMethod (rf_help_class, "doit", ptz, true);
     harness.check (m instanceof Method);
@@ -284,9 +334,21 @@ public class reflect implements Testlet
 	harness.check (false);
       }
 
+    try
+      {
+	Method[] ms = i_class.getDeclaredMethods();
+	harness.check (ms.length, 0);
+      }
+    catch (SecurityException se)
+      {
+	// One per check above.
+	harness.check (false);
+      }
+
     harness.checkPoint("getDeclaringClass");
-    // Neither of these classes has a declaring class.
+    // None of these classes has a declaring class.
     harness.check(rf_help_class.getDeclaringClass(), null);
     harness.check(reflect_class.getDeclaringClass(), null);
+    harness.check(i_class.getDeclaringClass(), null);
   }
 }

@@ -1,5 +1,8 @@
 2000-01-06  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Class/reflect.java (test): Added tests for
+	int.class.
+
 	* gnu/testlet/java/lang/reflect/Method/invoke.java (test): Use
 	`na_meth' and not `ti_meth' in null pointer test.  Added some
 	comments.
