@@ -2,6 +2,7 @@
 /* BlobTest.java - Test java.util.Blob interface
 /*
 /* Copyright (c) 1999 Aaron M. Renn (arenn@urbanophile.com)
+/* Copyright (c) 2002 Mark J. Wielaard (mark@klomp.org)
 /*
 /* This program is free software; you can redistribute it and/or modify
 /* it under the terms of the GNU General Public License as published 
@@ -24,6 +25,7 @@ package gnu.testlet.java.sql.Blob;
 
 import java.sql.*;
 import java.io.InputStream;
+import java.io.OutputStream;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
@@ -64,6 +66,29 @@ public long
 position(Blob pattern, long offset) throws SQLException
 {
   return(0);
+}
+
+public int
+setBytes(long l,byte[] bs)
+{
+  return(0);
+}
+
+public int
+setBytes(long l ,byte[] bs ,int i1, int i2)
+{
+  return(0);
+}
+
+public void
+truncate(long l)
+{
+  return;
+}
+
+public OutputStream setBinaryStream(long l)
+{
+  return(null);
 }
 
 } // class BlobTest

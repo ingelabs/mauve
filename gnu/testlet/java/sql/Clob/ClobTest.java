@@ -2,6 +2,7 @@
 /* ClobTest.java - Test java.sql.Clob
 /*
 /* Copyright (c) 1999 Aaron M. Renn (arenn@urbanophile.com)
+/* Copyright (c) 2002 Mark J. Wielaard (mark@klomp.org)
 /*
 /* This program is free software; you can redistribute it and/or modify
 /* it under the terms of the GNU General Public License as published 
@@ -24,7 +25,9 @@ package gnu.testlet.java.sql.Clob;
 
 import java.sql.*;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Reader;
+import java.io.Writer;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
@@ -73,5 +76,33 @@ position(Clob pattern, long offset) throws SQLException
   return(0);
 }
 
-} // class ClobTest
+public int
+setString(long l, String s) throws SQLException
+{
+  return(0);
+}
 
+public int
+setString(long l, String s, int i1, int i2) throws SQLException
+{
+  return(0);
+}
+
+public OutputStream setAsciiStream(long l) throws SQLException
+{
+  return(null);
+}
+
+public Writer
+setCharacterStream(long l) throws SQLException
+{
+  return(null);
+}
+
+public void
+truncate(long l) throws SQLException
+{
+  return;
+}
+
+} // class ClobTest

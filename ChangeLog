@@ -1,10 +1,24 @@
+2002-10-11  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/sql/Blob/BlobTest.java: Make it compile with
+	JDBC3.0.
+	* gnu/testlet/java/sql/Clob/ClobTest.java: Likewise.
+	* gnu/testlet/java/sql/Connection/TestJdbc10.java: Removed.
+	* gnu/testlet/java/sql/Connection/TestJdbc20.java: Removed.
+	* gnu/testlet/java/sql/Connection/TestJdbc.java: Merge of above two
+	test cases that should now work with any JDBC version.
+	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc10.java: Removed.
+	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc20.java: Removed.
+	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc.java: Merge of above
+	two test cases that should now work with any JDBC version.
+
 2002-10-09  Daryl Lee  <dol@sources.redhat.com>
 
 	* Renamed gnu/testlet/java/io/DataInputOutput to .../DataOutputStream
 	to make directory name align with java.io package class names
 	* Moved read-oriented tests to .../DataInputStream
 	* Fixed associated package and paths
-	
+
 2002-10-09  Daryl Lee  <dol@sources.redhat.com>
 
 	* Corrected conflict in this file in 2002-09-20 comments
