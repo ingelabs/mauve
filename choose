@@ -61,7 +61,7 @@ while test -n "$taglist"; do
        echo "Invalid tag: $i" 1>&2
        exit 1
        ;;
-    !java.* | java.* | !javax.* | javax.*)
+    !java.* | java.* | !javax.* | javax.* | !BinaryCompatibility.* | BinaryCompatibility.*)
        file="`echo $i | tr . /`"
        file_specs="$file_specs $file"
        ;;

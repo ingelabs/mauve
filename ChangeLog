@@ -1,3 +1,8 @@
+2004-03-21  Michael Koch  <konqueror@gmx.de>
+
+	* choose, choose-classes: Added handling for suppression testcases in
+	BinaryCompatibility.* namespace.
+
 2004-03-15  Michael Koch  <konqueror@gmx.de>
 
 	* THANKS: Added myself.
