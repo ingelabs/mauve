@@ -96,6 +96,6 @@ public class format implements Testlet
       args[0] = new Double (.99);
       mf.applyPattern ("the disk is {0,number,percent} full");
       harness.check (format (mf, args, buf),
-		     "the disk is 99.00% full");
+		     "the disk is 99% full");
     }
 }

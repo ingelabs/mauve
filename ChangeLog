@@ -1,3 +1,15 @@
+1999-03-08  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/Test.java: Catch any
+	throwable, not just ParseException.
+
+	* gnu/testlet/java/text/MessageFormat/format.java: Default percent
+	format includes no fraction part.
+
+	* choose: Remove $usesfile.
+
+	* gnu/testlet/java/text/DecimalFormat/format.java: New file.
+
 1999-03-08  Andrew Haley  <aph@cygnus.com>
 
 	* gnu/testlet/java/lang/Long/new_Long.java: Add boundary checks

@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Test.java -- Test java.text.SimpleDateFormat
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 1999 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -67,7 +67,7 @@ test(TestHarness harness)
     {
       harness.check(sdf.parse(formatted_date), d, "parse() strict");
     }
-  catch(ParseException e)
+  catch(Throwable e)
     {
       harness.debug(e);
       harness.check(false, "parse() strict");
@@ -100,7 +100,7 @@ test(TestHarness harness)
         {
           d = sdf.parse(date_strs[i]);
         }
-      catch(ParseException e) { ; }
+      catch(Throwable e) { ; }
       if (d == null)
         harness.debug("Couldn't parse: " + date_strs[i]);
       else

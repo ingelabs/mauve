@@ -261,5 +261,6 @@ else
    mv $choices $outdir/choices
    mv $classes $outdir/classes
 fi
+rm $usesfile
 
 exit 0
