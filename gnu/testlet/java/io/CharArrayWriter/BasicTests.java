@@ -45,19 +45,29 @@ test(TestHarness harness)
   CharArrayWriter writer = new CharArrayWriter();
   if (writer.size() != 0)
     harness.check(writer.size(), 0, "empty size");
-  writer.write(firstLines, 0, firstLines.length());
-  writer.write(32);
   char[] thirdLineArray = new char[thirdLine.length()];
-  thirdLine.getChars(0, thirdLine.length(), thirdLineArray, 0);
-  writer.write(thirdLineArray, 2, 5);
-  String extractedString = writer.toString();
-  harness.check(extractedString, expected, "basic string");
-  /*
-   * Clear the buffer and write some more, then see if
-   * toCharArray works.
-   */
-  writer.reset();
-  writer.write(thirdLine, 0, thirdLine.length());
+  String extractedString;
+  try
+    {
+      writer.write(firstLines, 0, firstLines.length());
+      writer.write(32);
+      thirdLine.getChars(0, thirdLine.length(), thirdLineArray, 0);
+      writer.write(thirdLineArray, 2, 5);
+      extractedString = writer.toString();
+      harness.check(extractedString, expected, "basic string");
+      /*
+       * Clear the buffer and write some more, then see if
+       * toCharArray works.
+       */
+      writer.reset();
+      writer.write(thirdLine, 0, thirdLine.length());
+    }
+  catch (Throwable t)
+    {
+      harness.debug(t);
+      harness.check(false, "Unexpected exception");
+      extractedString = "";
+    }
   char[] resultArray = writer.toCharArray();
   boolean arrayEquals = resultArray.length == thirdLineArray.length;
   if (arrayEquals)
@@ -69,8 +79,16 @@ test(TestHarness harness)
   /*
    * Try flush and close and make sure they do nothing.
    */
-  writer.flush();
-  writer.close();
+  try
+    {
+      writer.flush();
+      writer.close();
+    }
+  catch (Throwable t)
+    {
+      harness.debug(t);
+      harness.check(false, "Unexpected exception flush/close");
+    }
   extractedString = writer.toString();
   harness.check(extractedString, thirdLine, "flush and close");
   /*
