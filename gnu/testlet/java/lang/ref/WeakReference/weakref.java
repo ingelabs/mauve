@@ -33,31 +33,51 @@ import java.lang.ref.*;
 
 public class weakref implements Testlet
 {
-  public WeakReference genRef (ReferenceQueue q, Object o)
+
+  static class Reffer extends Thread
   {
-    return new WeakReference (o, q);
-  }
+    ReferenceQueue q;
+    TestHarness harness;
+    WeakReference wr;
+    Integer twt;
 
-  public WeakReference try1 (ReferenceQueue q, TestHarness harness)
-  {
-    Integer twt = new Integer (23);
-    WeakReference wr = genRef (q, twt);
+    public Reffer (ReferenceQueue q, TestHarness harness)
+    {
+      this.q = q;
+      this.harness = harness;
+    }
 
-    System.gc ();
+    public void run()
+    {
+      twt = new Integer (23);
+      wr = new WeakReference (twt, q);
 
-    Reference r = q.poll ();
-    harness.check (r, null, "live reference");
-    harness.check (wr.get (), twt);
+      System.gc ();
 
-    // Must keep the WeakReference live.
-    return wr;
+      Reference r = q.poll ();
+      harness.check (r, null, "live reference");
+      harness.check (wr.get (), twt);
+    }
   }
 
   public void test (TestHarness harness)
   {
     ReferenceQueue q = new ReferenceQueue ();
 
-    WeakReference wr = try1 (q, harness);
+    // Create reference in a separate thread so no inadvertent references
+    // to the contained object are left on the stack, which causes VM's that
+    // do conservative stack GC scans to report false negatives for this test.
+    Reffer reffer = new Reffer(q, harness); 
+    reffer.start();
+    try {
+      reffer.join();
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+    WeakReference wr = reffer.wr;
+
+    // Weak reference "should" get cleared here
+    reffer.twt = null;
     System.gc ();
 
     Reference r = null;

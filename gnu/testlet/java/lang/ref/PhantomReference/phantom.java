@@ -34,6 +34,7 @@ import java.lang.ref.*;
 public class phantom implements Testlet
 {
   public static int final_count = 0;
+  public static phantom nogc;
 
   public phantom ()
   {
@@ -44,37 +45,58 @@ public class phantom implements Testlet
     ++final_count;
   }
 
-  public PhantomReference genRef (ReferenceQueue q, Object o)
+  static class Reffer extends Thread
   {
-    return new PhantomReference (o, q);
-  }
+    ReferenceQueue q;
+    TestHarness harness;
+    PhantomReference wr;
+    phantom twt;
 
-  public PhantomReference try1 (ReferenceQueue q, TestHarness harness)
-  {
-    phantom twt = new phantom ();
-    PhantomReference wr = genRef (q, twt);
+    public Reffer (ReferenceQueue q, TestHarness harness)
+    {
+      this.q = q;
+      this.harness = harness;
+    }
 
-    // Give the runtime some hints that it should really garbage collect.
-    System.gc ();
-    System.runFinalization();
-    System.gc ();
-    System.runFinalization();
+    public void run()
+    {
+      twt = new phantom ();
+      wr = new PhantomReference (twt, q);
 
-    Reference r = q.poll ();
-    harness.check (r, null, "live reference");
-    harness.check (final_count, 0);
+      // Give the runtime some hints that it should really garbage collect.
+      System.gc ();
+      System.runFinalization();
+      System.gc ();
+      System.runFinalization();
 
-    // Must keep the phantom object live.
-    System.out.println(twt);
-
-    return wr;
+      Reference r = q.poll ();
+      harness.check (r, null, "live reference");
+      harness.check (final_count, 0);
+    }
   }
 
   public void test (TestHarness harness)
   {
+
+    // Make sure 'this' is not finalized while running the test.
+    nogc = this;
+
     ReferenceQueue q = new ReferenceQueue ();
 
-    PhantomReference wr = try1 (q, harness);
+    // Create reference in a separate thread so no inadvertent references
+    // to the contained object are left on the stack, which causes VM's that
+    // do conservative stack GC scans to report false negatives for this test.
+    Reffer reffer = new Reffer(q, harness); 
+    reffer.start();
+    try {
+      reffer.join();
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+    PhantomReference wr = reffer.wr;
+
+    // Phantom reference "should" get cleared here
+    reffer.twt = null;
     System.gc ();
     System.runFinalization();
     System.gc ();
@@ -92,8 +114,5 @@ public class phantom implements Testlet
 
     harness.check (r, wr, "unreachable");
     harness.check (final_count, 1, "object finalized");
-
-    // Make sure we're not GCed while running the test.
-    System.out.println(this);
   }
 }

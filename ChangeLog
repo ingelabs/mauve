@@ -4,6 +4,10 @@
 	more strict and added a few more test cases
 	* gnu/testlet/BinaryCompatibility/foo: put -classpath flag
 	before class name(s) when invoking the Java compiler
+	* gnu/testlet/java/lang/ref/WeakReference/weakref.java,
+	gnu/testlet/java/lang/ref/PhantomReference/phantom.java: create
+	referenced objects in a separate thread to help avoid false
+	negatives in vm's that do conservative scanning of the stack.
 
 2004-12-30  Thomas Zander  <zander@kde.org>
 
