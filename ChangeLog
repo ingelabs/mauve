@@ -1,3 +1,9 @@
+1998-12-07  Andrew Haley  <aph@cygnus.co.uk>
+
+	* gnu/testlet/java/lang/Float/new_Float.java: new file.
+	gnu/testlet/java/lang/Double/new_Double.java: string conversion
+	tests added.
+
 1998-12-06  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/util/ResourceBundle/getBundle.java: Add null
