@@ -143,6 +143,18 @@ used are found in that same package as the test case.
 
 ================================================================
 
+The test harness can also ignore known failures.  Simply create a
+file 'xfails' in the directory where the tests are being run which
+contains 'FAIL:' entries from previous test runs.  The order of the
+lines in the file is immaterial.  Also, the -verbose flag must be
+used.  Totals for both XFAILs and XPASSes will be output at the
+end of the run.
+
+In this way, implementations can track known failures and subsequent
+test runs can thus highlight regressions.
+
+================================================================
+
 There are still a few things to do in the test framework.
 
 

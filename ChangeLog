@@ -1,3 +1,7 @@
+2001-02-13  Warren Levy  <warrenl@redhat.com>
+
+	* README: Included paragraph on ignoring expected failures with xfails.
+
 2001-02-08  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/InputStreamReader/except.java: New file.
