@@ -70,3 +70,48 @@ terms of primitive tags, and then we note the exceptions.
 When adding a new tag, change the `choose' program to map the
 specified tag onto the implied tags.  There is some code near the top
 that handles this transformation.
+
+================================================================
+
+There are still a few things to do in the test framework.
+
+
+It would be nice if we could have tests that can specify their
+expected output.  The expected output could be encoded directly in the
+test, e.g.:
+
+      /*{
+      expected output here
+      }*/
+
+The test harness would be reponsible for extracting this from the test
+source and then setting things up so that the checking is done
+correctly.  SimpleTestHarness could do this by setting System.out to
+point to some string buffer for the duration of the test.
+
+
+Change things so that the .o files can be built directly from the
+.java files without any intermediate .class files.  (Use the same
+configuration options that libjava uses.)
+
+
+Some tests require supporting code from the same directory.  Such
+tests should explicitly list these dependencies, so that a different
+kind of test framework can know how to link these tests properly.
+This is important if we want a single-test-at-a-time DejaGNU-based
+framework (suitable for running tests on target boards).  A new magic
+`// Uses:' comment is probably the way to go.
+
+
+Some tests probably should be run in their own environment.  This
+could be implemented using a new "group" magic comment, along with
+changes to the `choose' program to generate the list of classes in
+chunks.  Each such chunk would be fed into SimpleTestHarness in a
+separate invocation.
+
+
+It would be interesting to be able to compare test results for
+unspecified things against Sun's implementation.  This could be done
+by adding a new method to the test harness.  The `expected' argument
+would come from Sun's implementation.  Unlike `check', a failure here
+would simply be informative.
