@@ -1,3 +1,9 @@
+2003-06-24  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/text/CollationElementIterator/jdk11.java :
+	rewrote tests to check the ordering of collation keys rather than
+	actual key values (which are implementation dependent)
+
 2003-06-08  Mark Wielaard  <mark@klomp.org>
 
 	* choose: Add all classes first to usesfile to uniqify them later
@@ -9,6 +15,7 @@
 	regression test including "." in format; from Scott Gilbertson.
 
 2003-06-03  Stephen Crawley  <crawley@dstc.edu.au>
+	
         * gnu/testlet/java/math/BigDecimal/setScale.java: added new
 	  setScale testcase from Jerry Quinn <jlquinn@optonline.net>
 

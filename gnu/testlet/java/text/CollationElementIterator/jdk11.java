@@ -31,84 +31,130 @@ import java.util.Locale;
 
 public class jdk11 implements Testlet
 {
-  private static final int NEXT = 0;
   private static final int PRIMARY = 1;
   private static final int SECONDARY = 2;
   private static final int TERTIARY = 3;
+
   private static TestHarness harness = null;
 
   public void test(TestHarness harness)
   {
+    // FIXME ... add more test strings for the en_US locale
+    // FIXME ... add tests for characters that compare equal
+    // FIXME ... add tests for other locales
+    final String[] TEST_STRINGS = {
+      "X",
+      "12",
+      "abcdefghijklmnopqrstuvwxyz",
+      "0123456789",
+      " _,;:!?/.`^~'\"()[]{}@$*\\&#%+<=>|",
+      "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ",
+    };
+    final int[] TEST_ORDERS = {
+      PRIMARY,
+      PRIMARY,
+      PRIMARY, 
+      PRIMARY,
+      PRIMARY,
+      TERTIARY,
+    };
+    
     this.harness = harness;
     try
     {
       // -------- constants -------- 
       harness.check(CollationElementIterator.NULLORDER, -1, "NULLORDER");
   
-      RuleBasedCollator en_USCollator = 
-        (RuleBasedCollator)Collator.getInstance(new Locale("en", "US", ""));
+      RuleBasedCollator en_USCollator = (RuleBasedCollator) 
+	Collator.getInstance(new Locale("en", "US", ""));
       CollationElementIterator iterator = 
-        en_USCollator.getCollationElementIterator("This is a test");
+        en_USCollator.getCollationElementIterator("abcdefg");
 
       // -------- methods -------- 
-      int[][] results = new int[][]{
-        {6684673,102,0,1}, {5898240,90,0,0}, {5963776,91,0,0}, 
-        {6619136,101,0,0}, {256,0,1,0}, {5963776,91,0,0}, {6619136,101,0,0}, 
-        {256,0,1,0}, {5373952,82,0,0}, {256,0,1,0}, {6684672,102,0,0}, 
-        {5701632,87,0,0}, {6619136,101,0,0}, {6684672,102,0,0}};
-
-      checkOrder (iterator, results);
+      checkOrder(iterator, 7, PRIMARY, "en_US");
 
       // reset()
-      harness.checkPoint ("reset()");
-      iterator.reset ();
-      checkOrder (iterator, results);
+      harness.checkPoint("reset()");
+      iterator.reset();
+      checkOrder(iterator, 7, PRIMARY, "en_US");
 
       // ------- check empty string --------
       iterator = en_USCollator.getCollationElementIterator("");
-      harness.check (iterator.next (), CollationElementIterator.NULLORDER, "next()");
+      harness.check (iterator.next(), CollationElementIterator.NULLORDER, 
+		     "next()");
+
+      // ------- detailed checks of collation orders -------
+      for (int i = 0; i < TEST_STRINGS.length; i++) {
+	iterator = en_USCollator.getCollationElementIterator(TEST_STRINGS[i]);
+	checkOrder(iterator, TEST_STRINGS[i].length(), TEST_ORDERS[i], 
+		   "test string #" + i);
+      }
     } 
     catch (Throwable t)
     {
-      harness.debug (t);
-      harness.fail ("CollationElementIterator");
+      harness.debug(t);
+      harness.fail("CollationElementIterator");
     }
   }
  
-  static void checkOrder (CollationElementIterator iterator, int[][] results)
+  static void checkOrder (CollationElementIterator iterator, 
+			  int count, int order, String tag)
   {
     try
     {
       // next()
-      int next;
-      int i = 0;
-      while ((next = iterator.next ())  != CollationElementIterator.NULLORDER)
-      {
-        harness.debug ("next = " + next);
-        harness.check (next, results[i][NEXT], "next() " + i);
-  
-        // primaryOrder()
-        int primaryOrder = CollationElementIterator.primaryOrder(next);
-        harness.debug ("  primaryOrder = " + primaryOrder);
-        harness.check (primaryOrder, results[i][PRIMARY], "primaryOrder() " + i);
-  
-        // secondaryOrder()
-        int secondaryOrder = (int)CollationElementIterator.secondaryOrder(next);
-        harness.debug ("  secondaryOrder = " + secondaryOrder);
-        harness.check (secondaryOrder, results[i][SECONDARY], "secondaryOrder() " + i);
+      int key = iterator.next();
+      int[] prev = {key, 
+		    CollationElementIterator.primaryOrder(key),
+		    CollationElementIterator.secondaryOrder(key),
+		    CollationElementIterator.tertiaryOrder(key)
+      };
+      harness.debug("first = {" + prev[0] + ", " + prev[1] + ", " +
+		    prev[2] + ", " + prev[3] + "}");
+      harness.check(key != CollationElementIterator.NULLORDER, "first " + tag);
+      
+      int i = 1;
+      while ((key = iterator.next()) != CollationElementIterator.NULLORDER) {
+	int[] next = {key, 
+		      CollationElementIterator.primaryOrder(key),
+		      CollationElementIterator.secondaryOrder(key),
+		      CollationElementIterator.tertiaryOrder(key)
+	};
 
-        // tertiaryOrder()
-        int tertiaryOrder = (int)CollationElementIterator.tertiaryOrder(next);
-        harness.debug ("  tertiaryOrder = " + tertiaryOrder);
-        harness.check (tertiaryOrder, results[i][TERTIARY], "tertiaryOrder() " + i);
+	harness.debug("next (" + i + ") = {" + 
+		      next[0] + ", " + next[1] + ", " +
+		      next[2] + ", " + next[3] + "}");
+	
+        harness.check(next[0] > prev[0], 
+		      "next() " + i + " " + tag);
+	if (order == PRIMARY) {
+	  harness.check(next[1] > prev[1],
+			"no primary difference " + i + " " + tag);
+	}
+	else if (order == SECONDARY) {
+	  harness.check((next[1] > prev[1]) || 
+			(next[1] == prev[1] && next[2] > prev[2]),
+			"no secondary difference" + i + " " + tag);
+	}
+	else if (order == TERTIARY) {
+	  harness.check((next[1] > prev[1]) || 
+			(next[1] == prev[1] && next[2] > prev[2]) ||
+			(next[1] == prev[1] && next[2] == prev[2] && 
+			 next[3] > prev[3]),
+			"no tertiary difference" + i + " " + tag);
+	}	
+	prev = next;
         i++;
       }
-  
+      if (count != i) {
+	harness.debug("count is " + count + ", i is " + i);
+      }
+      harness.check(count == i, "wrong number of keys " + tag);
     } 
     catch (Throwable t)
     {
       harness.debug (t);
-      harness.fail ("CollationElementIterator");
+      harness.fail ("CollationElementIterator with localeName");
     }
   }
 
