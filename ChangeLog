@@ -2,6 +2,8 @@
 	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java:
 	replace e.printStackTrace() with harness.debug(e)
 	* gnu/testlet/java/net/ServerSocket/MulticastSocketTest.java: ditto
+	* gnu/testlet/java/net/ServerSocket/SocketTest.java: ditto +
+	other tidyups
 	
 2002-11-17  Stephen Crawley <crawley@dstc.edu.au>	
 	* gnu/testlet/java/net/Socket/SocketBServer.java: fixed indentation
