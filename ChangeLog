@@ -1,5 +1,10 @@
 2005-01-14  Arnaud Vandyck  <avdyk@gnu.org>
 
+	* gnu/testlet/javax/swing/text/StringContent/removeUndo.java:
+	More testcases.
+
+2005-01-14  Arnaud Vandyck  <avdyk@gnu.org>
+
 	* gnu/testlet/javax/swing/text/StringContent/insertUndo.java:
 	More testcases.
 
