@@ -164,14 +164,6 @@ Change things so that the .o files can be built directly from the
 configuration options that libjava uses.)
 
 
-Some tests require supporting code from the same directory.  Such
-tests should explicitly list these dependencies, so that a different
-kind of test framework can know how to link these tests properly.
-This is important if we want a single-test-at-a-time DejaGNU-based
-framework (suitable for running tests on target boards).  A new magic
-`// Uses:' comment is probably the way to go.
-
-
 Some tests probably should be run in their own environment.  This
 could be implemented using a new "group" magic comment, along with
 changes to the `choose' program to generate the list of classes in
