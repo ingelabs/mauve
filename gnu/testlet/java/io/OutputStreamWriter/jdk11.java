@@ -40,7 +40,9 @@ public class jdk11 implements Testlet
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		OutputStreamWriter osw = new OutputStreamWriter (baos);  //Default encoding
 		harness.check(true, "OutputStreamWriter(writer)");
-		harness.check(osw.getEncoding(), "8859_1", "getEncoding");
+		harness.check(osw.getEncoding() != null,
+				"non-null getEncoding");
+
 		osw.write(tstr.charAt(0));					// 'A'
 		harness.check(true,"write(int)");
 		osw.write("ABCDE", 1, 3);					// 'ABCD'
@@ -53,7 +55,8 @@ public class jdk11 implements Testlet
 		harness.check(true, "flush()");
 		harness.check(baos.toString(), tstr, "Wrote all characters okay");	
 		osw.close ();
-		harness.check(true, "close()");
+		harness.check(osw.getEncoding(), null,
+				"null encoding after close");
 		ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
 		OutputStreamWriter osw2 = new OutputStreamWriter(baos2, "8859_3");
 		harness.check(osw2.getEncoding(), "8859_3", "OutputStreamWriter(writer, encoding)");
