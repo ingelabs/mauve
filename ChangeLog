@@ -1,3 +1,7 @@
+2001-02-07  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/Arrays/sort.java: New file.
+
 2001-01-16  Warren Levy  <warrenl@redhat.com>
 
 	* gnu/testlet/java/math/BigInteger/shift.java: Added more test cases.
