@@ -1,3 +1,8 @@
+Thu Feb  4 06:26:53 1999  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/util/BitSet/jdk10.java: New file from
+	Artur Biesiadowski.
+
 1999-01-27  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/StringBuffer/plus.java: New file.
