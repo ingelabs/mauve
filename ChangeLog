@@ -1,4 +1,9 @@
-2004-12-03  Jeroen Frijters  <jeroen@frijters>
+2004-12-06  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/io/ObjectInputOutput/ExtTest.java:
+	New test.
+
+2004-12-03  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/Class/ClassTest.java:
 	A couple more Class.forName tests.
