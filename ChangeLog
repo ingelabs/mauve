@@ -1,5 +1,10 @@
 2003-02-09  Raif S. Naffah  <raif@fl.net.au> 
 
+	* gnu/testlet/java/lang/String/getBytes13.java: new test
+	* gnu/testlet/java/lang/String/getBytes14.java: new test
+
+2003-02-09  Raif S. Naffah  <raif@fl.net.au> 
+
 	* gnu/testlet/java/security/SecureRandom/SHA1PRNG.java: new test, 
 	verifies that two similarly seeded SecureRandom objects produce the
 	same results.
