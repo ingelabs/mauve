@@ -11,6 +11,7 @@
 //     to a temp file we create.
 
 package gnu.testlet;
+import java.io.*;
 
 public class SimpleTestHarness extends TestHarness
 {
@@ -78,8 +79,29 @@ public class SimpleTestHarness extends TestHarness
   public static void main (String[] args)
     {
       SimpleTestHarness harness = new SimpleTestHarness ();
-      for (int i = 0; i < args.length; ++i)
-	harness.runtest(args[i]);
+      BufferedReader r
+	= new BufferedReader (new InputStreamReader (System.in));
+      while (true)
+	{
+	  String cname = null;
+	  try
+	    {
+	      cname = r.readLine ();
+	    }
+	  catch (IOException x)
+	    {
+	      // Nothing.
+	    }
+	  if (cname == null)
+	    break;
+	  if (cname.endsWith ("~"))
+	    {
+	      // This means the file is a helper and not a test.
+	      continue;
+	    }
+	  harness.runtest (cname);
+	}
+
       System.exit(harness.done());
     }
 }

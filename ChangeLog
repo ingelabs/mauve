@@ -1,3 +1,22 @@
+1998-11-30  Tom Tromey  <tromey@cygnus.com>
+
+	* Makefile.in: Rebuilt.
+	* Makefile.am (harness_files): New macro.
+	(java_files): Now conditional.
+	(KEYS): New macro.
+	(choices): New target.
+	(classes.stamp): Depend on `choices'.
+	(test_files): Removed.
+	(test_names): Likewise.
+	(check-local): Use `classes' file to determine classes to run.
+	(EXTRA_SimpleTestHarness_SOURCES): Removed.
+	(class_files): Use `choices' file.
+	(FORCE): New target.
+	(recheck): New target.
+	* gnu/testlet/SimpleTestHarness.java (main): Read classes to
+	process from stdin.
+	* choose: New file.
+
 1998-11-25  Tom Tromey  <tromey@cygnus.com>
 
 	* README: New file.

@@ -73,11 +73,13 @@ JC1FLAGS = -g
 
 check_DATA = classes.stamp
 
-java_files := $(shell cd $(srcdir) && find gnu -name '*.java' -print)
-test_files := $(shell cd $(srcdir) && find gnu/testlet/java -name '*.java' -print)
-test_names := $(subst /,.,$(subst .java,,$(test_files)))
+harness_files = gnu/testlet/SimpleTestHarness.java \
+	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java
 
-@USE_GCJ_TRUE@class_files := $(shell find gnu -name '*.class' -print)
+KEYS =
+
+@USE_GCJ_TRUE@java_files := $(harness_files) $(shell test -f choices && cat choices)
+@USE_GCJ_TRUE@class_files := $(patsubst %.java,%.class,$(java_files))
 @USE_GCJ_TRUE@javao_files := $(patsubst %.class,%.o,$(class_files))
 
 @USE_GCJ_TRUE@BUILT_SOURCES = classes.stamp
@@ -89,7 +91,6 @@ test_names := $(subst /,.,$(subst .java,,$(test_files)))
 @USE_GCJ_TRUE@SimpleTestHarness_LDADD = $(javao_files)
 @USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 @USE_GCJ_TRUE@SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
-@USE_GCJ_TRUE@EXTRA_SimpleTestHarness_SOURCES = no-such-file.c
 
 @USE_GCJ_TRUE@MOSTLYCLEANFILES = $(javao_files)
 @USE_GCJ_TRUE@CLEANFILES = $(class_files) classes.stamp
@@ -106,26 +107,22 @@ CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 @USE_GCJ_TRUE@SimpleTestHarness_OBJECTS = 
-CFLAGS = @CFLAGS@
-COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LINK = $(CC) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
-DIST_COMMON =  ChangeLog Makefile.am Makefile.in aclocal.m4 configure \
-configure.in install-sh missing mkinstalldirs
+DIST_COMMON =  README ChangeLog Makefile.am Makefile.in aclocal.m4 \
+configure configure.in install-sh missing mkinstalldirs
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/no-such-file.P
-SOURCES = $(SimpleTestHarness_SOURCES) $(EXTRA_SimpleTestHarness_SOURCES)
+SOURCES = $(SimpleTestHarness_SOURCES)
 OBJECTS = $(SimpleTestHarness_OBJECTS)
 
 all: Makefile
 
 .SUFFIXES:
 .SUFFIXES: .S .c .class .java .o .s
-$(srcdir)/Makefile.in: #M# Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
+$(srcdir)/Makefile.in: @MAINT@Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile
 
 Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
@@ -241,30 +238,6 @@ distdir: $(DISTFILES)
 	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
 	  || cp -p $$d/$$file $(distdir)/$$file; \
 	done
-
-DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
-
--include $(DEP_FILES)
-
-mostlyclean-depend:
-
-clean-depend:
-
-distclean-depend:
-
-maintainer-clean-depend:
-	-rm -rf .deps
-
-%.o: %.c
-	@echo '$(COMPILE) -c $<'; \
-	$(COMPILE) -Wp,-MD,.deps/$(*F).P -c $<
-
-%.lo: %.c
-	@echo '$(LTCOMPILE) -c $<'; \
-	$(LTCOMPILE) -Wp,-MD,.deps/$(*F).p -c $<
-	@-sed -e 's/^\([^:]*\)\.o:/\1.lo \1.o:/' \
-	  < .deps/$(*F).p > .deps/$(*F).P
-	@-rm -f .deps/$(*F).p
 info:
 dvi:
 check: all $(check_PROGRAMS) $(check_DATA)
@@ -299,19 +272,18 @@ distclean-generic:
 maintainer-clean-generic:
 	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 mostlyclean:  mostlyclean-checkPROGRAMS mostlyclean-compile \
-		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+		mostlyclean-tags mostlyclean-generic
 
-clean:  clean-checkPROGRAMS clean-compile clean-tags clean-depend \
-		clean-generic mostlyclean
+clean:  clean-checkPROGRAMS clean-compile clean-tags clean-generic \
+		mostlyclean
 
 distclean:  distclean-checkPROGRAMS distclean-compile distclean-tags \
-		distclean-depend distclean-generic clean
+		distclean-generic clean
 	-rm -f config.status
 
 maintainer-clean:  maintainer-clean-checkPROGRAMS \
 		maintainer-clean-compile maintainer-clean-tags \
-		maintainer-clean-depend maintainer-clean-generic \
-		distclean
+		maintainer-clean-generic distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 	-rm -f config.status
@@ -320,27 +292,42 @@ maintainer-clean:  maintainer-clean-checkPROGRAMS \
 clean-checkPROGRAMS maintainer-clean-checkPROGRAMS mostlyclean-compile \
 distclean-compile clean-compile maintainer-clean-compile tags \
 mostlyclean-tags distclean-tags clean-tags maintainer-clean-tags \
-distdir mostlyclean-depend distclean-depend clean-depend \
-maintainer-clean-depend info dvi check-local installcheck install-exec \
-install-data install uninstall all installdirs mostlyclean-generic \
-distclean-generic clean-generic maintainer-clean-generic clean \
-mostlyclean distclean maintainer-clean
+distdir info dvi check-local installcheck install-exec install-data \
+install uninstall all installdirs mostlyclean-generic distclean-generic \
+clean-generic maintainer-clean-generic clean mostlyclean distclean \
+maintainer-clean
 
 
-classes.stamp: $(java_files)
+classes.stamp: choices
 	here=`/bin/pwd`; cd $(srcdir); \
 	  CLASSPATH=$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
-	    $(subst $(srcdir)/,,$?)
+	    $(harness_files) `cat $$here/choices`
 	touch classes.stamp
+choices: FORCE
+	ok=no; \
+	if test -f .save-keys && test "`cat .save-keys`" = "$(KEYS)"; then \
+	  ok=yes; \
+	fi; \
+	here=`/bin/pwd`; \
+	if test "$$ok" = no; then \
+	  echo "$(KEYS)" > .save-keys; \
+	  cd $(srcdir) && $(SHELL) choose $$here $(KEYS); \
+	fi
+
+FORCE:
+
+recheck:
+	test -f .save-keys || : > .save-keys
+	$(MAKE) KEYS="`cat .save-keys`"
 
 @USE_GCJ_TRUE@.class.o:
 @USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
-@USE_GCJ_TRUE@check-local: $(check_PROGRAMS)
-@USE_GCJ_TRUE@	./SimpleTestHarness $(test_names)
+@USE_GCJ_TRUE@check-local: $(check_PROGRAMS) choices
+@USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness
 
 @USE_GCJ_FALSE@check-local: classes.stamp
-@USE_GCJ_FALSE@	$(JAVA) gnu.testlet.SimpleTestHarness $(test_names)
+@USE_GCJ_FALSE@	cat classes | $(JAVA) gnu.testlet.SimpleTestHarness
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -1,0 +1,109 @@
+#! /bin/sh
+
+# Copyright (c) 1998 Cygnus Solutions
+# Written by Tom Tromey <tromey@cygnus.com>
+
+# Choose the tests we want to run.
+# Usage: choose [-verbose] output-directory [tag] ...
+# If a tag contains a `.' then it is considered to be a name in
+# the hierarchy (e.g., `java.lang').  In this case only tests in
+# that part of the hierarchy are selected.
+# FIXME: provide more information on the meaning of the other tags.
+# Note there is a special "not-a-test" tag which can be used
+# to mark a file as not having any test information.
+# Run in the source directory.
+
+verbose=
+tags=
+files=
+
+if test "$1" = "-verbose"; then
+   verbose=yes
+   shift
+fi
+
+outdir="$1"
+shift
+
+for i in ${1+"$@"}; do
+   case "$i" in
+    *.*)
+       file="`echo $i | tr . /`"
+       files="$files $file"
+       ;;
+    not-a-test)
+       # You can't specify this.
+       :
+       ;;
+    *)
+       tags="$tags $i"
+       ;;
+   esac
+done
+
+choices=/tmp/choices-$$
+: > $choices
+classes=/tmp/classes-$$
+: > $classes
+
+(cd gnu/testlet; find java -name '*.java' -print) |
+while read file; do
+   if test -n "$files"; then
+      ok=no
+      for pat in $files; do
+	 case $file in
+	  ${pat}*)
+	     ok=yes
+	     break
+	     ;;
+	 esac
+      done
+   else
+      ok=yes
+   fi
+
+   if test "$ok" = no; then
+      continue
+   fi
+
+   taglist="`grep '^// Tags:' gnu/testlet/$file | sed -e 's,^// Tags:,,'`"
+   istest=yes
+   case "$taglist" in
+    *not-a-test*)
+       istest=no
+       ;;
+   esac
+
+   ok=yes
+   for tag in $tags; do
+      case "$taglist" in
+       *" ${tag} "*)
+          ;;
+       *)
+	  test -n "$verbose" && echo "File $file doesn't have tag $tag"
+	  ok=no
+	  break
+	  ;;
+      esac
+   done
+
+   if test "$ok" = yes; then
+      class="gnu.testlet.`echo $file | sed -e 's/\.java$//' | tr / .`"
+      echo gnu/testlet/$file >> $choices
+      if test "$istest" = yes; then
+	 echo $class >> $classes
+	 test -n "$verbose" && echo "Chose $class"
+      fi
+   fi
+done
+
+if test -f $outdir/choices \
+   && cmp $choices $outdir/choices > /dev/null 2>&1; then
+   # Files are the same.
+   rm $choices $classes
+else
+   mv $choices $outdir/choices
+   mv $classes $outdir/classes
+fi
+
+exit 0
