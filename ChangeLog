@@ -1,3 +1,21 @@
+2003-11-14  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/javax/swing/undo/AbstractUndoableEdit/addEdit.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/canRedo.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/canUndo.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/
+	getPresentationName.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/
+	getRedoPresentationName.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/
+	getUndoPresentationName.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/isSignificant.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/redo.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/replaceEdit.java,
+	gnu/testlet/javax/swing/undo/AbstractUndoableEdit/undo.java,
+	gnu/testlet/javax/swing/undo/StateEdit/getPresentationName.java,
+	gnu/testlet/javax/swing/undo/StateEdit/undo.java: New files.
+
 2003-11-13  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/URL/newURL.java: Test anonymous:anonymous@host.
