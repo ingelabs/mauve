@@ -60,6 +60,17 @@ You can use `make recheck' to re-run `make check' with the key list
 you last used.
 
 
+If you want to run a single test by hand, you can feed its name
+directly to the test harness.  Make sure to remember the `gnu.testlet'
+prefix for the test cases.  E.g.:
+
+  echo gnu.testlet.java.lang.Character.classify | \
+    java gnu.testlet.SimpleTestHarness -verbose PATH-TO-SRCDIR
+
+The optional `-verbose' command-line argument makes the test suite a
+little noisier about what it is doing.  In particular it will print
+information about caught exceptions in this case.
+
 ================================================================
 
 Tags in a test are specified a little differently from tags on the

@@ -3,9 +3,6 @@
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // KNOWN BUGS:
-// * Current usage is bogus.  Should scan directory tree for `*.java'
-//   files and read them.  A few things here:
-//   - should examine Tags and omit files we don't care about
 //   - should look for /*{ ... }*/ and treat contents as expected
 //     output of test.  In this case we should redirect System.out
 //     to a temp file we create.
@@ -18,7 +15,7 @@ public class SimpleTestHarness extends TestHarness
   private int count = 0;
   private int failures = 0;
   private int total = 0;
-  private boolean verbose = false; // FIXME: no way to set this.
+  private boolean verbose = false;
   private String description;
   private String last_check;
   private File srcdir;
@@ -68,8 +65,10 @@ public class SimpleTestHarness extends TestHarness
 	}
       catch (Throwable ex)
 	{
-	  System.out.println ("FAIL: uncaught exception loading " + name
-			      + ": " + ex.toString());
+	  String d = "FAIL: uncaught exception loading " + name;
+	  if (verbose)
+	    d += ": " + ex.toString();
+	  System.out.println (d);
 	  ++failures;
 	  ++total;
 	}
@@ -83,10 +82,12 @@ public class SimpleTestHarness extends TestHarness
 	    }
 	  catch (Throwable ex)
 	    {
-	      System.out.println ("FAIL: " + description
-				  + ": uncaught exception at number "
-				  + (count + 1)
-				  + ": " + ex.toString());
+	      String d = ("FAIL: " + description
+			  + ": uncaught exception at number "
+			  + (count + 1));
+	      if (verbose)
+		d += ": " + ex.toString();
+	      System.out.println (d);
 	      ++failures;
 	      ++total;
 	    }
@@ -107,7 +108,17 @@ public class SimpleTestHarness extends TestHarness
   // Each argument is the name of a test to run.  FIXME.
   public static void main (String[] args)
     {
-      SimpleTestHarness harness = new SimpleTestHarness (args[0]);
+      if (args.length < 1 || args.length > 2
+	  || (args.length == 2 && !args[0].equals("-verbose")))
+	{
+	  System.err.println ("usage: SimpleTestHarness [-verbose] SRCDIR");
+	  System.exit(1);
+	}
+
+      SimpleTestHarness harness
+	= new SimpleTestHarness (args[args.length - 1]);
+      harness.verbose = args.length == 2;
+
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));
       while (true)
