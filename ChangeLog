@@ -1,3 +1,8 @@
+2004-11-07  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/jdk12.java:
+	Added documentation, copyright statements and license
+
 2004-11-06  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/util/Calendar/add.java,
