@@ -1,5 +1,8 @@
 2001-05-09  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/util/Calendar/add.java (test): Added no-op
+	test.
+
 	* gnu/testlet/java/util/Calendar/add.java: New file.
 
 2001-05-08  Tom Tromey  <tromey@redhat.com>

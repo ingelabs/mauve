@@ -47,6 +47,10 @@ public class add implements Testlet
     harness.check (cdf.format (epoch), "Thu, 1 Jan 1970 00:00:00 GMT");
     harness.check (k.getTime (), epoch);
 
+    // No-op.
+    k.add (Calendar.YEAR, 0);
+    harness.check (k.getTime (), epoch, "no-op add()");
+
     k.add (Calendar.YEAR, 12);
     harness.check (k.get (Calendar.YEAR), 1982, "add() to year");
     k.add (Calendar.YEAR, -1);
