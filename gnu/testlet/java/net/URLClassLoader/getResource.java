@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: getResourceBase
 
 // Copyright (C) 2002 Free Software Foundation, Inc.
 // Written by Mark Wielaard (mark@klomp.org)
@@ -35,12 +36,10 @@ import java.util.jar.JarOutputStream;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class getResource implements Testlet
+public class getResource extends getResourceBase
 {
-  protected TestHarness harness;
   private File tmpdir, tmpfile, subtmpdir, subtmpfile;
   private String jarPath;
-  protected URLClassLoader ucl;
 
   private void setup() throws IOException
   {
@@ -134,79 +133,5 @@ public class getResource implements Testlet
       {
 	tearDown();
       }
-  }
-
-  protected void check(String resource)
-  {
-    int index = resource.lastIndexOf('/');
-    String name, path, dir;
-    if (index != -1)
-      {
-	name = resource.substring(index+1);
-	path = resource.substring(0, index);
-	index = path.lastIndexOf('/');
-	path = path + '/';
-	if (index != -1)
-	  dir = path.substring(index);
-	else
-	  dir = '/' + path;
-      }
-    else
-      {
-	path = "";
-	name = resource;
-	dir = "";
-      }
-
-    harness.debug(" == resource='" + resource
-		    + "'; name='" + name
-		    + "'; dir='" + dir
-		    + "'; path='" + path + "'");
-
-    URL u = ucl.getResource(resource);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u != null, resource);
-
-    u = ucl.getResource("no-" + resource);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u == null, "no-" + resource);
-
-    u = ucl.getResource(path + '/' + "no-" + name);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u == null, path + '/' + "no-" + name);
-
-    u = ucl.getResource("./" + resource);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u != null, "./" + resource);
-
-    u = ucl.getResource(path + "./" + name);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u != null, path + "./" + name);
-
-    u = ucl.getResource(".\\" + resource);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u == null, "no .\\" + resource);
-
-    if (!dir.equals(""))
-      {
-	u = ucl.getResource(path + ".." + dir + name);
-	harness.debug(u != null ? u.toString() : null);
-	harness.check(u != null, path + ".." + dir + name);
-      }
-
-    if (!path.equals(""))
-      {
-	u = ucl.getResource(path + "//" + name);
-	harness.debug(u != null ? u.toString() : null);
-	harness.check(u != null, path + "//" + name);
-      }
-
-    u = ucl.getResource("\\" + resource);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u == null, "no \\" + resource);
-
-    u = ucl.getResource(":" + resource);
-    harness.debug(u != null ? u.toString() : null);
-    harness.check(u == null, "no :" + resource);
   }
 }

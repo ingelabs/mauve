@@ -1,3 +1,10 @@
+2002-11-23  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/URLClassLoader/getResourceBase.java: New base
+	class to make gcj native code linking happy.
+	* gnu/testlet/java/net/URLClassLoader/getResource.java: extend Base.
+	* gnu/testlet/java/net/URLClassLoader/getResourceRemote.java: Likewise.
+
 2002-11-22  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/URLClassLoader/getResourceRemote.java: New test.

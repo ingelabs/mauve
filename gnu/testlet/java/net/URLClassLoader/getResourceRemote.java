@@ -1,5 +1,5 @@
 // Tags: JDK1.2
-// Uses: getResource
+// Uses: getResourceBase
 
 // Copyright (C) 2002 Free Software Foundation, Inc.
 // Written by Mark Wielaard (mark@klomp.org)
@@ -39,7 +39,7 @@ import gnu.testlet.TestHarness;
 /**
  * Version of getResource test that uses a remote net connection.
  */
-public class getResourceRemote extends getResource
+public class getResourceRemote extends getResourceBase
 {
   public void test (TestHarness h)
   {
