@@ -1,5 +1,13 @@
 2004-12-19  Robert Schuster <thebohemian@gmx.net>
 
+	* gnu/testlet/java/beans/Beans/TestBean1.java
+	* gnu/testlet/java/beans/Beans/TestBean2.java,
+	* gnu/testlet/java/beans/Beans/TestBean3.java,
+	* gnu/testlet/java/beans/Beans/TestBean4.java:
+	Fixed "not-a-test" tag.
+
+2004-12-19  Robert Schuster <thebohemian@gmx.net>
+
 	* gnu/testlet/java/beans/Beans/instantiate_1.java: New
 	tests
 	* gnu/testlet/java/beans/Beans/TestBean1.java

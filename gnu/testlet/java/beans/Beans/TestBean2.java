@@ -1,3 +1,5 @@
+//Tags: not-a-test
+
 //Copyright (C) 2004 Robert Schuster <thebohemian@gmx.net>
 
 //Mauve is free software; you can redistribute it and/or modify
