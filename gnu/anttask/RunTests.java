@@ -175,8 +175,8 @@ public class RunTests extends MatchingTask {
         try {
             Reader reader = new FileReader(sourceFile);
             StringBuffer buf = new StringBuffer();
-            int maxLines=20;
-            while(true) {
+            int maxLines=30;
+            while(maxLines > 0) {
                 int character = reader.read();
                 if(character == -1)
                     break;
@@ -194,6 +194,7 @@ public class RunTests extends MatchingTask {
                         }
                     }
                     buf = new StringBuffer();
+                    maxLines--;
                 }
                 else
                     buf.append((char) character);
@@ -215,58 +216,6 @@ public class RunTests extends MatchingTask {
             super.runtest(name);
             if(haltOnFailure && getFailures() > 0)
                 throw new BuildException("Failures");
-        }
-    }
-
-    private static class Tags {
-        String fromJDK="1.0", toJDK="99.0";
-        String fromJDBC="1.0", toJDBC="99.0";
-        public Tags(String line) {
-//System.out.println("tagLine: '"+ line +"'");
-            int start=0;
-            for(int i=0; i <= line.length();i++) {
-                if(i == line.length() || line.charAt(i) == ' ') {
-                    if(start < i)
-                        process(line.substring(start, i));
-                    start = i+1;
-                }
-            }
-
-        }
-        public void process(String token) {
-//System.out.println("     +-- '"+ token +"'");
-            boolean end = token.startsWith("!");
-            if(end)
-                token = token.substring(1);
-            if(token.startsWith("jls") || token.startsWith("jdk")) {
-                String value = token.substring(3);
-                if(end)
-                    toJDK = value;
-                else
-                    fromJDK = value;
-            }
-            else if(token.startsWith("jdbc")) {
-                String value = token.substring(4);
-                if(end)
-                    toJDBC = value;
-                else
-                    fromJDBC = value;
-            }
-        }
-        public boolean isValid(double javaVersion, double JDBCVersion) throws NumberFormatException {
-            if(javaVersion != 0d) {
-                double from = Double.parseDouble(fromJDK);
-                if(from > javaVersion)  return false;
-                double end = Double.parseDouble(toJDK);
-                if(end < javaVersion)  return false;
-            }
-            if(JDBCVersion != 0d) {
-                double from = Double.parseDouble(fromJDBC);
-                if(from < JDBCVersion)  return false;
-                double end = Double.parseDouble(toJDBC);
-                if(end > JDBCVersion)  return false;
-            }
-            return true;
         }
     }
 }
