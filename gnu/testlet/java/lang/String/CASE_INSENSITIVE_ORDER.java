@@ -1,4 +1,4 @@
-/* Copyright (C) 2001 Eric Blake
+/* Copyright (C) 2001, 2002 Eric Blake
  *
  * This file is part of Mauve.
  *
@@ -54,19 +54,15 @@ public class CASE_INSENSITIVE_ORDER implements Testlet
     harness.check(c.compare("B", "A") > 0);
 
     harness.checkPoint("unicode mappings");
-    harness.debug("These two tests are unspecified - see Sun bug 4425387");
-    // the API specifies using String.toUpperCase(), which expands lower
-    // sharp s to upper SS, but all implementations seem to use
-    // Character.toUpperCase() which cannot perform 1:m case mappings.
-    // Therefore, it is not obvious whether these should compare the same.
-    harness.check(c.compare("\u00df", "sS"), 0);
-    // Likewise, String.toUpperCase() is defined as using the default
-    // locale, although the documentation for compareToIgnoreCase(String)
-    // claims to be locale independent; which affects comparison performed
-    // in the Turkish locale (where 'i' to 'I' map funny).
+    // the API (as corrected in 1.4.1) specifies using
+    // Character.toUpperCase(), and not String.toUpperCase(), so 1:m case
+    // mappings are not performed (such as sharp-s to SS).
+    harness.check(c.compare("\u00df", "sS") != 0);
+    // Likewise, comparisons are locale independent, which affects things
+    // like Turkish 'i' and 'I'.
     Locale l = Locale.getDefault();
     Locale.setDefault(new Locale("tr", ""));
-    harness.check(c.compare("\u0131I", "i\u0130") > 0);
+    harness.check(c.compare("\u0131I", "i\u0130"), 0);
     Locale.setDefault(l);
     harness.check(c.compare("\u0131I", "i\u0130"), 0);
 
