@@ -1,7 +1,7 @@
 // Tags: JDK1.1
-// Uses: Resource1 Resource2_en Resource3_bo Resource4_en Resource4_en_CA Resource4 Resource4_jp Resource4_jp_JA Resource4_jp_JA_WIN Resource4_jp_JA_WIN_95 Resource5_en Resource5_en_CA Resource5 Resource5_jp Resource5_jp_JA Resource5_jp_JA_WIN Resource6_en Resource6_en_CA Resource6 Resource6_jp Resource6_jp_JA Resource7_en Resource7_en_CA Resource7 Resource7_jp Resource8_en Resource8_en_CA Resource8 Resource9_en Resource9_en_CA Resource10_en
+// Uses: Resource1 Resource2_en Resource3_bo Resource4_en Resource4_en_CA Resource4 Resource4_jp Resource4_jp_JA Resource4_jp_JA_WIN Resource4_jp_JA_WIN_95 Resource5_en Resource5_en_CA Resource5 Resource5_jp Resource5_jp_JA Resource5_jp_JA_WIN Resource6_en Resource6_en_CA Resource6 Resource6_jp Resource6_jp_JA Resource7_en Resource7_en_CA Resource7 Resource7_jp Resource8_en Resource8_en_CA Resource8 Resource9_en Resource9_en_CA Resource10_en Resource11
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 2004 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -26,6 +26,9 @@ import gnu.testlet.TestHarness;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.MissingResourceException;
+import java.net.URLClassLoader;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 public class getBundle implements Testlet
 {
@@ -62,6 +65,21 @@ public class getBundle implements Testlet
 	}
       return rb.getString ("class");
     }
+
+  private String loadCheck (String bundle, ClassLoader loader)
+  {
+    ResourceBundle rb;
+    try 
+      {
+	rb = ResourceBundle.getBundle (bundle, Locale.getDefault (),
+				       loader);
+      }
+    catch (MissingResourceException ex)
+      {
+	return MISSING;
+      }
+    return rb.getString ("class");
+  }
 
   // This is a simple helper function to save typing below.
   private String c (String bundle)
@@ -178,6 +196,26 @@ public class getBundle implements Testlet
 
       // Restore the default locale.
       Locale.setDefault (defaultLocale);
+
+      // Try loading a bundle where we have a class that doesn't
+      // extend ResourceBundle, but we do have a backup properties
+      // file.  This may seem strange, but actual applications
+      // (Eclipse) rely on this behavior.
+      harness.checkPoint("shadowing class");
+      try
+	{
+	  URL u = harness.getResourceFile ("").toURL ();
+	  URLClassLoader loader = new URLClassLoader (new URL[] { u });
+	  harness.check (loadCheck (c ("Resource11"), loader), "Maude");
+	}
+      catch (MalformedURLException _)
+	{
+	  harness.check(false);
+	}
+      catch (ResourceNotFoundException _)
+	{
+	  harness.check(false);
+	}
     }
 }
 

@@ -1,3 +1,12 @@
+2004-10-20  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/ResourceBundle/getBundle.java
+	(loadCheck): New overload.
+	(test): Added new test.
+	* gnu/testlet/java/util/ResourceBundle/Resource11.properties: New
+	file.
+	* gnu/testlet/java/util/ResourceBundle/Resource11.java: New file.
+
 2004-10-20  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/util/Calendar/set.java: Add tests for setting

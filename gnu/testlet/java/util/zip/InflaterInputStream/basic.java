@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 1999 Cygnus Solutions
+// Copyright (C) 1999, 2004 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -57,6 +57,27 @@ public class basic implements Testlet
 	{
 	    harness.check(false, "deflation tests fail");
 	}
+
+    try
+      {
+	harness.checkPoint("three lines");
+	ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	DeflaterOutputStream dos = new DeflaterOutputStream(bos);
+	new PrintStream(dos).print("line one\nline two\nline three");
+	dos.close();
+
+	byte[] deflated_data = bos.toByteArray();
+
+	InflaterInputStream iis = new InflaterInputStream(new ByteArrayInputStream(deflated_data));
+
+	byte[] reinflated_data = new byte[1024];
+	harness.check(iis.read(reinflated_data), 30);
+	harness.check(iis.read(reinflated_data), -1);
+      }
+    catch(IOException e)
+      {
+	harness.check(false, "deflation tests fail");
+      }
 
     // There are apparently programs out there that depend on this behaviour.
     harness.checkPoint("Constructor");
