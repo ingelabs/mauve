@@ -48,6 +48,7 @@ test(TestHarness harness)
       SequenceInputStream sis = new SequenceInputStream(is1, is2);
 
       int bytes_read;
+	  harness.check(str1.length(), sis.available(), "available()");
       while((bytes_read = sis.read(buf)) != -1)
         {
           harness.debug(new String(buf,0,bytes_read), false);
@@ -68,7 +69,9 @@ test(TestHarness harness)
       ByteArrayInputStream is2 = new ByteArrayInputStream(str2.getBytes());
       SequenceInputStream sis = new SequenceInputStream(is1, is2);
 
-      sis.read(buf);
+      sis.read(buf, 0, 5);
+	  harness.check(true, "read(buf, off, len)");
+
       sis.close();
 
       harness.check(sis.read(), -1, "close() test");
