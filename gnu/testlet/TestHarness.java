@@ -39,6 +39,27 @@ public abstract class TestHarness
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
     }
+  public void check (boolean result, boolean expected)
+    {
+      boolean ok = (result == expected);
+      check (ok);
+      if (! ok)
+	debug ("got " + result + " but expected " + expected);
+    }
+  public void check (int result, int expected)
+    {
+      boolean ok = (result == expected);
+      check (ok);
+      if (! ok)
+	debug ("got " + result + " but expected " + expected);
+    }
+  public void check (long result, long expected)
+    {
+      boolean ok = (result == expected);
+      check (ok);
+      if (! ok)
+	debug ("got " + result + " but expected " + expected);
+    }
   public void check (double result, double expected)
     {
       // This triple check overcomes the fact that == does not
@@ -56,20 +77,6 @@ public abstract class TestHarness
 	// accidentally show the same string for two different doubles!
 	debug ("got " + result + " but expected " + expected);
     }
-  public void check (long result, long expected)
-    {
-      boolean ok = (result == expected);
-      check (ok);
-      if (! ok)
-	debug ("got " + result + " but expected " + expected);
-    }
-  public void check (int result, int expected)
-    {
-      boolean ok = (result == expected);
-      check (ok);
-      if (! ok)
-	debug ("got " + result + " but expected " + expected);
-    }
 
   // These methods are like the above, but checkpoint first.
   public void check (boolean result, String name)
@@ -78,6 +85,11 @@ public abstract class TestHarness
       check (result);
     }
   public void check (Object result, Object expected, String name)
+    {
+      checkPoint (name);
+      check (result, expected);
+    }
+  public void check (boolean result, boolean expected, String name)
     {
       checkPoint (name);
       check (result, expected);
