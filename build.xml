@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--Copyright (c) 2004 Thomas Zander <zander@kde.org>
+
+    This file is part of Mauve.
+
+    Mauve is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2, or (at your option)
+    any later version.
+
+    Mauve is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Mauve; see the file COPYING.  If not, write to
+    the Free Software Foundation, 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA. -->
+
+<project name="mauve" default="test" basedir=".">
+
+    <!-- this loads the ant global properties -->
+    <property file="${user.home}/.ant-global.properties"/>
+
+    <property name="src" value="."/>
+    <property name="build" value="build"/>
+    <property name="docs" value="doc"/>
+
+    <!-- clean up .class and .jar files -->
+    <target name="clean" description="Clean out compiled files">
+        <!-- call clean from example-buildfile -->
+        <delete dir="${build}"/>
+        <delete dir="${docs}"/>
+    </target>
+
+    <!-- INIT creates the required directories and files -->
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build}"/>
+        <mkdir dir="${docs}"/>
+        <!-- if ant runs; we can be pretty sure these are correct. -->
+        <filter token="SRCDIR" value="${user.dir}"/>
+        <filter token="TMPDIR" value="${java.io.tmpdir}" />
+        <filter token="CHECK_PATH_SEPARATOR" value="${path.separator}"/>
+        <filter token="CHECK_FILE_SEPARATOR" value="${file.separator}"/>
+        <copy file="${src}/gnu/testlet/config.java.in"
+                tofile="${src}/gnu/testlet/config.java"
+                verbose="true"
+                filtering="true" />
+    </target>
+
+    <!-- CLASSPATH -->
+    <path id="myclass.path">
+        <pathelement location="${build}" />
+    </path>
+
+    <!-- compiles all the sources -->
+    <target name="compile" depends="init" description="Compile all files">
+        <javac srcdir="${src}" destdir="${build}"
+            includes="gnu/**/*.java"
+            exlucdes="gnu/testlet/BinaryCompatibility/**"
+            classpathref="myclass.path"
+            debug="on" />
+    </target>
+
+    <target name="doc" depends="init" description="Build javadoc">
+        <javadoc packagenames="gnu.testlet"
+            defaultexcludes="yes"
+            destdir="${docs}/"
+            classpathref="myclass.path"
+            windowtitle="Mauve test API" >
+            <doctitle><![CDATA[<h1>Mauve test API</h1>]]></doctitle>
+        </javadoc>
+    </target>
+
+    <target name="test" depends="init,compile" description="run the tests">
+        <taskdef name="mauve" classname="gnu.anttask.RunTests" classpath="build"/>
+        <mauve debug="false"
+            verbose="false"
+            haltonfailure="false"
+            failonerror="true">
+            <fileset dir="${build}" includes="gnu/testlet/java/**" />
+            <fileset dir="${build}" includes="gnu/testlet/javax/**" />
+        </mauve>
+    </target>
+</project>

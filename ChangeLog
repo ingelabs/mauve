@@ -1,3 +1,15 @@
+2004-04-13  Thomas Zander <zander@kde.org>
+
+	* build.xml: New file.
+	* gnu/testlet/javax/swing/JLabel/Icon.java: New file.
+	* gnu/testlet/javax/swing/JLabel/Mnemonic.java: New file.
+
+	* gnu/testlet/java/text/SimpleDateFormat/attribute.java 
+	(test_FieldPos): Locals no longer static.
+ 
+	* gnu/testlet/SimpleTestHarness.java (getFailures): New method.
+	* gnu/anttask/RunTests.java: New file.
+
 2004-04-13  Sascha Brawer  <brawer@dandelis.ch>
 
 	* gnu/testlet/javax/imageio/stream/,

@@ -50,6 +50,11 @@ public class SimpleTestHarness
 	    " (number " + (count + 1) + ")");
   }
   
+
+  protected int getFailures() {
+    return failures;
+  }
+
   public void check (boolean result)
   {
     if (!result)

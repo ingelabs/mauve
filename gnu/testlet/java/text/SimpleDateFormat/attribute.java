@@ -157,15 +157,15 @@ public class attribute implements Testlet {
       {
 	SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd hh:kk:mm:ss 'zone' zzzz");
 	Date date = new Date();
-	static Format.Field[] fields = new Format.Field[] {
+	Format.Field[] fields = new Format.Field[] {
 	  DateFormat.Field.YEAR,  DateFormat.Field.MONTH, DateFormat.Field.DAY_OF_MONTH,
 	  DateFormat.Field.HOUR1, DateFormat.Field.HOUR_OF_DAY1, DateFormat.Field.MINUTE,
 	  DateFormat.Field.SECOND
 	};
-	static int[] begin = new int[] {
+	int[] begin = new int[] {
 	  0, 5, 8, /***/  11, 14, 17, 20
 	};
-	static int[] end = new int[] {
+	int[] end = new int[] {
 	  4, 7, 10, /***/ 13, 16, 19, 22
 	};
 
