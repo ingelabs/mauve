@@ -1,3 +1,8 @@
+2002-10-05  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/System/identityHashCode.java: New Test.
+	* gnu/testlet/java/lang/Thread/getThreadGroup.java: New test.
+
 2002-09-28  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/lang/Double/DoubleTest.java (test_valueOf):
 	Tidied up test; message strings etcetera.
