@@ -1,3 +1,43 @@
+Sat Dec 26 20:35:02 1998  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/BufferedReader/MarkReset.java: Added this
+	test case.
+
+	* gnu/testlet/java/io/BufferedReader/SimpleRead.java: Added this
+	test case.
+
+Sat Dec 26 20:02:33 1998  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/BufferedInputStream/MarkReset.java: Added
+	this test case.
+
+	* gnu/testlet/java/io/BufferedInputStream/SimpleRead.java: Added
+	this test case.
+
+	* gnu/testlet/java/io/BufferedInputStream/ProtectedVars.java: Added
+	this test case.
+
+Sat Dec 26 19:33:33 1998  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/BufferedCharWriter/Test.java: Added this
+	test case.
+
+Sat Dec 26 19:23:41 1998  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/BufferedByteOutputStream/Test.java: Added this
+	test case.
+
+Sat Dec 26 19:10:12 1998  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/CharArrayReader/MarkReset.java: Added this
+	test case.
+
+	* gnu/testlet/java/io/CharArrayReader/SimpleRead.java: Added this
+	test case.
+
+	* gnu/testlet/java/io/CharArrayReader/ProtectedVars.java: Added
+	this test case.
+
 Sat Dec 26 00:05:27 1998  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/io/ByteArrayInputStream/MarkReset.java: Added
