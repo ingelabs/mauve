@@ -1,4 +1,4 @@
-// Copyright (c) 1998, 1999, 2001  Red Hat, Inc.
+// Copyright (c) 1998, 1999, 2001, 2003  Red Hat, Inc.
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -199,6 +199,17 @@ public class SimpleTestHarness
         debug("  Element " + i + ": " + o[i]);
   }
 
+  private void removeSecurityManager()
+  {
+    SecurityManager m = System.getSecurityManager();
+    if (m instanceof TestSecurityManager)
+      {
+	TestSecurityManager tsm = (TestSecurityManager) m;
+	tsm.setRunChecks(false);
+	System.setSecurityManager(null);
+      }
+  }
+
   protected void runtest (String name)
     {
       // Try to ensure we start off with a reasonably clean slate.
@@ -239,9 +250,11 @@ public class SimpleTestHarness
 	  try
 	    {
 	      t.test (this);
+	      removeSecurityManager();
 	    }
 	  catch (Throwable ex)
 	    {
+	      removeSecurityManager();
 	      String d = ("FAIL: " + description
 			  + ": uncaught exception at "
 			  + ((last_check == null) ? "" :

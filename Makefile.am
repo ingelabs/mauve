@@ -11,6 +11,7 @@ check_DATA = $(STAMP)
 
 harness_files = gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
+	gnu/testlet/TestSecurityManager.java \
 	gnu/testlet/ResourceNotFoundException.java
 
 ## FIXME: leading space makes automake ignore this.  Bleah.

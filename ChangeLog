@@ -1,3 +1,10 @@
+2003-07-20  Tom Tromey  <tromey@redhat.com>
+
+	* Makefile.am (harness_files): Added TestSecurityManager.java.
+	* gnu/testlet/SimpleTestHarness.java (runtest): Clear security
+	manager after test.
+	* gnu/testlet/TestSecurityManager.java: New file.
+
 2003-07-19  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/CollationElementIterator/jdk11.java:
