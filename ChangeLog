@@ -1,3 +1,9 @@
+2003-01-26  C. Brian Jones  <cbj@gnu.org>
+
+	* gnu/testlet/java/io/RandomAccessFile/jdk11.java (test): localize
+	use of 'int i' and modify two erroneous test checks for skipBytes()
+	to one correct check.
+
 2003-01-25  C. Brian Jones  <cbj@gnu.org>
 
 	* gnu/testlet/java/io/RandomAccessFile/jdk11.java: reformatted only

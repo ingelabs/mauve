@@ -107,18 +107,16 @@ public class jdk11
       raf.seek(0);
 
       // Make sure skipBytes goes all the way to the end of the file and no further
-      int i = 0;
       int skipped = 0;
 
-      while (i < (testlength + 1))
+      for (int i = 0; i < testbytes.length + 1; i++)
       { // last skip should return 0 bytes
-        skipped += raf.skipBytes(1);
-        harness.debug("skipped " + skipped + " bytes");
-        i++;
+        int offset = raf.skipBytes(1);
+        harness.debug("skipped " + offset + " bytes");
+        skipped += offset;
       }
 
-      harness.check(skipped > testlength, "skipBytes() stopped before EOF");
-      harness.check(skipped < testlength, "skipBytes() skipped past EOF");
+      harness.check(skipped, testlength, "skipBytes() did not skip past EOF");
 
       // read()
       raf.seek(0);
@@ -155,7 +153,7 @@ public class jdk11
       int buf2ln = teststr.length() + 5; // make a buffer big enough to hold all the data
       byte[] buf2 = new byte[buf2ln];
 
-      for (i = 0; i < buf2ln; i++)
+      for (int i = 0; i < buf2ln; i++)
         buf2[i] = 0; // fill with zeroes so we can test length
 
       raf.seek(0);
@@ -173,7 +171,7 @@ public class jdk11
       }
 
       // readFully(b[], off, len)
-      for (i = 0; i < buf2ln; i++)
+      for (int i = 0; i < buf2ln; i++)
         buf2[i] = 0; // fill with zeroes so we can test length
 
       raf.seek(0);
@@ -255,7 +253,7 @@ public class jdk11
 
       String s = "";
 
-      for (i = 0; i < 6; i++)
+      for (int i = 0; i < 6; i++)
         s += raf.readChar();
 
       harness.check(s, "foobar", "writeChar/writeChars/readChar()");
