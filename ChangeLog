@@ -1,5 +1,10 @@
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
 
+    * gnu/testlet/javax/swing/JTextArea/text.java: New test case.
+    * gnu/testlet/javax/swing/JTextArea/gettingText.java: New test.    
+
+2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
+
     * gnu/testlet/javax/swing/JFrame/paint5.java: New test.
 	
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>

@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
+
+
 package gnu.testlet.javax.swing.JTextArea;
 
 import gnu.testlet.TestHarness;
@@ -49,5 +51,10 @@ public class text
     harness.check(t1.getText(),"012replacement56789","replacement");
     t1.insert("insertion", 1);
     harness.check(t1.getText(),"0insertion12replacement56789","insertion");
+    t1.setSelectionStart(0);
+    t1.setSelectionEnd(1);
+    t1.replaceSelection("selection");
+    harness.check(t1.getText(),"selectioninsertion12replacement56789",
+    "insertion");
   }
 }
