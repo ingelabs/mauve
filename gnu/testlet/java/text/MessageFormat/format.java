@@ -98,6 +98,22 @@ public class format implements Testlet
       harness.check (myformat (mf, args, buf),
 		     "the disk is 99% full");
 
+      harness.checkPoint ("two variables");
+      args = new Object[2];
+      args[0] = "files";
+      args[1] = new Long (29);
+      mf.applyPattern ("the disk contains {1} {0}");
+      harness.check (myformat (mf, args, buf), "the disk contains 29 files");
+
+      // Check the case of missing args
+      args = new Object[1];
+      args[0] = "files";
+      mf.applyPattern ("the disk contains {1} {0}");
+      harness.check (myformat (mf, args, buf), "the disk contains {1} files");
+      args = null;
+      harness.check (myformat (mf, args, buf), "the disk contains {1} {0}");
+
+      args = new Object[1];
       harness.checkPoint ("choice format");
       args[0] = new Long (5);
       mf.applyPattern ("There {0,choice,0#are no files|1#is one file|1<are {0, number, integer} files}.");

@@ -1,3 +1,8 @@
+2004-06-21  Ito kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/text/MessageFormat/format.java:
+	Add some tests.
+
 2004-06-20  Jerry Quinn  <jlquinn@optonline.net>
 
 	* gnu/testlet/java/beans/Statement/check.java: New test.
