@@ -1,9 +1,9 @@
 ## Process this file with automake to produce Makefile.in.
 
-AUTOMAKE_OPTIONS = foreign
+## FIXME: dependencies
+AUTOMAKE_OPTIONS = foreign subdir-objects no-dependencies
 
-JCFLAGS = -g
-JC1FLAGS = -g
+JAVACFLAGS = -g
 
 TESTFLAGS =
 
@@ -18,12 +18,12 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 
 classes.stamp: choices $(CHOICES)  gnu/testlet/config.class
 	here=`/bin/pwd`; cd $(srcdir); \
-	  CLASSPATH=$$CLASSPATH:$$here:`/bin/pwd` $(JAVAC) $(JCFLAGS) -d $$here \
+	  CLASSPATH=$$CLASSPATH:$$here:`/bin/pwd` $(JAVAC) $(JAVACFLAGS) -d $$here \
 	    $(harness_files) $(CHOICES)
 	touch classes.stamp
 
 gnu/testlet/config.class: gnu/testlet/config.java
-	$(JAVAC) $(JCFLAGS) gnu/testlet/config.java
+	$(JAVAC) $(JAVACFLAGS) gnu/testlet/config.java
 
 KEYS =
 choices: FORCE
@@ -47,37 +47,30 @@ STAMP = classes.stamp
 $(javao_files): classes.stamp
 
 %.o: %.class classes.stamp
-	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(GCJFLAGS) -c -o $@ $<
 
 else # CLASS_FILES
 
 %.o: %.java
 ## Eww.
 	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
-	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(GCJFLAGS) -c -o $@ $<
 
 endif # CLASS_FILES
 
 java_files = $(harness_files) $(CHOICES)
 class_files = $(patsubst %.java,%.class,$(java_files)) \
 	gnu/testlet/config.class
-harnesso_files = $(patsubst %.java,%.o,$(harness_files)) \
-	gnu/testlet/config.o
 javao_files = $(patsubst %.java,%.o,$(CHOICES))
 
 check_PROGRAMS = SimpleTestHarness
 
-SimpleTestHarness_SOURCES =
-SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files)
-SimpleTestHarness_LDADD = $(harnesso_files) $(javao_files)
-SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
-SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+AM_GCJFLAGS = -I. -I$(srcdir)
 
-## Explicitly writing this works around an apparent GNU make bug.
-## Sigh.
-SimpleTestHarness$(EXEEXT): $(SimpleTestHarness_OBJECTS) $(harnesso_files) $(SimpleTestHarness_DEPENDENCIES)
-	@rm -f SimpleTestHarness$(EXEEXT)
-	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
+SimpleTestHarness_SOURCES = gnu/testlet/config.java $(harness_files)
+SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files) 
+SimpleTestHarness_LDADD = $(javao_files)
+SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 
 check-local: $(check_PROGRAMS) $(CHOICES)
 	cat classes | ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)

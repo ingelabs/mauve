@@ -1,3 +1,18 @@
+2002-05-13  Tom Tromey  <tromey@redhat.com>
+
+	* configure, Makefile.in: Rebuilt.
+	* configure.in: Invoke AC_PROG_CC, AM_PROG_GCJ.
+	* Makefile.am (SimpleTestHarness_LINK): Removed.
+	(JAVACFLAGS): Renamed from JCFLAGS.
+	(JC1FLAGS): Removed.
+	(%.o): Use GCJFLAGS.
+	(AUTOMAKE_OPTIONS): Use subdir-objects, no-dependencies.
+	(SimpleTestHarness_SOURCES): Use harness_files.
+	(SimpleTestHarness_LDADD): Don't mention harnesso_files.
+	(SimpleTestHarness$(EXEEXT)): Removed.
+	(harnesso_files): Removed.
+	(AM_GCJFLAGS): New variable.
+
 2002-05-11  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/text/BreakIterator/sentiter.java: Add test for
