@@ -1,3 +1,10 @@
+2003-12-22  Michael Koch <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/DatagramPacket/DatagramPacketOffset.java,
+	gnu/testlet/java/net/DatagramPacket/DatagramPacketReceive.java,
+	gnu/testlet/java/net/DatagramPacket/DatagramPacketReceive2.java:
+	New files from Norbert Frese to test UDP packet sending/receiving.
+
 2003-12-15  Guilhem Lavaux <guilem@kaffe.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/Compat1.java,
