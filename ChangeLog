@@ -1,5 +1,10 @@
 2005-01-16  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/io/ObjectInputStream/registerValidation.java:
+	New test.
+	
+2005-01-16  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/lang/Class/serialization.java: New tests.
 	
 2005-01-15  Andrew John Hughes  <gnu_andrew@member.fsf.org>
