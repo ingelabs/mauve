@@ -24,7 +24,9 @@ package gnu.testlet.java.lang.Class;
 
 import gnu.testlet.*;
 import java.lang.reflect.*;
- 
+
+// This tests VM Spec 2.17.4
+// As discussed at http://gcc.gnu.org/ml/java-patches/2004-q2/msg00443.html 
 public class init implements Testlet
 {
   static boolean initI = false;
@@ -51,26 +53,34 @@ public class init implements Testlet
     try
       {
 	// Sanity checks.
-	h.check(!initI);
-	h.check(!initC);
+	// h.check(!initI); - A runtime may initialize an interface immediatly
+	// h.check(!initC); - Likewise for the class
+	//                    (this is probably inefficient though)
+	
 	h.check(!invokedM);
 	
 	// Should no initialize any class.
 	Class i = new I[0].getClass().getComponentType();
-	h.check(!initC);
-	h.check(!initI);
+
+	// Although not recommended for efficiency reason, the
+	// interface may be initialized.
+	// h.check(!initC);
+	// h.check(!initI);
+
+	h.check(!invokedM);
 	
 	// Still should not initialize anything
 	Method m = i.getDeclaredMethod("m", null);
-	h.check(!initC);
-	h.check(!initI);
+	// h.check(!initC); - See above
+	// h.check(!initI); - Likewise
+	h.check(!invokedM);
 	
-	// Finally C gets initialized. But note that I does not!
+	// After this at least C must now be initialized
 	Object o = new C();
 	h.check(initC);
-	h.check(!initI);
+	// h.check(!initI); - And the interface may also be initialized.
 	
-	// And finally also I gets initialized and m gets invoked.
+	// And finally also I must be initialized and m gets invoked.
 	m.invoke(o, null);
 	h.check(initI);
 	h.check(invokedM);
