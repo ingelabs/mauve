@@ -1,3 +1,7 @@
+1998-12-08  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/lang/reflect/Modifier/toString.java: New file.
+
 1998-12-07  Tom Tromey  <tromey@cygnus.com>
 
 	Modified version of patch from Godmar Back:
