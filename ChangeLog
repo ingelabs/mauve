@@ -1,5 +1,8 @@
 1999-04-21  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/String/getBytes.java: Explicitly use
+	`8859_1' encoding.
+
 	* gnu/testlet/java/lang/String/getBytes.java: New file.
 	From Bryce McKinlay <bryce@albatross.co.nz>.
 

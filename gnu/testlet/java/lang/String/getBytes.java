@@ -22,13 +22,21 @@
 package gnu.testlet.java.lang.String;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import java.io.UnsupportedEncodingException;
 
 public class getBytes implements Testlet
 {
   public void test (TestHarness harness)
   {
     String s = new String ("test me");
-    byte[] b = s.getBytes();
-    harness.check (b.length != 0);
+    try
+      {
+	byte[] b = s.getBytes("8859_1");
+	harness.check (b.length, s.length());
+      }
+    catch (UnsupportedEncodingException _)
+      {
+	harness.check (false);
+      }
   }
 }
