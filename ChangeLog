@@ -1,3 +1,17 @@
+2004-01-07  Sascha Brawer  <brawer@dandelis.ch>
+	
+	* gnu/testlet/javax/swing/undo/CompoundEdit/
+	addEdit.java, canRedo.java, canUndo.java, isInProgress.java,
+	lastEdit.java: New tests.
+	
+	* gnu/testlet/javax/swing/undo/UndoableEditSupport/
+	UndoableEditSupport.java, createCompoundEdit.java,
+	getUndoableEditListeners.java, getUpdateLevel.java: New tests.
+	
+	Classpath bug #7119.
+	* gnu/testlet/javax/swing/undo/UndoableEditSupport/toString.java:
+	New test.
+
 2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
 
 	Classpath bug #7109.
