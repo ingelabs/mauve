@@ -170,7 +170,7 @@ while read file; do
 
    # Surround value with spaces so that case statements will work
    # correctly.
-   taglist=" `grep '^// Tags:' gnu/testlet/$file | sed -e 's,^// Tags:,,'` "
+   taglist=" `grep '^// *Tags:' gnu/testlet/$file | sed -e 's,^// *Tags:,,'` "
    istest=yes
    case "$taglist" in
     *\ not-a-test\ *)
@@ -213,7 +213,7 @@ while read file; do
       echo "gnu/testlet/$file" >> $usesfile
       if test "$istest" = yes; then
 	 echo $class >> $classes
-	 test -n "$verbose" && echo "Chose $class"
+	 test -n "$verbose" && echo "Choose $class"
 
 	 # Now that we know we're going to use this class, see
 	 # what other support classes this test requires.

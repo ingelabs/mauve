@@ -1,5 +1,10 @@
 2004-10-14  Michael Koch  <konqueror@gmx.de>
 
+	* choose, choose-classes: Make it less strict about "Tags:" in
+	testcases.
+
+2004-10-14  Michael Koch  <konqueror@gmx.de>
+
 	* .cvsignore: Ignore SImpleTestHarness (generated when compiling to
 	native).
 

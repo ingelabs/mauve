@@ -167,7 +167,7 @@ while read file; do
 
    # Surround value with spaces so that case statements will work
    # correctly.
-   taglist=" `grep '^// Tags:' gnu/testlet/$file | sed -e 's,^// Tags:,,'` "
+   taglist=" `egrep '^// *Tags:' gnu/testlet/$file | sed -e 's,^// *Tags:,,'` "
    istest=yes
    case "$taglist" in
     *\ not-a-test\ *)
@@ -208,7 +208,7 @@ while read file; do
       class="gnu.testlet.`echo $file | sed -e 's/\.java$//' | tr / .`"
       if test "$istest" = yes; then
 	 echo $class >> $classes
-	 test -n "$verbose" && echo "Chose $class"
+	 test -n "$verbose" && echo "Choose $class"
       else
       	 test -n "$verbose" && echo " ... excluded because not-a-test"
       fi
