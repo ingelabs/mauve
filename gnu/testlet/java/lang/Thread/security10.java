@@ -37,6 +37,19 @@ public class security10 implements Testlet
   
   public void test (TestHarness h)
   {
+    SecurityManager secman = System.getSecurityManager();
+    try
+      {
+        testImpl(h);
+      }
+    finally
+      {
+        System.setSecurityManager(secman);
+      }
+  }
+
+  private void testImpl(TestHarness h)
+  {
     h.checkPoint("Thread creation");
     
     Thread testThread = new Thread();

@@ -1,3 +1,8 @@
+2005-01-31  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/lang/Thread/security10.java:
+	Added code to save and restore security manager.
+
 2005-01-27  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/util/zip/ZipFile/newZipFile.java:
