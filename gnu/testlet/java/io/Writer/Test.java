@@ -1,8 +1,9 @@
 /*************************************************************************
 /* Test.java -- Test Writer
 /*
-/* Copyright (c) 1998 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 2004 Free Software Foundation, Inc.
 /* Written by Daryl Lee (dolee@sources.redhat.com)
+/* And Mark Wielaard (mark@klomp.org)
 /*
 /* This program is free software; you can redistribute it and/or modify
 /* it under the terms of the GNU General Public License as published 
@@ -40,6 +41,11 @@ public class Test extends Writer implements Testlet
 		super();
 		buf = new char[LEN];
 		index = 0;
+	}
+
+	Test(Object lock)
+	{
+		super(lock);
 	}
 
 	public void write(char cbuf[], int off, int len)
@@ -85,6 +91,16 @@ test(TestHarness harness)
   catch (IOException e) {
 	harness.fail("Unexpected IOException");
   }
+
+  // The lock object must be non-null.
+  boolean npe_thrown = false;
+  try {
+	new Test(null);
+  }
+  catch (NullPointerException npe) {
+	  npe_thrown = true;
+  }
+  harness.check(npe_thrown, "null lock object");
 }
 
 } // class Test
