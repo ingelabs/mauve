@@ -1,5 +1,8 @@
 2002-06-18  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/lang/Class/ClassTest.java (test_getSuperclass):
+	Test interface, void, and a primitive type.
+
 	* gnu/testlet/java/io/BufferedReader/boundary.java (test): mark()
 	doesn't reset read pointer.
 

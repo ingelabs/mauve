@@ -1,4 +1,4 @@
-/* Copyright (C) 1999, 2000, 2001 Hewlett-Packard Company
+/* Copyright (C) 1999, 2000, 2001, 2002 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -108,6 +108,36 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 		}
 		catch ( Exception e ){
 		   harness.fail(" Error: getSuperclass failed - 6");
+		}
+
+		try {	
+		   Class clss = Class.forName("java.lang.Cloneable");
+		   if ( clss.getSuperclass() != null))
+		   harness.fail(" Error : getSuperclass  " +
+		        		" failed - 6 " );
+		}
+		catch ( Exception e ){
+		   harness.fail(" Error: getSuperclass failed - 7");
+		}
+
+		try {	
+		   Class clss = Void.TYPE;
+		   if ( clss.getSuperclass() != null))
+		   harness.fail(" Error : getSuperclass  " +
+		        		" failed - 8 " );
+		}
+		catch ( Exception e ){
+		   harness.fail(" Error: getSuperclass failed - 9");
+		}
+
+		try {	
+		   Class clss = Double.TYPE;
+		   if ( clss.getSuperclass() != null))
+		   harness.fail(" Error : getSuperclass  " +
+		        		" failed - 10 " );
+		}
+		catch ( Exception e ){
+		   harness.fail(" Error: getSuperclass failed - 11");
 		}
 	}
 
