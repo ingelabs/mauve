@@ -1,5 +1,24 @@
 2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/geom/RectangularShape/contains.java: New test.
+	* gnu/testlet/java/awt/geom/RectangularShape/getBounds.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getCenterX.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getCenterY.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getFrame.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getMaxX.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getMaxY.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getMinX.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/getMinY.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/intersects.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/isEmpty.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/setFrame.java: Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/setFrameFromCenter.java:
+	Ditto.
+	* gnu/testlet/java/awt/geom/RectangularShape/setFrameFromDiagonal.java:
+	Ditto.
+
+2004-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/lang/Math/max.java: Test all different signs for 0.
 	* gnu/testlet/java/lang/Math/min.java: Likewise.
 
