@@ -1,3 +1,10 @@
+2004-11-17  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/SwingUtilities/computeIntersection.java,
+	gnu/testlet/javax/swing/SwingUtilities/computeUnion.java, 
+	gnu/testlet/javax/swing/SwingUtilities/isRectangleContainingRectangle.java:
+	New tests.
+	
 2004-11-17  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/InetSocketAddress/InetSocketAddressTest.java:
