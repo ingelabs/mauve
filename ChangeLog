@@ -1,3 +1,10 @@
+2004-04-29  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/InetAddress/InetAddressTest.java:
+	Added new testcase to check if InetAddress.getByName("127.0.0.1")
+	really returns an instance of Inet4Address. Un-commented JDK 1.1
+	testcases.
+
 2004-04-29  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/RandomAccessFile/setLength.java: New test.

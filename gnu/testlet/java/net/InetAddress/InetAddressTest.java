@@ -106,7 +106,6 @@ public class InetAddressTest implements Testlet
     harness.check ( addr2[0], addr1, "Error : test_Basics failed - 9" +
 			 "Both the addresses should be the same" );
 
-    // hpjavux
     InetAddress addr3 = null;
     try {
       addr3 = InetAddress.getByName("savannah.gnu.org");
@@ -138,7 +137,6 @@ public class InetAddressTest implements Testlet
        harness.check(false, "test_Basics failed - 12 - NullPointerException");
     }
 
-    if (true) {	// 1.1 features not implemented
       //multicast test
 
       InetAddress addr4 = null;
@@ -193,9 +191,19 @@ public class InetAddressTest implements Testlet
       if ( !addr7.isMulticastAddress())
 	harness.fail("Error : test_Basics failed - 20 " +
 			   " Should have returned true here " );
-    }
-	
 
+    InetAddress addr8 = null;
+    try {
+      addr8 = InetAddress.getByName("127.0.0.1");
+    }
+    catch (UnknownHostException e) {
+      harness.fail("Error : test_Basics failed - 21 " +
+		   " Should not throw UnknownHostException here " );
+    }
+
+    if (! (addr8 instanceof Inet4Address))
+      harness.fail("Error : test_Basics failed - 22 " +
+		   " Should have returned true here " );
   }
 
   public void testall()
