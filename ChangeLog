@@ -1,5 +1,6 @@
 2003-02-03  John Leuner  <jewel@debian.org>
-
+	
+	* gnu/testlet/java/util/zip/InflaterInputStream/basic.java: new test
 	* gnu/testlet/java/util/jar/JarFile/jartest.jar: test file
 	* gnu/testlet/java/util/jar/JarFile/basic.java: new tests
 	* gnu/testlet/java/util/zip/ZipInputStream/basic.java: added read_from_end
