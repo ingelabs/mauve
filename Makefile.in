@@ -82,8 +82,6 @@ KEYS =
 @USE_GCJ_TRUE@class_files := $(patsubst %.java,%.class,$(java_files))
 @USE_GCJ_TRUE@javao_files := $(patsubst %.class,%.o,$(class_files))
 
-@USE_GCJ_TRUE@BUILT_SOURCES = classes.stamp
-
 @USE_GCJ_TRUE@check_PROGRAMS = SimpleTestHarness
 
 @USE_GCJ_TRUE@SimpleTestHarness_SOURCES =
@@ -270,7 +268,6 @@ distclean-generic:
 	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
 
 maintainer-clean-generic:
-	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 mostlyclean:  mostlyclean-checkPROGRAMS mostlyclean-compile \
 		mostlyclean-tags mostlyclean-generic
 
@@ -316,18 +313,23 @@ choices: FORCE
 
 FORCE:
 
-recheck:
-	test -f .save-keys || : > .save-keys
-	$(MAKE) KEYS="`cat .save-keys`"
-
 @USE_GCJ_TRUE@.class.o:
 @USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS) choices
 @USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness
 
+@USE_GCJ_TRUE@recheck:
+@USE_GCJ_TRUE@	test -f .save-keys || : > .save-keys
+@USE_GCJ_TRUE@	@rm -f SimpleTestHarness
+@USE_GCJ_TRUE@	$(MAKE) KEYS="`cat .save-keys`" check
+
 @USE_GCJ_FALSE@check-local: classes.stamp
 @USE_GCJ_FALSE@	cat classes | $(JAVA) gnu.testlet.SimpleTestHarness
+
+@USE_GCJ_FALSE@recheck:
+@USE_GCJ_FALSE@	test -f .save-keys || : > .save-keys
+@USE_GCJ_FALSE@	$(MAKE) KEYS="`cat .save-keys`" check
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

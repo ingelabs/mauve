@@ -1,5 +1,10 @@
 1998-11-30  Tom Tromey  <tromey@cygnus.com>
 
+	* README: Updated to mention keys.
+	* Makefile.in: Rebuilt.
+	* Makefile.am (recheck): Actually run `check' target.
+	(BUILT_SOURCES): Removed.
+
 	* Makefile.in: Rebuilt.
 	* Makefile.am (harness_files): New macro.
 	(java_files): Now conditional.

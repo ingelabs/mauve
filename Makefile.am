@@ -32,10 +32,6 @@ choices: FORCE
 
 FORCE:
 
-recheck:
-	test -f .save-keys || : > .save-keys
-	$(MAKE) KEYS="`cat .save-keys`"
-
 if USE_GCJ
 
 ## We must run a separate find because otherwise we won't find .class
@@ -45,7 +41,7 @@ java_files := $(harness_files) $(shell test -f choices && cat choices)
 class_files := $(patsubst %.java,%.class,$(java_files))
 javao_files := $(patsubst %.class,%.o,$(class_files))
 
-BUILT_SOURCES = classes.stamp
+## BUILT_SOURCES = classes.stamp
 
 check_PROGRAMS = SimpleTestHarness
 
@@ -56,15 +52,18 @@ SimpleTestHarness_DEPENDENCIES = classes.stamp $(javao_files)
 SimpleTestHarness_LDADD = $(javao_files)
 SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
-## FIXME: this hack pulls in the LINK definition.  (This is a
-## workaround for an automake bug.)
-## EXTRA_SimpleTestHarness_SOURCES = no-such-file.c
 
 .class.o:
 	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 check-local: $(check_PROGRAMS) choices
 	cat classes | ./SimpleTestHarness
+
+recheck:
+	test -f .save-keys || : > .save-keys
+## Always remove the test program to force a relink.
+	@rm -f SimpleTestHarness
+	$(MAKE) KEYS="`cat .save-keys`" check
 
 MOSTLYCLEANFILES = $(javao_files)
 CLEANFILES = $(class_files) classes.stamp
@@ -73,6 +72,10 @@ else  ## USE_GCJ
 
 check-local: classes.stamp
 	cat classes | $(JAVA) gnu.testlet.SimpleTestHarness
+
+recheck:
+	test -f .save-keys || : > .save-keys
+	$(MAKE) KEYS="`cat .save-keys`" check
 
 CLEANFILES = classes.stamp
 
