@@ -1,5 +1,10 @@
 2004-07-16  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/nio/channels/FileChannel/manyopen.java:
+	Fixed off-by-one error in cleanup.
+
+2004-07-16  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/beans/EventHandler/check14.java,
 	gnu/testlet/java/nio/Buffer/PlainBufferTest.java,
 	gnu/testlet/java/nio/Buffer/WrappedWithOffsetBufferTest.java,

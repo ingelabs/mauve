@@ -42,7 +42,7 @@ public class manyopen implements Testlet
     int i = 0;
     try
       {
-	for (i = 1; i < MANY; i++)
+	for (i = 0; i < MANY; i++)
 	  {
 	    File f = new File(tmpfile + i + ".in");
 	    f.createNewFile();
