@@ -2,11 +2,31 @@ dnl Process this with autoconf to create configure
 AC_INIT(gnu/testlet/Testlet.java)
 AM_INIT_AUTOMAKE(mauve, 0.0)
 
+AC_ARG_WITH(gcj,
+[  --with-gcj                       Use gcj to compile .class files])
+AM_CONDITIONAL(USE_GCJ, test "$with_gcj" = yes)
+
 dnl See if the user prefers to build .class files with gcj, or whether
-dnl javac will be used.
+dnl javac will be used.  The default is to use gcj if we're compiling
+dnl with gcj.
 AC_ARG_ENABLE(gcj-classes,
 [  --enable-gcj-classes             Use gcj, not javac, to build class files],
-  JAVAC='$(GCJ) -C')
+   gcj_classes="$enable_gcj_classes", gcj_classes=maybe)
+if test "$gcj_classes" = yes \
+   || (test "$gcj_classes" = maybe && test "$with_gcj" = yes); then
+   JAVAC='$(GCJ) -C'
+fi
+
+dnl If we're using gcj, the default is not to build class files at all.
+AC_ARG_ENABLE(class-files,
+[  --enable-class-files             Create class files when using gcj],
+   class_files="$enable_class_files",
+   if test "$with_gcj" = yes; then
+      class_files=no
+   else
+      class_files=yes
+   fi)
+AM_CONDITIONAL(CLASS_FILES, test "$class_files" = yes)
 
 JAVA=${JAVA-java}
 AC_SUBST(JAVA)
@@ -14,10 +34,6 @@ JAVAC=${JAVAC-javac}
 AC_SUBST(JAVAC)
 GCJ=${GCJ-gcj}
 AC_SUBST(GCJ)
-
-AC_ARG_WITH(gcj,
-[  --with-gcj                       Use gcj to compile .class files])
-AM_CONDITIONAL(USE_GCJ, test "$with_gcj" = yes)
 
 AC_PROG_INSTALL
 

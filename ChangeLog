@@ -1,5 +1,22 @@
 1999-07-05  Tom Tromey  <tromey@cygnus.com>
 
+	* Makefile.am (harnesso_files): New macro.
+	(SimpleTestHarness_LDADD): Added harnesso_files.
+	(SimpleTestHarness): New target.
+
+	* Makefile.in: Rebuilt.
+	* Makefile.am ($(javao_files)): New conditional target.
+	(STAMP): New macro.
+	(SimpleTestHarness_DEPENDENCIES): Use it.
+	(%.o:%.class): Now conditional.
+	(%.o:%.java): New pattern.
+	(check_DATA): Use $(STAMP).
+	* configure: Rebuilt.
+	* configure.in: If --with-gcj given, then default JAVAC to `gcj -C'.
+	Added --enable-classes.
+
+1999-07-05  Tom Tromey  <tromey@cygnus.com>
+
 	* gnu/testlet/java/io/Utf8Encoding/mojo.java: New file.  From
 	"Mojo Jojo" <mojojojo@pacbell.net>.
 

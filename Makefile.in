@@ -1,4 +1,4 @@
-# Makefile.in generated automatically by automake 1.4a from Makefile.am
+# Makefile.in generated automatically by automake 1.4 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
@@ -9,6 +9,7 @@
 # but WITHOUT ANY WARRANTY, to the extent permitted by law; without
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
+
 
 SHELL = @SHELL@
 
@@ -45,10 +46,9 @@ AUTOMAKE = @AUTOMAKE@
 AUTOHEADER = @AUTOHEADER@
 
 INSTALL = @INSTALL@
-INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
-INSTALL_STRIP_FLAG =
 transform = @program_transform_name@
 
 NORMAL_INSTALL = :
@@ -67,7 +67,6 @@ SRCDIR = @SRCDIR@
 TMPDIR = @TMPDIR@
 VERSION = @VERSION@
 
-
 AUTOMAKE_OPTIONS = foreign
 
 JCFLAGS = -g
@@ -75,7 +74,7 @@ JC1FLAGS = -g
 
 TESTFLAGS = 
 
-check_DATA = classes.stamp
+check_DATA = $(STAMP)
 
 harness_files = gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
@@ -84,26 +83,44 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 
 KEYS = 
 
-@USE_GCJ_TRUE@java_files = @USE_GCJ_TRUE@$(harness_files) $(CHOICES)
-@USE_GCJ_TRUE@class_files = @USE_GCJ_TRUE@$(patsubst %.java,%.class,$(java_files)) \
+@USE_GCJ_TRUE@@CLASS_FILES_TRUE@STAMP = \
+@USE_GCJ_TRUE@@CLASS_FILES_TRUE@classes.stamp
+@USE_GCJ_FALSE@STAMP = \
+@USE_GCJ_FALSE@classes.stamp
+
+@USE_GCJ_TRUE@java_files = \
+@USE_GCJ_TRUE@$(harness_files) $(CHOICES)
+@USE_GCJ_TRUE@class_files = \
+@USE_GCJ_TRUE@$(patsubst %.java,%.class,$(java_files)) \
 @USE_GCJ_TRUE@	gnu/testlet/config.class
-@USE_GCJ_TRUE@javao_files = @USE_GCJ_TRUE@$(patsubst %.class,%.o,$(class_files))
+@USE_GCJ_TRUE@harnesso_files = \
+@USE_GCJ_TRUE@$(patsubst %.java,%.o,$(harness_files)) \
+@USE_GCJ_TRUE@	gnu/testlet/config.o
+@USE_GCJ_TRUE@javao_files = \
+@USE_GCJ_TRUE@$(patsubst %.java,%.o,$(CHOICES))
 
-@USE_GCJ_TRUE@check_PROGRAMS = @USE_GCJ_TRUE@SimpleTestHarness
+@USE_GCJ_TRUE@check_PROGRAMS = \
+@USE_GCJ_TRUE@SimpleTestHarness
 
-@USE_GCJ_TRUE@SimpleTestHarness_SOURCES = 
-@USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = @USE_GCJ_TRUE@classes.stamp $(javao_files)
-@USE_GCJ_TRUE@SimpleTestHarness_LDADD = @USE_GCJ_TRUE@$(javao_files)
-@USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = @USE_GCJ_TRUE@--main=gnu.testlet.SimpleTestHarness
-@USE_GCJ_TRUE@SimpleTestHarness_LINK = @USE_GCJ_TRUE@$(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+@USE_GCJ_TRUE@SimpleTestHarness_SOURCES = \
+@USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = \
+@USE_GCJ_TRUE@$(STAMP) $(javao_files)
+@USE_GCJ_TRUE@SimpleTestHarness_LDADD = \
+@USE_GCJ_TRUE@$(harnesso_files) $(javao_files)
+@USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = \
+@USE_GCJ_TRUE@--main=gnu.testlet.SimpleTestHarness
+@USE_GCJ_TRUE@SimpleTestHarness_LINK = \
+@USE_GCJ_TRUE@$(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 
-@USE_GCJ_TRUE@MOSTLYCLEANFILES = @USE_GCJ_TRUE@$(javao_files)
+@USE_GCJ_TRUE@MOSTLYCLEANFILES = \
+@USE_GCJ_TRUE@$(javao_files)
 
-@USE_GCJ_TRUE@CLEANFILES = @USE_GCJ_TRUE@$(class_files) classes.stamp
-@USE_GCJ_FALSE@CLEANFILES = @USE_GCJ_FALSE@classes.stamp
+@USE_GCJ_TRUE@CLEANFILES = \
+@USE_GCJ_TRUE@$(class_files) classes.stamp
+@USE_GCJ_FALSE@CLEANFILES = \
+@USE_GCJ_FALSE@classes.stamp
 
 SUFFIXES = .class .java
-subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
@@ -112,23 +129,21 @@ DEFS = @DEFS@ -I. -I$(srcdir)
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-@USE_GCJ_TRUE@am_SimpleTestHarness_OBJECTS = 
-SimpleTestHarness_OBJECTS =  $(am_SimpleTestHarness_OBJECTS)
-DIST_SOURCES =  $(SimpleTestHarness_SOURCES)
-DIST_COMMON =  README $(check_DATA) COPYING ChangeLog Makefile.am \
-Makefile.in THANKS aclocal.m4 configure configure.in install-sh missing \
-mkinstalldirs
+@USE_GCJ_TRUE@SimpleTestHarness_OBJECTS = 
+DIST_COMMON =  README COPYING ChangeLog Makefile.am Makefile.in THANKS \
+aclocal.m4 configure configure.in install-sh missing mkinstalldirs
 
 
-DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
+TAR = tar
 GZIP_ENV = --best
 SOURCES = $(SimpleTestHarness_SOURCES)
-OBJECTS = $(am_SimpleTestHarness_OBJECTS)
+OBJECTS = $(SimpleTestHarness_OBJECTS)
 
 all: all-redirect
 .SUFFIXES:
-.SUFFIXES: .c .class .java .o
+.SUFFIXES: .S .c .class .java .o .s
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
 	cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile
 
@@ -153,6 +168,12 @@ distclean-checkPROGRAMS:
 
 maintainer-clean-checkPROGRAMS:
 
+.s.o:
+	$(COMPILE) -c $<
+
+.S.o:
+	$(COMPILE) -c $<
+
 mostlyclean-compile:
 	-rm -f *.o core *.core
 
@@ -162,10 +183,6 @@ distclean-compile:
 	-rm -f *.tab.c
 
 maintainer-clean-compile:
-
-SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_DEPENDENCIES)
-	@rm -f SimpleTestHarness
-	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
 tags: TAGS
 TAGS:
 
@@ -178,7 +195,7 @@ top_distdir = $(distdir)
 # tarfile.
 distcheck: dist
 	-rm -rf $(distdir)
-	GZIP=$(GZIP_ENV) gunzip -c $(distdir).tar.gz | $(AMTAR) xf -
+	GZIP=$(GZIP_ENV) $(TAR) zxf $(distdir).tar.gz
 	mkdir $(distdir)/=build
 	mkdir $(distdir)/=inst
 	dc_install_base=`cd $(distdir)/=inst && pwd`; \
@@ -198,11 +215,11 @@ distcheck: dist
 	echo "$$dashes"
 dist: distdir
 	-chmod -R a+r $(distdir)
-	$(AMTAR) ch$(AMTARFLAGS)f - $(distdir) | GZIP=$(GZIP_ENV) gzip -c > $(distdir).tar.gz
+	GZIP=$(GZIP_ENV) $(TAR) chozf $(distdir).tar.gz $(distdir)
 	-rm -rf $(distdir)
 dist-all: distdir
 	-chmod -R a+r $(distdir)
-	$(AMTAR) ch$(AMTARFLAGS)f - $(distdir) | GZIP=$(GZIP_ENV) gzip -c > $(distdir).tar.gz
+	GZIP=$(GZIP_ENV) $(TAR) chozf $(distdir).tar.gz $(distdir)
 	-rm -rf $(distdir)
 distdir: $(DISTFILES)
 	-rm -rf $(distdir)
@@ -216,7 +233,7 @@ distdir: $(DISTFILES)
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
 	  if test -d $$d/$$file; then \
-	    cp -pr $$d/$$file $(distdir)/$$file; \
+	    cp -pr $$/$$file $(distdir)/$$file; \
 	  else \
 	    test -f $(distdir)/$$file \
 	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
@@ -247,7 +264,7 @@ uninstall: uninstall-am
 all-am: Makefile
 all-redirect: all-am
 install-strip:
-	$(MAKE) $(AM_MAKEFLAGS) INSTALL_STRIP_FLAG=-s install
+	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
 installdirs:
 
 
@@ -293,9 +310,8 @@ distclean-compile clean-compile maintainer-clean-compile tags distdir \
 info-am info dvi-am dvi check-local check check-am installcheck-am \
 installcheck install-exec-am install-exec install-data-am install-data \
 install-am install uninstall-am uninstall all-redirect all-am all \
-install-strip installdirs mostlyclean-generic distclean-generic \
-clean-generic maintainer-clean-generic clean mostlyclean distclean \
-maintainer-clean
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 
  include choices
@@ -321,8 +337,18 @@ choices: FORCE
 
 FORCE:
 
-@USE_GCJ_TRUE@%.o: %.class classes.stamp
-@USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+@USE_GCJ_TRUE@@CLASS_FILES_TRUE@$(javao_files): classes.stamp
+
+@USE_GCJ_TRUE@@CLASS_FILES_TRUE@%.o: %.class classes.stamp
+@USE_GCJ_TRUE@@CLASS_FILES_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+
+@USE_GCJ_TRUE@@CLASS_FILES_FALSE@%.o: %.java
+@USE_GCJ_TRUE@@CLASS_FILES_FALSE@	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
+@USE_GCJ_TRUE@@CLASS_FILES_FALSE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+
+@USE_GCJ_TRUE@SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(harnesso_files) $(SimpleTestHarness_DEPENDENCIES)
+@USE_GCJ_TRUE@	@rm -f SimpleTestHarness
+@USE_GCJ_TRUE@	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
 
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS) $(CHOICES)
 @USE_GCJ_TRUE@	cat classes | ./SimpleTestHarness $(TESTFLAGS)

@@ -12,9 +12,11 @@ ac_help=
 ac_default_prefix=/usr/local
 # Any additions from configure.in:
 ac_help="$ac_help
+  --with-gcj                       Use gcj to compile .class files"
+ac_help="$ac_help
   --enable-gcj-classes             Use gcj, not javac, to build class files"
 ac_help="$ac_help
-  --with-gcj                       Use gcj to compile .class files"
+  --enable-class-files             Create class files when using gcj"
 ac_help="$ac_help
 
   --with-tmpdir=DIR                Put temporary files in DIR [/tmp]"
@@ -559,7 +561,7 @@ ac_configure=$ac_aux_dir/configure # This should be Cygnus configure.
 # SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
 # ./install, which can be erroneously created by make from ./install.sh.
 echo $ac_n "checking for a BSD compatible install""... $ac_c" 1>&6
-echo "configure:563: checking for a BSD compatible install" >&5
+echo "configure:565: checking for a BSD compatible install" >&5
 if test -z "$INSTALL"; then
 if eval "test \"`echo '$''{'ac_cv_path_install'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -612,7 +614,7 @@ test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL_PROGRAM}'
 test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
 
 echo $ac_n "checking whether build environment is sane""... $ac_c" 1>&6
-echo "configure:616: checking whether build environment is sane" >&5
+echo "configure:618: checking whether build environment is sane" >&5
 # Just in case
 sleep 1
 echo timestamp > conftestfile
@@ -669,7 +671,7 @@ test "$program_suffix" != NONE &&
 test "$program_transform_name" = "" && program_transform_name="s,x,x,"
 
 echo $ac_n "checking whether ${MAKE-make} sets \${MAKE}""... $ac_c" 1>&6
-echo "configure:673: checking whether ${MAKE-make} sets \${MAKE}" >&5
+echo "configure:675: checking whether ${MAKE-make} sets \${MAKE}" >&5
 set dummy ${MAKE-make}; ac_make=`echo "$2" | sed 'y%./+-%__p_%'`
 if eval "test \"`echo '$''{'ac_cv_prog_make_${ac_make}_set'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -715,7 +717,7 @@ EOF
 
 missing_dir=`cd $ac_aux_dir && pwd`
 echo $ac_n "checking for working aclocal""... $ac_c" 1>&6
-echo "configure:719: checking for working aclocal" >&5
+echo "configure:721: checking for working aclocal" >&5
 # Run test in a subshell; some versions of sh will print an error if
 # an executable is not found, even if stderr is redirected.
 # Redirect stdin to placate older versions of autoconf.  Sigh.
@@ -728,7 +730,7 @@ else
 fi
 
 echo $ac_n "checking for working autoconf""... $ac_c" 1>&6
-echo "configure:732: checking for working autoconf" >&5
+echo "configure:734: checking for working autoconf" >&5
 # Run test in a subshell; some versions of sh will print an error if
 # an executable is not found, even if stderr is redirected.
 # Redirect stdin to placate older versions of autoconf.  Sigh.
@@ -741,7 +743,7 @@ else
 fi
 
 echo $ac_n "checking for working automake""... $ac_c" 1>&6
-echo "configure:745: checking for working automake" >&5
+echo "configure:747: checking for working automake" >&5
 # Run test in a subshell; some versions of sh will print an error if
 # an executable is not found, even if stderr is redirected.
 # Redirect stdin to placate older versions of autoconf.  Sigh.
@@ -754,7 +756,7 @@ else
 fi
 
 echo $ac_n "checking for working autoheader""... $ac_c" 1>&6
-echo "configure:758: checking for working autoheader" >&5
+echo "configure:760: checking for working autoheader" >&5
 # Run test in a subshell; some versions of sh will print an error if
 # an executable is not found, even if stderr is redirected.
 # Redirect stdin to placate older versions of autoconf.  Sigh.
@@ -767,7 +769,7 @@ else
 fi
 
 echo $ac_n "checking for working makeinfo""... $ac_c" 1>&6
-echo "configure:771: checking for working makeinfo" >&5
+echo "configure:773: checking for working makeinfo" >&5
 # Run test in a subshell; some versions of sh will print an error if
 # an executable is not found, even if stderr is redirected.
 # Redirect stdin to placate older versions of autoconf.  Sigh.
@@ -779,20 +781,6 @@ else
    echo "$ac_t""missing" 1>&6
 fi
 
-
-
-# Check whether --enable-gcj-classes or --disable-gcj-classes was given.
-if test "${enable_gcj_classes+set}" = set; then
-  enableval="$enable_gcj_classes"
-  JAVAC='$(GCJ) -C'
-fi
-
-
-JAVA=${JAVA-java}
-
-JAVAC=${JAVAC-javac}
-
-GCJ=${GCJ-gcj}
 
 
 # Check whether --with-gcj or --without-gcj was given.
@@ -811,6 +799,48 @@ else
   USE_GCJ_FALSE=
 fi
 
+# Check whether --enable-gcj-classes or --disable-gcj-classes was given.
+if test "${enable_gcj_classes+set}" = set; then
+  enableval="$enable_gcj_classes"
+  gcj_classes="$enable_gcj_classes"
+else
+  gcj_classes=maybe
+fi
+
+if test "$gcj_classes" = yes \
+   || (test "$gcj_classes" = maybe && test "$with_gcj" = yes); then
+   JAVAC='$(GCJ) -C'
+fi
+
+# Check whether --enable-class-files or --disable-class-files was given.
+if test "${enable_class_files+set}" = set; then
+  enableval="$enable_class_files"
+  class_files="$enable_class_files"
+else
+  if test "$with_gcj" = yes; then
+      class_files=no
+   else
+      class_files=yes
+   fi
+fi
+
+
+
+if test "$class_files" = yes; then
+  CLASS_FILES_TRUE=
+  CLASS_FILES_FALSE='#'
+else
+  CLASS_FILES_TRUE='#'
+  CLASS_FILES_FALSE=
+fi
+
+JAVA=${JAVA-java}
+
+JAVAC=${JAVAC-javac}
+
+GCJ=${GCJ-gcj}
+
+
 # Find a good install program.  We prefer a C program (faster),
 # so one script is as good as another.  But avoid the broken or
 # incompatible versions:
@@ -823,7 +853,7 @@ fi
 # SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
 # ./install, which can be erroneously created by make from ./install.sh.
 echo $ac_n "checking for a BSD compatible install""... $ac_c" 1>&6
-echo "configure:827: checking for a BSD compatible install" >&5
+echo "configure:857: checking for a BSD compatible install" >&5
 if test -z "$INSTALL"; then
 if eval "test \"`echo '$''{'ac_cv_path_install'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1055,11 +1085,13 @@ s%@AUTOMAKE@%$AUTOMAKE%g
 s%@AUTOHEADER@%$AUTOHEADER%g
 s%@MAKEINFO@%$MAKEINFO%g
 s%@SET_MAKE@%$SET_MAKE%g
+s%@USE_GCJ_TRUE@%$USE_GCJ_TRUE%g
+s%@USE_GCJ_FALSE@%$USE_GCJ_FALSE%g
+s%@CLASS_FILES_TRUE@%$CLASS_FILES_TRUE%g
+s%@CLASS_FILES_FALSE@%$CLASS_FILES_FALSE%g
 s%@JAVA@%$JAVA%g
 s%@JAVAC@%$JAVAC%g
 s%@GCJ@%$GCJ%g
-s%@USE_GCJ_TRUE@%$USE_GCJ_TRUE%g
-s%@USE_GCJ_FALSE@%$USE_GCJ_FALSE%g
 s%@SRCDIR@%$SRCDIR%g
 s%@TMPDIR@%$TMPDIR%g
 

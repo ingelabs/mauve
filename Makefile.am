@@ -7,7 +7,7 @@ JC1FLAGS = -g
 
 TESTFLAGS =
 
-check_DATA = classes.stamp
+check_DATA = $(STAMP)
 
 harness_files = gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
@@ -41,23 +41,43 @@ FORCE:
 
 if USE_GCJ
 
+if CLASS_FILES
+STAMP = classes.stamp
+
+$(javao_files): classes.stamp
+
+%.o: %.class classes.stamp
+	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+
+else # CLASS_FILES
+
+%.o: %.java
+## Eww.
+	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
+	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+
+endif # CLASS_FILES
+
 java_files = $(harness_files) $(CHOICES)
 class_files = $(patsubst %.java,%.class,$(java_files)) \
 	gnu/testlet/config.class
-javao_files = $(patsubst %.class,%.o,$(class_files))
+harnesso_files = $(patsubst %.java,%.o,$(harness_files)) \
+	gnu/testlet/config.o
+javao_files = $(patsubst %.java,%.o,$(CHOICES))
 
 check_PROGRAMS = SimpleTestHarness
 
 SimpleTestHarness_SOURCES =
-## FIXME: should have way to compile from .java directly to
-## .o.  See libjava/Makefile.am.
-SimpleTestHarness_DEPENDENCIES = classes.stamp $(javao_files)
-SimpleTestHarness_LDADD = $(javao_files)
+SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files)
+SimpleTestHarness_LDADD = $(harnesso_files) $(javao_files)
 SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 SimpleTestHarness_LINK = $(GCJ) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 
-%.o: %.class classes.stamp
-	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
+## Explicitly writing this works around an apparent GNU make bug.
+## Sigh.
+SimpleTestHarness: $(SimpleTestHarness_OBJECTS) $(harnesso_files) $(SimpleTestHarness_DEPENDENCIES)
+	@rm -f SimpleTestHarness
+	$(SimpleTestHarness_LINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
 
 check-local: $(check_PROGRAMS) $(CHOICES)
 	cat classes | ./SimpleTestHarness $(TESTFLAGS)
@@ -72,6 +92,8 @@ MOSTLYCLEANFILES = $(javao_files)
 CLEANFILES = $(class_files) classes.stamp
 
 else  ## USE_GCJ
+
+STAMP = classes.stamp
 
 check-local: classes.stamp
 	cat classes | \
