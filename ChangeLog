@@ -1,3 +1,8 @@
+2004-12-07  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/util/Timer/taskException.java:
+	Fixed the test.
+
 2004-12-06  Guilhem Lavaux  <guilhem@kaffe.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/Deserializable.java: New

@@ -32,7 +32,7 @@ import java.util.TimerTask;
 
 public class taskException implements Testlet
 {
-  private boolean ran;
+  private volatile boolean ran;
 
   public void test (TestHarness harness)
   {
@@ -48,7 +48,7 @@ public class taskException implements Testlet
         }
       }, 10);
     try { Thread.sleep (50); } catch (InterruptedException ignore) {}
-    harness.check (!ran, "task was not run");
+    harness.check (ran, "task was not run");
     try
       {
         timer.schedule (new TimerTask()
