@@ -238,8 +238,8 @@ public class newInstance implements Testlet
     harness.check(val, 2);
 
     harness.checkPoint("array");
-    val = 0;
     Class c = null;
+    val = 0;
     try
       {
 	// see above for why this is not 255
@@ -250,20 +250,23 @@ public class newInstance implements Testlet
       {
 	val = 1;
       }
-    try
-      {
-	x = Array.newInstance(c, new int[] {1, 1});
-	val = 2;
-      }
-    catch (IllegalArgumentException e)
-      {
-	val = 3;
-      }
-    catch (Throwable t)
-      {
-	val = 4;
-      }
-    harness.check(val, 3);
+
+    // This is invalid: it is ok to have an array with >255
+    // dimensions.
+//      try
+//        {
+//  	x = Array.newInstance(c, new int[] {1, 1});
+//  	val = 2;
+//        }
+//      catch (IllegalArgumentException e)
+//        {
+//  	val = 3;
+//        }
+//      catch (Throwable t)
+//        {
+//  	val = 4;
+//        }
+//      harness.check(val, 3);
 
     try
       {
@@ -276,36 +279,38 @@ public class newInstance implements Testlet
       }
     harness.check(val, 5);
 
-    try
-      {
-	x = Array.newInstance(x.getClass(), 1);
-	val = 7;
-      }
-    catch (IllegalArgumentException e)
-      {
-	val = 8;
-      }
-    catch (Throwable t)
-      {
-	val = 9;
-      }
-    harness.check(val, 8);
+    // Another invalid test.
+//      try
+//        {
+//  	x = Array.newInstance(x.getClass(), 1);
+//  	val = 7;
+//        }
+//      catch (IllegalArgumentException e)
+//        {
+//  	val = 8;
+//        }
+//      catch (Throwable t)
+//        {
+//  	val = 9;
+//        }
+//      harness.check(val, 8);
 
-    try
-      {
-	x = Array.newInstance(x.getClass(), new int[] {1, 1});
-	val = 10;
-      }
-    catch (IllegalArgumentException e)
-      {
-	val = 11;
-      }
-    catch (Throwable t)
-      {
-	val = 12;
-      }
-    harness.check(val, 11);
-    
+    // Also invalid.
+//      try
+//        {
+//  	x = Array.newInstance(x.getClass(), new int[] {1, 1});
+//  	val = 10;
+//        }
+//      catch (IllegalArgumentException e)
+//        {
+//  	val = 11;
+//        }
+//      catch (Throwable t)
+//        {
+//  	val = 12;
+//        }
+//      harness.check(val, 11);
+
     val = 0;
     try
       {
@@ -358,6 +363,7 @@ public class newInstance implements Testlet
     harness.check(val, 2);
 
     harness.checkPoint("String");
+    x = "check";
     val = 0;
     try
       {
@@ -387,6 +393,7 @@ public class newInstance implements Testlet
 	val = 99;
       }
     harness.check(val, 100);
+    harness.debug(x.getClass().toString());
 
     val = 0;
     try
