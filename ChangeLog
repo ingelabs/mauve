@@ -1,3 +1,12 @@
+2004-10-16  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/javax/swing/SpinnerListModel/
+	(ArrayModel.java): New class of tests for creating a model from an array
+	(Constructors.java): New class of tests for the model's constructors
+	(ListModel.java): New class of tests for creating a model from a list
+	(Ordering.java): New class of tests for the ordering of elements in a model
+	(SetList.java): New class of tests for setting the list of an existing model
+
 2004-10-15  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
