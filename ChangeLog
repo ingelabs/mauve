@@ -1,3 +1,7 @@
+2003-07-01  Stephen Crawley  <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/text/RuleBasedCollator/jdk11.java : new tests
+
 2003-06-27  Stephen Crawley  <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/text/CollationElementIterator/jdk11.java :
