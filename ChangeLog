@@ -1,5 +1,9 @@
 1999-03-14  Anthony Green  <green@cygnus.com>
 
+	* gnu/testlet/java/lang/Boolean/BooleanTest.java: Use TestHarness.
+
+1999-03-14  Anthony Green  <green@cygnus.com>
+
 	* gnu/testlet/java/lang/Boolean/BooleanTest.java,
 	gnu/testlet/java/lang/Byte/ByteTest.java,
 	gnu/testlet/java/lang/Character/CharacterTest.java,

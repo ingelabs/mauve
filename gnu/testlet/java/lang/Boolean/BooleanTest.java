@@ -26,112 +26,104 @@ import gnu.testlet.TestHarness;
 
 public class BooleanTest implements Testlet
 {
-  protected static TestHarness harness;
+  public void test_Basics(TestHarness harness)
+  {
+    harness.checkPoint ("Basics");
 
-  public void test_Basics()
-    {
-      if ( !Boolean.TRUE.equals(new Boolean(true)) ||
-	   !Boolean.FALSE.equals(new Boolean(false)) )		
-	harness.fail("Error: test_Basics failed - 1" );
+    harness.check (Boolean.TRUE.equals(new Boolean(true)) 
+		   && Boolean.FALSE.equals(new Boolean(false)));
       
-      Boolean b1 = new Boolean( true );
-      Boolean b2 = new Boolean( false );
+    Boolean b1 = new Boolean( true );
+    Boolean b2 = new Boolean( false );
+    
+    harness.check (b1.booleanValue() == true && b2.booleanValue() == false);
       
-      if ( b1.booleanValue() != true || b2.booleanValue() != false )
-	harness.fail("Error: test_Basics failed - 2" );
+    Boolean bs1 = new Boolean ("True");
+    Boolean bs2 = new Boolean ("False");
+    Boolean bs3 = new Boolean ("true");
+    Boolean bs4 = new Boolean ("hi");
+    Boolean bs5 = new Boolean ("");
+
+    harness.check (bs1.booleanValue() == true 
+		   && bs2.booleanValue() == false
+		   && bs3.booleanValue() == true
+		   && bs4.booleanValue() == false
+		   && bs5.booleanValue() == false );
       
-      Boolean bs1 = new Boolean ("True");
-      Boolean bs2 = new Boolean ("False");
-      Boolean bs3 = new Boolean ("true");
-      Boolean bs4 = new Boolean ("hi");
-      Boolean bs5 = new Boolean ("");
-      
-      if ( bs1.booleanValue() != true || bs2.booleanValue() != false ||
-	   bs3.booleanValue() != true || bs4.booleanValue() != false ||
-	   bs5.booleanValue() != false )
-	harness.fail("Error: test_Basics failed - 3" );
-      
-      if ( (!bs1.toString().equals("true")) ||
-	   (!bs2.toString().equals("false")) )
-	harness.fail("Error: test_Basics failed - 4" );
-    }
+    harness.check (bs1.toString().equals("true")
+		   && bs2.toString().equals("false"));
+  }
   
-  public void test_equals()
+  public void test_equals (TestHarness harness)
     {
+      harness.checkPoint ("equals");
+
       Boolean b1 = new Boolean(true);
       Boolean b2 = new Boolean(false);
       
-      if ( b1.equals(new Integer(4)))
-	harness.fail("Error: test_equals failed - 1" );
+      harness.check (! b1.equals(new Integer(4)));
+
+      harness.check (! b1.equals(null));
       
-      if ( b1.equals(null))
-	harness.fail("Error: test_equals failed - 2" );
+      harness.check (! b1.equals( b2 ));
       
-      if ( b1.equals( b2 ))
-	harness.fail("Error: test_equals failed - 3" );
-      
-      if ( !b1.equals( new Boolean(true) ))
-	harness.fail("Error: test_equals failed - 4" );
+      harness.check (! b1.equals( new Boolean(true) ));
     }
   
-  public void test_hashCode( )
+  public void test_hashCode(TestHarness harness)
     {
+      harness.checkPoint ("hashCode");
+
       Boolean b1 = new Boolean(true);
       Boolean b2 = new Boolean(false);
       
-      if ( b1.hashCode() != 1231 || b2.hashCode() != 1237 )
-	harness.fail("Error: test_hashCode returned wrong results" );
-      
+      harness.check ( b1.hashCode() == 1231 
+		      && b2.hashCode() == 1237 );
     }
   
-  public void test_booleanValue( )
+  public void test_booleanValue(TestHarness harness)
     {
+      harness.checkPoint ("booleanValue");
+
       Boolean b1 = new Boolean(true);
       Boolean b2 = new Boolean(false);
       
-      if ( b1.booleanValue() != true  || b2.booleanValue() != false )
-	harness.fail("Error: test_booleanValue returned wrong results" );
-      
+      harness.check ( b1.booleanValue() == true 
+		      && b2.booleanValue() == false );
     }
   
-  public void test_valueOf( )
+  public void test_valueOf(TestHarness harness)
     {
-      if ( !Boolean.valueOf("True").booleanValue() || 
-	   !Boolean.valueOf("true").booleanValue() ||
-	   Boolean.valueOf("anc").booleanValue())			 
-	harness.fail("Error: test_valueOf returned wrong results" );
+      harness.checkPoint ("valueOf");
+
+      harness.check (Boolean.valueOf("True").booleanValue() 
+		     && Boolean.valueOf("true").booleanValue()
+		     && !Boolean.valueOf("anc").booleanValue());
     }
   
-  public void test_getBoolean( )
+  public void test_getBoolean(TestHarness harness)
     {
-      java.util.Properties  prop = System.getProperties();
+      harness.checkPoint ("getBoolean");
+
+      java.util.Properties prop = System.getProperties();
       prop.put("booleankey1" , "true" );
       prop.put("booleankey2" , "false" );
       prop.put("booleankey3" , "hi" );
       
       System.setProperties(prop);
-      
-      if ( Boolean.getBoolean("booleankey1") != true ||
-	   Boolean.getBoolean("booleankey2") != false ||
-	   Boolean.getBoolean("booleankey3") != false )
-	harness.fail("Error: test_getBoolean returned wrong results" );
+
+      harness.check ( Boolean.getBoolean("booleankey1") == true 
+		      && Boolean.getBoolean("booleankey2") == false 
+		      && Boolean.getBoolean("booleankey3") == false );
     }
-  
-  
-  
-  public void testall()
-    {
-      test_Basics();
-      test_equals();
-      test_hashCode();
-      test_booleanValue();
-      test_valueOf();
-      test_getBoolean();
-    }
-  
+
   public void test (TestHarness the_harness)
     {
-      harness = the_harness;
-      testall ();
+      test_Basics (harness);
+      test_equals (harness);
+      test_hashCode (harness);
+      test_booleanValue (harness);
+      test_valueOf (harness);
+      test_getBoolean (harness);
     }
 }
