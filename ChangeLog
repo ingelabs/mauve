@@ -1,3 +1,7 @@
+2003-02-04  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/beans/PropertyDescriptorTest.java: added
+	more tests for the 2 introspective constructors
+
 2003-02-03  John Leuner  <jewel@debian.org>
 	
 	* gnu/testlet/java/util/zip/InflaterInputStream/basic.java: new test
