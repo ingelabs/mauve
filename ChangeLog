@@ -1,4 +1,4 @@
-2004-05-28  Max Gilead <gilead@yellowhedgehog.com>
+2004-05-28  Max Gilead  <gilead@yellowhedgehog.com>
 
 	* gnu/testlet/java/nio/Buffer/BufferFactory.java,
 	gnu/testlet/java/nio/Buffer/ByteBufferTest.java,
@@ -12,7 +12,7 @@
 	gnu/testlet/java/nio/Buffer/WrappedWithOffsetBufferTest.java:
 	New testcases.
 
-2004-05-28  Michael Koch  <konqueror@gmx.de>
+2004-05-28  Max Gilead  <gilead@yellowhedgehog.com>
 
 	* gnu/testlet/TestHarness.java
 	(check): New method.
