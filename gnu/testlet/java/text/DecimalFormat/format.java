@@ -24,14 +24,21 @@
 
 package gnu.testlet.java.text.DecimalFormat;
 
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
 import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class format implements Testlet
 {
+  public void test(TestHarness harness)
+  {
+    testGeneral(harness);
+    testRounding(harness);
+    testMiscellaneous(harness);
+  }
+  
   public void apply (TestHarness harness, DecimalFormat df, String pattern)
     {
       harness.checkPoint("pattern " + pattern);
@@ -47,7 +54,7 @@ public class format implements Testlet
       harness.check (ok);
     }
 
-  public void test (TestHarness harness)
+  public void testGeneral(TestHarness harness)
     {
       // Just to be explicit: we're only testing the US locale here.
       Locale loc = Locale.US;
@@ -99,6 +106,7 @@ public class format implements Testlet
       apply (harness, df, "'#'#.#");
       harness.check (df.format (30), "#30");
 
+      // grouping size of zero might cause a failure - see bug parade 4088503
       harness.checkPoint("regression tests for setGroupingSize");
       df = new DecimalFormat();
       df.setGroupingSize(0);
@@ -117,4 +125,61 @@ public class format implements Testlet
 //       apply (harness, df, "00.00E00");
 //       harness.check (df.format (200000), "20.00E+04");
     }
+  
+  /**
+   * Checks that rounding behaviour follows "half-even" rounding.  For example,
+   * see bug parade 4763975.
+   * 
+   * @param harness  the harness.
+   */
+  private void testRounding(TestHarness harness) 
+  {
+    harness.checkPoint("DecimalFormat rounding");
+    Locale original = Locale.getDefault();
+    Locale.setDefault(Locale.UK);
+    DecimalFormat f = new DecimalFormat("0.00");
+    harness.check(f.format(1.225), "1.22");
+    harness.check(f.format(1.235), "1.24");
+    Locale.setDefault(original);
+  }
+  
+  private void testMiscellaneous(TestHarness harness) 
+  {
+    harness.checkPoint("DecimalFormat: misc");
+    Locale original = Locale.getDefault();
+    Locale.setDefault(Locale.UK);
+    
+    DecimalFormat f = new DecimalFormat("0");
+    
+    // some implementations can't handle custom subclasses of Number
+    boolean pass = true;
+    try
+    {
+      f.format(new Number() {
+        public float floatValue() 
+        {
+          return 0.0f;   
+        }
+        public double doubleValue() 
+        {
+          return 0.0f;   
+        }   
+        public long longValue()
+        {
+          return 0l; 
+        }
+        public int intValue()
+        {
+          return 0; 
+        }
+      });
+    }
+    catch (Exception e)
+    {
+      pass = false;   
+    }
+    harness.check(pass);
+    
+    Locale.setDefault(original);
+  }
 }

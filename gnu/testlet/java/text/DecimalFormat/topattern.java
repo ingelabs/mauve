@@ -45,12 +45,14 @@ public class topattern implements Testlet
       DecimalFormat df = new DecimalFormat ("0.##");
       harness.check (df.toPattern (), "0.##");
       harness.check (df.toLocalizedPattern (), "0.##");
-
+      
       DecimalFormatSymbols dfs = df.getDecimalFormatSymbols ();
       dfs.setDecimalSeparator (',');
       dfs.setZeroDigit ('1');
       dfs.setDigit ('X');
       dfs.setGroupingSeparator ('!');
+      df.setDecimalFormatSymbols(dfs);   // dfs is only a copy of the internal 
+                                         // symbols so pass symbols back to df
       harness.check (df.toLocalizedPattern (), "1,XX");
 
       df.applyPattern ("Fr #,##0.##");

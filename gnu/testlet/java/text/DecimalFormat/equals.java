@@ -39,13 +39,89 @@ public class equals implements Testlet
    */
   public void test(TestHarness harness) 
   {
-    DecimalFormat f1 = new DecimalFormat("#,##0");
-    DecimalFormat f2 = new DecimalFormat("#,##0.00");
-    harness.check(!f1.equals(f2));
+    DecimalFormat f1 = new DecimalFormat();
+    DecimalFormat f2 = new DecimalFormat();
+    harness.check(f1.equals(f2));                          // 1
+    harness.check(f2.equals(f1));                          // 2
+    
+    f1.applyPattern("#,##0");
+    f2.applyPattern("#,##0.00");
+    harness.check(!f1.equals(f2));                         // 3
+    f2.applyPattern("#,##0");
+    harness.check(f1.equals(f2));                          // 4
+    
+    f1.setDecimalSeparatorAlwaysShown(!f1.isDecimalSeparatorAlwaysShown());
+    harness.check(!f1.equals(f2));                         // 5
+    f2.setDecimalSeparatorAlwaysShown(f1.isDecimalSeparatorAlwaysShown());
+    harness.check(f1.equals(f2));                          // 6
+    
+    f1.setGroupingSize(5);
+    harness.check(!f1.equals(f2));                         // 7
+    f2.setGroupingSize(5);
+    harness.check(f1.equals(f2));                          // 8
+    
+    f1.setGroupingUsed(!f1.isGroupingUsed());             
+    harness.check(!f1.equals(f2));                         // 9
+    f2.setGroupingUsed(f1.isGroupingUsed());
+    harness.check(f1.equals(f2));                          // 10
+    
+    f1.setMaximumFractionDigits(12);
+    harness.check(!f1.equals(f2));                         // 11
+    f2.setMaximumFractionDigits(12);
+    harness.check(f1.equals(f2));                          // 12
+    
+    f1.setMaximumIntegerDigits(23);
+    harness.check(!f1.equals(f2));                         // 13
+    f2.setMaximumIntegerDigits(23);
+    harness.check(f1.equals(f2));                          // 14
+    
+    f1.setMinimumFractionDigits(5);
+    harness.check(!f1.equals(f2));                         // 15
+    f2.setMinimumFractionDigits(5);
+    harness.check(f1.equals(f2));                          // 16
+    
+    f1.setMinimumIntegerDigits(4);
+    harness.check(!f1.equals(f2));                         // 17
+    f2.setMinimumIntegerDigits(4);
+    harness.check(f1.equals(f2));                          // 18
+    
+    f1.setMultiplier(17);
+    harness.check(!f1.equals(f2));                         // 19
+    f2.setMultiplier(17);
+    harness.check(f1.equals(f2));                          // 20
+    
+    f1.setNegativePrefix("ABC");
+    harness.check(!f1.equals(f2));                         // 21
+    f2.setNegativePrefix("ABC");
+    harness.check(f1.equals(f2));                          // 22
+    
+    f1.setPositivePrefix("XYZ");
+    harness.check(!f1.equals(f2));                         // 23
+    f2.setPositivePrefix("XYZ");
+    harness.check(f1.equals(f2));                          // 24
+    
+    f1.setNegativeSuffix("FGH");
+    harness.check(!f1.equals(f2));                         // 25
+    f2.setNegativeSuffix("FGH");
+    harness.check(f1.equals(f2));                          // 26
+    
+    f1.setPositiveSuffix("JKL");
+    harness.check(!f1.equals(f2));                         // 27
+    f2.setPositiveSuffix("JKL");
+    harness.check(f1.equals(f2));                          // 28
+    
+    // check equivalent patterns
+    f1.applyPattern("0.00");
+    f2.applyPattern("0.00;-0.00");
+    harness.check(f1.equals(f2));                          // 29
+    
 
-    f1 = new DecimalFormat("0");
-    f2 = new DecimalFormat("0.00");
-    harness.check(!f1.equals(f2));
+    // check null
+    harness.check(!f1.equals(null));                       // 30
+    
+    // check arbitrary object
+    harness.check(!f1.equals("Not a DecimalFormat"));      // 31
+
   }
 
 }
