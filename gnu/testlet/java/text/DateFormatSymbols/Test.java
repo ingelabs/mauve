@@ -105,6 +105,7 @@ test(TestHarness harness)
       arrayDump(harness, dfs.getAmPmStrings(), "am/pm strings"); 
       arrayDump(harness, dfs.getZoneStrings(), "zone string array"); 
       harness.debug("local pattern chars: " + dfs.getLocalPatternChars()); 
+      System.out.println ("Hello!");
 
       dfs.setEras(my_eras);
       harness.check(arrayEquals(dfs.getEras(), my_eras), "eras");
