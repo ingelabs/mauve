@@ -36,20 +36,20 @@ public class interrupt implements Testlet
     Thread.interrupted();
 
     harness.check(!current.isInterrupted(),
-		    "Thread.interrupted() makes isInterrupted() false");
+		  "Thread.interrupted() makes isInterrupted() false");
     harness.check(!Thread.interrupted(),
-		    "Thread.interrupted() makes interrupted() false");
-
+		  "Thread.interrupted() makes interrupted() false");
+    
     // Make sure interrupt flag is set
     current.interrupt();
     
     harness.check(current.isInterrupted(),
-		    "interrupt() makes isInterrupted() true");
+		  "interrupt() makes isInterrupted() true");
     harness.check(current.isInterrupted(),
-		    "isInterrupt() doesn't clear interrupt flag");
+		  "isInterrupt() doesn't clear interrupt flag");
     harness.check(Thread.interrupted(),
-		    "interrupt() makes interrupted() true");
-
+		  "interrupt() makes interrupted() true");
+    
     // Set interrupt flag again for wait test
     current.interrupt();
     boolean interrupted_exception = false;
@@ -63,11 +63,11 @@ public class interrupt implements Testlet
 	interrupted_exception = true;
       }
     harness.check(interrupted_exception,
-		    "wait with interrupt flag throws InterruptedException");
-
+		  "wait with interrupt flag throws InterruptedException");
+    
     harness.check(interrupted_exception && !Thread.interrupted(),
-		    "InterruptedException in wait() clears interrupt flag");
-
+		  "InterruptedException in wait() clears interrupt flag");
+    
     // Set interrupt flag again for sleep test
     current.interrupt();
     interrupted_exception = false;
@@ -80,27 +80,27 @@ public class interrupt implements Testlet
 	interrupted_exception = true;
       }
     harness.check(interrupted_exception,
-		    "sleep with interrupt flag throws InterruptedException");
-
+		  "sleep with interrupt flag throws InterruptedException");
+    
     harness.check(interrupted_exception && !Thread.interrupted(),
-		    "InterruptedException in sleep() clears interrupt flag");
+		  "InterruptedException in sleep() clears interrupt flag");
 
     // Set interrupt flag again for join test
     current.interrupt();
     interrupted_exception = false;
     try
       {
-	current.join(50,50);
+	current.join(50, 50);
       }
     catch(InterruptedException ie)
       {
 	interrupted_exception = true;
       }
     harness.check(interrupted_exception,
-		    "join with interrupt flag throws InterruptedException");
-
+		  "join with interrupt flag throws InterruptedException");
+    
     harness.check(interrupted_exception && !Thread.interrupted(),
-		    "InterruptedException in join() clears interrupt flag");
+		  "InterruptedException in join() clears interrupt flag");
   }
 }
 
