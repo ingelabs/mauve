@@ -1,3 +1,7 @@
+2004-10-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/net/MessageFormat/format14.java: New test.
+	
 2004-10-26  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/URLConnection/post.java:
