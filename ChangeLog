@@ -1,0 +1,6 @@
+Fri Nov  6 09:06:10 1998  Anthony Green  <green@hoser.cygnus.com>
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	install-sh, missing, mkinstalldirs, gnu/testlet/Testlet.java,
+	gnu/testlet/java/lang/Boolean/new_Boolean.java: Imported.
+	
