@@ -1,5 +1,5 @@
 /*************************************************************************
-/* implement.java -- Test interface java.text.AttributedCharacterIterator
+/* implement.java -- Test interface java.text.CharacterIterator
 /*
 /* Copyright (c) 1999 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
@@ -19,72 +19,66 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.2
-// Uses: CharItImpl
+// Tags: not-a-test
 
 package gnu.testlet.java.text.AttributedCharacterIterator;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 import java.text.*;
-import java.util.Set;
-import java.util.Map;
 
-public class implement extends CharItImpl
-             implements AttributedCharacterIterator, Testlet
+// Package local copy for use by AttributedCharacterIterator
+class CharItImpl implements CharacterIterator
 {
 
-public void 
-test(TestHarness harness)
-{
-  harness.check(true, "Correctly implemented AttributedCharacterIterator");
-}
-
-public int
-getRunStart()
-{
-  return(0);
-}
-public int
-getRunStart(AttributedCharacterIterator.Attribute attr)
-{
-  return(0);
-}
-public int
-getRunStart(Set attrs)
-{
-  return(0);
-}
-public int
-getRunLimit()
-{
-  return(0);
-}
-public int
-getRunLimit(AttributedCharacterIterator.Attribute attr)
-{
-  return(0);
-}
-public int
-getRunLimit(Set attrs)
-{
-  return(0);
-}
-public Map
-getAttributes()
-{
-  return(null);
-}
-public Set
-getAllAttributeKeys()
-{
-  return(null);
-}
 public Object
-getAttribute(AttributedCharacterIterator.Attribute attr)
+clone()
 {
   return(null);
 }
+public char
+current()
+{
+  return('0');
+}
+public char
+first()
+{
+  return('0');
+}
+public int
+getBeginIndex()
+{
+  return(0);
+}
+public int
+getEndIndex()
+{
+  return(0);
+}
+public int
+getIndex()
+{
+  return(0);
+}
+public char
+last()
+{
+  return('0');
+}
+public char
+next()
+{
+  return('0');
+}
+public char
+previous()
+{
+  return('0');
+}
+public char
+setIndex(int pos)
+{
+  return('0');
+}
 
-} // class implement
+} // class CharacterIteratorImplement
 

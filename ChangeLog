@@ -1,5 +1,12 @@
 2002-04-15  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/text/AttributedCharacterIterator/CharItImpl.java:
+	New package private class.
+	* gnu/testlet/java/text/AttributedCharacterIterator/implement.java:
+	Uses CharItImpl.
+
+2002-04-15  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/util/AbstractMap/AcuniaAbstractMapTest.java:
 	Remove inner classes.
 	* gnu/testlet/java/util/AbstractMap/EIterator.java: New class.
