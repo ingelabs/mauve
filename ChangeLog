@@ -1,3 +1,9 @@
+2000-07-10  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/io/PipedStream/receive.java: Fixed tag.
+	Changed code to use `receive' and not `PipeTest'.
+	From Peter Naulls.
+
 2000-04-21  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/io/PipedStream/receive.java: New file.

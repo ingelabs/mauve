@@ -1,4 +1,4 @@
-// Tags: JDK 1.0
+// Tags: JDK1.0
 
 // Test PipedInputStream.receive().
 // Written by Tom Tromey <tromey@cygnus.com>
@@ -31,10 +31,10 @@ import java.io.*;
 public class receive extends PipedInputStream implements Runnable, Testlet
 {
   static Thread main;
-  static PipeTest in;
+  static receive in;
   static PipedOutputStream out;
 
-  PipeTest (PipedOutputStream x) throws IOException
+  receive (PipedOutputStream x) throws IOException
   {
     super(x);
   }
@@ -52,7 +52,7 @@ public class receive extends PipedInputStream implements Runnable, Testlet
     try {
       main = Thread.currentThread();
       out = new PipedOutputStream();
-      in = new PipeTest(out);
+      in = new receive (out);
 
       (new Thread(in)).start();
 
