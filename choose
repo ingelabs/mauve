@@ -105,6 +105,15 @@ done
 
 echo >> $choices
 
+# Due to a weirdness in GNU make, we want to list the dependencies
+# explicitly here.  This is really nasty.  But if we remove this, then
+# SimpleTestHarness will never be built, because its dependencies
+# won't include the .o files (but, strangely, the link line will).
+sed -e 's/CHOICES =/SimpleTestHarness:/' \
+   -e 's/\.java/.o/g' $choices > /tmp/x-$$
+cat /tmp/x-$$ >> $choices
+rm /tmp/x-$$
+
 if test -f $outdir/choices \
    && cmp $choices $outdir/choices > /dev/null 2>&1; then
    # Files are the same.

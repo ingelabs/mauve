@@ -78,9 +78,9 @@ harness_files = gnu/testlet/SimpleTestHarness.java \
 
 KEYS =
 
-@USE_GCJ_TRUE@java_files := $(harness_files) $(CHOICES)
-@USE_GCJ_TRUE@class_files := $(patsubst %.java,%.class,$(java_files))
-@USE_GCJ_TRUE@javao_files := $(patsubst %.class,%.o,$(class_files))
+@USE_GCJ_TRUE@java_files = $(harness_files) $(CHOICES)
+@USE_GCJ_TRUE@class_files = $(patsubst %.java,%.class,$(java_files))
+@USE_GCJ_TRUE@javao_files = $(patsubst %.class,%.o,$(class_files))
 
 @USE_GCJ_TRUE@check_PROGRAMS = SimpleTestHarness
 
@@ -295,7 +295,7 @@ clean-generic maintainer-clean-generic clean mostlyclean distclean \
 maintainer-clean
 
 
--include choices
+include choices
 
 classes.stamp: choices $(CHOICES)
 	here=`/bin/pwd`; cd $(srcdir); \
@@ -304,7 +304,7 @@ classes.stamp: choices $(CHOICES)
 	touch classes.stamp
 choices: FORCE
 	ok=no; \
-	if test -f .save-keys && test "`cat .save-keys`" = "$(KEYS)"; then \
+	if test -f .save-keys && test -f choices && test "`cat .save-keys`" = "$(KEYS)"; then \
 	  ok=yes; \
 	fi; \
 	here=`/bin/pwd`; \
@@ -315,7 +315,7 @@ choices: FORCE
 
 FORCE:
 
-@USE_GCJ_TRUE@.class.o:
+@USE_GCJ_TRUE@%.o: %.class
 @USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(JC1FLAGS) -c -o $@ $<
 
 @USE_GCJ_TRUE@check-local: $(check_PROGRAMS) $(CHOICES)

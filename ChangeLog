@@ -1,3 +1,16 @@
+1998-12-01  Tom Tromey  <tromey@cygnus.com>
+
+	* choose: Explicitly generate dependencies for SimpleTestHarness.
+	* Makefile.in: Rebuilt.
+	* Makefile.am: Use `include', not `-include'.
+	(choices): Only let .save-keys override creation if `choices' file
+	exists.
+	(java_files): Don't define with `:='.
+	(class_files): Likewise.
+	(javao_files): Likewise.
+	($(javao_files)): New target.
+	(.class.o): Removed.
+
 1998-11-30  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Character/getType12.java: New file.
