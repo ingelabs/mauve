@@ -1,4 +1,5 @@
 // Tags: JDK1.4
+// Uses: ServerThread
 
 /*
   Copyright (C) 2003 C. Brian Jones
@@ -34,9 +35,10 @@ public class jdk14 implements Testlet
 {
   public void test (TestHarness harness)
   {
-    String host = ((SimpleTestHarness) harness).getMailHost();
-    int port = 25;
+    String host = "localhost";
+    int port = 14610;
     Socket sock = null;
+    ServerThread server = new ServerThread(harness, port);
     try 
       {
 	sock = new Socket (); // unconnected socket
@@ -73,6 +75,7 @@ public class jdk14 implements Testlet
       try {
 	if (sock != null)
 	  sock.close();
+	server.close();
       } catch(IOException ignored) {}
     }
   }

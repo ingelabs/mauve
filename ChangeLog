@@ -1,3 +1,11 @@
+2005-02-09  Bryce McKinlay  <mckinlay@redhat.com>
+
+	* gnu/testlet/java/net/Socket/ServerThread.java: New file.
+	* gnu/testlet/java/net/Socket/jdk12.java: Use ServerThread instead
+	of trying to connect to external server.
+	* gnu/testlet/java/net/Socket/jdk13.java: Likewise.
+	* gnu/testlet/java/net/Socket/jdk14.java: Likewise.
+
 2005-02-08  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/net/URI/URITest.java (test): Added Classpath
