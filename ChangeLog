@@ -1,3 +1,8 @@
+2002-11-17  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/net/Socket/SocketBServer.java: fixed indentation
+	* gnu/testlet/java/net/Socket/SocketServer.java: ditto
+	* gnu/testlet/java/net/Socket/SocketTest.java: ditto
+
 2002-11-16  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/BufferedCharWriter/Test.java:
 	Added tests for remaining methods in BufferedWriter

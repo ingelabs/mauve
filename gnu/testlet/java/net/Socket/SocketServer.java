@@ -29,58 +29,55 @@ import java.io.*;
 
 
 class SocketServer extends Thread {
- ServerSocket srvsock = null;
- String helloBuddy="hello buddy";
+  ServerSocket srvsock = null;
+  String helloBuddy="hello buddy";
 
   static TestHarness harness;
 
- public void init()
- {
-  try {
-   srvsock = new ServerSocket(20000);
-   harness.check(true);
-  }
-  catch ( Exception e )
+  public void init()
   {
-   harness.fail("Error : BasicSocketServer::init failed " +
-    "Exception should not be thrown here " + e );
-    e.printStackTrace();
+    try {
+      srvsock = new ServerSocket(20000);
+      harness.check(true);
+    }
+    catch (Exception e) {
+      harness.fail("Error : BasicSocketServer::init failed " +
+		   "Exception should not be thrown here " + e);
+      e.printStackTrace();
+    }
   }
- }
 
- public void run()
- {
-  if ( srvsock == null )
+  public void run()
   {
-   harness.fail("Error : BasicSocketServer::run failed  - 1 " +
-    "server socket creation was not successful" );
-   return;
+    if (srvsock == null) {
+      harness.fail("Error : BasicSocketServer::run failed  - 1 " +
+		   "server socket creation was not successful");
+      return;
+    }
+
+    int i = 0;
+    while (i++ < 5) {
+      try {
+	Socket clnt = srvsock.accept();
+	
+	OutputStream os = clnt.getOutputStream();
+	//DataOutputStream dos = new DataOutputStream(os);
+	//dos.writeBytes("hello buddy");
+	//dos.close();
+	
+	//System.out.println("Write helloBuddy as bytes");
+	byte data[] = new byte[helloBuddy.length()];
+	helloBuddy.getBytes(0,helloBuddy.length(),data,0);
+	os.write(data);
+	os.close();
+	harness.check(true);
+	
+      }
+      catch (Exception e) {
+	harness.fail("Error : BasicSocketServer::run failed - 2" +
+		     "exception was thrown: " + e);
+	e.printStackTrace();
+      }
+    }
   }
-
-  int i = 0;
-  while( i++ < 5 )
-  {
-   try {
-    Socket clnt = srvsock.accept();
-
-    OutputStream os = clnt.getOutputStream();
-    //DataOutputStream dos = new DataOutputStream( os );
-    //dos.writeBytes("hello buddy");
-    //dos.close();
-
-    //System.out.println("Write helloBuddy as bytes");
-    byte data[] = new byte[helloBuddy.length()];
-    helloBuddy.getBytes(0,helloBuddy.length(),data,0);
-    os.write(data);
-    os.close();
-    harness.check(true);
-
-   }
-   catch ( Exception e ){
-    harness.fail("Error : BasicSocketServer::run failed - 2" +
-     "exception was thrown: " + e );
-    e.printStackTrace();
-   }
-  }
- }
 }
