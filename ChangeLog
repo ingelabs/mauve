@@ -1,3 +1,11 @@
+2002-02-18  C. Brian Jones <cbj@gnu.org>
+
+	* gnu/testlet/java/beans/IntrospectorTest.java: renamed
+	gnu/testlet/java/beans/Introspector/jdk11.java
+	(test): check static method Introspector.decapitalize(String) 
+	* gnu/testlet/java/beans/Introspector: new directory
+	* gnu/testlet/java/beans/Introspector/jdk12.java: new file
+	
 2002-02-18  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/IdentityHashMap/simple.java: JDK1.3 -> JDK1.4
