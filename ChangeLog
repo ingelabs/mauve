@@ -1,5 +1,7 @@
 2001-09-27  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/lang/ThreadLocal/simple.java: New file.
+
 	* gnu/testlet/javax/naming/CompositeName/composite.java: New file.
 	* gnu/testlet/javax/naming/CompoundName/simple.java: New file.
 
