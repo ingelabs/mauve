@@ -50,7 +50,9 @@ public class security implements Testlet
     File tmpfile2 = new File(tmpdir, "testfile2");
     harness.check(tmpfile2.delete() || !tmpfile2.exists());
 
-    Permission[] noPerms = new Permission[0];
+    Permission[] noPerms = new Permission[1];
+    noPerms[0] = new RuntimePermission("shutdownHooks");
+
     Permission tmpdirReadPerm =
       new FilePermission(tmpdir.toString(), "read");
     Permission tmpdirWritePerm =
@@ -241,9 +243,9 @@ public class security implements Testlet
       harness.checkPoint("listRoots()");
       try {
 	// sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
-	sm.prepareChecks(noPerms, noPerms);
+	sm.prepareChecks(new Permission[0], noPerms);
 	File[] roots = File.listRoots();
-	// harness.check(roots.length, 1, "File.listRoots()");
+	harness.check(roots.length >= 1, "File.listRoots()");
 	sm.checkAllChecked(harness);
       }
       catch (Exception ex) {

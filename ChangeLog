@@ -1,5 +1,10 @@
 2004-06-25  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/File/security.java: Allow RuntimePermission
+	shutdownhook check. There must be at least one File root.
+
+2004-06-25  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/FileReader/jdk11.java: Don't depend on the
 	choices file being present.
 
