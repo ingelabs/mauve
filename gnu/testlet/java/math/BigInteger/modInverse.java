@@ -59,8 +59,28 @@ public class modInverse implements Testlet
 
   public void test(TestHarness harness)
   {
+    testRecursion(harness);
     for (int i = 0; i < ps.length; i++)
       testCase(harness, i, ps[i], qs[i]);
+  }
+
+  private void testRecursion(TestHarness harness)
+  {
+    harness.checkPoint("testRecursion");
+    try
+    {
+      BigInteger k = new BigInteger("1a1eb1e6b8f115eee3dc1334afc7de2f7efbd568", 16);
+      BigInteger q = new BigInteger("de09f1902cf484f232fee5d27262372d1c6072d7", 16);
+      BigInteger t = new BigInteger("a3a790f0b7d2bea3a81dc676032cf99c23c28bee", 16);
+      BigInteger tt = k.modInverse(q);
+//      harness.check(true, "k.modInverse(q)="+tt.toString(16));
+      harness.check(t.equals(k.modInverse(q)), "recursion ok");
+    }
+    catch (Exception x)
+    {
+      harness.debug(x);
+      harness.fail(String.valueOf(x));
+    }
   }
 
   private void testCase(TestHarness harness, int i, String ps, String qs)
