@@ -1,4 +1,8 @@
-2004-11-02  Guilhem Lavaux  <guilhem@kaffe.org>
+2004-11-03  Stephen Crawley  <crawley@dstc.edu.au>
+	* gnu/testlet/java/util/Vector/VectorSerialization.java: remove
+	spurious "// Uses: Test" - there is no such Java class.
+
+2004-11-02  Guilhem Lavaux  <guilhem@kaffe.org>	
 
 	* gnu/testlet/java/util/Vector/VectorSerialization.java,
 	gnu/testlet/java/util/Vector/TestVector.ser:

@@ -1,5 +1,4 @@
 // Tags: JDK1.2
-// Uses: Test
 
 /* VectorSerialization.java -- Tests the serialization of Vector.
 
