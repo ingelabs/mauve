@@ -1,3 +1,11 @@
+2004-08-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Dimension/clone.java: New test.
+	* gnu/testlet/java/awt/Dimension/constructors.java: Likewise.
+	* gnu/testlet/java/awt/Dimension/equals.java: Likewise.
+	* gnu/testlet/java/awt/Dimension/getSize.java: Likewise.
+	* gnu/testlet/java/awt/Dimension/setSize.java: Likewise.
+
 2004-08-06  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/awt/image/Kernel/check.java (test): Always
