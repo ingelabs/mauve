@@ -1,3 +1,58 @@
+2003-10-24  Sascha Brawer  <brawer@dandelis.ch>
+
+	* gnu/testlet/java/awt/geom/CubicCurve2D/clone.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/Double.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/getBounds2D.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/getCtrlP1.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/getCtrlP2.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/getP1.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/getP2.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Double/setCurve.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/Float.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/getBounds2D.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/getCtrlP1.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/getCtrlP2.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/getP1.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/getP2.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/Float/setCurve.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/getFlatness.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/getFlatnessSq.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/getPathIterator.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/setCurve.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/solveCubic.java,
+	gnu/testlet/java/awt/geom/CubicCurve2D/subdivide.java,
+	gnu/testlet/java/awt/geom/GeneralPath/append_PathIterator.java,
+	gnu/testlet/java/awt/geom/GeneralPath/GeneralPath.java,
+	gnu/testlet/java/awt/geom/GeneralPath/getCurrentPoint.java,
+	gnu/testlet/java/awt/geom/GeneralPath/getPathIterator.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/clone.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Double/Double.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Double/getBounds2D.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Double/getCtrlPt.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Double/getP1.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Double/getP2.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Double/setCurve.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Float/Float.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Float/getBounds2D.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Float/getCtrlPt.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Float/getP1.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Float/getP2.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/Float/setCurve.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/getFlatness.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/getFlatnessSq.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/getPathIterator.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/setCurve.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/solveQuadratic.java,
+	gnu/testlet/java/awt/geom/QuadCurve2D/subdivide.java,
+	gnu/testlet/java/awt/geom/Rectangle2D/getPathIterator.java,
+	gnu/testlet/java/awt/geom/RoundRectangle2D/contains.java,
+	gnu/testlet/java/awt/geom/RoundRectangle2D/intersects.java: New files.
+
+	* gnu/testlet/java/awt/geom/RoundRectangle2D/intersects.java
+	/doc-files/contains-1.png,
+	gnu/testlet/java/awt/geom/RoundRectangle2D/intersects.java/
+	doc-files/intersects-1.png: New illustrations.
+
 2003-09-25  Stephen Crawley  <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/lang/Thread/stop.java: avoid hanging forever
