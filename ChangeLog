@@ -1,3 +1,9 @@
+2004-04-15  Archie Cobbs  <archie@dellroad.org>
+
+	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java: Give the
+	runtime some more hints (Thread.yield/System.gc) that it should
+	really garbage collect.
+
 2004-04-15  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/lang/Character/unicode.java:

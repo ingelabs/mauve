@@ -54,6 +54,9 @@ public class phantom implements Testlet
     phantom twt = new phantom ();
     PhantomReference wr = genRef (q, twt);
 
+    // Give the runtime some hints that it should really garbage collect.
+    System.gc ();
+    System.yield ();
     System.gc ();
 
     Reference r = q.poll ();
