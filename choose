@@ -61,7 +61,7 @@ while test -n "$taglist"; do
        echo "Invalid tag: $i" 1>&2
        exit 1
        ;;
-    !java.* | java.* | !javax.* | javax.* | !BinaryCompatibility.* | BinaryCompatibility.*)
+    !java.* | java.* | !javax.* | javax.* | !locales.* | locales.* | !BinaryCompatibility.* | BinaryCompatibility.*)
        file="`echo $i | tr . /`"
        file_specs="$file_specs $file"
        ;;
@@ -130,7 +130,7 @@ classes=/tmp/classes-$$
 usesfile=/tmp/uses-$$
 : > $usesfile
 
-(cd gnu/testlet; find java javax BinaryCompatibility -name '*.java' -print) |
+(cd gnu/testlet; find java javax locales BinaryCompatibility -name '*.java' -print) |
 while read file; do
    exact_match=no
    test -n "$verbose" && echo "Examining $file"
