@@ -1,3 +1,9 @@
+2004-10-17  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/geom/Arc2D/Double/clone.java: New test.
+	* gnu/testlet/java/awt/geom/Arc2D/Float/clone.java: Likewise.
+	* gnu/testlet/java/awt/geom/Arc2D/clone.java: Removed.
+
 2004-10-17  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/util/Date/range.java
