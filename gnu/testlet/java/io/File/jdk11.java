@@ -219,6 +219,11 @@ public class jdk11 implements Testlet, FilenameFilter
 
     try 
       {
+	// Make sure that file exists.
+	cons.mkdir ();
+	FileOutputStream fos = new FileOutputStream (tmp3);
+	fos.write (1);
+	fos.close ();
 	harness.debug ("tmp3.getCanonicalPath () = " + tmp3.getCanonicalPath ());
 	harness.debug ("equals? " + srcdirstr + File.separator 
 		       + THIS_FILE + File.separator
@@ -228,6 +233,9 @@ public class jdk11 implements Testlet, FilenameFilter
 						       + THIS_FILE
 						       + File.separator
 						       + TMP_FILENAME3), "getCanonicalPath ()");
+	// Remove again
+	tmp3.delete ();
+	cons.delete ();
       } 
     catch (IOException ioe)
       {

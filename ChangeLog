@@ -1,3 +1,26 @@
+2002-04-05  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/File/jdk11.java (test): Make sure that file
+	exists before calling getCanonicalPath().
+
+	* gnu/testlet/java/lang/reflect/Method/invoke.java (test): Expect
+	IllegalArgument exception when argument for a method that takes an
+	int is null.
+
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java
+	(test_params): Make toString() tests less strict, just check if they
+	contain the ip number.
+
+	* gnu/testlet/java/net/Socket/SocketTest.java (test_BasicServer):
+	Make available() test less strict.
+	(test_params): Use well known hosts. Make toString() tests less
+	strict. Drop comparison with getLocalHost() which is invalid if
+	machine has multiple interfaces.
+
+	* gnu/testlet/java/net/URL/URLTest.java (test_openConnection): Be less
+	strict in server name/version (Apache) and content type (text/html)
+	(test_openStream): Be less strict in actual content (HTML).
+
 2002-04-03  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/AbstractCollection/AcuniaAbstractCollectionTest.java:

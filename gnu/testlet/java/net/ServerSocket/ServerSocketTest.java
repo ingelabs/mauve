@@ -165,15 +165,13 @@ public class ServerSocketTest implements Testlet
 
 			}
 			catch ( Exception e ){}
+			
+			String ip = "0.0.0.0";
+			harness.check(sock.toString().indexOf(ip) != -1,
+				"toString() should contain IP");
+			harness.check(sock.getInetAddress().toString().indexOf(ip) != -1,
+				"InetAddress toString() should contain IP");
 
-			if ( !sock.toString().equals(
-"ServerSocket[addr=all-zeros-broadcast/0.0.0.0,port=0,localport=30000]"))
-				harness.fail("Error : test_params failed - 4" + "toString did not return proper values " );
-
-			if ( !sock.getInetAddress().toString().equals(
-			  "all-zeros-broadcast/0.0.0.0"))
-				harness.fail("Error : test_params failed - 5" + "getInetAddress did not return proper values " );
-			  
 			sock.setSocketFactory( null );
 			
 		}

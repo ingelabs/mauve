@@ -128,9 +128,11 @@ public class URLTest implements Testlet
 
 			URLConnection conn = url.openConnection();
 
-			harness.check (conn.getHeaderField(2), "Apache/1.3.9 (Unix)");
+			harness.check (conn.getHeaderField(2).indexOf("Apache") != -1,
+							"I want my Apache server!");
 			String conttype	= conn.getContentType();
-			harness.check (conttype, "text/html");
+			harness.check (conttype.indexOf("text/html") != -1,
+							"Content must be text/html");
 
 			Object obj = url.getContent();
 			harness.check (url.toExternalForm(),
@@ -156,11 +158,12 @@ public class URLTest implements Testlet
 			URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
 			java.io.InputStream conn = url.openStream();
 
-			byte b [] = new byte[6];
-			conn.read(b , 0 , 6 );
+			byte b [] = new byte[256];
+			conn.read(b , 0 , 256 );
 
 			String str = new String( b ) ;
-			harness.check (str, "<HTML>");
+			harness.check (str.indexOf("HTML") != -1,
+							"Need some HTML");
 
 		}catch ( Exception e ){
 			harness.fail(" Error in test_openStream  - 2 " + 

@@ -143,9 +143,9 @@ public class SocketTest implements Testlet
    is.skip(2);
 
    int len=is.available();  // deterministic after blocking for skip
-   if (len!=9) { //"hello buddy" len
+   if (len <= 0) { //"hello buddy" len
     harness.fail("Error : test_BasicServer failed - 7 " +
-     "len returned is not correct.  " + len );
+     "no more data available.  " );
    }
 
    is.read(data,0,3);
@@ -189,7 +189,9 @@ public class SocketTest implements Testlet
  {
   harness.checkPoint("params");
   try {
-   Socket sock = new Socket( "www.cygnus.com" , 7  );
+   String host = "mail.gnu.org";
+   int port = 25;
+   Socket sock = new Socket( host , port  );
 
    if ( sock.getLocalPort() <= 0 )
     harness.fail("Error : test_params failed - 1 " +
@@ -220,18 +222,14 @@ public class SocketTest implements Testlet
    if ( sock.getSoLinger() != -1 )
     harness.fail("Error : test_params failed - 5"  );
 
-   if ( sock.getPort() != 7 )
+   if ( sock.getPort() != port )
     harness.fail("Error : test_params failed - 6"  );
 
-   if (! (   (sock.getInetAddress().toString().equals(
-    "www.cygnus.com/205.180.83.41"))))
-    harness.fail("Error : test_params failed - 7"  );
+   harness.check(sock.getInetAddress().toString().indexOf(host) != -1,
+     "getInetAddress().toString() should contain host " + host);
+   harness.check(sock.toString().indexOf(host) != -1,
+     "toString() should contain host " + host);
 
-   if ( !sock.getLocalAddress().toString().equals(InetAddress.getLocalHost().toString()) )
-    harness.fail("Error : test_params failed - 8"  );
-
-   if ( !( (sock.toString().equals("Socket[addr=www.cygnus.com/205.180.83.41,port=7,localport="+sock.getLocalPort()+"]"))))
-    harness.fail("Error : test_params failed - 9 " + " toString did not return the expected string " );
    try {
        Socket.setSocketImplFactory( null );
    }
@@ -296,7 +294,7 @@ public class SocketTest implements Testlet
 
   // host inet given
   try {
-   Socket s = new Socket ( "mothership.cygnus.com" , 13 );
+   Socket s = new Socket ( "www.gnu.org" , 13 );
   }
   catch ( Exception e ){
      e.printStackTrace();

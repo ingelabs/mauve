@@ -166,7 +166,7 @@ public class invoke implements Testlet
 		new IllegalArgumentException ());
     args1[0] = null;
     try_invoke (harness, ti_meth, null, args1,
-		new NullPointerException ());
+		new IllegalArgumentException ());
     args1[0] = new Integer (-5);
     try_invoke (harness, ti_meth, null, args1,
 		new InvocationTargetException (new IllegalArgumentException ()));
