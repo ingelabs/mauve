@@ -1,3 +1,10 @@
+2002-10-21  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/lang/Class/reflect2.java: Completed tests for
+	inner class introspection methods.  (No testing of security yet)
+	* gnu/testlet/java/lang/Class/reflect.java: ditto
+	* gnu/testlet/java/lang/Class/rf2_help.java: ditto
+	* gnu/testlet/java/lang/Class/rf_help.java: ditto
+
 2002-10-20  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/lang/Class/ClassTest.java: Rejigged to use
 	'harness.check(...)' rather than 'if (!...) { harness.fail(...) }

@@ -28,6 +28,13 @@ import java.lang.reflect.*;
 
 public class reflect2 implements Testlet
 {
+  private TestHarness harness;
+  private Class help;
+  private Class help2;
+  private Class help_inner;
+  private Class help2_inner;
+  private Class help2_inner_inner;
+
   public Class getClass(String name)
   {
     try {
@@ -39,11 +46,85 @@ public class reflect2 implements Testlet
     }
   }
 
+  public void test_getClasses() 
+  {
+    harness.checkPoint("getClasses");
+
+    Class[] inner = (new Object()).getClass().getClasses();
+    harness.check(inner.length == 0);
+
+    inner = help.getClasses();
+    harness.check(inner.length == 1);
+    harness.check(inner[0].equals(help_inner));
+
+    inner = help2.getClasses();
+    harness.check(inner.length == 3);
+
+    inner = help_inner.getClasses();
+    harness.check(inner.length == 0);
+
+    inner = help2_inner.getClasses();
+    harness.check(inner.length == 1);
+    harness.check(inner[0].equals(help2_inner_inner));
+
+    inner = help2_inner_inner.getClasses();
+    harness.check(inner.length == 0);
+
+  } 
+
+  public void test_getDeclaringClass() 
+  {
+    harness.checkPoint("getDeclaringClass");
+
+    Class outer = help.getDeclaringClass();
+    harness.check(outer == null);
+
+    outer = help2.getDeclaringClass();
+    harness.check(outer == null);
+
+    outer = help_inner.getDeclaringClass();
+    harness.check(outer.equals(help));
+
+    outer = help2_inner.getDeclaringClass();
+    harness.check(outer.equals(help2));
+
+    outer = help2_inner_inner.getDeclaringClass();
+    harness.check(outer.equals(help2_inner));
+  }
+
+  public void test_getDeclaredClasses() 
+  {
+    harness.checkPoint("getDeclaredClasses");
+
+    Class[] inner = help.getDeclaredClasses();
+    harness.check(inner.length == 1);
+    harness.check(inner[0].equals(help_inner));    
+
+    inner = help2.getDeclaredClasses();
+    harness.check(inner.length == 8);
+    
+    inner = help2_inner.getDeclaredClasses();
+    harness.check(inner.length == 1);
+    harness.check(inner[0].equals(help2_inner_inner));
+
+    inner = help2_inner_inner.getDeclaredClasses();
+    harness.check(inner.length == 0);
+  }
+
   public void test(TestHarness harness)
   {
-    Class help = getClass("gnu.testlet.java.lang.Class.rf2_help");
-    Class[] inner = help.getClasses();
-    Class[] inner2 = help.getDeclaredClasses();
-    Class outer = help.getDeclaringClass();
+    this.harness = harness;
+    help = getClass("gnu.testlet.java.lang.Class.rf_help");
+    help2 = getClass("gnu.testlet.java.lang.Class.rf2_help");
+
+    help_inner = ((new rf_help(1.0)).new inner()).getClass();
+    help2_inner = ((new rf2_help(1.0)).new inner_class_1()).getClass();
+    help2_inner_inner = 
+      (((new rf2_help(1.0)).new inner_class_1()).
+       new inner_inner_class_1()).getClass();
+
+    test_getClasses();
+    test_getDeclaringClass();
+    test_getDeclaredClasses();
   }
 }

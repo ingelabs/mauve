@@ -22,11 +22,11 @@
 
 package gnu.testlet.java.lang.Class;
 
-public class rf2_help
+public class rf2_help extends rf_help
 {
   public class inner_class_1
   {
-    public class innner_inner_class_1
+    public class inner_inner_class_1
     {
     }
   }
@@ -57,5 +57,10 @@ public class rf2_help
 
   interface inner_interface_4
   {
+  }
+
+  public rf2_help(double arg) 
+  {
+    super(arg);
   }
 }

@@ -117,7 +117,7 @@ public class reflect implements Testlet
     
     try {
       Constructor[] cls = rf_help_class.getConstructors();
-      harness.check(cls.length, 0);
+      harness.check(cls.length, 1);
     }
     catch (SecurityException se) {
       // One per check above.
@@ -155,11 +155,13 @@ public class reflect implements Testlet
     
     try {
       Constructor[] cls = rf_help_class.getDeclaredConstructors();
-      harness.check(cls.length, 1);
+      harness.check(cls.length, 2);
       harness.check(cls[0].getName(), "gnu.testlet.java.lang.Class.rf_help");
+      harness.check(cls[1].getName(), "gnu.testlet.java.lang.Class.rf_help");
     }
     catch (SecurityException se) {
       // One per check above.
+      harness.check(false);
       harness.check(false);
       harness.check(false);
     }

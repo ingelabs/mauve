@@ -24,16 +24,23 @@ package gnu.testlet.java.lang.Class;
 
 public class rf_help
 {
+  public class inner {
+  }
+
   private int size = 0;
   public String name = "";
   static double value = 1.0;
 
-  static void doit ()
+  static void doit()
   {
     value = 1.0;
   }
 
-  private rf_help ()
+  private rf_help()
+  {
+  }
+
+  public rf_help(double arg) 
   {
   }
 }
