@@ -1,3 +1,7 @@
+2003-06-03  Stephen Crawley  <crawley@dstc.edu.au>
+        * gnu/testlet/java/math/BigDecimal/setScale.java: added new
+	  setScale testcase from Jerry Quinn <jlquinn@optonline.net>
+
 2003-05-24  Daniel Bonniot  <bonniot@users.sf.net>
 
 	* gnu/testlet/java/util/Arrays/equals.java: New file.

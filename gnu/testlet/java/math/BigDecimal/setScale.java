@@ -51,5 +51,12 @@ public class setScale implements Testlet
     		   new BigDecimal ("0.740"));
     harness.check (result.setScale(4, BigDecimal.ROUND_HALF_UP),
     		   new BigDecimal ("0.7404"));
+
+    // setScale testcase from Jerry Quinn <jlquinn@optonline.net>
+    harness.checkPoint ("quinn");
+    BigDecimal x = new BigDecimal("0.20562");
+    harness.check (x.toString(), "0.20562");
+    x = x.setScale(2, BigDecimal.ROUND_HALF_EVEN); // to x.xx
+    harness.check (x.toString(), "0.21");
   }
 }
