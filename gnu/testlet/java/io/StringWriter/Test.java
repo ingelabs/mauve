@@ -57,14 +57,14 @@ test(TestHarness harness)
   sw.write(buf, 13, 12);
   sw.write(buf[25]);
   sw.write(buf, 26, buf.length - 26);
-  try
+  try		// IOException added in 1.2
     {
       sw.close();
     }
-  catch(Exception e)
+  catch(IOException e)
     {
       harness.debug("Caught unexpected exception: " + e);
-      harness.check(false);
+      harness.fail("Unexpected IOException");
       return;
     }
 

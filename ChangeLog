@@ -1,6 +1,6 @@
 2002-12-27  Daryl Lee <dol@sources.redhat.com>
-	* gnu/testlet/java/io/StringReader/Test.java:
-	Changed misleading comment on ready() Exception
+	* gnu/testlet/java/io/StringWriter/Test.java:
+	Modified close() test to catch IOException explicitly
 
 2002-12-27  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/FileOutputStream/jdk12.java:
