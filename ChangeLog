@@ -1,3 +1,8 @@
+2002-11-13  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PushbackReader/Unread.java
+	Added tests to complete testing of all methods
+	(above date is my local time)
+
 2002-11-14  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/net/ServerSocket/BasicBacklogSocketServer.java:
 	cosmetic changes only - reindented, etc

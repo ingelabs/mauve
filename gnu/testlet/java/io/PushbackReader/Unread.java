@@ -55,6 +55,9 @@ test(TestHarness harness)
       
       boolean passed = true;
 
+	  harness.check(prt.ready(), "ready()");
+	  harness.check(!prt.markSupported(), "markSupported()");
+
       prt.read(read_buf1); 
       prt.unread(read_buf1);
       prt.read(read_buf2);
@@ -76,6 +79,9 @@ test(TestHarness harness)
         }
 
       harness.check(total_read, str.length(), "total_read == str.length()");
+
+	  prt.close();
+	  harness.check(true, "close()");
     }
   catch(IOException e)
     {
