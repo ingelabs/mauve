@@ -80,6 +80,8 @@ public class basic implements Testlet
 
 	byte[] deflated_data = bos.toByteArray();
 
+	// Lack of buffering caused InflaterInputStream problems in
+	// with versions of Classpath.
 	InflaterInputStream iis = new InflaterInputStream(new BufferedInputStream (new ByteArrayInputStream(deflated_data), 1));
 
 	Properties p = new Properties();
