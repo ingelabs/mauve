@@ -1,5 +1,10 @@
 2002-06-13  Tom Tromey  <tromey@redhat.com>
 
+	From Timothy Stack:
+	* gnu/testlet/java/io/BufferedByteOutputStream/interrupt.java
+	(getCount): New method
+	(test): Use it.
+
 	* gnu/testlet/java/io/PrintStream/subclass.java (subclass): Don't
 	pass `null' to superclass constructor.  From Dalibor Topic.
 

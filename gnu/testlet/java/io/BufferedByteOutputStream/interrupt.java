@@ -25,6 +25,11 @@ public class interrupt extends BufferedOutputStream implements Testlet
     super (null);
   }
 
+  private int getCount()
+  {
+    return this.count;
+  }
+
   public void test (TestHarness harness)
   {
     // We create an output stream that will throw an
@@ -36,7 +41,7 @@ public class interrupt extends BufferedOutputStream implements Testlet
     int BUFFER = 7;
 
     helper h = new helper (10);
-    BufferedOutputStream out = new interrupt (h, BUFFER);
+    interrupt out = new interrupt (h, BUFFER);
 
     boolean ok = false;
     int i = -1;
@@ -63,7 +68,7 @@ public class interrupt extends BufferedOutputStream implements Testlet
     // In theory the BufferedOutputStream should notice the
     // InterruptedIOException and update its internal data structure
     // accordingly.
-    harness.check (count, 4);
+    harness.check (out.getCount(), 4);
 
     h = new helper (10);
     out = new interrupt (h, BUFFER);
