@@ -1,3 +1,8 @@
+2003-08-01  David P Grove  <groved@us.ibm.com>
+
+	* gnu/testlet/java/text/DecimalFormat/format.java (test):
+	Regression test for setGroupingSize.
+
 2003-08-01  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/math/BigDecimal/divide.java: New tests.

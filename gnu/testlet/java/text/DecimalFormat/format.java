@@ -1,6 +1,6 @@
 // Test simple forms of DecimalFormat.format.
 
-// Copyright (c) 1999  Cygnus Solutions
+// Copyright (c) 1999, 2003  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -98,6 +98,13 @@ public class format implements Testlet
 
       apply (harness, df, "'#'#.#");
       harness.check (df.format (30), "#30");
+
+      harness.checkPoint("regression tests for setGroupingSize");
+      df = new DecimalFormat();
+      df.setGroupingSize(0);
+      harness.check (df.format (100000), "100000");
+      harness.check (df.isGroupingUsed());
+      harness.check (df.getGroupingSize(), 0);
 
       // FIXME: we don't actually know the right result here, because
       // neither the JCL book nor the JDK 1.2 docs explain what should
