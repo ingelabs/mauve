@@ -1,10 +1,10 @@
-// Tags: JDK1.0 JDK1.1 JDK1.2
+// Tags: JDK1.2
 
 package gnu.testlet.java.lang.Character;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class getType implements Testlet
+public class getType12 implements Testlet
 {
   public static void p (TestHarness harness, char c, String expected)
     {
@@ -105,44 +105,10 @@ public class getType implements Testlet
 
   public void test (TestHarness harness)
     {
-      p (harness, ' ', "space_separator");
-      p (harness, '\u2028', "line_separator");
-      p (harness, '\u2029', "paragraph_separator");
-      p (harness, '\u2110', "uppercase_letter");
-      p (harness, 'Z', "uppercase_letter");
-      p (harness, '\uff44', "lowercase_letter");
-      p (harness, 'z', "lowercase_letter");
-      p (harness, '\u1fe4', "lowercase_letter");
-      p (harness, '\u01c5', "titlecase_letter");
-      p (harness, '\u3005', "modifier_letter");
-      p (harness, '\u01bf', "other_letter");
-      p (harness, '\u0666', "decimal_digit_number");
-      p (harness, '\u216f', "letter_number");
-      p (harness, '\u0f32', "other_number");
-      p (harness, '\u0f35', "non_spacing_mark");
-      p (harness, '\u06de', "enclosing_mark");
-      p (harness, '\u0903', "combining_spacing_mark");
-      p (harness, '-', "dash_punctuation");
-      p (harness, '\ufe59', "start_punctuation");
-      p (harness, '\u00ab', "start_punctuation");
-      p (harness, '\u0f3b', "end_punctuation");
-      p (harness, '\u2019', "end_punctuation");
-      p (harness, '\uff3f', "connector_punctuation");
-      p (harness, '\u2202', "math_symbol");
-      p (harness, '\u20ab', "currency_symbol");
-      p (harness, '\u02c2', "modifier_symbol");
-      p (harness, '\u0ad0', "other_symbol");
-      p (harness, '\u009f', "control");
-      p (harness, '\ufeff', "format");
-      p (harness, '\uffff', "unassigned");
-      p (harness, '\uffef', "unassigned");
-      p (harness, '\uebeb', "private_use");
-      p (harness, '\udb9c', "surrogate");
-      p (harness, '\u249f', "other_symbol");
-      p (harness, '\u2102', "uppercase_letter");
+      p (harness, '\u20ac', "currency_symbol");
     }
 
-  public getType ()
+  public getType12 ()
     {
     }
 }

@@ -1,5 +1,7 @@
 1998-11-30  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Character/getType12.java: New file.
+
 	* Makefile.in: Rebuilt.
 	* Makefile.am: Removed now-incorrect comment.
 	Include `choices' file.
