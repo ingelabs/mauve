@@ -1,3 +1,7 @@
+2005-02-08  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/ClassLoader/redefine.java: New file.
+
 2005-02-06 Audrius Meskauskas <audriusa@bluewin.ch>
 	* gnu/testlet/javax/swing/text/html/HTML/HTML_Test.java,
 	gnu/testlet/javax/swing/text/html/parser/AttributeList/AttributeList_test.java 
