@@ -338,7 +338,7 @@ classes.stamp: $(java_files)
 @USE_GCJ_TRUE@	./SimpleTestHarness $(test_names)
 
 @USE_GCJ_FALSE@check-local: $(check_PROGRAMS)
-@USE_GCJ_FALSE@	$(JAVA) gnu/testlet/SimpleTestHarness $(test_names)
+@USE_GCJ_FALSE@	$(JAVA) gnu.testlet.SimpleTestHarness $(test_names)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

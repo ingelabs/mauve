@@ -4,17 +4,18 @@ AM_INIT_AUTOMAKE(mauve, 0.0)
 AM_MAINTAINER_MODE
 
 JAVA=${JAVA-java}
-JAVAC=${JAVAC-javac}
-GCJ=${GCJ-gcj}
 AC_SUBST(JAVA)
+JAVAC=${JAVAC-javac}
 AC_SUBST(JAVAC)
+GCJ=${GCJ-gcj}
 AC_SUBST(GCJ)
+
+AC_ARG_WITH(gcj,
+[  --with-gcj                       Use gcj to compile .class files])
+AM_CONDITIONAL(USE_GCJ, test "$with_gcj" = yes)
 
 AC_PROG_INSTALL
 
 AC_PROG_CC
-
-dnl FIXME: for now, we just assume gcj.
-AM_CONDITIONAL(USE_GCJ, :)
 
 AC_OUTPUT(Makefile)

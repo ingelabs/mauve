@@ -55,7 +55,7 @@ CLEANFILES = $(class_files)
 else  ## USE_GCJ
 
 check-local: $(check_PROGRAMS)
-	$(JAVA) gnu/testlet/SimpleTestHarness $(test_names)
+	$(JAVA) gnu.testlet.SimpleTestHarness $(test_names)
 
 endif ## USE_GCJ
 

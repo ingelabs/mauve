@@ -1,5 +1,12 @@
 1998-11-24  Tom Tromey  <tromey@cygnus.com>
 
+	* Makefile.in: Rebuilt.
+	* Makefile.am (check-local): Use correct name for
+	SimpleTestHarness class.
+
+	* configure: Rebuilt.
+	* configure.in: Recognize --with-gcj.
+
 	* gnu/testlet/java/lang/Long/getLong.java: Added import for
 	Properties; fixed typo.
 
