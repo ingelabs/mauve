@@ -1,3 +1,9 @@
+2005-01-10  Arnaud Vandyck  <avdyk@ressource-toi.org>
+
+	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java,
+	gnu/testlet/javax/swing/text/StringContent/BadLocationExceptionTest.java:
+	Updated testcases.
+
 2005-01-09  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/TableColumn/constants.java,

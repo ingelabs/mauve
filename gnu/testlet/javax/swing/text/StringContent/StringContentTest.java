@@ -42,7 +42,7 @@ public class StringContentTest implements Testlet
         h.checkPoint("StringContent -- insertString()");
         sc.insertString(0, "path");
         h.check("path\n", sc.getString(0, sc.length()),
-                "StringContent.insertString(): insert 'path' at 0");
+                "StringContent.insertString(): insert 'path' at 0 getString() is: " + sc.getString(0, sc.length()));
         h.checkPoint("StringContent -- length()");
         h.check(5, sc.length(),
                 "StringContent.length(): should be 5, is: " + sc.length());
@@ -50,10 +50,10 @@ public class StringContentTest implements Testlet
         sc.insertString(0, "class");
         h.checkPoint("StringContent -- getString()");
         h.check("classpath\n", sc.getString(0, sc.length()), 
-                "StringContent.insertString(): put 'class' at 0");
+                "StringContent.insertString(): put 'class' at 0 should be 'classpath' and is: " + sc.getString(0, sc.length()));
         h.checkPoint("StringContent -- length() part2");
         h.check(10, sc.length(),
-                "StringContent.length(): should be 9, is: " + sc.length());
+                "StringContent.length(): should be 10, is: " + sc.length());
         h.checkPoint("StringContent -- remove()");
         sc.remove(1, 4);
         h.checkPoint("StringContent -- getString() part2");

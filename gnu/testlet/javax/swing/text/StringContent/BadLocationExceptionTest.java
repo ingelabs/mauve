@@ -76,7 +76,7 @@ public class BadLocationExceptionTest implements Testlet
     catch (BadLocationException ble)
       {
         h.check("Invalid range", ble.getMessage(), "BadLocation message should be 'Invalid range' and is: " + ble.getMessage());
-        h.check(sc.length(), ble.offsetRequested(), "OffsetRequested() should be " + sc.length() + " and is: " + ble.offsetRequested());
+        h.check(5, ble.offsetRequested(), "OffsetRequested() should be 5 and is: " + ble.offsetRequested());
       }
     try
       {
@@ -87,7 +87,7 @@ public class BadLocationExceptionTest implements Testlet
     catch (BadLocationException ble)
       {
         h.check("Invalid range", ble.getMessage(), "BadLocation message should be 'Invalid range' and is: " + ble.getMessage());
-        h.check(sc.length(), ble.offsetRequested(), "OffsetRequested() should be '"+ sc.length() + "' and is: " + ble.offsetRequested());
+        h.check(9, ble.offsetRequested(), "OffsetRequested() should be 9 and is: " + ble.offsetRequested());
       }
   }
 
