@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1999 Cygnus Solutions
+// Copyright (C) 1999, 2000 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -37,7 +37,9 @@ public class plus implements Testlet
 
   public void test (TestHarness harness)
     {
-      harness.check (s(0) + "", "null");
+      // Experimentation shows this to be the case.
+      harness.check (s(0) + "", null);
+
       harness.check (s(1) + "", "z");
 
       harness.check ("wxy" + s(0), "wxynull");

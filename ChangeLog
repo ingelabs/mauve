@@ -1,3 +1,8 @@
+2000-12-20  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/StringBuffer/plus.java (test): Fixed
+	null-as-left-operand test to match JDK 1.2.
+
 2000-12-08  Warren Levy  <warrenl@redhat.com>
 
 	* gnu/testlet/java/net/Socket/SocketBServer.java (harness): Made
