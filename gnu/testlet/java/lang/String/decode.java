@@ -35,9 +35,27 @@ public class decode implements Testlet
 	bstr[i] = (byte) cstr[i];
 
       String a = new String(bstr);
+      String a_utf8 = "";
       String b = new String(bstr, 3, 3);
+      String b_utf8 = "";
       String c = "";
       String d = "";
+
+      try
+	{
+	  a_utf8 = new String(bstr, "UTF-8");
+	}
+      catch (UnsupportedEncodingException ex)
+	{
+	}
+
+      try
+	{
+	  b_utf8 = new String(bstr, 3, 3, "UTF-8");
+	}
+      catch (UnsupportedEncodingException ex)
+	{
+	}
 
       try
 	{
@@ -56,7 +74,9 @@ public class decode implements Testlet
 	}
 
       harness.check (a, "abc	ABC 123");
+      harness.check (a_utf8, "abc	ABC 123");
       harness.check (b, "	AB");
+      harness.check (b_utf8, "	AB");
       harness.check (c, "abc	ABC 123");
       harness.check (d, "	AB");
 
