@@ -1,5 +1,10 @@
 2003-07-18  Mark Wielaard  <mark@klomp.org>
-	
+
+	* gnu/testlet/java/util/zip/InflaterInputStream/basic.java: Add
+	illegal argument constructor tests.
+
+2003-07-18  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/math/BigDecimal/setScale.java: Add tests for all
 	corner cases of ROUND_HALF_EVEN.
 

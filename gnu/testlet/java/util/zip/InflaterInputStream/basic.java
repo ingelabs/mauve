@@ -58,5 +58,69 @@ public class basic implements Testlet
 	{
 	    harness.check(false, "deflation tests fail");
 	}
+
+    // There are apparently programs out there that depend on this behaviour.
+    harness.checkPoint("Constructor");
+    boolean exception_thrown = false;
+    try
+      {
+	InflaterInputStream iis = new InflaterInputStream(null);
+      }
+    catch (NullPointerException npe)
+      {
+	exception_thrown = true;
+      }
+    harness.check(exception_thrown);
+
+    ByteArrayInputStream bais = new ByteArrayInputStream(new byte[1]);
+    exception_thrown = false;
+    try
+      {
+	InflaterInputStream iis = new InflaterInputStream(bais, null);
+      }
+    catch (NullPointerException npe)
+      {
+	exception_thrown = true;
+      }
+    harness.check(exception_thrown);
+
+    exception_thrown = false;
+    try
+      {
+	InflaterInputStream iis = new InflaterInputStream(null,
+							  new Inflater(),
+							  1024);
+      }
+    catch (NullPointerException npe)
+      {
+	exception_thrown = true;
+      }
+    harness.check(exception_thrown);
+
+    exception_thrown = false;
+    try
+      {
+	InflaterInputStream iis = new InflaterInputStream(bais,
+							  null,
+							  1024);
+      }
+    catch (NullPointerException npe)
+      {
+	exception_thrown = true;
+      }
+    harness.check(exception_thrown);
+
+    exception_thrown = false;
+    try
+      {
+	InflaterInputStream iis = new InflaterInputStream(bais,
+							  new Inflater(),
+							  -1024);
+      }
+    catch (IllegalArgumentException iae)
+      {
+	exception_thrown = true;
+      }
+    harness.check(exception_thrown);
   }
 }
