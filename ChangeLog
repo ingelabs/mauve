@@ -1,3 +1,8 @@
+1999-04-12  Warren Levy  <warrenl@cygnus.com>
+
+	* gnu/testlet/java/io/DataInputStream/readLine.java: New file;
+	written by Anthony Green  <green@cygnus.com>.
+
 1999-04-08  Tom Tromey  <tromey@cygnus.com>
 
 	* choose: Generate multi-line text in choices file.  Otherwise sed
