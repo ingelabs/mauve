@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 1999, 2000 Red Hat, Inc.
+// Copyright (C) 1999, 2000, 2001 Red Hat, Inc.
 
 // This file is part of Mauve.
 
@@ -46,6 +46,11 @@ public class toString implements Testlet
     return "zardoz";
   }
 
+  public int arrayargs (int[] z)
+  {
+    return z.length;
+  }
+
   public void test (TestHarness harness)
   {
     Class ic = null;
@@ -61,5 +66,11 @@ public class toString implements Testlet
     Class[] na_list = new Class[0];
     Method na_meth = getMethod (ic, "no_args", na_list);
     harness.check (na_meth.toString (), "public java.lang.String gnu.testlet.java.lang.reflect.Method.toString.no_args()");
+
+    Class[] aa_list = new Class[1];
+    aa_list[0] = int[].class;
+    Method aa_meth = getMethod (ic, "arrayargs", aa_list);
+    harness.check (aa_meth.toString (),
+		   "public int gnu.testlet.java.lang.reflect.Method.toString.arrayargs(int[])");
   }
 }

@@ -1,3 +1,8 @@
+2001-08-23  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/reflect/Method/toString.java (test): Added
+	test for method with array argument.
+
 2001-08-19  John Leuner  <jewel@debian.org>
 
 	* gnu/testlet/java/lang/Math/min.java: added some more tests for min that don't
