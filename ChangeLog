@@ -1,5 +1,16 @@
 2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/java/util/logging/Logger: New directory.
+
+	* gnu/testlet/java/util/logging/Logger/getLogger.java,
+	gnu/testlet/java/util/logging/Logger/global.java,
+	gnu/testlet/java/util/logging/Logger/securityChecks.java,
+	gnu/testlet/java/util/logging/Logger/TestLogger.java,
+	gnu/testlet/java/util/logging/Logger/TestSecurityManager.java:
+	New file.
+
+2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/java/util/logging/LogRecord: New directory.
 
 	* gnu/testlet/java/util/logging/LogRecord/getMillis.java,
