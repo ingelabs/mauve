@@ -1,5 +1,5 @@
 // Tags: JDK1.1
-// Uses: rf2_help
+// Uses: rf_help rf2_help
 
 // Copyright (C) 2000, 2002 Cygnus Solutions
 
