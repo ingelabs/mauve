@@ -1,3 +1,8 @@
+2003-01-02  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/BufferedInputStream/SimpleRead.java (test):
+	Removed wrong check(false).
+
 2002-12-27  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/StringWriter/Test.java (test): Catch Throwable

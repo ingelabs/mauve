@@ -64,7 +64,6 @@ test(TestHarness harness)
 	  harness.debug("Mark " + (bis.markSupported() ? "is" : "is not") + " supported.");
 	  int skip = 10;
 	  long skipped = bis.skip(skip);
-	  harness.check(false, "skip() threw StringIndexOutOfBoundsException");
 	  harness.check(skipped, skip, "skip(long)");
 	  harness.debug("Skipped " + skipped + "(=" + skip + "?) bytes");
 	  harness.debug("Reading " + bis.read(buf, 0, 3) + "(=3?) bytes");
