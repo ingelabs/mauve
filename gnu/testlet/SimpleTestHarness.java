@@ -1,4 +1,4 @@
-// Copyright (c) 1998, 1999  Cygnus Solutions
+// Copyright (c) 1998, 1999, 2001  Red Hat, Inc.
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -25,6 +25,7 @@
 
 package gnu.testlet;
 import java.io.*;
+import java.util.Vector;
 
 public class SimpleTestHarness 
     extends TestHarness 
@@ -32,6 +33,9 @@ public class SimpleTestHarness
 {
   private int count = 0;
   private int failures = 0;
+  private static Vector expected_xfails = new Vector ();
+  private int xfailures = 0;
+  private int xpasses = 0;
   private int total = 0;
   private boolean verbose = false;
   private boolean debug = false;
@@ -49,12 +53,29 @@ public class SimpleTestHarness
     {
       if (! result)
 	{
-	  System.out.println (getDescription ("FAIL"));
-	  ++failures;
+	  String desc;
+	  if (!expected_xfails.contains (desc = getDescription ("FAIL")))
+	    {
+	      System.out.println (desc);
+	      ++failures;
+	    }
+	  else if (verbose)
+	    {
+	      System.out.println ("X" + desc);
+	      ++xfailures;
+	    }
 	}
       else if (verbose)
 	{
-	  System.out.println (getDescription ("PASS"));
+	  if (expected_xfails.contains (getDescription ("FAIL")))
+	    {
+	      System.out.println (getDescription ("XPASS"));
+	      ++xpasses;
+	    }
+	  else
+	    {
+	      System.out.println (getDescription ("PASS"));
+	    }
 	}
       ++count;
       ++total;
@@ -73,8 +94,8 @@ public class SimpleTestHarness
   public Reader getResourceReader (String name) 
     throws ResourceNotFoundException
     {
-      return(new BufferedReader(new InputStreamReader(
-		getResourceStream(name))));
+      return (new BufferedReader (new InputStreamReader (
+		getResourceStream (name))));
     }
 
   public InputStream getResourceStream (String name) 
@@ -88,8 +109,8 @@ public class SimpleTestHarness
 	{
 	  return 
 	    new FileInputStream (getSourceDirectory () 
-				+ File.separator 
-				+ realName );
+				+ File.separator
+				+ realName);
 	}
       catch (FileNotFoundException ex)
 	{
@@ -205,6 +226,10 @@ public class SimpleTestHarness
   protected int done ()
     {
       System.out.println(failures + " of " + total + " tests failed");
+      if (xpasses > 0)
+        System.out.println(xpasses + " of " + total + " tests unexpectedly passed");
+      if (xfailures > 0)
+        System.out.println(xfailures + " of " + total + " tests expectedly failed");
       return failures > 0 ? 1 : 0;
     }
 
@@ -232,6 +257,22 @@ public class SimpleTestHarness
 
       SimpleTestHarness harness
 	= new SimpleTestHarness (verbose, debug);
+
+      try
+        {
+          BufferedReader xfile = new BufferedReader (new FileReader ("xfails"));
+	  String str;
+          while ((str = xfile.readLine ()) != null)
+            expected_xfails.addElement (str);
+        }
+      catch (FileNotFoundException ex)
+        {
+          // Nothing.
+        }
+      catch (IOException ex)
+        {
+          // Nothing.
+        }
 
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));

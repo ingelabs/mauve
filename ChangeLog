@@ -1,3 +1,10 @@
+2001-02-08  Warren Levy  <warrenl@redhat.com>
+
+	* gnu/testlet/SimpleTestHarness.java: Minor formatting fixes.
+	(check): Compare failures against expected failures.
+	(done): Print out totals for unexpected failures and passes.
+	(main): Load expected failures file into Vector.
+
 2001-02-07  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/MessageFormat/format.java (test): Added
