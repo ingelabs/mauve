@@ -1,3 +1,5 @@
+//Tags: not-a-test
+
 //Copyright (C) 2004  Robert Schuster <theBohemian@gmx.net>
 
 //Mauve is free software; you can redistribute it and/or modify
@@ -18,8 +20,8 @@ package gnu.testlet.java.beans.Introspector;
 /** This class is used to test the Introspector in the test:
  * <code>gnu.testlet.java.beans.getBeanInfo2_2</code>.
  *
- * See each method's documentation to see what is expected for the
- * test.
+ * <p>See each method's documentation to see what is expected for the
+ * test.</p>
  *
  * @author Robert Schuster <theBohemian@gmx.net>
  */

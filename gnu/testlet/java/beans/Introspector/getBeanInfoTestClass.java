@@ -1,5 +1,9 @@
+//Tags: not-a-test
+
 //Copyright (C) 2004  Robert Schuster <theBohemian@gmx.net>
+
 //Mauve is free software; you can redistribute it and/or modify
+
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation; either version 2, or (at your option)
 //any later version. 
@@ -20,8 +24,8 @@ package gnu.testlet.java.beans.Introspector;
  * <code>gnu.testlet.java.beans.getBeanInfo</code> and
  * <code>gnu.testlet.java.beans.getBeanInfo2</code>.
  *
- * See each method's documentation to see what is expected for the
- * tests.
+ * <p>See each method's documentation to see what is expected for the
+ * tests.</p>
  *
  * @author Robert Schuster <theBohemian@gmx.net>
  */
@@ -29,7 +33,6 @@ public class getBeanInfoTestClass
 {
   /** This method is expected to be the read method of the property
    * 'correctProperty' and should show up as in the method descriptors.
-   * 
    *
    * @param i Unused.
    */

@@ -1,6 +1,9 @@
 //Tags: JDK1.2
+
 //Uses: getBeanInfoTestClass
+
 //Copyright (C) 2004  Robert Schuster <theBohemian@gmx.net>
+
 //Mauve is free software; you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation; either version 2, or (at your option)
@@ -26,20 +29,19 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 
 /** This tests the property retrieving mechanism of the
- * Introspector class.<br/>
- * <br/>
- * See {@link getBeanInfoTestClass} for details on what is
- * expected.<br/>
- * <br/>
- * The property test goes like this:
- * There is a test class having a number of well-known methods. Some of them should
+ * Introspector class.
+ * 
+ * <p>See {@link getBeanInfoTestClass} for details on what is
+ * expected.</p>
+ * 
+ * <p>The property test goes like this:</p>
+ * <p>There is a test class having a number of well-known methods. Some of them should
  * make a property other should not. At first <code>Method</code> instances for
  * the properties are retrieved using reflection. Then the <code>BeanInfo</code>
  * instance of the test class is retrieved. Finally the test checks whether the
  * <code>BeanInfo</code> contains the right <code>PropertyDescription</code>
  * by testing their read and write methods against the methods that were retrieved
- * in the beginning.<br/>
- * <br/>
+ * in the beginning.</p>
  * 
  * @author Robert Schuster <theBohemian@gmx.net>
  */

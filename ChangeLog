@@ -1,6 +1,15 @@
 2005-01-22  Robert Schuster <thebohemian@gmx.net>
 
-    * gnu/testlet/java/beans/Beans.java: Fixed JDK Tag.
+	* gnu/testlet/java/beans/Introspector/getBeanInfoTestClass.java,
+	gnu/testlet/java/beans/Introspector/getBeanInfo2_2TestClass.java,
+	gnu/testlet/java/beans/Introspector/getBeanInfo.java,
+	gnu/testlet/java/beans/Introspector/getBeanInfo2_2.java,
+	gnu/testlet/java/beans/Introspector/getBeanInfo2_2.java:
+	Fixed documentation and mauve tags.
+
+2005-01-22  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/Beans.java: Fixed JDK Tag.
 
 2005-01-20  Michael Koch  <konqueror@gmx.de>
 

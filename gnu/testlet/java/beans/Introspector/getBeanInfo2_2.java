@@ -1,7 +1,9 @@
 //Tags: JDK1.2
+
 //Uses: getBeanInfo2_2TestClass
 
 //Copyright (C) 2004  Robert Schuster <theBohemian@gmx.net>
+
 //Mauve is free software; you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation; either version 2, or (at your option)
@@ -27,16 +29,15 @@ import java.beans.MethodDescriptor;
 import java.lang.reflect.Method;
 
 /** This is the second test of the <strong>method</strong> retrieving
- * mechanism of the Introspector class.<br/>
- * <br/>
- * See {@link getBeanInfoFakePropertyMethodsTestClass} for
- * details on what is expected.<br/>
- * <br/>
- * The test goes like this:
- * There is a test class having a number of well-known methods. All
+ * mechanism of the Introspector class.
+ * 
+ * <p>See {@link getBeanInfo2_2TestClass} for
+ * details on what is expected.</p>
+ * 
+ * <p>The test goes like this:</p>
+ * <p>There is a test class having a number of well-known methods. All
  * <code>public</code> methods should be available in a
- * <code>MethodDescriptor</code> array.
- * <br/>
+ * <code>MethodDescriptor</code> array.</p>
  * 
  * @author Robert Schuster <theBohemian@gmx.net>
  */
