@@ -1,3 +1,7 @@
+2004-03-09  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/BufferedInputStream/BigMark.java: New test.
+
 2004-03-08  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/io/File/security.java : revamped testcase to
 	use a test security manager to monitor the permissions checked.
