@@ -22,8 +22,6 @@
 */
 
 package gnu.testlet.java.net.URLConnection;
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 import java.net.*;
 import java.io.IOException; 
 
@@ -35,8 +33,8 @@ class MyURLConnection extends URLConnection {
 
    
   public void connect() throws IOException {
-    if (false) { // shouldn't happen
-      throw new IOException("File info not available");
-    }
+//  if (false) { // shouldn't happen
+//    throw new IOException("File info not available");
+//  }
   }
 }
