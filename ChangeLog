@@ -1,6 +1,9 @@
 2002-11-22  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/URLClassLoader/getResourceRemote.java: New test.
+	* gnu/testlet/java/net/URLClassLoader/getResource.java: Make reusable.
+
+	* gnu/testlet/java/net/URL/URLTest.java: Add sanity checks and debug.
 
 2002-11-21  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/BufferedCharWriter:

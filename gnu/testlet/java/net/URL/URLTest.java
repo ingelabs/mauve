@@ -128,13 +128,26 @@ public class URLTest implements Testlet
 
 			URLConnection conn = url.openConnection();
 
-			harness.check (conn.getHeaderField(2).indexOf("Apache") != -1,
+			if (conn == null) {
+				harness.fail("openConnection returned null");
+				return;
+			}
+
+			String headerField = conn.getHeaderField(2);
+			harness.check (headerField != null
+					&& headerField.indexOf("Apache") != -1,
 							"I want my Apache server!");
 			String conttype	= conn.getContentType();
-			harness.check (conttype.indexOf("text/html") != -1,
+			harness.check (conttype != null
+					&& conttype.indexOf("text/html") != -1,
 							"Content must be text/html");
 
-			Object obj = url.getContent();
+			try {
+				Object obj = url.getContent();
+			} catch (Throwable t) {
+				harness.fail("getContent() threw Exception");
+				harness.debug(t);
+			}
 			harness.check (url.toExternalForm(),
 				"http://sources.redhat.com/mauve/testarea/index.html");
 			harness.check (url.getRef(), null);
@@ -144,7 +157,7 @@ public class URLTest implements Testlet
 		}catch ( Exception e ){
 				harness.fail(" Error in test_openConnection  - 3 " + 
 					" exception should not be thrown here");
-				e.printStackTrace(System.out);
+				harness.debug(e);
 		}		
 
 	}
@@ -155,10 +168,13 @@ public class URLTest implements Testlet
 	{
 		harness.checkPoint("openStream");
 		try {
+			harness.debug("creating URL");
 			URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
+			harness.debug("opening stream");
 			java.io.InputStream conn = url.openStream();
 
 			byte b [] = new byte[256];
+			harness.debug("reding from stream");
 			conn.read(b , 0 , 256 );
 
 			String str = new String( b ) ;
@@ -482,13 +498,21 @@ public class URLTest implements Testlet
 
 	public void testall()
 	{
+		harness.debug("Running: test_Basics");
 		test_Basics();
+		harness.debug("Running: test_openConnection");
 		test_openConnection();
+		harness.debug("Running: test_openStream");
 		test_openStream();
+		harness.debug("Running: test_sameFile");
 		test_sameFile();
+		harness.debug("Running: test_toString");
 		test_toString();
+		harness.debug("Running: test_URLStreamHandler");
 		test_URLStreamHandler();
+		harness.debug("Running: cr601a");
                 test_cr601a();
+		harness.debug("Running: cr601b");
                 test_cr601b();
 	}
 
