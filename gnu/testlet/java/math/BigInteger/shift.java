@@ -33,6 +33,10 @@ public class shift implements Testlet
       new BigInteger ("-50123044517898350982301255831878893568", 10);
     harness.check (x.shiftRight(64).toString(), "-2717175687894652269");
     harness.check (x.shiftLeft(-64).toString(), "-2717175687894652269");
+    harness.check (x.shiftRight(1).toString(),
+      "-25061522258949175491150627915939446784");
+    harness.check (x.shiftLeft(1).toString(), 
+      "-100246089035796701964602511663757787136");
 
     harness.check (x.shiftRight(0).toString(), x.toString());
     harness.check (x.shiftLeft(0).toString(), x.toString());
@@ -40,5 +44,9 @@ public class shift implements Testlet
     x = new BigInteger ("50123044517898350982301255831878893568", 10);
     harness.check (x.shiftRight(64).toString(), "2717175687894652268");
     harness.check (x.shiftLeft(-64).toString(), "2717175687894652268");
+    harness.check (x.shiftRight(1).toString(),
+      "25061522258949175491150627915939446784");
+    harness.check (x.shiftLeft(1).toString(), 
+      "100246089035796701964602511663757787136");
   }
 }
