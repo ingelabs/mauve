@@ -57,49 +57,49 @@ public class equals
 	harness.check(z1.equals(z2));    // check 3
 	
 	z1 = new SimpleTimeZone(rawOffset2, "Z1", Calendar.APRIL, 5, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 4
+	harness.check(!z1.equals(z2));	 // check 4
 	z2 = new SimpleTimeZone(rawOffset2, "Z1", Calendar.APRIL, 5, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 5
+	harness.check(z1.equals(z2));    // check 5
 
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.APRIL, 5, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 6
+	harness.check(!z1.equals(z2));	 // check 6
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.APRIL, 5, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 7
+	harness.check(z1.equals(z2));    // check 7
   
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 5, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 8
+	harness.check(!z1.equals(z2));	 // check 8
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 5, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 9
+	harness.check(z1.equals(z2));    // check 9
 
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 10
+	harness.check(!z1.equals(z2));	 // check 10
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time1, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 11
+	harness.check(z1.equals(z2));    // check 11
   
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 12
+	harness.check(!z1.equals(z2));	 // check 12
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.SEPTEMBER, 15, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 13
+	harness.check(z1.equals(z2));    // check 13
   
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 15, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 14
+	harness.check(!z1.equals(z2));	 // check 14
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 15, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 15
+	harness.check(z1.equals(z2));    // check 15
 
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time2, 3600000);
-    harness.check(!z1.equals(z2));	 // check 16
+	harness.check(!z1.equals(z2));	 // check 16
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time2, 3600000);
-    harness.check(z1.equals(z2));    // check 17
+	harness.check(z1.equals(z2));    // check 17
   
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time1, 3600000);
-    harness.check(!z1.equals(z2));	 // check 18
+	harness.check(!z1.equals(z2));	 // check 18
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time1, 3600000);
-    harness.check(z1.equals(z2));    // check 19
+	harness.check(z1.equals(z2));    // check 19
   
 	z1 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time1, 3600001);
-    harness.check(!z1.equals(z2));	 // check 20
+	harness.check(!z1.equals(z2));	 // check 20
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time1, 3600001);
-    harness.check(z1.equals(z2));    // check 21
+	harness.check(z1.equals(z2));    // check 21
   
   }
 

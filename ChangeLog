@@ -1,5 +1,10 @@
 2005-01-06  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/util/SimpleTimeZone/equals.java:
+	Reformatted to become readable.
+
+2005-01-06  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/util/TimeZone/setID.java: New testcases.
 
 2005-01-05  Tom Tromey  <tromey@redhat.com>
