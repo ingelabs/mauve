@@ -23,8 +23,6 @@ must be matched by the files to be tested.  Some values:
      * Any key starting with `java.' is taken to be the name of a
        class hierarchy.
        E.g., the key `java.lang' matches only test classes in java.lang.*.
-       If multiple keys of this type, a test file need only match one
-       to be included.
 
      * Any key starting with `!java.' is used to exclude a class
        hierarchy.
@@ -48,6 +46,13 @@ library implementation:
 
 Note that anything after a `#' on a line is treated as a comment and
 is stripped.
+
+File inclusion and exclusion commands are processed in order.  So, for
+instance, specifying `!java.lang java.lang.System' will omit all
+java.lang tests except for System.  Every file starts off in the
+`included' state; an explicit exclusion is needed to reject it.  (So,
+e.g., specifying just `java.lang' is insufficient to select only
+java.lang.  You must specify `!java java.lang'.)
 
 You can use `make recheck' to re-run `make check' with the key list
 you last used.

@@ -19,8 +19,7 @@
 verbose=
 spectags=
 tags=
-files=
-exclude_files=
+file_specs=
 
 if test "$1" = "-verbose"; then
    verbose=yes
@@ -48,13 +47,13 @@ while test -n "$taglist"; do
     X--)
        seen_dashdash=yes
        ;;
-    java.*)
-       file="`echo $i | tr . /`"
-       files="$files $file"
+    !!java.*)
+       echo "Invalid tag: $i" 1>&2
+       exit 1
        ;;
-    !java.*)
-       file="`echo $i | tr . / | sed -e 's/!//'`"
-       exclude_files="$exclude_files $file"
+    !java.* | java.*)
+       file="`echo $i | tr . /`"
+       file_specs="$file_specs $file"
        ;;
     not-a-test)
        # You can't specify this.
@@ -84,8 +83,7 @@ done
 
 test -n "$verbose" && echo "tags = $tags"
 test -n "$verbose" && echo "spectags = $spectags"
-test -n "$verbose" && echo "files = $files"
-test -n "$verbose" && echo "exclude_files = $exclude_files"
+test -n "$verbose" && echo "file_specs = $file_specs"
 
 choices=/tmp/choices-$$
 echo -n "CHOICES = " > $choices
@@ -95,38 +93,27 @@ classes=/tmp/classes-$$
 (cd gnu/testlet; find java -name '*.java' -print) |
 while read file; do
    test -n "$verbose" && echo "Examining $file"
-   if test -n "$files"; then
-      ok=no
-      for pat in $files; do
-	 case $file in
+   if test -n "$file_specs"; then
+      ok=yes
+      for pat in $file_specs; do
+	 # PAT can be like `java.lang' or `!java.lang'.
+	 # If `!FILE' matches `PAT', then we know the pattern
+	 # starts with `!' and is an exclusion pattern.
+	 # Otherwise, if `!FILE' matches `!PAT', then we know that
+	 # the file should be included.
+	 case "!$file" in
 	  ${pat}*)
+	     ok=no
+	     test -n "$verbose" && echo "  ... excluded by $pat"
+	     ;;
+	  !${pat}*)
 	     ok=yes
-	     break
+	     test -n "$verbose" && echo "  ... included by $pat"
 	     ;;
 	 esac
       done
    else
       ok=yes
-   fi
-
-   if test "$ok" = no; then
-      test -n "$verbose" && echo " ... not in any file pattern"
-      continue
-   fi
-
-   if test -n "$exclude_files"; then
-      for pat in $exclude_files; do
-	 case $file in
-	  ${pat}*)
-	     test -n "$verbose" && echo " ... excluded by pattern $pat"
-	     ok=no
-	     break
-	     ;;
-	 esac
-      done
-   fi
-   if test "$ok" = no; then
-      continue
    fi
 
    # Surround value with spaces so that case statements will work

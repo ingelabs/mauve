@@ -1,5 +1,7 @@
 1998-12-03  Tom Tromey  <tromey@cygnus.com>
 
+	* choose: Process all file exclusions and inclusions in order.
+
 	* Makefile.in: Rebuilt.
 	* Makefile.am (check-local): Pass srcdir to SimpleTestHarness.
 	* gnu/testlet/SimpleTestHarness.java (srcdir): New instance
