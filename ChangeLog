@@ -1,4 +1,9 @@
-2004-04-12  Mark Wielaar  <mark@klomp.org>
+2004-04-12  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/RandomAccessFile/jdk11.java: Show IOException in
+	debug mode.
+
+2004-04-12  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/Compat1.java: Use check with
 	two argument, not equals(), to show what is actually different.

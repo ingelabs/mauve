@@ -290,6 +290,7 @@ public class jdk11
     }
     catch (IOException e)
     {
+      harness.debug(e);
       harness.fail("IOException after opening file");
     }
 
