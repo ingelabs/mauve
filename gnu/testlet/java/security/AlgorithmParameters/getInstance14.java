@@ -32,7 +32,7 @@ import java.security.Security;
 
 public class getInstance14 extends Provider implements Testlet
 {
-  getInstance14()
+  public getInstance14()
   {
     super("AlgorithmParameters", 1.0, "");
 

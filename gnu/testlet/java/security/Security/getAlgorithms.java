@@ -37,7 +37,7 @@ import java.util.Iterator;
  */
 public class getAlgorithms extends Provider implements Testlet
 {
-  getAlgorithms()
+  public getAlgorithms()
   {
     super("getAlgorithms", 1.0, "");
 
