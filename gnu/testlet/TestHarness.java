@@ -71,6 +71,11 @@ public abstract class TestHarness
       checkPoint (name);
       check (result, expected);
     }
+  public void fail (String name)
+    {
+      checkPoint (name);
+      check (false);
+    }
 
   // Given a resource name, return a Reader on it.  Resource names are
   // just like file names.  They are relative to the top level Mauve
