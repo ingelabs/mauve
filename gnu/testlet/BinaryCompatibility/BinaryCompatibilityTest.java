@@ -41,45 +41,43 @@ public class BinaryCompatibilityTest implements Testlet
     try
       {
         String command;
-        BufferedReader tests 
-          = new BufferedReader 
-          (new FileReader 
-           (((SimpleTestHarness)harness).getSourceDirectory() 
-            + "/gnu/testlet/BinaryCompatibility/tests"));
+        SimpleTestHarness sth = (SimpleTestHarness) harness;
+        String path = (sth.getSourceDirectory() +
+                       "/gnu/testlet/BinaryCompatibility/tests");
+        char sep = sth.getSeparator().charAt(0);
+        FileReader fr = new FileReader(path);
+        BufferedReader tests = new BufferedReader(fr);
         while ((command = tests.readLine()) != null)
           {
             String srcdir = "/gnu/testlet/BinaryCompatibility";
-            srcdir = srcdir.replace
-              ('/', 
-               (((SimpleTestHarness)harness).getSeparator().charAt(0)));
-            File dir = new File
-              (((SimpleTestHarness)harness).getSourceDirectory() 
-               + srcdir);       
+            srcdir = srcdir.replace('/', sep);
+            File dir = new File(sth.getSourceDirectory() + srcdir);
+            harness.debug("Execing external command: " + command);
             Process p = Runtime.getRuntime().exec(command, null, dir);
-            BufferedReader result
-              = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader result =
+              new BufferedReader(new InputStreamReader(p.getInputStream()));
             String s;
             while ((s = result.readLine()) != null)
               {
                 harness.verbose(s);
                 if (s.startsWith("PASS "))
-                  harness.check(true, s.substring(s.indexOf("// ")+3));
+                  harness.check(true, s.substring(s.indexOf("// ") + 3));
                 else if (s.startsWith("FAIL "))
-                  harness.check(false, s.substring(s.indexOf("// ")+3));
+                  harness.check(false, s.substring(s.indexOf("// ") + 3));
               }
           }
       }
     catch (Throwable t)
       {
-        harness.debug (t);
-        harness.check (false);
+        harness.debug(t);
+        harness.check(false);
       } 
   }
 
   public void test (TestHarness the_harness)
   {
     harness = the_harness;
-    testall ();
+    testall();
   }
 
 }
