@@ -1,5 +1,8 @@
 1999-03-11  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/text/DecimalFormat/parse.java (test): Correctly
+	use trailing `-' in edge case.  Sigh.
+
 	* gnu/testlet/java/text/DecimalFormat/format.java (test): Add test
 	for Long.MIN_VALUE.
 
