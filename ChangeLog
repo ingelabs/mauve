@@ -1,5 +1,9 @@
 2002-10-05  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/Thread/join.java: New Test.
+
+2002-10-05  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/Thread/interrupt.java: New Test.
 	* gnu/testlet/java/lang/Thread/name.java: New Test.
 	* gnu/testlet/java/lang/Thread/daemon.java: New Test.
