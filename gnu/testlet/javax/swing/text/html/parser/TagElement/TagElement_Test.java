@@ -1,4 +1,4 @@
-//Tags: JDK1.4
+// Tags: JDK1.2
 
 // Copyright (C) 2005 Audrius Meskauskas, AudriusA@Bluewin.ch
 
@@ -81,7 +81,7 @@ public class TagElement_Test
       te = new TagElement(e);
       harness.check(!(te.fictional()));
 
-      harness.check(te.getHTMLTag(), t);
+      harness.check(te.getHTMLTag().toString(), t.toString());
       harness.check(t.breaksFlow(), te.breaksFlow());
       harness.check(t.isPreformatted(), te.isPreformatted());
       }

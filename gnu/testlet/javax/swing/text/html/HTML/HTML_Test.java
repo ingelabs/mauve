@@ -1,4 +1,4 @@
-//Tags: JDK1.4
+// Tags: JDK1.2
 
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 

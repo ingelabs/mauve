@@ -1,4 +1,4 @@
-//Tags: JDK1.4
+// Tags: JDK1.2
 // Copyright (C) 2005 Audrius Meskauskas, AudriusA@Bluewin.ch
 // // This file is part of Mauve.
 // Mauve is free software; you can redistribute it and/or modify
