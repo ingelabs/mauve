@@ -1,5 +1,9 @@
 2004-02-26  Sascha Brawer  <brawer@dandelis.ch>
 
+	* THANKS: Adding myself.
+
+2004-02-26  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/java/util/logging/Level: New directory.
 
 	* gnu/testlet/java/util/logging/Level/equals.java,
