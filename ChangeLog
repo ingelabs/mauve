@@ -1,4 +1,8 @@
 2002-12-24  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/PrintWriter/jdk11.java:
+	Added tests for PrintWriter class
+
+2002-12-24  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/PipedReaderWriter/Test.java:
 	Changed parameters to read() method call to match API
 
