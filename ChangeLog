@@ -1,3 +1,8 @@
+1999-02-22  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/TestHarness.java (check): Use Double.toString to
+	compare equality of doubles.
+
 1999-02-16  Tom Tromey  <tromey@cygnus.com>
 
 	* choose: Don't use `dirname'.  Sort and uniquify the list of used

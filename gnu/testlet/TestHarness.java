@@ -38,7 +38,10 @@ public abstract class TestHarness
     }
   public void check (double result, double expected)
     {
-      boolean ok = (result == expected);
+      // We use Double.toString() here because we want all NaNs to
+      // compare equal (which `==' will not give) but we want 0.0 and
+      // -0.0 to be different (which Double.equals will not give).
+      boolean ok = (Double.toString(result).equals(Double.toString(expected)));
       check (ok);
       if (! ok)
 	debug ("got " + result + " but expected " + expected);
