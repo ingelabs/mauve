@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 Free Software Foundation, Inc.
+// Copyright (C) 2004, 2005 Free Software Foundation, Inc.
 // Contributed by Mark Wielaard (mark@klomp.org)
 
 // This file is part of Mauve.
@@ -35,5 +35,8 @@ public class getPackage implements Testlet
 	harness.check(name, p.getName());
       else
 	harness.debug("getPackage() returned null");
+
+      p = Package.getPackage("java.lang");
+      harness.check(p != null, "checking package for 'java.lang'");
     }
 }
