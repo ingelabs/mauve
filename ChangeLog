@@ -1,3 +1,8 @@
+2003-01-21  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/File/jdk11.java (test): Added check for
+	absoluteness of empty string.
+
 2003-01-20  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java (diagrun):
