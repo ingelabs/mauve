@@ -39,7 +39,7 @@ test(TestHarness harness)
   try
     {
       InputStream is = harness.getResourceStream(
-                       "gnu#testlet#java#io#Utf8Encoding#utf8test.data");
+                       "gnu#testlet#java#io#Utf8Encoding#utf8test.bin");
       InputStreamReader isr = new InputStreamReader(is, "UTF8");
       char[] buf = new char[255];
 
