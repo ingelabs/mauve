@@ -246,6 +246,8 @@ public class SimpleTestHarness extends TestHarness
 	  try
 	    {
 	      cname = r.readLine ();
+	      if (cname == null)
+		break;
 	      if (verbose)
 		System.out.println (cname);
 	    }
@@ -255,8 +257,6 @@ public class SimpleTestHarness extends TestHarness
 	    }
 	  if (verbose)
 	    System.out.println ("----");
-	  if (cname == null)
-	    break;
 	  harness.runtest (cname);
 	}
 

@@ -1,9 +1,26 @@
+1999-02-15  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/SimpleTestHarness.java: Test for null cname before
+	printing it out.
+
+	* gnu/testlet/java/io/DataInputOutput/ReadStream.java: Tag as
+	not-a-test.
+	* gnu/testlet/java/io/DataInputOutput/ReadReference.java: Tag as
+	using ReadStream.
+	
+	* choose: Add JLS1.0 and JLS1.1 tags.
+
+	* gnu/testlet/java/lang/Math/cos.java,
+	gnu/testlet/java/lang/Math/min.java,
+	gnu/testlet/java/lang/Math/max.java,
+	gnu/testlet/java/lang/Math/rint.java: Fixed comments.
+
 Mon Feb 15 21:04:24 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/io/DataInputOutput/WriteRead.java: Added file.
 
 	* gnu/testlet/java/io/DataInputOutput/ReadStream.java: Added file.
-
+	
 	* gnu/testlet/java/io/DataInputOutput/ReadReference.java: Added file.
 
 Mon Feb 15 20:16:12 1999  Aaron M. Renn  <arenn@urbanophile.com>

@@ -1,7 +1,7 @@
-dnl aclocal.m4 generated automatically by aclocal 1.3b
+dnl aclocal.m4 generated automatically by aclocal 1.3
 
 dnl Copyright (C) 1994, 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
-dnl This file is free software; the Free Software Foundation
+dnl This Makefile.in is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
 
@@ -110,29 +110,6 @@ else
    AC_MSG_RESULT(missing)
 fi
 AC_SUBST($1)])
-
-# Add --enable-maintainer-mode option to configure.
-# From Jim Meyering
-
-# serial 1
-
-AC_DEFUN(AM_MAINTAINER_MODE,
-[AC_MSG_CHECKING([whether to enable maintainer-specific portions of Makefiles])
-  dnl maintainer-mode is disabled by default
-  AC_ARG_ENABLE(maintainer-mode,
-[  --enable-maintainer-mode enable make rules and dependencies not useful
-                          (and sometimes confusing) to the casual installer],
-      USE_MAINTAINER_MODE=$enableval,
-      USE_MAINTAINER_MODE=no)
-  AC_MSG_RESULT($USE_MAINTAINER_MODE)
-  if test $USE_MAINTAINER_MODE = yes; then
-    MAINT=
-  else
-    MAINT='#M#'
-  fi
-  AC_SUBST(MAINT)dnl
-]
-)
 
 # Define a conditional.
 

@@ -20,6 +20,7 @@
 /*************************************************************************/
 
 // Tags: JDK1.0
+// Uses: ReadStream
 
 package gnu.testlet.java.io.DataInputOutput;
 

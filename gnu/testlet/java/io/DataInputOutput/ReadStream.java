@@ -19,7 +19,7 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.0
+// Tags: not-a-test
 
 package gnu.testlet.java.io.DataInputOutput;
 
