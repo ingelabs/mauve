@@ -1,3 +1,11 @@
+Thu Jan  7 21:23:46 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/lang/Character/UnicodeData.txt: Added Unicode
+	2.1.2 database file needed for character test.
+
+	* gnu/testlet/java/lang/Character/unicode.java: Added Artur
+	Biesiadowski's (abies@pg.dga.pl) Character test to the archives.
+
 Mon Jan  4 18:58:11 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/DateFormatSymbols/Test.java: Added this
