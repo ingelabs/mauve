@@ -1,3 +1,9 @@
+2004-01-12  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/lang/reflect/Other.java: New file.
+	* gnu/testlet/java/lang/reflect/ReflectAccess.java:
+	Added Uses: tag, moved class "Other" to an extra file.
+
 2004-01-10  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/text/MessageFormat/attribute.java:
