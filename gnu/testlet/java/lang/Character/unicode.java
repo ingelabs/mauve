@@ -248,8 +248,15 @@ public class unicode implements Testlet
 
 // isLowerCase
 			char i = (char)x;
-			if (  "Ll".equals(chars[i].category) !=
-				Character.isLowerCase((char)i) )
+			if (  ("Ll".equals(chars[i].category)
+			       && (i < 0x2000 || i > 0x2fff)
+			       && chars[i].lowercase == 0
+			       && (chars[i].uppercase != 0
+				   || (chars[i].name.indexOf("SMALL LETTER")
+				       != -1)
+				   || (chars[i].name.indexOf("SMALL LIGATURE")
+				       != -1)))
+			      != Character.isLowerCase((char)i) )
 			{
 				reportError(i,
 (Character.isLowerCase((char)i) ? "lowercase" : "not-lowercase" ));
