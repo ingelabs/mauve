@@ -193,36 +193,49 @@ public class SocketTest implements Testlet
 
   public void test_params()
   {
+    String host = "mail.gnu.org";
+    int port = 25;
+
     harness.checkPoint("params");
     Socket sock = null;
-    try {
-      String host = "mail.gnu.org";
-      int port = 25;
-      sock = new Socket(host, port);
 
+    try {
+      sock = new Socket (); // unconnected socket
+      harness.check (sock.getPort (), 0, "unconnected socket getPort() should return 0");
+      harness.check (sock.getLocalPort (), -1, "unbound socket getLocalPort() should return -1");
+    }
+    catch (Exception e) {
+
+    }
+
+    try {
+      sock = new Socket(host, port);
+      
       harness.check(sock.getLocalPort() > 0,
 		    "Error : test_params failed - 1 " +
 		    "get port did not return proper values");
-
-      if (true) {
-	try {
-	  sock.setSoTimeout(100);
-	  harness.check(sock.getSoTimeout() == 100,
-			"Error : test_params failed - 2 " +
-			"get /set timeout did not return proper values");
-	  harness.check(true);
-	} 
-	catch (Exception e) {
-	  harness.check(false, "Error : setSoTimeout fails since some OSes do not support the feature");
-	  harness.debug(e);
-	}
-      }
       
+      try {
+	sock.setSoTimeout(100);
+	harness.check(sock.getSoTimeout() == 100,
+		      "Error : test_params failed - 2 " +
+		      "get /set timeout did not return proper values");
+	harness.check(true);
+      } 
+      catch (Exception e) {
+	harness.check(false, "Error : setSoTimeout fails since some OSes do not support the feature");
+	harness.debug(e);
+      }
+
+      harness.debug ("getTcpNoDelay() default: " + sock.getTcpNoDelay ());
+      harness.check ((sock.getTcpNoDelay () == false), "default getTcpNoDelay() should be false");
       sock.setTcpNoDelay(true);
       harness.check(sock.getTcpNoDelay(),
 		    "Error : test_params failed - 3 " +
 		    "get /set tcp delay did not return proper values");
-
+      
+      harness.debug ("getSoLinger() default: " + sock.getSoLinger());
+      harness.check (sock.getSoLinger(), -1, "default getSoLinger() should be -1");
       sock.setSoLinger(true, 10);
       harness.check(sock.getSoLinger() == 10, 
 		    "Error : test_params failed - 4");
