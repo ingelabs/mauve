@@ -237,6 +237,22 @@ public class SimpleTestHarness
     {
       this.verbose = verbose;
       this.debug = debug;
+
+      try
+        {
+          BufferedReader xfile = new BufferedReader (new FileReader ("xfails"));
+	  String str;
+          while ((str = xfile.readLine ()) != null)
+            expected_xfails.addElement (str);
+        }
+      catch (FileNotFoundException ex)
+        {
+          // Nothing.
+        }
+      catch (IOException ex)
+        {
+          // Nothing.
+        }
     }
 
   public static void main (String[] args)
@@ -257,22 +273,6 @@ public class SimpleTestHarness
 
       SimpleTestHarness harness
 	= new SimpleTestHarness (verbose, debug);
-
-      try
-        {
-          BufferedReader xfile = new BufferedReader (new FileReader ("xfails"));
-	  String str;
-          while ((str = xfile.readLine ()) != null)
-            expected_xfails.addElement (str);
-        }
-      catch (FileNotFoundException ex)
-        {
-          // Nothing.
-        }
-      catch (IOException ex)
-        {
-          // Nothing.
-        }
 
       BufferedReader r
 	= new BufferedReader (new InputStreamReader (System.in));

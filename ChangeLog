@@ -1,5 +1,10 @@
 2001-02-08  Warren Levy  <warrenl@redhat.com>
 
+	* gnu/testlet/SimpleTestHarness.java (SimpleTestHarness): Moved
+	code for reading xfails file from main.
+
+2001-02-08  Warren Levy  <warrenl@redhat.com>
+
 	* gnu/testlet/SimpleTestHarness.java: Minor formatting fixes.
 	(check): Compare failures against expected failures.
 	(done): Print out totals for unexpected failures and passes.
