@@ -38,7 +38,7 @@ test(TestHarness harness)
   // for good ol' English
   Collator col = Collator.getInstance(Locale.US);
 
-  System.err.println("foo bar" + col.compare("foo", "bar"));
+  harness.debug("foo bar" + col.compare("foo", "bar"));
   harness.check(col.compare("foo", "bar") > 0, "foo and bar");
   harness.check(col.compare("bar", "baz") < 0, "bar and baz");
   harness.check(col.compare("FOO", "FOO") == 0, "FOO and FOO");
