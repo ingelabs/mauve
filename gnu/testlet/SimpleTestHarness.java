@@ -250,6 +250,11 @@ public class SimpleTestHarness
 
     }
 
+  protected SimpleTestHarness (boolean verbose, boolean debug)
+    {
+      this(verbose, debug, false);
+    }
+
   protected SimpleTestHarness (boolean verbose, boolean debug,
 		               boolean results_only)
     {

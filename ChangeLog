@@ -1,5 +1,9 @@
 2002-10-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/SimpleTestHarness.java: Add two argument constructor.
+
+2002-10-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/SimpleTestHarness.java: Add -resultsonly flag.
 	* README: Document -resultsonly flag.
 
