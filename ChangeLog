@@ -1,3 +1,7 @@
+2005-01-10  Tom Tromey  <tromey@redhat.com>
+
+	* choose: Allow '//Uses' as well.
+
 2005-01-10  Arnaud Vandyck  <avdyk@gnu.org>
 
 	* gnu/testlet/javax/swing/text/StringContent/stickyPosition.java:

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# Copyright (c) 1998, 1999 Cygnus Solutions
+# Copyright (c) 1998, 1999, 2005 Cygnus Solutions
 # Written by Tom Tromey <tromey@cygnus.com>
 
 # This file is part of Mauve.
@@ -221,7 +221,7 @@ while read file; do
 
 	 # Now that we know we're going to use this class, see
 	 # what other support classes this test requires.
-         useslist=" `grep '^// Uses:' gnu/testlet/$file | sed -e 's,^// Uses:,,'` "
+         useslist=" `grep '^// *Uses:' gnu/testlet/$file | sed -e 's,^// *Uses:,,'` "
          for used in $useslist; do
 	   usedfile=$dirpart/$used.java
 	   echo "gnu/testlet/$usedfile" >> $usesfile
