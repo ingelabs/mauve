@@ -1,3 +1,7 @@
+2005-01-18  Thomas Zander <zander@kde.org>
+
+	* gnu/testlet/javax/swing/JFrame/SetSize.java: New (gui) test
+
 2005-01-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/DefaultListModel/addElement.java,
