@@ -28,7 +28,9 @@ AC_SUBST(SRCDIR)
 
 dnl Specify the tempdir.
 AC_ARG_WITH(tmpdir,
-[  --with-tmpdir                    Use gcj, not javac, to build class files],
+changequote(<<,>>)
+<<  --with-tmpdir=DIR                Put temporary files in DIR [/tmp]>>,
+changequote([,])
 TMPDIR="$with_tmpdir")
 
 TMPDIR=${TMPDIR-/tmp}
