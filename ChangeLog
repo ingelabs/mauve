@@ -1,5 +1,13 @@
 2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
 
+	* gnu/testlet/javax/swing/event/EventListenerList/getListeners.java,
+	gnu/testlet/javax/swing/event/EventListenerList/getListenerCount.java,
+	gnu/testlet/javax/swing/event/EventListenerList/getListenerList.java,
+	gnu/testlet/javax/swing/event/EventListenerList/toString.java:
+	New tests.
+
+2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
+
 	Classpath bug #7105.
 	* gnu/testlet/javax/swing/event/EventListenerList/remove.java: New
 	test, passes with JDK 1.4.1_01 but not with Classpath.
