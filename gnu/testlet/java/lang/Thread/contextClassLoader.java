@@ -57,7 +57,7 @@ public class contextClassLoader implements Testlet, Runnable
 		      "null is a valid contextClassLoader");
 	
 	t = new Thread(this, "CL-Test-Thread-2");
-	harness.check(t.getContextClassLoader() == null,
+	harness.check(t.getContextClassLoader(), null,
 		      "New thread inherits null classloader");
 	checkClassLoader = null;
 	check_msg = "run with null classloader";

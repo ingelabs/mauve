@@ -1,5 +1,10 @@
 2004-04-12  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/Thread/contextClassLoader.java: Use three
+	argument check to set (debug) message.
+
+2004-04-12  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/Class/ClassTest.java: Use check with
 	two argument, not equals(), to show what is actually different.
 
