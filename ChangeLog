@@ -1,3 +1,18 @@
+Wed Dec 30 10:07:55 1998  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/TestHarness.java: getSourceDirectory returns
+	a String, not a File.
+	* gnu/testlet/SimpleTestHarness.java: srcdir is a String, not
+	a File.
+
+	* gnu/testlet/java/io/PipedStream/Test.java: Uses
+	PipedStreamTestWriter.
+	* gnu/testlet/java/io/PipedReaderWriter/Test.java: Uses
+	PipedTestWriter.
+	* gnu/testlet/java/io/PipedReaderWriter/PipedTestWriter.java,
+	gnu/testlet/java/io/PipedStream/PipedStreamTestWriter.java:
+	New files.
+	
 Sat Dec 26 20:35:02 1998  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/io/BufferedReader/MarkReset.java: Added this
