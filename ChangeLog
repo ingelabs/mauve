@@ -1,4 +1,8 @@
 2002-12-23  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/FilterOutputStream/write.java: New file.
+	These files complete direct tests of FilterOutputStream class
+
+2002-12-23  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/FilterInputStream/MarkReset.java: New file.
 	* gnu/testlet/java/io/FilterInputStream/SimpleRead.java: New file.
 	These files complete direct tests of FilterInputStream class
