@@ -1,3 +1,8 @@
+2002-11-29  John Leuner  <jewel@debian.org>
+
+	* gnu/testlet/java/lang/reflect/Method/toString.java: 
+	added extra test for method with multi-dimensional array in argument
+
 2002-11-29  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/DataOutputStream/writeUTF.java: New test.

@@ -51,6 +51,11 @@ public class toString implements Testlet
     return z.length;
   }
 
+  public int multidim_arrayargs (int[][][] z)
+  {
+    return z.length;
+  }
+
   public void test (TestHarness harness)
   {
     Class ic = null;
@@ -72,5 +77,17 @@ public class toString implements Testlet
     Method aa_meth = getMethod (ic, "arrayargs", aa_list);
     harness.check (aa_meth.toString (),
 		   "public int gnu.testlet.java.lang.reflect.Method.toString.arrayargs(int[])");
+
+    Method mdaa_meth = getMethod (ic, "multidim_arrayargs", aa_list);
+    harness.check(mdaa_meth == null, "invalid argument list for this method, getMethod should return null");
+
+    aa_list = new Class[1];
+    aa_list[0] = int[][][].class;
+    mdaa_meth = getMethod (ic, "multidim_arrayargs", aa_list);
+
+    harness.checkPoint("method with multiple array dims in argument");
+    harness.check (mdaa_meth.toString (),
+		   "public int gnu.testlet.java.lang.reflect.Method.toString.multidim_arrayargs(int[][][])");
+    System.out.println("args " + mdaa_meth.toString());
   }
 }
