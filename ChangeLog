@@ -1,3 +1,7 @@
+2003-01-18  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/String/getBytes.java: Add new UTF8 test.
+
 2003-01-03  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/ObjectStreamClass/ProxyTest.java: New test.
