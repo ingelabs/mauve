@@ -175,6 +175,10 @@ public class DoubleTest implements Testlet
 		harness.check(!( !str.equals ("-9412128.34" )), 
 			"Error: test_toString failed - 9" );
 
+		// The following case fails for some Sun JDKs (e.g. 1.3.1
+		// and 1.4.0) where toString(0.001) returns "0.0010".  This
+		// is contrary to the JDK 1.4 javadoc.  This particular
+		// case has been noted as a comment to Sun Java bug #4642835
 		str = Double.toString( 0.001 );
 		if ( !Double.toString( 0.001 ).equals ("0.001" )) {
 			harness.fail("Error: test_toString failed - 10" );

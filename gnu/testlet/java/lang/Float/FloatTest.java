@@ -145,6 +145,10 @@ public class FloatTest implements Testlet
 			    str + "'");
 		}
 
+		// The following case fails for some Sun JDKs (e.g. 1.3.1
+		// and 1.4.0) where toString(0.001) returns "0.0010".  This
+		// is contrary to the JDK 1.4 javadoc.  This particular
+		// case has been noted as a comment to Sun Java bug #4642835
 		str = Float.toString( 0.001f );
 		harness.check(!( !Float.toString( 0.001f ).equals ("0.001" )), 
 			"Error: test_toString failed - 10" );
