@@ -1,5 +1,9 @@
 2003-02-16  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/String/getBytes13.java: Tags JDK13 only.
+
+2003-02-16  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/String/getBytes14.java: Add tests for
 	US-ASCII, windows-1252, ISO-8859-1, ISO-8859-15, ISO8859_15, UTF-16BE
 	and UTF-16LE

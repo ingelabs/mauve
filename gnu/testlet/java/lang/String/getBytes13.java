@@ -1,4 +1,4 @@
-// Tags: JDK1.3,JDK1.4
+// Tags: JDK1.3
 
 // Copyright (C) 2003 Free Software Foundation, Inc.
 
