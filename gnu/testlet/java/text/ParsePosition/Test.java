@@ -40,13 +40,10 @@ test(TestHarness harness)
   pp.setIndex(666);
   harness.check(pp.getIndex(), 666, "set/getIndex()");
 
-  // More JDK 1.2.  How will we compile this stuff?
-/*
   harness.check(pp.getErrorIndex(), -1, "getErrorIndex() no error");
 
   pp.setErrorIndex(65536);
   harness.check(pp.getErrorIndex(), 65536, "set/getErrorIndex()");
-*/
 
   harness.debug(pp.toString());
 }
