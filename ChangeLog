@@ -1,3 +1,8 @@
+2005-02-23  Audrius Meskauskas  <audriusa@bluewin.ch>
+
+    * gnu/testlet/javax/swing/JComboBox/basic.java: New test.
+	* gnu/testlet/javax/swing/JComboBox/listenerList.java: New test.
+	
 2005-02-22  Audrius Meskauskas  <audriusa@bluewin.ch>
 
     * gnu/testlet/javax/swing/JToggleButton/click.java: New test.
