@@ -1,3 +1,8 @@
+2004-03-14  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/System/arraycopy.java: Add tests for copying
+	arrays of different dimensions.
+
 2004-03-12  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/FilePermission/simple.java: Add test for dirs

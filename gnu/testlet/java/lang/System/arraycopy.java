@@ -1,6 +1,7 @@
 // Tags: JDK1.0
 
 // Copyright (C) 1998, 2003 Red Hat, Inc.
+// Copyright (C) 2004 Mark Wielaard (mark@klomp.org)
 
 // This file is part of Mauve.
 
@@ -161,5 +162,17 @@ public class arraycopy implements Testlet
       harness.check (ss[2], "2");
       harness.check (ss[3], "26");
       harness.check (ss[4], "27");
+
+      harness.checkPoint("Different dimensions");
+      harness.check (copy (new Object[1][1], 0, new Object[1], 0,  1), null);
+      harness.check (copy (new int[1][1], 0, new Object[1], 0,  1), null);
+      Object[] objs = new Object[1];
+      objs[0] = new int[1];
+      harness.check (copy (objs, 0, new int[1][1], 0,  1), null);
+      harness.check (copy (new String[1][1], 0, new Object[1], 0,  1), null);
+      harness.check (copy (new int[1][1], 0, new int[1], 0,  1),
+		     "caught ArrayStoreException");
+      harness.check (copy (new int[1], 0, new int[1][1], 0,  1),
+		     "caught ArrayStoreException");
     }
 }
