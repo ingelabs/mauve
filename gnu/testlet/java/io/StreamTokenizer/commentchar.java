@@ -27,14 +27,11 @@ import gnu.testlet.TestHarness;
 public class commentchar implements Testlet
 {
   public static void tokenize (TestHarness harness,
+			       StreamTokenizer st,
 			       String input,
 			       int[] expected)
   {
     harness.checkPoint (input);
-    StringReader sr = new StringReader (input);
-    StreamTokenizer st = new StreamTokenizer (sr);
-    st.commentChar('#');
-
     try
       {
 	int tt;
@@ -56,6 +53,22 @@ public class commentchar implements Testlet
       }
   }
 
+  public static StreamTokenizer make_tokenizer (String input)
+  {
+    StringReader sr = new StringReader (input);
+    StreamTokenizer st = new StreamTokenizer (sr);
+    return st;
+  }
+
+  public static void tokenize (TestHarness harness,
+			       String input,
+			       int[] expected)
+  {
+    StreamTokenizer st = make_tokenizer (input);
+    st.commentChar('#');
+    tokenize (harness, st, input, expected);
+  }
+
   public void test (TestHarness harness)
   {
     int[] x1 = new int[2];
@@ -67,5 +80,17 @@ public class commentchar implements Testlet
     x2[0] = StreamTokenizer.TT_WORD;
     tokenize (harness, "alpha / bleh", x2);
     tokenize (harness, "alpha # bleh", x2);
+
+    // Classpath regression test.
+    x2[0] = StreamTokenizer.TT_EOF;
+    String input = "  %foo,bar baz\n";
+    StreamTokenizer st = make_tokenizer(input);
+    st.resetSyntax();
+    st.whitespaceChars(0, ' ');    
+    st.wordChars(' '+1, '\u00FF');
+    st.whitespaceChars(',', ',');
+    st.commentChar('%');
+    st.eolIsSignificant(true);
+    tokenize (harness, st, input, x2);
   }
 }
