@@ -1,4 +1,4 @@
-//Tags: JDK1.5
+//Tags: JDK1.2
 
 //Uses: TestBean1 TestBean2 TestBean3 TestBean4
 
