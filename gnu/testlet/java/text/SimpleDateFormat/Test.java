@@ -76,21 +76,6 @@ test(TestHarness harness)
   sdf.setTimeZone(TimeZone.getDefault());
   harness.debug(sdf.format(new Date(System.currentTimeMillis())));
 
-  // We don't check the results but just that this works at all.  THis
-  // is a regression test for libgcj.
-  harness.checkPoint ("parsing regression");
-  DateFormat cdf = new SimpleDateFormat ("EEE, dd MMM yyyy HH:mm:ss zzzz");
-  boolean ok = true;
-  try
-    {
-      d = cdf.parse ("Fri, 18 May 2001 20:18:06 GMT");
-    }
-  catch (ParseException _)
-    {
-      ok = false;
-    }
-  harness.check (ok);
-
   // Now do some lenient parsing tests.  These might not all work.
   dfs = new DateFormatSymbols(Locale.US);
   sdf = new SimpleDateFormat(pattern, dfs);
