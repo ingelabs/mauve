@@ -1,3 +1,7 @@
+2004-05-01  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/text/DecimalFormat/parse.java: Added new testcases.
+
 2004-05-01  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/nio/channels/FileChannel/truncate.java: New test.
