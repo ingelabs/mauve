@@ -1,3 +1,7 @@
+1998-12-08  Anthony Green  <green@cygnus.com>
+
+	* choose: JAVA2 and JDK1.2 are synonymous.
+
 1998-12-08  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/reflect/Modifier/toString.java: New file.
