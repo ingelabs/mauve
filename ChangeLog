@@ -1,3 +1,17 @@
+Thu Apr  8 21:15:50 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/DecimalFormatSymbols/GetSet12.java: 
+	Added this test case.
+
+	* gnu/testlet/java/text/DecimalFormatSymbols/GetSet11.java: 
+	Added this test case.
+
+	* gnu/testlet/java/text/DecimalFormatSymbols/DumpDefault12.java: 
+	Added this test case.
+
+	* gnu/testlet/java/text/DecimalFormatSymbols/DumpDefault11.java: 
+	Added this test case.
+
 1999-04-05  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Integer/new_Integer.java: Added another
