@@ -229,17 +229,6 @@ public class DatagramSocketTest2 implements Testlet
 			harness.check(false, "Expected IOException");
 		}
 
-		try
-		{
-			// zero data buffer length
-			DatagramPacket pkt = new DatagramPacket(buf, 0);
-			sock.receive(pkt);
-			harness.check(true);
-		}
-		catch (IOException e)
-		{
-			errormsg("invalid_receive_data", 5, false, "IOException");
-		}
 		sock.close();
 	}
 

@@ -1,3 +1,8 @@
+2002-05-01  John Leuner  <jewel@debian.org>
+
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java:
+	deleted broken zero length buffer test. (Dalibor Topic)
+
 2002-04-30  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/BufferedReader/boundary.java: New file.
