@@ -200,23 +200,20 @@ public class DiagBigDecimal implements Testlet {
   * detected, or <0 if an unexpected Exception was signalled.
   */
  
- public int diagrun(TestHarness harness){
-  int fails;
+ public void diagrun(TestHarness harness){
   int num=0;
-  DiagException de=null;
+  RuntimeException de=null;
   java.lang.RuntimeException e=null;
   java.lang.String rest=null;
   
-  fails=0; // count of failures
   try{num=1;num:for(;num<=testcount;num++){ // [testcount is constant set above]
    try{
     dotest(harness, num);
    }
-   catch (DiagException $1){de=$1;
+   catch (RuntimeException $1){de=$1;
     say(harness);
     harness.verbose("**** Failed:"+" "+de.getMessage()+" "+"****");
     say(harness);
-    fails=fails+de.failcount;
    }
   }
   }
@@ -224,10 +221,10 @@ public class DiagBigDecimal implements Testlet {
    say(harness);
    harness.verbose("**** Failed: unexpected exception ****");
    e.printStackTrace();
-   return -1;
+   return;
   }/*num*/
   
-  return fails;
+  return;
  }
 
  /* Run test by number -- method for development/private switching */
@@ -1193,7 +1190,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checknull*/
   harness.check (flag, "cst301");
   
-  summary("Constructors", harness);
   return;
   }
 
@@ -1208,7 +1204,6 @@ public class DiagBigDecimal implements Testlet {
    harness.check ((one.toString()).equals("1"), "cuc002");
    harness.check ((ten.toString()).equals("10"), "cuc003");
   
-  summary("No mutation", harness);
   return;}
 
  
@@ -1237,7 +1232,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0.01")).abs().toString()).equals("0.01"), "abs015");
   harness.check (((new BigDecimal("-0.01")).abs().toString()).equals("0.01"), "abs016");
 
-  summary("abs", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1367,7 +1361,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checknull*/
   harness.check (flag, "add200");
   
-  summary("add", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -1393,7 +1386,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checknull*/
   harness.check (flag, "cpt100");
   
-  summary("compareTo", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -1462,7 +1454,6 @@ public class DiagBigDecimal implements Testlet {
   }/*div0*/
   harness.check (flag, "div204");
 
-  summary("divide", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1488,7 +1479,6 @@ public class DiagBigDecimal implements Testlet {
    flag=true;
   }/*checknull*/
   harness.check (flag, "max010");
-  summary("max", harness);
   return;}
 
  /** Test the {@link BigDecimal#min} method. */
@@ -1515,7 +1505,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checknull*/
   harness.check (flag, "min010");
   
-  summary("min", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1624,7 +1613,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checknull*/
   harness.check (flag, "mul200");
   
-  summary("multiply", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -1790,7 +1778,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checknull*/
   harness.check (flag, "sub200");
   
-  summary("subtract", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1853,7 +1840,6 @@ public class DiagBigDecimal implements Testlet {
   // 244
   // 245
   
-  summary("byteValue+", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1891,7 +1877,6 @@ public class DiagBigDecimal implements Testlet {
   }
   harness.check (flag, "cto102");
 
-  summary("compareTo(Obj)", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1914,7 +1899,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal(val)).doubleValue())==java.lang.Double.POSITIVE_INFINITY, "dov006");
   val="-1e1000";
   harness.check (((new BigDecimal(val)).doubleValue())==java.lang.Double.NEGATIVE_INFINITY, "dov007");
-  summary("doubleValue", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -1928,7 +1912,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check ((!(d.equals((java.lang.Object)(new BigDecimal(66))))), "equ003");
   harness.check (d.equals((java.lang.Object)d), "equ004");
   harness.check (d.equals((java.lang.Object)((new BigDecimal(10)).add(new BigDecimal(7)))), "equ005");
-  summary("equals", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -1956,7 +1939,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal(val)).floatValue())==java.lang.Float.POSITIVE_INFINITY, "flv008");
   val="-1e1000";
   harness.check (((new BigDecimal(val)).floatValue())==java.lang.Float.NEGATIVE_INFINITY, "flv009");
-  summary("floatValue", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -1975,7 +1957,6 @@ public class DiagBigDecimal implements Testlet {
   hs="126.5E+200";
   d=new BigDecimal(hs);
   harness.check ((d.hashCode())!=(hs.hashCode()), "has003");
-  summary("hashCode", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -2026,7 +2007,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((5))==((new BigDecimal("5.0")).intValue()), "inv108");
   harness.check (((-5))==((new BigDecimal("-5.0")).intValue()), "inv109");
   
-  summary("intValue+", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2078,7 +2058,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check ((((long)5))==((new BigDecimal("5.0")).longValue()), "lov108");
   harness.check ((((long)-5))==((new BigDecimal("-5.0")).longValue()), "lov109");
   
-  summary("longValue+", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2118,7 +2097,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(+5).toString()).equals("0.00005"), "mpl035");
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(+10).toString()).equals("0.0000000005"), "mpl036");
   
-  summary("movePointLeft", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -2157,7 +2135,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(-5).toString()).equals("0.00005"), "mpr035");
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(-10).toString()).equals("0.0000000005"), "mpr036");
   
-  summary("movePointRight", harness);
   return;}
 /* ----------------------------------------------------------------- */
  
@@ -2181,7 +2158,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("-0.1")).scale())==1, "sca015");
   harness.check (((new BigDecimal("-0.12")).scale())==2, "sca016");
   harness.check (((new BigDecimal("-0.123")).scale())==3, "sca017");
-  summary("scale", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2226,7 +2202,6 @@ public class DiagBigDecimal implements Testlet {
    flag=(e.getMessage()).equals("Rounding necessary");
   }/*checkrunn*/
   harness.check (flag, "ssc102");
-  summary("setScale", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2252,7 +2227,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((smin))==((new BigDecimal(smax+1)).shortValue()), "shv011");
   harness.check (((smax))==((new BigDecimal(smin-1)).shortValue()), "shv012");
   
-  summary("shortValue+", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2278,7 +2252,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (1==((new BigDecimal("1")).signum()), "sig015");
   harness.check (1==((new BigDecimal("1e+12")).signum()), "sig016");
   harness.check (0==((new BigDecimal("00e+12")).signum()), "sig017");
-  summary("signum", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2336,7 +2309,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("1E-1000")).toBigInteger().toString()).equals("0"), "tbi044");
   harness.check (((new BigDecimal("-1E-1000")).toBigInteger().toString()).equals("0"), "tbi045");
   
-  summary("toBigInteger+", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2358,7 +2330,6 @@ public class DiagBigDecimal implements Testlet {
   harness.check (str.equals((java.lang.Object)cs), "tos004");
   harness.check ((cs instanceof java.lang.String), "tos005");
   harness.check ((d.toString() instanceof java.lang.String), "tos006");
-  summary("toString", harness);
   return;}
 
  /* ----------------------------------------------------------------- */
@@ -2414,40 +2385,6 @@ public class DiagBigDecimal implements Testlet {
   }/*checkscale*/
   harness.check (flag, "val100");
   
-  summary("valueOf", harness);
-  return;}
-
- /* ------------------------------------------------------------------ */
- /* Support routines and minor classes follow                          */
- /* ------------------------------------------------------------------ */
- 
- /* ----------------------------------------------------------------- */
- /* Method called to summarise pending tests                          */
- /* ----------------------------------------------------------------- */
- /* Arg1 is section name */
- 
- private void summary(java.lang.String section, TestHarness harness){
-  int bad;
-  int count;
-  int i=0;
-  Test item=null;
-  bad=0;
-  count=Tests.size();
-  {int $144=count;i=0;i:for(;$144>0;$144--,i++){
-   item=(Test)(Tests.elementAt(i));
-   if ((!item.ok)) 
-    {
-     bad++;
-     harness.verbose("Failed:"+" "+item.name);
-    }
-   }
-  }/*i*/
-  totalcount=totalcount+count;
-  Tests=new java.util.Vector(100); // reinitialize
-  if (bad==0) 
-   say("OK"+" "+left(section,14)+" "+right("["+count+" "+"tests]",12), harness);
-  else 
-   throw new DiagException(section+" "+"[failed"+" "+bad+" "+"of"+" "+count+" "+"tests]",bad);
   return;}
 
  
@@ -2505,91 +2442,4 @@ public class DiagBigDecimal implements Testlet {
     diagrun (harness);
   }
 
-/* ------------------------------------------------------------------ */
-/* Test -- represents a test and its status                           */
-/* ------------------------------------------------------------------ */
-/* Copyright IBM Corporation 1998, 2000.  All rights reserved.        */
-/* Author: Mike Cowlishaw                                             */
-/* ------------------------------------------------------------------ */
-/* 1998.07.15 Initial version                                         */
-/* 2000.03.27 Change to javadoc comments                              */
-
-/**
- * The <code>Test</code> class is used to record a specific test.
- * When constructed, it notes the name of the test and adds the test
- * to the list of tests held by the parent.
- *
- * Its <code>ok</flag> is assigned directly to record whether the
- * test succeeded (1) or failed (0).
- *
- * @see     com.ibm.icu.math.DiagBigDecimal
- * @version 1.00 2000.03.27
- * @author  Mike Cowlishaw
- */
- 
- public class Test{
-  private final transient java.lang.String $0="DiagBigDecimal.nrx";
-  /* properties shared transient */
- /** The name of the test. */
-  transient java.lang.String name;
- /** Success flag; will be set to 1 (true) if the test succeeded, or 0
-  * (false) if the test failed.
-  */
-  transient boolean ok;
-
- 
- /**
-  * Constructs a new <code>Test</code> with a specified name.
-  *
-  * @param testname The <code>String</code> naming the test.
-  */
-  
-  public Test(java.lang.String testname){super();
-   name=testname; // save the name
-   DiagBigDecimal.this.Tests.addElement((java.lang.Object)this); // and add to parent's list
-   return;}
-  }
-
- /* ------------------------------------------------------------------ */
- /* DiagException                                                      */
- /* ------------------------------------------------------------------ */
- /* Copyright IBM Corporation 1996, 2000.  All rights reserved.        */
- /* Author: Mike Cowlishaw                                             */
- /* ------------------------------------------------------------------ */
- /* 1996.05.27 Initial version in NetRexx (as DiagX)                   */
- /* 1998.06.25 Copied from NetRexx test suite                          */
- /* 1999.07.03 Add fail count                                          */
- /* 2000.03.27 Change to javadoc comments                              */
- 
- /**
-  * The <code>DiagException</code> class is used to signal the failure
-  * of a test group.  It records the number of failures in the group.
-  *
-v  * @see     com.ibm.icu.math.DiagBigDecimal
-  * @version 1.00 2000.03.27
-  * @author  Mike Cowlishaw
-  */
- 
- public static class DiagException extends java.lang.RuntimeException{
-  private final transient java.lang.String $0="DiagBigDecimal.nrx";
- 
-  /* properties shared transient */
- /** the count of failed tests in the group which signalled this
-   * exception.
-   */
-  transient int failcount=0;
- // number of tests which failed
- 
- /**
-  * Constructs a new <code>DiagException</code> with a message and
-  * failure count.  This is thrown when a group of tests fails.
-  *
-  * @param message The <code>String</code> message describing the group.
-  * @param fails   The <code>int</code> number of failed tests in the  group.
-  */
-  
-  public DiagException(java.lang.String message,int fails){
-   super(message);
-   failcount=fails;
-   return;}
- }}
+ }

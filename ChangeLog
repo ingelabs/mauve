@@ -1,3 +1,11 @@
+2003-01-20  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java (diagrun):
+	Return void.
+	(DiagException): Remove and use RuntimeException if necessary.
+	(summary): Removed.
+	(Test): Removed.
+
 2003-01-18  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/String/getBytes.java: Add new UTF8 test.
