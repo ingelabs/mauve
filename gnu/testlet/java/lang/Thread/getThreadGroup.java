@@ -29,8 +29,11 @@ public class getThreadGroup implements Testlet
 {
   public void test (TestHarness harness)
   {
-    // By default the group is the same as the one from current thread
     Thread current = Thread.currentThread();
+    harness.check(current.getThreadGroup() != null,
+		    "Every Thread has a ThreadGroup");
+
+    // By default the group is the same as the one from current thread
     Thread t = new Thread();
     harness.check(t.getThreadGroup(), current.getThreadGroup());
 

@@ -1,5 +1,15 @@
 2002-10-05  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/Thread/isAlive.java: Don't hold lock on Thread
+	while calling join().
+	* gnu/testlet/java/lang/Thread/daemon.java: Split started, running
+	and stopped test cases.
+	* gnu/testlet/java/lang/Thread/priority: Likewise.
+	* gnu/testlet/java/lang/Thread/getThreadGroup.java: Add explicit null
+	check
+
+2002-10-05  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/Thread/join.java: New Test.
 
 2002-10-05  Mark Wielaard  <mark@klomp.org>

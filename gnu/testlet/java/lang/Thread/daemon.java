@@ -29,12 +29,17 @@ public class daemon extends Thread implements Testlet
 {
 
   boolean started = false;
+  boolean please_stop = false;
+
   public void run()
   {
     synchronized(this)
       {
 	started = true;
 	notify();
+
+	while (!please_stop)
+	  try { wait(); } catch(InterruptedException ignored) { }
       }
   }
 
@@ -65,6 +70,7 @@ public class daemon extends Thread implements Testlet
     harness.check(t.isDaemon() != status,
 		    "Can change daemon status on unstarted Thread");
 
+    // Make sure we have a running thread.
     t.start();
     synchronized(t)
       {
@@ -85,10 +91,31 @@ public class daemon extends Thread implements Testlet
 	illegal_exception = true;
       }
     harness.check(illegal_exception,
-		    "Cannot change daemon state on started Thread");
+		    "Cannot change daemon state on running Thread");
     harness.check(t.isDaemon() != status,
-		    "Daemon status does not change when set on started Thread");
+		    "Daemon status does not change when set on running Thread");
 
+    // Make sure we have a stopped thread.
+    synchronized(t)
+      {
+	t.please_stop = true;
+	t.notify();
+      }
+    try { t.join(); } catch (InterruptedException ignored) { }
+
+    illegal_exception = false;
+    try
+      {
+	t.setDaemon(!status);
+      }
+    catch (IllegalThreadStateException itse)
+      {
+	illegal_exception = true;
+      }
+    harness.check(illegal_exception,
+      "Cannot change daemon state on started (and stopped) Thread");
+    harness.check(t.isDaemon() != status,
+      "Daemon status does not change when set on started (and stopped Thread");
   }
 }
 

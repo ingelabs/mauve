@@ -25,7 +25,7 @@ package gnu.testlet.java.lang.Thread;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class priority implements Testlet
+public class priority implements Testlet, Runnable
 {
   private static TestHarness harness;
 
@@ -38,6 +38,8 @@ public class priority implements Testlet
 		    test_name + " has at at most MAX_PRIORITY");
 
     // Remember old thread group priority
+    ThreadGroup tg = t.getThreadGroup();
+    harness.debug("ThreadGroup: " + tg);
     int thread_group_prio = t.getThreadGroup().getMaxPriority();
 
     t.getThreadGroup().setMaxPriority(Thread.MAX_PRIORITY);
@@ -97,7 +99,7 @@ public class priority implements Testlet
     test_set_prio(current, "Every Thread");
 
     int prio = current.getPriority();
-    Thread t  = new Thread();
+    Thread t  = new Thread(p);
     harness.check(t.getPriority() == prio,
 		    "New Thread inherits priority");
     test_set_prio(t, "New Thread");
@@ -107,6 +109,28 @@ public class priority implements Testlet
     harness.check(t.getPriority() == prio,
 		    "Started Thread does not change priority");
     test_set_prio(t, "Started Thread");
+
+    synchronized(p) {
+      p.please_stop = true;
+      p.notify();
+    }
+
+    try { t.join(); } catch(InterruptedException ie) { }
+    harness.check(t.getPriority() == prio,
+                    "Stopped Thread does not change priority");
+
+    // What is the expected behavior of setPriority on a stopped Thread?
+  }
+
+  static priority p = new priority();
+  boolean please_stop = false;
+  public void run()
+  {
+    synchronized(p)
+    {
+      while(!please_stop)
+	try { p.wait(); } catch(InterruptedException ie) { }
+    }
   }
 }
 

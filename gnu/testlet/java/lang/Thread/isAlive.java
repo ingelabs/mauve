@@ -62,10 +62,10 @@ public class isAlive extends Thread implements Testlet
 
 	t.please_stop = true;
 	t.notify();
-	try { t.join(); } catch (InterruptedException ignore) { }
-
-	harness.check(!t.isAlive(), "Stopped threads are not alive");
       }
+    try { t.join(); } catch (InterruptedException ignore) { }
+
+    harness.check(!t.isAlive(), "Stopped threads are not alive");
   }
 }
 
