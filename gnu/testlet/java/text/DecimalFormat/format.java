@@ -94,7 +94,7 @@ public class format implements Testlet
       harness.check (df.format (1234.56), "123,456%");
 
       apply (harness, df, "#.#");
-      harness.check (df.format (0.2), ".2");
+      harness.check (df.format (0.2), "0.2");
 
       apply (harness, df, "'#'#.#");
       harness.check (df.format (30), "#30");

@@ -41,10 +41,14 @@ test(TestHarness harness)
   as.addAttribute(AttributedCharacterIterator.Attribute.LANGUAGE,
                   "bogosity", 9, 23);
 
+  AttributedCharacterIterator aci0 = as.getIterator(null, 28, 60);
+  Set s0 = aci0.getAllAttributeKeys();
+  harness.check(s0.size(), 1, "Attribute key count");
+
   AttributedCharacterIterator aci = as.getIterator(null, 20, 29);
 
   Set s = aci.getAllAttributeKeys();
-  harness.check(s.size(), 1, "Attribute key count");
+  harness.check(s.size(), 2);
   Object[] o = s.toArray();
   if (o.length > 0)
     for (int i = 0; i < o.length; i++)
@@ -54,10 +58,7 @@ test(TestHarness harness)
 
   aci.first();
   int rl = aci.getRunLimit();
-  // FIXME: Verify this is right.  I just assume it should return 24,
-  // which is one past then end of the "READING" attribute I set above.
-  // I really don't fully understand this class!
-  harness.check(rl, 24, "getRunLimit");
+  harness.check(rl, 23, "getRunLimit");
 
   StringBuffer result = new StringBuffer("");
   do

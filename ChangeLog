@@ -1,3 +1,11 @@
+2004-02-25  Guilhem Lavaux <guilhem@kaffe.org>
+
+	* gnu/testlet/java/text/DecimalFormat/DecimalFormat.java:
+	Fixed "#.#" testcase.
+
+	* gnu/testlet/java/text/AttributedString/Test.java:
+	Fixed offsets. New subtestcase.
+
 2004-02-27  Sascha Brawer  <brawer@dandelis.ch>
 
 	* gnu/testlet/java/util/logging/Logger/getName.java,
