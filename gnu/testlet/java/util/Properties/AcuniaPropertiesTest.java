@@ -520,7 +520,10 @@ public class AcuniaPropertiesTest implements Testlet
     // Note that there used to be code here checking whether the
     // "!comment" and "#morec" keys were found, on the theory that
     // leading whitespace mattered.  This no longer seems to be the
-    // case, however.
+    // case, however.  In the past it apparently varied between JVMs,
+    // but the 1.4 docs are unambiguous on this topic.  We check for
+    // "ents" since line-continuation doesn't affect comments.
+    v.add("ents=");
     v.add("name=no");
     v.add("dog=no\\cat   ");
     v.add("burps=");
