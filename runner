@@ -30,7 +30,7 @@
 # Usage: runner test_class_name
 # Run in the source directory.
 
-if test "x$(RUNTIME)" = "x" ; then
+if test "x$RUNTIME" = "x" ; then
 #RUNTIME="gij"
 #RUNTIME="Kissme"
 #RUNTIME="/usr/local/sablevm/bin/sablevm -Y"
@@ -61,7 +61,7 @@ testclass=$1
 if test "$RUNTIME" = "native"; then
     echo $testclass | ./SimpleTestHarness -resultsonly &
 else
-    echo $testclass | $RUNTIME gnu.testlet.SimpleTestHarness -resultsonly &
+    echo $testclass | $RUNTIME gnu.testlet.SimpleTestHarness -debug -verbose &
 fi
 PID=$!
 wait $PID
