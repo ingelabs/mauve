@@ -155,21 +155,23 @@ public class newInstance implements Testlet
       }
     harness.check(val, 2);
 
-    val = 0;
-    try
-      {
-	x = Array.newInstance(String.class, new int[256]);
-	val = 1;
-      }
-    catch (IllegalArgumentException e)
-      {
-	val = 2;
-      }
-    catch (Throwable t)
-      {
-	val = 3;
-      }
-    harness.check(val, 2);
+    // This test is wrong: 255 is a potential limit, but not a
+    // specified limit.
+//      val = 0;
+//      try
+//        {
+//  	x = Array.newInstance(String.class, new int[256]);
+//  	val = 1;
+//        }
+//      catch (IllegalArgumentException e)
+//        {
+//  	val = 2;
+//        }
+//      catch (Throwable t)
+//        {
+//  	val = 3;
+//        }
+///    harness.check(val, 2);
 
     val = 0;
     try
