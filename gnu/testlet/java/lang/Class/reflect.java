@@ -1,7 +1,7 @@
 // Tags: JDK1.1
 // Uses: rf_help
 
-// Copyright (C) 2000 Cygnus Solutions
+// Copyright (C) 2000, 2002 Cygnus Solutions
 
 // This file is part of Mauve.
 
@@ -93,6 +93,7 @@ public class reflect implements Testlet
   {
     Class reflect_class = getClass ("gnu.testlet.java.lang.Class.reflect");
     Class rf_help_class = getClass ("gnu.testlet.java.lang.Class.rf_help");
+    Class aci_class = getClass ("java.text.AttributedCharacterIterator");
     Class i_class = Integer.TYPE;
 
     Class[] ptz = new Class[0];
@@ -350,5 +351,9 @@ public class reflect implements Testlet
     harness.check(rf_help_class.getDeclaringClass(), null);
     harness.check(reflect_class.getDeclaringClass(), null);
     harness.check(i_class.getDeclaringClass(), null);
+
+    harness.checkPoint("getMethod with superinterface");
+    m = getMethod (aci_class, "current", ptz, true);
+    harness.check (((Method) m).getName (), "current");
   }
 }

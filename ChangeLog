@@ -1,3 +1,8 @@
+2002-07-05  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Class/reflect.java (test): Check for
+	getMethod with superinterface.
+
 2002-07-02  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/text/MessageFormat/format.java: Added new test
