@@ -1,5 +1,10 @@
 2004-10-13  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/lang/reflect/Method/toString.java:
+	Added some more testcases.
+
+2004-10-13  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/net/InetAddress/getCanonicalHostName.java:
 	New testcase.
 

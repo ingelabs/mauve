@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 1999, 2000, 2001 Red Hat, Inc.
+// Copyright (C) 1999, 2000, 2001, 2004 Red Hat, Inc.
 
 // This file is part of Mauve.
 
@@ -45,6 +45,10 @@ public class toString implements Testlet
     return "zardoz";
   }
 
+  public void simpleargs (int i, byte b)
+  {
+  }
+  
   public int arrayargs (int[] z)
   {
     return z.length;
@@ -53,6 +57,16 @@ public class toString implements Testlet
   public int multidim_arrayargs (int[][][] z)
   {
     return z.length;
+  }
+
+  public String classargs (String[][] s)
+  {
+    return "test";
+  }
+
+  public String[] arrayreturn()
+  {
+    return null;
   }
 
   public void test (TestHarness harness)
@@ -69,11 +83,21 @@ public class toString implements Testlet
 
     Class[] na_list = new Class[0];
     Method na_meth = getMethod (ic, "no_args", na_list);
+    harness.checkPoint("method with no arguments");
     harness.check (na_meth.toString (), "public java.lang.String gnu.testlet.java.lang.reflect.Method.toString.no_args()");
 
+    Class[] simple_list = new Class[2];
+    simple_list[0] = int.class;
+    simple_list[1] = byte.class;
+    Method simple_meth = getMethod (ic, "simpleargs", simple_list);
+    harness.checkPoint("method with primitive argument types");
+    harness.check (simple_meth.toString (),
+		    "public void gnu.testlet.java.lang.reflect.Method.toString.simpleargs(int,byte)");
+    
     Class[] aa_list = new Class[1];
     aa_list[0] = int[].class;
     Method aa_meth = getMethod (ic, "arrayargs", aa_list);
+    harness.checkPoint("method with a simple array type as argument");
     harness.check (aa_meth.toString (),
 		   "public int gnu.testlet.java.lang.reflect.Method.toString.arrayargs(int[])");
 
@@ -87,5 +111,18 @@ public class toString implements Testlet
     harness.checkPoint("method with multiple array dims in argument");
     harness.check (mdaa_meth.toString (),
 		   "public int gnu.testlet.java.lang.reflect.Method.toString.multidim_arrayargs(int[][][])");
+
+    aa_list = new Class[1];
+    aa_list[0] = String[][].class;
+    Method string_meth = getMethod (ic, "classargs", aa_list);
+    harness.checkPoint("method with class type array");
+    harness.check (string_meth.toString (),
+		    "public java.lang.String gnu.testlet.java.lang.reflect.Method.toString.classargs(java.lang.String[][])");
+
+    na_list = new Class[0];
+    Method ra_meth = getMethod (ic, "arrayreturn", na_list);
+    harness.checkPoint("method with array as return type");
+    harness.check (ra_meth.toString (),
+		    "public java.lang.String[] gnu.testlet.java.lang.reflect.Method.toString.arrayreturn()");
   }
 }
