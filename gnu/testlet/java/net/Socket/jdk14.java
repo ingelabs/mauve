@@ -1,4 +1,4 @@
-// Tags: JDK1.3
+// Tags: JDK1.4
 
 /*
   Copyright (C) 2003 C. Brian Jones
@@ -29,7 +29,7 @@ import java.net.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class jdk13 implements Testlet
+public class jdk14 implements Testlet
 {
   public void test (TestHarness harness)
   {
@@ -38,16 +38,29 @@ public class jdk13 implements Testlet
     Socket sock = null;
     try 
       {
-	harness.checkPoint("getKeepAlive()");
-	sock = new Socket (host, port);
-	
-	harness.debug ("getKeepAlive() default: " + sock.getKeepAlive ());
-	harness.check (sock.getKeepAlive () == false, "getKeepAlive() default should be false");
-	sock.setKeepAlive (true);
-	harness.check (sock.getKeepAlive (), "setKeepAlive() - 1");
+	sock = new Socket (); // unconnected socket
+	harness.check (sock.getPort (), 0, "unconnected socket getPort() should return 0");
+	harness.check (sock.getLocalPort (), -1, "unbound socket getLocalPort() should return -1");
 
-	harness.checkPoint ("shutdownInput()");
-	harness.checkPoint ("shutdownOutput()");
+	sock = new Socket (host, port);
+
+	harness.checkPoint("connect()");
+	harness.checkPoint("bind()");
+	harness.checkPoint("getRemoteSocketAddress()");
+	harness.checkPoint("getLocalSocketAddress()");
+	harness.checkPoint("getChannel");
+	harness.checkPoint("sendUrgentData");
+	harness.checkPoint("setOOBInline");
+	harness.checkPoint("getOOBInline");
+	harness.checkPoint("setTrafficClass()");
+	harness.checkPoint("getTrafficClass()");
+	harness.checkPoint("setReuseAddress()");
+	harness.checkPoint("getReuseAddress()");
+	harness.checkPoint("isConnected()");
+	harness.checkPoint("isBound()");
+	harness.checkPoint("isClosed()");
+	harness.checkPoint("isInputShutdown()");
+	harness.checkPoint("isOutputShutdown()");
       }
     catch (Throwable t)
       { 

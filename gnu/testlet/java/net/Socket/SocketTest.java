@@ -200,15 +200,6 @@ public class SocketTest implements Testlet
     Socket sock = null;
 
     try {
-      sock = new Socket (); // unconnected socket
-      harness.check (sock.getPort (), 0, "unconnected socket getPort() should return 0");
-      harness.check (sock.getLocalPort (), -1, "unbound socket getLocalPort() should return -1");
-    }
-    catch (Exception e) {
-
-    }
-
-    try {
       sock = new Socket(host, port);
       
       harness.check(sock.getLocalPort() > 0,

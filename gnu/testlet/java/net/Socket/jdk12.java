@@ -1,4 +1,4 @@
-// Tags: JDK1.3
+// Tags: JDK1.2
 
 /*
   Copyright (C) 2003 C. Brian Jones
@@ -29,7 +29,7 @@ import java.net.*;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class jdk13 implements Testlet
+public class jdk12 implements Testlet
 {
   public void test (TestHarness harness)
   {
@@ -38,16 +38,13 @@ public class jdk13 implements Testlet
     Socket sock = null;
     try 
       {
-	harness.checkPoint("getKeepAlive()");
 	sock = new Socket (host, port);
-	
-	harness.debug ("getKeepAlive() default: " + sock.getKeepAlive ());
-	harness.check (sock.getKeepAlive () == false, "getKeepAlive() default should be false");
-	sock.setKeepAlive (true);
-	harness.check (sock.getKeepAlive (), "setKeepAlive() - 1");
 
-	harness.checkPoint ("shutdownInput()");
-	harness.checkPoint ("shutdownOutput()");
+	harness.checkPoint("setSendBufferSize()");
+	harness.checkPoint("getSendBufferSize()");
+	harness.checkPoint("setReceiveBufferSize()");
+	harness.checkPoint("getReceiveBufferSize()");
+
       }
     catch (Throwable t)
       { 

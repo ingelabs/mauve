@@ -1,9 +1,21 @@
+2003-01-31  C. Brian Jones <cbj@gnu.org>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java (test_params): 
+	remove check defaults for getPort(), getLocalPort()
+	* gnu/testlet/java/net/Socket/jdk12.java: prepare for new tests 
+	(added checkpoints)
+	* gnu/testlet/java/net/Socket/jdk13.java: prepare for new tests 
+	(added checkpoints)
+	* gnu/testlet/java/net/Socket/jdk14.java: new test has default 
+	checks for getPort(), getLocalPort(); prepare for new tests 
+	(added checkpoints)
+
 2003-01-30  C. Brian Jones <cbj@gnu.org>
 
 	* gnu/testlet/java/net/Socket/SocketTest.java (test_params): 
 	check defaults for getPort(), getLocalPort(), getTcpNoDelay(), 
 	getSoLinger()
-	* jdk13.java: new test
+	* gnu/testlet/java/net/Socket/jdk13.java: new test
 
 2003-01-30  C. Brian Jones <cbj@gnu.org>
 
