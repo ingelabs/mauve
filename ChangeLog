@@ -1,5 +1,10 @@
 2004-11-05  Noa Resare  <noa@resare.com>
 
+	* gnu/testlet/BinaryCompatibility/foo:
+	Added explicit -classpath to $JAVA invocation
+
+2004-11-05  Noa Resare  <noa@resare.com>
+
 	* gnu/testlet/TestResult.java: New file.
 	* gnu/testlet/TestReport.java: New file.
 	* gnu/testlet/SimpleTestHarness.java:
