@@ -1,5 +1,10 @@
 2005-02-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/lang/Float/compareTo.java,
+	gnu/testlet/java/lang/Double/compareTo.java: New tests.
+	
+2005-02-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/Date/after.java, 
 	gnu/testlet/java/util/Date/before.java, 
 	gnu/testlet/java/util/Date/clone.java, 
