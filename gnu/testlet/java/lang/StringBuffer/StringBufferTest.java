@@ -345,7 +345,7 @@ public class StringBufferTest implements Testlet
 			harness.fail("Error : test_insert failed - 5");
 		}catch ( NullPointerException e ) {}
 
-
+		cdata = new char[2];
 		try {
 			buf = buf.insert(-1 , cdata );
 			harness.fail("Error : test_insert failed - 6");

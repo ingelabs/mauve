@@ -1,3 +1,8 @@
+2002-10-27  Mark Wielaard  <mark@klomp.org>
+
+	* gnu.testlet.java.lang.StringBuffer.StringBufferTest (test_insert):
+	Test for IndexOutOfBoundException not NullPointerException.
+
 2002-10-28  Stephen Crawley <crawley@dstc.edu.au>
         * gnu/testlet/java/lang/Class/reflect.java: Added tests for
 	getField and getDeclaredField with inherited fields.
