@@ -12,6 +12,7 @@ check_DATA = $(STAMP)
 harness_files = gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
 	gnu/testlet/TestSecurityManager.java \
+	gnu/testlet/TestSecurityManager2.java \
 	gnu/testlet/ResourceNotFoundException.java
 
 ## FIXME: leading space makes automake ignore this.  Bleah.
@@ -73,7 +74,7 @@ SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files)
 SimpleTestHarness_LDADD = $(javao_files)
 SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
 
-check-local: $(check_PROGRAMS) $(CHOICES)
+check-local: $(check_PROGRAMS) $(CHOICES) cleanup-env
 	cat classes | GCJ="$(GCJ)" JAVA= ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)
 
 recheck:
@@ -89,7 +90,7 @@ else  ## USE_GCJ
 
 STAMP = classes.stamp
 
-check-local: classes.stamp
+check-local: classes.stamp cleanup-env
 	cat classes | \
 	CLASSPATH=$$CLASSPATH:`/bin/pwd` JAVAC="$(JAVAC)" JAVA="$(JAVA)" $(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
 
@@ -100,6 +101,15 @@ recheck:
 CLEANFILES = classes.stamp
 
 endif ## USE_GCJ
+
+# Cleanup files, directories and other stuff left over from previous
+# test runs that will interfere with this one.  (Ideally a testcase
+# should do this for itself.)
+cleanup-env: 
+	if test -d /tmp/mauve-testdir ; then \
+	  chmod -R 777 /tmp/mauve-testdir ; \
+	  rm -rf /tmp/mauve-testdir ; \
+	fi
 
 ## For now can't define this conditionally.
 SUFFIXES = .class .java

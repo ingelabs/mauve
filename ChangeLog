@@ -1,3 +1,14 @@
+2004-03-08  Stephen Crawley <crawley@dstc.edu.au>
+	* gnu/testlet/java/io/File/security.java : revamped testcase to
+	use a test security manager to monitor the permissions checked.
+	* gnu/testlet/TestSecurityManager2.java : new class
+	
+	* Makefile.am : Added gnu/testlet/TestSecurityManager2.java to
+	the harness file list.  Added a rule to clean up /tmp/mauve-testdir
+	* Makefile.in : regenerated
+	* aclocal.m4 : regenerated
+	* configure : regenerated
+
 2004-02-25  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/text/DecimalFormat/DecimalFormat.java:

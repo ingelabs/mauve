@@ -1,7 +1,9 @@
 // Tags: JDK1.2
 
 // Copyright (C) 2003 Red Hat, Inc.
+// Copyright (C) 2004 Stephen Crawley.
 // Written by Tom Tromey <tromey@redhat.com>
+// Extensively modified by Stephen Crawley <crawley@dstc.edu.au>
 
 // This file is part of Mauve.
 
@@ -29,11 +31,12 @@ import java.io.OutputStream;
 import java.io.FilePermission;
 import java.io.FilenameFilter;
 import java.io.FileFilter;
-
+import java.security.Permission;
+import java.util.PropertyPermission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager;
+import gnu.testlet.TestSecurityManager2;
 
 public class security implements Testlet
 {
@@ -48,185 +51,227 @@ public class security implements Testlet
     File tmpfile2 = new File(tmpdir, "testfile2");
     harness.check(tmpfile2.delete() || !tmpfile2.exists());
 
-    System.setSecurityManager(new TestSecurityManager());
+    Permission[] noPerms = new Permission[0];
+    Permission tmpdirReadPerm =
+      new FilePermission(tmpdir.toString(), "read");
+    Permission tmpdirWritePerm =
+      new FilePermission(tmpdir.toString(), "write");
+    Permission tmpdirDeletePerm =
+      new FilePermission(tmpdir.toString(), "delete");
 
-    boolean ok;
+    Permission tmpfileReadPerm =
+      new FilePermission(tmpfile.toString(), "read");
+    Permission tmpfileWritePerm =
+      new FilePermission(tmpfile.toString(), "write");
+    Permission tmpfileDeletePerm =
+      new FilePermission(tmpfile.toString(), "delete");
 
-    ok = false;
-    try
-      {
+    Permission tmpallWritePerm =
+      new FilePermission(tmp + File.separator + "*", "write");
+    Permission tmpdirallWritePerm =
+      new FilePermission(tmpdir.toString() + File.separator + "*", "write");
+    Permission tmpfile2WritePerm =
+      new FilePermission(tmpfile2.toString(), "write");
+
+    Permission rootReadPerm =
+      new FilePermission(File.separator, "read");
+
+    Permission tmpdirPropPerm =
+      new PropertyPermission("java.io.tmpdir", "read");
+
+    TestSecurityManager2 sm = new TestSecurityManager2();
+    try {
+      sm.install();
+	
+      harness.checkPoint("dir.canWrite");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
 	tmpdir.canWrite();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (SecurityException ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.canWrite - unexpected exception");
       }
-    harness.check(ok, "dir.canWrite()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.canRead");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.canRead();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (SecurityException ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.canRead - unexpected exception");
       }
-    harness.check(ok, "dir.canRead()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("file.createNewFile");
+      try {
+	sm.prepareChecks(new Permission[]{tmpfileWritePerm}, noPerms);
 	tmpfile.createNewFile();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "file.createNewFile - unexpected exception");
       }
-    catch (IOException ignore)
-      {
-      }
-    harness.check(ok, "file.createNewFile()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("file.delete");
+      try {
+	sm.prepareChecks(new Permission[]{tmpfileDeletePerm}, noPerms);
 	tmpfile.delete();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "file.delete - unexpected exception");
       }
-    harness.check(ok, "file.delete()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.list(null)");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.list(null);
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.list(null) - unexpected exception");
       }
-    harness.check(ok, "dir.list(null)");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.list()");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.list();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.list() - unexpected exception");
       }
-    harness.check(ok, "dir.list()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.listFiles()");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.listFiles();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.listFiles() - unexpected exception");
       }
-    harness.check(ok, "dir.listFiles()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.listFiles(FilenameFilter)");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.listFiles((FilenameFilter) null);
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false,
+		      "dir.listFiles(FilenameFilter) - unexpected exception");
       }
-    harness.check(ok, "dir.listFiles(FilenameFilter)");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.listFiles(FileFilter)");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.listFiles((FileFilter) null);
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false,
+		      "dir.listFiles(FileFilter) - unexpected exception");
       }
-    harness.check(ok, "dir.listFiles(FileFilter)");
 
-    ok = false;
-    try
-      {
-	tmpdir.createTempFile("pfx", "sfx");
+      harness.checkPoint("createTempFile(2-args)");
+      try {
+	sm.prepareChecks(new Permission[]{tmpallWritePerm},
+			 new Permission[]{tmpdirPropPerm});
+	File.createTempFile("pfx", "sfx");
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "createTempFile(2-args) - unexpected exception");
       }
-    catch (IOException ignore)
-      {
-      }
-    harness.check(ok, "dir.createTempFile(2-args)");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("createTempFile(3-args)");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirallWritePerm}, noPerms);
 	File.createTempFile("pfx", "sfx", tmpdir);
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "createTempFile(3-args) - unexpected exception");
       }
-    catch (IOException ignore)
-      {
-      }
-    harness.check(ok, "File.createTempFile(3-args)");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.setReadOnly");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
 	tmpdir.setReadOnly();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.setReadOnly - unexpected exception");
       }
-    harness.check(ok, "dir.setReadOnly()");
+      
+      harness.checkPoint("listRoots()");
+      try {
+	// sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
+	sm.prepareChecks(noPerms, noPerms);
+	File[] roots = File.listRoots();
+	// harness.check(roots.length, 1, "File.listRoots()");
+	sm.checkAllChecked(harness);
+      }
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "listRoots() - unexpected exception");
+      }
 
-    File[] roots = File.listRoots();
-    harness.check(roots.length, 0, "File.listRoots()");
-
-    ok = false;
-    try
-      {
+      harness.checkPoint("file.renameTo");
+      try {
+	sm.prepareChecks(new Permission[]{tmpfileWritePerm, 
+					  tmpfile2WritePerm}, 
+			 noPerms);
 	tmpfile.renameTo(tmpfile2);
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "file.renameTo - unexpected exception");
       }
-    harness.check(ok, "file.renameTo()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.setLastModified()");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
 	tmpdir.setLastModified(0);
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.setLastModified() - unexpected exception");
       }
-    harness.check(ok, "dir.setLastModified()");
 
-    ok = false;
-    try
-      {
+      harness.checkPoint("dir.deleteOnExit()");
+      try {
+	sm.prepareChecks(new Permission[]{tmpdirDeletePerm}, noPerms);
 	tmpdir.deleteOnExit();
+	sm.checkAllChecked(harness);
       }
-    catch (SecurityException _)
-      {
-	ok = true;
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "dir.deleteOnExit() - unexpected exception");
       }
-    harness.check(ok, "dir.deleteOnExit()");
+    }
+    catch (Throwable ex) {
+      harness.debug(ex);
+      harness.check(false, "outer handler - unexpected exception");
+    }
+    finally {
+      sm.uninstall();
+    }
   }
 }
