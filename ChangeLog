@@ -1,3 +1,7 @@
+1999-03-11  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/java/text/ChoiceFormat/next.java: New file.
+
 1999-03-10  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/text/DecimalFormat/topattern.java: New file.
