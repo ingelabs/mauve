@@ -27,6 +27,7 @@ public class min implements Testlet
 {
   public void test (TestHarness harness)
     {
+      harness.checkPoint("Small doubles");
       harness.check (Double.toString (Math.min (0.0, -0.0)), "-0.0");
       harness.check (Double.toString (Math.min (-0.0, -0.0)), "-0.0");
       harness.check (Double.toString (Math.min (0.0, -0.0)), "-0.0");
@@ -36,8 +37,14 @@ public class min implements Testlet
       harness.check (Double.toString (Math.min (-1.0, -2.0)), "-2.0");
       harness.check (Double.toString (Math.min (-2.0, 1.0)), "-2.0");
       harness.check (Double.toString (Math.min (1.0, -2.0)), "-2.0");
+
+      harness.checkPoint("Double NaNs");
+
       harness.check (Double.toString (Math.min (2.0, Double.NaN)), "NaN");
       harness.check (Double.toString (Math.min (Double.NaN, 2.0)), "NaN");
+
+      harness.checkPoint("Double infinities");
+
       harness.check (Double.toString (Math.min (Double.NEGATIVE_INFINITY, 
 			       Double.POSITIVE_INFINITY)), 
 		     "-Infinity");
@@ -48,8 +55,13 @@ public class min implements Testlet
 		     "-Infinity");
       harness.check (Double.toString (Math.min (Double.POSITIVE_INFINITY, 0.0)),
 		     "0.0");
+
+      harness.checkPoint("Double pi");
+
       harness.check (Double.toString (Math.max (Math.PI, 0.0)),
 		     Double.toString(Math.PI));
+
+      harness.checkPoint("Small floats");
 
       harness.check (Float.toString (Math.min (0.0f, -0.0f)), "-0.0");
       harness.check (Float.toString (Math.min (-0.0f, -0.0f)), "-0.0");
@@ -60,8 +72,14 @@ public class min implements Testlet
       harness.check (Float.toString (Math.min (-1.0f, -2.0f)), "-2.0");
       harness.check (Float.toString (Math.min (-2.0f, 1.0f)), "-2.0");
       harness.check (Float.toString (Math.min (1.0f, -2.0f)), "-2.0");
+
+      harness.checkPoint("Float NaNs");
+
       harness.check (Float.toString (Math.min (2.0f, Float.NaN)), "NaN");
       harness.check (Float.toString (Math.min (Float.NaN, 2.0f)), "NaN");
+
+      harness.checkPoint("Float infinities");
+
       harness.check (Float.toString (Math.min (Float.NEGATIVE_INFINITY, 
 			       Float.POSITIVE_INFINITY)), 
 		     "-Infinity");
@@ -72,6 +90,9 @@ public class min implements Testlet
 		     "-Infinity");
       harness.check (Float.toString (Math.min (Float.POSITIVE_INFINITY, 0.0f)),
 		     "0.0");
+
+      harness.checkPoint("Float pi");
+
       harness.check (Float.toString (Math.max ((float)Math.PI, 0.0f)),
 		     Float.toString((float)Math.PI));
     }
