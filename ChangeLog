@@ -1,3 +1,7 @@
+2004-12-30  Thomas Zander  <zander@kde.org>
+
+	* gnu/testlet/locales/LocaleTest.java: altered file to all ASCII
+
 2004-12-30  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Thread/sleep.java: New test.
