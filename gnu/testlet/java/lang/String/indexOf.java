@@ -1,6 +1,6 @@
 // Tags: JDK1.0
 
-// Copyright (C) 1998 Cygnus Solutions
+// Copyright (C) 1998, 1999 Cygnus Solutions
 
 // This file is part of Mauve.
 
