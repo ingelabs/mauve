@@ -1,3 +1,7 @@
+2002-12-25  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/StringReader/Test.java:
+	Added tests for StringReader class
+
 2002-12-24  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/PrintWriter/jdk11.java:
 	Added tests for PrintWriter class
