@@ -1,3 +1,10 @@
+2004-11-08  Robert Schuster <thebohemian@gmx.net>
+
+	gnu/testlet/java/beans/Introspector/getBeanInfo2_2.java:
+	new test
+	gnu/testlet/java/beans/Introspector/getBeanInfo2_2TestClass.java:
+	new helper class for above test
+
 2004-11-07  Robert Schuster <thebohemian@gmx.net>
 
 	Tests for bug #10938:
