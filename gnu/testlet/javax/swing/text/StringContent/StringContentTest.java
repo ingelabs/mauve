@@ -41,7 +41,7 @@ public class StringContentTest implements Testlet
       {
         h.checkPoint("StringContent -- insertString()");
         sc.insertString(0, "path");
-        h.check("path", sc.getString(0, sc.length() -1),
+        h.check("path\n", sc.getString(0, sc.length()),
                 "StringContent.insertString(): insert 'path' at 0");
         h.checkPoint("StringContent -- length()");
         h.check(5, sc.length(),
@@ -49,7 +49,7 @@ public class StringContentTest implements Testlet
         h.checkPoint("StringContent -- insertString() part2");
         sc.insertString(0, "class");
         h.checkPoint("StringContent -- getString()");
-        h.check("classpath", sc.getString(0, sc.length() -1), 
+        h.check("classpath\n", sc.getString(0, sc.length()), 
                 "StringContent.insertString(): put 'class' at 0");
         h.checkPoint("StringContent -- length() part2");
         h.check(10, sc.length(),
@@ -57,26 +57,27 @@ public class StringContentTest implements Testlet
         h.checkPoint("StringContent -- remove()");
         sc.remove(1, 4);
         h.checkPoint("StringContent -- getString() part2");
-        h.check("cpath", sc.getString(0, sc.length()-1),
+        h.check("cpath\n", sc.getString(0, sc.length()),
                 "StringContent.remove(): should be 'cpath' is '"
-                + sc.getString(0, sc.length()-1) + "'");
+                + sc.getString(0, sc.length()) + "'");
         h.checkPoint("StringContent -- remove() part2");
         sc.remove(2, 3);
         h.checkPoint("StringContent -- getString() part3");
-        h.check("cp", sc.getString(0, sc.length()-1),
+        h.check("cp\n", sc.getString(0, sc.length()),
                 "StringContent.remove(): should be 'cp' is '"
-                + sc.getString(0, sc.length()-1) + "'");
+                + sc.getString(0, sc.length()) + "'");
         h.checkPoint("StringContent -- getChars()");
-        char[] ctab = { 'c', 'p' };
-        Segment s = new Segment(ctab, 0, 2);
+        char[] ctab = { 'c', 'p' , '\n'};
+        Segment s = new Segment(ctab, 0, 3);
         Segment s2 = new Segment();
-        sc.getChars(0, sc.length() -1, s2);
+        sc.getChars(0, sc.length(), s2);
         h.check(s.toString(), s2.toString(),
                 "StringContent.getChars(): "
                 + "compare to javax.swing.text.Segment "
                 + "(first Segment: " + s + "; second Segment: " + s2 + ")");
         h.checkPoint("StringContent -- StringContent()");
         sc = new StringContent(100);
+        h.check("\n", sc.getString(0, sc.length()), "StringContent(100): getString(0, lenght) should be '\\n'");
         h.check(1, sc.length(), "StringContent(100): length() should be 1 and is : " + sc.length());
         h.checkPoint("StringContent -- StringContent() part2");
         sc = new StringContent(1);
@@ -100,7 +101,7 @@ public class StringContentTest implements Testlet
         h.check(0, position.getOffset(), "Position.getOffset() should be 0 and is: " + position.getOffset());
         sc.remove(0, 5);
         h.check(0, position.getOffset(), "Position.getOffset() should be 0 and is: " + position.getOffset());
-        h.check("path", sc.getString(0, sc.length() -1), "getString(0, length()) should be 'path' and is: " + sc.getString(0, sc.length()));
+        h.check("path\n", sc.getString(0, sc.length()), "getString(0, length()) should be 'path' and is: " + sc.getString(0, sc.length()));
         h.check(0, position2.getOffset(), "Position.getOffset() should be 0 and is: " + position2.getOffset());
       }
     catch (BadLocationException ble)

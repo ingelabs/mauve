@@ -1,3 +1,8 @@
+2005-01-03  Arnaud Vandyck  <avdyk@ressource-toi.org>
+
+	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java:
+	Reworked.
+
 2005-01-03  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/InetAddress/isSiteLocalAddress.java:
