@@ -45,7 +45,7 @@ public class set implements Testlet
   private void testSimple(TestHarness harness)
   {
     harness.checkPoint("Simple tests");
-    Calendar c = Calendar.getInstance();
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
     c.setTimeZone(TimeZone.getTimeZone("GMT"));
 
     c.clear();
@@ -118,7 +118,7 @@ public class set implements Testlet
   public void test_DAY_OF_MONTH(TestHarness harness)
   {
     harness.checkPoint("setting DAY_OF_MONTH etc shouldn't effect other fields");
-    Calendar c = Calendar.getInstance();
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
     SimpleDateFormat df = new SimpleDateFormat("EEEEEEEEEEEEE, yyyy-MM-dd [DDD] HH:mm:ss.SSSS", Locale.US);
     c.set(2004, 9, 1, 12, 0, 0);
     c.set(Calendar.MILLISECOND, 0);
@@ -139,7 +139,7 @@ public class set implements Testlet
   {
     harness.checkPoint("setting only some fields");
 
-    Calendar c = Calendar.getInstance();
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
     c.setTimeZone(TimeZone.getTimeZone("GMT"));
 
     c.clear();
@@ -176,7 +176,7 @@ public class set implements Testlet
   private void testLenience(TestHarness harness)
   {
     harness.checkPoint("test the setLenient() functionality");
-    Calendar c = Calendar.getInstance();
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
     c.setLenient(false);
     c.set(Calendar.MONTH, 42);
     boolean b = false;
@@ -194,7 +194,7 @@ public class set implements Testlet
   private void testConflictingFields(TestHarness harness)
   {
     harness.checkPoint("test setting conflicting values of different fields");
-    Calendar c = Calendar.getInstance();
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
     c.setTimeZone(TimeZone.getTimeZone("GMT"));
     c.clear();
 
@@ -249,7 +249,7 @@ public class set implements Testlet
   private void testNormalization(TestHarness harness)
   {
     harness.checkPoint("Normalization");
-    Calendar c = Calendar.getInstance();
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
     c.setTimeZone(TimeZone.getTimeZone("GMT"));
     
     // negative HOUR_OF_DAY
