@@ -68,7 +68,7 @@ public class basic implements Testlet
 			break;
 		    }
 		//		System.out.println("item " + item + " and string '" + s + "'");
-`		item++;
+		item++;
 	    }
 
 	jarfile.close();
