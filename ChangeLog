@@ -1,3 +1,8 @@
+2002-02-18  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/String/indexOf.java: Add checks for empty
+	strings.
+
 2002-02-16  C. Brian Jones <cbj@gnu.org>
 
 	* missing: updated to automake 1.5

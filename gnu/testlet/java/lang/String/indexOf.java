@@ -41,6 +41,10 @@ public class indexOf implements Testlet
       harness.check (b.indexOf("abc", 1), 1);
       harness.check (b.indexOf("abc", 10), -1);
 
+      harness.check ("".indexOf(""), 0);
+      harness.check (b.indexOf(""), 0);
+      harness.check ("".indexOf(b), -1);
+
       harness.check (b.lastIndexOf(' '), 8);
       harness.check (b.lastIndexOf(' ', 1), 0);
       harness.check (b.lastIndexOf(' ', 10), 8);
@@ -49,5 +53,9 @@ public class indexOf implements Testlet
       harness.check (b.lastIndexOf("abc"), 1);
       harness.check (b.lastIndexOf("abc", 1), 1);
       harness.check (b.lastIndexOf("abc", 10), 1);
+
+      harness.check ("".lastIndexOf(""), 0);
+      harness.check (b.lastIndexOf(""), b.length());
+      harness.check ("".lastIndexOf(b), -1);
     }
 }
