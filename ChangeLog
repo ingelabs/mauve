@@ -1,3 +1,8 @@
+2004-04-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java: Remove
+	RESERVED_PORT (21) test.
+
 2004-04-24  Stephen Crawley <crawley@dstc.edu.au>
 
 	* gnu/testlet/java/lang/Integer/getInteger.java 

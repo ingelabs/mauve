@@ -59,7 +59,6 @@ public class DatagramSocketTest2 implements Testlet
 {
 	final static int INVALID_PORT = -1;
 	final static int ECHO_PORT = 7;
-	final static int RESERVED_PORT = 21;
 	final static int GOOD_PORT = 37777;
 	final static int MAX_PORT = 65535;
 
@@ -93,25 +92,6 @@ public class DatagramSocketTest2 implements Testlet
 	public void invalid_port()
 	{
 		harness.checkPoint("invalid_port");
-		try
-		{
-			DatagramSocket sock = new DatagramSocket(RESERVED_PORT);
-			errormsg("invalid_port", 1, true, "BindException");
-		}
-		catch (BindException e)
-		{
-			harness.check(true);
-		}
-		catch (SocketException e)
-		{
-			errormsg("invalid_port", 1, false, "SocketException");
-		}
-		catch (NullPointerException e)
-		{
-			errormsg("invalid_port", 1, false, "NullPointerException");
-			e.printStackTrace();
-		}
-
 		try
 		{
 			DatagramSocket sock = new DatagramSocket(INVALID_PORT);
