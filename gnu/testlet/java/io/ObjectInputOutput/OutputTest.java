@@ -3,7 +3,7 @@
 
 /* OutputTest.java -- Tests ObjectOutputStream class
 
-   Copyright (c) 1999 by Free Software Foundation, Inc.
+   Copyright (c) 1999, 2003 by Free Software Foundation, Inc.
    Written by Geoff Berry <gcb@gnu.org>.
 
    This program is free software; you can redistribute it and/or modify
@@ -54,13 +54,29 @@ public class OutputTest implements Testlet
       ByteArrayOutputStream bytes = new ByteArrayOutputStream ();
       ObjectOutputStream oos = new ObjectOutputStream (bytes);
       Object[] objs = t.getTestObjs ();
-      for (int i = 0; i < objs.length; ++ i)
-	t.writeData (oos, objs[i], throwsOSE);
+      boolean exception_thrown = false;
+      try
+	{
+	  for (int i = 0; i < objs.length; ++ i)
+	    oos.writeObject(objs[i]);
+	}
+      catch (ObjectStreamException ose)
+	{
+	  exception_thrown = true;
+	  if (!throwsOSE)
+	    harness.debug(ose);
+	}
       oos.close ();
       
-      harness.check (compareBytes (bytes.toByteArray (),
+      if (throwsOSE)
+	harness.check(exception_thrown, "Unserializable: " + t);
+      else
+	{
+	  harness.check(!exception_thrown, "Serializable: " + t);
+	  harness.check (compareBytes (bytes.toByteArray (),
 				   harness.getResourceStream (
 				     cname.replace ('.', '#') + ".data")));
+	}
     }
     catch (Exception e)
     {

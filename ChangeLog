@@ -1,3 +1,9 @@
+2003-01-24  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/ObjectInputOutput/OutputTest.java:
+	Explicitly check for ObjectStreamExceptions and only compare
+	contents when no such exceptions are thrown.
+
 2003-01-25  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java: fixed some
 	error case tests to catch the correct exceptions, and only to 
