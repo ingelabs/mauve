@@ -1,5 +1,10 @@
 2004-12-06  Jeroen Frijters  <jeroen@frijters.net>
 
+	* gnu/testlet/java/io/BufferedInputStream/ZeroRead.java:
+	New test.
+
+2004-12-06  Jeroen Frijters  <jeroen@frijters.net>
+
 	* gnu/testlet/java/io/ObjectInputOutput/ExtTest.java:
 	New test.
 
