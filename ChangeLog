@@ -1,3 +1,8 @@
+2005-01-03  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/net/InetAddress/isSiteLocalAddress.java:
+	New testcases.
+
 2005-01-02  Archie Cobbs  <archie@dellroad.org>
 
 	* README, gnu/testlet/java/net/Socket/TestSocketImplFactory.java,
