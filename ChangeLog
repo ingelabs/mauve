@@ -1,3 +1,20 @@
+Sun Jul 25 01:26:40 1999  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/io/ObjectStreamClass/Test.java: New file.  All
+ 	of these new files were contributed by Geoff Berry <gcb@gnu.org>.
+	* gnu/testlet/java/io/ObjectInputOutput/InputTest.java: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/OutputTest.java: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test.java: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$BadField.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$CallDefault.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$Extern.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$GetPutField.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$HairyGraph.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$NoCallDefault.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test$NotSerial.data: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/write-ref-data.sh: New file.
+	* gnu/testlet/java/io/ObjectInputOutput/Test.java: New file.
+
 1999-07-12  Warren Levy  <warrenl@cygnus.com>
 
 	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java (test_params):
