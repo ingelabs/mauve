@@ -1,3 +1,20 @@
+Sat Jan  9 16:47:38 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/ParseException/Test.java: Added this test
+	case.
+
+	* gnu/testlet/java/text/FieldPosition/Test.java: Added this test case.
+
+Fri Jan  8 22:39:03 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/text/ParsePosition/Test.java: Added this test case.
+
+	* gnu/testlet/java/text/DateFormat/Test.java: Added this test case.
+
+	* gnu/testlet/SimpleTestHarness.java: Add array debug method.
+
+	* gnu/testlet/TestHarness.java: Add array debug method.
+
 1999-01-08  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Character/UnicodeData.txt: Updated to
