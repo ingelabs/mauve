@@ -1,3 +1,8 @@
+2004-04-15  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/lang/Character/unicode.java:
+	Added CharInfo to Uses: tag.
+
 2004-04-14  Sascha Brawer  <brawer@dandelis.ch>
 
 	* gnu/testlet/java/awt/image/ComponentColorModel/

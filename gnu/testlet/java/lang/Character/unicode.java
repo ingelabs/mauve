@@ -1,5 +1,5 @@
 // Tags: JDK1.4
-// Uses: UnicodeBase
+// Uses: UnicodeBase CharInfo
 
 /* Copyright (C) 1999 Artur Biesiadowski
    Copyright (C) 2004 Stephen Crawley 
