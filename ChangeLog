@@ -1,7 +1,8 @@
 2004-12-31  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/util/Currency/getInstance.java: New test.
-	* gnu/testlet/java/text/DecimalFormatSymbols.java: New test.
+	* gnu/testlet/java/text/DecimalFormatSymbols/getCurrency.java:
+	New test.
 
 2004-12-30  Michael Koch  <konqueror@gmx.de>
 
