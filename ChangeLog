@@ -1,3 +1,11 @@
+2002-04-14  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/URLConnection/URLConnectionTest.java:
+	(test_URLConnection): getInputStream() and getOutputStream() should
+	throw UnknownServiceException. Make toString check less strict.
+	sourceware.cygnus.com -> sources.redhat.com.
+	Don't depend on order of HeaderFields.
+
 2002-04-07  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/HashMap/AcuniaHashMapTest.java

@@ -47,7 +47,7 @@ public class URLConnectionTest implements Testlet
 	  harness.fail("Error: Handler - 55");
 	}
 			
-      URL url = new URL("http://sourceware.cygnus.com:80/mauve/testarea/index.html" );
+      URL url = new URL("http://sources.redhat.com:80/mauve/testarea/index.html" );
 
       URLConnection conn = url.openConnection();
 
@@ -75,13 +75,13 @@ public class URLConnectionTest implements Testlet
       }
     catch ( Exception e )
       {
-	e.printStackTrace();
+	harness.debug(e);
 	harness.fail("Error in test_Basics  - 2 " + 
 			   " should not have raised  exception here " );
       }
     catch ( Throwable e )
       {
-	e.printStackTrace();
+	harness.debug(e);
 	harness.fail("Error in test_Basics  - 2 " + 
 			   " should not have raised  Throwable here " );
       }
@@ -94,7 +94,7 @@ public class URLConnectionTest implements Testlet
     try {
       URLConnection.setDefaultAllowUserInteraction( false );
 
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 
       URLConnection conn = url.openConnection();
 
@@ -120,10 +120,11 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("getContentFunctions");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 
       URLConnection conn = url.openConnection();
 
+      // Cannot actually check size since it may return -1
       int siz = conn.getContentLength();
 
       String type = conn.getContentType();
@@ -133,29 +134,25 @@ public class URLConnectionTest implements Testlet
 
       java.io.InputStream is = (java.io.InputStream)conn.getContent();
 
-      byte b[] = new byte[21];
-      is.read( b , 0 , 7);;
+      byte b[] = new byte[256];
       is.read( b , 0 , b.length);
 
       String cont = new String( b );
 
-      harness.check( type, "text/html",
+      harness.check( type.indexOf("text/html") != -1,
 			   "Error in test_getContentFunctions  - 1 " + 
 			   " content type was not correct " );
 
       harness.check( enc, null, "Error in test_getContentFunctions  - 2 " + 
 			   "encoding  was not correct " );
 
-      harness.check( siz, 1030, "Error in test_getContentFunctions  - 3 " + 
-			   "size  was not correct " );
-
-      harness.check ( cont, "<!DOCTYPE HTML PUBLIC",
+      harness.check ( cont.indexOf("<!DOCTYPE HTML PUBLIC") != -1,
 			   "Error in test_getContentFunctions  - 4 " + 
 			   "getContent did not return proper results "  );
     }
     catch ( Exception e )
       {
-	e.printStackTrace();
+	harness.debug(e);
 	harness.fail("Error in test_getContentFunctions  - 5 " + 
 			   " should not have raised  exception here " );
       }
@@ -166,7 +163,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("streams");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 
       URLConnection conn = url.openConnection();
 
@@ -185,7 +182,7 @@ public class URLConnectionTest implements Testlet
       }
 
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 
       URLConnection conn = url.openConnection();
 
@@ -208,7 +205,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("DefaultRequestProperty");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
 	
       String str = HttpURLConnection.getDefaultRequestProperty("ACCEPT");
 
@@ -232,7 +229,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("DefaultUseCaches");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
       URLConnection conn = url.openConnection();
 
       boolean bool = conn.getDefaultUseCaches();
@@ -259,7 +256,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("DoInputOutput");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
       URLConnection conn = url.openConnection();
 
       boolean bool = conn.getDoInput();
@@ -288,21 +285,27 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("getHeaderField");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
       URLConnection conn = url.openConnection();
 
       String str0 = conn.getHeaderField(0);
-      String str1 = conn.getHeaderField(1);
-      String str2 = conn.getHeaderField(2);
-      String str3 = conn.getHeaderField(3);
-      String str4 = conn.getHeaderField(4);
-      String str5 = conn.getHeaderField(5);
+      harness.debug("header-0: " + str0);
+      String str1 = conn.getHeaderField("Date");
+      harness.debug("header-1: " + str1);
+      String str2 = conn.getHeaderField("Server");
+      harness.debug("header-2: " + str2);
+      String str3 = conn.getHeaderField("Last-Modified");
+      harness.debug("header-3: " + str3);
+      String str4 = conn.getHeaderField("Transfer-Encoding");
+      harness.debug("header-4: " + str4);
+      String str5 = conn.getHeaderField("Content-Type");
+      harness.debug("header-5: " + str5);
 
       harness.check ( str0, "HTTP/1.1 200 OK",
 			   "Error in test_getHeaderField  - 0 " + 
 			   " 0 header field wrong" );
 
-      harness.check ( str2, "Apache/1.3.4 (Unix)",
+      harness.check ( str2.indexOf("Apache") != -1,
 			   "Error in test_getHeaderField  - 1 " + 
 			   " 2 header field wrong" );
 
@@ -310,42 +313,12 @@ public class URLConnectionTest implements Testlet
 			   "Error in test_getHeaderField  - 2 " + 
 			   " 4 header field wrong" );
 
-      harness.check ( str5, "text/html",
+      harness.check ( str5.indexOf("text/html") != -1,
 			   "Error in test_getHeaderField  - 3 " + 
 			   " 5 header field wrong" );
 
 
       ((HttpURLConnection)conn).disconnect();
-      str1 = conn.getHeaderFieldKey(1);
-      str2 = conn.getHeaderFieldKey(2);
-      str3 = conn.getHeaderFieldKey(3);
-      str4 = conn.getHeaderFieldKey(4);
-      str5 = conn.getHeaderFieldKey(5);
-
-      harness.check ( str0, "",
-			   "Error in test_getHeaderField  - 4 " + 
-			   " 0 headerkey  field wrong" );
-
-      harness.check ( str1, "Date",
-			   "Error in test_getHeaderField  - 5 " + 
-			   " first headerkey  field wrong" );
-
-      harness.check ( str2, "Server",
-			   "Error in test_getHeaderField  - 6 " + 
-			   " 2 headerkey field wrong" );
-
-      harness.check ( str3, "Last-Modified",
-			   "Error in test_getHeaderField  - 7 " + 
-			   " 3 headerkey field wrong" );
-
-      harness.check ( str4, "Transfer-Encoding",
-			   "Error in test_getHeaderField  - 8 " + 
-			   " 4 headerkey field wrong" );
-
-      harness.check ( str5, "Content-Type",
-			   "Error in test_getHeaderField  - 9 " + 
-			   " 5 headerkey field wrong" );
-			
     }
     catch ( Exception e )
       {
@@ -358,7 +331,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("URLConnection");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
       MyURLConnection conn = new MyURLConnection(url);
 
       harness.check(conn.getURL(), url,
@@ -396,9 +369,25 @@ public class URLConnectionTest implements Testlet
 	  harness.check(true);
 	}
 
-      conn.getInputStream();
-      conn.getOutputStream();
-      harness.check(conn.toString(), url.toString(),
+      try {
+	conn.getInputStream();
+	harness.fail("Error in test_URLConnection - getInputStream");
+      }
+      catch (UnknownServiceException e)
+	{
+	  harness.check(true);
+	}
+
+      try {
+	conn.getOutputStream();
+	harness.fail("Error in test_URLConnection - getOutputStream");
+      }
+      catch (UnknownServiceException e)
+	{
+	  harness.check(true);
+	}
+
+      harness.check(conn.toString().indexOf(url.toString()) != -1,
 	"Error in test_URLConnection - 12b ");
       conn.setDoInput(true);
       harness.check(conn.getDoInput(), "Error in test_URLConnection - 13 ");
@@ -428,7 +417,7 @@ public class URLConnectionTest implements Testlet
       //	    if(!MyURLConnection.guessContentTypeFromStream(null).equals(""))
       //	      harness.fail("Error in test_URLConnection - 22 ");
     } catch (Exception e) {
-        e.printStackTrace();
+        harness.debug(e);
 	harness.fail("Error in test_URLConnection  - 23 " + 
 			   " should not have raised  exception here " );
     }
@@ -438,7 +427,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("HttpURLConnection");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
       MyHttpURLConnection conn = new MyHttpURLConnection(url);
       conn.setRequestMethod("GET");
       harness.check(conn.getRequestMethod(), "GET",
@@ -449,7 +438,7 @@ public class URLConnectionTest implements Testlet
       harness.check(MyHttpURLConnection.getFollowRedirects(),
 	"Error in test_HttpURLConnection - 2 ");
     } catch (Exception e) {
-      e.printStackTrace();
+      harness.debug(e);
       harness.fail("Error in test_HttpURLConnection - 3 " +
 			   " should not have raised  exception here " );
     }
@@ -459,7 +448,7 @@ public class URLConnectionTest implements Testlet
   {
     harness.checkPoint("HttpURLConnectionI");
     try {
-      URL url = new URL ( "http://sourceware.cygnus.com/mauve/testarea/index.html");
+      URL url = new URL ( "http://sources.redhat.com/mauve/testarea/index.html");
       HttpURLConnection conn = (HttpURLConnection) url.openConnection();
       conn.getExpiration();
       conn.getLastModified();
@@ -468,13 +457,9 @@ public class URLConnectionTest implements Testlet
       conn.usingProxy();
       harness.check(true);
     } catch (Exception e) {
-      e.printStackTrace();
+      harness.debug(e);
       harness.fail("Error in test_HttpURLConnectionI - 1 " +
 			   " should not have raised  exception here " );
-    } catch (Throwable e) {
-      e.printStackTrace();
-      harness.fail("Error in test_HttpURLConnectionI - 1 " +
-			   " should not have raised  Throwable here " );
     }
   }
 
