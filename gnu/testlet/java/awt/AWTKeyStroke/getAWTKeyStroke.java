@@ -122,6 +122,7 @@ public class getAWTKeyStroke
     harness.check(ks, expected);
     
     // check for IllegalArgumentException for null argument
+    harness.checkPoint("null (String) argument");
     try
     {
       ks = AWTKeyStroke.getAWTKeyStroke(null);
@@ -131,8 +132,13 @@ public class getAWTKeyStroke
     {
       harness.check(true);
     }
+    catch (Throwable e)
+    {
+      harness.check(false);
+    }
     
     // check for IllegalArgumentException for bad string
+    harness.checkPoint("bad string");
     try
     {
       ks = AWTKeyStroke.getAWTKeyStroke("bad");
@@ -142,7 +148,5 @@ public class getAWTKeyStroke
     {
       harness.check(true);
     }
-    
-    
   }
 }
