@@ -1,3 +1,24 @@
+2004-10-15  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/XMLDecoder/jdk14.java:	New testcase set
+	* gnu/testlet/java/beans/XMLDecoder/EqualityChecker.java: Support class for test case
+	* gnu/testlet/java/beans/XMLDecoder/IntArrayChecker.java: Dito
+	* gnu/testlet/java/beans/XMLDecoder/PointArrayChecker.java: Dito
+	* gnu/testlet/java/beans/XMLDecoder/DecoderTestHelper.java: Dito
+	* gnu/testlet/java/beans/XMLDecoder/data/boolean.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/byte.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/short.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/int.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/long.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/float.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/double.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/simpleElements.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/intArray.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/growableIntArray.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/pointArray.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/growablePointArray.xml: Data file for test
+	* gnu/testlet/java/beans/XMLDecoder/data/list.xml: Data file for test
+
 2004-10-15  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/javax/imageio/spi/IIORegistry/getDefaultInstance.java:
