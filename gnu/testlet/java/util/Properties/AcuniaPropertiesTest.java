@@ -1,4 +1,4 @@
-/* Copyright (C) 2001 ACUNIA
+/* Copyright (C) 2001, 2004 ACUNIA
 
    This file is part of Mauve.
 
@@ -517,15 +517,11 @@ public class AcuniaPropertiesTest implements Testlet
     try {p.load(bin);} catch (Exception e) {}
     Enumeration e = p.keys();
     Vector v = new Vector();
-    // Yes, the following is valid.
-    // Names can contain a !, just not whitespace,
-    // and only lines starting with comment chars are ignored.
-    v.add("!comment=");
+    // Note that there used to be code here checking whether the
+    // "!comment" and "#morec" keys were found, on the theory that
+    // leading whitespace mattered.  This no longer seems to be the
+    // case, however.
     v.add("name=no");
-    // Yes, the following is valid
-    // Line starts with whitespace, not a comment
-    // and "\\\n" is a line continuation.
-    v.add("#morec=omments");
     v.add("dog=no\\cat   ");
     v.add("burps=");
     v.add("test=");

@@ -1,3 +1,8 @@
+2004-09-21  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java
+	(test_loadextra): Leading whitespace doesn't matter.
+
 2004-09-20  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/Collections/binarySearch.java: New test.
