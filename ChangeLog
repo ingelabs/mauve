@@ -1,3 +1,8 @@
+2005-01-13  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/java/lang/Thread/security10.java:
+	New testcases.
+
 2005-01-12  Bryn Cooke  <BrynCooke@myrealbox.com>
 
 	* gnu/testlet/java/net/URL/URLTest.java:
