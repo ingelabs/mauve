@@ -1,3 +1,7 @@
+2004-11-17  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/io/BufferedInputStream/Skip.java: New Testcase.
+
 2004-11-17  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/util/Calendar/set.java:
