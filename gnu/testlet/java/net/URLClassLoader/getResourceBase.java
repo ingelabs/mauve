@@ -46,14 +46,30 @@ public abstract class getResourceBase implements Testlet
 
   /**
    * Checks that a resource exists in the <code>ucl</code> class loader.
+   * The base string gives a hint about from which URL source it should
+   * get loaded.
    * If noncanonical is true then it also checks non canonical ways
    * (using . and .. in the resource path) of accessing the resource.
    */
-  protected void check(String resource, boolean noncanonical)
+  protected void check(String resource, String base, boolean noncanonical)
   {
     URL u = ucl.getResource(resource);
     harness.debug(u != null ? u.toString() : null);
-    harness.check(u != null, resource);
+    String sep = base.endsWith(".jar") ? "!/" : "/";
+    String fullpath = base + sep + resource;
+    String r;
+    if (u != null)
+      {
+	String f = u.getFile();
+	int i = f.indexOf(fullpath);
+	if (i != -1)
+	  r = f.substring(f.length() - fullpath.length());
+	else
+	  r = f;
+      }
+    else
+      r = null;
+    harness.check(r, fullpath, "URL file path ends with " + fullpath);
 
     u = ucl.getResource("no-" + resource);
     harness.debug(u != null ? u.toString() : null);

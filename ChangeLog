@@ -1,5 +1,13 @@
 2002-12-22  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/net/URLClassLoader/getResourceBase.java (check):
+	Add base string to give a hint about from which URL source resource
+	should get loaded.
+	* gnu/testlet/java/net/URLClassLoader/getResource.java: Set base.
+	* gnu/testlet/java/net/URLClassLoader/getResourceRemote.java: Likewise.
+
+2002-12-22  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/StringBuffer/StringBufferTest.java (getChars):
 	Add big offsets test.
 

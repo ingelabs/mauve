@@ -54,10 +54,11 @@ public class getResourceRemote extends getResourceBase
 	  ("http://sources.redhat.com/mauve/testarea/remotejar.jar");
 	ucl = URLClassLoader.newInstance(urls);
 	
-	check("testresource", true);
-	check("testdir/resourceindir", true);
-	check("remote-jresource", false);
-	check("path/in/remote-jar/resourcefile", false);
+	check("testresource", "/mauve/testarea", true);
+	check("testdir/resourceindir", "/mauve/testarea", true);
+	check("remote-jresource", "/mauve/testarea/remotejar.jar",  false);
+	check("path/in/remote-jar/resourcefile",
+	      "/mauve/testarea/remotejar.jar", false);
       }
     catch (IOException ioe)
       {
