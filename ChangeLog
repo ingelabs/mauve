@@ -1,3 +1,7 @@
+2002-11-16  Daryl Lee <dol@sources.redhat.com>
+	* gnu/testlet/java/io/BufferedOutputByteStream:
+	Renamed directory to BufferedOutputStream to match classname
+
 2002-11-20  Stephen Crawley <crawley@dstc.edu.au>
 	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java:
 	replace e.printStackTrace() with harness.debug(e)
