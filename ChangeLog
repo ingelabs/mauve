@@ -2,6 +2,7 @@
 	* .cvsignore: New file. Tell CVS to ignore various generated
 	files, log files, temporary files and so on.
 	* gnu/testlet/.cvsignore: Ignore config.java - it is generated
+	* CVSROOT/cvsignore: New File.  Ignore all Java bytecode files.
 	* gnu/testlet/java/io/RandomAccessFile/raf.java: Avoid going
 	into an infinite loop if seekBytes seeks beyond the end-of-file.
 
