@@ -1,3 +1,9 @@
+2003-10-26  Everton da Silva Marques  <everton@lab.ipaccess.diveo.net.br>
+
+	* gnu/testlet/java/net/MulticastSocket/MulticastSocketTest.java
+	(test_MultipleBind): New test method.
+	(testall): Call test_MultipleBind.
+
 2003-10-29  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest2.java:

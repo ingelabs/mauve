@@ -192,6 +192,36 @@ public class MulticastSocketTest implements Testlet
 	    
     }
 
+    public void test_MultipleBind() {
+	
+	final int sharedMcastPort = 1234;
+	
+        // First Socket
+	
+        MulticastSocket firstMcastSock;
+        try {
+	    firstMcastSock = new MulticastSocket(sharedMcastPort);
+	    harness.check(true);
+        }
+        catch (Exception e) {
+	    harness.fail("could not create FIRST multicast socket on shared port " + sharedMcastPort);
+	    harness.debug(e);
+        }
+	
+        // Second Socket
+	
+        MulticastSocket secondMcastSock;
+        try {
+	    secondMcastSock = new MulticastSocket(sharedMcastPort);
+	    harness.check(true);
+        }
+        catch (Exception e) {
+            harness.fail("could not create SECOND multicast socket on shared port " + sharedMcastPort);
+            harness.debug(e);
+        }
+    }
+	
+
     public void test_Comm(){
 	try {
                         MulticastClient client = new MulticastClient();
@@ -208,6 +238,7 @@ public class MulticastSocketTest implements Testlet
     public void testall()
     {
 	test_Basics();
+       test_MultipleBind();
 	test_Comm();
     }
 
