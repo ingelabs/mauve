@@ -1,5 +1,7 @@
 1998-11-24  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/Long/getLong.java: New file.
+
 	* configure, Makefile.in: Rebuilt.
 	* configure.in (CC): Don't set.
 	(GCJ): Subst.
