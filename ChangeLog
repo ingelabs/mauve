@@ -1,5 +1,11 @@
 2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
 
+	Classpath bug #7109.
+	* gnu/testlet/javax/swing/undo/UndoableEditSupport/beginUpdate.java:
+	New test.
+
+2004-01-06  Sascha Brawer  <brawer@dandelis.ch>
+
 	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/
 	createDataBuffer, getSampleSize.java: New tests.
 
