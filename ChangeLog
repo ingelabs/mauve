@@ -1,3 +1,8 @@
+2004-11-06  Noa Resare  <noa@resare.com>
+
+	* gnu/testlet/java/util/Calendar/roll.java:
+	Add explicit locale to SimpleDateFormat constructor.
+
 2004-11-05  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/net/DatagramPacket/DatagramPacketTest2.java

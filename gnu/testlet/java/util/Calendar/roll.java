@@ -34,7 +34,8 @@ public class roll implements Testlet
   public void test (TestHarness harness)
   {
     TimeZone tz = TimeZone.getTimeZone ("GMT");
-    DateFormat cdf = new SimpleDateFormat ("EEE, d MMM yyyy HH:mm:ss zzz");
+    DateFormat cdf = new SimpleDateFormat ("EEE, d MMM yyyy HH:mm:ss zzz",
+					   Locale.US);
     cdf.setTimeZone (tz);
 
     // We use the US locale since we need a fixed one, and this one I
