@@ -1,3 +1,26 @@
+2003-03-20  Raif S. Naffah  <raif@fl.net.au>
+
+	* gnu/testlet/java/security/AlgorithmParameterGenerator: new directory.
+	* gnu/testlet/java/security/AlgorithmParameters: ditto.
+	* gnu/testlet/java/security/KeyFactory: ditto.
+	* gnu/testlet/java/security/KeyPairGenerator: ditto.
+	* gnu/testlet/java/security/AlgorithmParameterGenerator/getInstance14.java: 
+	new test.
+	* gnu/testlet/java/security/AlgorithmParameterGenerator/MauveAlgorithm.java: 
+	new supporting class.
+	* gnu/testlet/java/security/AlgorithmParameters/getInstance14.java: new test.
+	* gnu/testlet/java/security/AlgorithmParameters/MauveAlgorithm.java: new
+	supporting class.
+	* gnu/testlet/java/security/KeyFactory/getInstance14.java: new test.
+	* gnu/testlet/java/security/KeyFactory/MauveAlgorithm.java: new supporting
+	class.
+	* gnu/testlet/java/security/KeyPairGenerator/getInstance14.java: new test.
+	* gnu/testlet/java/security/KeyPairGenerator/MauveAlgorithm.java: new
+	supporting class.
+	* gnu/testlet/java/security/MessageDigest/getInstance14.java: new test.
+	* gnu/testlet/java/security/Security/getAlgorithms.java: new test.
+	* gnu/testlet/java/security/Signature/getInstance14.java: new test.
+
 2003-03-16  Stephen Crawley  <crawley@dstc.edu.au>
 	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java 
 	(test_params): catch IOException (not Exception) when testing
