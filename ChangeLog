@@ -1,3 +1,8 @@
+2005-03-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Font/decode.java: New tests.
+	* gnu/testlet/java/util/StringTokenizer.java: New tests.
+	
 2005-03-03  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/io/DataInputStream/readLine.java:
