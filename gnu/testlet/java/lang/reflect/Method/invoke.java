@@ -165,8 +165,8 @@ public class invoke implements Testlet
 
     harness.checkPoint ("returns_void");
     Object[] args2 = new Object[2];
-    args2[0] = new Integer[7];
-    args2[1] = new Integer[8];
+    args2[0] = new Integer (7);
+    args2[1] = new Integer (8);
     try_invoke (harness, rv_meth, this, args2, null);
     harness.check(save, 15);
   }

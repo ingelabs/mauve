@@ -1,5 +1,8 @@
 2000-01-05  Tom Tromey  <tromey@cygnus.com>
 
+	* gnu/testlet/java/lang/reflect/Method/invoke.java: Create Integer
+	objects, not arrays of Integers.
+
 	* gnu/testlet/java/lang/Class/reflect.java (test): Check for
 	inherited method lookup.  Fixed checkpoint name for
 	getDeclaredMethods.  Added getDeclaringClass test.  Make
