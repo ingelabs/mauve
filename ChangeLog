@@ -1,3 +1,8 @@
+2001-03-23  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Class/ClassTest.java (test_forName): Added
+	test for `[int'.
+
 2001-02-19  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/ThreadGroup/enumerate.java: New file.

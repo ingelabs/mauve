@@ -1,4 +1,4 @@
-/* Copyright (C) 1999, 2000 Hewlett-Packard Company
+/* Copyright (C) 1999, 2000, 2001 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -200,6 +200,14 @@ public class ClassTest	 implements Cloneable, java.io.Serializable, Testlet
 			harness.check(false);
 		}
 		catch ( ClassNotFoundException e ){
+			harness.check(true);
+		}
+
+		try {
+			Object obj2 = Class.forName ("[int");
+			harness.check(false);
+		}
+		catch (ClassNotFoundException _) {
 			harness.check(true);
 		}
 	}
