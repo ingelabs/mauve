@@ -1,3 +1,18 @@
+Thu Mar 25 22:27:11 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/sql/DatabaseMetaData/TestJdbc10.java: Add
+	!JDK1.2 to keys.
+
+Thu Mar 25 22:26:04 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/sql/Connection/TestJdbc10.java: Add !JDK1.2
+	to keys.
+
+Thu Mar 25 22:23:22 1999  Aaron M. Renn  <arenn@urbanophile.com>
+
+	* gnu/testlet/java/io/StringWriter/Test.java: Check for exception
+	in close()
+
 Wed Mar 24 21:11:20 1999  Aaron M. Renn  <arenn@urbanophile.com>
 
 	* gnu/testlet/java/text/Annotation/Test.java: Added this test case.

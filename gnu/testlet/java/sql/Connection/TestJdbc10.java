@@ -9,7 +9,7 @@
  * of this file.
  */
 
-// Tags: JDK1.1 JDBC1.0
+// Tags: JDK1.1 !JDK1.2 JDBC1.0
 
 package gnu.testlet.java.sql.Connection;
 

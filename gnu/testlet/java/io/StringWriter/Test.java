@@ -54,7 +54,16 @@ test(TestHarness harness)
   sw.write(buf, 13, 12);
   sw.write(buf[25]);
   sw.write(buf, 26, buf.length - 26);
-  sw.close();
+  try
+    {
+      sw.close();
+    }
+  catch(Exception e)
+    {
+      harness.debug("Caught unexpected exception: " + e);
+      harness.check(false);
+      return;
+    }
 
   harness.debug(sw.toString());
   harness.check(sw.toString(), str, "string equality");
