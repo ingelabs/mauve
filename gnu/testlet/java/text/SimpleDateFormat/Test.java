@@ -1,7 +1,7 @@
 /*************************************************************************
 /* Test.java -- Test java.text.SimpleDateFormat
 /*
-/* Copyright (c) 1998, 1999 Free Software Foundation, Inc.
+/* Copyright (c) 1998, 1999, 2001 Free Software Foundation, Inc.
 /* Written by Aaron M. Renn (arenn@urbanophile.com)
 /*
 /* This program is free software; you can redistribute it and/or modify
@@ -75,6 +75,21 @@ test(TestHarness harness)
 
   sdf.setTimeZone(TimeZone.getDefault());
   harness.debug(sdf.format(new Date(System.currentTimeMillis())));
+
+  // We don't check the results but just that this works at all.  THis
+  // is a regression test for libgcj.
+  harness.checkPoint ("parsing regression");
+  DateFormat cdf = new SimpleDateFormat ("EEE, dd MMM yyyy HH:mm:ss zzzz");
+  boolean ok = true;
+  try
+    {
+      d = cdf.parse ("Fri, 18 May 2001 20:18:06 GMT");
+    }
+  catch (ParseException _)
+    {
+      ok = false;
+    }
+  harness.check (ok);
 
   // Now do some lenient parsing tests.  These might not all work.
   dfs = new DateFormatSymbols(Locale.US);
