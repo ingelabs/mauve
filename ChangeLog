@@ -1,3 +1,13 @@
+2003-02-03  John Leuner  <jewel@debian.org>
+
+	* gnu/testlet/java/util/jar/JarFile/jartest.jar: test file
+	* gnu/testlet/java/util/jar/JarFile/basic.java: new tests
+	* gnu/testlet/java/util/zip/ZipInputStream/basic.java: added read_from_end
+	* gnu/testlet/java/util/Arrays/sort.java: added some sort tests
+	* gnu/testlet/java/lang/Class/ClassTest.java: Added new tests for isPrimitive and class modifiers
+	* gnu/testlet/TestHarness.java: Add new getResourceFile method
+	* gnu/testlet/SimpleTestHarness.java: idem
+
 2003-02-01  C. Brian Jones  <cbj@gnu.org>
 
 	* gnu/testlet/java/io/ObjectInputOutput/Test.java: change output of

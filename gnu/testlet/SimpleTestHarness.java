@@ -131,6 +131,24 @@ public class SimpleTestHarness
 	}
     }
 
+  public File getResourceFile (String name) throws ResourceNotFoundException
+    {
+	// The following code assumes File.separator is a single character.
+	if (File.separator.length () > 1)
+	    throw new Error ("File.separator length is greater than 1");
+	String realName = name.replace ('#', File.separator.charAt (0));
+	File f =  new File(getSourceDirectory ()
+			   + File.separator
+			   + realName);
+	if(!f.exists())
+	    {
+		throw new ResourceNotFoundException ("could not find mauve resource file "
+						     + ": " + getSourceDirectory ()
+						     + File.separator + realName);
+	    }
+	return f;
+    }
+
   public void checkPoint (String name)
     {
       last_check = name;

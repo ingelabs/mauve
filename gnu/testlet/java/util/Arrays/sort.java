@@ -24,33 +24,67 @@ import java.util.*;
 
 public class sort implements Testlet
 {
-  private static boolean isSorted(int[] array) 
-  {
-    for (int i = 1; i < array.length; ++i) {
-      if (array[i-1] > array[i])
-	return false;
+    private static boolean isSorted(int[] array) 
+    {
+	for (int i = 1; i < array.length; ++i) {
+	    if (array[i-1] > array[i])
+		return false;
+	}
+	return true;
     }
-    return true;
-  }
 
-  public void test (TestHarness harness)
-  {
-    int n = 100;
-    int bound = 200;
-    int times = 10;
+    private static boolean isSorted(float[] array) 
+    {
+	for (int i = 1; i < array.length; ++i) {
+	    if (array[i-1] > array[i])
+		return false;
+	}
+	return true;
+    }
 
-    int[] A = new int[n];
-    Random rand = new Random();
+    public void test (TestHarness harness)
+    {
+	int n = 100;
+	int bound = 200;
+	int times = 10;
 
-    int i = 0;
-    for (; i < times; ++i)
-      {
-	for (int j = 0; j < n; ++j) 
-	  A[j] = rand.nextInt(bound);
+	int[] A = new int[n];
+	Random rand = new Random();
 
-	Arrays.sort(A);
+	int i = 0;
+	for (; i < times; ++i)
+	    {
+		for (int j = 0; j < n; ++j) 
+		    A[j] = rand.nextInt(bound);
 
-	harness.check (isSorted (A));
-      }
-  }
+		Arrays.sort(A);
+
+		harness.check (isSorted (A));
+	    }
+
+	test_quicksort(harness);
+    }
+
+    public void test_quicksort(TestHarness harness)
+    {
+	float[] float_array = { 7.3f, 20000.7f, 343f, 24f, 0.000004f, 1e09f, 44, 44, 44, 44, 44, 44, 44, 44 };
+	java.util.Arrays.sort(float_array);
+	harness.check(isSorted(float_array));
+
+	float[] float_array2 = { 7.3f, 20000.7f, 21.2f, 343f, 24f, 0.000004f, 1e09f };
+	java.util.Arrays.sort(float_array2);
+	harness.check(isSorted(float_array2));
+
+	int[] iarray1 = { 1, 2, 3, 4, 5, 6, 7, 8};
+	java.util.Arrays.sort(iarray1);
+	harness.check(isSorted(iarray1));
+
+	int[] iarray2 = { 8, 7, 6, 5, 4, 3, 2, 1};
+	java.util.Arrays.sort(iarray2);
+	harness.check(isSorted(iarray2));
+
+	int[] iarray3 = { 8, 7, 6, 5, 11, 3, 2, 1};
+	java.util.Arrays.sort(iarray3);
+	harness.check(isSorted(iarray3));
+    }
 }

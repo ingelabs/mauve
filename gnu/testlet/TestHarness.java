@@ -20,6 +20,7 @@
 
 package gnu.testlet;
 
+import java.io.File;
 import java.io.Reader;
 import java.io.InputStream;
 
@@ -110,6 +111,9 @@ public abstract class TestHarness
     throws ResourceNotFoundException;
 
   public abstract InputStream getResourceStream (String name) 
+    throws ResourceNotFoundException;
+
+  public abstract File getResourceFile (String name) 
     throws ResourceNotFoundException;
 
   // Provide a directory name for writing temporary files.

@@ -70,6 +70,30 @@ public class basic implements Testlet
     harness.check (s, "done");
   }
 
+    public void read_from_end(TestHarness harness, ZipInputStream zis)
+    {
+	try {
+	ZipEntry ze = zis.getNextEntry();
+	ze = zis.getNextEntry();
+	byte[] b = new byte["Contents of file 2\n".length()];
+	int count = zis.read(b, 0, b.length);
+	harness.check (new String(b), "Contents of file 2\n");
+	harness.check(count, b.length);
+
+	//read 0 bytes
+	count = zis.read(b, 0, 0);
+	harness.check(count, 0);
+
+	//read 1 byte past the end
+	count = zis.read(b,0,1);
+	harness.check(count, -1);
+	zis.close();
+	} catch(IOException e)
+	    {
+		harness.check(false, "failed all read_from_end tests");
+	    }
+    }
+
   public void test (TestHarness harness)
   {
     harness.checkPoint ("reading zip file");
@@ -80,7 +104,21 @@ public class basic implements Testlet
       }
     catch (gnu.testlet.ResourceNotFoundException _)
       {
-	// FIXME: all tests should fail.
+	  // FIXME: all tests should fail.
+	  harness.check(false, "all basic tests failed");
+      }
+
+    harness.checkPoint ("checking 0 byte read");
+
+    try
+      {
+	read_from_end (harness,
+		       new ZipInputStream (harness.getResourceStream ("gnu#testlet#java#util#zip#ZipInputStream#reference.zip")));
+      }
+    catch (gnu.testlet.ResourceNotFoundException _)
+      {
+	  // FIXME: all tests should fail.
+	  harness.check(false, "all read tests failed");
       }
 
     harness.checkPoint ("writing and re-reading");
