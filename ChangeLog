@@ -1,3 +1,8 @@
+2002-07-12  Mark Wielaard  <mark@klomp.org>
+
+	* choose: Also check in in/exclusion of javax.* tests, don't look
+	for com.* tests.
+
 2002-07-05  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/reflect.java (test): Check for
