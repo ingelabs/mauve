@@ -116,6 +116,10 @@ while read file; do
       ok=yes
    fi
 
+   if test "$ok" = no; then
+      continue
+   fi
+
    # Surround value with spaces so that case statements will work
    # correctly.
    taglist=" `grep '^// Tags:' gnu/testlet/$file | sed -e 's,^// Tags:,,'` "

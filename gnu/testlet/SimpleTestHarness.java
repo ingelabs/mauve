@@ -20,11 +20,14 @@ public class SimpleTestHarness extends TestHarness
   private int total = 0;
   private boolean verbose = false; // FIXME: no way to set this.
   private String description;
+  private String last_check;
   private File srcdir;
 
   public void check (boolean result)
     {
-      String d = description + " (number " + (count + 1) + ")";
+      String d = (description
+		  + ((last_check == null) ? "" : (": " + last_check))
+		  + " (number " + (count + 1) + ")");
       if (! result)
 	{
 	  System.out.println("FAIL: " + d);
@@ -43,12 +46,19 @@ public class SimpleTestHarness extends TestHarness
       return srcdir;
     }
 
+  public void checkPoint (String name)
+    {
+      last_check = name;
+      count = 0;
+    }
+
   private void runtest (String name)
     {
       // Try to ensure we start off with a reasonably clean slate.
       System.gc();
       System.runFinalization();
-      count = 0;
+
+      checkPoint (null);
 
       Testlet t = null;
       try

@@ -1,5 +1,17 @@
 1998-12-03  Tom Tromey  <tromey@cygnus.com>
 
+	* choose: `continue' if file excluded by file tests.
+
+	* gnu/testlet/java/lang/Character/classify.java (test): Call
+	checkPoint where appropriate.
+
+	* gnu/testlet/SimpleTestHarness.java (last_check): New instance
+	variable.
+	(checkPoint): New method.
+	(runtest): Call checkPoint.
+	(check): Use last_check.
+	* gnu/testlet/TestHarness.java (checkPoint): New method.
+
 	* choose: Process all file exclusions and inclusions in order.
 
 	* Makefile.in: Rebuilt.
