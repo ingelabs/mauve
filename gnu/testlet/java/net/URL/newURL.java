@@ -90,12 +90,18 @@ public class newURL implements Testlet
     check(null,
 	  "jar:abc!/eat/me",
 	  null);
+    
+    URL u = check(null,
+		  "http://anonymous:anonymous@host/",
+		  "http://anonymous:anonymous@host/");
+    harness.check(u.getHost(), "host");
+    harness.check(u.getUserInfo(), "anonymous:anonymous");
   }
 
   // Checks that the URL created from the context plus the url gives
   // the string result. Or when the result is null, whether the
-  // contruction throws a exception.
-  private void check(String context, String url, String string)
+  // contruction throws a exception. Returns the generated URL or null.
+  private URL check(String context, String url, String string)
   {
     harness.checkPoint(context + " + " + url + " = " + string);
     URL c;
@@ -109,7 +115,7 @@ public class newURL implements Testlet
 	  {
 	    harness.debug(mue);
 	    harness.check(false);
-	    return;
+	    return null;
 	  }
       }
     else
@@ -119,6 +125,7 @@ public class newURL implements Testlet
       {
 	URL u = new URL(c, url);
 	harness.check(u.toString(), string);
+	return u;
       }
     catch (MalformedURLException mue)
       {
@@ -126,6 +133,7 @@ public class newURL implements Testlet
 	if (!expected)
 	  harness.debug(mue);
 	harness.check(expected);
+	return null;
       }
   }
 }
