@@ -1,3 +1,8 @@
+2005-02-18  Robert Schuster <thebohemian@gmx.net>
+
+    * gnu/testlet/java/nio/charset/Charset/forName.java: Added
+    a subtest.    
+
 2005-02-17  Thomas Zander <zander@kde.org>
 	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
 	rename variable named 'enum' to avoid conflicting with java 1.5 reserved keyword

@@ -64,12 +64,24 @@ public class forName implements Testlet
 
     h.check(works, "UnsupportedCharsetException expected");
 	  
-    // Check for standard encodings.
+    // Checks for standard encodings.
     checkCharset(h, "ISO-8859-1");
     checkCharset(h, "US-ASCII");
     checkCharset(h, "UTF-8");
     checkCharset(h, "UTF-16");
     checkCharset(h, "UTF-16BE");
     checkCharset(h, "UTF-16LE");
+    
+    /* Checks for IllegalArgumentException being thrown
+     * when given charset name is null.
+     */
+    works = false;
+    try {
+    	Charset.forName(null);
+    } catch(Exception e) {
+    	works = e instanceof IllegalArgumentException;
+    }
+    h.check(works, "IllegalArgumentException thrown");
   }
+  
 }
