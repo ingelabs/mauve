@@ -1,3 +1,7 @@
+2005-02-15  Audrius Meskauskas <audriusa@bluewin.ch>    
+    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
+	New test on long tandem of subsequent html tags.
+
 2005-02-14  Audrius Meskauskas <audriusa@bluewin.ch>    
     * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Text.java: New test.
     * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/eolnNorification.java:
