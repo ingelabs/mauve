@@ -22,6 +22,7 @@ package gnu.testlet.java.util.Calendar;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.SimpleTimeZone;
@@ -30,6 +31,12 @@ import java.util.TimeZone;
 public class set implements Testlet
 {
   public void test (TestHarness harness)
+  {
+    test_DST(harness);
+    test_DAY_OF_MONTH(harness);
+  }
+  
+  public void test_DST (TestHarness harness)
   {
     // Create a custom TimeZone with a daylight-time period.
     SimpleTimeZone stz = new SimpleTimeZone(60 * 60 * 1000, "MyZone",
@@ -71,5 +78,26 @@ public class set implements Testlet
       
     // Restore default timezone
     TimeZone.setDefault(null);
+  }
+  
+  public void test_DAY_OF_MONTH(TestHarness harness)
+  {
+    harness.checkPoint("setting DAY_OF_MONTH etc shouldn't effect other fields");
+    Calendar c = Calendar.getInstance();
+    SimpleDateFormat df = new SimpleDateFormat("EEEEEEEEEEEEE, yyyy-MM-dd [DDD] HH:mm:ss.SSSS");
+    c.set(2004, 9, 1, 12, 0, 0);
+    c.set(Calendar.MILLISECOND, 0);
+    
+    String time = df.format(c.getTime());
+    harness.check(time, "Friday, 2004-10-01 [275] 12:00:00.0000");
+    harness.check (c.get(Calendar.HOUR), 12);
+    
+    c.set(Calendar.DAY_OF_MONTH, 31);
+    time = df.format(c.getTime());
+    harness.check(time, "Sunday, 2004-10-31 [305] 12:00:00.0000");
+
+    c.set(Calendar.MONTH, Calendar.JANUARY);
+    time = df.format(c.getTime());
+    harness.check(time, "Saturday, 2004-01-31 [031] 12:00:00.0000");
   }
 }
