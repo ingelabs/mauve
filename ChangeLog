@@ -1,4 +1,12 @@
 2005-02-02  David Daney <ddaney@avtrex.com>
+	* gnu/testlet/java/net/InetAddress/getByAddress.java:
+	New testcase.
+
+2005-02-02  David Daney <ddaney@avtrex.com>
+	* gnu/testlet/java/util/GregorianCalendar/getMinimum.java:
+	New testcase.
+
+2005-02-02  David Daney <ddaney@avtrex.com>
 	* gnu/testlet/java/lang/Thread/security10.java:
 	Allow setSecurityManager.
 
