@@ -18,7 +18,8 @@
 /* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 /*************************************************************************/
 
-// Tags: JDK1.1
+// We use CollationElementIterator.setText, a 1.2 invention.
+// Tags: JDK1.2
 
 package gnu.testlet.java.text.CollationElementIterator;
 
