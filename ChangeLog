@@ -1,3 +1,9 @@
+2004-10-31  Robert Schuster <thebohemian@gmx.net>
+
+	* gnu/testlet/java/beans/PropertyEditorSupport/getSource.java:
+		new testcases
+	* gnu/testlet/java/beans/PropertyEditorSupport/setValue.java:
+		new testcases for classpath bug #10799	
 
 2004-10-31  Robert Schuster <thebohemian@gmx.net>
 
