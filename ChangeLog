@@ -1,5 +1,9 @@
 2003-11-13  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/net/URL/newURL.java: New test, adapted from kaffe.
+
+2003-11-13  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/net/URLConnection/getPermission.java: New test.
 
 2003-11-12  Sascha Brawer  <brawer@dandelis.ch> 
