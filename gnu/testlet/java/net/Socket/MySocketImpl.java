@@ -1,7 +1,7 @@
 // Tags: not-a-test
 
 /*
-   Copyright (C) 1999 Hewlett-Packard Company
+   Copyright (C) 1999, 2002 Hewlett-Packard Company
    Copyright (C) 2002 Free Software Foundation, Inc.
 
    This file is part of Mauve.
@@ -46,4 +46,6 @@ class MySocketImpl extends SocketImpl {
 
   public void shutdownInput() throws IOException {}
   public void shutdownOutput() throws IOException {}
+  public void connect(SocketAddress addr, int timeout) throws IOException {}
+  public void sendUrgentData(int data) throws IOException {}
 }

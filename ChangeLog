@@ -1,3 +1,8 @@
+2002-09-11  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/net/Socket/MySocketImpl.java (connect,
+	sendUrgentData): Add dummy implementations from 1.4.
+
 2002-09-03  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/reflect.java (test) [getMethod with
