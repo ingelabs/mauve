@@ -205,7 +205,7 @@ public class ServerSocketTest implements Testlet
 			 "get /set timeout did not return proper values");
 	  }
 	}
-	catch (Exception e) {
+	catch (IOException e) {
 	  harness.fail("Error : setSoTimeout fails since vxWorks do " +
 		       "not support the feature");
 	  harness.debug(e);
@@ -217,16 +217,22 @@ public class ServerSocketTest implements Testlet
 	harness.fail("Error : test_params failed - 3 " + 
 		     "should have thrown bind exception here.");
       }
-      catch (Exception e) {
+      catch (IOException e) { // Should this be more specific?
 	harness.check(true);
       }
       
       String ip = "0.0.0.0";
       harness.check(sock.toString().indexOf(ip) != -1,
 		    "toString() should contain IP");
-      harness.check(sock.getInetAddress().toString().indexOf(ip) != -1,
-		    "InetAddress toString() should contain IP");
-      
+      InetAddress addr = sock.getInetAddress();
+      if (addr == null) {
+	harness.fail("Error : test_params failed - 4 " +
+		     "sock.getInetAddress() -> null");
+      }
+      else {
+	harness.check(addr.toString().indexOf(ip) != -1,
+		      "InetAddress toString() should contain IP");
+      }
       sock.setSocketFactory(null);
       harness.check(true);
     }

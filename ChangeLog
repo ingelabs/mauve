@@ -1,3 +1,9 @@
+2003-03-16  Stephen Crawley  <crawley@dstc.edu.au>
+	* gnu/testlet/java/net/ServerSocket/ServerSocketTest.java 
+	(test_params): catch IOException (not Exception) when testing
+	sock.setSoTimeout(int), sock.getSoTimeout(), and new ServerSocket(int).
+	A call to sock.getInetAddress() might return null ...
+
 2003-03-15  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/OutputStreamWriter/jdk11.java (test): 
