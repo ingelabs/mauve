@@ -1,5 +1,9 @@
 2002-10-25  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/reflect/Method/equals.java: Add null check.
+
+2002-10-25  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/io/File/listFiles.java: New test.
 
 2002-10-23  Stephen Crawley <crawley@dstc.edu.au>
