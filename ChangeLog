@@ -1,3 +1,8 @@
+2005-02-16  Bryce McKinlay  <mckinlay@redhat.com>
+
+	* gnu/testlet/java/util/LinkedHashMap/LinkedHashMapTest: Fix tag typo.
+	'JLS1.4' -> 'JDK1.4'.
+
 2005-02-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/text/DateFormat.equals: New tests;

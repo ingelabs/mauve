@@ -18,7 +18,7 @@
    Boston, MA 02111-1307, USA.
 */
 
-// Tags: JLS1.4
+// Tags: JDK1.4
 
 package gnu.testlet.java.util.LinkedHashMap;
 
