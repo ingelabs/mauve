@@ -1,5 +1,13 @@
 2002-10-05  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/Thread/interrupt.java: New Test.
+	* gnu/testlet/java/lang/Thread/name.java: New Test.
+	* gnu/testlet/java/lang/Thread/daemon.java: New Test.
+	* gnu/testlet/java/lang/Thread/priority.java: New Test.
+	* gnu/testlet/java/lang/Thread/isAlive.java: New Test.
+
+2002-10-05  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/System/identityHashCode.java: New Test.
 	* gnu/testlet/java/lang/Thread/getThreadGroup.java: New test.
 
