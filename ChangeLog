@@ -1,5 +1,12 @@
 2004-12-25  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/javax/swing/text/TextAction/augmentList.java,
+	gnu/testlet/javax/swing/JTextField/getActions.java,
+	gnu/testlet/javax/swing/text/DefaultEditorKit/getActions.java:
+	New files.
+
+2004-12-25  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/DefaultMetalThemeTest.java,
 	gnu/testlet/javax/swing/plaf/metal/MetalTheme/MetalThemeTest.java:
 	New files.
