@@ -68,7 +68,8 @@ public class WrappedWithOffsetBufferTest
     buf = factory.newInstance();
     try
       {
-      buf.position(-1);
+        buf.position(-1);
+        h.check(false, "position: is negative");
       }
       catch(IllegalArgumentException iae)
       {
@@ -80,7 +81,8 @@ public class WrappedWithOffsetBufferTest
     buf.limit(5);
     try
       {
-      buf.position(6);
+        buf.position(6);
+        h.check(false, "position: is larger than capacity");
       }
       catch(IllegalArgumentException iae)
       {
@@ -125,7 +127,8 @@ public class WrappedWithOffsetBufferTest
     buf.position(4);
     try
       {
-      buf.reset();
+        buf.reset();
+        h.check(false, "mark: mark not invalidated");
       }
       catch(InvalidMarkException ime)
       {
@@ -156,7 +159,8 @@ public class WrappedWithOffsetBufferTest
     checkStatus(h, buf, "limit", 20, 4, false, 0, 4);
     try
       {
-      buf.reset();
+        buf.reset();
+        h.check(false, "limit: mark not invalidated");
       }
       catch(InvalidMarkException ime)
       {
@@ -167,7 +171,8 @@ public class WrappedWithOffsetBufferTest
     buf = factory.newInstance();
     try
       {
-      buf.limit(-1);
+        buf.limit(-1);
+        h.check(false, "limit: is negative");
       }
       catch(IllegalArgumentException iae)
       {
@@ -178,7 +183,8 @@ public class WrappedWithOffsetBufferTest
     buf = factory.newInstance();
     try
       {
-      buf.limit(21);
+        buf.limit(21);
+        h.check(false, "limit: is larger than capacity");
       }
       catch(IllegalArgumentException iae)
       {
@@ -198,7 +204,8 @@ public class WrappedWithOffsetBufferTest
     checkStatus(h, buf, "rewind", 20, 9, true, 9, 0);
     try
       {
-      buf.reset();
+        buf.reset();
+        h.check(false, "rewind: mark not invalidated");
       }
       catch(InvalidMarkException ime)
       {
@@ -218,7 +225,8 @@ public class WrappedWithOffsetBufferTest
     checkStatus(h, buf, "clear", 20, 20, true, 20, 0);
     try
       {
-      buf.reset();
+        buf.reset();
+        h.check(false, "clear: mark not invalidated");
       }
       catch(InvalidMarkException ime)
       {
@@ -237,7 +245,8 @@ public class WrappedWithOffsetBufferTest
     checkStatus(h, buf, "flip", 20, 6, true, 6, 0);
     try
       {
-      buf.reset();
+        buf.reset();
+        h.check(false, "flip: mark not invalidated");
       }
       catch(InvalidMarkException ime)
       {
