@@ -1,3 +1,10 @@
+2000-01-09  Anthony Green  <green@cygnus.com>
+
+	* gnu/testlet/java/lang/String/StringTest.java (test_getChars,
+	test_getBytes): Don't check for StringIndexOutOfBoundsException or
+	ArrayIndexOutOfBoundsException.  The spec only mentions
+	IndexOutOfBoundsException.
+	
 2000-01-07  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/Class/ClassTest.java (test_forName): Use
@@ -34,6 +41,7 @@
 	(do_nothing): New method.
 	(getMethod): Likewise.
 
+>>>>>>> 1.162
 2000-01-05  Dalibor Topic <robilad@yahoo.com>
 
 	* gnu/testlet/java/lang/reflect/Method/invoke.java: Pass argument

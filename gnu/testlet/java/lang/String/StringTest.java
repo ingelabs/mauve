@@ -238,35 +238,27 @@ public class StringTest implements Testlet
 		try {
 			str.getChars(-1 , 3 , dst , 1 );
 			harness.fail("Error : test_getChars failed - 2");
-		}catch ( StringIndexOutOfBoundsException e ){}
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getChars(4 , 3 , dst , 1 );
 			harness.fail("Error : test_getChars failed - 3");
-		}catch ( StringIndexOutOfBoundsException e ){}
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getChars(1 , 15 , dst , 1 );
 			harness.fail("Error : test_getChars failed - 4");
-		}catch ( StringIndexOutOfBoundsException e ){}
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getChars(1 , 5 , dst , -1 );
 			harness.fail("Error : test_getChars failed - 5");
-		}catch ( ArrayIndexOutOfBoundsException e ){}
-		catch ( IndexOutOfBoundsException e ){
-			harness.fail("Error : test_getChars failed - 5a"+
-                           " should throw ArrayIndexOutOfBounds exception");
-                }
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getChars(1 , 10 , dst , 1 );
 			harness.fail("Error : test_getChars failed - 6");
-		}catch ( ArrayIndexOutOfBoundsException e ){}
-		catch ( IndexOutOfBoundsException e ){
-			harness.fail("Error : test_getChars failed - 6a"+
-                           " should throw ArrayIndexOutOfBounds exception");
-                }
+		}catch ( IndexOutOfBoundsException e ){}
 
 		str.getChars(0,5,dst, 0 );
 		harness.check(!( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
@@ -301,35 +293,27 @@ public class StringTest implements Testlet
 		try {
 			str.getBytes(-1 , 3 , dst , 1 );
 			harness.fail("Error : test_getBytes failed - 2");
-		}catch ( StringIndexOutOfBoundsException e ){}
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getBytes(4 , 3 , dst , 1 );
 			harness.fail("Error : test_getBytes failed - 3");
-		}catch ( StringIndexOutOfBoundsException e ){}
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getBytes(1 , 15 , dst , 1 );
 			harness.fail("Error : test_getBytes failed - 4");
-		}catch ( StringIndexOutOfBoundsException e ){}
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getBytes(1 , 5 , dst , -1 );
 			harness.fail("Error : test_getBytes failed - 5");
-		}catch ( ArrayIndexOutOfBoundsException e ){}
-		catch ( IndexOutOfBoundsException e ){
-			harness.fail("Error : test_getBytes failed - 5a"+
-                           " should throw ArrayIndexOutOfBounds exception");
-                }
+		}catch ( IndexOutOfBoundsException e ){}
 
 		try {
 			str.getBytes(1 , 10 , dst , 1 );
 			harness.fail("Error : test_getBytes failed - 6");
-		}catch ( ArrayIndexOutOfBoundsException e ){}
-		catch ( IndexOutOfBoundsException e ){
-			harness.fail("Error : test_getBytes failed - 5a"+
-                           " should throw ArrayIndexOutOfBounds exception");
-                }
+		}catch ( IndexOutOfBoundsException e ){}
 
 		str.getBytes(0,5,dst, 0 );
 		harness.check(!( dst[0] != 'a' || dst[1] != 'b' || dst[2] != 'c' ||
