@@ -1,3 +1,8 @@
+2003-10-29  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/BinaryCompatibility/.cvsignore:
+	Ignore generated files.
+
 2003-10-26  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/jar/JarInputStream/getNextEntry.java: New
