@@ -1,5 +1,10 @@
 2001-09-27  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/lang/ref/PhantomReference/phantom.java: New file.
+	* gnu/testlet/java/lang/ref/WeakReference/weakref.java: New file.
+
+2001-09-27  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/io/BufferedByteOutputStream/interrupt.java:
 	Added `uses' line.
 
