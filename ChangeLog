@@ -1,3 +1,8 @@
+2004-11-19  Casey Marshall  <csm@gnu.org>
+
+	* gnu/testlet/java/util/Timer/taskException.java:
+	New testcase.
+
 2004-11-18  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/util/Calendar/set.java:
