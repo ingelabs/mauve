@@ -1,5 +1,8 @@
 2001-02-07  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/text/MessageFormat/format.java (test): Added
+	test for JDK compatibility.
+
 	* gnu/testlet/java/util/Arrays/sort.java: New file.
 
 2001-01-16  Warren Levy  <warrenl@redhat.com>

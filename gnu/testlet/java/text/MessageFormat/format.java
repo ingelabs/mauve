@@ -1,6 +1,6 @@
 // Test simple forms of MessageFormat formatting.
 
-// Copyright (c) 1999  Cygnus Solutions
+// Copyright (c) 1999, 2001  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
 
 // This file is part of Mauve.
@@ -106,5 +106,14 @@ public class format implements Testlet
       args[0] = new Double (10.23);
       mf.applyPattern ("Got {0,number,'#'.##}");
       harness.check (format (mf, args, buf), "Got #10.23");
+
+      // This tests for JDK compatibility.  Pointed out by libgcj
+      // user.
+      harness.checkPoint ("array argument");
+      mf.applyPattern ("test Message = {0}");
+      args = new Object[1];
+      args[0] = "a jolly string";
+      harness.check (mf.format ((Object) args),
+		     "test Message = a jolly string");
     }
 }
