@@ -1,3 +1,7 @@
+2002-11-22  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/URLClassLoader/getResourceRemote.java: New test.
+
 2002-11-21  Daryl Lee <dol@sources.redhat.com>
 	* gnu/testlet/java/io/BufferedCharWriter:
 	Renamed to BufferedWriter to match classname

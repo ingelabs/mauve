@@ -37,10 +37,10 @@ import gnu.testlet.TestHarness;
 
 public class getResource implements Testlet
 {
-  private TestHarness harness;
+  protected TestHarness harness;
   private File tmpdir, tmpfile, subtmpdir, subtmpfile;
   private String jarPath;
-  private URLClassLoader ucl;
+  protected URLClassLoader ucl;
 
   private void setup() throws IOException
   {
@@ -136,7 +136,7 @@ public class getResource implements Testlet
       }
   }
 
-  private void check(String resource)
+  protected void check(String resource)
   {
     int index = resource.lastIndexOf('/');
     String name, path, dir;
