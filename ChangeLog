@@ -1,5 +1,9 @@
 2004-12-26  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/nio/charset/Charset/encode.java: New testcases.
+
+2004-12-26  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/nio/ByteBuffer/Allocating.java,
 	gnu/testlet/java/nio/ByteBuffer/ByteBufferFactory.java,
 	gnu/testlet/java/nio/ByteBuffer/GetPut.java,
