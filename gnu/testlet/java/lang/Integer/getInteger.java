@@ -88,7 +88,7 @@ public class getInteger extends SecurityManager implements Testlet
 	}
       if (ok)
         {
-	  try
+          try
 	    {
 	      Integer.getInteger("secure");
 	      ok = false;
@@ -109,8 +109,11 @@ public class getInteger extends SecurityManager implements Testlet
   public void checkPropertyAccess(String s)
   {
     if ("secure".equals(s))
+      throw new SecurityException("'Croak'");
+    else 
       super.checkPropertyAccess(s);
   }
+
   /**
    * Allow restoration of the existing security manager
    */

@@ -1,3 +1,13 @@
+2004-04-24  Stephen Crawley <crawley@dstc.edu.au>
+
+	* gnu/testlet/java/lang/Integer/getInteger.java 
+	(checkPropertyAccess):  Fixed bug in the security check that
+	caused the last subtest to fail.
+	
+	* gnu/testlet/java/lang/reflect/ReflectAccess.java: Tweak code
+	so that subtests are counted if they succeed, and they have 
+	description messages.
+	
 2004-04-20  Guilhem Lavaux <guilhem@kaffe.org>
 
 	* gnu/testlet/java/net/URL/URLTest.java

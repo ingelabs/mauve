@@ -54,7 +54,7 @@ public class ReflectAccess extends Super implements Testlet
     Field fieldP = Other.class.getDeclaredField("p");
     Field fieldQ = Other.class.getDeclaredField("q");
     Field fieldR = Other.class.getDeclaredField("r");
-    
+
     try
     {
       Method methodT = ReflectAccess.class.getDeclaredMethod("t", null);
@@ -63,6 +63,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (NoSuchMethodException x)
     {
       // ok
+      harness.check(true, "method 't' is declared in class ReflectAccess");
     }
     
     Method methodS = Super.class.getDeclaredMethod("s", null);
@@ -81,9 +82,9 @@ public class ReflectAccess extends Super implements Testlet
     methodB.invoke(null, null);
     methodC.invoke(obj, null);
     
-    harness.check (fieldD.getChar(obj) == 'd');
-    harness.check (fieldE.getChar(obj) == 'e');
-    harness.check (fieldF.getChar(obj) == 'f');
+    harness.check (fieldD.getChar(obj) == 'd', "field d is accessible");
+    harness.check (fieldE.getChar(obj) == 'e', "field e is accessible");
+    harness.check (fieldF.getChar(obj) == 'f', "field f is accessible");
 
     obj = new OtherPkg();
     
@@ -95,6 +96,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, methodG + " is inaccessible");
     }
     try
     {
@@ -104,6 +106,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, methodH + " is inaccessible");
     }
     try
     {
@@ -113,6 +116,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, methodI + " is inaccessible");
     }
     try
     {
@@ -122,6 +126,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, fieldJ + " is inaccessible");
     }
     try
     {
@@ -131,6 +136,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, fieldK + " is inaccessible");
     }
     try
     {
@@ -140,6 +146,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, fieldL + " is inaccessible");
     }
     
     obj = new Other();
@@ -155,6 +162,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, methodO + " is inaccessible");
     }
     
     methodO.setAccessible(true);
@@ -171,11 +179,11 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, fieldR + " is inaccessible");
     }
     
     fieldR.setAccessible(true);
-    harness.check (fieldR.getChar(obj) == 'r');
-    
+    harness.check(fieldR.getChar(obj) == 'r', fieldR + " is accessible");
     obj = new ReflectAccess();
     
     try 
@@ -186,6 +194,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, methodS + " is inaccessible");
     }
     
     methodT.invoke(obj, null);
@@ -199,6 +208,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, methodV + " is inaccessible");
     }
 
     harness.check (fieldW.getChar(obj) == 'w');
@@ -212,6 +222,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, fieldY + " is inaccessible");
     }
     
     try
@@ -222,6 +233,7 @@ public class ReflectAccess extends Super implements Testlet
     catch (IllegalAccessException x)
     {
       // ok
+      harness.check(true, fieldZ + " is inaccessible");
     }
   }
   
