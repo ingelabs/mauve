@@ -54,8 +54,7 @@ public class reflect2 implements Testlet
     harness.check(inner.length == 0);
 
     inner = help.getClasses();
-    harness.check(inner.length == 1);
-    harness.check(inner[0].equals(help_inner));
+    harness.check(inner.length == 1 && inner[0].equals(help_inner));
 
     inner = help2.getClasses();
     harness.check(inner.length == 3);
@@ -64,8 +63,7 @@ public class reflect2 implements Testlet
     harness.check(inner.length == 0);
 
     inner = help2_inner.getClasses();
-    harness.check(inner.length == 1);
-    harness.check(inner[0].equals(help2_inner_inner));
+    harness.check(inner.length == 1 && inner[0].equals(help2_inner_inner));
 
     inner = help2_inner_inner.getClasses();
     harness.check(inner.length == 0);
@@ -83,13 +81,13 @@ public class reflect2 implements Testlet
     harness.check(outer == null);
 
     outer = help_inner.getDeclaringClass();
-    harness.check(outer.equals(help));
+    harness.check(outer != null && outer.equals(help));
 
     outer = help2_inner.getDeclaringClass();
-    harness.check(outer.equals(help2));
+    harness.check(outer != null && outer.equals(help2));
 
     outer = help2_inner_inner.getDeclaringClass();
-    harness.check(outer.equals(help2_inner));
+    harness.check(outer != null && outer.equals(help2_inner));
   }
 
   public void test_getDeclaredClasses() 
@@ -97,15 +95,13 @@ public class reflect2 implements Testlet
     harness.checkPoint("getDeclaredClasses");
 
     Class[] inner = help.getDeclaredClasses();
-    harness.check(inner.length == 1);
-    harness.check(inner[0].equals(help_inner));    
+    harness.check(inner.length == 1 && inner[0].equals(help_inner));    
 
     inner = help2.getDeclaredClasses();
     harness.check(inner.length == 8);
     
     inner = help2_inner.getDeclaredClasses();
-    harness.check(inner.length == 1);
-    harness.check(inner[0].equals(help2_inner_inner));
+    harness.check(inner.length == 1 && inner[0].equals(help2_inner_inner));
 
     inner = help2_inner_inner.getDeclaredClasses();
     harness.check(inner.length == 0);
