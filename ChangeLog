@@ -1,3 +1,11 @@
+2003-08-19  Andrew Haley  <aph@redhat.com>
+
+	* choose: Check BinaryCompatibility as well as java and javax.
+	* Makefile.am (check-local): Pass GCJ, JAVAC and JAVA in environment.
+	* gnu/testlet/BinaryCompatibility: New tests.
+	* Makefile.in: Regenerate.
+	* configure: Regenerate.
+
 2003-08-16  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/String/decode.java: Add explicit UTF-8 test.
