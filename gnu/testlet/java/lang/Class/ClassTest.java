@@ -48,6 +48,21 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
     harness.check((new Object[3]).getClass().getName().
 		  equals("[Ljava.lang.Object;")) ;
     harness.check((new int[6][7][8]).getClass().getName().equals("[[[I"));
+
+    // Note: the javadoc Class.getName() for JDK 1.3.x, 1.4.0 & 1.4.1 
+    // seems to say that getName() returns a one character code for
+    // primitive types and void, etcetera.  In fact, this is a bug in
+    // the Sun javadoc.  According to Sun's bug database, it is fixed 
+    // in JDK 1.4.2 (Merlin) release.
+    harness.check(Void.TYPE.getName().equals("void"));
+    harness.check(Boolean.TYPE.getName().equals("boolean"));
+    harness.check(Byte.TYPE.getName().equals("byte"));
+    harness.check(Character.TYPE.getName().equals("char"));
+    harness.check(Short.TYPE.getName().equals("short"));
+    harness.check(Integer.TYPE.getName().equals("int"));    
+    harness.check(Long.TYPE.getName().equals("long"));
+    harness.check(Float.TYPE.getName().equals("float"));
+    harness.check(Double.TYPE.getName().equals("double"));
   }
   
   public void test_isInterface()
