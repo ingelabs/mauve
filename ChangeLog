@@ -1,5 +1,9 @@
 2005-03-07  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Font/serialization.java: New test.
+	
+2005-03-07  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/StringTokenizer/constructors.java: New tests.
 	* gnu/testlet/java/util/StringTokenizer/countTokens.java: Likewise.
 	* gnu/testlet/java/util/StringTokenizer/hasMoreElements.java: Likewise.
