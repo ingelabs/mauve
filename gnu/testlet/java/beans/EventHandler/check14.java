@@ -30,6 +30,9 @@ import gnu.testlet.TestHarness;
 import java.beans.EventHandler;
 import java.lang.reflect.Method;
 
+/**
+ * <p>Basic tests for the <code>EventHandler</code></p>
+ */
 public class check14 implements Testlet
 {
   // Inner classes because compilation complains it can't find the files
@@ -51,6 +54,8 @@ public class check14 implements Testlet
     public void setAction(boolean b) { flag = b; }
     // To test that basic properties work
     public void setAction(String s) { str = s; }
+	// To test event forwarding.
+	public void setEventProperty(Event e) { str =  e.getD(); flag = e.isB(); }
   }
 
   public class Event
@@ -206,7 +211,6 @@ public class check14 implements Testlet
     harness.check(target.flag == false, "Test full, invoke listen2");
     harness.check(target.str == "yes");
     target.reset();
-
 
     // Make sure created objects actually implement Listener, not just the
     // method.

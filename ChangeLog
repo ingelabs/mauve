@@ -1,5 +1,14 @@
 2005-03-10  Robert Schuster <thebohemian@gmx.net>
 
+    * gnu/testlet/java/beans/EventHandler/check14.java: Added
+    more subtests and documentation.
+    * gnu/testlet/java/beans/EventHandler/check14b.java: New
+    tests.
+    * gnu/testlet/java/beans/EventHandler/check14b.java: New
+    tests, was check14.java .
+
+2005-03-10  Robert Schuster <thebohemian@gmx.net>
+
     * gnu/testlet/java/beans/EventHandler/check.java: Removed
     file, will be added as check14c.java again.
 
