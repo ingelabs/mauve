@@ -36,7 +36,7 @@ public class jdk11 implements Testlet
     try
       {
 		InputStreamReader isr = new InputStreamReader (new StringBufferInputStream ("zardoz has spoken"));
-		harness.check(!isr.ready(), "ready()");   // deprecated post-1.1
+		harness.check(isr.ready(), "ready()");   // deprecated post-1.1
 		harness.check(isr.getEncoding(), "8859_1", "getEncoding");
 		char[] cbuf = new char[10];
 		isr.read (cbuf, 0, cbuf.length);

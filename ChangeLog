@@ -1,3 +1,8 @@
+2003-02-12  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/InputStreamReader/jdk11.java (test):
+	InputStreamReader should be ready().
+
 2003-02-09  Raif S. Naffah  <raif@fl.net.au> 
 
 	* gnu/testlet/java/lang/String/getBytes13.java: new test
