@@ -1,3 +1,7 @@
+1999-12-24  Tom Tromey  <tromey@cygnus.com>
+
+	* gnu/testlet/SimpleTestHarness.java (debug): Formatting fix.
+
 1999-12-23  Tom Tromey  <tromey@cygnus.com>
 
 	* gnu/testlet/java/lang/reflect/Method/invoke.java (try_invoke):

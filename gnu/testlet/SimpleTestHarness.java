@@ -131,8 +131,7 @@ public class SimpleTestHarness
 	ex.printStackTrace(System.out);
     }
 
-  public void
-  debug(Object[] o, String desc)
+  public void debug(Object[] o, String desc)
   {
     debug("Dumping Object Array: " + desc);
     if (o == null)
