@@ -1,5 +1,11 @@
 2002-12-12  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/security/SecureRandom/Instance.java: New test.
+	* gnu/testlet/java/security/SecureRandom/MauveSecureRandom.java: New
+	file.
+
+2002-12-12  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/util/ResourceBundle.java: Remove child variant
 	tests. Fix check for resource with default Locale en_CA.
 
