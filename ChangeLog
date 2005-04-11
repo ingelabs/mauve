@@ -1,5 +1,10 @@
 2005-04-11  Jeroen Frijters  <jeroen@frijters.net>
 
+	* gnu/testlet/java/nio/channels/FileChannel/map.java:
+	New test.
+
+2005-04-11  Jeroen Frijters  <jeroen@frijters.net>
+
 	* gnu/testlet/java/beans/EventHandler/check.java,
 	gnu/testlet/java/beans/EventHandler/check14b.java,
 	gnu/testlet/java/beans/EventHandler/check14c.java:
