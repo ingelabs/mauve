@@ -79,7 +79,8 @@ public class check14b implements Testlet {
 	}
 	
 	public interface Listener2 {
-		public void listen(Event e);
+		// The check. prefix is a workaround for a Jikes bug.
+		public void listen(check14b.Event e);
 	}
 	
 	private boolean noArgMethodCalled;
