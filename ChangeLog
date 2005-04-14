@@ -1,3 +1,27 @@
+2005-04-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/IndexColorModel/constructors.java: new 
+	file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getAlpha.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getAlphas.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getBlue.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getBlues.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getColorSpace.java: new 
+	file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getComponentSize.java: new
+	file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getGreen.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getGreens.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getPixelSize.java: new 
+	file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getRed.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getReds.java: new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getTransparency.java: new
+	file;
+	* gnu/testlet/java/awt/image/IndexColorModel/getTransparentPixel.java: 
+	new file;
+	* gnu/testlet/java/awt/image/IndexColorModel/isValid.java: new file;
+	
 2005-04-11  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/List/subList.java: new file;
