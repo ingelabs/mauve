@@ -34,8 +34,10 @@ if test "x$RUNTIME" = "x" ; then
 #RUNTIME="gij"
 #RUNTIME="Kissme"
 #RUNTIME="/usr/local/sablevm/bin/sablevm -Y"
-RUNTIME=jamvm
+RUNTIME="/home/roman/bin/jamvm"
 #RUNTIME="native"
+#RUNTIME="/usr/lib/j2se/1.4/bin/java"
+#RUNTIME="/usr/lib/j2sdk1.5-sun/bin/java"
 fi
 
 # Number of seconds to wait for the test to finish
