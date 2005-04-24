@@ -1,5 +1,46 @@
 2005-04-24  David Gilbert  <david.gilbert@object-refinery.com>
 
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumn.java:
+	new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	addColumnModelListener.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	constructor.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumn.java:
+	new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumnCount.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumnIndex.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumnIndexAt.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumnMargin.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumnModelListeners.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumns.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getColumnSelectionAllowed.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getListeners.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getSelectedColumnCount.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	getSelectionModel.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	moveColumn.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	MyListener.java: new support file;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	setColumnMargin.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	setColumnSelectionAllowed.java: new tests;
+        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	setSelectionModel.java: new tests;
+	
+2005-04-24  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/math/BigInteger/setBit.java: new tests.
 	
 2005-04-14  David Gilbert  <david.gilbert@object-refinery.com>
