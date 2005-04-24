@@ -1,3 +1,7 @@
+2005-04-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/math/BigInteger/setBit.java: new tests.
+	
 2005-04-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/IndexColorModel/constructors.java: new 
