@@ -1,3 +1,7 @@
+2005-04-25  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/BufferedReader/mark.java: New test.
+
 2005-04-24  David Gilbert  <david.gilbert@object-refinery.com>
 
         * gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumn.java:
