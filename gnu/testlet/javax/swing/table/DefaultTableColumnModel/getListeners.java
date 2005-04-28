@@ -1,4 +1,5 @@
 // Tags: JDK1.3
+// Uses: MyListener
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 

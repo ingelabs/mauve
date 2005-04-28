@@ -1,3 +1,13 @@
+2005-04-28  Michael Koch  <konqueror@gmx.de>
+
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumn.java,
+	gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumnModelListener.java,
+	gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumnModelListeners.java,
+	gnu/testlet/javax/swing/table/DefaultTableColumnModel/getListeners.java,
+	gnu/testlet/javax/swing/table/DefaultTableColumnModel/moveColumn.java,
+	gnu/testlet/javax/swing/table/DefaultTableColumnModel/setColumnMargin.java:
+	Added needed Uses tags.
+
 2005-04-25  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/BufferedReader/mark.java: New test.
