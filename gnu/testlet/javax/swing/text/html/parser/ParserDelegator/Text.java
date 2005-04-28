@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: parsingTester
 
 // Copyright (C) 2005 Audrius Meskauskas, AudriusA@Bluewin.ch
 
