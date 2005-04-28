@@ -1,3 +1,8 @@
+2005-04-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/util/Collections/unmodifiableList.java:
+	new test.
+
 2005-04-28  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/javax/swing/JComboBox/MutableTest1.java,
