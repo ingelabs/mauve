@@ -1,6 +1,5 @@
-//Tags: JDK1.2
-
-//Uses: TestModel1
+// Tags: JDK1.2
+// Uses: TestModel1
 
 //Copyright (C) 2004 Robert Schuster <thebohemian@gmx.net>
 

@@ -1,5 +1,12 @@
 2005-04-28  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/javax/swing/JComboBox/MutableTest1.java,
+	gnu/testlet/javax/swing/JComboBox/MutableTest2.java,
+	gnu/testlet/javax/swing/JComboBox/SimpleSelectionTest.java:
+	Cleaned up mauve tags.
+
+2005-04-28  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/java/beans/Beans/instantiate_1.java,
 	gnu/testlet/java/beans/Introspector/getBeanInfo.java,
 	gnu/testlet/java/beans/Introspector/getBeanInfo2.java,
