@@ -1,5 +1,10 @@
 2005-04-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/text/DateFormat/hashCode.java: new test;
+	* gnu/testlet/java/text/DecimalFormat/hashCode.java: new test;
+
+2005-04-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/Collections/unmodifiableList.java:
 	new test.
 
