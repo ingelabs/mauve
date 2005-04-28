@@ -1,6 +1,5 @@
-//Tags: JDK1.2
-
-//Uses: TestBean1 TestBean2 TestBean3 TestBean4
+// Tags: JDK1.2
+// Uses: TestBean1 TestBean2 TestBean3 TestBean4
 
 //Copyright (C) 2004 Robert Schuster <thebohemian@gmx.net>
 

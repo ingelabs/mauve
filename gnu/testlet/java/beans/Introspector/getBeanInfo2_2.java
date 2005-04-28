@@ -1,6 +1,5 @@
-//Tags: JDK1.2
-
-//Uses: getBeanInfo2_2TestClass
+// Tags: JDK1.2
+// Uses: getBeanInfo2_2TestClass
 
 //Copyright (C) 2004  Robert Schuster <theBohemian@gmx.net>
 

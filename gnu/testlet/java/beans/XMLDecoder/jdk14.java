@@ -1,6 +1,5 @@
-//Tags: JDK1.4
-
-//Uses: DecoderTestHelper EqualityChecker IntArrayChecker PointArrayChecker DoubleArrayChecker
+// Tags: JDK1.4
+// Uses: DecoderTestHelper EqualityChecker IntArrayChecker PointArrayChecker DoubleArrayChecker
 
 //Copyright (C) 2004 Robert Schuster <theBohemian@gmx.net>
 
