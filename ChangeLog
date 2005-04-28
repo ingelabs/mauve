@@ -1,5 +1,12 @@
 2005-04-28  Michael Koch  <konqueror@gmx.de>
 
+	* gnu/testlet/java/util/ArrayList/subList.java,
+	gnu/testlet/java/util/LinkedList/subList.java,
+	gnu/testlet/java/util/Vector/subList.java:
+	Added the needed Uses tags.
+
+2005-04-28  Michael Koch  <konqueror@gmx.de>
+
 	* gnu/testlet/javax/swing/table/DefaultTableModel/addColumn.java,
 	gnu/testlet/javax/swing/table/DefaultTableModel/convertToVector.java,
 	gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Text.java:
