@@ -1,4 +1,9 @@
-2005-04-29  Thomas Zander <zander@kde.org>
+2005-04-29  Sven de Marothy  <sven@physto.se>
+
+	* gnu/testlet/java/io/Utf8Encoding/mojo.java (negative): Expect
+	replacement char.
+
+2005-04-29  Thomas Zander  <zander@kde.org>
 
 	* build.xml: Don't compile classpath specific tests in the ant target
 	 since; well that can't work.

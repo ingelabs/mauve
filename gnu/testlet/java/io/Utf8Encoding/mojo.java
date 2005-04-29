@@ -131,9 +131,7 @@ public class mojo implements Testlet
 	    reader = new InputStreamReader (in, "UTF8");
 
 	    c = reader.read ();
-	} catch (CharConversionException e) {
-	    flag = true;
-	
+	    flag = (c == 0xFFFD); // Should be replacement char
 	} catch (Throwable t) {
 	    harness.debug (label + ": failed, threw "
 			   + t.getClass ().getName ()
