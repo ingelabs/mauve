@@ -1,3 +1,8 @@
+2005-04-29  Thomas Zander <zander@kde.org>
+
+	* build.xml: Don't compile classpath specific tests in the ant target
+	 since; well that can't work.
+
 2005-04-28  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/text/DateFormat/hashCode.java: new test;

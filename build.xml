@@ -60,10 +60,10 @@
     <target name="compile" depends="init" description="Compile all files">
         <javac srcdir="${src}" destdir="${build}"
             includes="gnu/**/*.java"
-            excludes="gnu/testlet/BinaryCompatibility/**"
+            excludes="gnu/testlet/BinaryCompatibility/**, gnu/testlet/gnu/**"
             classpathref="myclass.path"
-            target="1.3"
-            source="1.3"
+            target="1.1"
+            source="1.2"
             debug="on">
         </javac>
     </target>
