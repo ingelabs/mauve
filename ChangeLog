@@ -1,3 +1,9 @@
+2005-05-03  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/ColorUIResource/constructors.java: new tests;
+	* gnu/testlet/javax/swing/plaf/ColorUIResource/equals.java: new tests;
+	* gnu/testlet/javax/swing/plaf/ColorUIResource/serialization.java: new tests;
+	
 2005-04-29  Sven de Marothy  <sven@physto.se>
 
 	* gnu/testlet/java/io/Utf8Encoding/mojo.java (negative): Expect
