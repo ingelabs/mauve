@@ -1,3 +1,7 @@
+2005-05-05  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/lang/Integer/decode.java: new tests;
+
 2005-05-03  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/ColorUIResource/constructors.java: new tests;
