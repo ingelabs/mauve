@@ -34,13 +34,11 @@
 if test "x$KEYS" = "x"; then
 KEYS="JDK1.0 JDK1.1 JDK1.2 JDK1.3 JDK1.4 JDBC1.0 JDBC2.0"
 KEYS="$KEYS !java.lang.Character.unicode"
-KEYS="$KEYS !java.* !javax.* !BinaryCompatibility. !locales."
-KEYS="$KEYS javax.swing.plaf.metal."
 fi
 
 if test "x$COMPILER" = "x"; then
 #COMPILER="gcj -C -Wno-deprecated"
-COMPILER="jikes -bootclasspath /home/roman/share/classpath/glibj.zip"
+COMPILER="jikes -bootclasspath /usr/local/classpath/share/classpath/glibj.zip"
 fi
 
 if test "x$COMPILER" = "xgcj"; then
