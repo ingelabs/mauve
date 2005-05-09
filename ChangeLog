@@ -1,3 +1,7 @@
+2005-05-09  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/util/BitSet/Get.java: New file.
+
 2005-05-05  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/lang/Integer/decode.java: new tests;
