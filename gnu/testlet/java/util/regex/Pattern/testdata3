@@ -1,0 +1,29 @@
+/abc\Qabc\Eabc/
+    abcabcabc
+ 0: abcabcabc
+
+/abc\Q(*+|\Eabc/
+    abc(*+|abc
+ 0: abc(*+|abc
+
+/\Qa.b+c*\E/
+    a.b+c*
+ 0: a.b+c*
+    aabbcc
+No match
+
+/\Q(a)\E/
+    (a)
+ 0: (a)
+    a
+No match
+
+/a+\Qb+\Ea+/
+    aaab+a
+ 0: aaab+a
+    aaabbbaaa
+No match
+
+/\Q\a\b\n\r\E/
+    \a\b\n\r
+ 0: \a\b\n\r
