@@ -494,7 +494,6 @@ public class URITest implements Testlet
 	    "../../g"); // 16
 
     // Classpath regression when running jonas.
-    h.checkPoint("jrmi://localhost:2000");
     testOne(h, "jrmi://localhost:2000",
 	    "localhost:2000", // 1
 	    null, // 2
@@ -512,5 +511,23 @@ public class URITest implements Testlet
 	    "//localhost:2000", // 14
 	    null, // 15
 	    "jrmi://localhost:2000"); // 16
+
+    String[] tests = { "/a,b", "/a%2C,b", "/a%2c,b" };
+    for (int i = 0; i < tests.length; ++i)
+      {
+	h.checkPoint(tests[i]);
+	boolean ok = false;
+	URI uri = null;
+	try
+	  {
+	    uri = new URI(tests[i]);
+	    ok = uri.toString().equals(tests[i]);
+	  }
+	catch (URISyntaxException _)
+	  {
+	    h.debug(_);
+	  }
+	h.check(ok);
+      }
   }
 }

@@ -1,3 +1,8 @@
+2005-05-16  Brion Vibber  <brion@pobox.com>
+
+	* gnu/testlet/java/net/URI/URITest.java (test): Added regression
+	tests.
+
 2005-05-16  Tom Tromey  <tromey@redhat.com>
 
 	* choose: Handle '..' in Uses lines better.
