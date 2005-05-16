@@ -203,8 +203,16 @@ while read file; do
 	 # what other support classes this test requires.
          useslist=" `grep '^// *Uses:' gnu/testlet/$file | sed -e 's,^// *Uses:,,'` "
          for used in $useslist; do
-	   usedfile=$dirpart/$used.java
-	   echo "gnu/testlet/$usedfile" >> $usesfile
+	    # Normalize by removing '..' components from the start
+	    # of each 'Uses' file name.
+	    ndir=$dirpart
+	    while test `expr $used : '[.][.]/'` -ne 0; do
+	       ndir=`dirname $ndir`
+	       used=`echo "$used" | sed -e 's,^[.][.]/,,'`
+	    done
+
+	    usedfile=$ndir/$used.java
+	    echo "gnu/testlet/$usedfile" >> $usesfile
          done
 
       fi
