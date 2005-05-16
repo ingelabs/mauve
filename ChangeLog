@@ -1,3 +1,15 @@
+2005-05-16  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Color/constants.java: new tests;
+	* gnu/testlet/java/awt/Color/constructors.java: new tests;
+	* gnu/testlet/java/awt/Color/decode.java: new tests;
+	* gnu/testlet/java/awt/Color/equals.java: new tests;
+	* gnu/testlet/java/awt/Color/getBlue.java: new tests;
+	* gnu/testlet/java/awt/Color/getGreen.java: new tests;
+	* gnu/testlet/java/awt/Color/getRed.java: new tests;
+	* gnu/testlet/java/awt/Color/hashCode.java: new tests;
+	* gnu/testlet/java/awt/Color/serialization.java: new tests;
+	
 2005-05-16  Brion Vibber  <brion@pobox.com>
 
 	* gnu/testlet/java/net/URI/URITest.java (test): Added regression
