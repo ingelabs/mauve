@@ -151,8 +151,32 @@ public class format implements Testlet
     
     DecimalFormat f = new DecimalFormat("0");
     
+    // try formatting a null object
+    boolean pass = false;
+    try
+    {
+      f.format(null);   
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;   
+    }
+    harness.check(pass);
+    
+    // try formatting an object that is not a Number
+    pass = false;
+    try
+    {
+      f.format("XYZ");   
+    }
+    catch (IllegalArgumentException e) 
+    {
+      pass = true;   
+    }
+    harness.check(pass);
+    
     // some implementations can't handle custom subclasses of Number
-    boolean pass = true;
+    pass = true;
     try
     {
       f.format(new Number() {
