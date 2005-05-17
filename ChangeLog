@@ -2,6 +2,8 @@
 
 	* gnu/testlet/java/text/DecimalFormat/format.java: added checks 
 	for null and non-Number arguments.
+	* gnu/testlet/java/text/SimpleDateFormat/parse.java: added checks 
+	for null arguments, and bug 13058.
 	
 2005-05-16  David Gilbert  <david.gilbert@object-refinery.com>
 

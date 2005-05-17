@@ -1,10 +1,23 @@
-/* Tests date parsing with SimpleDateFormat
-   Copyright (C) 2004 Noa Resare <noa@resare.com>
-
-   This file is part of mauve.
-*/
-
 // Tags: JDK1.1
+
+// Copyright (C) 2004, 2005 Noa Resare <noa@resare.com>
+
+// This file is part of Mauve.
+
+// Mauve is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+
+// Mauve is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with Mauve; see the file COPYING.  If not, write to
+// the Free Software Foundation, 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.  */
 
 package gnu.testlet.java.text.SimpleDateFormat;
 
@@ -59,6 +72,46 @@ public class parse implements Testlet
     toTest = new HashMap();
     toTest.put("dec 31, 2004", new Date(1104451200000L));
     doParse(harness, sdf1, toTest);
+    
+    // test a case that is failing in statcvs and is the same as (I think) the
+    // bug described in bug 13058
+    harness.checkPoint("Bug 13058");
+    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss zzzzz", Locale.US);
+    Date d = null;
+    try
+    {
+      d = sdf2.parse("2004-07-18 17:42:25 +0000 GMT");        
+    }
+    catch (ParseException e)
+    {
+      // failure will be caught below  
+    }
+    harness.check(new Date(1090172545000L).equals(d));
+    
+    // test null arguments
+    harness.checkPoint("Null arguments");
+    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+    boolean pass = false;
+    try
+    {
+      df.parse(null, new ParsePosition(0));
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;   
+    }
+    harness.check(pass);
+    
+    pass = false;
+    try
+    {
+      df.parse("17-May-2005", null);   
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;   
+    }
+    harness.check(pass);
   }
 
   /**
