@@ -1,3 +1,28 @@
+2005-05-18  Audrius Meskauskas, <AudriusA@bluewin.ch>
+
+	* gnu/testlet/org/omg/CORBA/Any/testAny.java,
+	gnu/testlet/org/omg/CORBA/portable/InputStream/cdrIO.java,
+	gnu/testlet/org/omg/CORBA/TypeCode/orbTypecodes.java,
+	gnu/testlet/org/omg/CORBA/ORB/DirectTest.java,
+	gnu/testlet/org/omg/CORBA/ORB/RequestTest.java: New tests.
+	* gnu/testlet/org/omg/CORBA/Asserter.java: New file.
+	* gnu/testlet/org/omg/CORBA/ORB/comServer.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/returnThisHelper.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/node.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/_comTesterImplBase.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/comServant.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/comTester.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/nodeHelper.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/nodeHolder.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/ourUserException.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/ourUserExceptionHelper.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/returnThisHolder.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/passThisHelper.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/returnThis.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/passThis.java,
+	gnu/testlet/org/omg/CORBA/ORB/communication/_comTesterStub.java:
+	New CORBA test server.
+
 2005-05-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/GradientPaint/constructors.java: new tests;
