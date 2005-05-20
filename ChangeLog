@@ -1,3 +1,14 @@
+2005-05-20  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/java/net/URI/ComparisonTest.java,
+	* gnu/testlet/java/net/URI/EqualityTest.java,
+	* gnu/testlet/java/net/URI/NormalizationTest.java,
+	* gnu/testlet/java/net/URI/RelativizationTest.java,
+	* gnu/testlet/java/net/URI/ToASCIIStringTest.java:
+	New tests for the compareTo(), equals(), normalize(),
+	relativize(URI) and toASCIIString() methods
+	respectively.
+
 2005-05-20  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/net/URLConnection/Jar.java: New file.
