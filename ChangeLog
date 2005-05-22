@@ -1,3 +1,7 @@
+2005-05-22  Audrius Meskauskas, <AudriusA@bluewin.ch>
+   * gnu/testlet/org/omg/CORBA/ServiceInformationHelper/basicHelperOperations.java:
+   New test.   
+
 2005-05-20  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/java/net/URI/ComparisonTest.java,
