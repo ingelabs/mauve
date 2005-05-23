@@ -89,6 +89,7 @@
             failonerror="true">
             <fileset dir="${build}" includes="gnu/testlet/java/**" />
             <fileset dir="${build}" includes="gnu/testlet/javax/**" />
+			<fileset dir="${build}" includes="gnu/testlet/org/**" />
         </mauve>
     </target>
 

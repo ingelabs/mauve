@@ -1,3 +1,8 @@
+2005-05-23  Audrius Meskauskas  <AudriusA@bluewin.ch>
+    
+	build.xml: Adding gnu/testlet/org/** to the
+	"test" ("run the tests") target.
+
 2005-05-23  Tom Tromey  <tromey@redhat.com>
 
 	* choose: Search 'org'.
@@ -21,7 +26,7 @@
 
 	* gnu/testlet/java/net/URLConnection/Jar.java: New file.
 
-2005-05-18  Audrius Meskauskas, <AudriusA@bluewin.ch>
+2005-05-18  Audrius Meskauskas  <AudriusA@bluewin.ch>
 
 	* gnu/testlet/org/omg/CORBA/Any/testAny.java,
 	gnu/testlet/org/omg/CORBA/portable/InputStream/cdrIO.java,
