@@ -1,3 +1,7 @@
+2005-05-23  Tom Tromey  <tromey@redhat.com>
+
+	* choose: Search 'org'.
+
 2005-05-22  Audrius Meskauskas, <AudriusA@bluewin.ch>
    * gnu/testlet/org/omg/CORBA/ServiceInformationHelper/basicHelperOperations.java:
    New test.   
