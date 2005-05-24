@@ -1,5 +1,9 @@
 2005-05-24  Tom Tromey  <tromey@redhat.com>
 
+	* choose: Handle 'org' in keys file.
+
+2005-05-24  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/net/URI/ComparisonTest.java (test): Convert
 	SortedSet to String for debug().
 
