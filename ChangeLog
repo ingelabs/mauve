@@ -1,3 +1,8 @@
+2005-05-24  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/net/URI/ComparisonTest.java (test): Convert
+	SortedSet to String for debug().
+
 2005-05-23  Audrius Meskauskas  <AudriusA@bluewin.ch>
     
 	build.xml: Adding gnu/testlet/org/** to the

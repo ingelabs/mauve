@@ -69,7 +69,7 @@ public class ComparisonTest
 	s.add(new URI("http://jones@example.com:99?name=Fred#1"));
 	s.add(new URI("http://jones@example.com:98?name=Sally#1"));
 	s.add(new URI("isbn:987654321#34"));
-	h.debug(s);
+	h.debug(s.toString());
       }
     catch (URISyntaxException e)
       {
