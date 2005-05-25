@@ -1,4 +1,9 @@
-2005-05-24  Audrius Meskauskas, <AudriusA@bluewin.ch>
+2005-05-25  Audrius Meskauskas  <AudriusA@bluewin.ch>
+ 
+    * gnu/testlet/org/omg/CORBA/portable/OutputStream/BinaryAlignment.java,
+	gnu/testlet/org/omg/CORBA/portable/OutputStream/mirror.java: New test.
+ 
+2005-05-24  Audrius Meskauskas  <AudriusA@bluewin.ch>
 
 	* gnu/testlet/org/omg/CORBA/ORB/parallelRunTest.java,
 	gnu/testlet/org/omg/CORBA/ORB/Asynchron/assServant.java,
