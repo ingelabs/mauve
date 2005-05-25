@@ -1,8 +1,13 @@
+2005-05-25  Roman Kennke  <roman@kennke.org>
+
+	* gnu/testlet/javax/swing/AbstractButton/constructor.java:
+	Added new test.
+
 2005-05-25  Audrius Meskauskas  <AudriusA@bluewin.ch>
- 
-    * gnu/testlet/org/omg/CORBA/portable/OutputStream/BinaryAlignment.java,
+
+	* gnu/testlet/org/omg/CORBA/portable/OutputStream/BinaryAlignment.java,
 	gnu/testlet/org/omg/CORBA/portable/OutputStream/mirror.java: New test.
- 
+
 2005-05-24  Audrius Meskauskas  <AudriusA@bluewin.ch>
 
 	* gnu/testlet/org/omg/CORBA/ORB/parallelRunTest.java,
