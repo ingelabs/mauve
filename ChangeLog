@@ -1,3 +1,13 @@
+2005-05-24  Audrius Meskauskas, <AudriusA@bluewin.ch>
+
+	* gnu/testlet/org/omg/CORBA/ORB/parallelRunTest.java,
+	gnu/testlet/org/omg/CORBA/ORB/Asynchron/assServant.java,
+	gnu/testlet/org/omg/CORBA/ORB/Asynchron/_asyncStub.java,
+	gnu/testlet/org/omg/CORBA/ORB/Asynchron/async.java,
+	gnu/testlet/org/omg/CORBA/ORB/Asynchron/assServer.java,
+	gnu/testlet/org/omg/CORBA/ORB/Asynchron/_asyncImplBase.java:
+	New tests.
+
 2005-05-24  Tom Tromey  <tromey@redhat.com>
 
 	* choose: Handle 'org' in keys file.
@@ -16,7 +26,7 @@
 
 	* choose: Search 'org'.
 
-2005-05-22  Audrius Meskauskas, <AudriusA@bluewin.ch>
+2005-05-22  Audrius Meskauskas <AudriusA@bluewin.ch>
    * gnu/testlet/org/omg/CORBA/ServiceInformationHelper/basicHelperOperations.java:
    New test.   
 
