@@ -1,3 +1,8 @@
+2005-05-28  Ziga Mahkovec  <ziga.mahkovec@klika.si>
+
+	* gnu/testlet/java/util/regex/Pattern/testdata3: New regex test cases
+	for possessive quantifiers (PR libgcj/20435).
+
 2005-05-25  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/javax/swing/AbstractButton/constructor.java:
