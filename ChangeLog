@@ -33,8 +33,8 @@
 	SortedSet to String for debug().
 
 2005-05-23  Audrius Meskauskas  <AudriusA@bluewin.ch>
-    
-	build.xml: Adding gnu/testlet/org/** to the
+
+	* build.xml: Adding gnu/testlet/org/** to the
 	"test" ("run the tests") target.
 
 2005-05-23  Tom Tromey  <tromey@redhat.com>
@@ -42,8 +42,9 @@
 	* choose: Search 'org'.
 
 2005-05-22  Audrius Meskauskas <AudriusA@bluewin.ch>
-   * gnu/testlet/org/omg/CORBA/ServiceInformationHelper/basicHelperOperations.java:
-   New test.   
+
+	* gnu/testlet/org/omg/CORBA/ServiceInformationHelper/basicHelperOperations.java:
+	New test.   
 
 2005-05-20  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
@@ -211,43 +212,43 @@
 
 2005-04-24  David Gilbert  <david.gilbert@object-refinery.com>
 
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumn.java:
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumn.java:
 	new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	addColumnModelListener.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	constructor.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumn.java:
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumn.java:
 	new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumnCount.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumnIndex.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumnIndexAt.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumnMargin.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumnModelListeners.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumns.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getColumnSelectionAllowed.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getListeners.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getSelectedColumnCount.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	getSelectionModel.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	moveColumn.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	MyListener.java: new support file;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	setColumnMargin.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	setColumnSelectionAllowed.java: new tests;
-        * gnu/testlet/javax/swing/table/DefaultTableColumnModel/
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/
 	setSelectionModel.java: new tests;
 	
 2005-04-24  David Gilbert  <david.gilbert@object-refinery.com>
@@ -326,7 +327,7 @@
 	locale to Locale.FRANCE.
 
 2005-03-17  Audrius Meskauskas  <audriusa@bluewin.ch>
-        
+
 	* gnu/testlet/javax/xml/parsers/DocumentBuilder/
 	parseSimpleXML.java,
 	gnu/testlet/javax/xml/parsers/DocumentBuilder/
@@ -450,22 +451,22 @@
 
 2005-03-11  Robert Schuster <thebohemian@gmx.net>
 
-    * gnu/testlet/java/beans/EventHandler/check14c.java: New
-    tests.
+	* gnu/testlet/java/beans/EventHandler/check14c.java: New
+	tests.
 
 2005-03-10  Robert Schuster <thebohemian@gmx.net>
 
-    * gnu/testlet/java/beans/EventHandler/check14.java: Added
-    more subtests and documentation.
-    * gnu/testlet/java/beans/EventHandler/check14b.java: New
-    tests.
-    * gnu/testlet/java/beans/EventHandler/check14c.java: New
-    tests, was check14.java.
+	* gnu/testlet/java/beans/EventHandler/check14.java: Added
+	more subtests and documentation.
+	* gnu/testlet/java/beans/EventHandler/check14b.java: New
+	tests.
+	* gnu/testlet/java/beans/EventHandler/check14c.java: New
+	tests, was check14.java.
 
 2005-03-10  Robert Schuster <thebohemian@gmx.net>
 
-    * gnu/testlet/java/beans/EventHandler/check.java: Removed
-    file, will be added as check14c.java again.
+	* gnu/testlet/java/beans/EventHandler/check.java: Removed
+	file, will be added as check14c.java again.
 
 2005-03-10  Dalibor Topic  <robilad@kaffe.org>
 
@@ -540,34 +541,34 @@
 
 2005-03-01  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
-    * gnu/testlet/java/text/DecimalFormat/parse.java: New test cases.
+	* gnu/testlet/java/text/DecimalFormat/parse.java: New test cases.
 
 2005-02-27  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    * gnu/testlet/java/util/TreeSet/basic.java: New test.
+	* gnu/testlet/java/util/TreeSet/basic.java: New test.
 
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    * gnu/testlet/javax/swing/JTextArea/text.java: New test case.
-    * gnu/testlet/javax/swing/JTextArea/gettingText.java: New test.    
+	* gnu/testlet/javax/swing/JTextArea/text.java: New test case.
+	* gnu/testlet/javax/swing/JTextArea/gettingText.java: New test.    
 
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    * gnu/testlet/javax/swing/JFrame/paint5.java: New test.
+	* gnu/testlet/javax/swing/JFrame/paint5.java: New test.
 	
 2005-02-24  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    * gnu/testlet/javax/swing/Timer/preparatory.java: New test.
+	* gnu/testlet/javax/swing/Timer/preparatory.java: New test.
 	* gnu/testlet/javax/swing/Timer/basic.java: New test.
 	
 2005-02-23  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    * gnu/testlet/javax/swing/JComboBox/basic.java: New test.
+	* gnu/testlet/javax/swing/JComboBox/basic.java: New test.
 	* gnu/testlet/javax/swing/JComboBox/listenerList.java: New test.
 	
 2005-02-22  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    * gnu/testlet/javax/swing/JToggleButton/click.java: New test.
+	* gnu/testlet/javax/swing/JToggleButton/click.java: New test.
 
 2005-02-22  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
@@ -575,7 +576,7 @@
 
 2005-02-21  Audrius Meskauskas  <audriusa@bluewin.ch>
 
-    gnu/testlet/javax/swing/JTextArea/text.java: new test
+	* gnu/testlet/javax/swing/JTextArea/text.java: new test
 
 2005-02-21  Bryce McKinlay  <mckinlay@redhat.com>
 
@@ -697,22 +698,22 @@
 	
 2005-02-18  Robert Schuster <thebohemian@gmx.net>
 
-    * gnu/testlet/java/beans/XMLDecoder/jdk14.java: Added
-    new subtest.
-    * gnu/testlet/java/beans/XMLDecoder/DoubleArrayChecker.java: New
-    file.
-    * gnu/testlet/java/beans/XMLDecoder/DecoderTestHelper.java: Added
-    constructor copying name argument to field.
-    * gnu/testlet/java/beans/XMLDecoder/PointArrayChecker.java: Fixed
-    equality check.
-    * gnu/testlet/java/beans/XMLDecoder/data/GrowableDoubleArray.xml,
-    gnu/testlet/java/beans/XMLDecoder/GrowableIntArray2.xml: New
-    testdata.
+	* gnu/testlet/java/beans/XMLDecoder/jdk14.java: Added
+	new subtest.
+	* gnu/testlet/java/beans/XMLDecoder/DoubleArrayChecker.java: New
+	file.
+	* gnu/testlet/java/beans/XMLDecoder/DecoderTestHelper.java: Added
+	constructor copying name argument to field.
+	* gnu/testlet/java/beans/XMLDecoder/PointArrayChecker.java: Fixed
+	equality check.
+	* gnu/testlet/java/beans/XMLDecoder/data/GrowableDoubleArray.xml,
+	gnu/testlet/java/beans/XMLDecoder/GrowableIntArray2.xml: New
+	testdata.
 
 2005-02-18  Robert Schuster <thebohemian@gmx.net>
 
-    * gnu/testlet/java/nio/charset/Charset/forName.java: Added
-    a subtest.    
+	* gnu/testlet/java/nio/charset/Charset/forName.java: Added
+	a subtest.    
 
 2005-02-17  Thomas Zander <zander@kde.org>
 	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
@@ -736,27 +737,30 @@
 	from 'Tags'.
 
 2005-02-15  Audrius Meskauskas <audriusa@bluewin.ch>    
-    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
 	New test on long tandem of subsequent html tags.
 
 2005-02-14  Audrius Meskauskas <audriusa@bluewin.ch>    
-    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Text.java: New test.
-    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/eolnNorification.java:
+
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Text.java: New test.
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/eolnNorification.java:
 	New test.
-    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/randomTables.java:
-    New test.
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/randomTables.java:
+	New test.
 	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/tokenLocations.java:
 	New test case on position of SGML insertion.
 	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
 	New test cases with valueless unknown argument and nested tables.
 	
 2005-02-13  Thomas Zander <zander@kde.org>
-    * gnu/testlet/javax/swing/KeyStroke/getKeyStroke.java: new test
+
+	* gnu/testlet/javax/swing/KeyStroke/getKeyStroke.java: new test
 
 2005-02-13  Audrius Meskauskas <audriusa@bluewin.ch>    
-    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/tokenLocations.java
-    * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java
-    Adding test if the positions of the parsed HTML tokens are reported correctly.
+
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/tokenLocations.java
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java
+	Adding test if the positions of the parsed HTML tokens are reported correctly.
 
 2005-02-12  Mark Wielaard  <mark@klomp.org>
 
@@ -928,9 +932,9 @@
 
 2005-01-28  Bryce McKinlay  <mckinlay@redhat.com>
 
-        * gnu/testlet/java/util/Date/getTimezoneOffset.java: New test. 
-        * gnu/testlet/java/util/Date/range.java: Remove DOS CRLF chars.
-        * Makefile.in, aclocal.m4, configure: Rebuilt.
+	* gnu/testlet/java/util/Date/getTimezoneOffset.java: New test. 
+	* gnu/testlet/java/util/Date/range.java: Remove DOS CRLF chars.
+	* Makefile.in, aclocal.m4, configure: Rebuilt.
 
 2005-01-27  Michael Koch  <konqueror@gmx.de>
 
@@ -1630,8 +1634,8 @@
 	(Korea.java): New class of tests for the Korean currency.
 	(PRC.java): New class of tests for the People's Republic of China's currency.
 	(ReferenceEquality.java): New class of tests to check that there is only one instance
-                                  of the Currency class for each locale.
-        (Taiwan.java): New class of tests for the Taiwanese currency.
+	                          of the Currency class for each locale.
+	(Taiwan.java): New class of tests for the Taiwanese currency.
 	(UK.java): New class of tests for the UK's currency.
 	(US.java): New class of tests for the American currency.
 
@@ -1685,7 +1689,7 @@
 2004-11-05  Noa Resare  <noa@resare.com>
 
 	* gnu/testlet/java/beans/PropertyEditorSupport/getSource.java:
-        Removed compatibility workaround for 1.4.
+	Removed compatibility workaround for 1.4.
 	Marked as JDK1.5 as the getSource() method came then.
 	Change indentation to follow GNUish coding style.
 
@@ -3025,7 +3029,7 @@
 
 	* gnu/testlet/java/text/SimpleDateFormat/attribute.java 
 	(test_FieldPos): Locals no longer static.
- 
+
 	* gnu/testlet/SimpleTestHarness.java (getFailures): New method.
 	* gnu/anttask/RunTests.java: New file.
 
@@ -3886,8 +3890,8 @@
 
 2003-06-03  Stephen Crawley  <crawley@dstc.edu.au>
 	
-        * gnu/testlet/java/math/BigDecimal/setScale.java: added new
-	  setScale testcase from Jerry Quinn <jlquinn@optonline.net>
+	* gnu/testlet/java/math/BigDecimal/setScale.java: added new
+	setScale testcase from Jerry Quinn <jlquinn@optonline.net>
 
 2003-05-24  Daniel Bonniot  <bonniot@users.sf.net>
 
@@ -3900,8 +3904,8 @@
 
 2003-05-06  Stephen Crawley  <crawley@dstc.edu.au>
 
-        * gnu/testlet/java/lang/Class/ClassTest.java: removed duplicate
-	  tests for isPrimitive(), and enhanced getModifiers() tests
+	* gnu/testlet/java/lang/Class/ClassTest.java: removed duplicate
+	tests for isPrimitive(), and enhanced getModifiers() tests
 
 2003-04-13  Dalibor Topic  <robilad@yahoo.com>
 
@@ -4175,7 +4179,8 @@
 	test the exception messages if CHECK_EXCEPTION_MESSAGES is true.
 
 2003-01-24  Raif Naffah <raif@fl.net.au>
-        * gnu/testlet/SimpleTestHarness.java (main): added a -file
+
+	* gnu/testlet/SimpleTestHarness.java (main): added a -file
 	option as an alternative to stdin for reading selected test
 	classes.
 
@@ -4635,7 +4640,7 @@
 
 2002-10-28  Stephen Crawley <crawley@dstc.edu.au>
 	
-        * gnu/testlet/java/lang/Class/reflect.java: Added tests for
+	* gnu/testlet/java/lang/Class/reflect.java: Added tests for
 	getField and getDeclaredField with inherited fields.
 
 2002-10-26  Daryl Lee <dol@sources.redhat.com>
@@ -4814,10 +4819,11 @@
 	* gnu/testlet/java/lang/Float/FloatTest.java (test_toString): ditto
 
 2002-09-26  Stephen Crawley <crawley@dstc.edu.au>	
-        * gnu/testlet/java/lang/Double/DoubleTest.java (test_shortbyteValue):
+
+	* gnu/testlet/java/lang/Double/DoubleTest.java (test_shortbyteValue):
 	Reverted test for truncation in byteValue() to match JDK 1.4 spec
 	and implementation.  [This was incorrectly 'fixed' on 2002-06-13.]
-        * gnu/testlet/java/lang/Float/FloatTest.java (test_shortbyteValue):
+	* gnu/testlet/java/lang/Float/FloatTest.java (test_shortbyteValue):
 	ditto
 
 2002-09-25  Eric Blake  <ebb9@email.byu.edu>
@@ -5636,7 +5642,7 @@
 Sun Jul 25 01:26:40 1999  Anthony Green  <green@cygnus.com>
 
 	* gnu/testlet/java/io/ObjectStreamClass/Test.java: New file.  All
- 	of these new files were contributed by Geoff Berry <gcb@gnu.org>.
+	of these new files were contributed by Geoff Berry <gcb@gnu.org>.
 	* gnu/testlet/java/io/ObjectInputOutput/InputTest.java: New file.
 	* gnu/testlet/java/io/ObjectInputOutput/OutputTest.java: New file.
 	* gnu/testlet/java/io/ObjectInputOutput/Test.java: New file.
@@ -6143,7 +6149,7 @@ Mon Feb 15 19:57:17 1999  Aaron M. Renn  <arenn@urbanophile.com>
 	* gnu/testlet/TestHarness.java (check(double, double)): New method
 
 	* gnu/testlet/TestHarness.java (check(double, double, String)): 
-        New method
+	New method
 
 	* gnu/testlet/TestHarness.java (getResourceStream): New method
 	
