@@ -1,3 +1,8 @@
+2005-05-29  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/LinkedHashMap/Regress.java: New file.
+	For PR libgcj/20273.
+
 2005-05-28  Ziga Mahkovec  <ziga.mahkovec@klika.si>
 
 	* gnu/testlet/java/util/regex/Pattern/testdata3: New regex test cases
