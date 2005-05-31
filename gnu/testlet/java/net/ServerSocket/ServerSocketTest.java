@@ -249,6 +249,28 @@ public class ServerSocketTest implements Testlet
     }
     
   }
+
+  public void test_close()
+  {
+    try {
+      harness.checkPoint("test_close");
+      ServerSocket s = new ServerSocket(0);
+      harness.check(s.isBound());
+      harness.check(!s.isClosed());
+      int port = s.getLocalPort();
+      InetAddress address = s.getInetAddress();
+      SocketAddress sockAddress = s.getLocalSocketAddress();
+      s.close();
+      harness.check(s.isBound());
+      harness.check(s.isClosed());
+      harness.check(port == s.getLocalPort());
+      harness.check(address.equals(s.getInetAddress()));
+      harness.check(sockAddress.equals(s.getLocalSocketAddress()));
+    } catch (Exception e) {
+      harness.fail("Unexpected exception");
+      harness.debug(e);
+    }
+  }
   
   public void testall()
   {
@@ -256,6 +278,7 @@ public class ServerSocketTest implements Testlet
     test_MyBasicServer();
     test_BasicBacklogServer();
     test_params();
+    test_close();
   }
   
   public void test (TestHarness the_harness)

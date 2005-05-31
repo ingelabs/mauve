@@ -1,3 +1,8 @@
+2005-05-31  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/net/ServerSocket/ServerSocketText.java:
+	Added tests.
+
 2005-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/ColorModel/getComponentSize.java: New file.
