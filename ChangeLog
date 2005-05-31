@@ -1,3 +1,9 @@
+2005-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/ColorModel/getComponentSize.java: New file.
+	* gnu/testlet/java/awt/image/ColorModel/getRGBdefault.java: New file.
+	* gnu/testlet/java/awt/image/DirectColorModel/constructors.java: New file.
+	
 2005-05-29  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/LinkedHashMap/Regress.java: New file.
