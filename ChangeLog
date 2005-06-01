@@ -1,3 +1,8 @@
+2005-05-31  Audrius Meskauskas  <AudriusA@bluewin.ch>
+
+	* gnu/testlet/java/net/ServerSocket/CORBA.java:
+	Added tests.
+
 2005-05-31  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/net/ServerSocket/ServerSocketText.java:
