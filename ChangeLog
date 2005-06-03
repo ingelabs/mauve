@@ -1,3 +1,8 @@
+2005-06-03  Tom Dunstan  <tomdcc@gmail.com>
+
+	* gnu/testlet/java/text/MessageFormat/parse.java (parse): Added
+	regression test.
+
 2005-05-31  Audrius Meskauskas  <AudriusA@bluewin.ch>
 
 	* gnu/testlet/java/net/ServerSocket/CORBA.java:

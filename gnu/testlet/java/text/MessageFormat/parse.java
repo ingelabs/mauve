@@ -72,5 +72,16 @@ public class parse implements Testlet
       harness.check (val.length, 1);
       harness.check (val[0] instanceof Number);
       harness.check (((Number) (val[0])).longValue (), 23);
+
+      harness.checkPoint ("greedy string matching at end");
+      mf.applyPattern ("/foo/{0}");
+
+      pp.setIndex(0);
+      val = mf.parse ("/foo/bar", pp);
+      harness.check (val.length, 1);
+      harness.check (val[0] instanceof String);
+      harness.check (val[0], "bar");
+
+
     }
 }
