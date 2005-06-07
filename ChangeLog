@@ -1,3 +1,23 @@
+2005-06-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/BandedSampleModel/constructors.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/createCompatibleSampleModel.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/createDataBuffer.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/createSubsetSampleModel.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getDataElements.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getPixel.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getPixels.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getSample.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getSampleDouble.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getSampleFloat.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/getSamples.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/hashCode.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/setDataElements.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/setPixel.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/setPixels.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/setSample.java: new test;
+	* gnu/testlet/java/awt/image/BandedSampleModel/setSamples.java: new test;
+
 2005-06-05  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/java/net/URI/ToStringTest.java:
