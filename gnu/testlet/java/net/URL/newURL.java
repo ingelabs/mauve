@@ -84,6 +84,9 @@ public class newURL implements Testlet
     check("jar:http://www.kaffe.org/foo/bar.jar!/",
 	  "/float/boat",
 	  "jar:http://www.kaffe.org/foo/bar.jar!/float/boat");
+    check("jar:http://www.kaffe.org/foo/bar.jar!/float",
+	  "#boat",
+	  "jar:http://www.kaffe.org/foo/bar.jar!/float#boat");
     check(null,
 	  "http://www.kaffe.org:99999/foo/bar",
 	  "http://www.kaffe.org:99999/foo/bar");

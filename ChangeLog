@@ -1,3 +1,9 @@
+2005-06-09  Ziga Mahkovec  <ziga.mahkovec@klika.si>
+
+	New test for Classpath bug #13353:
+	* gnu/testlet/java/net/URL/newURL.java: New test for jar: URLs with
+	fragments.
+
 2005-06-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/BandedSampleModel/constructors.java: new test;
