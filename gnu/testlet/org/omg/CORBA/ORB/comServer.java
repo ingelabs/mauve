@@ -39,23 +39,24 @@ exception statement from your version. */
 package gnu.testlet.org.omg.CORBA.ORB;
 
 import gnu.testlet.org.omg.CORBA.ORB.communication.comServant;
+import gnu.testlet.org.omg.CORBA_2_3.ORB.Valtype.GreetingsServant;
 
 import org.omg.CORBA.ORB;
 
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-
 /**
  * The ORB server class, used for test communication.
+ * To avoid pausing for each test, all CORBA tests, related to the
+ * client - server communication, are connected to this server.
+ *
+ * Warning: this server starts on ports 1126 and up.
  *
  * Modified, converting Classpath example into test.
  *
  * @author Audrius Meskauskas (AudriusA@bluewin.ch)
  */
-class comServer
+public class comServer
 {
-  public static String IOR;
-
+  public static String[] IORs;
   public static ORB orb;
 
   public static void main(String[] args)
@@ -68,22 +69,29 @@ class comServer
    * test, both server and client are started on the same virtual machine,
    * just in the different threads.
    */
-  public static synchronized String start_server(String[] args)
+  public static synchronized String[] start_server(String[] args)
   {
     // Check maybe is already running.
-    if (IOR != null)
-      return IOR;
+    if (IORs != null)
+      return IORs;
     try
       {
+        IORs = new String[ 2 ];
+
         // Create and initialize the ORB.
         orb = org.omg.CORBA.ORB.init(args, null);
 
-        // Create the servant and register it with the ORB.
+        // Create the test 1 servant and register it with the ORB.
         comServant tester = new comServant();
         orb.connect(tester);
 
-        // Storing the IOR reference.
-        String ior = orb.object_to_string(tester);
+        // Create the test 2 servant and register it with the ORB.
+        GreetingsServant tester2 = new GreetingsServant();
+        orb.connect(tester2);
+
+        // Storing the IOR references.
+        IORs [ 0 ] = orb.object_to_string(tester);
+        IORs [ 1 ] = orb.object_to_string(tester2);
 
         new Thread()
           {
@@ -94,8 +102,6 @@ class comServer
             }
           }.start();
 
-        IOR = ior;
-
         // Sleep for 3 seconds, allowing the server to start.
         try
           {
@@ -105,11 +111,11 @@ class comServer
           {
           }
 
-        return ior;
+        return IORs;
       }
     catch (Exception e)
       {
-        IOR = null;
+        IORs = null;
         return null;
       }
   }

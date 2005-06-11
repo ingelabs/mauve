@@ -1,3 +1,30 @@
+2005-06-11  Audrius Meskauskas  <AudriusA@bluewin.ch>
+
+	* gnu/testlet/org/omg/CORBA_2_3/ORB/ValueTypeTest.java: New tests.
+	* gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoValueFactory.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/Info.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoDefaultFactory.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoImpl.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/_GreetingsImplBase.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoHolder.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/GreetingsServant.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/Greetings.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoImpl.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/_GreetingsStub.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoValueFactory.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfo.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoHelper.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/GreetingsHelper.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoHolder.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoDefaultFactory.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoHelper.java: New test
+	supporting classes.
+	* gnu/testlet/org/omg/CORBA/ORB/comServer.java: Adapted to work with
+	ValueTypeTest.
+	* gnu/testlet/org/omg/CORBA_2_3/ORB/DirectTest.java,
+	* gnu/testlet/org/omg/CORBA_2_3/ORB/RequestTest.java: Adapted to work with
+	the changed comServer.
+
 2005-06-09  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* gnu/testlet/java/awt/MenuItem/label1.java: New test.

@@ -59,6 +59,9 @@ import gnu.testlet.org.omg.CORBA.ORB.communication.returnThis;
 /**
  * Test the invocations by direct call after casting to an interface.
  *
+ * Warning: this test start CORBA server on port 1126. Be sure your
+ * security restrictions allow that server to start.
+ *
  * This Classpath example was modified, converting it into the test.
  *
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
@@ -221,7 +224,7 @@ public class DirectTest
   protected void setUp()
                 throws java.lang.Exception
   {
-    String ior = comServer.start_server(new String[ 0 ]);
+    String ior = comServer.start_server(new String[ 0 ])[0];
 
     orb = org.omg.CORBA.ORB.init(new String[ 0 ], null);
 
