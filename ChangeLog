@@ -1,3 +1,8 @@
+2005-06-13  Ziga Mahkovec  <ziga.mahkovec@klika.si>
+
+	* gnu/testlet/java/text/AttributedString/Test.java: Added new test
+	exposing a runLimit bug.
+
 2005-05-11  Audrius Meskauskas  <AudriusA@bluewin.ch>
 
 	* gnu/testlet/java/net/ServerSocket/CORBA.java:

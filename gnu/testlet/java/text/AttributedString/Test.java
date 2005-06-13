@@ -60,6 +60,11 @@ test(TestHarness harness)
   int rl = aci.getRunLimit();
   harness.check(rl, 23, "getRunLimit");
 
+  aci.setIndex(rl);
+  rl = aci.getRunLimit(AttributedCharacterIterator.Attribute.LANGUAGE);
+  harness.check(rl, 29, "getRunLimit");
+  aci.first();
+
   StringBuffer result = new StringBuffer("");
   do
     {
