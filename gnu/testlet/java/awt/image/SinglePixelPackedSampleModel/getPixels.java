@@ -135,6 +135,17 @@ public class getPixels implements Testlet
     {
       harness.check(true);
     }
+    
+    // check other array types
+    try
+    {
+      float[] samples1 = m1.getPixels(0, 0, 1, 1, (float[]) null, db);
+      harness.check(true);
+    }
+    catch (NullPointerException e) 
+    {
+      harness.check(false);
+    }
   }
 }
 

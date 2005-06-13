@@ -1,5 +1,10 @@
 2005-06-13  Ziga Mahkovec  <ziga.mahkovec@klika.si>
 
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/getPixels.java:
+	Added new test exposing a NPE in SampleModel.getPixels.
+
+2005-06-13  Ziga Mahkovec  <ziga.mahkovec@klika.si>
+
 	* gnu/testlet/java/text/AttributedString/Test.java: Added new test
 	exposing a runLimit bug.
 
