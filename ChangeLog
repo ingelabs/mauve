@@ -1,3 +1,10 @@
+2005-06-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/text/AttributedString/addAttribute.java: new tests;
+	* gnu/testlet/java/text/AttributedString/addAttributes.java: new tests;
+	* gnu/testlet/java/text/AttributedString/constructors.java: new tests;
+	* gnu/testlet/java/text/AttributedString/getIterator.java: new tests.
+	
 2005-06-13  Ziga Mahkovec  <ziga.mahkovec@klika.si>
 
 	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/getPixels.java:
