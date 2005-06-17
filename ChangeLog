@@ -1,5 +1,9 @@
 2005-06-17  Robert Schuster  <thebohemian@gmx.net>
 
+	* gnu/testlet/java/io/InputStreamReader/getEncoding.java: New tests.
+
+2005-06-17  Robert Schuster  <thebohemian@gmx.net>
+
 	* gnu/testlet/java/beans/FeatureDescriptor/check.java: New tests.
 
 2005-06-14  David Gilbert  <david.gilbert@object-refinery.com>
