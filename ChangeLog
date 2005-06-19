@@ -1,3 +1,18 @@
+2005-06-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+        * gnu/testlet/javax/swing/table/AbstractTableModel/findColumn.java: new test;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableCellUpdated.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableChanged.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableDataChanged.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsDeleted.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsInserted.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsUpdated.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableStructureChanged.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/getColumnClass.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/getColumnName.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/isCellEditable.java: new tests;
+        * gnu/testlet/javax/swing/table/AbstractTableModel/MyTableModel.java: support class.
+
 2005-06-19  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/newInstance.java: Added 'Uses'.
