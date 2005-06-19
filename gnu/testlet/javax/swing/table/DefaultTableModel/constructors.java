@@ -130,29 +130,13 @@ public class constructors implements Testlet
     harness.check(m4.getColumnName(2), "C");   // 14
     
     // null data array - behaviour not specified
-    boolean pass = false;
-    try
-    {
-      DefaultTableModel m5 = new DefaultTableModel(null, columns1);
-    }
-    catch (NullPointerException e)
-    {
-      pass = true;
-    }
-    harness.check(pass);  
+    DefaultTableModel m5 = new DefaultTableModel(null, columns1);
+    harness.check(m5.getDataVector().size(), 0);
+    harness.check(m5.getColumnCount(), 3);
     
     // null column names array - behaviour not specified
-    pass = false;
-    Object[] columns5 = null;
-    try
-    {
-      DefaultTableModel m6 = new DefaultTableModel(data1, columns5);
-    }
-    catch (NullPointerException e) 
-    {
-      pass = true;
-    }
-    harness.check(pass);
+    DefaultTableModel m6 = new DefaultTableModel(data1, null);
+    harness.check(m6.getColumnCount(), 0);
     
   }
   
@@ -184,22 +168,15 @@ public class constructors implements Testlet
 
     // null array
     Object[] columns4 = null;
-    boolean pass = false;
-    try
-    {
-      DefaultTableModel m4 = new DefaultTableModel(columns4, 2);
-    }
-    catch (NullPointerException e)
-    {
-      pass = true;
-    }
-    harness.check(pass);            // check 13
+    DefaultTableModel m4 = new DefaultTableModel(columns4, 2);
+    harness.check(m4.getColumnCount(), 0);
+    harness.check(m4.getRowCount(), 2);
     
     // negative row count
-    pass = false;
+    boolean pass = false;
     try 
     {
-      DefaultTableModel m5 = new DefaultTableModel(columns1, -1);
+      /*DefaultTableModel m5 =*/ new DefaultTableModel(columns1, -1);
     }
     catch (RuntimeException e) 
     {
@@ -252,8 +229,7 @@ public class constructors implements Testlet
     {
       pass = true;
     }
-    
-    
+
     // negative row count
     pass = false;
     try 

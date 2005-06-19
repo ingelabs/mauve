@@ -40,12 +40,15 @@ public class setColumnIdentifiers implements Testlet
    */
   public void test(TestHarness harness)      
   {
-    testBasics(harness);
-    testEvents(harness);
+    testBasics1(harness);
+    testBasics2(harness);
+    testEvents1(harness);
+    testEvents2(harness);
   }
   
-  public void testBasics(TestHarness harness) 
+  public void testBasics1(TestHarness harness) 
   {
+    harness.checkPoint("setColumnIdentifiers(Object[])");
     DefaultTableModel m1 = new DefaultTableModel(1, 3);
     m1.setColumnIdentifiers(new Object[] {"C1", "C2", "C3"});
     harness.check(m1.getColumnName(0), "C1");  // 1
@@ -65,16 +68,62 @@ public class setColumnIdentifiers implements Testlet
     m1.setColumnIdentifiers((Object[]) null);
     harness.check(m1.getColumnCount(), 0);                // 8
     Vector v3 = m1.getDataVector();
-    Vector v3a = (Vector) v2.get(0);
+    Vector v3a = (Vector) v3.get(0);
     harness.check(v3a.size(), 0);
   }
 
-  public void testEvents(TestHarness harness) 
+  public void testBasics2(TestHarness harness) 
+  {
+    harness.checkPoint("setColumnIdentifiers(Vector)");
+    DefaultTableModel m1 = new DefaultTableModel(1, 3);
+    Vector v = new Vector();
+    v.add("C1");
+    v.add("C2");
+    v.add("C3");
+    m1.setColumnIdentifiers(v);
+    harness.check(m1.getColumnName(0), "C1");  // 1
+    harness.check(m1.getColumnName(1), "C2");  // 2
+    harness.check(m1.getColumnName(2), "C3");  // 3
+    Vector v1 = m1.getDataVector();
+    Vector v1a = (Vector) v1.get(0);
+    harness.check(v1a.size(), 3);              // 4
+
+    Vector cols2 = new Vector();
+    cols2.add("SINGLE COLUMN");
+    m1.setColumnIdentifiers(cols2);
+    harness.check(m1.getColumnCount(), 1);                // 5
+    harness.check(m1.getColumnName(0), "SINGLE COLUMN");  // 6
+    Vector v2 = m1.getDataVector();
+    Vector v2a = (Vector) v2.get(0);
+    harness.check(v2a.size(), 1);                         // 7
+    
+    m1.setColumnIdentifiers((Vector) null);
+    harness.check(m1.getColumnCount(), 0);                // 8
+    Vector v3 = m1.getDataVector();
+    Vector v3a = (Vector) v3.get(0);
+    harness.check(v3a.size(), 0);
+  }
+
+  public void testEvents1(TestHarness harness) 
   {
     DefaultTableModel m1 = new DefaultTableModel(1, 3);
     MyTableModelListener listener1 = new MyTableModelListener();
     m1.addTableModelListener(listener1);
     m1.setColumnIdentifiers(new Object[] {"C1", "C2", "C3"});
+    TableModelEvent event = listener1.getEvent();
+    harness.check(event.getType(), TableModelEvent.UPDATE);
+  }
+
+  public void testEvents2(TestHarness harness) 
+  {
+    DefaultTableModel m1 = new DefaultTableModel(1, 3);
+    Vector v = new Vector();
+    v.add("C1");
+    v.add("C2");
+    v.add("C3");
+    MyTableModelListener listener1 = new MyTableModelListener();
+    m1.addTableModelListener(listener1);
+    m1.setColumnIdentifiers(v);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.UPDATE);
   }

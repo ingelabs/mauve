@@ -60,13 +60,17 @@ public class setColumnCount implements Testlet
     harness.check(m2.getColumnCount(), 1);
     harness.check(m2.getValueAt(0, 0), "V1");
   
+    // check zero column count - this is permitted
+    m2.setColumnCount(0);
+    harness.check(m2.getColumnCount(), 0);
+    
     // negative column count - the spec doesn't say what exception this should
     // throw, so we'll just check for a runtime exception
     DefaultTableModel m3 = new DefaultTableModel();
     boolean pass = false;
     try 
     {
-      m1.setColumnCount(-1);
+      m3.setColumnCount(-1);
     }
     catch (RuntimeException e) 
     {

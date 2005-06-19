@@ -25,7 +25,8 @@ import gnu.testlet.Testlet;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the getColumnName() method in the {@link DefaultTableModel} class.
+ * Some tests for the getColumnName() method in the {@link DefaultTableModel} 
+ * class.
  */
 public class getColumnName implements Testlet
 {
@@ -47,7 +48,7 @@ public class getColumnName implements Testlet
     boolean pass = false;
     try
     {
-      String n = m1.getColumnName(-1);
+      /*String n =*/ m1.getColumnName(-1);
     }
     catch (RuntimeException e)
     {
@@ -55,8 +56,8 @@ public class getColumnName implements Testlet
     }
     harness.check(pass);
     
-    // column index too large
-    harness.check(m1.getColumnName(99), "");
+    // column index too large - this should fetch a default column name
+    harness.check(m1.getColumnName(99), "CV");
   }
 
 }

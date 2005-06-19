@@ -1,5 +1,22 @@
 2005-06-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+        * gnu/testlet/javax/swing/table/DefaultTableModel/constructors.java
+        (testConstructor3): changed expected result for null arguments,
+        (testConstructor4): changed expected result for null argument,
+        * gnu/testlet/javax/swing/table/DefaultTableModel/getColumnName.java
+        (test) Modified expected value for case where column index is too large,
+        * gnu/testlet/javax/swing/table/DefaultTableModel/setColumnCount.java
+        (test) Added check for zero columns,
+        * gnu/testlet/javax/swing/table/DefaultTableModel/setColumnIdentifiers.java
+        (testBasics) Renamed testBasics1 and corrected small error,
+        (testBasics2) New method,
+        (testEvents) Renamed testEvents1,
+        (testEvents2) New method.
+        * gnu/testlet/javax/swing/table/DefaultTableModel/setDataVector.java
+        (test) Changed expected results for null arguments.
+
+2005-06-19  David Gilbert  <david.gilbert@object-refinery.com>
+
         * gnu/testlet/javax/swing/table/AbstractTableModel/findColumn.java: new test;
         * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableCellUpdated.java: new tests;
         * gnu/testlet/javax/swing/table/AbstractTableModel/fireTableChanged.java: new tests;

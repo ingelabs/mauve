@@ -27,7 +27,8 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the setDataVector() methods in the {@link DefaultTableModel} class.
+ * Some tests for the setDataVector() methods in the {@link DefaultTableModel} 
+ * class.
  */
 public class setDataVector implements Testlet
 {
@@ -160,30 +161,20 @@ public class setDataVector implements Testlet
     
     // test null data vector - spec says 
     // "unspecified behavior, an possibly an exception."
-    // we check for NullPointerException...
-    boolean pass = false;
+    // According to bug 4348070, JDK 1.3 throws an IllegalArgumentException
+    // and JDK 1.4 doesn't throw any exception.
+    // we check for column count matching the supplied column names which would
+    // be the result of just calling setColumnIdentifiers...
     DefaultTableModel m3 = new DefaultTableModel();
-    try 
-    {
-      m3.setDataVector((Vector) null, columns2);
-    }
-    catch (NullPointerException e) 
-    {
-      pass = true;
-    }
-    harness.check(pass);                       // 21
+    m3.setDataVector((Vector) null, columns2);
+    harness.check(m3.getColumnCount(), 3);     // 21
+    harness.check(m3.getDataVector().size(), 0);
     
-    // test null column names
-    pass = false;
-    DefaultTableModel m4 = new DefaultTableModel();
-    try
-    {
-      m4.setDataVector((Vector) vv, null);
-    }
-    catch (NullPointerException e) 
-    {
-      pass = true;
-    }
-    harness.check(pass);                       // 22
+    // test null column names - it is not specified what should happen here,
+    // but we can probably assume the same behaviour as in setColumnIdentifiers,
+    // which is to set a zero-column model
+    DefaultTableModel m4 = new DefaultTableModel(2, 3);
+    m4.setDataVector(vv, null);
+    harness.check(m4.getColumnCount(), 0);     // 22
   }
 }
