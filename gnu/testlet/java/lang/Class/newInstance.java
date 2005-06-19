@@ -1,5 +1,7 @@
 // Tags: JDK1.1
 
+// Uses: pkg/test1 pkg/test2 pkg/test3 pkg/test4
+
 // Copyright (C) 2005 Jeroen Frijters
 
 // This file is part of Mauve.
