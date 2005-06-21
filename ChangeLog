@@ -1,7 +1,11 @@
+2005-06-21  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
+	* gnu/testlet/org/omg/IOP/IOR/Streams.java: New test.
+
 2005-06-20  Robert Schuster  <robertschuster@fsfe.org>
 
-		* gnu/testlet/javax/swing/JDialog/setDefaultCloseOperation.java:
-		New test.
+	* gnu/testlet/javax/swing/JDialog/setDefaultCloseOperation.java:
+	New test.
 
 2005-06-19  David Gilbert  <david.gilbert@object-refinery.com>
 
