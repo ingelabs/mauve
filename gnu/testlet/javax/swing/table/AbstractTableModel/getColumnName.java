@@ -46,6 +46,7 @@ public class getColumnName implements Testlet
     harness.check(m1.getColumnName(27), "AB");
     harness.check(m1.getColumnName(-1), "");
     harness.check(m1.getColumnName(Integer.MIN_VALUE), "");
+    harness.check(m1.getColumnName(Integer.MAX_VALUE - 1), "FXSHRXW");
     harness.check(m1.getColumnName(Integer.MAX_VALUE), "FXSHRXX");
   }
 

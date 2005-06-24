@@ -38,7 +38,8 @@ public class moveRow implements Testlet
    */
   public void test(TestHarness harness)      
   {
-    Object[][] data = new Object[][] {{"A"}, {"B"}, {"C"}, {"D"}, {"E"}, {"F"}, {"G"}, {"H"}, {"I"}, {"J"}, {"K"}};
+    Object[][] data = new Object[][] {{"A"}, {"B"}, {"C"}, {"D"}, {"E"}, {"F"},
+            {"G"}, {"H"}, {"I"}, {"J"}, {"K"}};
     DefaultTableModel m1 = new DefaultTableModel(data, new Object[] {"C1"});
     MyTableModelListener listener1 = new MyTableModelListener();
     m1.addTableModelListener(listener1);
@@ -56,6 +57,9 @@ public class moveRow implements Testlet
     harness.check(m1.getValueAt(10, 0), "K");
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.UPDATE);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 1);
+    harness.check(event.getLastRow(), 7);
     listener1.setEvent(null);
 
     DefaultTableModel m2 = new DefaultTableModel(data, new Object[] {"C1"});

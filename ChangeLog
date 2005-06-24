@@ -1,3 +1,29 @@
+2005-06-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/AbstractTableModel/getColumnName.java: 
+	added one more check;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/addColumn.java
+	(testAddColumn1): check more fields in generated event,
+	(testAddColumn2): check generated event,
+	(testAddColumn3): reformatting only;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/addRow.java
+	(testAddRow1): check more fields in generated event,
+	(testAddRow2): likewise;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/insertRow.java
+	(testInsertRow1): check more fields in generated event,
+	(testInsertRow2): likewise;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/moveRow.java
+	(test): check more fields in generated event;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setColumnCount.java
+	(testEvents): check more fields in generated event;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setColumnIdentifiers.java
+	(testEvents1): check more fields in generated event,
+	(testEvents2): likewise;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setDataVector.java
+	(testEvent): new method;
+	* gnu/testlet/javax/swing/table/DefaultTableModel/setRowCount.java
+	(testEvents): check more fields in generated events.
+
 2005-06-21  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
 	* gnu/testlet/org/omg/IOP/IOR/Streams.java: New test.

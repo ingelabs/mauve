@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: MyTableModelListener
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
@@ -24,6 +25,7 @@ import gnu.testlet.Testlet;
 
 import java.util.Vector;
 
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +44,7 @@ public class setDataVector implements Testlet
   {
     test1(harness);
     test2(harness);
+    testEvent(harness);
   }
   
   public void test1(TestHarness harness)
@@ -177,4 +180,34 @@ public class setDataVector implements Testlet
     m4.setDataVector(vv, null);
     harness.check(m4.getColumnCount(), 0);     // 22
   }
+  
+  public void testEvent(TestHarness harness)
+  {
+    harness.checkPoint("Check TableModelEvent");
+    DefaultTableModel m = new DefaultTableModel();
+    MyTableModelListener listener = new MyTableModelListener();
+    m.addTableModelListener(listener);
+    Vector v1 = new Vector();
+    v1.add("V1");
+    v1.add("V2");
+    v1.add("V3");
+    Vector v2 = new Vector();
+    v2.add("V4");
+    v2.add("V5");
+    v2.add("V6");
+    Vector v = new Vector();
+    v.add(v1);
+    v.add(v2);
+    Vector columns = new Vector();
+    columns.add("C1");
+    columns.add("C2");
+    columns.add("C3");
+    m.setDataVector(v, columns);
+    TableModelEvent event = listener.getEvent();
+    harness.check(event.getType(), TableModelEvent.UPDATE);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
+  }
+  
 }

@@ -26,7 +26,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the setColumnCount() method in the {@link DefaultTableModel} class.
+ * Some tests for the setColumnCount() method in the {@link DefaultTableModel} 
+ * class.
  */
 public class setColumnCount implements Testlet
 {
@@ -90,6 +91,9 @@ public class setColumnCount implements Testlet
     m1.setColumnCount(4);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.UPDATE);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
 
     DefaultTableModel m2 = new DefaultTableModel(1, 3);
     MyTableModelListener listener2 = new MyTableModelListener();
@@ -100,6 +104,9 @@ public class setColumnCount implements Testlet
     m2.setColumnCount(1);
     TableModelEvent event2 = listener2.getEvent();
     harness.check(event2.getType(), TableModelEvent.UPDATE);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
   }
 
 }

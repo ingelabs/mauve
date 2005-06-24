@@ -28,7 +28,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the insertRow() methods in the {@link DefaultTableModel} class.
+ * Some tests for the insertRow() methods in the {@link DefaultTableModel} 
+ * class.
  */
 public class insertRow implements Testlet
 {
@@ -47,7 +48,8 @@ public class insertRow implements Testlet
   private void testInsertRow1(TestHarness harness) 
   {
     harness.checkPoint("insertRow(int, Object[])");
-    DefaultTableModel m1 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 0);
+    DefaultTableModel m1 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 0);
     MyTableModelListener listener1 = new MyTableModelListener();
     m1.addTableModelListener(listener1);
     m1.insertRow(0, new Object[] {"V1", "V2", "V3"});
@@ -61,6 +63,9 @@ public class insertRow implements Testlet
     harness.check(m1.getRowCount(), 2);
     event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 0);
+    harness.check(event.getLastRow(), 0);
     listener1.setEvent(null);
     
     // negative row index
@@ -95,7 +100,8 @@ public class insertRow implements Testlet
     v1.add("V1");
     v1.add("V2");
     v1.add("V3");
-    DefaultTableModel m1 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 0);
+    DefaultTableModel m1 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 0);
     MyTableModelListener listener1 = new MyTableModelListener();
     m1.addTableModelListener(listener1);
     m1.insertRow(0, v1);
@@ -103,12 +109,18 @@ public class insertRow implements Testlet
     harness.check(m1.getRowCount(), 1);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 0);
+    harness.check(event.getLastRow(), 0);
     listener1.setEvent(null);
     
     m1.insertRow(0, (Vector) null);
     harness.check(m1.getRowCount(), 2);
     event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 0);
+    harness.check(event.getLastRow(), 0);
     listener1.setEvent(null);
     
     // negative row index

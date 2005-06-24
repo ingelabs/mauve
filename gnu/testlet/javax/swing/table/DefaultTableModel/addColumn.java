@@ -29,7 +29,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the addColumn() methods in the {@link DefaultTableModel} class.
+ * Some tests for the addColumn() methods in the {@link DefaultTableModel} 
+ * class.
  */
 public class addColumn implements Testlet
 {
@@ -57,7 +58,10 @@ public class addColumn implements Testlet
     harness.check(m1.getColumnName(0), "C1");               // 2 
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.UPDATE); // 3
-
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
+    
     // null argument is permitted in JDK 1.4 (see bug report 4474094)
     boolean pass = true;
     try 
@@ -68,7 +72,7 @@ public class addColumn implements Testlet
     {
       pass = false;
     }
-    harness.check(pass);                                    // 4
+    harness.check(pass);                                    
   }
 
   private void testAddColumn2(TestHarness harness) 
@@ -77,6 +81,8 @@ public class addColumn implements Testlet
     
     // correct number of data values
     DefaultTableModel m1 = new DefaultTableModel(2, 3);
+    MyTableModelListener listener1 = new MyTableModelListener();
+    m1.addTableModelListener(listener1);
     Vector columnData1 = new Vector();
     columnData1.add("V1");
     columnData1.add("V2");
@@ -85,33 +91,47 @@ public class addColumn implements Testlet
     harness.check(m1.getColumnName(3), "C4");              // 2
     harness.check(m1.getValueAt(0, 3), "V1");              // 3
     harness.check(m1.getValueAt(1, 3), "V2");              // 4
+    TableModelEvent event = listener1.getEvent();
+    harness.check(event.getType(), TableModelEvent.UPDATE); // 5
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); // 6 
+    harness.check(event.getFirstRow(), -1);                 // 7
+    harness.check(event.getLastRow(), -1);                  // 8
     
     // too few data values
     DefaultTableModel m2 = new DefaultTableModel(2, 3);
+    MyTableModelListener listener2 = new MyTableModelListener();
+    m2.addTableModelListener(listener2);
     Vector columnData2 = new Vector();
     columnData2.add("V1");
     m2.addColumn("C4", columnData2);
-    harness.check(m2.getColumnCount(), 4);                 // 5
-    harness.check(m2.getColumnName(3), "C4");              // 6
-    harness.check(m2.getValueAt(0, 3), "V1");              // 7
-    harness.check(m2.getValueAt(1, 3), null);              // 8
+    harness.check(m2.getColumnCount(), 4);                 // 9
+    harness.check(m2.getColumnName(3), "C4");              // 10
+    harness.check(m2.getValueAt(0, 3), "V1");              // 11
+    harness.check(m2.getValueAt(1, 3), null);              // 12
+    event = listener2.getEvent();
+    harness.check(event.getType(), TableModelEvent.UPDATE); 
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
     
     // too many data values
-    DefaultTableModel m3 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 2);
+    DefaultTableModel m3 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 2);
     Vector columnData3 = new Vector();
     columnData3.add("V1");
     columnData3.add("V2");
     columnData3.add("V3");
     m3.addColumn("C4", columnData3);
-    harness.check(m3.getColumnCount(), 4);                 // 9
-    harness.check(m3.getColumnName(3), "C4");              // 10
-    harness.check(m3.getValueAt(0, 3), "V1");              // 11
-    harness.check(m3.getValueAt(1, 3), "V2");              // 12
+    harness.check(m3.getColumnCount(), 4);                 // 13
+    harness.check(m3.getColumnName(3), "C4");              // 14
+    harness.check(m3.getValueAt(0, 3), "V1");              // 15
+    harness.check(m3.getValueAt(1, 3), "V2");              // 16
     
-    harness.check(m3.getValueAt(2, 3), "V3");              // 13
-    harness.check(m3.getValueAt(2, 2), null);              // 14
+    harness.check(m3.getValueAt(2, 3), "V3");              // 17
+    harness.check(m3.getValueAt(2, 2), null);              // 18
     
-    // null column name argument is permitted in JDK 1.4 (see bug report 4474094)
+    // null column name argument is permitted in JDK 1.4 
+    // (see bug report 4474094)
     boolean pass = true;
     try 
     {
@@ -156,7 +176,8 @@ public class addColumn implements Testlet
     harness.check(m2.getValueAt(1, 3), null);              // 8
     
     // too many data values
-    DefaultTableModel m3 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 2);
+    DefaultTableModel m3 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 2);
     Object[] columnData3 = new Object[3];
     columnData3[0] = "V1";
     columnData3[1] = "V2";
@@ -169,7 +190,8 @@ public class addColumn implements Testlet
     harness.check(m3.getValueAt(2, 3), "V3");              // 13
     harness.check(m3.getValueAt(2, 2), null);              // 14
     
-    // null column name argument is permitted in JDK 1.4 (see bug report 4474094)
+    // null column name argument is permitted in JDK 1.4 
+    // (see bug report 4474094)
     boolean pass = true;
     try 
     {

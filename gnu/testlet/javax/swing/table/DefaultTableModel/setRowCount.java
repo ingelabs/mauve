@@ -26,7 +26,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the setRowCount() method in the {@link DefaultTableModel} class.
+ * Some tests for the setRowCount() method in the {@link DefaultTableModel} 
+ * class.
  */
 public class setRowCount implements Testlet
 {
@@ -44,7 +45,8 @@ public class setRowCount implements Testlet
   
   public void testBasics(TestHarness harness) 
   {
-    DefaultTableModel m1 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 3);
+    DefaultTableModel m1 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 3);
     m1.setValueAt("V1", 0, 0);
     m1.setValueAt("V2", 1, 0);
     m1.setValueAt("V3", 2, 0);
@@ -83,9 +85,12 @@ public class setRowCount implements Testlet
     m1.setValueAt("V1", 0, 0);
     m1.setValueAt("V2", 1, 0);
     m1.setValueAt("V3", 2, 0);
-    m1.setRowCount(4);
+    m1.setRowCount(5);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event.getFirstRow(), 3);
+    harness.check(event.getLastRow(), 4);
 
     DefaultTableModel m2 = new DefaultTableModel(3, 1);
     MyTableModelListener listener2 = new MyTableModelListener();
@@ -96,6 +101,9 @@ public class setRowCount implements Testlet
     m2.setRowCount(1);
     TableModelEvent event2 = listener2.getEvent();
     harness.check(event2.getType(), TableModelEvent.DELETE);
+    harness.check(event2.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event2.getFirstRow(), 1);
+    harness.check(event2.getLastRow(), 2);
   }
 
 }

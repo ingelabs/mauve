@@ -28,7 +28,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Some tests for the setColumnIdentifiers() method in the {@link DefaultTableModel} class.
+ * Some tests for the setColumnIdentifiers() method in the 
+ * {@link DefaultTableModel} class.
  */
 public class setColumnIdentifiers implements Testlet
 {
@@ -112,6 +113,9 @@ public class setColumnIdentifiers implements Testlet
     m1.setColumnIdentifiers(new Object[] {"C1", "C2", "C3"});
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.UPDATE);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
   }
 
   public void testEvents2(TestHarness harness) 
@@ -126,6 +130,9 @@ public class setColumnIdentifiers implements Testlet
     m1.setColumnIdentifiers(v);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.UPDATE);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS);
+    harness.check(event.getFirstRow(), -1);
+    harness.check(event.getLastRow(), -1);
   }
 
 }

@@ -49,7 +49,8 @@ public class addRow implements Testlet
     harness.checkPoint("addRow(Object[])");
     
     // check case where number of data items matches number of columns
-    DefaultTableModel m1 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 0);
+    DefaultTableModel m1 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 0);
     MyTableModelListener listener1 = new MyTableModelListener();
     m1.addTableModelListener(listener1);
     m1.addRow(new Object[] {"V1", "V2", "V3"});
@@ -57,6 +58,9 @@ public class addRow implements Testlet
     harness.check(m1.getRowCount(), 1);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 0);
+    harness.check(event.getLastRow(), 0);
     listener1.setEvent(null);
     
     // check case where number of data items < number of columns
@@ -67,6 +71,9 @@ public class addRow implements Testlet
     harness.check(m1.getRowCount(), 2);
     event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 1);
+    harness.check(event.getLastRow(), 1);
     listener1.setEvent(null);
   }
 
@@ -75,7 +82,8 @@ public class addRow implements Testlet
     harness.checkPoint("addRow(Vector)");
     
     // check case where number of data items matches number of columns
-    DefaultTableModel m1 = new DefaultTableModel(new Object[] {"C1", "C2", "C3"}, 0);
+    DefaultTableModel m1 = new DefaultTableModel(
+            new Object[] {"C1", "C2", "C3"}, 0);
     MyTableModelListener listener1 = new MyTableModelListener();
     m1.addTableModelListener(listener1);
     Vector row = new Vector();
@@ -87,6 +95,9 @@ public class addRow implements Testlet
     harness.check(m1.getRowCount(), 1);
     TableModelEvent event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 0);
+    harness.check(event.getLastRow(), 0);
     listener1.setEvent(null);
     
     // check case where number of data items < number of columns
@@ -97,6 +108,9 @@ public class addRow implements Testlet
     harness.check(m1.getRowCount(), 2);
     event = listener1.getEvent();
     harness.check(event.getType(), TableModelEvent.INSERT);
+    harness.check(event.getColumn(), TableModelEvent.ALL_COLUMNS); 
+    harness.check(event.getFirstRow(), 1);
+    harness.check(event.getLastRow(), 1);
     listener1.setEvent(null);
   }
 
