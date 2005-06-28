@@ -1,3 +1,15 @@
+2005-06-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/BorderLayout/addLayoutComponent.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/constants.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/constructors.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/getHgap.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/getVgap.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/layoutContainer.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/preferredLayoutSize.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/setHgap.java: new tests,
+	* gnu/testlet/java/awt/BorderLayout/setVgap.java: new tests.
+	
 2005-06-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/AbstractTableModel/getColumnName.java: 
