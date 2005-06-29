@@ -1,3 +1,8 @@
+2005-06-29  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/event/TableModelEvent/constructors.java: 
+	new tests.
+	
 2005-06-28  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/BorderLayout/addLayoutComponent.java: new tests,
