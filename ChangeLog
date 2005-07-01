@@ -1,5 +1,12 @@
 2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/moveColumn.java:
+	(test): split into testGeneral() and testSpecial();
+	(testGeneral): old contents of test() modified slightly to catch error where Classpath is swapping columns rather than moving one column,
+	(testSpecial): new special case tests.
+	
+2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JTable/convertColumnIndexToModel.java: new tests;
 	* gnu/testlet/javax/swing/JTable/getModel.java: new tests;
 	* gnu/testlet/javax/swing/JTable/isCellEditable.java: new tests;

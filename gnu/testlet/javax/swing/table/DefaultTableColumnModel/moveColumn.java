@@ -40,18 +40,33 @@ public class moveColumn implements Testlet
    */
   public void test(TestHarness harness)       
   {
+    testGeneral(harness);
+    testSpecial(harness);
+  }
+
+  /**
+   * Runs the test using the specified harness. 
+   * 
+   * @param harness  the test harness (<code>null</code> not permitted).
+   */
+  public void testGeneral(TestHarness harness)       
+  {
+    harness.checkPoint("moveColumn(int, int) - General");
     DefaultTableColumnModel m1 = new DefaultTableColumnModel();
     m1.addColumn(new TableColumn(1, 23));
     m1.addColumn(new TableColumn(2, 34));
     m1.addColumn(new TableColumn(3, 45));
+    m1.addColumn(new TableColumn(4, 56));
 
-    m1.moveColumn(1, 2);
+    m1.moveColumn(1, 3);
     TableColumn tc0 = m1.getColumn(0);
     TableColumn tc1 = m1.getColumn(1);
     TableColumn tc2 = m1.getColumn(2);
+    TableColumn tc3 = m1.getColumn(3);
     harness.check(tc0.getWidth(), 23);
     harness.check(tc1.getWidth(), 45);
-    harness.check(tc2.getWidth(), 34);
+    harness.check(tc2.getWidth(), 56);
+    harness.check(tc3.getWidth(), 34);
  
     // check that moving a column sends the correct event
     MyListener listener = new MyListener();
@@ -60,6 +75,84 @@ public class moveColumn implements Testlet
     harness.check(listener.getEvent() != null);
     harness.check(listener.getEvent().getFromIndex(), 0);
     harness.check(listener.getEvent().getToIndex(), 1);
+    
+  }
+  
+  public void testSpecial(TestHarness harness) 
+  {
+    harness.checkPoint("moveColumn(int, int) - Special");
+    DefaultTableColumnModel m1 = new DefaultTableColumnModel();
+    m1.addColumn(new TableColumn(1, 23));
+    m1.addColumn(new TableColumn(2, 34));
+    m1.addColumn(new TableColumn(3, 45));
+    m1.addColumn(new TableColumn(4, 56));
+
+    // check from index == to index 
+    MyListener listener = new MyListener();
+    m1.addColumnModelListener(listener);
+    m1.moveColumn(1, 1);
+    TableColumn tc0 = m1.getColumn(0);
+    TableColumn tc1 = m1.getColumn(1);
+    TableColumn tc2 = m1.getColumn(2);
+    TableColumn tc3 = m1.getColumn(3);
+    harness.check(tc0.getWidth(), 23);
+    harness.check(tc1.getWidth(), 34);
+    harness.check(tc2.getWidth(), 45);
+    harness.check(tc3.getWidth(), 56);
+    harness.check(listener.getEvent() != null);
+    harness.check(listener.getEvent().getFromIndex(), 1);
+    harness.check(listener.getEvent().getToIndex(), 1);
+    
+    // check negative from index
+    boolean pass = false;
+    try
+    {
+      m1.moveColumn(-1, 0);
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // check negative to index
+    pass = false;
+    try
+    {
+      m1.moveColumn(0, -1);
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // check from index too large
+    pass = false;
+    try
+    {
+      m1.moveColumn(4, 3);
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // check to index too large
+    pass = false;
+    try
+    {
+      m1.moveColumn(3, 4);
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // check too index == last position
+    m1.moveColumn(0, 3);
   }
 
 }
