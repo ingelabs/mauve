@@ -89,12 +89,12 @@
             failonerror="true">
             <fileset dir="${build}" includes="gnu/testlet/java/**" />
             <fileset dir="${build}" includes="gnu/testlet/javax/**" />
-			<fileset dir="${build}" includes="gnu/testlet/org/**" />
+            <fileset dir="${build}" includes="gnu/testlet/org/**" />
         </mauve>
     </target>
 
     <target name="parseSources" description="Create tests lists file">
-        <java classname="gnu.anttask.CreateTags" fork="true">
+        <java classname="gnu.testlet.runner.CreateTags" fork="true">
             <classpath>
                 <pathelement location="${build}" />
             </classpath>
@@ -107,7 +107,7 @@
         <jar jarfile="alltests.jar" filesonly="true">
             <fileset dir="build" />
             <manifest>
-                <attribute name="Main-Class" value="gnu.anttask.Filter" />
+                <attribute name="Main-Class" value="gnu.testlet.runner.Filter" />
                 <attribute name="Built-By" value="${user.name}"/>
             </manifest>
 

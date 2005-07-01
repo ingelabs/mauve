@@ -1,3 +1,13 @@
+2005-07-01  Thomas Zander  <zander@kde.org>
+
+	* gnu/testlet/runner/CheckResult.java, gnu/testlet/runner/ClassResult.java,
+	gnu/testlet/runner/CreateTags.java, gnu/testlet/runner/Filter.java,
+	gnu/testlet/runner/HTMLGenerator.java, gnu/testlet/runner/Mauve.java,
+	gnu/testlet/runner/PackageResult.java, gnu/testlet/runner/RunResult.java,
+	gnu/testlet/runner/Tags.java, gnu/testlet/runner/TestResult.java,
+	gnu/testlet/runner/XMLGenerator.java:  New testrunner which is much faster then
+	the SimpleTestRunner and creates html output.
+
 2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/moveColumn.java:
