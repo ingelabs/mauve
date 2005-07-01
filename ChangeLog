@@ -1,5 +1,55 @@
 2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorSelectedForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getBlack.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControl.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlDarkShadow.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlDisabled.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlHighlight.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlInfo.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlShadow.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlTextColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlTextFont.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDescription.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDesktopColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getFocusColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getHighlightedTextColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getID.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getInactiveControlTextColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getInactiveSystemTextColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuBackground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuDisabledForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuSelectedBackground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuSelectedForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuTextFont.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getName.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControl.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlDarkShadow.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlHighlight.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlInfo.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlShadow.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSeparatorBackground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSeparatorForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSubTextFont.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSystemTextColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSystemTextFont.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getTextHighlightColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getUserTextColor.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getUserTextFont.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWhite.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowBackground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleBackground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleFont.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleInactiveBackground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleInactiveForeground.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/isNativeLookAndFeel.java: new tests;
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/isSupportedLookAndFeel.java: new tests;
+
+2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getControlTextFont.java: new test;
 	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getMenuTextFont.java: new test;
 	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getName.java: new test;
