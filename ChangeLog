@@ -1,5 +1,12 @@
 2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JTable/convertColumnIndexToModel.java: new tests;
+	* gnu/testlet/javax/swing/JTable/getModel.java: new tests;
+	* gnu/testlet/javax/swing/JTable/isCellEditable.java: new tests;
+	* gnu/testlet/javax/swing/JTable/setModel.java: new tests;
+
+2005-07-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java: new tests;
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorSelectedForeground.java: new tests;
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getBlack.java: new tests;
