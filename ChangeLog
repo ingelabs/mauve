@@ -1,3 +1,17 @@
+2005-07-05  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JTable/addColumn.java: new test,
+	* gnu/testlet/javax/swing/JTable/constructors.java: new test,
+	* gnu/testlet/javax/swing/JTable/convertColumnIndexToView.java: new test,
+	* gnu/testlet/javax/swing/JTable/createDefaultColumnsFromModel.java: new test,
+	* gnu/testlet/javax/swing/JTable/createDefaultDataModel.java: new test,
+	* gnu/testlet/javax/swing/JTable/createDefaultSelectionModel.java: new test,
+	* gnu/testlet/javax/swing/JTable/getAutoCreateColumnsFromModel.java: new test,
+	* gnu/testlet/javax/swing/JTable/getColumn.java: new test,
+	* gnu/testlet/javax/swing/JTable/getColumnName.java: new test,
+	* gnu/testlet/javax/swing/JTable/MyJTable.java: new support file,
+	* gnu/testlet/javax/swing/JTable/setAutoCreateColumnsFromModel.java: new test.
+	
 2005-07-01  Thomas Zander  <zander@kde.org>
 
 	* gnu/testlet/runner/CheckResult.java, gnu/testlet/runner/ClassResult.java,
