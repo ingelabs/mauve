@@ -1,5 +1,4 @@
-// Tags: JDK1.1
-// Uses: TestObjectInputValidation
+// Tags: not-a-test
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
@@ -35,38 +34,31 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-/**
- * Some checks for registerValidation() method of the {@link ObjectInputStream} class.
- */
-public class registerValidation implements Testlet 
-{
-
-  /**
-   * Runs the test using the specified harness.
-   * 
-   * @param harness  the test harness (<code>null</code> not permitted).
-   */
-  public void test(TestHarness harness)      
-  {
-    TestObjectInputValidation t1 = new TestObjectInputValidation("Name1");
-    TestObjectInputValidation t2 = null;
-
-    try {
-      ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-      ObjectOutput out = new ObjectOutputStream(buffer);
-      out.writeObject(t1);
-      out.close();
-
-      ObjectInput in = new ObjectInputStream(
-        new ByteArrayInputStream(buffer.toByteArray())
-      );
-      t2 = (TestObjectInputValidation) in.readObject();
-      in.close();
-    }
-    catch (Exception e) {
-      harness.debug(e);
-    }
-    harness.check(t2.isValidated());
+class TestObjectInputValidation implements ObjectInputValidation, Serializable {
+  private boolean validated;
+  private String name;
+  public TestObjectInputValidation(String name) 
+  {      
+    this.name = name;
+    this.validated = false;
   }
-  
+  public boolean isValidated() 
+  {
+    return this.validated;
+  }
+  public void validateObject()
+  {
+    this.validated = true;
+  }
+  private void writeObject(ObjectOutputStream stream) throws IOException 
+  {
+    stream.defaultWriteObject();
+  }
+  private void readObject(ObjectInputStream stream) 
+      throws IOException, ClassNotFoundException 
+  {
+    stream.defaultReadObject();
+    stream.registerValidation(this, 10);
+  }
+
 }

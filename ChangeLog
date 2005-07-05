@@ -1,3 +1,10 @@
+2005-07-05  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/ObjectInputStream/registerValidation.java:
+	Remove extra class and use...
+	* gnu/testlet/java/io/ObjectInputStream/TestObjectInputValidation.java:
+	New class.
+
 2005-07-05  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/removeColumn.java: new test.
