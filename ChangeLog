@@ -1,5 +1,9 @@
 2005-07-05  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/removeColumn.java: new test.
+	
+2005-07-05  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JTable/addColumn.java: new test,
 	* gnu/testlet/javax/swing/JTable/constructors.java: new test,
 	* gnu/testlet/javax/swing/JTable/convertColumnIndexToView.java: new test,
