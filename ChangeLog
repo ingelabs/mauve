@@ -1,3 +1,13 @@
+2005-07-06  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/AbstractAction/clone.java: new tests,
+	* gnu/testlet/javax/swing/AbstractAction/constructors.java: new tests,
+	* gnu/testlet/javax/swing/AbstractAction/getValue.java: new tests,
+	* gnu/testlet/javax/swing/AbstractAction/putValue.java: new tests,
+	* gnu/testlet/javax/swing/AbstractAction/setEnabled.java: new tests,
+	* gnu/testlet/javax/swing/AbstractAction/MyAction.java: new file,
+	* gnu/testlet/javax/swing/AbstractAction/MyPropertyChangeListener.java: new file.
+
 2005-07-05  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/ObjectInputStream/registerValidation.java:
