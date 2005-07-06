@@ -1,5 +1,19 @@
 2005-07-06  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JTable/constructors.java
+	(constructor3): removed whitespace.
+	* gnu/testlet/javax/swing/JTable/getColumnName.java:
+	(test): add test to confirm that identifier and headerValue are not used.
+	* gnu/testlet/javax/swing/JTable/getModel.java: remove unnecessary imports,
+	* gnu/testlet/javax/swing/JTable/isCellEditable.java: 
+	(test): fixed indentation,
+	* gnu/testlet/javax/swing/JTable/setModel.java:
+	(test): split into test1() and test2(),
+	(test1): code from previous test(),
+	(test2): check that the autoCreateColumnsFromModel flag is correctly observed.
+	
+2005-07-06  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/AbstractAction/clone.java: new tests,
 	* gnu/testlet/javax/swing/AbstractAction/constructors.java: new tests,
 	* gnu/testlet/javax/swing/AbstractAction/getValue.java: new tests,

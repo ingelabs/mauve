@@ -27,6 +27,7 @@ import java.util.Arrays;
 import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  * Some checks for the setModel() method in the {@link JTable} class.
@@ -40,7 +41,13 @@ public class setModel implements Testlet {
    */
   public void test(TestHarness harness)      
   {
-    harness.checkPoint("setModel(TableModel)");
+    test1(harness);
+    test2(harness);
+  }
+
+  public void test1(TestHarness harness)      
+  {
+    harness.checkPoint("setModel(TableModel) - test1");
     DefaultTableModel m1 = new DefaultTableModel();
     JTable t = new JTable(m1);
     DefaultTableModel m2 = new DefaultTableModel();
@@ -63,4 +70,40 @@ public class setModel implements Testlet {
     harness.check(pass);
   }
 
+  /**
+   * This test checks that the autoCreateColumnsFromModel flag is correctly
+   * observed.
+   * 
+   * @param harness  the test harness.
+   */
+  public void test2(TestHarness harness)      
+  {
+    harness.checkPoint("setModel(TableModel) - test2");
+    DefaultTableModel m1 = new DefaultTableModel(2, 3);
+    JTable t = new JTable(m1);
+    TableColumnModel tcm = t.getColumnModel();
+    tcm.getColumn(1).setModelIndex(0);
+    tcm.getColumn(0).setModelIndex(1);
+    harness.check(t.getColumnCount(), 3);
+    harness.check(t.getColumnName(0), "B");
+    harness.check(t.getColumnName(1), "A");
+    harness.check(t.getColumnName(2), "C");
+    
+    DefaultTableModel m2 = new DefaultTableModel(new String[] {"AA", "BB"}, 1);
+    t.setModel(m2);
+    harness.check(t.getColumnCount(), 2);
+    harness.check(t.getColumnName(0), "AA");
+    harness.check(t.getColumnName(1), "BB");
+   
+    tcm = t.getColumnModel();
+    tcm.getColumn(1).setModelIndex(0);
+    tcm.getColumn(0).setModelIndex(1);    
+    t.setAutoCreateColumnsFromModel(false);
+    DefaultTableModel m3 = new DefaultTableModel(
+            new String[] {"CC", "DD", "EE"}, 1);
+    t.setModel(m3);
+    harness.check(t.getColumnCount(), 2);
+    harness.check(t.getColumnName(0), "DD");
+    harness.check(t.getColumnName(1), "CC");
+  }
 }

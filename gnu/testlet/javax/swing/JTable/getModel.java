@@ -22,10 +22,7 @@ package gnu.testlet.javax.swing.JTable;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.util.Arrays;
-
 import javax.swing.JTable;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 /**

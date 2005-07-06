@@ -39,9 +39,10 @@ public class isCellEditable implements Testlet {
   {
     harness.checkPoint("isCellEditable()");
     DefaultTableModel m1 = new DefaultTableModel(4, 6) {
-        public boolean isCellEditable(int row, int column) {
-            return (row > 1 && column > 2);
-        }
+      public boolean isCellEditable(int row, int column) 
+      {
+        return (row > 1 && column > 2);
+      }
     };
     JTable t = new JTable(m1);
     harness.check(!t.isCellEditable(0, 0));

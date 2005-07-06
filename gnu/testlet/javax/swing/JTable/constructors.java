@@ -91,7 +91,7 @@ public class constructors implements Testlet {
   public void constructor3(TestHarness harness) 
   {
     harness.checkPoint("JTable(Object[][], Object[])");
-    
+
     // try null data
     boolean pass = false;
     try
