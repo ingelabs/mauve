@@ -1,5 +1,5 @@
 //Tags: JDK1.2
-//Uses: gnu/testlet/java/beans/Introspector/foo/TestSubject gnu/testlet/java/beans/Introspector/foo/info/TestSubjectBeanInfo gnu/testlet/java/beans/Introspector/bar/TestSubject gnu/testlet/java/beans/Introspector/bar/info/TestSubjectBeanInfo
+//Uses: foo/TestSubject foo/info/TestSubjectBeanInfo bar/TestSubject bar/info/TestSubjectBeanInfo
 
 //Copyright (C) 2005  Robert Schuster <theBohemian@gmx.net>
 
