@@ -1,5 +1,10 @@
 2005-07-06  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/io/InputStreamReader/hang.java (test): Fixed
+	UTF-8 encoding bug.
+
+2005-07-06  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/io/InputStreamReader/hang.java: New file
 
 2005-07-06  Tom Tromey  <tromey@redhat.com>

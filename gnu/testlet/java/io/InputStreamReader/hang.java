@@ -40,8 +40,8 @@ public class hang implements Testlet
 	// will split it.
 	byte[] bytes = new byte[20];
 	Arrays.fill(bytes, (byte) 'a');
-	bytes[9] = (byte) 0xc0;
-	bytes[10] = (byte) 0x80;
+	bytes[9] = (byte) 208;
+	bytes[10] = (byte) 164;
 
 	ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
 	BufferedInputStream bis = new BufferedInputStream(bais, 10);
