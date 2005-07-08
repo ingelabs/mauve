@@ -1,5 +1,10 @@
 2005-07-08  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/TreeLeafIcon/getAdditionalHeight.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/TreeLeafIcon/getShift.java: likewise.
+
+2005-07-08  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/TreeFolderIcon/getAdditionalHeight.java: new test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/TreeFolderIcon/getShift.java: likewise.
 	
