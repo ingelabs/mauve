@@ -1,3 +1,9 @@
+2005-07-08  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeControlIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeFolderIcon.java: likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeLeafIcon.java: likewise.
+
 2005-07-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JProgressBar/constructors.java: new tests.
