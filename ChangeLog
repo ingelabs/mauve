@@ -1,6 +1,8 @@
 2005-07-09  Archie Cobbs  <archie@dellroad.org>
 
 	* batch_run: use "=" instead of "==" for test(1) equality
+	* uses-list: avoid error from shifting too many parameters
+	* runner: add jc (commented out)
 
 2005-07-08  David Gilbert  <david.gilbert@object-refinery.com>
 

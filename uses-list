@@ -68,8 +68,12 @@ while test ! -z "$class"; do
     done
     test -n "$verbose" && echo " ... uses: $filelist"
 
-    class="$1"
-    shift
+    if test $# -gt 0; then
+	class="$1"
+	shift
+    else
+	class=""
+    fi
 done
 
 # Now uniquify the list of auxiliary files we used.
