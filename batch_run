@@ -111,7 +111,7 @@ for testclass in `cat test_classes`; do
         $COMPILER $COMPILER_FLAGS -o SimpleTestHarness --main=gnu.testlet.SimpleTestHarness \
 	          $framework_sources `cat uses_files`
     fi
-    if test $?  == 0; then
+    if test $?  = 0; then
         ./runner $testclass 2>&1 | egrep '^(PASS|FAIL): '
     else
         echo "FAIL: $testclass COMPILE FAILED"

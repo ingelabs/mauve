@@ -1,3 +1,7 @@
+2005-07-09  Archie Cobbs  <archie@dellroad.org>
+
+	* batch_run: use "=" instead of "==" for test(1) equality
+
 2005-07-08  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/TreeLeafIcon/getAdditionalHeight.java: new test,
