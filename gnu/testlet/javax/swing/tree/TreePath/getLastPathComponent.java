@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004  Michael Koch <konqueror@gmx.de>
+// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,25 +22,24 @@ package gnu.testlet.javax.swing.tree.TreePath;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import javax.swing.tree.*;
+import javax.swing.tree.TreePath;
 
 /**
- * Tests if getParentPath correctly returns null if the current TreePath only
- * contains one element.
+ * Some tests for the getLastPathCompoent() method in the {@link TreePath} 
+ * class.
  */
-public class getParentPath implements Testlet
+public class getLastPathComponent implements Testlet 
 {
-  public void test(TestHarness h)
+
+  /**
+   * Runs the test using the specified harness.
+   * 
+   * @param harness  the test harness (<code>null</code> not permitted).
+   */
+  public void test(TestHarness harness)      
   {
-    TreePath test = new TreePath("Test");
-    h.check(test.getParentPath(), null);
-    
-    TreePath p = new TreePath(new Object[] {"A", "B"});
-    TreePath parent = p.getParentPath();
-    h.check(parent, new TreePath("A"));
-    
-    p = new TreePath(new Object[] {"A", "B", "C", "D"});
-    parent = p.getParentPath();
-    h.check(parent, new TreePath(new Object[] {"A", "B", "C"})); 
+    TreePath p1 = new TreePath(new Object[] {"A", "B", "C"});
+    harness.check(p1.getLastPathComponent(), "C");
   }
+
 }

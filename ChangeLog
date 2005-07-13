@@ -1,3 +1,17 @@
+2005-07-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/jaxax/swing/tree/TreePath/constructors.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/equals.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/getLastPathComponent.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/getParentPath.java
+	(test): added additional checks,
+	* gnu/testlet/jaxax/swing/tree/TreePath/getPath.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/getPathComponent.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/getPathCount.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/isDescendant.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/pathByAddingChild.java: new file,
+	* gnu/testlet/jaxax/swing/tree/TreePath/serialization.java: new file.
+	
 2005-07-13  Robert Schuster  <robertschuster@fsfe.org>
 
 	* gnu/testlet/javax/swing/AbstractButton/getActionCommand.java: New base class
