@@ -1,3 +1,17 @@
+2005-07-13  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/AbstractButton/getActionCommand.java: New base class
+	for tests in subclasses.
+	* gnu/testlet/javax/swing/JButton/getActionCommand.java,
+	gnu/testlet/javax/swing/JRadioButton/getActionCommand.java,
+	gnu/testlet/javax/swing/JToggleButton/getActionCommand.java,
+	gnu/testlet/javax/swing/JCheckBox/getActionCommand.java,
+	gnu/testlet/javax/swing/JMenuItem/getActionCommand.java,
+	gnu/testlet/javax/swing/JMenu/getActionCommand.java,
+	gnu/testlet/javax/swing/JRadioButtonMenuItem/getActionCommand.java,
+	gnu/testlet/javax/swing/JCheckBoxMenuItem/getActionCommand.java: New tests
+	based on "gnu.testlet.javax.swing.AbstractButton.getActionCommand".
+
 2005-07-09  Archie Cobbs  <archie@dellroad.org>
 
 	* batch_run: use "=" instead of "==" for test(1) equality
