@@ -1,3 +1,10 @@
+2005-07-14  Guilhem Lavaux  <guilhem@kaffe.org>
+
+	* gnu/testlet/java/util/logging/LogManager/logging.properties,
+	gnu/testlet/java/util/logging/LogManager/readConfiguration.java
+	gnu/testlet/java/util/logging/LogManager/TestHandler.java: New testlet
+	for LogManager.
+
 2005-07-13  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/jaxax/swing/tree/TreePath/constructors.java: new file,
