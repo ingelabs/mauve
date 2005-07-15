@@ -27,7 +27,7 @@ import gnu.testlet.Testlet;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -44,9 +44,13 @@ public class click
   String command;
   boolean ceCalled;
 
+  /** If the ActionListener has been called. */
+  boolean alCalled;
+
   public void actionPerformed(ActionEvent e)
   {
     command = e.getActionCommand();
+    alCalled = true;
   }
 
   public void stateChanged(ChangeEvent e)
@@ -56,20 +60,19 @@ public class click
 
   public void test(TestHarness harness)
   {
-    JCheckBox b = createToggleButton(harness);
+    JToggleButton b = createToggleButton(harness);
 
     testStateChanges(harness, b);
     testListeners(harness, b);
   }
 
-  private void testListeners(TestHarness harness, JCheckBox b)
+  private void testListeners(TestHarness harness, JToggleButton b)
   {
     b.setSelected(false);
     b.addActionListener(this);
     b.addChangeListener(this);
-
+    alCalled = false;
     b.doClick();
-
     harness.check(command, LABEL,
                   "Notifying action listener about the programmatic click"
                  );
@@ -110,7 +113,7 @@ public class click
     harness.check(!ceCalled, "Removing change listener");
   }
 
-  private void testStateChanges(TestHarness harness, JCheckBox b)
+  private void testStateChanges(TestHarness harness, JToggleButton b)
   {
     b.setSelected(false);
     b.doClick();
@@ -125,9 +128,9 @@ public class click
   /**
    * Create the test object and also check its basic properties.
    */
-  private JCheckBox createToggleButton(TestHarness harness)
+  private JToggleButton createToggleButton(TestHarness harness)
   {
-    JCheckBox b = new JCheckBox();
+    JToggleButton b = new JToggleButton();
     b.setText(LABEL);
     harness.check(b.getText(), LABEL, LABEL);
 
