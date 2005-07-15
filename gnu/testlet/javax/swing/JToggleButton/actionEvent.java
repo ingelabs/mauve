@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 Audrius Meskauskas <audriusa@bluewin.ch>
+// Copyright (C) 2005 Roman Kennke (roman@kennke.org)
 
 // This file is part of Mauve.
 

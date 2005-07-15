@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 Roman Kennke <roman@kennke.org>
+// Copyright (C) 2005 Roman Kennke (roman@kennke.org)
 
 // This file is part of Mauve.
 
@@ -19,13 +19,12 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-package gnu.testlet.javax.swing.AbstractButton;
+package gnu.testlet.javax.swing.JToggleButton;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
+import javax.swing.JToggleButton;
 
 /**
  * Checks if the AbstractButton constructor correctly initializes the
@@ -33,16 +32,12 @@ import javax.swing.ButtonModel;
  */
 public class constructor implements Testlet
 {
-  // a concrete version of AbstractButton for testing purposes
-  class MyButton extends AbstractButton
-  {
-  }
-
   public void test(TestHarness h)
   {
-    MyButton b = new MyButton();
-    ButtonModel m = b.getModel();
-    h.check(m, null);
-    h.check(b.getText(), "");
+    JToggleButton t1 = new JToggleButton();
+    h.check(t1.getText(), "", "Button label should default to \"\"");
+
+    t1 = new JToggleButton((String) null);
+    h.check(t1.getText(), "", "Button label should default to \"\"");
   }
 }

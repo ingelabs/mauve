@@ -26,23 +26,29 @@ import gnu.testlet.TestHarness;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
+import javax.swing.Icon;
 
 /**
- * Checks if the AbstractButton constructor correctly initializes the
+ * Checks if the AbstractButton init() method correctly initializes the
  * properties of the AbstractButton.
  */
-public class constructor implements Testlet
+public class init implements Testlet
 {
   // a concrete version of AbstractButton for testing purposes
   class MyButton extends AbstractButton
   {
+    /**
+     * Made public for testing.
+     */
+    public void init(String s, Icon i) {
+      super.init(s, i);
+    }
   }
 
   public void test(TestHarness h)
   {
     MyButton b = new MyButton();
-    ButtonModel m = b.getModel();
-    h.check(m, null);
-    h.check(b.getText(), "");
+    b.init(null, null);
+    h.check(b.getText(), "", "AbstractButton.text is \"\" per default");
   }
 }
