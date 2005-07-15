@@ -1,3 +1,10 @@
+2005-07-15  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/breadthFirstEnumeration.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/postorderEnumeration.java,
+	gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/preorderEnumeration.java:
+	Removed unused import.
+
 2005-07-15  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/javax/swing/JToggleButton/actionEvent.java:

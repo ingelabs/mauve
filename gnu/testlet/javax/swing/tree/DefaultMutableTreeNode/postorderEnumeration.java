@@ -25,8 +25,6 @@ import gnu.testlet.Testlet;
 
 import java.util.Enumeration;
 
-import javax.swing.tree.*;
-
 public class postorderEnumeration implements Testlet
 {
   public void test(TestHarness h)
