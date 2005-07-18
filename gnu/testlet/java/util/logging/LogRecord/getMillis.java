@@ -41,12 +41,14 @@ public class getMillis
     rec1 = new LogRecord(Level.CONFIG, "foo");
     try
       {
-        Thread.sleep(4);
+	long start = System.currentTimeMillis();
+	while (start == System.currentTimeMillis())
+	    Thread.sleep(1);
       }
     catch (InterruptedException _)
       {
       }
     rec2 = new LogRecord(Level.INFO, "bar");
-    th.check(rec1.getMillis() != rec2.getMillis());
+    th.check(rec1.getMillis() < rec2.getMillis());
   }
 }

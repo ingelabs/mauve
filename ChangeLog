@@ -1,3 +1,8 @@
+2005-07-18  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/util/logging/LogRecord/getMillis.java:
+	Made the code more robust against time resolution issues.
+
 2005-07-15  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/javax/swing/AbstractButton/init.java:
