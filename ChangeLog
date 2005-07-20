@@ -1,3 +1,37 @@
+2005-07-20  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JSlider/addChangeListener.java: new file,
+	* gnu/testlet/javax/swing/JSlider/createStandardLabels.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getExtent.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getInverted.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getLabelTable.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getMajorTickSpacing.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getMaximum.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getMinimum.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getMinorTickSpacing.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getModel.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getPaintLabels.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getPaintTicks.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getPaintTrack.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getSnapToTicks.java: new file,
+	* gnu/testlet/javax/swing/JSlider/getUIClassID.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setExtent.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setInverted.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setLabelTable.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setMajorTickSpacing.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setMaximum.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setMinimum.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setMinorTickSpacing.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setModel.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setOrientation.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setPaintLabels.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setPaintTicks.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setPaintTrack.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setSnapToTicks.java: new file,
+	* gnu/testlet/javax/swing/JSlider/setValue.java: new file,
+	* gnu/testlet/javax/swing/JSlider/MyChangeListener.java: new file,
+	* gnu/testlet/javax/swing/JSlider/MyPropertyChangeListener.java: new file.
+
 2005-07-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JSlider/constructors.java: new tests.
