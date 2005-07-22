@@ -263,6 +263,10 @@ public class DatagramSocketTest implements Testlet
 			} catch (InterruptedIOException e )
 			{
 				harness.check(true);
+			} catch (IOException ioe) 
+			{
+				harness.debug(ioe);
+				harness.check(false);
 			}
 			client.close();
 
