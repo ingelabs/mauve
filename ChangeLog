@@ -1,5 +1,14 @@
 2005-07-22  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/io/Serializable/BreakMe.java: New test and
+	generator.
+	* gnu/testlet/java/io/Serializable/BreakMeTestSer.java: New test.
+	* gnu/testlet/java/io/Serializable/MyBreakMe.java: New helper clas.
+	* gnu/testlet/java/io/Serializable/MyBreakMe.ser: New binary
+	serialized stream.
+
+2005-07-22  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/net/DatagramSocket/DatagramSocketTest.java
 	(test_echoWithTimeout): Catch and fail when we get a general
 	IOException instead of a InterruptedIOException.
