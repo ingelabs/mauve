@@ -74,6 +74,9 @@ public class constructors implements Testlet
     harness.check(c1.getCellEditor(), null);
     harness.check(c1.getHeaderValue(), null);
     harness.check(c1.getResizable(), true);
+    
+    TableColumn c2 = new TableColumn(-1);
+    harness.check(c2.getModelIndex(), -1);
   }
   
   private void testConstructor3(TestHarness harness) 
@@ -88,6 +91,10 @@ public class constructors implements Testlet
     harness.check(c1.getCellEditor(), null);
     harness.check(c1.getHeaderValue(), null);
     harness.check(c1.getResizable(), true);
+    
+    // negative width
+    TableColumn c2 = new TableColumn(1, -1);
+    harness.check(c2.getWidth(), -1);
   }
   
   private void testConstructor4(TestHarness harness)  

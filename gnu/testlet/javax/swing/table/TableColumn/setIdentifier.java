@@ -40,6 +40,9 @@ public class setIdentifier implements Testlet
     TableColumn c = new TableColumn();
     c.setIdentifier(new Integer(99));
     harness.check(c.getIdentifier(), new Integer(99));
+    
+    c.setIdentifier(null);
+    harness.check(c.getIdentifier(), null);
   }
 
 }

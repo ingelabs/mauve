@@ -41,8 +41,8 @@ public class setMinWidth implements Testlet
     c.setMinWidth(11);
     harness.check(c.getMinWidth(), 11);
     
-    // spec says that current and preferred width will be updated if they are less than
-    // the min width
+    // spec says that current and preferred width will be updated if they are 
+    // less than the min width
     harness.check(c.getWidth(), 75);
     harness.check(c.getPreferredWidth(), 75);
     c.setMinWidth(88);

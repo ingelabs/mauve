@@ -1,5 +1,17 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/table/TableColumn/constructors.java
+	(testConstructor2): added check for negative width,
+	(testConstructor3): added check for negative width.
+	* gnu/testlet/javax/swing/table/TableColumn/setHeaderValue.java:
+	(test): check null argument.
+	* gnu/testlet/javax/swing/table/TableColumn/setIdentifier.java:
+	(test): check null argument.
+	* gnu/testlet/javax/swing/table/TableColumn/setMinWidth.java:
+	(test): wrap at 80 columns.
+
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JMenuItem/constructors.java: new tests.
 	
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>

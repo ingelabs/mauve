@@ -47,9 +47,12 @@ public class setHeaderValue implements Testlet, PropertyChangeListener
     harness.check(c.getHeaderValue(), new Integer(99));
     
     // O'Reilly's "Java Swing" (first edition) lists this as a "bound" property
-  	c.addPropertyChangeListener(this);
-  	c.setHeaderValue("Value");
-  	harness.check(this.event != null);
+    c.addPropertyChangeListener(this);
+    c.setHeaderValue("Value");
+    harness.check(this.event != null);
+    
+    c.setHeaderValue(null);
+    harness.check(c.getHeaderValue(), null);
   }
   
   public void propertyChange(PropertyChangeEvent e) 
