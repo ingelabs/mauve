@@ -1,5 +1,5 @@
 // Tags: JDK1.3
-// Uses: MyBasicLookAndFeel.java
+// Uses: MyBasicLookAndFeel
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 

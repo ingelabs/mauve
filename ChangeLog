@@ -1,5 +1,12 @@
 2005-07-25  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/initComponentDefaults.java:
+	Fixed 'Uses'.
+
+2005-07-25  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableChanged.java:
 	Fixed 'Uses'.
 	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsInserted.java:
