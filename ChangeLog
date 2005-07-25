@@ -1,5 +1,11 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/ConvolveOp/constants.java: new file,
+	* gnu/testlet/java/awt/image/ConvolveOp/constructors.java: new file,
+	* gnu/testlet/java/awt/image/ConvolveOp/getKernel.java: new file.
+	
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/AlphaComposite/equals.java: new file,
 	* gnu/testlet/java/awt/AlphaComposite/getInstance.java: new file,
 	* gnu/testlet/java/awt/AlphaComposite/getInstance14.java: new file,
