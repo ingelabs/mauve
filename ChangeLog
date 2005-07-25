@@ -1,5 +1,9 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JMenuItem/constructors.java: new tests.
+	
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/RenderingHints/get.java: reformatted
 	(test): added test for key with no value defined.
 
