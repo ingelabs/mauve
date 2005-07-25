@@ -39,6 +39,11 @@ public class getColumnMargin implements Testlet
   public void test(TestHarness harness)      
   {
     DefaultTableColumnModel m1 = new DefaultTableColumnModel();
+    
+    // the default is 1
+    harness.check(m1.getColumnMargin(), 1);
+    
+    // try another setting
     m1.setColumnMargin(123);
     harness.check(m1.getColumnMargin(), 123);
   }

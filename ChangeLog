@@ -1,5 +1,10 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumnMargin.java
+	(test): added check for default value.
+
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/calculateGeometry.java: new file,
 	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/constructors.java: new file,
 	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/getMaximumSize.java: new file,
