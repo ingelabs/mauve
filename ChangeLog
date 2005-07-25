@@ -1,5 +1,10 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/MyBasicLookAndFeel.java: new file.
+	
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/image/ConvolveOp/constants.java: new file,
 	* gnu/testlet/java/awt/image/ConvolveOp/constructors.java: new file,
 	* gnu/testlet/java/awt/image/ConvolveOp/getKernel.java: new file.
