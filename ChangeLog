@@ -1,5 +1,20 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/calculateGeometry.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/constructors.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/getMaximumSize.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/getMinimumSize.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/getPreferredSize.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/getThumbSize.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/installUI.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/MyBasicSliderUI.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/valueForXPosition.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/valueForYPosition.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/xPositionForValue.java: new file,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/yPositionForValue.java: new file.
+
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/table/TableColumn/constructors.java
 	(testConstructor2): added check for negative width,
 	(testConstructor3): added check for negative width.
