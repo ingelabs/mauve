@@ -1,3 +1,8 @@
+2005-07-24  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/Properties/load.java (test): Added
+	trailing-backslash test.  PR classpath/22994.
+
 2005-07-25  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:

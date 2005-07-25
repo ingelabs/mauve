@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 2000 Red Hat Inc.
+// Copyright (C) 2000, 2005 Red Hat Inc.
 
 // This file is part of Mauve.
 
@@ -79,6 +79,40 @@ public class load implements Testlet
       harness.check (in.getProperty (EXPECT[i * 2]),
                      p.getProperty (EXPECT[i * 2]));
     }
+
+    // Classpath regression tests.
+    harness.checkPoint("trailing backslash");
+    p = new Properties();
+    boolean ok = true;
+    try
+      {
+	p.load(new ByteArrayInputStream("val = trailing backslash \\\n".getBytes()));
+      }
+    catch (IOException x)
+      {
+      }
+    catch (Throwable x2)
+      {
+	ok = false;
+      }
+    harness.check(ok);
+    harness.check(p.size(), 1);
+
+    p = new Properties();
+    ok = true;
+    try
+      {
+	p.load(new ByteArrayInputStream("v\\".getBytes()));
+      }
+    catch (IOException x)
+      {
+      }
+    catch (Throwable x2)
+      {
+	ok = false;
+      }
+    harness.check(ok);
+    harness.check(p.size(), 1);
   }
 
   private static final String[] EXPECT = new String[] {
