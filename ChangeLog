@@ -1,3 +1,28 @@
+2005-07-25  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableChanged.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsInserted.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsUpdated.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableDataChanged.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableCellUpdated.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableRowsDeleted.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/table/AbstractTableModel/fireTableStructureChanged.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/calculateGeometry.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/installUI.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/getThumbSize.java:
+	Fixed 'Uses'.
+	* gnu/testlet/javax/swing/plaf/basic/BasicSliderUI/constructors.java:
+	Fixed 'Uses'.
+
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/initComponentDefaults.java: new file,
