@@ -1,5 +1,12 @@
 2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/AlphaComposite/equals.java: new file,
+	* gnu/testlet/java/awt/AlphaComposite/getInstance.java: new file,
+	* gnu/testlet/java/awt/AlphaComposite/getInstance14.java: new file,
+	* gnu/testlet/java/awt/AlphaComposite/getRule.java: new file.
+
+2005-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumnMargin.java
 	(test): added check for default value.
 
