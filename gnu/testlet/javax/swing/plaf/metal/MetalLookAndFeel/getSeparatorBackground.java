@@ -51,6 +51,9 @@ public class getSeparatorBackground implements Testlet {
 
     c = MetalLookAndFeel.getSeparatorBackground();
     harness.check(c, new ColorUIResource(Color.red));  
+
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
   }
 
 }

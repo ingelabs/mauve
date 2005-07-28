@@ -51,6 +51,10 @@ public class getSystemTextColor implements Testlet {
 
     c = MetalLookAndFeel.getSystemTextColor();
     harness.check(c, new ColorUIResource(Color.red));  
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

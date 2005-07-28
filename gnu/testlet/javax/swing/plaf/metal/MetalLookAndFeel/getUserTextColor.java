@@ -50,7 +50,11 @@ public class getUserTextColor implements Testlet {
     });
 
     c = MetalLookAndFeel.getUserTextColor();
-    harness.check(c, new ColorUIResource(Color.red));  
+    harness.check(c, new ColorUIResource(Color.red)); 
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

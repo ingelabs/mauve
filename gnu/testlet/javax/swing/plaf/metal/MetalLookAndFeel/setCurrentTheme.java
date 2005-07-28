@@ -46,6 +46,8 @@ public class setCurrentTheme implements Testlet
     c1 = laf.getDefaults().getColor("Button.background");
     h.check(c1, Color.red);
 
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
   }
 
   class TestTheme extends DefaultMetalTheme 

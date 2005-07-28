@@ -50,6 +50,10 @@ public class getWhite implements Testlet {
  
     white = MetalLookAndFeel.getWhite();
     harness.check(white, new ColorUIResource(Color.red));
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

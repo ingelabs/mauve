@@ -51,6 +51,10 @@ public class getWindowTitleBackground implements Testlet {
 
     c = MetalLookAndFeel.getWindowTitleBackground();
     harness.check(c, new ColorUIResource(Color.red));  
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

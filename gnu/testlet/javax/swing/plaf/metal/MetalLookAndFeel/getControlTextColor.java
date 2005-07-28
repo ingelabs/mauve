@@ -51,6 +51,10 @@ public class getControlTextColor implements Testlet {
 
     c = MetalLookAndFeel.getControlTextColor();
     harness.check(c, new ColorUIResource(Color.red));
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

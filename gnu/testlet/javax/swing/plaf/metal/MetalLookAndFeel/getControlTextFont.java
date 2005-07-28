@@ -51,6 +51,10 @@ public class getControlTextFont implements Testlet {
 
     f = MetalLookAndFeel.getControlTextFont();
     harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 99));
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

@@ -51,6 +51,10 @@ public class getMenuBackground implements Testlet {
 
     c = MetalLookAndFeel.getMenuBackground();
     harness.check(c, new ColorUIResource(Color.red));  
+    
+    // reset the theme so that other tests won't be affected
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+
   }
 
 }

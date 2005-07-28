@@ -1,5 +1,88 @@
 2005-07-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java
+	(test): reset default theme after test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorSelectedForeground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getBlack.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControl.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlDarkShadow.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlDisabled.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlHighlight.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlInfo.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlShadow.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlTextColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getControlTextFont.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDesktopColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getFocusColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getHighlightedTextColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getInactiveControlTextColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getInactiveSystemTextColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuBackground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuSelectedBackground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuSelectedForeground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getMenuTextFont.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControl.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlDarkShadow.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlHighlight.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlInfo.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getPrimaryControlShadow.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSeparatorBackground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSeparatorForeground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSubTextFont.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSystemTextColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getSystemTextFont.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getTextHighlightColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getUserTextColor.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWhite.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowBackground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleBackground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleFont.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleForeground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleInactiveBackground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getWindowTitleInactiveForeground.java
+	(test): likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/setCurrentTheme.java
+	(test): likewise.
+
+2005-07-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JTree/setModel.java: new file.
 	
 2005-07-26  Roman Kennke  <roman@kennke.org>
