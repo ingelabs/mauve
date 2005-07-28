@@ -1,3 +1,7 @@
+2005-07-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JTree/setModel.java: new file.
+	
 2005-07-26  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/java/util/Properties/getProperty.java:
