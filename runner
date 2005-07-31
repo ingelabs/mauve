@@ -35,7 +35,7 @@ if test "x$RUNTIME" = "x" ; then
 #RUNTIME="Kissme"
 #RUNTIME="/usr/local/sablevm/bin/sablevm -Y"
 #RUNTIME="jc -Xint"
-RUNTIME=jamvm
+RUNTIME="jamvm"
 #RUNTIME="native"
 fi
 
@@ -63,7 +63,7 @@ if test "x$RUNTIME" = "xnative"; then
     echo $testclass > testfilename.txt
     ./SimpleTestHarness -debug -verbose -file testfilename.txt &
 else
-    echo $testclass | $RUNTIME gnu.testlet.SimpleTestHarness -debug -verbose &
+    echo $testclass | $RUNTIME -Dmauve.vmexec=$RUNTIME gnu.testlet.SimpleTestHarness -debug -verbose &
 fi
 PID=$!
 wait $PID

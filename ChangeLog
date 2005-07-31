@@ -1,3 +1,9 @@
+2005-07-31  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/nio/channels/FileChannel/lock.java: New test.
+	* runner: Add -Dmauve.vmexec=$RUNTIME.
+	* batch_run (COMPILER): Add -nowarn.
+
 2005-07-29  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/ClassLoader/findLoadedClass.java:

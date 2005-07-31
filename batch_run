@@ -38,7 +38,7 @@ fi
 
 if test "x$COMPILER" = "x"; then
 #COMPILER="gcj -C -Wno-deprecated"
-COMPILER="jikes -bootclasspath /usr/local/classpath/share/classpath/glibj.zip"
+COMPILER="jikes -nowarn -bootclasspath /usr/local/classpath/share/classpath/glibj.zip"
 fi
 
 if test "x$COMPILER" = "xgcj"; then
