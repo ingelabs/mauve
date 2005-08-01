@@ -1,5 +1,9 @@
 2005-08-01  Jeroen Frijters  <jeroen@frijters.net>
 
+	* gnu/testlet/java/lang/ClassLoader/initialize.java: New test.
+
+2005-08-01  Jeroen Frijters  <jeroen@frijters.net>
+
 	* gnu/testlet/java/nio/channels/FileChannel/lock.java
 	(test): Moved file delete to end.
 
