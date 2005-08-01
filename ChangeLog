@@ -1,3 +1,8 @@
+2005-08-01  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/nio/channels/FileChannel/lock.java
+	(test): Moved file delete to end.
+
 2005-07-31  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/nio/channels/FileChannel/lock.java: New test.

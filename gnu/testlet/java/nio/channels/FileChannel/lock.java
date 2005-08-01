@@ -179,7 +179,6 @@ public class lock implements Testlet, Runnable
 		harness.debug(ioe);
 	      }
 	  }
-	harness.check(file.delete(), "cleanup " + file);
 
 	try
 	  {
@@ -199,6 +198,8 @@ public class lock implements Testlet, Runnable
 	  {
 	    harness.debug(ie);
 	  }
+
+	harness.check(file.delete(), "cleanup " + file);
       }
   }
 
