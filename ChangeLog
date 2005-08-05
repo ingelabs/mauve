@@ -1,3 +1,14 @@
+2005-08-05  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/awt/datatransfer/Clipboard/clipboard.java:
+	New test.
+	* gnu/testlet/java/awt/datatransfer/Clipboard/clipboardFlavors.java:
+	Likewise.
+	* gnu/testlet/java/awt/datatransfer/DataFlavor/flavor.java:
+	Likewise.
+	* gnu/testlet/java/awt/datatransfer/StringSelection/selection.java:
+	Likewise.
+
 2005-08-01  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/ClassLoader/initialize.java: New test.
