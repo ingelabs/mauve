@@ -1,3 +1,6 @@
+2005-08-07  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
+        * gnu/testlet/org/omg/DynamicAny/DynAny/BasicTest.java,        gnu/testlet/org/omg/DynamicAny/DynAny/Iona/TestStructHelper.java,        gnu/testlet/org/Iona/omg/DynamicAny/DynAny/TestEnumHelper.java,        gnu/testlet/org/Iona/omg/DynamicAny/DynAny/TestEnum.java,        gnu/testlet/org/Iona/omg/DynamicAny/DynAny/TestStruct.java: New test.        
 2005-08-05  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/awt/datatransfer/Clipboard/clipboard.java:
