@@ -1,3 +1,8 @@
+2005-08-11  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/Observable/observable.java: New file.
+	PR classpath/23279.
+
 2005-08-10  Roman Kennke  <roman@kennke.org>
 
 	* java/awt/Component/update.java
