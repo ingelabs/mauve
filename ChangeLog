@@ -1,5 +1,12 @@
 2005-08-11  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/javax/swing/JTable/createDefaultSelectionModel.java:
+	Added Uses.
+	* gnu/testlet/javax/swing/JTable/createDefaultDataModel.java:
+	Added Uses.
+
+2005-08-11  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/util/Observable/observable.java: New file.
 	PR classpath/23279.
 
