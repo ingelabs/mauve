@@ -30,7 +30,6 @@ import javax.swing.text.html.parser.DTD;
 import javax.swing.text.html.parser.Element;
 import javax.swing.text.html.parser.TagElement;
 import gnu.testlet.gnu.javax.swing.text.html.parser.*;
-import gnu.testlet.gnu.javax.swing.text.html.support.Parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

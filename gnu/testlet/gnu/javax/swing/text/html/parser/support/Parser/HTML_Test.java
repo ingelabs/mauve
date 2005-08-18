@@ -28,7 +28,6 @@ import gnu.testlet.Testlet;
 
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.html.HTML;
-import gnu.testlet.gnu.javax.swing.text.html.support.Parser.*;
 
 public class HTML_Test
   extends TestCase

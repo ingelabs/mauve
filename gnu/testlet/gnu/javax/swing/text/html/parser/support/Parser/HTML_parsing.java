@@ -25,7 +25,6 @@ package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 import gnu.testlet.gnu.javax.swing.text.html.parser.*;
-import gnu.testlet.gnu.javax.swing.text.html.support.Parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

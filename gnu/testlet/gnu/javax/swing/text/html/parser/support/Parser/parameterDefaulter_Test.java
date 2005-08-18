@@ -33,7 +33,6 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import gnu.testlet.gnu.javax.swing.text.html.parser.*;
-import gnu.testlet.gnu.javax.swing.text.html.support.Parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

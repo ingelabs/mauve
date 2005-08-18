@@ -29,7 +29,6 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.parser.DTD;
 import javax.swing.text.html.parser.Element;
 import gnu.testlet.gnu.javax.swing.text.html.parser.*;
-import gnu.testlet.gnu.javax.swing.text.html.support.Parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

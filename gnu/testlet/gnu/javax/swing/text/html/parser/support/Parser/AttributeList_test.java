@@ -27,7 +27,6 @@ import gnu.testlet.Testlet;
 
 import javax.swing.text.html.parser.AttributeList;
 import gnu.testlet.gnu.javax.swing.text.html.parser.*;
-import gnu.testlet.gnu.javax.swing.text.html.support.Parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

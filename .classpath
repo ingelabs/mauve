@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="gnu/anttask/|gnu/testlet/BinaryCompatibility/" kind="src" path=""/>
+	<classpathentry excluding="gnu/anttask/|gnu/testlet/BinaryCompatibility/|gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeFolderIcon.java" kind="src" path=""/>
 	<classpathentry kind="lib" path="/classpath/bin"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/classpath"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
