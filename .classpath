@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="gnu/anttask/|gnu/testlet/BinaryCompatibility/" kind="src" path=""/>
+	<classpathentry kind="lib" path="/classpath/bin"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
