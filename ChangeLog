@@ -1,3 +1,8 @@
+2005-08-19  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/awt/Component/update.java: Use StringBuffer,
+	not StringBuilder (to avoid requiring a 1.5 tag).
+
 2005-08-18  Tom Tromey  <tromey@redhat.com>
 
 	* .classpath: Depend on classpath project.  Omit getTreeFolderIcon.java.

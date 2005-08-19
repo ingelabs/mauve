@@ -40,7 +40,7 @@ public class update implements Testlet
    * this teststring. This way we can check which component's update and paint
    * method gets called and in which order.
    */
-  StringBuilder test = new StringBuilder();
+  StringBuffer test = new StringBuffer();
 
   // We define some classes here, they all override update() to append
   // a unique character to the teststring. At the end we test if the
@@ -166,7 +166,7 @@ public class update implements Testlet
       {
       }
 
-    test = new StringBuilder();
+    test = new StringBuffer();
     t.update(g);
     harness.check(test.toString(), "19284", test.toString());
     t.setVisible(false);
