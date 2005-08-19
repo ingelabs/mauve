@@ -1,5 +1,10 @@
 2005-08-19  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/javax/swing/text/ElementIterator/ElementIteratorTest.java
+	(test): Added another test for first() and previous().
+	
+2005-08-19  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/javax/swing/text/ElementIterator/ElementIteratorTest.java:
 	New file.
 

@@ -86,12 +86,18 @@ public class ElementIteratorTest
 
 	ElementIterator iter = new ElementIterator(doc);
 
-	harness.check(iter.first(), br, "checking first()");
+	harness.check(iter.first(), br, "checking first() 1");
 	harness.check(iter.next(), leaf1, "checking next() 1");
 	harness.check(iter.next(), leaf2, "checking next() 2");
 	harness.check(iter.previous(), leaf1, "checking previous() 1");
+	// Note that previous() doesn't move the iterator.
+	harness.check(iter.previous(), leaf1, "checking previous() 2");
 	harness.check(iter.next(), null, "checking next() 3");
-	harness.check(iter.previous(), null, "checking previous() 2");
+	harness.check(iter.previous(), null, "checking previous() 3");
+
+	harness.check(iter.first(), br, "checking first() 2");
+	harness.check(iter.next(), leaf1,
+		      "checking next() after second first");
       }
     catch (BadLocationException _)
       {
