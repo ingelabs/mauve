@@ -106,14 +106,20 @@ public class getAWTKeyStroke
     harness.check(ks, expected);
     
     ks = AWTKeyStroke.getAWTKeyStroke("control DELETE");
+    expected = AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_DELETE, InputEvent.CTRL_DOWN_MASK);
+    harness.check(ks, expected);
     expected = AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_DELETE, InputEvent.CTRL_MASK);
     harness.check(ks, expected);
 
     ks = AWTKeyStroke.getAWTKeyStroke("alt shift X");
+    expected = AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_X, InputEvent.ALT_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK);
+    harness.check(ks, expected);
     expected = AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_X, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK);
     harness.check(ks, expected);
   
     ks = AWTKeyStroke.getAWTKeyStroke("alt shift released X");
+    expected = AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_X, InputEvent.ALT_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK, true);
+    harness.check(ks, expected);
     expected = AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_X, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK, true);
     harness.check(ks, expected);
     
