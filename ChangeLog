@@ -1,5 +1,9 @@
 2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/Vector/copyInto.java: new test.
+	
+2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/addPropertyChangeListener.java: new test;
 	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/constructor.java: new test;
 	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/firePropertyChange.java: new test;
