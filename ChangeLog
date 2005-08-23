@@ -1,5 +1,9 @@
 2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/UIManager/LookAndFeelInfo/constructor.java: new file.
+	
+2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/UIManager/addAuxiliaryLookAndFeel.java: new file,
 	* gnu/testlet/javax/swing/UIManager/addPropertyChangeListener.java: new file,
 	* gnu/testlet/javax/swing/UIManager/getAuxiliaryLookAndFeels.java: new file,
