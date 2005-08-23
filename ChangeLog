@@ -1,5 +1,18 @@
 2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/UIManager/addAuxiliaryLookAndFeel.java: new file,
+	* gnu/testlet/javax/swing/UIManager/addPropertyChangeListener.java: new file,
+	* gnu/testlet/javax/swing/UIManager/getAuxiliaryLookAndFeels.java: new file,
+	* gnu/testlet/javax/swing/UIManager/getCrossPlatformLookAndFeelClassName.java: new file,
+	* gnu/testlet/javax/swing/UIManager/getDefaults.java: new file,
+	* gnu/testlet/javax/swing/UIManager/getLookAndFeelDefaults.java: new file,
+	* gnu/testlet/javax/swing/UIManager/getPropertyChangeListeners.java: new file,
+	* gnu/testlet/javax/swing/UIManager/removeAuxiliaryLookAndFeel.java: new file,
+	* gnu/testlet/javax/swing/UIManager/setLookAndFeel.java: new file,
+	* gnu/testlet/javax/swing/UIManager/MyLookAndFeel.java: new file.
+
+2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/Vector/copyInto.java: new test.
 	
 2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
