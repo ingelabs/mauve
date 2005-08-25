@@ -2,7 +2,7 @@
 
 // Tags: JDK1.1
 
-// Copyright (c) 1999, 2001, 2003  Free Software Foundation
+// Copyright (c) 1999, 2001, 2003, 2005  Free Software Foundation
 
 // This file is part of Mauve.
 
@@ -86,6 +86,14 @@ public class regress implements Testlet
     GregorianCalendar g = new GregorianCalendar (1, 0, 1, 12, 0, 0);
     harness.check (f.format(g.getTime()), "0001-01-01",
 		   "4 digit year");
+
+    f = new SimpleDateFormat("''yyyy-MM-dd''");
+    harness.check (f.format(g.getTime()), "'0001-01-01'",
+		   "quoting 1");
+
+    f = new SimpleDateFormat("'' '' '''FOO''' '' ''");
+    harness.check (f.format(g.getTime()), "' ' 'FOO' ' '",
+		   "quoting 2");
 
     long someTime = 1098968427000L; // 04-10-28 14:00:27 GMT
     SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HHmmss z");

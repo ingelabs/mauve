@@ -1,3 +1,9 @@
+2005-08-24  Tom Tromey  <tromey@redhat.com>
+
+	PR classpath/23183:
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test):
+	Added 2 new regression tests.
+
 2005-08-23  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/UIManager/LookAndFeelInfo/constructor.java: new file.
