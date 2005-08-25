@@ -1,3 +1,7 @@
+2005-08-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initSystemColorDefaults.java: new tests.
+
 2005-08-24  Tom Tromey  <tromey@redhat.com>
 
 	PR classpath/23183:
