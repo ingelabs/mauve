@@ -1,3 +1,7 @@
+2005-08-25  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicIconFactory/getCheckBoxMenuItemIcon.java: new file.
+
 2005-08-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initSystemColorDefaults.java: new tests.
