@@ -1,11 +1,15 @@
 2005-08-30  David Gilbert  <david.gilbert@object-refinery.com>
+	
+	* gnu/testlet/javax/swing/plaf/metal/MetalCheckBoxUI/getPropertyPrefix.java: new test.
+
+2005-08-30  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/MyBasicButtonUI.java: new support class,
 	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/getPropertyPrefix.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicRadioButtonUI/MyBasicRadioButtonUI.java: new support class,
-	* gnu/testlet/javax/swing/plaf/basic/BasicRadioButtonUI/MyBasicRadioButtonUI.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicRadioButtonUI/getPropertyPrefix.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicToggleButtonUI/MyBasicToggleButtonUI.java: new support class,
-	* gnu/testlet/javax/swing/plaf/basic/BasicToggleButtonUI/MyBasicToggleButtonUI.java: new test.
+	* gnu/testlet/javax/swing/plaf/basic/BasicToggleButtonUI/getPropertyPrefix.java: new test.
 	
 2005-08-25  David Gilbert  <david.gilbert@object-refinery.com>
 
