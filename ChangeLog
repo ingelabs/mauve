@@ -1,5 +1,9 @@
 2005-08-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicMenuItemUI/getPropertyPrefix.java: replaced with correct file.
+
+2005-08-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicCheckBoxMenuItemUI/MyBasicCheckBoxMenuItemUI.java: new support class,
 	* gnu/testlet/javax/swing/plaf/basic/BasicCheckBoxMenuItemUI/getPropertyPrefix.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicMenuItemUI/MyBasicMenuItemUI.java: new support class,
