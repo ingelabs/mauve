@@ -1,5 +1,20 @@
 2005-08-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicEditorPaneUI/MyBasicEditorPaneUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicEditorPaneUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFormattedTextFieldUI/MyBasicFormattedTextFieldUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFormattedTextFieldUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicPasswordFieldUI/MyBasicPasswordFieldUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicPasswordFieldUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextAreaUI/MyBasicTextAreaUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextAreaUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextFieldUI/MyBasicTextFieldUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextFieldUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextPaneUI/MyBasicTextPaneUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextPaneUI/getPropertyPrefix.java: new test.
+
+2005-08-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicMenuItemUI/getPropertyPrefix.java: replaced with correct file.
 
 2005-08-31  David Gilbert  <david.gilbert@object-refinery.com>
@@ -11,7 +26,7 @@
 	* gnu/testlet/javax/swing/plaf/basic/BasicMenuUI/MyBasicMenuUI.java: new support class,
 	* gnu/testlet/javax/swing/plaf/basic/BasicMenuUI/getPropertyPrefix.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicRadioButtonMenuItemUI/MyBasicRadioButtonMenuItemUI.java: new support class,
-	* gnu/testlet/javax/swing/plaf/basic/BasicRadioButtonMenuItemUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicRadioButtonMenuItemUI/getPropertyPrefix.java: new test.
 
 2005-08-30  David Gilbert  <david.gilbert@object-refinery.com>
 	
