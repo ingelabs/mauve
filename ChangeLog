@@ -1,3 +1,8 @@
+2005-09-02  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java
+	(test): commented out broken icon tests.
+
 2005-09-01  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/zip/Adler32/checksum.java: New test.

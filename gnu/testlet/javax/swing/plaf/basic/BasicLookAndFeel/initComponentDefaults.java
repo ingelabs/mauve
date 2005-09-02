@@ -63,7 +63,7 @@ public class initComponentDefaults implements Testlet
   public void test(TestHarness harness) 
   {
     // TODO: there are a lot of 'instanceof' checks in here.  Those are weak
-    // tests, try to strenghthen them.
+    // tests, try to strengthen them.
 
     MyBasicLookAndFeel laf = new MyBasicLookAndFeel();
     UIDefaults defaults = new UIDefaults();
@@ -73,8 +73,8 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("AuditoryCues.allAuditoryCues") != null);
     harness.check(defaults.get("AuditoryCues.cueList") != null);
     harness.check(defaults.get("AuditoryCues.noAuditoryCues") != null);
-    harness.checkPoint("Button");
     
+    harness.checkPoint("Button");
     CompoundBorderUIResource b1 = (CompoundBorderUIResource) defaults.get("Button.border");
     harness.check(b1.getInsideBorder() instanceof MarginBorder);
     harness.check(b1.getOutsideBorder() instanceof ButtonBorder);
@@ -121,7 +121,7 @@ public class initComponentDefaults implements Testlet
     
     harness.checkPoint("DesktopIcon");
     harness.check(defaults.get("DesktopIcon.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    
+        
     harness.checkPoint("EditorPane");
     harness.check(defaults.get("EditorPane.background"), new ColorUIResource(255, 255, 255));
     harness.check(defaults.get("EditorPane.border") instanceof BasicBorders.MarginBorder);
@@ -132,23 +132,32 @@ public class initComponentDefaults implements Testlet
     harness.checkPoint("FileChooser");
     harness.check(defaults.get("FileChooser.ancestorInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("FileChooser.cancelButtonMnemonic"), new Integer(67));
-    harness.check(defaults.get("FileChooser.detailsViewIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("FileChooser.detailsViewIcon"), null);
     harness.check(defaults.get("FileChooser.directoryOpenButtonMnemonic"), new Integer(79));
     harness.check(defaults.get("FileChooser.helpButtonMnemonic"), new Integer(72));
-    harness.check(defaults.get("FileChooser.homeFolderIcon"), null);
-    harness.check(defaults.get("FileChooser.listViewIcon"), null);
-    harness.check(defaults.get("FileChooser.newFolderIcon"), null);
+    // FIXME: the following 3 checks are commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("FileChooser.detailsViewIcon"), null);
+    //harness.check(defaults.get("FileChooser.homeFolderIcon"), null);
+    //harness.check(defaults.get("FileChooser.listViewIcon"), null);
+    //harness.check(defaults.get("FileChooser.newFolderIcon"), null);
     harness.check(defaults.get("FileChooser.openButtonMnemonic"), new Integer(79));
     harness.check(defaults.get("FileChooser.saveButtonMnemonic"), new Integer(83));
     harness.check(defaults.get("FileChooser.updateButtonMnemonic"), new Integer(85));
-    harness.check(defaults.get("FileChooser.upFolderIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("FileChooser.upFolderIcon"), null);
 
     harness.checkPoint("FileView");
-    harness.check(defaults.get("FileView.computerIcon"), null);
-    harness.check(defaults.get("FileView.directoryIcon"), null);
-    harness.check(defaults.get("FileView.fileIcon"), null);
-    harness.check(defaults.get("FileView.floppyDriveIcon"), null);
-    harness.check(defaults.get("FileView.hardDriveIcon"), null);
+    // FIXME: the following 5 checks are commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("FileView.computerIcon"), null);
+    //harness.check(defaults.get("FileView.directoryIcon"), null);
+    //harness.check(defaults.get("FileView.fileIcon"), null);
+    //harness.check(defaults.get("FileView.floppyDriveIcon"), null);
+    //harness.check(defaults.get("FileView.hardDriveIcon"), null);
 
     harness.checkPoint("FormattedTextField");
     harness.check(defaults.get("FormattedTextField.border") instanceof BasicBorders.FieldBorder);
@@ -160,7 +169,9 @@ public class initComponentDefaults implements Testlet
     harness.checkPoint("InternalFrame");
     harness.check(defaults.get("InternalFrame.border") instanceof BorderUIResource.CompoundBorderUIResource);
     harness.check(defaults.get("InternalFrame.closeIcon") instanceof Icon);
-    harness.check(defaults.get("InternalFrame.icon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("InternalFrame.icon"), null);
     harness.check(defaults.get("InternalFrame.iconifyIcon") instanceof Icon);
     harness.check(defaults.get("InternalFrame.maximizeIcon") instanceof Icon);
     harness.check(defaults.get("InternalFrame.minimizeIcon") instanceof Icon);
@@ -216,13 +227,19 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("OptionPane.border") instanceof BorderUIResource.EmptyBorderUIResource);
     harness.check(defaults.get("OptionPane.buttonAreaBorder") instanceof BorderUIResource.EmptyBorderUIResource);
     harness.check(defaults.get("OptionPane.buttonClickThreshhold"), new Integer(500));
-    harness.check(defaults.get("OptionPane.errorIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("OptionPane.errorIcon"), null);
     harness.check(defaults.get("OptionPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
-    harness.check(defaults.get("OptionPane.informationIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("OptionPane.informationIcon"), null);
     harness.check(defaults.get("OptionPane.messageAreaBorder") instanceof BorderUIResource.EmptyBorderUIResource);
     harness.check(defaults.get("OptionPane.minimumSize"), new DimensionUIResource(262, 90));
-    harness.check(defaults.get("OptionPane.questionIcon"), null);
-    harness.check(defaults.get("OptionPane.warningIcon"), null);
+    // FIXME: the following 2 checks are commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("OptionPane.questionIcon"), null);
+    //harness.check(defaults.get("OptionPane.warningIcon"), null);
     harness.check(defaults.get("OptionPane.windowBindings") instanceof Object[]);
 
     harness.checkPoint("Panel");
@@ -412,16 +429,22 @@ public class initComponentDefaults implements Testlet
     harness.checkPoint("Tree");
     harness.check(defaults.get("Tree.ancestorInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("Tree.changeSelectionWithFocus"), Boolean.TRUE);
-    harness.check(defaults.get("Tree.closedIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("Tree.closedIcon"), null);
     harness.check(defaults.get("Tree.drawsFocusBorderAroundIcon"), Boolean.FALSE);
     harness.check(defaults.get("Tree.editorBorder") instanceof BorderUIResource.LineBorderUIResource);
     harness.check(defaults.get("Tree.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("Tree.focusInputMap.RightToLeft") instanceof InputMapUIResource);
     harness.check(defaults.get("Tree.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
     harness.check(defaults.get("Tree.hash"), new ColorUIResource(128, 128, 128));
-    harness.check(defaults.get("Tree.leafIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("Tree.leafIcon"), null);
     harness.check(defaults.get("Tree.leftChildIndent"), new Integer(7));
-    harness.check(defaults.get("Tree.openIcon"), null);
+    // FIXME: the following check is commented out - the JDK returns null because 
+    // MyBasicLookAndFeel doesn't look in the right place for the gif
+    //harness.check(defaults.get("Tree.openIcon"), null);
     harness.check(defaults.get("Tree.rightChildIndent"), new Integer(13));
     harness.check(defaults.get("Tree.rowHeight"), new Integer(16));
     harness.check(defaults.get("Tree.scrollsOnExpand"), Boolean.TRUE);
