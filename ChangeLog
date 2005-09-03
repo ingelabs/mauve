@@ -1,3 +1,12 @@
+2005-09-03  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
+        * gnu/testlet/org/omg/PortableInterceptor/Interceptor/testInterceptors.java,
+        gnu/testlet/org/omg/PortableInterceptor/Interceptor/ucClientRequestInterceptor.java,
+        gnu/testlet/org/omg/PortableInterceptor/Interceptor/ucInitialiser.java,
+        gnu/testlet/org/omg/PortableInterceptor/Interceptor/ucIorInterceptor.java,
+        gnu/testlet/org/omg/PortableInterceptor/Interceptor/ucServerRequestInterceptor.java:
+        New test.
+
 2005-09-02  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java
