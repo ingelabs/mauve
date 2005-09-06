@@ -1,3 +1,10 @@
+2005-09-06  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getDisabledTextColor.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getFocusColor.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getSelectColor.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/MyMetalRadioButtonUI.java: support file.
+
 2005-09-03  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
         * gnu/testlet/org/omg/PortableInterceptor/Interceptor/testInterceptors.java,
