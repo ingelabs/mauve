@@ -45,6 +45,7 @@ import javax.swing.plaf.InputMapUIResource;
 import javax.swing.plaf.InsetsUIResource;
 import javax.swing.plaf.BorderUIResource.LineBorderUIResource;
 import javax.swing.plaf.basic.BasicBorders;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalBorders;
 import javax.swing.plaf.metal.MetalIconFactory;
 import javax.swing.plaf.metal.MetalLookAndFeel;
@@ -55,6 +56,154 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
  */
 public class initComponentDefaults implements Testlet
 {
+  /**
+   * This extends the default theme, so that each theme color gets a
+   * unique value. This allows to check the color values of the UIDefaults
+   * against the theme colors.
+   */
+  static class TestTheme extends DefaultMetalTheme
+  {
+    public ColorUIResource getAcceleratorForeground()
+    {
+      return new ColorUIResource(0, 0, 1);
+    }
+    public ColorUIResource getAcceleratorSelectedForeground()
+    {
+      return new ColorUIResource(0, 0, 2);
+    }
+    public ColorUIResource getBlack()
+    {
+      return new ColorUIResource(0, 0, 3);
+    }
+    public ColorUIResource getControl()
+    {
+      return new ColorUIResource(0, 0, 4);
+    }
+    public ColorUIResource getControlDarkShadow()
+    {
+      return new ColorUIResource(0, 0, 5);
+    }
+    public ColorUIResource getControlDisabled()
+    {
+      return new ColorUIResource(0, 0, 6);
+    }
+    public ColorUIResource getControlHighlight()
+    {
+      return new ColorUIResource(0, 0, 7);
+    }
+    public ColorUIResource getControlInfo()
+    {
+      return new ColorUIResource(0, 0, 8);
+    }
+    public ColorUIResource getControlShadow()
+    {
+      return new ColorUIResource(0, 0, 9);
+    }
+    public ColorUIResource getControlTextColor()
+    {
+      return new ColorUIResource(0, 0, 10);
+    }
+    public ColorUIResource getDesktopColor()
+    {
+      return new ColorUIResource(0, 0, 11);
+    }
+    public ColorUIResource getFocusColor()
+    {
+      return new ColorUIResource(0, 0, 12);
+    }
+    public ColorUIResource getHighlightedTextColor()
+    {
+      return new ColorUIResource(0, 0, 13);
+    }
+    public ColorUIResource getInactiveSystemTextColor()
+    {
+      return new ColorUIResource(0, 0, 14);
+    }
+    public ColorUIResource getMenuBackground()
+    {
+      return new ColorUIResource(0, 0, 15);
+    }
+    public ColorUIResource getMenuDisabledForeground()
+    {
+      return new ColorUIResource(0, 0, 16);
+    }
+    public ColorUIResource getMenuForeground()
+    {
+      return new ColorUIResource(0, 0, 17);
+    }
+    public ColorUIResource getMenuSelectedBackground()
+    {
+      return new ColorUIResource(0, 0, 18);
+    }
+    public ColorUIResource getMenuSelectedForeground()
+    {
+      return new ColorUIResource(0, 0, 19);
+    }
+    public ColorUIResource getPrimaryControl()
+    {
+      return new ColorUIResource(0, 0, 20);
+    }
+    public ColorUIResource getPrimaryControlDarkShadow()
+    {
+      return new ColorUIResource(0, 0, 21);
+    }
+    public ColorUIResource getPrimaryControlHighlight()
+    {
+      return new ColorUIResource(0, 0, 22);
+    }
+    public ColorUIResource getPrimaryControlInfo()
+    {
+      return new ColorUIResource(0, 0, 23);
+    }
+    public ColorUIResource getPrimaryControlShadow()
+    {
+      return new ColorUIResource(0, 0, 24);
+    }
+    public ColorUIResource getSeparatorBackground()
+    {
+      return new ColorUIResource(0, 0, 25);
+    }
+    public ColorUIResource getSeparatorForeground()
+    {
+      return new ColorUIResource(0, 0, 26);
+    }
+    public ColorUIResource getSystemTextColor()
+    {
+      return new ColorUIResource(0, 0, 27);
+    }
+    public ColorUIResource getTextHighlightColor()
+    {
+      return new ColorUIResource(0, 0, 28);
+    }
+    public ColorUIResource getUserTextColor()
+    {
+      return new ColorUIResource(0, 0, 29);
+    }
+    public ColorUIResource getWindowBackground()
+    {
+      return new ColorUIResource(0, 0, 30);
+    }
+    public ColorUIResource getWindowTitleBackground()
+    {
+      return new ColorUIResource(0, 0, 31);
+    }
+    public ColorUIResource getWindowTitleForeground()
+    {
+      return new ColorUIResource(0, 0, 32);
+    }
+    public ColorUIResource getWindowTitleInactiveBackground()
+    {
+      return new ColorUIResource(0, 0, 33);
+    }
+    public ColorUIResource getWindowTitleInactiveForeground()
+    {
+      return new ColorUIResource(0, 0, 34);
+    }
+    public ColorUIResource getInactiveControlTextColor()
+    {
+      return new ColorUIResource(0, 0, 35);
+    }
+  }
 
   /**
    * Runs the test using the specified harness.  
@@ -63,17 +212,21 @@ public class initComponentDefaults implements Testlet
    */
   public void test(TestHarness harness) 
   {
+    MyMetalLookAndFeel.setCurrentTheme(new TestTheme());
     MyMetalLookAndFeel laf = new MyMetalLookAndFeel();
-    UIDefaults defaults = new UIDefaults();
-    laf.initComponentDefaults(defaults);
-//    Iterator iterator = defaults.keySet().iterator();
-//    while (iterator.hasNext()) {
-//        Object key = iterator.next();
-//        System.out.println(key);
-//    }
-    
+
+    // The following does not work, at least not with JDK1.5. Maybe
+    // don't use the 'defaults' parameter anymore...
+    // UIDefaults defaults = new UIDefaults();
+    // laf.initComponentDefaults(defaults);
+    UIDefaults defaults = laf.getDefaults();
+
     // TODO: in the following code, there are many 'instanceof' checks - these
     // are typically very weak tests.  Maybe they can be strengthened...
+    
+    // The color test do not test for the real color values. This is
+    // not possible. It merely tests which of the MetalTheme colors
+    // is use here. See the TestTheme class above.
     harness.checkPoint("AuditoryCues");
     harness.check(defaults.get("AuditoryCues.allAuditoryCues") != null);
     harness.check(defaults.get("AuditoryCues.cueList") != null);
@@ -81,73 +234,104 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("AuditoryCues.noAuditoryCues") != null);
     
     harness.checkPoint("Button");
+    harness.check(defaults.get("Button.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Button.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("Button.disabledText"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("Button.focus"), new ColorUIResource(153, 153, 204));
+    harness.check(defaults.get("Button.darkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("Button.disabledText"), new ColorUIResource(0, 0, 6));
+    harness.check(defaults.get("Button.disabledToolBarBorderBackground"), null);
+    harness.check(defaults.get("Button.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("Button.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("Button.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Button.foreground"), new ColorUIResource(0, 0, 10));
+    harness.check(defaults.get("Button.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("Button.light"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("Button.margin"), new InsetsUIResource(2, 14, 2, 14));
-    harness.check(defaults.get("Button.select"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("Button.select"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("Button.shadow"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("Button.textIconGap"), new Integer(4));
     harness.check(defaults.get("Button.textShiftOffset"), new Integer(0));
-    
+    harness.check(defaults.get("Button.toolBarBorderBackground"), null);
+
     harness.checkPoint("CheckBox");
+    harness.check(defaults.get("CheckBox.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("CheckBox.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("CheckBox.disabledText"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("CheckBox.focus"), new ColorUIResource(153, 153, 204));
+    harness.check(defaults.get("CheckBox.disabledText"), new ColorUIResource(0, 0, 6));
+    harness.check(defaults.get("CheckBox.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("CheckBox.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("CheckBox.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("CheckBox.foreground"), new ColorUIResource(16, 16, 16));
     harness.check(defaults.get("CheckBox.icon") instanceof Icon);
     harness.check(defaults.get("CheckBox.margin"), new InsetsUIResource(2, 2, 2, 2));
-    harness.check(defaults.get("Checkbox.select"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("Checkbox.select"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("CheckBox.textIconGap"), new Integer(4));
     harness.check(defaults.get("CheckBox.textShiftOffset"), new Integer(0));
 
     harness.checkPoint("CheckBoxMenuItem");
     harness.check(defaults.get("CheckBoxMenuItem.acceleratorFont"), new Font("Dialog", Font.PLAIN, 10));
-    harness.check(defaults.get("CheckBoxMenuItem.acceleratorForeground"), new ColorUIResource(102, 102, 153));
-    harness.check(defaults.get("CheckBoxMenuItem.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("CheckBoxMenuItem.acceleratorForeground"), new ColorUIResource(0, 0, 1));
+    harness.check(defaults.get("CheckBoxMenuItem.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 2));
     harness.check(defaults.get("CheckBoxMenuItem.arrowIcon") instanceof Icon);
+    harness.check(defaults.get("CheckBoxMenuItem.background"), new ColorUIResource(0, 0, 15));
 //    harness.check(defaults.get("CheckBoxMenuItem.border") instanceof MetalBorders.MenuItemBorder); 
     harness.check(defaults.get("CheckBoxMenuItem.borderPainted"), Boolean.TRUE);
     harness.check(defaults.get("CheckBoxMenuItem.checkIcon") instanceof Icon);
     harness.check(defaults.get("CheckBoxMenuItem.commandSound"), "sounds/MenuItemCommand.wav");
-    harness.check(defaults.get("CheckBoxMenuItem.disabledForeground"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("CheckBoxMenuItem.disabledForeground"), new ColorUIResource(0, 0, 16));
     harness.check(defaults.get("CheckBoxMenuItem.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("CheckBoxMenuItem.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("CheckBoxMenuItem.margin"), new InsetsUIResource(2, 2, 2, 2));
-    harness.check(defaults.get("CheckBoxMenuItem.selectionBackground"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("CheckBoxMenuItem.selectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("CheckBoxMenuItem.selectionBackground"), new ColorUIResource(0, 0, 18));
+    harness.check(defaults.get("CheckBoxMenuItem.selectionForeground"), new ColorUIResource(0, 0, 19));
+    harness.check(defaults.get("CheckBoxMenuItem.select"), null);
 
     harness.checkPoint("ColorChooser");
+    harness.check(defaults.get("ColorChooser.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ColorChooser.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("ColorChooser.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("ColorChooser.rgbBlueMnemonic"), new Integer(66));
     harness.check(defaults.get("ColorChooser.rgbGreenMnemonic"), new Integer(78));
     harness.check(defaults.get("ColorChooser.rgbRedMnemonic"), new Integer(68));
+    harness.check(defaults.get("ColorChooser.swatchesDefaultRecentColor"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ColorChooser.swatchesRecentSwatchSize"), new Dimension(10, 10));
     harness.check(defaults.get("ColorChooser.swatchesSwatchSize"), new Dimension(10, 10));
 
     harness.checkPoint("ComboBox");
     harness.check(defaults.get("ComboBox.ancestorInputMap") instanceof InputMapUIResource);
+    harness.check(defaults.get("ComboBox.background"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("ComboBox.buttonBackground"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("ComboBox.buttonDarkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("ComboBox.buttonHighlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("ComboBox.buttonShadow"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("ComboBox.disabledBackground"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("ComboBox.disabledForeground"), new ColorUIResource(0, 0, 14));
     harness.check(defaults.get("ComboBox.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("ComboBox.selectionBackground"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("ComboBox.selectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("ComboBox.foreground"), new ColorUIResource(0, 0, 10));
+    harness.check(defaults.get("ComboBox.selectionBackground"), new ColorUIResource(0, 0, 24));
+    harness.check(defaults.get("ComboBox.selectionForeground"), new ColorUIResource(0, 0, 10));
     
     harness.checkPoint("Desktop");
     harness.check(defaults.get("Desktop.ancestorInputMap") instanceof InputMapUIResource);
+    harness.check(defaults.get("Desktop.background"), new ColorUIResource(0, 0, 11));
     
     harness.checkPoint("DesktopIcon");
-    harness.check(defaults.get("DesktopIcon.background"), new ColorUIResource(204, 204, 204));
+    harness.check(defaults.get("DesktopIcon.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("DesktopIcon.border") instanceof BorderUIResource.CompoundBorderUIResource); 
     harness.check(defaults.get("DesktopIcon.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("DesktopIcon.foreground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("DesktopIcon.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("DesktopIcon.width"), new Integer(160));
     
     harness.checkPoint("EditorPane");
+    harness.check(defaults.get("EditorPane.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("EditorPane.border") instanceof BasicBorders.MarginBorder); 
     harness.check(defaults.get("EditorPane.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.get("EditorPane.caretForeground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("EditorPane.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("EditorPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("EditorPane.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("EditorPane.inactiveForeground"), new ColorUIResource(0, 0, 14));
     harness.check(defaults.get("EditorPane.margin"), new InsetsUIResource(3, 3, 3, 3));
+    harness.check(defaults.get("EditorPane.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("EditorPane.selectionForeground"), new ColorUIResource(0, 0, 13));
     
     harness.checkPoint("FileChooser");
     harness.check(defaults.get("FileChooser.ancestorInputMap") instanceof InputMapUIResource);
@@ -174,18 +358,34 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("FileView.hardDriveIcon") instanceof Icon);
     
     harness.checkPoint("FormattedTextField");
+    harness.check(defaults.get("FormattedTextField.background"), new ColorUIResource(0, 0, 30));  
     harness.check(defaults.get("FormattedTextField.border") instanceof BorderUIResource.CompoundBorderUIResource);  
     harness.check(defaults.get("FormattedTextField.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.get("FormattedTextField.caretForeground"), new ColorUIResource(0, 0, 29));  
     harness.check(defaults.get("FormattedTextField.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("FormattedTextField.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("FormattedTextField.foreground"), new ColorUIResource(0, 0, 29));  
+    harness.check(defaults.get("FormattedTextField.inactiveBackground"), new ColorUIResource(0, 0, 4));  
+    harness.check(defaults.get("FormattedTextField.inactiveForeground"), new ColorUIResource(0, 0, 14));  
     harness.check(defaults.get("FormattedTextField.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(defaults.get("FormattedTextField.selectionBackground"), new ColorUIResource(0, 0, 28));  
+    harness.check(defaults.get("FormattedTextField.selectionForeground"), new ColorUIResource(0, 0, 13));  
     
     harness.checkPoint("InternalFrame");
 //    harness.check(defaults.get("InternalFrame.border") instanceof MetalBorders.InternalFrameBorder); 
+    harness.check(defaults.get("InternalFrame.activeTitleBackground"), new ColorUIResource(0, 0, 31));
+    harness.check(defaults.get("InternalFrame.activeTitleForeground"), new ColorUIResource(0, 0, 32));
+    harness.check(defaults.get("InternalFrame.borderColor"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("InternalFrame.borderDarkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("InternalFrame.borderHighlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("InternalFrame.borderLight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("InternalFrame.borderShadow"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("InternalFrame.closeIcon") instanceof Icon);
     harness.check(defaults.get("InternalFrame.closeSound"), "sounds/FrameClose.wav");
     harness.check(defaults.get("InternalFrame.icon") instanceof Icon);
     harness.check(defaults.get("InternalFrame.iconifyIcon") instanceof Icon);
+    harness.check(defaults.get("InternalFrame.inactiveTitleBackground"), new ColorUIResource(0, 0, 33));
+    harness.check(defaults.get("InternalFrame.inactiveTitleForeground"), new ColorUIResource(0, 0, 34));
     harness.check(defaults.get("InternalFrame.maximizeIcon") instanceof Icon);
     harness.check(defaults.get("InternalFrame.maximizeSound"), "sounds/FrameMaximize.wav");
     harness.check(defaults.get("InternalFrame.minimizeIcon") instanceof Icon);
@@ -199,9 +399,11 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("InternalFrame.titleFont"), new FontUIResource("Dialog", Font.BOLD, 12));
     
     harness.checkPoint("Label");
-    harness.check(defaults.get("Label.disabledForeground"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("Label.background"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("Label.disabledForeground"), new ColorUIResource(0, 0, 14));
+    harness.check(defaults.get("Label.disabledShadow"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("Label.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("Label.foreground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("Label.foreground"), new ColorUIResource(0, 0, 27));
     
     harness.checkPoint("List");
     harness.check(defaults.get("List.cellRenderer") instanceof ListCellRenderer);

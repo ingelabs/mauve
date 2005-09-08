@@ -1,5 +1,10 @@
 2005-09-08  Roman Kennke  <roman@kennke.org>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/initComponentDefaults.java:
+	Added and improved tests for component color defaults.
+
+2005-09-08  Roman Kennke  <roman@kennke.org>
+
 	* gnu/testlet/javax/swing/text/GapContent/PositionTest.java:
 	New testcase to check for behaviour of positions in GapContent.
 
