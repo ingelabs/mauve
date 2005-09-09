@@ -1,3 +1,10 @@
+2005-09-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getMaximumSize.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getMinimumSize.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getPreferredSize.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/isFocusTraversable.java: new test.
+
 2005-09-08  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/initComponentDefaults.java:
