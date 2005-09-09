@@ -1,5 +1,14 @@
 2005-09-09  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextAreaUI/MyBasicTextAreaUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextAreaUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextFieldUI/MyBasicTextFieldUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextFieldUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextPaneUI/MyBasicTextPaneUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicTextPaneUI/getPropertyPrefix.java: new test.
+
+2005-09-09  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getMaximumSize.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getMinimumSize.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getPreferredSize.java: new test,
@@ -48,12 +57,6 @@
 	* gnu/testlet/javax/swing/plaf/basic/BasicFormattedTextFieldUI/getPropertyPrefix.java: new test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicPasswordFieldUI/MyBasicPasswordFieldUI.java: new support class,
 	* gnu/testlet/javax/swing/plaf/basic/BasicPasswordFieldUI/getPropertyPrefix.java: new test,
-	* gnu/testlet/javax/swing/plaf/basic/BasicTextAreaUI/MyBasicTextAreaUI.java: new support class,
-	* gnu/testlet/javax/swing/plaf/basic/BasicTextAreaUI/getPropertyPrefix.java: new test,
-	* gnu/testlet/javax/swing/plaf/basic/BasicTextFieldUI/MyBasicTextFieldUI.java: new support class,
-	* gnu/testlet/javax/swing/plaf/basic/BasicTextFieldUI/getPropertyPrefix.java: new test,
-	* gnu/testlet/javax/swing/plaf/basic/BasicTextPaneUI/MyBasicTextPaneUI.java: new support class,
-	* gnu/testlet/javax/swing/plaf/basic/BasicTextPaneUI/getPropertyPrefix.java: new test.
 
 2005-08-31  David Gilbert  <david.gilbert@object-refinery.com>
 
