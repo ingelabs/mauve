@@ -54,7 +54,7 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
  * Some checks for the initComponentDefaults() method in the 
  * {@link MetalLookAndFeel} class.  
  */
-public class initComponentDefaults implements Testlet
+public class getDefaults implements Testlet
 {
   /**
    * This extends the default theme, so that each theme color gets a
@@ -223,8 +223,7 @@ public class initComponentDefaults implements Testlet
 
     // TODO: in the following code, there are many 'instanceof' checks - these
     // are typically very weak tests.  Maybe they can be strengthened...
-    
-    // The color test do not test for the real color values. This is
+    // The color tests do not test for the real color values. This is
     // not possible. It merely tests which of the MetalTheme colors
     // is use here. See the TestTheme class above.
     harness.checkPoint("AuditoryCues");
@@ -237,7 +236,7 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("Button.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Button.border") instanceof BorderUIResource.CompoundBorderUIResource);
     harness.check(defaults.get("Button.darkShadow"), new ColorUIResource(0, 0, 5));
-    harness.check(defaults.get("Button.disabledText"), new ColorUIResource(0, 0, 6));
+    harness.check(defaults.get("Button.disabledText"), new ColorUIResource(0, 0, 35));
     harness.check(defaults.get("Button.disabledToolBarBorderBackground"), null);
     harness.check(defaults.get("Button.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("Button.focusInputMap") instanceof InputMapUIResource);
@@ -255,11 +254,11 @@ public class initComponentDefaults implements Testlet
     harness.checkPoint("CheckBox");
     harness.check(defaults.get("CheckBox.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("CheckBox.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("CheckBox.disabledText"), new ColorUIResource(0, 0, 6));
+    harness.check(defaults.get("CheckBox.disabledText"), new ColorUIResource(0, 0, 35));
     harness.check(defaults.get("CheckBox.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("CheckBox.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("CheckBox.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("CheckBox.foreground"), new ColorUIResource(16, 16, 16));
+    harness.check(defaults.get("CheckBox.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("CheckBox.icon") instanceof Icon);
     harness.check(defaults.get("CheckBox.margin"), new InsetsUIResource(2, 2, 2, 2));
     harness.check(defaults.get("Checkbox.select"), new ColorUIResource(0, 0, 9));
@@ -288,10 +287,10 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("ColorChooser.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ColorChooser.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
     harness.check(defaults.get("ColorChooser.foreground"), new ColorUIResource(0, 0, 10));
-    harness.check(defaults.get("ColorChooser.rgbBlueMnemonic"), new Integer(66));
-    harness.check(defaults.get("ColorChooser.rgbGreenMnemonic"), new Integer(78));
-    harness.check(defaults.get("ColorChooser.rgbRedMnemonic"), new Integer(68));
-    harness.check(defaults.get("ColorChooser.swatchesDefaultRecentColor"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.getInt("ColorChooser.rgbBlueMnemonic"), 0);
+    harness.check(defaults.getInt("ColorChooser.rgbGreenMnemonic"), 0);
+    harness.check(defaults.getInt("ColorChooser.rgbRedMnemonic"), 0);
+    harness.check(defaults.get("ColorChooser.swatchesDefaultRecentColor"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ColorChooser.swatchesRecentSwatchSize"), new Dimension(10, 10));
     harness.check(defaults.get("ColorChooser.swatchesSwatchSize"), new Dimension(10, 10));
 
@@ -318,12 +317,12 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("DesktopIcon.border") instanceof BorderUIResource.CompoundBorderUIResource); 
     harness.check(defaults.get("DesktopIcon.font"), new FontUIResource("Dialog", Font.BOLD, 12));
     harness.check(defaults.get("DesktopIcon.foreground"), new ColorUIResource(0, 0, 10));
-    harness.check(defaults.get("DesktopIcon.width"), new Integer(160));
+    harness.check(defaults.getInt("DesktopIcon.width"), 160);
     
     harness.checkPoint("EditorPane");
     harness.check(defaults.get("EditorPane.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("EditorPane.border") instanceof BasicBorders.MarginBorder); 
-    harness.check(defaults.get("EditorPane.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.getInt("EditorPane.caretBlinkRate"), 500);
     harness.check(defaults.get("EditorPane.caretForeground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("EditorPane.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("EditorPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
@@ -335,19 +334,19 @@ public class initComponentDefaults implements Testlet
     
     harness.checkPoint("FileChooser");
     harness.check(defaults.get("FileChooser.ancestorInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("FileChooser.cancelButtonMnemonic"), new Integer(67));
+    harness.check(defaults.getInt("FileChooser.cancelButtonMnemonic"), 0);
     harness.check(defaults.get("FileChooser.detailsViewIcon") instanceof Icon);
-    harness.check(defaults.get("FileChooser.directoryOpenButtonMnemonic"), new Integer(79));
-    harness.check(defaults.get("FileChooser.fileNameLabelMnemonic"), new Integer(78));
-    harness.check(defaults.get("FileChooser.filesOfTypeLabelMnemonic"), new Integer(84));
-    harness.check(defaults.get("FileChooser.helpButtonMnemonic"), new Integer(72));
+    harness.check(defaults.getInt("FileChooser.directoryOpenButtonMnemonic"), 0);
+    harness.check(defaults.getInt("FileChooser.fileNameLabelMnemonic"), 78);
+    harness.check(defaults.getInt("FileChooser.filesOfTypeLabelMnemonic"), 84);
+    harness.check(defaults.getInt("FileChooser.helpButtonMnemonic"), 0);
     harness.check(defaults.get("FileChooser.homeFolderIcon") instanceof Icon);
     harness.check(defaults.get("FileChooser.listViewIcon") instanceof Icon);
-    harness.check(defaults.get("FileChooser.lookInLabelMnemonic"), new Integer(73));
+    harness.check(defaults.getInt("FileChooser.lookInLabelMnemonic"), 73);
     harness.check(defaults.get("FileChooser.newFolderIcon") instanceof Icon);
-    harness.check(defaults.get("FileChooser.openButtonMnemonic"), new Integer(79));
-    harness.check(defaults.get("FileChooser.saveButtonMnemonic"), new Integer(83));
-    harness.check(defaults.get("FileChooser.updateButtonMnemonic"), new Integer(85));
+    harness.check(defaults.getInt("FileChooser.openButtonMnemonic"), 0);
+    harness.check(defaults.getInt("FileChooser.saveButtonMnemonic"), 0);
+    harness.check(defaults.getInt("FileChooser.updateButtonMnemonic"), 0);
     harness.check(defaults.get("FileChooser.upFolderIcon") instanceof Icon);
     
     harness.checkPoint("FileView");
@@ -360,7 +359,7 @@ public class initComponentDefaults implements Testlet
     harness.checkPoint("FormattedTextField");
     harness.check(defaults.get("FormattedTextField.background"), new ColorUIResource(0, 0, 30));  
     harness.check(defaults.get("FormattedTextField.border") instanceof BorderUIResource.CompoundBorderUIResource);  
-    harness.check(defaults.get("FormattedTextField.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.getInt("FormattedTextField.caretBlinkRate"), 500);
     harness.check(defaults.get("FormattedTextField.caretForeground"), new ColorUIResource(0, 0, 29));  
     harness.check(defaults.get("FormattedTextField.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("FormattedTextField.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
@@ -393,7 +392,7 @@ public class initComponentDefaults implements Testlet
 //    harness.check(defaults.get("InternalFrame.optionDialogBorder") instanceof MetalBorders.OptionDialogBorder);
 //    harness.check(defaults.get("InternalFrame.paletteBorder") instanceof MetalBorders.PaletteBorder);
     harness.check(defaults.get("InternalFrame.paletteCloseIcon") instanceof Icon);
-    harness.check(defaults.get("InternalFrame.paletteTitleHeight"), new Integer(11));
+    harness.check(defaults.getInt("InternalFrame.paletteTitleHeight"), 11);
     harness.check(defaults.get("InternalFrame.restoreDownSound"), "sounds/FrameRestoreDown.wav");
     harness.check(defaults.get("InternalFrame.restoreUpSound"), "sounds/FrameRestoreUp.wav");
     harness.check(defaults.get("InternalFrame.titleFont"), new FontUIResource("Dialog", Font.BOLD, 12));
@@ -406,37 +405,48 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("Label.foreground"), new ColorUIResource(0, 0, 27));
     
     harness.checkPoint("List");
+    harness.check(defaults.get("List.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("List.cellRenderer") instanceof ListCellRenderer);
     harness.check(defaults.get("List.focusCellHighlightBorder") instanceof BorderUIResource.LineBorderUIResource);
     harness.check(defaults.get("List.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("List.focusInputMap.RightToLeft") instanceof InputMapUIResource);
     harness.check(defaults.get("List.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("List.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("List.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("List.selectionForeground"), new ColorUIResource(0, 0, 13));
     
     harness.checkPoint("Menu");
     harness.check(defaults.get("Menu.acceleratorFont"), new FontUIResource("Dialog", Font.PLAIN, 10));
-    harness.check(defaults.get("Menu.acceleratorForeground"), new ColorUIResource(102, 102, 153));
-    harness.check(defaults.get("Menu.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("Menu.acceleratorForeground"), new ColorUIResource(0, 0, 1));
+    harness.check(defaults.get("Menu.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 2));
     harness.check(defaults.get("Menu.arrowIcon") instanceof Icon); 
 //    harness.check(defaults.get("Menu.border") instanceof MetalBorders.MenuItemBorder);
+    harness.check(defaults.get("Menu.background"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("Menu.borderPainted"), Boolean.TRUE);
     harness.check(defaults.get("Menu.checkIcon"), null);
     harness.check(defaults.get("Menu.crossMenuMnemonic"), Boolean.TRUE);
-    harness.check(defaults.get("Menu.disabledForeground"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("Menu.disabledForeground"), new ColorUIResource(0, 0, 16));
     harness.check(defaults.get("Menu.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Menu.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("Menu.margin"), new InsetsUIResource(2, 2, 2, 2));
-    harness.check(defaults.get("Menu.menuPopupOffsetX"), new Integer(0));
-    harness.check(defaults.get("Menu.menuPopupOffsetY"), new Integer(0));
-    harness.check(defaults.get("Menu.selectionBackground"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("Menu.selectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.getInt("Menu.menuPopupOffsetX"), 0);
+    harness.check(defaults.getInt("Menu.menuPopupOffsetY"), 0);
+    harness.check(defaults.get("Menu.selectionBackground"), new ColorUIResource(0, 0, 18));
+    harness.check(defaults.get("Menu.selectionForeground"), new ColorUIResource(0, 0, 19));
     int[] value = (int[]) defaults.get("Menu.shortcutKeys");
     harness.check(value != null ? value.length : 0, 1);
     harness.check(value != null ? value[0] : 0, 8);
-    harness.check(defaults.get("Menu.submenuPopupOffsetX"), new Integer(-4));
-    harness.check(defaults.get("Menu.submenuPopupOffsetY"), new Integer(-3));
+    harness.check(defaults.getInt("Menu.submenuPopupOffsetX"), -4);
+    harness.check(defaults.getInt("Menu.submenuPopupOffsetY"), -3);
     
     harness.checkPoint("MenuBar");
 //    harness.check(defaults.get("MenuBar.border") instanceof MetalBorders.MenuBarBorder);
+    harness.check(defaults.get("MenuBar.background"), new ColorUIResource(0, 0, 15));
+    harness.check(defaults.get("MenuBar.borderColor"), null);
     harness.check(defaults.get("MenuBar.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("MenuBar.foreground"), new ColorUIResource(0, 0, 17));
+    harness.check(defaults.get("MenuBar.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("MenuBar.shadow"), new ColorUIResource(0, 0, 9));
     Object[] bindings = (Object[]) defaults.get("MenuBar.windowBindings");
     harness.check(bindings.length, 2);
     harness.check(bindings[0], "F10");
@@ -445,23 +455,26 @@ public class initComponentDefaults implements Testlet
     harness.checkPoint("MenuItem");
     harness.check(defaults.get("MenuItem.acceleratorDelimiter"), "-");
     harness.check(defaults.get("MenuItem.acceleratorFont"), new FontUIResource("Dialog", Font.PLAIN, 10));
-    harness.check(defaults.get("MenuItem.acceleratorForeground"), new ColorUIResource(102, 102, 153));
-    harness.check(defaults.get("MenuItem.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("MenuItem.acceleratorForeground"), new ColorUIResource(0, 0, 1));
+    harness.check(defaults.get("MenuItem.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 2));
     harness.check(defaults.get("MenuItem.arrowIcon") instanceof Icon);
 //    harness.check(defaults.get("MenuItem.border") instanceof MetalBorders.MenuItemBorder);
+    harness.check(defaults.get("MenuItem.background"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("MenuItem.borderPainted"), Boolean.TRUE);
     harness.check(defaults.get("MenuItem.checkIcon"), null);
     harness.check(defaults.get("MenuItem.commandSound"), "sounds/MenuItemCommand.wav");
-    harness.check(defaults.get("MenuItem.disabledForeground"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("MenuItem.disabledForeground"), new ColorUIResource(0, 0, 16));
     harness.check(defaults.get("MenuItem.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("MenuItem.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("MenuItem.margin"), new InsetsUIResource(2, 2, 2, 2));
-    harness.check(defaults.get("MenuItem.selectionBackground"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("MenuItem.selectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("MenuItem.selectionBackground"), new ColorUIResource(0, 0, 18));
+    harness.check(defaults.get("MenuItem.selectionForeground"), new ColorUIResource(0, 0, 19));
     
     harness.checkPoint("OptionPane");
+    harness.check(defaults.get("OptionPane.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("OptionPane.border") instanceof BorderUIResource.EmptyBorderUIResource);
     harness.check(defaults.get("OptionPane.buttonAreaBorder") instanceof BorderUIResource.EmptyBorderUIResource);
-    harness.check(defaults.get("OptionPane.buttonClickThreshhold"), new Integer(500));
+    harness.check(defaults.getInt("OptionPane.buttonClickThreshhold"), 500);
     harness.check(defaults.get("OptionPane.errorDialog.border.background"), new ColorUIResource(153, 51, 51));
     harness.check(defaults.get("OptionPane.errorDialog.titlePane.background"), new ColorUIResource(255, 153, 153));
     harness.check(defaults.get("OptionPane.errorDialog.titlePane.foreground"), new ColorUIResource(51, 0, 0));
@@ -469,9 +482,11 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("OptionPane.errorIcon"), null);
     harness.check(defaults.get("OptionPane.errorSound"), "sounds/OptionPaneError.wav");
     harness.check(defaults.get("OptionPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("OptionPane.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("OptionPane.informationIcon"), null);
     harness.check(defaults.get("OptionPane.informationSound"), "sounds/OptionPaneInformation.wav");
     harness.check(defaults.get("OptionPane.messageAreaBorder") instanceof BorderUIResource.EmptyBorderUIResource);
+    harness.check(defaults.get("OptionPane.messageForeground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("OptionPane.minimumSize"), new DimensionUIResource(262, 90));
     harness.check(defaults.get("OptionPane.questionDialog.border.background"), new ColorUIResource(51, 102, 51));
     harness.check(defaults.get("OptionPane.questionDialog.titlePane.background"), new ColorUIResource(153, 204, 153));
@@ -491,60 +506,81 @@ public class initComponentDefaults implements Testlet
     harness.check(bindings[1], "close");
     
     harness.checkPoint("Panel");
+    harness.check(defaults.get("Panel.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Panel.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("Panel.foreground"), new ColorUIResource(0, 0, 29));
     
     harness.checkPoint("PasswordField");
+    harness.check(defaults.get("PasswordField.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("PasswordField.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("PasswordField.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.getInt("PasswordField.caretBlinkRate"), 500);
+    harness.check(defaults.get("PasswordField.caretForeground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("PasswordField.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("PasswordField.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("PasswordField.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("PasswordField.inactiveBackground"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("PasswordField.inactiveForeground"), new ColorUIResource(0, 0, 14));
     harness.check(defaults.get("PasswordField.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(defaults.get("PasswordField.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("PasswordField.selectionForeground"), new ColorUIResource(0, 0, 13));
     
     harness.checkPoint("PopupMenu");
+    harness.check(defaults.get("PopupMenu.background"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("PopupMenu.border") instanceof MetalBorders.PopupMenuBorder);
     harness.check(defaults.get("PopupMenu.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("PopupMenu.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("PopupMenu.popupSound"), "sounds/PopupMenuPopup.wav");
     harness.check(defaults.get("PopupMenu.selectedWindowInputMapBindings") instanceof Object[]);
     harness.check(defaults.get("PopupMenu.selectedWindowInputMapBindings.RightToLeft") instanceof Object[]);
     
     harness.checkPoint("ProgressBar");
+    harness.check(defaults.get("ProgressBar.background"), new ColorUIResource(0, 0, 4));
     LineBorderUIResource b = (LineBorderUIResource) defaults.get("ProgressBar.border");
     harness.check(b.getThickness(), 1);
-    harness.check(b.getLineColor(), new Color(102, 102, 102));
-    harness.check(defaults.get("ProgressBar.cellLength"), new Integer(1));
-    harness.check(defaults.get("ProgressBar.cellSpacing"), new Integer(0));
-    harness.check(defaults.get("ProgressBar.cycleTime"), new Integer(3000));
+    harness.check(b.getLineColor(), new Color(0, 0, 5));
+    harness.check(defaults.getInt("ProgressBar.cellLength"), 1);
+    harness.check(defaults.getInt("ProgressBar.cellSpacing"), 0);
+    harness.check(defaults.getInt("ProgressBar.cycleTime"), 3000);
     harness.check(defaults.get("ProgressBar.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("ProgressBar.foreground"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("ProgressBar.repaintInterval"), new Integer(50));
-    harness.check(defaults.get("ProgressBar.selectionBackground"), new ColorUIResource(102, 102, 153));
+    harness.check(defaults.get("ProgressBar.foreground"), new ColorUIResource(0, 0, 24));
+    harness.check(defaults.getInt("ProgressBar.repaintInterval"), 50);
+    harness.check(defaults.get("ProgressBar.selectionBackground"), new ColorUIResource(0, 0, 21));
+    harness.check(defaults.get("ProgressBar.selectionForeground"), new ColorUIResource(0, 0, 4));
     
     harness.checkPoint("RadioButton");
+    harness.check(defaults.get("RadioButton.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("RadioButton.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("RadioButton.disabledText"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("RadioButton.focus"), new ColorUIResource(153, 153, 204));
+    harness.check(defaults.get("RadioButton.darkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("RadioButton.disabledText"), new ColorUIResource(0, 0, 35));
+    harness.check(defaults.get("RadioButton.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("RadioButton.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("RadioButton.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("RadioButton.foreground"), new ColorUIResource(0, 0, 10));
+    harness.check(defaults.get("RadioButton.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("RadioButton.icon") instanceof Icon);
+    harness.check(defaults.get("RadioButton.light"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("RadioButton.margin"), new InsetsUIResource(2, 2, 2, 2));
-    harness.check(defaults.get("RadioButton.select"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("RadioButton.textIconGap"), new Integer(4));
-    harness.check(defaults.get("RadioButton.textShiftOffset"), new Integer(0));
+    harness.check(defaults.get("RadioButton.select"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("RadioButton.shadow"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.getInt("RadioButton.textIconGap"), 4);
+    harness.check(defaults.getInt("RadioButton.textShiftOffset"), 0);
     
     harness.checkPoint("RadioButtonMenuItem");
     harness.check(defaults.get("RadioButtonMenuItem.acceleratorFont"), new Font("Dialog", Font.PLAIN, 10));
-    harness.check(defaults.get("RadioButtonMenuItem.acceleratorForeground"), new ColorUIResource(102, 102, 153));
-    harness.check(defaults.get("RadioButtonMenuItem.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("RadioButtonMenuItem.acceleratorForeground"), new ColorUIResource(0, 0, 1));
+    harness.check(defaults.get("RadioButtonMenuItem.acceleratorSelectionForeground"), new ColorUIResource(0, 0, 2));
     harness.check(defaults.get("RadioButtonMenuItem.arrowIcon") instanceof Icon);
 //    harness.check(defaults.get("RadioButtonMenuItem.border") instanceof MetalBorders.MenuItemBorder);
+    harness.check(defaults.get("RadioButtonMenuItem.background"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("RadioButtonMenuItem.borderPainted"), Boolean.TRUE);
     harness.check(defaults.get("RadioButtonMenuItem.checkIcon") instanceof Icon);
     harness.check(defaults.get("RadioButtonMenuItem.commandSound"), "sounds/MenuItemCommand.wav");
-    harness.check(defaults.get("RadioButtonMenuItem.disabledForeground"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("RadioButtonMenuItem.disabledForeground"), new ColorUIResource(0, 0, 16));
     harness.check(defaults.get("RadioButtonMenuItem.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("RadioButtonMenuItem.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("RadioButtonMenuItem.margin"), new InsetsUIResource(2, 2, 2, 2));
-    harness.check(defaults.get("RadioButtonMenuItem.selectionBackground"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("RadioButtonMenuItem.selectionForeground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("RadioButtonMenuItem.selectionBackground"), new ColorUIResource(0, 0, 18));
+    harness.check(defaults.get("RadioButtonMenuItem.selectionForeground"), new ColorUIResource(0, 0, 19));
     
     harness.checkPoint("RootPane");
     harness.check(defaults.get("RootPane.colorChooserDialogBorder") instanceof Border);
@@ -559,32 +595,41 @@ public class initComponentDefaults implements Testlet
     
     harness.checkPoint("ScrollBar");
     harness.check(defaults.get("ScrollBar.allowsAbsolutePositioning"), Boolean.TRUE);
-    harness.check(defaults.get("ScrollBar.background"), new ColorUIResource(204, 204, 204));
-    harness.check(defaults.get("ScrollBar.darkShadow"), new ColorUIResource(102, 102, 102));
+    harness.check(defaults.get("ScrollBar.background"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("ScrollBar.darkShadow"), new ColorUIResource(0, 0, 5));
     harness.check(defaults.get("ScrollBar.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("ScrollBar.focusInputMap.RightToLeft") instanceof InputMapUIResource);
-    harness.check(defaults.get("ScrollBar.highlight"), new ColorUIResource(255, 255, 255));
+    harness.check(defaults.get("ScrollBar.foreground"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("ScrollBar.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ScrollBar.maximumThumbSize"), new DimensionUIResource(4096, 4096));
     harness.check(defaults.get("ScrollBar.minimumThumbSize"), new DimensionUIResource(8, 8));
-    harness.check(defaults.get("ScrollBar.shadow"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("ScrollBar.thumb"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("ScrollBar.thumbHighlight"), new ColorUIResource(204, 204, 255));
-    harness.check(defaults.get("ScrollBar.thumbShadow"), new ColorUIResource(102, 102, 153));
-    harness.check(defaults.get("ScrollBar.width"), new Integer(17));
+    harness.check(defaults.get("ScrollBar.shadow"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("ScrollBar.thumb"), new ColorUIResource(0, 0, 24));
+    harness.check(defaults.get("ScrollBar.thumbDarkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("ScrollBar.thumbHighlight"), new ColorUIResource(0, 0, 20));
+    harness.check(defaults.get("ScrollBar.thumbShadow"), new ColorUIResource(0, 0, 21));
+    harness.check(defaults.get("ScrollBar.track"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("ScrollBar.trackHighlight"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.getInt("ScrollBar.width"), 17);
     
     harness.checkPoint("ScrollPane");
     harness.check(defaults.get("ScrollPane.ancestorInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("ScrollPane.ancestorInputMap.RightToLeft") instanceof InputMapUIResource);
+    harness.check(defaults.get("ScrollPane.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ScrollPane.border") instanceof MetalBorders.ScrollPaneBorder);
     harness.check(defaults.get("ScrollPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("ScrollPane.foreground"), new ColorUIResource(0, 0, 10));
     
     harness.checkPoint("Separator");
-    harness.check(defaults.get("Separator.background"), new ColorUIResource(255, 255, 255));
-    harness.check(defaults.get("Separator.foreground"), new ColorUIResource(102, 102, 153));
+    harness.check(defaults.get("Separator.background"), new ColorUIResource(0, 0, 25));
+    harness.check(defaults.get("Separator.foreground"), new ColorUIResource(0, 0, 26));
+    harness.check(defaults.get("Separator.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("Separator.shadow"), new ColorUIResource(0, 0, 9));
     
     harness.checkPoint("Slider");
-    harness.check(defaults.get("Slider.focus"), new ColorUIResource(153, 153, 204));
-    
+    harness.check(defaults.get("Slider.altTrackColor"), null);
+    harness.check(defaults.get("Slider.background"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("Slider.focus"), new ColorUIResource(0, 0, 12));
     InputMap focusInputMap = (InputMap) defaults.get("Slider.focusInputMap");
     KeyStroke[] keys = focusInputMap.keys();
 //    for (int i = 0; i < keys.length; i++) {
@@ -640,10 +685,12 @@ public class initComponentDefaults implements Testlet
     harness.check(rightToLeftMap.get(KeyStroke.getKeyStroke("KP_LEFT")), "positiveUnitIncrement");
     
     harness.check(defaults.get("Slider.focusInsets"), new InsetsUIResource(0, 0, 0, 0));
-    harness.check(defaults.get("Slider.foreground"), new ColorUIResource(153, 153, 204));
+    harness.check(defaults.get("Slider.foreground"), new ColorUIResource(0, 0, 24));
+    harness.check(defaults.get("Slider.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("Slider.horizontalThumbIcon") != null); 
-    harness.check(defaults.get("Slider.majorTickLength"), new Integer(6));
-    harness.check(defaults.get("Slider.trackWidth"), new Integer(7));
+    harness.check(defaults.getInt("Slider.majorTickLength"), 6);
+    harness.check(defaults.get("Slider.shadow"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.getInt("Slider.trackWidth"), 7);
     harness.check(defaults.get("Slider.verticalThumbIcon") != null);
     
     harness.checkPoint("Spinner");
@@ -652,104 +699,167 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("Spinner.arrowButtonInsets"), new InsetsUIResource(0, 0, 0, 0));
     harness.check(defaults.get("Spinner.arrowButtonSize"), new Dimension(16, 5));
     harness.check(defaults.get("Spinner.border") instanceof Border);
+    harness.check(defaults.get("Spinner.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Spinner.editorBorderPainted"), Boolean.FALSE);
     harness.check(defaults.get("Spinner.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Spinner.foreground"), new ColorUIResource(0, 0, 4));
     
     harness.checkPoint("SplitPane");
     harness.check(defaults.get("SplitPane.ancestorInputMap") instanceof InputMapUIResource);
+    harness.check(defaults.get("SplitPane.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("SplitPane.border") instanceof Border);
-    harness.check(defaults.get("SplitPane.dividerSize"), new Integer(10));
+    harness.check(defaults.get("SplitPane.darkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("SplitPane.dividerFocusColor"), new ColorUIResource(0, 0, 20));
+    harness.check(defaults.getInt("SplitPane.dividerSize"), 10);
+    harness.check(defaults.get("SplitPane.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("SplitPane.shadow"), new ColorUIResource(0, 0, 9));
+
+    harness.checkPoint("SplitPaneDivider");
+    harness.check(defaults.get("SplitPaneDivider.draggingColor"), new ColorUIResource(64, 64, 64));
     harness.check(defaults.get("SplitPaneDivider.border") instanceof Border);
     
     harness.checkPoint("TabbedPane");
     harness.check(defaults.get("TabbedPane.ancestorInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("TabbedPane.background"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("TabbedPane.background"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("TabbedPane.borderHighlightColor"), null);
+    harness.check(defaults.get("TabbedPane.contentAreaColor"), null);
     harness.check(defaults.get("TabbedPane.contentBorderInsets"), new InsetsUIResource(2, 2, 3, 3));
-    harness.check(defaults.get("TabbedPane.focus"), new ColorUIResource(102, 102, 153));
+    harness.check(defaults.get("TabbedPane.darkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("TabbedPane.focus"), new ColorUIResource(0, 0, 21));
     harness.check(defaults.get("TabbedPane.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("TabbedPane.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("TabbedPane.light"), new ColorUIResource(204, 204, 204));
-    harness.check(defaults.get("TabbedPane.selected"), new ColorUIResource(204, 204, 204));
+    harness.check(defaults.get("TabbedPane.foreground"), new ColorUIResource(0, 0, 10));
+    harness.check(defaults.get("TabbedPane.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("TabbedPane.light"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("TabbedPane.selected"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("TabbedPane.selectedTabPadInsets"), new InsetsUIResource(2, 2, 2, 1));
-    harness.check(defaults.get("TabbedPane.selectHighlight"), new ColorUIResource(255, 255, 255));
-    harness.check(defaults.get("TabbedPane.tabAreaBackground"), new ColorUIResource(204, 204, 204));
+    harness.check(defaults.get("TabbedPane.selectHighlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("TabbedPane.shadow"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("TabbedPane.tabAreaBackground"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("TabbedPane.tabAreaInsets"), new InsetsUIResource(4, 2, 0, 6));
     harness.check(defaults.get("TabbedPane.tabInsets"), new InsetsUIResource(0, 9, 1, 9));
-    harness.check(defaults.get("TabbedPane.tabRunOverlay"), new Integer(2));
-    harness.check(defaults.get("TabbedPane.textIconGap"), new Integer(4));
+    harness.check(defaults.getInt("TabbedPane.tabRunOverlay"), 2);
+    harness.check(defaults.getInt("TabbedPane.textIconGap"), 4);
+    harness.check(defaults.get("TabbedPane.unselectedBackground"), null);
     
     harness.checkPoint("Table");
     harness.check(defaults.get("Table.ancestorInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("Table.ancestorInputMap.RightToLeft") instanceof InputMapUIResource);
+    harness.check(defaults.get("Table.background"), new ColorUIResource(0, 0, 30));
+    harness.check(defaults.get("Table.focusCellBackground"), new ColorUIResource(0, 0, 30));
+    harness.check(defaults.get("Table.focusCellForeground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("Table.focusCellHighlightBorder") instanceof BorderUIResource.LineBorderUIResource);
     harness.check(defaults.get("Table.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
-    harness.check(defaults.get("Table.gridColor"), new ColorUIResource(153, 153, 153));
+    harness.check(defaults.get("Table.foreground"), new ColorUIResource(0, 0, 10));
+    harness.check(defaults.get("Table.gridColor"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("Table.scrollPaneBorder") instanceof MetalBorders.ScrollPaneBorder);
+    harness.check(defaults.get("Table.focusCellBackground"), new ColorUIResource(0, 0, 30));
     
     harness.checkPoint("TableHeader");
 //    harness.check(defaults.get("TableHeader.cellBorder") instanceof MetalBorders.TableHeaderBorder);
+    harness.check(defaults.get("TableHeader.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("TableHeader.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("TableHeader.foreground"), new ColorUIResource(0, 0, 10));
     
     harness.checkPoint("TextArea");
+    harness.check(defaults.get("TextArea.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("TextArea.border") instanceof BasicBorders.MarginBorder);
-    harness.check(defaults.get("TextArea.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.getInt("TextArea.caretBlinkRate"), 500);
+    harness.check(defaults.get("TextArea.caretForeground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("TextArea.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("TextArea.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("TextArea.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("TextArea.inactiveForeground"), new ColorUIResource(0, 0, 14));
     harness.check(defaults.get("TextArea.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(defaults.get("TextArea.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("TextArea.selectionForeground"), new ColorUIResource(0, 0, 13));
     
     harness.checkPoint("TextField");
+    harness.check(defaults.get("TextField.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("TextField.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("TextField.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.getInt("TextField.caretBlinkRate"), 500);
+    harness.check(defaults.get("TextField.caretForeground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("TextField.darkShadow"), new ColorUIResource(0, 0, 5));
     harness.check(defaults.get("TextField.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("TextField.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("TextField.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("TextField.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("TextField.inactiveBackground"), new ColorUIResource(0, 0, 4));
+    harness.check(defaults.get("TextField.inactiveForeground"), new ColorUIResource(0, 0, 14));
+    harness.check(defaults.get("TextField.light"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("TextField.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(defaults.get("TextField.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("TextField.selectionForeground"), new ColorUIResource(0, 0, 13));
+    harness.check(defaults.get("TextField.shadow"), new ColorUIResource(0, 0, 9));
     
     harness.checkPoint("TextPane");
+    harness.check(defaults.get("TextPane.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("TextPane.border") instanceof BasicBorders.MarginBorder);
-    harness.check(defaults.get("TextPane.caretBlinkRate"), new Integer(500));
+    harness.check(defaults.getInt("TextPane.caretBlinkRate"), 500);
+    harness.check(defaults.get("TextPane.caretForeground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("TextPane.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("TextPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("TextPane.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("TextPane.inactiveForeground"), new ColorUIResource(0, 0, 14));
     harness.check(defaults.get("TextPane.margin"), new InsetsUIResource(3, 3, 3, 3));
+    harness.check(defaults.get("TextPane.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("TextPane.selectionForeground"), new ColorUIResource(0, 0, 13));
     
     harness.checkPoint("TitledBorder");
     harness.check(defaults.get("TitledBorder.border"), null);
     harness.check(defaults.get("TitledBorder.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("TitledBorder.titleColor"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("TitledBorder.titleColor"), new ColorUIResource(0, 0, 27));
     
     harness.checkPoint("ToggleButton");
+    harness.check(defaults.get("ToggleButton.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ToggleButton.border") instanceof BorderUIResource.CompoundBorderUIResource);
-    harness.check(defaults.get("ToggleButton.disabledText"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("ToggleButton.focus"), new ColorUIResource(153, 153, 204));
+    harness.check(defaults.get("ToggleButton.darkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("ToggleButton.disabledText"), new ColorUIResource(0, 0, 35));
+    harness.check(defaults.get("ToggleButton.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("ToggleButton.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("ToggleButton.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("ToggleButton.foreground"), new ColorUIResource(0, 0, 10));
+    harness.check(defaults.get("ToggleButton.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("ToggleButton.light"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ToggleButton.margin"), new InsetsUIResource(2, 14, 2, 14));
-    harness.check(defaults.get("ToggleButton.select"), new ColorUIResource(153, 153, 153));
-    harness.check(defaults.get("ToggleButton.textIconGap"), new Integer(4));
-    harness.check(defaults.get("ToggleButton.textShiftOffset"), new Integer(0));
+    harness.check(defaults.get("ToggleButton.select"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.get("ToggleButton.shadow"), new ColorUIResource(0, 0, 9));
+    harness.check(defaults.getInt("ToggleButton.textIconGap"), 4);
+    harness.check(defaults.getInt("ToggleButton.textShiftOffset"), 0);
     
     harness.checkPoint("ToolBar");
     harness.check(defaults.get("ToolBar.ancestorInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("ToolBar.background"), new ColorUIResource(204, 204, 204));
+    harness.check(defaults.get("ToolBar.background"), new ColorUIResource(0, 0, 15));
 //    harness.check(defaults.get("ToolBar.border") instanceof MetalBorders.ToolBarBorder);
-    harness.check(defaults.get("ToolBar.dockingBackground"), new ColorUIResource(204, 204, 204));
-    harness.check(defaults.get("ToolBar.dockingForeground"), new ColorUIResource(102, 102, 153));
-    harness.check(defaults.get("ToolBar.floatingBackground"), new ColorUIResource(204, 204, 204));
-    harness.check(defaults.get("ToolBar.floatingForeground"), new ColorUIResource(204, 204, 255));
+    harness.check(defaults.get("ToolBar.borderColor"), null);
+    harness.check(defaults.get("ToolBar.darkShadow"), new ColorUIResource(0, 0, 5));
+    harness.check(defaults.get("ToolBar.dockingBackground"), new ColorUIResource(0, 0, 15));
+    harness.check(defaults.get("ToolBar.dockingForeground"), new ColorUIResource(0, 0, 21));
+    harness.check(defaults.get("ToolBar.floatingBackground"), new ColorUIResource(0, 0, 15));
+    harness.check(defaults.get("ToolBar.floatingForeground"), new ColorUIResource(0, 0, 20));
     harness.check(defaults.get("ToolBar.font"), new FontUIResource("Dialog", Font.BOLD, 12));
-    harness.check(defaults.get("ToolBar.foreground"), new ColorUIResource(0, 0, 0));
+    harness.check(defaults.get("ToolBar.foreground"), new ColorUIResource(0, 0, 17));
+    harness.check(defaults.get("ToolBar.highlight"), new ColorUIResource(0, 0, 7));
+    harness.check(defaults.get("ToolBar.light"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ToolBar.separatorSize"), new DimensionUIResource(10, 10));
+    harness.check(defaults.get("ToolBar.shadow"), new ColorUIResource(0, 0, 9));
     
     harness.checkPoint("ToolTip");
+    harness.check(defaults.get("ToolTip.background"), new ColorUIResource(0, 0, 20));
+    harness.check(defaults.get("ToolTip.backgroundInactive"), new ColorUIResource(0, 0, 4));
     LineBorderUIResource b2 = (LineBorderUIResource) defaults.get("ToolTip.border");
     harness.check(b2.getThickness(), 1);
-    harness.check(b2.getLineColor(), new Color(102, 102, 153));
+    harness.check(b2.getLineColor(), new Color(0, 0, 21));
     b2 = (LineBorderUIResource) defaults.get("ToolTip.borderInactive");
     harness.check(b2 != null ? b2.getThickness() : 0, 1);
-    harness.check(b2 != null ? b2.getLineColor() : null, new Color(102, 102, 102));
+    harness.check(b2 != null ? b2.getLineColor() : null, new Color(0, 0, 5));
     harness.check(defaults.get("ToolTip.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("ToolTip.foreground"), new ColorUIResource(0, 0, 23));
+    harness.check(defaults.get("ToolTip.foregroundInactive"), new ColorUIResource(0, 0, 5));
     harness.check(defaults.get("ToolTip.hideAccelerator"), Boolean.FALSE);
     
     harness.checkPoint("Tree");
+    harness.check(defaults.get("Tree.background"), new ColorUIResource(0, 0, 30));
     harness.check(defaults.get("Tree.ancestorInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("Tree.changeSelectionWithFocus"), Boolean.TRUE);
     harness.check(defaults.get("Tree.closedIcon") instanceof MetalIconFactory.TreeFolderIcon);
@@ -760,18 +870,24 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("Tree.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("Tree.focusInputMap.RightToLeft") instanceof InputMapUIResource);
     harness.check(defaults.get("Tree.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
-    harness.check(defaults.get("Tree.hash"), new ColorUIResource(204, 204, 255));
+    harness.check(defaults.get("Tree.foreground"), new ColorUIResource(0, 0, 29));
+    harness.check(defaults.get("Tree.hash"), new ColorUIResource(0, 0, 20));
     harness.check(defaults.get("Tree.leafIcon") instanceof MetalIconFactory.TreeLeafIcon);
-    harness.check(defaults.get("Tree.leftChildIndent"), new Integer(7));
-    harness.check(defaults.get("Tree.line"), new ColorUIResource(204, 204, 255));
+    harness.check(defaults.getInt("Tree.leftChildIndent"), 7);
+    harness.check(defaults.get("Tree.line"), new ColorUIResource(0, 0, 20));
     harness.check(defaults.get("Tree.openIcon") instanceof MetalIconFactory.TreeFolderIcon);
-    harness.check(defaults.get("Tree.rightChildIndent"), new Integer(13));
-    harness.check(defaults.get("Tree.rowHeight"), new Integer(0));
+    harness.check(defaults.getInt("Tree.rightChildIndent"), 13);
+    harness.check(defaults.getInt("Tree.rowHeight"), 0);
     harness.check(defaults.get("Tree.scrollsOnExpand"), Boolean.TRUE);
-    harness.check(defaults.get("Tree.selectionBorderColor"), new ColorUIResource(153, 153, 204));
-    harness.check(defaults.get("Tree.textBackground"), new ColorUIResource(255, 255, 255));
+    harness.check(defaults.get("Tree.selectionBackground"), new ColorUIResource(0, 0, 28));
+    harness.check(defaults.get("Tree.selectionBorderColor"), new ColorUIResource(0, 0, 12));
+    harness.check(defaults.get("Tree.selectionForeground"), new ColorUIResource(0, 0, 13));
+    harness.check(defaults.get("Tree.textBackground"), new ColorUIResource(0, 0, 30));
+    harness.check(defaults.get("Tree.textForeground"), new ColorUIResource(0, 0, 29));
     
     harness.checkPoint("Viewport");
+    harness.check(defaults.get("Viewport.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Viewport.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
+    harness.check(defaults.get("Viewport.foreground"), new ColorUIResource(0, 0, 29));
   }
 }
