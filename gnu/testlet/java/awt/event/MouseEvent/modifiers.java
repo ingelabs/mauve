@@ -42,7 +42,7 @@ import java.awt.event.KeyEvent;
  *
  * @author Roman Kennke
  */
-public class modifiersEx implements Testlet
+public class modifiers implements Testlet
 {
   int mask;
   Robot robot;
@@ -52,25 +52,15 @@ public class modifiersEx implements Testlet
 
   public void checkMask (int keycode[], int buttonmask, int keymask)
   {
-    int robot_button = 0;
-
-    if (buttonmask == InputEvent.BUTTON1_DOWN_MASK)
-      robot_button = InputEvent.BUTTON1_MASK;
-    else if (buttonmask == InputEvent.BUTTON2_DOWN_MASK)
-      robot_button = InputEvent.BUTTON2_MASK;
-    else if (buttonmask == InputEvent.BUTTON3_DOWN_MASK)
-      robot_button = InputEvent.BUTTON3_MASK;
-
     int i;
     for (i = 0; i < keycode.length; i++)
       robot.keyPress (keycode[i]);
 
-    robot.mousePress(robot_button);
+    robot.mousePress(buttonmask);
     h.check(mask, buttonmask | keymask, "mousePressed: " + mask);
     mask = 0;
-    robot.mouseRelease(robot_button);
-    // release event extended modifiers don't include button mask
-    h.check(mask, keymask, "mouseReleased: " + mask);
+    robot.mouseRelease(buttonmask);
+    h.check(mask, buttonmask | keymask, "mouseReleased: " + mask);
     mask = 0;
 
     for (i = 0; i < keycode.length; i++)
@@ -88,173 +78,173 @@ public class modifiersEx implements Testlet
 	       0);
 
     // one modifier
-    // SHIFT_DOWN_MASK
+    // SHIFT_MASK
     checkMask (new int[] { KeyEvent.VK_SHIFT },
 	       buttonmask,
-	       InputEvent.SHIFT_DOWN_MASK);
+	       InputEvent.SHIFT_MASK);
 
-    // CTRL_DOWN_MASK
+    // CTRL_MASK
     checkMask (new int[] { KeyEvent.VK_CONTROL },
 	       buttonmask,
-	       InputEvent.CTRL_DOWN_MASK);
+	       InputEvent.CTRL_MASK);
 
     if (test_alt)
       {
-	// META_DOWN_MASK
+	// META_MASK
 	checkMask (new int[] { KeyEvent.VK_META },
 		   buttonmask,
-		   InputEvent.META_DOWN_MASK);
+		   InputEvent.META_MASK);
 
-	// ALT_DOWN_MASK
+	// ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.ALT_DOWN_MASK);
+		   InputEvent.ALT_MASK);
 
-	// ALT_GRAPH_DOWN_MASK
+	// ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.ALT_GRAPH_MASK);
       }
 
     // two modifiers
 
-    // SHIFT_DOWN_MASK | CTRL_DOWN_MASK
+    // SHIFT_MASK | CTRL_MASK
     checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL },
 	       buttonmask,
-	       InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK);
+	       InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK);
 
     if (test_alt)
       {
-	// SHIFT_DOWN_MASK | META_DOWN_MASK
+	// SHIFT_MASK | META_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_META },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.META_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.META_MASK);
 
-	// SHIFT_DOWN_MASK | ALT_DOWN_MASK
+	// SHIFT_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.ALT_MASK);
 
-	// SHIFT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// CTRL_DOWN_MASK | META_DOWN_MASK
+	// CTRL_MASK | META_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_META },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.META_MASK);
 
-	// CTRL_DOWN_MASK | ALT_DOWN_MASK
+	// CTRL_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.ALT_MASK);
 
-	// CTRL_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// CTRL_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// META_DOWN_MASK | ALT_DOWN_MASK
+	// META_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_META, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.META_MASK | InputEvent.ALT_MASK);
 
-	// META_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// META_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_META, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.META_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.META_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
 	// three modifiers
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | META_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | META_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_META },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.META_MASK);
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | ALT_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.ALT_MASK);
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// SHIFT_DOWN_MASK | META_DOWN_MASK | ALT_DOWN_MASK
+	// SHIFT_MASK | META_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_META, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.META_MASK | InputEvent.ALT_MASK);
 
-	// SHIFT_DOWN_MASK | META_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | META_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// SHIFT_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// CTRL_DOWN_MASK | META_DOWN_MASK | ALT_DOWN_MASK
+	// CTRL_MASK | META_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.META_MASK | InputEvent.ALT_MASK);
 
-	// CTRL_DOWN_MASK | META_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// CTRL_MASK | META_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.META_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// CTRL_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// CTRL_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// META_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// META_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_META, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.META_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
 	// four modifiers
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | META_DOWN_MASK | ALT_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | META_MASK | ALT_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_ALT },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.META_MASK | InputEvent.ALT_MASK);
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | META_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | META_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.META_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// SHIFT_DOWN_MASK | META_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | META_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_META, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.META_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
-	// CTRL_DOWN_MASK | META_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// CTRL_MASK | META_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.CTRL_MASK | InputEvent.META_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
 
 	// five modifiers
 
-	// SHIFT_DOWN_MASK | CTRL_DOWN_MASK | META_DOWN_MASK | ALT_DOWN_MASK | ALT_GRAPH_DOWN_MASK
+	// SHIFT_MASK | CTRL_MASK | META_MASK | ALT_MASK | ALT_GRAPH_MASK
 	checkMask (new int[] { KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH },
 		   buttonmask,
-		   InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK | InputEvent.META_DOWN_MASK | InputEvent.ALT_DOWN_MASK | InputEvent.ALT_GRAPH_DOWN_MASK);
+		   InputEvent.SHIFT_MASK | InputEvent.CTRL_MASK | InputEvent.META_MASK | InputEvent.ALT_MASK | InputEvent.ALT_GRAPH_MASK);
       }
   }
 
@@ -266,11 +256,11 @@ public class modifiersEx implements Testlet
       {
         public void mousePressed(MouseEvent ev) 
         {
-          mask = ev.getModifiersEx();
+          mask = ev.getModifiers();
         }
         public void mouseReleased(MouseEvent ev) 
         {
-          mask = ev.getModifiersEx();
+          mask = ev.getModifiers();
         }
       };
     frame.addMouseListener(a);
@@ -283,8 +273,8 @@ public class modifiersEx implements Testlet
 
     robot.mouseMove(loc.x + 50, loc.y + 50);
 
-    checkAllMaskCombinations (InputEvent.BUTTON1_DOWN_MASK);
-    checkAllMaskCombinations (InputEvent.BUTTON2_DOWN_MASK);
-    checkAllMaskCombinations (InputEvent.BUTTON3_DOWN_MASK);
+    checkAllMaskCombinations (InputEvent.BUTTON1_MASK);
+    checkAllMaskCombinations (InputEvent.BUTTON2_MASK);
+    checkAllMaskCombinations (InputEvent.BUTTON3_MASK);
   }
 }

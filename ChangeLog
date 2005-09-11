@@ -1,3 +1,10 @@
+2005-09-11  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* gnu/testlet/java/awt/Window/pack1.java: New test.
+	* gnu/testlet/java/awt/event/MouseEvent/modifiersEx.java: Cover
+	all modifiers.
+	* gnu/testlet/java/awt/event/MouseEvent/modifiers.java: New test.
+
 2005-09-09  Roman Kennke  <roman@kennke.org>
 
 	* gnu/testlet/javax/swing/text/html/CSS/Attribute.java:
