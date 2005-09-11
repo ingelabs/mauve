@@ -1,5 +1,11 @@
 2005-09-11  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
+	* gnu/testlet/java/awt/Frame/isDisplayable1.java: New test.
+	* gnu/testlet/java/awt/Frame/isDisplayable2.java: New test.
+	* gnu/testlet/java/awt/Frame/isDisplayable3.java: New test.
+
+2005-09-11  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
 	* gnu/testlet/java/awt/Window/pack1.java: New test.
 	* gnu/testlet/java/awt/event/MouseEvent/modifiersEx.java: Cover
 	all modifiers.
