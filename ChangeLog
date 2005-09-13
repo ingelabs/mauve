@@ -1,3 +1,10 @@
+2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JComboBox/getPrototypeDisplayValue.java: 
+	new test,
+	* gnu/testlet/javax/swing/JComboBox/setPrototypeDisplayValue.java:
+	likewise.
+	
 2005-09-13  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/insertString.java:
