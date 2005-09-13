@@ -1,5 +1,16 @@
 2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicCheckBoxUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicCheckBoxUI/MyBasicCheckBoxUI.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicEditorPaneUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicEditorPaneUI/MyBasicEditorPaneUI.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFormattedTextFieldUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFormattedTextFieldUI/MyBasicFormattedTextFieldUI.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicPasswordFieldUI/getPropertyPrefix.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicPasswordFieldUI/MyBasicPasswordFieldUI.java: new test.
+
+2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/ButtonBorder/getBorderInsets.java: 
 	new test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/Flush3DBorder/getBorderInsets.java: 
