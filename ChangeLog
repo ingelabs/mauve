@@ -1,5 +1,10 @@
 2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/getDesktopIconBorder.java: 
+	new test.
+
+2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/BoxLayout/addLayoutComponent.java: new test,
 	* gnu/testlet/javax/swing/BoxLayout/constants.java: new test,
 	* gnu/testlet/javax/swing/BoxLayout/constructor.java: new test,
