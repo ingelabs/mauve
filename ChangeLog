@@ -1,5 +1,19 @@
 2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/BoxLayout/addLayoutComponent.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/constants.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/constructor.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/getLayoutAlignmentX.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/getLayoutAlignmentY.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/invalidateLayout.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/layoutContainer.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/maximumLayoutSize.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/minimumLayoutSize.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/preferredLayoutSize.java: new test,
+	* gnu/testlet/javax/swing/BoxLayout/removeLayoutComponent.java: new test.
+
+2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JComboBox/getPrototypeDisplayValue.java: 
 	new test,
 	* gnu/testlet/javax/swing/JComboBox/setPrototypeDisplayValue.java:
