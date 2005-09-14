@@ -1,3 +1,7 @@
+2005-09-14  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/JTextArea/isValidChecks.java: new test.
+
 2005-09-13  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicCheckBoxUI/getPropertyPrefix.java: new test,
