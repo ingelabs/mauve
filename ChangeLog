@@ -1,3 +1,11 @@
+2005-09-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/text/DecimalFormat/toPattern.java
+	(test): now calls test1() and test2(),
+	(test1): new method, copied code from topattern.java,
+	(test2): new method, code from original test() method,
+	* gnu/testlet/java/text/DecimalFormat/topattern.java.
+
 2005-09-14  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/JTextArea/isValidChecks.java: new test.
