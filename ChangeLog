@@ -1,3 +1,8 @@
+2005-09-15  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/java/awt/Frame/isDisplayable4.java: New test.
+	* gnu/testlet/java/awt/Frame/isDisplayable5.java: New test.
+
 2005-09-15  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/CloseAction/constructor.java: new test,
