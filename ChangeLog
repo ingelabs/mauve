@@ -1,3 +1,12 @@
+2005-09-15  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/CloseAction/constructor.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/IconifyAction/constructor.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/MaximizeAction/constructor.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/MoveAction/constructor.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/RestoreAction/constructor.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicInternalFrameTitlePane/SizeAction/constructor.java: new test.
+	
 2005-09-15  Anthony Balkissoon  <abalkiss@redhat.com>	
 
 	* gnu/testlet/java/awt/Frame/isDisplayable1.java: Added a check that 
