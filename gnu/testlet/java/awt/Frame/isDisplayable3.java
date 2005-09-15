@@ -34,16 +34,22 @@ public class isDisplayable3 implements Testlet
     Button b = new Button ();
     f.add (b);
 
+    harness.checkPoint ("parent check");
+    harness.check (b.getParent(), f);
+
+    harness.checkPoint ("before showing");
     harness.check (f.isDisplayable (), false);
     harness.check (b.isDisplayable (), false);
 
     f.show ();
 
+    harness.checkPoint ("after showing frame");
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);
 
     b.show ();
 
+    harness.checkPoint ("after showing button");
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);
   }

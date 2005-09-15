@@ -1,3 +1,11 @@
+2005-09-15  Anthony Balkissoon  <abalkiss@redhat.com>	
+
+	* gnu/testlet/java/awt/Frame/isDisplayable1.java: Added a check that 
+	the JDialog's parent is the JFrame.
+	* gnu/testlet/java/awt/Frame/isDisplayable2.java: Likewise.
+	* gnu/testlet/java/awt/Frame/isDisplayable3.java: Added a check that 
+	the JButton's parent is the JFrame.
+
 2005-09-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/text/DecimalFormat/toPattern.java

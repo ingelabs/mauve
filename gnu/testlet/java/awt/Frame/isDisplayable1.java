@@ -33,16 +33,22 @@ public class isDisplayable1 implements Testlet
     Frame f = new Frame ();
     Dialog d = new Dialog (f);
 
+    harness.checkPoint ("parent check");
+    harness.check (d.getParent(), f);
+
+    harness.checkPoint ("before showing");
     harness.check (f.isDisplayable (), false);
     harness.check (d.isDisplayable (), false);
 
     f.show ();
 
+    harness.checkPoint ("after showing frame");
     harness.check (f.isDisplayable (), true);
     harness.check (d.isDisplayable (), false);
 
     d.show ();
 
+    harness.checkPoint ("after showing dialog");
     harness.check (f.isDisplayable (), true);
     harness.check (d.isDisplayable (), true);
   }
