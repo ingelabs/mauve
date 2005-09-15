@@ -26,13 +26,20 @@ import gnu.testlet.Testlet;
 
 import java.awt.*;
 
+/**
+ * Tests whether calling pack makes the whole hierarchy displayable.
+ */
 public class isDisplayable5 implements Testlet
 {
   public void test (TestHarness harness)
   {
     Frame f = new Frame ();
     Button b = new Button ();
+    Robot r = harness.createRobot ();
+
     f.add(b);
+
+    r.waitForIdle ();
 
     harness.checkPoint ("before packing");
     harness.check (f.getPeer(), null);
@@ -42,7 +49,11 @@ public class isDisplayable5 implements Testlet
 
     f.pack();
 
+    r.waitForIdle ();
+
     harness.checkPoint ("after packing frame");
+    harness.check (f.getPeer() != null);
+    harness.check (b.getPeer() != null);
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);
   }

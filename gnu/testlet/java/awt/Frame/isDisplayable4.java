@@ -26,12 +26,19 @@ import gnu.testlet.Testlet;
 
 import java.awt.*;
 
+/**
+ * Tests that adding a Component to an already-displayable Frame
+ * causes the Component to become displayable.
+ */
 public class isDisplayable4 implements Testlet
 {
   public void test (TestHarness harness)
   {
     Frame f = new Frame ();
     Button b = new Button ();
+    Robot r = harness.createRobot ();
+
+    r.waitForIdle ();
 
     harness.checkPoint ("before showing");
     harness.check (f.getPeer(), null);
@@ -41,13 +48,22 @@ public class isDisplayable4 implements Testlet
 
     f.show ();
 
+    r.waitForIdle ();
+
     harness.checkPoint ("after showing frame");
+    harness.check (f.getPeer() != null);
     harness.check (b.getPeer(), null);
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), false);
 
+    // Adding the button causes it to become displayable.
     f.add(b);
+
+    r.waitForIdle ();
+
     harness.checkPoint ("after adding button to frame");
+    harness.check (f.getPeer() != null);
+    harness.check (b.getPeer() != null);
     harness.check (b.getParent(), f);
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);

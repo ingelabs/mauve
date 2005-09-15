@@ -26,29 +26,48 @@ import gnu.testlet.Testlet;
 
 import java.awt.*;
 
+/**
+ * Tests whether showing a child Dialog causes the parent Frame to
+ * become displayable.
+ */
 public class isDisplayable2 implements Testlet
 {
   public void test (TestHarness harness)
   {
     Frame f = new Frame ();
     Dialog d = new Dialog (f);
+    Robot r = harness.createRobot ();
 
+    r.waitForIdle ();
+
+    // Check that the owner frame is set as the Dialog's parent.
     harness.checkPoint ("parent check");
     harness.check (d.getParent(), f);
 
     harness.checkPoint ("before showing");
+    harness.check (f.getPeer (), null);
+    harness.check (d.getPeer (), null);
     harness.check (f.isDisplayable (), false);
     harness.check (d.isDisplayable (), false);
 
     d.show ();
 
+    r.waitForIdle ();
+
+    // Dialog is shown which makes the Frame displayable.
     harness.checkPoint ("after showing dialog");
+    harness.check (f.getPeer () != null);
+    harness.check (d.getPeer () != null);
     harness.check (f.isDisplayable (), true);
     harness.check (d.isDisplayable (), true);
 
     f.show ();
     
+    r.waitForIdle ();
+
     harness.checkPoint ("after showing frame");
+    harness.check (f.getPeer () != null);
+    harness.check (d.getPeer () != null);
     harness.check (f.isDisplayable (), true);
     harness.check (d.isDisplayable (), true);
   }

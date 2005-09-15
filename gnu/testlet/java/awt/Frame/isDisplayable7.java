@@ -27,50 +27,61 @@ import gnu.testlet.Testlet;
 import java.awt.*;
 
 /**
- * Tests the behaviour of isDisplayable on Frames and Dialogs.  Also
- * check whether a Dialog's parent's "displayability" affects its
- * displayability.
+ * Tests that adding a not-visible Component to a Frame, then showing
+ * the Frame, causes the Component to become displayable.
  */
-public class isDisplayable1 implements Testlet
+public class isDisplayable7 implements Testlet
 {
   public void test (TestHarness harness)
   {
     Frame f = new Frame ();
-    Dialog d = new Dialog (f);
+    Button b = new Button ();
     Robot r = harness.createRobot ();
 
     r.waitForIdle ();
 
-    // Check that the owner frame is set as the Dialog's parent.
+    // Hide the button.
+    b.setVisible (false);
+
+    // FIXME: this hangs with our Robot implementation:
+    //    r.waitForIdle ();
+
+    f.add (b);
+
+    // Check if the button is made visible when it is added.
+    harness.check (!b.isVisible ());
+
+    r.waitForIdle ();
+
     harness.checkPoint ("parent check");
-    harness.check (d.getParent(), f);
+    harness.check (b.getParent(), f);
 
     harness.checkPoint ("before showing");
     harness.check (f.getPeer (), null);
-    harness.check (d.getPeer (), null);
+    harness.check (b.getPeer (), null);
     harness.check (f.isDisplayable (), false);
-    harness.check (d.isDisplayable (), false);
+    harness.check (b.isDisplayable (), false);
 
     f.show ();
 
     r.waitForIdle ();
 
-    // Parent Frame is displayable, child Dialog is not.
+    // Check if showing the parent Frame makes the hidden child Button
+    // displayable.
     harness.checkPoint ("after showing frame");
     harness.check (f.getPeer () != null);
-    harness.check (d.getPeer (), null);
+    harness.check (b.getPeer () != null);
     harness.check (f.isDisplayable (), true);
-    harness.check (d.isDisplayable (), false);
+    harness.check (b.isDisplayable (), true);
 
-    d.show ();
+    b.show ();
 
     r.waitForIdle ();
 
-    // Dialog becomes displayable after it is shown.
-    harness.checkPoint ("after showing dialog");
+    harness.checkPoint ("after showing button");
     harness.check (f.getPeer () != null);
-    harness.check (d.getPeer () != null);
+    harness.check (b.getPeer () != null);
     harness.check (f.isDisplayable (), true);
-    harness.check (d.isDisplayable (), true);
+    harness.check (b.isDisplayable (), true);
   }
 }

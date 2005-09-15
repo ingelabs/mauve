@@ -26,6 +26,10 @@ import gnu.testlet.Testlet;
 
 import java.awt.*;
 
+/**
+ * Tests whether showing a parent Frame makes a child Component
+ * displayable.
+ */
 public class isDisplayable3 implements Testlet
 {
   public void test (TestHarness harness)
@@ -33,23 +37,37 @@ public class isDisplayable3 implements Testlet
     Frame f = new Frame ();
     Button b = new Button ();
     f.add (b);
+    Robot r = harness.createRobot ();
+
+    r.waitForIdle ();
 
     harness.checkPoint ("parent check");
     harness.check (b.getParent(), f);
 
     harness.checkPoint ("before showing");
+    harness.check (f.getPeer (), null);
+    harness.check (b.getPeer (), null);
     harness.check (f.isDisplayable (), false);
     harness.check (b.isDisplayable (), false);
 
     f.show ();
 
+    r.waitForIdle ();
+
+    // Showing the parent Frame makes the child Button displayable.
     harness.checkPoint ("after showing frame");
+    harness.check (f.getPeer () != null);
+    harness.check (b.getPeer () != null);
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);
 
     b.show ();
 
+    r.waitForIdle ();
+
     harness.checkPoint ("after showing button");
+    harness.check (f.getPeer () != null);
+    harness.check (b.getPeer () != null);
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);
   }
