@@ -1,5 +1,9 @@
 2005-09-18  Tom Tromey  <tromey@redhat.com>
 
+	* .settings/org.eclipse.jdt.ui.prefs: Added file template.
+
+2005-09-18  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/lang/Long/Tests15.java: New file.
 
 2005-09-16    Audrius Meskauskas  <AudriusA@Bioinformatics.org>
