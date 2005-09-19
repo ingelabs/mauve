@@ -1,5 +1,9 @@
 2005-09-19  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/javax/swing/JFrame/glassPaneLayout.java: New test.
+
+2005-09-19  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/javax/swing/JLayeredPane/defaultLayoutManager.java:
 	New test.
 
