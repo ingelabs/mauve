@@ -1,3 +1,12 @@
+2005-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/filechooser/FileView/getDescription.java: new test,
+	* gnu/testlet/javax/swing/filechooser/FileView/getIcon.java: new test,
+	* gnu/testlet/javax/swing/filechooser/FileView/getName.java: new test,
+	* gnu/testlet/javax/swing/filechooser/FileView/getTypeDescription.java: new test,
+	* gnu/testlet/javax/swing/filechooser/FileView/isTraversable.java: new test,
+	* gnu/testlet/javax/swing/filechooser/FileView/MyFileView.java: new support class.
+
 2005-09-19  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/JFrame/glassPaneLayout.java: New test.
