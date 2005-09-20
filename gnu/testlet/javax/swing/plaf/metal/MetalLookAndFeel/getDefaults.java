@@ -512,7 +512,7 @@ public class getDefaults implements Testlet
     
     harness.checkPoint("PasswordField");
     harness.check(defaults.get("PasswordField.background"), new ColorUIResource(0, 0, 30));
-    harness.check(defaults.get("PasswordField.border") instanceof BorderUIResource.CompoundBorderUIResource);
+    harness.check(defaults.get("PasswordField.border"), MetalBorders.getTextBorder());
     harness.check(defaults.getInt("PasswordField.caretBlinkRate"), 500);
     harness.check(defaults.get("PasswordField.caretForeground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("PasswordField.focusInputMap") instanceof InputMapUIResource);

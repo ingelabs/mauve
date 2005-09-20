@@ -1,5 +1,10 @@
 2005-09-20  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java:
+	(test): use more specific test for 'PasswordField.border'.
+
+2005-09-20  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/getButtonBorder.java: new test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/getDesktopIconBorder.java
 	(test): added check for UIResource,
