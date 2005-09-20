@@ -76,6 +76,15 @@ public class newFile implements Testlet
 		      "same parent with (double) separator");
 	harness.check(againdir.getParent(), dirdir.getParent(),
 		      "same parent with double separator and dir in dir");
+	
+	harness.checkPoint("getname returns the argument");
+	harness.check(new File("dir").getName(), "dir");
+	// Directory separator is stripped.
+	harness.check(new File("dir" + File.separator).getName(), "dir");
+	// If the file separator is backslash, I think it doesn't
+	// make sense to check this one.
+	if (File.separatorChar != '\\')
+		harness.check(new File("dir\\").getName(), "dir\\");
       }
     finally
       {

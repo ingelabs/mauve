@@ -1,5 +1,10 @@
 2005-09-20  Tom Tromey  <tromey@redhat.com>
 
+	PR classpath/23974:
+	* gnu/testlet/java/io/File/newFile.java (test): Added tests.
+
+2005-09-20  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/ParserTest.java
 	(dumpAttributes): Don't use local named 'enum'.
 	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Parser_Test.java
