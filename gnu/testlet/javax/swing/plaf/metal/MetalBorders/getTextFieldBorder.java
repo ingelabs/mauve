@@ -31,9 +31,9 @@ import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalBorders;
 
 /**
-* Some tests for the MetalBorders.getDesktopIconBorder() method.
+* Some tests for the MetalBorders.getTextFieldBorder() method.
 */
-public class getDesktopIconBorder implements Testlet
+public class getTextFieldBorder implements Testlet
 {
 
   /**
@@ -43,10 +43,10 @@ public class getDesktopIconBorder implements Testlet
    */
   public void test(TestHarness harness)      
   {
-    Border b = MetalBorders.getDesktopIconBorder();
+    Border b = MetalBorders.getTextFieldBorder();
     harness.check(b instanceof UIResource);
     Insets insets = b.getBorderInsets(null);
-    harness.check(insets, new Insets(3, 3, 2, 3));
+    harness.check(insets, new Insets(2, 2, 2, 2));
   }
   
 }
