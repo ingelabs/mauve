@@ -121,12 +121,12 @@ public class Parser_Test
 
   protected void dumpAttributes(AttributeSet atts)
   {
-    Enumeration enum = atts.getAttributeNames();
+    Enumeration e = atts.getAttributeNames();
 
     // Sort them to ensure the same order every time:
     TreeSet t = new TreeSet();
-    while (enum.hasMoreElements())
-      t.add(enum.nextElement().toString());
+    while (e.hasMoreElements())
+      t.add(e.nextElement().toString());
 
     Iterator iter = t.iterator();
 

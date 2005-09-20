@@ -123,10 +123,10 @@ public class ParserTest
 
   private void dumpAttributes(AttributeSet atts)
   {
-    Enumeration enum = atts.getAttributeNames();
-    while (enum.hasMoreElements())
+    Enumeration e = atts.getAttributeNames();
+    while (e.hasMoreElements())
       {
-        String a = enum.nextElement().toString();
+        String a = e.nextElement().toString();
         String v = (String) atts.getAttribute(a);
         out.print(" " + a + "='" + v + "'");
       }

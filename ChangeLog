@@ -1,3 +1,10 @@
+2005-09-20  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/ParserTest.java
+	(dumpAttributes): Don't use local named 'enum'.
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Parser_Test.java
+	(dumpAttributes): Don't use local named 'enum'.
+
 2005-09-20  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java:
