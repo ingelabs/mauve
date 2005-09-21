@@ -1,3 +1,7 @@
+2005-09-21  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/awt/BorderLayout/Test15.java: New file.
+
 2005-09-20  Tom Tromey  <tromey@redhat.com>
 
 	PR classpath/23974:
