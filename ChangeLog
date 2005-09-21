@@ -1,3 +1,7 @@
+2005-09-21  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/ServerSocket/AcceptGetLocalPort.java: New test.
+
 2005-09-21  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/awt/BorderLayout/Test15.java: New file.
