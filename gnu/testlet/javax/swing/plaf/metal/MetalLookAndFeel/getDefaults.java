@@ -877,7 +877,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Tree.line"), new ColorUIResource(0, 0, 20));
     harness.check(defaults.get("Tree.openIcon") instanceof MetalIconFactory.TreeFolderIcon);
     harness.check(defaults.getInt("Tree.rightChildIndent"), 13);
-    harness.check(defaults.getInt("Tree.rowHeight"), 0);
+    harness.check(defaults.getInt("Tree.rowHeight"), 16);
     harness.check(defaults.get("Tree.scrollsOnExpand"), Boolean.TRUE);
     harness.check(defaults.get("Tree.selectionBackground"), new ColorUIResource(0, 0, 28));
     harness.check(defaults.get("Tree.selectionBorderColor"), new ColorUIResource(0, 0, 12));
