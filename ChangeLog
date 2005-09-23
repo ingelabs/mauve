@@ -1,6 +1,12 @@
 2005-09-23  Lillian Angel  <langel@redhat.com>
 
-	* mauve/gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java: Added checks for Tree.textForeground and Tree.textBackground.
+	* mauve/gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java: Fixed syntax
+	error.
+
+2005-09-23  Lillian Angel  <langel@redhat.com>
+
+	* mauve/gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java: Added checks 
+	for Tree.textForeground and Tree.textBackground.
 	* mauve/gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java: 
 	Fixed Tree.rowHeight check.
 

@@ -449,7 +449,9 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("Tree.rowHeight"), new Integer(16));
     harness.check(defaults.get("Tree.scrollsOnExpand"), Boolean.TRUE);
     harness.check(defaults.get("Tree.selectionBorderColor"), new ColorUIResource(0, 0, 0));
-    
+    harness.check(defaults.get("Tree.textForeground"), new ColorUIResource(Color.black));
+    harness.check(defaults.get("Tree.textBackground"), new ColorUIResource(new Color(192, 192,192)));
+
     harness.checkPoint("Viewport");
     harness.check(defaults.get("Viewport.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
   }
