@@ -1,3 +1,8 @@
+2005-09-23  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JComponent/getFont.java: new test,
+	* gnu/testlet/javax/swing/JComponent/MyJLabel.java: new support class.
+
 2005-09-21  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/ServerSocket/AcceptGetLocalPort.java: New test.
