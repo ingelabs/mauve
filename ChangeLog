@@ -1,5 +1,19 @@
 2005-09-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/addElement.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/constructors.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/getElementAt.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/getIndexOf.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/getSelectedItem.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/getSize.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/insertElementAt.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/removeAllElements.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/removeElement.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/removeElementAt.java: new test,
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/setSelectedItem.java: new test.
+
+2005-09-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JComponent/getFont.java: new test,
 	* gnu/testlet/javax/swing/JComponent/MyJLabel.java: new support class.
 
