@@ -1,3 +1,13 @@
+2005-09-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/addElement.java
+	(index0, index1, eventType): removed fields,
+	(events): new field,
+	(contentsChanged): use new events field,
+	(intervalAdded): likewise,
+	(intervalRemoved): likewise,
+	(test): check for multiple events.
+
 2005-09-23  Lillian Angel  <langel@redhat.com>
 
 	* mauve/gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java: Fixed syntax
