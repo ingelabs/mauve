@@ -1,3 +1,9 @@
+2005-09-26  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/JEditorPane: New directory.
+	* gnu/testlet/javax/swing/JEditorPane/getScrollableTrackvs.java:
+	New test.
+
 2005-09-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/DefaultComboBoxModel/addElement.java
