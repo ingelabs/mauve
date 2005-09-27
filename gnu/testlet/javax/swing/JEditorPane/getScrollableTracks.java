@@ -1,6 +1,6 @@
 //Tags: JDK1.2 GUI
 
-//Copyright (C) 2005 Robert Schuster <thebohemian@gmx.net>
+//Copyright (C) 2005 Red Hat
 
 //This file is part of Mauve.
 

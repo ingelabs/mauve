@@ -1,6 +1,6 @@
-// Tags: JDK1.2 GUI
+// Tags: JDK1.2
 
-// Copyright (C) 2004 Thomas Zander <zander@kde.org>
+// Copyright (C) 2004 Red Hat
 
 // This file is part of Mauve.
 
