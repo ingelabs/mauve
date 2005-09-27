@@ -1,3 +1,8 @@
+2005-09-27  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
+	Import Color.
+
 2005-09-26  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/JEditorPane: New directory.

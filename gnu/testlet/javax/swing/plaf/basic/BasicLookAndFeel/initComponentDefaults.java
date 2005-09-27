@@ -25,6 +25,7 @@ package gnu.testlet.javax.swing.plaf.basic.BasicLookAndFeel;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Arrays;
