@@ -1,5 +1,12 @@
 2005-09-27  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/javax/swing/JTextArea/isValidChecks.java: Added copyright
+	info.
+	* gnu/testlet/javax/swing/JLayeredPane/defaultLayoutManager.java:
+	Fixed copyright info.
+
+2005-09-27  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/javax/swing/text/SimpleAttributeSet/removeAttributesOnlyIfMatch: Changed copyright info to reflect proper author.
 	* gnu/testlet/javax/swing/JEditorPane/getScrollableTrackvs.java:
 	Likewise.
