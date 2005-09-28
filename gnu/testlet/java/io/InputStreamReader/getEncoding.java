@@ -34,9 +34,10 @@ import gnu.testlet.Testlet;
  * canonical (Java) IO name for a given NIO charset.</p>
  * 
  * <p>The extended charsets are not required to be available. However if one
- * is installed than it should support the proper name mapping. That means that
- * if Mauve reports "got null but expected <some charset name" then this should
- * be OK as long as the following charsets are not concerned:
+ * is installed than it should support the proper name mapping.
+ * </p>
+ * 
+ * <p>However the following charset are mandatory:
  * <lu>
  * <li>US-ASCII</li>
  * <li>ISO-8859-1</li>
@@ -165,8 +166,12 @@ public class getEncoding implements Testlet {
 			} catch (UnsupportedCharsetException uce) {
 				supported = false;
 			}
-			harness.check(name, extIoNames[i]);
-			harness.check(supported, true);
+			
+			if ( supported )
+			  {
+			    harness.check(name, extIoNames[i]);
+			    harness.check(supported, true);
+			  }
 		}
 	}
 

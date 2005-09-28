@@ -1,3 +1,9 @@
+2005-09-27  Robert Schuster <robertschuster@fsfe.org>
+	Suggested by: Torben.Nielsen@sagemdenmark.dk
+	
+	* gnu/testlet/java/io/InputStreamReader/getEncoding.java: Check names
+	of extended (= optional) charset only if it is available.
+
 2005-09-27  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/SimpleAttributeSet/containsChecksParent.java: New test.
