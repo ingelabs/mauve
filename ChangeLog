@@ -1,3 +1,8 @@
+2005-09-29  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicIconFactory/getCheckBoxIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicIconFactory/getMenuArrowIcon.java: new test.
+
 2005-09-28  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/AbstractDocument/BranchElement/getElementIndexNullPointer.java: New test.
