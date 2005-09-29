@@ -1,3 +1,8 @@
+2005-09-29  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/GapContent/PositionTest.java:
+	Added test for Bug #24105.
+
 2005-09-29  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicIconFactory/getCheckBoxIcon.java: new test,

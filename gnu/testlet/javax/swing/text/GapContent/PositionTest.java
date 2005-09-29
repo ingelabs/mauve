@@ -22,6 +22,7 @@ package gnu.testlet.javax.swing.text.GapContent;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.GapContent;
+import javax.swing.text.PlainDocument;
 import javax.swing.text.Position;
 
 import gnu.testlet.TestHarness;
@@ -43,6 +44,8 @@ public class PositionTest implements Testlet
   public void test(TestHarness harness)
   {
     testSimple(harness);
+    testComplex(harness);
+    testBorderCase(harness);
   }
 
   /**
@@ -55,6 +58,7 @@ public class PositionTest implements Testlet
    */
   void testSimple(TestHarness harness)
   {
+    harness.checkPoint("testSimple");
     GapContent c = new GapContent();
     try
       {
@@ -75,6 +79,59 @@ public class PositionTest implements Testlet
       {
         harness.fail("BadLocationException");
         harness.debug(ex);
+      }
+  }
+
+  /**
+   * Tests a more complex situation.
+   */
+  void testComplex(TestHarness harness)
+  {
+    harness.checkPoint("testComplex");
+    GapContent c = new GapContent();
+    try
+      {
+        Position p1 = c.createPosition(0);
+        Position p2 = c.createPosition(1);
+        harness.check(p1.getOffset(), 0);
+        harness.check(p2.getOffset(), 1);
+
+        c.insertString(0, "abcdefghijklmno");
+        harness.check(p1.getOffset(), 0);
+        harness.check(p2.getOffset(), 16);
+
+        c.insertString(5, "12345");
+        harness.check(p1.getOffset(), 0);
+        harness.check(p2.getOffset(), 21);
+      }
+    catch (BadLocationException ex)
+      {
+        harness.fail("BadLocationException");
+        harness.debug(ex);
+      }
+  }
+
+  /**
+   * This testcase checks bug reported in:
+   * http://gcc.gnu.org/bugzilla/show_bug.cgi?id=24105
+   * 
+   * @param h the test harness to use
+   */
+  void testBorderCase(TestHarness h)
+  {
+    h.checkPoint("border case");
+    try
+      {
+        PlainDocument doc = new PlainDocument();
+        doc.insertString(0, "One Three Four", null);
+        Position pos = doc.createPosition(4);
+        doc.insertString(4, "Two ", null);
+        System.out.println (pos.getOffset());
+        h.check(pos.getOffset(), 8);
+      }
+    catch (BadLocationException ex)
+      {
+        h.fail("BadLocationException thrown");  
       }
   }
 }
