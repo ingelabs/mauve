@@ -1,5 +1,15 @@
 2005-09-29  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/OverlayLayout/getLayoutAlignmentX.java
+	* gnu/testlet/javax/swing/OverlayLayout/getLayoutAlignmentY.java
+	* gnu/testlet/javax/swing/OverlayLayout/layoutContainer.java
+	* gnu/testlet/javax/swing/OverlayLayout/maximumLayoutSize.java
+	* gnu/testlet/javax/swing/OverlayLayout/minimumLayoutSize.java
+	* gnu/testlet/javax/swing/OverlayLayout/preferredLayoutSize.java
+	New tests for the OverlayLayout.
+
+2005-09-29  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/text/GapContent/PositionTest.java:
 	Added test for Bug #24105.
 
