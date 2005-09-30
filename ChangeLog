@@ -1,3 +1,8 @@
+2005-09-30  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/text/PlainDocument/removeJoinesLines.java:
+	New test.
+
 2005-09-29  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/OverlayLayout/getLayoutAlignmentX.java
