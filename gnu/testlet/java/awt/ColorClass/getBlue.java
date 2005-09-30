@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.  */
 
-package gnu.testlet.java.awt.Color;
+package gnu.testlet.java.awt.ColorClass;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -27,9 +27,9 @@ import gnu.testlet.Testlet;
 import java.awt.Color;
 
 /**
- * Some checks for the hashCode() method in the {@link Color} class works.  
+ * Some checks for the getBlue() method in the {@link Color} class.  
  */
-public class hashCode implements Testlet 
+public class getBlue implements Testlet 
 {
 
   /**
@@ -39,12 +39,11 @@ public class hashCode implements Testlet
    */
   public void test(TestHarness harness)  
   {
-    Color c1 = new Color(1, 2, 3);
-    Color c2 = new Color(1, 2, 3);
-    harness.check(c1.hashCode() == c2.hashCode());
-    
-    harness.check(Color.black.hashCode() == new Color(0, 0, 0).hashCode());
-    harness.check(Color.white.hashCode() == new Color(255, 255, 255).hashCode());
+    Color c = new Color(1, 2, 3);
+    harness.check(c.getBlue(), 3);
+
+    c = new Color(243, 244, 245);
+    harness.check(c.getBlue(), 245);
   }
 
 }

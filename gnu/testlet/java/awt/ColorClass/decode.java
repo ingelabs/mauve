@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.  */
 
-package gnu.testlet.java.awt.Color;
+package gnu.testlet.java.awt.ColorClass;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -27,9 +27,9 @@ import gnu.testlet.Testlet;
 import java.awt.Color;
 
 /**
- * Some checks for the getBlue() method in the {@link Color} class.  
+ * Some checks for the decode() method in the {@link Color} class.  
  */
-public class getBlue implements Testlet 
+public class decode implements Testlet 
 {
 
   /**
@@ -39,11 +39,35 @@ public class getBlue implements Testlet
    */
   public void test(TestHarness harness)  
   {
-    Color c = new Color(1, 2, 3);
+    Color c = Color.decode("0x010203");
+    harness.check(c.getRed(), 1);
+    harness.check(c.getGreen(), 2);
     harness.check(c.getBlue(), 3);
-
-    c = new Color(243, 244, 245);
-    harness.check(c.getBlue(), 245);
+  
+    // try a null argument - see bug parade 6211249
+    boolean pass = false;
+    try
+    {
+      Color.decode(null);   
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;   
+    }
+    harness.check(pass);
+    
+    // try a non-numeric string
+    pass = false;
+    try
+    {
+      Color.decode("XYZ");
+    }
+    catch (NumberFormatException e) 
+    {
+      pass = true;   
+    }
+    harness.check(pass);
+  
   }
 
 }

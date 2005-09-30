@@ -1,4 +1,4 @@
-// Tags: JDK1.2
+// Tags: JDK1.1
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.  */
 
-package gnu.testlet.java.awt.Color;
+package gnu.testlet.java.awt.ColorClass;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -27,9 +27,9 @@ import gnu.testlet.Testlet;
 import java.awt.Color;
 
 /**
- * Some checks for the constants defined by the {@link Color} class.  
+ * Some checks for the hashCode() method in the {@link Color} class works.  
  */
-public class constants implements Testlet 
+public class hashCode implements Testlet 
 {
 
   /**
@@ -39,19 +39,12 @@ public class constants implements Testlet
    */
   public void test(TestHarness harness)  
   {
-    harness.check(Color.black.equals(new Color(0, 0, 0)));
-    harness.check(Color.blue.equals(new Color(0, 0, 255)));
-    harness.check(Color.cyan.equals(new Color(0, 255, 255)));
-    harness.check(Color.darkGray.equals(new Color(64, 64, 64)));
-    harness.check(Color.gray.equals(new Color(128, 128, 128)));
-    harness.check(Color.green.equals(new Color(0, 255, 0)));
-    harness.check(Color.lightGray.equals(new Color(192, 192, 192)));
-    harness.check(Color.magenta.equals(new Color(255, 0, 255)));
-    harness.check(Color.orange.equals(new Color(255, 200, 0)));
-    harness.check(Color.pink.equals(new Color(255, 175, 175)));
-    harness.check(Color.red.equals(new Color(255, 0, 0)));
-    harness.check(Color.white.equals(new Color(255, 255, 255)));
-    harness.check(Color.yellow.equals(new Color(255, 255, 0)));
+    Color c1 = new Color(1, 2, 3);
+    Color c2 = new Color(1, 2, 3);
+    harness.check(c1.hashCode() == c2.hashCode());
+    
+    harness.check(Color.black.hashCode() == new Color(0, 0, 0).hashCode());
+    harness.check(Color.white.hashCode() == new Color(255, 255, 255).hashCode());
   }
 
 }

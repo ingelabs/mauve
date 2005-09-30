@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.  */
 
-package gnu.testlet.java.awt.Color;
+package gnu.testlet.java.awt.ColorClass;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -27,9 +27,9 @@ import gnu.testlet.Testlet;
 import java.awt.Color;
 
 /**
- * Some checks for the getGreen() method in the {@link Color} class.  
+ * Some checks for the getRed() method in the {@link Color} class.  
  */
-public class getGreen implements Testlet 
+public class getRed implements Testlet 
 {
 
   /**
@@ -40,10 +40,10 @@ public class getGreen implements Testlet
   public void test(TestHarness harness)  
   {
     Color c = new Color(1, 2, 3);
-    harness.check(c.getGreen(), 2);
-
+    harness.check(c.getRed(), 1);
+ 
     c = new Color(243, 244, 245);
-    harness.check(c.getGreen(), 244);
+    harness.check(c.getRed(), 243);
   }
 
 }
