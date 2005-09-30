@@ -1,7 +1,13 @@
+2005-09-30  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxIcon/getIconHeight.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxIcon/getIconWidth.java: new test.
+
 2005-09-30  Fabien DUMINY  <fduminy@jnode.org>
-    * for Windows users: renamed gnu/testlet/java/awt/Color to gnu/testlet/java/awt/ColorClass
-    * for Windows users: renamed gnu/testlet/java/awt/Event to gnu/testlet/java/awt/EventClass
-    * for Windows users: renamed gnu/testlet/java/awt/Font to gnu/testlet/java/awt/FontClass
+	
+	* for Windows users: renamed gnu/testlet/java/awt/Color to gnu/testlet/java/awt/ColorClass
+	* for Windows users: renamed gnu/testlet/java/awt/Event to gnu/testlet/java/awt/EventClass
+	* for Windows users: renamed gnu/testlet/java/awt/Font to gnu/testlet/java/awt/FontClass
 
 2005-09-30  Anthony Balkissoon  <abalkiss@redhat.com>
 
