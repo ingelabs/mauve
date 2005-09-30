@@ -1,5 +1,9 @@
 2005-09-30  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/ToolBarBorder/getBorderInsets.java: new test.
+
+2005-09-30  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalButtonUI/getDisabledTextColor.java: new test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalButtonUI/getFocusColor.java: new test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalButtonUI/getSelectColor.java: new test,
