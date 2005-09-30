@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 Red Hat.
+// Copyright (C) 2005 Red Hat.
 
 // This file is part of Mauve.
 
