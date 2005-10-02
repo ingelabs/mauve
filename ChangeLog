@@ -1,3 +1,8 @@
+2005-10-02  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/AbstractButton/setRolloverEnabled.java: 
+	New test.
+
 2005-09-30  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/ToolBarBorder/getBorderInsets.java: new test.
