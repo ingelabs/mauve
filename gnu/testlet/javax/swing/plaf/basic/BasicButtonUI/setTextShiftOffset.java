@@ -1,4 +1,4 @@
-// Tags: not-a-test
+// Tags: JDK1.2 
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
@@ -19,45 +19,32 @@
 // the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
 // Boston, MA 02110-1301 USA.
 
+
 package gnu.testlet.javax.swing.plaf.basic.BasicButtonUI;
 
-import javax.swing.plaf.basic.BasicButtonUI;
+import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
 /**
- * Provides access to protected methods.
+ * Some checks for the setTextShiftOffset() method.
  */
-public class MyBasicButtonUI extends BasicButtonUI 
+public class setTextShiftOffset implements Testlet 
 {
-  public MyBasicButtonUI()
+
+  /**
+   * Runs the test using the specified harness.
+   * 
+   * @param harness  the test harness (<code>null</code> not permitted).
+   */
+  public void test(TestHarness harness) 
   {
-    super();
+    MyBasicButtonUI ui = new MyBasicButtonUI();
+    harness.check(ui.getTextShiftOffset(), 0);
+    ui.setTextShiftOffset();
+    harness.check(ui.getTextShiftOffset(), 0);
+    ui.setDefaultTextShiftOffsetField(99);
+    ui.setTextShiftOffset();
+    harness.check(ui.getTextShiftOffset(), 99);
   }
-  public int getDefaultTextIconGapField() 
-  {
-    return this.defaultTextIconGap;
-  }
-  public int getDefaultTextShiftOffsetField()
-  {
-    return this.defaultTextShiftOffset;
-  }
-  public void setDefaultTextShiftOffsetField(int offset)
-  {
-    this.defaultTextShiftOffset = offset;
-  }
-  public String getPropertyPrefix()
-  {
-    return super.getPropertyPrefix();
-  }
-  public int getTextShiftOffset()
-  {
-    return super.getTextShiftOffset();
-  }
-  public void setTextShiftOffset()
-  {
-    super.setTextShiftOffset();
-  }
-  public void clearTextShiftOffset()
-  {
-    super.clearTextShiftOffset();
-  }
+  
 }

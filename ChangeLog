@@ -1,5 +1,25 @@
 2005-10-02  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/MyBasicButtonUI.java
+	(getDefaultTextIconGapField): new method,
+	(getDefaultTextShiftOffsetField): new method,
+	(setDefaultTextShiftOffsetField): new method,
+	(getTextShiftOffset): new method,
+	(setTextShiftOffset): new method,
+	(clearTextShiftOffset): new method,
+	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/clearTextShiftOffset.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/defaultTextIconGap.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/defaultTextShiftOffset.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/getTextShiftOffset.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicButtonUI/setTextShiftOffset.java:
+	New test.
+
+2005-10-02  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/AbstractButton/setRolloverEnabled.java: 
 	New test.
 
