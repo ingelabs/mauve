@@ -1,3 +1,8 @@
+2005-10-05  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/text/AbstractDocument/ElementChange.java: 
+	New test.
+
 2005-10-04  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/java/awt/Component/getFont.java: New test.
