@@ -78,12 +78,8 @@ public abstract class InfoHelper
       return (Info) ((org.omg.CORBA_2_3.portable.InputStream) istream).read_value(id());
     else if (testMode == 1)
       return (Info) ((org.omg.CORBA_2_3.portable.InputStream) istream).read_value(new InfoImpl());
-    else if (testMode == 2)
+    else 
       return (Info) ((org.omg.CORBA_2_3.portable.InputStream) istream).read_value(InfoImpl.class);
-    else
-
-      // The parameterless version should also work
-      return (Info) ((org.omg.CORBA_2_3.portable.InputStream) istream).read_value();
   }
 
   public static void write(OutputStream ostream, Info value)

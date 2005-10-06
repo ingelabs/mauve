@@ -1,3 +1,16 @@
+2005-10-06  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
+        * gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoHelper.java:
+        Adapted to use in value type tests for RMI-IIOP as well.
+        * gnu/testlet/javax/swing/rmi/CORBA/Tie/myStructure.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/NodeObject.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/Externa.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/RMI_test.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/_RMI_test_Stub.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/RMI_testImpl.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/_RMI_testImpl_Tie.java,
+        gnu/testlet/javax/swing/rmi/CORBA/Tie/RMI_IIOP.java: New tests.
+
 2005-10-05  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/security/AccessController/doPrivileged.java:
