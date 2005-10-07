@@ -1,3 +1,7 @@
+2005-10-07  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Long/Tests15.java: Fixed typo in Tags.
+
 2005-10-06  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JLabel/constructor.java: New test.

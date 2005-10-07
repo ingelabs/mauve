@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: JDK 1.5
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.Long;
 
