@@ -1,3 +1,21 @@
+2005-10-10  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/border/TitledBorder/constructors.java: New test,
+	* gnu/testlet/javax/swing/border/TitledBorder/getBorder.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/getBorderInsets.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/getTitle.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/getTitleColor.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/getTitleFont.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/getTitleJustification.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/getTitlePosition.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/isBorderOpaque.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/setBorder.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/setTitle.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/setTitleColor.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/setTitleFont.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/setTitleJustification.java: Likewise,
+	* gnu/testlet/javax/swing/border/TitledBorder/setTitlePosition.java: Likewise.
+
 2005-10-07  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Long/Tests15.java: Fixed typo in Tags.
