@@ -130,7 +130,10 @@ public class CreateTags {
                                 tags = line;
                         }
                         else if(buf.indexOf("package ") == 0)
-                            pckage = buf.substring(8, buf.length()-1);
+                        {
+                            int idx = buf.lastIndexOf(";");
+                            pckage = buf.substring(8, idx);
+                        }
                         buf = new StringBuffer();
                         maxLines--;
                     }
