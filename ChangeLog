@@ -1,3 +1,8 @@
+2005-10-11  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/filechooser/FileSystemView/getFileSystemView.java:
+	New test.
+
 2005-10-10  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/border/TitledBorder/constructors.java: New test,
