@@ -22,6 +22,8 @@ package gnu.testlet.javax.swing.DefaultComboBoxModel;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.util.List;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
@@ -33,29 +35,21 @@ import javax.swing.event.ListDataListener;
 public class setSelectedItem 
   implements Testlet, ListDataListener 
 {
-  int index0;
-  int index1;
-  int eventType;
+  List events = new java.util.ArrayList();
   
   public void contentsChanged(ListDataEvent event) 
   {
-    eventType = event.getType();
-    index0 = event.getIndex0();
-    index1 = event.getIndex1();
+    events.add(event);
   }
   
   public void intervalAdded(ListDataEvent event) 
   {
-    eventType = event.getType();
-    index0 = event.getIndex0();
-    index1 = event.getIndex1();
+    events.add(event);
   }
   
   public void intervalRemoved(ListDataEvent event) 
   {
-    eventType = event.getType();
-    index0 = event.getIndex0();
-    index1 = event.getIndex1();
+    events.add(event);
   }
 
   /**
@@ -65,34 +59,55 @@ public class setSelectedItem
    */
   public void test(TestHarness harness)      
   {   
-    DefaultComboBoxModel m = new DefaultComboBoxModel(new Object[] {"A", "B", "C"});
+    DefaultComboBoxModel m = new DefaultComboBoxModel(new Object[] {"A", "B", 
+            "C"});
     harness.check(m.getSelectedItem(), "A");
     
+    m.addListDataListener(this);
+
+    // first set the selected item to one of the elements in the list...
     m.setSelectedItem("C");
+    harness.check(events.size(), 1);
     harness.check(m.getSelectedItem(), "C");
-    harness.check(eventType, ListDataEvent.CONTENTS_CHANGED);
-    harness.check(index0, 0);
-    harness.check(index1, 0);
+    ListDataEvent event = (ListDataEvent) events.get(0);
+    harness.check(event.getType(), ListDataEvent.CONTENTS_CHANGED);
+    harness.check(event.getIndex0(), -1);
+    harness.check(event.getIndex1(), -1);
+    events.clear();
     
-    eventType = -1;
-    index0 = -1;
-    index1 = -1;
+    // now set the selected item to null...
     m.setSelectedItem(null);
     harness.check(m.getSelectedItem(), null);
-    harness.check(eventType, -1);
-    harness.check(index0, -1);
-    harness.check(index1, -1);
+    harness.check(events.size(), 1);
+    event = (ListDataEvent) events.get(0);
+    harness.check(event.getType(), ListDataEvent.CONTENTS_CHANGED);
+    harness.check(event.getIndex0(), -1);
+    harness.check(event.getIndex1(), -1);
+    events.clear();
 
-    eventType = -1;
-    index0 = -1;
-    index1 = -1;
+    // now set the selected item to something not in the list...
     m.setSelectedItem("Z");
     harness.check(m.getSelectedItem(), "Z");
     harness.check(m.getSize(), 3);
     harness.check(m.getIndexOf("Z"), -1);
-    harness.check(eventType, -1);
-    harness.check(index0, -1);
-    harness.check(index1, -1);
+    harness.check(events.size(), 1);
+    event = (ListDataEvent) events.get(0);
+    harness.check(event.getType(), ListDataEvent.CONTENTS_CHANGED);
+    harness.check(event.getIndex0(), -1);
+    harness.check(event.getIndex1(), -1);
+    events.clear();
+    
+    // now set the selected item to the same value - no event should be 
+    // generated...
+    m.setSelectedItem("Z");
+    harness.check(events.size(), 0);
+    
+    // make sure setting null when already null doesn't generate an event
+    m.setSelectedItem(null);
+    events.clear();
+    m.setSelectedItem(null);
+    harness.check(events.size(), 0);
+    
   }
 }
 

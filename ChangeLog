@@ -1,3 +1,16 @@
+2005-10-11  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/setSelectedItem.java
+	(index0): removed,
+	(index1): likewise,
+	(eventType): likewise,
+	(events): new field,
+	(contentsChanged): add event to events list,
+	(intervalAdded): likewise,
+	(intervalRemoved): likewise,
+	(test): revised tests to use new events list, and added several new
+	checks.
+
 2005-10-11  Fabien DUMINY  <fduminy@jnode.org>
 	
 	* gnu/testlet/runner/CreateTags.java : fixed bug with testlet name extraction under Windows
