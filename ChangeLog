@@ -1,5 +1,10 @@
 2005-10-12  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java
+	(test): strengthened tests for FileView icons.
+
+2005-10-12  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JFileChooser/accept.java: new test,
 	* gnu/testlet/javax/swing/JFileChooser/addChoosableFileFilter.java: new test,
 	* gnu/testlet/javax/swing/JFileChooser/constructors.java: new test,

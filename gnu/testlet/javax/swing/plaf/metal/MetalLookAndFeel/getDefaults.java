@@ -350,11 +350,11 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("FileChooser.upFolderIcon") instanceof Icon);
     
     harness.checkPoint("FileView");
-    harness.check(defaults.get("FileView.computerIcon") instanceof Icon);
-    harness.check(defaults.get("FileView.directoryIcon") instanceof Icon);
-    harness.check(defaults.get("FileView.fileIcon") instanceof Icon);
-    harness.check(defaults.get("FileView.floppyDriveIcon") instanceof Icon);
-    harness.check(defaults.get("FileView.hardDriveIcon") instanceof Icon);
+    harness.check(defaults.get("FileView.computerIcon"), MetalIconFactory.getTreeComputerIcon());
+    harness.check(defaults.get("FileView.directoryIcon") instanceof MetalIconFactory.TreeFolderIcon);
+    harness.check(defaults.get("FileView.fileIcon") instanceof MetalIconFactory.TreeLeafIcon);
+    harness.check(defaults.get("FileView.floppyDriveIcon"), MetalIconFactory.getTreeFloppyDriveIcon());
+    harness.check(defaults.get("FileView.hardDriveIcon"), MetalIconFactory.getTreeHardDriveIcon());
     
     harness.checkPoint("FormattedTextField");
     harness.check(defaults.get("FormattedTextField.background"), new ColorUIResource(0, 0, 30));  
