@@ -28,9 +28,9 @@ import javax.swing.Icon;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
- * Some checks for the getTreeLeafIcon() method.
+ * Some checks for the getInternalFrameDefaultMenuIcon() method.
  */
-public class getTreeLeafIcon implements Testlet 
+public class getInternalFrameDefaultMenuIcon implements Testlet 
 {
 
   /**
@@ -38,15 +38,14 @@ public class getTreeLeafIcon implements Testlet
    * 
    * @param harness  the test harness (<code>null</code> not permitted).
    */
-  public void test(TestHarness harness)     
+  public void test(TestHarness harness)    
   {
-    Icon icon = MetalIconFactory.getTreeLeafIcon();
+    Icon icon = MetalIconFactory.getInternalFrameDefaultMenuIcon();
     harness.check(icon.getIconWidth(), 16);
-    harness.check(icon.getIconHeight(), 20);
-    
-    // check that a new instance is returned each time
-    Icon icon2 = MetalIconFactory.getTreeLeafIcon();
-    harness.check(icon != icon2);
+    harness.check(icon.getIconHeight(), 16);
+    // check that a shared instance is returned each time
+    Icon icon2 = MetalIconFactory.getInternalFrameDefaultMenuIcon();
+    harness.check(icon == icon2);
   }
 
 }

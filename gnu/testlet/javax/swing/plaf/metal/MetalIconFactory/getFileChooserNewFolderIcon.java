@@ -28,25 +28,23 @@ import javax.swing.Icon;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
- * Some checks for the getTreeLeafIcon() method.
+ * Some checks for the getFileChooserNewFolderIcon() method.
  */
-public class getTreeLeafIcon implements Testlet 
+public class getFileChooserNewFolderIcon implements Testlet 
 {
 
   /**
-   * Runs the test using the specified harness.  
+   * Runs the test using the specified harness. 
    * 
    * @param harness  the test harness (<code>null</code> not permitted).
    */
-  public void test(TestHarness harness)     
+  public void test(TestHarness harness)  
   {
-    Icon icon = MetalIconFactory.getTreeLeafIcon();
-    harness.check(icon.getIconWidth(), 16);
-    harness.check(icon.getIconHeight(), 20);
-    
-    // check that a new instance is returned each time
-    Icon icon2 = MetalIconFactory.getTreeLeafIcon();
-    harness.check(icon != icon2);
+    Icon icon = MetalIconFactory.getFileChooserNewFolderIcon();
+    harness.check(icon.getIconWidth(), 18);
+    harness.check(icon.getIconHeight(), 18);
+    Icon icon2 = MetalIconFactory.getFileChooserNewFolderIcon();
+    harness.check(icon == icon2);
   }
 
 }

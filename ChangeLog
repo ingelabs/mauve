@@ -1,3 +1,30 @@
+2005-10-12  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getCheckBoxIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getCheckBoxMenuItemIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserDetailViewIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserHomeFolderIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserListViewIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserNewFolderIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserUpFolderIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getHorizontalSliderThumbIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameAltMaximizeIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameCloseIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameDefaultMenuIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameMaximizeIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameMinimizeIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getRadioButtonIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getRadioButtonMenuItemIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeComputerIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeControlIcon.java: updated header,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeFloppyDriveIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeFolderIcon.java
+	(test): added new check,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeHardDriveIcon.java: new test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeLeafIcon.java
+	(test): added new check,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getVerticalSliderThumbIcon.java: new test.
+
 2005-10-12  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Thread/sleep.java: Explicitly wait for helper

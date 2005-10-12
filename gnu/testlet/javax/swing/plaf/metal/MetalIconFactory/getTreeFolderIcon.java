@@ -16,8 +16,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.plaf.metal.MetalIconFactory;
 
@@ -40,9 +40,13 @@ public class getTreeFolderIcon implements Testlet
    */
   public void test(TestHarness harness)     
   {
-    Icon icon = MetalIconFactory.getTreeFloppyDriveIcon();
+    Icon icon = MetalIconFactory.getTreeFolderIcon();
     harness.check(icon.getIconWidth(), 16);
-    harness.check(icon.getIconHeight(), 16);
+    harness.check(icon.getIconHeight(), 18);
+    
+    // check that the method returns a new instance each time
+    Icon icon2 = MetalIconFactory.getTreeFolderIcon();
+    harness.check(icon != icon2);
   }
 
 }

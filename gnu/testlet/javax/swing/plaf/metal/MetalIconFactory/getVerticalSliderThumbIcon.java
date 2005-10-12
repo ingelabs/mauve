@@ -28,24 +28,23 @@ import javax.swing.Icon;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
- * Some checks for the getTreeLeafIcon() method.
+ * Some checks for the getVerticalSliderThumbIcon() method.
  */
-public class getTreeLeafIcon implements Testlet 
+public class getVerticalSliderThumbIcon implements Testlet 
 {
 
   /**
-   * Runs the test using the specified harness.  
+   * Runs the test using the specified harness. 
    * 
    * @param harness  the test harness (<code>null</code> not permitted).
    */
-  public void test(TestHarness harness)     
+  public void test(TestHarness harness)   
   {
-    Icon icon = MetalIconFactory.getTreeLeafIcon();
+    Icon icon = MetalIconFactory.getVerticalSliderThumbIcon();
     harness.check(icon.getIconWidth(), 16);
-    harness.check(icon.getIconHeight(), 20);
-    
+    harness.check(icon.getIconHeight(), 15);
     // check that a new instance is returned each time
-    Icon icon2 = MetalIconFactory.getTreeLeafIcon();
+    Icon icon2 = MetalIconFactory.getVerticalSliderThumbIcon();
     harness.check(icon != icon2);
   }
 

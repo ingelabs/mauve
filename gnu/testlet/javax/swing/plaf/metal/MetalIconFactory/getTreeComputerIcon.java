@@ -28,9 +28,9 @@ import javax.swing.Icon;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
- * Some checks for the getTreeLeafIcon() method.
+ * Some checks for the getTreeComputerIcon() method.
  */
-public class getTreeLeafIcon implements Testlet 
+public class getTreeComputerIcon implements Testlet 
 {
 
   /**
@@ -40,13 +40,13 @@ public class getTreeLeafIcon implements Testlet
    */
   public void test(TestHarness harness)     
   {
-    Icon icon = MetalIconFactory.getTreeLeafIcon();
+    Icon icon = MetalIconFactory.getTreeComputerIcon();
     harness.check(icon.getIconWidth(), 16);
-    harness.check(icon.getIconHeight(), 20);
+    harness.check(icon.getIconHeight(), 16);
     
-    // check that a new instance is returned each time
-    Icon icon2 = MetalIconFactory.getTreeLeafIcon();
-    harness.check(icon != icon2);
+    // check that the method returns a shared instance...
+    Icon icon2 = MetalIconFactory.getTreeComputerIcon();
+    harness.check(icon == icon2);
   }
 
 }
