@@ -60,6 +60,21 @@ public class firePropertyChange
     harness.check(this.lastEvent.getPropertyName(), "X");
     harness.check(this.lastEvent.getOldValue(), "Y");
     harness.check(this.lastEvent.getNewValue(), "Z");
+    
+    // if the old and new values are the same (and non-null), then no listeners
+    // are notified
+    this.lastEvent = null;
+    e = new PropertyChangeEvent("SOURCE", "X", "YY", "YY");
+    s.firePropertyChange(e);
+    harness.check(lastEvent, null);
+    
+    // but if the old and new values are both null, listeners ARE notified
+    this.lastEvent = null;
+    e = new PropertyChangeEvent("SOURCE", "X", null, null);
+    s.firePropertyChange(e);
+    harness.check(lastEvent, e);    
+    
+    // check that a null argument throws a null pointer exception
     this.lastEvent = null;
     boolean pass = false;
     try

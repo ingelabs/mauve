@@ -1,3 +1,9 @@
+2005-10-12  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/firePropertyChange.java
+	(test1): added checks for old and new values the same, and old and new 
+	values both null.
+
 2005-10-11  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/DefaultComboBoxModel/setSelectedItem.java
