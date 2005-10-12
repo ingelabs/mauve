@@ -30,6 +30,7 @@ public class sleep implements Testlet, Runnable
   private TestHarness harness;
 
   private Thread thread;
+  private boolean helper_started;
   private boolean helper_done;
 
   private final static long SLEEP_TIME = 5 * 1000; // 5 seconds
@@ -56,6 +57,7 @@ public class sleep implements Testlet, Runnable
 	// (It should also go to sleep)
 	synchronized(this)
 	  {
+	    helper_started = true;
 	    this.notify();
 	  }
 
@@ -70,7 +72,8 @@ public class sleep implements Testlet, Runnable
       }
     catch (InterruptedException ie)
       {
-	harness.fail("Interrupted in helper thread");
+	harness.debug("Interrupted in helper thread");
+	harness.check(false);
       }
   }
 
@@ -95,11 +98,13 @@ public class sleep implements Testlet, Runnable
 	// Wait for the helper to start (and sleep immediately).
 	try
 	  {
-	    this.wait(0);
+	    while (!helper_started)
+	      this.wait();
 	  }
 	catch (InterruptedException ie)
 	  {
-	    harness.fail("Interruped during wait for helper thread");
+	    harness.debug("Interrupted during helper start");
+	    harness.check(false);
 	  }
 	
 	// Go to sleep.
@@ -117,8 +122,10 @@ public class sleep implements Testlet, Runnable
 	
 	// About half the time should have been spent sleeping.
 	long present = System.currentTimeMillis();
-	harness.check(present - past >= SLEEP_TIME / 2);
-	harness.check(present - past < SLEEP_TIME);
+	long diff = present - past;
+	harness.debug("diff: " + diff);
+	harness.check(diff >= SLEEP_TIME / 2);
+	harness.check(diff < SLEEP_TIME);
 
 	// Even though we are interrupted,
 	// the thread interrupted flag should be cleared.
@@ -136,7 +143,8 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("Interruped during joining the helper thread");
+	harness.debug("Interruped during joining the helper thread");
+	harness.check(false);
       }
     harness.check(helper_done);
     
@@ -177,7 +185,6 @@ public class sleep implements Testlet, Runnable
     invalid(Long.MAX_VALUE, Integer.MAX_VALUE);
 
     // (Large) valid argument checks
-    harness.checkPoint("Long (interrupted) sleep");
     valid(Integer.MAX_VALUE);
     valid(Long.MAX_VALUE);
     valid(Integer.MAX_VALUE, 0);
@@ -202,8 +209,10 @@ public class sleep implements Testlet, Runnable
     // The thread should have slept at least 5 miliseconds.
     // But certainly not more than 500 miliseconds.
     long present = System.currentTimeMillis();
-    harness.check(present - past > 5);
-    harness.check(present - past < 500);
+    long diff = present - past;
+    harness.debug("diff: " + diff);
+    harness.check(diff > 5);
+    harness.check(diff < 500);
 
 
     // A thread in interrupted state that goes to sleep gets
@@ -239,7 +248,8 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("InterruptedException in invalid(" + milli + ")");
+	harness.debug("InterruptedException in invalid(" + milli + ")");
+	harness.check(false);
       }
     harness.check(illegal_argument);
   }
@@ -257,8 +267,9 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("InterruptedException in invalid("
-		     + milli + ", " + nano + ")");
+	harness.debug("InterruptedException in invalid("
+		      + milli + ", " + nano + ")");
+	harness.check(false);
       }
     harness.check(illegal_argument);
 
@@ -266,13 +277,30 @@ public class sleep implements Testlet, Runnable
 
   private void valid(long milli)
   {
+    harness.checkPoint("valid long:" + milli);
     Thread helper = new Thread(this);
+    helper_started = false;
     helper_done = false;
-    helper_sleep = 0;
+    helper_sleep = 1000;
     thread = Thread.currentThread();
+
+    // Wait for the helper to start (and sleep immediately).
+    helper.start();
+    synchronized(this)
+      {
+	try
+	  {
+	    while (!helper_started)
+	      this.wait();
+	  }
+	catch (InterruptedException ie)
+	  {
+	    harness.debug("Interrupted during helper start");
+	    harness.check(false);
+	  }
+      }
     
     boolean interrupted_exception = false;
-    helper.start();
     try
       {
 	Thread.sleep(milli);
@@ -289,20 +317,38 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("Interruped during joining the helper thread");
+	harness.debug("Interruped during joining the helper thread");
+	harness.check(false);
       }
     harness.check(helper_done);
   }
 
   private void valid(long milli, int nano)
   {
+    harness.checkPoint("valid long " + milli + " int " + nano);
     Thread helper = new Thread(this);
+    helper_started = false;
     helper_done = false;
-    helper_sleep = 0;
+    helper_sleep = 1000;
     thread = Thread.currentThread();
     
-    boolean interrupted_exception = false;
+    // Wait for the helper to start (and sleep immediately).
     helper.start();
+    synchronized(this)
+      {
+	try
+	  {
+	    while (!helper_started)
+	      this.wait();
+	  }
+	catch (InterruptedException ie)
+	  {
+	    harness.debug("Interrupted during helper start");
+	    harness.check(false);
+	  }
+      }
+    
+    boolean interrupted_exception = false;
     try
       {
 	Thread.sleep(milli, nano);
@@ -331,7 +377,8 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("Interruped during joining the helper thread");
+	harness.debug("Interrupted during joining the helper thread");
+	harness.check(false);
       }
     harness.check(helper_done);
   }
@@ -345,7 +392,8 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("InterruptedException in nearZero(" + milli + ")");
+	harness.debug("InterruptedException in nearZero(" + milli + ")");
+	harness.check(false);
       }
   }
 
@@ -358,8 +406,9 @@ public class sleep implements Testlet, Runnable
       }
     catch(InterruptedException ie)
       {
-	harness.fail("InterruptedException in nearZero("
-		     + milli + ", " + nano + ")");
+	harness.debug("InterruptedException in nearZero("
+		      + milli + ", " + nano + ")");
+	harness.check(false);
       }
   }
 

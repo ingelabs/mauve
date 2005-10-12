@@ -1,3 +1,8 @@
+2005-10-12  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/Thread/sleep.java: Explicitly wait for helper
+	thread to start sleeping. Add extra debug info.
+
 2005-10-12  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/firePropertyChange.java
