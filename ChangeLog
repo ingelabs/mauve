@@ -1,3 +1,8 @@
+2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/UIDefaults/getBoolean.java: 
+	New test.
+
 2005-10-12  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/AbstractDocument/ElementChange2.java:
