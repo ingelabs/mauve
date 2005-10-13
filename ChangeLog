@@ -1,5 +1,27 @@
 2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/MyBasicFileChooserUI.java: new support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/constructor.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveButton.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveButtonMnemonic.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveButtonText.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveButtonToolTipText.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveSelectionAciton.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getCancelSelectionAction.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getChangeToParentDirectoryAction.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getDialogTitle.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getDirectoryName.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getFileName.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getFileView.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getGoHomeAction.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getNewFolderAction.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getUpdateAction.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/installIcons.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/installStrings.java: new test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/uninstallStrings.java: new test.
+
+2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconHeight.java:
 	New test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconWidth.java:
