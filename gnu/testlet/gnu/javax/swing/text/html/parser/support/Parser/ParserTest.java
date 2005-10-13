@@ -1,4 +1,4 @@
-// Tags: JDK1.2 
+// Tags: not-a-test 
 
 // Copyright (C) 2005 Audrius Meskauskas <audriusa@bluewin.ch>
 

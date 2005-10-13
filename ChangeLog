@@ -1,5 +1,18 @@
 2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/ParserTest.java:
+	Marked as 'not-a-test',
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Parser_Test.java:
+	Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/TestCase.java:
+	Likewise,
+	* gnu/testlet/java/util/TreeSet/basic.java:
+	Implemented Testlet,
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/MenuBarBorder/MyMenuBarBorder.java:
+	Marked as 'not-a-test'.
+
+2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java
 	(test): Strengthened the test for the 'List.focusCellHighlightBorder' 
 	default.

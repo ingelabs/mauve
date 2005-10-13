@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 Audrius Meskauskas <audriusa@bluewin.ch>
+// Copyright (C) 2004, 2005 Audrius Meskauskas <audriusa@bluewin.ch>
 
 // This file is part of Mauve.
 
@@ -23,19 +23,17 @@
 package gnu.testlet.java.util.TreeSet;
 
 import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
  * Basic TreeSet test.
  * @author Audrius Meskauskas (AudriusA@Bluewin.ch)
  */
-public class basic
+public class basic implements Testlet
 {
   TreeSet set = new TreeSet();
 
