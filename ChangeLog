@@ -1,5 +1,18 @@
 2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/constructor.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/getButtonWidth.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/getMaximumSize.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/getMinimumSize.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/getPreferredSize.java:
+	New test.
+
+2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalToggleButtonUI/getDisabledTextColor.java:
 	New test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalToggleButtonUI/getFocusColor.java:
