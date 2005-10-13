@@ -47,7 +47,7 @@ public class testInterceptors extends Asserter implements Testlet
 {
   public static Object fior;
 
-  public void testInterceptors()
+  public void test()
   {
     try
       {
@@ -298,7 +298,19 @@ public class testInterceptors extends Asserter implements Testlet
 
   public void test(TestHarness harness)
   {
-    h = harness;
-    testInterceptors();
+    // Set the loader of this class as a context class loader, ensuring that the
+    // CORBA implementation will be able to locate the interceptor classes.
+    ClassLoader previous = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+    
+    try
+      {
+        h = harness;
+        test();
+      }
+    finally
+      {
+        Thread.currentThread().setContextClassLoader(previous);
+      }
   }
 }

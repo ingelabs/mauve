@@ -30,8 +30,6 @@ import org.omg.CORBA.Any;
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.TypeCode;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.InputStream;
 
 /**
@@ -187,10 +185,24 @@ public class ValueTypeTest
   public void test(TestHarness harness)
   {
     h = harness;
-    setUp();
-
-    testCustomValue();
-    testStreamableValue();
-    testDirectComunication();
+    // Set the loader of this class as a context class loader, ensuring that the
+    // CORBA implementation will be able to locate the stub classes.
+    ClassLoader previous = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+    try
+      {
+        setUp();
+        testCustomValue();
+        testStreamableValue();
+        testDirectComunication();
+      }
+    catch (Throwable ex)
+      {
+        h.fail("Exception " + ex);
+      }
+    finally
+      {
+        Thread.currentThread().setContextClassLoader(previous);
+      }
   }
 }

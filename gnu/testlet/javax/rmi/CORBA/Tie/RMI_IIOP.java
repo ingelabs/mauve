@@ -50,6 +50,10 @@ public class RMI_IIOP
   public void test(TestHarness harness)
   {
     ORB client_orb = null;
+    // Set the loader of this class as a context class loader, ensuring that the
+    // CORBA implementation will be able to locate the RMI stubs and ties.
+    ClassLoader previous = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
     try
       {
         client_orb = ORB.init(new String[0], null);
@@ -222,6 +226,7 @@ public class RMI_IIOP
       }
     finally
       {
+        Thread.currentThread().setContextClassLoader(previous);
         try
           {
             if (server_orb != null)
@@ -231,7 +236,8 @@ public class RMI_IIOP
           }
         catch (Throwable t)
           {
-            // Failed to destroy. Nothing to do.
+            // Failed to destroy. 
+            harness.fail("Unable to destroy the ORBs: "+t);
           }
       }
   }
@@ -273,6 +279,6 @@ public class RMI_IIOP
       {
         harness.fail("Unable to initalise ORB: " + e);
         return null; // Unreachable.
-      }
+      }    
   }
 }

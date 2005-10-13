@@ -83,20 +83,19 @@ public class testForwarding
           }
 
         TestLocationForwardClient.main(new String[ 0 ]);
-
-        try
+       
+        // Wait at most 2 seconds for the termination of the server thread.
+        long from = System.currentTimeMillis();
+        do
           {
-            Thread.sleep(100);
+              Thread.sleep(100);
           }
-        catch (InterruptedException ex)
-          {
-          }
+        while (System.currentTimeMillis() - from < 2000 && !fs_terminated);
 
         harness.check(fs_terminated, "Server thread must exit");
       }
     catch (Exception ex)
       {
-        ex.printStackTrace();
         fail(ex);
       }
   }

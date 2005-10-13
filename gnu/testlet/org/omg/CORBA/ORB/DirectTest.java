@@ -76,25 +76,37 @@ public class DirectTest
 
   public void test(TestHarness harness)
   {
+    // Set the loader of this class as a context class loader, ensuring that the
+    // CORBA implementation will be able to locate the stub classes.
+    ClassLoader previous = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
     try
       {
-        setUp();
+        try
+          {
+            setUp();
+          }
+        catch (Exception ex)
+          {
+            ex.printStackTrace();
+            harness.fail(ex.getClass().getName() + " in setup.");
+          }
+
+        h = harness;
+
+        testField();
+        testParameters();
+        testStringArray();
+        testStructure();
+        testSystemException();
+        testTree();
+        testUserException();
+        testWideNarrowStrings();
       }
-    catch (Exception ex)
+    finally
       {
-        harness.fail(ex.getClass().getName() + " in setup.");
+        Thread.currentThread().setContextClassLoader(previous);
       }
-
-    h = harness;
-
-    testField();
-    testParameters();
-    testStringArray();
-    testStructure();
-    testSystemException();
-    testTree();
-    testUserException();
-    testWideNarrowStrings();
   }
 
   /**
@@ -227,7 +239,6 @@ public class DirectTest
     String ior = comServer.start_server(new String[ 0 ])[0];
 
     orb = org.omg.CORBA.ORB.init(new String[ 0 ], null);
-
     object = (comTester) orb.string_to_object(ior);
   }
 
