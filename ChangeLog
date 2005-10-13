@@ -1,5 +1,12 @@
 2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconHeight.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconWidth.java:
+	New test.
+
+2005-10-13  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/constructor.java:
 	New test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/getButtonWidth.java:
