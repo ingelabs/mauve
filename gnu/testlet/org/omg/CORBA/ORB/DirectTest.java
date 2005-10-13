@@ -57,12 +57,10 @@ import gnu.testlet.org.omg.CORBA.ORB.communication.passThis;
 import gnu.testlet.org.omg.CORBA.ORB.communication.returnThis;
 
 /**
- * Test the invocations by direct call after casting to an interface.
- *
- * Warning: this test start CORBA server on port 1126. Be sure your
- * security restrictions allow that server to start.
- *
- * This Classpath example was modified, converting it into the test.
+ * Test the invocations by direct call after casting to an interface. Warning:
+ * this test start CORBA server on port 1126. Be sure your security restrictions
+ * allow that server to start. This Classpath example was modified, converting
+ * it into the test.
  *
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
  */
@@ -76,37 +74,26 @@ public class DirectTest
 
   public void test(TestHarness harness)
   {
-    // Set the loader of this class as a context class loader, ensuring that the
-    // CORBA implementation will be able to locate the stub classes.
-    ClassLoader previous = Thread.currentThread().getContextClassLoader();
-    Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
     try
       {
-        try
-          {
-            setUp();
-          }
-        catch (Exception ex)
-          {
-            ex.printStackTrace();
-            harness.fail(ex.getClass().getName() + " in setup.");
-          }
-
-        h = harness;
-
-        testField();
-        testParameters();
-        testStringArray();
-        testStructure();
-        testSystemException();
-        testTree();
-        testUserException();
-        testWideNarrowStrings();
+        setUp();
       }
-    finally
+    catch (Exception ex)
       {
-        Thread.currentThread().setContextClassLoader(previous);
+        ex.printStackTrace();
+        harness.fail(ex.getClass().getName() + " in setup.");
       }
+
+    h = harness;
+
+    testField();
+    testParameters();
+    testStringArray();
+    testStructure();
+    testSystemException();
+    testTree();
+    testUserException();
+    testWideNarrowStrings();
   }
 
   /**
