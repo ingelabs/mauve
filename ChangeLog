@@ -1,3 +1,8 @@
+2005-10-16  Fabien DUMINY  <fduminy@jnode.org>
+	
+	* gnu/testlet/runner/TestletToAPI.java : added
+	* README.TestletToAPI : added
+
 2005-10-13  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
         * gnu/testlet/org/omg/CORBA/ORB/DirectTest.java: Do not set the thread 
         context class loader (test the work of VMStackWalker).
