@@ -21,10 +21,16 @@
 
 package gnu.testlet.javax.swing.JLabel;
 
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
+
+import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Tests if the constructor sets the default values for the JLabel's properties
@@ -36,7 +42,24 @@ public class constructor implements Testlet
 {
   public void test(TestHarness harness)
   {
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+    
+    // use this to check that the defaults are those for a Label
+    UIManager.put("Label.font", new Font("Dialog", Font.PLAIN, 21));
+    UIManager.put("Label.foreground", Color.green);
+    UIManager.put("Label.background", Color.yellow);
+    
     JLabel l = new JLabel();
+    harness.check(l.getFont(), new Font("Dialog", Font.PLAIN, 21));
+    harness.check(l.getForeground(), Color.green);
+    harness.check(l.getBackground(), Color.yellow);
     harness.check(l.getAlignmentX(), 0.0F, "alignmentX");
     harness.check(l.getAlignmentY(), 0.5F, "alignmentY");
     harness.check(l.getHorizontalAlignment(), SwingConstants.LEADING,
