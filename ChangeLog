@@ -1,5 +1,18 @@
 2005-10-18  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createArrowButton.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createEditor.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createRenderer.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/general.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getDefaultSize.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getMaximumSize.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getMinimumSize.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getPreferredSize.java: New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/MyBasicComboBoxUI.java: New support class,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/MyBasicComboBoxUILAF.java: Likewise.
+
+2005-10-18  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JLabel/constructor.java
 	(test): set MetalLookAndFeel and check default colors.
 
