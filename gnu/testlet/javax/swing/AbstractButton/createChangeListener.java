@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: TestButton
 
 // Copyright (C) 2005 Roman Kennke <roman@kennke.org>
 
@@ -21,33 +22,35 @@
 
 package gnu.testlet.javax.swing.AbstractButton;
 
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-import javax.swing.AbstractButton;
-import javax.swing.Icon;
+import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
 /**
- * Checks if the AbstractButton init() method correctly initializes the
- * properties of the AbstractButton.
+ * Checks if the ChangeListener returned by this method is supposed to
+ * trigger repaint and/or revalidate.
+ *
+ * @author Roman Kennke (kennke@aicas.com)
  */
-public class init implements Testlet
+public class createChangeListener implements Testlet
 {
-  // a concrete version of AbstractButton for testing purposes
-  class MyButton extends AbstractButton
+
+  /**
+   * Starts the test run.
+   *
+   * @param harness the test harness to use
+   */
+  public void test(TestHarness harness)
   {
-    /**
-     * Made public for testing.
-     */
-    public void init(String s, Icon i) {
-      super.init(s, i);
-    }
+    TestButton b = new TestButton();
+    ChangeListener l = b.createChangeListener();
+    b.repaintCalled = false;
+    b.revalidateCalled = false;
+    l.stateChanged(new ChangeEvent(b.getModel()));
+    harness.check(b.repaintCalled, true);
+    harness.check(b.revalidateCalled, false);
   }
 
-  public void test(TestHarness h)
-  {
-    MyButton b = new MyButton();
-    b.init(null, null);
-    h.check(b.getText(), "", "AbstractButton.text is \"\" per default");
-  }
 }
