@@ -1,5 +1,9 @@
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JCheckBox/constructor.java: New test.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/SizeRequirements/calculateAlignedPositions.java:
 	New test.
 
