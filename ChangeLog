@@ -1,5 +1,25 @@
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JComponent/TestComponent.java:
+	New auxiliary helper class.
+	* gnu/testlet/javax/swing/JComponent/paint.java:
+	* gnu/testlet/javax/swing/JComponent/setAlignmentX.java:
+	* gnu/testlet/javax/swing/JComponent/setAlignmentY.java:
+	* gnu/testlet/javax/swing/JComponent/setBackground.java:
+	* gnu/testlet/javax/swing/JComponent/setBorder.java:
+	* gnu/testlet/javax/swing/JComponent/setEnabled.java:
+	* gnu/testlet/javax/swing/JComponent/setFont.java:
+	* gnu/testlet/javax/swing/JComponent/setForeground.java:
+	* gnu/testlet/javax/swing/JComponent/setMaximumSize.java:
+	* gnu/testlet/javax/swing/JComponent/setMinimumSize.java:
+	* gnu/testlet/javax/swing/JComponent/setOpaque.java:
+	* gnu/testlet/javax/swing/JComponent/setPreferredSize.java:
+	* gnu/testlet/javax/swing/JComponent/setUI.java:
+	* gnu/testlet/javax/swing/JComponent/setVisible.java:
+	New tests.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/text/GapContent/insertString.java:
 	New test.
 
