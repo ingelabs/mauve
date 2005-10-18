@@ -1,5 +1,10 @@
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/text/GapContent/insertString.java:
+	New test.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/AbstractButton/createChangeListener.java:
 	New test.
 	* gnu/testlet/javax/swing/AbstractButton/TestButton.java:

@@ -126,7 +126,6 @@ public class PositionTest implements Testlet
         doc.insertString(0, "One Three Four", null);
         Position pos = doc.createPosition(4);
         doc.insertString(4, "Two ", null);
-        System.out.println (pos.getOffset());
         h.check(pos.getOffset(), 8);
       }
     catch (BadLocationException ex)
