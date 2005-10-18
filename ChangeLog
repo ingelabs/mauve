@@ -1,3 +1,11 @@
+2005-10-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JComboBox/addItem.java: New test,
+	* gnu/testlet/javax/swing/JComboBox/getEditor.java: New test,
+	* gnu/testlet/javax/swing/JComboBox/removeItem.java: New test,
+	* gnu/testlet/javax/swing/JComboBox/setEditable.java: New test,
+	* gnu/testlet/javax/swing/JComboBox/setEditor.java: New test.
+
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JList/AccessibleJList/TestList.java
