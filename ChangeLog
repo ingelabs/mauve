@@ -1,5 +1,10 @@
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JScrollPane/AccessibleJScrollPane/resetViewport.java:
+	New test.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JComponent/TestComponent.java:
 	New auxiliary helper class.
 	* gnu/testlet/javax/swing/JComponent/paint.java:
