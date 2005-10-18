@@ -1,5 +1,32 @@
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JList/AccessibleJList/TestList.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/contentsChanged.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/getAccessibleChild.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/getAccessibleRole.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/getAccessibleStateSet.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/intervalAdded.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/intervalRemoved.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/valueChanged.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getAccessibleRole.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getAccessibleStateSet.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getBackground.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getCursor.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getFont.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getForeground.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/isEnabled.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/isFocusTraversable.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/isShowing.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/isVisible.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/setBackground.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/setCursor.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/setEnabled.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/setFont.java
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/setForeground.java
+	New tests.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JLabel/TestLabel.java:
 	New auxiliary helper class.
 	* gnu/testlet/javax/swing/JLabel/setText.java:
