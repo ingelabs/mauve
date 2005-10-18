@@ -1,6 +1,6 @@
 // Tags: not-a-test
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005 Roman Kennke (kennke@aicas.com)
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,35 +19,22 @@
 
 package gnu.testlet.javax.swing.UIManager;
 
-import javax.swing.LookAndFeel;
-import javax.swing.UIDefaults;
+import javax.swing.JComponent;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.LabelUI;
 
 /**
- * A minimal look and feel class for use in testing.
+ * A minimal UI for JLabel for testing.
  */
-public class MyLookAndFeel extends LookAndFeel {
-  public MyLookAndFeel() {
-  }
-  public String getDescription() {
-    return "MyLookAndFeel Description";
-  }
-  public String getID() {
-    return "MyLookAndFeel ID";
-  }
-  public String getName() {
-    return "MyLookAndFeel Name";
-  }
-  public boolean isNativeLookAndFeel() {
-    return false;
-  }
-  public boolean isSupportedLookAndFeel() {
-    return true;
-  }
-  public UIDefaults getDefaults()
+public class TestLabelUI extends LabelUI {
+  static boolean installUICalled = false;
+  public void installUI(JComponent c)
   {
-    UIDefaults def = new UIDefaults();
-    def.put("LabelUI", "gnu.testlet.javax.swing.UIManager.TestLabelUI");
-    return def;
+    super.installUI(c);
+    installUICalled = true;
   }
-
+  public static ComponentUI createUI(JComponent c)
+  {
+    return new TestLabelUI();
+  }
 }
