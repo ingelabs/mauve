@@ -1,5 +1,10 @@
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/SizeRequirements/calculateAlignedPositions.java:
+	New test.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/RepaintManager/DisabledEventQueue.java:
 	Auxiliary helper class.
 	* gnu/testlet/javax/swing/RepaintManager/addDirtyRegion.java
