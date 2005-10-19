@@ -1,3 +1,8 @@
+2005-10-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java
+	(test): an additional check for 'Button.margin'.
+
 2005-10-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createArrowButton.java: New test,

@@ -28,6 +28,7 @@ import gnu.testlet.Testlet;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,6 +45,7 @@ import javax.swing.plaf.DimensionUIResource;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.InputMapUIResource;
 import javax.swing.plaf.InsetsUIResource;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.BorderUIResource.LineBorderUIResource;
 import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.plaf.metal.DefaultMetalTheme;
@@ -245,7 +247,9 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Button.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("Button.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("Button.light"), new ColorUIResource(0, 0, 7));
-    harness.check(defaults.get("Button.margin"), new InsetsUIResource(2, 14, 2, 14));
+    Insets buttonMargin = defaults.getInsets("Button.margin");
+    harness.check(buttonMargin instanceof UIResource);
+    harness.check(buttonMargin, new InsetsUIResource(2, 14, 2, 14));
     harness.check(defaults.get("Button.select"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("Button.shadow"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("Button.textIconGap"), new Integer(4));
