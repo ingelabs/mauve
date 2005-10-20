@@ -1,3 +1,8 @@
+2005-10-20  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/DefaultListSelectionModel: New directory.
+	* gnu/testlet/javax/swing/DefaultListSelectionModel/leadSelectionIndex.java: New test.
+
 2005-10-19  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java
