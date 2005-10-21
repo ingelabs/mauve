@@ -1,3 +1,9 @@
+2005-10-21  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/TestLookAndFeel.java: New support class,
+	* gnu/testlet/javax/swing/JComboBox/setEditor.java: Updated import for
+	TestLookAndFeel.
+	
 2005-10-21  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/lang/reflect/Proxy.java: Use proper class loader

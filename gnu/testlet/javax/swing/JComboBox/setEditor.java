@@ -21,7 +21,7 @@ package gnu.testlet.javax.swing.JComboBox;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import gnu.testlet.javax.swing.TestLookAndFeel;
+import gnu.testlet.javax.swing.plaf.TestLookAndFeel;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
