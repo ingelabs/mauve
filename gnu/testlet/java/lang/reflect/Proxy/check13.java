@@ -50,7 +50,7 @@ public class check13 implements Testlet, InvocationHandler, Serializable {
 		// Creates a Proxy implementation of an ActionListener that will
 		// call the invoke() method whenever a method of al is called.
 		ActionListener al = (ActionListener) Proxy.newProxyInstance(
-				ActionListener.class.getClassLoader(),
+				getClass().getClassLoader(),
 				new Class[] { ActionListener.class }, this);
 
 		Method expectedMethod = null;

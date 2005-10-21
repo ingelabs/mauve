@@ -1,3 +1,8 @@
+2005-10-21  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/lang/reflect/Proxy.java: Use proper class loader
+	for the proxy, so that the serialization test succeeds.
+
 2005-10-20  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/DefaultListSelectionModel: New directory.
