@@ -27,8 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.TreeSet;
 
-import javax.swing.SpinnerDateModel;
-
 /**
  * This test checks if the File.createTempFile may return the same file
  * (wrong) if called from the parallel threads.
@@ -44,12 +42,14 @@ public class createFile implements Testlet
   String[][] returned;
   TestHarness harness;
   int completed;
+  File tempDir;
 
   public void test(TestHarness a_harness)
   {
     try
       {
         harness = a_harness;
+        tempDir = new File(harness.getTempDirectory());
         returned = new String[N_THREADS][];
         completed = 0;
 
@@ -116,8 +116,10 @@ public class createFile implements Testlet
             {
               try
                 {
-                  String s = File.createTempFile("mauve", "cft").getAbsolutePath();
+                  File tempFile = File.createTempFile("mauve", "cft", tempDir);
+                  String s = tempFile.getAbsolutePath();
                   returned[thread_number][file] = s;
+                  tempFile.delete();
                 }
               catch (IOException ioex)
                 {
