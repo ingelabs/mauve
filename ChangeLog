@@ -1,3 +1,8 @@
+2005-10-23  Guilhem Lavaux  <guilhem@kaffe.org>
+
+	* gnu/testlet/java/nio/channels/SocketChannel/select.java: Check that
+	register only authorise non-blocking channel.
+
 2005-10-23  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
 
         * gnu/testlet/java/io/File/createFile.java: Added cleanup.

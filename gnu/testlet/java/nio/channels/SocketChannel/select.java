@@ -60,11 +60,22 @@ public class select implements Testlet
 	ServerSocketChannel ssc = ServerSocketChannel.open();
 	Selector sel = Selector.open();
 
-	ssc.configureBlocking(false);
-
 	ssc.socket().bind(new InetSocketAddress(testPort));
 	
-	SelectionKey ssc_key = ssc.register(sel, SelectionKey.OP_ACCEPT, null);
+	SelectionKey ssc_key;
+       
+	ssc.configureBlocking(true);
+	try
+	  {
+	    ssc_key = ssc.register(sel, SelectionKey.OP_ACCEPT, null);
+	    harness.fail("Channel must be in blocking mode for being able to register");
+	  }
+       	catch (IllegalBlockingModeException e)
+	  {
+	    harness.check(true);
+	  }
+	ssc.configureBlocking(false);
+	ssc_key = ssc.register(sel, SelectionKey.OP_ACCEPT, null);
     
 	Thread client_thread = new Thread() {
 	    public void run()
