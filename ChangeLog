@@ -1,3 +1,7 @@
+2005-10-23  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
+
+        * gnu/testlet/java/io/File/createFile.java: New test.
+
 2005-10-21  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/TestLookAndFeel.java: New support class,
