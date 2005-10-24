@@ -1,5 +1,13 @@
 2005-10-24  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/constructor.java: New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/getMinimumThumbSize.java: New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/getPreferredSize.java: New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/layoutContainer.java: New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/MyMetalScrollBarUI.java: New file.
+
+2005-10-24  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/constructor.java: New file,
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMaximumSize.java: New file,
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMaximumThumbSize.java: New file,
