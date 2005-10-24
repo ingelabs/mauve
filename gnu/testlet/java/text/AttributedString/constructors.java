@@ -16,8 +16,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.java.text.AttributedString;
 
@@ -50,12 +50,68 @@ public class constructors implements Testlet
 
   private void testConstructor1(TestHarness harness) 
   {
-    harness.checkPoint("AttributedString(AttributedCharacterIterator);"); 
+    harness.checkPoint("AttributedString(AttributedCharacterIterator);");
+    
+    // it isn't specified, but we assume a NullPointerException if the iterator
+    // is null
+    boolean pass = false;
+    try
+    {
+      /* AttributedString as = */ 
+          new AttributedString((AttributedCharacterIterator) null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
   }
 
   private void testConstructor2(TestHarness harness) 
   {
-    harness.checkPoint("AttributedString(AttributedCharacterIterator, int, int);"); 
+    harness.checkPoint("AttributedString(AttributedCharacterIterator, int, int);");
+    AttributedString source = new AttributedString("ABCDEFGHIJ");
+    AttributedCharacterIterator sourceACI = source.getIterator();
+    
+    // should get an IllegalArgumentException if the start index is outside the
+    // valid range
+    boolean pass = false;
+    try
+    {
+      /*AttributedString as =*/ new AttributedString(sourceACI, -1, 2);
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+
+    // should get an IllegalArgumentException if the end index is outside the
+    // valid range
+    pass = false;
+    try
+    {
+      /*AttributedString as =*/ new AttributedString(sourceACI, 2, 12);
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // it isn't specified, but we assume a NullPointerException if the iterator
+    // is null
+    pass = false;
+    try
+    {
+      /* AttributedString as = */ 
+          new AttributedString((AttributedCharacterIterator) null, 1, 5);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
   }
 
   private void testConstructor3(TestHarness harness) 

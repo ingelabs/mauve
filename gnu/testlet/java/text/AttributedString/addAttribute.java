@@ -16,8 +16,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.java.text.AttributedString;
 
@@ -92,13 +92,13 @@ public class addAttribute implements Testlet
      AttributedString as = new AttributedString("ABCDEFG");
      as.addAttribute(AttributedCharacterIterator.Attribute.LANGUAGE, "Unknown", 2, 4);
      AttributedCharacterIterator aci = as.getIterator();
-     harness.check(aci.getRunStart(AttributedCharacterIterator.Attribute.LANGUAGE) == 0);
-     harness.check(aci.getRunLimit(AttributedCharacterIterator.Attribute.LANGUAGE) == 2);
+     harness.check(aci.getRunStart(AttributedCharacterIterator.Attribute.LANGUAGE), 0);
+     harness.check(aci.getRunLimit(AttributedCharacterIterator.Attribute.LANGUAGE), 2);
      aci.next();
      aci.next();
      aci.next();
-     harness.check(aci.getRunStart(AttributedCharacterIterator.Attribute.LANGUAGE) == 2);
-     harness.check(aci.getRunLimit(AttributedCharacterIterator.Attribute.LANGUAGE) == 4);     
+     harness.check(aci.getRunStart(AttributedCharacterIterator.Attribute.LANGUAGE), 2);
+     harness.check(aci.getRunLimit(AttributedCharacterIterator.Attribute.LANGUAGE), 4);     
  
      // if beginIndex < 0, there should be an IllegalArgumentException
      boolean pass = false;

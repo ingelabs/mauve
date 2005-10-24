@@ -1,3 +1,17 @@
+2005-10-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/text/AttributedCharacterIterator/getAttribute.java:
+	New test,
+	* gnu/testlet/java/text/AttributedCharacterIterator/getRunStart.java:
+	New test,
+	* gnu/testlet/java/text/AttributedString/addAttribute.java: updated 
+	FSF address,
+	(test2): use int check rather than '==',
+	* gnu/testlet/java/text/AttributedString/constructors.java: updated
+	FSF address,
+	(testConstructor1): check null argument,
+	(testConstructor2): check illegal arguments.
+
 2005-10-23  Guilhem Lavaux  <guilhem@kaffe.org>
 
 	* gnu/testlet/java/nio/channels/SocketChannel/select.java: Check that
