@@ -1,3 +1,8 @@
+2005-10-26  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JTable/isRowSelected.java: New test.
+	* gnu/testlet/javax/swing/JTable/isColumnSelected.java: New test.
+
 2005-10-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/constructor.java: New file,
@@ -96,6 +101,15 @@
 	* gnu/testlet/javax/swing/JComboBox/removeItem.java: New test,
 	* gnu/testlet/javax/swing/JComboBox/setEditable.java: New test,
 	* gnu/testlet/javax/swing/JComboBox/setEditor.java: New test.
+
+2005-10-18  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/UIManager/TestLabelUI.java:
+	New auxiliary helper class.
+	* gnu/testlet/javax/swing/UIManager/getUI.java:
+	New test.
+	* gnu/testlet/javax/swing/UIManager/MyLookAndFeel.java:
+	Added default test UI for JLabel.
 
 2005-10-18  Roman Kennke  <kennke@aicas.com>
 
