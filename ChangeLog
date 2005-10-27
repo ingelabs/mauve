@@ -1,3 +1,8 @@
+2005-10-27  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
+
+        * gnu/testlet/java/io/File/security.java (test): Delete tmpdir2
+	in the cleanup.
+
 2005-10-27  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/createDecreaseButton.java:
