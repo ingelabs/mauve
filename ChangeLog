@@ -1,3 +1,10 @@
+2005-10-27  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JTextField/createDefaultModel.java:
+	New test.
+	* gnu/testlet/javax/swing/text/PlainDocument/insertString.java:
+	New test.
+
 2005-10-27  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
 
         * gnu/testlet/java/io/File/security.java (test): Delete tmpdir2
