@@ -24,6 +24,8 @@ package gnu.testlet.javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
+import javax.swing.JButton;
+import javax.swing.JScrollBar;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 /**
@@ -51,4 +53,81 @@ public class MyBasicScrollBarUI extends BasicScrollBarUI
     return super.getThumbBounds();
   }
 
+  /**
+   * Overrides createIncreaseButton() to enable public access in tests.
+   *
+   * @param o the orientation
+   */
+  public JButton createIncreaseButton(int o)
+  {
+    return super.createIncreaseButton(o);
+  }
+
+  /**
+   * Overrides createDecreaseButton() to enable public access in tests.
+   *
+   * @param o the orientation
+   */
+  public JButton createDecreaseButton(int o)
+  {
+    return super.createDecreaseButton(o);
+  }
+
+  /**
+   * Overrides installDefaults() to enable public access in tests.
+   */
+  public void installDefaults()
+  {
+    super.installDefaults();
+  }
+
+  /**
+   * Returns the value of the (otherwise protected) field incrButton.
+   *
+   * @return the value of the incrButton field
+   */
+  public JButton getIncrButton()
+  {
+    return incrButton;
+  }
+
+  /**
+   * Sets the value of the (otherwise protected) field incrButton.
+   *
+   * @param b the button to set
+   */
+  public void setIncrButton(JButton b)
+  {
+    incrButton = b;
+  }
+
+  /**
+   * Returns the value of the (otherwise protected) field decrButton.
+   *
+   * @return the value of the decrButton field
+   */
+  public JButton getDecrButton()
+  {
+    return decrButton;
+  }
+
+  /**
+   * Sets the value of the (otherwise protected) field decrButton.
+   *
+   * @param b the button to set
+   */
+  public void setDecrButton(JButton b)
+  {
+    decrButton = b;
+  }
+
+  /**
+   * Sets the value of the (otherwise protected) field scrollbar.
+   *
+   * @param sb the scrollbar to set
+   */
+  public void setScrollbar(JScrollBar sb)
+  {
+    scrollbar = sb;
+  }
 }

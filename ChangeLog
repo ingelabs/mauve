@@ -1,3 +1,15 @@
+2005-10-27  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/createDecreaseButton.java:
+	New test.
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/createIncreaseButton.java:
+	New test.
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/installDefaults.java:
+	New test.
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/MyBasicScrollBarUI.java:
+	Added some more methods to make protected fields/methods
+	publicly accessible.
+
 2005-10-26  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JTable/isRowSelected.java: New test.
