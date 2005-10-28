@@ -1,3 +1,7 @@
+2005-10-28  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/java/awt/Component/requestFocus.java: New test.
+
 2005-10-28  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JFileChooser/changeToParentDirectory.java:
