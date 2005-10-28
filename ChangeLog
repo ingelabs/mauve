@@ -1,5 +1,10 @@
 2005-10-28  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/java/awt/Component/requestFocus.java: Changed from JFrame
+	to Frame, changed Tags from JDK 1.2 to JDK 1.0.
+
+2005-10-28  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/java/awt/Component/requestFocus.java: New test.
 
 2005-10-28  David Gilbert  <david.gilbert@object-refinery.com>

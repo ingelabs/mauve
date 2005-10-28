@@ -1,4 +1,4 @@
-// Tags: GUI JDK1.1
+// Tags: GUI JDK1.0
 
 // Copyright (C) 2005 Red Hat
 
@@ -22,7 +22,7 @@ package gnu.testlet.java.awt.Component;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import javax.swing.JFrame;
+import java.awt.Frame;
 
 public class requestFocus implements Testlet {
 
@@ -33,7 +33,7 @@ public class requestFocus implements Testlet {
    */
   public void test(TestHarness harness)      
   {
-    JFrame jf = new JFrame();
+    Frame jf = new Frame();
     jf.show();
     try
       {
