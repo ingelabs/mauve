@@ -1,3 +1,8 @@
+2005-10-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JFileChooser/changeToParentDirectory.java:
+	New test.
+
 2005-10-28  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/DefaultListSelectionModel/setLeadSelectionIndex.java:
