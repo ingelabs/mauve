@@ -1,3 +1,8 @@
+2005-10-28  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
+
+        * gnu/testlet/org/omg/PortableServer/POAOperations/poa_POA_test.java:
+	Give 500 ms for the server thread to start.
+
 2005-10-27  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JTextField/createDefaultModel.java:

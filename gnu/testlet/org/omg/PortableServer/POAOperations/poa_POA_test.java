@@ -441,32 +441,20 @@ public class poa_POA_test
       }
   }
 
-  protected void setUp()
-                throws java.lang.Exception
+  protected void setUp() throws java.lang.Exception
   {
-    // Launch the server.
-    // Start the server.
-    new Thread()
-      {
-        public void run()
-        {
-          server = new poa_Server();
-          server.start_server(THIS.h);
-        }
-      }.start();
+    server = new poa_Server();
+    server.start_server(THIS.h);
 
-    long start = System.currentTimeMillis();
-    while (server == null || !server.started ||
-           System.currentTimeMillis() - start > 10000
-          )
-      try
-        {
-          Thread.sleep(10);
-        }
-      catch (InterruptedException ex)
-        {
-        }
-    orb = org.omg.CORBA.ORB.init(new String[ 0 ], null);
+    try
+      {
+        // Give 500 ms for the server thread to start.
+        Thread.sleep(500);
+      }
+    catch (InterruptedException ex)
+      {
+      }
+    orb = org.omg.CORBA.ORB.init(new String[0], null);
   }
 
   public void test(TestHarness a_harness)
@@ -489,6 +477,7 @@ public class poa_POA_test
       }
     catch (Exception ex)
       {
+        ex.printStackTrace();
         h.fail("Exc:" + ex + ":" + ex.getCause());
       }
   }
