@@ -22,9 +22,12 @@ package gnu.testlet.javax.swing.JTable;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Arrays;
 
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -33,6 +36,23 @@ import javax.swing.table.TableColumnModel;
  * Some checks for the setModel() method in the {@link JTable} class.
  */
 public class setModel implements Testlet {
+
+  class PropertyChangeHandler implements PropertyChangeListener
+  {
+
+    /**
+     * Receives notification when a property changes.
+     *
+     * @param e the property change event
+     */
+    public void propertyChange(PropertyChangeEvent e)
+    {
+      propertyChangeFired = true;
+    }
+    
+  }
+
+  boolean propertyChangeFired;
 
   /**
    * Runs the test using the specified harness.
@@ -43,6 +63,9 @@ public class setModel implements Testlet {
   {
     test1(harness);
     test2(harness);
+    testLeadAnchorSelectionUpdate(harness);
+    testSelectionModel(harness);
+    testPropertyFired(harness);
   }
 
   public void test1(TestHarness harness)      
@@ -105,5 +128,109 @@ public class setModel implements Testlet {
     harness.check(t.getColumnCount(), 2);
     harness.check(t.getColumnName(0), "DD");
     harness.check(t.getColumnName(1), "CC");
+  }
+
+  /**
+   * Tests if setModel updates the lead and anchor selection indices correctly.
+   *
+   * @param the test harness to use
+   */
+  private void testLeadAnchorSelectionUpdate(TestHarness harness)
+  {
+    harness.checkPoint("leadAnchorSelectionUpdate");
+
+    JTable table = new JTable(0, 0);
+
+    // Test a model with 0 rows and 0 columns.
+    table.setModel(new DefaultTableModel(0, 0));
+    try { Thread.sleep(500); } catch (InterruptedException ex) {}
+    harness.check(table.getSelectionModel().getLeadSelectionIndex(), -1);
+    harness.check(table.getSelectionModel().getAnchorSelectionIndex(), -1);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getLeadSelectionIndex(), -1);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getAnchorSelectionIndex(), -1);
+
+    // Test a model with 1 row and 0 columns.
+    table.setModel(new DefaultTableModel(1, 0));
+    try { Thread.sleep(500); } catch (InterruptedException ex) {}
+    harness.check(table.getSelectionModel().getLeadSelectionIndex(), 0);
+    harness.check(table.getSelectionModel().getAnchorSelectionIndex(), 0);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getLeadSelectionIndex(), -1);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getAnchorSelectionIndex(), -1);
+
+    // Test a model with 0 rows and 1 column.
+    table.setModel(new DefaultTableModel(0, 1));
+    try { Thread.sleep(500); } catch (InterruptedException ex) {}
+    harness.check(table.getSelectionModel().getLeadSelectionIndex(), -1);
+    harness.check(table.getSelectionModel().getAnchorSelectionIndex(), -1);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getLeadSelectionIndex(), 0);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getAnchorSelectionIndex(), 0);
+
+    // Test a model with 1 row and 1 columns.
+    table.setModel(new DefaultTableModel(1, 1));
+    try { Thread.sleep(500); } catch (InterruptedException ex) {}
+    harness.check(table.getSelectionModel().getLeadSelectionIndex(), 0);
+    harness.check(table.getSelectionModel().getAnchorSelectionIndex(), 0);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getLeadSelectionIndex(), 0);
+    harness.check(table.getColumnModel().getSelectionModel()
+                  .getAnchorSelectionIndex(), 0);
+  }
+
+  /**
+   * Tests if the selectionModel is changes when the table's model
+   * changes. The test shows that the selectionModel is not replaced but the
+   * selection is cleared.
+   *
+   * @oaram harness the test harness to use
+   */
+  private void testSelectionModel(TestHarness harness)
+  {
+    harness.checkPoint("selectionModel");
+    JTable table = new JTable();
+    ListSelectionModel m1 = table.getSelectionModel();
+    m1.addSelectionInterval(1, 1);
+    harness.check(m1.isSelectedIndex(1), true);
+    table.setModel(new DefaultTableModel());
+    harness.check(table.getSelectionModel() == m1);
+    harness.check(m1.isSelectedIndex(1), false);
+  }
+
+  /**
+   * Tests if changing this property fires a property change event.
+   *
+   * @param harness the test harness to use
+   */
+  private void testPropertyFired(TestHarness harness)
+  {
+    harness.checkPoint("propertyFired");
+    JTable table = new JTable();
+    table.addPropertyChangeListener(new PropertyChangeHandler());
+    DefaultTableModel m1 = new DefaultTableModel();
+    DefaultTableModel m2 = new DefaultTableModel();
+    propertyChangeFired = false;
+    table.setModel(m1);
+    harness.check(propertyChangeFired, true);
+    propertyChangeFired = false;
+    table.setModel(m1);
+    harness.check(propertyChangeFired, false);
+    propertyChangeFired = false;
+    table.setModel(m2);
+    harness.check(propertyChangeFired, true);
+    try
+      {
+        table.setModel(null);
+        harness.fail("IllegalArgumenException must be fired");
+      }
+    catch (IllegalArgumentException ex)
+      {
+        harness.check(true);
+      }
+    
   }
 }
