@@ -1,3 +1,7 @@
+2005-10-30  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/runner/Mauve.java: reformatted and updated header.
+
 2005-10-28  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/java/awt/Component/requestFocus.java: Changed from JFrame
