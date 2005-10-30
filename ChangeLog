@@ -1,5 +1,13 @@
 2005-10-30  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/runner/Mauve.java
+	(execute): save default locale before running tests and restore it 
+	after,
+	(getSourceDirectory): removed inappropriate return value,
+	(main): removed redundant code.
+
+2005-10-30  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/runner/Mauve.java: reformatted and updated header.
 
 2005-10-28  Anthony Balkissoon  <abalkiss@redhat.com>

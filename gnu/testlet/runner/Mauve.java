@@ -1,4 +1,4 @@
-// Copyright (C) 2004 by Object Refinery Limited
+// Copyright (C) 2004, 2005 by Object Refinery Limited
 // Copyright (C) 2005 by <zander@kde.org>
 // Written by David Gilbert (david.gilbert@object-refinery.com)
 // Written by Thomas Zander <zander@kde.org>
@@ -39,6 +39,7 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.util.Locale;
 
 /**
  * An application that runs a collection of Mauve tests and creates a report 
@@ -62,6 +63,9 @@ public class Mauve extends TestHarness
    */
   public synchronized void execute(String file, String prefix, String output) 
   {
+    // save the default locale, some tests change the default and we want
+    // to restore it before generating the HTML report...
+    Locale savedLocale = Locale.getDefault();
     File out = new File(output);
     if (out.exists() && !out.isDirectory())
       throw new IllegalArgumentException("Output should be a directory");
@@ -169,6 +173,10 @@ public class Mauve extends TestHarness
     catch (IOException e) {
       e.printStackTrace(System.out);
     }
+
+    // tests are complete so restore the default locale
+    Locale.setDefault(savedLocale);
+    
     // write results to HTML
     System.out.println("Creating HTML report...");
     try 
@@ -417,7 +425,7 @@ public class Mauve extends TestHarness
 
   public String getSourceDirectory () 
   {
-    return "/home/dgilbert/workspace/mauve-latest"; // TODO
+    return null; // TODO
   }
 
   public File getResourceFile (String name) throws ResourceNotFoundException 
@@ -459,7 +467,6 @@ public class Mauve extends TestHarness
     String file = "tests";
     String prefix = "gnu.testlet.";
     String output = "results";
-    boolean error = false;
     for (int i = 0; i < args.length; i++) 
       {
         String a = args[i];
