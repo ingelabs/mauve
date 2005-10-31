@@ -33,32 +33,61 @@ import java.io.ObjectInputValidation;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 class TestObjectInputValidation implements ObjectInputValidation, Serializable {
-  private boolean validated;
+  ArrayList validated;
   private String name;
+  private int priority;
+  TestObjectInputValidation object;
+
   public TestObjectInputValidation(String name) 
   {      
     this.name = name;
-    this.validated = false;
+    this.priority = 10;
+    this.object = this;
   }
-  public boolean isValidated() 
+
+  // Registers with priority for given object.
+  public TestObjectInputValidation(int priority,
+				   TestObjectInputValidation object)
   {
-    return this.validated;
+    this.priority = priority;
+    this.object = object;
   }
+
   public void validateObject()
   {
-    this.validated = true;
+    if (object.validated == null)
+      object.validated = new ArrayList();
+    object.validated.add(new Integer(priority));
   }
+
   private void writeObject(ObjectOutputStream stream) throws IOException 
   {
     stream.defaultWriteObject();
   }
+
   private void readObject(ObjectInputStream stream) 
       throws IOException, ClassNotFoundException 
   {
-    stream.defaultReadObject();
     stream.registerValidation(this, 10);
+    stream.registerValidation(new TestObjectInputValidation(-10, this), -10);
+    stream.defaultReadObject();
+    stream.registerValidation(this, 12); // Again with other priority
+    stream.registerValidation(new TestObjectInputValidation(-12, this), -12);
+    stream.registerValidation(new TestObjectInputValidation(11, this), 11);
   }
 
+  // Ignores validated list and object.
+  public boolean equals(Object o)
+  {
+    if (o instanceof TestObjectInputValidation)
+      {
+	TestObjectInputValidation other = (TestObjectInputValidation) o;
+	return this.name.equals(other.name)
+	  && this.priority == other.priority;
+      }
+    return false;
+  }
 }

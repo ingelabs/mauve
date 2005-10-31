@@ -1,3 +1,11 @@
+2005-10-30  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/ObjectInputStream/registerValidation.java:
+	Check fields and priority order.
+	* gnu/testlet/java/io/ObjectInputStream/TestObjectInputValidation.java:
+	Add self reference, register multiple times with different priorities,
+	add equals().
+
 2005-10-30  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/runner/Mauve.java

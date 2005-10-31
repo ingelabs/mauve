@@ -34,6 +34,7 @@ import java.io.ObjectInputValidation;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Some checks for registerValidation() method of the {@link ObjectInputStream} class.
@@ -62,11 +63,27 @@ public class registerValidation implements Testlet
       );
       t2 = (TestObjectInputValidation) in.readObject();
       in.close();
+
+      harness.check(t2, t1); // name and priority the same
+      harness.check(t2.object, t2); // has self-reference
+      harness.check(t2.validated != null);
+
+      Object[] ps = t2.validated.toArray();
+      int[] priorities = new int[ps.length];
+      for (int i = 0; i < ps.length; i++)
+	priorities[i] = ((Integer) ps[i]).intValue();
+      harness.check(priorities != null);
+      harness.check(priorities.length, 5);
+      harness.check(priorities[0], -12);
+      harness.check(priorities[1], -10);
+      harness.check(priorities[2], 10);
+      harness.check(priorities[3], 11);
+      harness.check(priorities[4], 10); // The priority 12 "this" again.
     }
     catch (Exception e) {
       harness.debug(e);
+      harness.check(false, e.toString());
     }
-    harness.check(t2.isValidated());
   }
   
 }
