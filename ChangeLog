@@ -1,3 +1,8 @@
+2005-11-01  Tom Tromey  <tromey@redhat.com>
+
+	* .settings/org.eclipse.jdt.core.prefs: Ensure 1.4 settings are used.
+	* .settings/org.eclipse.jdt.ui.prefs: Likewise.
+
 2005-11-01  Robert Schuster  <robertschuster@fsfe.org>
 
 	* gnu/testlet/java/net/URL/URLTest.java:
