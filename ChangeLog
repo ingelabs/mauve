@@ -1,3 +1,9 @@
+2005-11-01  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/java/net/URL/URLTest.java:
+	(test_cr601a): Added "//" to test values.
+	(test_cr601b): Dito.
+
 2005-10-30  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/ObjectInputStream/registerValidation.java:

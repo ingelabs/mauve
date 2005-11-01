@@ -305,7 +305,7 @@ public class URLTest implements Testlet
 
                 // tests 0..3
                 {"file:////c:/pub/files/foobar.txt",
-                 "file://c:/pub/files/foobar.txt",
+                 "file:////c:/pub/files/foobar.txt",
                  "",
                  "//c:/pub/files/foobar.txt"},
 
@@ -341,7 +341,7 @@ public class URLTest implements Testlet
 
                 // tests 24..27
                 {"file:////hpjavant/bgee/foobar.txt",
-                 "file://hpjavant/bgee/foobar.txt",
+                 "file:////hpjavant/bgee/foobar.txt",
                  "",
                  "//hpjavant/bgee/foobar.txt"},
 
@@ -486,7 +486,7 @@ public class URLTest implements Testlet
 
                  // tests 44..47
                 {"", "//hpjavant/bgee/foobar.txt",
-                 "file://hpjavant/bgee/foobar.txt",
+                 "file:////hpjavant/bgee/foobar.txt",
                  "",
                  "//hpjavant/bgee/foobar.txt"},
 
@@ -498,7 +498,7 @@ public class URLTest implements Testlet
 
                  // tests 52..55
                 {null, "//hpjavant/bgee/foobar.txt",
-                 "file://hpjavant/bgee/foobar.txt",
+                 "file:////hpjavant/bgee/foobar.txt",
                  null,
                  "//hpjavant/bgee/foobar.txt"},
 
