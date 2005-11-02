@@ -1,3 +1,7 @@
+2005-11-01  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Dialog/size.java: New Test.
+
 2005-11-02  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/java/awt/Container/addImpl.java: New test.
