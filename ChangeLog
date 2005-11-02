@@ -1,5 +1,11 @@
 2005-11-02  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/java/awt/Component/getForeground: Modified test
+	to show that the foreground is fetched from the parent component
+	if present.
+
+2005-11-02  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/java/awt/Component/getMaximumSize.java: New test.
 
 2005-11-01  Lillian Angel  <langel@redhat.com>
