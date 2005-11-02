@@ -1,3 +1,7 @@
+2005-11-01  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Dialog/size.java: Fixed logic in test case.
+
 2005-11-02  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/java/awt/Component/getForeground: Modified test
