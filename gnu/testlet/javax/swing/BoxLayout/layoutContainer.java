@@ -26,13 +26,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.awt.AWTError;
-import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 /**
  * Some checks for the layoutContainer() method defined in the 
@@ -53,6 +53,7 @@ public class layoutContainer implements Testlet
     testLineAxis(harness);
     testPageAxis(harness);
     testOriginalContainer(harness);
+    testOverflowCase(harness);
   }
   
   private void testXAxis(TestHarness harness)
@@ -157,6 +158,49 @@ public class layoutContainer implements Testlet
       }
     harness.check(pass);
   }
-  
+
+  /**
+   * This tests a case where we have 3 components with max values of
+   * Integer.MAX_VALUE. This test is derived from an actual bug.
+   *
+   * @param harness the test harness to use
+   */
+  private void testOverflowCase(TestHarness harness)
+  {
+    harness.checkPoint("overflowCase");
+    JComponent c1 = new JComponent(){};
+    c1.setMinimumSize(new Dimension(4, 4));
+    c1.setPreferredSize(new Dimension(49, 11));
+    c1.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+    JComponent c2 = new JComponent(){};
+    c2.setMinimumSize(new Dimension(4, 4));
+    c2.setPreferredSize(new Dimension(49, 11));
+    c2.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+    JComponent c3 = new JComponent(){};
+    c3.setMinimumSize(new Dimension(4, 4));
+    c3.setPreferredSize(new Dimension(49, 11));
+    c3.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+    Container c = new Container();
+    BoxLayout l = new BoxLayout(c, BoxLayout.X_AXIS); 
+    c.setLayout(l);
+    c.add(c1);
+    c.add(c2);
+    c.add(c3);
+    c.setSize(670, 46);
+    l.invalidateLayout(c);
+    l.layoutContainer(c);
+    harness.check(c1.getX(), 0);
+    harness.check(c1.getY(), 0);
+    harness.check(c1.getWidth(), 223);
+    harness.check(c1.getHeight(), 46);
+    harness.check(c2.getX(), 223);
+    harness.check(c2.getY(), 0);
+    harness.check(c2.getWidth(), 223);
+    harness.check(c2.getHeight(), 46);
+    harness.check(c3.getX(), 446);
+    harness.check(c3.getY(), 0);
+    harness.check(c3.getWidth(), 223);
+    harness.check(c3.getHeight(), 46);
+  }
 }
 
