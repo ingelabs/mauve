@@ -1,3 +1,16 @@
+2005-11-07  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JApplet/isRootPaneCheckingEnabled.java:
+	New test.
+	* gnu/testlet/javax/swing/JDialog/isRootPaneCheckingEnabled.java:
+	New test.
+	* gnu/testlet/javax/swing/JFrame/isRootPaneCheckingEnabled.java:
+	New test.
+	* gnu/testlet/javax/swing/JInternalFrame/isRootPaneCheckingEnabled.java:
+	New test.
+	* gnu/testlet/javax/swing/JWindow/isRootPaneCheckingEnabled.java:
+	New test.
+
 2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/constructor.java:
