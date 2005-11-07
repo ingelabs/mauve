@@ -1,3 +1,12 @@
+2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxEditor/addActionListener.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxEditor/constructor.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxEditor/removeActionListener.java:
+	New test.
+
 2005-11-04  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/BoxLayout/layoutContainer.java: Added new
