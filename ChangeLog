@@ -1,3 +1,12 @@
+2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/constructor.java
+	(test): added new checks,
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/editorBorderInsets.java: 
+	New test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/MyMetalComboBoxEditor.java: 
+	New support class.
+
 2005-11-07  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JApplet/isRootPaneCheckingEnabled.java:

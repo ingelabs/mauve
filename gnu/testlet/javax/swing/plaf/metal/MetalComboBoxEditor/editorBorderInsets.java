@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: MyMetalComboBoxEditor
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
 
@@ -26,15 +27,10 @@ import gnu.testlet.Testlet;
 
 import java.awt.Insets;
 
-import javax.swing.JTextField;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.metal.MetalComboBoxEditor;
-
 /**
-* Some tests for the constructor() in the {@link MetalComboBoxEditor} 
-* class.
-*/
-public class constructor implements Testlet
+ * Checks the value of the editorBorderInsets field.
+ */
+public class editorBorderInsets implements Testlet
 {
 
   /**
@@ -44,12 +40,8 @@ public class constructor implements Testlet
    */
   public void test(TestHarness harness)      
   {
-    MetalComboBoxEditor editor = new MetalComboBoxEditor();
-    JTextField tf = (JTextField) editor.getEditorComponent();
-    harness.check(tf.getColumns(), 9);
-    harness.check(tf.getInsets(), new Insets(4, 2, 4, 0));
-    harness.check(tf.getMargin(), new Insets(0, 0, 0, 0));
-    harness.check(!(tf.getInsets() instanceof UIResource));
+    harness.check(MyMetalComboBoxEditor.getEditorBorderInsetsField(), 
+            new Insets(4, 2, 4, 0));
   }
   
 }
