@@ -104,5 +104,52 @@ public class decode implements Testlet
 
       harness.check (String.copyValueOf(cstr), "abc	ABC 123");
       harness.check (String.copyValueOf(cstr, 3, 3), "	AB");
+
+      byte[] leWithBOM = new byte[]
+        {(byte)0xFF, (byte)0xFE, (byte)'a', (byte)0x00};
+      byte[] leWithoutBOM = new byte[]
+        {(byte)'a', (byte)0x00};
+      byte[] beWithBOM = new byte[]
+        {(byte)0xFE, (byte)0xFF, (byte)0x00, (byte)'a'};
+      byte[] beWithoutBOM = new byte[]
+        {(byte)0x00, (byte)'a'};
+
+      // UTF-16: Big endian assumed without BOM
+      harness.check(decodeTest(leWithBOM, "UTF-16", "a"));
+      harness.check(!decodeTest(leWithoutBOM, "UTF-16", "a"));
+      harness.check(decodeTest(beWithBOM, "UTF-16", "a"));
+      harness.check(decodeTest(beWithoutBOM, "UTF-16", "a"));
+
+      // UTF-16LE: BOM should not be used
+      harness.check(!decodeTest(leWithBOM, "UTF-16LE", "a"));
+      harness.check(decodeTest(leWithoutBOM, "UTF-16LE", "a"));
+      harness.check(!decodeTest(beWithBOM, "UTF-16LE", "a"));
+      harness.check(!decodeTest(beWithoutBOM, "UTF-16LE", "a"));
+
+      // UTF-16BE: BOM should not be used
+      harness.check(!decodeTest(leWithBOM, "UTF-16BE", "a"));
+      harness.check(!decodeTest(leWithoutBOM, "UTF-16BE", "a"));
+      harness.check(!decodeTest(beWithBOM, "UTF-16BE", "a"));
+      harness.check(decodeTest(beWithoutBOM, "UTF-16BE", "a"));
+
+      // UnicodeLittle: Little endian assumed without BOM
+      harness.check(decodeTest(leWithBOM, "UnicodeLittle", "a"));
+      harness.check(decodeTest(leWithoutBOM, "UnicodeLittle", "a"));
+      harness.check(!decodeTest(beWithBOM, "UnicodeLittle", "a"));
+      harness.check(!decodeTest(beWithoutBOM, "UnicodeLittle", "a"));
     }
+
+  public boolean decodeTest (byte[] bytes, String encoding, String expected)
+    {
+      try
+        {
+          String s = new String(bytes, encoding);
+          return s.equals(expected);
+        }        
+      catch (UnsupportedEncodingException ex)
+	{
+	  return false;
+	}
+    }
+
 }

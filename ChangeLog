@@ -1,3 +1,8 @@
+2005-11-07  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/lang/String/decode.java: Added new tests
+	for UTF-16 encodings.
+
 2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createArrowButton.java
