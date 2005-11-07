@@ -69,4 +69,9 @@ public class MyBasicComboBoxUI extends BasicComboBoxUI
   {
     return this.popup;
   }
+  
+  public JButton getArrowButton()
+  {
+    return this.arrowButton;
+  }
 }

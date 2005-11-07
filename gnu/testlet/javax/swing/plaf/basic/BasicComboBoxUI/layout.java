@@ -24,20 +24,22 @@ package gnu.testlet.javax.swing.plaf.basic.BasicComboBoxUI;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.awt.Insets;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Rectangle;
 
-import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.plaf.BorderUIResource.CompoundBorderUIResource;
-import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
 /**
- * Some checks for the createArrowButton() method in the 
- * {@link BasicComboBoxUI} class.  
+ * Some checks for the layout in the {@link BasicComboBoxUI} class.  
  */
-public class createArrowButton implements Testlet 
+public class layout implements Testlet 
 {
 
   /**
@@ -55,17 +57,19 @@ public class createArrowButton implements Testlet
     {
       e.printStackTrace();
     }
-    MyBasicComboBoxUI ui = new MyBasicComboBoxUI();
-    JButton b = ui.createArrowButton();
-    harness.check(b instanceof BasicArrowButton);
-    Border border = b.getBorder();
-    harness.check(border instanceof CompoundBorderUIResource);
-    // the insets and margin are presumably ignored when this button is
-    // drawn...
-    Insets insets = b.getInsets();
-    harness.check(insets, new Insets(4, 17, 5, 17));
-    Insets margin = b.getMargin();
-    harness.check(margin, new Insets(2, 14, 2, 14));
+    JComboBox cb = new JComboBox();
+    cb.setEditable(true);
+    JFrame frame = new JFrame();
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.add(cb);
+    frame.setContentPane(panel);
+    frame.pack();
+    JTextField tf = (JTextField) cb.getEditor().getEditorComponent();
+    Font font = cb.getFont();
+    FontMetrics fm = cb.getFontMetrics(font);
+    int height = fm.getHeight() + 2;
+    int width = fm.stringWidth("m") * tf.getColumns() + 1; 
+    harness.check(tf.getBounds(), new Rectangle(0, 0, width, height));
   }
 
 }

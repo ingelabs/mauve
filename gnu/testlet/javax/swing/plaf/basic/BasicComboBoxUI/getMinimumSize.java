@@ -46,7 +46,7 @@ public class getMinimumSize implements Testlet
   public void test(TestHarness harness)  
   {
     JComboBox cb = new JComboBox();
-    BasicComboBoxUI ui = new BasicComboBoxUI();
+    MyBasicComboBoxUI ui = new MyBasicComboBoxUI();
     cb.setUI(ui);
     int additionalHeight = 2;  // margin?  border?
     int additionalWidth = 2;  

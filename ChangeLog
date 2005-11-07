@@ -1,5 +1,25 @@
 2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createArrowButton.java
+	(test): set look and feel and added new checks,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createEditor.java
+	(test): added new checks,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getDisplaySize.java
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getMinimumSize.java
+	(test): Use MyBasicComboBoxUI,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getPreferredSize.java
+	(test): Move code to new method testNonEditable(), replace with calls 
+	to new test methods,
+	(testNonEditable): New method,
+	(testEditable): New method,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/layout.java:
+	New test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/MyBasicComboBoxUI.java
+	(getArrowButton): new method.
+
+2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/constructor.java
 	(test): added new checks,
 	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/editorBorderInsets.java: 
