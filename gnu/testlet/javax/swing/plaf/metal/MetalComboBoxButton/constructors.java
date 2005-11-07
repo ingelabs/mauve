@@ -24,10 +24,13 @@ package gnu.testlet.javax.swing.plaf.metal.MetalComboBoxButton;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.awt.Insets;
+
 import javax.swing.CellRendererPane;
 import javax.swing.Icon;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalComboBoxButton;
 import javax.swing.plaf.metal.MetalComboBoxIcon;
 
@@ -58,6 +61,11 @@ public class constructors implements Testlet
     harness.check(b.getComboBox() == jcb);
     harness.check(b.getComboIcon() == icon);
     harness.check(!b.isIconOnly());
+    Insets margin = b.getMargin();
+    harness.check(margin, new Insets(2, 14, 2, 14));
+    harness.check(margin instanceof UIResource);
+    Insets insets = b.getInsets();
+    harness.check(insets, new Insets(4, 17, 5, 17));
     
     boolean pass = false;
     try
