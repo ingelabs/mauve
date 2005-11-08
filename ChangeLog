@@ -1,5 +1,11 @@
 2005-11-08  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JComponent/getAlignmentX.java: New test.
+	* gnu/testlet/javax/swing/JComponent/getAlignmentY.java: New test.
+	* gnu/testlet/javax/swing/JComponent/TestLayout: New auxiliary class.
+
+2005-11-08  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/java/awt/Container/getAlignmentX.java: New test.
 	* gnu/testlet/java/awt/Container/getAlignmentY.java: New test.
 	* gnu/testlet/java/awt/Container/TestLayout: New auxiliary class.
