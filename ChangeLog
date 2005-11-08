@@ -1,5 +1,10 @@
 2005-11-08  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JLayeredPane/getComponentsInLayer.java:
+	New test.
+
+2005-11-08  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/java/awt/Component/invalidate.java
 	(testInvalidateInvalidComponent): New test.
 
