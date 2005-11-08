@@ -1,3 +1,27 @@
+2005-11-08  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/SimpleTestHarness.java: Don't implement config.
+	(getSourceDirectory): Removed.
+	(getTempDirectory): Removed.
+	(getPathSeparator): Removed.
+	(getSeparator): Removed.
+	(getMailHost): Removed.
+	* gnu/testlet/TestHarness.java: Implements config.
+	(getSourceDirectory): Added.
+	(getTempDirectory): Added.
+	(getPathSeparator): Added.
+	(getSeparator): Added.
+	(getMailHost): Added.
+	* gnu/testlet/BinaryCompatibility/BinaryCompatibilityTest.java:
+	Don't cast to SimpleTestHarness.
+	* gnu/testlet/java/io/File/jdk11.java: Likewise.
+	* gnu/testlet/java/net/Socket/SocketTest.java: Likewise.
+	* gnu/testlet/java/net/Socket/jdk12.java: Remove SimpleTestHarness
+	import.
+	* gnu/testlet/java/net/Socket/jdk13.java: Likewise.
+	* gnu/testlet/java/net/Socket/jdk13.java: Likewise.
+
+
 2005-11-08  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/java/awt/BorderLayout/getLayoutAlignmentX.java: New test.

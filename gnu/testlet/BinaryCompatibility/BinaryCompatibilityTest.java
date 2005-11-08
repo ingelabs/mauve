@@ -2,6 +2,7 @@
 
 // Copyright (C) 2003 Red Hat, Inc.
 // Written by aph@redhat.com
+// Copyright (C) 2005 Mark J. Wielaard  <mark@klomp.org>
 
 // A set of tests for Chapter 13 of the JLS, "Binary Compatibility".
 // We run a script that compiles every test case twice, the second
@@ -29,7 +30,6 @@
 package gnu.testlet.BinaryCompatibility;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.SimpleTestHarness;
 import java.io.*;
 
 public class BinaryCompatibilityTest implements Testlet
@@ -41,17 +41,16 @@ public class BinaryCompatibilityTest implements Testlet
     try
       {
         String command;
-        SimpleTestHarness sth = (SimpleTestHarness) harness;
-        String path = (sth.getSourceDirectory() +
+        String path = (harness.getSourceDirectory() +
                        "/gnu/testlet/BinaryCompatibility/tests");
-        char sep = sth.getSeparator().charAt(0);
+        char sep = harness.getSeparator().charAt(0);
         FileReader fr = new FileReader(path);
         BufferedReader tests = new BufferedReader(fr);
         while ((command = tests.readLine()) != null)
           {
             String srcdir = "/gnu/testlet/BinaryCompatibility";
             srcdir = srcdir.replace('/', sep);
-            File dir = new File(sth.getSourceDirectory() + srcdir);
+            File dir = new File(harness.getSourceDirectory() + srcdir);
             harness.debug("Execing external command: " + command);
             Process p = Runtime.getRuntime().exec(command, null, dir);
             BufferedReader result =

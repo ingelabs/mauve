@@ -1,7 +1,7 @@
 /*************************************************************************
 /* jdk11.java -- java.io.File 1.1 tests
 /*
-/* Copyright (c) 2001, 2002, 2003 Free Software Foundation, Inc.
+/* Copyright (c) 2001, 2002, 2003, 2005 Free Software Foundation, Inc.
 /*
 /* This program is free software; you can redistribute it and/or modify
 /* it under the terms of the GNU General Public License as published 
@@ -24,7 +24,6 @@ package gnu.testlet.java.io.File;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.SimpleTestHarness;
 import gnu.testlet.config;
 
 import java.io.File;
@@ -37,19 +36,8 @@ import java.util.Date;
 public class jdk11 implements Testlet, FilenameFilter
 {
   
-  public void test (TestHarness testharness)
+  public void test (TestHarness harness)
   {
-    SimpleTestHarness harness = null;
-    try 
-      {
-	harness = (SimpleTestHarness)testharness;
-      } 
-    catch (ClassCastException cce)
-      {
-	harness.fail ("Harness not an instance of SimpleTestHarness");
-	return;
-      }
-
     String srcdirstr = harness.getSourceDirectory ();
     String tmpdirstr = harness.getTempDirectory ();
 

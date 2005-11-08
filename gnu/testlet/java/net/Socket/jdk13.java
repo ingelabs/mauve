@@ -3,6 +3,7 @@
 
 /*
   Copyright (C) 2003 C. Brian Jones
+  Copyright (C) 2003 Mark J. Wielaard  <mark@klomp.org>
   
   This file is part of Mauve.
   
@@ -28,7 +29,6 @@ import java.io.IOException;
 import java.net.*;
 
 import gnu.testlet.Testlet;
-import gnu.testlet.SimpleTestHarness;
 import gnu.testlet.TestHarness;
 
 public class jdk13 implements Testlet

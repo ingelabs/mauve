@@ -1,5 +1,6 @@
 // Copyright (c) 1998, 1999, 2001  Cygnus Solutions
 // Written by Tom Tromey <tromey@cygnus.com>
+// Copyright (c) 2005  Mark J. Wielaard  <mark@klomp.org>
 
 // This file is part of Mauve.
 
@@ -32,6 +33,7 @@ import java.awt.Robot;
  * commented).
  */
 public abstract class TestHarness
+  implements config
 {
   /**
    * Records the result of a boolean check.
@@ -199,13 +201,6 @@ public abstract class TestHarness
     throws ResourceNotFoundException;
 
   /**
-   * Provide a directory name for writing temporary files.
-   *
-   * @return The temporary directory name.
-   */
-  public abstract String getTempDirectory ();
-
-  /**
    * Records a check point.  This can be used to mark a known place in a 
    * testlet.  It is useful if you have a large number of tests -- it makes 
    * it easier to find a failing test in the source code. 
@@ -249,4 +244,36 @@ public abstract class TestHarness
    * @param desc  the description.
    */
   public abstract void debug (Object[] o, String desc);
+
+  // Default config interface methods.
+  public String getSourceDirectory ()
+  {
+    return srcdir;
+  }
+  
+  /**
+   * Provide a directory name for writing temporary files.
+   *
+   * @return The temporary directory name.
+   */
+
+  public String getTempDirectory ()
+  {
+    return tmpdir;
+  }
+  
+  public String getPathSeparator ()
+  {
+    return pathSeparator;
+  }
+  
+  public String getSeparator ()
+  {
+    return separator;
+  }
+  
+  public String getMailHost ()
+  {
+    return mailHost;
+  }
 }

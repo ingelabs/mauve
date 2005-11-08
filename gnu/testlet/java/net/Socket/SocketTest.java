@@ -3,6 +3,7 @@
 
 /*
   Copyright (C) 1999 Hewlett-Packard Company
+  Copyright (C) 2005 Mark J. Wielaard <mark@klomp.org>
   
   This file is part of Mauve.
   
@@ -25,14 +26,13 @@
 package gnu.testlet.java.net.Socket;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.SimpleTestHarness;
 import java.net.*;
 import java.io.*;
 
 
 public class SocketTest implements Testlet
 {
-  protected static SimpleTestHarness harness;
+  protected static TestHarness harness;
   
   public void test_BasicServer()
   {
@@ -499,7 +499,7 @@ public class SocketTest implements Testlet
 
   public void test (TestHarness the_harness)
   {
-    harness = (SimpleTestHarness) the_harness;
+    harness = the_harness;
     testall ();
   }
 }

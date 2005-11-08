@@ -1,5 +1,6 @@
 // Copyright (c) 1998, 1999, 2001, 2003  Red Hat, Inc.
 // Written by Tom Tromey <tromey@cygnus.com>
+// Copyright (c) 2005  Mark J. Wielaard  <mark@klomp.org>
 
 // This file is part of Mauve.
 
@@ -29,7 +30,6 @@ import java.util.Vector;
 
 public class SimpleTestHarness
   extends TestHarness
-  implements gnu.testlet.config
 {
   private int count = 0;
   private int failures = 0;
@@ -96,31 +96,6 @@ public class SimpleTestHarness
     ++total;
   }
 
-  public String getSourceDirectory ()
-  {
-    return srcdir;
-  }
-  
-  public String getTempDirectory ()
-  {
-    return tmpdir;
-  }
-  
-  public String getPathSeparator ()
-  {
-    return pathSeparator;
-  }
-  
-  public String getSeparator ()
-  {
-    return separator;
-  }
-  
-  public String getMailHost ()
-  {
-    return mailHost;
-  }
-  
   public Reader getResourceReader (String name)
     throws ResourceNotFoundException
   {
