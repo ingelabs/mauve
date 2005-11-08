@@ -1,5 +1,10 @@
 2005-11-08  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/java/awt/BorderLayout/getLayoutAlignmentX.java: New test.
+	* gnu/testlet/java/awt/BorderLayout/getLayoutAlignmentY.java: New test.
+
+2005-11-08  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JRootPane/RootLayout/getLayoutAlignmentX.java:
 	New test.
 	* gnu/testlet/javax/swing/JRootPane/RootLayout/getLayoutAlignmentY.java:
