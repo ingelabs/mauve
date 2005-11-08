@@ -1,3 +1,8 @@
+2005-11-08  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/awt/Component/invalidate.java
+	(testInvalidateInvalidComponent): New test.
+
 2005-11-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxButton/constructors.java

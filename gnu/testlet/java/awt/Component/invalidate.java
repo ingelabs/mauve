@@ -36,17 +36,40 @@ import java.awt.*;
 public class invalidate implements Testlet
 {
 
-  /** If revalidate has been called or not. */
-  boolean invalidated;
-
   /**
    * Non abstract subclass of Component to allow instatiation and
    * test.
    */
-  public class TestComponent extends Component {
-    /** Override this method to check if revalidate has been called.
-    */
-    public void invalidate() {
+  public class TestComponent extends Component
+  {
+
+    /**
+     * If revalidate has been called or not.
+     */
+    boolean invalidated;
+
+    /**
+     *  Override this method to check if revalidate has been called.
+     */
+    public void invalidate()
+    {
+      invalidated = true;
+      super.invalidate();
+    }
+  }
+
+  /**
+   * Subclass of Container to allow  test.
+   */
+  class TestContainer extends Container
+  {
+    boolean invalidated;
+
+    /**
+     *  Override this method to check if revalidate has been called.
+     */
+    public void invalidate()
+    {
       invalidated = true;
       super.invalidate();
     }
@@ -54,27 +77,65 @@ public class invalidate implements Testlet
 
   public void test (TestHarness harness)
   {
+    test1(harness);
+    testInvalidateInvalidComponent(harness);
+  }
+
+  private void test1(TestHarness harness)
+  {
     // prepare test component
-    Component comp = new TestComponent();
+    TestComponent comp = new TestComponent();
     Frame frame = new Frame();
     frame.add(comp);
     frame.setVisible(true);
 
-    // change size and check if revalidate has been called
-    invalidated = false;
+    // change size and check if invalidate has been called
+    comp.invalidated = false;
     comp.setSize(100, 200);
-    harness.check(invalidated, true);
+    harness.check(comp.invalidated, true);
 
-    // change size and check if revalidate has been called
-    invalidated = false;
+    // change size and check if invalidate has been called
+    comp.invalidated = false;
     comp.setSize(new Dimension(101, 201));
-    harness.check(invalidated, true);
+    harness.check(comp.invalidated, true);
 
-    // change size and check if revalidate has been called
-    invalidated = false;
+    // change size and check if invalidate has been called
+    comp.invalidated = false;
     comp.resize(102, 202);
-    harness.check(invalidated, true);
+    harness.check(comp.invalidated, true);
 
     frame.dispose();
+  }
+
+  private void testInvalidateInvalidComponent(TestHarness harness)
+  {
+    harness.checkPoint("invalidateInvalidComponent");
+    Frame f = new Frame();
+    TestContainer c1 = new TestContainer();
+    TestComponent c2 = new TestComponent();
+    c1.add(c2);
+    f.add(c1);
+    f.setSize(100, 100);
+    f.setVisible(true);
+    c1.validate();
+    c2.validate();
+    harness.check(c1.isValid(), true);
+    harness.check(c1.isValid(), true);
+    c1.invalidated = false;
+    c2.invalidated = false;
+    // This should invalidate both c1 and c2.
+    c2.invalidate();
+    harness.check(c1.invalidated, true);
+    harness.check(c2.invalidated, true);
+
+    // Now both components are invalid. Another call to invalidate() on c2
+    // should not invalidate c1, since it's already invalid.
+    c1.invalidated = false;
+    c2.invalidated = false;
+    // This should invalidate both c1 and c2.
+    c2.invalidate();
+    harness.check(c1.invalidated, false);
+    harness.check(c2.invalidated, true);
+    f.dispose();
   }
 }
