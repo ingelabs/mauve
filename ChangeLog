@@ -1,3 +1,8 @@
+2005-11-09  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/SwingUtilities/replaceUIActionMap.java: 
+	New test.
+
 2005-11-09  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JList/constructors.java: New test,
