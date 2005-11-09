@@ -1,3 +1,12 @@
+2005-11-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JList/constructors.java: New test,
+	* gnu/testlet/javax/swing/JList/getBackground.java: New test,
+	* gnu/testlet/javax/swing/JList/getSelectionBackground.java: New test,
+	* gnu/testlet/javax/swing/JList/setBackground.java: New test,
+	* gnu/testlet/javax/swing/JList/setModel.java: New test,
+	* gnu/testlet/javax/swing/JList/setSelectionBackground: New test.
+
 2005-11-08  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/SimpleTestHarness.java: Don't implement config.
