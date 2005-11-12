@@ -1,5 +1,13 @@
 2005-11-12  Wolfgang Baer  <WBaer@gmx.de>
 
+	* gnu/testlet/javax/print/attribute/EnumSyntax/serialize.java: New test
+	* gnu/testlet/javax/print/attribute/EnumSyntax/equals.java: New test.
+	* gnu/testlet/javax/print/attribute/EnumSyntax/WrongEnumSyntax.java,
+	* gnu/testlet/javax/print/attribute/EnumSyntax/CorrectEnumSyntax.java:
+	New helper classes for serialization and equal tests.
+
+2005-11-12  Wolfgang Baer  <WBaer@gmx.de>
+
 	* gnu/testlet/java/io/File/emptyFile.java: New test. 
 
 2005-11-12  Wolfgang Baer  <WBaer@gmx.de>
