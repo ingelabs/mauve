@@ -1,3 +1,13 @@
+2005-11-13  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/attribute/HashAttributeSet/emptySet.java,
+	* gnu/testlet/javax/print/attribute/HashAttributeSet/nullTests.java,
+	* gnu/testlet/javax/print/attribute/HashAttributeSet/populatedSet.java,
+	New tests.
+	* gnu/testlet/javax/print/attribute/HashAttributeSet/SimpleAttribute.java,
+	* gnu/testlet/javax/print/attribute/HashAttributeSet/AnotherSimpleAttribute.java,
+	New helper classes for emptySet and populatedSet tests.
+
 2005-11-12  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/attribute/EnumSyntax/serialize.java: New test
