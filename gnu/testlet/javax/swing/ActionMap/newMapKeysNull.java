@@ -19,23 +19,23 @@
 //the Free Software Foundation, 59 Temple Place - Suite 330,
 //Boston, MA 02111-1307, USA.
 
-package gnu.testlet.javax.swing.InputMap;
+package gnu.testlet.javax.swing.ActionMap;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import javax.swing.InputMap;
+import javax.swing.ActionMap;
 
 /**
- * This tests whether keys() and allKeys() return null for new InputMaps.
+ * This tests whether keys() and allKeys() return null for new ActionMaps.
  */ 
 public class newMapKeysNull implements Testlet {
 	
 	public void test(TestHarness harness) {
-          InputMap map = new InputMap();
+          ActionMap map = new ActionMap();
           if (map.keys() != null)
-            harness.fail("New InputMap should return null for keys()");
+            harness.fail("New ActionMap should return null for keys()");
           if (map.allKeys() != null)
-            harness.fail("New ActionMap should return null for allKeys()");
+            harness.fail ("New ActionMap should return null for allKeys()");
 	}
 
 }

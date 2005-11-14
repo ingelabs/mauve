@@ -1,3 +1,9 @@
+2005-11-14  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/InputMap/newMapKeysNull.java: Added a check 
+	for allKeys() in addition to existing check for keys().
+	* gnu/testlet/javax/swing/ActionMap/newMapKeysNull.java: New test.
+
 2005-11-14  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/io/PrintStream/encodings.java: New test.
