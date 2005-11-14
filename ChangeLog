@@ -1,3 +1,7 @@
+2005-11-14  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/io/PrintStream/encodings.java: New test.
+
 2005-11-13  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/attribute/HashAttributeSet/emptySet.java,
