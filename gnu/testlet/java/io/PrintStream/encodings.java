@@ -80,10 +80,12 @@ public class encodings implements Testlet
 
     test1 (harness, "ISO-8859-1", input, expected);
     test1 (harness, "??UNSUPPORTED??", input, null);
+    String saved_encoding = System.getProperty("file.encoding");
     System.setProperty ("file.encoding", "ISO-8859-1");
     test1 (harness, null, input, expected);
     System.setProperty ("file.encoding", "??UNSUPPORTED??");
     test1 (harness, null, input, expected);
+    System.setProperty("file.encoding", saved_encoding);
   }
 
 }

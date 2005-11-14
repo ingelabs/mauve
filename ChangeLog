@@ -1,3 +1,8 @@
+2005-11-14  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/io/PrintStream/encodings.java: Reset the
+	system property after the testing.
+
 2005-11-14  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/attribute/AttributeSetUtilities/simple.java
