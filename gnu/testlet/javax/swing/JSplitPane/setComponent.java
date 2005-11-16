@@ -39,16 +39,24 @@ public class setComponent implements Testlet {
           JButton button = new JButton();
 
           harness.checkPoint ("set left");
+          // try setting to null
           pane.setLeftComponent(null);
           harness.check (pane.getLeftComponent() == null);
+          // now set it to a real component
           pane.setLeftComponent(scroll);
           harness.check (pane.getLeftComponent() == scroll);
+          // now try setting it to null again
+          pane.setLeftComponent (null);
+          harness.check (pane.getLeftComponent() == null);
+
 
           harness.checkPoint ("set right");
           pane.setRightComponent(null);
           harness.check (pane.getRightComponent() == null);
           pane.setRightComponent(button);
           harness.check(pane.getRightComponent() == button);
+          pane.setRightComponent(null);
+          harness.check(pane.getRightComponent() == null);
 
 	}
 

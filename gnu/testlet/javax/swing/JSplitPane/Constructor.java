@@ -29,7 +29,8 @@ import javax.swing.JButton;
 
 /**
  * This tests whether the constructors for JSplitPane assign 
- * the correct Components as leftComponent and rightComponent.
+ * the correct Components as leftComponent and rightComponent
+ * when dealing with null arguments.
  */ 
 public class Constructor implements Testlet {
 	
@@ -39,10 +40,48 @@ public class Constructor implements Testlet {
           harness.check(pane.getLeftComponent().getClass() == JButton.class);
           harness.check(pane.getRightComponent().getClass() == JButton.class);
 
-          pane = new JSplitPane (JSplitPane.HORIZONTAL_SPLIT, false, null, null);
-          harness.checkPoint ("general constructor with 2 nulls");
+          harness.checkPoint ("constructor with only orientation");
+          pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
           harness.check(pane.getLeftComponent() == null);
           harness.check(pane.getRightComponent() == null);                    
-	}
+          pane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
 
+          harness.checkPoint ("constructor with orientation and layout");
+          pane = new JSplitPane (JSplitPane.VERTICAL_SPLIT, false);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+          pane = new JSplitPane (JSplitPane.VERTICAL_SPLIT, true);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+          pane = new JSplitPane (JSplitPane.HORIZONTAL_SPLIT, true);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+          pane = new JSplitPane (JSplitPane.HORIZONTAL_SPLIT, false);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                              
+
+          harness.checkPoint ("constructor with orientation and 2 components");
+          pane = new JSplitPane (JSplitPane.VERTICAL_SPLIT, null, null);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+          pane = new JSplitPane (JSplitPane.HORIZONTAL_SPLIT, null, null);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+
+          harness.checkPoint ("most general constructor");
+          pane = new JSplitPane (JSplitPane.HORIZONTAL_SPLIT, false, null, null);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+          pane = new JSplitPane (JSplitPane.HORIZONTAL_SPLIT, true, null, null);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);        
+          pane = new JSplitPane (JSplitPane.VERTICAL_SPLIT, false, null, null);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                    
+          pane = new JSplitPane (JSplitPane.VERTICAL_SPLIT, true, null, null);
+          harness.check(pane.getLeftComponent() == null);
+          harness.check(pane.getRightComponent() == null);                                          
+	}
 }
