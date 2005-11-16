@@ -1,3 +1,8 @@
+2005-11-16  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/FilePermission/simple.java: Added tests
+	for implies() action checking.
+
 2005-11-16  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/io/PrintStream/encodings.java: Removed

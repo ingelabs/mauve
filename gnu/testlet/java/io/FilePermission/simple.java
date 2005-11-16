@@ -151,5 +151,32 @@ public class simple implements Testlet
     catch (java.lang.IllegalArgumentException ex) {
       harness.check(true);
     }
+
+    harness.checkPoint("implies() action checking");
+    for (int i = 1; i < 1 << actions.length; i++) { 
+      for (int j = 1; j < 1 << actions.length; j++) {
+	FilePermission pi = new FilePermission("/tmp/p", makeActions(i));
+	FilePermission pj = new FilePermission("/tmp/p", makeActions(j));
+
+	harness.check(pi.implies(pj) == ((i & j) == j));
+      }
+    }
+  }
+
+  // stuff for implies action checking
+  private static String[] actions = {"read", "write", "execute", "delete"};
+  private static String makeActions(int mask)
+  {
+    String result = "";
+    for (int i = 0; i < actions.length; i++)
+      {
+	if ((mask & (1 << i)) != 0)
+	  {
+	    if (result.length() > 0)
+	      result += ",";
+	    result += actions[i];
+	  }
+      }
+    return result;
   }
 }
