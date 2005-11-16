@@ -1,3 +1,8 @@
+2005-11-16  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/io/PrintStream/encodings.java: Removed
+	some tests whose results depend on the environment.
+
 2005-11-14  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/io/PrintStream/encodings.java: Reset the
