@@ -1,3 +1,9 @@
+2005-11-16  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/JSplitPane: New directory.
+	* gnu/testlet/javax/swing/JSplitPane/Constructor.java: New test.
+	* gnu/testlet/javax/swing/JSplitPane/setComponent.java: New test.
+
 2005-11-16  David Daney  <ddaney@avtrex.com)
 
 	* gnu/testlet/java/util/Calendar/set.java (test): Call ...
