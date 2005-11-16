@@ -40,6 +40,7 @@ public class set implements Testlet
     testLenience(harness);
     testConflictingFields(harness);
     testNormalization(harness);
+    testModSeconds(harness);
   }
 
   private void testSimple(TestHarness harness)
@@ -285,4 +286,26 @@ public class set implements Testlet
    // XXX could have some fun here with leap seconds
   }
 
+  private void testModSeconds(TestHarness harness)
+  {
+    harness.checkPoint("ModSeconds");
+    Calendar c = Calendar.getInstance(Locale.FRANCE);
+    c.setTimeZone(TimeZone.getTimeZone("GMT"));
+    c.setLenient(true);
+    c.set(Calendar.YEAR, 2005);
+    c.set(Calendar.MONTH, 10);
+    c.set(Calendar.DAY_OF_MONTH, 2);
+    c.set(Calendar.HOUR, 2);
+    c.set(Calendar.AM_PM, Calendar.AM);
+    c.set(Calendar.MINUTE, 30);
+
+    long t = c.getTimeInMillis() + 5500;
+
+    c.setTimeInMillis(t);
+    c.set(Calendar.SECOND, 0);
+    c.set(Calendar.MILLISECOND, 0);
+    c.getTime();
+    harness.check(c.get(Calendar.YEAR), 2005);
+    harness.check(c.get(Calendar.SECOND), 0);
+  }
 }

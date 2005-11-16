@@ -1,3 +1,8 @@
+2005-11-16  David Daney  <ddaney@avtrex.com)
+
+	* gnu/testlet/java/util/Calendar/set.java (test): Call ...
+	(testModSeconds) New test case.
+
 2005-11-16  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/io/FilePermission/simple.java: Added tests
