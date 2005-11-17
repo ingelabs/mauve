@@ -1,3 +1,8 @@
+2005-11-16  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/lang/SecurityManager: New directory.
+	* gnu/testlet/java/lang/SecurityManager/thread.java: New test.
+
 2005-11-16  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/JSplitPane/Constructor.java: Added several
