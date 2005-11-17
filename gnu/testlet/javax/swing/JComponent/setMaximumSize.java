@@ -20,19 +20,26 @@
 
 package gnu.testlet.javax.swing.JComponent;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+
+import java.awt.Dimension;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 /**
  * Tests if setMaximumSize works correctly.
  *
  * @author Roman Kennke (kennke@aicas.com)
  */
-public class setMaximumSize implements Testlet
+public class setMaximumSize implements Testlet, PropertyChangeListener
 {
+    
+  PropertyChangeEvent event;
+  
   /**
    * Starts the test run.
    *
@@ -40,10 +47,48 @@ public class setMaximumSize implements Testlet
    */
   public void test(TestHarness harness)
   {
+    testGeneral(harness);
+    testPropertyChangeEvent(harness);
     testRepaint(harness);
     testRevalidate(harness);
   }
 
+  /**
+   * Some general checks.
+   * 
+   * @param harness  the test harness.
+   */
+  private void testGeneral(TestHarness harness) 
+  {
+    JComponent c = new JPanel();
+    harness.check(c.getMaximumSize(), new Dimension(32767, 32767));
+    Dimension d = new Dimension(123, 456);
+    c.setMaximumSize(d);
+    harness.check(c.getMaximumSize(), d);
+    harness.check(c.getMaximumSize() != d);
+    c.setMaximumSize(null);  // restores the default
+    harness.check(c.getMaximumSize(), new Dimension(32767, 32767));
+  }
+  
+  private void testPropertyChangeEvent(TestHarness harness) 
+  {
+    JComponent c = new JPanel();
+    c.addPropertyChangeListener(this);
+    c.setMaximumSize(new Dimension(1, 2));
+    harness.check(this.event.getPropertyName(), "maximumSize");
+    harness.check(this.event.getOldValue(), null);
+    harness.check(this.event.getNewValue(), new Dimension(1, 2));
+    this.event = null;
+    c.setMaximumSize(null);
+    harness.check(this.event.getOldValue(), new Dimension(1, 2));
+    harness.check(this.event.getNewValue(), null);
+  }
+  
+  public void propertyChange(PropertyChangeEvent e) 
+  {
+    this.event = e;
+  }
+  
   /**
    * Tests if setMaximumSize triggers a repaint.
    *
