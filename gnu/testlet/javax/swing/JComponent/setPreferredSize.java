@@ -21,6 +21,11 @@
 package gnu.testlet.javax.swing.JComponent;
 
 import java.awt.Dimension;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -30,8 +35,16 @@ import gnu.testlet.Testlet;
  *
  * @author Roman Kennke (kennke@aicas.com)
  */
-public class setPreferredSize implements Testlet
+public class setPreferredSize implements Testlet, PropertyChangeListener
 {
+    
+  PropertyChangeEvent event;
+  
+  public void propertyChange(PropertyChangeEvent event) 
+  {
+    this.event = event;
+  }
+  
   /**
    * Starts the test run.
    *
@@ -39,10 +52,50 @@ public class setPreferredSize implements Testlet
    */
   public void test(TestHarness harness)
   {
+    testGeneral(harness);
+    testPropertyChangeEvent(harness);
     testRepaint(harness);
     testRevalidate(harness);
   }
 
+  /**
+   * Some general checks.
+   * 
+   * @param harness  the test harness.
+   */
+  private void testGeneral(TestHarness harness) 
+  {
+    JComponent c = new JPanel();
+    harness.check(c.getPreferredSize(), new Dimension(10, 10));
+    Dimension d = new Dimension(123, 456);
+    c.setPreferredSize(d);
+    harness.check(c.getPreferredSize(), d);
+    harness.check(c.getPreferredSize() != d);
+    c.setPreferredSize(null);  // restores the default
+    harness.check(c.getPreferredSize(), new Dimension(10, 10));
+  }
+  
+  private void testPropertyChangeEvent(TestHarness harness) 
+  {
+    JComponent c = new JPanel();
+    c.addPropertyChangeListener(this);
+    c.setPreferredSize(new Dimension(1, 2));
+    harness.check(this.event.getPropertyName(), "preferredSize");
+    harness.check(this.event.getOldValue(), null);
+    harness.check(this.event.getNewValue(), new Dimension(1, 2));
+    this.event = null;
+    c.setPreferredSize(null);
+    harness.check(this.event.getOldValue(), new Dimension(1, 2));
+    harness.check(this.event.getNewValue(), null);
+    this.event = null;
+    c.setPreferredSize(null);
+    harness.check(this.event.getOldValue(), null);
+    harness.check(this.event.getNewValue(), null);
+    c.setPreferredSize(new Dimension(12, 34));
+    this.event = null;
+    c.setPreferredSize(new Dimension(12, 34));
+    harness.check(this.event, null);
+  }
   /**
    * Tests if setPreferredSize triggers a repaint.
    *
