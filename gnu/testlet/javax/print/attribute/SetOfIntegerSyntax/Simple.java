@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 // Tags: JDK1.2
 
+
 package gnu.testlet.javax.print.attribute.SetOfIntegerSyntax;
 
 import gnu.testlet.TestHarness;
@@ -28,74 +29,83 @@ import gnu.testlet.Testlet;
 
 import javax.print.attribute.SetOfIntegerSyntax;
 
-public class Simple extends SetOfIntegerSyntax implements Testlet {
+public class Simple extends SetOfIntegerSyntax implements Testlet
+{
 
-	// Constructor for the test harness.
-	public Simple() {
-		super(3);
-	}
+  // Constructor for the test harness.
+  public Simple()
+  {
+    super(3);
+  }
 
-	public Simple(int lowerBound, int upperBound) {
-		super(lowerBound, upperBound);
-	}
+  public Simple(int lowerBound, int upperBound)
+  {
+    super(lowerBound, upperBound);
+  }
 
-	public Simple(int member) {
-		super(member);
-	}
+  public Simple(int member)
+  {
+    super(member);
+  }
 
-	public Simple(int[][] members) {
-		super(members);
-	}
+  public Simple(int[][] members)
+  {
+    super(members);
+  }
 
-	public Simple(String s) {
-		super(s);
-	}
-	
-	public void test(TestHarness harness) {
-		SetOfIntegerSyntax single = new Simple(5);
-		SetOfIntegerSyntax range = new Simple(new int[][] {{1, 5}});
-		SetOfIntegerSyntax rangeTwo = new Simple(new int[][] {{1, 5}, {10, 12}});
-		
-		harness.checkPoint("single-value equals");
-		harness.check(new Simple(5), single);
-		harness.check(new Simple(new int[][] {{5}}), single);
-		harness.check(new Simple(new int[][] {{1, 0}, {5, 5}}), single);
-		harness.check(new Simple("5"), single);
-		harness.check(new Simple("1-0,5"), single);
-		harness.check(new Simple("5,1:0,5"), single);
+  public Simple(String s)
+  {
+    super(s);
+  }
 
-		harness.checkPoint("single-range equals");
-		harness.check(new Simple(new int[][] {{1, 5}}), range);
-		harness.check(new Simple("1-5"), range);
-		harness.check(new Simple("1:5,5-1"), range);
-		harness.check(new Simple("1-3,1-5"), range);
-		harness.check(new Simple("1-5,1-3"), range);
-		harness.check(new Simple("1-3,2-5"), range);
-		harness.check(new Simple("1-3,4-5"), range);
-		harness.check(new Simple("4-5,1-3"), range);
-		harness.check(new Simple(1, 5), range);
-		
-		harness.checkPoint("two-range equals");
-		harness.check(new Simple(new int[][] {{10, 12}, {1,5}}), rangeTwo);
-		harness.check(new Simple("1-3,2-5,10,11:12"), rangeTwo);
-		
-		harness.checkPoint("next");
-		harness.check(single.next(0), 5);
-		harness.check(single.next(5), -1);
-		harness.check(single.next(38), -1);
-		harness.check(range.next(0), 1);
-		harness.check(range.next(1), 2);
-		harness.check(range.next(4), 5);
-		harness.check(range.next(5), -1);
-		harness.check(rangeTwo.next(5), 10);
-		
-		harness.checkPoint("hashCode");
-		harness.check(single.hashCode(), 10);
-		harness.check(range.hashCode(), 6);
+  public void test(TestHarness harness)
+  {
+    SetOfIntegerSyntax single = new Simple(5);
+    SetOfIntegerSyntax range = new Simple(new int[][] { { 1, 5 } });
+    SetOfIntegerSyntax rangeTwo = new Simple(
+        new int[][] { { 1, 5 }, { 10, 12 } });
 
-		harness.checkPoint("toString");
-		harness.check(single.toString(), "5");
-		harness.check(range.toString(), "1-5");
-		harness.check(rangeTwo.toString(), "1-5,10-12");
-	}
+    harness.checkPoint("single-value equals");
+    harness.check(new Simple(5), single);
+    harness.check(new Simple(new int[][] { { 5 } }), single);
+    harness.check(new Simple(new int[][] { { 1, 0 }, { 5, 5 } }), single);
+    harness.check(new Simple("5"), single);
+    harness.check(new Simple("1-0,5"), single);
+    harness.check(new Simple("5,1:0,5"), single);
+
+    harness.checkPoint("single-range equals");
+    harness.check(new Simple(new int[][] { { 1, 5 } }), range);
+    harness.check(new Simple("1-5"), range);
+    harness.check(new Simple("1:5,5-1"), range);
+    harness.check(new Simple("1-3,1-5"), range);
+    harness.check(new Simple("1-5,1-3"), range);
+    harness.check(new Simple("1-3,2-5"), range);
+    harness.check(new Simple("1-3,4-5"), range);
+    harness.check(new Simple("4-5,1-3"), range);
+    harness.check(new Simple(1, 5), range);
+
+    harness.checkPoint("two-range equals");
+    harness.check(new Simple(new int[][] { { 10, 12 }, { 1, 5 } }), rangeTwo);
+    harness.check(new Simple("1-3,2-5,10,11:12"), rangeTwo);
+
+    harness.checkPoint("next");
+    harness.check(single.next(0), 5);
+    harness.check(single.next(5), -1);
+    harness.check(single.next(38), -1);
+    harness.check(range.next(0), 1);
+    harness.check(range.next(1), 2);
+    harness.check(range.next(4), 5);
+    harness.check(range.next(5), -1);
+    harness.check(rangeTwo.next(5), 10);
+
+    harness.checkPoint("hashCode");
+    harness.check(single.hashCode(), 10);
+    harness.check(range.hashCode(), 6);
+
+    harness.checkPoint("toString");
+    harness.check(single.toString(), "5");
+    harness.check(range.toString(), "1-5");
+    harness.check(rangeTwo.toString(), "1-5,10-12");
+
+  }
 }

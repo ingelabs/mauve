@@ -1,3 +1,8 @@
+2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/attribute/SetOfIntegerSyntax/Simple.java: 
+	Reformatted to match coding style.
+
 2005-11-17  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JComponent/setPreferredSize.java
