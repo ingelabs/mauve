@@ -1,5 +1,10 @@
 2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
 
+	* gnu/testlet/javax/print/attribute/ResolutionSyntax/simple.java (test):
+	Added test for special toString case and bundle them into a checkpoint.
+
+2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
+
 	* gnu/testlet/javax/print/attribute/TextSyntax: New directory.
 	* gnu/testlet/javax/print/attribute/TextSyntax/constructors.java:
 	New tests for constructors.

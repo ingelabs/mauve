@@ -49,15 +49,16 @@ public class simple implements Testlet
     TestResolutionSyntax test = 
       new TestResolutionSyntax(400, 600, ResolutionSyntax.DPI);
     
-    harness.check(test.toString(), "40000x60000 dphi", "toString()");
-    harness.check(test.toString(ResolutionSyntax.DPI, "dpi"), 
-                  "400x600 dpi", "toString(DPI)");
+    harness.checkPoint("toString");
+    harness.check(test.toString(), "40000x60000 dphi");
+    harness.check(test.toString(ResolutionSyntax.DPI, "dpi"), "400x600 dpi");
     harness.check(test.toString(ResolutionSyntax.DPCM, "dpcm"), 
-                  "157x236 dpcm", "toString(DPCM)");
-    harness.check(test.getFeedResolution(ResolutionSyntax.DPCM), 
-                  236, "getFeedResolution(DPCM)");
-    harness.check(test.getFeedResolution(ResolutionSyntax.DPI), 
-                  600, "getFeedResolution(DPI)");
+                  "157x236 dpcm");
+    harness.check(test.toString(ResolutionSyntax.DPCM, null), "157x236");
+    
+    harness.checkPoint("getFeedResolution");
+    harness.check(test.getFeedResolution(ResolutionSyntax.DPCM), 236);
+    harness.check(test.getFeedResolution(ResolutionSyntax.DPI), 600);    
 
     TestResolutionSyntax test2 = 
       new TestResolutionSyntax(400, 600, ResolutionSyntax.DPI);
