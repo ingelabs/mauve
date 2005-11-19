@@ -1,6 +1,12 @@
 2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/attribute/SetOfIntegerSyntax/Simple.java: 
+	Corrected tags to JDK1.4.	
+	(test): Added new tests for contains, constructor and normalization.
+
+2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/attribute/SetOfIntegerSyntax/Simple.java: 
 	Reformatted to match coding style.
 
 2005-11-17  David Gilbert  <david.gilbert@object-refinery.com>

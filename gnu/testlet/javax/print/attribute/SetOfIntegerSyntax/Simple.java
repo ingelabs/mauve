@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: JDK1.2
+// Tags: JDK1.4
 
 
 package gnu.testlet.javax.print.attribute.SetOfIntegerSyntax;
@@ -106,6 +106,89 @@ public class Simple extends SetOfIntegerSyntax implements Testlet
     harness.check(single.toString(), "5");
     harness.check(range.toString(), "1-5");
     harness.check(rangeTwo.toString(), "1-5,10-12");
+
+    harness.checkPoint("contains");
+    harness.check(single.contains(5));
+    harness.check(range.contains(2));
+    harness.check(rangeTwo.contains(12));
+    harness.check(single.contains(6), false);
+    harness.check(range.contains(6), false);
+    harness.check(rangeTwo.contains(8), false);
+
+    harness.checkPoint("constructors");
+    try
+      {
+        new Simple((String) null);
+        harness.check(true);
+      }
+    catch (NullPointerException e)
+      {
+        harness.check(false);
+      }
+
+    try
+      {
+        new Simple((int[][]) null);
+        harness.check(true);
+      }
+    catch (NullPointerException e)
+      {
+        harness.check(false);
+      }
+
+    try
+      {
+        new Simple(new int[][] { { 1, 5 }, null });
+        harness.check(false);
+      }
+    catch (NullPointerException e)
+      {
+        harness.check(true);
+      }
+
+    try
+      {
+        new Simple(new int[][] { null });
+        harness.check(false);
+      }
+    catch (NullPointerException e)
+      {
+        harness.check(true);
+      }
+
+    try
+      {
+        new Simple(new int[][] { { 1, 2, 3 } });
+        harness.check(false);
+      }
+    catch (IllegalArgumentException e)
+      {
+        harness.check(true);
+      }
+
+    try
+      {
+        new Simple(new int[][] { { -1, 2 } });
+        harness.check(false);
+      }
+    catch (IllegalArgumentException e)
+      {
+        harness.check(true);
+      }
+
+    try
+      {
+        new Simple(14, 12);
+        harness.check(true);
+      }
+    catch (NullPointerException e)
+      {
+        harness.check(false);
+      }
+
+    harness.checkPoint("normalization");
+    harness.check(new Simple("17- 99,1:3,12").toString(), "1-3,12,17-99");
+    harness.check(new Simple("17- 99,19-20,14-18").toString(), "14-99");
 
   }
 }
