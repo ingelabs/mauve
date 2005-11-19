@@ -1,5 +1,11 @@
 2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
 
+	* gnu/testlet/javax/print/attribute/ResolutionSyntax: New directory. 
+	* gnu/testlet/javax/print/attribute/ResolutionSyntax/simple.java:
+	New tests for conversion, lessThanOrEqual and equal methods.
+	
+2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
+
 	* gnu/testlet/javax/print/attribute/SetOfIntegerSyntax/Simple.java: 
 	Corrected tags to JDK1.4.	
 	(test): Added new tests for contains, constructor and normalization.
