@@ -1,5 +1,11 @@
 2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
 
+	* gnu/testlet/javax/print/attribute/TextSyntax: New directory.
+	* gnu/testlet/javax/print/attribute/TextSyntax/constructors.java:
+	New tests for constructors.
+
+2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
+
 	* gnu/testlet/javax/print/attribute/ResolutionSyntax: New directory. 
 	* gnu/testlet/javax/print/attribute/ResolutionSyntax/simple.java:
 	New tests for conversion, lessThanOrEqual and equal methods.
