@@ -1,3 +1,7 @@
+2005-11-22  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/insert.java: New test.
+
 2005-11-19  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/attribute/Size2DSyntax: New directory.
