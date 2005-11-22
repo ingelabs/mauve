@@ -78,6 +78,23 @@ public class MaskFormatterTest
             exception = true;
           }
         harness.check (exception);                  
+        
+        // Checks to see if valid/invalid character sets work
+        formatter = new MaskFormatter("T##'FA");        
+        formatter.setInvalidCharacters("T");
+        formatter.setValidCharacters("4");
+        harness.check(formatter.valueToString("T44F4"), "T44F4");
+        harness.check(formatter.stringToValue("T44F4"), "T44F4");
+        exception = false;
+        try
+          {
+            formatter.valueToString("T33F3");
+          }
+        catch (ParseException pe2)
+          {
+            exception = true;
+          }
+        harness.check(exception);
       }
     catch (java.text.ParseException ex) 
       {
