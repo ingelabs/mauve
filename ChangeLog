@@ -1,3 +1,7 @@
+2005-11-22  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/text/MaskFormatterTest.java: New test.
+
 2005-11-22  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/insert.java: New test.
