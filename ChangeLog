@@ -1,5 +1,14 @@
 2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getMenuArrowIcon.java: 
+	New tests,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getMenuItemArrowIcon.java: 
+	New tests,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getMenuItemCheckIcon.java: 
+	New tests.
+
+2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JScrollPane/createHorizontalScrollBar.java: 
 	New test,
 	* gnu/testlet/javax/swing/JScrollPane/createVerticalScrollBar.java:
