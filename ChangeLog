@@ -1,5 +1,9 @@
 2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Container/getListeners.java: New test.
+
+2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Component/getListeners.java: New test.
 
 2005-11-23  Roman Kennke  <kennke@aicas.com>
