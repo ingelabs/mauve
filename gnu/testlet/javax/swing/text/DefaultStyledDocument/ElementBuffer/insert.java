@@ -886,7 +886,7 @@ public class insert implements Testlet, DocumentListener
 
     // We have one paragraph in the root element.
     Element root = doc.getDefaultRootElement();
-    h.check(root.getElementCount(), 3);
+    h.check(root.getElementCount(), 2);
 
     // We should now have 2 children in the first paragraph.
     Element par1 = root.getElement(0);
@@ -896,20 +896,13 @@ public class insert implements Testlet, DocumentListener
     h.check(el.getEndOffset(), 5);
     el = par1.getElement(1);
     h.check(el.getStartOffset(), 5);
-    h.check(el.getEndOffset(), 7);
-
-    // We should now have 1 leaf element between the first and second
-    // paragraph.
-    el = root.getElement(1);
-    h.check(el.getElementCount(), 0);
-    h.check(el.getStartOffset(), 7);
-    h.check(el.getEndOffset(), 12);
+    h.check(el.getEndOffset(), 10);
 
     // We should now have 2 children in the first paragraph.
-    Element par2 = root.getElement(2);
+    Element par2 = root.getElement(1);
     h.check(par2.getElementCount(), 2);
     el = par2.getElement(0);
-    h.check(el.getStartOffset(), 12);
+    h.check(el.getStartOffset(), 10);
     h.check(el.getEndOffset(), 15);
     el = par2.getElement(1);
     h.check(el.getStartOffset(), 15);
@@ -918,14 +911,14 @@ public class insert implements Testlet, DocumentListener
     // Some structural changes for the root.
     DocumentEvent.ElementChange ec = documentEvent.getChange(root);
     h.check(ec.getChildrenRemoved().length, 0);
-    h.check(ec.getChildrenAdded().length, 2);
+    h.check(ec.getChildrenAdded().length, 1);
     h.check(ec.getIndex(), 1);
 
     // Check changes for paragraph 1
     ec = documentEvent.getChange(par1);
-    h.check(ec.getChildrenRemoved().length, 2);
-    h.check(ec.getChildrenAdded().length, 1);
-    h.check(ec.getIndex(), 1);
+    h.check(ec.getChildrenRemoved().length, 3);
+    h.check(ec.getChildrenAdded().length, 2);
+    h.check(ec.getIndex(), 0);
 
     // Check changes for paragraph 2
     ec = documentEvent.getChange(par2);

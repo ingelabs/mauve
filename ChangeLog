@@ -1,5 +1,9 @@
 2005-11-23  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/insert.java: Fixed some tests.
+
+2005-11-23  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/insert.java: Added new tests for this class.
 
 2005-11-22  Anthony Balkissoon  <abalkiss@redhat.com>
