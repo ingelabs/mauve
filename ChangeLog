@@ -1,5 +1,12 @@
 2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JScrollPane/createHorizontalScrollBar.java: 
+	New test,
+	* gnu/testlet/javax/swing/JScrollPane/createVerticalScrollBar.java:
+	New test.
+
+2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JScrollBar/constructors.java: New test.
 
 2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
