@@ -1,3 +1,8 @@
+2005-11-24  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/text/InternationalFormatter: New directory.
+	* gnu/testlet/javax/swing/text/InternationalFormatter/InternationalFormatterTest.java: New test.
+
 2005-11-23  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getMenuArrowIcon.java: 
