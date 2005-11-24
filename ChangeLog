@@ -1,3 +1,9 @@
+2005-11-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JScrollBar/constructors.java
+	(constructor1): Use harness.debug() to log exception,
+	(constructor2): Likewise.
+
 2005-11-24  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/InternationalFormatter: New directory.

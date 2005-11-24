@@ -55,7 +55,7 @@ public class constructors implements Testlet {
     }
     catch (Exception e)
     {
-      e.printStackTrace();
+      harness.debug(e);
     }
 
     JScrollBar bar = new JScrollBar();
@@ -77,7 +77,7 @@ public class constructors implements Testlet {
     }
     catch (Exception e)
     {
-      e.printStackTrace();
+      harness.debug(e);
     }
 
     JScrollBar bar = new JScrollBar(JScrollBar.HORIZONTAL);
