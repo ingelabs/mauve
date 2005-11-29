@@ -1,4 +1,5 @@
 // Copyright (C) 2005 Jeroen Frijters
+// Tags: not-a-test
 
 // This file is part of Mauve.
 

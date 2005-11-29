@@ -1,3 +1,10 @@
+2005-11-29  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/Class/pkg/test1.java: Mark not-a-test.
+	* gnu/testlet/java/lang/Class/pkg/test2.java: Likewise.
+	* gnu/testlet/java/lang/Class/pkg/test3.java: Likewise.
+	* gnu/testlet/java/lang/Class/pkg/test4.java: Likewise.
+
 2005-11-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JScrollBar/constructors.java
