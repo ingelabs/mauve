@@ -25,6 +25,8 @@
 package gnu.testlet.java.net.URL;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+
+import java.io.IOException;
 import java.net.*;
 
 
@@ -296,6 +298,21 @@ public class URLTest implements Testlet
 		}catch ( MalformedURLException e ){
 			harness.fail(" Error in test_URLStreamHandler  - 1 " + 
 					" exception should not be thrown here");
+		}
+		
+		harness.checkPoint("inherit URLStreamHandler");
+		try {
+		    URL base = new URL("acme",
+				       "www.redhat.com",
+				       80,
+				       "/docs/",
+				       new MyURLStreamHandler());
+		    URL other = new URL(base, "manuals/enterprise/");
+		    harness.check(other.toString(),
+		    		"acme://www.redhat.com:80/docs/manuals/enterprise/");
+		} catch (IOException _) {
+			harness.check(false);
+			harness.debug(_);
 		}
 	}
 
@@ -635,7 +652,7 @@ public class URLTest implements Testlet
 		harness.debug("Running: test_toString");
 		test_toString();
 		harness.debug("Running: test_URLStreamHandler");
-//		test_URLStreamHandler();
+		test_URLStreamHandler();
 		harness.debug("Running: cr601a");
                 test_cr601a();
 		harness.debug("Running: cr601b");

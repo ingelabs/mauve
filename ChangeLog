@@ -1,3 +1,9 @@
+2005-11-29  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/net/URL/URLTest.java (testall): Enable
+	URLStreamHandler test.
+	(test_URLStreamHandler): Added test for classpath PR 25141.
+
 2005-11-29  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Number/NewNumber.java: Mark not-a-test.
