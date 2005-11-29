@@ -1,5 +1,10 @@
 2005-11-29  Mark Wielaard  <mark@klomp.org>
 
+	* gnu/testlet/java/lang/Number/NewNumber.java: Mark not-a-test.
+	* gnu/testlet/java/lang/reflect/Other.java: Likewise.
+
+2005-11-29  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/lang/Class/pkg/test1.java: Mark not-a-test.
 	* gnu/testlet/java/lang/Class/pkg/test2.java: Likewise.
 	* gnu/testlet/java/lang/Class/pkg/test3.java: Likewise.

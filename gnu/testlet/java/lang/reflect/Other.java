@@ -1,4 +1,5 @@
 // Test reflection member accessibility checks.
+// Tags: not-a-test
 
 package gnu.testlet.java.lang.reflect;
 
