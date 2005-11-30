@@ -242,8 +242,7 @@ public class security implements Testlet
       
       harness.checkPoint("listRoots()");
       try {
-	// sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
-	sm.prepareChecks(new Permission[0], noPerms);
+	sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
 	File[] roots = File.listRoots();
 	harness.check(roots.length >= 1, "File.listRoots()");
 	sm.checkAllChecked(harness);
