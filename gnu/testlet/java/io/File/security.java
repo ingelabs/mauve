@@ -93,6 +93,7 @@ public class security implements Testlet
     try {
       sm.install();
 	
+      // security: java.io.File-canWrite-DIR
       harness.checkPoint("dir.canWrite");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
@@ -104,6 +105,7 @@ public class security implements Testlet
 	harness.check(false, "dir.canWrite - unexpected exception");
       }
 
+      // security: java.io.File-canRead-DIR
       harness.checkPoint("dir.canRead");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
@@ -115,6 +117,7 @@ public class security implements Testlet
 	harness.check(false, "dir.canRead - unexpected exception");
       }
 
+      // security: java.io.File-createNewFile
       harness.checkPoint("file.createNewFile");
       try {
 	sm.prepareChecks(new Permission[]{tmpfileWritePerm}, noPerms);
@@ -126,6 +129,7 @@ public class security implements Testlet
 	harness.check(false, "file.createNewFile - unexpected exception");
       }
 
+      // security: java.io.File-delete-FILE
       harness.checkPoint("file.delete");
       try {
 	sm.prepareChecks(new Permission[]{tmpfileDeletePerm}, noPerms);
@@ -137,6 +141,7 @@ public class security implements Testlet
 	harness.check(false, "file.delete - unexpected exception");
       }
 
+      // security: java.io.File-list(FilenameFilter)
       harness.checkPoint("dir.list(null)");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
@@ -148,6 +153,7 @@ public class security implements Testlet
 	harness.check(false, "dir.list(null) - unexpected exception");
       }
 
+      // security: java.io.File-list
       harness.checkPoint("dir.list()");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
@@ -159,6 +165,7 @@ public class security implements Testlet
 	harness.check(false, "dir.list() - unexpected exception");
       }
 
+      // security: java.io.File-listFiles
       harness.checkPoint("dir.listFiles()");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
@@ -170,6 +177,7 @@ public class security implements Testlet
 	harness.check(false, "dir.listFiles() - unexpected exception");
       }
 
+      // security: java.io.File-listFiles(FilenameFilter)
       harness.checkPoint("dir.listFiles(FilenameFilter)");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
@@ -182,6 +190,7 @@ public class security implements Testlet
 		      "dir.listFiles(FilenameFilter) - unexpected exception");
       }
 
+      // security: java.io.File-listFiles(FileFilter)
       harness.checkPoint("dir.listFiles(FileFilter)");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
@@ -194,6 +203,7 @@ public class security implements Testlet
 		      "dir.listFiles(FileFilter) - unexpected exception");
       }
 
+      // security: java.io.File-createTempFile(String, String)
       harness.checkPoint("createTempFile(2-args)");
       try {
 	sm.prepareChecks(new Permission[]{tmpallWritePerm},
@@ -206,6 +216,7 @@ public class security implements Testlet
 	harness.check(false, "createTempFile(2-args) - unexpected exception");
       }
 
+      // security: java.io.File-createTempFile(String, String, File)
       harness.checkPoint("createTempFile(3-args)");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirallWritePerm}, noPerms);
@@ -217,6 +228,7 @@ public class security implements Testlet
 	harness.check(false, "createTempFile(3-args) - unexpected exception");
       }
 
+      // security: java.io.File-setReadOnly-DIR
       harness.checkPoint("dir.setReadOnly");
       try {
 	sm.prepareChecks(new Permission[]{tmpdir2WritePerm}, noPerms);
@@ -228,6 +240,7 @@ public class security implements Testlet
 	harness.check(false, "dir.setReadOnly - unexpected exception");
       }
 
+      // security: java.io.File-delete-DIR
       // Make sure we remove the read only temp dir
       harness.checkPoint("dir.delete");
       try {
@@ -240,6 +253,7 @@ public class security implements Testlet
 	harness.check(false, "dir.delete - unexpected exception");
       }
       
+      // security: java.io.File-listRoots
       harness.checkPoint("listRoots()");
       try {
 	sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
@@ -252,6 +266,7 @@ public class security implements Testlet
 	harness.check(false, "listRoots() - unexpected exception");
       }
 
+      // security: java.io.File-renameTo
       harness.checkPoint("file.renameTo");
       try {
 	sm.prepareChecks(new Permission[]{tmpfileWritePerm, 
@@ -265,6 +280,7 @@ public class security implements Testlet
 	harness.check(false, "file.renameTo - unexpected exception");
       }
 
+      // security: java.io.File-setLastModified-DIR
       harness.checkPoint("dir.setLastModified()");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
@@ -276,6 +292,7 @@ public class security implements Testlet
 	harness.check(false, "dir.setLastModified() - unexpected exception");
       }
 
+      // security: java.io.File-deleteOnExit-DIR
       harness.checkPoint("dir.deleteOnExit()");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirDeletePerm}, noPerms);
@@ -286,6 +303,19 @@ public class security implements Testlet
 	harness.debug(ex);
 	harness.check(false, "dir.deleteOnExit() - unexpected exception");
       }
+
+      // security: TODO: java.io.File-deleteOnExit-FILE
+      // security: TODO: java.io.File-exists
+      // security: TODO: java.io.File-canRead-FILE
+      // security: TODO: java.io.File-isFile
+      // security: TODO: java.io.File-isDirectory
+      // security: TODO: java.io.File-isHidden
+      // security: TODO: java.io.File-lastModified
+      // security: TODO: java.io.File-length
+      // security: TODO: java.io.File-canWrite-FILE
+      // security: TODO: java.io.File-mkdir
+      // security: TODO: java.io.File-mkdirs
+      // security: TODO: java.io.File-setLastModified-FILE
     }
     catch (Throwable ex) {
       harness.debug(ex);
