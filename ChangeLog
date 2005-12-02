@@ -1,3 +1,8 @@
+2005-12-02  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/JFormattedTextField/JFormattedTextFieldTests.java:
+	Added 3 new tests to this file.
+
 2005-12-02  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/io/FileInputStream/security.java: New test.

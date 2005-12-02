@@ -25,8 +25,12 @@ import gnu.testlet.Testlet;
 
 import java.text.ParseException;
 
+import javax.swing.Action;
 import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
 import javax.swing.text.DefaultFormatter;
+import javax.swing.text.DefaultFormatter.DefaultDocumentFilter;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
@@ -36,7 +40,6 @@ import javax.swing.text.MaskFormatter;
  */
 public class JFormattedTextFieldTests implements Testlet
 {
-
   /**
    * Runs the test using the specified harness.
    * 
@@ -47,16 +50,19 @@ public class JFormattedTextFieldTests implements Testlet
     JFormattedTextField field = new JFormattedTextField();
 
     harness.checkPoint ("defaults");
+    harness.check (((AbstractDocument)field.getDocument()).getDocumentFilter() == null);
     harness.check (field.getFormatterFactory() == null);
     harness.check (field.getFormatter() == null);
 
+
     harness.checkPoint ("implicit creation of formatter and factory");
     field.setValue("aBcDeFg");
+    harness.check (((AbstractDocument)field.getDocument()).getDocumentFilter() != null);
     harness.check (field.getFormatterFactory().getClass(), 
                    DefaultFormatterFactory.class);
     harness.check (field.getFormatter().getClass(), DefaultFormatter.class);
-
     
+
     harness.checkPoint ("setting formatter changes the text");
     MaskFormatter mask = null;
     DefaultFormatter nullFormatter = new DefaultFormatter();
@@ -75,7 +81,10 @@ public class JFormattedTextFieldTests implements Testlet
 
     harness.checkPoint ("field value going to null brings in nullFormatter");
     field.setValue(null);
-    harness.check (field.getFormatter().getClass(), DefaultFormatter.class);
-    
+    harness.check (field.getFormatter().getClass(), DefaultFormatter.class);        
+
+    harness.checkPoint ("removing the DocumentFilter");
+    field.getFormatter().uninstall();
+    harness.check (((AbstractDocument)field.getDocument()).getDocumentFilter() == null);    
   }
 }
