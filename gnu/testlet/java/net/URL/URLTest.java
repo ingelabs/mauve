@@ -165,6 +165,20 @@ public class URLTest implements Testlet
 				harness.fail(" Error in test_Basics  - 35 " + 
                                              " exception should not be thrown here");
                 }
+
+		harness.checkPoint("Null context handler");
+		try
+		{
+			URL u = new URL(null, "http://sources.redhat.com/");
+
+			harness.check(true);
+		}
+                catch ( MalformedURLException e ){
+			harness.fail(" Error in test_Basics - null context");
+		}
+		catch (NullPointerException e) {
+			harness.fail(" Error in test_Basics - null context");
+		}
 	}
 
 	public void test_openConnection()
