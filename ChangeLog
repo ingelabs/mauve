@@ -1,7 +1,11 @@
+2005-12-02  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/FileInputStream/security.java: More tests.
+	* gnu/testlet/java/io/FileOutputStream/security.java: Likewise.
+
 2005-12-04  Guilhem Lavaux  <guilhem@kaffe.org>
 
 	* gnu/testlet/java/net/URL/URLTest.java: Test URL with null context.
-
 
 2005-12-02  Anthony Balkissoon  <abalkiss@redhat.com>
 

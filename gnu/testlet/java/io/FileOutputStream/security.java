@@ -20,8 +20,10 @@
 
 package gnu.testlet.java.io.FileOutputStream;
 
+import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
+import java.io.FilePermission;
 import java.security.Permission;
 
 import gnu.testlet.Testlet;
@@ -32,16 +34,36 @@ public class security implements Testlet
 {
   public void test (TestHarness harness)
   {
-    Permission perm = new RuntimePermission("writeFileDescriptor");
+    File dir = new File(harness.getTempDirectory(), "mauve-testdir");
+    harness.check(dir.mkdir() || dir.exists(), "temp directory");
+    
+    File file = new File(dir, "file");
+    String path = file.getPath();
+
+    Permission rperm = new FilePermission(path, "read");
+    Permission wperm = new FilePermission(path, "write");
+    Permission fdPerm = new RuntimePermission("writeFileDescriptor");
     
     TestSecurityManager2 sm = new TestSecurityManager2(harness);
 
     try {
       sm.install();
 	
+      // security: java.io.FileOutputStream-FileOutputStream(File)
+      harness.checkPoint("File constructor");
+      sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
+      new FileOutputStream(file);
+      sm.checkAllChecked(harness);
+
+      // security: java.io.FileOutputStream-FileOutputStream(String)
+      harness.checkPoint("String constructor");
+      sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
+      new FileOutputStream(path);
+      sm.checkAllChecked(harness);
+
       // security: java.io.FileOutputStream-FileOutputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
-      sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+      sm.prepareChecks(new Permission[] {fdPerm}, new Permission[] {});
       new FileOutputStream(FileDescriptor.out);
       sm.checkAllChecked(harness);
     }
@@ -51,6 +73,9 @@ public class security implements Testlet
     }
     finally {
 	sm.uninstall();
+
+	file.delete();
+	dir.delete();
     }
   }
 }

@@ -20,8 +20,10 @@
 
 package gnu.testlet.java.io.FileInputStream;
 
+import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
+import java.io.FilePermission;
 import java.security.Permission;
 
 import gnu.testlet.Testlet;
@@ -32,16 +34,32 @@ public class security implements Testlet
 {
   public void test (TestHarness harness)
   {
-    Permission perm = new RuntimePermission("readFileDescriptor");
+    File file = new File(harness.getSourceDirectory(), "ChangeLog");
+    String path = file.getPath();
+    
+    Permission perm = new FilePermission(path, "read");
+    Permission fdPerm = new RuntimePermission("readFileDescriptor");
     
     TestSecurityManager2 sm = new TestSecurityManager2(harness);
 
     try {
       sm.install();
 	
+      // security: java.io.FileInputStream-FileInputStream(File)
+      harness.checkPoint("File constructor");
+      sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+      new FileInputStream(file);
+      sm.checkAllChecked(harness);
+      
+      // security: java.io.FileInputStream-FileInputStream(String)
+      harness.checkPoint("String constructor");
+      sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+      new FileInputStream(path);
+      sm.checkAllChecked(harness);
+      
       // security: java.io.FileInputStream-FileInputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
-      sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+      sm.prepareChecks(new Permission[] {fdPerm}, new Permission[] {});
       new FileInputStream(FileDescriptor.in);
       sm.checkAllChecked(harness);
     }
