@@ -47,21 +47,39 @@ public class security implements Testlet
 	
       // security: java.io.FileInputStream-FileInputStream(File)
       harness.checkPoint("File constructor");
-      sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
-      new FileInputStream(file);
-      sm.checkAllChecked(harness);
+      try {
+	sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+	new FileInputStream(file);
+	sm.checkAllChecked(harness);
+      }
+      catch (SecurityException ex) {
+	harness.debug(ex);
+	harness.check(false, "Unexpected check");
+      }
       
       // security: java.io.FileInputStream-FileInputStream(String)
       harness.checkPoint("String constructor");
-      sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
-      new FileInputStream(path);
-      sm.checkAllChecked(harness);
+      try {
+	sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+	new FileInputStream(path);
+	sm.checkAllChecked(harness);
+      }
+      catch (SecurityException ex) {
+	harness.debug(ex);
+	harness.check(false, "Unexpected check");
+      }
       
       // security: java.io.FileInputStream-FileInputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
-      sm.prepareChecks(new Permission[] {fdPerm}, new Permission[] {});
-      new FileInputStream(FileDescriptor.in);
-      sm.checkAllChecked(harness);
+      try {
+	sm.prepareChecks(new Permission[] {fdPerm}, new Permission[] {});
+	new FileInputStream(FileDescriptor.in);
+	sm.checkAllChecked(harness);
+      }
+      catch (SecurityException ex) {
+	harness.debug(ex);
+	harness.check(false, "Unexpected check");
+      }
     }
     catch (Throwable ex) {
       harness.debug(ex);
