@@ -1,5 +1,9 @@
 2005-12-02  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/io/RandomAccessFile/security.java: New tests.
+
+2005-12-02  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/java/io/FileOutputStream/security.java: Final set of
 	throwpoint tests.
 
