@@ -55,11 +55,27 @@ public class security implements Testlet
       new FileOutputStream(file);
       sm.checkAllChecked(harness);
 
+      // security: java.io.FileOutputStream-FileOutputStream(File, boolean)
+      harness.checkPoint("File, boolean constructor");
+      for (int i = 0; i <= 1; i++) {
+	  sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
+	  new FileOutputStream(file, i == 1);
+	  sm.checkAllChecked(harness);
+      }
+
       // security: java.io.FileOutputStream-FileOutputStream(String)
       harness.checkPoint("String constructor");
       sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
       new FileOutputStream(path);
       sm.checkAllChecked(harness);
+
+      // security: java.io.FileOutputStream-FileOutputStream(String, boolean)
+      harness.checkPoint("String, boolean constructor");
+      for (int i = 0; i <= 1; i++) {
+	  sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
+	  new FileOutputStream(path, i == 1);
+	  sm.checkAllChecked(harness);
+      }
 
       // security: java.io.FileOutputStream-FileOutputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");

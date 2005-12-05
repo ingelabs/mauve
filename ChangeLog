@@ -1,5 +1,10 @@
 2005-12-02  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/io/FileOutputStream/security.java: Final set of
+	throwpoint tests.
+
+2005-12-02  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/java/io/FileInputStream/security.java: More tests.
 	* gnu/testlet/java/io/FileOutputStream/security.java: Likewise.
 
