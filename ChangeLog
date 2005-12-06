@@ -1,3 +1,7 @@
+2005-12-06  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/java/awt/BorderLayout/maxLayoutSize.java: New file.
+
 2005-12-06  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/createActionMap.java: 
