@@ -1,3 +1,28 @@
+2005-12-06  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/createActionMap.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/createFilterComboBoxModel.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getApproveButton.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getBottomPanel.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getButtonPanel.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getFileName.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getMaximumSize.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getMinimumSize.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getPreferredSize.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/MyMetalFileChooserUI.java: 
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/setFileName.java: 
+	New file.
+
 2005-12-05  Anthony Green  <green@redhat.com>
 
 	* gnu/testlet/java/nio/DoubleBuffer/compareTo.java: New test.
