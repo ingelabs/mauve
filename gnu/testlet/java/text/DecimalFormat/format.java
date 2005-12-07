@@ -88,6 +88,10 @@ public class format implements Testlet
 
       harness.check (df.format (Long.MIN_VALUE), "-9223372036854775808");
 
+      apply (harness, df, "#");
+      harness.check (df.format (0), "0");
+      harness.check (df.format (0.0), "0");
+
       apply (harness, df, "###0.#;(###0.#)");
       harness.check (df.format (-1234.56), "(1234.6)");
       harness.check (df.format (1234.56), "1234.6");
