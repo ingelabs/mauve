@@ -1,3 +1,7 @@
+2005-12-07  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/JTextArea/preferredSize.java: New test.
+
 2005-12-07  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JComponent/constructor.java: New test.
