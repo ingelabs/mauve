@@ -1,3 +1,8 @@
+2005-12-07  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Double/toHexString.java: New file.
+	* gnu/testlet/java/lang/Float/toHexString.java: New file.
+
 2005-12-07  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/JTextArea/preferredSize.java: New test.
