@@ -25,12 +25,9 @@ import gnu.testlet.Testlet;
 
 import java.text.ParseException;
 
-import javax.swing.Action;
 import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DefaultFormatter;
-import javax.swing.text.DefaultFormatter.DefaultDocumentFilter;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
