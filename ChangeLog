@@ -1,5 +1,9 @@
 2005-12-08  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/javax/swing/JEditorPane/ConstructorsAndTypes.java: New test.
+
+2005-12-08  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/javax/swing/JEditorPane/ContentType.java: New test.
 
 2005-12-07  Tom Tromey  <tromey@redhat.com>
