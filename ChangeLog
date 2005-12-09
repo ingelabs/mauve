@@ -1,7 +1,6 @@
 2005-12-09  Lillian Angel  <langel@redhat.com>
 
-	* gnu/testlet/javax/swing/text/html/HTMLDocument: New directory.
-	* gnu/testlet/javax/swing/text/html/HTMLDocument/ElementTagAttributeTest.java: 
+	* gnu/testlet/javax/swing/text/html/HTML/ElementTagAttributeTest.java: 
 	New test.
 
 2005-12-08  Anthony Balkissoon  <abalkiss@redhat.com>
