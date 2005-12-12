@@ -1,3 +1,7 @@
+2005-12-09  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/lang/Class/security.java: New test.
+
 2005-12-09  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/text/html/HTML/ElementTagAttributeTest.java: 
