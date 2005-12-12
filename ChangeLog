@@ -1,5 +1,10 @@
 2005-12-12  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JComponent/getPreferredSize.java:
+	New test.
+
+2005-12-12  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/ViewportLayout/layoutContainer.java
 	New test for this layout manager.
 
