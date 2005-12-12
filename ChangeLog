@@ -1,3 +1,8 @@
+2005-12-12  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/ViewportLayout/layoutContainer.java
+	New test for this layout manager.
+
 2005-12-09  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/lang/Class/security.java: New test.
