@@ -35,8 +35,12 @@ public class property implements Testlet
 
     String key = "Mauve-Key-test-prop";
     String value = key + "-value";
+
+    harness.check(Security.getProperty(key), null);
     Security.setProperty(key, value);
     harness.check(Security.getProperty(key), value);
+    Security.setProperty(key, null);
+    harness.check(Security.getProperty(key), null);
   }
 }
 

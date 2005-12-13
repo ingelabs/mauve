@@ -1,3 +1,8 @@
+2005-12-13  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/security/Security/property.java: Test handling
+	of null values.
+
 2005-12-12  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JComponent/getPreferredSize.java:
