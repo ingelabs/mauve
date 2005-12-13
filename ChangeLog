@@ -1,3 +1,7 @@
+2005-12-13  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/io/File/newFileURI.java: New test.
+
 2005-12-13  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/security/Security/property.java: Test handling
