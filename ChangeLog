@@ -1,3 +1,7 @@
+2005-12-14  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/lang/Class/newInstance.java: Changed a criterion.
+
 2005-12-13  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/io/File/newFileURI.java: New test.
