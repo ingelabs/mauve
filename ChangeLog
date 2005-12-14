@@ -1,3 +1,9 @@
+2005-12-14  Tom Tromey  <tromey@redhat.com>
+
+	PR classpath/25389:
+	* gnu/testlet/java/io/File/newFileURI.java (test): Expect
+	non-hierarchical URI to fail.
+
 2005-12-14  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/lang/Class/newInstance.java: Changed a criterion.

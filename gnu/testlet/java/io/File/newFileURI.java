@@ -69,9 +69,19 @@ public class newFileURI implements Testlet
 	// Current dir
 	harness.check(new File("").getCanonicalFile(),
 		      new File(".").getCanonicalFile());
-	uri = new URI("file:./");
-	urifile = new File(uri).getCanonicalFile();
-	harness.check(urifile, new File(".").getCanonicalFile());
+	// Non-hierarchical URI
+	try
+	  {
+		harness.checkPoint("non-hierarchical URI");
+		uri = new URI("file:./");
+		urifile = new File(uri);
+		harness.check(false);
+      }
+	catch (IllegalArgumentException _)
+	  {
+		// Expected.
+		harness.check(true);
+	  }
       }
     catch (IOException ioe)
       {
