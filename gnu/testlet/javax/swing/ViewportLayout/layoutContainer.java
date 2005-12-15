@@ -66,7 +66,7 @@ public class layoutContainer implements Testlet
     view.setMaximumSize(new Dimension(300, 300));
     vp.setSize(400, 400);
     layout.layoutContainer(vp);
-    h.check(view.getSize(), vp.getSize());
+    h.check(view.getSize(), new Dimension(400, 400));
   }
 
   /**
@@ -85,7 +85,7 @@ public class layoutContainer implements Testlet
     view.setMaximumSize(new Dimension(300, 300));
     vp.setSize(150, 150);
     layout.layoutContainer(vp);
-    h.check(view.getSize(), view.getPreferredSize());
+    h.check(view.getSize(), new Dimension(200, 200));
   }
 
   /**
@@ -104,6 +104,6 @@ public class layoutContainer implements Testlet
     view.setMaximumSize(new Dimension(300, 300));
     vp.setSize(50, 50);
     layout.layoutContainer(vp);
-    h.check(view.getSize(), vp.getSize());
+    h.check(view.getSize(), new Dimension(50, 50));
   }
 }

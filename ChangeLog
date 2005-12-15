@@ -1,5 +1,11 @@
 2005-12-15  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/ViewportLayout/layoutContainer.java
+	Made tests more safe from sideeffects by using absolute Dimension
+	values instead of some size properties.
+
+2005-12-15  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JComponent/getPreferredSize.java:
 	Added test for changing the value of preferred size.
 
