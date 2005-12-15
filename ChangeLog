@@ -1,3 +1,8 @@
+2005-12-15  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JComponent/getPreferredSize.java:
+	Added test for changing the value of preferred size.
+
 2005-12-14  Tom Tromey  <tromey@redhat.com>
 
 	PR classpath/25389:

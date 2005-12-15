@@ -120,6 +120,7 @@ public class getPreferredSize implements Testlet
     testWithAll(harness);
 
     testSmallerThanMinSize(harness);
+    testChangeValue(harness);
   }
 
   /**
@@ -260,5 +261,22 @@ public class getPreferredSize implements Testlet
     c.setMinimumSize(new Dimension(100, 100));
     c.setPreferredSize(new Dimension(50, 50));
     h.check(c.getPreferredSize(), new Dimension(50, 50));
+  }
+
+  /**
+   * Tests if it is possible to change to actual setting or preferredSize by
+   * changing the values of the returned Dimension object.
+   *
+   * @param h the test harness
+   */
+  private void testChangeValue(TestHarness h)
+  {
+    h.checkPoint("changeValue");
+    TestComponent c = new TestComponent();
+    c.setPreferredSize(new Dimension(100, 100));
+    Dimension d = c.getPreferredSize();
+    d.width = 200;
+    d.height = 200;
+    h.check(c.getPreferredSize(), new Dimension(100, 100));
   }
 }
