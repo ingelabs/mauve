@@ -51,6 +51,18 @@ public class getApproveButtonText implements Testlet
     harness.check(ui.getApproveButtonText(fc), "Save");
     fc.setApproveButtonText("Hello World!");    
     harness.check(ui.getApproveButtonText(fc), "Hello World!");
+    
+    // try null argument
+    boolean pass = false;
+    try
+    {
+      /*String t =*/ ui.getApproveButtonText(null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
   }
   
 }

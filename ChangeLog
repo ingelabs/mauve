@@ -1,5 +1,10 @@
 2005-12-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveButtonText.java:
+	(test): Add null argument test.
+
+2005-12-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JComboBox/model.java: New test.
 
 2005-12-15  Roman Kennke  <kennke@aicas.com>
