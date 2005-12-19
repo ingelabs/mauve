@@ -1,5 +1,10 @@
 2005-12-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxUI/MyMetalComboBoxUI.java:
+	Fixed tag.
+
+2005-12-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicFileChooserUI/getApproveButtonText.java:
 	(test): Add null argument test.
 
