@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<launchConfiguration type='org.eclipse.ui.externaltools.ProgramLaunchConfigurationType'>
+    <stringAttribute key='org.eclipse.debug.core.ATTR_REFRESH_SCOPE' value='${container}'/>
+    <listAttribute key='org.eclipse.debug.ui.favoriteGroups'>
+      <listEntry value='org.eclipse.ui.externaltools.launchGroup'/>
+</listAttribute>
+    <stringAttribute key='org.eclipse.ui.externaltools.ATTR_LOCATION' value='${project_loc:mauve}/batch_run'/>
+    <stringAttribute key='org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY' value='${project_loc}'/>
+    <mapAttribute key='org.eclipse.debug.core.environmentVariables'>
+      <mapEntry key='KEYS' value='classpath'/>
+      <mapEntry key='CLASSPATHBCP' value='${project_loc:classpath}/install/share/classpath'/>
+      <mapEntry key='CACAO_BIN' value='${project_loc:classpath}/install/bin/java'/>
+      <mapEntry key='JAMVM_BIN' value='${project_loc:classpath}/install/bin/jamvm'/>
+      <mapEntry key='RUNTIME' value='${project_loc:classpath}/install/bin/java'/>
+</mapAttribute>
+    <booleanAttribute key='org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND' value='false'/>
+    <booleanAttribute key='org.eclipse.debug.core.appendEnvironmentVariables' value='false'/>
+</launchConfiguration>
