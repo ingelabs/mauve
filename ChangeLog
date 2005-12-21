@@ -1,3 +1,9 @@
+2005-12-20  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
+	Added checks for TextArea.focusInputMap, TextField.focusInputMap, TextPane.focusInputMap,
+	and PasswordField.focusInputMap.
+
 2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/AttributeSet: New directory.

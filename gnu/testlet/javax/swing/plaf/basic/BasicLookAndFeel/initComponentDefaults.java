@@ -36,6 +36,7 @@ import javax.swing.InputMap;
 import javax.swing.KeyStroke;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 import javax.swing.plaf.ColorUIResource;
@@ -251,6 +252,7 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("PasswordField.caretBlinkRate"), new Integer(500));
     harness.check(defaults.get("PasswordField.font"), new FontUIResource("MonoSpaced", Font.PLAIN, 12));
     harness.check(defaults.get("PasswordField.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(UIManager.get("PasswordField.focusInputMap") instanceof InputMapUIResource);
     
     harness.checkPoint("PopupMenu");
     harness.check(defaults.get("PopupMenu.border") instanceof BorderUIResource.CompoundBorderUIResource);
@@ -389,12 +391,14 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("TextArea.caretBlinkRate"), new Integer(500));
     harness.check(defaults.get("TextArea.font"), new FontUIResource("MonoSpaced", Font.PLAIN, 12));
     harness.check(defaults.get("TextArea.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(UIManager.get("TextArea.focusInputMap") instanceof InputMapUIResource);
     
     harness.checkPoint("TextField");
     harness.check(defaults.get("TextField.border") instanceof BasicBorders.FieldBorder);
     harness.check(defaults.get("TextField.caretBlinkRate"), new Integer(500));
     harness.check(defaults.get("TextField.font"), new FontUIResource("SansSerif", Font.PLAIN, 12));
     harness.check(defaults.get("TextField.margin"), new InsetsUIResource(0, 0, 0, 0));
+    harness.check(UIManager.get("TextField.focusInputMap") instanceof InputMapUIResource);
     
     harness.checkPoint("TextPane");
     harness.check(defaults.get("TextPane.background"), new ColorUIResource(255, 255, 255));
@@ -402,6 +406,7 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("TextPane.caretBlinkRate"), new Integer(500));
     harness.check(defaults.get("TextPane.font"), new FontUIResource("Serif", Font.PLAIN, 12));
     harness.check(defaults.get("TextPane.margin"), new InsetsUIResource(3, 3, 3, 3));
+    harness.check(UIManager.get("TextPane.focusInputMap") instanceof InputMapUIResource);
     
     harness.checkPoint("TitledBorder");
     harness.check(defaults.get("TitledBorder.border") instanceof BorderUIResource.EtchedBorderUIResource);
