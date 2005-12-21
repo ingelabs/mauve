@@ -22,6 +22,9 @@
 package gnu.testlet.javax.swing.text.DefaultStyledDocument.ElementBuffer;
 
 import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Segment;
+import javax.swing.text.AttributeSet;
 import javax.swing.text.Element;
 import javax.swing.JTextPane;
 
@@ -40,6 +43,28 @@ public class ElementStructure3 extends DefaultStyledDocument implements Testlet
     buffer = new ElementBuffer2(createDefaultRoot());
   }
 
+  protected void insertUpdate(DefaultDocumentEvent ev, AttributeSet attr)
+  {
+    int newLines = 0;
+    h2.check (ev.getLength() == 134);
+    h2.check (ev.getOffset() == 0);
+    Segment txt = new Segment();
+    try
+      {
+        getText(ev.getOffset(), ev.getLength(), txt);
+      }
+    catch (BadLocationException ble)
+      {
+      }
+
+    for (int i = txt.offset; i < txt.offset + txt.count; i ++)
+      {
+        if (txt.array[i] == '\n')
+          newLines ++;
+      }
+    h2.check (newLines == 1);
+    super.insertUpdate(ev, attr);
+  }
   
  public class ElementBuffer2 extends ElementBuffer
   {
