@@ -1,5 +1,11 @@
 2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure3.java: Added another check to this test and also added a 
+	harness.debug statement for an exception we're throwing now that we 
+	shouldn't be.
+
+2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure3.java: Added more checks to this test.
 
 2005-12-20  Lillian Angel  <langel@redhat.com>

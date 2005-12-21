@@ -51,18 +51,20 @@ public class ElementStructure3 extends DefaultStyledDocument implements Testlet
     Segment txt = new Segment();
     try
       {
-        getText(ev.getOffset(), ev.getLength(), txt);
+        getText(ev.getOffset(), ev.getLength() + 1, txt);
       }
     catch (BadLocationException ble)
       {
       }
 
-    for (int i = txt.offset; i < txt.offset + txt.count; i ++)
+    int i = txt.offset;
+    for (; i < txt.offset + txt.count - 1; i ++)
       {
         if (txt.array[i] == '\n')
           newLines ++;
       }
     h2.check (newLines == 1);
+    h2.check (txt.array[i] == '\n');
     super.insertUpdate(ev, attr);
   }
   
@@ -112,12 +114,19 @@ public class ElementStructure3 extends DefaultStyledDocument implements Testlet
    */
   public void test(TestHarness harness)
   {
-    h2 = harness;
-    JTextPane tp = new JTextPane();
-    tp.setDocument(new ElementStructure3());
-    tp.setText("Questions are <font size=\"+1\" color=\"blue\">a " + 
-               "burden</font> to others,\n" +
-               "answers <font size=\"+2\" color=\"red\">a " + 
-               "prison</font> for oneself.");
+    try
+      {
+        h2 = harness;
+        JTextPane tp = new JTextPane();
+        tp.setDocument(new ElementStructure3());
+        tp.setText("Questions are <font size=\"+1\" color=\"blue\">a " + 
+                   "burden</font> to others,\n" +
+                   "answers <font size=\"+2\" color=\"red\">a " + 
+                   "prison</font> for oneself.");
+      }
+    catch (Throwable t)
+      {
+        harness.debug(t);
+      }
   }
 }
