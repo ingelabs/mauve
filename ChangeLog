@@ -1,5 +1,10 @@
 2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/javax/swing/text/AttributeSet: New directory.
+	* gnu/testlet/javax/swing/text/AttributeSet/isEqual.java: New test.
+
+2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure3.java: New test.
 
 2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
