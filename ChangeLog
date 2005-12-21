@@ -1,5 +1,9 @@
 2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure3.java: New test.
+
+2005-12-20  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure2.java: New test.
 
 2005-12-21  Raif S. Naffah  <raif@swiftdsl.com.au>
