@@ -1,3 +1,7 @@
+2005-12-21  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/SingleTestHarness.java: New file.
+
 2005-12-20  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
