@@ -1,6 +1,11 @@
 2005-12-20  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
+	Added checks for bindings in FormattedTextField's focusInputMap.
+
+2005-12-20  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
 	Fixed a couple of typos.
 
 2005-12-22  Ito Kazumitasu  <kaz@maczuka.gcd.org>
