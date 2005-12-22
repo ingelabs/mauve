@@ -1,3 +1,7 @@
+2005-12-22  Ito Kazumitasu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/lang/Class/newInstance.java: Reverted.
+
 2005-12-21  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/SingleTestHarness.java: New file.

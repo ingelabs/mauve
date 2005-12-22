@@ -150,10 +150,10 @@ public class newInstance implements Testlet
     // Just see to it that the following is legal.
     new test5();
     // If new test5() is legal, why should test5.class.newInstance()
-    // throw IllegalAccessException?  Although Sun's JDK throws
-    // IllegalAccessException here, that may be misbehavior.
-    // checkFail(harness, test5.class);
-    checkSuccess(harness, test5.class);
+    // throw IllegalAccessException?  But the runtime access control
+    // is somewhat different from the compile time access control.
+    // So it may be OK that Sun's JDK throws IllegalAccessException here.
+    checkFail(harness, test5.class);
 
     checkSuccess(harness, test1.inner.class);
 
