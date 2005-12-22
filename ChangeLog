@@ -1,6 +1,13 @@
 2005-12-20  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
+	Added checks for bindings in Button, CheckBox, EditorPane, List, TabbedPane, 
+	ToggleButton and Tree. Fixed several regressions caused by these new checks and
+	Removed TODO comments for icons. There are no icons in the BasicL&F.
+
+2005-12-20  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:
 	Added checks for bindings in FormattedTextField's focusInputMap.
 
 2005-12-20  Lillian Angel  <langel@redhat.com>
