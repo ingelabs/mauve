@@ -46,7 +46,6 @@ import javax.swing.plaf.InputMapUIResource;
 import javax.swing.plaf.InsetsUIResource;
 import javax.swing.plaf.BorderUIResource.CompoundBorderUIResource;
 import javax.swing.plaf.basic.BasicBorders;
-import javax.swing.plaf.basic.BasicLookAndFeel;
 import javax.swing.plaf.basic.BasicBorders.ButtonBorder;
 import javax.swing.plaf.basic.BasicBorders.MarginBorder;
 
@@ -429,7 +428,7 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("TextArea.font"), new FontUIResource("MonoSpaced", Font.PLAIN, 12));
     harness.check(defaults.get("TextArea.margin"), new InsetsUIResource(0, 0, 0, 0));
     harness.check(UIManager.get("TextArea.focusInputMap") instanceof InputMapUIResource);
-    Object ta = UIManager.get("TextPane.focusInputMap");
+    Object ta = UIManager.get("TextArea.focusInputMap");
     InputMapUIResource taim = (InputMapUIResource) ta;
     harness.check(taim.keys().length == 55);
     harness.check(taim.get(KeyStroke.getKeyStroke("shift UP")), "selection-up");
@@ -494,10 +493,10 @@ public class initComponentDefaults implements Testlet
     harness.check(defaults.get("TextField.font"), new FontUIResource("SansSerif", Font.PLAIN, 12));
     harness.check(defaults.get("TextField.margin"), new InsetsUIResource(0, 0, 0, 0));
     harness.check(UIManager.get("TextField.focusInputMap") instanceof InputMapUIResource);
-    Object tf = UIManager.get("TextPane.focusInputMap");
+    Object tf = UIManager.get("TextField.focusInputMap");
     InputMapUIResource tfim = (InputMapUIResource) tf;
-    harness.check(tfim.keys().length == 55);
-    harness.check(tfim.get(KeyStroke.getKeyStroke("ENTER")), "insert-break");
+    harness.check(tfim.keys().length == 33);
+    harness.check(tfim.get(KeyStroke.getKeyStroke("ENTER")), "notify-field-accept");
     harness.check(tfim.get(KeyStroke.getKeyStroke("LEFT")), "caret-backward");
     harness.check(tfim.get(KeyStroke.getKeyStroke("RIGHT")), "caret-forward");
     harness.check(tfim.get(KeyStroke.getKeyStroke("BACK_SPACE")), "delete-previous");
