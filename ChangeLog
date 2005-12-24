@@ -1,3 +1,8 @@
+2005-12-24  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/io/InputStreamReader/getEncoding.java (test): Fix
+	call to check.  Debug-print exception.
+
 2005-12-20  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java:

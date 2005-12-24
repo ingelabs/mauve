@@ -83,10 +83,11 @@ public class getEncoding implements Testlet {
 				InputStreamReader isr = new InputStreamReader(is, cs);
 				name = isr.getEncoding();
 			} catch (UnsupportedCharsetException uce) {
+				harness.debug(uce);
 				supported = false;
 			}
 			harness.check(name, ioNames[i]);
-			harness.check(true, supported);
+			harness.check(supported, true);
 		}
 		
 		// These are the charsets provided by J2SE5 in an international installation.
