@@ -1,3 +1,9 @@
+2005-12-25  Jeroen Frijters  <jeroen@frijters.net>
+
+	* gnu/testlet/java/util/Collections/binarySearch.java: Added
+	test to check which object compareTo is called on and to check
+	to argument order for Comparable.compare().
+
 2005-12-24  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/InputStreamReader/getEncoding.java (test): Fix

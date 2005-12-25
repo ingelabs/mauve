@@ -26,6 +26,7 @@ import gnu.testlet.Testlet;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -50,6 +51,42 @@ public class binarySearch implements Testlet
     // test for a known bug (10447)
     harness.checkPoint("10447");
     testBug10447(harness);
+
+    // comparison order
+    harness.checkPoint("Compare Order");
+    testCompareOrder(new ArrayList(), harness);
+    testCompareOrder(new LinkedList(), harness);
+  }
+
+  private void testCompareOrder(List list, TestHarness harness)
+  {
+    final boolean[] result = new boolean[] { false, false };
+    list.add(new Comparable() {
+        public int compareTo(Object obj) {
+            result[0] = true;
+            return -1;
+        }
+    });
+    Collections.binarySearch(list, new Comparable() {
+        public int compareTo(Object obj) {
+            result[1] = true;
+            return -1;
+        }
+    });
+    harness.check(result[0] && !result[1]);
+
+    final Object obj1 = new Object();
+    final Object obj2 = new Object();
+    list.clear();
+    list.add(obj1);
+    result[0] = false;
+    Collections.binarySearch(list, obj2, new Comparator() {
+        public int compare(Object o1, Object o2) {
+           result[0] = (o1 == obj1 && o2 == obj2);
+           return -1;
+        }
+    });
+    harness.check(result[0]);
   }
   
   private void genericTest(List list, TestHarness harness) 
