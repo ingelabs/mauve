@@ -1,6 +1,12 @@
-2006-01-01  Raif S. Naffah  <raif@swiftdsl.com.au>
+2006-01-03  Raif S. Naffah  <raif@swiftdsl.com.au>
 
-	* .externalToolBuilders/MauveTestlet.launch: New file.
+	* gnu/testlet/java/security/MessageDigest/getInstance14.java (test):
+	  Corrected string literal used in harness.checkPoint().
+	  Added 2 new testcases to test passing Provider and Algorithm names with
+	  extra spaces.
+	* gnu/testlet/java/security/Engine/getInstance.java: new file.
+	* gnu/testlet/java/net/InetAddress/getAllByName.java (test):
+	  Ensure hostname strings with extra spaces are recognized.
 
 2005-12-25  Jeroen Frijters  <jeroen@frijters.net>
 

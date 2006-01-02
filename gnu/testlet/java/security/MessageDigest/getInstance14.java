@@ -25,6 +25,8 @@
 package gnu.testlet.java.security.MessageDigest;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+
+import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.Provider;
 import java.security.NoSuchAlgorithmException;
@@ -43,7 +45,7 @@ public class getInstance14 extends Provider implements Testlet
 
   public void test (TestHarness harness)
   {
-    harness.checkPoint ("KeyPairGenerator");
+    harness.checkPoint ("MessageDigest");
 
     MessageDigest spi;
     Provider provider = this;
@@ -51,10 +53,36 @@ public class getInstance14 extends Provider implements Testlet
     String signature;
 
     spi = null;
+    signature = "getInstance(\"foo\", \"  MessageDigest  \")";
+    try
+      {
+        spi = MessageDigest.getInstance("foo", "  MessageDigest  ");
+        harness.check(spi != null, signature);
+      }
+    catch (GeneralSecurityException x)
+      {
+        harness.fail(signature);
+        harness.debug(x);
+      }
+
+    spi = null;
     signature = "getInstance(\"foo\", provider)";
     try
       {
         spi = MessageDigest.getInstance("foo", provider);
+        harness.check(spi != null, signature);
+      }
+    catch (NoSuchAlgorithmException x)
+      {
+        harness.fail(signature);
+        harness.debug(x);
+      }
+
+    spi = null;
+    signature = "getInstance(\"  foo  \", provider)";
+    try
+      {
+        spi = MessageDigest.getInstance("  foo  ", provider);
         harness.check(spi != null, signature);
       }
     catch (NoSuchAlgorithmException x)
