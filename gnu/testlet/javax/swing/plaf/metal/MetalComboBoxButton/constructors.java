@@ -65,7 +65,7 @@ public class constructors implements Testlet
     harness.check(margin, new Insets(2, 14, 2, 14));
     harness.check(margin instanceof UIResource);
     Insets insets = b.getInsets();
-    harness.check(insets, new Insets(4, 17, 5, 17));
+    harness.check(insets, new Insets(5, 17, 5, 17));
     
     boolean pass = false;
     try
