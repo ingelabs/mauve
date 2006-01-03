@@ -1,5 +1,10 @@
 2006-01-03  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/javax/swing/UIManager/getUI.java
+	(test): Fixed check.
+
+2006-01-03  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxButton/constructors.java
 	(testConstructor1): Fixed typo in test. This now passes for us and the JDK.
 

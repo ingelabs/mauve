@@ -58,6 +58,6 @@ public class getUI implements Testlet {
 
     TestLabel l = new TestLabel();
     UIManager.getUI(l);
-    harness.check(TestLabelUI.installUICalled, true);
+    harness.check(TestLabelUI.installUICalled, false);
   }
 }
