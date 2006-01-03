@@ -39,6 +39,7 @@ public class getWhite implements Testlet {
    * @param harness  the test harness (<code>null</code> not permitted).
    */
   public void test(TestHarness harness) {
+	MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
     ColorUIResource white = MetalLookAndFeel.getWhite();
     harness.check(white, new ColorUIResource(Color.white));
 

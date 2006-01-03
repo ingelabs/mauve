@@ -40,6 +40,7 @@ public class getUserTextFont implements Testlet {
  * @param harness  the test harness (<code>null</code> not permitted).
  */
   public void test(TestHarness harness) {
+	MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
     FontUIResource f = MetalLookAndFeel.getUserTextFont();
     harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 12));
 

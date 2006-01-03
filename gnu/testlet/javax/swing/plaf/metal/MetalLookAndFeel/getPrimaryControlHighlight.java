@@ -40,6 +40,7 @@ public class getPrimaryControlHighlight implements Testlet {
    * @param harness  the test harness (<code>null</code> not permitted). 
    */
   public void test(TestHarness harness) {
+	MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
     ColorUIResource c = MetalLookAndFeel.getPrimaryControlHighlight();
     harness.check(c, new ColorUIResource(Color.white));
 

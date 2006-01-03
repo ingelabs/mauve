@@ -40,7 +40,8 @@ public class getMenuDisabledForeground implements Testlet {
    * @param harness  the test harness (<code>null</code> not permitted). 
    */
   public void test(TestHarness harness) {
-    ColorUIResource c = MetalLookAndFeel.getMenuDisabledForeground();
+	MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+	ColorUIResource c = MetalLookAndFeel.getMenuDisabledForeground();
     harness.check(c, new ColorUIResource(new Color(153, 153, 153)));
 
     MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme() {

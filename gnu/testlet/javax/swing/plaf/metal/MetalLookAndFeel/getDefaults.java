@@ -46,6 +46,7 @@ import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.InputMapUIResource;
 import javax.swing.plaf.InsetsUIResource;
 import javax.swing.plaf.UIResource;
+import javax.swing.plaf.IconUIResource;
 import javax.swing.plaf.BorderUIResource.LineBorderUIResource;
 import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.plaf.metal.DefaultMetalTheme;
@@ -487,11 +488,11 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("OptionPane.errorDialog.titlePane.background"), new ColorUIResource(255, 153, 153));
     harness.check(defaults.get("OptionPane.errorDialog.titlePane.foreground"), new ColorUIResource(51, 0, 0));
     harness.check(defaults.get("OptionPane.errorDialog.titlePane.shadow"), new ColorUIResource(204, 102, 102));
-    harness.check(defaults.get("OptionPane.errorIcon"), null);
+    harness.check(defaults.get("OptionPane.errorIcon") instanceof IconUIResource);
     harness.check(defaults.get("OptionPane.errorSound"), "sounds/OptionPaneError.wav");
     harness.check(defaults.get("OptionPane.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
     harness.check(defaults.get("OptionPane.foreground"), new ColorUIResource(0, 0, 10));
-    harness.check(defaults.get("OptionPane.informationIcon"), null);
+    harness.check(defaults.get("OptionPane.informationIcon") instanceof IconUIResource);
     harness.check(defaults.get("OptionPane.informationSound"), "sounds/OptionPaneInformation.wav");
     harness.check(defaults.get("OptionPane.messageAreaBorder") instanceof BorderUIResource.EmptyBorderUIResource);
     harness.check(defaults.get("OptionPane.messageForeground"), new ColorUIResource(0, 0, 10));
@@ -500,13 +501,13 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("OptionPane.questionDialog.titlePane.background"), new ColorUIResource(153, 204, 153));
     harness.check(defaults.get("OptionPane.questionDialog.titlePane.foreground"), new ColorUIResource(0, 51, 0));
     harness.check(defaults.get("OptionPane.questionDialog.titlePane.shadow"), new ColorUIResource(102, 153, 102));
-    harness.check(defaults.get("OptionPane.questionIcon"), null);
+    harness.check(defaults.get("OptionPane.questionIcon") instanceof IconUIResource);
     harness.check(defaults.get("OptionPane.questionSound"), "sounds/OptionPaneQuestion.wav");
     harness.check(defaults.get("OptionPane.warningDialog.border.background"), new ColorUIResource(153, 102, 51));
     harness.check(defaults.get("OptionPane.warningDialog.titlePane.background"), new ColorUIResource(255, 204, 153));
     harness.check(defaults.get("OptionPane.warningDialog.titlePane.foreground"), new ColorUIResource(102, 51, 0));
     harness.check(defaults.get("OptionPane.warningDialog.titlePane.shadow"), new ColorUIResource(204, 153, 102));
-    harness.check(defaults.get("OptionPane.warningIcon"), null);
+    harness.check(defaults.get("OptionPane.warningIcon") instanceof IconUIResource);
     harness.check(defaults.get("OptionPane.warningSound"), "sounds/OptionPaneWarning.wav");
     bindings = (Object[]) defaults.get("OptionPane.windowBindings");
     harness.check(bindings.length, 2);
@@ -605,8 +606,8 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("ScrollBar.allowsAbsolutePositioning"), Boolean.TRUE);
     harness.check(defaults.get("ScrollBar.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ScrollBar.darkShadow"), new ColorUIResource(0, 0, 5));
-    harness.check(defaults.get("ScrollBar.focusInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("ScrollBar.focusInputMap.RightToLeft") instanceof InputMapUIResource);
+    harness.check(defaults.get("ScrollBar.focusInputMap"), null);
+    harness.check(defaults.get("ScrollBar.focusInputMap.RightToLeft"), null);
     harness.check(defaults.get("ScrollBar.foreground"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ScrollBar.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ScrollBar.maximumThumbSize"), new DimensionUIResource(4096, 4096));
@@ -814,7 +815,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("TextPane.selectionForeground"), new ColorUIResource(0, 0, 13));
     
     harness.checkPoint("TitledBorder");
-    harness.check(defaults.get("TitledBorder.border"), null);
+    harness.check(defaults.get("TitledBorder.border") instanceof LineBorderUIResource);
     harness.check(defaults.get("TitledBorder.font"), new FontUIResource("Dialog", Font.BOLD, 12));
     harness.check(defaults.get("TitledBorder.titleColor"), new ColorUIResource(0, 0, 27));
     
@@ -885,7 +886,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Tree.line"), new ColorUIResource(0, 0, 20));
     harness.check(defaults.get("Tree.openIcon") instanceof MetalIconFactory.TreeFolderIcon);
     harness.check(defaults.getInt("Tree.rightChildIndent"), 13);
-    harness.check(defaults.getInt("Tree.rowHeight"), 16);
+    harness.check(defaults.getInt("Tree.rowHeight"), 0);
     harness.check(defaults.get("Tree.scrollsOnExpand"), Boolean.TRUE);
     harness.check(defaults.get("Tree.selectionBackground"), new ColorUIResource(0, 0, 28));
     harness.check(defaults.get("Tree.selectionBorderColor"), new ColorUIResource(0, 0, 12));

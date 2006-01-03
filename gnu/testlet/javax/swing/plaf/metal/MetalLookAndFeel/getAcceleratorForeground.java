@@ -42,7 +42,7 @@ public class getAcceleratorForeground implements Testlet {
   public void test(TestHarness harness) {
     new MetalLookAndFeel();
     ColorUIResource c = MetalLookAndFeel.getAcceleratorForeground();
-    harness.check(c, new ColorUIResource(new Color(102, 102, 153)));
+    harness.check(c, new ColorUIResource(new Color(99, 130, 191)));
 
     MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme() {
       public ColorUIResource getAcceleratorForeground() {

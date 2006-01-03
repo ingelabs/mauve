@@ -41,7 +41,7 @@ public class setCurrentTheme implements Testlet
   {
     MetalLookAndFeel laf = new MetalLookAndFeel();
     Color c1 = laf.getDefaults().getColor("Button.background");
-    h.check(c1, new Color(204, 204, 204));
+    h.check(c1, new Color(238, 238, 238));
     MetalLookAndFeel.setCurrentTheme(new TestTheme());
     c1 = laf.getDefaults().getColor("Button.background");
     h.check(c1, Color.red);

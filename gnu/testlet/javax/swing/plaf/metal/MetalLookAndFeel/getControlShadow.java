@@ -40,6 +40,7 @@ public class getControlShadow implements Testlet {
    * @param harness  the test harness (<code>null</code> not permitted).
    */
   public void test(TestHarness harness) {
+	MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
     ColorUIResource c = MetalLookAndFeel.getControlShadow();
     harness.check(c, new ColorUIResource(new Color(153, 153, 153)));
 

@@ -39,6 +39,7 @@ public class getControlDisabled implements Testlet {
    * @param harness  the test harness (<code>null</code> not permitted).
    */
   public void test(TestHarness harness) {
+	MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
     ColorUIResource c = MetalLookAndFeel.getControlDisabled();
     harness.check(c, new ColorUIResource(new Color(153, 153, 153)));
 
