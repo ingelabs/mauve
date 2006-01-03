@@ -1,3 +1,9 @@
+2006-01-03  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/String/getBytes13.java (dumpArray): New
+	method.
+	(test1Encoding): Use it.
+
 2006-01-03  Lillian Angel  <langel@redhat.com>
 	
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java:i

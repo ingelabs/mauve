@@ -1,6 +1,6 @@
 // Tags: JDK1.3
 
-// Copyright (C) 2003 Free Software Foundation, Inc.
+// Copyright (C) 2003, 2006 Free Software Foundation, Inc.
 
 // This file is part of Mauve.
 
@@ -55,13 +55,32 @@ public class getBytes13 implements Testlet
     String signature = "String.getBytes(\""+encoding+"\")";
     try
       {
-        h.check (areEqual(s.getBytes(encoding), ba), signature);
+	byte[] theBytes = s.getBytes(encoding);
+	boolean result = areEqual(theBytes, ba);
+        h.check (result, signature);
+	if (! result)
+	  {
+	    dumpArray(h, "Got     : ", theBytes);
+	    dumpArray(h, "Expected: ", ba);
+	  }
       }
     catch (UnsupportedEncodingException x)
       {
         h.debug (x);
 	h.fail (signature);
       }
+  }
+
+  static void dumpArray(TestHarness h, String prefix, byte[] a)
+  {
+    StringBuffer result = new StringBuffer(prefix);
+    for (int i = 0; i < a.length; ++i)
+      {
+	if (i > 0)
+	  result.append(' ');
+	result.append(a[i]);
+      }
+    h.debug(result.toString());
   }
 
   static boolean areEqual (byte[] a, byte[] b)
@@ -72,7 +91,7 @@ public class getBytes13 implements Testlet
       return false;
     for (int i = 0; i < a.length; i++)
       if (a[i] != b[i])
-        return false;
+	return false;
     return true;
   }
 }
