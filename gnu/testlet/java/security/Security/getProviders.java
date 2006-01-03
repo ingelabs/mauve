@@ -72,6 +72,18 @@ public class getProviders implements Testlet
   {
     Security.addProvider(tom);
 
+    String signature = "Security.getProvider(\"tom\")";
+    try
+      {
+        Provider sameProvider = Security.getProvider("  Tom  ");
+        harness.check(sameProvider != null, signature);
+      }
+    catch (Throwable x)
+      {
+        harness.fail(signature);
+        harness.debug(x);
+      }
+
     String filter = "NoService.NoAlgorithm";
     // try dummy filter with one known provider
     try

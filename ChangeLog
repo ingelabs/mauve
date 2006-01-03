@@ -1,3 +1,8 @@
+2006-01-03  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/java/security/Security/getProviders.java (test1Provider):
+	  Ensure provider's name with extra spaces is recognized.
+
 2006-01-03  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/java/security/MessageDigest/getInstance14.java (test):
