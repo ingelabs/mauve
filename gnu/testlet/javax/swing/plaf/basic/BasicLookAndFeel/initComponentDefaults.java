@@ -118,9 +118,9 @@ public class initComponentDefaults implements Testlet
     
     harness.checkPoint("ColorChooser");
     harness.check(defaults.get("ColorChooser.font"), new FontUIResource("Dialog", Font.PLAIN, 12));
-    harness.check(defaults.get("ColorChooser.rgbBlueMnemonic"), new Integer(66));
-    harness.check(defaults.get("ColorChooser.rgbGreenMnemonic"), new Integer(78));
-    harness.check(defaults.get("ColorChooser.rgbRedMnemonic"), new Integer(68));
+    harness.check(defaults.get("ColorChooser.rgbBlueMnemonic"), "66");
+    harness.check(defaults.get("ColorChooser.rgbGreenMnemonic"), "78");
+    harness.check(defaults.get("ColorChooser.rgbRedMnemonic"), "68");
     harness.check(defaults.get("ColorChooser.swatchesRecentSwatchSize"), new Dimension(10, 10));
     harness.check(defaults.get("ColorChooser.swatchesSwatchSize"), new Dimension(10, 10));
     
@@ -202,12 +202,12 @@ public class initComponentDefaults implements Testlet
     
     harness.checkPoint("FileChooser");
     harness.check(defaults.get("FileChooser.ancestorInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("FileChooser.cancelButtonMnemonic"), new Integer(67));
-    harness.check(defaults.get("FileChooser.directoryOpenButtonMnemonic"), new Integer(79));
-    harness.check(defaults.get("FileChooser.helpButtonMnemonic"), new Integer(72));
-    harness.check(defaults.get("FileChooser.openButtonMnemonic"), new Integer(79));
-    harness.check(defaults.get("FileChooser.saveButtonMnemonic"), new Integer(83));
-    harness.check(defaults.get("FileChooser.updateButtonMnemonic"), new Integer(85));
+    harness.check(defaults.get("FileChooser.cancelButtonMnemonic"), "67");
+    harness.check(defaults.get("FileChooser.directoryOpenButtonMnemonic"), "79");
+    harness.check(defaults.get("FileChooser.helpButtonMnemonic"), "72");
+    harness.check(defaults.get("FileChooser.openButtonMnemonic"), "79");
+    harness.check(defaults.get("FileChooser.saveButtonMnemonic"), "83");
+    harness.check(defaults.get("FileChooser.updateButtonMnemonic"), "85");
 
     harness.checkPoint("FileView");
 
@@ -471,8 +471,6 @@ public class initComponentDefaults implements Testlet
     
     harness.checkPoint("ScrollBar");
     harness.check(defaults.get("ScrollBar.background"), new ColorUIResource(224, 224, 224));
-    harness.check(defaults.get("ScrollBar.focusInputMap") instanceof InputMap);
-    harness.check(defaults.get("ScrollBar.focusInputMap.RightToLeft") instanceof InputMap);
     harness.check(defaults.get("ScrollBar.maximumThumbSize"), new DimensionUIResource(4096, 4096));
     harness.check(defaults.get("ScrollBar.minimumThumbSize"), new DimensionUIResource(8, 8));
     harness.check(defaults.get("ScrollBar.width"), new Integer(16));
@@ -499,8 +497,6 @@ public class initComponentDefaults implements Testlet
     harness.check(keyList.contains(KeyStroke.getKeyStroke("END")));
     harness.check(keyList.contains(KeyStroke.getKeyStroke("PAGE_UP")));
     harness.check(keyList.contains(KeyStroke.getKeyStroke("PAGE_DOWN"))); 
-    harness.check(keyList.contains(KeyStroke.getKeyStroke("ctrl PAGE_UP")));
-    harness.check(keyList.contains(KeyStroke.getKeyStroke("ctrl PAGE_DOWN"))); 
     harness.check(focusInputMap.get(KeyStroke.getKeyStroke("LEFT")), "negativeUnitIncrement");
     harness.check(focusInputMap.get(KeyStroke.getKeyStroke("RIGHT")), "positiveUnitIncrement");
     harness.check(focusInputMap.get(KeyStroke.getKeyStroke("UP")), "positiveUnitIncrement");
@@ -513,8 +509,6 @@ public class initComponentDefaults implements Testlet
     harness.check(focusInputMap.get(KeyStroke.getKeyStroke("END")), "maxScroll");
     harness.check(focusInputMap.get(KeyStroke.getKeyStroke("PAGE_UP")), "positiveBlockIncrement");
     harness.check(focusInputMap.get(KeyStroke.getKeyStroke("PAGE_DOWN")), "negativeBlockIncrement");
-    harness.check(focusInputMap.get(KeyStroke.getKeyStroke("ctrl PAGE_UP")), "positiveBlockIncrement");
-    harness.check(focusInputMap.get(KeyStroke.getKeyStroke("ctrl PAGE_DOWN")), "negativeBlockIncrement");
     
     InputMap rightToLeftMap = (InputMap) defaults.get("Slider.focusInputMap.RightToLeft");
     keys = rightToLeftMap != null ? rightToLeftMap.keys() : new KeyStroke[] {};

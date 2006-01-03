@@ -1,5 +1,10 @@
 2006-01-03  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicLookAndFeel/initComponentDefaults.java
+	(test): Fixed checks so they pass with the JDK.
+
+2006-01-03  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/javax/swing/UIManager/getUI.java
 	(test): Fixed check.
 
