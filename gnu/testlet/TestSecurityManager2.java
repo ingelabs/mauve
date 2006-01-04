@@ -40,6 +40,20 @@ public class TestSecurityManager2 extends SecurityManager
   public TestSecurityManager2(TestHarness harness) {
     super();
     this.harness = harness;
+
+    // Preload some classes to avoid infinite loops
+    String[] preload = new String[] {
+      "java.lang.StringBuffer",     // needed by checkCheck()
+      "java.lang.RuntimePermission" // needed by uninstall()
+    };
+    for (int i = 0; i < preload.length; i++) {
+      try {
+	Class.forName(preload[i]);
+      }
+      catch (ClassNotFoundException e) {
+	harness.debug(e);
+      }
+    }
   }
 
   public void install()
