@@ -1,0 +1,106 @@
+// Copyright (C) 2006 Red Hat, Inc.
+// Written by Gary Benson <gbenson@redhat.com>
+
+// This file is part of Mauve.
+
+// Mauve is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+
+// Mauve is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with Mauve; see the file COPYING.  If not, write to
+// the Free Software Foundation, 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+package gnu.testlet.java.io.ObjectOutputStream;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.SerializablePermission;
+import java.security.Permission;
+
+import gnu.testlet.Testlet;
+import gnu.testlet.TestHarness;
+import gnu.testlet.TestSecurityManager2;
+
+public class security implements Testlet
+{
+  public void test(TestHarness harness)
+  {
+    try {
+      TestObjectOutputStream teststream = new TestObjectOutputStream();
+  
+      Permission[] enableSubclassImplementation = new Permission[] {
+	new SerializablePermission("enableSubclassImplementation")};
+
+      Permission[] enableSubstitution = new Permission[] {
+	new SerializablePermission("enableSubstitution")};
+
+      Permission[] noPerms = new Permission[] {};
+
+      TestSecurityManager2 sm = new TestSecurityManager2(harness);
+      try {
+	sm.install();
+
+	// security: java.io.ObjectOutputStream-ObjectOutputStream
+	harness.checkPoint("constructor");
+	try {
+	  sm.prepareChecks(enableSubclassImplementation, noPerms);
+	  new TestObjectOutputStream();
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+
+	// security: java.io.ObjectOutputStream-enableReplaceObject
+	harness.checkPoint("enableReplaceObject");
+	try {
+	  sm.prepareChecks(noPerms, noPerms);
+	  teststream.testEnableReplaceObject(false);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+	try {
+	  sm.prepareChecks(enableSubstitution, noPerms);
+	  teststream.testEnableReplaceObject(true);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+      }
+      finally {
+	sm.uninstall();
+      }
+    }
+    catch (Throwable ex) {
+      harness.debug(ex);
+      harness.check(false, "Unexpected exception");
+    }
+  }
+
+  private static class TestObjectOutputStream extends ObjectOutputStream
+  {
+    public TestObjectOutputStream() throws IOException
+    {
+      super();
+    }
+
+    public boolean testEnableReplaceObject(boolean enable)
+    {
+      return enableReplaceObject(enable);
+    }
+  }
+}

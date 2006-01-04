@@ -1,5 +1,10 @@
 2006-01-04  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/io/ObjectInputStream/security.java: New test.
+	* gnu/testlet/java/io/ObjectOutputStream/security.java: Likewise.
+
+2006-01-04  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/TestSecurityManager2.java (TestSecurityManager2):
 	Preload some classes to avoid infinite loops when in force.
 
