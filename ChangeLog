@@ -1,3 +1,8 @@
+2006-01-05  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/Pattern/matches.java: Added some
+	test cases.
+
 2006-01-04  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure4.java: New test.

@@ -62,6 +62,15 @@ public class matches implements Testlet
 	harness.check(!Pattern.matches("([a-z]|\\d|[A-Z])*", ",abc1defZghi"));
 	harness.check(!Pattern.matches("([a-z]|\\d|[A-Z])*", "abc1defZghi,"));
 	harness.check(!Pattern.matches("([a-z]|\\d|[A-Z])*", ",abc1defZghi,"));
+
+	harness.check(Pattern.matches("()*", ""));
+	harness.check(!Pattern.matches("()*", "x"));
+	harness.check(Pattern.matches("(b*c*)*", ""));
+	harness.check(Pattern.matches("(b*c*)*", "cbbcbbb"));
+	harness.check(Pattern.matches("(b*c*)+", ""));
+	harness.check(Pattern.matches("(b*c*)+", "cbbcbbb"));
+	harness.check(Pattern.matches("(b*c*){3,}", "cbbcbbb"));
+	harness.check(Pattern.matches("(b*c*){10,}", "cbbcbbb"));
       }
     catch(PatternSyntaxException pse)
       {
