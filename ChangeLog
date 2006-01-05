@@ -1,3 +1,8 @@
+2006-01-05  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/text/GapContent/PositionTest.java
+	(testComplex): Added more test cases.
+
 2006-01-05  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure6.java: New test.
@@ -30,7 +35,7 @@
 
 2006-01-03  Lillian Angel  <langel@redhat.com>
 	
-	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java:i
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java:
 	(test): Fixed color.
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorSelectedForeground.java:
 	(test): Fixed to set the current theme, otherwise the color returned is null.

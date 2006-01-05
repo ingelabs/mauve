@@ -103,6 +103,20 @@ public class PositionTest implements Testlet
         c.insertString(5, "12345");
         harness.check(p1.getOffset(), 0);
         harness.check(p2.getOffset(), 21);
+        
+        PlainDocument doc = new PlainDocument();
+        doc.insertString(0, "cdefgh", null);
+        Position s = doc.createPosition(1);
+        harness.check(s.getOffset(), 1);
+
+        doc.insertString(0, "a", null);
+        harness.check(s.getOffset(), 2);
+        Position a = doc.createPosition(1);
+        harness.check(a.getOffset(), 1);
+
+        doc.insertString(1, "b", null);
+        harness.check(s.getOffset(), 3);
+        harness.check(a.getOffset(), 2);
       }
     catch (BadLocationException ex)
       {
