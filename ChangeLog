@@ -140,6 +140,10 @@
 	* gnu/testlet/java/net/InetAddress/getAllByName.java (test):
 	  Ensure hostname strings with extra spaces are recognized.
 
+2006-01-01  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* .externalToolBuilders/MauveTestlet.launch: New file.
+
 2005-12-25  Jeroen Frijters  <jeroen@frijters.net>
 
 	* gnu/testlet/java/util/Collections/binarySearch.java: Added
