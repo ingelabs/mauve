@@ -1,3 +1,7 @@
+2006-01-11  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/util/Hashtable/EnumerateAndModify.java: New test.
+
 2006-01-05  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/text/GapContent/PositionTest.java
