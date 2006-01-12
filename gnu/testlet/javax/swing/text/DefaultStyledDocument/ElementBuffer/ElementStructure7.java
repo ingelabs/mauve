@@ -47,7 +47,6 @@ public class ElementStructure7 implements Testlet
       {
         JTextPane tp = new JTextPane();
         StyledDocument doc = new StyledDocument2();
-        GapContent gc = new GapContent();
         tp.setStyledDocument(doc);
 
         h2 = harness;
