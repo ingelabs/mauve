@@ -84,7 +84,15 @@ public class ElementStructure7 implements Testlet
                                              ev.getType());
         super.insert(offset, length, data, docEvent);
         Vector edits = docEvent.getEdits();
-        
+        h2.check(data.length == 4);
+        h2.check(data[0].getType() == ElementSpec.ContentType);
+        h2.check(data[0].getDirection() == ElementSpec.JoinPreviousDirection);
+        h2.check(data[1].getType() == ElementSpec.EndTagType);
+        h2.check(data[1].getDirection() == ElementSpec.OriginateDirection);
+        h2.check(data[2].getType() == ElementSpec.StartTagType);
+        h2.check(data[2].getDirection() == ElementSpec.JoinFractureDirection);
+        h2.check(data[3].getType() == ElementSpec.ContentType);
+        h2.check(data[3].getDirection() == ElementSpec.JoinNextDirection);
         h2.check(edits.size(), 3);
         Object zero = edits.get(0);
         h2.check(zero instanceof AbstractDocument.ElementEdit);
