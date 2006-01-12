@@ -1,3 +1,12 @@
+2006-01-12  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument1.java: New test.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument2.java: New test.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument3.java: New test.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument4.java: New test.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument5.java: New test.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument6.java: New test.
+	
 2006-01-12  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure7.java: New Test.
