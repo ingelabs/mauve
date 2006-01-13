@@ -1,3 +1,10 @@
+2006-01-13  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/attribute/standard,
+	* gnu/testlet/javax/print/attribute/standard/MediaSize: New directories.
+	* gnu/testlet/javax/print/attribute/standard/MediaSize/userClass.java: 
+	New test. 
+
 2006-01-13  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/text/SimpleAttributeSet/addAttribute.java: New file,
