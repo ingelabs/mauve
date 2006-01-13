@@ -1,3 +1,25 @@
+2006-01-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/addAttribute.java: New file,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/addAttributes.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/clone.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/constructors.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/containsAttribute.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/containsAttributes.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/copyAttributes.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/EMPTY.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/equals.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/getAttribute.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/getAttributeCount.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/getAttributeNames.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/getResolveParent.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/isDefined.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/isEmpty.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/isEqual.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/removeAttribute.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/removeAttributes.java: Likewise,
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/setResolveParent.java: Likewise.
+
 2006-01-12  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/TransferHandler/TransferActionConstructor: 
