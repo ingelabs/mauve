@@ -1,3 +1,11 @@
+2006-01-14  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/SimpleDoc/: New directory.
+	* gnu/testlet/javax/print/SimpleDoc/constructor.java,
+	* gnu/testlet/javax/print/SimpleDoc/getAttributes.java, 
+	* gnu/testlet/javax/print/SimpleDoc/getReaderForText.java,
+	* gnu/testlet/javax/print/SimpleDoc/getStreamForBytes.java: New tests.
+
 2006-01-13  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/attribute/standard,
