@@ -1,3 +1,12 @@
+2006-01-16  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/javax/security/auth/login/TestOfPR25202.java: New file.
+	* gnu/testlet/javax/security/auth/login/TestOfGnuConfiguration.java:
+	  New file.
+	* gnu/testlet/javax/security/auth/login/TestOfConfigurationParser.java:
+	  New file.
+	* gnu/testlet/javax/security/auth/login/DBLoginModule.java: New file.
+
 2006-01-14  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/SimpleDoc/: New directory.
