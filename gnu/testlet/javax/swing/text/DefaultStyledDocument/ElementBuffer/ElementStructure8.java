@@ -40,6 +40,7 @@ public class ElementStructure8 implements Testlet
   {
     try
       {
+        harness.checkPoint("Test 0");
         DefaultStyledDocument doc = new DefaultStyledDocument();
         Element root = doc.getDefaultRootElement();
         doc.insertString(0, "first line of text. \n", null);
@@ -71,6 +72,60 @@ public class ElementStructure8 implements Testlet
         harness.check(fourth.getEndOffset() == 66);
         
         
+        harness.checkPoint("Test 1");
+        doc = new DefaultStyledDocument();
+        root = doc.getDefaultRootElement();
+        doc.insertString(0, "first line of text. \n", null);
+        harness.check(root.getElementCount() == 2);
+        harness.check(root.getElement(0).getStartOffset() == 0);
+        harness.check(root.getElement(0).getEndOffset() == 21);
+        harness.check(root.getElement(1).getStartOffset() == 21);
+        harness.check(root.getElement(1).getEndOffset() == 22);
+        doc.insertString(21, "second line of text. \n ", null);
+        harness.check(root.getElementCount() == 3);
+        harness.check(root.getElement(0).getElementCount() == 1);
+        harness.check(root.getElement(1).getElementCount() == 1);
+        harness.check(root.getElement(2).getElementCount() == 2);
+
+        first = root.getElement(0).getElement(0);
+        harness.check(first.getStartOffset() == 0);
+        harness.check(first.getEndOffset() == 21);
+
+        second = root.getElement(1).getElement(0);
+        harness.check(second.getStartOffset() == 21);
+        harness.check(second.getEndOffset() == 43);
+
+        third = root.getElement(2).getElement(0);
+        harness.check(third.getStartOffset() == 43);
+        harness.check(third.getEndOffset() == 44);
+        
+        fourth = root.getElement(2).getElement(1);
+        harness.check(fourth.getStartOffset() == 44);
+        harness.check(fourth.getEndOffset() == 45);
+
+        
+        harness.checkPoint("Test 2");
+        doc = new DefaultStyledDocument();
+        root = doc.getDefaultRootElement();
+        doc.insertString(0, "first line of text.", null);
+        harness.check(root.getElementCount() == 1);
+        harness.check(root.getElement(0).getStartOffset() == 0);
+        harness.check(root.getElement(0).getEndOffset() == 20);
+        doc.insertString(5, "second line \n of text.", null);
+        harness.check(root.getElementCount() == 2);
+        harness.check(root.getElement(0).getElementCount() == 1);
+        harness.check(root.getElement(1).getElementCount() == 1);
+
+        first = root.getElement(0).getElement(0);
+        harness.check(first.getStartOffset() == 0);
+        harness.check(first.getEndOffset() == 18);
+
+        second = root.getElement(1).getElement(0);
+        harness.check(second.getStartOffset() == 18);
+        harness.check(second.getEndOffset() == 42);
+        
+        
+        harness.checkPoint("Test 3");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
         doc.insertString(0, "first line of text. \n", null);
@@ -106,7 +161,7 @@ public class ElementStructure8 implements Testlet
         harness.check(fifth.getStartOffset() == 67);
         harness.check(fifth.getEndOffset() == 68);
         
-        
+        harness.checkPoint("Test 4");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
         doc.insertString(0, "\n second line of text. \n third line of text. \n", null);
