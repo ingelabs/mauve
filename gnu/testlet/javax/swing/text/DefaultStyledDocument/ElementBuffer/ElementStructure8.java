@@ -87,8 +87,7 @@ public class ElementStructure8 implements Testlet
         harness.check(root.getElement(1).getStartOffset() == 21);
         harness.check(root.getElement(1).getEndOffset() == 22);
 
-
-        // Add another line of text with 2 new lines.
+        // Add another line of text with 3 new lines.
         doc.insertString(21, "\n second line of text. \n third line of text. \n", null);
         harness.check(root.getElementCount() == 5);
         harness.check(root.getElement(0).getElementCount() == 1);
@@ -115,10 +114,37 @@ public class ElementStructure8 implements Testlet
         Element fifth = root.getElement(4).getElement(0);
         harness.check(fifth.getStartOffset() == 67);
         harness.check(fifth.getEndOffset() == 68);
+        
+        doc = new DefaultStyledDocument();
+        root = doc.getDefaultRootElement();
+        
+        // Add  line of text with 2 new lines.
+        doc.insertString(0, "\n second line of text. \n third line of text. \n", null);
+        harness.check(root.getElementCount() == 4);
+        harness.check(root.getElement(0).getElementCount() == 1);
+        harness.check(root.getElement(1).getElementCount() == 1);
+        harness.check(root.getElement(2).getElementCount() == 1);
+        harness.check(root.getElement(3).getElementCount() == 1);
+
+        first = root.getElement(0).getElement(0);
+        harness.check(first.getStartOffset() == 0);
+        harness.check(first.getEndOffset() == 1);
+
+        second = root.getElement(1).getElement(0);
+        harness.check(second.getStartOffset() == 1);
+        harness.check(second.getEndOffset() == 24);
+
+        third = root.getElement(2).getElement(0);
+        harness.check(third.getStartOffset() == 24);
+        harness.check(third.getEndOffset() == 46);
+
+        fourth = root.getElement(3).getElement(0);
+        harness.check(fourth.getStartOffset() == 46);
+        harness.check(fourth.getEndOffset() == 47);
       }
     catch (Throwable t)
       {
-        harness.fail(t + " Exception caught!");
+        harness.fail(t.getCause() + " Exception caught!");
       }
   }
 }
