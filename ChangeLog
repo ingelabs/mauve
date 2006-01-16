@@ -1,5 +1,10 @@
 2006-01-16  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/TestSecurityManager2.java (TestSecurityManager2):
+	Remove a now-unnecessary workaround.
+
+2006-01-16  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/java/net/SocketPermission/implies.java: New test.
 
 2006-01-16  Raif S. Naffah  <raif@swiftdsl.com.au>
