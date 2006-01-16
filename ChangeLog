@@ -1,6 +1,11 @@
 2006-01-16  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure8.java:
+	Fixed Tags, removed FIXME.
+
+2006-01-16  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure8.java:
 	Added new checks.
 
 2006-01-16  Lillian Angel  <langel@redhat.com>
