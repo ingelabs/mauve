@@ -1,3 +1,8 @@
+2006-01-16  Pedro Izecksohn  <izecksohn@yahoo.com>
+
+	* gnu/testlet/org/w3c/dom/childNodesLength.java: New test.
+	* gnu/testlet/org/w3c/dom/test.xml: New data file.
+
 2006-01-16  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/TestSecurityManager2.java (TestSecurityManager2):
