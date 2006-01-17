@@ -34,7 +34,6 @@ public class childNodesLength implements Testlet
 {
 
   TestHarness harness;
-  boolean passed;
 
   private void checkNode (Node node)
   {
@@ -85,8 +84,6 @@ public class childNodesLength implements Testlet
 
     this.harness=harness;
 
-    passed=true;
-
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
     DocumentBuilder db = null;
@@ -128,15 +125,6 @@ public class childNodesLength implements Testlet
     }
 
     recurse (document.getChildNodes());
-
-    if (passed)
-    {
-      harness.check (true, "All Node kinds tested implement .getChildNodes().getLength() correctly.");
-    }
-    else
-    {
-      harness.fail ("Some Node kind does NOT implement .getChildNodes().getLength() correctly.");
-    }
 
   }
 
