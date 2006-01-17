@@ -35,8 +35,6 @@ public class implies implements Testlet
 	SocketPermission pi = new SocketPermission("localhost", makeAction(i));
 	SocketPermission pj = new SocketPermission("localhost", makeAction(j));
 
-	harness.checkPoint(pi.getActions() + " implies " + pj.getActions());
-	
 	harness.check(pi.implies(pj) == ((maybeAddResolve(i) & j) == j));
       }
     }
