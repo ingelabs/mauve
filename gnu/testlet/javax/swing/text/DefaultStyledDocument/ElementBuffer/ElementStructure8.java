@@ -40,6 +40,7 @@ public class ElementStructure8 implements Testlet
   {
     try
       {
+        /* TEST 0 *////////////////////////////////////////////////////////////
         harness.checkPoint("Test 0");
         DefaultStyledDocument doc = new DefaultStyledDocument();
         Element root = doc.getDefaultRootElement();
@@ -71,7 +72,7 @@ public class ElementStructure8 implements Testlet
         harness.check(fourth.getStartOffset() == 65);
         harness.check(fourth.getEndOffset() == 66);
         
-        
+        /* TEST 1 *////////////////////////////////////////////////////////////
         harness.checkPoint("Test 1");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
@@ -103,7 +104,7 @@ public class ElementStructure8 implements Testlet
         harness.check(fourth.getStartOffset() == 44);
         harness.check(fourth.getEndOffset() == 45);
 
-        
+        /* TEST 2 *////////////////////////////////////////////////////////////
         harness.checkPoint("Test 2");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
@@ -124,7 +125,7 @@ public class ElementStructure8 implements Testlet
         harness.check(second.getStartOffset() == 18);
         harness.check(second.getEndOffset() == 42);
         
-        
+        /* TEST 3 *////////////////////////////////////////////////////////////
         harness.checkPoint("Test 3");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
@@ -161,6 +162,7 @@ public class ElementStructure8 implements Testlet
         harness.check(fifth.getStartOffset() == 67);
         harness.check(fifth.getEndOffset() == 68);
         
+        /* TEST 4 *////////////////////////////////////////////////////////////
         harness.checkPoint("Test 4");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
@@ -187,6 +189,7 @@ public class ElementStructure8 implements Testlet
         harness.check(fourth.getStartOffset() == 46);
         harness.check(fourth.getEndOffset() == 47);
         
+        /* TEST 5 *////////////////////////////////////////////////////////////
         harness.checkPoint("Test 5");
         doc = new DefaultStyledDocument();
         root = doc.getDefaultRootElement();
