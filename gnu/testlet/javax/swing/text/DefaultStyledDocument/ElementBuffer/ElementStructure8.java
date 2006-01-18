@@ -186,6 +186,31 @@ public class ElementStructure8 implements Testlet
         fourth = root.getElement(3).getElement(0);
         harness.check(fourth.getStartOffset() == 46);
         harness.check(fourth.getEndOffset() == 47);
+        
+        harness.checkPoint("Test 5");
+        doc = new DefaultStyledDocument();
+        root = doc.getDefaultRootElement();
+        doc.insertString(0, "first line of text.", null);
+        harness.check(root.getElementCount() == 1);
+        harness.check(root.getElement(0).getStartOffset() == 0);
+        harness.check(root.getElement(0).getEndOffset() == 20);
+        doc.insertString(20, "\n third line of text.", null);
+        harness.check(root.getElementCount() == 3);
+        harness.check(root.getElement(0).getElementCount() == 1);
+        harness.check(root.getElement(1).getElementCount() == 1);
+        harness.check(root.getElement(2).getElementCount() == 1);
+
+        first = root.getElement(0).getElement(0);
+        harness.check(first.getStartOffset() == 0);
+        harness.check(first.getEndOffset() == 20);
+
+        second = root.getElement(1).getElement(0);
+        harness.check(second.getStartOffset() == 20);
+        harness.check(second.getEndOffset() == 21);
+
+        third = root.getElement(2).getElement(0);
+        harness.check(third.getStartOffset() == 21);
+        harness.check(third.getEndOffset() == 41);
       }
     catch (Throwable t)
       {
