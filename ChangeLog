@@ -1,3 +1,9 @@
+2006-01-18  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/Pattern/testdata1,
+	gnu/testlet/java/util/regex/Pattern/testdata2:
+	Moved some cases from testdata2 to testdata1.
+
 2006-01-17  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/implies.java: Remove a bit

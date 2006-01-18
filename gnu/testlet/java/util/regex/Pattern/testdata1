@@ -2507,3 +2507,436 @@ No match
     aaaaaaaaaaaaaa
 No match
 
+/^[W-c]+$/i
+    WXY_^abc
+ 0: WXY_^abc
+    wxy_^ABC
+ 0: wxy_^ABC
+
+/^[\x3f-\x5F]+$/i
+    WXY_^abc
+ 0: WXY_^abc
+    wxy_^ABC
+ 0: wxy_^ABC
+
+/\x5c/
+    \\
+ 0: \
+
+/\x20Z/
+    the Zoo
+ 0:  Z
+    *** Failers
+No match
+    Zulu
+No match
+
+/^[W-\]46]/
+    W46]789
+ 0: W
+    Wall
+ 0: W
+    Zebra
+ 0: Z
+    Xylophone
+ 0: X
+    42
+ 0: 4
+    [abcd]
+ 0: [
+    ]abcd[
+ 0: ]
+    \\backslash
+ 0: \
+    *** Failers
+No match
+    -46]789
+No match
+    well
+No match
+
+/a(?-i)b/i
+    ab
+ 0: ab
+    Ab
+ 0: Ab
+    *** Failers
+No match
+    aB
+No match
+    AB
+No match
+
+/(a(?i)b)c/
+    abc
+ 0: abc
+ 1: ab
+    aBc
+ 0: aBc
+ 1: aB
+    *** Failers
+No match
+    abC
+No match
+    aBC
+No match
+    Abc
+No match
+    ABc
+No match
+    ABC
+No match
+    AbC
+No match
+
+/a(?i:b)c/
+    abc
+ 0: abc
+    aBc
+ 0: aBc
+    *** Failers
+No match
+    ABC
+No match
+    abC
+No match
+    aBC
+No match
+
+/a(?i:b)*c/
+    aBc
+ 0: aBc
+    aBBc
+ 0: aBBc
+    *** Failers
+No match
+    aBC
+No match
+    aBBC
+No match
+
+/a(?=b(?i)c)\w\wd/
+    abcd
+ 0: abcd
+    abCd
+ 0: abCd
+    *** Failers
+No match
+    aBCd
+No match
+    abcD
+No match
+
+/(?=a(?i)b)\w\wc/
+    abc
+ 0: abc
+    aBc
+ 0: aBc
+    *** Failers
+No match
+    Ab
+No match
+    abC
+No match
+    aBC
+No match
+
+/(abc|)+/
+    abc
+ 0: abc
+ 1: 
+    abcabc
+ 0: abcabc
+ 1: 
+    abcabcabc
+ 0: abcabcabc
+ 1: 
+    xyz
+ 0: 
+ 1: 
+
+/(?i:saturday|sunday)/
+    saturday
+ 0: saturday
+    sunday
+ 0: sunday
+    Saturday
+ 0: Saturday
+    Sunday
+ 0: Sunday
+    SATURDAY
+ 0: SATURDAY
+    SUNDAY
+ 0: SUNDAY
+    SunDay
+ 0: SunDay
+
+/(a(?i)bc|BB)x/
+    abcx
+ 0: abcx
+ 1: abc
+    aBCx
+ 0: aBCx
+ 1: aBC
+    bbx
+ 0: bbx
+ 1: bb
+    BBx
+ 0: BBx
+ 1: BB
+    *** Failers
+No match
+    abcX
+No match
+    aBCX
+No match
+    bbX
+No match
+    BBX
+No match
+
+/^([ab](?i)[cd]|[ef])/
+    ac
+ 0: ac
+ 1: ac
+    aC
+ 0: aC
+ 1: aC
+    bD
+ 0: bD
+ 1: bD
+    elephant
+ 0: e
+ 1: e
+    Europe
+ 0: E
+ 1: E
+    frog
+ 0: f
+ 1: f
+    France
+ 0: F
+ 1: F
+    *** Failers
+No match
+    Africa
+No match
+
+/^(ab|a(?i)[b-c](?m-i)d|x(?i)y|z)/
+    ab
+ 0: ab
+ 1: ab
+    aBd
+ 0: aBd
+ 1: aBd
+    xy
+ 0: xy
+ 1: xy
+    xY
+ 0: xY
+ 1: xY
+    zebra
+ 0: z
+ 1: z
+    Zambesi
+ 0: Z
+ 1: Z
+    *** Failers
+No match
+    aCD
+No match
+    XY
+No match
+
+/(?:(?i)a)b/
+    ab
+ 0: ab
+
+/((?i)a)b/
+    ab
+ 0: ab
+ 1: a
+
+/(?:(?i)a)b/
+    Ab
+ 0: Ab
+
+/((?i)a)b/
+    Ab
+ 0: Ab
+ 1: A
+
+/(?:(?i)a)b/
+    *** Failers
+No match
+    cb
+No match
+    aB
+No match
+
+/((?i)a)b/
+
+/(?i:a)b/
+    ab
+ 0: ab
+
+/((?i:a))b/
+    ab
+ 0: ab
+ 1: a
+
+/(?i:a)b/
+    Ab
+ 0: Ab
+
+/((?i:a))b/
+    Ab
+ 0: Ab
+ 1: A
+
+/(?i:a)b/
+    *** Failers
+No match
+    aB
+No match
+    aB
+No match
+
+/((?i:a))b/
+
+/(?:(?-i)a)b/i
+    ab
+ 0: ab
+
+/((?-i)a)b/i
+    ab
+ 0: ab
+ 1: a
+
+/(?:(?-i)a)b/i
+    aB
+ 0: aB
+
+/((?-i)a)b/i
+    aB
+ 0: aB
+ 1: a
+
+/(?:(?-i)a)b/i
+    *** Failers
+No match
+    aB
+ 0: aB
+    Ab
+No match
+
+/((?-i)a)b/i
+
+/(?:(?-i)a)b/i
+    aB
+ 0: aB
+
+/((?-i)a)b/i
+    aB
+ 0: aB
+ 1: a
+
+/(?:(?-i)a)b/i
+    *** Failers
+No match
+    Ab
+No match
+    AB
+No match
+
+/((?-i)a)b/i
+
+/(?-i:a)b/i
+    ab
+ 0: ab
+
+/((?-i:a))b/i
+    ab
+ 0: ab
+ 1: a
+
+/(?-i:a)b/i
+    aB
+ 0: aB
+
+/((?-i:a))b/i
+    aB
+ 0: aB
+ 1: a
+
+/(?-i:a)b/i
+    *** Failers
+No match
+    AB
+No match
+    Ab
+No match
+
+/((?-i:a))b/i
+
+/(?-i:a)b/i
+    aB
+ 0: aB
+
+/((?-i:a))b/i
+    aB
+ 0: aB
+ 1: a
+
+/(?-i:a)b/i
+    *** Failers
+No match
+    Ab
+No match
+    AB
+No match
+
+/((?-i:a))b/i
+
+/((?-i:a.))b/i
+    *** Failers
+No match
+    AB
+No match
+    a\nB
+No match
+
+/^(?:a?b?)*$/
+    *** Failers
+No match
+    dbcb
+No match
+    a--
+No match
+
+/(?i)AB(?-i)C/
+    XabCY
+ 0: abC
+    *** Failers
+No match
+    XabcY
+No match
+
+/((?i)AB(?-i)C|D)E/
+    abCE
+ 0: abCE
+ 1: abC
+    DE
+ 0: DE
+ 1: D
+    *** Failers
+No match
+    abcE
+No match
+    abCe
+No match
+    dE
+No match
+    De
+No match
+
