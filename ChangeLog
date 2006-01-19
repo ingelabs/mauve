@@ -1,3 +1,26 @@
+2006-01-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/low/Buffer/Buffer_Test.java: Added 'GNU' tag,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/low/Constants/Constants_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/low/ReaderTokenizer/ReaderTokenizer_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/AttributeList_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/DTD_test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Element_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Entity_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/HTML_parsing.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/HTML_randomTable.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/HTML_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/parameterDefaulter_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Parser_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/ParserEntityResolverTest.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/ParserTest.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/supplementaryNotifications.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/TagElement_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/TestCase.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Text.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/textPreProcessor_Test.java: Likewise,
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Token_locations.java: Likewise.
+
 2006-01-19  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/argument.java: New test.

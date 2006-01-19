@@ -1,6 +1,6 @@
-// Tags: JDK1.2 
+// Tags: JDK1.2 GNU
 
-// Copyright (C) 2005 Audrius Meskauskas <audriusa@bluewin.ch>
+// Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
 // This file is part of Mauve.
 
@@ -16,15 +16,14 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 
 package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import gnu.testlet.gnu.javax.swing.text.html.parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

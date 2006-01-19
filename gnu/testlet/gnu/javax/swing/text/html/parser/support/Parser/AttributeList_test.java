@@ -1,6 +1,6 @@
-// Tags: JDK1.2 
+// Tags: JDK1.2 GNU
 
-// Copyright (C) 2005 Audrius Meskauskas <audriusa@bluewin.ch>
+// Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
 // This file is part of Mauve.
 
@@ -26,7 +26,6 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.text.html.parser.AttributeList;
-import gnu.testlet.gnu.javax.swing.text.html.parser.*;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)

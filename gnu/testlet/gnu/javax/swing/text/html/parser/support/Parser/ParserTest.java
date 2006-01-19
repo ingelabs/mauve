@@ -16,16 +16,13 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 
 package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
 
-import gnu.javax.swing.text.html.parser.support.Parser;
-
 import java.io.PrintStream;
-
 import java.util.Enumeration;
 
 import javax.swing.text.AttributeSet;

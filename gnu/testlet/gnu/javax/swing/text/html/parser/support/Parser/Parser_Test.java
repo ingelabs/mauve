@@ -16,14 +16,13 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 
 package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
 
 import java.io.StringReader;
-
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.TreeSet;
@@ -33,9 +32,7 @@ import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.HTMLEditorKit.ParserCallback;
 import javax.swing.text.html.parser.ParserDelegator;
-import javax.swing.text.html.parser.TagElement;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
