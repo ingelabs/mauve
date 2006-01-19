@@ -1,5 +1,9 @@
 2006-01-19  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/net/SocketPermission/argument.java: New test.
+
+2006-01-19  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/java/net/SocketPermission/implies.java: Add checks
 	for ports and (minimally) for hosts.
 
