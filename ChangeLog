@@ -1,3 +1,8 @@
+2006-01-19  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/net/SocketPermission/implies.java: Add checks
+	for ports and (minimally) for hosts.
+
 2006-01-16  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure8.java:
