@@ -1,4 +1,4 @@
-2006-01-18  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+2006-01-21  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/util/regex/CharacterClasses.java:
 	Commented out a case of "[[]" which ceased to be valid.
