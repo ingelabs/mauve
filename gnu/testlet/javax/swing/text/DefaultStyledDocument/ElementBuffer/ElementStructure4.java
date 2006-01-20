@@ -75,7 +75,7 @@ public class ElementStructure4 implements Testlet
       }
     catch (Throwable t)
       {
-        harness.debug(t);
+        harness.fail(t.toString());
       }
   }
 }
