@@ -58,7 +58,11 @@ public class CharacterClasses implements Testlet
     test(".", '.', '^');
     test("*", '*', '$');
     test("$", '$', '*');
-    test("[", '[', ']');
+    // Sun's JDK does not accept the traditional expression "[[]"
+    // maybe because it must support new expressions such as "[a-d[m-p]]"
+    // and "[a-z&&[^m-p]]".  So the following test has been commented out.
+    // test("[", '[', ']');
+    test("\\[", '[', ']');
     test("\\]", ']', '[');
 
     helper.testNotPattern("[]");

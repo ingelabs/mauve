@@ -1,3 +1,8 @@
+2006-01-18  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/CharacterClasses.java:
+	Commented out a case of "[[]" which ceased to be valid.
+
 2006-01-20  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/DefaultFormatter/getValueClass.java:
