@@ -22,6 +22,8 @@ package gnu.testlet.java.awt.Container;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
@@ -95,6 +97,32 @@ public class addImpl implements Testlet
     componentAddedCalled = false;
     c.add(new Component(){});
     harness.check(componentAddedCalled, true);
+
+    // check that LayoutManager.addLayoutComponent() is called
+    // with non-null name.
+    Container two = new Container();
+    final TestHarness transfer = harness;
+    two.setLayout(new LayoutManager()
+      {
+	TestHarness harness = transfer;
+	Dimension size = new Dimension();
+	public void removeLayoutComponent(Component comp) {}
+	public java.awt.Dimension preferredLayoutSize(Container cont)
+	{
+	  return size;
+	}
+	public Dimension minimumLayoutSize(Container cont)
+	{
+	  return size;
+	}
+	public void layoutContainer(Container container) {}
+	public void addLayoutComponent(String name, Component comp)
+	{
+	  boolean pass = (name != null);
+	  harness.check(pass, true);
+	}
+      });
+    two.add(new Component() {});
   }
 
 }
