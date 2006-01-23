@@ -1,3 +1,21 @@
+2006-01-23  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure1.java: Added more detailed tests.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure2.java: Removed this test because it is a duplicate of 
+	ElementStructure1.java.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure3.java: Added more detailed tests.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure4.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure5.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure6.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure7.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure8.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument1.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument2.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument3.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument4.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument5.java: Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument6.java: Likewise.
+
 2006-01-23  David Gilbert  <david.gilbert@object-refinery.com>
 
  	* gnu/testlet/javax/swing/text/Segment/clone.java: New test,

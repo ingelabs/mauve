@@ -21,26 +21,249 @@
 
 package gnu.testlet.javax.swing.text.DefaultStyledDocument.ElementBuffer;
 
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.Element;
+import javax.swing.text.StyledDocument;
+
 public class StyledDocument4 extends DefaultStyledDocument implements Testlet
 {
+  public void test(TestHarness harness) 
+  {
+    h2 = harness;
+    StyledDocument doc = new StyledDocument4();
+    try
+      {
+        doc.insertString(0, "aaaaaaaaa\nbbbbbbbbb", null);
+        doc.insertString(5, "\nN", null);
+      }
+    catch (Exception ex)
+      {
+        // ex.printStackTrace();
+        harness.debug(ex);
+      }
+    catch (AssertionError e)
+      {
+        // e.printStackTrace();
+        harness.debug(e);
+      }
+    
+    // printElements(doc.getDefaultRootElement(), 0);
+  }
+  
   // A variable to keep track of the number of times text has been inserted
   static int numInserts = 0;
 
   static TestHarness h2;
-
+  
+  static int numLeaves = 0;
+  static int numBranches = 0;
+  
   // Creates a new StyledDocument4 using an ElementBuffer2 as the buffer
   public StyledDocument4()
   {
     super();
     buffer = new ElementBuffer2(createDefaultRoot());
   }
+  
+  // Overriding this method allows us to check that the right number
+  // of newLines was encountered and that the event has the proper
+  // offset and length.
+  protected void insertUpdate(DefaultDocumentEvent ev, AttributeSet attr)
+  {
+    int l = ev.getLength();
+    int o = ev.getOffset();
+    if (numInserts == 0)
+      {
+        h2.checkPoint("first doc event");
+        h2.check(o == 0);
+        h2.check(l == 19);
+      }
+    else if (numInserts == 1)
+      {
+        h2.checkPoint("second doc event");
+        h2.check(o == 5);
+        h2.check(l == 2);
+      }
+    else
+      h2.fail("too many calls to DefaultStyledDocument.insertUpdate");
+
+    super.insertUpdate(ev, attr);
+  }
+
+  // Overriding this method allows us to check that the proper LeafElements
+  // are being created.
+  protected Element createLeafElement(Element parent, 
+                                      AttributeSet a, int p0, int p1)
+  {
+    numLeaves++;
+    if (numLeaves== 1)
+      {
+        h2.checkPoint ("create first leaf element");
+        h2.check (p0 == 0);
+        h2.check (p1 == 10);
+        try
+        {
+          h2.check (parent.getStartOffset() == 0);
+          h2.check (parent.getEndOffset() == 20);
+        }
+        catch (Exception e)
+        {
+          // I put 2 fails here so that the total number of tests will remain
+          // the same whether we pass or fail these tests.
+          h2.fail ("parent Element should have children, but has none.");
+          h2.fail ("parent Element should have children, but has none.");
+        }
+        h2.check (a.getAttributeCount() == 0);
+      }
+    else if (numLeaves == 2)
+      {
+        h2.checkPoint ("create second leaf element");
+        h2.check (p0 == 19);
+        h2.check (p1 == 20);
+        h2.check(parent.getElementCount() == 0);
+        h2.check (a.getAttributeCount() == 0);
+      }
+    else if (numLeaves == 3)
+      {
+        h2.checkPoint ("create third leaf element");
+        h2.check (p0 == 10);
+        h2.check (p1 == 20);
+        try
+        {
+          h2.check (parent.getStartOffset() == 19);
+          h2.check (parent.getEndOffset() == 20);
+        }
+        catch (Exception e)
+        {
+          // I put 2 fails here so that the total number of tests will remain
+          // the same whether we pass or fail these tests.
+          h2.fail ("branch element should have children, but has none");
+          h2.fail ("branch element should have children, but has none");
+        }
+        h2.check (a.getAttributeCount() == 0);
+      }
+    else if (numLeaves == 4)
+      {
+        h2.checkPoint ("create fourth leaf element");
+        h2.check (p0 == 0);
+        h2.check (p1 == 6);
+        try
+        {
+          h2.check (parent.getStartOffset() == 0);
+          h2.check (parent.getEndOffset() == 12);
+        }
+        catch (Exception e)
+        {
+          // I put 2 fails here so that the total number of tests will remain
+          // the same whether we pass or fail these tests.
+          h2.fail ("branch element should have children, but has none");
+          h2.fail ("branch element should have children, but has none");
+        }
+        h2.check (a.getAttributeCount() == 0);
+      }
+    else if (numLeaves == 5)
+      {
+        h2.checkPoint ("create fifth leaf element");
+        h2.check (p0 == 7);
+        h2.check (p1 == 12);
+        h2.check (parent.getElementCount() == 0);
+        h2.check (a.getAttributeCount() == 0);
+      }
+    else if (numLeaves == 6)
+      {
+        h2.checkPoint ("create sixth leaf element");
+        h2.check (p0 == 6);
+        h2.check (p1 == 12);
+        try
+        {
+          h2.check (parent.getStartOffset() == 7);
+          h2.check (parent.getEndOffset() == 12);
+        }
+        catch (Exception e)
+        {
+          // I put 2 fails here so that the total number of tests will remain
+          // the same whether we pass or fail these tests.
+          h2.fail ("branch element should have children, but has none");
+          h2.fail ("branch element should have children, but has none");
+        }
+        h2.check (a.getAttributeCount() == 0);
+      }
+    else
+      h2.fail ("too many leaf elements created");
+    return super.createLeafElement(parent, a, p0, p1);
+  }
+  
+  // Overriding this method allows us to check that the proper BranchElements
+  // are being created.
+  protected Element createBranchElement(Element parent,
+                                        AttributeSet a)
+  {
+    numBranches ++;
+    if (numBranches == 1)
+      {
+        h2.checkPoint("create first branch element");
+        h2.check(parent.getStartOffset() == 0);
+        h2.check(parent.getEndOffset() == 20);
+        h2.check(a.getAttributeCount() == 0);
+      }
+    else if (numBranches == 2)
+      {
+        h2.checkPoint("create second branch element");
+        h2.check(parent.getStartOffset() == 0);
+        h2.check(parent.getEndOffset() == 22);
+        h2.check(a.getAttributeCount() == 0);
+      }
+
+    else
+      h2.fail ("too many branch elements created");
+    return super.createBranchElement(parent, a);
+  }
+  
+  // Prints some spaces.
+  public static void pad(int pad)
+  {
+    for (int i = 0; i < pad; i++)
+      System.out.print(" ");
+  }
+
+  // Displays the Element hierarchy starting with <code>start</code>.
+  // This is just debugging code.
+  public static void printElements (Element start, int pad)
+  {
+    pad(pad);
+    if (pad == 0)
+      System.out.println ("ROOT ELEMENT ("+start.getStartOffset()+", "
+                          + start.getEndOffset()+")");
+    else if (start instanceof AbstractDocument.BranchElement)
+      System.out.println ("BranchElement ("+start.getStartOffset()+", "
+                          + start.getEndOffset()+")");
+    else
+      {
+        try
+          {
+            System.out.println ("LeafElement ("+start.getStartOffset()+", "
+                                + start.getEndOffset()+"): "
+                                + start.getAttributes().getAttributeCount() 
+                                + ": "
+                                + start.getDocument().
+                                getText(start.getStartOffset(), 
+                                        start.getEndOffset() - 
+                                        start.getStartOffset()));
+          }
+        catch (BadLocationException ble)
+          {
+          }
+      }
+    for (int i = 0; i < start.getElementCount(); i ++)
+      printElements (start.getElement(i), pad+3);
+  }
+
 
   // A class to be the buffer of the styled document that also prints out some 
   // debugging info and checks that internal structure is correct
@@ -57,7 +280,8 @@ public class StyledDocument4 extends DefaultStyledDocument implements Testlet
       if (numInserts == 1)
         {
           h2.check (data[0].getType() == ElementSpec.ContentType);
-          h2.check (data[0].getDirection() == ElementSpec.JoinPreviousDirection);
+          h2.check 
+            (data[0].getDirection() == ElementSpec.JoinPreviousDirection);
           h2.check (data[0].getOffset() == 0);
           h2.check (data[0].getLength() == 10);
 
@@ -67,7 +291,8 @@ public class StyledDocument4 extends DefaultStyledDocument implements Testlet
           h2.check (data[1].getLength() == 0);
 
           h2.check (data[2].getType() == ElementSpec.StartTagType);
-          h2.check (data[2].getDirection() == ElementSpec.JoinFractureDirection);
+          h2.check 
+            (data[2].getDirection() == ElementSpec.JoinFractureDirection);
           h2.check (data[2].getOffset() == 0);
           h2.check (data[2].getLength() == 0);
 
@@ -79,7 +304,8 @@ public class StyledDocument4 extends DefaultStyledDocument implements Testlet
       else if (numInserts == 2)
         {
           h2.check (data[0].getType() == ElementSpec.ContentType);
-          h2.check (data[0].getDirection() == ElementSpec.JoinPreviousDirection);
+          h2.check 
+            (data[0].getDirection() == ElementSpec.JoinPreviousDirection);
           h2.check (data[0].getOffset() == 0);
           h2.check (data[0].getLength() == 1);
           
@@ -89,7 +315,8 @@ public class StyledDocument4 extends DefaultStyledDocument implements Testlet
           h2.check (data[1].getLength() == 0);
 
           h2.check (data[2].getType() == ElementSpec.StartTagType);
-          h2.check (data[2].getDirection() == ElementSpec.JoinFractureDirection);
+          h2.check 
+            (data[2].getDirection() == ElementSpec.JoinFractureDirection);
           h2.check (data[2].getOffset() == 0);
           h2.check (data[2].getLength() == 0);
 
@@ -102,18 +329,5 @@ public class StyledDocument4 extends DefaultStyledDocument implements Testlet
     }
   }
   
-  public void test(TestHarness harness) 
-  {
-    h2 = harness;
-    StyledDocument doc = new StyledDocument4();
-    try
-      {
-        doc.insertString(0, "aaaaaaaaa\nbbbbbbbbb", null);
-        doc.insertString(5, "\nN", null);
-      }
-    catch (BadLocationException ex)
-      {
-        ex.printStackTrace();
-      }     
-  }
+
 }
