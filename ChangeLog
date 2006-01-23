@@ -1,3 +1,20 @@
+2006-01-23  David Gilbert  <david.gilbert@object-refinery.com>
+
+ 	* gnu/testlet/javax/swing/text/Segment/clone.java: New test,
+ 	* gnu/testlet/javax/swing/text/Segment/constructors.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/current.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/first.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/getBeginIndex.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/getEndIndex.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/getIndex.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/isPartialReturn.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/last.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/next.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/previous.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/setIndex.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/setPartialReturn.java: Likewise,
+ 	* gnu/testlet/javax/swing/text/Segment/toString.java: Likewise.
+
 2006-01-22  James Damour  <James.Damour@corp.request.com>
 
 	* java/awt/Container/addImpl.java
