@@ -215,23 +215,25 @@ public class insertString implements Testlet
     }
     harness.check(gc.length(), 7);
     
-    // insert at index of last character + 1 - this seems to be OK for 
-    // GapContent, but not StringContent...
+    // insert at index of last character + 1 - the API docs say this should
+    // raise a BadLocationException, but JDK1.5.0_06 doesn't (I reported this
+    // to Sun as a bug in their implementation, will add a bug ID if one is assigned)
+    pass = false;
     try
     {
       gc.insertString(7, "XYZ");
     }
     catch (BadLocationException e)
     {
-      // ignore
+      pass = true;
     }
-    harness.check(gc.length(), 10);
+    harness.check(pass);
 
     // insert at index of last character + 2 
     pass = false;
     try
     {
-      gc.insertString(11, "XYZ");
+      gc.insertString(gc.length() + 1, "XYZ");
     }
     catch (BadLocationException e)
     {
@@ -240,6 +242,7 @@ public class insertString implements Testlet
     harness.check(pass);
 
     // insert empty string
+    int length = gc.length();
     try
     {
       gc.insertString(0, "");
@@ -248,7 +251,7 @@ public class insertString implements Testlet
     {
       // ignore
     }
-    harness.check(gc.length(), 10);
+    harness.check(gc.length(), length);
     
     // insert null string
     pass = false;
@@ -264,22 +267,7 @@ public class insertString implements Testlet
     {
       pass = true;
     }
-    harness.check(pass);
-    
-    // the following can be done with GapContent but not with StringContent
-    harness.checkPoint("anomaly");
-    GapContent gc2 = new GapContent();
-    try
-    {
-      harness.check(gc2.getString(0, 1).equals("\n"));
-      gc2.insertString(1, "X");
-      harness.check(gc2.getString(0, 2).equals("\nX"));      
-    }
-    catch (BadLocationException e)
-    {
-      harness.fail(e.toString());
-    }
-    
+    harness.check(pass);    
   }
 
 }

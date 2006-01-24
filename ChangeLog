@@ -1,5 +1,10 @@
 2006-01-24  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/text/GapContent/insertString.java
+	(testGeneral): Corrected test.
+
+2006-01-24  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/text/GapContent/constructors.java: New tests,
 	* gnu/testlet/javax/swing/text/GapContent/createPosition.java: Likewise,
 	* gnu/testlet/javax/swing/text/GapContent/getChars.java: Likewise,
