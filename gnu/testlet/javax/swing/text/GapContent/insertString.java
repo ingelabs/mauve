@@ -1,6 +1,7 @@
 // Tags: JDK1.2
 
 // Copyright (C) 2005 Roman Kennke <kennke@aicas.com>
+// Copyright (C) 2006 David Gilbert  <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -16,16 +17,16 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.text.GapContent;
 
-import javax.swing.text.BadLocationException;
-import javax.swing.text.GapContent;
-
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+
+import javax.swing.text.BadLocationException;
+import javax.swing.text.GapContent;
 
 /**
  * Tests if GapContent.insertString works correctly.
@@ -65,6 +66,7 @@ public class insertString implements Testlet
     testBiggerInsert(harness);
     testBigInsert(harness);
     testComplexInsert(harness);
+    testGeneral(harness);
   }
 
   /**
@@ -169,4 +171,115 @@ public class insertString implements Testlet
     harness.check(c.getTestGapStart(), gapStart);
     harness.check(c.getTestGapEnd(), gapEnd);
   }
+  
+  /**
+   * The same tests that I added for StringContent.java.
+   */
+  public void testGeneral(TestHarness harness)      
+  {
+    harness.checkPoint("testGeneral()");
+    
+    GapContent gc = new GapContent();
+    // regular insert
+    try
+    {
+      gc.insertString(0, "ABC");
+      // ignoring undo/redo here - see insertUndo.java
+    }
+    catch (BadLocationException e)
+    {
+      // ignore - checks below will fail if this happens
+    }
+    harness.check(gc.length(), 4);
+    
+    // insert at location before start
+    boolean pass = false;
+    try
+    {
+      gc.insertString(-1, "XYZ");
+    }
+    catch (BadLocationException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // insert at index of last character - this is OK
+    try
+    {
+      gc.insertString(3, "XYZ");
+    }
+    catch (BadLocationException e)
+    {
+      // ignore
+    }
+    harness.check(gc.length(), 7);
+    
+    // insert at index of last character + 1 - this seems to be OK for 
+    // GapContent, but not StringContent...
+    try
+    {
+      gc.insertString(7, "XYZ");
+    }
+    catch (BadLocationException e)
+    {
+      // ignore
+    }
+    harness.check(gc.length(), 10);
+
+    // insert at index of last character + 2 
+    pass = false;
+    try
+    {
+      gc.insertString(11, "XYZ");
+    }
+    catch (BadLocationException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+
+    // insert empty string
+    try
+    {
+      gc.insertString(0, "");
+    }
+    catch (BadLocationException e)
+    {
+      // ignore
+    }
+    harness.check(gc.length(), 10);
+    
+    // insert null string
+    pass = false;
+    try
+    {
+      gc.insertString(0, null);
+    }
+    catch (BadLocationException e)
+    {
+      // ignore
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // the following can be done with GapContent but not with StringContent
+    harness.checkPoint("anomaly");
+    GapContent gc2 = new GapContent();
+    try
+    {
+      harness.check(gc2.getString(0, 1).equals("\n"));
+      gc2.insertString(1, "X");
+      harness.check(gc2.getString(0, 2).equals("\nX"));      
+    }
+    catch (BadLocationException e)
+    {
+      harness.fail(e.toString());
+    }
+    
+  }
+
 }
