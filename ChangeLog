@@ -1,3 +1,18 @@
+2006-01-24  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/text/StringContent/BadLocationExceptionTest.java: Updated header and imports,
+	* gnu/testlet/javax/swing/text/StringContent/constructors.java: New tests,
+	* gnu/testlet/javax/swing/text/StringContent/createPosition.java: Likewise,
+	* gnu/testlet/javax/swing/text/StringContent/getChars.java: Likewise,
+	* gnu/testlet/javax/swing/text/StringContent/getString.java: Likewise,
+	* gnu/testlet/javax/swing/text/StringContent/insertString.java: Likewise,
+	* gnu/testlet/javax/swing/text/StringContent/insertUndo.java: Updated header and imports,
+	* gnu/testlet/javax/swing/text/StringContent/length.java: New tests,
+	* gnu/testlet/javax/swing/text/StringContent/remove.java: New tests,
+	* gnu/testlet/javax/swing/text/StringContent/removeUndo.java: Updated header and imports,
+	* gnu/testlet/javax/swing/text/StringContent/stickyPosition.java: Likewise,
+	* gnu/testlet/javax/swing/text/StringContent/StringContentTest.java: Likewise.
+
 2006-01-23  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure1.java: Added more detailed tests.
