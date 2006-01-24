@@ -1,6 +1,6 @@
 2006-01-24  Gary Benson <gbenson@redhat.com>
 
-	* gnu/testlet/java/net/SocketPermission/argument.java: New test.
+	* gnu/testlet/java/net/SocketPermission/serialization.java: New test.
 
 2006-01-24  David Gilbert  <david.gilbert@object-refinery.com>
 
