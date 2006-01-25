@@ -1,3 +1,15 @@
+2006-01-25  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/text/PlainDocument/createPosition.java: New tests,
+	* gnu/testlet/javax/swing/text/PlainDocument/getLength.java: Likewise,
+	* gnu/testlet/javax/swing/text/PlainDocument/getRootElements.java: Likewise,
+	* gnu/testlet/javax/swing/text/PlainDocument/getText.java: Likewise,
+	* gnu/testlet/javax/swing/text/PlainDocument/insertString.java
+	(test): Call new test methods,
+	(testArguments): New method,
+	(testPositions): Likewise,
+	* gnu/testlet/javax/swing/text/PlainDocument/remove.java: New tests.
+
 2006-01-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/text/GapContent/insertString.java
