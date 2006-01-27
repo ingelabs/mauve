@@ -1,5 +1,10 @@
 2006-01-27  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/lang/Runtime/security.java: Ignore the
+	modifyThread check that Classpath's reference VMProcess calls.
+
+2006-01-27  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/java/lang/Runtime/security.java: New test.
 
 2006-01-27  Gary Benson <gbenson@redhat.com>
