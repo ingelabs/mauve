@@ -1,5 +1,9 @@
 2006-01-27  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/lang/Runtime/security.java: New test.
+
+2006-01-27  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/TestSecurityManager2.java: Added the ability to
 	abort tests when the permission is checked, to allow us to test
 	things that we don't actually want doing.
