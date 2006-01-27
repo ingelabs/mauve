@@ -1,3 +1,9 @@
+2006-01-27  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/TestSecurityManager2.java: Added the ability to
+	abort tests when the permission is checked, to allow us to test
+	things that we don't actually want doing.
+
 2006-01-27  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/javax/crypto/jce/TestOfPR25981.java: New test.

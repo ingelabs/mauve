@@ -35,6 +35,10 @@ public class TestSecurityManager2 extends SecurityManager
 		     new PropertyPermission("*", "read")};
   private boolean[] checked = new boolean[0];
 
+  private boolean throwOnSuccess = false;
+
+  public static final String successMessage = "Test complete, aborting";
+
   private final TestHarness harness;
 
   public TestSecurityManager2(TestHarness harness) {
@@ -56,6 +60,7 @@ public class TestSecurityManager2 extends SecurityManager
 
   public void uninstall()
   {
+    throwOnSuccess = false;
     mayCheck = new Permission[]{new RuntimePermission("setSecurityManager")};
     System.setSecurityManager(oldManager);
   }
@@ -75,9 +80,18 @@ public class TestSecurityManager2 extends SecurityManager
   }
 
   public void prepareChecks(Permission[] mustCheck, Permission[] mayCheck) {
+    prepareChecks(mustCheck, mayCheck, false);
+  }
+      
+  public void prepareChecks(Permission[] mustCheck,
+			    Permission[] mayCheck,
+			    boolean throwOnSuccess) {
     this.mayCheck = mayCheck;
     this.mustCheck = mustCheck;
     this.checked = new boolean[mustCheck.length];
+    this.throwOnSuccess = throwOnSuccess;
+    if (throwOnSuccess && mustCheck.length != 1)
+      throw new IllegalArgumentException();
   }
 
   public void checkAllChecked(TestHarness harness) {
@@ -111,6 +125,9 @@ public class TestSecurityManager2 extends SecurityManager
       }
     }
 
+    if (matched && throwOnSuccess)
+      throw new SecurityException(successMessage);
+    
     expectedPerms.append(" May check:");
     if (!matched) {
       for (int i = 0; i < mayCheck.length; i++) {
