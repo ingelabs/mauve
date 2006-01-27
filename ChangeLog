@@ -1,3 +1,95 @@
+2006-01-28  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/javax/crypto/sasl/TestOfClientFactory.java: New file.
+	* gnu/testlet/javax/crypto/sasl/TestOfServerFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/sasl/srp/TestOfSRPAuthInfoProvider.java:
+	  Likewise.
+	* gnu/testlet/javax/crypto/sasl/srp/TestOfSRPPasswordFile.java: Likewise.
+	* gnu/testlet/javax/crypto/sasl/srp/TestOfSRPPrimitives.java: Likewise.
+	* gnu/testlet/javax/crypto/prng/TestOfARCFour.java: Likewise.
+	* gnu/testlet/javax/crypto/prng/TestOfICMGenerator.java: Likewise.
+	* gnu/testlet/javax/crypto/prng/TestOfPBKDF2.java: Likewise.
+	* gnu/testlet/javax/crypto/prng/TestOfPRNGFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/pad/TestOfPadFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/pad/TestOfPKCS7.java: Likewise.
+	* gnu/testlet/javax/crypto/pad/TestOfTBC.java: Likewise.
+	* gnu/testlet/javax/crypto/mode/TestOfCBC.java: Likewise.
+	* gnu/testlet/javax/crypto/mode/TestOfCFB.java: Likewise.
+	* gnu/testlet/javax/crypto/mode/TestOfEAX.java: Likewise.
+	* gnu/testlet/javax/crypto/mode/TestOfECB.java: Likewise.
+	* gnu/testlet/javax/crypto/mode/TestOfModeFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/mode/TestOfOFB.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfHMac.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfHMacFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfHMacMD5.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfHMacSha1.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfMacFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfOMAC.java: Likewise.
+	* gnu/testlet/javax/crypto/mac/TestOfTMMH16.java: Likewise.
+	* gnu/testlet/javax/crypto/keyring/TestOfPrivateKeyring.java: Likewise.
+	* gnu/testlet/javax/crypto/keyring/TestOfPublicKeyring.java: Likewise.
+	* gnu/testlet/javax/crypto/key/dh/TestOfDHCodec.java: Likewise.
+	* gnu/testlet/javax/crypto/key/dh/TestOfDHKeyAgreements.java: Likewise.
+	* gnu/testlet/javax/crypto/key/dh/TestOfDHKeyGeneration.java: Likewise.
+	* gnu/testlet/javax/crypto/key/srp6/TestOfSRP6KeyAgreements.java:
+	  Likewise.
+	* gnu/testlet/javax/crypto/key/srp6/TestOfSRPCodec.java: Likewise.
+	* gnu/testlet/javax/crypto/key/srp6/TestOfSRPKeyGeneration.java:
+	  Likewsie.
+	* gnu/testlet/javax/crypto/jce/TestOfCipher.java: Likewise.
+	* gnu/testlet/javax/crypto/jce/TestOfMac.java: Likewise.
+	* gnu/testlet/javax/crypto/jce/TestOfOtherProviders.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/BaseCipherTestCase.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfAnubis.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfBlowfish.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfCast5.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfCipherFactory.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfDES.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfKhazad.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfNullCipher.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfRijndael.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfSerpent.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfSquare.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfTripleDES.java: Likewise.
+	* gnu/testlet/javax/crypto/cipher/TestOfTwofish.java: Likewise.
+	* gnu/testlet/javax/crypto/assembly/TestOfAssembly.java: Likewise.
+	* gnu/testlet/javax/crypto/assembly/TestOfCascade.java: Likewise.
+	* gnu/testlet/java/security/sig/dss/TestOfDSSSignature.java: Likewise.
+	* gnu/testlet/java/security/sig/dss/TestOfDSSSignatureCodec.java:
+	  Likewise.
+	* gnu/testlet/java/security/sig/rsa/TestOfRSAPKCS1V1_5Signature.java:
+	  Likewise.
+	* gnu/testlet/java/security/sig/rsa/TestOfRSAPSSSignature.java:
+	  Likewise.
+	* gnu/testlet/java/security/sig/rsa/TestOfRSASignatureCodec.java:
+	  Likewise.
+	* gnu/testlet/java/security/sig/TestOfSignatureFactory.java: Likewise.
+	* gnu/testlet/java/security/key/dss/TestOfDSSCodec.java: Likewise.
+	* gnu/testlet/java/security/key/dss/TestOfDSSKeyGeneration.java:
+	  Likewise.
+	* gnu/testlet/java/security/key/rsa/TestOfRSACodec.java: Likewise.
+	* gnu/testlet/java/security/key/rsa/TestOfRSAKeyGeneration.java:
+	  Likewise.
+	* gnu/testlet/java/security/key/TestOfKeyPairGeneratorFactory.java:
+	  Likewise.
+	* gnu/testlet/java/security/jce/TestOfKeyPairGenerator.java: Likewise.
+	* gnu/testlet/java/security/jce/TestOfMessageDigest.java: Likewise.
+	* gnu/testlet/java/security/jce/TestOfProvider.java: Likewise.
+	* gnu/testlet/java/security/jce/TestOfSignature.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfHashFactory.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfHaval.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfMD2.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfMD4.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfMD5.java: Likewsie.
+	* gnu/testlet/java/security/hash/TestOfRipeMD128.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfRipeMD160.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfSha160.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfSha256.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfSha384.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfTiger.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfSha512.java: Likewise.
+	* gnu/testlet/java/security/hash/TestOfWhirlpool.java: Likewise.
+
 2006-01-27  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/java/lang/Runtime/security.java: Ignore the
