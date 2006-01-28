@@ -1,5 +1,10 @@
 2006-01-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getFont.java
+	(test): Changed getBackground() --> getFont().
+
+2006-01-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/UIManager/addPropertyChangeListener.java
 	(test): Don't assume there are zero listeners at start of test,
 	* gnu/testlet/javax/swing/UIManager/getPropertyChangeListeners.java

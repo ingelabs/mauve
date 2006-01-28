@@ -17,9 +17,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.javax.swing.JList.AccessibleJList.AccessibleJListChild;
 
@@ -52,7 +52,7 @@ public class getFont implements Testlet
     AccessibleComponent child = (AccessibleComponent) al.getAccessibleChild(0);
     harness.check(child.getFont(), font1);
     l.setFont(font2);
-    harness.check(child.getBackground(), font2);
+    harness.check(child.getFont(), font2);
   }
 
 }
