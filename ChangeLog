@@ -1,5 +1,12 @@
 2006-01-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/hasListeners.java
+	(test): Corrected test for null argument,
+	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/removePropertyChangeListener.java
+	(test2): Likewise.
+
+2006-01-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JList/AccessibleJList/AccessibleJListChild/getFont.java
 	(test): Changed getBackground() --> getFont().
 

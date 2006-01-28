@@ -13,9 +13,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.javax.swing.event.SwingPropertyChangeSupport;
 
@@ -87,15 +87,17 @@ public class removePropertyChangeListener
     // remove a listener that doesn't exist
     s.removePropertyChangeListener("X", this);
     
-    // try a null argument 1
+    // according to the 1.5.0 spec, a null property name causes no action
+    // or exception
     boolean pass = false;
     try
     {
       s.removePropertyChangeListener(null, this);
-    }
-    catch (NullPointerException e)
-    {
       pass = true;
+    }
+    catch (Exception e)
+    {
+      pass = false;
     }
     harness.check(pass);
     
