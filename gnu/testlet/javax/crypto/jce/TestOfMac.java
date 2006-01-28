@@ -25,13 +25,13 @@ package gnu.testlet.javax.crypto.jce;
 
 import gnu.java.security.Registry;
 import gnu.java.security.prng.IRandom;
+import gnu.java.security.prng.MDGenerator;
 import gnu.javax.crypto.cipher.CipherFactory;
 import gnu.javax.crypto.cipher.IBlockCipher;
 import gnu.javax.crypto.mac.IMac;
 import gnu.javax.crypto.mac.MacFactory;
 import gnu.javax.crypto.mac.TMMH16;
 import gnu.javax.crypto.mac.UMac32;
-import gnu.javax.crypto.prng.PRNGFactory;
 import gnu.javax.crypto.jce.GnuCrypto;
 import gnu.javax.crypto.jce.spec.TMMHParameterSpec;
 import gnu.javax.crypto.jce.spec.UMac32ParameterSpec;
@@ -92,6 +92,10 @@ public class TestOfMac implements Testlet
     for (Iterator it = MacFactory.getNames().iterator(); it.hasNext();)
       {
         macName = (String) it.next();
+        // we dont provide OMAC based on NullCipher through the JCE. skip
+        if (macName.equals("omac-null"))
+          continue;
+
         AlgorithmParameterSpec params = null;
         if (macName.equalsIgnoreCase("UMAC32"))
           {
@@ -104,19 +108,14 @@ public class TestOfMac implements Testlet
           }
         else if (macName.equalsIgnoreCase("TMMH16"))
           {
-            IRandom rand = PRNGFactory.getInstance(Registry.MD_PRNG);
-            rand.init(new HashMap());
+            IRandom rand1 = new MDGenerator();
+            rand1.init(new HashMap());
             Integer tagLen = new Integer(4);
-            params = new TMMHParameterSpec(rand, tagLen);
-            try
-              {
-                attrib.put(TMMH16.KEYSTREAM, rand.clone());
-              }
-            catch (CloneNotSupportedException cnse)
-              {
-                throw new RuntimeException("can't clone " + rand.getClass());
-              }
+            params = new TMMHParameterSpec(rand1, tagLen);
 
+            IRandom rand2 = new MDGenerator();
+            rand2.init(new HashMap());
+            attrib.put(TMMH16.KEYSTREAM, rand2);
             attrib.put(TMMH16.TAG_LENGTH, tagLen);
           }
 
@@ -220,7 +219,7 @@ public class TestOfMac implements Testlet
               }
             else if (macName.equalsIgnoreCase("TMMH16"))
               {
-                IRandom rand = PRNGFactory.getInstance(Registry.MD_PRNG);
+                IRandom rand = new MDGenerator();
                 rand.init(new HashMap());
                 Integer tagLen = new Integer(4);
                 params = new TMMHParameterSpec(rand, tagLen);
