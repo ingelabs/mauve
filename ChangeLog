@@ -1,3 +1,8 @@
+2006-01-28  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/ViewportLayout/layoutContainer.java
+	(testMinimumViewSize): New test.
+
 2006-01-28  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/javax/crypto/sasl/TestOfClientFactory.java: New file.

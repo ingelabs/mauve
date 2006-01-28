@@ -22,6 +22,7 @@
 package gnu.testlet.javax.swing.ViewportLayout;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import javax.swing.JPanel;
 import javax.swing.JViewport;
@@ -48,6 +49,7 @@ public class layoutContainer implements Testlet
     test1(harness);
     test2(harness);
     test3(harness);
+    testMinimumViewSize(harness);
   }
 
   /**
@@ -105,5 +107,27 @@ public class layoutContainer implements Testlet
     vp.setSize(50, 50);
     layout.layoutContainer(vp);
     h.check(view.getSize(), new Dimension(50, 50));
+  }
+
+  /**
+   * There was a strange rule in Classpath's implementation that said that if
+   * the viewport is larger than the view's minimumSize, the view's location
+   * must be set to (0,0). This test proves that this is wrong.
+   *
+   * @param h the test harness to use
+   */
+  private void testMinimumViewSize(TestHarness h)
+  {
+    JViewport vp = new JViewport();
+    ViewportLayout l = (ViewportLayout) vp.getLayout();
+    JPanel view = new JPanel();
+    view.setMinimumSize(new Dimension(100, 100));
+    view.setPreferredSize(new Dimension(200, 200));
+    view.setMaximumSize(new Dimension(300, 300));
+    vp.setSize(150, 150);
+    vp.setView(view);
+    view.setBounds(50, 50, 100, 100);
+    l.layoutContainer(vp);
+    h.check(view.getLocation(), new Point(50, 50));
   }
 }
