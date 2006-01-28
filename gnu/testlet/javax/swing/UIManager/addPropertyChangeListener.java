@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,9 +13,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.javax.swing.UIManager;
 
@@ -42,17 +42,17 @@ public class addPropertyChangeListener
   {
     // check that there are no listeners
     PropertyChangeListener[] listeners = UIManager.getPropertyChangeListeners();
-    harness.check(listeners.length, 0);
+    int count = listeners.length;
     
     // now add a listener
     UIManager.addPropertyChangeListener(this);
     listeners = UIManager.getPropertyChangeListeners();;
-    harness.check(listeners.length, 1);
-    harness.check(listeners[0], this);
+    harness.check(listeners.length, count + 1);
+    harness.check(listeners[count], this);
     
     // try adding a null listener - it gets silently ignored
     UIManager.addPropertyChangeListener(null);
-    harness.check(listeners.length, 1);
+    harness.check(listeners.length, count + 1);
   }
 
   public void propertyChange(PropertyChangeEvent e)
