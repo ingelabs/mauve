@@ -1,3 +1,15 @@
+2006-01-29  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/javax/crypto: Moved to gnu/testlet/gnu/javax/crypto.
+	* gnu/testlet/java/security/sig:
+	Moved to gnu/testlet/gnu/java/security/sig.
+	* gnu/testlet/java/security/key.java:
+	Moved to gnu/testlet/gnu/java/security/key.
+	* gnu/testlet/java/security/jce:
+	Moved to gnu/testlet/gnu/java/security/jce.
+	* gnu/testlet/java/security/hash:
+	Moved to gnu/testlet/gnu/java/security/hash.
+
 2006-01-28  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/event/SwingPropertyChangeSupport/hasListeners.java

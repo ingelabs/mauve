@@ -21,7 +21,7 @@
 
 // Tags: GNU-CRYPTO JDK1.4
 
-package gnu.testlet.java.security.sig;
+package gnu.testlet.gnu.java.security.sig;
 
 import gnu.java.security.sig.ISignature;
 import gnu.java.security.sig.SignatureFactory;

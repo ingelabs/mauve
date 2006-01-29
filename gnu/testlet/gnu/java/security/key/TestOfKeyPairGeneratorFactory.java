@@ -21,7 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 // Tags: GNU-CRYPTO JDK1.4
 
-package gnu.testlet.java.security.key;
+package gnu.testlet.gnu.java.security.key;
 
 import gnu.java.security.key.IKeyPairGenerator;
 import gnu.java.security.key.KeyPairGeneratorFactory;
