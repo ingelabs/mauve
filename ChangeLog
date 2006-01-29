@@ -1,6 +1,7 @@
 2006-01-30  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/util/TestOfPrime2.java: New file.
+	Fixed Copyright holder.
 
 2006-01-29  Raif S. Naffah  <raif@swiftdsl.com.au>
 

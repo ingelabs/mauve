@@ -1,5 +1,5 @@
 /* TestOfPrime2.java
-   Copyright (C) 2006 FIXME: your info here
+   Copyright (C) 2006 Free Software Foundation, Inc.
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
