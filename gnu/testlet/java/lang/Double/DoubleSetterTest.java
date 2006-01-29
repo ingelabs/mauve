@@ -39,7 +39,7 @@ public class DoubleSetterTest implements Testlet
   public void test_max()
   {
 	// Check directly the MAX_VALUE against NaN 
-	harness.check(!Double.isNaN(Double.MAX_VALUE), "Error: test_max return wrong results");
+	harness.check(!Double.isNaN(Double.MAX_VALUE));
 	harness.check(!Double.isNaN(new Double(Double.MAX_VALUE).doubleValue()));
 	
 	// Check the MAX_VALUE against NaN via a direct method setter
