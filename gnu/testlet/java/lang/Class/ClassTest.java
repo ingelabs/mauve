@@ -367,7 +367,15 @@ public class ClassTest implements Cloneable, java.io.Serializable, Testlet
   private void checkClassNotFoundException(String className)
   {
     try {
-      Class.forName(className);
+      Class c = Class.forName(className);
+      harness.debug("class: " + c);
+      harness.debug("classloader: " + c.getClassLoader());
+      if (c.isArray())
+	{
+	  Class ct = c.getComponentType();
+	  harness.debug("component type: " + ct);
+	  harness.debug("component type classloader: " + ct.getClassLoader());
+	}
       harness.check(false);
     }
     catch (ClassNotFoundException e) {

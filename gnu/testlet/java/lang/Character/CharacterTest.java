@@ -30,33 +30,33 @@ public class CharacterTest implements Testlet
 	public void test_Basics()
 	{
 	  harness.check(!(Character.forDigit(8, 2) != '\0'), 
-	    "Error: test_forDigit - 50");
+	    "test_forDigit - 50");
 	  harness.check(!(Character.forDigit(-3, 2) != '\0'), 
-	    "Error: test_forDigit - 51");
+	    "test_forDigit - 51");
 	  harness.check(!(Character.forDigit(2, 8) != '2'), 
-	    "Error: test_forDigit - 52");
+	    "test_forDigit - 52");
 	  harness.check(!(Character.forDigit(12, 16) != 'c'), 
-	    "Error: test_forDigit - 53");
+	    "test_forDigit - 53");
 
 	  harness.check(!(Character.isJavaLetter('\uFFFF')), 
-	    "Error: test_forDigit - 54");
+	    "test_forDigit - 54");
 	  harness.check(!(!Character.isJavaLetter('a')), 
-	    "Error: test_forDigit - 55");
+	    "test_forDigit - 55");
 
 	  
 	    
 		harness.check(!( Character.MIN_VALUE != '\u0000' ), 
-			"Error: test_Basics failed - 1" );
+			"test_Basics - 1" );
 		harness.check(!( Character.MAX_VALUE != '\uffff' ), 
-			"Error: test_Basics failed - 2" );
+			"test_Basics - 2" );
 		harness.check(!( Character.MIN_RADIX != 2 ), 
-			"Error: test_Basics failed - 3" );
+			"test_Basics - 3" );
 		harness.check(!( Character.MAX_RADIX != 36 ), 
-			"Error: test_Basics failed - 4" );
+			"test_Basics - 4" );
 
 		Character ch = new Character('b');
 		harness.check(!( ch.charValue() != 'b' ), 
-			"Error: test_Basics failed - 5" );
+			"test_Basics - 5" );
 	}
 
 	public void test_toString()
@@ -65,7 +65,7 @@ public class CharacterTest implements Testlet
 		String str = ch.toString();
 
 		harness.check(!( str.length() != 1 || !str.equals("a")), 
-			"Error: test_toString failed " );
+			"test_toString " );
 	}
 
 
@@ -76,7 +76,7 @@ public class CharacterTest implements Testlet
 		Character ch3 = new Character('-');
 
 		harness.check(!( !ch1.equals(ch2) || ch1.equals(ch3) || ch1.equals(null)), 
-			"Error: test_equals failed - 1" );
+			"test_equals - 1" );
 	}
 
 	public void test_hashCode( )
@@ -84,7 +84,7 @@ public class CharacterTest implements Testlet
 		Character ch1 = new Character('a');
 
 		harness.check(!( ch1.hashCode() != (int) 'a' ), 
-			"Error: test_hashCode returned wrong results" );
+			"test_hashCode" );
 	}
 
 
@@ -96,7 +96,7 @@ public class CharacterTest implements Testlet
 			!Character.isSpace('\n') ||
 			!Character.isSpace(' ')  ||
 			Character.isSpace('+') ), 
-			"Error: test_isSpace returned wrong results" );
+			"test_isSpace" );
 
 	}
 
@@ -104,9 +104,9 @@ public class CharacterTest implements Testlet
 	{
 		// radix wrong
 		harness.check(!( Character.digit( 'a' , Character.MIN_RADIX - 1 ) != -1 ), 
-			"Error: test_digit returned wrong results - 1" );
+			"test_digit - 1" );
 		harness.check(!( Character.digit( 'a' , Character.MAX_RADIX + 1 ) != -1 ), 
-			"Error: test_digit returned wrong results - 2" );
+			"test_digit - 2" );
 	}
 
 
@@ -141,9 +141,9 @@ public class CharacterTest implements Testlet
 // not supported		Character.isJavaLetter( 'a' );
 	  Character.isJavaLetterOrDigit( 'a' );
 	  harness.check(!(Character.isJavaLetterOrDigit('\uFFFF')), 
-	      "Error: isJavaLetterOrDigit - 60");
+	      "isJavaLetterOrDigit - 60");
 	  harness.check(!(Character.isLetterOrDigit('\uFFFF')), 
-	      "Error: isLetterOrDigit - 61");
+	      "isLetterOrDigit - 61");
 
 
 // not supported		Character.isLetter( 'a' );

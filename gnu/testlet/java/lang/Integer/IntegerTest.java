@@ -32,29 +32,29 @@ public class IntegerTest implements Testlet
 	{
 		harness.check(!( Integer.MIN_VALUE != 0x80000000 || 
 			 Integer.MAX_VALUE != 0x7fffffff ), 
-			"Error: test_Basics failed - 1" );
+			"test_Basics - 1" );
 
 		harness.check(Integer.TYPE
 			      == new int[0].getClass().getComponentType(),
-			      "Error: test_Basics failed - 1a");
+			      "test_Basics - 1a");
 
 		Integer i1 = new Integer(100);
 
 		harness.check(!( i1.intValue() != 100 ), 
-			"Error: test_Basics failed - 2" );
+			"test_Basics - 2" );
 
 		try {
 		harness.check(!( (new Integer("234")).intValue() != 234 ), 
-			"Error: test_Basics failed - 3" );
+			"test_Basics - 3" );
 		}
 		catch ( NumberFormatException e )
 		{
-			harness.fail("Error: test_Basics failed - 3" );
+			harness.fail("test_Basics - 3" );
 		}
 
 		try {
 		harness.check(!( (new Integer("-FF")).intValue() != -255 ), 
-			"Error: test_Basics failed - 4" );
+			"test_Basics - 4" );
 		}
 		catch ( NumberFormatException e )
 		{
@@ -62,56 +62,56 @@ public class IntegerTest implements Testlet
 
 		try {
 		    new Integer("babu");
-			harness.fail("Error: test_Basics failed - 5" );
+			harness.fail("test_Basics - 5" );
 		}
 		catch ( NumberFormatException e )
 		{
 		}
 		harness.check(!( Integer.decode( "123").intValue() != 123 ), 
-			"Error: test_Basics failed - 6" );
+			"test_Basics - 6" );
 		harness.check(!( Integer.decode( "32767").intValue() != 32767 ), 
-			"Error: test_Basics failed - 7" );
+			"test_Basics - 7" );
 
 	}
 
 	public void test_toString()
 	{
 		harness.check(!( !( new Integer(123)).toString().equals("123")), 
-			"Error: test_toString failed - 1" );
+			"test_toString - 1" );
 		harness.check(!( !( new Integer(-44)).toString().equals("-44")), 
-			"Error: test_toString failed - 2" );
+			"test_toString - 2" );
 
 		harness.check(!( !Integer.toString( 234 ).equals ("234" )), 
-			"Error: test_toString failed - 3" );
+			"test_toString - 3" );
 		harness.check(!( !Integer.toString( -34 ).equals ("-34" )), 
-			"Error: test_toString failed - 4" );
+			"test_toString - 4" );
 		harness.check(!( !Integer.toString( -34 ).equals ("-34" )), 
-			"Error: test_toString failed - 5" );
+			"test_toString - 5" );
 
 		harness.check(!( !Integer.toString(99 , 1 ).equals("99")), 
-			"Error: test_toString failed - 6" );
+			"test_toString - 6" );
 		harness.check(!( !Integer.toString(99 , 37 ).equals("99")), 
-			"Error: test_toString failed - 7" );
+			"test_toString - 7" );
 
 		harness.check(!( !Integer.toString(15 , 2 ).equals("1111")), 
-			"Error: test_toString failed - 8" );
+			"test_toString - 8" );
 		harness.check(!( !Integer.toString(37 , 36 ).equals("11")), 
-			"Error: test_toString failed - 9" );
+			"test_toString - 9" );
 		harness.check(!( !Integer.toString(31 , 16 ).equals("1f")), 
-			"Error: test_toString failed - 10" );
+			"test_toString - 10" );
 
 
 		harness.check(!( !Integer.toString(-99 , 1 ).equals("-99")), 
-			"Error: test_toString failed - 11" );
+			"test_toString - 11" );
 		harness.check(!( !Integer.toString(-99 , 37 ).equals("-99")), 
-			"Error: test_toString failed - 12" );
+			"test_toString - 12" );
 
 		harness.check(!( !Integer.toString(-15 , 2 ).equals("-1111")), 
-			"Error: test_toString failed - 13" );
+			"test_toString - 13" );
 		harness.check(!( !Integer.toString(-37 , 36 ).equals("-11")), 
-			"Error: test_toString failed - 14" );
+			"test_toString - 14" );
 		harness.check(!( !Integer.toString(-31 , 16 ).equals("-1f")), 
-			"Error: test_toString failed - 15" );
+			"test_toString - 15" );
 	}
 
 	public void test_equals()
@@ -120,16 +120,16 @@ public class IntegerTest implements Testlet
 		Integer i2 = new Integer(-23);
 
 		harness.check(!( !i1.equals( new Integer(23))), 
-			"Error: test_equals failed - 1" );
+			"test_equals - 1" );
 		harness.check(!( !i2.equals( new Integer(-23))), 
-			"Error: test_equals failed - 2" );
+			"test_equals - 2" );
 
 		
 		harness.check(!( i1.equals( i2 )), 
-			"Error: test_equals failed - 3" );
+			"test_equals - 3" );
 
 		harness.check(!( i1.equals(null)), 
-			"Error: test_equals failed - 4" );
+			"test_equals - 4" );
 	}
 
 	public void test_hashCode( )
@@ -138,7 +138,7 @@ public class IntegerTest implements Testlet
 		Integer b2 = new Integer(-3439);
 
 		harness.check(!( b1.hashCode() != 3439 || b2.hashCode() != -3439 ), 
-			"Error: test_hashCode returned wrong results" );
+			"test_hashCode" );
 	}
 
 	public void test_intValue( )
@@ -147,10 +147,10 @@ public class IntegerTest implements Testlet
 		Integer b2 = new Integer(-32767);
 
 		harness.check(!( b1.intValue() != 32767 ),  
-			"Error: test_intValue returned wrong results - 1" );
+			"test_intValue - 1" );
 
 		harness.check(!( b2.intValue() != -32767 ),  
-			"Error: test_intValue returned wrong results - 2" );
+			"test_intValue - 2" );
 	}
 
 	public void test_longValue( )
@@ -159,10 +159,10 @@ public class IntegerTest implements Testlet
 		Integer b2 = new Integer(-3767);
 
 		harness.check(!( b1.longValue() != (long)3767 ),  
-			"Error: test_longValue returned wrong results - 1" );
+			"test_longValue - 1" );
 
 		harness.check(!( b2.longValue() != -3767 ),  
-			"Error: test_longValue returned wrong results - 2" );
+			"test_longValue - 2" );
 	}
 	public void test_floatValue( )
 	{
@@ -170,10 +170,10 @@ public class IntegerTest implements Testlet
 		Integer b2 = new Integer(-3276);
 
 		harness.check(!( b1.floatValue() != 3276.0f ),  
-			"Error: test_floatValue returned wrong results - 1" );
+			"test_floatValue - 1" );
 
 		harness.check(!( b2.floatValue() != -3276.0f ),  
-			"Error: test_floatValue returned wrong results - 2" );
+			"test_floatValue - 2" );
 	}
 	public void test_doubleValue( )
 	{
@@ -181,10 +181,10 @@ public class IntegerTest implements Testlet
 		Integer b2 = new Integer(30);
 
 		harness.check(!( b1.doubleValue() != 0.0 ),  
-			"Error: test_doubleValue returned wrong results - 1" );
+			"test_doubleValue - 1" );
 
 		harness.check(!( b2.doubleValue() != 30.0 ),  
-			"Error: test_doubleValue returned wrong results - 2" );
+			"test_doubleValue - 2" );
 	}
 
 	public void test_shortbyteValue( )
@@ -193,20 +193,20 @@ public class IntegerTest implements Testlet
 		Integer b2 = new Integer(300);
 
 		harness.check(!( b1.byteValue() != 0 ),  
-			"Error: test_shortbyteValue returned wrong results - 1" );
+			"test_shortbyteValue - 1" );
 
 		harness.check(!( b2.byteValue() != (byte)300 ),  
-			"Error: test_shortbyteValue returned wrong results - 2" );
+			"test_shortbyteValue - 2" );
 		harness.check(!( b1.shortValue() != 0 ),  
-			"Error: test_shortbyteValue returned wrong results - 3" );
+			"test_shortbyteValue - 3" );
 
 		harness.check(!( b2.shortValue() != (short)300 ),  
-			"Error: test_shortbyteValue returned wrong results - 4" );
+			"test_shortbyteValue - 4" );
 		harness.check(!( ((Number)b1).shortValue() != 0 ),  
-			"Error: test_shortbyteValue returned wrong results - 5" );
+			"test_shortbyteValue - 5" );
 
 		harness.check(!( ((Number)b2).byteValue() != (byte)300 ),  
-			"Error: test_shortbyteValue returned wrong results - 6" );
+			"test_shortbyteValue - 6" );
 	}
 
 	public void test_toHexString()
@@ -217,10 +217,10 @@ public class IntegerTest implements Testlet
 		str1 = Integer.toHexString( -5361 ); 
 
 		harness.check( "20b7".equals(str), 
-			"Error: test_toHexString returned wrong results - 1" );
+			"test_toHexString - 1" );
 
 		harness.check( "ffffeb0f".equals(str1),
-			"Error: test_toHexString returned wrong results - 2" );	
+			"test_toHexString - 2" );	
 	}
 
 	public void test_toOctalString()
@@ -230,63 +230,63 @@ public class IntegerTest implements Testlet
 		str1= Integer.toOctalString(-9863 );
 
 		harness.check(!( !str.equals("13327")), 
-			"Error: test_toOctalString returned wrong results - 1" );
+			"test_toOctalString - 1" );
 
 		harness.check(!( !str1.equals("37777754571")), 
-			"Error: test_toOctalString returned wrong results - 2" );	
+			"test_toOctalString - 2" );	
 	}
 
 	public void test_toBinaryString()
 	{
 		harness.check(!( !Integer.toBinaryString(358).equals("101100110")), 
-			"Error: test_toBinaryString returned wrong results - 1" );
+			"test_toBinaryString - 1" );
 
 		harness.check(!( !Integer.toBinaryString( -5478 ).equals("11111111111111111110101010011010")), 
-			"Error: test_toBinaryString returned wrong results - 2" );	
+			"test_toBinaryString - 2" );	
 	}
 
 	public void test_parseInt()
 	{
 		harness.check(!( Integer.parseInt("473") != Integer.parseInt("473" , 10 )), 
-			"Error: test_parseInt returned wrong results - 1" );	
+			"test_parseInt - 1" );	
 
 		harness.check(!( Integer.parseInt("0" , 10 ) != 0 ),  
-			"Error: test_parseInt returned wrong results - 2" );	
+			"test_parseInt - 2" );	
 
 		harness.check(!( Integer.parseInt("473" , 10 ) != 473 ),  
-			"Error: test_parseInt returned wrong results - 3" );	
+			"test_parseInt - 3" );	
 		harness.check(!( Integer.parseInt("-0" , 10 ) != 0 ),  
-			"Error: test_parseInt returned wrong results - 4" );	
+			"test_parseInt - 4" );	
 		harness.check(!( Integer.parseInt("-FF" , 16 ) != -255 ),  
-			"Error: test_parseInt returned wrong results - 5" );	
+			"test_parseInt - 5" );	
 		harness.check(!( Integer.parseInt("1100110" , 2 ) != 102 ),  
-			"Error: test_parseInt returned wrong results - 6" );	
+			"test_parseInt - 6" );	
 		harness.check(!( Integer.parseInt("2147483647" , 10 )  !=  2147483647 ),  
-			"Error: test_parseInt returned wrong results - 7" );	
+			"test_parseInt - 7" );	
 		harness.check(!( Integer.parseInt("-2147483647" , 10 ) != -2147483647 ),  
-			"Error: test_parseInt returned wrong results - 8" );	
+			"test_parseInt - 8" );	
 		try {
 			Integer.parseInt("2147483648" , 10 );
-			harness.fail("Error: test_parseInt returned wrong results - 9" );	
+			harness.fail("test_parseInt - 9" );	
 		}catch ( NumberFormatException e ){}
 		try {
 			Integer.parseInt("99" , 8 );
-			harness.fail("Error: test_parseInt returned wrong results - 10" );	
+			harness.fail("test_parseInt - 10" );	
 		}catch ( NumberFormatException e ){}
 		try {
 			Integer.parseInt("kona" , 10 );
-			harness.fail("Error: test_parseInt returned wrong results - 11" );	
+			harness.fail("test_parseInt - 11" );	
 		}catch ( NumberFormatException e ){}
         harness.check(!( Integer.parseInt("Kona" , 27 ) != 411787 ), 
-			"Error: test_parseInt returned wrong results - 12" );	
+			"test_parseInt - 12" );	
 	}
 
 	public void test_valueOf( )
 	{
 		harness.check(!( Integer.valueOf("21234").intValue() != Integer.parseInt("21234")), 
-			"Error: test_valueOf returned wrong results - 1" );	
+			"test_valueOf - 1" );	
 		harness.check(!( Integer.valueOf("Kona", 27).intValue() != Integer.parseInt("Kona", 27)), 
-			"Error: test_valueOf returned wrong results - 2" );	
+			"test_valueOf - 2" );	
 	}
 
 	public void test_getInteger( )
@@ -309,17 +309,17 @@ public class IntegerTest implements Testlet
 		harness.check(!( Integer.getInteger("integerkey1").intValue() != 2345 ||
 			 Integer.getInteger("integerkey2").intValue() != -984 ||
 			 Integer.getInteger("integerkey3").intValue() != 0 ), 
-			"Error: test_getInteger returned wrong results - 1" );
+			"test_getInteger - 1" );
 
 		harness.check(!( Integer.getInteger("integerkey4", new Integer(0)).intValue() != 31 ||
 			 Integer.getInteger("integerkey5",new Integer(0)).intValue() != 31 ||
 			 Integer.getInteger("integerkey6",new Integer(0)).intValue() != 15 ), 
-			"Error: test_getInteger returned wrong results - 2" );
+			"test_getInteger - 2" );
 
 		harness.check(!( Integer.getInteger("integerkey7", new Integer(0)).intValue() != 0 ), 
-			"Error: test_getInteger returned wrong results - 3" );
+			"test_getInteger - 3" );
 		harness.check(!( Integer.getInteger("integerkey7", 0).intValue() != 0 ), 
-			"Error: test_getInteger returned wrong results - 4" );
+			"test_getInteger - 4" );
 
 	}
 

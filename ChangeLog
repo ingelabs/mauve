@@ -1,3 +1,18 @@
+2005-01-29  Edwin Steiner  <edwin.steiner@gmx.net>
+
+	* gnu/testlet/java/lang/Byte/ByteTest.java,
+	gnu/testlet/java/lang/Character/CharacterTest.java,
+	gnu/testlet/java/lang/Double/DoubleTest.java,
+	gnu/testlet/java/lang/Float/FloatTest.java,
+	gnu/testlet/java/lang/Integer/IntegerTest.java,
+	gnu/testlet/java/lang/Long/LongTest.java,
+	gnu/testlet/java/lang/Math/MathTest.java,
+	gnu/testlet/java/lang/Short/ShortTest.java,
+	gnu/testlet/java/lang/String/StringTest.java,
+	gnu/testlet/java/lang/StringBuffer/StringBufferTest.java:
+	Cleaned up test names containing "Error", "failed", or
+	"returned wrong results".
+
 2006-01-29  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/lang/Double/DoubleSetterTest.java: New test which
