@@ -1,3 +1,9 @@
+2006-01-30  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/Pattern/testdata1,
+	gnu/testlet/java/util/regex/Pattern/testdata2:
+	Moved some cases from testdata2 to testdata1.
+
 2006-01-30  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicListUI/updateLayoutStateNeeded.java:

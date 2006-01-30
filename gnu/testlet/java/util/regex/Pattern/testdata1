@@ -2940,3 +2940,192 @@ No match
     De
 No match
 
+/^(b+|a){1,2}c/
+    bc
+ 0: bc
+ 1: b
+    bbc
+ 0: bbc
+ 1: bb
+    bbbc
+ 0: bbbc
+ 1: bbb
+    bac
+ 0: bac
+ 1: a
+    bbac
+ 0: bbac
+ 1: a
+    aac
+ 0: aac
+ 1: a
+    abbbbbbbbbbbc
+ 0: abbbbbbbbbbbc
+ 1: bbbbbbbbbbb
+    bbbbbbbbbbbac
+ 0: bbbbbbbbbbbac
+ 1: a
+    *** Failers
+No match
+    aaac
+No match
+    abbbbbbbbbbbac
+No match
+
+/^[ab]{1,3}(ab*|b)/
+    aabbbbb
+ 0: aabb
+ 1: b
+
+/^(a|)\1*b/
+    ab
+ 0: ab
+ 1: a
+    aaaab
+ 0: aaaab
+ 1: a
+    b
+ 0: b
+ 1: 
+    *** Failers
+No match
+    acb
+No match
+
+/^(a|)\1+b/
+    aab
+ 0: aab
+ 1: a
+    aaaab
+ 0: aaaab
+ 1: a
+    b
+ 0: b
+ 1: 
+    *** Failers
+No match
+    ab
+No match
+
+/(a)\1{8,}/
+    aaaaaaaaa
+ 0: aaaaaaaaa
+ 1: a
+    aaaaaaaaaa
+ 0: aaaaaaaaaa
+ 1: a
+    *** Failers
+No match
+    aaaaaaa
+No match
+
+/(abc)\1/i
+    abcabc
+ 0: abcabc
+ 1: abc
+    ABCabc
+ 0: ABCabc
+ 1: ABC
+    abcABC
+ 0: abcABC
+ 1: abc
+
+/((?i)blah)\s+\1/
+    blah blah
+ 0: blah blah
+ 1: blah
+    BLAH BLAH
+ 0: BLAH BLAH
+ 1: BLAH
+    Blah Blah
+ 0: Blah Blah
+ 1: Blah
+    blaH blaH
+ 0: blaH blaH
+ 1: blaH
+    *** Failers
+No match
+    blah BLAH
+No match
+    Blah blah
+No match
+    blaH blah
+No match
+
+/((?i)blah)\s+(?i:\1)/
+    blah blah
+ 0: blah blah
+ 1: blah
+    BLAH BLAH
+ 0: BLAH BLAH
+ 1: BLAH
+    Blah Blah
+ 0: Blah Blah
+ 1: Blah
+    blaH blaH
+ 0: blaH blaH
+ 1: blaH
+    blah BLAH
+ 0: blah BLAH
+ 1: blah
+    Blah blah
+ 0: Blah blah
+ 1: Blah
+    blaH blah
+ 0: blaH blah
+ 1: blaH
+
+/(ab)\d\1/i
+    Ab4ab
+ 0: Ab4ab
+ 1: Ab
+    ab4Ab
+ 0: ab4Ab
+ 1: ab
+
+/((((((((((a))))))))))\10/
+    aa
+ 0: aa
+ 1: a
+ 2: a
+ 3: a
+ 4: a
+ 5: a
+ 6: a
+ 7: a
+ 8: a
+ 9: a
+ 10: a
+
+/((((((((((a))))))))))\10/i
+    AA
+ 0: AA
+ 1: A
+ 2: A
+ 3: A
+ 4: A
+ 5: A
+ 6: A
+ 7: A
+ 8: A
+ 9: A
+ 10: A
+
+/ab\d{0}e/
+    abe
+ 0: abe
+    *** Failers
+No match
+    ab1e
+No match
+
+/(ab|ab*)bc/
+    abc
+ 0: abc
+ 1: a
+
+/(ab|ab*)bc/i
+    ABC
+ 0: ABC
+ 1: A
+
