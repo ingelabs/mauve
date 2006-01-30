@@ -1,5 +1,9 @@
 2006-01-30  Gary Benson <gbenson@redhat.com>
 
+	* gnu/testlet/java/lang/System/security.java: More new tests.
+
+2006-01-30  Gary Benson <gbenson@redhat.com>
+
 	* gnu/testlet/java/lang/System/security.java: New test.
 
 2006-01-30  Roman Kennke  <kennke@aicas.com>

@@ -38,6 +38,11 @@ public class security implements Testlet
       String library_name = "blah";
       String library_path = "/path/to/libnothing.so";
 
+      String a_variable = "PATH";
+      String not_a_variable = "PITH";
+      harness.check(System.getenv(a_variable) != null);
+      harness.check(System.getenv(not_a_variable) == null);
+      
       Properties properties = System.getProperties();
 
       String a_property = "java.vm.name";
@@ -52,6 +57,11 @@ public class security implements Testlet
 	new RuntimePermission("loadLibrary." + library_name)};
       Permission[] loadLibrary_path = new Permission[] {
 	new RuntimePermission("loadLibrary." + library_path)};
+
+      Permission[] readVariable = new Permission[] {
+	new RuntimePermission("getenv." + a_variable)};
+      Permission[] readNonVariable = new Permission[] {
+	new RuntimePermission("getenv." + not_a_variable)};
 
       Permission[] readWriteAllProperties = new Permission[] {
 	new PropertyPermission("*", "read,write")};
@@ -141,6 +151,29 @@ public class security implements Testlet
 	  }
 	}
 
+	// security: TODO: java.lang.System-getenv()
+
+	// security: java.lang.System-getenv(String)
+	harness.checkPoint("getenv(String)");
+	try {
+	  sm.prepareChecks(readVariable, noPerms);
+	  System.getenv(a_variable);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+	try {
+	  sm.prepareChecks(readNonVariable, noPerms);
+	  System.getenv(not_a_variable);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+
 	// security: java.lang.System-getProperties
 	harness.checkPoint("getProperties");
 	try {
@@ -165,8 +198,8 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-getProperty
-	harness.checkPoint("getProperty");
+	// security: java.lang.System-getProperty(String)
+	harness.checkPoint("getProperty(String)");
 	try {
 	  sm.prepareChecks(readProperty, noPerms);
 	  System.getProperty(a_property);
@@ -179,6 +212,27 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readNonProperty, noPerms);
 	  System.getProperty(not_a_property);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+
+	// security: java.lang.System-getProperty(String, String)
+	harness.checkPoint("getProperty(String, String)");
+	try {
+	  sm.prepareChecks(readProperty, noPerms);
+	  System.getProperty(a_property, "quadrant");
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+	try {
+	  sm.prepareChecks(readNonProperty, noPerms);
+	  System.getProperty(not_a_property, "blade");
 	  sm.checkAllChecked(harness);
 	}
 	catch (SecurityException ex) {
@@ -242,6 +296,8 @@ public class security implements Testlet
 	  harness.debug(ex);
 	  harness.check(false, "unexpected check");
 	}
+
+	// security: TODO: java.lang.System-clearProperty
 
 	// security: java.lang.System-setSecurityManager
 	harness.checkPoint("setSecurityManager");
