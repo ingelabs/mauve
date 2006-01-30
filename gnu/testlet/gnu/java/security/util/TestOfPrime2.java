@@ -25,7 +25,9 @@ package gnu.testlet.gnu.java.security.util;
 
 import java.math.BigInteger;
 
+import gnu.java.security.key.dss.DSSKeyPairGenerator;
 import gnu.java.security.util.Prime2;
+import gnu.javax.crypto.key.srp6.SRPAlgorithm;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -843,7 +845,10 @@ public class TestOfPrime2 implements Testlet
     checkIsPrime65537(harness);
     checkIsPrime229153(harness);
     checkIsPrime274177(harness);
+    checkCryptoPrimes(harness);
     checkIsPrime(harness);
+    checkIsNonPrime(harness);
+    checkSpeed(harness);
   }
 
   private void checkIsPrime38737(TestHarness harness)
@@ -864,7 +869,7 @@ public class TestOfPrime2 implements Testlet
   {
     harness.checkPoint("checkIsPrime65537");
     BigInteger bi = BigInteger.valueOf(65537);
-    harness.check(Prime2.passEulerCriterion(bi), "65537 IS prime");
+    harness.check(Prime2.passEulerCriterion(bi), "65537 (Fermat's F4) IS prime");
   }
 
   private void checkIsPrime229153(TestHarness harness)
@@ -881,6 +886,44 @@ public class TestOfPrime2 implements Testlet
     harness.check(Prime2.passEulerCriterion(bi), "274177 IS prime");
   }
 
+  private void checkCryptoPrimes(TestHarness harness)
+  {
+    harness.checkPoint("checkCryptoPrimes");
+    BigInteger p;
+    // DSS known primes
+    p = DSSKeyPairGenerator.KEY_PARAMS_512.getP();
+    harness.check(Prime2.passEulerCriterion(p), "DSS 512-bit p IS prime");
+    p = DSSKeyPairGenerator.KEY_PARAMS_512.getQ();
+    harness.check(Prime2.passEulerCriterion(p), "DSS 512-bit q IS prime");
+    p = DSSKeyPairGenerator.KEY_PARAMS_768.getP();
+    harness.check(Prime2.passEulerCriterion(p), "DSS 768-bit p IS prime");
+    p = DSSKeyPairGenerator.KEY_PARAMS_768.getQ();
+    harness.check(Prime2.passEulerCriterion(p), "DSS 768-bit q IS prime");
+    p = DSSKeyPairGenerator.KEY_PARAMS_1024.getP();
+    harness.check(Prime2.passEulerCriterion(p), "DSS 1024-bit p IS prime");
+    p = DSSKeyPairGenerator.KEY_PARAMS_1024.getQ();
+    harness.check(Prime2.passEulerCriterion(p), "DSS 1024-bit q IS prime");
+    // SRP known primes
+    p = SRPAlgorithm.N_264;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 264-bit N IS prime");
+    p = SRPAlgorithm.N_384;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 384-bit N IS prime");
+    p = SRPAlgorithm.N_512;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 512-bit N IS prime");
+    p = SRPAlgorithm.N_640;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 640-bit N IS prime");
+    p = SRPAlgorithm.N_768;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 768-bit N IS prime");
+    p = SRPAlgorithm.N_1024;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 1024-bit N IS prime");
+    p = SRPAlgorithm.N_1280;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 1280-bit N IS prime");
+    p = SRPAlgorithm.N_1536;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 1536-bit N IS prime");
+    p = SRPAlgorithm.N_2048;
+    harness.check(Prime2.passEulerCriterion(p), "SRP 2048-bit N IS prime");
+  }
+
   private void checkIsPrime(TestHarness harness)
   {
     harness.checkPoint("checkIsPrime");
@@ -888,8 +931,137 @@ public class TestOfPrime2 implements Testlet
     for (int i = 0; i < KNOWN_SMALL_PRIMES.length; i++)
       {
         prime = KNOWN_SMALL_PRIMES[i];
-        harness.check(Prime2.passEulerCriterion(BigInteger.valueOf(prime)),
-                      prime + " IS prime");
+        if (!Prime2.passEulerCriterion(BigInteger.valueOf(prime)))
+          harness.fail(prime + " IS prime");
       }
+    harness.check(true, "All known small primes pass Euler test");
+  }
+
+  private void checkIsNonPrime(TestHarness harness)
+  {
+    harness.checkPoint("checkIsNonPrime");
+    for (int i = 0; i < KNOWN_SMALL_PRIMES.length - 1; i++)
+      for (int j = KNOWN_SMALL_PRIMES[i] + 2; j < KNOWN_SMALL_PRIMES[i+1]; j += 2)
+        if (Prime2.passEulerCriterion(BigInteger.valueOf(j)))
+          harness.fail(j + " IS NOT prime");
+
+    harness.check(true, "All known small non-primes fail Euler test");
+  }
+
+  private void checkSpeed(TestHarness harness)
+  {
+    harness.checkPoint("checkSpeed");
+    long t1 = eulerTime(harness);
+    System.err.println("*** Euler = " + (t1 / 1000) + "sec.");
+
+//    long t2 = millerRabinTime(harness, 10) + millerRabinTime(harness, 90) / 2;
+    long t2 = millerRabinTime(harness, 50);
+    System.err.println("*** Miller-Rabin = " + (t2 / 1000) + "sec.");
+  }
+
+  private long eulerTime(TestHarness harness)
+  {
+    long p;
+    long result = - System.currentTimeMillis();
+    for (int i = 0; i < KNOWN_SMALL_PRIMES.length; i++)
+      {
+        p = KNOWN_SMALL_PRIMES[i];
+        if (!Prime2.passEulerCriterion(BigInteger.valueOf(p)))
+          harness.fail(p + " IS prime");
+      }
+
+    for (int i = 0; i < KNOWN_SMALL_PRIMES.length - 1; i++)
+      for (int j = KNOWN_SMALL_PRIMES[i] + 2; j < KNOWN_SMALL_PRIMES[i+1]; j += 2)
+        if (Prime2.passEulerCriterion(BigInteger.valueOf(j)))
+          harness.fail(j + " IS NOT prime");
+
+    // DSS known primes
+    if (!Prime2.passEulerCriterion(DSSKeyPairGenerator.KEY_PARAMS_512.getP()))
+      harness.fail("DSS 512-bit p IS prime");
+    if (!Prime2.passEulerCriterion(DSSKeyPairGenerator.KEY_PARAMS_512.getQ()))
+      harness.fail("DSS 512-bit q IS prime");
+    if (!Prime2.passEulerCriterion(DSSKeyPairGenerator.KEY_PARAMS_768.getP()))
+      harness.fail("DSS 768-bit p IS prime");
+    if (!Prime2.passEulerCriterion(DSSKeyPairGenerator.KEY_PARAMS_768.getQ()))
+      harness.fail("DSS 768-bit q IS prime");
+    if (!Prime2.passEulerCriterion(DSSKeyPairGenerator.KEY_PARAMS_1024.getP()))
+      harness.fail("DSS 1024-bit p IS prime");
+    if (!Prime2.passEulerCriterion(DSSKeyPairGenerator.KEY_PARAMS_1024.getQ()))
+      harness.fail("DSS 1024-bit q IS prime");
+
+    // SRP known primes
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_264))
+      harness.fail("SRP 264-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_384))
+      harness.fail("SRP 384-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_512))
+      harness.fail("SRP 512-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_640))
+      harness.fail("SRP 640-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_768))
+      harness.fail("SRP 768-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_1024))
+      harness.fail("SRP 1024-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_1280))
+      harness.fail("SRP 1280-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_1536))
+      harness.fail("SRP 1536-bit N IS prime");
+    if (!Prime2.passEulerCriterion(SRPAlgorithm.N_2048))
+      harness.fail("SRP 2048-bit N IS prime");
+
+    return result + System.currentTimeMillis();
+  }
+
+  private long millerRabinTime(TestHarness harness, int certainty)
+  {
+    long p;
+    long result = - System.currentTimeMillis();
+    for (int i = 0; i < KNOWN_SMALL_PRIMES.length; i++)
+      {
+        p = KNOWN_SMALL_PRIMES[i];
+        if (!BigInteger.valueOf(p).isProbablePrime(certainty))
+          harness.fail(p + " IS prime");
+      }
+
+    for (int i = 0; i < KNOWN_SMALL_PRIMES.length - 1; i++)
+      for (int j = KNOWN_SMALL_PRIMES[i] + 2; j < KNOWN_SMALL_PRIMES[i+1]; j += 2)
+        if (BigInteger.valueOf(j).isProbablePrime(certainty))
+          harness.fail(j + " IS NOT prime");
+
+    // DSS known primes
+    if (!DSSKeyPairGenerator.KEY_PARAMS_512.getP().isProbablePrime(certainty))
+      harness.fail("DSS 512-bit p IS prime");
+    if (!DSSKeyPairGenerator.KEY_PARAMS_512.getQ().isProbablePrime(certainty))
+      harness.fail("DSS 512-bit q IS prime");
+    if (!DSSKeyPairGenerator.KEY_PARAMS_768.getP().isProbablePrime(certainty))
+      harness.fail("DSS 768-bit p IS prime");
+    if (!DSSKeyPairGenerator.KEY_PARAMS_768.getQ().isProbablePrime(certainty))
+      harness.fail("DSS 768-bit q IS prime");
+    if (!DSSKeyPairGenerator.KEY_PARAMS_1024.getP().isProbablePrime(certainty))
+      harness.fail("DSS 1024-bit p IS prime");
+    if (!DSSKeyPairGenerator.KEY_PARAMS_1024.getQ().isProbablePrime(certainty))
+      harness.fail("DSS 1024-bit q IS prime");
+
+    // SRP known primes
+    if (!SRPAlgorithm.N_264.isProbablePrime(certainty))
+      harness.fail("SRP 264-bit N IS prime");
+    if (!SRPAlgorithm.N_384.isProbablePrime(certainty))
+      harness.fail("SRP 384-bit N IS prime");
+    if (!SRPAlgorithm.N_512.isProbablePrime(certainty))
+      harness.fail("SRP 512-bit N IS prime");
+    if (!SRPAlgorithm.N_640.isProbablePrime(certainty))
+      harness.fail("SRP 640-bit N IS prime");
+    if (!SRPAlgorithm.N_768.isProbablePrime(certainty))
+      harness.fail("SRP 768-bit N IS prime");
+    if (!SRPAlgorithm.N_1024.isProbablePrime(certainty))
+      harness.fail("SRP 1024-bit N IS prime");
+    if (!SRPAlgorithm.N_1280.isProbablePrime(certainty))
+      harness.fail("SRP 1280-bit N IS prime");
+    if (!SRPAlgorithm.N_1536.isProbablePrime(certainty))
+      harness.fail("SRP 1536-bit N IS prime");
+    if (!SRPAlgorithm.N_2048.isProbablePrime(certainty))
+      harness.fail("SRP 2048-bit N IS prime");
+
+    return result + System.currentTimeMillis();
   }
 }

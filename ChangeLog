@@ -1,3 +1,15 @@
+2006-01-31  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/util/TestOfPrime2.java (test): Call new
+	methods.
+	(checkIsPrime65537): Clarified that the number is Fermat's F4 prime.
+	(checkCryptoPrimes): New method.
+	(checkIsPrime): Re-wrote to reduce amount of output.
+	(checkIsNonPrime): New method.
+	(checkSpeed): New method.
+	(eulerTime): New method.
+	(millerRabinTime): New method.
+
 2006-01-30  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JLayeredPane/addImp.java
