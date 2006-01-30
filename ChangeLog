@@ -1,3 +1,8 @@
+2006-01-30  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicListUI/updateLayoutStateNeeded.java:
+	New test
+
 2006-01-31  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/util/TestOfPrime2.java (test): Call new
