@@ -1,5 +1,10 @@
 2006-01-30  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/java/awt/Container/getPreferredSize.java:
+	New test.
+
+2006-01-30  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JRootPane/RootLayout/preferredLayoutSize.java:
 	Fixed copyright header and docs.
 
