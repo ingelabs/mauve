@@ -1,6 +1,11 @@
 2006-01-30  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JLayeredPane/addImp.java
+	(testAddDifferentLayers): New test.
+
+2006-01-30  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JLayeredPane/addImp.java
 	New test.
 
 2005-01-29  Mark Wielaard  <mark@klomp.org>

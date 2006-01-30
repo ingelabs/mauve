@@ -45,6 +45,7 @@ public class addImpl implements Testlet
   public void test(TestHarness harness)
   {
     testAddSameLayer(harness);
+    testAddDifferentLayers(harness);
   }
 
   /**
@@ -65,5 +66,25 @@ public class addImpl implements Testlet
     h.check(l.getComponent(0), p1);
     h.check(l.getComponent(1), p2);
     h.check(l.getComponent(2), p3);
+  }
+
+  /**
+   * Tests the addition of 3 components into different layers with -1
+   * positions.
+   *
+   * @param h the test harness to use
+   */
+  private void testAddDifferentLayers(TestHarness h)
+  {
+    JLayeredPane l = new JLayeredPane();
+    JPanel p1 = new JPanel();
+    JPanel p2 = new JPanel();
+    JPanel p3 = new JPanel();
+    l.add(p1, new Integer(0));
+    l.add(p2, new Integer(1));
+    l.add(p3, new Integer(2));
+    h.check(l.getComponent(0), p3);
+    h.check(l.getComponent(1), p2);
+    h.check(l.getComponent(2), p1);
   }
 }
