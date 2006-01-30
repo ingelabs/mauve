@@ -1,5 +1,5 @@
-/* preferredLayoutSize.java -- FIXME: describe
-   Copyright (C) 2006 FIXME: your info here
+/* preferredLayoutSize.java -- tests the preferredLayoutSize() method
+   Copyright (C) 2006 Roman Kennke (kennke@aicas.com)
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: FIXME
+// Tags: JDK1.2
 
 package gnu.testlet.javax.swing.JRootPane.RootLayout;
 
@@ -32,9 +32,19 @@ import javax.swing.JRootPane;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+/**
+ * Checks the preferredLayoutSize() method in the RootLayout.
+ *
+ * @author Roman Kennke (kennke@aicas.com)
+ */
 public class preferredLayoutSize implements Testlet
 {
 
+  /**
+   * The entry point in the test.
+   *
+   * @param harness the test harness to use
+   */
   public void test(TestHarness harness)
   {
     testInvalidLayout(harness);
