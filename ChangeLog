@@ -1,3 +1,12 @@
+2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getDisabledTextColor.java
+	(test): Set known theme in MetalLookAndFeel,
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getFocusColor.java: 
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getSelectColor.java:
+	(test): Likewise.
+
 2006-01-31  Gary Benson <gbenson@redhat.com>
 
 	* gnu/testlet/TestSecurityManager2.java: Added prepareChecks

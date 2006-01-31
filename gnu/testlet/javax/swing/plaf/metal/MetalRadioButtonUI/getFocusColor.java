@@ -26,7 +26,11 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getFocusColor() method.
@@ -41,6 +45,17 @@ public class getFocusColor implements Testlet
    */
   public void test(TestHarness harness) 
   {
+    // test with a known theme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();   
+      }
+    
     // a new instance has no select color yet
     MyMetalRadioButtonUI ui = new MyMetalRadioButtonUI();
     harness.check(ui.getFocusColor(), null);
