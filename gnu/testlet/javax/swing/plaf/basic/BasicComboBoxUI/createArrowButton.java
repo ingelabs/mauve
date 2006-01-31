@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -32,6 +32,7 @@ import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource.CompoundBorderUIResource;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the createArrowButton() method in the 
@@ -66,6 +67,16 @@ public class createArrowButton implements Testlet
     harness.check(insets, new Insets(4, 17, 5, 17));
     Insets margin = b.getMargin();
     harness.check(margin, new Insets(2, 14, 2, 14));
+    
+    // restore a sane look and feel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
 }

@@ -1,5 +1,17 @@
 2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createArrowButton.java
+	(test): Set MetalLookAndFeel at end of test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/createRenderer.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getDisplaySize.java
+	(testNotEditable): Likewise,
+	(testEditable): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/layout.java
+	(test): Likewise.
+
+2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JComboBox/setEditor.java
 	(test): Restore MetalLookAndFeel at the end of the test.
 

@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -33,6 +33,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getDisplaySize() method in the 
@@ -92,6 +93,17 @@ public class getDisplaySize implements Testlet
     cb.setPrototypeDisplayValue("Prototype");
     width = fm.stringWidth("Prototype") + additionalWidth;
     harness.check(ui.getDisplaySize(), new Dimension(width, height));
+    
+    // restore MetalLookAndFeel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (UnsupportedLookAndFeelException e)
+    {
+      e.printStackTrace();
+    }
+
   }
 
   /**
@@ -138,6 +150,17 @@ public class getDisplaySize implements Testlet
     cb.setPrototypeDisplayValue("Long Prototype Display Value");
     width = fm.stringWidth("Long Prototype Display Value") + 2;
     harness.check(ui.getDisplaySize(), new Dimension(width, height));
+
+    // restore a sane look and feel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (UnsupportedLookAndFeelException e)
+    {
+      e.printStackTrace();
+    }
+    
   }
 
 }
