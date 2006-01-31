@@ -1,3 +1,8 @@
+2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/AbstractButton.java
+	(test): Set the look and feel theme to DefaultMetalTheme.
+
 2006-01-31  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JDesktopPane/constructor.java

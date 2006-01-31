@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,6 +27,10 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the setRolloverEnabled() method in the 
@@ -48,8 +52,19 @@ public class setRolloverEnabled
    * @param harness  the test harness (<code>null</code> not permitted).
    */
   public void test(TestHarness harness)      
-  {   
+  { 
+    // this test is theme-dependent
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e) 
+      {
+        // ignore 
+      }
     AbstractButton b = new JButton("Test");
+    harness.check(b.isRolloverEnabled(), false);
     b.addPropertyChangeListener(this);    
     b.setRolloverEnabled(true);
     harness.check(b.isRolloverEnabled(), true);
