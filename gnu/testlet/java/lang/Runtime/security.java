@@ -62,8 +62,6 @@ public class security implements Testlet
       Permission[] loadLibrary_path = new Permission[] {
 	new RuntimePermission("loadLibrary." + library_path)};
 
-      Permission[] noPerms = new Permission[] {};
-
       TestSecurityManager2 sm = new TestSecurityManager2(harness);
       try {
 	sm.install();
@@ -143,7 +141,7 @@ public class security implements Testlet
 	// security: java.lang.Runtime-exit
 	harness.checkPoint("exit");
 	try {
-	  sm.prepareChecks(exitVM, noPerms, true);
+	  sm.prepareChecks(exitVM, true);
 	  runtime.exit(0);
 	  harness.check(false, "shouldn't be reached");	  
 	}
@@ -160,7 +158,7 @@ public class security implements Testlet
 	// security: java.lang.Runtime-runFinalizersOnExit
 	harness.checkPoint("runFinalizersOnExit");
 	try {
-	  sm.prepareChecks(exitVM, noPerms);
+	  sm.prepareChecks(exitVM);
 	  Runtime.runFinalizersOnExit(false);
 	  sm.checkAllChecked(harness);
 	}
@@ -172,7 +170,7 @@ public class security implements Testlet
 	// security: java.lang.Runtime-addShutdownHook
 	harness.checkPoint("addShutdownHook");
 	try {
-	  sm.prepareChecks(shutdownHooks, noPerms);
+	  sm.prepareChecks(shutdownHooks);
 	  runtime.addShutdownHook(thread);
 	  sm.checkAllChecked(harness);
 	}
@@ -184,7 +182,7 @@ public class security implements Testlet
 	// security: java.lang.Runtime-removeShutdownHook
 	harness.checkPoint("removeShutdownHook");
 	try {
-	  sm.prepareChecks(shutdownHooks, noPerms);
+	  sm.prepareChecks(shutdownHooks);
 	  runtime.removeShutdownHook(thread);
 	  sm.checkAllChecked(harness);
 	}
@@ -196,7 +194,7 @@ public class security implements Testlet
 	// security: java.lang.Runtime-load
 	harness.checkPoint("load");
 	try {
-	  sm.prepareChecks(loadLibrary_name, noPerms, true);
+	  sm.prepareChecks(loadLibrary_name, true);
 	  runtime.load(library_name);
 	  harness.check(false, "shouldn't be reached");	  
 	}
@@ -213,7 +211,7 @@ public class security implements Testlet
 	// security: java.lang.Runtime-loadLibrary
 	harness.checkPoint("loadLibrary");
 	try {
-	  sm.prepareChecks(loadLibrary_path, noPerms, true);
+	  sm.prepareChecks(loadLibrary_path, true);
 	  runtime.loadLibrary(library_path);
 	  harness.check(false, "shouldn't be reached");	  
 	}

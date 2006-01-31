@@ -1,3 +1,20 @@
+2006-01-31  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/TestSecurityManager2.java: Added prepareChecks
+	methods with no mayCheck parameter to avoid having to create
+	and pass empty arrays all the time.
+
+	* gnu/testlet/java/io/File/security.java: Use the above.
+	* gnu/testlet/java/io/FileInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/FileOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectOutputStream/security.java: Likewise.
+	* gnu/testlet/java/lang/Class/security.java: Likewise.
+	* gnu/testlet/java/lang/ClassLoader/security.java: Likewise.
+	* gnu/testlet/java/lang/Runtime/security.java: Likewise.
+	* gnu/testlet/java/lang/SecurityManager/thread.java: Likewise.
+	* gnu/testlet/java/lang/System/security.java: Likewise.
+
 2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/AbstractButton.java
@@ -31,7 +48,7 @@
 
 	* gnu/testlet/java/lang/System/security.java: New test.
 
-2006-01-30  Roman Kennke  <kennke@aicas.com>
+2006-01-30  Roman Kennkte  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/ViewportLayout/minimumLayoutSize.java:
 	New test

@@ -104,7 +104,7 @@ public class security implements Testlet
       // security: java.io.FileOutputStream-FileOutputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
       try {
-	sm.prepareChecks(new Permission[] {fdPerm}, new Permission[] {});
+	sm.prepareChecks(new Permission[] {fdPerm});
 	new FileOutputStream(FileDescriptor.out);
 	sm.checkAllChecked(harness);
       }

@@ -74,8 +74,6 @@ public class security implements Testlet
 	Permission[] getProtectionDomain = new Permission[] {
 	  new RuntimePermission("getProtectionDomain")};
 	
-	Permission[] noPerms = new Permission[] {};
-
 	TestSecurityManager2 sm = new TestSecurityManager2(harness);
 	try {
 	  sm.install();
@@ -83,7 +81,7 @@ public class security implements Testlet
 	  // security: java.lang.Class-forName
 	  harness.checkPoint("forName");
 	  try {
-	    sm.prepareChecks(getClassLoader, noPerms);
+	    sm.prepareChecks(getClassLoader);
 	    Class.forName("java.lang.Class", false, null);
 	    sm.checkAllChecked(harness);
 	  }
@@ -95,7 +93,7 @@ public class security implements Testlet
 	  // security: java.lang.Class-getClassLoader
 	  harness.checkPoint("getClassLoader");
 	  try {
-	    sm.prepareChecks(getClassLoader, noPerms);
+	    sm.prepareChecks(getClassLoader);
 	    testClass.getClassLoader();
 	    sm.checkAllChecked(harness);
 	  }
@@ -105,13 +103,12 @@ public class security implements Testlet
 	  }
 
 	  // getDeclaredMember checks
-	  getMemberChecks(harness, sm, testClass,
-			  true, accessDeclaredMembers, noPerms);
+	  getMemberChecks(harness, sm, testClass, true, accessDeclaredMembers);
 	  
 	  // security: java.lang.Class-getProtectionDomain
 	  harness.checkPoint("getProtectionDomain");
 	  try {
-	    sm.prepareChecks(getProtectionDomain, noPerms);
+	    sm.prepareChecks(getProtectionDomain);
 	    testClass.getProtectionDomain();
 	    sm.checkAllChecked(harness);
 	  }
@@ -120,7 +117,7 @@ public class security implements Testlet
 	    harness.check(false, "unexpected check");
 	  }
 	  try {
-	    sm.prepareChecks(getProtectionDomain, noPerms);
+	    sm.prepareChecks(getProtectionDomain);
 	    getClass().getProtectionDomain();
 	    sm.checkAllChecked(harness);
 	  }
@@ -139,8 +136,7 @@ public class security implements Testlet
 	  sm.install();
 
 	  // getMember checks
-	  getMemberChecks(harness, sm, testClass,
-			  false, accessPublicMembers, noPerms);
+	  getMemberChecks(harness, sm, testClass, false, accessPublicMembers);
 	}
 	finally {
 	  sm.uninstall();
@@ -158,7 +154,7 @@ public class security implements Testlet
 
   private void getMemberChecks(TestHarness harness, TestSecurityManager2 sm,
 			       Class testClass, boolean declared,
-			       Permission[] mustCheck, Permission[] mayCheck)
+			       Permission[] mustCheck)
   {
     int level;
     
@@ -169,7 +165,7 @@ public class security implements Testlet
     else
       harness.checkPoint("getClasses"); 
     try {
-      sm.prepareChecks(mustCheck, mayCheck);
+      sm.prepareChecks(mustCheck);
       if (declared)
 	testClass.getDeclaredClasses();
       else
@@ -188,7 +184,7 @@ public class security implements Testlet
     else
       harness.checkPoint("getFields");
     try {
-      sm.prepareChecks(mustCheck, mayCheck);
+      sm.prepareChecks(mustCheck);
       if (declared)
 	testClass.getDeclaredFields();
       else
@@ -207,7 +203,7 @@ public class security implements Testlet
     else
       harness.checkPoint("getMethods");
     try {
-      sm.prepareChecks(mustCheck, mayCheck);
+      sm.prepareChecks(mustCheck);
       if (declared)
 	testClass.getDeclaredMethods();
       else
@@ -226,7 +222,7 @@ public class security implements Testlet
     else
       harness.checkPoint("getConstructors");
     try {
-      sm.prepareChecks(mustCheck, mayCheck);
+      sm.prepareChecks(mustCheck);
       if (declared)
 	testClass.getDeclaredConstructors();
       else
@@ -251,7 +247,7 @@ public class security implements Testlet
     try {
       for (int i = 0; i < modifiers.length; i++) {
 	for (int j = 0; j < 5; j++) {
-	  sm.prepareChecks(mustCheck, mayCheck);
+	  sm.prepareChecks(mustCheck);
 	  boolean exists;
 	  try {
 	    String name = modifiers[i] + "field" + j;
@@ -284,7 +280,7 @@ public class security implements Testlet
       for (int i = 0; i < modifiers.length; i++) {
 	for (int j = 0; j < 5; j++) {
 	  for (int k = 0; k < methodtypes.length; k++) {
-	    sm.prepareChecks(mustCheck, mayCheck);
+	    sm.prepareChecks(mustCheck);
 	    boolean exists;
 	    try {
 	      String name = modifiers[i] + "method" + j;
@@ -320,7 +316,7 @@ public class security implements Testlet
     }
     try {
       for (int i = 0; i < constructortypes.length; i++) {
-	sm.prepareChecks(mustCheck, mayCheck);
+	sm.prepareChecks(mustCheck);
 	boolean exists;
 	try {
 	  if (declared)

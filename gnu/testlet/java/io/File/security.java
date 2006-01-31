@@ -65,8 +65,6 @@ public class security implements Testlet
     Permission tmpdir2DeletePerm =
       new FilePermission(tmpdir2.toString(), "delete");
 
-    Permission tmpfileReadPerm =
-      new FilePermission(tmpfile.toString(), "read");
     Permission tmpfileWritePerm =
       new FilePermission(tmpfile.toString(), "write");
     Permission tmpfileDeletePerm =

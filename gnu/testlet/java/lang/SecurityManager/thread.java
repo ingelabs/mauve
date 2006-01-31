@@ -55,12 +55,12 @@ public class thread implements Testlet
     TestSecurityManager2 sm = new TestSecurityManager2(harness);
 
     sm.prepareChecks(new Permission[] {
-      new RuntimePermission("modifyThread")}, new Permission[] {});
+      new RuntimePermission("modifyThread")});
     sm.checkAccess(thread);
     sm.checkAllChecked(harness);
 
     sm.prepareChecks(new Permission[] {
-      new RuntimePermission("modifyThreadGroup")}, new Permission[] {});
+      new RuntimePermission("modifyThreadGroup")});
     sm.checkAccess(group);
     sm.checkAllChecked(harness);
   }

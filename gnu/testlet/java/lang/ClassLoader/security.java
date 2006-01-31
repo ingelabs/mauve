@@ -61,8 +61,6 @@ public class security implements Testlet
       Permission[] getClassLoader = new Permission[] {
 	new RuntimePermission("getClassLoader")};
 
-      Permission[] noPerms = new Permission[] {};
-
       TestSecurityManager2 sm = new TestSecurityManager2(harness);
       try {
 	sm.install();
@@ -70,7 +68,7 @@ public class security implements Testlet
 	// security: java.lang.ClassLoader-ClassLoader()
 	harness.checkPoint("Constructor (no-args)");
 	try {
-	  sm.prepareChecks(createClassLoader, noPerms);
+	  sm.prepareChecks(createClassLoader);
 	  new TestClassLoader();
 	  sm.checkAllChecked(harness);
 	}
@@ -82,7 +80,7 @@ public class security implements Testlet
 	// security: java.lang.ClassLoader-ClassLoader(ClassLoader)
 	harness.checkPoint("Constructor (one-arg)");
 	try {
-	  sm.prepareChecks(createClassLoader, noPerms);
+	  sm.prepareChecks(createClassLoader);
 	  new TestClassLoader(ourLoader);
 	  sm.checkAllChecked(harness);
 	}
@@ -94,7 +92,7 @@ public class security implements Testlet
 	// security: java.lang.ClassLoader-getSystemClassLoader
 	harness.checkPoint("getSystemClassLoader");
 	try {
-	  sm.prepareChecks(getClassLoader, noPerms);
+	  sm.prepareChecks(getClassLoader);
 	  getSystemClassLoaderTest.invoke(null, new Object[] {});
 	  sm.checkAllChecked(harness);
 	}
@@ -106,7 +104,7 @@ public class security implements Testlet
 	// security: java.lang.ClassLoader-getParent
 	harness.checkPoint("getParent");
 	try {
-	  sm.prepareChecks(getClassLoader, noPerms);
+	  sm.prepareChecks(getClassLoader);
 	  getParentTest.invoke(null, new Object[] {ourLoader});
 	  sm.checkAllChecked(harness);
 	}

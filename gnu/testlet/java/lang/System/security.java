@@ -82,8 +82,6 @@ public class security implements Testlet
       Permission[] setSecurityManager = new Permission[] {
 	new RuntimePermission("setSecurityManager")};
       
-      Permission[] noPerms = new Permission[] {};
-
       TestSecurityManager2 sm = new TestSecurityManager2(harness);
       try {
 	sm.install();
@@ -91,7 +89,7 @@ public class security implements Testlet
 	// security: java.lang.System-exit
 	harness.checkPoint("exit");
 	try {
-	  sm.prepareChecks(exitVM, noPerms, true);
+	  sm.prepareChecks(exitVM, true);
 	  System.exit(0);
 	  harness.check(false, "shouldn't be reached");	  
 	}
@@ -108,7 +106,7 @@ public class security implements Testlet
 	// security: java.lang.System-runFinalizersOnExit
 	harness.checkPoint("runFinalizersOnExit");
 	try {
-	  sm.prepareChecks(exitVM, noPerms);
+	  sm.prepareChecks(exitVM);
 	  System.runFinalizersOnExit(false);
 	  sm.checkAllChecked(harness);
 	}
@@ -120,7 +118,7 @@ public class security implements Testlet
 	// security: java.lang.System-load
 	harness.checkPoint("load");
 	try {
-	  sm.prepareChecks(loadLibrary_name, noPerms, true);
+	  sm.prepareChecks(loadLibrary_name, true);
 	  System.load(library_name);
 	  harness.check(false, "shouldn't be reached");	  
 	}
@@ -137,7 +135,7 @@ public class security implements Testlet
 	// security: java.lang.System-loadLibrary
 	harness.checkPoint("loadLibrary");
 	try {
-	  sm.prepareChecks(loadLibrary_path, noPerms, true);
+	  sm.prepareChecks(loadLibrary_path, true);
 	  System.loadLibrary(library_path);
 	  harness.check(false, "shouldn't be reached");	  
 	}
@@ -156,7 +154,7 @@ public class security implements Testlet
 	// security: java.lang.System-getenv(String)
 	harness.checkPoint("getenv(String)");
 	try {
-	  sm.prepareChecks(readVariable, noPerms);
+	  sm.prepareChecks(readVariable);
 	  System.getenv(a_variable);
 	  sm.checkAllChecked(harness);
 	}
@@ -165,7 +163,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 	try {
-	  sm.prepareChecks(readNonVariable, noPerms);
+	  sm.prepareChecks(readNonVariable);
 	  System.getenv(not_a_variable);
 	  sm.checkAllChecked(harness);
 	}
@@ -177,7 +175,7 @@ public class security implements Testlet
 	// security: java.lang.System-getProperties
 	harness.checkPoint("getProperties");
 	try {
-	  sm.prepareChecks(readWriteAllProperties, noPerms);
+	  sm.prepareChecks(readWriteAllProperties);
 	  System.getProperties();
 	  sm.checkAllChecked(harness);
 	}
@@ -189,7 +187,7 @@ public class security implements Testlet
 	// security: java.lang.System-setProperties
 	harness.checkPoint("setProperties");
 	try {
-	  sm.prepareChecks(readWriteAllProperties, noPerms);
+	  sm.prepareChecks(readWriteAllProperties);
 	  System.setProperties(properties);
 	  sm.checkAllChecked(harness);
 	}
@@ -201,7 +199,7 @@ public class security implements Testlet
 	// security: java.lang.System-getProperty(String)
 	harness.checkPoint("getProperty(String)");
 	try {
-	  sm.prepareChecks(readProperty, noPerms);
+	  sm.prepareChecks(readProperty);
 	  System.getProperty(a_property);
 	  sm.checkAllChecked(harness);
 	}
@@ -210,7 +208,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 	try {
-	  sm.prepareChecks(readNonProperty, noPerms);
+	  sm.prepareChecks(readNonProperty);
 	  System.getProperty(not_a_property);
 	  sm.checkAllChecked(harness);
 	}
@@ -222,7 +220,7 @@ public class security implements Testlet
 	// security: java.lang.System-getProperty(String, String)
 	harness.checkPoint("getProperty(String, String)");
 	try {
-	  sm.prepareChecks(readProperty, noPerms);
+	  sm.prepareChecks(readProperty);
 	  System.getProperty(a_property, "quadrant");
 	  sm.checkAllChecked(harness);
 	}
@@ -231,7 +229,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 	try {
-	  sm.prepareChecks(readNonProperty, noPerms);
+	  sm.prepareChecks(readNonProperty);
 	  System.getProperty(not_a_property, "blade");
 	  sm.checkAllChecked(harness);
 	}
@@ -243,7 +241,7 @@ public class security implements Testlet
 	// security: java.lang.System-setIn
 	harness.checkPoint("setIn");
 	try {
-	  sm.prepareChecks(setIO, noPerms);
+	  sm.prepareChecks(setIO);
 	  System.setIn(System.in);
 	  sm.checkAllChecked(harness);
 	}
@@ -255,7 +253,7 @@ public class security implements Testlet
 	// security: java.lang.System-setOut
 	harness.checkPoint("setOut");
 	try {
-	  sm.prepareChecks(setIO, noPerms);
+	  sm.prepareChecks(setIO);
 	  System.setOut(System.out);
 	  sm.checkAllChecked(harness);
 	}
@@ -267,7 +265,7 @@ public class security implements Testlet
 	// security: java.lang.System-setErr
 	harness.checkPoint("setErr");
 	try {
-	  sm.prepareChecks(setIO, noPerms);
+	  sm.prepareChecks(setIO);
 	  System.setErr(System.err);
 	  sm.checkAllChecked(harness);
 	}
@@ -279,7 +277,7 @@ public class security implements Testlet
 	// security: java.lang.System-setProperty
 	harness.checkPoint("setProperty");
 	try {
-	  sm.prepareChecks(writeProperty, noPerms);
+	  sm.prepareChecks(writeProperty);
 	  System.setProperty(a_property, properties.getProperty(a_property));
 	  sm.checkAllChecked(harness);
 	}
@@ -288,7 +286,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 	try {
-	  sm.prepareChecks(writeNonProperty, noPerms);
+	  sm.prepareChecks(writeNonProperty);
 	  System.setProperty(not_a_property, "hello mum");
 	  sm.checkAllChecked(harness);
 	}
@@ -302,7 +300,7 @@ public class security implements Testlet
 	// security: java.lang.System-setSecurityManager
 	harness.checkPoint("setSecurityManager");
 	try {
-	  sm.prepareChecks(setSecurityManager, noPerms);
+	  sm.prepareChecks(setSecurityManager);
 	  System.setSecurityManager(sm);
 	  sm.checkAllChecked(harness);
 	}

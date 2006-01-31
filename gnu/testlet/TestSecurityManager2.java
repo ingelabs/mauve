@@ -27,7 +27,9 @@ public class TestSecurityManager2 extends SecurityManager
 {
   private SecurityManager oldManager;
 
-  private Permission[] mustCheck = new Permission[0];
+  private Permission[] noChecks = new Permission[0];
+  
+  private Permission[] mustCheck = noChecks;
   // On some JDKs, setting the security manager triggers some network
   // initialization that reads system properties ...
   private Permission[] mayCheck = 
@@ -79,10 +81,18 @@ public class TestSecurityManager2 extends SecurityManager
     checkPermission(perm, null);
   }
 
+  public void prepareChecks(Permission[] mustCheck) {
+    prepareChecks(mustCheck, noChecks);
+  }
+
   public void prepareChecks(Permission[] mustCheck, Permission[] mayCheck) {
     prepareChecks(mustCheck, mayCheck, false);
   }
       
+  public void prepareChecks(Permission[] mustCheck, boolean throwOnSuccess) {
+    prepareChecks(mustCheck, noChecks, throwOnSuccess);
+  }
+
   public void prepareChecks(Permission[] mustCheck,
 			    Permission[] mayCheck,
 			    boolean throwOnSuccess) {

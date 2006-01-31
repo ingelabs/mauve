@@ -48,7 +48,7 @@ public class security implements Testlet
       // security: java.io.FileInputStream-FileInputStream(File)
       harness.checkPoint("File constructor");
       try {
-	sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+	sm.prepareChecks(new Permission[] {perm});
 	new FileInputStream(file);
 	sm.checkAllChecked(harness);
       }
@@ -60,7 +60,7 @@ public class security implements Testlet
       // security: java.io.FileInputStream-FileInputStream(String)
       harness.checkPoint("String constructor");
       try {
-	sm.prepareChecks(new Permission[] {perm}, new Permission[] {});
+	sm.prepareChecks(new Permission[] {perm});
 	new FileInputStream(path);
 	sm.checkAllChecked(harness);
       }
@@ -72,7 +72,7 @@ public class security implements Testlet
       // security: java.io.FileInputStream-FileInputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
       try {
-	sm.prepareChecks(new Permission[] {fdPerm}, new Permission[] {});
+	sm.prepareChecks(new Permission[] {fdPerm});
 	new FileInputStream(FileDescriptor.in);
 	sm.checkAllChecked(harness);
       }
