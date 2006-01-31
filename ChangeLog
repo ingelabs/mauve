@@ -1,5 +1,10 @@
 2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JComboBox/setEditor.java
+	(test): Restore MetalLookAndFeel at the end of the test.
+
+2006-01-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getDisabledTextColor.java
 	(test): Set known theme in MetalLookAndFeel,
 	* gnu/testlet/javax/swing/plaf/metal/MetalRadioButtonUI/getFocusColor.java: 

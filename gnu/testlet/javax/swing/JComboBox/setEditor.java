@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ import javax.swing.JComponent;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.plaf.metal.MetalComboBoxEditor;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the setEditor() method in the {@link JComponent} class.
@@ -50,7 +51,7 @@ public class setEditor
     // use a known look and feel
     try
       {
-        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
       }
     catch (Exception e)
       {
@@ -80,6 +81,16 @@ public class setEditor
     JComboBox c2 = new JComboBox();
     harness.check(c1.getEditor(), editor);
     harness.check(c2.getEditor() instanceof BasicComboBoxEditor.UIResource);
+    
+    // restore MetalLookAndFeel so as not to interfere with other tests
+    try
+      {
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (Exception e)
+      {
+        harness.fail("Problem restoring MetalLookAndFeel");
+      }
     
     // try a null setting - no exceptions are thrown
     c1.setEditor(null);
