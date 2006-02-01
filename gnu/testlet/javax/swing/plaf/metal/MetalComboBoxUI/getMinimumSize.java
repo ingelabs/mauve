@@ -1,6 +1,6 @@
-// Tags: JDK1.2
+// Tags: JDK1.5
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -32,9 +32,13 @@ import java.awt.Insets;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalComboBoxButton;
 import javax.swing.plaf.metal.MetalComboBoxIcon;
 import javax.swing.plaf.metal.MetalComboBoxUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getMinimumSize() method in the 
@@ -50,6 +54,16 @@ public class getMinimumSize implements Testlet
    */
   public void test(TestHarness harness)
   {
+    // test with a known LAF/theme
+    try
+    {
+      MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (UnsupportedLookAndFeelException e)
+    {
+      e.printStackTrace();
+    }
     test1(harness);
     test2(harness);
     testEditable(harness);
@@ -133,7 +147,7 @@ public class getMinimumSize implements Testlet
     cb.setEditable(true);
     Insets tfInsets = tf.getInsets();
     FontMetrics fm = cb.getFontMetrics(cb.getFont());
-    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 1;
+    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 5;
     int width = fm.stringWidth("m") * tf.getColumns() + tfInsets.left 
         + tfInsets.right + height + 3; 
     harness.check(ui.getPreferredSize(cb), new Dimension(width, height));    
@@ -151,7 +165,7 @@ public class getMinimumSize implements Testlet
     Insets tfInsets2 = tf2.getInsets();
     cb2.setFont(new Font("Dialog", Font.PLAIN, 24));
     FontMetrics fm2 = cb2.getFontMetrics(cb2.getFont());
-    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 1;
+    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 5;
     int width2 = fm2.stringWidth("m") * tf2.getColumns() + tfInsets2.left 
         + tfInsets2.right + height2 + 3; 
     harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));    
@@ -177,7 +191,7 @@ public class getMinimumSize implements Testlet
     cb.setEditable(true);
     Insets tfInsets = tf.getInsets();
     FontMetrics fm = cb.getFontMetrics(cb.getFont());
-    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 1;
+    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 5;
     int width = fm.stringWidth("m") * tf.getColumns() + tfInsets.left 
         + tfInsets.right + height + 3; 
     harness.check(ui.getPreferredSize(cb), new Dimension(width, height));    
@@ -195,7 +209,7 @@ public class getMinimumSize implements Testlet
     Insets tfInsets2 = tf2.getInsets();
     cb2.setFont(new Font("Dialog", Font.PLAIN, 24));
     FontMetrics fm2 = cb2.getFontMetrics(cb2.getFont());
-    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 1;
+    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 5;
     int width2 = fm2.stringWidth("m") * tf2.getColumns() + tfInsets2.left 
         + tfInsets2.right + height2 + 3; 
     harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));    

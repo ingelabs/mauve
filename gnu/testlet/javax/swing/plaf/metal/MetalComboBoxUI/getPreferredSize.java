@@ -1,6 +1,6 @@
-// Tags: JDK1.2
+// Tags: JDK1.5
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -93,7 +93,7 @@ public class getPreferredSize implements Testlet
     Insets tfInsets = tf.getInsets();
     System.out.println("tfInsets = " + tfInsets);
     FontMetrics fm = cb.getFontMetrics(cb.getFont());
-    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 1;
+    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 5;
     int width = fm.stringWidth("m") * tf.getColumns() + tfInsets.left 
         + tfInsets.right + height + 3; 
     harness.check(ui.getPreferredSize(cb), new Dimension(width, height));    
@@ -111,7 +111,7 @@ public class getPreferredSize implements Testlet
     Insets tfInsets2 = tf2.getInsets();
     cb2.setFont(new Font("Dialog", Font.PLAIN, 24));
     FontMetrics fm2 = cb2.getFontMetrics(cb2.getFont());
-    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 1;
+    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 5;
     int width2 = fm2.stringWidth("m") * tf2.getColumns() + tfInsets2.left 
         + tfInsets2.right + height2 + 3; 
     harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));    

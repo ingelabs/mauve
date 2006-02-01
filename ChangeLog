@@ -1,5 +1,17 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxUI/getDisplaySize.java
+	(testNotEditable): Set theme,
+	(testEditable): Set MetalLookAndFeel at end,
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxUI/getMinimumSize.java
+	(test): Set known look and feel,
+	(testEditable): Updated expected values,
+	(testEditableWithCustomFont): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxUI/getPreferredSize.java
+	(testEditable): Updated expected values.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/constructor.java
 	(test): Set MetalLookAndFeel at end of test,
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMaximumSize.java
