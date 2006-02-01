@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -90,11 +90,10 @@ public class getPreferredSize implements Testlet
     JTextField tf = (JTextField) cb.getEditor().getEditorComponent();
     cb.setEditable(true);
     Font font = cb.getFont();
-    System.out.println(font);
     FontMetrics fm = cb.getFontMetrics(font);
     int height = fm.getHeight() + 2;
     int width = fm.stringWidth("m") * tf.getColumns() + height; 
-    harness.check(ui.getPreferredSize(cb), new Dimension(width + 1, height));    
+    harness.check(ui.getPreferredSize(cb), new Dimension(width, height));    
     cb.setModel(new DefaultComboBoxModel(new Object[] {"X"}));
     harness.check(ui.getPreferredSize(cb), new Dimension(width, height));        
     cb.setPrototypeDisplayValue("XX");    
