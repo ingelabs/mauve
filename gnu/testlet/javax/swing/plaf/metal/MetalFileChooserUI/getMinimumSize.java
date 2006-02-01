@@ -27,7 +27,11 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalFileChooserUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getMinimumSize() method in the 
@@ -43,13 +47,21 @@ public class getMinimumSize implements Testlet
    */
   public void test(TestHarness harness)  
   {
+    // test with DefaultMetalTheme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();  
+      }
     JFileChooser fc = new JFileChooser();
     MetalFileChooserUI ui = new MetalFileChooserUI(fc);
-    Dimension expected = new Dimension(506, 326);
-    Dimension d1 = ui.getPreferredSize(fc);
-    harness.check(d1, expected);
     
     // check that the method returns a new instance every time?
+    Dimension d1 = ui.getPreferredSize(fc);
     Dimension d2 = ui.getPreferredSize(fc);
     harness.check(d1 != d2);
     

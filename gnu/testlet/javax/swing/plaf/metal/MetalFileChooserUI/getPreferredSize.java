@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -27,7 +27,11 @@ import gnu.testlet.Testlet;
 import java.awt.Dimension;
 
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalFileChooserUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getPreferredSize() method in the 
@@ -43,9 +47,19 @@ public class getPreferredSize implements Testlet
    */
   public void test(TestHarness harness)  
   {
+    // test with DefaultMetalTheme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();  
+      }
     JFileChooser fc = new JFileChooser();
     MetalFileChooserUI ui = new MetalFileChooserUI(fc);
-    Dimension expected = new Dimension(506, 326);
+    Dimension expected = ui.getMinimumSize(fc);
     Dimension d1 = ui.getPreferredSize(fc);
     harness.check(d1, expected);
     

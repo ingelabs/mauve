@@ -1,3 +1,12 @@
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getActionMap.java:
+	Removed,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getMinimumSize.java
+	(test): Set theme and removed fixed size test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getActionMap.java
+	(test): Likewise.
+
 2006-02-01  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/installDefaults.java:
