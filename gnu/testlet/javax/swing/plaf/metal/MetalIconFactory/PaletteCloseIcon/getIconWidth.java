@@ -1,6 +1,6 @@
-// Tags: JDK1.3
+// Tags: JDK1.5
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -41,7 +41,7 @@ public class getIconWidth implements Testlet
   public void test(TestHarness harness)      
   {
     PaletteCloseIcon icon = new PaletteCloseIcon();
-    harness.check(icon.getIconWidth(), 5);    
+    harness.check(icon.getIconWidth(), 7);    
   }
 
 }

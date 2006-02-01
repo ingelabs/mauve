@@ -1,5 +1,13 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconHeight.java
+	(test): Change expected result to 7,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconWidth.java
+	(test): Likewise,
+	Changed tag to JDK1.5 for both.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java
 	(test): Set a known theme at the start of the test,
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/setCurrentTheme.java
