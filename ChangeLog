@@ -1,5 +1,10 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getPreferredSize.java
+	(test): Removed check for actual size.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxUI/getDisplaySize.java
 	(testNotEditable): Set theme,
 	(testEditable): Set MetalLookAndFeel at end,

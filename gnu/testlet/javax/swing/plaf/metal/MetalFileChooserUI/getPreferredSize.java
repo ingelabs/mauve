@@ -59,11 +59,9 @@ public class getPreferredSize implements Testlet
       }
     JFileChooser fc = new JFileChooser();
     MetalFileChooserUI ui = new MetalFileChooserUI(fc);
-    Dimension expected = ui.getMinimumSize(fc);
-    Dimension d1 = ui.getPreferredSize(fc);
-    harness.check(d1, expected);
     
     // check that the method returns a new instance every time?
+    Dimension d1 = ui.getPreferredSize(fc);
     Dimension d2 = ui.getPreferredSize(fc);
     harness.check(d1 != d2);
     
