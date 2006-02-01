@@ -1,3 +1,8 @@
+2006-02-01  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/regex/Pattern/UnicodeSimpleCategory.java:
+	New test.
+
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/text/StringContent/remove.java: Minor 
