@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,9 +26,12 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the constructors of the {@link TitledBorder} 
@@ -44,6 +47,16 @@ public class constructors implements Testlet
    */
   public void test(TestHarness harness)       
   {
+    // test with DefaultMetalTheme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();  
+      }
     test1(harness);
     test2(harness);
     test3(harness);

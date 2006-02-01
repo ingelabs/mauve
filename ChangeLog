@@ -4,6 +4,11 @@
 
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/border/TitledBorder/constructors.java
+	(test): Set known look and feel and theme.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getActionMap.java:
 	Removed,
 	* gnu/testlet/javax/swing/plaf/metal/MetalFileChooserUI/getMinimumSize.java
