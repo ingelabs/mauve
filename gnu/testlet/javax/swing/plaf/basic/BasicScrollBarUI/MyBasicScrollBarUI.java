@@ -82,6 +82,14 @@ public class MyBasicScrollBarUI extends BasicScrollBarUI
   }
 
   /**
+   * Overrides installComponents() to enable public access in tests.
+   */
+  public void installComponents()
+  {
+    super.installComponents();
+  }
+
+  /**
    * Returns the value of the (otherwise protected) field incrButton.
    *
    * @return the value of the incrButton field

@@ -1,5 +1,17 @@
 2006-02-01  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/installDefaults.java:
+	(testIncrButton): Fixed to test the JDK1.5 behaviour, which is
+	to not install any button in the installDefaults method.
+	(testDecrButton): Fixed to test the JDK1.5 behaviour, which is
+	to not install any button in the installDefaults method.
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/installComponents.java:
+	New test. Checks if the ScrollBar buttons are created here.
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/MyBasicScrollBarUI.java:
+	Added installComponents() method to make protected method visible.
+
+2006-02-01  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JLayeredPane/addImpl.java
 	(testAddZeroPosition): New test.
 

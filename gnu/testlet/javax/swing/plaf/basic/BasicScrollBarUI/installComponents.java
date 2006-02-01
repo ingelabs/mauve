@@ -1,6 +1,6 @@
 // Tags: JDK1.5
 
-// Copyright (C) 2005 Roman Kennke <kennke@aicas.com>
+// Copyright (C) 2006 Roman Kennke <kennke@aicas.com>
 
 // This file is part of Mauve.
 
@@ -27,13 +27,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 /**
- * Tests if installDefaults() works correctly. ATM we check if the fields
+ * Tests if installComponents() works correctly. ATM we check if the fields
  * incrButton and decrButton are initialized within this method, since we had
  * a bug with this. There is certainly more that could be checked here.
  *
  * @author Roman Kennke (kennke@aicas.com)
  */
-public class installDefaults implements Testlet
+public class installComponents implements Testlet
 {
 
   /**
@@ -57,8 +57,8 @@ public class installDefaults implements Testlet
     MyBasicScrollBarUI ui = new MyBasicScrollBarUI();
     ui.setScrollbar(new JScrollBar());
     harness.check(ui.getIncrButton(), null);
-    ui.installDefaults();
-    harness.check(ui.getIncrButton(), null);
+    ui.installComponents();
+    harness.check(ui.getIncrButton() != null);
   }
 
   /**
@@ -71,7 +71,7 @@ public class installDefaults implements Testlet
     MyBasicScrollBarUI ui = new MyBasicScrollBarUI();
     ui.setScrollbar(new JScrollBar());
     harness.check(ui.getDecrButton(), null);
-    ui.installDefaults();
-    harness.check(ui.getDecrButton(), null);
+    ui.installComponents();
+    harness.check(ui.getDecrButton() != null);
   }
 }
