@@ -1,6 +1,6 @@
-// Tags: JDK1.2 
+// Tags: JDK1.5 
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -26,6 +26,10 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.JButton;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Checks the defaultTextIconGap field.
@@ -40,13 +44,25 @@ public class defaultTextIconGap implements Testlet
    */
   public void test(TestHarness harness) 
   {
+    // test with DefaultMetalTheme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();  
+      }
+    
     // at first the field value is 0
     MyBasicButtonUI ui = new MyBasicButtonUI();
     harness.check(ui.getDefaultTextIconGapField(), 0);
     
     // the field value is updated after a call to installUI()
+    // UPDATE: in JDK1.5, it seems this update no longer happens
     ui.installUI(new JButton());
-    harness.check(ui.getDefaultTextIconGapField(), 4);    
+    harness.check(ui.getDefaultTextIconGapField(), 0 /* 4 */);    
   }
   
 }
