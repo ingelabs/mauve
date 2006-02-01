@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -30,6 +30,7 @@ import java.awt.Dimension;
 import javax.swing.JScrollBar;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getMaximumSize() method in the {@link BasicScrollBarUI} 
@@ -68,6 +69,16 @@ public class getMaximumSize implements Testlet
     scrollBar2.setUI(ui2);
     harness.check(ui2.getMaximumSize(scrollBar2), 
             new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+    
+    // restore a sane look and feel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
 }

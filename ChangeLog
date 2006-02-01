@@ -1,5 +1,22 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/constructor.java
+	(test): Set MetalLookAndFeel at end of test,
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMaximumSize.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMaximumThumbSize.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMinimumSize.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getMinimumThumbSize.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/getPreferredSize.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/basic/BasicScrollBarUI/layoutContainer.java
+	(test): Likewise.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getPreferredSize.java
 	(testEditable): Removed System.out.println() and modified expected result for one check.
 

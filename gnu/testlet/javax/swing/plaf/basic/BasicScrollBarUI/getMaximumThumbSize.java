@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -30,6 +30,7 @@ import java.awt.Dimension;
 import javax.swing.JScrollBar;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getMaximumThumbSize() method in the 
@@ -66,6 +67,16 @@ public class getMaximumThumbSize implements Testlet
     JScrollBar scrollBar2 = new JScrollBar(JScrollBar.VERTICAL);
     scrollBar2.setUI(ui2);
     harness.check(ui2.getMaximumThumbSize(), new Dimension(4096, 4096));
+    
+    // restore a sane look and feel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
 }

@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -32,6 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the constructor in the {@link BasicScrollBarUI} class.  
@@ -78,6 +79,17 @@ public class constructor implements Testlet
     ui.layoutContainer(scrollBar);
     harness.check(ui.getTrackBounds(), new Rectangle(16, 0, 68, 20));    
     harness.check(ui.getThumbBounds(), new Rectangle(16, 0, 8, 20));
+    
+    // restore a sane look and feel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+
   }
 
 }
