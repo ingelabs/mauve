@@ -21,8 +21,8 @@
 
 package gnu.testlet.javax.swing.plaf.metal.MetalLookAndFeel;
 
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
 import java.awt.Color;
 
@@ -39,10 +39,11 @@ public class setCurrentTheme implements Testlet
 {
   public void test(TestHarness h)
   {
-    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+    DefaultMetalTheme theme = new DefaultMetalTheme();
+    MetalLookAndFeel.setCurrentTheme(theme);
     MetalLookAndFeel laf = new MetalLookAndFeel();
     Color c1 = laf.getDefaults().getColor("Button.background");
-    h.check(c1, new Color(238, 238, 238));
+    h.check(c1, theme.getControl());
     MetalLookAndFeel.setCurrentTheme(new TestTheme());
     c1 = laf.getDefaults().getColor("Button.background");
     h.check(c1, Color.red);

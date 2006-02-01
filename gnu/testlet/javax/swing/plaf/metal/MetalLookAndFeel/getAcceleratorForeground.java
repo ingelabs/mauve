@@ -40,9 +40,10 @@ public class getAcceleratorForeground implements Testlet {
    * @param harness  the test harness (<code>null</code> not permitted).
    */
   public void test(TestHarness harness) {
-    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+    DefaultMetalTheme theme = new DefaultMetalTheme();
+    MetalLookAndFeel.setCurrentTheme(theme);
     ColorUIResource c = MetalLookAndFeel.getAcceleratorForeground();
-    harness.check(c, new ColorUIResource(new Color(99, 130, 191)));
+    harness.check(c, theme.getAcceleratorForeground());
 
     MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme() {
       public ColorUIResource getAcceleratorForeground() {
