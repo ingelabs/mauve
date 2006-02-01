@@ -1,3 +1,8 @@
+2006-02-01  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JLayeredPane/addImpl.java
+	(testAddZeroPosition): New test.
+
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/MenuBarBorder/getBorderInsets.java

@@ -46,6 +46,7 @@ public class addImpl implements Testlet
   {
     testAddSameLayer(harness);
     testAddDifferentLayers(harness);
+    testAddZeroPosition(harness);
   }
 
   /**
@@ -83,6 +84,27 @@ public class addImpl implements Testlet
     l.add(p1, new Integer(0));
     l.add(p2, new Integer(1));
     l.add(p3, new Integer(2));
+    h.check(l.getComponent(0), p3);
+    h.check(l.getComponent(1), p2);
+    h.check(l.getComponent(2), p1);
+  }
+
+  /**
+   * Tests the addition of 3 components into the same layer and with a position
+   * argument of 0. This should add each component as the top component in
+   * that layer.
+   *
+   * @param h the test harness to use
+   */
+  private void testAddZeroPosition(TestHarness h)
+  {
+    JLayeredPane l = new JLayeredPane();
+    JPanel p1 = new JPanel();
+    JPanel p2 = new JPanel();
+    JPanel p3 = new JPanel();
+    l.add(p1, JLayeredPane.FRAME_CONTENT_LAYER, 0);
+    l.add(p2, JLayeredPane.FRAME_CONTENT_LAYER, 0);
+    l.add(p3, JLayeredPane.FRAME_CONTENT_LAYER, 0);
     h.check(l.getComponent(0), p3);
     h.check(l.getComponent(1), p2);
     h.check(l.getComponent(2), p1);
