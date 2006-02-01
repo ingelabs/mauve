@@ -5,6 +5,14 @@
 
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/constructor.java
+	(test): Set DefaultMetalTheme and use correct insets,
+	* gnu/testlet/javax/swing/plaf/metal/MetalComboBoxEditor/editorBorderInsets.java
+	(test): Likewise,
+	Updated tag to JDK1.5 for both.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/MenuBarBorder/getBorderInsets.java
 	(test1): Use MetalLookAndFeel with DefaultMetalTheme,
 	(test2): Likewise,

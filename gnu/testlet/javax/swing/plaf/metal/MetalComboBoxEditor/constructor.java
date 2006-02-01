@@ -1,6 +1,6 @@
-// Tags: JDK1.2
+// Tags: JDK1.5
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -27,8 +27,12 @@ import gnu.testlet.Testlet;
 import java.awt.Insets;
 
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.UIResource;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalComboBoxEditor;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
 * Some tests for the constructor() in the {@link MetalComboBoxEditor} 
@@ -44,10 +48,20 @@ public class constructor implements Testlet
    */
   public void test(TestHarness harness)      
   {
+    // test with DefaultMetalTheme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();  
+      }
     MetalComboBoxEditor editor = new MetalComboBoxEditor();
     JTextField tf = (JTextField) editor.getEditorComponent();
     harness.check(tf.getColumns(), 9);
-    harness.check(tf.getInsets(), new Insets(4, 2, 4, 0));
+    harness.check(tf.getInsets(), new Insets(2, 2, 2, 0));
     harness.check(tf.getMargin(), new Insets(0, 0, 0, 0));
     harness.check(!(tf.getInsets() instanceof UIResource));
   }

@@ -1,4 +1,4 @@
-// Tags: JDK1.2
+// Tags: JDK1.5
 // Uses: MyMetalComboBoxEditor
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
@@ -27,6 +27,11 @@ import gnu.testlet.Testlet;
 
 import java.awt.Insets;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+
 /**
  * Checks the value of the editorBorderInsets field.
  */
@@ -40,8 +45,18 @@ public class editorBorderInsets implements Testlet
    */
   public void test(TestHarness harness)      
   {
+    // test with DefaultMetalTheme
+    try
+      {
+        MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
+      }
+    catch (UnsupportedLookAndFeelException e)
+      {
+        e.printStackTrace();  
+      }
     harness.check(MyMetalComboBoxEditor.getEditorBorderInsetsField(), 
-            new Insets(4, 2, 4, 0));
+            new Insets(2, 2, 2, 0));
   }
   
 }
