@@ -1,5 +1,14 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/MenuBarBorder/getBorderInsets.java
+	(test1): Use MetalLookAndFeel with DefaultMetalTheme,
+	(test2): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/ToolBarBorder/getBorderInsets.java
+	(test1): Use MetalLookAndFeel with DefaultMetalTheme,
+	(test2): Likewise.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconHeight.java
 	(test): Change expected result to 7,
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/PaletteCloseIcon/getIconWidth.java
