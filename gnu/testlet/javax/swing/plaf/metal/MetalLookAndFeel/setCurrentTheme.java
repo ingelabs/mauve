@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 Roman Kennke <roman@kennke.org>
+// Copyright (C) 2005, 2006 Roman Kennke <roman@kennke.org>
 
 // This file is part of Mauve.
 
@@ -16,8 +16,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.plaf.metal.MetalLookAndFeel;
 
@@ -39,6 +39,7 @@ public class setCurrentTheme implements Testlet
 {
   public void test(TestHarness h)
   {
+    MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
     MetalLookAndFeel laf = new MetalLookAndFeel();
     Color c1 = laf.getDefaults().getColor("Button.background");
     h.check(c1, new Color(238, 238, 238));

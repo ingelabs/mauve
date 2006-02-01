@@ -1,5 +1,12 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java
+	(test): Set a known theme at the start of the test,
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/setCurrentTheme.java
+	(test): Likewise.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/UIManager/getUI.java
 	(test): Set MetalLookAndFeel at end of test.
 
