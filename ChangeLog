@@ -1,5 +1,10 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/text/StringContent/remove.java: Minor 
+	correction to header.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/text/SimpleAttributeSet/containsAttribute.java
 	(test): Added one more check.
 

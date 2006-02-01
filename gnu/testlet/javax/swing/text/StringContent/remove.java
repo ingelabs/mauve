@@ -1,5 +1,5 @@
-/* remove.java -- Some checks for the insertString() method in the 
-                  StringContent class.
+/* remove.java -- Some checks for the remove() method in the StringContent 
+                  class.
    Copyright (C) 2006  David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
