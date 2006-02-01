@@ -75,11 +75,23 @@ public class containsAttribute implements Testlet
       }
     harness.check(pass);
     
-    // try null value
+    // try null value for existing key
     pass = false;
     try
       {
         s.containsAttribute("X2", null);
+      }
+    catch (NullPointerException e) 
+      {
+        pass = true;  
+      }
+    harness.check(pass);  
+    
+    // try null value for non-existent key
+    pass = false;
+    try
+      {
+        s.containsAttribute("XXX", null);
       }
     catch (NullPointerException e) 
       {

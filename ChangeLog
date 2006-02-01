@@ -1,5 +1,10 @@
 2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/text/SimpleAttributeSet/containsAttribute.java
+	(test): Added one more check.
+
+2006-02-01  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getAcceleratorForeground.java
 	(test): Set theme then check color against theme,
 	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/setCurrentTheme.java
