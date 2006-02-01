@@ -14,8 +14,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.UIManager;
 
@@ -24,7 +24,9 @@ import gnu.testlet.Testlet;
 
 import javax.swing.JLabel;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.LabelUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 /**
  * Some checks for the getUI() method in the 
@@ -59,5 +61,16 @@ public class getUI implements Testlet {
     TestLabel l = new TestLabel();
     UIManager.getUI(l);
     harness.check(TestLabelUI.installUICalled, false);
+    
+    // restore a sane look and feel
+    try
+    {
+      UIManager.setLookAndFeel(new MetalLookAndFeel());
+    }
+    catch (UnsupportedLookAndFeelException e)
+    {
+      e.printStackTrace();
+    }
+    
   }
 }
