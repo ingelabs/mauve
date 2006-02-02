@@ -1,3 +1,7 @@
+2006-02-02  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/AbstractCollection/toString.java: New test.
+
 2006-02-02  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/GapContent/insertString.java
