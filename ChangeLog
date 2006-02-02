@@ -1,3 +1,8 @@
+2006-02-02  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/GapContent/insertString.java
+	(testGeneral): Fixed boundary case to pass with the JDK.
+
 2006-02-01  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/regex/Pattern/UnicodeSimpleCategory.java:

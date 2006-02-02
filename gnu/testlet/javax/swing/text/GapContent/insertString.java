@@ -215,19 +215,17 @@ public class insertString implements Testlet
     }
     harness.check(gc.length(), 7);
     
-    // insert at index of last character + 1 - the API docs say this should
-    // raise a BadLocationException, but JDK1.5.0_06 doesn't (I reported this
-    // to Sun as a bug in their implementation, will add a bug ID if one is assigned)
-    pass = false;
+    // Insert at index of last character + 1. This appends the new string to
+    // the existing string.
     try
     {
       gc.insertString(7, "XYZ");
     }
     catch (BadLocationException e)
     {
-      pass = true;
+      pass = false;
     }
-    harness.check(pass);
+    harness.check(gc.length(), 10);
 
     // insert at index of last character + 2 
     pass = false;
