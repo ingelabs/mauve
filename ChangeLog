@@ -1,3 +1,12 @@
+2006-02-04  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/jce/TestOfKeyPairGenerator.java
+	(checkJCEKeyPairGenerator): New method refactored from old
+	testDSAKeyPairGenerator().
+	Ensure implementation provides defaults for 512- and 1024-bit modulus.
+	(testDSAKeyPairGenerator): Removed.
+	(test): Call checkJCEKeyPairGenerator with DSA and DSS.
+
 2006-02-03  Olivier Jolly  <olivier.jolly@pcedev.com>
 
     * gnu/testlet/java/io/ObjectInputOutput/LoopSerializationTest.java:

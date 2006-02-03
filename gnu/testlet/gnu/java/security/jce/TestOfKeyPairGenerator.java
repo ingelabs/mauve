@@ -49,12 +49,18 @@ public class TestOfKeyPairGenerator implements Testlet
     setUp();
 
     testUnknownGenerator(harness);
-    testDSAKeyPairGenerator(harness);
+    checkJCEKeyPairGenerator(harness, "DSA");
+    checkJCEKeyPairGenerator(harness, "DSS");
     testRSAKeyPairGenerator(harness);
   }
 
+  private void setUp()
+  {
+    Security.addProvider(new Gnu()); // dynamically adds our provider
+  }
+
   /** Should fail with an unknown algorithm. */
-  public void testUnknownGenerator(TestHarness harness)
+  private void testUnknownGenerator(TestHarness harness)
   {
     harness.checkPoint("testUnknownGenerator");
     try
@@ -68,51 +74,84 @@ public class TestOfKeyPairGenerator implements Testlet
       }
   }
 
-  public void testDSAKeyPairGenerator(TestHarness harness)
+  private void checkJCEKeyPairGenerator(TestHarness harness, String algo)
   {
-    harness.checkPoint("testDSAKeyPairGenerator");
+    harness.checkPoint("checkJCEKeyPairGenerator - " + algo);
     try
       {
         KeyPairGenerator kpg =
-            KeyPairGenerator.getInstance("DSA", Registry.GNU_SECURITY);
+            KeyPairGenerator.getInstance(algo, Registry.GNU_SECURITY);
 
-        // modulus length should be between 512, and 1024 in increments of 64
+        String msg = "L MUST be <= 1024 and of the form 512 + 64n";
         try
           {
             kpg.initialize(530);
-            harness.fail("L should be <= 1024 and of the form 512 + 64n");
+            harness.fail(msg);
           }
         catch (IllegalArgumentException x)
           {
-            harness.check(true, "L should be <= 1024 and of the form 512 + 64n");
+            harness.check(true, msg);
           }
 
-        kpg.initialize(512 + 64);
+        kpg.initialize(512);
         KeyPair kp = kpg.generateKeyPair();
 
         BigInteger p1 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
+        harness.check(Prime2.isProbablePrime(p1), "p is probable prime - 512-bit");
         BigInteger p2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getP();
-        harness.check(p1.equals(p2), "p1.equals(p2)");
+        harness.check(p1.equals(p2), "p1.equals(p2) - 512-bit");
 
         BigInteger q1 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
+        harness.check(Prime2.isProbablePrime(q1), "q is probable prime - 512-bit");
         BigInteger q2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getQ();
-        harness.check(q1.equals(q2), "q1.equals(q2)");
+        harness.check(q1.equals(q2), "q1.equals(q2) - 512-bit");
 
         BigInteger g1 = ((DSAPublicKey) kp.getPublic()).getParams().getG();
         BigInteger g2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getG();
-        harness.check(g1.equals(g2), "g1.equals(g2)");
+        harness.check(g1.equals(g2), "g1.equals(g2) - 512-bit");
 
-        harness.check(Prime2.isProbablePrime(q1), "q is probable prime");
-        harness.check(Prime2.isProbablePrime(p1), "p is probable prime");
+        kp = kpg.generateKeyPair();
+        p2 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
+        harness.check(p1.equals(p2), "MUST provide deault params for L = 512-bit (p)");
+        q2 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
+        harness.check(p1.equals(p2), "MUST provide deault params for L = 512-bit (q)");
+        g2 = ((DSAPublicKey) kp.getPublic()).getParams().getG();
+        harness.check(p1.equals(p2), "MUST provide deault params for L = 512-bit (g)");
+
+
+        kpg.initialize(1024);
+        kp = kpg.generateKeyPair();
+
+        p1 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
+        harness.check(Prime2.isProbablePrime(p1), "p is probable prime - 1024-bit");
+        p2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getP();
+        harness.check(p1.equals(p2), "p1.equals(p2) - 1024-bit");
+
+        q1 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
+        harness.check(Prime2.isProbablePrime(q1), "q is probable prime - 1024-bit");
+        q2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getQ();
+        harness.check(q1.equals(q2), "q1.equals(q2) - 1024-bit");
+
+        g1 = ((DSAPublicKey) kp.getPublic()).getParams().getG();
+        g2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getG();
+        harness.check(g1.equals(g2), "g1.equals(g2) - 1024-bit");
+
+        kp = kpg.generateKeyPair();
+        p2 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
+        harness.check(p1.equals(p2), "MUST provide deault params for L = 1024-bit (p)");
+        q2 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
+        harness.check(p1.equals(p2), "MUST provide deault params for L = 1024-bit (q)");
+        g2 = ((DSAPublicKey) kp.getPublic()).getParams().getG();
+        harness.check(p1.equals(p2), "MUST provide deault params for L = 1024-bit (g)");
       }
     catch (Exception x)
       {
         harness.debug(x);
-        harness.fail("testDSAKeyPairGenerator()");
+        harness.fail("checkJCEKeyPairGenerator - " + algo);
       }
   }
 
-  public void testRSAKeyPairGenerator(TestHarness harness)
+  private void testRSAKeyPairGenerator(TestHarness harness)
   {
     harness.checkPoint("testRSAKeyPairGenerator");
     try
@@ -148,10 +187,5 @@ public class TestOfKeyPairGenerator implements Testlet
         harness.debug(x);
         harness.fail("testRSAKeyPairGenerator()");
       }
-  }
-
-  private void setUp()
-  {
-    Security.addProvider(new Gnu()); // dynamically adds our provider
   }
 }
