@@ -49,7 +49,7 @@ public class security implements Testlet
     try {
       sm.install();
 	
-      // security: java.io.FileOutputStream-FileOutputStream(File)
+      // throwpoint: java.io.FileOutputStream-FileOutputStream(File)
       harness.checkPoint("File constructor");
       try {
 	sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
@@ -61,7 +61,7 @@ public class security implements Testlet
 	harness.check(false, "Unexpected check");
       }
 
-      // security: java.io.FileOutputStream-FileOutputStream(File, boolean)
+      // throwpoint: java.io.FileOutputStream-FileOutputStream(File, boolean)
       harness.checkPoint("File, boolean constructor");
       for (int i = 0; i <= 1; i++) {
 	try {
@@ -75,7 +75,7 @@ public class security implements Testlet
 	}
       }
 
-      // security: java.io.FileOutputStream-FileOutputStream(String)
+      // throwpoint: java.io.FileOutputStream-FileOutputStream(String)
       harness.checkPoint("String constructor");
       try {
 	sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
@@ -87,7 +87,7 @@ public class security implements Testlet
 	harness.check(false, "Unexpected check");
       }
 
-      // security: java.io.FileOutputStream-FileOutputStream(String, boolean)
+      // throwpoint: java.io.FileOutputStream-FileOutputStream(String, boolean)
       harness.checkPoint("String, boolean constructor");
       for (int i = 0; i <= 1; i++) {
 	try {
@@ -101,7 +101,7 @@ public class security implements Testlet
 	}
       }
 
-      // security: java.io.FileOutputStream-FileOutputStream(FileDescriptor)
+      // throwpoint: java.io.FileOutputStream-FileOutputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
       try {
 	sm.prepareChecks(new Permission[] {fdPerm});

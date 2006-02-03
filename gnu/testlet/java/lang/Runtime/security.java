@@ -66,7 +66,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
-	// security: java.lang.Runtime-exec(String)
+	// throwpoint: java.lang.Runtime-exec(String)
 	harness.checkPoint("exec(String)");
 	try {
 	  sm.prepareChecks(executeCommand, modifyThread);
@@ -78,7 +78,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-exec(String, String[])
+	// throwpoint: java.lang.Runtime-exec(String, String[])
 	harness.checkPoint("exec(String, String[])");
 	try {
 	  sm.prepareChecks(executeCommand, modifyThread);
@@ -90,7 +90,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-exec(String, String[], File)
+	// throwpoint: java.lang.Runtime-exec(String, String[], File)
 	harness.checkPoint("exec(String, String[], File)");
 	try {
 	  sm.prepareChecks(executeCommand, modifyThread);
@@ -102,7 +102,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-exec(String[])
+	// throwpoint: java.lang.Runtime-exec(String[])
 	harness.checkPoint("exec(String[])");
 	try {
 	  sm.prepareChecks(executeCommand, modifyThread);
@@ -114,7 +114,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-exec(String[], String[])
+	// throwpoint: java.lang.Runtime-exec(String[], String[])
 	harness.checkPoint("exec(String[], String[])");
 	try {
 	  sm.prepareChecks(executeCommand, modifyThread);
@@ -126,7 +126,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-exec(String[], String[], File)
+	// throwpoint: java.lang.Runtime-exec(String[], String[], File)
 	harness.checkPoint("exec(String[], String[], File)");
 	try {
 	  sm.prepareChecks(executeCommand, modifyThread);
@@ -138,7 +138,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-exit
+	// throwpoint: java.lang.Runtime-exit
 	harness.checkPoint("exit");
 	try {
 	  sm.prepareChecks(exitVM, true);
@@ -155,7 +155,7 @@ public class security implements Testlet
 	  }
 	}
 	
-	// security: java.lang.Runtime-runFinalizersOnExit
+	// throwpoint: java.lang.Runtime-runFinalizersOnExit
 	harness.checkPoint("runFinalizersOnExit");
 	try {
 	  sm.prepareChecks(exitVM);
@@ -167,7 +167,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-addShutdownHook
+	// throwpoint: java.lang.Runtime-addShutdownHook
 	harness.checkPoint("addShutdownHook");
 	try {
 	  sm.prepareChecks(shutdownHooks);
@@ -179,7 +179,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 	
-	// security: java.lang.Runtime-removeShutdownHook
+	// throwpoint: java.lang.Runtime-removeShutdownHook
 	harness.checkPoint("removeShutdownHook");
 	try {
 	  sm.prepareChecks(shutdownHooks);
@@ -191,7 +191,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.Runtime-load
+	// throwpoint: java.lang.Runtime-load
 	harness.checkPoint("load");
 	try {
 	  sm.prepareChecks(loadLibrary_name, true);
@@ -208,7 +208,7 @@ public class security implements Testlet
 	  }
 	}
 
-	// security: java.lang.Runtime-loadLibrary
+	// throwpoint: java.lang.Runtime-loadLibrary
 	harness.checkPoint("loadLibrary");
 	try {
 	  sm.prepareChecks(loadLibrary_path, true);

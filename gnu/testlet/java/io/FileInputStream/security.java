@@ -45,7 +45,7 @@ public class security implements Testlet
     try {
       sm.install();
 	
-      // security: java.io.FileInputStream-FileInputStream(File)
+      // throwpoint: java.io.FileInputStream-FileInputStream(File)
       harness.checkPoint("File constructor");
       try {
 	sm.prepareChecks(new Permission[] {perm});
@@ -57,7 +57,7 @@ public class security implements Testlet
 	harness.check(false, "Unexpected check");
       }
       
-      // security: java.io.FileInputStream-FileInputStream(String)
+      // throwpoint: java.io.FileInputStream-FileInputStream(String)
       harness.checkPoint("String constructor");
       try {
 	sm.prepareChecks(new Permission[] {perm});
@@ -69,7 +69,7 @@ public class security implements Testlet
 	harness.check(false, "Unexpected check");
       }
       
-      // security: java.io.FileInputStream-FileInputStream(FileDescriptor)
+      // throwpoint: java.io.FileInputStream-FileInputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
       try {
 	sm.prepareChecks(new Permission[] {fdPerm});

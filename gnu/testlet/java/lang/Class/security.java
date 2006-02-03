@@ -78,7 +78,7 @@ public class security implements Testlet
 	try {
 	  sm.install();
 
-	  // security: java.lang.Class-forName
+	  // throwpoint: java.lang.Class-forName
 	  harness.checkPoint("forName");
 	  try {
 	    sm.prepareChecks(getClassLoader);
@@ -90,7 +90,7 @@ public class security implements Testlet
 	    harness.check(false, "unexpected check");
 	  }
 
-	  // security: java.lang.Class-getClassLoader
+	  // throwpoint: java.lang.Class-getClassLoader
 	  harness.checkPoint("getClassLoader");
 	  try {
 	    sm.prepareChecks(getClassLoader);
@@ -105,7 +105,7 @@ public class security implements Testlet
 	  // getDeclaredMember checks
 	  getMemberChecks(harness, sm, testClass, true, accessDeclaredMembers);
 	  
-	  // security: java.lang.Class-getProtectionDomain
+	  // throwpoint: java.lang.Class-getProtectionDomain
 	  harness.checkPoint("getProtectionDomain");
 	  try {
 	    sm.prepareChecks(getProtectionDomain);
@@ -158,8 +158,8 @@ public class security implements Testlet
   {
     int level;
     
-    // security: java.lang.Class-getClasses
-    // security: java.lang.Class-getDeclaredClasses
+    // throwpoint: java.lang.Class-getClasses
+    // throwpoint: java.lang.Class-getDeclaredClasses
     if (declared)
       harness.checkPoint("getDeclaredClasses");
     else
@@ -177,8 +177,8 @@ public class security implements Testlet
       harness.check(false, "unexpected check");
     }
 
-    // security: java.lang.Class-getFields
-    // security: java.lang.Class-getDeclaredFields
+    // throwpoint: java.lang.Class-getFields
+    // throwpoint: java.lang.Class-getDeclaredFields
     if (declared)
       harness.checkPoint("getDeclaredFields");
     else
@@ -196,8 +196,8 @@ public class security implements Testlet
       harness.check(false, "unexpected check");
     }
 
-    // security: java.lang.Class-getMethods
-    // security: java.lang.Class-getDeclaredMethods
+    // throwpoint: java.lang.Class-getMethods
+    // throwpoint: java.lang.Class-getDeclaredMethods
     if (declared)
       harness.checkPoint("getDeclaredMethods");
     else
@@ -215,8 +215,8 @@ public class security implements Testlet
       harness.check(false, "unexpected check");
     }
 
-    // security: java.lang.Class-getConstructors
-    // security: java.lang.Class-getDeclaredConstructors
+    // throwpoint: java.lang.Class-getConstructors
+    // throwpoint: java.lang.Class-getDeclaredConstructors
     if (declared)
       harness.checkPoint("getDeclaredConstructors");
     else
@@ -234,8 +234,8 @@ public class security implements Testlet
       harness.check(false, "unexpected check");
     }
 
-    // security: java.lang.Class-getField
-    // security: java.lang.Class-getDeclaredField
+    // throwpoint: java.lang.Class-getField
+    // throwpoint: java.lang.Class-getDeclaredField
     if (declared) {
       harness.checkPoint("getDeclaredField");
       level = 0;
@@ -270,8 +270,8 @@ public class security implements Testlet
       harness.check(false, "unexpected check");
     }
     
-    // security: java.lang.Class-getMethod
-    // security: java.lang.Class-getDeclaredMethod
+    // throwpoint: java.lang.Class-getMethod
+    // throwpoint: java.lang.Class-getDeclaredMethod
     if (declared)
       harness.checkPoint("getDeclaredMethod");
     else
@@ -304,8 +304,8 @@ public class security implements Testlet
       harness.check(false, "unexpected check");
     }
 
-    // security: java.lang.Class-getConstructor
-    // security: java.lang.Class-getDeclaredConstructor
+    // throwpoint: java.lang.Class-getConstructor
+    // throwpoint: java.lang.Class-getDeclaredConstructor
     if (declared) {
       harness.checkPoint("getDeclaredConstructor");
       level = 0;

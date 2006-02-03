@@ -86,7 +86,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
-	// security: java.lang.System-exit
+	// throwpoint: java.lang.System-exit
 	harness.checkPoint("exit");
 	try {
 	  sm.prepareChecks(exitVM, true);
@@ -103,7 +103,7 @@ public class security implements Testlet
 	  }
 	}
 	
-	// security: java.lang.System-runFinalizersOnExit
+	// throwpoint: java.lang.System-runFinalizersOnExit
 	harness.checkPoint("runFinalizersOnExit");
 	try {
 	  sm.prepareChecks(exitVM);
@@ -115,7 +115,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-load
+	// throwpoint: java.lang.System-load
 	harness.checkPoint("load");
 	try {
 	  sm.prepareChecks(loadLibrary_name, true);
@@ -132,7 +132,7 @@ public class security implements Testlet
 	  }
 	}
 
-	// security: java.lang.System-loadLibrary
+	// throwpoint: java.lang.System-loadLibrary
 	harness.checkPoint("loadLibrary");
 	try {
 	  sm.prepareChecks(loadLibrary_path, true);
@@ -149,9 +149,9 @@ public class security implements Testlet
 	  }
 	}
 
-	// security: TODO: java.lang.System-getenv()
+	// throwpoint: TODO: java.lang.System-getenv()
 
-	// security: java.lang.System-getenv(String)
+	// throwpoint: java.lang.System-getenv(String)
 	harness.checkPoint("getenv(String)");
 	try {
 	  sm.prepareChecks(readVariable);
@@ -172,7 +172,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-getProperties
+	// throwpoint: java.lang.System-getProperties
 	harness.checkPoint("getProperties");
 	try {
 	  sm.prepareChecks(readWriteAllProperties);
@@ -184,7 +184,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-setProperties
+	// throwpoint: java.lang.System-setProperties
 	harness.checkPoint("setProperties");
 	try {
 	  sm.prepareChecks(readWriteAllProperties);
@@ -196,7 +196,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-getProperty(String)
+	// throwpoint: java.lang.System-getProperty(String)
 	harness.checkPoint("getProperty(String)");
 	try {
 	  sm.prepareChecks(readProperty);
@@ -217,7 +217,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-getProperty(String, String)
+	// throwpoint: java.lang.System-getProperty(String, String)
 	harness.checkPoint("getProperty(String, String)");
 	try {
 	  sm.prepareChecks(readProperty);
@@ -238,7 +238,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-setIn
+	// throwpoint: java.lang.System-setIn
 	harness.checkPoint("setIn");
 	try {
 	  sm.prepareChecks(setIO);
@@ -250,7 +250,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-setOut
+	// throwpoint: java.lang.System-setOut
 	harness.checkPoint("setOut");
 	try {
 	  sm.prepareChecks(setIO);
@@ -262,7 +262,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-setErr
+	// throwpoint: java.lang.System-setErr
 	harness.checkPoint("setErr");
 	try {
 	  sm.prepareChecks(setIO);
@@ -274,7 +274,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.System-setProperty
+	// throwpoint: java.lang.System-setProperty
 	harness.checkPoint("setProperty");
 	try {
 	  sm.prepareChecks(writeProperty);
@@ -295,9 +295,9 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: TODO: java.lang.System-clearProperty
+	// throwpoint: TODO: java.lang.System-clearProperty
 
-	// security: java.lang.System-setSecurityManager
+	// throwpoint: java.lang.System-setSecurityManager
 	harness.checkPoint("setSecurityManager");
 	try {
 	  sm.prepareChecks(setSecurityManager);

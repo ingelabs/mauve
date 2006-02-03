@@ -65,7 +65,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
-	// security: java.lang.ClassLoader-ClassLoader()
+	// throwpoint: java.lang.ClassLoader-ClassLoader()
 	harness.checkPoint("Constructor (no-args)");
 	try {
 	  sm.prepareChecks(createClassLoader);
@@ -77,7 +77,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.ClassLoader-ClassLoader(ClassLoader)
+	// throwpoint: java.lang.ClassLoader-ClassLoader(ClassLoader)
 	harness.checkPoint("Constructor (one-arg)");
 	try {
 	  sm.prepareChecks(createClassLoader);
@@ -89,7 +89,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.ClassLoader-getSystemClassLoader
+	// throwpoint: java.lang.ClassLoader-getSystemClassLoader
 	harness.checkPoint("getSystemClassLoader");
 	try {
 	  sm.prepareChecks(getClassLoader);
@@ -101,7 +101,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.lang.ClassLoader-getParent
+	// throwpoint: java.lang.ClassLoader-getParent
 	harness.checkPoint("getParent");
 	try {
 	  sm.prepareChecks(getClassLoader);

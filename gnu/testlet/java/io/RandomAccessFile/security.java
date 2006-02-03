@@ -76,7 +76,7 @@ public class security implements Testlet
 
 	RandomAccessFile raf;
 
-	// security: java.io.RandomAccessFile-RandomAccessFile(File, String)
+	// throwpoint: java.io.RandomAccessFile-RandomAccessFile(File, String)
 	harness.checkPoint("File constructor, mode = \"" + mode + "\"");
 	try {
 	  sm.prepareChecks(mustCheck, mayCheck);
@@ -90,7 +90,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.io.RandomAccessFile-RandomAccessFile(String, String)
+	// throwpoint: java.io.RandomAccessFile-RandomAccessFile(String, String)
 	harness.checkPoint("String constructor, mode = \"" + mode + "\"");
 	try {
 	  sm.prepareChecks(mustCheck, mayCheck);

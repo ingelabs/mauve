@@ -1,3 +1,17 @@
+2006-02-03  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/File/security.java: Renamed the marker
+	that tags throwpoint tests from "security" to "throwpoint".
+	* gnu/testlet/java/io/FileInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/FileOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/RandomAccessFile/security.java: Likewise.
+	* gnu/testlet/java/lang/Class/security.java: Likewise.
+	* gnu/testlet/java/lang/ClassLoader/security.java: Likewise.
+	* gnu/testlet/java/lang/Runtime/security.java: Likewise.
+	* gnu/testlet/java/lang/System/security.java: Likewise.
+
 2006-02-03  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/javax/crypto: Removed.

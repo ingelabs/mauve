@@ -48,7 +48,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
-	// security: java.io.ObjectOutputStream-ObjectOutputStream
+	// throwpoint: java.io.ObjectOutputStream-ObjectOutputStream
 	harness.checkPoint("constructor");
 	try {
 	  sm.prepareChecks(enableSubclassImplementation);
@@ -60,7 +60,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// security: java.io.ObjectOutputStream-enableReplaceObject
+	// throwpoint: java.io.ObjectOutputStream-enableReplaceObject
 	harness.checkPoint("enableReplaceObject");
 	try {
 	  sm.prepareChecks(noPerms);
