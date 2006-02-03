@@ -1,3 +1,11 @@
+2006-02-03  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/javax/crypto: Removed.
+	* gnu/testlet/java/security/sig: Likewise.
+	* gnu/testlet/java/security/key.java: Likewise.
+	* gnu/testlet/java/security/jce: Likewise.
+	* gnu/testlet/java/security/hash: Likewise.
+
 2006-02-02  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/AbstractCollection/toString.java: New test.
