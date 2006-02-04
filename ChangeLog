@@ -1,3 +1,14 @@
+2006-02-04  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/java/net/HttpURLConnection: New directory.
+	* gnu/testlet/java/net/HttpURLConnection/fileNotFound.java,	
+	* gnu/testlet/java/net/HttpURLConnection/nullPointerException.java,
+	* gnu/testlet/java/net/HttpURLConnection/illegalStateException.java,
+	* gnu/testlet/java/net/HttpURLConnection/getRequestProperty.java,
+	* gnu/testlet/java/net/HttpURLConnection/getOutputStream.java: New tests.
+	* gnu/testlet/java/net/URLConnection/URLConnectionTest.java:
+	(test_getHeaderField): Removed failing wrong test.
+
 2006-02-02  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JLayeredPane/setPosition.java,

@@ -295,9 +295,7 @@ public class URLConnectionTest implements Testlet
       String str2 = conn.getHeaderField("Server");
       harness.debug("header-2: " + str2);
       String str3 = conn.getHeaderField("Last-Modified");
-      harness.debug("header-3: " + str3);
-      String str4 = conn.getHeaderField("Transfer-Encoding");
-      harness.debug("header-4: " + str4);
+      harness.debug("header-3: " + str3);    
       String str5 = conn.getHeaderField("Content-Type");
       harness.debug("header-5: " + str5);
 
@@ -308,10 +306,6 @@ public class URLConnectionTest implements Testlet
       harness.check ( str2.indexOf("Apache") != -1,
 			   "Error in test_getHeaderField  - 1 " + 
 			   " 2 header field wrong" );
-
-      harness.check ( str4, "chunked",
-			   "Error in test_getHeaderField  - 2 " + 
-			   " 4 header field wrong" );
 
       harness.check ( str5.indexOf("text/html") != -1,
 			   "Error in test_getHeaderField  - 3 " + 
