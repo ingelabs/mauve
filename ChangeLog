@@ -1,3 +1,9 @@
+2006-02-02  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JLayeredPane/setPosition.java,
+	* gnu/testlet/javax/swing/JLayeredPane/moveToFront.java:
+	New tests.
+
 2006-02-04  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/jce/TestOfDSSKeyPairGenerator.java: New
