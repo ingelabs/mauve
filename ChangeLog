@@ -1,3 +1,8 @@
+2006-02-05  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/java/net/HttpURLConnection/fileNotFound.java:
+	(test): Added tests for calling getInputStream, getErrorStream.
+
 2006-02-04  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/java/net/HttpURLConnection: New directory.

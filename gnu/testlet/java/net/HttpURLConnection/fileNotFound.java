@@ -27,11 +27,12 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Tests that a 404 passes to the caller without exception.
+ * Tests that a 404 condition.
  */
 public class fileNotFound implements Testlet
 {
@@ -44,14 +45,37 @@ public class fileNotFound implements Testlet
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         
         conn.setRequestMethod("GET");
-        int code = conn.getResponseCode();
-        h.check(code == 404);
+        
+        try 
+          {
+            // connect does not throw a FNFE
+            conn.connect();
+            int code = conn.getResponseCode();
+            h.check(code == 404);
+          }
+        catch (FileNotFoundException e)
+          {       
+            h.check(false);
+          }
+        
+        try 
+          {
+            // FNFE is thrown by calling getInputStream
+            conn.getInputStream();
+            h.check(false);
+          }
+        catch (FileNotFoundException e)
+          {
+            h.check(true);
+          }
+        
+        // the errorstream must be set (at least our
+        // URL returns an error page
+        InputStream error = conn.getErrorStream();
+        h.check(error != null);
+        
         conn.disconnect();        
-      }   
-    catch (FileNotFoundException e)
-      {       
-        h.check(false);
-      }
+      }  
     catch (Exception e)
     {       
       h.debug(e);
