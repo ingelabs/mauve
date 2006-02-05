@@ -1,3 +1,7 @@
+2006-02-05  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/lang/ClassLoader/loadClass.java: New test.
+
 2006-02-05  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/java/net/HttpURLConnection/fileNotFound.java:
