@@ -1,3 +1,8 @@
+2006-02-06  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/java/net/Socket/SocketTest.java (test_Basics): Specialized 
+	Exceptions to be thrown to ConnectException if connection fails.
+
 2006-02-05  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/javax/swing/DefaultListCellRenderer/

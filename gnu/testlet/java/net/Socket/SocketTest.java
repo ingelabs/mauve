@@ -295,8 +295,13 @@ public class SocketTest implements Testlet
 		   "Unknown host exception should not have been thrown here");
       harness.debug(e);
     }
+    catch (ConnectException e) {
+      harness.check(true);      
+    }
     catch (IOException e) {
-      harness.check(true);
+      harness.fail("Error : test_Basics failed - 4 " +
+                   "ConnectException should have been thrown here");
+      harness.debug(e);
     }
     finally {
       try {
@@ -316,8 +321,13 @@ public class SocketTest implements Testlet
 		   "Unknown host exception should not have been thrown here");
       harness.debug(e);
     }
-    catch (IOException e) {
+    catch (ConnectException e) {
       harness.check(true);
+    }
+    catch (IOException e) {
+      harness.fail("Error : test_Basics failed - 6 " +
+                   "ConnectException should have been thrown here");
+      harness.debug(e);
     }
     finally {
       try {
@@ -350,8 +360,13 @@ public class SocketTest implements Testlet
       harness.fail("Error : test_Basics failed - 8 " +
 		   "exception should have been thrown here");
     }
-    catch (Exception e) {
+    catch (ConnectException e) {
       harness.check(true);
+    }
+    catch (IOException e) {
+      harness.fail("Error : test_Basics failed - 8 " +
+                   "ConnectException should have been thrown here");
+      harness.debug(e);
     }
     finally {
       try {
