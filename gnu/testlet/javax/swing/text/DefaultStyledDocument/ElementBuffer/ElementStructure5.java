@@ -24,9 +24,7 @@ package gnu.testlet.javax.swing.text.DefaultStyledDocument.ElementBuffer;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Element;
 
@@ -129,136 +127,6 @@ public class ElementStructure5 extends DefaultStyledDocument implements Testlet
     super.insertUpdate(ev, attr);
   }
 
-  // Overriding this method allows us to check that the proper LeafElements
-  // are being created.
-  protected Element createLeafElement(Element parent, AttributeSet a, int p0,
-                                      int p1)
-  {
-    numLeaves++;
-    if (numLeaves == 1)
-      {
-        h2.checkPoint("create first leaf element");
-        h2.check(p0 == 0);
-        h2.check(p1 == 21);
-        try
-          {
-            h2.check(parent.getStartOffset() == 0);
-            h2.check(parent.getEndOffset() == 22);
-          }
-        catch (Exception e)
-          {
-            // I put 2 fails here so that the total number of tests will remain
-            // the same whether we pass or fail these tests.
-            h2.fail("parent Element should have children, but has none.");
-            h2.fail("parent Element should have children, but has none.");
-          }        
-        h2.check(a.getAttributeCount() == 0);
-      }
-    else if (numLeaves == 2)
-      {
-        h2.checkPoint("create second leaf element");
-        h2.check(p0 == 21);
-        h2.check(p1 == 22);
-        h2.check(parent.getElementCount() == 0);
-        h2.check(a.getAttributeCount() == 0);
-      }
-    else if (numLeaves == 3)
-      {
-        h2.checkPoint("create third leaf element");
-        h2.check(p0 == 0);
-        h2.check(p1 == 21);
-        try
-          {
-            h2.check(parent.getStartOffset() == 0);
-            h2.check(parent.getEndOffset() == 43);
-          }
-        catch (Exception e)
-          {
-            // I put 2 fails here so that the total number of tests will remain
-            // the same whether we pass or fail these tests.
-            h2.fail("branch element should have children, but has none");
-            h2.fail("branch element should have children, but has none");
-          }
-        h2.check(a.getAttributeCount() == 0);
-      }
-    else if (numLeaves == 4)
-      {
-        h2.checkPoint("create fourth leaf element");
-        h2.check(p0 == 21);
-        h2.check(p1 == 43);
-        h2.check(parent.getElementCount() == 0);
-        h2.check(a.getAttributeCount() == 0);
-      }
-    else
-      h2.fail ("too many leaf elements created");
-    return super.createLeafElement(parent, a, p0, p1);
-  }
-
-  // Overriding this method allows us to check that the proper BranchElements
-  // are being created.
-  protected Element createBranchElement(Element parent, AttributeSet a)
-  {    
-    numBranches ++;
-    if (numBranches == 1)
-      {
-        h2.checkPoint("create first branch element");
-        h2.check(parent.getStartOffset() == 0);
-        h2.check(parent.getEndOffset() == 22);
-        h2.check(a.getAttributeCount() == 0);
-      }
-    else if (numBranches == 2)
-      {
-        h2.checkPoint("create second branch element");
-        h2.check(parent.getStartOffset() == 0);
-        h2.check(parent.getEndOffset() == 44);
-        h2.check(a.getAttributeCount() == 0); 
-      }
-    else
-      h2.fail ("too many branch elements created");
-    return super.createBranchElement(parent, a);
-  }
-
-  // Prints some spaces.
-  public static void pad(int pad)
-  {
-    for (int i = 0; i < pad; i++)
-      System.out.print(" ");
-  }
-
-  // Displays the Element hierarchy starting with <code>start</code>.
-  // This is just debugging code.
-  public static void printElements(Element start, int pad)
-  {
-    pad(pad);
-    if (pad == 0)
-      System.out.println("ROOT ELEMENT (" + start.getStartOffset() + ", "
-                         + start.getEndOffset() + ")");
-    else if (start instanceof AbstractDocument.BranchElement)
-      System.out.println("BranchElement (" + start.getStartOffset() + ", "
-                         + start.getEndOffset() + ")");
-    else
-      {
-        try
-          {
-            System.out.println("LeafElement ("
-                               + start.getStartOffset()
-                               + ", "
-                               + start.getEndOffset()
-                               + "): "
-                               + start.getAttributes().getAttributeCount()
-                               + ": "
-                               + start.getDocument().
-                               getText(start.getStartOffset(),
-                                       start.getEndOffset()
-                                       - start.getStartOffset()));
-          }
-        catch (BadLocationException ble)
-          {
-          }
-      }
-    for (int i = 0; i < start.getElementCount(); i++)
-      printElements(start.getElement(i), pad + 3);
-  }
 
   // A class to be the buffer of the styled document.
   // This allows us to check that some values are correct internally within

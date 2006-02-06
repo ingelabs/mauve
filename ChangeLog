@@ -1,3 +1,28 @@
+2006-02-06  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure1.java:
+	Removed strict checks.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure3.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure4.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure5.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure6.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure7.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure8.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument1.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument4.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument5.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument6.java:
+	Likewise.
+
 2006-02-06  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/util/regex/Pattern/testdata1,
