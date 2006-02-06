@@ -3129,3 +3129,302 @@ No match
  0: ABC
  1: A
 
+/(?:(?!foo)...|^.{0,2})bar(.*)/
+    foobar crowbar etc
+ 0: rowbar etc
+ 1:  etc
+    barrel
+ 0: barrel
+ 1: rel
+    2barrel
+ 0: 2barrel
+ 1: rel
+    A barrel
+ 0: A barrel
+ 1: rel
+
+/(\.\d\d((?=0)|\d(?=\d)))/
+    1.230003938
+ 0: .23
+ 1: .23
+ 2: 
+    1.875000282
+ 0: .875
+ 1: .875
+ 2: 5
+    *** Failers
+No match
+    1.235
+No match
+
+/(?<!bar)foo/
+    foo
+ 0: foo
+    catfood
+ 0: foo
+    arfootle
+ 0: foo
+    rfoosh
+ 0: foo
+    *** Failers
+No match
+    barfoo
+No match
+    towbarfoo
+No match
+
+/\w{3}(?<!bar)foo/
+    catfood
+ 0: catfoo
+    *** Failers
+No match
+    foo
+No match
+    barfoo
+No match
+    towbarfoo
+No match
+
+/(?>(\.\d\d[1-9]?))\d+/
+    1.230003938
+ 0: .230003938
+ 1: .23
+    1.875000282
+ 0: .875000282
+ 1: .875
+    *** Failers
+No match
+    1.235
+No match
+
+/^((?>\w+)|(?>\s+))*$/
+    now is the time for all good men to come to the aid of the party
+ 0: now is the time for all good men to come to the aid of the party
+ 1: party
+    *** Failers
+No match
+    this is not a line with only words and spaces!
+No match
+
+/((?>\d+))(\w)/
+    12345a
+ 0: 12345a
+ 1: 12345
+ 2: a
+    *** Failers
+No match
+    12345+
+No match
+
+/(?>a+)b/
+    aaab
+ 0: aaab
+
+/((?>a+)b)/
+    aaab
+ 0: aaab
+ 1: aaab
+
+/(?>(a+))b/
+    aaab
+ 0: aaab
+ 1: aaa
+
+/(?>b)+/
+    aaabbbccc
+ 0: bbb
+
+/(?>a+|b+|c+)*c/
+    aaabbbbccccd
+ 0: aaabbbbc
+
+/((?>[^()]+)|\([^()]*\))+/
+    ((abc(ade)ufh()()x
+ 0: abc(ade)ufh()()x
+ 1: x
+
+/\(((?>[^()]+)|\([^()]+\))+\)/
+    (abc)
+ 0: (abc)
+ 1: abc
+    (abc(def)xyz)
+ 0: (abc(def)xyz)
+ 1: xyz
+    *** Failers
+No match
+    ((()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+No match
+
+/(?>a(?i)b+)+c/
+    abc
+ 0: abc
+    aBbc
+ 0: aBbc
+    aBBc
+ 0: aBBc
+    *** Failers
+No match
+    Abc
+No match
+    abAb
+No match
+    abbC
+No match
+
+/(?<=a(?i)b)(\w\w)c/
+    abxxc
+ 0: xxc
+ 1: xx
+    aBxxc
+ 0: xxc
+ 1: xx
+    *** Failers
+No match
+    Abxxc
+No match
+    ABxxc
+No match
+    abxxC
+No match
+
+/(?>a*)*/
+    a
+ 0: a
+    aa
+ 0: aa
+    aaaa
+ 0: aaaa
+
+/(?<=(?<!foo)bar)baz/
+    barbaz
+ 0: baz
+    barbarbaz
+ 0: baz
+    koobarbaz
+ 0: baz
+    *** Failers
+No match
+    baz
+No match
+    foobarbaz
+No match
+
+/(?<=a)b/
+    ab
+ 0: b
+    *** Failers
+No match
+    cb
+No match
+    b
+No match
+
+/(?<!c)b/
+    ab
+ 0: b
+    b
+ 0: b
+    b
+ 0: b
+
+/(?<![cd])b/
+    *** Failers
+No match
+    B\nB
+No match
+    dbcb
+No match
+
+/(?<![cd])[ab]/
+    dbaacb
+ 0: a
+
+/(?<!(c|d))b/
+
+/(?<!cd)[ab]/
+    cdaccb
+ 0: b
+
+/(?>a+)b/
+    aaab
+ 0: aaab
+
+/((?>a+)b)/
+    aaab
+ 0: aaab
+ 1: aaab
+
+/(?>(a+))b/
+    aaab
+ 0: aaab
+ 1: aaa
+
+/((?>[^()]+)|\([^()]*\))+/
+    ((abc(ade)ufh()()x
+ 0: abc(ade)ufh()()x
+ 1: x
+
+/word (?>(?:(?!otherword)[a-zA-Z0-9]+ ){0,30})otherword/
+    word cat dog elephant mussel cow horse canary baboon snake shark otherword
+ 0: word cat dog elephant mussel cow horse canary baboon snake shark otherword
+    word cat dog elephant mussel cow horse canary baboon snake shark
+No match
+
+/word (?>[a-zA-Z0-9]+ ){0,30}otherword/
+    word cat dog elephant mussel cow horse canary baboon snake shark the quick brown fox and the lazy dog and several other words getting close to thirty by now I hope
+No match
+
+/(?<=\d{3}(?!999))foo/
+    999foo
+ 0: foo
+    123999foo
+ 0: foo
+    *** Failers
+No match
+    123abcfoo
+No match
+
+/(?<=(?!...999)\d{3})foo/
+    999foo
+ 0: foo
+    123999foo
+ 0: foo
+    *** Failers
+No match
+    123abcfoo
+No match
+
+/(?<=\d{3}(?!999)...)foo/
+    123abcfoo
+ 0: foo
+    123456foo
+ 0: foo
+    *** Failers
+No match
+    123999foo
+No match
+
+/(?<=\d{3}...)(?<!999)foo/
+    123abcfoo
+ 0: foo
+    123456foo
+ 0: foo
+    *** Failers
+No match
+    123999foo
+No match
+
+/((?>Z)+|A)*/
+    ZABCDEFG
+ 0: ZA
+ 1: A
+
+/((?>)+|A)*/
+    ZABCDEFG
+ 0: 
+ 1: 
+
+/(?<=Z)X./
+    \x84XAZXB
+ 0: XB
+
