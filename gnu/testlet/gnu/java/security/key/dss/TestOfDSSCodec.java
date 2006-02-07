@@ -1,4 +1,4 @@
-/* TestOfDSSCodec.java -- 
+/* TestOfDSSCodec.java
    Copyright (C) 2006 Free Software Foundation, Inc.
 This file is part of Mauve.
 
@@ -25,7 +25,9 @@ package gnu.testlet.gnu.java.security.key.dss;
 
 import gnu.java.security.key.IKeyPairCodec;
 import gnu.java.security.key.dss.DSSKeyPairGenerator;
+import gnu.java.security.key.dss.DSSKeyPairPKCS8Codec;
 import gnu.java.security.key.dss.DSSKeyPairRawCodec;
+import gnu.java.security.key.dss.DSSKeyPairX509Codec;
 import gnu.java.security.key.dss.DSSPrivateKey;
 import gnu.java.security.key.dss.DSSPublicKey;
 import gnu.testlet.TestHarness;
@@ -43,75 +45,137 @@ import java.util.HashMap;
  */
 public class TestOfDSSCodec implements Testlet
 {
+  private HashMap map = new HashMap();
   private DSSKeyPairGenerator kpg = new DSSKeyPairGenerator();
-
   private KeyPair kp;
 
   public void test(TestHarness harness)
   {
+    setUp();
+
+    testUnknownKeyPairCodec(harness);
     testKeyPairRawCodec(harness);
+    testKeyPairASN1Codec(harness);
     testPublicKeyValueOf(harness);
     testPrivateKeyValueOf(harness);
   }
 
-  public void testKeyPairRawCodec(TestHarness harness)
+  private void testUnknownKeyPairCodec(TestHarness harness)
   {
-    harness.checkPoint("TestOfDSSCodec.testKeyPairRawCodec");
-    setUp();
+    harness.checkPoint("testUnknownKeyPairCodec");
+
+    kpg.setup(map);
+    kp = kpg.generate();
 
     DSAPublicKey pubK = (DSAPublicKey) kp.getPublic();
-    DSAPrivateKey secK = (DSAPrivateKey) kp.getPrivate();
-
-    byte[] pk1, pk2;
     try
-      { // an invalid format ID
-        pk1 = ((DSSPublicKey) pubK).getEncoded(0);
-        harness.fail("Succeeded with unknown format ID");
+      {
+        ((DSSPublicKey) pubK).getEncoded(0);
+        harness.fail("Public key succeeded with unknown format ID");
       }
     catch (IllegalArgumentException x)
       {
-        harness.check(true, "Recognised unknown format ID");
+        harness.check(true, "Recognised unknown public key format ID");
       }
 
-    pk1 = ((DSSPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-    pk2 = ((DSSPrivateKey) secK).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    DSAPrivateKey secK = (DSAPrivateKey) kp.getPrivate();
+    try
+      {
+        ((DSSPrivateKey) secK).getEncoded(0);
+        harness.fail("Private key succeeded with unknown format ID");
+      }
+    catch (IllegalArgumentException x)
+      {
+        harness.check(true, "Recognised unknown private key format ID");
+      }
+  }
+
+  private void testKeyPairRawCodec(TestHarness harness)
+  {
+    harness.checkPoint("testKeyPairRawCodec");
+
+    kpg.setup(map);
+    kp = kpg.generate();
 
     IKeyPairCodec codec = new DSSKeyPairRawCodec();
-    PublicKey newPubK = codec.decodePublicKey(pk1);
-    PrivateKey newSecK = codec.decodePrivateKey(pk2);
+    byte[] pk;
 
+    DSAPublicKey pubK = (DSAPublicKey) kp.getPublic();
+    pk = ((DSSPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PublicKey newPubK = codec.decodePublicKey(pk);
     harness.check(pubK.equals(newPubK),
                   "DSS public key Raw encoder/decoder test");
+
+    DSAPrivateKey secK = (DSAPrivateKey) kp.getPrivate();
+    pk = ((DSSPrivateKey) secK).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PrivateKey newSecK = codec.decodePrivateKey(pk);
     harness.check(secK.equals(newSecK),
                   "DSS private key Raw encoder/decoder test");
   }
 
-  public void testPublicKeyValueOf(TestHarness harness)
+  private void testKeyPairASN1Codec(TestHarness harness)
   {
-    harness.checkPoint("TestOfDSSCodec.testPublicKeyValueOf");
-    setUp();
+    harness.checkPoint("testKeyPairASN1Codec");
+
+    kpg.setup(map);
+    kp = kpg.generate();
+
+    byte[] pk;
 
     DSAPublicKey pubK = (DSAPublicKey) kp.getPublic();
+    DSAPrivateKey secK = (DSAPrivateKey) kp.getPrivate();
 
-    byte[] pk = ((DSSPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-    PublicKey newPubK = DSSPublicKey.valueOf(pk);
+    pk = ((DSSPrivateKey) secK).getEncoded(IKeyPairCodec.PKCS8_FORMAT);
+    PrivateKey newSecK = new DSSKeyPairPKCS8Codec().decodePrivateKey(pk);
+    harness.check(secK.equals(newSecK),
+                  "DSS private key ASN.1 encoder/decoder test");
 
+    pk = ((DSSPublicKey) pubK).getEncoded(IKeyPairCodec.X509_FORMAT);
+    PublicKey newPubK = new DSSKeyPairX509Codec().decodePublicKey(pk);
     harness.check(pubK.equals(newPubK),
-                  "DSS public key valueOf(<raw-value>) test");
+                  "DSS public key ASN.1 encoder/decoder test");
   }
 
-  public void testPrivateKeyValueOf(TestHarness harness)
+  private void testPublicKeyValueOf(TestHarness harness)
   {
-    harness.checkPoint("TestOfDSSCodec.testPrivateKeyValueOf");
-    setUp();
+    harness.checkPoint("testPublicKeyValueOf");
 
-    DSAPrivateKey privateK = (DSAPrivateKey) kp.getPrivate();
+    kpg.setup(map);
+    kp = kpg.generate();
+    byte[] pk;
 
-    byte[] pk = ((DSSPrivateKey) privateK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-    PrivateKey newSecK = DSSPrivateKey.valueOf(pk);
+    DSAPublicKey p1 = (DSAPublicKey) kp.getPublic();
 
-    harness.check(privateK.equals(newSecK),
+    pk = ((DSSPublicKey) p1).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PublicKey p2 = DSSPublicKey.valueOf(pk);
+    harness.check(p1.equals(p2),
+                  "DSS public key valueOf(<raw-value>) test");
+
+    pk = ((DSSPublicKey) p1).getEncoded(IKeyPairCodec.X509_FORMAT);
+    PublicKey p3 = DSSPublicKey.valueOf(pk);
+    harness.check(p1.equals(p3),
+                  "DSS public key valueOf(<x509-value>) test");
+  }
+
+  private void testPrivateKeyValueOf(TestHarness harness)
+  {
+    harness.checkPoint("testPrivateKeyValueOf");
+
+    kpg.setup(map);
+    kp = kpg.generate();
+    byte[] pk;
+
+    DSAPrivateKey p1 = (DSAPrivateKey) kp.getPrivate();
+
+    pk = ((DSSPrivateKey) p1).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PrivateKey p2 = DSSPrivateKey.valueOf(pk);
+    harness.check(p1.equals(p2),
                   "DSS private key valueOf(<raw-value>) test");
+
+    pk = ((DSSPrivateKey) p1).getEncoded(IKeyPairCodec.PKCS8_FORMAT);
+    PrivateKey p3 = DSSPrivateKey.valueOf(pk);
+    harness.check(p1.equals(p3),
+                  "DSS private key valueOf(<pkcs8-value>) test");
   }
 
   private void setUp()
@@ -119,8 +183,5 @@ public class TestOfDSSCodec implements Testlet
     HashMap map = new HashMap();
     map.put(DSSKeyPairGenerator.MODULUS_LENGTH, new Integer(512));
     map.put(DSSKeyPairGenerator.USE_DEFAULTS, new Boolean(false));
-
-    kpg.setup(map);
-    kp = kpg.generate();
   }
 }
