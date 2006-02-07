@@ -1,3 +1,10 @@
+2006-02-07  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/FlowView/TestFlowView.java: New
+	helper class.
+	* gnu/testlet/javax/swing/text/FlowView/getFlowAxis: New
+	test class.
+
 2006-02-07  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/key/dss/TestOfDSSCodec.java
