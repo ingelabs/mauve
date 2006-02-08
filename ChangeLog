@@ -1,3 +1,19 @@
+2006-02-08  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/SpinnerDateModel/constructors.java: New file,
+	* gnu/testlet/javax/swing/SpinnerDateModel/getNextValue.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerDateModel/getPreviousValue.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerDateModel/setEnd.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerDateModel/setStart.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerDateModel/setValue.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/constructors.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/getNextValue.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/getPreviousValue.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/setMaximum.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/setMinimum.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/setStepSize.java: Likewise,
+	* gnu/testlet/javax/swing/SpinnerNumberModel/setValue.java: Likewise.
+
 2006-02-07  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/FlowView/TestFlowView.java: New
