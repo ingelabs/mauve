@@ -20,6 +20,7 @@
  */
 
 // Tags: JDK1.2
+// Uses: SerializableLoopA SerializableLoopB
 
 
 package gnu.testlet.java.io.ObjectInputOutput;
