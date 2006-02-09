@@ -45,7 +45,7 @@ import java.util.HashMap;
  */
 public class TestOfDSSCodec implements Testlet
 {
-  private HashMap map = new HashMap();
+  private HashMap map;
   private DSSKeyPairGenerator kpg = new DSSKeyPairGenerator();
   private KeyPair kp;
 
@@ -64,7 +64,6 @@ public class TestOfDSSCodec implements Testlet
   {
     harness.checkPoint("testUnknownKeyPairCodec");
 
-    kpg.setup(map);
     kp = kpg.generate();
 
     DSAPublicKey pubK = (DSAPublicKey) kp.getPublic();
@@ -94,7 +93,6 @@ public class TestOfDSSCodec implements Testlet
   {
     harness.checkPoint("testKeyPairRawCodec");
 
-    kpg.setup(map);
     kp = kpg.generate();
 
     IKeyPairCodec codec = new DSSKeyPairRawCodec();
@@ -117,7 +115,6 @@ public class TestOfDSSCodec implements Testlet
   {
     harness.checkPoint("testKeyPairASN1Codec");
 
-    kpg.setup(map);
     kp = kpg.generate();
 
     byte[] pk;
@@ -140,7 +137,6 @@ public class TestOfDSSCodec implements Testlet
   {
     harness.checkPoint("testPublicKeyValueOf");
 
-    kpg.setup(map);
     kp = kpg.generate();
     byte[] pk;
 
@@ -161,7 +157,6 @@ public class TestOfDSSCodec implements Testlet
   {
     harness.checkPoint("testPrivateKeyValueOf");
 
-    kpg.setup(map);
     kp = kpg.generate();
     byte[] pk;
 
@@ -180,8 +175,11 @@ public class TestOfDSSCodec implements Testlet
 
   private void setUp()
   {
-    HashMap map = new HashMap();
+    map = new HashMap();
     map.put(DSSKeyPairGenerator.MODULUS_LENGTH, new Integer(512));
     map.put(DSSKeyPairGenerator.USE_DEFAULTS, new Boolean(false));
+
+    kpg = new DSSKeyPairGenerator();
+    kpg.setup(map);
   }
 }

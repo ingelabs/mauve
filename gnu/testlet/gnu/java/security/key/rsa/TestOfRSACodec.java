@@ -27,7 +27,9 @@ import gnu.java.security.key.IKeyPairCodec;
 import gnu.java.security.key.rsa.GnuRSAPrivateKey;
 import gnu.java.security.key.rsa.GnuRSAPublicKey;
 import gnu.java.security.key.rsa.RSAKeyPairGenerator;
+import gnu.java.security.key.rsa.RSAKeyPairPKCS8Codec;
 import gnu.java.security.key.rsa.RSAKeyPairRawCodec;
+import gnu.java.security.key.rsa.RSAKeyPairX509Codec;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -39,108 +41,142 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.HashMap;
 
 /**
- * Conformance tests for the RSA key format encoding/decoding implementation.
+ * Conformance tests for the RSA key format encoding/decoding implementations.
  */
 public class TestOfRSACodec implements Testlet
 {
-  private RSAKeyPairGenerator kpg = new RSAKeyPairGenerator();
-
+  private HashMap map;
+  private RSAKeyPairGenerator kpg;
   private KeyPair kp;
 
   public void test(TestHarness harness)
   {
+    setUp();
+
+    testUnknownKeyPairCodec(harness);
     testKeyPairRawCodec(harness);
+    testKeyPairASN1Codec(harness);
     testPrivateKeyValueOf(harness);
     testPublicKeyValueOf(harness);
   }
 
-  public void testKeyPairRawCodec(TestHarness harness)
+  private void testUnknownKeyPairCodec(TestHarness harness)
   {
-    harness.checkPoint("TestOfRSACodec.testKeyPairRawCodec");
+    harness.checkPoint("testUnknownKeyPairCodec");
+
+    kp = kpg.generate();
+
+    GnuRSAPublicKey pubK = (GnuRSAPublicKey) kp.getPublic();
     try
       {
-        setUp();
-
-        RSAPublicKey pubK = (RSAPublicKey) kp.getPublic();
-        RSAPrivateKey secK = (RSAPrivateKey) kp.getPrivate();
-
-        byte[] pk1, pk2;
-        try
-          { // an invalid format ID
-            pk1 = ((GnuRSAPublicKey) pubK).getEncoded(0);
-            harness.fail("Succeeded with unknown format ID");
-          }
-        catch (IllegalArgumentException x)
-          {
-            harness.check(true, "Recognised unknown format ID");
-          }
-
-        pk1 = ((GnuRSAPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-        pk2 = ((GnuRSAPrivateKey) secK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-
-        IKeyPairCodec codec = new RSAKeyPairRawCodec();
-        PublicKey newPubK = codec.decodePublicKey(pk1);
-        PrivateKey newSecK = codec.decodePrivateKey(pk2);
-
-        harness.check(pubK.equals(newPubK),
-                      "RSA public key Raw encoder/decoder test");
-        harness.check(secK.equals(newSecK),
-                      "RSA private key Raw encoder/decoder test");
+        ((GnuRSAPublicKey) pubK).getEncoded(0);
+        harness.fail("Public key succeeded with unknown format ID");
       }
-    catch (Exception x)
+    catch (IllegalArgumentException x)
       {
-        harness.debug(x);
-        harness.fail("TestOfRSACodec.testKeyPairRawCodec");
+        harness.check(true, "Recognised unknown public key format ID");
       }
+
+    GnuRSAPrivateKey secK = (GnuRSAPrivateKey) kp.getPrivate();
+    try
+      {
+        ((GnuRSAPrivateKey) secK).getEncoded(0);
+        harness.fail("Private key succeeded with unknown format ID");
+      }
+    catch (IllegalArgumentException x)
+      {
+        harness.check(true, "Recognised unknown private key format ID");
+      }
+  }
+
+  public void testKeyPairRawCodec(TestHarness harness)
+  {
+    harness.checkPoint("testKeyPairRawCodec");
+
+    byte[] pk;
+    IKeyPairCodec codec = new RSAKeyPairRawCodec();
+    kp = kpg.generate();
+
+    RSAPublicKey pubK = (RSAPublicKey) kp.getPublic();
+    pk = ((GnuRSAPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PublicKey newPubK = codec.decodePublicKey(pk);
+    harness.check(pubK.equals(newPubK),
+                  "RSA public key Raw encoder/decoder test");
+
+    RSAPrivateKey secK = (RSAPrivateKey) kp.getPrivate();
+    pk = ((GnuRSAPrivateKey) secK).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PrivateKey newSecK = codec.decodePrivateKey(pk);
+    harness.check(secK.equals(newSecK),
+                  "RSA private key Raw encoder/decoder test");
+  }
+
+  private void testKeyPairASN1Codec(TestHarness harness)
+  {
+    harness.checkPoint("testKeyPairASN1Codec");
+
+    kp = kpg.generate();
+
+    byte[] pk;
+
+    RSAPublicKey pubK = (RSAPublicKey) kp.getPublic();
+    pk = ((GnuRSAPublicKey) pubK).getEncoded(IKeyPairCodec.X509_FORMAT);
+    PublicKey newPubK = new RSAKeyPairX509Codec().decodePublicKey(pk);
+    harness.check(pubK.equals(newPubK),
+                  "RSA public key ASN.1 encoder/decoder test");
+
+    RSAPrivateKey secK = (RSAPrivateKey) kp.getPrivate();
+    pk = ((GnuRSAPrivateKey) secK).getEncoded(IKeyPairCodec.PKCS8_FORMAT);
+    PrivateKey newSecK = new RSAKeyPairPKCS8Codec().decodePrivateKey(pk);
+    harness.check(secK.equals(newSecK),
+                  "RSA private key ASN.1 encoder/decoder test");
   }
 
   public void testPublicKeyValueOf(TestHarness harness)
   {
-    harness.checkPoint("TestOfRSACodec.testPublicKeyValueOf");
-    try
-      {
-        setUp();
-        RSAPublicKey pubK = (RSAPublicKey) kp.getPublic();
+    harness.checkPoint("testPublicKeyValueOf");
 
-        byte[] pk = ((GnuRSAPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-        PublicKey newPubK = GnuRSAPublicKey.valueOf(pk);
+    byte[] pk;
+    kp = kpg.generate();
 
-        harness.check(pubK.equals(newPubK));
-      }
-    catch (Exception x)
-      {
-        harness.debug(x);
-        harness.fail("TestOfRSACodec.testPublicKeyValueOf");
-      }
+    RSAPublicKey p1 = (RSAPublicKey) kp.getPublic();
+
+    pk = ((GnuRSAPublicKey) p1).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PublicKey p2 = GnuRSAPublicKey.valueOf(pk);
+    harness.check(p1.equals(p2),
+                  "RSA public key valueOf(<raw-value>) test");
+
+    pk = ((GnuRSAPublicKey) p1).getEncoded(IKeyPairCodec.X509_FORMAT);
+    PublicKey p3 = GnuRSAPublicKey.valueOf(pk);
+    harness.check(p1.equals(p3),
+                  "RSA public key valueOf(<x509-value>) test");
   }
 
   public void testPrivateKeyValueOf(TestHarness harness)
   {
-    harness.checkPoint("TestOfRSACodec.testPrivateKeyValueOf");
-    setUp();
+    harness.checkPoint("testPrivateKeyValueOf");
 
-    try
-      {
-        RSAPrivateKey privateK = (GnuRSAPrivateKey) kp.getPrivate();
+    byte[] pk;
+    kp = kpg.generate();
 
-        byte[] pk = ((GnuRSAPrivateKey) privateK).getEncoded(IKeyPairCodec.RAW_FORMAT);
-        PrivateKey newSecK = GnuRSAPrivateKey.valueOf(pk);
+    RSAPrivateKey p1 = (RSAPrivateKey) kp.getPrivate();
 
-        harness.check(privateK.equals(newSecK));
-      }
-    catch (Exception x)
-      {
-        harness.debug(x);
-        harness.fail("TestOfRSACodec.testPrivateKeyValueOf");
-      }
+    pk = ((GnuRSAPrivateKey) p1).getEncoded(IKeyPairCodec.RAW_FORMAT);
+    PrivateKey p2 = GnuRSAPrivateKey.valueOf(pk);
+    harness.check(p1.equals(p2),
+                  "RSA private key valueOf(<raw-value>) test");
+
+    pk = ((GnuRSAPrivateKey) p1).getEncoded(IKeyPairCodec.PKCS8_FORMAT);
+    PrivateKey p3 = GnuRSAPrivateKey.valueOf(pk);
+    harness.check(p1.equals(p3),
+                  "RSA private key valueOf(<pkcs8-value>) test");
   }
 
   private void setUp()
   {
-    HashMap map = new HashMap();
+    map = new HashMap();
     map.put(RSAKeyPairGenerator.MODULUS_LENGTH, new Integer(1024));
 
+    kpg = new RSAKeyPairGenerator();
     kpg.setup(map);
-    kp = kpg.generate();
   }
 }

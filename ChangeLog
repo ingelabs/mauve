@@ -1,3 +1,19 @@
+2006-02-09  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/key/rsa/TestOfRSACodec.java: Aligned
+	with gnu.testlet.gnu.java.security.key.dss.TestOfDSSCodec.
+	* gnu/testlet/gnu/java/security/key/dss/TestOfDSSCodec.java (setUp):
+	Instantiate and setup the key-pair generator once.
+	(testUnknownKeyPairCodec): Moved the key-pair generator setup to setUp().
+	(testKeyPairRawCodec): Likewise.
+	(testKeyPairASN1Codec): Likewise.
+	(testPublicKeyValueOf): Likewise.
+	(testPrivateKeyValueOf): Likewise.
+	* gnu/testlet/gnu/java/security/jce/TestOfFormat.java (testDSSSymmetry):
+	Renamed from testSymmetry.
+	(testRSASymmetry): New method.
+	(test): Added call to new method.
+
 2006-02-09  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/View/TestView.java: New helper class.
