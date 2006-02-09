@@ -1,3 +1,12 @@
+2006-02-09  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/View/TestView.java: New helper class.
+	* gnu/testlet/javax/swing/text/View/getAlignment.java,
+	* gnu/testlet/javax/swing/text/View/getMaximumSpan.java,
+	* gnu/testlet/javax/swing/text/View/getMinimumSpan.java,
+	* gnu/testlet/javax/swing/text/View/getResizeWeight.java:
+	New tests.
+
 2006-02-08  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/io/ObjectInputOutput/LoopSerializationTest.java:
