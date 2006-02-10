@@ -1,3 +1,10 @@
+2006-02-10  Olivier Jolly  <olivier.jolly@pcedev.com>
+
+	* gnu/testlet/java/io/ObjectInputOutput/HierarchyTest.java: New test
+	on abstract constructor calls in deserialization.
+	* gnu/testlet/java/io/ObjectInputOutput/ProxySerializationTest.java:
+	New test on proxy serialization.
+
 2006-02-09  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/key/rsa/TestOfRSACodec.java: Aligned
