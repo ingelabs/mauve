@@ -1,3 +1,9 @@
+2006-02-11  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/java/awt/CardLayout: New directory
+	* gnu/testlet/java/awt/CardLayout/first.java: New test.
+	* gnu/testlet/java/awt/CardLayout/show.java: New test.
+
 2006-02-11  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/jce/FakeProvider.java
