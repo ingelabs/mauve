@@ -1,3 +1,9 @@
+2006-02-11  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/jce/FakeProvider.java
+	(FakeProvider): Added mapping for DSS and RSA key-factories.
+	* gnu/testlet/gnu/java/security/jce/TestOfKeyFactory.java: New file.
+
 2006-02-10  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/io/ObjectInputOutput/HierarchyTest.java: New test

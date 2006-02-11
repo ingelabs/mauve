@@ -37,5 +37,9 @@ public class FakeProvider extends Provider
     put("AlgorithmParameters.DSA", FakeDSAParameters.class.getName());
     put("KeyFactory.Encoded",
         gnu.java.security.jce.sig.EncodedKeyFactory.class.getName());
+    put("KeyFactory.DSS",
+        gnu.java.security.jce.sig.DSSKeyFactory.class.getName());
+    put("KeyFactory.RSA",
+        gnu.java.security.jce.sig.RSAKeyFactory.class.getName());
   }
 }
