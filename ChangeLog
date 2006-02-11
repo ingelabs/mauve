@@ -1,5 +1,10 @@
 2006-02-11  Olivier Jolly  <olivier.jolly@pcedev.com>
 
+	* gnu/testlet/java/lang/reflect/Proxy/ExceptionRaising.java: New
+	test on exception handling with proxies.
+
+2006-02-11  Olivier Jolly  <olivier.jolly@pcedev.com>
+
 	* gnu/testlet/java/lang/reflect/Proxy/ToString.java: New test on
 	toString method forwarding to the InvocationHandler.
 
