@@ -1,3 +1,8 @@
+2006-02-11  Olivier Jolly  <olivier.jolly@pcedev.com>
+
+	* gnu/testlet/java/lang/reflect/Proxy/ToString.java: New test on
+	toString method forwarding to the InvocationHandler.
+
 2006-02-11  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/java/awt/CardLayout: New directory
