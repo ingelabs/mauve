@@ -1,6 +1,7 @@
 // Tags: JDK1.4
 
 // Copyright (C) 2004 Michael Koch <konqueror@gmx.de>
+// Copyright (C) 2006 Mark Wielaard <mark@klomp.org>
 
 // This file is part of Mauve.
 
@@ -128,9 +129,12 @@ public class augmentList
       {
       }
 
-    h.check(ok, "invalid arguments");
-    h.check(result.length, 2, "invalid array length");
-    h.check(result[0], data[1], "invalid content");
-    h.check(result[1], data[0], "invalid content");
+    // The length is guaranteed, and so is the content, but not the order.
+    h.check(ok, "arguments");
+    h.check(result.length, 2, "array length");
+    
+    h.check(result[0] == data[0] || result[0] == data[1], "content");
+    h.check(result[1] == data[0] || result[1] == data[1], "content");
+    h.check(result[0] != result[1], "content");
   }
 }
