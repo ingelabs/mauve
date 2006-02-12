@@ -1,3 +1,13 @@
+2006-02-12  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/javax/swing/AbstractAction/putValue.java: Don't check
+	unspecified null value case.
+
+2006-02-12  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/javax/swing/text/TextAction/augmentList.java: Order
+	of elements doesn't matter, as long as all elements are present.
+
 2006-02-12  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/javax/print/DocFlavor/parseMimeType.java: 

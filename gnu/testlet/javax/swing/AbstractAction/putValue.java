@@ -50,20 +50,21 @@ public class putValue implements Testlet
     a1.putValue(Action.NAME, null);
     harness.check(a1.getValue(Action.NAME), null);
  
-    // try null key - it is not specified what happens here, Sun's 
-    // implementation allows it but then throws an exception if you try to
-    // retrieve the value using the null key...
+    // try null key - it is not specified what happens here
+    // so we don't explicitly test this case.
+    /*
     boolean pass = false;
     try
     {
       a1.putValue(null, "XYZ");
-      /*Object value =*/ a1.getValue(null);
+      Object value = a1.getValue(null);
     }
     catch (NullPointerException e) 
     {
       pass = true;
     }
     harness.check(pass);
+    */
   }
 
 }
