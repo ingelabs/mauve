@@ -1,3 +1,25 @@
+2006-02-12  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/javax/crypto/key/dh/TestOfDHCodec.java: Aligned with
+	gnu.testlet.gnu.java.security.key.dss.TestOfDSSCodec.
+	* gnu/testlet/gnu/java/security/jce/TestOfKeyFactory.java
+	(dhKPG): New field.
+	(dhKF): Likewise.
+	(test): Call testDHKeyFactory.
+	(setUp): Add GnuCrypto provider.
+	Initialize dhKPG and dhKF.
+	(testDSSKeyFactory): Removed spec3 field.
+	(testRSAKeyFactory): Likewise.
+	(testDHKeyFactory): New method.
+	* gnu/testlet/gnu/java/security/jce/TestOfFormat.java (dhKPG):
+	New field.
+	(test): Call testDHSymmetry.
+	(setUp): Add GnuCrypto provider.
+	Initialize dhKPG.
+	(testDHSymmetry): New method.
+	* gnu/testlet/gnu/java/security/jce/FakeProvider.java
+	(FakeProvider): Added mapping for DH key-factory.
+
 2006-02-11  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/lang/reflect/Proxy/ExceptionRaising.java: New

@@ -41,5 +41,7 @@ public class FakeProvider extends Provider
         gnu.java.security.jce.sig.DSSKeyFactory.class.getName());
     put("KeyFactory.RSA",
         gnu.java.security.jce.sig.RSAKeyFactory.class.getName());
+    put("KeyFactory.DH",
+        gnu.javax.crypto.jce.sig.DHKeyFactory.class.getName());
   }
 }

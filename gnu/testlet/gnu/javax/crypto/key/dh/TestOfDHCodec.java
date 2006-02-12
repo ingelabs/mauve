@@ -24,7 +24,9 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 package gnu.testlet.gnu.javax.crypto.key.dh;
 
 import gnu.java.security.key.IKeyPairCodec;
+import gnu.javax.crypto.key.dh.DHKeyPairPKCS8Codec;
 import gnu.javax.crypto.key.dh.DHKeyPairRawCodec;
+import gnu.javax.crypto.key.dh.DHKeyPairX509Codec;
 import gnu.javax.crypto.key.dh.GnuDHKeyPairGenerator;
 import gnu.javax.crypto.key.dh.GnuDHPrivateKey;
 import gnu.javax.crypto.key.dh.GnuDHPublicKey;
@@ -36,41 +38,69 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.HashMap;
 
+import javax.crypto.interfaces.DHPrivateKey;
+import javax.crypto.interfaces.DHPublicKey;
+
 /**
  * Conformance tests for the Diffie-Hellman key format encoding/decoding
  * implementation.
  */
 public class TestOfDHCodec implements Testlet
 {
+  private HashMap map;
   private GnuDHKeyPairGenerator kpg = new GnuDHKeyPairGenerator();
-
   private KeyPair kp;
 
   public void test(TestHarness harness)
   {
+    setUp();
+
+    testUnknownKeyPairCodec(harness);
     testKeyPairRawCodec(harness);
+    testKeyPairASN1Codec(harness);
     testPublicKeyValueOf(harness);
     testPrivateKeyValueOf(harness);
   }
 
+  private void testUnknownKeyPairCodec(TestHarness harness)
+  {
+    harness.checkPoint("testUnknownKeyPairCodec");
+
+    kp = kpg.generate();
+
+    DHPublicKey pubK = (DHPublicKey) kp.getPublic();
+    try
+      {
+        ((GnuDHPublicKey) pubK).getEncoded(0);
+        harness.fail("Public key succeeded with unknown format ID");
+      }
+    catch (IllegalArgumentException x)
+      {
+        harness.check(true, "Recognised unknown public key format ID");
+      }
+
+    DHPrivateKey secK = (DHPrivateKey) kp.getPrivate();
+    try
+      {
+        ((GnuDHPrivateKey) secK).getEncoded(0);
+        harness.fail("Private key succeeded with unknown format ID");
+      }
+    catch (IllegalArgumentException x)
+      {
+        harness.check(true, "Recognised unknown private key format ID");
+      }
+  }
+
   public void testKeyPairRawCodec(TestHarness harness)
   {
-    harness.checkPoint("TestOfDHCodec.testKeyPairRawCodec");
-    setUp();
+    harness.checkPoint("testKeyPairRawCodec");
+
+    kp = kpg.generate();
 
     GnuDHPublicKey pubK = (GnuDHPublicKey) kp.getPublic();
     GnuDHPrivateKey secK = (GnuDHPrivateKey) kp.getPrivate();
 
     byte[] pk1, pk2;
-    try
-      { // an invalid format ID
-        pk1 = ((GnuDHPublicKey) pubK).getEncoded(0);
-        harness.fail("Succeeded with unknown format ID");
-      }
-    catch (IllegalArgumentException x)
-      {
-        harness.check(true, "Recognised unknown format ID");
-      }
 
     pk1 = ((GnuDHPublicKey) pubK).getEncoded(IKeyPairCodec.RAW_FORMAT);
     pk2 = ((GnuDHPrivateKey) secK).getEncoded(IKeyPairCodec.RAW_FORMAT);
@@ -85,10 +115,33 @@ public class TestOfDHCodec implements Testlet
                   "DH private key Raw encoder/decoder test");
   }
 
+  private void testKeyPairASN1Codec(TestHarness harness)
+  {
+    harness.checkPoint("testKeyPairASN1Codec");
+
+    kp = kpg.generate();
+
+    byte[] pk;
+
+    DHPublicKey pubK = (DHPublicKey) kp.getPublic();
+    DHPrivateKey secK = (DHPrivateKey) kp.getPrivate();
+
+    pk = ((GnuDHPrivateKey) secK).getEncoded(IKeyPairCodec.PKCS8_FORMAT);
+    PrivateKey newSecK = new DHKeyPairPKCS8Codec().decodePrivateKey(pk);
+    harness.check(secK.equals(newSecK),
+                  "DH private key ASN.1 encoder/decoder test");
+
+    pk = ((GnuDHPublicKey) pubK).getEncoded(IKeyPairCodec.X509_FORMAT);
+    PublicKey newPubK = new DHKeyPairX509Codec().decodePublicKey(pk);
+    harness.check(pubK.equals(newPubK),
+                  "DH public key ASN.1 encoder/decoder test");
+  }
+
   public void testPublicKeyValueOf(TestHarness harness)
   {
-    harness.checkPoint("TestOfDHCodec.testPublicKeyValueOf");
-    setUp();
+    harness.checkPoint("testPublicKeyValueOf");
+
+    kp = kpg.generate();
 
     GnuDHPublicKey pubK = (GnuDHPublicKey) kp.getPublic();
 
@@ -101,8 +154,9 @@ public class TestOfDHCodec implements Testlet
 
   public void testPrivateKeyValueOf(TestHarness harness)
   {
-    harness.checkPoint("TestOfDHCodec.testPrivateKeyValueOf");
-    setUp();
+    harness.checkPoint("testPrivateKeyValueOf");
+
+    kp = kpg.generate();
 
     GnuDHPrivateKey privateK = (GnuDHPrivateKey) kp.getPrivate();
 
@@ -115,11 +169,11 @@ public class TestOfDHCodec implements Testlet
 
   private void setUp()
   {
-    HashMap map = new HashMap();
+    map = new HashMap();
     map.put(GnuDHKeyPairGenerator.PRIME_SIZE, new Integer(512));
     map.put(GnuDHKeyPairGenerator.EXPONENT_SIZE, new Integer(160));
 
+    kpg = new GnuDHKeyPairGenerator();
     kpg.setup(map);
-    kp = kpg.generate();
   }
 }

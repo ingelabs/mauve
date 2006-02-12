@@ -34,6 +34,7 @@ import java.security.spec.X509EncodedKeySpec;
 
 import gnu.java.security.Registry;
 import gnu.java.security.provider.Gnu;
+import gnu.javax.crypto.jce.GnuCrypto;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -49,6 +50,8 @@ public class TestOfFormat
 
   private KeyPairGenerator rsaKPG;
 
+  private KeyPairGenerator dhKPG;
+
   private KeyFactory encodedKF;
 
   public void test(TestHarness harness)
@@ -57,11 +60,13 @@ public class TestOfFormat
 
     testDSSSymmetry(harness);
     testRSASymmetry(harness);
+    testDHSymmetry(harness);
   }
 
   private void setUp(TestHarness harness)
   {
     Security.addProvider(new Gnu());
+    Security.addProvider(new GnuCrypto());
     Security.addProvider(new FakeProvider());
     try
       {
@@ -69,6 +74,8 @@ public class TestOfFormat
                                               Registry.GNU_SECURITY);
         rsaKPG = KeyPairGenerator.getInstance(Registry.RSA_KPG,
                                               Registry.GNU_SECURITY);
+        dhKPG = KeyPairGenerator.getInstance(Registry.DH_KPG,
+                                             Registry.GNU_CRYPTO);
         encodedKF = KeyFactory.getInstance("Encoded", "FakeProvider");
       }
     catch (Exception x)
@@ -153,6 +160,45 @@ public class TestOfFormat
       {
         harness.debug(x);
         harness.fail("testRSASymmetry(): " + x.getMessage());
+      }
+  }
+
+  private void testDHSymmetry(TestHarness harness)
+  {
+    harness.checkPoint("testDHSymmetry");
+
+    try
+      {
+        dhKPG.initialize(512);
+        KeyPair kp = dhKPG.generateKeyPair();
+        harness.check(kp != null, "MUST generate valid DH keypair");
+
+        PublicKey p1 = kp.getPublic();
+
+        String f1 = p1.getFormat();
+        harness.check("X.509".equalsIgnoreCase(f1),
+                      "DH public key format MUST be X.509");
+        byte[] encoded1 = p1.getEncoded();
+
+        X509EncodedKeySpec spec1 = new X509EncodedKeySpec(encoded1);
+        PublicKey p2 = encodedKF.generatePublic(spec1);
+        harness.check(p1.equals(p2), "Two DH public keys MUST be equal");
+
+        PrivateKey p3 = kp.getPrivate();
+
+        String f2 = p3.getFormat();
+        harness.check("PKCS#8".equalsIgnoreCase(f2),
+                      "DH private key format MUST be PKCS#8");
+        byte[] encoded2 = p3.getEncoded();
+
+        PKCS8EncodedKeySpec spec2 = new PKCS8EncodedKeySpec(encoded2);
+        PrivateKey p4 = encodedKF.generatePrivate(spec2);
+        harness.check(p3.equals(p4), "Two DH private keys MUST be equal");
+      }
+    catch (Exception x)
+      {
+        harness.debug(x);
+        harness.fail("testDHSymmetry(): " + x.getMessage());
       }
   }
 }

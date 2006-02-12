@@ -23,6 +23,12 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 package gnu.testlet.gnu.java.security.jce;
 
+import gnu.java.security.Registry;
+import gnu.java.security.provider.Gnu;
+import gnu.javax.crypto.jce.GnuCrypto;
+import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
+
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -38,10 +44,8 @@ import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import gnu.java.security.Registry;
-import gnu.java.security.provider.Gnu;
-import gnu.testlet.TestHarness;
-import gnu.testlet.Testlet;
+import javax.crypto.spec.DHPrivateKeySpec;
+import javax.crypto.spec.DHPublicKeySpec;
 
 /**
  * Conformance tests for the JCE DSS and RSA key-factories.
@@ -51,8 +55,10 @@ public class TestOfKeyFactory
 {
   private KeyPairGenerator dssKPG;
   private KeyPairGenerator rsaKPG;
+  private KeyPairGenerator dhKPG;
   private KeyFactory dssKF;
   private KeyFactory rsaKF;
+  private KeyFactory dhKF;
   private KeyFactory encKF;
 
   public void test(TestHarness harness)
@@ -61,11 +67,13 @@ public class TestOfKeyFactory
 
     testDSSKeyFactory(harness);
     testRSAKeyFactory(harness);
+    testDHKeyFactory(harness);
   }
 
   private void setUp(TestHarness harness)
   {
     Security.addProvider(new Gnu());
+    Security.addProvider(new GnuCrypto());
     Security.addProvider(new FakeProvider());
     try
       {
@@ -73,8 +81,11 @@ public class TestOfKeyFactory
                                               Registry.GNU_SECURITY);
         rsaKPG = KeyPairGenerator.getInstance(Registry.RSA_KPG,
                                               Registry.GNU_SECURITY);
+        dhKPG = KeyPairGenerator.getInstance(Registry.DH_KPG,
+                                             Registry.GNU_CRYPTO);
         dssKF = KeyFactory.getInstance(Registry.DSS_KPG, "FakeProvider");
         rsaKF = KeyFactory.getInstance(Registry.RSA_KPG, "FakeProvider");
+        dhKF = KeyFactory.getInstance(Registry.DH_KPG, "FakeProvider");
         encKF = KeyFactory.getInstance("Encoded", "FakeProvider");
       }
     catch (Exception x)
@@ -93,7 +104,7 @@ public class TestOfKeyFactory
     harness.check(kp != null, "MUST generate valid DSS keypair");
 
     PublicKey p1, p2, p3;
-    KeySpec spec1, spec2, spec3;
+    KeySpec spec1, spec2;
     PrivateKey p4, p5, p6;
     String msg;
 
@@ -117,7 +128,7 @@ public class TestOfKeyFactory
     msg = "MUST NOT emit PKCS#8 encoding for DSS public key";
     try
       {
-        spec3 = dssKF.getKeySpec(p1, PKCS8EncodedKeySpec.class);
+        dssKF.getKeySpec(p1, PKCS8EncodedKeySpec.class);
         harness.fail(msg);
       }
     catch (InvalidKeySpecException x)
@@ -145,7 +156,7 @@ public class TestOfKeyFactory
     msg = "MUST NOT emit X.509 encoding for DSS private key";
     try
       {
-        spec3 = dssKF.getKeySpec(p4, X509EncodedKeySpec.class);
+        dssKF.getKeySpec(p4, X509EncodedKeySpec.class);
         harness.fail(msg);
       }
     catch (InvalidKeySpecException x)
@@ -163,7 +174,7 @@ public class TestOfKeyFactory
     harness.check(kp != null, "MUST generate valid RSA keypair");
 
     PublicKey p1, p2, p3;
-    KeySpec spec1, spec2, spec3;
+    KeySpec spec1, spec2;
     PrivateKey p4, p5, p6;
     String msg;
 
@@ -187,7 +198,7 @@ public class TestOfKeyFactory
     msg = "MUST NOT emit PKCS#8 encoding for RSA public key";
     try
       {
-        spec3 = rsaKF.getKeySpec(p1, PKCS8EncodedKeySpec.class);
+        rsaKF.getKeySpec(p1, PKCS8EncodedKeySpec.class);
         harness.fail(msg);
       }
     catch (InvalidKeySpecException x)
@@ -215,7 +226,77 @@ public class TestOfKeyFactory
     msg = "MUST NOT emit X.509 encoding for RSA private key";
     try
       {
-        spec3 = rsaKF.getKeySpec(p4, X509EncodedKeySpec.class);
+        rsaKF.getKeySpec(p4, X509EncodedKeySpec.class);
+        harness.fail(msg);
+      }
+    catch (InvalidKeySpecException x)
+      {
+        harness.check(true, msg);
+      }
+  }
+
+  private void testDHKeyFactory(TestHarness harness)
+  {
+    harness.checkPoint("testDHKeyFactory");
+
+    dhKPG.initialize(512);
+    KeyPair kp = dhKPG.generateKeyPair();
+    harness.check(kp != null, "MUST generate valid DH keypair");
+
+    PublicKey p1, p2, p3;
+    KeySpec spec1, spec2;
+    PrivateKey p4, p5, p6;
+    String msg;
+
+    p1 = kp.getPublic();
+    try
+      {
+        spec1 = dhKF.getKeySpec(p1, DHPublicKeySpec.class);
+        p2 = encKF.generatePublic(spec1);
+        harness.check(p2.equals(p1), "Two DH public keys MUST be equal");
+
+        spec2 = dhKF.getKeySpec(p1, X509EncodedKeySpec.class);
+        p3 = encKF.generatePublic(spec2);
+        harness.check(p3.equals(p2), "Two decoded DH public keys MUST be equal");
+      }
+    catch (InvalidKeySpecException x)
+      {
+        harness.debug(x);
+        harness.fail("Unable to generate encoded DH public keys");
+      }
+
+    msg = "MUST NOT emit PKCS#8 encoding for DH public key";
+    try
+      {
+        dhKF.getKeySpec(p1, PKCS8EncodedKeySpec.class);
+        harness.fail(msg);
+      }
+    catch (InvalidKeySpecException x)
+      {
+        harness.check(true, msg);
+      }
+
+    p4 = kp.getPrivate();
+    try
+      {
+        spec1 = dhKF.getKeySpec(p4, DHPrivateKeySpec.class);
+        p5 = encKF.generatePrivate(spec1);
+        harness.check(p5.equals(p4), "Two DH private keys MUST be equal");
+
+        spec2 = dhKF.getKeySpec(p4, PKCS8EncodedKeySpec.class);
+        p6 = encKF.generatePrivate(spec2);
+        harness.check(p6.equals(p5), "Two decoded DH private keys MUST be equal");
+      }
+    catch (InvalidKeySpecException x)
+      {
+        harness.debug(x);
+        harness.fail("Unable to generate encoded DH private keys");
+      }
+
+    msg = "MUST NOT emit X.509 encoding for DH private key";
+    try
+      {
+        dhKF.getKeySpec(p4, X509EncodedKeySpec.class);
         harness.fail(msg);
       }
     catch (InvalidKeySpecException x)
