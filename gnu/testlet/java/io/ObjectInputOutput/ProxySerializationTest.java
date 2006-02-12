@@ -20,7 +20,7 @@
 
  */
 
-// Tags: 1.3
+// Tags: JDK1.3
 
 
 package gnu.testlet.java.io.ObjectInputOutput;

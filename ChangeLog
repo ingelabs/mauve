@@ -1,3 +1,8 @@
+2006-02-12  Olivier Jolly  <olivier.jolly@pcedev.com>
+
+	* gnu/testlet/java/io/ObjectInputOutput/ProxySerializationTest.java:
+	Fixed test tag.
+
 2006-02-12  Dalibor Topic  <robilad@kaffe.org>
 
 	* gnu/testlet/java/io/File/UnicodeURI.java: New test for
