@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -26,6 +26,7 @@ import gnu.testlet.Testlet;
 
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.plaf.metal.MetalBorders.ButtonBorder;
 
 /**
@@ -52,6 +53,10 @@ public class getBorderInsets implements Testlet
     ButtonBorder b = new ButtonBorder();
     Insets insets = b.getBorderInsets(null);
     harness.check(insets, new Insets(3, 3, 3, 3));
+    
+    // the method always returns the same instance
+    Insets insets2 = b.getBorderInsets(null);
+    harness.check(insets == insets2);
   }
 
   public void test2(TestHarness harness)      
@@ -60,17 +65,19 @@ public class getBorderInsets implements Testlet
     ButtonBorder b = new ButtonBorder();
     Insets insets = b.getBorderInsets(null, new Insets(1, 2, 3, 4));
     harness.check(insets, new Insets(3, 3, 3, 3));
-    
+
+    // check null insets
     boolean pass = false;
     try
     {
-      b.getBorderInsets(null, null);
+      b.getBorderInsets(new JButton("Test"), null);
     }
     catch (NullPointerException e)
     {
       pass = true;
     }
     harness.check(pass);
+  
   }
   
 }

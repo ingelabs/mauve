@@ -26,6 +26,7 @@ import gnu.testlet.Testlet;
 
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
 /**
@@ -52,6 +53,10 @@ public class getBorderInsets implements Testlet
     PaletteBorder b = new PaletteBorder();
     Insets insets = b.getBorderInsets(null);
     harness.check(insets, new Insets(1, 1, 1, 1));
+    
+    // the method always returns the same instance
+    Insets insets2 = b.getBorderInsets(null);
+    harness.check(insets == insets2);
   }
 
   public void test2(TestHarness harness)      
@@ -64,7 +69,7 @@ public class getBorderInsets implements Testlet
     boolean pass = false;
     try
     {
-      b.getBorderInsets(null, null);
+      b.getBorderInsets(new JButton("Test"), null);
     }
     catch (NullPointerException e)
     {

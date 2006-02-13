@@ -1,3 +1,17 @@
+2006-02-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/ButtonBorder/getBorderInsets.java
+	(test1): Added check for return value,
+	(test2): Set component in test for null Insets argument,
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/Flush3DBorder/getBorderInsets.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/InternalFrameBorder/getBorderInsets.java:
+	Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/MenuItemBorder/getBorderInsets.java:
+	Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/PaletteBorder/getBorderInsets.java:
+	Likewise.
+
 2006-02-13  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/util/regex/Pattern/testdata3: Added some tests.

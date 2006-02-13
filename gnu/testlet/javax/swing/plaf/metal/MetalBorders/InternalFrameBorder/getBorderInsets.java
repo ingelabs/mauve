@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -16,8 +16,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.plaf.metal.MetalBorders.InternalFrameBorder;
 
@@ -26,6 +26,7 @@ import gnu.testlet.Testlet;
 
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.plaf.metal.MetalBorders.InternalFrameBorder;
 
 /**
@@ -52,6 +53,10 @@ public class getBorderInsets implements Testlet
     InternalFrameBorder b = new InternalFrameBorder();
     Insets insets = b.getBorderInsets(null);
     harness.check(insets, new Insets(5, 5, 5, 5));
+    
+    // the method always returns the same instance
+    Insets insets2 = b.getBorderInsets(null);
+    harness.check(insets == insets2);
   }
 
   public void test2(TestHarness harness)      
@@ -64,7 +69,7 @@ public class getBorderInsets implements Testlet
     boolean pass = false;
     try
     {
-      b.getBorderInsets(null, null);
+      b.getBorderInsets(new JButton("Test"), null);
     }
     catch (NullPointerException e)
     {

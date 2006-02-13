@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -26,8 +26,8 @@ import gnu.testlet.Testlet;
 
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.plaf.metal.MetalBorders.Flush3DBorder;
-import javax.swing.plaf.metal.MetalBorders.InternalFrameBorder;
 
 /**
 * Some tests for the getBorderInsets() method in the {@link Flush3DBorder} 
@@ -53,6 +53,10 @@ public class getBorderInsets implements Testlet
     Flush3DBorder b = new Flush3DBorder();
     Insets insets = b.getBorderInsets(null);
     harness.check(insets, new Insets(2, 2, 2, 2));
+
+    // the method always returns the same instance
+    Insets insets2 = b.getBorderInsets(null);
+    harness.check(insets == insets2);
   }
 
   public void test2(TestHarness harness)      
@@ -62,10 +66,11 @@ public class getBorderInsets implements Testlet
     Insets insets = b.getBorderInsets(null, new Insets(1, 2, 3, 4));
     harness.check(insets, new Insets(2, 2, 2, 2));
     
+    // check null insets
     boolean pass = false;
     try
     {
-      b.getBorderInsets(null, null);
+      b.getBorderInsets(new JButton("Test"), null);
     }
     catch (NullPointerException e)
     {
