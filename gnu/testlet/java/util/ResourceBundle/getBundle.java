@@ -174,7 +174,8 @@ public class getBundle implements Testlet
 
       try 
 	{
-	  ResourceBundle.getBundle (c ("Resource1"), null);
+    	  // The cast avoids ambiguity with JDK 1.6.
+	  ResourceBundle.getBundle (c ("Resource1"), (Locale) null);
 	  harness.check (false);
 	}
       catch (NullPointerException ex)
@@ -184,7 +185,8 @@ public class getBundle implements Testlet
 
       try 
 	{
-	  ResourceBundle.getBundle ("no such resource", null);
+    	  // The cast avoids ambiguity with JDK 1.6.
+	  ResourceBundle.getBundle ("no such resource", (Locale) null);
 	  harness.check (false);
 	}
       catch (NullPointerException ex)
