@@ -1,3 +1,7 @@
+2006-02-13  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/Pattern/testdata3: Added some tests.
+
 2006-02-12  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/io/ObjectInputOutput/ProxySerializationTest.java:

@@ -91,3 +91,29 @@ No match
 No match
     /2005/100/100/url
 No match
+
+#
+# Union and intersection of character classes
+#
+
+/[\p{L}[\p{Mn}[\p{Pc}[\p{Nd}[\p{Nl}[\p{Sc}]]]]]]+/
+    $a1_
+ 0: $a1_
+
+/[a-c&&[b-e]&&[\w]]X/
+    bX
+ 0: bX
+
+/[a-c&&b-e&&\p{Lower}]X/
+    cX
+ 0: cX
+
+/[a-e[h-k][m-p]&&[^bjn]]+/
+    ckp
+ 0: ckp
+    dhn
+ 0: dh
+    nhd
+ 0: hd
+    nx
+No match
