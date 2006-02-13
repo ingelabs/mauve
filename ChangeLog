@@ -1,3 +1,7 @@
+2006-02-13  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/awt/Component/repaint.java: New test.
+
 2006-02-13  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalBorders/ButtonBorder/getBorderInsets.java
