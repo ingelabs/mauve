@@ -1,5 +1,11 @@
 2006-02-14  Olivier Jolly  <olivier.jolly@pcedev.com>
 
+	* gnu/testlet/java/io/ObjectInputOutput/HierarchyTest.java
+	(HierarchyTest.Base): Added explicit constructor to avoid interpretation
+	of its visibility.
+
+2006-02-14  Olivier Jolly  <olivier.jolly@pcedev.com>
+
 	* batch_run
 	  (COMPILER): Added "none" as possible value to skip compilation.
 
