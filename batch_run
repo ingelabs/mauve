@@ -22,7 +22,8 @@
 
 # Tries to compile and run all possible tests.
 # Produces a FAIL output if compilation fails.
-# COMPILER command can be set in the script
+# COMPILER command can be set in the script or to "none" to avoid
+# cleaning .class files and recompiling them
 # For testing (gcj) native code compilation set NATIVE to 'true', otherwise
 # don't set it.
 # Uses runner script to run each individual test.
@@ -57,8 +58,11 @@ else
 NATIVE=
 fi
 
-# Cleanup
-find gnu/testlet -name "*.class" | xargs rm -f
+# Cleanup if COMPILER != none
+if test "x$COMPILER" != "xnone"; then
+	find gnu/testlet -name "*.class" | xargs rm -f
+fi
+
 if test ! -z "$NATIVE"; then
     rm -f SimpleTestHarness
 fi
@@ -66,7 +70,7 @@ fi
 # Create Mauve Framwork
 framework_sources="gnu/testlet/SimpleTestHarness.java gnu/testlet/TestHarness.java gnu/testlet/Testlet.java gnu/testlet/ResourceNotFoundException.java gnu/testlet/TestSecurityManager.java gnu/testlet/config.java gnu/testlet/TestResult.java gnu/testlet/TestReport.java"
 
-if test -z "$NATIVE"; then
+if test -z "$NATIVE" && test "x$COMPILER" != "xnone"; then
     $COMPILER $COMPILER_FLAGS $framework_sources
 fi
 
@@ -110,7 +114,9 @@ for testclass in `cat test_classes`; do
 
     # Try to compile sources
     if test -z "$NATIVE"; then
-        $COMPILER $COMPILER_FLAGS @uses_files
+	if test "x$COMPILER" != "xnone"; then
+	       	$COMPILER $COMPILER_FLAGS @uses_files
+	fi
     else
         $COMPILER $COMPILER_FLAGS -o SimpleTestHarness --main=gnu.testlet.SimpleTestHarness \
 	          $framework_sources `cat uses_files`
