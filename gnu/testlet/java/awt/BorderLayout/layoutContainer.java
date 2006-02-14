@@ -44,6 +44,7 @@ public class layoutContainer implements Testlet
    */
   public void test(TestHarness harness)   
   {
+    test0(harness);
     test1(harness);
     test2(harness);
     test3(harness);
@@ -57,6 +58,37 @@ public class layoutContainer implements Testlet
     test11(harness);
   }
 
+  /**
+   * All 5 components.
+   */
+  private void test0(TestHarness harness) 
+  { 
+    harness.checkPoint("test0");
+    JPanel p = new JPanel(new BorderLayout());
+    p.setSize(200, 200);
+    JPanel p1 = new JPanel();
+    p1.setPreferredSize(new Dimension(12, 34));
+    p.add(p1, BorderLayout.CENTER);
+    JPanel p2 = new JPanel();
+    p2.setPreferredSize(new Dimension(10, 54));
+    p.add(p2, BorderLayout.NORTH);
+    JPanel p3 = new JPanel();
+    p3.setPreferredSize(new Dimension(100, 74));
+    p.add(p3, BorderLayout.WEST);
+    JPanel p4 = new JPanel();
+    p4.setPreferredSize(new Dimension(92, 33));
+    p.add(p4, BorderLayout.EAST);
+    JPanel p5 = new JPanel();
+    p5.setPreferredSize(new Dimension(18, 64));
+    p.add(p5, BorderLayout.SOUTH);
+    p.doLayout();
+    harness.check(p1.getBounds(), new Rectangle(100, 54, 8, 82));
+    harness.check(p2.getBounds(), new Rectangle(0, 0, 200, 54));
+    harness.check(p3.getBounds(), new Rectangle(0, 54, 100, 82));
+    harness.check(p4.getBounds(), new Rectangle(108, 54, 92, 82));
+    harness.check(p5.getBounds(), new Rectangle(0, 136, 200, 64));
+  }
+  
   /**
    * Single component in the center.
    */
