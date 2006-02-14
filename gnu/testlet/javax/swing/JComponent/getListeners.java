@@ -1,6 +1,6 @@
 // Tags: JDK1.3
 
-// Copyright (C) 2005 David Gilbert  <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006 David Gilbert  <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,8 +22,9 @@ package gnu.testlet.javax.swing.JComponent;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.awt.event.ContainerListener;
 import java.awt.event.FocusListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.EventListener;
 
 import javax.swing.JComponent;
@@ -39,6 +40,15 @@ public class getListeners implements Testlet, AncestorListener {
   class TestComponent extends JComponent
   {
   }
+  
+  class MyPropertyChangeListener 
+    implements PropertyChangeListener
+  {
+    public void propertyChange(PropertyChangeEvent e) 
+    {
+      // ignore
+    }
+  }
 
   /**
    * Runs the test using the specified harness.
@@ -52,12 +62,23 @@ public class getListeners implements Testlet, AncestorListener {
     EventListener[] listeners = c.getListeners(AncestorListener.class);
     harness.check(listeners.length, 1);
     harness.check(listeners[0], this);
+    
     // try a listener type that isn't registered
     listeners = c.getListeners(FocusListener.class);
     harness.check(listeners.length, 0);
     c.removeAncestorListener(this);
     listeners = c.getListeners(AncestorListener.class);
     harness.check(listeners.length, 0);
+    
+    // try a PropertyChangeListener
+    PropertyChangeListener pcl = new MyPropertyChangeListener();
+    c.addPropertyChangeListener(pcl);
+    listeners = c.getListeners(PropertyChangeListener.class);
+    harness.check(listeners.length, 1);
+    if (listeners.length > 0) 
+      harness.check(listeners[0], pcl);
+    else
+      harness.check(false);
     
     // try a null argument
     boolean pass = false;
