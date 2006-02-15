@@ -1,5 +1,14 @@
 2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/constructor.java: New test,
+	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/minimumLayoutSize.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/MyDefaultEditor.java: New support class,
+	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/preferredLayoutSize.java: New test,
+	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/propertyChange.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/stateChanged.java: Likewise.
+
+2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JSpinner/addChangeListener.java: New test,
 	* gnu/testlet/javax/swing/JSpinner/constructors.java: Likewise,
 	* gnu/testlet/javax/swing/JSpinner/createEditor.java: Likewise,
