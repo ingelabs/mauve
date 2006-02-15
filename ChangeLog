@@ -1,5 +1,10 @@
 2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JSpinner/ListEditor/constructor.java: New test,
+	* gnu/testlet/javax/swing/JSpinner/ListEditor/getModel.java: Likewise.
+
+2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JSpinner/DateEditor/constructors.java: New test,
 	* gnu/testlet/javax/swing/JSpinner/DateEditor/getFormat.java: Likewise,
 	* gnu/testlet/javax/swing/JSpinner/DateEditor/getModel.java: Likewise.
