@@ -1,5 +1,11 @@
 2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JSpinner/DateEditor/constructors.java: New test,
+	* gnu/testlet/javax/swing/JSpinner/DateEditor/getFormat.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/DateEditor/getModel.java: Likewise.
+
+2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/constructor.java: New test,
 	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/minimumLayoutSize.java: Likewise,
 	* gnu/testlet/javax/swing/JSpinner/DefaultEditor/MyDefaultEditor.java: New support class,
