@@ -1,5 +1,12 @@
 2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/SpinnerDateModel/getNextValue.java
+	(test): Add checks for model without bounds,
+	* gnu/testlet/javax/swing/SpinnerDateModel/getPreviousValue.java
+	(test): Likewise.
+
+2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/SpinnerNumberModel/getNextValue.java
 	(test): Add checks for model without bounds,
 	* gnu/testlet/javax/swing/SpinnerNumberModel/getPreviousValue.java

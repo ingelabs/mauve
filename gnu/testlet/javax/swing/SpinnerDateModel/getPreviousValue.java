@@ -31,6 +31,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerNumberModel;
 
 public class getPreviousValue implements Testlet {
 
@@ -52,5 +53,13 @@ public class getPreviousValue implements Testlet {
     harness.check(m.getPreviousValue(), start);
     m.setValue(start);
     harness.check(m.getPreviousValue(), null);
+    
+    // repeat for model without bounds
+    m = new SpinnerDateModel(now, null, null, Calendar.MILLISECOND);
+    harness.check(m.getValue(), now);
+    harness.check(m.getPreviousValue(), prev);
+
+    // accessing the previous value doesn't update the current value
+    harness.check(m.getValue(), now);    
   }
 }

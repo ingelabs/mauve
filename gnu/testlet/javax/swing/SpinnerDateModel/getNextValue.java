@@ -52,5 +52,14 @@ public class getNextValue implements Testlet {
     harness.check(m.getNextValue(), end);
     m.setValue(end);
     harness.check(m.getNextValue(), null);
+    
+    // repeat for model without bounds
+    m = new SpinnerDateModel(now, null, null, Calendar.MILLISECOND);
+    harness.check(m.getValue(), now);
+    harness.check(m.getNextValue(), next);
+
+    // accessing the next value doesn't update the current value
+    harness.check(m.getValue(), now);    
+
   }
 }
