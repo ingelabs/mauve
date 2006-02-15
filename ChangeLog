@@ -1,5 +1,21 @@
 2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JSpinner/addChangeListener.java: New test,
+	* gnu/testlet/javax/swing/JSpinner/constructors.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/createEditor.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/getChangeListeners.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/getEditor.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/getModel.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/getNextValue.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/getPreviousValue.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/getUIClassID.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/MyJSpinner.java: New support class,
+	* gnu/testlet/javax/swing/JSpinner/removeChangeListener.java: New test,
+	* gnu/testlet/javax/swing/JSpinner/setEditor.java: Likewise,
+	* gnu/testlet/javax/swing/JSpinner/setModel.java: Likewise.
+
+2006-02-15  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/SpinnerDateModel/getNextValue.java
 	(test): Add checks for model without bounds,
 	* gnu/testlet/javax/swing/SpinnerDateModel/getPreviousValue.java
