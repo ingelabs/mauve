@@ -100,8 +100,6 @@ public class TestSecurityManager2 extends SecurityManager
     this.mustCheck = mustCheck;
     this.checked = new boolean[mustCheck.length];
     this.throwOnSuccess = throwOnSuccess;
-    if (throwOnSuccess && mustCheck.length != 1)
-      throw new IllegalArgumentException();
   }
 
   public void checkAllChecked(TestHarness harness) {
@@ -135,9 +133,16 @@ public class TestSecurityManager2 extends SecurityManager
       }
     }
 
-    if (matched && throwOnSuccess)
-      throw new SecurityException(successMessage);
-    
+    if (throwOnSuccess) {
+      boolean allChecked = true;
+      for (int i = 0; i < checked.length; i++) {
+	if (!checked[i])
+	  allChecked = false;
+      }
+      if (allChecked)
+	throw new SecurityException(successMessage);
+    }
+
     expectedPerms.append(" May check:");
     if (!matched) {
       for (int i = 0; i < mayCheck.length; i++) {
