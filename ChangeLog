@@ -1,4 +1,4 @@
-2006-01-27  Gary Benson <gbenson@redhat.com>
+2006-02-16  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/TestSecurityManager2.java: Added the ability to
 	test for multiple permisson checks when in the mode that aborts
