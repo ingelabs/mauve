@@ -1,3 +1,7 @@
+2006-02-16  Gary Benson <gbenson@redhat.com>
+
+	* gnu/testlet/java/lang/Thread/security.java: New test.
+
 2006-02-16  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/TestSecurityManager2.java: Added the ability to
