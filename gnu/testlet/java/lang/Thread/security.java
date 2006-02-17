@@ -189,6 +189,18 @@ public class security implements Testlet
 	  harness.debug(ex);
 	  harness.check(false, "unexpected check");
 	}
+	
+	// throwpoint: java.lang.Thread-enumerate
+	harness.checkPoint("enumerate");
+	try {
+	  sm.prepareChecks(modifyThreadGroup);
+	  Thread.enumerate(new Thread[0]);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}	
 
 	// throwpoint: java.lang.Thread-stop()
 	harness.checkPoint("stop()");
