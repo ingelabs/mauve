@@ -38,13 +38,16 @@ import java.security.Signature;
  */
 public class TestOfSignature implements Testlet
 {
+  private static final byte[] MESSAGE = "Que du magnifique...".getBytes();
+
   public void test(TestHarness harness)
   {
     setUp();
 
     testUnknownScheme(harness);
-    testDSSRawSignature(harness);
+    testDSSSignatures(harness);
     testRSAPSSRawSignature(harness);
+    testRSAPKCS1Signatures(harness);
   }
 
   /** Should fail with an unknown scheme. */
@@ -62,74 +65,100 @@ public class TestOfSignature implements Testlet
       }
   }
 
-  public void testDSSRawSignature(TestHarness harness)
+  public void testDSSSignatures(TestHarness harness)
   {
-    harness.checkPoint("testDSSRawSignature");
+    KeyPairGenerator kpg = null;
     try
       {
-        KeyPairGenerator kpg =
-            KeyPairGenerator.getInstance("DSA", Registry.GNU_SECURITY);
-        kpg.initialize(512);
-        KeyPair kp = kpg.generateKeyPair();
-
-        Signature alice = Signature.getInstance("DSA", Registry.GNU_SECURITY);
-//        Signature bob = (Signature) alice.clone();
-        Signature bob = Signature.getInstance("DSA", Registry.GNU_SECURITY);
-
-        byte[] message = "1 if by land, 2 if by sea...".getBytes();
-
-        alice.initSign(kp.getPrivate());
-        alice.update(message);
-        byte[] signature = alice.sign();
-
-        bob.initVerify(kp.getPublic());
-        bob.update(message);
-
-        harness.check(bob.verify(signature), "Verify DSA own signature");
+        kpg = KeyPairGenerator.getInstance(Registry.DSS_KPG,
+                                           Registry.GNU_SECURITY);
       }
     catch (Exception x)
       {
         harness.debug(x);
-        harness.fail("testDSSRawSignature(): " + String.valueOf(x));
+        harness.fail("Unable to get a DSS key-pair generator");
       }
+
+    kpg.initialize(512);
+    KeyPair kp = kpg.generateKeyPair();
+
+    testSignature(harness, "DSS/RAW", Registry.GNU_SECURITY, kp);
+    testSignature(harness, "SHA160withDSS", "FakeProvider", kp);
   }
 
   public void testRSAPSSRawSignature(TestHarness harness)
   {
-    harness.checkPoint("testRSAPSSRawSignature");
+    KeyPairGenerator kpg = null;
     try
       {
-        KeyPairGenerator kpg =
-            KeyPairGenerator.getInstance("RSA", Registry.GNU_SECURITY);
-        kpg.initialize(1024);
-        KeyPair kp = kpg.generateKeyPair();
-
-        Signature alice =
-            Signature.getInstance("RSA-PSS/RAW", Registry.GNU_SECURITY);
-//        Signature bob = (Signature) alice.clone();
-        Signature bob =
-            Signature.getInstance("RSA-PSS/RAW", Registry.GNU_SECURITY);
-
-        byte[] message = "Que du magnifique...".getBytes();
-
-        alice.initSign(kp.getPrivate());
-        alice.update(message);
-        byte[] signature = alice.sign();
-
-        bob.initVerify(kp.getPublic());
-        bob.update(message);
-
-        harness.check(bob.verify(signature), "Verify RSA-PSS own signature");
+        kpg = KeyPairGenerator.getInstance(Registry.RSA_KPG,
+                                           Registry.GNU_SECURITY);
       }
     catch (Exception x)
       {
         harness.debug(x);
-        harness.fail("testRSAPSSRawSignature(): " + String.valueOf(x));
+        harness.fail("Unable to get an RSA key-pair generator");
+      }
+
+    kpg.initialize(1024);
+    KeyPair kp = kpg.generateKeyPair();
+
+    testSignature(harness, "RSA-PSS/RAW", Registry.GNU_SECURITY, kp);
+  }
+
+  private void testRSAPKCS1Signatures(TestHarness harness)
+  {
+    KeyPairGenerator kpg = null;
+    try
+      {
+        kpg = KeyPairGenerator.getInstance(Registry.RSA_KPG,
+                                           Registry.GNU_SECURITY);
+      }
+    catch (Exception x)
+      {
+        harness.debug(x);
+        harness.fail("Unable to get an RSA key-pair generator");
+      }
+
+    kpg.initialize(1024);
+    KeyPair kp = kpg.generateKeyPair();
+
+    testSignature(harness, "MD2withRSA", "FakeProvider", kp);
+    testSignature(harness, "MD5withRSA", "FakeProvider", kp);
+    testSignature(harness, "SHA160withRSA", "FakeProvider", kp);
+    testSignature(harness, "SHA256withRSA", "FakeProvider", kp);
+    testSignature(harness, "SHA384withRSA", "FakeProvider", kp);
+    testSignature(harness, "SHA512withRSA", "FakeProvider", kp);
+  }
+
+  private void testSignature(TestHarness harness, String sigName,
+                             String provider,  KeyPair kp)
+  {
+    String msg = "Signature " + sigName + " provided by " + provider;
+    try
+      {
+        Signature alice = Signature.getInstance(sigName, provider);
+        Signature bob = Signature.getInstance(sigName, provider);
+
+        alice.initSign(kp.getPrivate());
+        alice.update(MESSAGE);
+        byte[] signature = alice.sign();
+
+        bob.initVerify(kp.getPublic());
+        bob.update(MESSAGE);
+
+        harness.check(bob.verify(signature), msg);
+      }
+    catch (Exception x)
+      {
+        harness.debug(x);
+        harness.fail(msg);
       }
   }
 
   private void setUp()
   {
     Security.addProvider(new Gnu()); // dynamically adds our provider
+    Security.addProvider(new FakeProvider()); // dynamically adds our provider
   }
 }

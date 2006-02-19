@@ -43,5 +43,21 @@ public class FakeProvider extends Provider
         gnu.java.security.jce.sig.RSAKeyFactory.class.getName());
     put("KeyFactory.DH",
         gnu.javax.crypto.jce.sig.DHKeyFactory.class.getName());
+
+    // Signatures
+    put("Signature.SHA160withDSS",
+        gnu.java.security.jce.sig.SHA160withDSS.class.getName());
+    put("Signature.MD2withRSA",
+        gnu.java.security.jce.sig.MD2withRSA.class.getName());
+    put("Signature.MD5withRSA",
+        gnu.java.security.jce.sig.MD5withRSA.class.getName());
+    put("Signature.SHA160withRSA",
+        gnu.java.security.jce.sig.SHA160withRSA.class.getName());
+    put("Signature.SHA256withRSA",
+        gnu.java.security.jce.sig.SHA256withRSA.class.getName());
+    put("Signature.SHA384withRSA",
+        gnu.java.security.jce.sig.SHA384withRSA.class.getName());
+    put("Signature.SHA512withRSA",
+        gnu.java.security.jce.sig.SHA512withRSA.class.getName());
   }
 }

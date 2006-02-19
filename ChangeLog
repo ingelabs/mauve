@@ -1,3 +1,23 @@
+2006-02-19  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/sig/TestOfSignatureCodecFactory.java:
+	New file.
+	* gnu/testlet/gnu/java/security/sig/rsa/TestOfRSASignatureCodec.java:
+	Re-wrote to test all RSA signature codecs.
+	* gnu/testlet/gnu/java/security/sig/dss/TestOfDSSSignatureCodec.java
+	(test): Call new method.
+	(testSignatureASN1Codec): New method.
+	* gnu/testlet/gnu/java/security/key/TestOfKeyPairCodecFactory.java: New
+	file.
+	* gnu/testlet/gnu/java/security/jce/TestOfSignature.java
+	(test): Call new methods.
+	(testDSSRawSignature): Renamed testDSSSignatures.
+	(testDSSSignatures): Add test for SHA160withDSS.
+	(testRSAPKCS1Signatures): New method.
+	(testSignature): New method.
+	* gnu/testlet/gnu/java/security/jce/FakeProvider.java
+	(FakeProvider): Added JCE signature mappings.
+
 2006-02-17  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/lang/Thread/security.java: One more test.

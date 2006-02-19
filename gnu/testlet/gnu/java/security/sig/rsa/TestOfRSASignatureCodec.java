@@ -23,11 +23,13 @@
 
 package gnu.testlet.gnu.java.security.sig.rsa;
 
+import gnu.java.security.Registry;
 import gnu.java.security.key.rsa.RSAKeyPairGenerator;
 import gnu.java.security.sig.BaseSignature;
+import gnu.java.security.sig.ISignature;
 import gnu.java.security.sig.ISignatureCodec;
-import gnu.java.security.sig.rsa.RSAPSSSignature;
-import gnu.java.security.sig.rsa.RSAPSSSignatureRawCodec;
+import gnu.java.security.sig.SignatureCodecFactory;
+import gnu.java.security.sig.SignatureFactory;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -42,51 +44,41 @@ import java.util.HashMap;
  */
 public class TestOfRSASignatureCodec implements Testlet
 {
-  private RSAKeyPairGenerator kpg = new RSAKeyPairGenerator();
-
-  private KeyPair kp;
+  private static final String RAW = Registry.RAW_ENCODING_SHORT_NAME;
+  private static final String ASN1 = Registry.X509_ENCODING_SORT_NAME;
+  private static final byte[] MESSAGE = "1 if by land, 2 if by sea...".getBytes();
+  private RSAPublicKey pubK;
+  private RSAPrivateKey secK;
 
   public void test(TestHarness harness)
   {
-    testSignatureRawCodec(harness);
-  }
+    setUp();
 
-  public void testSignatureRawCodec(TestHarness harness)
-  {
-    harness.checkPoint("TestOfRSASignatureCodec.testSignatureRawCodec");
-    try
-      {
-        setUp();
-        RSAPublicKey pubK = (RSAPublicKey) kp.getPublic();
-        RSAPrivateKey secK = (RSAPrivateKey) kp.getPrivate();
+    testCodec(harness, Registry.RSA_PSS_SIG, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.MD2_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.MD5_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.SHA160_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.SHA256_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.SHA384_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.SHA512_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.RIPEMD128_HASH, RAW);
+    testCodec(harness, Registry.RSA_PSS_SIG + "-" + Registry.RIPEMD160_HASH, RAW);
 
-        RSAPSSSignature alice = new RSAPSSSignature();
-        RSAPSSSignature bob = (RSAPSSSignature) alice.clone();
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG, RAW);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.MD2_HASH, RAW);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.MD5_HASH, RAW);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA160_HASH, RAW);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA256_HASH, RAW);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA384_HASH, RAW);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA512_HASH, RAW);
 
-        byte[] message = "1 if by land, 2 if by sea...".getBytes();
-
-        HashMap map = new HashMap();
-        map.put(BaseSignature.SIGNER_KEY, secK);
-        alice.setupSign(map);
-        alice.update(message, 0, message.length);
-        Object signature = alice.sign();
-
-        ISignatureCodec codec = new RSAPSSSignatureRawCodec();
-
-        byte[] encodedSignature = codec.encodeSignature(signature);
-        Object decodedSignature = codec.decodeSignature(encodedSignature);
-
-        map.put(BaseSignature.VERIFIER_KEY, pubK);
-        bob.setupVerify(map);
-        bob.update(message, 0, message.length);
-
-        harness.check(bob.verify(decodedSignature));
-      }
-    catch (Exception x)
-      {
-        harness.debug(x);
-        harness.fail("TestOfRSASignatureCodec.testSignatureRawCodec");
-      }
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG, ASN1);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.MD2_HASH, ASN1);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.MD5_HASH, ASN1);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA160_HASH, ASN1);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA256_HASH, ASN1);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA384_HASH, ASN1);
+    testCodec(harness, Registry.RSA_PKCS1_V1_5_SIG + "-" + Registry.SHA512_HASH, ASN1);
   }
 
   private void setUp()
@@ -94,7 +86,36 @@ public class TestOfRSASignatureCodec implements Testlet
     HashMap map = new HashMap();
     map.put(RSAKeyPairGenerator.MODULUS_LENGTH, new Integer(1024));
 
+    RSAKeyPairGenerator kpg = new RSAKeyPairGenerator();
     kpg.setup(map);
-    kp = kpg.generate();
+
+    KeyPair kp = kpg.generate();
+
+    pubK = (RSAPublicKey) kp.getPublic();
+    secK = (RSAPrivateKey) kp.getPrivate();
+  }
+
+  private void testCodec(TestHarness harness, String sigName, String format)
+  {
+    harness.checkPoint("Signature codec " + sigName + "/" + format);
+
+    ISignature alice = SignatureFactory.getInstance(sigName);
+    ISignature bob = (ISignature) alice.clone();
+    ISignatureCodec codec = SignatureCodecFactory.getInstance(sigName, format);
+
+    HashMap map = new HashMap();
+    map.put(BaseSignature.SIGNER_KEY, secK);
+    alice.setupSign(map);
+    alice.update(MESSAGE, 0, MESSAGE.length);
+    Object signature = alice.sign();
+
+    byte[] encodedSignature = codec.encodeSignature(signature);
+    Object decodedSignature = codec.decodeSignature(encodedSignature);
+
+    map.put(BaseSignature.VERIFIER_KEY, pubK);
+    bob.setupVerify(map);
+    bob.update(MESSAGE, 0, MESSAGE.length);
+
+    harness.check(bob.verify(decodedSignature));
   }
 }

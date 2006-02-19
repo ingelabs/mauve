@@ -28,6 +28,7 @@ import gnu.java.security.sig.BaseSignature;
 import gnu.java.security.sig.ISignatureCodec;
 import gnu.java.security.sig.dss.DSSSignature;
 import gnu.java.security.sig.dss.DSSSignatureRawCodec;
+import gnu.java.security.sig.dss.DSSSignatureX509Codec;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -49,6 +50,7 @@ public class TestOfDSSSignatureCodec implements Testlet
   public void test(TestHarness harness)
   {
     testSignatureRawCodec(harness);
+    testSignatureASN1Codec(harness);
   }
 
   public void testSignatureRawCodec(TestHarness harness)
@@ -81,6 +83,38 @@ public class TestOfDSSSignatureCodec implements Testlet
 
     harness.check(bob.verify(decodedSignature),
                   "Signature Raw encoder/decoder test");
+  }
+
+  private void testSignatureASN1Codec(TestHarness harness)
+  {
+    harness.checkPoint("testSignatureASN1Codec");
+    setUp();
+
+    DSAPublicKey publicK = (DSAPublicKey) kp.getPublic();
+    DSAPrivateKey privateK = (DSAPrivateKey) kp.getPrivate();
+
+    DSSSignature alice = new DSSSignature();
+    DSSSignature bob = (DSSSignature) alice.clone();
+
+    byte[] message = "1 if by land, 2 if by sea...".getBytes();
+
+    HashMap map = new HashMap();
+    map.put(BaseSignature.SIGNER_KEY, privateK);
+    alice.setupSign(map);
+    alice.update(message, 0, message.length);
+    Object signature = alice.sign();
+
+    ISignatureCodec codec = new DSSSignatureX509Codec();
+
+    byte[] encodedSignature = codec.encodeSignature(signature);
+    Object decodedSignature = codec.decodeSignature(encodedSignature);
+
+    map.put(BaseSignature.VERIFIER_KEY, publicK);
+    bob.setupVerify(map);
+    bob.update(message, 0, message.length);
+
+    harness.check(bob.verify(decodedSignature),
+                  "Signature X.509 encoder/decoder test");
   }
 
   // helper methods ----------------------------------------------------------
