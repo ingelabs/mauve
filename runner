@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2002, 2004 Free Software Foundation, Inc.
+# Copyright (c) 2002, 2004, 2006 Free Software Foundation, Inc.
 # Written by Mark Wielaard <mark@klomp.org>
 
 # This file is part of Mauve.
@@ -38,6 +38,8 @@ if test "x$RUNTIME" = "x" ; then
 RUNTIME="jamvm"
 #RUNTIME="native"
 fi
+
+JAVA=$RUNTIME; export JAVA
 
 # Number of seconds to wait for the test to finish
 WAIT=60

@@ -3,7 +3,7 @@
 # Copyright (c) 1998, 1999 Cygnus Solutions
 # Written by Tom Tromey <tromey@cygnus.com>
 
-# Copyright (c) 2002 Free Software Foundation, Inc.
+# Copyright (c) 2002, 2006 Free Software Foundation, Inc.
 # Adapted by Mark Wielaard <mark@klomp.org>
 
 # This file is part of Mauve.
@@ -131,7 +131,7 @@ test -n "$verbose" && echo "file_specs = $file_specs"
 classes=/tmp/classes-$$
 : > $classes
 
-(cd gnu/testlet; find java javax locales BinaryCompatibility -name '*.java' -print) |
+(cd gnu/testlet; find java javax gnu org locales BinaryCompatibility -name '*.java' -print) |
 while read file; do
    exact_match=no
    test -n "$verbose" && echo "Examining $file"

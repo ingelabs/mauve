@@ -1,5 +1,12 @@
 2006-02-19  Mark Wielaard  <mark@klomp.org>
 
+	* batch_run (KEYS): Add GNU and GNU-CRYPTO
+	(COMPILER): Export either GCJ or JAVAC.
+	* choose-classes: Also search gnu and org hierarchies.
+	* runner (RUNTIME): Export RUNTIME as JAVA.
+
+2006-02-19  Mark Wielaard  <mark@klomp.org>
+
 	* gnu/testlet/java/awt/Menu/addItem.java: New test.
 	* gnu/testlet/java/awt/MenuBar/addMenu.java: New test.
 
