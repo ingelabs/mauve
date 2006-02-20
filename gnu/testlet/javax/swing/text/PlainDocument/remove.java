@@ -1,6 +1,7 @@
 /* remove.java -- Some checks for the remove() method in the PlainDocument 
    class.
    Copyright (C) 2006  David Gilbert <david.gilbert@object-refinery.com>
+   Copyright (C) 2006  Robert Schuster <robertschuster@fsfe.org>
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -28,6 +29,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Element;
 import javax.swing.text.PlainDocument;
 import javax.swing.text.Position;
 
@@ -43,6 +45,8 @@ public class remove implements Testlet
   {
     testArguments(harness);
     testPositions(harness);
+
+    testBehavior(harness);
   }
   
   public void testArguments(TestHarness harness)
@@ -153,4 +157,39 @@ public class remove implements Testlet
     }
   }
   
+  private void testBehavior(TestHarness harness)
+  {
+    harness.checkPoint("testArguments");
+
+    PlainDocument pd = new PlainDocument();
+    int index0 = -1;
+    int index1 = -1;
+
+    try
+      {
+        pd.insertString(0, "abc\ndef\n", null);
+
+        // Delete the 'c'.
+        pd.remove(2, 1);
+
+        Element re = pd.getDefaultRootElement();
+        
+        // There should still be two separate lines
+        // (no Element merge should have taken place).
+        index0 = re.getElementIndex(2);
+        index1 = re.getElementIndex(3);
+      }
+    catch (BadLocationException ble)
+      {
+        // Very odd. This should not happen.
+        index0 = -1;
+        index1 = -1;
+      }
+    finally
+      {
+        harness.check(index0, 0);
+        harness.check(index1, 1);
+      }
+    
+  }
 }

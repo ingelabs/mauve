@@ -1,5 +1,10 @@
 2006-02-20  Robert Schuster  <robertschuster@fsfe.org>
 
+	* gnu/testlet/javax/swing/text/PlainDocument/remove.java:
+	(testBehavior): New method.
+
+2006-02-20  Robert Schuster  <robertschuster@fsfe.org>
+
 	* gnu/testlet/javax/swing/text/GapContent/remove.java:
 	(testGeneral): Added test.
 

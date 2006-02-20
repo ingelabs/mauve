@@ -29,6 +29,7 @@ import gnu.testlet.Testlet;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.GapContent;
+import javax.swing.text.Position;
 
 public class remove implements Testlet
 {
@@ -113,6 +114,32 @@ public class remove implements Testlet
     harness.check(pass);
     harness.check(gc.length(), 8);
     
+
+    int offset = 0;
+    try
+    {
+      gc = new GapContent();
+      gc.insertString(0, "abc\ndef\n");
+
+      // create position on the 'd'.
+      Position pos = gc.createPosition(4);
+
+      // remove the 'd'
+      gc.remove(4, 1);
+
+      offset = pos.getOffset();
+    }
+    catch(BadLocationException ble)
+    {
+      // If that happens something is pretty odd
+      offset = -1;
+    }
+    finally
+    {
+      // offset of our position should *NOT* have changed
+      harness.check(offset, 4);
+    }
+
   }
   
   /**
@@ -140,3 +167,4 @@ public class remove implements Testlet
   }
 
 }
+
