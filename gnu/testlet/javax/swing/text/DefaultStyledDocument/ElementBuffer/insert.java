@@ -100,6 +100,8 @@ public class insert implements Testlet, DocumentListener
     testEndTag3(harness);
     testEndTag4(harness);
     testEndTag5(harness);
+
+    testNewlines(harness);
   }
 
   /**
@@ -923,6 +925,100 @@ public class insert implements Testlet, DocumentListener
     // Check changes for paragraph 2
     ec = documentEvent.getChange(par2);
     h.check(ec, null);
+  }
+
+  /**
+   * Inserts 'a\na\n' and checks the results. The characters are inserted
+   * one by one, as if somebody typed it in by keyboard.
+   *
+   * @param h the test harness to use
+   */
+  private void testNewlines(TestHarness h)
+  {
+    h.checkPoint("testNewlines");
+    TestDocument doc = new TestDocument();
+    doc.addDocumentListener(this);
+
+    // The first 'a'
+    char[] text = new char[] {'a'};
+    SimpleAttributeSet atts = new SimpleAttributeSet();
+    TestDocument.ElementSpec[] specs = new TestDocument.ElementSpec[1];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[0].setDirection(TestDocument.ElementSpec.JoinPreviousDirection);
+    doc.insert(0, specs);
+
+    // The first '\n'
+    text = new char[] {'\n'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[0].setDirection(TestDocument.ElementSpec.JoinPreviousDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
+    doc.insert(1, specs);
+
+    // The second 'a'
+    text = new char[] {'a'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[0].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.JoinNextDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    doc.insert(2, specs);
+
+    // The second '\n'
+    text = new char[] {'\n'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[0].setDirection(TestDocument.ElementSpec.JoinPreviousDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
+    doc.insert(3, specs);
+
+    // We have one paragraph in the root element.
+    Element root = doc.getDefaultRootElement();
+    h.check(root.getElementCount(), 3);
+
+    // We should now have 1 child in the 1st paragraph.
+    Element par = root.getElement(0);
+    h.check(par.getElementCount(), 1);
+    Element el = par.getElement(0);
+    h.check(el.getStartOffset(), 0);
+    h.check(el.getEndOffset(), 2);
+
+    // We should now have 1 child in the 2nd paragraph.
+    par = root.getElement(1);
+    h.check(par.getElementCount(), 1);
+    el = par.getElement(0);
+    h.check(el.getStartOffset(), 2);
+    h.check(el.getEndOffset(), 4);
+
+    // We should now have 1 child in the 3rd paragraph.
+    par = root.getElement(2);
+    h.check(par.getElementCount(), 1);
+    el = par.getElement(0);
+    h.check(el.getStartOffset(), 4);
+    h.check(el.getEndOffset(), 5);
+
   }
 
   /**
