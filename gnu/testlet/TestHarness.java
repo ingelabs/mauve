@@ -21,11 +21,14 @@
 
 package gnu.testlet;
 
+import java.awt.AWTException;
+import java.awt.Color;
+import java.awt.Rectangle;
+import java.awt.Robot;
+
 import java.io.File;
 import java.io.Reader;
 import java.io.InputStream;
-import java.awt.AWTException;
-import java.awt.Robot;
 
 /**
  * This base class defines the API that test cases can report against.  This
@@ -186,7 +189,114 @@ public abstract class TestHarness
       checkPoint (name);
       check (false);
     }
+  
+  /**
+   * Compares two colors.
+   * 
+   * @param a -
+   *          Color to compare
+   * @param b -
+   *          Color to compare
+   * @param match -
+   *          True if colors should be equivalent.
+   */
+  public void checkColor(Color a, Color b, boolean match)
+  {
+    if (match)
+      check(a.getRed() == b.getRed() && a.getGreen() == b.getGreen()
+            && a.getBlue() == b.getBlue());
+    else
+      check(!(a.getRed() == b.getRed() && a.getGreen() == b.getGreen() 
+          && a.getBlue() == b.getBlue()));
+  }
+  
+  /**
+   * This method checks that the pixels outside of the rectange, at all corners,
+   * match (or don't match) a given color.
+   * 
+   * @param r -
+   *          The Robot to use to get the pixel color at a location
+   * @param rect -
+   *          The Rectangle to check
+   * @param comp -
+   *          The Color to compare the pixel colors to
+   * @param match -
+   *          True if the pixel outside the rectangle corner should be
+   *          equivalent to comp.
+   */
+  public void checkRectangleOuterColors(Robot r, Rectangle rect, Color comp,
+                                        boolean match)
+  {
+    Color c;
 
+    // top-left-left
+    c = r.getPixelColor(rect.x - 1, rect.y);
+    checkColor(c, comp, match);
+
+    // top-left-top
+    r.getPixelColor(rect.x, rect.y - 1);
+    checkColor(c, comp, match);
+
+    // top-right-right
+    r.getPixelColor((rect.x + rect.width - 1) + 1, rect.y);
+    checkColor(c, comp, match);
+
+    // top-right-top
+    r.getPixelColor((rect.x + rect.width - 1), rect.y - 1);
+    checkColor(c, comp, match);
+
+    // bottom-left-left
+    r.getPixelColor(rect.x - 1, (rect.y + rect.height - 1));
+    checkColor(c, comp, match);
+
+    // bottom-left-bottom
+    r.getPixelColor(rect.x, (rect.y + rect.height - 1) + 1);
+    checkColor(c, comp, match);
+
+    // bottom-right-right
+    r.getPixelColor((rect.x + rect.width - 1) + 1, (rect.y + rect.height - 1));
+    checkColor(c, comp, match);
+
+    // bottom-right-bottom
+    r.getPixelColor((rect.x + rect.width - 1), (rect.y + rect.height - 1) + 1);
+    checkColor(c, comp, match);
+  }
+
+  /**
+   * This method checks the pixel colors of a Rectangle's corners
+   * 
+   * @param r -
+   *          The Robot to use to get the pixel colors.
+   * @param rect -
+   *          The Rectangle to check.
+   * @param comp -
+   *          The Color to compare
+   * @param match -
+   *          True if the corner pixel color of the rectangle should be
+   *          equivalent to comp.
+   */
+  public void checkRectangleCornerColors(Robot r, Rectangle rect, Color comp,
+                                         boolean match)
+  {
+    Color c;
+
+    // top-left
+    c = r.getPixelColor(rect.x, rect.y);
+    checkColor(c, comp, match);
+
+    // top-right
+    c = r.getPixelColor(rect.x + rect.width - 1, rect.y);
+    checkColor(c, comp, match);
+
+    // bottom-left
+    c = r.getPixelColor(rect.x, rect.y + rect.height - 1);
+    checkColor(c, comp, match);
+
+    // bottom-right
+    c = r.getPixelColor(rect.x + rect.width - 1, rect.y + rect.height - 1);
+    checkColor(c, comp, match);
+  }
+  
   // Given a resource name, return a Reader on it.  Resource names are
   // just like file names.  They are relative to the top level Mauve
   // directory, but '#' characters are used in place of directory

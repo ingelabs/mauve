@@ -25,7 +25,6 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.awt.*;
-import java.awt.event.*;
 
 /**
  * Check that a frame's size is set correctly when it is initially
@@ -58,18 +57,6 @@ public class size1 implements Testlet
     }
   }
 
-  public void checkColor (TestHarness harness, Color c, boolean match)
-  {
-    if (match)
-      harness.check (c.getRed () == nonWMColor.getRed ()
-		     && c.getGreen () == nonWMColor.getGreen ()
-		     && c.getBlue () == nonWMColor.getBlue ());
-    else
-      harness.check (!(c.getRed () == nonWMColor.getRed ()
-		       && c.getGreen () == nonWMColor.getGreen ()
-		       && c.getBlue () == nonWMColor.getBlue ()));
-  }
-
   public void test (TestHarness harness)
   {
     Robot r = harness.createRobot ();
@@ -99,61 +86,14 @@ public class size1 implements Testlet
     r.waitForIdle ();
     r.delay (100);
 
+    Rectangle bounds = fg.getBounds();
+    
     // check the two pixels adjacent to each corner of the foreground
     // frame.
-
-    // top-left-left
-    c = r.getPixelColor (fg_x - 1, fg_y);
-    checkColor (harness, c, true);
-
-    // top-left-top
-    c = r.getPixelColor (fg_x, fg_y - 1);
-    checkColor (harness, c, true);
-
-    // top-right-right
-    c = r.getPixelColor ((fg_x + fg_width - 1) + 1, fg_y);
-    checkColor (harness, c, true);
-
-    // top-right-top
-    c = r.getPixelColor ((fg_x + fg_width - 1), fg_y - 1);
-    checkColor (harness, c, true);
-
-    // bottom-left-left
-    c = r.getPixelColor (fg_x - 1, (fg_y + fg_height - 1));
-    checkColor (harness, c, true);
-
-    // bottom-left-bottom
-    c = r.getPixelColor (fg_x, (fg_y + fg_height - 1) + 1);
-    checkColor (harness, c, true);
-
-    // bottom-right-right
-    c = r.getPixelColor ((fg_x + fg_width - 1) + 1,
-			 (fg_y + fg_height - 1));
-    checkColor (harness, c, true);
-
-    // bottom-right-bottom
-    c = r.getPixelColor ((fg_x + fg_width - 1),
-			 (fg_y + fg_height - 1) + 1);
-    checkColor (harness, c, true);
-
+    harness.checkRectangleOuterColors(r, bounds, nonWMColor, true);
+    
     // check the frame's corner pixels.
-
-    // top-left
-    c = r.getPixelColor (fg_x, fg_y);
-    checkColor (harness, c, false);
-
-    // top-right
-    c = r.getPixelColor (fg_x + fg_width - 1, fg_y);
-    checkColor (harness, c, false);
-
-    // bottom-left
-    c = r.getPixelColor (fg_x, fg_y + fg_height - 1);
-    checkColor (harness, c, false);
-
-    // bottom-right
-    c = r.getPixelColor (fg_x + fg_width -1,
-			 fg_y + fg_height - 1);
-    checkColor (harness, c, false);
+    harness.checkRectangleCornerColors(r, bounds, nonWMColor, false);
 
     r.delay (3000);
   }
