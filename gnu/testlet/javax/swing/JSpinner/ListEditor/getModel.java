@@ -1,4 +1,4 @@
-/* constructor.java -- Checks for the constructor in the ListEditor class.
+/* getModel.java -- Checks for the getModel() method in the ListEditor class.
    Copyright (C) 2006 David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
@@ -26,33 +26,17 @@ package gnu.testlet.javax.swing.JSpinner.ListEditor;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.beans.PropertyChangeListener;
-import java.util.Arrays;
-import java.util.EventListener;
-
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
-import javax.swing.event.ChangeListener;
 
-public class constructor implements Testlet
+public class getModel implements Testlet 
 {
   public void test(TestHarness harness) 
   {
-    harness.checkPoint("(JSpinner)");
+    harness.checkPoint("()");
     SpinnerListModel m = new SpinnerListModel(new String[] {"A", "B", "C"});
     JSpinner s = new JSpinner(m);
-    JSpinner.DefaultEditor e = new JSpinner.DefaultEditor(s);
-    harness.check(e.getLayout(), e);
-    harness.check(e.getTextField().getValue(), "A");
-    
-    // the editor should be a listener on the spinner
-    EventListener[] sl = s.getListeners(ChangeListener.class);
-    harness.check(Arrays.asList(sl).contains(e));
-    
-    // the editor should be listening to PropertyChangeEvents in the
-    // text field
-    EventListener[] tfl = e.getTextField().getListeners(
-            PropertyChangeListener.class);
-    harness.check(Arrays.asList(tfl).contains(e));
+    JSpinner.ListEditor editor = (JSpinner.ListEditor) s.getEditor();
+    harness.check(editor.getModel(), m);
   }
 }
