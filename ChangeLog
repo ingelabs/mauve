@@ -1,4 +1,19 @@
-2006-02-21  Lillian Angel  <langel@redhat.com>
+2006-02-22  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/TestHarness.java
+	(checkColor): Removed.
+	(checkRectangleOuterColors): Removed.
+	(checkRectangleCornerColors): Removed.
+	* gnu/testlet/java/awt/Container/LightweightContainer.java
+	(testLoc): Added comment, changed to use LocationTests.
+	(testWindow): Likewise.
+	(testLoc1): Added new test.
+	(test): Added call to testLoc1.
+	* gnu/testlet/java/awt/Frame/size1.java
+	(test): Added comment, changed to use LocationTests.
+	* gnu/testlet/java/awt/LocationTests.java: New class.
+
+2006-02-22  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/TestHarness.java
 	(checkColor): Fixed API documentation.

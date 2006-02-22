@@ -23,6 +23,7 @@ package gnu.testlet.java.awt.Frame;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.java.awt.LocationTests;
 
 import java.awt.*;
 
@@ -91,11 +92,12 @@ public class size1 implements Testlet
     
     // check the two pixels adjacent to each corner of the foreground
     // frame.
-    harness.checkRectangleOuterColors(r, bounds, nonWMColor, true);
+    LocationTests.checkRectangleOuterColors(harness, r, bounds, nonWMColor, true);
     
     // check the frame's corner pixels.
-    harness.checkRectangleCornerColors(r, bounds, nonWMColor, false);
-
+    LocationTests.checkRectangleCornerColors(harness, r, bounds, nonWMColor, false);
+    
+    // There is a delay so the tester can see the result.
     r.delay (3000);
   }
 }

@@ -25,6 +25,7 @@ package gnu.testlet.java.awt.Container;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.java.awt.LocationTests;
 
 import java.awt.*;
 
@@ -34,6 +35,7 @@ public class LightweightContainer implements Testlet
   public void test (TestHarness harness)
   {
     testLoc(harness);
+    testLoc2(harness);
     testWindow(harness);
   }
   
@@ -61,9 +63,10 @@ public class LightweightContainer implements Testlet
     bounds.y = loc.y + i.top;
     // bounds of blue rectangle inside red rectangle
     Rectangle bounds2 = new Rectangle(bounds.x + 1, bounds.y + 1, bounds.width - 2, bounds.height - 2);
-    harness.checkRectangleOuterColors(r, bounds2, Color.red, true);
-    harness.checkRectangleCornerColors(r, bounds2, Color.red, false);
+    LocationTests.checkRectangleOuterColors(harness, r, bounds2, Color.red, true);
+    LocationTests.checkRectangleCornerColors(harness, r, bounds2, Color.red, false);
     
+    // There is a delay so the tester can see the result.
     r.delay(3000);
   }
   
@@ -115,18 +118,74 @@ public class LightweightContainer implements Testlet
     fgHW_x = p.x + i.left + fgHW_x + fgLW_x;
     fgHW_y = p.y + i.top + fgHW_y + fgLW_y;
     Rectangle b = new Rectangle(fgHW_x, fgHW_y, fgHW_w, fgHW_h);
-    harness.checkRectangleOuterColors(r, b, bgHW_c, true);
+    LocationTests.checkRectangleOuterColors(harness, r, b, bgHW_c, true);
     
     // check the fgHW's corner pixels.
-    harness.checkRectangleCornerColors(r, b, fgHW_c, true);
-    harness.checkRectangleCornerColors(r, b, bgHW_c, false);
+    LocationTests.checkRectangleCornerColors(harness, r, b, fgHW_c, true);
+    LocationTests.checkRectangleCornerColors(harness, r, b, bgHW_c, false);
     
     // check the two pixels adjacent to each corner of the fgLW
     p = f.getLocationOnScreen();
     fgLW_x = p.x + i.left + fgLW_x;
     fgLW_y = p.y + i.top + fgLW_y;
-    harness.checkRectangleOuterColors(r, new Rectangle(fgLW_x, fgLW_y, fgLW_w, fgLW_h), bgHW_c, true);
+    LocationTests.checkRectangleOuterColors(harness, r, new Rectangle(fgLW_x, fgLW_y, fgLW_w, fgLW_h), bgHW_c, true);
+    
+    // There is a delay so the tester can see the result.
+    r.delay(3000);
+  }
+  
+  // Tests the location of a Lightweight Container next to
+  // a heavyweight panel, both in a frame.
+  public void testLoc2(TestHarness harness)
+  {
+    Robot r = harness.createRobot();
+    Frame f = new Frame();
+    f.setLayout(new BorderLayout());
 
+    Panel HW = new Panel();
+    HW.setLayout (new BorderLayout());
+    HW.add (new testPanel(Color.green), BorderLayout.CENTER);
+    f.add(HW, BorderLayout.CENTER);
+    
+    testContainer LW = new testContainer();
+    GridBagLayout gridbag = new GridBagLayout();
+    GridBagConstraints c = new GridBagConstraints();
+    LW.setLayout(gridbag);
+    Button b1 = new Button("Button1");
+    Button b2 = new Button("Button2");
+    Button b3 = new Button("Button3");
+    Label l = new Label("Label");
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.weightx = 0.0;    c.weighty = 0.0;
+    c.insets = new Insets(4, 4, 1, 1);
+    c.gridwidth = GridBagConstraints.REMAINDER;
+    gridbag.setConstraints(b1, c);
+    LW.add(b1);
+    c.gridwidth = 1;
+    gridbag.setConstraints(l, c);
+    LW.add(l);
+    gridbag.setConstraints(b2, c);
+    LW.add(b2);
+    gridbag.setConstraints(b3, c);
+    LW.add(b3);
+    f.add(LW, BorderLayout.EAST);
+    
+    // Wait for delay to avoid race conditions
+    r.waitForIdle();
+    r.delay(300);    
+    
+    f.setSize(500, 500);
+    f.show();
+    
+    Rectangle bounds = LW.getBounds();
+    Point loc = f.getLocationOnScreen();
+    Insets i = f.getInsets();
+    bounds.x = loc.x + i.left + HW.getWidth();
+    bounds.y = loc.y + i.top;
+    LocationTests.checkRectangleOuterColors(harness, r, bounds, Color.red, false);
+    LocationTests.checkRectangleOuterColors(harness, r, bounds, Color.blue, false);
+    
+    // There is a delay so the tester can see the result.
     r.delay(3000);
   }
   
