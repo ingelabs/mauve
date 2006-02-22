@@ -112,10 +112,12 @@ public class LightweightContainer implements Testlet
     Point p = f.getLocationOnScreen();
     fgHW_x = p.x + i.left + fgHW_x + fgLW_x;
     fgHW_y = p.y + i.top + fgHW_y + fgLW_y;
-    harness.checkRectangleOuterColors(r, new Rectangle(fgHW_x, fgHW_y, fgHW_w, fgHW_h), bgHW_c, true);
+    Rectangle b = new Rectangle(fgHW_x, fgHW_y, fgHW_w, fgHW_h);
+    harness.checkRectangleOuterColors(r, b, bgHW_c, true);
     
     // check the fgHW's corner pixels.
-    harness.checkRectangleCornerColors(r, new Rectangle(fgHW_x, fgHW_y, fgHW_w, fgHW_h), bgHW_c, false);
+    harness.checkRectangleCornerColors(r, b, fgHW_c, true);
+    harness.checkRectangleCornerColors(r, b, bgHW_c, false);
     
     // check the two pixels adjacent to each corner of the fgLW
     p = f.getLocationOnScreen();
