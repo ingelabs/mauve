@@ -194,11 +194,11 @@ public abstract class TestHarness
    * Compares two colors.
    * 
    * @param a -
-   *          Color to compare
+   *          Color to compare.
    * @param b -
-   *          Color to compare
+   *          Color to compare.
    * @param match -
-   *          True if colors should be equivalent.
+   *          true if colors should be equivalent.
    */
   public void checkColor(Color a, Color b, boolean match)
   {
@@ -215,13 +215,13 @@ public abstract class TestHarness
    * match (or don't match) a given color.
    * 
    * @param r -
-   *          The Robot to use to get the pixel color at a location
+   *          the Robot to use to get the pixel color at a location.
    * @param rect -
-   *          The Rectangle to check
+   *          the Rectangle to check
    * @param comp -
-   *          The Color to compare the pixel colors to
+   *          the Color to compare the pixel colors to.
    * @param match -
-   *          True if the pixel outside the rectangle corner should be
+   *          true if the pixel outside the rectangle corner should be
    *          equivalent to comp.
    */
   public void checkRectangleOuterColors(Robot r, Rectangle rect, Color comp,
@@ -263,16 +263,16 @@ public abstract class TestHarness
   }
 
   /**
-   * This method checks the pixel colors of a Rectangle's corners
+   * This method checks the pixel colors of a Rectangle's corners.
    * 
    * @param r -
-   *          The Robot to use to get the pixel colors.
+   *          the Robot to use to get the pixel colors.
    * @param rect -
-   *          The Rectangle to check.
+   *          the Rectangle to check.
    * @param comp -
-   *          The Color to compare
+   *          the Color to compare.
    * @param match -
-   *          True if the corner pixel color of the rectangle should be
+   *          true if the corner pixel color of the rectangle should be
    *          equivalent to comp.
    */
   public void checkRectangleCornerColors(Robot r, Rectangle rect, Color comp,

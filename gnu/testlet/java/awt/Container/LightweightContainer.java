@@ -49,6 +49,7 @@ public class LightweightContainer implements Testlet
     f.add(tc);
     f.show();
 
+    // There is a delay to avoid any race conditions.    
     r.waitForIdle();
     r.delay(300);
     
@@ -103,7 +104,8 @@ public class LightweightContainer implements Testlet
     bgHW.add(fgLW);
     fgLW.add(fgHW);
     f.show();
-    
+
+    // There is a delay to avoid any race conditions.
     r.waitForIdle();
     r.delay(300);    
     Insets i = f.getInsets();

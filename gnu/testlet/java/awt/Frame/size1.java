@@ -83,6 +83,7 @@ public class size1 implements Testlet
     bg.show ();
     fg.show ();
 
+    // There is a delay to avoid any race conditions.
     r.waitForIdle ();
     r.delay (100);
 
