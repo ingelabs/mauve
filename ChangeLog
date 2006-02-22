@@ -1,5 +1,11 @@
 2006-02-22  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/java/awt/Container/LightweightContainer.java
+	(testLoc1): Fixed up tests so it fails without pending
+	lightweight patch.
+
+2006-02-22  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/TestHarness.java
 	(checkColor): Removed.
 	(checkRectangleOuterColors): Removed.

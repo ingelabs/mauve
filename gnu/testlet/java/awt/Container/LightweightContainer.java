@@ -53,7 +53,7 @@ public class LightweightContainer implements Testlet
 
     // There is a delay to avoid any race conditions.    
     r.waitForIdle();
-    r.delay(300);
+    r.delay(1000);
     
     // bounds of red rectangle (1 pixel wide border)
     Rectangle bounds = tc.getBounds();
@@ -110,7 +110,7 @@ public class LightweightContainer implements Testlet
 
     // There is a delay to avoid any race conditions.
     r.waitForIdle();
-    r.delay(300);    
+    r.delay(1000);    
     Insets i = f.getInsets();
     
     // check the two pixels adjacent to each corner of the fgHW
@@ -169,21 +169,26 @@ public class LightweightContainer implements Testlet
     gridbag.setConstraints(b3, c);
     LW.add(b3);
     f.add(LW, BorderLayout.EAST);
-    
-    // Wait for delay to avoid race conditions
-    r.waitForIdle();
-    r.delay(300);    
-    
+        
     f.setSize(500, 500);
     f.show();
+
+    // Wait for delay to avoid race conditions
+    r.waitForIdle();
+    r.delay(2000);    
     
     Rectangle bounds = LW.getBounds();
     Point loc = f.getLocationOnScreen();
     Insets i = f.getInsets();
     bounds.x = loc.x + i.left + HW.getWidth();
     bounds.y = loc.y + i.top;
-    LocationTests.checkRectangleOuterColors(harness, r, bounds, Color.red, false);
-    LocationTests.checkRectangleOuterColors(harness, r, bounds, Color.blue, false);
+    
+    int x = f.getLocationOnScreen().x + HW.getWidth() + f.getInsets().left;
+    int y = f.getLocationOnScreen().y + f.getHeight()/2 + f.getInsets().top;
+    Color d = r.getPixelColor(x, y);
+    LocationTests.checkColor(harness, d, Color.red, true);
+    Color e = r.getPixelColor(x - 1, y);
+    LocationTests.checkColor(harness, e, Color.green, true);
     
     // There is a delay so the tester can see the result.
     r.delay(3000);
