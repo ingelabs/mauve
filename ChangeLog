@@ -1,3 +1,7 @@
+2006-02-23  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/DocFlavor/hostEncoding.java: New test.
+
 2006-02-24  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/javax/security/auth/login/TestOfConfigurationParser.java:
