@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: GNU-CRYPTO
+// Tags: GNU-CRYPTO JDK1.4
 
 package gnu.testlet.javax.security.auth.login;
 
