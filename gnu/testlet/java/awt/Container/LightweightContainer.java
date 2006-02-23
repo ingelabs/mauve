@@ -151,47 +151,50 @@ public class LightweightContainer implements Testlet
     GridBagLayout gridbag = new GridBagLayout();
     GridBagConstraints c = new GridBagConstraints();
     LW.setLayout(gridbag);
+    
     Button b1 = new Button("Button1");
     Button b2 = new Button("Button2");
     Button b3 = new Button("Button3");
     Label l = new Label("Label");
+    Panel pan = new Panel(new GridLayout(3, 2, 2, 2));
+    Label l2 = new Label("", Label.CENTER);
+
+    pan.add(l);
+    pan.add(b1);
+    pan.add(b2);
+    pan.add(b3);
+    
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0.0;    c.weighty = 0.0;
     c.insets = new Insets(4, 4, 1, 1);
     c.gridwidth = GridBagConstraints.REMAINDER;
-    gridbag.setConstraints(b1, c);
-    LW.add(b1);
     c.gridwidth = 1;
-    gridbag.setConstraints(l, c);
-    LW.add(l);
-    gridbag.setConstraints(b2, c);
-    LW.add(b2);
-    gridbag.setConstraints(b3, c);
-    LW.add(b3);
+    c.gridwidth = GridBagConstraints.REMAINDER;
+    c.weightx = 1.0;    c.weighty = 1.0;
+    gridbag.setConstraints(l2, c);
+    LW.add(l2);
+    c.weightx = 1.0;    c.weighty = 0.0;
+    gridbag.setConstraints(pan, c);
+    LW.add(pan);
     f.add(LW, BorderLayout.EAST);
         
     f.setSize(500, 500);
     f.show();
-
+    
     // Wait for delay to avoid race conditions
     r.waitForIdle();
-    r.delay(2000);    
+    r.delay(2000);   
     
-    Rectangle bounds = LW.getBounds();
-    Point loc = f.getLocationOnScreen();
-    Insets i = f.getInsets();
-    bounds.x = loc.x + i.left + HW.getWidth();
-    bounds.y = loc.y + i.top;
-    
-    int x = f.getLocationOnScreen().x + HW.getWidth() + f.getInsets().left;
-    int y = f.getLocationOnScreen().y + f.getHeight()/2 + f.getInsets().top;
+    Point p = f.getLocationOnScreen();
+    int x = LW.getX() + f.getInsets().left + p.x - 1;
+    int y = pan.getY() + f.getInsets().top + p.y;
     Color d = r.getPixelColor(x, y);
-    LocationTests.checkColor(harness, d, Color.red, true);
-    Color e = r.getPixelColor(x - 1, y);
-    LocationTests.checkColor(harness, e, Color.green, true);
+    LocationTests.checkColor(harness, d, Color.blue, false);
+    Color e = r.getPixelColor(x - 2, y);
+    LocationTests.checkColor(harness, e, Color.blue, true);
     
     // There is a delay so the tester can see the result.
-    r.delay(3000);
+    r.delay(2000);
   }
   
   class testPanel extends Panel
