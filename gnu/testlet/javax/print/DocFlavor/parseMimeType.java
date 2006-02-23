@@ -124,6 +124,36 @@ public class parseMimeType implements Testlet
       }
     try
       {
+        // wrong character
+        new DocFlavor(" te,xt/plain; charset=us-ascii", "java.io.InputStream");
+        h.check(false);
+      }
+    catch (IllegalArgumentException e)
+      {        
+        h.check(true);
+      }
+    try
+      {
+        // only values may be quoted
+        new DocFlavor("text/plain; \"charset\"=us-ascii", "java.io.InputStream");
+        h.check(false);
+      }
+    catch (IllegalArgumentException e)
+      {
+        h.check(true);
+      }
+    try
+      {
+        // ' is an allowed character
+        new DocFlavor(" text/plain; charset=us-asc'ii", "java.io.InputStream");
+        h.check(true);
+      }
+    catch (IllegalArgumentException e)
+      {
+        h.check(false);
+      }
+    try
+      {
         // wrongly character in unqouted value
         new DocFlavor("text/plain; charset=?us-ascii", "java.io.InputStream");
         h.check(false);
@@ -138,6 +168,27 @@ public class parseMimeType implements Testlet
         DocFlavor syntax = new DocFlavor("text/plain; param=\"?value.\"",
             "java.io.InputStream");
         h.check(syntax.getParameter("param").equals("?value."));
+      }
+    catch (IllegalArgumentException e)
+      {
+        h.check(false);
+      }
+    try
+      {
+        // character in qouted value
+        new DocFlavor("text/plain; param=\"?vöal ue.\"", "java.io.InputStream");
+        h.check(true);
+      }
+    catch (IllegalArgumentException e)
+      {
+        h.check(false);
+      }
+    try
+      {
+        // special characters in mime type
+        DocFlavor syntax = new DocFlavor("application/vnd.cups-command",
+            "java.io.InputStream");
+        h.check(syntax.getMediaSubtype().equals("vnd.cups-command"));
       }
     catch (IllegalArgumentException e)
       {

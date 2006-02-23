@@ -1,3 +1,8 @@
+2006-02-23  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/javax/print/DocFlavor/parseMimeType.java
+	(test): Additional tests for special characters.
+
 2006-02-22  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* gnu/testlet/javax/swing/JFrame/HeavyweightComponent.java: New
