@@ -1,7 +1,12 @@
+2006-02-24  Lillian Angel  <langel@redhat.com>
+	
+	* gnu/testlet/java/awt/Container/LightweightContainer.java
+	(testLoc2): Simplified test.
+
 2006-02-23  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/Container/LightweightContainer.java
-	(testLoc1): Made test more complicated to use GridBagLayout.
+	(testLoc2): Made test more complicated to use GridBagLayout.
 	Fixed to fail without reshape patch.
 
 2006-02-23  Wolfgang Baer  <WBaer@gmx.de>
