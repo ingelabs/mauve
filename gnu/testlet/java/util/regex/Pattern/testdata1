@@ -3428,3 +3428,58 @@ No match
     \x84XAZXB
  0: XB
 
+/^(b+?|a){1,2}?c/
+    bac
+ 0: bac
+ 1: a
+    bbac
+ 0: bbac
+ 1: a
+    bbbac
+ 0: bbbac
+ 1: a
+    bbbbac
+ 0: bbbbac
+ 1: a
+    bbbbbac
+ 0: bbbbbac
+ 1: a
+
+/(([a-c])b*?\2){3}/
+    ababbbcbc
+ 0: ababbbcbc
+ 1: cbc
+ 2: c
+
+/^(b+?|a){1,2}?c/
+    bc
+ 0: bc
+ 1: b
+    bbc
+ 0: bbc
+ 1: b
+    bbbc
+ 0: bbbc
+ 1: bb
+    bac
+ 0: bac
+ 1: a
+    bbac
+ 0: bbac
+ 1: a
+    aac
+ 0: aac
+ 1: a
+    abbbbbbbbbbbc
+ 0: abbbbbbbbbbbc
+ 1: bbbbbbbbbbb
+    bbbbbbbbbbbac
+ 0: bbbbbbbbbbbac
+ 1: a
+    *** Failers
+No match
+    aaac
+No match
+    abbbbbbbbbbbac
+No match
+

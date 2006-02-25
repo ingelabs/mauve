@@ -1,3 +1,9 @@
+2006-02-25  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/Pattern/testdata1,
+	gnu/testlet/java/util/regex/Pattern/testdata2:
+	Moved some cases from testdata2 to testdata1.
+
 2006-02-24  Lillian Angel  <langel@redhat.com>
 	
 	* gnu/testlet/java/awt/Container/LightweightContainer.java
