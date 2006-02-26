@@ -1,3 +1,20 @@
+2006-02-26  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/jce/FakeProvider.java: Removed.
+	* gnu/testlet/gnu/java/security/jce/FakeDSAParameters.java: Likewise.
+	* gnu/testlet/gnu/java/security/jce/TestOfDSSKeyPairGenerator.java
+	(checkInitializeSignatures): Use GNU provider.
+	* gnu/testlet/gnu/java/security/jce/TestOfKeyFactory.java (setUp): Do
+	not install fake provider.
+	Use GNU provider instead.
+	* gnu/testlet/gnu/java/security/jce/TestOfFormat.java (setUp): Likewise.
+	* gnu/testlet/gnu/java/security/jce/TestOfDSSKeyFactory.java
+	(setUp): Likewise.
+	* gnu/testlet/gnu/java/security/jce/TestOfSignature.java
+	(testDSSSignatures): Use GNU provider.
+	(testRSAPKCS1Signatures): Likewise.
+	(setUp): Do not install fake provider.
+
 2006-02-25  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/util/regex/Pattern/testdata1,

@@ -74,7 +74,6 @@ public class TestOfKeyFactory
   {
     Security.addProvider(new Gnu());
     Security.addProvider(new GnuCrypto());
-    Security.addProvider(new FakeProvider());
     try
       {
         dssKPG = KeyPairGenerator.getInstance(Registry.DSS_KPG,
@@ -83,10 +82,10 @@ public class TestOfKeyFactory
                                               Registry.GNU_SECURITY);
         dhKPG = KeyPairGenerator.getInstance(Registry.DH_KPG,
                                              Registry.GNU_CRYPTO);
-        dssKF = KeyFactory.getInstance(Registry.DSS_KPG, "FakeProvider");
-        rsaKF = KeyFactory.getInstance(Registry.RSA_KPG, "FakeProvider");
-        dhKF = KeyFactory.getInstance(Registry.DH_KPG, "FakeProvider");
-        encKF = KeyFactory.getInstance("Encoded", "FakeProvider");
+        dssKF = KeyFactory.getInstance(Registry.DSS_KPG, Registry.GNU_SECURITY);
+        rsaKF = KeyFactory.getInstance(Registry.RSA_KPG, Registry.GNU_SECURITY);
+        dhKF = KeyFactory.getInstance(Registry.DH_KPG, Registry.GNU_CRYPTO);
+        encKF = KeyFactory.getInstance("Encoded", Registry.GNU_SECURITY);
       }
     catch (Exception x)
       {

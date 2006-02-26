@@ -126,7 +126,7 @@ public class TestOfDSSKeyPairGenerator implements Testlet
 
     // KeyPairGenerator init methods ------------------------------------------
 
-    Provider fp = new FakeProvider();
+    Provider fp = new Gnu();
 
     msg = "initialize(AlgorithmParameterSpec) MUST succeed";
     try

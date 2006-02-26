@@ -67,7 +67,6 @@ public class TestOfFormat
   {
     Security.addProvider(new Gnu());
     Security.addProvider(new GnuCrypto());
-    Security.addProvider(new FakeProvider());
     try
       {
         dssKPG = KeyPairGenerator.getInstance(Registry.DSS_KPG,
@@ -76,7 +75,7 @@ public class TestOfFormat
                                               Registry.GNU_SECURITY);
         dhKPG = KeyPairGenerator.getInstance(Registry.DH_KPG,
                                              Registry.GNU_CRYPTO);
-        encodedKF = KeyFactory.getInstance("Encoded", "FakeProvider");
+        encodedKF = KeyFactory.getInstance("Encoded", Registry.GNU_SECURITY);
       }
     catch (Exception x)
       {

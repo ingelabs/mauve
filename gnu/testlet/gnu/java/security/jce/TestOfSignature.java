@@ -83,7 +83,7 @@ public class TestOfSignature implements Testlet
     KeyPair kp = kpg.generateKeyPair();
 
     testSignature(harness, "DSS/RAW", Registry.GNU_SECURITY, kp);
-    testSignature(harness, "SHA160withDSS", "FakeProvider", kp);
+    testSignature(harness, "SHA160withDSS", Registry.GNU_SECURITY, kp);
   }
 
   public void testRSAPSSRawSignature(TestHarness harness)
@@ -123,12 +123,12 @@ public class TestOfSignature implements Testlet
     kpg.initialize(1024);
     KeyPair kp = kpg.generateKeyPair();
 
-    testSignature(harness, "MD2withRSA", "FakeProvider", kp);
-    testSignature(harness, "MD5withRSA", "FakeProvider", kp);
-    testSignature(harness, "SHA160withRSA", "FakeProvider", kp);
-    testSignature(harness, "SHA256withRSA", "FakeProvider", kp);
-    testSignature(harness, "SHA384withRSA", "FakeProvider", kp);
-    testSignature(harness, "SHA512withRSA", "FakeProvider", kp);
+    testSignature(harness, "MD2withRSA", Registry.GNU_SECURITY, kp);
+    testSignature(harness, "MD5withRSA", Registry.GNU_SECURITY, kp);
+    testSignature(harness, "SHA160withRSA", Registry.GNU_SECURITY, kp);
+    testSignature(harness, "SHA256withRSA", Registry.GNU_SECURITY, kp);
+    testSignature(harness, "SHA384withRSA", Registry.GNU_SECURITY, kp);
+    testSignature(harness, "SHA512withRSA", Registry.GNU_SECURITY, kp);
   }
 
   private void testSignature(TestHarness harness, String sigName,
@@ -159,6 +159,5 @@ public class TestOfSignature implements Testlet
   private void setUp()
   {
     Security.addProvider(new Gnu()); // dynamically adds our provider
-    Security.addProvider(new FakeProvider()); // dynamically adds our provider
   }
 }

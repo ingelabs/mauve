@@ -60,16 +60,17 @@ public class TestOfDSSKeyFactory
   private void setUp(TestHarness harness)
   {
     Security.addProvider(new Gnu());
-    Security.addProvider(new FakeProvider());
     try
       {
-        kpg = KeyPairGenerator.getInstance(Registry.DSS_KPG, Registry.GNU_SECURITY);
+        kpg = KeyPairGenerator.getInstance(Registry.DSS_KPG,
+                                           Registry.GNU_SECURITY);
         kpg.initialize(512);
         harness.verbose("*** Generating a DSS key-pair");
         KeyPair kp = kpg.generateKeyPair();
         publicK = kp.getPublic();
         privateK = kp.getPrivate();
-        keyFactory = KeyFactory.getInstance(Registry.DSS_KPG, "FakeProvider");
+        keyFactory = KeyFactory.getInstance(Registry.DSS_KPG,
+                                            Registry.GNU_SECURITY);
       }
     catch (Exception x)
       {
