@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2004 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2004, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,9 +13,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// along with GNU Classpath; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.javax.swing.SwingUtilities;
 
@@ -44,97 +44,97 @@ public class computeUnion implements Testlet {
     harness.checkPoint("No intersection");
     
     // no intersection - top left 
-    dest = SwingUtilities.computeUnion(0, 4, 1, 1, dest);
+    SwingUtilities.computeUnion(0, 4, 1, 1, dest);
     harness.check(dest, new Rectangle(0, 1, 4, 4));  // 1
 
     // no intersection - top
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(2, 4, 1, 1, dest);
+    SwingUtilities.computeUnion(2, 4, 1, 1, dest);
     harness.check(dest, new Rectangle(1, 1, 3, 4));  // 2
     
     // no intersection - top right
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(4, 4, 1, 1, dest);
+    SwingUtilities.computeUnion(4, 4, 1, 1, dest);
     harness.check(dest, new Rectangle(1, 1, 4, 4));  // 3
 
     // no intersection - bottom left
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 0, 1, 1, dest);
+    SwingUtilities.computeUnion(0, 0, 1, 1, dest);
     harness.check(dest, new Rectangle(0, 0, 4, 4));  // 4
 
     // no intersection - bottom 
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(2, 0, 1, 1, dest);
+    SwingUtilities.computeUnion(2, 0, 1, 1, dest);
     harness.check(dest, new Rectangle(1, 0, 3, 4));  // 5
 
     // no intersection - bottom right
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(4, 0, 1, 1, dest);
+    SwingUtilities.computeUnion(4, 0, 1, 1, dest);
     harness.check(dest, new Rectangle(1, 0, 4, 4));  // 6
     
     // no intersection - left
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 2, 1, 1, dest);
+    SwingUtilities.computeUnion(0, 2, 1, 1, dest);
     harness.check(dest, new Rectangle(0, 1, 4, 3));  // 7
     
     // no intersection - right
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(4, 2, 1, 1, dest);
+    SwingUtilities.computeUnion(4, 2, 1, 1, dest);
     harness.check(dest, new Rectangle(1, 1, 4, 3));  // 8
     
     // no intersection - empty rectangle
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(2, 2, 0, 0, dest);
+    SwingUtilities.computeUnion(2, 2, 0, 0, dest);
     harness.check(dest, new Rectangle(1, 1, 3, 3));  // 9
     
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 0, 0, 0, dest);
+    SwingUtilities.computeUnion(0, 0, 0, 0, dest);
     harness.check(dest, new Rectangle(0, 0, 4, 4));  // 10
     
     harness.checkPoint("Intersection");
 
     // intersection - top left
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 3, 2, 2, dest);
+    SwingUtilities.computeUnion(0, 3, 2, 2, dest);
     harness.check(dest, new Rectangle(0, 1, 4, 4));  
 
     // intersection - top
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(2, 3, 1, 2, dest);
+    SwingUtilities.computeUnion(2, 3, 1, 2, dest);
     harness.check(dest, new Rectangle(1, 1, 3, 4));
 
     // intersection - top right
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(3, 3, 2, 2, dest);
+    SwingUtilities.computeUnion(3, 3, 2, 2, dest);
     harness.check(dest, new Rectangle(1, 1, 4, 4));
 
     // intersection - bottom left
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 0, 2, 2, dest);
+    SwingUtilities.computeUnion(0, 0, 2, 2, dest);
     harness.check(dest, new Rectangle(0, 0, 4, 4));
 
     // intersection - bottom
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(2, 0, 1, 2, dest);
+    SwingUtilities.computeUnion(2, 0, 1, 2, dest);
     harness.check(dest, new Rectangle(1, 0, 3, 4));
 
     // intersection - bottom right
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(3, 0, 2, 2, dest);
+    SwingUtilities.computeUnion(3, 0, 2, 2, dest);
     harness.check(dest, new Rectangle(1, 0, 4, 4));
 
     // intersection - left
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 2, 2, 1, dest);
+    SwingUtilities.computeUnion(0, 2, 2, 1, dest);
     harness.check(dest, new Rectangle(0, 1, 4, 3));
     
     // no intersection - right
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(3, 2, 2, 1, dest);
+    SwingUtilities.computeUnion(3, 2, 2, 1, dest);
     harness.check(dest, new Rectangle(1, 1, 4, 3));
     
     dest = new Rectangle(1, 1, 3, 3);
-    dest = SwingUtilities.computeUnion(0, 0, 4, 4, dest);
+    SwingUtilities.computeUnion(0, 0, 4, 4, dest);
     harness.check(dest, new Rectangle(0, 0, 4, 4));
     
     harness.checkPoint("Null arguments");

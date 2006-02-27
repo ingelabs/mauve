@@ -1,3 +1,10 @@
+2006-02-27  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/SwingUtilities/computeIntersection.java
+	(test): Don't set dest to method return value,
+	* gnu/testlet/javax/swing/SwingUtilities/computeUnion.java
+	(test): Likewise.
+	
 2006-02-26  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/jce/FakeProvider.java: Removed.
