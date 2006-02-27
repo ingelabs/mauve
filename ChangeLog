@@ -1,3 +1,8 @@
+2006-02-27  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/net/URLConnection/getRequestProperties.java: New
+	test.
+
 2006-02-27  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/SwingUtilities/computeIntersection.java
