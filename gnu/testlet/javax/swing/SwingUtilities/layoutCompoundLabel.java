@@ -80,7 +80,7 @@ public class layoutCompoundLabel implements Testlet, SwingConstants
     harness.checkPoint("TL-text");
     displayText = SwingUtilities.layoutCompoundLabel(fm, text, icon, TOP, LEFT, CENTER, LEFT, viewR, iconR, textR, 3);
     harness.check(viewR, new Rectangle(10, 20, 100, 25));
-    harness.check(iconR, new Rectangle(10 + ww, 27, 0, 0));
+    harness.check(iconR, new Rectangle(10 + ww, 20 + hh / 2, 0, 0));
     harness.check(textR, new Rectangle(10, 20, ww, hh));
     
     harness.checkPoint("TC-text");
@@ -88,7 +88,7 @@ public class layoutCompoundLabel implements Testlet, SwingConstants
     textR = new Rectangle();
     displayText = SwingUtilities.layoutCompoundLabel(fm, text, icon, TOP, CENTER, CENTER, LEFT, viewR, iconR, textR, 3);
     harness.check(viewR, new Rectangle(10, 20, 100, 25));
-    harness.check(iconR, new Rectangle(60 + (ww + 1) / 2, 27, 0, 0));
+    harness.check(iconR, new Rectangle(60 + (ww + 1) / 2, 20 + hh / 2, 0, 0));
     harness.check(textR, new Rectangle(60 - ww / 2, 20, ww, hh));
     
     harness.checkPoint("TR-text");
@@ -96,7 +96,7 @@ public class layoutCompoundLabel implements Testlet, SwingConstants
     textR = new Rectangle();
     displayText = SwingUtilities.layoutCompoundLabel(fm, text, icon, TOP, RIGHT, CENTER, LEFT, viewR, iconR, textR, 3);
     harness.check(viewR, new Rectangle(10, 20, 100, 25));
-    harness.check(iconR, new Rectangle(110, 27, 0, 0));
+    harness.check(iconR, new Rectangle(110, 20 + hh / 2, 0, 0));
     harness.check(textR, new Rectangle(110 - ww, 20, ww, hh));
     
     harness.checkPoint("CL-text");
