@@ -1,5 +1,12 @@
 2006-02-28  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/AbstractDocument/BranchElement/getStartOffset.java:
+	New test.
+	* gnu/testlet/javax/swing/AbstractDocument/LeafElement/getStartOffset.java:
+	New test.
+
+2006-02-28  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/SwingUtilities/layoutCompoundLabel.java:
 	(test): Fixed some tests the take font metrics differences into account.
 
