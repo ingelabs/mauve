@@ -1,3 +1,7 @@
+2006-02-28  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/net/URL/URLTest.java (test_Basics): Added a test.
+
 2006-02-28  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/lang/ClassLoader/Resources.java: New file.

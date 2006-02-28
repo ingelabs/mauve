@@ -179,6 +179,15 @@ public class URLTest implements Testlet
 		catch (NullPointerException e) {
 			harness.fail(" Error in test_Basics - null context");
 		}
+                harness.checkPoint("Colon in spec");
+                try {
+                    URL cxt = new URL("http://www.foo.bar.com");
+                    URL url = new URL(cxt, "_urn:testing/");
+                    harness.check("http://www.foo.bar.com/_urn:testing/".equals(url.toString()));
+                }
+                catch (Exception e) {
+                    harness.fail(" Error in test_Basics - Colon in spec");
+                }
 	}
 
 	public void test_openConnection()
