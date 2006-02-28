@@ -1,3 +1,8 @@
+2006-02-28  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/Class/newInstance.java (test6): New class.
+	(test): Updated comment.  Run test6 test.
+
 2006-02-28  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/AbstractDocument/BranchElement/getStartOffset.java:

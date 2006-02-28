@@ -23,6 +23,8 @@
 
 package gnu.testlet.java.lang.Class;
 
+import java.io.IOException;
+
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
@@ -135,6 +137,29 @@ public class newInstance implements Testlet
     }
   }
 
+  public static class test6
+  {
+    public test6() throws IOException
+    {
+      throw new IOException("hi bob");
+    }
+    
+    static void check(TestHarness harness)
+    {
+      boolean ok = false;
+      try
+        {
+    	  test6.class.newInstance();
+        }
+      catch (Throwable t)
+        {
+    	  harness.debug(t);
+    	  ok = t instanceof IOException;
+        }
+      harness.check(ok);
+    }
+  }
+
   public void test(TestHarness harness)
   {
     test1.check(harness);
@@ -150,9 +175,11 @@ public class newInstance implements Testlet
     // Just see to it that the following is legal.
     new test5();
     // If new test5() is legal, why should test5.class.newInstance()
-    // throw IllegalAccessException?  But the runtime access control
-    // is somewhat different from the compile time access control.
-    // So it may be OK that Sun's JDK throws IllegalAccessException here.
+    // throw IllegalAccessException?  The reason that it is different is
+    // that 'new test5()' will call a compiler-generated accessor
+    // constructor.  This accessor has package-private access and an
+    // extra argument (to differentiate it from the user-written
+    // constructor).
     checkFail(harness, test5.class);
 
     checkSuccess(harness, test1.inner.class);
@@ -169,6 +196,8 @@ public class newInstance implements Testlet
         harness.debug(x);
         harness.fail("test configuration failure");
       }
+    
+    test6.check(harness);
   }
 
   static void checkSuccess(TestHarness harness, Class c)
