@@ -1,3 +1,7 @@
+2006-02-28  Olivier Jolly  <olivier.jolly@pcedev.com>
+
+	* gnu/testlet/java/lang/ClassLoader/Resources.java: New file.
+
 2006-02-28  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Class/newInstance.java (test6): New class.
