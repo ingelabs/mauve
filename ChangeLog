@@ -1,3 +1,8 @@
+2006-03-01  Tom Tromey  <tromey@redhat.com>
+
+	* .project, .externalToolBuilders/ConfigureMauve.launch: Updated
+	configure builder.
+
 2006-02-28  David Daney  <ddaney@avtrex.com>
 
 	* gnu/testlet/java/net/URL/URLTest.java (test_Basics): Added a test.
