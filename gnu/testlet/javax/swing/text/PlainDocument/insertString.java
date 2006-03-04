@@ -51,6 +51,8 @@ public class insertString implements Testlet
     testFilterNewline(harness);
     testArguments(harness);
     testPositions(harness);
+
+    testModifications(harness);
   }
 
   /**
@@ -61,6 +63,8 @@ public class insertString implements Testlet
    */
   private void testNewline(TestHarness harness)
   {
+    harness.checkPoint("testNewline");
+
     PlainDocument doc = new PlainDocument();
     try
       {
@@ -93,6 +97,8 @@ public class insertString implements Testlet
    */
   private void testFilterNewline(TestHarness harness)
   {
+    harness.checkPoint("testFilterNewline");
+
     PlainDocument doc = new PlainDocument();
     doc.putProperty("filterNewlines", Boolean.TRUE);
     try
@@ -123,9 +129,9 @@ public class insertString implements Testlet
     {
       d.insertString(-1, "XYZ", SimpleAttributeSet.EMPTY);
     }
-    catch (BadLocationException e)
+    catch (Exception e)
     {
-      pass = true;
+      pass = e instanceof BadLocationException;
     }
     harness.check(pass);
 
@@ -198,6 +204,153 @@ public class insertString implements Testlet
     catch (BadLocationException e)
       { 
       }
+  }
+
+  // Helper for testModifications.
+  PlainDocument prepare(String initialContent)
+  {
+    PlainDocument pd = new PlainDocument();
+
+    try
+      {
+        pd.insertString(0, initialContent, null);
+
+        return pd;
+      }
+    catch (BadLocationException ble)
+      {
+        return pd;
+      }
+  }
+
+  // Helper for testModifications.
+  void checkElement(TestHarness harness,
+		    PlainDocument doc,
+ 		    int elementIndex,
+		    int startOffset,
+		    int endOffset,
+                    String text)
+  {
+    Element e = doc.getDefaultRootElement();
+    Element child = e.getElement(elementIndex);
+
+    harness.check(child.getStartOffset(), startOffset);
+    harness.check(child.getEndOffset(), endOffset);
+
+    String retrievedText = null;
+    try
+      {
+        retrievedText = doc.getText(startOffset, endOffset-startOffset);
+      }
+    catch (BadLocationException ble)
+      {
+      }
+    harness.check(retrievedText, text);
+  }
+
+  // Helper for testModifications.
+  void insert(PlainDocument doc, int index, String text)
+  {
+    try
+      {
+        doc.insertString(index, text, null);
+      }
+    catch(BadLocationException ble)
+      {
+      }
+  }
+
+  void testModifications(TestHarness h)
+  {
+    // Test 1: Insert an "a" into before a "\n".
+    h.checkPoint("modifications-insert char 1-pre");
+    PlainDocument doc = new PlainDocument();;
+
+    // Checks whether there is an Element at index 0 which has the
+    // starting offset 0, end offset 1 and contains the text "\n".
+    checkElement(h, doc, 0, 0, 1, "\n");
+
+    h.checkPoint("modifications-insert char 1-post");
+    insert(doc, 0, "a");
+    checkElement(h, doc, 0, 0, 2, "a\n");
+
+    // Test 2: Insert a newline after the first a in "abc\nbla\n".
+    h.checkPoint("modifications-insert newline 1-pre");
+    doc = prepare("abc\nbla\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 8, "bla\n");
+
+    h.checkPoint("modifications-insert newline 1-post");
+    insert(doc, 1, "\n");
+    checkElement(h, doc, 0, 0, 2, "a\n");
+    checkElement(h, doc, 1, 2, 5, "bc\n");
+    checkElement(h, doc, 2, 5, 9, "bla\n");
+
+    // Test 3: Insert a newline after the c in "abc\n".
+    h.checkPoint("modifications-insert newline 2-pre");
+    doc = prepare("abc\nbla\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+
+    h.checkPoint("modifications-insert newline 2-post");
+    insert(doc, 3, "\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 5, "\n");
+
+    // Test 4: Type a char after "abc\n".
+    h.checkPoint("modifications-insert char 2-pre");
+    doc = prepare("abc\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+
+    h.checkPoint("modifications-insert char 2-post");
+    insert(doc, 4, "d");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 6, "d\n");
+
+    // Test 5: Insert "foo\nbaz\nbar" after "ab" in "abc\ndef\n".
+    h.checkPoint("modifications-insert multi-line string 1-pre");
+    doc = prepare("abc\ndef\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 8, "def\n");
+
+    h.checkPoint("modifications-insert multi-line string 1-post");
+    insert(doc, 2, "foo\nbaz\nbar");
+    checkElement(h, doc, 0,  0,  6, "abfoo\n");
+    checkElement(h, doc, 1,  6, 10, "baz\n");
+    checkElement(h, doc, 2, 10, 15, "barc\n");
+    checkElement(h, doc, 3, 15, 19, "def\n");
+
+    // Test 6: Insert "foo" after first newline in "abc\ndef\n"
+    h.checkPoint("modifications-insert single-line string-pre");
+    doc = prepare("abc\ndef\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 8, "def\n");
+
+    h.checkPoint("modifications-insert single-line string-post");
+    insert(doc, 4, "foo");
+    checkElement(h, doc, 0,  0,  4, "abc\n");
+    checkElement(h, doc, 1,  4, 11, "foodef\n");
+
+    // Test 7: Insert "foo\nbaz\nbar" after first newline in "abc\ndef\n".
+    h.checkPoint("modifications-insert multi-line string 2-pre");
+    doc = prepare("abc\ndef\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 8, "def\n");
+
+    h.checkPoint("modifications-insert multi-line string 2-post");
+    insert(doc, 4, "foo\nbaz\nbar");
+    checkElement(h, doc, 0,  0,  4, "abc\n");
+    checkElement(h, doc, 1,  4,  8, "foo\n");
+    checkElement(h, doc, 2,  8, 12, "baz\n");
+    checkElement(h, doc, 3, 12, 19, "bardef\n");
+
+    // Test 8: Type char after a in "ac\n".
+    h.checkPoint("modifications-insert char 3-pre");
+    doc = prepare("ac\n");
+    checkElement(h, doc, 0, 0, 3, "ac\n");
+
+    h.checkPoint("modifications-insert char 3-post");
+    insert(doc, 1, "b");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
   }
 
 }

@@ -1,3 +1,15 @@
+2006-03-04  Robert Schuster  <robertschuster@fsfe.org>
+	
+	* gnu/testlet/javax/swing/text/PlainDocument/insertString.java:
+	(testModifications): New test method.
+	(testNewLine): Added checkpoint name.
+	(testFilterNewLine): Added checkpoint name.
+	(testArguments): Changed catch-clause to Exception, added instanceof
+	for previous exception type.
+	(prepare): Added new helper method.
+	(checkElement): Added new helper method.
+	(insert): Added new helper method.
+
 2006-03-04  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/jce/TestOfHttps.java: 
