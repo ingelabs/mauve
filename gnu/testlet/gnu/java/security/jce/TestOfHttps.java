@@ -1,5 +1,5 @@
 /* TestOfHttps.java
-   Copyright (C) 2006 FIXME: your info here
+   Copyright (C) 2006 Free Software Foundation, Inc.
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -53,12 +53,9 @@ public class TestOfHttps
       URL u = new URL("https://www.paypal.com/");
       InputStream in = u.openStream();
       BufferedReader br = new BufferedReader(new InputStreamReader(in));
-      String line = br.readLine();
-      while (line != null)
-        {
-          System.out.println(line);
-          line = br.readLine();
-        }
+      String line;
+      while ((line = br.readLine()) != null)
+        ; // do nothing
 
       harness.check(true, msg);
     }
