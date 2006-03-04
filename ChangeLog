@@ -1,3 +1,7 @@
+2006-03-04  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/javax/swing/JEditorPane/setText.java: New test.
+
 2006-03-02  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/java/net/URLConnection/Jar.java (test): 
