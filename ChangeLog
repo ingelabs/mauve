@@ -1,3 +1,8 @@
+2006-03-05  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/lang/reflect/Constructor/toString.java: New file.
+	* gnu/testlet/java/lang/reflect/Field/toString.java: New file.
+
 2006-03-04  Robert Schuster  <robertschuster@fsfe.org>
 	
 	* gnu/testlet/javax/swing/text/PlainDocument/insertString.java:
