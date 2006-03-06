@@ -1,5 +1,10 @@
 2006-03-06  Wolfgang Baer  <WBaer@gmx.de>
 
+	* gnu/testlet/java/net/HttpURLConnection/requestPropertiesTest.java: 
+	New tests.
+
+2006-03-06  Wolfgang Baer  <WBaer@gmx.de>
+
 	* gnu/testlet/java/net/HttpURLConnection/TestHttpServer.java: New file.
 	* gnu/testlet/java/net/HttpURLConnection/responseCodeTest.java: 
 	New test using TestHttpServer.java.
