@@ -1,3 +1,8 @@
+2006-03-06  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Container/TestPanelRepaint.java:
+	New Class.
+
 2006-03-06  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/java/net/URLConnection/getHeaderFields.java: 
