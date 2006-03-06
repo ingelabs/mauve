@@ -351,6 +351,22 @@ public class insertString implements Testlet
     h.checkPoint("modifications-insert char 3-post");
     insert(doc, 1, "b");
     checkElement(h, doc, 0, 0, 4, "abc\n");
+
+    // Test 9: Multiple text insertions
+    h.checkPoint("modifications-multi-insert-1");
+    doc = prepare("abc\ndef\n");
+    checkElement(h, doc, 0, 0, 4, "abc\n");
+    checkElement(h, doc, 1, 4, 8, "def\n");
+
+    h.checkPoint("modifications-multi-insert-2");
+    insert(doc, 3, "---");
+    checkElement(h, doc, 0, 0, 7, "abc---\n");
+    checkElement(h, doc, 1, 7, 11, "def\n");
+
+    h.checkPoint("modifications-multi-insert-3");
+    insert(doc, 7, "---");
+    checkElement(h, doc, 0, 0, 7, "abc---\n");
+    checkElement(h, doc, 1, 7, 14, "---def\n");
   }
 
 }

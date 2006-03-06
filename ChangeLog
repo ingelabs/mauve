@@ -1,3 +1,8 @@
+2006-03-06  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/text/PlainDocument/insertString.java:
+	(testModifications): Added another test.
+
 2006-03-06  Dalibor Topic <robilad@kaffe.org>
 
 	* gnu/testlet/java/net/URI/UnicodeURI.java: New file.
