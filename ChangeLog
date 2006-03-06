@@ -1,3 +1,7 @@
+2006-03-06  Dalibor Topic <robilad@kaffe.org>
+
+	* gnu/testlet/java/net/URI/UnicodeURI.java: New file.
+
 2006-03-05  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/reflect/Constructor/toString.java: New file.
