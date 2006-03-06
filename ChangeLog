@@ -1,3 +1,11 @@
+2006-03-06  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/java/net/HttpURLConnection/TestHttpServer.java: New file.
+	* gnu/testlet/java/net/HttpURLConnection/responseCodeTest.java: 
+	New test using TestHttpServer.java.
+	* gnu/testlet/java/net/HttpURLConnection/responseHeadersTest.java: 
+	Likewise.
+
 2006-03-06  Robert Schuster  <robertschuster@fsfe.org>
 
 	* gnu/testlet/javax/swing/text/PlainDocument/insertString.java:
