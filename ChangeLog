@@ -1,5 +1,12 @@
 2006-03-06  Wolfgang Baer  <WBaer@gmx.de>
 
+	* gnu/testlet/java/net/URLConnection/getHeaderFields.java: 
+	(check): Use checkPoint instead of test names. Fix header key = String
+	test to use second header entry to work on http.
+	(test): Extend the basic test to all protocol implementations.
+
+2006-03-06  Wolfgang Baer  <WBaer@gmx.de>
+
 	* gnu/testlet/java/net/HttpURLConnection/requestPropertiesTest.java: 
 	New tests.
 
