@@ -20,7 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 
-package gnu.testlet.java.awt.Container;
+package gnu.testlet.java.awt.Panel;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -74,11 +74,6 @@ public class TestPanelRepaint
     {
       harness.fail("Update should not be called!");
       super.update(g);
-    }
-
-    public void paint(Graphics g)
-    {
-      super.paint(g);
     }
 
     public void componentResized(ComponentEvent e)
