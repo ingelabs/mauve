@@ -1,7 +1,7 @@
 // Tags: JDK1.2
 // Uses: getResourceBase
 
-// Copyright (C) 2002 Free Software Foundation, Inc.
+// Copyright (C) 2002, 2006 Free Software Foundation, Inc.
 // Written by Mark Wielaard (mark@klomp.org)
 
 // This file is part of Mauve.
@@ -70,6 +70,8 @@ public class getResource extends getResourceBase
     jos.putNextEntry(je);
     jos.write(new byte[256]);
 
+    je = new JarEntry("path/in/jar/");
+    jos.putNextEntry(je);
     je = new JarEntry("path/in/jar/file");
     jos.putNextEntry(je);
     jos.write(new byte[256]);
@@ -110,18 +112,67 @@ public class getResource extends getResourceBase
 	urls[1] = new URL("file://" + jarPath);
 	ucl = URLClassLoader.newInstance(urls);
 
+        // Check that the root resource can be found
+        // It is valid as a directory
 	URL u = ucl.getResource(".");
 	harness.debug(u != null ? u.toString() : null);
-	harness.check(u == null, "no .");
+	harness.check(u != null, "Checking .");
 
+        // Check that the parent directory can not be found
+        // It is invalid as one shouldn't be able to escape the "url root"
 	u = ucl.getResource("..");
 	harness.debug(u != null ? u.toString() : null);
-	harness.check(u == null, "no ..");
+	harness.check(u == null, "Checking ..");
 
+        // Check that the current directory can not be found
+        // It is invalid because at one point, we're escaping the "url root"
+        u = ucl.getResource("../mauve-testdir");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u == null, "Checking ../mauve-testdir");
+        
+        // Check that the current directory can not be found
+        // It is invalid because at one point, we're walking into an invalid directory
+        u = ucl.getResource("mauve-testdir/..");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u == null, "Checking mauve-testdir/..");
+
+        // Check that the current directory can not be found
+        // It is invalid because at one point, we're walking into an invalid directory
+        u = ucl.getResource("mauve-testdir/../");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u == null, "Checking mauve-testdir/../");
+
+        // Check that the current directory can be found
+        // It is valid because we're walking into an valid directory and back
+        u = ucl.getResource("testdir/..");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u != null, "Checking testdir/..");
+
+        // Check that the current directory can be found
+        // It is valid because we're walking into an valid directory and back
+        u = ucl.getResource("testdir/../");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u != null, "Checking testdir/../");        
+        
+        // Check that the testdir subdirectory can not be found
+        // It is invalid because at one point, we're walking into an invalid directory
+        u = ucl.getResource("mauve-testdir/../testdir");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u == null, "Checking mauve-testdir/../testdir");        
+        
+        // Check that the testdir subdirectory can be found
+        // It is valid because we're walking into an valid directory and back
+        // and into a valid directory again
+        u = ucl.getResource("testdir/../testdir");
+        harness.debug(u != null ? u.toString() : null);
+        harness.check(u != null, "Checking testdir/../testdir");        
+        
 	check("testfile", "mauve-testdir", true);
+	check("testdir", "mauve-testdir", true);
 	check("testdir/test", "mauve-testdir", true);
 	check("jresource", "m.jar", false);
 	check("path/in/jar/file", "m.jar", false);
+	check("path/in/jar", "m.jar", false);
       }
     catch(IOException ioe)
       {

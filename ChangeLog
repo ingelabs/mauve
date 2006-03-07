@@ -1,3 +1,12 @@
+2006-03-07  Olivier Jolly  <olivier.jolly@pcedev.com>
+
+	* gnu/testlet/java/net/URLClassLoader/getResourceBase.java (check): Added
+	canonalization of tested filenames.
+	* gnu/testlet/java/net/URLCLassLoader/getResource.java (test, setup): Added
+	more special situations checks with ".." and invalid directories. Fixed
+	and documented existing checks dealing with directories.
+	Based on Robin Green's patch.
+
 2006-03-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/DefaultMutableTreeNodeTest.java: Updated header,

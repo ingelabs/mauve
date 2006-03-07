@@ -1,6 +1,6 @@
 // Tags: not-a-test
 
-// Copyright (C) 2002 Free Software Foundation, Inc.
+// Copyright (C) 2002, 2006 Free Software Foundation, Inc.
 // Written by Mark Wielaard (mark@klomp.org)
 
 // This file is part of Mauve.
@@ -22,11 +22,12 @@
 
 package gnu.testlet.java.net.URLClassLoader;
 
+import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
+
+import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
-
-import gnu.testlet.Testlet;
-import gnu.testlet.TestHarness;
 
 /**
  * Helper class for getResource classes that checks resources when
@@ -54,7 +55,25 @@ public abstract class getResourceBase implements Testlet
     if (u != null)
       {
 	String f = u.getFile();
-	int i = f.indexOf(fullpath);
+        File file = new File(u.getFile());
+
+        // Canonize filenames. If the file is a directory, makes sure both filenames
+        // end with a slash
+        if (file.isDirectory()
+            && fullpath.length() > 1
+            && (fullpath.charAt(fullpath.length() - 1) != File.separator.charAt(0)))
+          {
+            fullpath = fullpath + File.separator;
+          }
+        
+        if (file.isDirectory()
+            && f.length() > 1
+            && f.charAt(f.length() - 1) != File.separator.charAt(0))
+          {
+            f = f + File.separator;
+          }
+        
+	int i = f.indexOf(fullpath);         
 	if (i != -1)
 	  r = f.substring(f.length() - fullpath.length());
 	else
