@@ -1,5 +1,24 @@
 2006-03-07  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/DefaultMutableTreeNodeTest.java: Updated header,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getChildAfter.java
+	(test): Reworked,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getChildBefore.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getFirstChild.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getFirstLeaf.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getLastChild.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getLastLeaf.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getNextLeaf.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getNextSibling.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getPreviousLeaf.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getPreviousSibling.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getSiblingCount.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/isLeaf.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/isNodeSibling.java: New file.
+
+2006-03-07  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/add.java
 	(test): Reworked and added ancestor tests,
 	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/clone.java: New file,
