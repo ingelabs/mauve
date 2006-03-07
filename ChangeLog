@@ -1,3 +1,25 @@
+2006-03-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/add.java
+	(test): Reworked and added ancestor tests,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/clone.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/constructors.java
+	(check): Removed,
+	(test): Split into three calls,
+	(testConstructor1): New method,
+	(testConstructor2): Likewise,
+	(testConstructor3): Likewise,	
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getIndex.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/getParent.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/insert.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/isNodeAncestor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/isNodeChild.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/isNodeDescendant.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/remove.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/removeAllChildren.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/setAllowsChildren.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultMutableTreeNode/toString.java: New file.
+
 2006-03-06  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/Math/ulp.java: New file.
