@@ -1,3 +1,5 @@
+//Tags: not-a-test
+
 package gnu.testlet.java.beans.Introspector;
 
 public class C extends B
