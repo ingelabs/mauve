@@ -1,5 +1,7 @@
 2006-03-10  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
+	* gnu/testlet/java/awt/Graphics/TestPaintGraphics.java: Fix test.
+
 	* gnu/testlet/java/awt/Graphics/TestPaintGraphics.java: New test.
 
 	* gnu/testlet/javax/imageio/plugins/jpeg/TestJPEGHuffmanTable.java:

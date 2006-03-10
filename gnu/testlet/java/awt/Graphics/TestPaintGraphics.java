@@ -46,7 +46,7 @@ public class TestPaintGraphics implements Testlet
     		if (!onePaintDone)
     		{
     			firstGraphicsHashCode = System.identityHashCode(g);
-    			onePaintDone = false;
+    			onePaintDone = true;
     			repaint();
     		}
     		else
@@ -58,10 +58,11 @@ public class TestPaintGraphics implements Testlet
     };
     
     f.add (p);
+    f.setSize (200, 200);
     f.show ();
     Robot r = harness.createRobot();
     r.delay(2000);
-    
+    harness.check(firstGraphicsHashCode != 0 && secondGraphicsHashCode != 0);
     harness.check(firstGraphicsHashCode != secondGraphicsHashCode);  
   }
 }
