@@ -1,3 +1,8 @@
+2006-03-10  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* gnu/testlet/javax/imageio/plugins/jpeg/TestJPEGHuffmanTable.java:
+	New test.
+
 2006-03-08  Michael Koch  <konqueror@gmx.de>
 
 	* gnu/testlet/java/net/InetSocketAddress/createUnresolved.java:
