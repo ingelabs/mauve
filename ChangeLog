@@ -1,3 +1,16 @@
+2006-03-10  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Button/PaintTest.java: New Test.
+	* gnu/testlet/java/awt/Canvas/PaintTest.java: New Test.
+	* gnu/testlet/java/awt/Checkbox/PaintTest.java: New Test.
+	* gnu/testlet/java/awt/Label/PaintTest.java: New Test.
+	* gnu/testlet/java/awt/List/ScrollbarPaintTest.java: New Test.
+	* gnu/testlet/java/awt/ScrollPane/ScrollbarPaintTest.java: New Test.
+	* gnu/testlet/java/awt/Scrollbar/ScrollbarPaintTest.java: New Test.
+	* gnu/testlet/java/awt/TextArea/ScrollbarPaintTest.java: New Test.
+	* gnu/testlet/java/awt/TextField/PaintTest.java: New Test.
+	* gnu/testlet/java/awt/Choice/PaintTest.java: New Test.
+
 2006-03-10  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
 	* gnu/testlet/java/beans/Introspector/A.java: Added not-a-test
