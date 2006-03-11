@@ -1,3 +1,7 @@
+2006-03-11  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/util/zip/GZIPInputStream/PR24461.java: New file.
+
 2006-03-11  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/event/TreeSelectionEvent/cloneWithSource.java: 
