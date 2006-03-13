@@ -1,3 +1,10 @@
+2006-03-13  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/accessibility/AccessibleContext/TestAccessibleContext.java:
+	New auxiliary helper class.
+	* gnu/testlet/javax/accessibility/AccessibleContext/getAccessibleRelationSet.java:
+	New test.
+
 2006-03-11  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/zip/GZIPInputStream/PR24461.java: New file.
