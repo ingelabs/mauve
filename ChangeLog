@@ -1,5 +1,9 @@
 2006-03-13  Olivier Jolly  <olivier.jolly@pcedev.com>
 
+	* gnu/teslet/java/lang/ClassLoader/BootDefinedPackages.java: New test.
+
+2006-03-13  Olivier Jolly  <olivier.jolly@pcedev.com>
+
 	* gnu/teslet/java/lang/ClassLoader/initialize.java: Added comments.
 
 2006-03-13  Roman Kennke  <kennke@aicas.com>
