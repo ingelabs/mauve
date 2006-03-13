@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 Free Software Foundation, Inc.
+// Copyright (C) 2005, 2006 Free Software Foundation, Inc.
 // Written by Jeroen Frijters  <jeroen@frijters.net>
 
 // This file is part of Mauve.
@@ -25,13 +25,35 @@ package gnu.testlet.java.lang.ClassLoader;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+/**
+ * This test simulates a security attack dealing with the registering of a rogue
+ * ClassLoader when it is not allowed. The detail of the potentiel problem is
+ * described 
+ * <a href="http://www.securingjava.com/chapter-five/chapter-five-8.html">here</a>.
+ * Basically, it creates an incomplete ClassLoader (by throwing an exception
+ * during the construction) and later uses the finalizer to retrieve the
+ * instance and try to use this rogue instance. This test makes sure that any
+ * method call then throws a SecurityException.
+ * Running finalizers being not an exact science, some jvm will not run them
+ * when System.runFinalization() is called hence not allowing the security
+ * breach to be checked.
+ * 
+ * @author Jeroen Frijters <jeroen@frijters.net>
+ */
 public class initialize implements Testlet
 {
   static class TestLoader extends ClassLoader
   {
+    // The holder for the rogue TestLoader instance
     static TestLoader ref;
+    
+    // The method which simulates an exception to be thrown at construction time
     static ClassLoader throwException() { throw new Error(); }
+    
+    // The constructor which will fail to create a complete instance
     TestLoader() { super(throwException()); }
+    
+    // The finalizer which retrieves the partly created instance
     protected void finalize() { ref = this; }
 
     static void runTests(TestHarness harness) throws Exception
@@ -179,9 +201,15 @@ public class initialize implements Testlet
 
   public void test(TestHarness harness)
   {
+    // Creates a garbage collectable rogue TestLoader instance
     try { new TestLoader(); } catch(Error x) {}
+    
+    // Hints at the vm that running finalizers now would be a good idea
     System.gc();
     System.runFinalization();
+    
+    // Checks that TestLoader.finalize retrieved the partly created instance,
+    // and if so, tests it
     if (TestLoader.ref == null)
       harness.debug("Unable to obtain finalized ClassLoader instance");
     else
