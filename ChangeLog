@@ -1,3 +1,10 @@
+2006-03-14  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Container/addImpl.java
+	(test): Formatted function and added repaint functions
+	to override repaint in Container. Added fails to these functions,
+	they should not be called.
+
 2006-03-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/TableColumn/setResizable.java

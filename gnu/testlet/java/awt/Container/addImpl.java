@@ -87,42 +87,68 @@ public class addImpl implements Testlet
   {
     // We disable the event queue so we can check if this event is delivered
     // via the event queue or not.
-    Toolkit.getDefaultToolkit().getSystemEventQueue()
-    .push(new DisabledEventQueue());
+    Toolkit.getDefaultToolkit().getSystemEventQueue().push(new DisabledEventQueue());
 
-    Container c = new Container();
+    final TestHarness transfer = harness;
+    Container c = new Container()
+    {
+      TestHarness harness = transfer;
+      
+      public void repaint()
+      {
+        harness.fail("repaint has been called.");
+      }
+      
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
+    };
     c.addContainerListener(new TestContainerListener());
     // Pre-condition check.
     harness.check(c.isShowing(), false);
     componentAddedCalled = false;
-    c.add(new Component(){});
+    c.add(new Component()
+    {
+    });
     harness.check(componentAddedCalled, true);
 
     // check that LayoutManager.addLayoutComponent() is called
     // with non-null name.
     Container two = new Container();
-    final TestHarness transfer = harness;
     two.setLayout(new LayoutManager()
+    {
+      TestHarness harness = transfer;
+
+      Dimension size = new Dimension();
+
+      public void removeLayoutComponent(Component comp)
       {
-	TestHarness harness = transfer;
-	Dimension size = new Dimension();
-	public void removeLayoutComponent(Component comp) {}
-	public java.awt.Dimension preferredLayoutSize(Container cont)
-	{
-	  return size;
-	}
-	public Dimension minimumLayoutSize(Container cont)
-	{
-	  return size;
-	}
-	public void layoutContainer(Container container) {}
-	public void addLayoutComponent(String name, Component comp)
-	{
-	  boolean pass = (name != null);
-	  harness.check(pass, true);
-	}
-      });
-    two.add(new Component() {});
+      }
+
+      public java.awt.Dimension preferredLayoutSize(Container cont)
+      {
+        return size;
+      }
+
+      public Dimension minimumLayoutSize(Container cont)
+      {
+        return size;
+      }
+
+      public void layoutContainer(Container container)
+      {
+      }
+
+      public void addLayoutComponent(String name, Component comp)
+      {
+        boolean pass = (name != null);
+        harness.check(pass, true);
+      }
+    });
+    two.add(new Component()
+    {
+    });
   }
 
 }
