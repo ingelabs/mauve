@@ -1,3 +1,10 @@
+2006-03-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/TableColumn/setResizable.java
+	(lastEvent): New field,
+	(propertyChange): New method,
+	(test): Extended to check PropertyChangeEvent.
+
 2006-03-13  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/SwingUtilities/calculateInnerArea.java:
