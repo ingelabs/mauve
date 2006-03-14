@@ -1,5 +1,12 @@
 2006-03-14  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/table/TableColumn/setMaxWidth.java
+	(events): New field,
+	(propertyChange): New method,
+	(test): Added checks for PropertyChangeEvents.
+
+2006-03-14  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/table/TableColumn/setMinWidth.java
 	(events): New field,
 	(propertyChange): New method,
