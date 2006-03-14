@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,8 +14,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.table.TableColumn;
 
@@ -24,6 +24,7 @@ import gnu.testlet.Testlet;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
 import javax.swing.table.TableColumn;
 
@@ -33,7 +34,7 @@ import javax.swing.table.TableColumn;
 public class setWidth implements Testlet, PropertyChangeListener 
 {
 
-  private PropertyChangeEvent event;
+  List events = new java.util.ArrayList();
   
   /**
    * Runs the test using the specified harness.
@@ -43,27 +44,28 @@ public class setWidth implements Testlet, PropertyChangeListener
   public void test(TestHarness harness)      
   {
     TableColumn c = new TableColumn();
+    harness.check(c.getWidth(), 75);
+    c.addPropertyChangeListener(this);
+    
     c.setWidth(19);
     harness.check(c.getWidth(), 19);
+    harness.check(events.size(), 1);
+    PropertyChangeEvent e = (PropertyChangeEvent) events.get(0);
+    harness.check(e.getPropertyName(), "width");
+    harness.check(e.getOldValue(), new Integer(75));
+    harness.check(e.getNewValue(), new Integer(19));
     
-    c.setMinWidth(10);
-    c.setMaxWidth(20);
-    c.setWidth(15);
+    c.setWidth(10);
     harness.check(c.getWidth(), 15);
-    c.setWidth(7);
-    harness.check(c.getWidth(), 10);
-    c.setWidth(22);
-    harness.check(c.getWidth(), 20);   
     
-    // O'Reilly's "Java Swing" (first edition) lists this as a "bound" property
-  	c.addPropertyChangeListener(this);
-  	c.setWidth(18);
-  	harness.check(this.event != null);
+    c.setMaxWidth(100);
+    c.setWidth(110);
+    harness.check(c.getWidth(), 100);
   }
   
   public void propertyChange(PropertyChangeEvent e) 
   {
-    this.event = e;
+    this.events.add(e);
   }
 
 }

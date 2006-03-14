@@ -1,3 +1,19 @@
+2006-03-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/TableColumn/setMinWidth.java
+	(events): New field,
+	(propertyChange): New method,
+	(test): Added checks for PropertyChangeEvents,
+	* gnu/testlet/javax/swing/table/TableColumn/setPreferredWidth.java
+	(events): New field,
+	(propertyChange): New method,
+	(test): Added checks for PropertyChangeEvents,
+	* gnu/testlet/javax/swing/table/tableColumn/setWidth.java
+	(event): Removed,
+	(events): New field,
+	(propertyChange): Add event to new events list,
+	(test): Added checks for PropertyChangeEvents.
+
 2006-03-14  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/Container/addImpl.java
