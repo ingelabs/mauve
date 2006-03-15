@@ -23,6 +23,8 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 package gnu.testlet.javax.swing.JInternalFrame;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyVetoException;
 
 import javax.swing.JFrame;
@@ -30,6 +32,7 @@ import javax.swing.JInternalFrame;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.javax.swing.JInternalFrame.setResizable.TestPropertyChangeHandler;
 
 /**
  * Tests the functionality of the setSelected() method in JInternalFrame.
@@ -54,6 +57,25 @@ public class setSelected implements Testlet
   }
 
   /**
+   * Catches property changes and stores the property name.
+   */
+  class TestPropertyChangeHandler
+    implements PropertyChangeListener
+  {
+
+    public void propertyChange(PropertyChangeEvent e)
+    {
+      propertyChanged = e.getPropertyName();
+    }
+    
+  }
+
+  /**
+   * Stores the name of the last changed property.
+   */
+  String propertyChanged;
+
+  /**
    * The entry point into this test.
    *
    * @param harness the test harness to use
@@ -61,6 +83,7 @@ public class setSelected implements Testlet
   public void test(TestHarness harness)
   {
     testRepaint(harness);
+    testBoundProperty(harness);
   }
 
   /**
@@ -121,4 +144,34 @@ public class setSelected implements Testlet
       }
   }
 
+
+  /**
+   * Tests if this is a bound property.
+   *
+   * @param h the test harness to use
+   */
+  private void testBoundProperty(TestHarness h)
+  {
+    h.checkPoint("testBoundProperty");
+    JInternalFrame t = new JInternalFrame();
+    t.addPropertyChangeListener(new TestPropertyChangeHandler());
+    try
+      {
+        
+        JFrame fr = new JFrame();
+        fr.getContentPane().add(t);
+        fr.setSize(100, 100);
+        fr.setVisible(true);
+        t.setVisible(true);
+
+        t.setSelected(false);
+        propertyChanged = null;
+        t.setSelected(true);
+        h.check(propertyChanged, "selected");
+      }
+    catch (PropertyVetoException ex)
+      {
+        h.fail(ex.getMessage());
+      }
+  }
 }

@@ -1,3 +1,18 @@
+2006-03-15  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JInternalFrame/setSelected.java:
+	Added test for bound property.
+	* gnu/testlet/javax/swing/JInternalFrame/setResizable.java:
+	Added test for bound property.
+	* gnu/testlet/javax/swing/JInternalFrame/setMaximizable.java:
+	Added test for bound property.
+	* gnu/testlet/javax/swing/JInternalFrame/setIconifiable.java:
+	Added test for bound property.
+	* gnu/testlet/javax/swing/JInternalFrame/setClosed.java:
+	Added test for bound property.
+	* gnu/testlet/javax/swing/JInternalFrame/setClosable.java:
+	Added test for bound property.
+
 2006-03-15  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/TableColumn/sizeWidthToFit.java:
