@@ -20,16 +20,19 @@
 
 package gnu.testlet.java.awt.Container;
 
+import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Label;
 import java.awt.LayoutManager;
+import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
-
-import gnu.testlet.TestHarness;
-import gnu.testlet.Testlet;
 
 /**
  * This checks tests if the addImpl method notfies container listeners when
@@ -85,6 +88,12 @@ public class addImpl implements Testlet
    */
   public void test(TestHarness harness)
   {
+    test1(harness);
+    test2(harness);
+  }
+  
+  public void test1(TestHarness harness)
+  {
     // We disable the event queue so we can check if this event is delivered
     // via the event queue or not.
     Toolkit.getDefaultToolkit().getSystemEventQueue().push(new DisabledEventQueue());
@@ -108,14 +117,35 @@ public class addImpl implements Testlet
     // Pre-condition check.
     harness.check(c.isShowing(), false);
     componentAddedCalled = false;
-    c.add(new Component()
+    
+    Component a = new Component()
     {
-    });
+    };
+    
+    Component b = new Component()
+    {
+    };
+    
+    c.add(a);
     harness.check(componentAddedCalled, true);
-
+    
     // check that LayoutManager.addLayoutComponent() is called
     // with non-null name.
-    Container two = new Container();
+    Container two = new Container()
+    {
+      TestHarness harness = transfer;
+      
+      public void repaint()
+      {
+        harness.fail("repaint has been called.");
+      }
+      
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
+    };
+    
     two.setLayout(new LayoutManager()
     {
       TestHarness harness = transfer;
@@ -146,9 +176,36 @@ public class addImpl implements Testlet
         harness.check(pass, true);
       }
     });
-    two.add(new Component()
-    {
-    });
+    harness.check(two.isShowing(), false);
+    componentAddedCalled = false;
+    two.addContainerListener(new TestContainerListener());
+    two.add(b);
+    harness.check(componentAddedCalled, true);
   }
-
+  
+  public void test2(TestHarness harness)
+  {
+    Frame f = new Frame();
+    final TestHarness transfer = harness;
+    Panel a = new Panel()
+    {
+      TestHarness harness = transfer;
+      
+      public void repaint()
+      {
+        harness.fail("repaint has been called.");
+      }
+      
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
+    };
+    
+    f.add(a);
+    f.show();
+    
+    a.add(new Label("AAA"));
+    harness.check(a.isShowing(), true);
+  }
 }
