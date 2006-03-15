@@ -102,12 +102,7 @@ public class addImpl implements Testlet
     Container c = new Container()
     {
       TestHarness harness = transfer;
-      
-      public void repaint()
-      {
-        harness.fail("repaint has been called.");
-      }
-      
+            
       public void repaint(long tm, int x, int y, int w, int h)
       {
         harness.fail("repaint has been called.");
@@ -120,10 +115,22 @@ public class addImpl implements Testlet
     
     Component a = new Component()
     {
+      TestHarness harness = transfer;
+
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
     };
     
     Component b = new Component()
     {
+      TestHarness harness = transfer;
+
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
     };
     
     c.add(a);
@@ -134,12 +141,7 @@ public class addImpl implements Testlet
     Container two = new Container()
     {
       TestHarness harness = transfer;
-      
-      public void repaint()
-      {
-        harness.fail("repaint has been called.");
-      }
-      
+            
       public void repaint(long tm, int x, int y, int w, int h)
       {
         harness.fail("repaint has been called.");
@@ -185,27 +187,59 @@ public class addImpl implements Testlet
   
   public void test2(TestHarness harness)
   {
-    Frame f = new Frame();
     final TestHarness transfer = harness;
-    Panel a = new Panel()
+    Frame f = new Frame()
     {
       TestHarness harness = transfer;
-      
-      public void repaint()
-      {
-        harness.fail("repaint has been called.");
-      }
-      
+
       public void repaint(long tm, int x, int y, int w, int h)
       {
         harness.fail("repaint has been called.");
       }
     };
     
-    f.add(a);
-    f.show();
+    Panel a = new Panel()
+    {
+      TestHarness harness = transfer;
+            
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
+    };
     
-    a.add(new Label("AAA"));
+    Label l = new Label("!!!!!")
+    {
+      TestHarness harness = transfer;
+
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
+    };
+    
+    Container c = new Container()
+    {
+      TestHarness harness = transfer;
+
+      public void repaint(long tm, int x, int y, int w, int h)
+      {
+        harness.fail("repaint has been called.");
+      }
+    };
+    
+    a.add(c);
+    a.add(l);
+    c.setSize(100,100);
+    f.add(a);
+    f.pack();
+    f.show();    
     harness.check(a.isShowing(), true);
+    harness.check(c.isShowing(), true);
+    harness.check(l.isShowing(), true);
+    harness.check(f.isShowing(), true);
+    harness.check(c.isLightweight(), true);
+    harness.check(a.isLightweight(), false);
+    harness.check(l.isLightweight(), false);
   }
 }

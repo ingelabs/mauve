@@ -1,6 +1,16 @@
 2006-03-15  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/Container/addImpl.java
+	(test1): Removed repaint function. Only need one. Also,
+	added repaint functions to all the components.
+	(test2): Added a lightweight container to the panel to 
+	show that repaint is not called on it. Also, added a check
+	to show that repaint is not called on the frame when it is 
+	shown.
+
+2006-03-15  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Container/addImpl.java
 	(test): Changed to call new functions.
 	(test1): Moved old test to new function.
 	(test2): New function to test if repaint is called when a component
