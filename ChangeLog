@@ -1,3 +1,22 @@
+2006-03-15  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/TableColumn/addPropertyChangeListener.java:
+	New file,
+	* gnu/testlet/javax/swing/table/TableColumn/removePropertyChangeListener.java:
+	Likewise,
+	* gnu/testlet/javax/swing/table/TableColumn/setCellEditor.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/table/TableColumn/setCellRenderer.java
+	(test): Extended PropertyChangeEvent tests,
+	* gnu/testlet/javax/swing/table/TableColumn/setHeaderRenderer.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/table/TableColumn/setHeaderValue.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/table/TableColumn/setIdentifier.java
+	(event): New field,
+	(propertyChange): New method,
+	(test): Added checks for required PropertyChangeEvent.
+
 2006-03-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/TableColumn/setMaxWidth.java

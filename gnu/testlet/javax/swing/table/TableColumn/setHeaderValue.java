@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,8 +14,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.table.TableColumn;
 
@@ -49,10 +49,15 @@ public class setHeaderValue implements Testlet, PropertyChangeListener
     // O'Reilly's "Java Swing" (first edition) lists this as a "bound" property
     c.addPropertyChangeListener(this);
     c.setHeaderValue("Value");
-    harness.check(this.event != null);
+    harness.check(event.getPropertyName(), "headerValue");
+    harness.check(event.getOldValue(), new Integer(99));
+    harness.check(event.getNewValue(), "Value");
     
     c.setHeaderValue(null);
     harness.check(c.getHeaderValue(), null);
+    harness.check(event.getPropertyName(), "headerValue");
+    harness.check(event.getOldValue(), "Value");
+    harness.check(event.getNewValue(), null);
   }
   
   public void propertyChange(PropertyChangeEvent e) 

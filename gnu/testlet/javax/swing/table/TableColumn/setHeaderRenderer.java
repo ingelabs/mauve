@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,8 +14,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.table.TableColumn;
 
@@ -30,7 +30,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 /**
- * Some tests for the setHeaderRenderer() method in the {@link TableColumn} class.
+ * Some tests for the setHeaderRenderer() method in the {@link TableColumn} 
+ * class.
  */
 public class setHeaderRenderer implements Testlet, PropertyChangeListener
 {
@@ -52,7 +53,15 @@ public class setHeaderRenderer implements Testlet, PropertyChangeListener
   	c.addPropertyChangeListener(this);
   	TableCellRenderer r2 = new DefaultTableCellRenderer();
   	c.setHeaderRenderer(r2);
-  	harness.check(this.event != null);
+  	harness.check(event.getPropertyName(), "headerRenderer");
+    harness.check(event.getOldValue(), r);
+    harness.check(event.getNewValue(), r2);
+    
+    // try null
+    c.setHeaderRenderer(null);
+    harness.check(event.getPropertyName(), "headerRenderer");
+    harness.check(event.getOldValue(), r2);
+    harness.check(event.getNewValue(), null);
   }
   
   public void propertyChange(PropertyChangeEvent e) 
