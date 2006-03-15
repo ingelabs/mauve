@@ -71,6 +71,7 @@ public class basic implements Testlet
 
 	} catch(IOException e)
 	    {
+		harness.debug(e);
 		harness.check(false, "all jarfile tests failed");
 	    }
     }
