@@ -46,6 +46,9 @@ public class parse
 
         h.checkPoint(name);
         h.check(Level.parse(name) == TestUtils.LEVELS[i]);
+
+	// Simulate a new "parsed" string as name.
+        h.check(Level.parse((" " + name + " ").trim()) == TestUtils.LEVELS[i]);
       }
 
     /* Pass a number. */
