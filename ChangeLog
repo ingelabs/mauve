@@ -1,3 +1,7 @@
+2006-03-16  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* gnu/testlet/java/awt/FileDialog/TestGraphics.java: New test.
+
 2006-03-15  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/jar/JarFile/basic.java (test_jar): Log
