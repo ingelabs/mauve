@@ -3,6 +3,7 @@
 	* gnu/testlet/java/awt/FontMetrics/TestLogicalFontMetrics.java:
 	New test.
 	Remove timer to ensure all tests are run.
+	Make tolerance larger for larger font sizes.
 
 	* gnu/testlet/java/awt/FileDialog/TestGraphics.java: New test.
 

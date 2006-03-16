@@ -40,8 +40,6 @@ public class TestLogicalFontMetrics implements Testlet
   final int NUM_SIZES = 40;
   final int NUM_STYLES = 4;
 
-  final int TOLERANCE = 2;
-
   // Set this to true to create ascents.txt, descents.txt and
   // leading.txt for the five logical fonts in the four possible
   // styles, in sizes 0 through NUM_SIZES - 1.
@@ -57,6 +55,14 @@ public class TestLogicalFontMetrics implements Testlet
   boolean paintedOnce = false;
 
   int index = 0;
+
+  public int getTolerance (int size)
+  {
+    if (size < 19)
+      return 2;
+    else
+      return 5;
+  }
 
   public void test (TestHarness h)
   {
@@ -1821,12 +1827,12 @@ public class TestLogicalFontMetrics implements Testlet
                    f.getLeading() + ", ");
 
     int ascent = f.getAscent();
-    if (ascent < ascents[index] - TOLERANCE || ascent > ascents[index] + TOLERANCE)
+    if (ascent < ascents[index] - getTolerance(size) || ascent > ascents[index] + getTolerance(size))
       harness.fail ("ascent: " + name + " " + style + " " + size
                     + " expected: " + ascents[index] + " got: " + ascent);
 
     int descent = f.getDescent();
-    if (descent < descents[index] - TOLERANCE || descent > descents[index] + TOLERANCE)
+    if (descent < descents[index] - getTolerance(size) || descent > descents[index] + getTolerance(size))
       harness.fail ("descent: " + name + " " + style + " " + size
                     + " expected: " + descents[index] + " got: " + descent);
 
