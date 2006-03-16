@@ -54,6 +54,8 @@ public class TestLogicalFontMetrics implements Testlet
 
   TestHarness harness;
 
+  boolean paintedOnce = false;
+
   int index = 0;
 
   public void test (TestHarness h)
@@ -1712,56 +1714,68 @@ public class TestLogicalFontMetrics implements Testlet
       {
     	public void paint (Graphics g)
     	{
-          for (int i = 0; i < fontNames.length; i++)
+          if (!paintedOnce)
             {
-              outputMetrics ("// " + fontNames[i] + "\n",
-                             "// " + fontNames[i] + "\n",
-                             "// " + fontNames[i] + "\n");
-
-              for (int j = 0; j < NUM_SIZES; j++)
+              for (int i = 0; i < fontNames.length; i++)
                 {
-                  outputMetrics ("// size " + j + "\n",
-                                 "// size " + j + "\n",
-                                 "// size " + j + "\n");
+                  outputMetrics ("// " + fontNames[i] + "\n",
+                                 "// " + fontNames[i] + "\n",
+                                 "// " + fontNames[i] + "\n");
 
-                  index = i * NUM_SIZES * NUM_STYLES + j * NUM_STYLES;
+                  for (int j = 0; j < NUM_SIZES; j++)
+                    {
+                      outputMetrics ("// size " + j + "\n",
+                                     "// size " + j + "\n",
+                                     "// size " + j + "\n");
 
-                  // PLAIN
-                  g.setFont(new Font (fontNames[i], Font.PLAIN, j));
-                  checkMetrics (g, fontNames[i], "PLAIN", j, index);
+                      index = i * NUM_SIZES * NUM_STYLES + j * NUM_STYLES;
 
-                  index++;
+                      // PLAIN
+                      g.setFont(new Font (fontNames[i], Font.PLAIN, j));
+                      checkMetrics (g, fontNames[i], "PLAIN", j, index);
 
-                  // BOLD
-                  g.setFont(new Font (fontNames[i], Font.BOLD, j));
-                  checkMetrics (g, fontNames[i], "BOLD", j, index);
+                      index++;
 
-                  index++;
+                      // BOLD
+                      g.setFont(new Font (fontNames[i], Font.BOLD, j));
+                      checkMetrics (g, fontNames[i], "BOLD", j, index);
 
-                  // ITALIC
-                  g.setFont(new Font (fontNames[i], Font.ITALIC, j));
-                  checkMetrics (g, fontNames[i], "ITALIC", j, index);
+                      index++;
 
-                  index++;
+                      // ITALIC
+                      g.setFont(new Font (fontNames[i], Font.ITALIC, j));
+                      checkMetrics (g, fontNames[i], "ITALIC", j, index);
 
-                  // BOLD + ITALIC
-                  g.setFont(new Font (fontNames[i], Font.BOLD | Font.ITALIC, j));
-                  checkMetrics (g, fontNames[i], "BOLD + ITALIC", j, index);
+                      index++;
 
-                  outputMetrics ("\n", "\n", "\n");
+                      // BOLD + ITALIC
+                      g.setFont(new Font (fontNames[i], Font.BOLD | Font.ITALIC, j));
+                      checkMetrics (g, fontNames[i], "BOLD + ITALIC", j, index);
+
+                      outputMetrics ("\n", "\n", "\n");
+                    }
                 }
+              paintedOnce = true;
             }
     	}
       };
     p.setBackground(Color.blue);
-    Robot r = harness.createRobot ();
 
     f.setSize(300, 100);
     f.add(p);
     
     f.show();
 
-    r.delay (3000);
+    while (!paintedOnce)
+      {
+	try
+	  {
+	    java.lang.Thread.sleep (2000);
+	  }
+	catch (java.lang.InterruptedException e)
+	  {
+          }
+      }
 
     if (GENERATE_METRICS_DATA)
       {
@@ -1808,14 +1822,18 @@ public class TestLogicalFontMetrics implements Testlet
 
     int ascent = f.getAscent();
     if (ascent < ascents[index] - TOLERANCE || ascent > ascents[index] + TOLERANCE)
-      harness.fail ("ascent: " + name + " " + style + " " + size);
+      harness.fail ("ascent: " + name + " " + style + " " + size
+                    + " expected: " + ascents[index] + " got: " + ascent);
 
     int descent = f.getDescent();
     if (descent < descents[index] - TOLERANCE || descent > descents[index] + TOLERANCE)
-      harness.fail ("descent: " + name + " " + style + " " + size);
+      harness.fail ("descent: " + name + " " + style + " " + size
+                    + " expected: " + descents[index] + " got: " + descent);
 
+    int leading = f.getLeading();
     // Leading is always 0.
-    if (f.getLeading() != 0)
-      harness.fail ("leading: " + name + " " + style + " " + size);
+    if (leading != 0)
+      harness.fail ("leading: " + name + " " + style + " " + size
+                    + " expected: 0 got: " + leading);
   }
 }

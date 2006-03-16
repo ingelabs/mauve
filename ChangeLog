@@ -2,6 +2,7 @@
 
 	* gnu/testlet/java/awt/FontMetrics/TestLogicalFontMetrics.java:
 	New test.
+	Remove timer to ensure all tests are run.
 
 	* gnu/testlet/java/awt/FileDialog/TestGraphics.java: New test.
 
