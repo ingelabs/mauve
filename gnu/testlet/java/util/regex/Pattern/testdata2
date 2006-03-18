@@ -1,28 +1,3 @@
-/^(?=ab(de))(abd)(e)/
-    abde
- 0: abde
- 1: de
- 2: abd
- 3: e
-
-/^(?=(ab(cd)))(ab)/
-    abcd
- 0: ab
- 1: abcd
- 2: cd
- 3: ab
-
-/(?<=(foo)a)bar/
-    fooabar
- 0: bar
- 1: foo
-    *** Failers
-No match
-    bar
-No match
-    foobbar
-No match
-
 /\Aabc\z/m
     abc
  0: abc
@@ -57,20 +32,6 @@ No match
     *** Failers
 No match
     abcdef
-No match
-
-/(?<=(foo))bar\1/
-    foobarfoo
- 0: barfoo
- 1: foo
-    foobarfootling
- 0: barfoo
- 1: foo
-    *** Failers
-No match
-    foobar
-No match
-    barfoo
 No match
 
 /^(a\1?){4}$/
@@ -122,44 +83,15 @@ No match
     aaaaaaaaaaa
 No match
 
-/^(?:b|a(?=(.)))*\1/
-    abc
- 0: ab
- 1: b
-
-/(?=(a+?))(\1ab)/
-    aaab
- 0: aab
- 1: a
- 2: aab
-
 /$(?<=^(a))/
     a
  0: 
  1: a
 
-/(?=(a+?))(\1ab)/
-    aaab
- 0: aab
- 1: a
- 2: aab
-
 /b\z/
     a\nb
  0: b
     *** Failers
-No match
-
-/(?>.*)(?<=(abcd|wxyz))/
-    alphabetabcd
- 0: alphabetabcd
- 1: abcd
-    endingwxyz
- 0: endingwxyz
- 1: wxyz
-    *** Failers
-No match
-    a rather long string that doesn't end with one of them
 No match
 
 /\Gabc/

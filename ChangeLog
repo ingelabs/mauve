@@ -1,3 +1,9 @@
+2006-03-18  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/util/regex/Pattern/testdata1,
+	gnu/testlet/java/util/regex/Pattern/testdata2:
+	Moved some cases from testdata2 to testdata1.
+
 2006-03-17  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/security/BasicPermission/newPermission.java:
