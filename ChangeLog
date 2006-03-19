@@ -1,3 +1,7 @@
+2006-03-19  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/awt/font/NumericShaper/Basic.java: New file.
+
 2006-03-19  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/layout.java:
