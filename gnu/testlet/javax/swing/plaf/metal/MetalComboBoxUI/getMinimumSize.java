@@ -31,7 +31,6 @@ import java.awt.Insets;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.metal.DefaultMetalTheme;
@@ -76,25 +75,34 @@ public class getMinimumSize implements Testlet
     MyMetalComboBoxUI ui = new MyMetalComboBoxUI();
     cb.setUI(ui);
     Insets insets = ui.getArrowButton().getInsets();
-    int additionalWidth = insets.left + insets.right + 2;
-    int additionalHeight = insets.top + insets.bottom + 2;
-    FontMetrics fm = cb.getFontMetrics(cb.getFont());
-    
-    // the following width calculation is a guess.  We know the value
-    // depends on the font size, and that it is relatively small, so after
-    // trying out a few candidates this one seems to give the right result
-    int width = fm.charWidth(' ') + additionalWidth + 1 + fm.getHeight();
-    int height = fm.getHeight() + additionalHeight;
+    Insets comboInsets = cb.getInsets();
+    MetalComboBoxButton b = (MetalComboBoxButton) ui.getArrowButton();
+    Dimension displaySize = ui.getDisplaySize();
+    int width = displaySize.width + insets.left + 2 * insets.right
+                + comboInsets.left + comboInsets.right
+                + b.getComboIcon().getIconWidth();
+    int height = displaySize.height + comboInsets.top + comboInsets.bottom
+                 + insets.top + insets.bottom;
     harness.check(ui.getMinimumSize(cb), new Dimension(width, height));
                    // the width is the display width plus the button width and
                    // the button width is equal to 'height'
     
     cb.setModel(new DefaultComboBoxModel(new Object[] {"X"}));
-    width = fm.charWidth('X') + additionalWidth + 1 + fm.getHeight();
+    displaySize = ui.getDisplaySize();
+    width = displaySize.width + insets.left + 2 * insets.right
+                + comboInsets.left + comboInsets.right
+                + b.getComboIcon().getIconWidth();
+    height = displaySize.height + comboInsets.top + comboInsets.bottom
+             + insets.top + insets.bottom;
     harness.check(ui.getMinimumSize(cb), new Dimension(width, height));
     
     cb.setPrototypeDisplayValue("XX");    
-    width = fm.stringWidth("XX") + additionalWidth + 1 + fm.getHeight();
+    displaySize = ui.getDisplaySize();
+    width = displaySize.width + insets.left + 2 * insets.right
+                + comboInsets.left + comboInsets.right
+                + b.getComboIcon().getIconWidth();
+    height = displaySize.height + comboInsets.top + comboInsets.bottom
+             + insets.top + insets.bottom;
     harness.check(ui.getMinimumSize(cb), new Dimension(width, height));
   }
 
@@ -143,36 +151,42 @@ public class getMinimumSize implements Testlet
     JComboBox cb = new JComboBox();
     MyMetalComboBoxUI ui = new MyMetalComboBoxUI();
     cb.setUI(ui);
-    JTextField tf = (JTextField) cb.getEditor().getEditorComponent();
     cb.setEditable(true);
-    Insets tfInsets = tf.getInsets();
-    FontMetrics fm = cb.getFontMetrics(cb.getFont());
-    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 5;
-    int width = fm.stringWidth("m") * tf.getColumns() + tfInsets.left 
-        + tfInsets.right + height + 3; 
-    harness.check(ui.getPreferredSize(cb), new Dimension(width, height));    
+
+    // Check empty ComboBox.
+    Dimension dSize = ui.getDisplaySize();
+    Insets i = cb.getInsets();
+    Insets arrowMargin = ui.getArrowButton().getMargin();
+    int width = dSize.width + i.left + i.right
+                + dSize.height + arrowMargin.left + arrowMargin.right;
+    int height = dSize.height + i.top + i.bottom 
+                              + arrowMargin.top + arrowMargin.bottom;
+    harness.check(ui.getMinimumSize(cb), new Dimension(width, height));
+
+    // Check ComboBox with one element.
     cb.setModel(new DefaultComboBoxModel(new Object[] {"X"}));
-    harness.check(ui.getPreferredSize(cb), new Dimension(width, height));        
+    harness.check(ui.getMinimumSize(cb), new Dimension(width, height));        
     cb.setPrototypeDisplayValue("XX");    
-    harness.check(ui.getPreferredSize(cb), new Dimension(width, height));
+    harness.check(ui.getMinimumSize(cb), new Dimension(width, height));
     
     // repeat the tests with a different font
     JComboBox cb2 = new JComboBox();
     MyMetalComboBoxUI ui2 = new MyMetalComboBoxUI();
     cb2.setUI(ui2);
-    JTextField tf2 = (JTextField) cb2.getEditor().getEditorComponent();
     cb2.setEditable(true);
-    Insets tfInsets2 = tf2.getInsets();
     cb2.setFont(new Font("Dialog", Font.PLAIN, 24));
-    FontMetrics fm2 = cb2.getFontMetrics(cb2.getFont());
-    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 5;
-    int width2 = fm2.stringWidth("m") * tf2.getColumns() + tfInsets2.left 
-        + tfInsets2.right + height2 + 3; 
-    harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));    
+    dSize = ui2.getDisplaySize();
+    i = cb2.getInsets();
+    arrowMargin = ui2.getArrowButton().getMargin();
+    width = dSize.width + i.left + i.right
+            + dSize.height + arrowMargin.left + arrowMargin.right;
+    height = dSize.height + i.top + i.bottom 
+             + arrowMargin.top + arrowMargin.bottom;
+    harness.check(ui2.getMinimumSize(cb2), new Dimension(width, height));    
     cb2.setModel(new DefaultComboBoxModel(new Object[] {"X"}));
-    harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));        
+    harness.check(ui2.getMinimumSize(cb2), new Dimension(width, height));        
     cb2.setPrototypeDisplayValue("XX");    
-    harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));
+    harness.check(ui2.getMinimumSize(cb2), new Dimension(width, height));
   }
 
   /**
@@ -187,13 +201,14 @@ public class getMinimumSize implements Testlet
     cb.setFont(new Font("Dialog", Font.PLAIN, 24));
     MyMetalComboBoxUI ui = new MyMetalComboBoxUI();
     cb.setUI(ui);
-    JTextField tf = (JTextField) cb.getEditor().getEditorComponent();
     cb.setEditable(true);
-    Insets tfInsets = tf.getInsets();
-    FontMetrics fm = cb.getFontMetrics(cb.getFont());
-    int height = fm.getHeight() + tfInsets.top + tfInsets.bottom + 5;
-    int width = fm.stringWidth("m") * tf.getColumns() + tfInsets.left 
-        + tfInsets.right + height + 3; 
+    Dimension dSize = ui.getDisplaySize();
+    Insets i = cb.getInsets();
+    Insets arrowMargin = ui.getArrowButton().getMargin();
+    int width = dSize.width + i.left + i.right
+                + dSize.height + arrowMargin.left + arrowMargin.right;
+    int height = dSize.height + i.top + i.bottom 
+                              + arrowMargin.top + arrowMargin.bottom;
     harness.check(ui.getPreferredSize(cb), new Dimension(width, height));    
     cb.setModel(new DefaultComboBoxModel(new Object[] {"X"}));
     harness.check(ui.getPreferredSize(cb), new Dimension(width, height));        
@@ -204,19 +219,20 @@ public class getMinimumSize implements Testlet
     JComboBox cb2 = new JComboBox();
     MyMetalComboBoxUI ui2 = new MyMetalComboBoxUI();
     cb2.setUI(ui2);
-    JTextField tf2 = (JTextField) cb2.getEditor().getEditorComponent();
     cb2.setEditable(true);
-    Insets tfInsets2 = tf2.getInsets();
     cb2.setFont(new Font("Dialog", Font.PLAIN, 24));
-    FontMetrics fm2 = cb2.getFontMetrics(cb2.getFont());
-    int height2 = fm2.getHeight() + tfInsets2.top + tfInsets2.bottom + 5;
-    int width2 = fm2.stringWidth("m") * tf2.getColumns() + tfInsets2.left 
-        + tfInsets2.right + height2 + 3; 
-    harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));    
+    dSize = ui2.getDisplaySize();
+    i = cb2.getInsets();
+    arrowMargin = ui2.getArrowButton().getMargin();
+    width = dSize.width + i.left + i.right
+            + dSize.height + arrowMargin.left + arrowMargin.right;
+    height = dSize.height + i.top + i.bottom 
+             + arrowMargin.top + arrowMargin.bottom;
+    harness.check(ui2.getPreferredSize(cb2), new Dimension(width, height));    
     cb2.setModel(new DefaultComboBoxModel(new Object[] {"X"}));
-    harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));        
+    harness.check(ui2.getPreferredSize(cb2), new Dimension(width, height));        
     cb2.setPrototypeDisplayValue("XX");    
-    harness.check(ui2.getPreferredSize(cb2), new Dimension(width2, height2));
+    harness.check(ui2.getPreferredSize(cb2), new Dimension(width, height));
   }
 
 }

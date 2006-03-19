@@ -68,8 +68,8 @@ public class layout implements Testlet
     JTextField tf = (JTextField) cb.getEditor().getEditorComponent();
     Font font = cb.getFont();
     FontMetrics fm = cb.getFontMetrics(font);
-    int height = fm.getHeight() + 2;
-    int width = fm.stringWidth("m") * tf.getColumns() + 1; 
+    int height = cb.getHeight();
+    int width = fm.stringWidth("m") * tf.getColumns() + 1;
     harness.check(tf.getBounds(), new Rectangle(0, 0, width, height));
     // restore a sane look and feel
     try
