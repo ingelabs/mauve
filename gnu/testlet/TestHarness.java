@@ -22,8 +22,6 @@
 package gnu.testlet;
 
 import java.awt.AWTException;
-import java.awt.Color;
-import java.awt.Rectangle;
 import java.awt.Robot;
 
 import java.io.File;
@@ -52,127 +50,131 @@ public abstract class TestHarness
    * @param result  the actual result.
    * @param expected  the expected result.
    */
-  public void check (Object result, Object expected)
-    {
-      boolean ok = (result == null
-		    ? expected == null
-		    : result.equals(expected));
-      check (ok);
-      // This debug message may be misleading, depending on whether
-      // string conversion produces same results for unequal objects.
-      if (! ok)
-	debug ("got " + result + " but expected " + expected);
-    }
+  public void check(Object result, Object expected)
+  {
+    boolean ok = (result == null ? expected == null : result.equals(expected));
+    check(ok);
+    // This debug message may be misleading, depending on whether
+    // string conversion produces same results for unequal objects.
+    if (! ok)
+      debug("got " + result + " but expected " + expected);
+  }
 
   /**
    * Checks two booleans for equality and records the result of the check.
-   *
-   * @param result  the actual result.
-   * @param expected  the expected result.
+   * 
+   * @param result the actual result.
+   * @param expected the expected result.
    */
-  public void check (boolean result, boolean expected)
-    {
-      boolean ok = (result == expected);
-      check (ok);
-      if (! ok)
-	debug ("got " + result + " but expected " + expected);
-    }
+  public void check(boolean result, boolean expected)
+  {
+    boolean ok = (result == expected);
+    check(ok);
+    if (! ok)
+      debug("got " + result + " but expected " + expected);
+  }
 
   /**
    * Checks two ints for equality and records the result of the check.
-   *
-   * @param result  the actual result.
-   * @param expected  the expected result.
+   * 
+   * @param result the actual result.
+   * @param expected the expected result.
    */
-  public void check (int result, int expected)
-    {
-      boolean ok = (result == expected);
-      check (ok);
-      if (! ok)
-	debug ("got " + result + " but expected " + expected);
-    }
+  public void check(int result, int expected)
+  {
+    boolean ok = (result == expected);
+    check(ok);
+    if (! ok)
+      debug("got " + result + " but expected " + expected);
+  }
 
   /**
    * Checks two longs for equality and records the result of the check.
-   *
-   * @param result  the actual result.
-   * @param expected  the expected result.
+   * 
+   * @param result the actual result.
+   * @param expected the expected result.
    */
-  public void check (long result, long expected)
-    {
-      boolean ok = (result == expected);
-      check (ok);
-      if (! ok)
-	debug ("got " + result + " but expected " + expected);
-    }
+  public void check(long result, long expected)
+  {
+    boolean ok = (result == expected);
+    check(ok);
+    if (! ok)
+      debug("got " + result + " but expected " + expected);
+  }
 
   /**
    * Checks two doubles for equality and records the result of the check.
-   *
-   * @param result  the actual result.
-   * @param expected  the expected result.
+   * 
+   * @param result the actual result.
+   * @param expected the expected result.
    */
-  public void check (double result, double expected)
-    {
-      // This triple check overcomes the fact that == does not
-      // compare NaNs, and cannot tell between 0.0 and -0.0;
-      // and all without relying on java.lang.Double (which may
-      // itself be buggy - else why would we be testing it? ;)
-      // For 0, we switch to infinities, and for NaN, we rely
-      // on the identity in JLS 15.21.1 that NaN != NaN is true.
-      boolean ok = (result == expected
-		    ? (result != 0) || (1/result == 1/expected)
-		    : (result != result) && (expected != expected));
-      check (ok);
-      if (! ok)
-	// If Double.toString() is buggy, this debug statement may
-	// accidentally show the same string for two different doubles!
-	debug ("got " + result + " but expected " + expected);
-    }
+  public void check(double result, double expected)
+  {
+    // This triple check overcomes the fact that == does not
+    // compare NaNs, and cannot tell between 0.0 and -0.0;
+    // and all without relying on java.lang.Double (which may
+    // itself be buggy - else why would we be testing it? ;)
+    // For 0, we switch to infinities, and for NaN, we rely
+    // on the identity in JLS 15.21.1 that NaN != NaN is true.
+    boolean ok = (result == expected ? (result != 0)
+                                       || (1 / result == 1 / expected)
+                                    : (result != result)
+                                      && (expected != expected));
+    check(ok);
+    if (! ok)
+      // If Double.toString() is buggy, this debug statement may
+      // accidentally show the same string for two different doubles!
+      debug("got " + result + " but expected " + expected);
+  }
 
   // These methods are like the above, but checkpoint first.
-  public void check (boolean result, String name)
-    {
-      checkPoint (name);
-      check (result);
-    }
-  public void check (Object result, Object expected, String name)
-    {
-      checkPoint (name);
-      check (result, expected);
-    }
-  public void check (boolean result, boolean expected, String name)
-    {
-      checkPoint (name);
-      check (result, expected);
-    }
-  public void check (int result, int expected, String name)
-    {
-      checkPoint (name);
-      check (result, expected);
-    }
-  public void check (long result, long expected, String name)
-    {
-      checkPoint (name);
-      check (result, expected);
-    }
-  public void check (double result, double expected, String name)
-    {
-      checkPoint (name);
-      check (result, expected);
-    }
+  public void check(boolean result, String name)
+  {
+    checkPoint(name);
+    check(result);
+  }
 
-  public Robot createRobot ()
+  public void check(Object result, Object expected, String name)
+  {
+    checkPoint(name);
+    check(result, expected);
+  }
+
+  public void check(boolean result, boolean expected, String name)
+  {
+    checkPoint(name);
+    check(result, expected);
+  }
+
+  public void check(int result, int expected, String name)
+  {
+    checkPoint(name);
+    check(result, expected);
+  }
+
+  public void check(long result, long expected, String name)
+  {
+    checkPoint(name);
+    check(result, expected);
+  }
+
+  public void check(double result, double expected, String name)
+  {
+    checkPoint(name);
+    check(result, expected);
+  }
+
+  public Robot createRobot()
   {
     Robot r = null;
 
     try
       {
-	r = new Robot ();
+        r = new Robot();
       }
     catch (AWTException e)
       {
-	fail ("TestHarness: couldn't create Robot: " + e.getMessage ());
+        fail("TestHarness: couldn't create Robot: " + e.getMessage());
       }
 
     return r;
@@ -184,13 +186,13 @@ public abstract class TestHarness
    *
    * @param name  the checkpoint name.
    */
-  public void fail (String name)
-    {
-      checkPoint (name);
-      check (false);
-    }
+  public void fail(String name)
+  {
+    checkPoint(name);
+    check(false);
+  }
   
-  // Given a resource name, return a Reader on it.  Resource names are
+  // Given a resource name, return a Reader on it. Resource names are
   // just like file names.  They are relative to the top level Mauve
   // directory, but '#' characters are used in place of directory
   // separators.

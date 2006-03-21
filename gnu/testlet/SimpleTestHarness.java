@@ -29,150 +29,162 @@ import java.io.*;
 import java.util.Vector;
 
 public class SimpleTestHarness
-  extends TestHarness
+    extends TestHarness
 {
   private int count = 0;
+
   private int failures = 0;
+
   private static Vector expected_xfails = new Vector();
+
   private int xfailures = 0;
+
   private int xpasses = 0;
+
   private int total = 0;
+
   private boolean verbose = false;
+
   private boolean debug = false;
-  private boolean results_only=false;
-  private boolean exceptions=false;
+
+  private boolean results_only = false;
+
+  private boolean exceptions = false;
+
   private String description;
+
   private String last_check;
+
   private TestReport report = null;
+
   private TestResult currentResult = null;
 
-  private final String getDescription (String pf)
+  private final String getDescription(String pf)
   {
-    return (pf + ": " + description +
-	    ((last_check == null) ? "" : (": " + last_check)) +
-	    " (number " + (count + 1) + ")");
+    return (pf + ": " + description
+            + ((last_check == null) ? "" : (": " + last_check)) + " (number "
+            + (count + 1) + ")");
   }
-  
 
-  protected int getFailures() {
+  protected int getFailures()
+  {
     return failures;
   }
 
-  public void check (boolean result)
+  public void check(boolean result)
   {
-    if (!result)
+    if (! result)
       {
-	String desc;
-	currentResult.addFail((last_check == null ? "" : last_check) +
-		" (number " + (count + 1) + ")");
-	if (!expected_xfails.contains(desc = getDescription("FAIL")))
-	  {
-	    System.out.println(desc);
-	    ++failures;
-	  }
-	else if (verbose || results_only)
-	  {
-	    System.out.println("X" + desc);
-	    ++xfailures;
-	  }
+        String desc;
+        currentResult.addFail((last_check == null ? "" : last_check)
+                              + " (number " + (count + 1) + ")");
+        if (! expected_xfails.contains(desc = getDescription("FAIL")))
+          {
+            System.out.println(desc);
+            ++failures;
+          }
+        else if (verbose || results_only)
+          {
+            System.out.println("X" + desc);
+            ++xfailures;
+          }
       }
     else
       {
-	currentResult.addPass();
+        currentResult.addPass();
         if (verbose || results_only)
-	  {
-	    if (expected_xfails.contains(getDescription("FAIL")))
-	      {
-		System.out.println(getDescription("XPASS"));
-		++xpasses;
-	      }
-	    else
-	      {
-		System.out.println(getDescription("PASS"));
-	      }
+          {
+            if (expected_xfails.contains(getDescription("FAIL")))
+              {
+                System.out.println(getDescription("XPASS"));
+                ++xpasses;
+              }
+            else
+              {
+                System.out.println(getDescription("PASS"));
+              }
           }
       }
     ++count;
     ++total;
   }
 
-  public Reader getResourceReader (String name)
-    throws ResourceNotFoundException
+  public Reader getResourceReader(String name) throws ResourceNotFoundException
   {
     return new BufferedReader(new InputStreamReader(getResourceStream(name)));
   }
-  
-  public InputStream getResourceStream (String name)
-    throws ResourceNotFoundException
+
+  public InputStream getResourceStream(String name)
+      throws ResourceNotFoundException
   {
     // The following code assumes File.separator is a single character.
     if (File.separator.length() > 1)
-      throw new Error ("File.separator length is greater than 1");
+      throw new Error("File.separator length is greater than 1");
     String realName = name.replace('#', File.separator.charAt(0));
     try
       {
-	return new FileInputStream(getSourceDirectory() +
-				   File.separator + realName);
+        return new FileInputStream(getSourceDirectory() + File.separator
+                                   + realName);
       }
     catch (FileNotFoundException ex)
       {
-	throw new ResourceNotFoundException(ex.getLocalizedMessage() +
-					    ": " + getSourceDirectory() +
-					    File.separator + realName);
+        throw new ResourceNotFoundException(ex.getLocalizedMessage() + ": "
+                                            + getSourceDirectory()
+                                            + File.separator + realName);
       }
   }
-  
-  public File getResourceFile (String name) throws ResourceNotFoundException
+
+  public File getResourceFile(String name) throws ResourceNotFoundException
   {
     // The following code assumes File.separator is a single character.
-    if (File.separator.length () > 1)
-      throw new Error ("File.separator length is greater than 1");
-    String realName = name.replace ('#', File.separator.charAt (0));
+    if (File.separator.length() > 1)
+      throw new Error("File.separator length is greater than 1");
+    String realName = name.replace('#', File.separator.charAt(0));
     File f = new File(getSourceDirectory() + File.separator + realName);
-    if (!f.exists())
+    if (! f.exists())
       {
-	throw new ResourceNotFoundException("cannot find mauve resource file" +
-					    ": " + getSourceDirectory() +
-					    File.separator + realName);
+        throw new ResourceNotFoundException("cannot find mauve resource file"
+                                            + ": " + getSourceDirectory()
+                                            + File.separator + realName);
       }
     return f;
   }
-  
-  public void checkPoint (String name)
+
+  public void checkPoint(String name)
   {
     last_check = name;
     count = 0;
   }
-  
-  public void verbose (String message)
+
+  public void verbose(String message)
   {
     if (verbose)
       System.out.println(message);
   }
-  
-  public void debug (String message)
+
+  public void debug(String message)
   {
     debug(message, true);
   }
-  
-  public void debug (String message, boolean newline)
+
+  public void debug(String message, boolean newline)
   {
     if (debug)
       {
-	if (newline)
-	  System.out.println(message);
-	else
-	  System.out.print(message);
+        if (newline)
+          System.out.println(message);
+        else
+          System.out.print(message);
       }
   }
-  
-  public void debug (Throwable ex)
+
+  public void debug(Throwable ex)
   {
     if (debug)
       ex.printStackTrace(System.out);
   }
-  
-  public void debug (Object[] o, String desc)
+
+  public void debug(Object[] o, String desc)
   {
     debug("Dumping Object Array: " + desc);
     if (o == null)
@@ -181,12 +193,13 @@ public class SimpleTestHarness
         return;
       }
 
-    for (int i = 0; i < o.length; i++) {
-      if (o[i] instanceof Object[])
-        debug((Object[]) o[i], desc + " element " + i);
-      else
-        debug("  Element " + i + ": " + o[i]);
-    }
+    for (int i = 0; i < o.length; i++)
+      {
+        if (o[i] instanceof Object[])
+          debug((Object[]) o[i], desc + " element " + i);
+        else
+          debug("  Element " + i + ": " + o[i]);
+      }
   }
 
   private void removeSecurityManager()
@@ -194,130 +207,131 @@ public class SimpleTestHarness
     SecurityManager m = System.getSecurityManager();
     if (m instanceof TestSecurityManager)
       {
-	TestSecurityManager tsm = (TestSecurityManager) m;
-	tsm.setRunChecks(false);
-	System.setSecurityManager(null);
+        TestSecurityManager tsm = (TestSecurityManager) m;
+        tsm.setRunChecks(false);
+        System.setSecurityManager(null);
       }
   }
-  
-  protected void runtest (String name)
+
+  protected void runtest(String name)
   {
     // Try to ensure we start off with a reasonably clean slate.
     System.gc();
     System.runFinalization();
 
     currentResult = new TestResult(name);
-    
+
     checkPoint(null);
-    
+
     Testlet t = null;
     try
       {
-	Class k = Class.forName(name);
-	
-	Object o = k.newInstance();
-	if (!(o instanceof Testlet))
-	  return;
-	
-	t = (Testlet) o;
+        Class k = Class.forName(name);
+
+        Object o = k.newInstance();
+        if (! (o instanceof Testlet))
+          return;
+
+        t = (Testlet) o;
       }
     catch (Throwable ex)
       {
-	String d = "FAIL: uncaught exception loading " + name;
-	currentResult.addException(ex, "failed loading class " + name);
-	if (verbose || exceptions)
-	  d += ": " + ex.toString();
-	System.out.println(d);
-	if (exceptions)
-	  ex.printStackTrace(System.out);
-	debug(ex);
-	if (ex instanceof InstantiationException ||
-	    ex instanceof IllegalAccessException)
-	  debug("Hint: is the code we just loaded a public non-abstract " +
-		"class with a public nullary constructor???");
-	++failures;
-	++total;
+        String d = "FAIL: uncaught exception loading " + name;
+        currentResult.addException(ex, "failed loading class " + name);
+        if (verbose || exceptions)
+          d += ": " + ex.toString();
+        System.out.println(d);
+        if (exceptions)
+          ex.printStackTrace(System.out);
+        debug(ex);
+        if (ex instanceof InstantiationException
+            || ex instanceof IllegalAccessException)
+          debug("Hint: is the code we just loaded a public non-abstract "
+                + "class with a public nullary constructor???");
+        ++failures;
+        ++total;
       }
-    
+
     if (t != null)
       {
-	description = name;
-	try
-	  {
-	    t.test (this);
-	    removeSecurityManager();
-	  }
-	catch (Throwable ex)
-	  {
-	    removeSecurityManager();
-            String s = (last_check == null ? "" : " at \"" + last_check +
-                    "\" number " + (count + 1));
-	    String d = "FAIL: " + description + ": uncaught exception" + s;
-	    currentResult.addException(ex, "uncaught exception" + s);
-	    if (verbose || exceptions)
-	      d += ": " + ex.toString();
-	    System.out.println(d);
-	    if (exceptions)
-	      ex.printStackTrace(System.out);
-	    debug(ex);
-	    ++failures;
-	    ++total;
-	  }
+        description = name;
+        try
+          {
+            t.test(this);
+            removeSecurityManager();
+          }
+        catch (Throwable ex)
+          {
+            removeSecurityManager();
+            String s = (last_check == null ? "" : " at \"" + last_check
+                                                  + "\" number " + (count + 1));
+            String d = "FAIL: " + description + ": uncaught exception" + s;
+            currentResult.addException(ex, "uncaught exception" + s);
+            if (verbose || exceptions)
+              d += ": " + ex.toString();
+            System.out.println(d);
+            if (exceptions)
+              ex.printStackTrace(System.out);
+            debug(ex);
+            ++failures;
+            ++total;
+          }
       }
     if (report != null)
       report.addTestResult(currentResult);
   }
-  
-  protected int done ()
+
+  protected int done()
   {
-    if (!results_only)
+    if (! results_only)
       {
-	System.out.println(failures + " of " + total + " tests failed");
-	if (xpasses > 0)
-	  System.out.println(xpasses + " of " + total +
-			     " tests unexpectedly passed");
-	if (xfailures > 0)
-	  System.out.println(xfailures + " of " + total +
-			     " tests expectedly failed");
+        System.out.println(failures + " of " + total + " tests failed");
+        if (xpasses > 0)
+          System.out.println(xpasses + " of " + total
+                             + " tests unexpectedly passed");
+        if (xfailures > 0)
+          System.out.println(xfailures + " of " + total
+                             + " tests expectedly failed");
       }
     return failures > 0 ? 1 : 0;
-    
+
   }
-  
-  protected SimpleTestHarness (boolean verbose, boolean debug)
+
+  protected SimpleTestHarness(boolean verbose, boolean debug)
   {
     this(verbose, debug, false, false, null);
   }
-  
-  protected SimpleTestHarness (boolean verbose, boolean debug,
-		               boolean results_only, boolean exceptions,
-			       TestReport report)
+
+  protected SimpleTestHarness(boolean verbose, boolean debug,
+                              boolean results_only, boolean exceptions,
+                              TestReport report)
   {
     this.verbose = verbose;
     this.debug = debug;
     this.results_only = results_only;
     this.exceptions = exceptions;
     this.report = report;
-    
+
     try
       {
-	BufferedReader xfile = new BufferedReader(new FileReader("xfails"));
-	String str;
-	while ((str = xfile.readLine()) != null) {
-	  expected_xfails.addElement(str);
-	}
+        BufferedReader xfile = new BufferedReader(new FileReader("xfails"));
+        String str;
+        while ((str = xfile.readLine()) != null)
+          {
+            expected_xfails.addElement(str);
+          }
       }
     catch (FileNotFoundException ex)
       {
-	// Nothing.
+        // Nothing.
       }
     catch (IOException ex)
       {
-	// Nothing.
+        // Nothing.
       }
   }
-  
-  public static void main (String[] args)
+
+  public static void main(String[] args)
   {
     boolean verbose = false;
     boolean debug = false;
@@ -327,42 +341,45 @@ public class SimpleTestHarness
     String xmlfile = null;
     TestReport report = null;
     int i;
-    
+
     for (i = 0; i < args.length; i++)
       {
-	if (args[i].equals("-verbose"))
-	  verbose = true;
-	else if (args[i].equals("-debug"))
-	  debug = true;
-	else if (args[i].equals("-resultsonly"))
-	  {
-	    results_only = true;
-	    verbose = false;
-	    debug = false;
-	  }
-	else if (args[i].equals("-exceptions"))
-	  exceptions = true;
-	else if (args[i].equalsIgnoreCase("-file")) {
-	  if (++i >= args.length) 
-	    throw new RuntimeException("No file path after '-file'.  Exit");
-          file = args[i];
-	}
-	else if (args[i].equals("-xmlout"))
-	  {
-	    if (++i >= args.length)
-	      throw new RuntimeException("No file path after '-xmlout'.");
-	    xmlfile = args[i];
+        if (args[i].equals("-verbose"))
+          verbose = true;
+        else if (args[i].equals("-debug"))
+          debug = true;
+        else if (args[i].equals("-resultsonly"))
+          {
+            results_only = true;
+            verbose = false;
+            debug = false;
           }
-	else
-	  break;
+        else if (args[i].equals("-exceptions"))
+          exceptions = true;
+        else if (args[i].equalsIgnoreCase("-file"))
+          {
+            if (++i >= args.length)
+              throw new RuntimeException("No file path after '-file'.  Exit");
+            file = args[i];
+          }
+        else if (args[i].equals("-xmlout"))
+          {
+            if (++i >= args.length)
+              throw new RuntimeException("No file path after '-xmlout'.");
+            xmlfile = args[i];
+          }
+        else
+          break;
       }
-    if (xmlfile != null) {
-      report = new TestReport(System.getProperties());
-    }
-    
-    SimpleTestHarness harness =
-      new SimpleTestHarness(verbose, debug, results_only, exceptions, report);
-    
+    if (xmlfile != null)
+      {
+        report = new TestReport(System.getProperties());
+      }
+
+    SimpleTestHarness harness = new SimpleTestHarness(verbose, debug,
+                                                      results_only, exceptions,
+                                                      report);
+
     BufferedReader r = null;
     if (file != null)
       try
@@ -378,38 +395,38 @@ public class SimpleTestHarness
 
     while (true)
       {
-	String cname = null;
-	try
-	  {
-	    cname = r.readLine();
-	    if (cname == null)
-	      break;
-	    if (verbose)
-	      System.out.println(cname);
-	  }
-	catch (IOException x)
-	  {
-	    // Nothing.
-	  }
-	if (verbose)
-	  System.out.println("----");
-	harness.runtest(cname);
+        String cname = null;
+        try
+          {
+            cname = r.readLine();
+            if (cname == null)
+              break;
+            if (verbose)
+              System.out.println(cname);
+          }
+        catch (IOException x)
+          {
+            // Nothing.
+          }
+        if (verbose)
+          System.out.println("----");
+        harness.runtest(cname);
       }
 
     int retval = harness.done();
-    
+
     if (report != null)
       {
-	File f = new File(xmlfile);
-	try
-	  {
-	    report.writeXml(f);
-	  }
-	catch (IOException e)
-	  {
-	    throw new Error("Failed to write data to xml file: " + 
-		    e.getMessage());
-	  }
+        File f = new File(xmlfile);
+        try
+          {
+            report.writeXml(f);
+          }
+        catch (IOException e)
+          {
+            throw new Error("Failed to write data to xml file: "
+                            + e.getMessage());
+          }
       }
     System.exit(retval);
   }

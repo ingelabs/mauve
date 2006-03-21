@@ -62,45 +62,44 @@ public class TestReport
    *
    * @param f the file where the xml stream gets written
    */
-  public void writeXml(File f)
-    throws IOException
+  public void writeXml(File f) throws IOException
   {
     Writer out = new OutputStreamWriter(new FileOutputStream(f), ENCODING);
     out.write("<?xml version='1.0' encoding='" + ENCODING + "'?>\n");
-    out.write("<testreport version='0.1'>\n  <jvm name='" +
-	    escAttrib(systemProperties.get("java.vm.vendor")) +
-	    "'\n    version='" +
-	    escAttrib(systemProperties.get("java.vm.version")) + "' \n" +
-	    "    os='" + escAttrib(systemProperties.get("os.name")) + " " +
-	    escAttrib(systemProperties.get("os.version")) + " " +
-	    escAttrib(systemProperties.get("os.arch")) + "' />\n");
+    out.write("<testreport version='0.1'>\n  <jvm name='"
+              + escAttrib(systemProperties.get("java.vm.vendor"))
+              + "'\n    version='"
+              + escAttrib(systemProperties.get("java.vm.version")) + "' \n"
+              + "    os='" + escAttrib(systemProperties.get("os.name")) + " "
+              + escAttrib(systemProperties.get("os.version")) + " "
+              + escAttrib(systemProperties.get("os.arch")) + "' />\n");
     Collections.sort(testResults);
     Iterator results = testResults.iterator();
     while (results.hasNext())
       {
-	TestResult tr = (TestResult) results.next();
-	String[] failures = tr.getFailMessags();
-	out.write("  <testresult testlet='" + escAttrib(tr.getTestletName()) +
-		 "' passcount='" + tr.getPassCount());
-	if (failures.length > 0 || tr.getException() != null)
-	  out.write("'>\n");
-	else 
-	  out.write("'/>\n");
+        TestResult tr = (TestResult) results.next();
+        String[] failures = tr.getFailMessags();
+        out.write("  <testresult testlet='" + escAttrib(tr.getTestletName())
+                  + "' passcount='" + tr.getPassCount());
+        if (failures.length > 0 || tr.getException() != null)
+          out.write("'>\n");
+        else
+          out.write("'/>\n");
 
-	for (int i = 0; i < failures.length; i++)
-	  out.write("    <failure>" + esc(failures[i]) + "</failure>\n");
+        for (int i = 0; i < failures.length; i++)
+          out.write("    <failure>" + esc(failures[i]) + "</failure>\n");
 
-	if (tr.getException() != null)
-	  {
-	    Throwable t = tr.getException();
-	    out.write("    <exception class='" +
-                    escAttrib(t.getClass().getName()) +
-		    "'>\n      <reason>" + esc(tr.getExceptionMessage()) +
-		    "</reason>\n      <message>" + esc(t.getMessage()) +
-		    "</message>\n    </exception>\n");
-	  }
-	if (failures.length > 0 || tr.getException() != null) 
-	  out.write("  </testresult>\n");
+        if (tr.getException() != null)
+          {
+            Throwable t = tr.getException();
+            out.write("    <exception class='"
+                      + escAttrib(t.getClass().getName())
+                      + "'>\n      <reason>" + esc(tr.getExceptionMessage())
+                      + "</reason>\n      <message>" + esc(t.getMessage())
+                      + "</message>\n    </exception>\n");
+          }
+        if (failures.length > 0 || tr.getException() != null)
+          out.write("  </testresult>\n");
       }
     out.write("</testreport>\n");
     out.close();

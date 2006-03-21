@@ -1,3 +1,9 @@
+2006-03-21  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/SimpleTestHarness.java: Reformatted.
+	* gnu/testlet/TestHarness.java: Reformatted, removed unused imports.
+	* gnu/testlet/TestReport.java: Reformatted.
+
 2006-03-19  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/awt/font/NumericShaper/Basic.java: New file.
