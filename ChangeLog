@@ -1,5 +1,9 @@
 2006-03-22  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/io/FilePermission/traversal2.java: New test.
+
+2006-03-22  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/io/FilePermission/traversal.java: New test.
 
 2006-03-21  Tom Tromey  <tromey@redhat.com>
