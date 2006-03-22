@@ -1,3 +1,32 @@
+2006-03-22  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-16Bit.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-1Bit.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-24Bit.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-32Bit.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-4Bit.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-8Bit.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-RLE4.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-RLE8.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/outputBitmap.bmp:
+	Added bitmap for test.
+	* gnu/testlet/javax/imageio/ImageIO/ImageIOTest.java:
+	(test): Moved tests to testStringData. Added calls to
+	testReadWrite and testStringData.
+	(testStringData): New function.
+	(testReadWrite): Checks reading and writing of bitmap 
+	images. Compares images to verify they are the same.
+	(checkPixels): Helper used to compare pixels of two
+	images.
+
 2006-03-22  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/io/FilePermission/traversal2.java: New test.
