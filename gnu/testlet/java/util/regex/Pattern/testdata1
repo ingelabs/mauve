@@ -3551,3 +3551,41 @@ No match
     a rather long string that doesn't end with one of them
 No match
 
+/(a (?x)b c)d e/
+    a bcd e
+ 0: a bcd e
+ 1: a bc
+    *** Failers
+No match
+    a b cd e
+No match
+    abcd e
+No match
+    a bcde
+No match
+
+/(a b(?x)c d (?-x)e f)/
+    a bcde f
+ 0: a bcde f
+ 1: a bcde f
+    *** Failers
+No match
+    abcdef
+No match
+
+/a(?x: b c )d/
+    XabcdY
+ 0: abcd
+    *** Failers
+No match
+    Xa b c d Y
+No match
+
+/((?x)x y z | a b c)/
+    XabcY
+ 0: abc
+ 1: abc
+    AxyzB
+ 0: xyz
+ 1: xyz
+
