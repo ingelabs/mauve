@@ -1,3 +1,7 @@
+2006-03-23  Wolfgang Baer  <WBaer@gmx.de>
+
+	* gnu/testlet/java/io/ObjectOutputStream/useProtocolVersion.java: New test. 
+
 2006-03-23  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/util/regex/Pattern/testdata1,
