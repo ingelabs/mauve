@@ -1,3 +1,8 @@
+2006-03-25  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/util/GregorianCalendar/setFirstDayOfWeek.java:
+	New tests.
+
 2006-03-23  Wolfgang Baer  <WBaer@gmx.de>
 
 	* gnu/testlet/java/awt/Window/focusCycleRootTest.java: New test.
