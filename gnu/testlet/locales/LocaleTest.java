@@ -104,10 +104,11 @@ public class LocaleTest
 			   ExpectedValues expected,
 			   ExpectedDateValues expectedDate,
 			   ExpectedNumberValues expectedNumber1,
-			   ExpectedNumberValues expectedNumber2,
+			   ExpectedNumberValues expectedNumberCurrency1,
+			   ExpectedNumberValues expectedNumberCurrency2,
 			   ExpectedNumberValues expectedNumber3,
 			   ExpectedNumberValues expectedNumber4,
-			   ExpectedNumberValues expectedNumber5)
+			   ExpectedNumberValues expectedNumberProcent)
   {
     h.checkPoint("Locale " + locale);
 
@@ -192,15 +193,26 @@ public class LocaleTest
 	h.check(nf.format(10000000.1234d), expectedNumber1.e);
       }
     
-    if (expectedNumber2 != null)
+    if (expectedNumberCurrency1 != null)
       {
 	nf = NumberFormat.getCurrencyInstance(locale);
     
-	h.check(nf.format(1000L), expectedNumber2.a);
-	h.check(nf.format(1000000L), expectedNumber2.b);
-	h.check(nf.format(100d), expectedNumber2.c);
-	h.check(nf.format(100.1234d), expectedNumber2.d);
-	h.check(nf.format(10000000.1234d), expectedNumber2.e);
+	h.check(nf.format(1000L), expectedNumberCurrency1.a);
+	h.check(nf.format(1000000L), expectedNumberCurrency1.b);
+	h.check(nf.format(100d), expectedNumberCurrency1.c);
+	h.check(nf.format(100.1234d), expectedNumberCurrency1.d);
+	h.check(nf.format(10000000.1234d), expectedNumberCurrency1.e);
+      }
+    
+    if (expectedNumberCurrency2 != null)
+      {
+	nf = NumberFormat.getCurrencyInstance(locale);
+    
+	h.check(nf.format(-1000L), expectedNumberCurrency2.a);
+	h.check(nf.format(-1000000L), expectedNumberCurrency2.b);
+	h.check(nf.format(-100d), expectedNumberCurrency2.c);
+	h.check(nf.format(-100.1234d), expectedNumberCurrency2.d);
+	h.check(nf.format(-10000000.1234d), expectedNumberCurrency2.e);
       }
     
     if (expectedNumber3 != null)
@@ -225,15 +237,15 @@ public class LocaleTest
 	h.check(nf.format(10000000.1234d), expectedNumber4.e);
       }
     
-    if (expectedNumber5 != null)
+    if (expectedNumberProcent != null)
       {
 	nf = NumberFormat.getPercentInstance(locale);
     
-	h.check(nf.format(1000L), expectedNumber5.a);
-	h.check(nf.format(1000000L), expectedNumber5.b);
-	h.check(nf.format(100d), expectedNumber5.c);
-	h.check(nf.format(100.1234d), expectedNumber5.d);
-	h.check(nf.format(10000000.1234d), expectedNumber5.e);
+	h.check(nf.format(1000L), expectedNumberProcent.a);
+	h.check(nf.format(1000000L), expectedNumberProcent.b);
+	h.check(nf.format(100d), expectedNumberProcent.c);
+	h.check(nf.format(100.1234d), expectedNumberProcent.d);
+	h.check(nf.format(10000000.1234d), expectedNumberProcent.e);
       }
     
     // Currencies
@@ -276,6 +288,7 @@ public class LocaleTest
 		new ExpectedDateValues("18.03.1974", "18.03.74", "18.03.1974", "18. M\u00e4rz 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("1.000,00 \u20ac", "1.000.000,00 \u20ac", "100,00 \u20ac", "100,12 \u20ac", "10.000.000,12 \u20ac"),
+		new ExpectedNumberValues("-1.000,00 \u20ac", "-1.000.000,00 \u20ac", "-100,00 \u20ac", "-100,12 \u20ac", "-10.000.000,12 \u20ac"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
@@ -287,6 +300,7 @@ public class LocaleTest
 		new ExpectedDateValues("18-mars-74", "18/03/74", "18-mars-74", "18 mars 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("1.000,00 \u20ac", "1.000.000,00 \u20ac", "100,00 \u20ac", "100,12 \u20ac", "10.000.000,12 \u20ac"),
+		new ExpectedNumberValues("-1.000,00 \u20ac", "-1.000.000,00 \u20ac", "-100,00 \u20ac", "-100,12 \u20ac", "-10.000.000,12 \u20ac"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
@@ -300,6 +314,7 @@ public class LocaleTest
 		new ExpectedDateValues("18.03.1974", "18.03.74", "18.03.1974", "18. M\u00e4rz 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("1.000,00 \u20ac", "1.000.000,00 \u20ac", "100,00 \u20ac", "100,12 \u20ac", "10.000.000,12 \u20ac"),
+		new ExpectedNumberValues("-1.000,00 \u20ac", "-1.000.000,00 \u20ac", "-100,00 \u20ac", "-100,12 \u20ac", "-10.000.000,12 \u20ac"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
@@ -312,6 +327,7 @@ public class LocaleTest
 		new ExpectedDateValues("18 Mar 1974", "18/03/1974", "18 Mar 1974", "18 March 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("\u20ac1,000.00", "\u20ac1,000,000.00", "\u20ac100.00", "\u20ac100.12", "\u20ac10,000,000.12"),
+		new ExpectedNumberValues("-\u20ac1,000.00", "-\u20ac1,000,000.00", "-\u20ac100.00", "-\u20ac100.12", "-\u20ac10,000,000.12"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100", "10,000,000"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("100,000%", "100,000,000%", "10,000%", "10,012%", "1,000,000,012%"));
@@ -320,6 +336,7 @@ public class LocaleTest
 		new ExpectedValues("fr", "FR", "", "fr_FR", "fra", "FRA",
 				   "Franz\u00f6sisch", "Frankreich", "", "Franz\u00f6sisch (Frankreich)",
 				   "EUR", 2, "\u20ac"),
+		null,
 		null,
 		null,
 		null,
@@ -336,12 +353,14 @@ public class LocaleTest
 		null,
 		null,
 		null,
+		null,
 		null);
     // Locale: Portugal
     checkLocale(h, new Locale("pt", "PT"),
 		new ExpectedValues("pt", "PT", "", "pt_PT", "por", "PRT",
 				   "Portugiesisch", "Portugal", "", "Portugiesisch (Portugal)",
 				   "EUR", 2, "\u20ac"),
+		null,
 		null,
 		null,
 		null,
@@ -358,6 +377,7 @@ public class LocaleTest
 		null,
 		null,
 		null,
+		null,
 		null);
     // Locale: The Netherlands
     checkLocale(h, new Locale("nl", "NL"),
@@ -367,6 +387,7 @@ public class LocaleTest
 		new ExpectedDateValues("18-mrt-1974", "18-3-74", "18-mrt-1974", "18 maart 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("\u20ac 1.000,00", "\u20ac 1.000.000,00", "\u20ac 100,00", "\u20ac 100,12", "\u20ac 10.000.000,12"),
+		new ExpectedNumberValues("\u20ac 1.000,00-", "\u20ac 1.000.000,00-", "\u20ac 100,00-", "\u20ac 100,12-", "\u20ac 10.000.000,12-"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
@@ -375,6 +396,7 @@ public class LocaleTest
 		new ExpectedValues("fr", "LU", "", "fr_LU", "fra", "LUX",
 				   "Franz\u00f6sisch", "Luxemburg", "", "Franz\u00f6sisch (Luxemburg)",
 				   "EUR", 2, "\u20ac"),
+		null,
 		null,
 		null,
 		null,
@@ -389,6 +411,7 @@ public class LocaleTest
 		new ExpectedDateValues("18 Mar 1974", "18/03/1974", "18 Mar 1974", "18 March 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("\u00a31,000.00", "\u00a31,000,000.00", "\u00a3100.00", "\u00a3100.12", "\u00a310,000,000.12"),
+		new ExpectedNumberValues("-\u00a31,000.00", "-\u00a31,000,000.00", "-\u00a3100.00", "-\u00a3100.12", "-\u00a310,000,000.12"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100", "10,000,000"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("100,000%", "100,000,000%", "10,000%", "10,012%", "1,000,000,012%"));
@@ -400,6 +423,7 @@ public class LocaleTest
 		new ExpectedDateValues("Mar 18, 1974", "3/18/74", "Mar 18, 1974", "March 18, 1974", "5:20:30 PM", "5:20 PM", "5:20:30 PM", "5:20:30 PM GMT"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("$1,000.00", "$1,000,000.00", "$100.00", "$100.12", "$10,000,000.12"),
+		new ExpectedNumberValues("($1,000.00)", "($1,000,000.00)", "($100.00)", "($100.12)", "($10,000,000.12)"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100", "10,000,000"),
 		new ExpectedNumberValues("1,000", "1,000,000", "100", "100.123", "10,000,000.123"),
 		new ExpectedNumberValues("100,000%", "100,000,000%", "10,000%", "10,012%", "1,000,000,012%"));
@@ -408,12 +432,13 @@ public class LocaleTest
 		new ExpectedValues("fi", "FI", "", "fi_FI", "fin", "FIN",
 				   "Finnisch", "Finnland", "", "Finnisch (Finnland)",
 				   "EUR", 2, "\u20ac"),
-		new ExpectedDateValues("18.3.1974", "18.3.1974", "18.3.1974", "18. maaliskuuta 1974", "17.20.30", "17.20", "17.20.30", "17.20.30 GMT"),
-		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100,123", "10\u00a0000\u00a0000,123"),
-		new ExpectedNumberValues("1\u00a0000,00 \u20ac", "1\u00a0000\u00a0000,00 \u20ac", "100,00 \u20ac", "100,12 \u20ac", "10\u00a0000\u00a0000,12 \u20ac"),
-		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100", "10\u00a0000\u00a0000"),
-		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100,123", "10\u00a0000\u00a0000,123"),
-		new ExpectedNumberValues("100\u00a0000%", "100\u00a0000\u00a0000%", "10\u00a0000%", "10\u00a0012%", "1\u00a0000\u00a0000\u00a0012%"));
+		new ExpectedDateValues("18.3.1974", "18.3.1974", "18.3.1974", "18. maaliskuuta 1974", "17.20.30", "17.20", "17.20.30", "klo 17.20.30"),
+		new ExpectedNumberValues("1,000", "1,000,000", "100", "100,123", "10,000,000,123"),
+		new ExpectedNumberValues("1,000,00 \u20ac", "1,000,000,00 \u20ac", "100,00 \u20ac", "100,12 \u20ac", "10,000,000,12 \u20ac"),
+		new ExpectedNumberValues("-1,000,00 \u20ac", "-1,000,000,00 \u20ac", "-100,00 \u20ac", "-100,12 \u20ac", "-10,000,000,12 \u20ac"),
+		new ExpectedNumberValues("1,000", "1,000,000", "100", "100", "10,000,000"),
+		new ExpectedNumberValues("1,000", "1,000,000", "100", "100,123", "10,000,000,123"),
+		new ExpectedNumberValues("100,000%", "100,000,000%", "10,000%", "10,012%", "1,000,000,012%"));
     // Locale: Turkey
     checkLocale(h, new Locale("tr", "TR"),
 		new ExpectedValues("tr", "TR", "", "tr_TR", "tur", "TUR",
@@ -422,11 +447,15 @@ public class LocaleTest
 		new ExpectedDateValues("18.Mar.1974", "18.03.1974", "18.Mar.1974", "18 Mart 1974 Pazartesi", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("1.000 TRL", "1.000.000 TRL", "100 TRL", "100 TRL", "10.000.000 TRL"),
+		new ExpectedNumberValues("-1.000 TRL", "-1.000.000 TRL", "-100 TRL", "-100 TRL", "-10.000.000 TRL"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
 		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
     // Locale: Kazakstan
     checkLocale(h, new Locale("kk", "KZ"),
+		new ExpectedValues("kk", "KZ", "", "kk_KZ", "kaz", "KAZ",
+				   "Kasachisch", "Kasachstan", "", "Kasachisch (Kasachstan)",
+				   "KZT", 2, "KZT"),
 		null,
 		null,
 		null,
@@ -442,6 +471,7 @@ public class LocaleTest
 		new ExpectedDateValues("18.03.1974", "18.03.74", "18.03.1974", "18 m\u00e4rts 1974", "17:20:30", "17:20", "17:20:30", "17:20:30 GMT"),
 		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100,123", "10\u00a0000\u00a0000,123"),
 		new ExpectedNumberValues("1\u00a0000,00 EEK", "1\u00a0000\u00a0000,00 EEK", "100,00 EEK", "100,12 EEK", "10\u00a0000\u00a0000,12 EEK"),
+		new ExpectedNumberValues("-1\u00a0000,00 EEK", "-1\u00a0000\u00a0000,00 EEK", "-100,00 EEK", "-100,12 EEK", "-10\u00a0000\u00a0000,12 EEK"),
 		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100", "10\u00a0000\u00a0000"),
 		new ExpectedNumberValues("1\u00a0000", "1\u00a0000\u00a0000", "100", "100,123", "10\u00a0000\u00a0000,123"),
 		new ExpectedNumberValues("100\u00a0000%", "100\u00a0000\u00a0000%", "10\u00a0000%", "10\u00a0012%", "1\u00a0000\u00a0000\u00a0012%"));
