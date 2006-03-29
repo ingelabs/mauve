@@ -1,3 +1,9 @@
+2006-03-29  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/text/GapContent/insertString.java:
+	(testGeneral): Let test fail when unexpected exception occurs.
+	(testSpecialInsert): New test.
+
 2006-03-26  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	* gnu/testlet/java/util/regex/Pattern/testdata1,

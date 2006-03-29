@@ -2,6 +2,7 @@
 
 // Copyright (C) 2005 Roman Kennke <kennke@aicas.com>
 // Copyright (C) 2006 David Gilbert  <david.gilbert@object-refinery.com>
+// Copyright (C) 2006 Robert Schuster  <robertschuster@fsfe.org>
 
 // This file is part of Mauve.
 
@@ -27,6 +28,7 @@ import gnu.testlet.Testlet;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.GapContent;
+import javax.swing.text.Position;
 
 /**
  * Tests if GapContent.insertString works correctly.
@@ -67,6 +69,8 @@ public class insertString implements Testlet
     testBigInsert(harness);
     testComplexInsert(harness);
     testGeneral(harness);
+
+    testSpecialInsert(harness);
   }
 
   /**
@@ -202,6 +206,11 @@ public class insertString implements Testlet
     {
       pass = true;
     }
+    catch (Exception _)
+    {
+      pass = false;
+    }
+
     harness.check(pass);
     
     // insert at index of last character - this is OK
@@ -267,5 +276,33 @@ public class insertString implements Testlet
     }
     harness.check(pass);    
   }
+
+  public void testSpecialInsert(TestHarness harness)
+    {
+      harness.checkPoint("specialInsert");
+      int posValue = -1;
+
+      try
+        {
+	  GapContent gc = new GapContent();
+  	  gc.insertString(0, "foo\nbar\n");
+	  gc.remove(0, 4);
+
+          // Gap starts at 0 now and the following Position
+          // instance is created at the end of the gap.
+          Position pos = gc.createPosition(0);
+
+          // This insertion should not move the offset
+          // of the Position object.
+	  gc.insertString(0, "z");
+
+	  posValue = pos.getOffset();
+        }
+      catch(BadLocationException ble)
+        {
+        }
+      harness.check(posValue, 0);
+    }
+
 
 }
