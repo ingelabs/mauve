@@ -30,16 +30,19 @@ import java.awt.Graphics;
 import java.awt.List;
 import java.awt.Panel;
 import java.awt.Robot;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
 
 public class TestPanelRepaint
     implements Testlet
 {
   TestHarness harness;
-
+  Robot r;
+  boolean updateCalled;
+  
   public void test(TestHarness harness)
   {
     this.harness = harness;
+    r = harness.createRobot();
     myPanel p = new myPanel();
     p.add(new List(10));
     Frame f = new Frame();
@@ -47,32 +50,33 @@ public class TestPanelRepaint
     f.pack();
     f.show();
     
-    Robot r = harness.createRobot();
     // There is a delay to avoid any race conditions.    
     r.waitForIdle();
     r.delay(1000);
     
     f.move(100, 100);
     
-    r.delay(1000);
+    r.delay(3000);
     
     f.setSize(400, 400);
     
     // There is a delay so the tester can see the result.
     r.delay(3000);
+    harness.check(updateCalled);
   }
 
   public class myPanel
-      extends Panel
+      extends Panel implements ComponentListener
   {
     public myPanel()
     {
       super();
+      addComponentListener(this);
     }
 
     public void update(Graphics g)
     {
-      harness.fail("Update should not be called!");
+      updateCalled = true;
       super.update(g);
     }
 

@@ -1,3 +1,9 @@
+2006-03-29  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/Panel/TestPanelRepaint.java
+	(test): Added check.
+	(myPanel): Added component listener.
+
 2006-03-29  Robert Schuster  <robertschuster@fsfe.org>
 
 	* gnu/testlet/javax/swing/text/GapContent/insertString.java:
