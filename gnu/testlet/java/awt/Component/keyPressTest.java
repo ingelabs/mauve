@@ -87,7 +87,7 @@ public class keyPressTest implements Testlet
   
   class myFrame
       extends Frame
-  {    
+  { 
     
     public boolean keyDown(Event e, int i)
     {
