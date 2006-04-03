@@ -1,3 +1,12 @@
+2006-04-03  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
+	* gnu/testlet/javax/imageio/plugins/jpeg/TestJPEGHuffmanTable.java:
+	Reformat.  Optimize imports.
+	* gnu/testlet/javax/imageio/plugins/jpeg/TestJPEGImageReadParam.java:
+	New test.
+	* gnu/testlet/javax/imageio/plugins/jpeg/TestJPEGQTable.java:
+	Optimize imports.
+
 2006-03-31  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/Component/keyPressTest.java: 

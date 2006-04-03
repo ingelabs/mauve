@@ -24,10 +24,8 @@ package gnu.testlet.javax.imageio.plugins.jpeg;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import javax.imageio.plugins.jpeg.JPEGQTable;
 import java.util.Arrays;
-
-import javax.imageio.spi.IIORegistry;
+import javax.imageio.plugins.jpeg.JPEGQTable;
 
 /**
  * Test JPEGQTable construction and static fields.
