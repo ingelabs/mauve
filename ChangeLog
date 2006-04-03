@@ -1,3 +1,9 @@
+2006-04-03  Tom Tromey  <tromey@redhat.com>
+
+	PR classpath/26971:
+	* gnu/testlet/javax/naming/directory/BasicAttribute/Enumerate.java:
+	New file.
+
 2006-04-03  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* gnu/testlet/javax/imageio/plugins/jpeg/TestJPEGHuffmanTable.java:
