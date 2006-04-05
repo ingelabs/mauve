@@ -7,6 +7,7 @@ framework decide which tests should or should not be run against a
 given runtime.
 
 
+******BUILDING THE TESTSUITE*******
 To build, first run configure.  You can control the configuration with
 some environment variables:
 
@@ -25,210 +26,125 @@ The configure script also supports the following `--with' options:
                                 (Use this option if your local firewall
                                  blocks outgoing connections on port 25.)
 
-Note that you will need GNU make to use this testsuite.  If your
-installation provides GNU make under a different name, such as gmake,
-replace `make' with `gmake' in the following.
-
-Use `make check' to run the tests.  You can set the make variable
-`KEYS' to select a subset of the tests.  KEYS is a list of keys that
-must be matched by the files to be tested.  Some values:
-
-     * Any key starting with `java.' is taken to be the name of a
-       class hierarchy.
-       E.g., the key `java.lang' matches only test classes in java.lang.*.
-
-     * Any key starting with `!java.' is used to exclude a class
-       hierarchy.
-       E.g., `!java.lang.reflect' can be used to omit all reflection
-       tests, while still including the rest of java.lang.
-
-     JDK1.0  Run JDK1.0 tests only
-     JDK1.1  Run JDK1.1 tests only
-     JDK1.2  Run JDK1.2 tests only
-
-If an otherwise unrecognized tag QUUX is seen, and the file
-`mauve-QUUX' exists in the mauve source directory, then the contents
-of this file are treated as a list of tags.  For instance, here is the
-current version of `mauve-libjava', which is used by the `libjava'
-library implementation:
-
-	# Config file that tells mauve about the `libjava' tag.
-	JDK1.0
-	JDK1.1
-	!java.beans
-
-Note that anything after a `#' on a line is treated as a comment and
-is stripped.
-
-File inclusion and exclusion commands are processed in order.  So, for
-instance, specifying `!java.lang java.lang.System' will omit all
-java.lang tests except for System.  Every file starts off in the
-`included' state; an explicit exclusion is needed to reject it.  (So,
-e.g., specifying just `java.lang' is insufficient to select only
-java.lang.  You must specify `!java. java.lang'.  Note the `.'!)
-
-If no tags are given, "JDK1.0 JDK1.1" are assumed.
-
-You can use `make recheck' to re-run `make check' with the key list
-you last used.
-
-An alternative way to compiling and running all tests is the batch_run
-script.  This makes it easy to run all test in one batch without worrying
-wheter all tests compile and/or running them crashes or hangs the runtime.
-
-batch_run and the runner helper script aren't integrated with the configure
-setup yet so you will have to edit them by hand to explicitly set the
-COMPILER variable in batch_run and the RUNTIME variable in runner.
-Optionally you can also change the KEYS setting in batch_run if you don't
-want to run all tests.  You can also set the variable NATIVE=true in
-batch_run when you want to use gcj (without -C) in native mode.
-
-When a test cannot be compiled with the given COMPILER batch_run will
-output FAIL: <testname> COMPILE FAILED and go on with the next test.
-If the runner detects a runtime crash or timeout (runner variable
-WAIT=60 seconds) it will output FAIL: <testname> CRASH or TIMEOUT.
-
-If you want to run a single test by hand, you can feed its name
-directly to the test harness.  Make sure to remember the `gnu.testlet'
-prefix for the test cases.  E.g.:
-
-  echo gnu.testlet.java.lang.Character.classify | \
-    java gnu.testlet.SimpleTestHarness -verbose -debug PATH-TO-SRCDIR
-
-The optional `-verbose' command-line argument makes the test suite a
-little noisier about what it is doing.  In particular it will print
-information about caught exceptions in this case.
-
-Some tests may provide even more information about failures to aid
-with debugging a particular run-time system.  These messages are enabled
-by specifying the optional command-line argument `-debug'
-
-If you are only interested in the results of the tests (not only which
-ones FAIL but also which ones PASS). Then you can use the '-resultsonly'
-command-line argument. This will also suppress the printing of a summary
-at the end.
-
-The '-exceptions' command-line argument to causes the display of full
-stack traces when a test fails due to an uncaught exception.
-
-You may use the environment variable TESTFLAGS to provide these
-flags to the invocation of the SimpleTestHarness in the `check' target.
-For instance,
-
-  make check "TESTFLAGS=-verbose -debug"
-
-will run the testsuite in verbose and debug mode.
-
-================================================================
-
-Tags in a test are specified a little differently from tags on the
-command line.
-
-Each tag on the command line is first mapped to a list of actual tags.
-E.g., "JDK1.2" implies all the tags "JDK1.0", "JDK1.1", and "JDK1.2".
-
-If any tag from the expanded list is matched by the test case, then
-the test case is chosen.
-
-However, if one of the tags specified on the command line appears in
-the test with a `!' prefix, then the test is rejected.
-
-Tags must all appear on a single line beginning "// Tags: ".
-
-Many files test functionality that has existed since JDK1.0.  The
-corresponding line in the source:
-
-    // Tags: JDK1.0
-
-Here is how you would tag something that first appeared in JDK1.2:
-
-    // Tags: JDK1.2
-
-Here is how you would tag something that was eliminated in JDK1.2:
-
-    // Tags: JDK1.0 !JDK1.2
-
-The idea behind this scheme is that it is undesirable to update all
-the files whenever we add a tag.  So instead most tags are defined in
-terms of primitive tags, and then we note the exceptions.
-
-When adding a new tag, change the `choose' program to map the
-specified tag onto the implied tags.  There is some code near the top
-that handles this transformation.
-
-Files should only hold tags describing their prerequisites.  In
-particular, limitations of a given library implementation should not
-be mentioned in file tags (because when the library changes, this
-would necessitate global edits).  Instead, put such limitations in a
-`mauve-QUUX' tag expansion file.
-
-================================================================
-
-Some test cases may require extra utility classes to run.  When the
-choose script selects a test case for running, the framework
-identifies the supporting classes through another magic comment in the
-test source.
-
-Support classes must all appear on a single line beginning with the
-string "// Uses: ".  The framework assumes that all utility classes
-used are found in that same package as the test case.
-
-================================================================
-
-Graphical tests that display windows and accept input are marked with
-the GUI tag.  GUI tests are not included in the default list of tags.
-If the GUI tag does appear in KEYS, batch_run will spawn an Xvfb
-process, set DISPLAY to that X server and run the
-graphical/interactive tests there.  By default, metacity is run in
-Xvfb; use the WM environment variable to run a different window
-manager.  If you'd rather run the tests directly on your desktop, set
-SHOW_GUI_TESTS=1.
-
-================================================================
-
-The test harness can also ignore known failures.  Simply create a
-file 'xfails' in the directory where the tests are being run which
-contains 'FAIL:' entries from previous test runs.  The order of the
-lines in the file is immaterial.  Also, the -verbose flag must be
-used.  Totals for both XFAILs and XPASSes will be output at the
-end of the run.
-
-In this way, implementations can track known failures and subsequent
-test runs can thus highlight regressions.
-
-================================================================
-
-There are still a few things to do in the test framework.
 
 
-It would be nice if we could have tests that can specify their
-expected output.  The expected output could be encoded directly in the
-test, e.g.:
+*******RUNNING THE TESTS*******
+The Mauve tests are run using the harness script in the top directory.  To run
+all the tests using your system default "java" VM, type "./harness".
 
-      /*{
-      expected output here
-      }*/
+This is rarely what developers want to do, so below we provide details on how
+to do the following:
 
-The test harness would be reponsible for extracting this from the test
-source and then setting things up so that the checking is done
-correctly.  SimpleTestHarness could do this by setting System.out to
-point to some string buffer for the duration of the test.
+  1.  Specify the VM on which to run the tests
+  2.  Select a subset of the tests to run
+  3.  Use an input file to specify the tests to run
+  4.  Change the timeout interval
+  5.  Change the information displayed when tests are run
+  
+
+1.  Specifying the VM on which to run the tests
+
+  This can be done in 2 ways: setting the environment variable MAUVEVM, or 
+  using the -vm [vmpath] option when running the harness script.  The latter
+  overrides the former, so you can set MAUVEVM to be the VM that you usually
+  use, and can use the -vm option when you occasionally want to use another VM.
+
+  If, for example, I wanted to run all the JTable tests using JamVM, and then 
+  run them all on Sun's VM for comparison, I would type:
+
+  ./harness javax.swing.JTable -vm jamvm
+
+  and then
+
+  ./harness javax.swing.JTable -vm java
+
+  if "java" was a system command to run Sun's VM.  If not, you should specify
+  the path to Sun's "java" executable (ex: /usr/lib/java-1.5.0/bin/java).
 
 
-Change things so that the .o files can be built directly from the
-.java files without any intermediate .class files.  (Use the same
-configuration options that libjava uses.)
+2.  Selecting a subset of the tests to run
 
+  This is a common task for developers, you may be working to fix a bug in a 
+  certain area and want to run all the related tests, but not the entire
+  testsuite.  Simply specify the folder containing the tests, and all the tests
+  in that folder (and its subfolders, although this can be turned off) will be 
+  run.
 
-Some tests probably should be run in their own environment.  This
-could be implemented using a new "group" magic comment, along with
-changes to the `choose' program to generate the list of classes in
-chunks.  Each such chunk would be fed into SimpleTestHarness in a
-separate invocation.
+  Example: run all the java.net tests (remember, this uses system default 
+  "java" unless you have environment variable MAUVEVM set):
 
+  1.  ./harness java.net
+  2.  ./harness gnu.testlet.java.net
+  3.  ./harness gnu/testlet/java/net
+  3.  ./harness gnu/testlet/java/net/
+  *   It makes no difference if you use "." or "/", or if you have the
+      "gnu.testlet" preceeding the test folder or if you have a trailing "/".
+      
+  You may want to exclude certain tests from a run, this done using the
+  -exclude option.  Extending our previous example, let's run all the java.net
+  tests except for the java.net.Socket tests.
+      
+  1.  ./harness java.net -exclude java.net.Socket
+  2.  ./harness -exclude java.net.Socket java.net
 
-It would be interesting to be able to compare test results for
-unspecified things against Sun's implementation.  This could be done
-by adding a new method to the test harness.  The `expected' argument
-would come from Sun's implementation.  Unlike `check', a failure here
-would simply be informative.
+  The test or folder you want to exclude must follow the -exclude option, but 
+  other than that, the order doesn't matter.  In example #2 above java.net is
+  still taken to be tests you want to run, not tests you want to exclude.  So
+  if you want to exclude more than one folder, you need to use the -exclude
+  flag multiple times.
+  
+  If a folder has several subfolders and you want to exclude them all, you
+  can use the -norecursion option instead of explicitly excluding them 
+  all.  So to run the AbstractDocument tests but not the BranchElement or
+  LeafElement tests, type:
+  
+  ./harness javax.swing.text.AbstractDocument -norecursion
+  
+  Again, the order of the arguments/options after ./harness doesn't matter.
+  
+  
+3.  Using an input file to specify tests to be run
+
+  Simply use the -file [filename] option.  The input file should list, one per
+  line, the tests or folders you want to test.
+
+  Example: ./harness -file myInputFile
+
+  The input file specifies only tests to be run, not excluded, to exclude tests
+  you need to explicitly do so as in Section 2 above. 
+
+  Example: ./harness -file myInputFile -exclude java.net.Socket
+  
+
+4.  Changing the timeout interval
+
+  The Harness detects tests that have hung and terminates them.  It does so 
+  simply by allowing all tests to run for 60 seconds and if they haven't 
+  completed, declaring them hung.  If a test simply takes a long time you may
+  want to increase this interval.  If on the other hand, no passing tests take
+  longer than a few seconds and hanging tests are slowing down your test runs,
+  you may want to decrease the interval.  To set the timeout interval use
+  the -timeout [interval] option.  The interval is specified in milliseconds.
+
+  Example: ./harness gnu.java.security -timeout 30000
+  
+  will set the timeout to be 30 seconds instead of 60.
+  
+  
+5.  Changing the information displayed during test runs
+
+  By default the Harness prints only messages for those tests that fail, and 
+  only prints minimal information about uncaught exceptions. The following
+  options affect what is printed:
+  
+  -verbose: prints information about each passing harness.check() call within
+  the tests, whether they pass or fail.
+  
+  -exceptions: prints full stack traces for uncaught exceptions
+  
+  -showpasses: prints one-line summaries for passing tests
+  
+  -debug:      prints toString() information when a 
+               harness.check(Object, Object) call fails.
+  
+

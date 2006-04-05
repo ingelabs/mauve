@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Copyright (c) 2006 Red Hat.
+# Written by Anthony Balkissoon abalkiss@redhat.com
+
+# This file is part of Mauve.
+
+# Mauve is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# Mauve is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with Mauve; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Boston, MA 02110-1301 USA.
+
+## This tests to see if the MAUVEVM environment variable was set
+defaultVM=0
+if test "x$MAUVEVM" = "x"; then
+MAUVEVM="java"
+defaultVM=1
+fi
+
+## And this checks to see if the VM was set by a command line option
+helpOption=0;
+TESTS=
+while [ $# -gt 0 ]; do
+  case "$1" in 
+   -vm ) defaultVM=0; MAUVEVM=$2 ; shift 2 ;;
+   -help | --help | -h ) helpOption=1; TESTS=${TESTS}" "${1} ; shift ;;
+   * ) TESTS=${TESTS}" "${1} ; shift ;;
+  esac
+done
+
+if [ $defaultVM -eq 1 ]
+    then
+    if [ $helpOption -eq 0 ]
+	then
+	echo "Running tests with 'java' - to set the VM use the -vm option";
+	echo "or set the environment variable MAUVEVM";
+	echo ""
+    fi
+fi
+
+$MAUVEVM -Djava.vm.exec="$MAUVEVM" Harness $TESTS
+

@@ -1,3 +1,11 @@
+2006-04-05  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java: New file.
+	* README: New file (old one moved to README.OldHarness).
+	* README.OldHarness: New file, copied from the old README.
+	* RunnerProcess.java: New file.
+	* harness: New file.
+
 2006-04-05  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/net/URLConnection/getFileNameMap.java: New file.
