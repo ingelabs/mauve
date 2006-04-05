@@ -1,5 +1,9 @@
 2006-04-05  Tom Tromey  <tromey@redhat.com>
 
+	* gnu/testlet/java/net/URLConnection/getFileNameMap.java: New file.
+
+2006-04-05  Tom Tromey  <tromey@redhat.com>
+
 	* gnu/testlet/java/lang/reflect/InvocationTargetException/Chain.java:
 	New file.
 
