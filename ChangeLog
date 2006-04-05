@@ -1,5 +1,10 @@
 2006-04-05  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* README: Added line about compiling the Harness, RunnerProcess, and
+	tests.
+
+2006-04-05  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java: New file.
 	* README: New file (old one moved to README.OldHarness).
 	* README.OldHarness: New file, copied from the old README.

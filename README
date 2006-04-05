@@ -25,7 +25,15 @@ The configure script also supports the following `--with' options:
                                 defaults to `mx10.gnu.org'
                                 (Use this option if your local firewall
                                  blocks outgoing connections on port 25.)
+                                 
+After configuring, compile (using your favourite java compiler) the files 
+Harness.java and RunnerProcess.java.
 
+Then compile all the tests (or, if you don't plan on running all the tests,
+only the ones you wish to run).  This can be done by compiling *.java from
+the gnu.testlet folder.  On my machine I did this with the following command:
+
+find gnu/testlet -name "*.java" | xargs jikes
 
 
 *******RUNNING THE TESTS*******
