@@ -58,6 +58,8 @@ public class security implements Testlet
 	"gnu.testlet.java.lang.Class.");
 
       try {
+	Permission[] noChecks = new Permission[] { };
+
 	Permission[] getClassLoader = new Permission[] {
 	  new RuntimePermission("getClassLoader")};
 
@@ -95,6 +97,18 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(getClassLoader);
 	    testClass.getClassLoader();
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+
+	  // If it is a bootstrap class, there is a null classloader
+	  // and no checks are necessary.
+	  try {
+	    sm.prepareChecks(noChecks);
+	    Thread.class.getClassLoader();
 	    sm.checkAllChecked(harness);
 	  }
 	  catch (SecurityException ex) {
