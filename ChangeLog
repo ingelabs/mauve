@@ -1,3 +1,11 @@
+2006-04-08  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/hash/TestOfWhirlpool.java:
+	Updated documentation.
+	(TV1): Use Version 3 test vector.
+	(TV2): Use Version 3 test vector.
+	(test): Use ISO test vectors.
+
 2006-04-06  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Class/security.java: Add check for no
