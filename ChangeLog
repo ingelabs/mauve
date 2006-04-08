@@ -1,3 +1,12 @@
+2006-04-06  Michael Barker  <mike@middlesoft.co.uk>
+
+	* gnu/testlet/java/nio/channels/FileChannel/multibufferIO.java: Added
+	* gnu/testlet/java/nio/channels/FileChannel/multidirectbufferIO.java: Added
+	* gnu/testlet/java/nio/channels/FileChannel/singlebufferIO.java: Added
+	* gnu/testlet/java/nio/channels/SocketChannel/select.java Added flip() to
+	reset buffer.
+	
+	
 2006-04-08  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/hash/TestOfWhirlpool.java:

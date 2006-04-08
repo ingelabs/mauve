@@ -150,8 +150,8 @@ public class select implements Testlet
 	else
 	  harness.check(true);
 
+    bb.flip();
 	sc.write(bb);
-
 	sc.close();
 	ssc.close();
       }
