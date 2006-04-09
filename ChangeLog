@@ -1,5 +1,12 @@
 2006-04-06  Michael Barker  <mike@middlesoft.co.uk>
 
+	* gnu/testlet/java/nio/channels/FileChannel/offsetSingleBugger.java: 
+	New test
+	* gnu/testlet/java/nio/channels/FileChannel/offsetSingleDirectBuffer.java: 
+	New test
+	
+2006-04-06  Michael Barker  <mike@middlesoft.co.uk>
+
 	* gnu/testlet/java/nio/channels/FileChannel/multibufferIO.java: Added
 	* gnu/testlet/java/nio/channels/FileChannel/multidirectbufferIO.java: Added
 	* gnu/testlet/java/nio/channels/FileChannel/singlebufferIO.java: Added
