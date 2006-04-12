@@ -117,3 +117,28 @@ No match
  0: hd
     nx
 No match
+
+#
+# Unicode-aware case folding
+#
+
+/(?u:\uff21)/i
+    \uff41
+ 0: \uff41
+
+/(?:\uff21)/i
+    \uff41
+No match
+
+/(?ui:[\uff21-\uff23]+)/
+    \uff41\uff42\uff43
+ 0: \uff41\uff42\uff43
+    \uff21\uff42\uff23
+ 0: \uff21\uff42\uff23
+
+/(?i:[\uff21-\uff23]+)/
+    \uff41\uff42\uff43
+No match
+    \uff21\uff42\uff23
+ 0: \uff21
+

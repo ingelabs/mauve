@@ -1,3 +1,10 @@
+2006-04-12  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	*gnu/testlet/java/util/regex/Pattern/pcrematches.java(decode):
+	New method. (test): Use the new method decode to input Unicode
+	characters. Added some harness.debug logging.
+	* gnu/testlet/java/util/regex/Pattern/testdata3: Added new tests.
+
 2006-04-12  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/BitSet/clear.java: New file,

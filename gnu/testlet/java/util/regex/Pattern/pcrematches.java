@@ -111,23 +111,26 @@ public class pcrematches implements Testlet
     
     for (Iterator i=tc.tests.iterator(); i.hasNext(); ) {
       RETestcaseTest t = (RETestcaseTest)i.next();
-      Matcher mat = pat.matcher(t.text);
+      Matcher mat = pat.matcher(decode(t.text));
       if (mat.find()) {
         int groups = mat.groupCount();
         if (groups != t.groups.size() - 1) {
+	  harness.debug("groups=" + groups + " expected=" + (t.groups.size() - 1));
           harness.check(false, regex);
           return;
         }
         boolean failed = false;
         for (int j=0; j<=groups; j++) {
-          String g = (String)t.groups.get(j);
+          String g = decode((String)t.groups.get(j));
           String g2 = mat.group(j);
           if (!g.trim().equals(g2.trim())) {
+	    harness.debug("j=" + j + " expected=" + g + " found=" + g2);
             harness.check(false, regex);
             return;
           }
         }
       } else if (!t.groups.isEmpty()) {
+	harness.debug("match not found: regex=/" + regex + "/ text=\"" + t.text +"\"");
         harness.check(false, regex);
         return;
       }
@@ -176,5 +179,35 @@ public class pcrematches implements Testlet
         break;
     }
     return tc;
+  }
+
+  private static String decode(String s) {
+    StringBuffer sb = new StringBuffer();
+    int p = 0;
+    int q = 0;
+    while (true) {
+      p = s.indexOf("\\u", q);
+      if (p == -1) {
+	sb.append(s.substring(q));
+	break;
+      }
+      sb.append(s.substring(q, p));
+      if (p + 6 <= s.length()) {
+	String hex = s.substring(p+2, p+6);
+	try {
+	  int c = Integer.parseInt(hex, 16);
+	  sb.append((char)c);
+	}
+	catch (NumberFormatException _) {
+	  sb.append(s.substring(p, p+6));
+	}
+	q = p + 6;
+      }
+      else {
+	sb.append(s.substring(p, p+2));
+	q = p + 2;
+      }
+    }
+    return sb.toString();
   }
 }
