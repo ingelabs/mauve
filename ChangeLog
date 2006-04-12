@@ -1,5 +1,12 @@
 2006-04-12  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/util/BitSet/clear.java: New file,
+	* gnu/testlet/java/util/BitSet/flip.java: New file,
+	* gnu/testlet/java/util/BitSet/get.java: New file,
+	* gnu/testlet/java/util/BitSet/Get.java: Merged with get.java.
+
+2006-04-12  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/util/Collections/unmodifiableMap.java: New test.
 
 2006-04-06  Michael Barker  <mike@middlesoft.co.uk>
