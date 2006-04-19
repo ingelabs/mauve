@@ -1,3 +1,8 @@
+2006-04-19  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test): Added
+	regression test for PR classpath/27189.
+
 2006-04-12  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 
 	*gnu/testlet/java/util/regex/Pattern/pcrematches.java(decode):

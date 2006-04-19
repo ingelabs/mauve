@@ -114,6 +114,9 @@ public class regress implements Testlet
       }
 
 
-
+     sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss Z");
+     sdf.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+     someTime = 1098968427000L; // 04-10-28 14:00:27 GMT
+     harness.check(sdf.format(new Date(someTime)), "04-10-28 09:00:27 -0400");
   }
 }
