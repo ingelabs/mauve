@@ -135,5 +135,22 @@ public class unmodifiableMap implements Testlet
         harness.check(pass);
       }
 
+    // check a Map.Entry item from entrySet().toArray(Object[])
+    pass = false;    
+    Object[] entries2 = new Object[umap.size()];
+    umap.entrySet().toArray(entries2);
+    if (entries2.length > 0)
+      {
+        try
+          {
+            ((Map.Entry) entries2[0]).setValue("XYZ");
+          }
+        catch (UnsupportedOperationException e)
+          {
+            pass = true;
+          }
+        harness.check(pass);
+      }
+        
   }
 }
