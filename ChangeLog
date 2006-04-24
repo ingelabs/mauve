@@ -1,3 +1,46 @@
+2006-04-24  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* .cvsignore: Added .ecjOut and .ecjErr.
+	* aclocal.m4: Regenerated.
+	* configure.in: Added --with-vm, --enable-auto-compile, 
+	--with-classpath-install-dir, --with-ecj-jar options to support 
+	auto-compilation.
+	* configure: Regenerated.
+	* harness: Removed this unneeded wrapper script.
+	* Harness.java: Rewritten to allow auto-compilation and faster test
+	processing.
+	* Makefile.am: Added Harness.java and RunnerProcess.java to 
+	harness_files, added new target 'harness' that compiles these files
+	as well as gnu/testlet/config.java, and added target 'all-local' to 
+	make these compile by default.
+	* Makefile.in: Regenerated.
+	* README: Rewritten to include the new configure options, compilation
+	options, and the new invocation style.
+	* RunnerProcess.java: Fixed comments, formatting, and:
+	(NOT-A-TEST-DESCRIPTION): Made this field private.
+	(verbose): Made this field static.
+	(debug): Likewise.
+	(exceptions): Likewise.
+	(report): Likewise.
+	(xmlfile): Likewise.
+	(RunnerProcess(boolean, boolean, boolean, TestReport)): Removed this
+	unnecessary constructor.
+	(RunnerProcess()): New constructor.
+	* gnu/testlet/TestHarness.java:
+	(getAutoCompile): New method.
+	(getCpInstallDir): Likewise.
+	(getEcjJar): Likewise.
+	(getTestJava): Likewise.
+	* gnu/testlet/config.java.in:
+	(cpInstallDir): New field.
+	(autoCompile): Likewise.
+	(testJava): Likewise.
+	(ecjJar): Likewise.
+	(getCpInstallDir): New method.
+	(getAutoCompile): Likewise.
+	(getEcjJar): Likewise.
+	(getTestJava): Likewise.
+
 2006-04-23  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/util/Collections/unmodifiableMap.java(testMap):
