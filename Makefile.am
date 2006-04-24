@@ -9,13 +9,21 @@ TESTFLAGS =
 
 check_DATA = $(STAMP)
 
-harness_files = gnu/testlet/SimpleTestHarness.java \
+harness_files = Harness.java \
+	RunnerProcess.java \
+	gnu/testlet/SimpleTestHarness.java \
 	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
 	gnu/testlet/TestSecurityManager.java \
 	gnu/testlet/TestSecurityManager2.java \
 	gnu/testlet/ResourceNotFoundException.java \
 	gnu/testlet/TestReport.java \
 	gnu/testlet/TestResult.java
+
+harness: FORCE
+	$(JAVAC) $(harness_files)
+	$(JAVAC) gnu/testlet/config.java
+
+all-local: harness
 
 ## FIXME: leading space makes automake ignore this.  Bleah.
  include choices

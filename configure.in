@@ -8,9 +8,49 @@ ACX_CHECK_PATHNAME_STYLE_DOS
 dnl For EXEEXT.
 AC_PROG_CC
 
+dnl Check for which JVM should be tested, default to "java"
+AC_ARG_WITH(vm,
+[  --with-vm=TESTJVM  				Run the tests with TESTJVM],
+TEST_JAVA="$with_vm", TEST_JAVA="java")
+AC_SUBST(TEST_JAVA)
+export MAUVEVM="$TEST_JAVA"
+
+
 AC_ARG_WITH(gcj,
 [  --with-gcj                       Use gcj to compile .class files])
 AM_CONDITIONAL(USE_GCJ, test "$with_gcj" = yes)
+
+
+AC_ARG_WITH(classpath-install-dir,
+[  --with-classpath-install-dir=CPINSTALL   Specify the location of Classpath's install dir],
+CP_INSTALL_DIR="$with_classpath_install_dir")
+if ! test -d "$CP_INSTALL_DIR"
+then
+CP_INSTALL_DIR=""
+fi
+AC_SUBST(CP_INSTALL_DIR)
+
+
+AC_ARG_WITH(ecj-jar,
+[  --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for auto-compilation],
+ECJ_JAR="$with_ecj_jar", ECJ_JAR=yes)
+if test "$ECJ_JAR" = "yes"
+then
+ECJ_JAR="/usr/share/java/eclipse-ecj.jar"
+fi
+
+AC_SUBST(ECJ_JAR)
+
+dnl auto-compilation is disabled by default because it requires the
+dnl --with-classpath-install-dir option to be used as well, and so
+dnl by disabling it, the standard "./configure" setup has a better
+dnl chance of producing meaningful results.  If it were enabled
+dnl by default many tests would fail because the compiler wouldn't
+dnl have the correct bootclasspath
+AC_ARG_ENABLE(auto-compile,
+[  --enable-auto-compile            Use ecj to compile tests on the fly],
+AUTO_COMPILE="$enable_auto_compile",AUTO_COMPILE="no")
+AC_SUBST(AUTO_COMPILE)
 
 dnl See if the user prefers to build .class files with gcj, or whether
 dnl javac will be used.  The default is to use gcj if we're compiling

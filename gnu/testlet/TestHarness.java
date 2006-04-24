@@ -281,4 +281,23 @@ public abstract class TestHarness
   {
     return mailHost;
   }
+  public String getAutoCompile()
+  {
+    return autoCompile;
+  }
+
+  public String getCpInstallDir()
+  {
+    return cpInstallDir;
+  }
+
+  public String getEcjJar()
+  {
+    return ecjJar;
+  }
+
+  public String getTestJava()
+  {
+    return testJava;
+  } 
 }

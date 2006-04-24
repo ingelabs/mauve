@@ -272,7 +272,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
 ac_unique_file="gnu/testlet/Testlet.java"
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE USE_GCJ_TRUE USE_GCJ_FALSE CLASS_FILES_TRUE CLASS_FILES_FALSE JAVA JAVAC GCJ GCJFLAGS GCJDEPMODE am__fastdepGCJ_TRUE am__fastdepGCJ_FALSE SRCDIR TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA USE_GCJ_TRUE USE_GCJ_FALSE CP_INSTALL_DIR ECJ_JAR AUTO_COMPILE CLASS_FILES_TRUE CLASS_FILES_FALSE JAVA JAVAC GCJ GCJFLAGS GCJDEPMODE am__fastdepGCJ_TRUE am__fastdepGCJ_FALSE SRCDIR TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -810,13 +810,17 @@ Optional Features:
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
+  --enable-auto-compile            Use ecj to compile tests on the fly
   --enable-gcj-classes             Use gcj, not javac, to build class files
   --enable-class-files             Create class files when using gcj
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-vm=TESTJVM  				Run the tests with TESTJVM
   --with-gcj                       Use gcj to compile .class files
+  --with-classpath-install-dir=CPINSTALL   Specify the location of Classpath's install dir
+  --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for auto-compilation
 
   --with-tmpdir=DIR                Put temporary files in DIR /tmp
 
@@ -2898,6 +2902,18 @@ fi
 
 
 
+# Check whether --with-vm or --without-vm was given.
+if test "${with_vm+set}" = set; then
+  withval="$with_vm"
+  TEST_JAVA="$with_vm"
+else
+  TEST_JAVA="java"
+fi;
+
+export MAUVEVM="$TEST_JAVA"
+
+
+
 # Check whether --with-gcj or --without-gcj was given.
 if test "${with_gcj+set}" = set; then
   withval="$with_gcj"
@@ -2912,6 +2928,44 @@ else
   USE_GCJ_TRUE='#'
   USE_GCJ_FALSE=
 fi
+
+
+
+
+# Check whether --with-classpath-install-dir or --without-classpath-install-dir was given.
+if test "${with_classpath_install_dir+set}" = set; then
+  withval="$with_classpath_install_dir"
+  CP_INSTALL_DIR="$with_classpath_install_dir"
+fi;
+if ! test -d "$CP_INSTALL_DIR"
+then
+CP_INSTALL_DIR=""
+fi
+
+
+
+
+# Check whether --with-ecj-jar or --without-ecj-jar was given.
+if test "${with_ecj_jar+set}" = set; then
+  withval="$with_ecj_jar"
+  ECJ_JAR="$with_ecj_jar"
+else
+  ECJ_JAR=yes
+fi;
+if test "$ECJ_JAR" = "yes"
+then
+ECJ_JAR="/usr/share/java/eclipse-ecj.jar"
+fi
+
+
+
+# Check whether --enable-auto-compile or --disable-auto-compile was given.
+if test "${enable_auto_compile+set}" = set; then
+  enableval="$enable_auto_compile"
+  AUTO_COMPILE="$enable_auto_compile"
+else
+  AUTO_COMPILE="no"
+fi;
 
 
 # Check whether --enable-gcj-classes or --disable-gcj-classes was given.
@@ -3960,8 +4014,12 @@ s,@AMDEPBACKSLASH@,$AMDEPBACKSLASH,;t t
 s,@CCDEPMODE@,$CCDEPMODE,;t t
 s,@am__fastdepCC_TRUE@,$am__fastdepCC_TRUE,;t t
 s,@am__fastdepCC_FALSE@,$am__fastdepCC_FALSE,;t t
+s,@TEST_JAVA@,$TEST_JAVA,;t t
 s,@USE_GCJ_TRUE@,$USE_GCJ_TRUE,;t t
 s,@USE_GCJ_FALSE@,$USE_GCJ_FALSE,;t t
+s,@CP_INSTALL_DIR@,$CP_INSTALL_DIR,;t t
+s,@ECJ_JAR@,$ECJ_JAR,;t t
+s,@AUTO_COMPILE@,$AUTO_COMPILE,;t t
 s,@CLASS_FILES_TRUE@,$CLASS_FILES_TRUE,;t t
 s,@CLASS_FILES_FALSE@,$CLASS_FILES_FALSE,;t t
 s,@JAVA@,$JAVA,;t t

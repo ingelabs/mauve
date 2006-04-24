@@ -22,12 +22,20 @@ package gnu.testlet;
 
 public interface config 
 {	
+  public static final String cpInstallDir = "@CP_INSTALL_DIR@";
+  public static final String autoCompile = "@AUTO_COMPILE@";
+  public static final String testJava = "@TEST_JAVA@";
+  public static final String ecjJar = "@ECJ_JAR@";
   public static final String srcdir = "@SRCDIR@";
   public static final String tmpdir = "@TMPDIR@";
   public static final String pathSeparator = "@CHECK_PATH_SEPARATOR@";
   public static final String separator = "@CHECK_FILE_SEPARATOR@";
   public static final String mailHost = "@MAIL_HOST@";
 
+  public abstract String getCpInstallDir ();
+  public abstract String getAutoCompile ();
+  public abstract String getTestJava ();
+  public abstract String getEcjJar ();
   public abstract String getSourceDirectory ();
   public abstract String getTempDirectory ();
   public abstract String getPathSeparator ();

@@ -45,7 +45,7 @@ public class RunnerProcess
     extends TestHarness
 {
   // A description of files that are not tests
-  public static final String NOT_A_TEST_DESCRIPTION = "not-a-test";
+  private static final String NOT_A_TEST_DESCRIPTION = "not-a-test";
   
   // Total number of harness.check calls since the last checkpoint
   private int count = 0;
@@ -66,14 +66,15 @@ public class RunnerProcess
   private int total = 0;
 
   // True if we should run in verbose (noisy) mode
-  private boolean verbose = false;
+  private static boolean verbose = false;
+  
 
   // True if failing calls to harness.check(Object, Object) should print the
   // toString methods of each Object
-  private boolean debug = false;
+  private static boolean debug = false;
 
   // True if stack traces should be printed for uncaught exceptions
-  private boolean exceptions = false;
+  private static boolean exceptions = false;
 
   // A description of the test
   private String description;
@@ -82,20 +83,17 @@ public class RunnerProcess
   private String last_check;
 
   // The TestReport if a report is necessary
-  private TestReport report = null;
+  private static TestReport report = null;
 
+  // The xmlfile for the report
+  private static String xmlfile = null;
+  
   // The result of the current test
   private TestResult currentResult = null;
-
   
-  protected RunnerProcess(boolean verbose, boolean debug,
-                              boolean exceptions, TestReport report)
-  {
-    this.verbose = verbose;
-    this.debug = debug;
-    this.exceptions = exceptions;
-    this.report = report;
-
+  
+  protected RunnerProcess()
+  {    
     try
       {
         BufferedReader xfile = new BufferedReader(new FileReader("xfails"));
@@ -115,16 +113,10 @@ public class RunnerProcess
       }
   }
 
-  public static void main(String[] args)
+  public static void main(String[] args) throws Exception
   {    
-    boolean verbose = false;
-    boolean debug = false;
-    boolean exceptions = false;
-    String xmlfile = null;
-    TestReport report = null;
-    
     // The test that Harness wants us to run.
-    String testname;
+    String testname = null;
     
     // This reader is used to get testnames from Harness
     BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -163,14 +155,21 @@ public class RunnerProcess
         try
         {
           testname = in.readLine();
-          RunnerProcess harness = 
-            new RunnerProcess(verbose, debug, exceptions, report);
-          runAndReport(harness, testname, report, xmlfile);
+          RunnerProcess harness = new RunnerProcess();
+          runAndReport(harness, testname);
         }
         catch (IOException ioe)
         {          
-          System.out.println("Problems communicating between " +
-                "Harness and RunnerProcess");
+          String shortName = stripPrefix(testname);
+          if (verbose)
+            System.out.println ("TEST: " + shortName + 
+                                "\n  FAIL: failed to load\n" +
+                                "TEST FAILED: failed to load "+ 
+                                shortName);
+          else
+            System.out.println("FAIL: " + stripPrefix(testname)
+                                 + ": failed to load");
+          System.out.println("RunnerProcess:fail");
         }
       }
   }
@@ -194,7 +193,6 @@ public class RunnerProcess
     try
       {
         Class k = Class.forName(name);
-
         Object o = k.newInstance();
         if (! (o instanceof Testlet))
           {
@@ -249,6 +247,7 @@ public class RunnerProcess
         ++total;
       }
 
+    // If the harness started okay, now we run the test.
     if (t != null)
       {
         description = name;
@@ -280,30 +279,26 @@ public class RunnerProcess
       report.addTestResult(currentResult);
   }
 
-  
   /**
    * This method runs a single test in a new Harness and increments the
    * total tests run and total failures, if the test fails.  Prints
    * PASS and adds to the report, if the appropriate options are enabled.
    * @param harness the TestHarness to use for this test
    * @param testName the name of the test
-   * @param report the TestReport to generate
-   * @param xmlfile the name of the file for xml output
    */
-  static void runAndReport(RunnerProcess harness, String testName,
-                      TestReport report, String xmlfile)
+  static void runAndReport(RunnerProcess harness, String testName)
   {
     // If this call to runtest hangs, Harness will terminate this process.
-    harness.runtest(testName);
+    harness.runtest(testName.replace(File.separatorChar, '.'));
+
     // If the test wasn't a real test, return and tell Harness so.
     if (harness.description.equals(NOT_A_TEST_DESCRIPTION))
       {
         System.out.println("RunnerProcess:not-a-test");
         return;
       }
-    
+    // Print out a summary.
     int temp = harness.done();
-    
     // Print the report if necessary.
     if (report != null)
       {
@@ -343,8 +338,8 @@ public class RunnerProcess
           }
       }
     
-    return ("  line " + line + ": " + ((last_check == null) ? "" : last_check) + " ["
-            + (count + 1) + "]");
+    return ("  line " + line + ": " + ((last_check == null) ? "" : last_check) 
+            + " [" + (count + 1) + "]");
   }
 
   protected int getFailures()
@@ -697,8 +692,8 @@ public class RunnerProcess
     
     // sb holds all the information we wish to return.
     StringBuilder sb = 
-      new StringBuilder("  line " + lineOrigin + ": " + 
-                        (last_check == null ? "" : last_check) +
+      new StringBuilder("  " + (verbose ? "FAIL: " : "")+ "line " + lineOrigin 
+                        + ": " + (last_check == null ? "" : last_check) +
                         " [" + (count + 1) + "] -- uncaught exception:");
     
     // If a full stack trace will be printed, this method returns no details.

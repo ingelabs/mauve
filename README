@@ -7,67 +7,133 @@ framework decide which tests should or should not be run against a
 given runtime.
 
 
-******BUILDING THE TESTSUITE*******
-To build, first run configure.  You can control the configuration with
-some environment variables:
+This file has two main sections:
+0) CONFIGURING AND BUILDING THE TESTSUITE
+1) RUNNING THE TESTS
+
+
+
+******CONFIGURING AND BUILDING THE TESTSUITE*******
+To build, first run configure.  Below we cover the following:
+  0.  Specifying which VM to test.
+  1.  Configuring the auto-compilation feature.
+  2.  Environment variables for configure.
+  3.  Other options to configure.
+  4.  Building the testsuite.
+
+
+0. Specifying the VM to test.
+  The configure script takes the following option that specifies which java
+  implementation the testsuite will test:
+  
+      --with-vm=TESTVM
+  
+  For example, specifying --with-vm=jamvm will invoke "jamvm" when 
+  running the tests, and will therefore test the java implementation associated
+  with your jamvm installation.  If this option is not specified, it defaults
+  to "java".
+
+  
+1. Configuring the auto-compilation feature.
+  If you plan to use the auto-compilation feature of the Harness, which
+  compiles tests inline before running them (so new tests, or changed
+  tests are run properly without an additional step), you need to be sure
+  it is properly configured.  The following options are associated
+  with auto-compilation:
+
+	 --enable-auto-compilation  	Enable the auto-compilation feature
+	 --with-ecj-jar					Specify the location of the eclipse-ecj.jar
+	 								file for the compiler to use.  This defaults
+	 								to /usr/share/java/eclipse-ecj.jar and only 
+	 								needs to be specified if the location on your
+	 								machine is different from this.  If no valid
+	 								ecj jar is found, auto-compilation will be 
+	 								turned off.
+	 --with-classpath-install-dir	Specify the location of the java implemenation
+	 								installation.  This will be used as the
+	 								bootclasspath for the compiler.
+
+
+2. Environment variables for configure.
+  You can control the configuration with some environment variables:
 
      JAVA   Name of Java interpreter to use
      JAVAC  Name of Java (to class) compiler to use
      GCJ    Name of Java (to object) compiler to use
 
-GCJ is only used when the `--with-gcj' option is given to configure.
+  GCJ is only used when the `--with-gcj' option is given to configure.  
 
-The configure script also supports the following `--with' options:
+	 								
+3. Other configure options. 
+  The configure script also supports the following `--with' options:
 
+     --with-gcj					Indicate you will be using gcj, this will tell
+     							make to build the object files and use the 
+     							appropriate compiler
      --with-tmpdir=DIR          Put temporary files in DIR
                                 defaults to `/tmp'
      --with-mailhost=HOSTNAME   Use mail server at HOSTNAME for socket tests 
                                 defaults to `mx10.gnu.org'
                                 (Use this option if your local firewall
                                  blocks outgoing connections on port 25.)
+
                                  
-After configuring, compile (using your favourite java compiler) the files 
-Harness.java and RunnerProcess.java.
-
-Then compile all the tests (or, if you don't plan on running all the tests,
-only the ones you wish to run).  This can be done by compiling *.java from
-the gnu.testlet folder.  On my machine I did this with the following command:
-
-find gnu/testlet -name "*.java" | xargs jikes
-
+4. Building the testsuite.
+  If you are using the auto-compilation feature, there is no need to build the
+  tests, it will suffice to compile the files Harness.java and 
+  RunnerProcess.java.
+  
+  If you are using gcj or are not using the auto-compilation feature, you should
+  now run GNU make to build the testsuite.
+  
+  
+  
 
 *******RUNNING THE TESTS*******
-The Mauve tests are run using the harness script in the top directory.  To run
-all the tests using your system default "java" VM, type "./harness".
+The Mauve tests are run using the harness script in the top directory.  This
+section provides instructions on how to perform the following tasks:
 
-This is rarely what developers want to do, so below we provide details on how
-to do the following:
-
+  0.  Running all the tests.
   1.  Specify the VM on which to run the tests
   2.  Select a subset of the tests to run
   3.  Use an input file to specify the tests to run
   4.  Change the timeout interval
   5.  Change the information displayed when tests are run
+  6.  Turn on (or off) test auto-compilation.
+  
+
+0. Running all the tests
+  To run all the tests in the Mauve test suite, type 'HARNESSVM Harness' where 
+  HARNESSVM is the VM you wish to use to run the Harness.  Note that this is NOT
+  the same as the VM on which you run the tests.  Read item 1 to learn how to 
+  set the VM on which you run the tests.
+  
+  You can also run all the tests by typing 'HARNESSVM Harness gnu.testlet'.
   
 
 1.  Specifying the VM on which to run the tests
 
-  This can be done in 2 ways: setting the environment variable MAUVEVM, or 
-  using the -vm [vmpath] option when running the harness script.  The latter
-  overrides the former, so you can set MAUVEVM to be the VM that you usually
-  use, and can use the -vm option when you occasionally want to use another VM.
-
+  The VM on which to run the tests can be specified by configure as described
+  in the first section, CONFIGURING AND BUILDING THE TESTSUITE.  It can also be
+  done via command line options to the Harness (which override the configure
+  options).  To set the VM via the command line, use:
+  
+  -testvm [vmpath] 
+  
   If, for example, I wanted to run all the JTable tests using JamVM, and then 
   run them all on Sun's VM for comparison, I would type:
 
-  ./harness javax.swing.JTable -vm jamvm
+  HARNESSVM Harness javax.swing.JTable -vm jamvm
 
   and then
 
-  ./harness javax.swing.JTable -vm java
+  HARNESSVM Harness javax.swing.JTable -vm java
 
   if "java" was a system command to run Sun's VM.  If not, you should specify
-  the path to Sun's "java" executable (ex: /usr/lib/java-1.5.0/bin/java).
+  the path to Sun's "java" executable (ex: /usr/lib/java-1.5.0/bin/java).  Note
+  again that HARNESSVM is just the VM used to run the harness, and not the tests.
+  This is done for performance considerations to allow the Harness to be natively
+  compiled and ran while testing a variety of VMs.
 
 
 2.  Selecting a subset of the tests to run
@@ -81,10 +147,10 @@ to do the following:
   Example: run all the java.net tests (remember, this uses system default 
   "java" unless you have environment variable MAUVEVM set):
 
-  1.  ./harness java.net
-  2.  ./harness gnu.testlet.java.net
-  3.  ./harness gnu/testlet/java/net
-  3.  ./harness gnu/testlet/java/net/
+  1.  HARNESSVM Harness java.net
+  2.  HARNESSVM Harness gnu.testlet.java.net
+  3.  HARNESSVM Harness gnu/testlet/java/net
+  3.  HARNESSVM Harness gnu/testlet/java/net/
   *   It makes no difference if you use "." or "/", or if you have the
       "gnu.testlet" preceeding the test folder or if you have a trailing "/".
       
@@ -92,8 +158,8 @@ to do the following:
   -exclude option.  Extending our previous example, let's run all the java.net
   tests except for the java.net.Socket tests.
       
-  1.  ./harness java.net -exclude java.net.Socket
-  2.  ./harness -exclude java.net.Socket java.net
+  1.  HARNESSVM Harness java.net -exclude java.net.Socket
+  2.  HARNESSVM Harness -exclude java.net.Socket java.net
 
   The test or folder you want to exclude must follow the -exclude option, but 
   other than that, the order doesn't matter.  In example #2 above java.net is
@@ -106,9 +172,9 @@ to do the following:
   all.  So to run the AbstractDocument tests but not the BranchElement or
   LeafElement tests, type:
   
-  ./harness javax.swing.text.AbstractDocument -norecursion
+  HARNESSVM Harness javax.swing.text.AbstractDocument -norecursion
   
-  Again, the order of the arguments/options after ./harness doesn't matter.
+  Again, the order of the arguments/options doesn't matter.
   
   
 3.  Using an input file to specify tests to be run
@@ -116,12 +182,12 @@ to do the following:
   Simply use the -file [filename] option.  The input file should list, one per
   line, the tests or folders you want to test.
 
-  Example: ./harness -file myInputFile
+  Example: HARNESSVM Harness -file myInputFile
 
   The input file specifies only tests to be run, not excluded, to exclude tests
   you need to explicitly do so as in Section 2 above. 
 
-  Example: ./harness -file myInputFile -exclude java.net.Socket
+  Example: HARNESSVM Harness -file myInputFile -exclude java.net.Socket
   
 
 4.  Changing the timeout interval
@@ -134,7 +200,7 @@ to do the following:
   you may want to decrease the interval.  To set the timeout interval use
   the -timeout [interval] option.  The interval is specified in milliseconds.
 
-  Example: ./harness gnu.java.security -timeout 30000
+  Example: HARNESSVM Harness gnu.java.security -timeout 30000
   
   will set the timeout to be 30 seconds instead of 60.
   
@@ -154,5 +220,36 @@ to do the following:
   
   -debug:      prints toString() information when a 
                harness.check(Object, Object) call fails.
+
+
+6.  Turning on (or off) test auto-compilation
+  The auto-compilation feature is diabled by default, but can be turned on by 
+  using the --enable-auto-compilation option to configure.  You can also turn
+  on by using the following Harness option:
   
+  -compile yes 	   OR    -compile true
+  
+  If you have enabled auto-compilation in configure but wish to turn it off
+  for a particular test run, use
+  
+  -compile no      OR    -compile false
+  
+  Note that auto-compilation requires a correct path to eclipse-ecj.jar and 
+  a correct bootclasspath.  The following options deal with this:
+  
+  -classpath-install-dir CP_INSTALL_DIR
+  -ecj-jar ECJ_JAR_LOCATION
+  
+  These can also be specified at configure time via 
+  --with-classpath-installation-dir and --with-ecj-jar, the latter defaulting
+  to /usr/share/java/eclipse-ecj.jar if no location is specified.
+  
+  The following example is for the case where auto-compilation is disabled by
+  default in configure, but is turned on after a cvs update so that new tests
+  are compiled and run.
+  
+  Example:
+    - configure using --with-classpath-install-dir=CP_INSTALL_DIR
+    - cvs update (downloads the new testcases)
+    - HARNESSVM Harness -compile true  
 
