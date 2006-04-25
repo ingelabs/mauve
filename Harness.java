@@ -28,6 +28,7 @@ import gnu.testlet.config;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -384,8 +385,8 @@ public class Harness
       klass.getMethod
       ("compile", new Class[] 
           { String.class, PrintWriter.class, PrintWriter.class });    
-    ecjWriterOut = new PrintWriter(".ecjOut");
-    ecjWriterErr = new PrintWriter(".ecjErr");
+    ecjWriterOut = new PrintWriter(new FileOutputStream(".ecjOut"));
+    ecjWriterErr = new PrintWriter(new FileOutputStream(".ecjErr"));
     
     
     // Set up the compiler options now that we know whether or not we are
@@ -436,7 +437,11 @@ public class Harness
     temp = " -bootclasspath " + temp;
     if (!temp.endsWith(File.separator))
       temp += File.separator;
-    temp += "share/classpath";
+    temp += "share" + File.separator + "classpath";
+    
+    File f = new File (temp.substring(16) + File.separator + "glibj.zip");
+    if (f.exists())
+      temp += File.separator + "glibj.zip";
     return temp;
   }
 
@@ -553,7 +558,7 @@ public class Harness
    */
   private static void initProcess(String[] args)
   {    
-    StringBuilder sb = new StringBuilder(" RunnerProcess");
+    StringBuffer sb = new StringBuffer(" RunnerProcess");
     for (int i = 0; i < args.length; i++)      
       sb.append(" " + args[i]);      
     sb.insert(0, vmCommand);
@@ -836,7 +841,7 @@ public class Harness
     File dir = new File(folderName);
     String dirPath = dir.getPath();    
     File[] files = dir.listFiles();
-    StringBuilder sb = new StringBuilder();
+    StringBuffer sb = new StringBuffer();
     String fullPath = null;
     boolean compilepassed = true;
     
@@ -888,7 +893,7 @@ public class Harness
     runFolder(sb, compilepassed);
   }
   
-  private static boolean compileFolder(StringBuilder sb, String folderName)
+  private static boolean compileFolder(StringBuffer sb, String folderName)
   {
     int result = - 1;
     int compileFailsInFolder = 0;
@@ -1024,7 +1029,7 @@ public class Harness
    * @param compilepassed true if the compilation step happened and all 
    * tests passed or if compilation didn't happen (because of -nocompile).
    */
-  private static void runFolder(StringBuilder sb, boolean compilepassed)
+  private static void runFolder(StringBuffer sb, boolean compilepassed)
   {
     StringTokenizer st = new StringTokenizer(sb.toString());
     String nextTest = null;

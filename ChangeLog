@@ -1,5 +1,22 @@
 2006-04-24  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* Harness.java:
+	(setupCompiler): Changed ecjWriterOut and ecjWriterErr to use 1.4 
+	PrintWriter constructors.
+	(getClasspathInstallString): Add "glibj.zip" onto the end of the 
+	bootclasspath, if that file is present.
+	(initProcess): Use StringBuffer instead of StringBuilder, so it 
+	compiles on older compilers.
+	(compileFolder): Likewise.
+	(runFolder): Likewise.
+	* RunnerProcess.java:
+	(runTest): Replaced String.contains() with String.indexOf() so it 
+	compiles on older compilers.
+	(exceptionDetails): Replaced StringBuilder with StringBuffer so it
+	compiles on older compilers.
+
+2006-04-24  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* .cvsignore: Added .ecjOut and .ecjErr.
 	* aclocal.m4: Regenerated.
 	* configure.in: Added --with-vm, --enable-auto-compile, 

@@ -215,7 +215,7 @@ public class RunnerProcess
           // we have to check through the file.
           while (firstLine != null)
             {
-              if (firstLine.contains("not-a-test"))
+              if (firstLine.indexOf("not-a-test") != -1)
                   {
                     description = NOT_A_TEST_DESCRIPTION;
                     return;
@@ -691,10 +691,10 @@ public class RunnerProcess
       }
     
     // sb holds all the information we wish to return.
-    StringBuilder sb = 
-      new StringBuilder("  " + (verbose ? "FAIL: " : "")+ "line " + lineOrigin 
-                        + ": " + (last_check == null ? "" : last_check) +
-                        " [" + (count + 1) + "] -- uncaught exception:");
+    StringBuffer sb = 
+      new StringBuffer("  " + (verbose ? "FAIL: " : "")+ "line " + lineOrigin 
+		       + ": " + (last_check == null ? "" : last_check) +
+		       " [" + (count + 1) + "] -- uncaught exception:");
     
     // If a full stack trace will be printed, this method returns no details.
     if (exceptions)
