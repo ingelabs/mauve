@@ -483,8 +483,7 @@ public class Harness
   {
     try
     {
-      String c = vmCommand + " gnu" + File.separator + "testlet"
-                   + File.separator + "DetectBootclasspath";
+      String c = vmCommand + " gnu.testlet.DetectBootclasspath";
       Process p = Runtime.getRuntime().exec(c);      
       BufferedReader br = 
         new BufferedReader
@@ -1005,6 +1004,7 @@ public class Harness
             new BufferedReader(new FileReader(".ecjErr"));
           String lastFailingTest = null;
           String temp;
+          String prev = null;
           int loc;
           
           // Go to the part in the file that relates to this folder 
@@ -1038,36 +1038,42 @@ public class Harness
               loc = temp.indexOf("gnu" + File.separatorChar + "testlet");
               if (loc != - 1)
                 {
-                  String name = temp.substring(loc);
-                  String shortName = 
-                    stripPrefix(name).replace(File.separatorChar, '.');
-                  if (shortName.endsWith(".java"))
-                    shortName = shortName.substring(0, shortName.length() - 5);
-                  if (verbose && lastFailingTest != null)
-                    System.out.println
-                      ("TEST FAILED: compilation failed " + lastFailingTest);
-                  lastFailingTest = shortName;
-
-                  if (verbose)
-                    System.out.println
-                      ("TEST: " + shortName + "\n  FAIL: compilation failed.");
-                  else
-                    System.out.println("FAIL: " + shortName
-                                       + ": compilation failed");
-                  if (!showCompilationErrors)
-                    System.out.println
-                      ("  Read .ecjErr for details or run with " +
-                            "-showcompilefails");
-
-                  // When a test fails to compile, we count it as failing
-                  // but we do not run it.
                   compileFailsInFolder++;
-                  total_test_fails++;
-                  total_tests++;
-                  excludeTests.add(name);
+                  String name = temp.substring(loc);                  
+                  if (!name.equals(prev))
+                    {
+                      String shortName = 
+                        stripPrefix(name).replace(File.separatorChar, '.');
+                      if (shortName.endsWith(".java"))
+                        shortName = 
+                          shortName.substring(0, shortName.length() - 5);
+                      if (verbose && lastFailingTest != null)
+                        System.out.println
+                        ("TEST FAILED: compilation failed " + lastFailingTest);
+                      lastFailingTest = shortName;
+                      
+                      if (verbose)
+                        System.out.println
+                        ("TEST: " + shortName + "\n  FAIL: " +
+                                "compilation failed.");
+                      else
+                        System.out.println("FAIL: " + shortName
+                                           + ": compilation failed");
+                      if (!showCompilationErrors)
+                        System.out.println
+                        ("  Read .ecjErr for details or don't run with" +
+                        " -hidecompilefails");
+                      
+                      // When a test fails to compile, we count it as failing
+                      // but we do not run it.                      
+                      total_test_fails++;
+                      total_tests++;
+                      excludeTests.add(name);
+                    }
+                  prev = name;
                 }
               
-              // If -showcompilefails was used, print out the info. Do not
+              // Unless -hidecompilefails was used, print out the info. Do not
               // print the compiler summer (e.g. '3 problems (3 errors)').
               if (showCompilationErrors && 
                   temp.indexOf(problemsString(compileFailsInFolder)) == -1)
@@ -1178,7 +1184,7 @@ public class Harness
                              + ": compilation failed");
         if (!showCompilationErrors)
           System.out.println
-            ("  Read .ecjErr for details or run with -showcompilefails");
+            ("  Read .ecjErr for details or don't run with -hidecompilefails");
         else
           {
             try

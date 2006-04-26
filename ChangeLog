@@ -1,5 +1,14 @@
 2006-04-26  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* Harness.java: 
+	(getBootClassPath): Changed "/" to "." in exec command so it works with
+	gij.
+	(compileFolder): Count multiple compile errors for the same test as
+	just one total test and one total fail, and print the FAIL header info
+	only once.
+
+2006-04-26  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java: Changed reference to --disable-auto-compile to 
 	--disable-auto-compilation.
 	* configure: Regenerated.
