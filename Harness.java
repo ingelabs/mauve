@@ -581,7 +581,7 @@ public class Harness
       "See the README file for more details.\n" +      
       "  -compile [yes|no]:       specify whether or not to compile the " +
       "tests before running them.  This" + align + "overrides the configure" +
-      "option --disable-auto-compile but requires an ecj jar" + align + 
+      "option --disable-auto-compilation but requires an ecj jar" + align + 
       "to be in /usr/share/java/eclipse-ecj.jar or specified via the " +
       "--with-ecj-jar" + align + "option to configure.  See the README" +
       " file for more details.\n" +      

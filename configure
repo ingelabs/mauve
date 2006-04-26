@@ -810,7 +810,7 @@ Optional Features:
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
-  --enable-auto-compile            Use ecj to compile tests on the fly
+  --enable-auto-compilation            Use ecj to compile tests on the fly
   --enable-gcj-classes             Use gcj, not javac, to build class files
   --enable-class-files             Create class files when using gcj
 
@@ -2955,10 +2955,10 @@ fi
 
 
 
-# Check whether --enable-auto-compile or --disable-auto-compile was given.
-if test "${enable_auto_compile+set}" = set; then
-  enableval="$enable_auto_compile"
-  AUTO_COMPILE="$enable_auto_compile"
+# Check whether --enable-auto-compilation or --disable-auto-compilation was given.
+if test "${enable_auto_compilation+set}" = set; then
+  enableval="$enable_auto_compilation"
+  AUTO_COMPILE="$enable_auto_compilation"
 else
   AUTO_COMPILE="yes"
 fi;

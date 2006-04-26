@@ -43,9 +43,9 @@ dnl by disabling it, the standard "./configure" setup has a better
 dnl chance of producing meaningful results.  If it were enabled
 dnl by default many tests would fail because the compiler wouldn't
 dnl have the correct bootclasspath
-AC_ARG_ENABLE(auto-compile,
-[  --enable-auto-compile            Use ecj to compile tests on the fly],
-AUTO_COMPILE="$enable_auto_compile",AUTO_COMPILE="yes")
+AC_ARG_ENABLE(auto-compilation,
+[  --enable-auto-compilation            Use ecj to compile tests on the fly],
+AUTO_COMPILE="$enable_auto_compilation",AUTO_COMPILE="yes")
 AC_SUBST(AUTO_COMPILE)
 
 dnl See if the user prefers to build .class files with gcj, or whether

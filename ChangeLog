@@ -1,5 +1,13 @@
 2006-04-26  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* Harness.java: Changed reference to --disable-auto-compile to 
+	--disable-auto-compilation.
+	* configure: Regenerated.
+	* configure.in: Changed --enabled-auto-compile option to 
+	--enable-auto-compilation.
+
+2006-04-26  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java:
 	(bcp_timeout): New field.
 	(showCompilationErrors): Set to true by default.
