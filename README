@@ -38,7 +38,7 @@ To build, first run configure.  Below we cover the following:
   If you plan to use the auto-compilation feature of the Harness, which
   compiles tests inline before running them (so new tests, or changed
   tests are run properly without an additional step), you need to be sure
-  it is properly configured.  The following options are associated
+  it is properly configured. The following options are associated
   with auto-compilation:
 
 	 --enable-auto-compilation  	Enable the auto-compilation feature
@@ -49,9 +49,11 @@ To build, first run configure.  Below we cover the following:
 	 								machine is different from this.  If no valid
 	 								ecj jar is found, auto-compilation will be 
 	 								turned off.
-	 --with-classpath-install-dir	Specify the location of the java implemenation
-	 								installation.  This will be used as the
-	 								bootclasspath for the compiler.
+	 --with-bootclasspath			Specify the bootclasspath for the compiler.
+
+  Auto-compilation is enabled by default, and the bootclasspath is found
+  automatically.  If you wish to disable auto-compilation or change the
+  bootclasspath you should use the appropriate option(s) above.
 
 
 2. Environment variables for configure.
@@ -118,7 +120,7 @@ section provides instructions on how to perform the following tasks:
   done via command line options to the Harness (which override the configure
   options).  To set the VM via the command line, use:
   
-  -testvm [vmpath] 
+  -vm [vmpath] 
   
   If, for example, I wanted to run all the JTable tests using JamVM, and then 
   run them all on Sun's VM for comparison, I would type:
@@ -211,45 +213,49 @@ section provides instructions on how to perform the following tasks:
   only prints minimal information about uncaught exceptions. The following
   options affect what is printed:
   
-  -verbose: prints information about each passing harness.check() call within
-  the tests, whether they pass or fail.
+  -hidecompilefails: hides failures from the compiler.  These can still be 
+					 found in the .ecjErr file.
   
-  -exceptions: prints full stack traces for uncaught exceptions
+  -verbose: 		 prints information about each passing harness.check() call
+					 within the tests, whether they pass or fail.
   
-  -showpasses: prints one-line summaries for passing tests
+  -exceptions: 		 prints full stack traces for uncaught exceptions
   
-  -debug:      prints toString() information when a 
-               harness.check(Object, Object) call fails.
+  -showpasses: 		 prints one-line summaries for passing tests
+  
+  -debug:      		 prints toString() information when a 
+               		 harness.check(Object, Object) call fails.
 
 
-6.  Turning on (or off) test auto-compilation
-  The auto-compilation feature is diabled by default, but can be turned on by 
-  using the --enable-auto-compilation option to configure.  You can also turn
-  on by using the following Harness option:
+6.  Turning off (or on) test auto-compilation
+  The auto-compilation feature is enabled by default, but can be turned off by 
+  using the --disable-auto-compilation option to configure.  You can also turn
+  off the option by using the following Harness option:
   
-  -compile yes 	   OR    -compile true
+  -compile no	   OR    -compile false
   
-  If you have enabled auto-compilation in configure but wish to turn it off
+  If you have disabled auto-compilation in configure but wish to turn it on
   for a particular test run, use
   
-  -compile no      OR    -compile false
+  -compile yes     OR    -compile true
   
   Note that auto-compilation requires a correct path to eclipse-ecj.jar and 
   a correct bootclasspath.  The following options deal with this:
   
-  -classpath-install-dir CP_INSTALL_DIR
+  -bootclasspath BOOTCLASSPATH
   -ecj-jar ECJ_JAR_LOCATION
   
   These can also be specified at configure time via 
-  --with-classpath-installation-dir and --with-ecj-jar, the latter defaulting
-  to /usr/share/java/eclipse-ecj.jar if no location is specified.
+  --with-bootclasspath and --with-ecj-jar, the latter defaulting
+  to /usr/share/java/eclipse-ecj.jar if no location is specified.  The default
+  bootclasspath is found automatically and shouldn't need to be changed unless
+  you specifically want to specify an alternate location.
   
-  The following example is for the case where auto-compilation is disabled by
-  default in configure, but is turned on after a cvs update so that new tests
-  are compiled and run.
-  
-  Example:
-    - configure using --with-classpath-install-dir=CP_INSTALL_DIR
-    - cvs update (downloads the new testcases)
-    - HARNESSVM Harness -compile true  
+  So the default setup of:
+    1.  ./configure
+    2.  make
+    3.  HARNESSVM Harness
+    
+  will run with auto-compilation enabled with the ecj jar being 
+  /usr/share/java/eclipse-ecj.jar and the bootclasspath found automatically.
 

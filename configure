@@ -819,7 +819,7 @@ Optional Packages:
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-vm=TESTJVM  				Run the tests with TESTJVM
   --with-gcj                       Use gcj to compile .class files
-  --with-classpath-install-dir=CPINSTALL   Specify the location of Classpath's install dir
+  --with-bootclasspath=BOOTCP   Specify the bootclasspath for the compiler
   --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for auto-compilation
 
   --with-tmpdir=DIR                Put temporary files in DIR /tmp
@@ -2932,15 +2932,11 @@ fi
 
 
 
-# Check whether --with-classpath-install-dir or --without-classpath-install-dir was given.
-if test "${with_classpath_install_dir+set}" = set; then
-  withval="$with_classpath_install_dir"
-  CP_INSTALL_DIR="$with_classpath_install_dir"
+# Check whether --with-bootclasspath or --without-bootclasspath was given.
+if test "${with_bootclasspath+set}" = set; then
+  withval="$with_bootclasspath"
+  CP_INSTALL_DIR="$with_bootclasspath"
 fi;
-if ! test -d "$CP_INSTALL_DIR"
-then
-CP_INSTALL_DIR=""
-fi
 
 
 
@@ -2964,7 +2960,7 @@ if test "${enable_auto_compile+set}" = set; then
   enableval="$enable_auto_compile"
   AUTO_COMPILE="$enable_auto_compile"
 else
-  AUTO_COMPILE="no"
+  AUTO_COMPILE="yes"
 fi;
 
 

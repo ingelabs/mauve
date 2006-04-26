@@ -73,6 +73,9 @@ public class Harness
   // The location of the eclipse-ecj.jar file
   private static String ecjJarLocation = null;
   
+  // How long the bootclasspath finder program can run before termination
+  private static long bcp_timeout = 60000;
+  
   // How long a test may run before it is considered hung
   private static long runner_timeout = 60000;
 
@@ -93,7 +96,7 @@ public class Harness
   private static boolean compileTests = true;
   
   // Whether we should display information for failing compilations
-  private static boolean showCompilationErrors = false;
+  private static boolean showCompilationErrors = true;
   
   // The total number of tests run
   private static int total_tests = 0;
@@ -244,8 +247,8 @@ public class Harness
             else if (args[i].equals("no") || args[i].equals("false"))
               compileTests = false;
           }
-        else if (args[i].equals("-showcompilefails"))
-          showCompilationErrors = true;
+        else if (args[i].equals("-hidecompilefails"))
+          showCompilationErrors = false;
         else if (args[i].equals("-help") || args[i].equals("--help")
                  || args[i].equals("-h"))
           printHelpMessage();
@@ -256,13 +259,13 @@ public class Harness
               throw new RuntimeException("No file path after '-file'.  Exit");
             inputFile = args[i];
           }
-        else if (args[i].equalsIgnoreCase("-classpath-install-dir"))
+        else if (args[i].equalsIgnoreCase("-bootclasspath"))
           {
             // User is specifying the classpath installation folder to use
             // as the compiler's bootclasspath.
             if (++i >= args.length)
               throw new RuntimeException("No file path " +
-                    "after '-classpath-install-dir'.  Exit");
+                    "after '-bootclasspath'.  Exit");
             classpathInstallDir = args[i];
           }
         else if (args[i].equalsIgnoreCase("-ecj-jar"))
@@ -400,7 +403,7 @@ public class Harness
                          " It is indirectly\n    referenced from required " +
                          ".class files,'\n\nthen try setting the " +
                          "bootclasspath by using the\n" +
-                         "--with-classpath-install-dir=CPINSTALLDIR option " +
+                         "--with-bootclasspath=CPINSTALLDIR option " +
                          "in configure.");
     ecjWriterErr.println("\nThe compiler command used was: \n    " +
                          compileStringBase + "\n");
@@ -427,22 +430,102 @@ public class Harness
    */
   private static String getClasspathInstallString()
   {
-    String temp = classpathInstallDir; 
+    String temp = classpathInstallDir;
+    
+    // If classpathInstallDir is null that means no bootclasspath was 
+    // specified on the command line using -bootclasspath.  In this case
+    // check if anything was supplied to configure with --with-bootclasspath.
     if (temp == null)
       {
         temp = config.cpInstallDir;
+        
+        // If temp is the empty string then nothing was supplied to configure
+        // so auto-detect the bootclasspath using getBootClasspath().
         if (temp.equals(""))
-          return temp;
+          {
+            temp = getBootClassPath();
+            
+            // If auto-detect returned null we cannot auto-detect the 
+            // bootclasspath and we should try invoking the compiler without
+            // specifying the bootclasspath.  Otherwise, we should add
+            // " -bootclasspath " followed by the detected path.
+            if (temp != null)              
+              return " -bootclasspath " + temp;
+            return temp;
+          }
       }
+    
+    // This section is for bootclasspath's specified with
+    // -bootclasspath or --with-bootclasspath (in configure), we need
+    // to add "/share/classpath/glibj.zip" onto the end and
+    // " -bootclasspath onto the start".
     temp = " -bootclasspath " + temp;
     if (!temp.endsWith(File.separator))
       temp += File.separator;
     temp += "share" + File.separator + "classpath";
     
+    // If (for some reason) there is no glibj.zip file in the specified
+    // folder, just use the folder as the bootclasspath, perhaps the folder
+    // contains an expanded view of the resources.
     File f = new File (temp.substring(16) + File.separator + "glibj.zip");
     if (f.exists())
       temp += File.separator + "glibj.zip";
     return temp;
+  }
+  
+  /**
+   * Forks a process to run gnu/testlet/DetectBootclasspath on the VM that is
+   * being tested.  This program detects the bootclasspath so we can use
+   * it for the compiler's bootclasspath.
+   * @return the bootclasspath as found, or null if none could be found.
+   */
+  private static String getBootClassPath()
+  {
+    try
+    {
+      String c = vmCommand + " gnu" + File.separator + "testlet"
+                   + File.separator + "DetectBootclasspath";
+      Process p = Runtime.getRuntime().exec(c);      
+      BufferedReader br = 
+        new BufferedReader
+        (new InputStreamReader(p.getInputStream()));
+      String bcpOutput = null;
+      // Create a timer to watch this new process.
+      TimeoutWatcher tw = new TimeoutWatcher(bcp_timeout);
+      tw.start();
+      while (true)
+        {
+          // If for some reason the process hangs, return null, indicating we
+          // cannot auto-detect the bootclasspath.
+          if (testIsHung)
+            {
+              synchronized (runner_lock)
+              {
+                testIsHung = false;
+              }
+              br.close();
+              p.destroy();
+              return null;
+            }
+          if (br.ready())
+            {
+              bcpOutput = br.readLine();
+              if (bcpOutput.startsWith("BCP_FINDER:"))
+                return bcpOutput.substring(11);
+              else
+                {
+                  // This means the auto-detection failed.
+                  System.out.println(bcpOutput);
+                  return null;
+                }
+            }
+        }
+    }
+    catch (IOException ioe)
+    {
+      // Couldn't auto-fetch the bootclasspath.
+      return null;
+    }
   }
 
   /**
@@ -518,7 +601,7 @@ public class Harness
       "\n\nOutput Options:\n" +
       "  -showpasses:             display passing tests as well as failing " +
       "ones\n" +
-      "  -showcompilefails:       display errors from the compiler when " +
+      "  -hidecompilefails:       hide errors from the compiler when " +
       "tests fail to compile\n" +
       "  -exceptions:             print stack traces for uncaught " +
       "exceptions\n" +
@@ -940,8 +1023,7 @@ public class Harness
           
           // If temp is null, we didn't find it.  Otherwise, look for each
           // individual failing compilation, count it as a fail, exclude it
-          // from the test run, and if -showcompilefails was used, print 
-          // out the info.
+          // from the test run, and print out the info.
           while (temp != null)
             {
               // If we've reached a part of the file that pertains to another
@@ -956,8 +1038,11 @@ public class Harness
               loc = temp.indexOf("gnu" + File.separatorChar + "testlet");
               if (loc != - 1)
                 {
-                  String name = temp.substring(loc);                  
-                  String shortName = stripPrefix(name);
+                  String name = temp.substring(loc);
+                  String shortName = 
+                    stripPrefix(name).replace(File.separatorChar, '.');
+                  if (shortName.endsWith(".java"))
+                    shortName = shortName.substring(0, shortName.length() - 5);
                   if (verbose && lastFailingTest != null)
                     System.out.println
                       ("TEST FAILED: compilation failed " + lastFailingTest);
@@ -967,7 +1052,7 @@ public class Harness
                     System.out.println
                       ("TEST: " + shortName + "\n  FAIL: compilation failed.");
                   else
-                    System.out.println("FAIL: " + stripPrefix(name)
+                    System.out.println("FAIL: " + shortName
                                        + ": compilation failed");
                   if (!showCompilationErrors)
                     System.out.println
@@ -1120,7 +1205,7 @@ public class Harness
             }
           }
         if (config.cpInstallDir.equals(""))
-          System.out.println("  Try setting --with-classpath-install-dir " +
+          System.out.println("  Try setting --with-bootclasspath " +
                 "when running configure.\n  See the README file for details");
         if (verbose)
           System.out.println("TEST FAILED: compilation failed " + shortName);

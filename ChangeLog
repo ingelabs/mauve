@@ -1,3 +1,26 @@
+2006-04-26  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
+	(bcp_timeout): New field.
+	(showCompilationErrors): Set to true by default.
+	(setupHarness): Changed -showcompilefails option to -hidecompilefails
+	since fails are shown by default now.  Also changed 
+	-classpath-install-dir option to -bootclasspath to match the 
+	configure option.
+	(getClasspathInstallString): If no bootclasspath was specified on the
+	command line or in configure, then auto-detect it with the new method
+	getBootClassPath.
+	(getBootClassPath): New method.
+	* README: Changed --with-classpath-install-dir to --with-bootclasspath,
+	changed text to reflect the fact that auto-compilation is now enabeld
+	by default.  Added the -hidecompilefails option to the text.
+	* configure: Regenerated.
+	* configure.in: Changed --with-classpath-install-dir to 
+	--with-bootclasspath, changed auto-compilation to be enabled by 
+	default.
+	* gnu/testlet/DetectBootclasspath.java: New file.
+	
+
 2006-04-24  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:

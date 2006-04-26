@@ -21,13 +21,9 @@ AC_ARG_WITH(gcj,
 AM_CONDITIONAL(USE_GCJ, test "$with_gcj" = yes)
 
 
-AC_ARG_WITH(classpath-install-dir,
-[  --with-classpath-install-dir=CPINSTALL   Specify the location of Classpath's install dir],
-CP_INSTALL_DIR="$with_classpath_install_dir")
-if ! test -d "$CP_INSTALL_DIR"
-then
-CP_INSTALL_DIR=""
-fi
+AC_ARG_WITH(bootclasspath,
+[  --with-bootclasspath=BOOTCP   Specify the bootclasspath for the compiler],
+CP_INSTALL_DIR="$with_bootclasspath")
 AC_SUBST(CP_INSTALL_DIR)
 
 
@@ -49,7 +45,7 @@ dnl by default many tests would fail because the compiler wouldn't
 dnl have the correct bootclasspath
 AC_ARG_ENABLE(auto-compile,
 [  --enable-auto-compile            Use ecj to compile tests on the fly],
-AUTO_COMPILE="$enable_auto_compile",AUTO_COMPILE="no")
+AUTO_COMPILE="$enable_auto_compile",AUTO_COMPILE="yes")
 AC_SUBST(AUTO_COMPILE)
 
 dnl See if the user prefers to build .class files with gcj, or whether
