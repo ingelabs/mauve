@@ -1,5 +1,11 @@
 2006-04-27  Robert Schuster  <robertschuster@fsfe.org>
 
+	* gnu/testlet/javax/swing/text/Utilities/getNextWord.java: New test.
+	* gnu/testlet/javax/swing/text/Utilities/getTabbedTextOffset.java:
+	(test): Use fixed value to end loop.
+
+2006-04-27  Robert Schuster  <robertschuster@fsfe.org>
+
 	* gnu/testlet/javax/swing/text/Utilities/getTabbedTextOffset.java: New
 	test.
 

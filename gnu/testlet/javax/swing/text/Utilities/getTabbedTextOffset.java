@@ -51,17 +51,19 @@ public class getTabbedTextOffset implements Testlet
    */
   public void test(TestHarness harness)      
   {
+     // The x value that has to be reached before getTabbedTextOffset stops.
+     int endX = 50;
 
      harness.checkPoint("without rounding");
-     for (int i=0; i < s.count; i++)
+     for (int i=0; i <= endX; i++)
        harness.check(calculate(i, false), expectWithoutRounding(i));
 
      harness.checkPoint("with rounding");
-     for (int i=0; i < s.count; i++)
+     for (int i=0; i <= endX; i++)
        harness.check(calculate(i, true), expectWithRounding(i));
 
      harness.checkPoint("with rounding (implicit)");
-     for (int i=0; i < s.count; i++)
+     for (int i=0; i <= endX; i++)
        harness.check(calculate(i), expectWithRounding(i));
 
   }
