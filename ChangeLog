@@ -1,5 +1,14 @@
 2006-05-01  Olivier Jolly  <olivier.jolly@pcedev.com>
 
+	* gnu/testlet/java/util/Calendar/add.java: (test): Fixed compilation error
+	introduced by the addition of the TimeZone test.
+	* gnu/testlet/java/util/Calendar/minmax.java: (test): Fixed compilation error
+	introduced by the addition of the TimeZone test.
+	* gnu/testlet/java/util/Calendar/roll.java: (test): Fixed compilation error
+	introduced by the addition of the TimeZone test.	
+
+2006-05-01  Olivier Jolly  <olivier.jolly@pcedev.com>
+
 	* gnu/testlet/java/util/Calendar/TimeZone.java: New test.
 
 2006-04-27  Robert Schuster  <robertschuster@fsfe.org>

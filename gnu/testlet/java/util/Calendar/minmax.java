@@ -33,7 +33,7 @@ public class minmax implements Testlet
 {
   public void test (TestHarness harness)
   {
-    TimeZone tz = TimeZone.getTimeZone ("GMT");
+    java.util.TimeZone tz = java.util.TimeZone.getTimeZone ("GMT");
     DateFormat cdf = new SimpleDateFormat ("EEE, d MMM yyyy HH:mm:ss zzz");
     cdf.setTimeZone (tz);
 
