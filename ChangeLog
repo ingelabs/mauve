@@ -1,3 +1,11 @@
+2006-05-01  Bryce McKinlay  <mckinlay@redhat.com>
+
+	* gnu/testlet/java/util/HashMap/AcuniaHashMapTest.java
+	(test_entrySet): Iterator.hasNext() does not throw
+	ConcurrentModificationException - update test accordingly.
+	* gnu/testlet/java/util/LinkedHashMap/LinkedHashMapTest.java
+	(test_entrySet): Likewise.
+
 2006-05-01  Olivier Jolly  <olivier.jolly@pcedev.com>
 
 	* gnu/testlet/java/util/Calendar/add.java: (test): Fixed compilation error

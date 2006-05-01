@@ -326,10 +326,10 @@ public class AcuniaHashMapTest implements Testlet
     th.check( s.size() == 15 );
     try {
     	th.check(it.hasNext());
-	th.fail("it.hasNext after hm.remove should throw ConcurrentModificationException");
+	th.check(true);
     }
     catch(ConcurrentModificationException cme) {
-	th.check(true);
+	th.fail("it.hasNext should not throw ConcurrentModificationException");
     }
     try {
     	it.next();
