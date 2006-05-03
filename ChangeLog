@@ -1,3 +1,11 @@
+2006-05-03  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/text/GapContent/constructors.java:
+	(testConstructor2): Put checks into try-catch block. added a second
+	length check.
+	* gnu/testlet/javax/swing/text/GapContent/insertString.java:
+	(testGeneral): Added note.
+
 2006-05-01  Bryce McKinlay  <mckinlay@redhat.com>
 
 	* gnu/testlet/java/util/HashMap/AcuniaHashMapTest.java

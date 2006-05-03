@@ -81,12 +81,41 @@ public class constructors implements Testlet
     harness.check(gc.getArrayLength(), 10);
     
     // try unusual initial sizes
-    MyGapContent gc2 = new MyGapContent(0);
-    harness.check(gc2.length(), 1);
-    harness.check(gc2.getArrayLength(), 2);
-    gc2 = new MyGapContent(-1);
-    harness.check(gc2.getArrayLength(), 2);
+    int length = -1;
+    int arrayLength = -1;
+    MyGapContent gc2 = null;
+
+    try
+      {
+        gc2 = new MyGapContent(0);
+        length = gc2.length();
+        arrayLength = gc2.getArrayLength();
+      }
+    catch (Exception e)
+      {
+        // Can be ignored.
+      }
+    harness.check(length, 1);
+    harness.check(arrayLength, 2);
+
+    length = -1;
+    arrayLength = -1;
+    gc2 = null;
+    try
+      {
+        gc2 = new MyGapContent(0);
+        length = gc2.length();
+        arrayLength = gc2.getArrayLength();
+      }
+    catch (Exception e)
+      {
+        // Can be ignored. 
+      }
+    harness.check(length, 1);
+    harness.check(arrayLength, 2);
+
     
   }
 
 }
+

@@ -225,7 +225,7 @@ public class insertString implements Testlet
     harness.check(gc.length(), 7);
     
     // Insert at index of last character + 1. This appends the new string to
-    // the existing string.
+    // the existing string. (This works since 1.5 of the RI)
     try
     {
       gc.insertString(7, "XYZ");
