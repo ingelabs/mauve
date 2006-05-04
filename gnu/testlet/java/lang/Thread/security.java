@@ -32,12 +32,16 @@ import gnu.testlet.TestSecurityManager2;
 
 public class security implements Testlet
 {
+  private static Permission[] modifyThread = new Permission[] {
+    new RuntimePermission("modifyThread")};
+
+  private static Permission[] modifyThreadGroup = new Permission[] {
+    new RuntimePermission("modifyThreadGroup")};
+
   public void test(TestHarness harness)
   {
     try {
       harness.checkPoint("setup");
-
-      Thread testThread = new Thread();
 
       // we need a different classloader for some of the checks to occur.
       Class testClass = new URLClassLoader(new URL[] {
@@ -48,11 +52,30 @@ public class security implements Testlet
       Method getContextClassLoaderTest = testClass.getMethod(
 	"testGetContextClassLoader", new Class[] {Thread.class});
 
-      Thread currentThread = Thread.currentThread();
+      TestSecurityManager2 sm = new TestSecurityManager2(harness);
+
+      // The default SecurityManager.checkAccess(Thread) method only
+      // checks permissions when the thread in question is a system
+      // thread.  System threads are those whose parent is the system
+      // threadgroup, which is the threadgroup with no parent.
+      // 
+      // The default SecurityManager.checkAccess(ThreadGroup) method
+      // only checks permissions when the threadgroup in question is
+      // the system threadgroup.
+      ThreadGroup systemGroup = Thread.currentThread().getThreadGroup();
+      while (systemGroup.getParent() != null)
+	systemGroup = systemGroup.getParent();
+
+      Thread testThread = new Thread(systemGroup, "test thread");
+      harness.check(testThread.getThreadGroup().getParent() == null);
+
+      Thread modifyGroupThread = new Thread(
+	systemGroup, new SysTestRunner(harness, sm, testThread));
+      harness.check(modifyGroupThread.getThreadGroup().getParent() == null);
+
       Throwable threadDeath = new ThreadDeath();
       Throwable notThreadDeath = new ClassNotFoundException();
 
-      ThreadGroup group = new ThreadGroup("test group");
       Runnable runnable = new Runnable()
       {
 	public void run()
@@ -66,17 +89,17 @@ public class security implements Testlet
       Permission[] setContextClassLoader = new Permission[] {
 	new RuntimePermission("setContextClassLoader")};
 
-      Permission[] modifyThread = new Permission[] {
-	new RuntimePermission("modifyThread")};
-
       Permission[] stopThread = new Permission[] {
 	new RuntimePermission("modifyThread"),
 	new RuntimePermission("stopThread")};
 
-      Permission[] modifyThreadGroup = new Permission[] {
-	new RuntimePermission("modifyThreadGroup")};
+      // XXX Thread.stop() tests only work on Classpath
+      // XXX The checks don't happen otherwise, so calls
+      // XXX to Thread.currentThread().stop() actually
+      // XXX happen :(  So, we inhibit this.
+      boolean we_are_gnu_classpath =
+	System.getProperty("gnu.classpath.version") != null;
 
-      TestSecurityManager2 sm = new TestSecurityManager2(harness);
       try {
 	sm.install();
 
@@ -189,18 +212,6 @@ public class security implements Testlet
 	  harness.debug(ex);
 	  harness.check(false, "unexpected check");
 	}
-	
-	// throwpoint: java.lang.Thread-enumerate
-	harness.checkPoint("enumerate");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  Thread.enumerate(new Thread[0]);
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}	
 
 	// throwpoint: java.lang.Thread-stop()
 	harness.checkPoint("stop()");
@@ -216,7 +227,8 @@ public class security implements Testlet
 
 	try {
 	  sm.prepareChecks(modifyThread, true);
-	  currentThread.stop();
+	  if (we_are_gnu_classpath)
+	    Thread.currentThread().stop();
 	  harness.check(false, "shouldn't be reached");	  
 	}
 	catch (SecurityException ex) {
@@ -253,7 +265,8 @@ public class security implements Testlet
 	
 	try {
 	  sm.prepareChecks(modifyThread, true);
-	  currentThread.stop(threadDeath);
+	  if (we_are_gnu_classpath)
+	    Thread.currentThread().stop(threadDeath);
 	  harness.check(false, "shouldn't be reached");	  
 	}
 	catch (SecurityException ex) {
@@ -268,7 +281,8 @@ public class security implements Testlet
 
 	try {
 	  sm.prepareChecks(stopThread, true);
-	  currentThread.stop(notThreadDeath);
+	  if (we_are_gnu_classpath)
+	    Thread.currentThread().stop(notThreadDeath);
 	  harness.check(false, "shouldn't be reached");	  
 	}
 	catch (SecurityException ex) {
@@ -281,6 +295,10 @@ public class security implements Testlet
 	  }
 	}
 
+	// The modifyThreadGroup tests get run in a system thread.
+	modifyGroupThread.start();
+	modifyGroupThread.join();
+
 	// throwpoint: java.lang.Thread-Thread(ThreadGroup, Runnable)
 	// throwpoint: java.lang.Thread-Thread(ThreadGroup, Runnable, String)
 	// throwpoint: java.lang.Thread-Thread(ThreadGroup, Runnable, String, long)
@@ -288,19 +306,19 @@ public class security implements Testlet
 	harness.checkPoint("ThreadGroup constructors");
 	for (int i = 1; i <= 4; i++) {
 	  try {
-	    sm.prepareChecks(modifyThreadGroup);
+	    sm.prepareChecks(modifyThreadGroup, modifyThread);
 	    switch (i) {
 	    case 1:
-	      new Thread(group, runnable);
+	      new Thread(systemGroup, runnable);
 	      break;
 	    case 2:
-	      new Thread(group, runnable, "test thread");
+	      new Thread(systemGroup, runnable, "test thread");
 	      break;
 	    case 3:
-	      new Thread(group, runnable, "test thread", 1024);
+	      new Thread(systemGroup, runnable, "test thread", 1024);
 	      break;
 	    case 4:
-	      new Thread(group, "test thread");
+	      new Thread(systemGroup, "test thread");
 	      break;
 	    }
 	    sm.checkAllChecked(harness);
@@ -325,5 +343,82 @@ public class security implements Testlet
   public static void testGetContextClassLoader(Thread t)
   {
     t.getContextClassLoader();
+  }
+
+  // Stuff for the modifyThreadGroup tests
+  public static class SysTestRunner implements Runnable
+  {
+    private TestHarness harness;
+    private TestSecurityManager2 sm;
+    private Thread testThread;
+
+    private static Runnable runnable = new Runnable()
+    {
+      public void run()
+      {
+      }
+    };
+
+    public SysTestRunner(TestHarness harness,
+			 TestSecurityManager2 sm,
+			 Thread testThread)
+    {
+      this.harness = harness;
+      this.sm = sm;
+      this.testThread = testThread;
+    }
+
+    public void run()
+    {
+      try {
+	Thread thisThread = Thread.currentThread();
+
+	// throwpoint: java.lang.Thread-enumerate
+	harness.checkPoint("enumerate");
+	try {
+	  sm.prepareChecks(modifyThreadGroup);
+	  Thread.enumerate(new Thread[0]);
+	  sm.checkAllChecked(harness);
+	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}	
+
+	// throwpoint: java.lang.Thread-Thread()
+	// throwpoint: java.lang.Thread-Thread(Runnable)
+	// throwpoint: java.lang.Thread-Thread(String)
+	// throwpoint: java.lang.Thread-Thread(Runnable, String)
+	harness.checkPoint("basic constructors");
+	for (int i = 1; i <= 4; i++) {
+	  try {
+	    sm.prepareChecks(modifyThreadGroup, modifyThread);
+	    switch (i) {
+	    case 1:
+	      new Thread();
+	      break;
+	    case 2:
+	      new Thread(runnable);
+	      break;
+	    case 3:
+	      new Thread("test thread");
+	      break;
+	    case 4:
+	      new Thread(runnable, "test thread");
+	      break;
+	    }
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+	}
+      }
+      catch (Exception ex) {
+	harness.debug(ex);
+	harness.check(false, "Unexpected exception");
+      }
+    }
   }
 }
