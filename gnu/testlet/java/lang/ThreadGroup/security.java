@@ -33,217 +33,298 @@ public class security implements Testlet
     try {
       harness.checkPoint("setup");
 
-      ThreadGroup testGroup = Thread.currentThread().getThreadGroup();
-      if (testGroup.getParent() == null)
-	testGroup = new ThreadGroup(testGroup, "test group");
-      harness.check(testGroup.getParent() != null);
-      
-      Permission[] modifyThreadGroup = new Permission[] {
-	new RuntimePermission("modifyThreadGroup")};
+      // The default SecurityManager.checkAccess(ThreadGroup) method
+      // only checks permissions when the threadgroup in question is
+      // the system threadgroup, which is defined as the threadgroup
+      // with no parent.
 
-      Permission[] modifyThread = new Permission[] {
-	new RuntimePermission("modifyThread")};
+      ThreadGroup systemGroup = Thread.currentThread().getThreadGroup();
+      while (systemGroup.getParent() != null)
+	systemGroup = systemGroup.getParent();
 
-      Permission[] stopThread = new Permission[] {
-	new RuntimePermission("modifyThread"),
-	new RuntimePermission("stopThread")};
+      Thread testThread = new Thread(systemGroup, new TestRunner(harness));
 
-      TestSecurityManager2 sm = new TestSecurityManager2(harness);
-      try {
-	sm.install();
-
-	// throwpoint: java.lang.ThreadGroup-ThreadGroup(String)
-	harness.checkPoint("ThreadGroup(String)");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  new ThreadGroup("test");
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-	
-	// throwpoint: java.lang.ThreadGroup-ThreadGroup(ThreadGroup, String)
-	harness.checkPoint("ThreadGroup(ThreadGroup, String)");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  new ThreadGroup(testGroup, "test");
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-checkAccess
-	harness.checkPoint("checkAccess");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.checkAccess();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-enumerate(Thread[])
-	harness.checkPoint("enumerate(Thread[])");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.enumerate(new Thread[0]);
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}	
-
-	// throwpoint: java.lang.ThreadGroup-enumerate(Thread[], boolean)
-	harness.checkPoint("enumerate(Thread[], boolean)");
-	for (int i = 0; i <= 1; i++) {
-	  try {
-	    sm.prepareChecks(modifyThreadGroup);
-	    testGroup.enumerate(new Thread[0], i == 1);
-	    sm.checkAllChecked(harness);
-	  }
-	  catch (SecurityException ex) {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }	
-	}
-
-	// throwpoint: java.lang.ThreadGroup-enumerate(ThreadGroup[])
-	harness.checkPoint("enumerate(ThreadGroup[])");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.enumerate(new ThreadGroup[0]);
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}	
-
-	// throwpoint: java.lang.ThreadGroup-enumerate(ThreadGroup[], boolean)
-	harness.checkPoint("enumerate(ThreadGroup[], boolean)");
-	for (int i = 0; i <= 1; i++) {
-	  try {
-	    sm.prepareChecks(modifyThreadGroup);
-	    testGroup.enumerate(new ThreadGroup[0], i == 1);
-	    sm.checkAllChecked(harness);
-	  }
-	  catch (SecurityException ex) {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }	
-	}
-
-	// throwpoint: java.lang.ThreadGroup-getParent
-	harness.checkPoint("getParent");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.getParent();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-	
-	// throwpoint: java.lang.ThreadGroup-setDaemon
-	harness.checkPoint("setDaemon");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.setDaemon(false);
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-	
-	// throwpoint: java.lang.ThreadGroup-setMaxPriority
-	harness.checkPoint("setMaxPriority");
-	try {
-	  int priority = testGroup.getMaxPriority();
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.setMaxPriority(priority);
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-suspend
-	harness.checkPoint("suspend");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.suspend();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-resume
-	harness.checkPoint("resume");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.resume();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-destroy
-	harness.checkPoint("destroy");
-	try {
-	  sm.prepareChecks(modifyThreadGroup);
-	  testGroup.destroy();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-interrupt
-	harness.checkPoint("interrupt");
-	try {
-	  sm.prepareChecks(modifyThreadGroup, modifyThread);
-	  testGroup.interrupt();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-
-	// throwpoint: java.lang.ThreadGroup-stop
-	harness.checkPoint("stop");
-	try {
-	  sm.prepareChecks(modifyThreadGroup, stopThread);
-	  testGroup.stop();
-	  sm.checkAllChecked(harness);
-	}
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
-      }
-      finally {
-	sm.uninstall();
-      }
+      testThread.start();
+      testThread.join();
     }
     catch (Throwable ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
+    }
+  }
+  
+  public static class TestRunner implements Runnable
+  {
+    private TestHarness harness;
+
+    public TestRunner(TestHarness harness)
+    {
+      this.harness = harness;
+    }
+
+    public void run()
+    {
+      try {
+	ThreadGroup testGroup = Thread.currentThread().getThreadGroup();
+	harness.check(testGroup.getParent() == null);
+
+	ThreadGroup nonSystemGroup = new ThreadGroup(testGroup, "test group");
+	harness.check(nonSystemGroup.getParent() != null);
+	
+	Permission[] modifyThreadGroup = new Permission[] {
+	  new RuntimePermission("modifyThreadGroup")};
+
+	Permission[] modifyThread = new Permission[] {
+	  new RuntimePermission("modifyThread")};
+
+	Permission[] stopThread = new Permission[] {
+	  new RuntimePermission("modifyThread"),
+	  new RuntimePermission("stopThread")};
+
+	TestSecurityManager2 sm = new TestSecurityManager2(harness);
+	try {
+	  sm.install();
+
+	  // throwpoint: java.lang.ThreadGroup-ThreadGroup(String)
+	  harness.checkPoint("ThreadGroup(String)");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    new ThreadGroup("test");
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+	
+	  // throwpoint: java.lang.ThreadGroup-ThreadGroup(ThreadGroup, String)
+	  harness.checkPoint("ThreadGroup(ThreadGroup, String)");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    new ThreadGroup(testGroup, "test");
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-checkAccess
+	  harness.checkPoint("checkAccess");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    testGroup.checkAccess();
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-enumerate(Thread[])
+	  harness.checkPoint("enumerate(Thread[])");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    testGroup.enumerate(new Thread[0]);
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }	
+
+	  // throwpoint: java.lang.ThreadGroup-enumerate(Thread[], boolean)
+	  harness.checkPoint("enumerate(Thread[], boolean)");
+	  for (int i = 0; i <= 1; i++) {
+	    try {
+	      sm.prepareChecks(modifyThreadGroup);
+	      testGroup.enumerate(new Thread[0], i == 1);
+	      sm.checkAllChecked(harness);
+	    }
+	    catch (SecurityException ex) {
+	      harness.debug(ex);
+	      harness.check(false, "unexpected check");
+	    }	
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-enumerate(ThreadGroup[])
+	  harness.checkPoint("enumerate(ThreadGroup[])");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    testGroup.enumerate(new ThreadGroup[0]);
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }	
+
+	  // throwpoint: java.lang.ThreadGroup-enumerate(ThreadGroup[], boolean)
+	  harness.checkPoint("enumerate(ThreadGroup[], boolean)");
+	  for (int i = 0; i <= 1; i++) {
+	    try {
+	      sm.prepareChecks(modifyThreadGroup);
+	      testGroup.enumerate(new ThreadGroup[0], i == 1);
+	      sm.checkAllChecked(harness);
+	    }
+	    catch (SecurityException ex) {
+	      harness.debug(ex);
+	      harness.check(false, "unexpected check");
+	    }	
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-getParent
+	  harness.checkPoint("getParent");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    nonSystemGroup.getParent();
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+	
+	  // throwpoint: java.lang.ThreadGroup-setDaemon
+	  harness.checkPoint("setDaemon");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    testGroup.setDaemon(false);
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+	
+	  // throwpoint: java.lang.ThreadGroup-setMaxPriority
+	  harness.checkPoint("setMaxPriority");
+	  try {
+	    int priority = testGroup.getMaxPriority();
+	    sm.prepareChecks(modifyThreadGroup);
+	    testGroup.setMaxPriority(priority);
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-suspend
+	  harness.checkPoint("suspend");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup, modifyThread, true);
+	    testGroup.suspend();
+	    harness.check(false, "shouldn't be reached");
+	  }
+	  catch (SecurityException ex) {
+	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
+	      harness.check(true);
+	    }
+	    else {
+	      harness.debug(ex);
+	      harness.check(false, "unexpected check");
+	    }
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-resume
+	  harness.checkPoint("resume");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup, modifyThread, true);
+	    testGroup.resume();
+	    harness.check(false, "shouldn't be reached");
+	  }
+	  catch (SecurityException ex) {
+	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
+	      harness.check(true);
+	    }
+	    else {
+	      harness.debug(ex);
+	      harness.check(false, "unexpected check");
+	    }
+	  }
+
+	  // throwpoint: TODO: java.lang.ThreadGroup-destroy
+	  // XXX I'm not sure you can test for this one.  It's an
+	  // XXX error to call this on a non-empty threadgroup, but
+	  // XXX the check only happens for the system group which
+	  // XXX will not be empty.
+
+	  // throwpoint: java.lang.ThreadGroup-interrupt
+	  harness.checkPoint("interrupt");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup, modifyThread, true);
+	    testGroup.interrupt();
+	    harness.check(false, "shouldn't be reached");
+	  }
+	  catch (SecurityException ex) {
+	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
+	      harness.check(true);
+	    }
+	    else {
+	      harness.debug(ex);
+	      harness.check(false, "unexpected check");
+	    }
+	  }
+
+	  // throwpoint: java.lang.ThreadGroup-stop
+	  harness.checkPoint("stop");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup, stopThread, true);
+	    testGroup.stop();
+	    harness.check(false, "shouldn't be reached");
+	  }
+	  catch (SecurityException ex) {
+	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
+	      harness.check(true);
+	    }
+	    else {
+	      harness.debug(ex);
+	      harness.check(false, "unexpected check");
+	    }
+	  }
+	}
+	finally {
+	  sm.uninstall();
+	}
+
+	sm = new SpecialSecurityManager(harness);
+	try {
+	  sm.install();
+
+	  // throwpoint: java.lang.ThreadGroup-destroy
+	  harness.checkPoint("destroy");
+	  try {
+	    sm.prepareChecks(modifyThreadGroup);
+	    nonSystemGroup.destroy();
+	    sm.checkAllChecked(harness);
+	  }
+	  catch (SecurityException ex) {
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
+	  }
+	}
+	finally {
+	  sm.uninstall();
+	}
+      }
+      catch (Throwable ex) {
+	harness.debug(ex);
+	harness.check(false, "Unexpected exception");
+      }
+    }
+  }
+
+  public static class SpecialSecurityManager extends TestSecurityManager2
+  {
+    public SpecialSecurityManager(TestHarness harness)
+    {
+      super(harness);
+    }
+    
+    public void checkAccess(ThreadGroup g)
+    {
+      checkPermission(new RuntimePermission("modifyThreadGroup"));
     }
   }
 }
