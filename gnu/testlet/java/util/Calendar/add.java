@@ -1,6 +1,6 @@
 // Test Calendar.add().
 
-// Copyright (c) 2001  Red Hat
+// Copyright (c) 2001, 2006  Red Hat
 // Written by Tom Tromey <tromey@redhat.com>
 
 // This file is part of Mauve.
@@ -89,5 +89,37 @@ public class add implements Testlet
     harness.check (cdf.format (k.getTime ()),
 		   "Sat, 1 Mar 1980 10:00:00 GMT",
 		   "wrap up");
+    
+    testPreviousDate(harness);
+    
   }
+  
+  public void testPreviousDate(TestHarness harness)
+  {
+    Calendar calendar = Calendar.getInstance();
+    Date now = new Date();
+
+    // Calculate the start of today.
+    calendar.setTime(now);
+    calendar.clear(Calendar.HOUR_OF_DAY);
+    calendar.clear(Calendar.MINUTE);
+    calendar.clear(Calendar.SECOND);
+    calendar.clear(Calendar.MILLISECOND);
+
+    Date todayStart = calendar.getTime();
+
+    // Calculate the start of yesterday.
+    calendar.setTime(now);
+    calendar.add(Calendar.DATE, -1); // this change shouldn't be lost
+    calendar.clear(Calendar.HOUR_OF_DAY);
+    calendar.clear(Calendar.MINUTE);
+    calendar.clear(Calendar.SECOND);
+    calendar.clear(Calendar.MILLISECOND);
+
+    Date yesterdayStart = calendar.getTime();
+
+    harness.check(yesterdayStart.before(todayStart),
+                  "PR27362: Check that clear didn't swallow a previous add() call");
+  }
+  
 }
