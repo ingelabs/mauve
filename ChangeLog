@@ -1,9 +1,14 @@
-2006-05-06  Olivier Jolly  <olivier.jolly@pcedev.com>
+2006-05-07  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
-    * gnu/testlet/java/util/Calendar/add.java: (test): Added call to the new
-    test.
-    (testPreviousDate): Regression test for PR27362, which ensures that
-    Calendar.clear(int) doesn't swallow previous calendar changes.
+	* gnu/testlet/java/text/DecimalFormat/PR27311.java:
+	Test for the bug in PR#27311.
+	
+2006-05-06  Olivier Jolly  <olivier.jolly@pcedev.com>
+    
+	* gnu/testlet/java/util/Calendar/add.java: (test): Added call to the new
+	test.
+	(testPreviousDate): Regression test for PR27362, which ensures that
+	Calendar.clear(int) doesn't swallow previous calendar changes.
 
 2006-05-05  Gary Benson  <gbenson@redhat.com>
 
