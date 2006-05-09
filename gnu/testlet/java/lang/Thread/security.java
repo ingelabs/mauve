@@ -70,7 +70,7 @@ public class security implements Testlet
       harness.check(testThread.getThreadGroup().getParent() == null);
 
       Thread modifyGroupThread = new Thread(
-	systemGroup, new SysTestRunner(harness, sm, testThread));
+	systemGroup, new SysTestRunner(harness, sm));
       harness.check(modifyGroupThread.getThreadGroup().getParent() == null);
 
       Throwable threadDeath = new ThreadDeath();
@@ -350,7 +350,6 @@ public class security implements Testlet
   {
     private TestHarness harness;
     private TestSecurityManager2 sm;
-    private Thread testThread;
 
     private static Runnable runnable = new Runnable()
     {
@@ -359,20 +358,15 @@ public class security implements Testlet
       }
     };
 
-    public SysTestRunner(TestHarness harness,
-			 TestSecurityManager2 sm,
-			 Thread testThread)
+    public SysTestRunner(TestHarness harness, TestSecurityManager2 sm)
     {
       this.harness = harness;
       this.sm = sm;
-      this.testThread = testThread;
     }
 
     public void run()
     {
       try {
-	Thread thisThread = Thread.currentThread();
-
 	// throwpoint: java.lang.Thread-enumerate
 	harness.checkPoint("enumerate");
 	try {

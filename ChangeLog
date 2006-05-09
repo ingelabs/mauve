@@ -1,3 +1,7 @@
+2006-05-09  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/lang/Thread/security.java: Removed unused stuff.
+
 2005-04-29  Sven de Marothy  <sven@physto.se>
 
 	* gnu/testlet/java/util/Calendar/setTimeZone.java:
