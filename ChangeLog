@@ -1,3 +1,7 @@
+2006-05-09  Robert Schuster  <robertschuster@fsfe.org>
+	* gnu/testlet/javax/swing/text/AbstractDocument/filterTest.java:
+	New test.
+
 2006-05-09  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/lang/Thread/security.java: Removed unused stuff.
