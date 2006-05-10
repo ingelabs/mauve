@@ -1,3 +1,8 @@
+2006-05-10  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/lang/Thread/insecurity.java: New test.
+	* gnu/testlet/java/lang/ThreadGroup/insecurity.java: Likewise.
+
 2006-05-09  Robert Schuster  <robertschuster@fsfe.org>
 	* gnu/testlet/javax/swing/text/AbstractDocument/filterTest.java:
 	New test.
