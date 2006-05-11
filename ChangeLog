@@ -1,3 +1,10 @@
+2006-05-11  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/logging/Handler/TestSecurityManager.java
+	(install): Initialize LogManager first.
+	* gnu/testlet/java/util/logging/Logger/TestSecurityManager.java
+	(install): Likewise.
+
 2006-05-10  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/lang/Thread/insecurity.java: New test.

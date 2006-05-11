@@ -24,7 +24,7 @@ package gnu.testlet.java.util.logging.Handler;
 import java.security.Permission;
 import java.security.AccessControlException;
 import java.util.logging.LoggingPermission;
-
+import java.util.logging.LogManager;
 
 /**
  * A SecurityManager that can be told whether or not to grant
@@ -57,6 +57,9 @@ public class TestSecurityManager
 
   public void install()
   {
+    // Make sure the LogManager is fully installed first.
+    LogManager lm = LogManager.getLogManager();
+
     SecurityManager oldsm = System.getSecurityManager();
     
     if (oldsm == this)
