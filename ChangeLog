@@ -1,3 +1,8 @@
+2006-05-12  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/text/Utilities/getPreviousWord.java:
+	New test.
+
 2006-05-11  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/logging/Handler/TestSecurityManager.java
