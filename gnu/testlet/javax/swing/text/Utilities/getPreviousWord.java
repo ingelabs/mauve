@@ -33,17 +33,22 @@ import javax.swing.text.BadLocationException;
 
 public class getPreviousWord implements Testlet
 {
-  String text = "GNU Classpath, Essential Libraries for Java, " +
+  String text1 = "GNU Classpath, Essential Libraries for Java, " +
                 "is a GNU project to create free core class " +
                 "libraries for use with virtual machines and " +
                 "compilers for the java programming language.";
 
-  JTextField tf = new JTextField(text);
+  JTextField tf = new JTextField(text1);
 
-  int[] expected = new int[] { 175, 167, 155, 150, 146, 142, 132, 128, 119,
-                               111, 106, 102, 98, 88, 82, 77, 72, 65, 62, 54,
-                               50, 48, 45, 43, 39, 35, 25, 15, 13, 4, 0 
-                             };
+  int[] expected1 = new int[] { 176, 175, 167, 155, 150, 146, 142, 132, 128,
+                               119, 111, 106, 102, 98, 88, 82, 77, 72, 65, 62,
+                               54, 50, 48, 45, 43, 39, 35, 25, 15, 13, 4, 0
+                              };
+
+  String text2 = "foo 333 . **777.1)/&";
+
+  int[] expected2 = new int[] { 19, 18, 17, 12, 11, 10, 8, 4, 0 };
+
   /**
    * Runs the test using the specified harness.
    * 
@@ -53,11 +58,11 @@ public class getPreviousWord implements Testlet
   {
         // At first Utilities.getNextWord() has to return the correct offsets
         // for the given text.
-        harness.checkPoint("indices");
+        harness.checkPoint("indices-normal");
         try
           {
-            for ( int i=0; i < expected.length - 1; i++)
-	      harness.check(Utilities.getPreviousWord(tf, expected[i]), expected[i+1]);
+            for ( int i=0; i < expected1.length - 1; i++)
+	      harness.check(Utilities.getPreviousWord(tf, expected1[i]), expected1[i+1]);
           }
         catch (BadLocationException ble)
           {
@@ -103,6 +108,21 @@ public class getPreviousWord implements Testlet
             correctException = e instanceof BadLocationException;
           }
         harness.check(correctException);
+
+        // Do the index check again with a more complicated text.
+	tf.setText(text2);
+        harness.checkPoint("indices-tricky");
+        try
+          {
+            for ( int i=0; i < expected2.length - 1; i++)
+	      harness.check(Utilities.getPreviousWord(tf, expected2[i]), expected2[i+1]);
+          }
+        catch (BadLocationException ble)
+          {
+            ble.printStackTrace();
+	    harness.verbose("index: "  + ble.offsetRequested());
+            harness.fail("BadLocationException occurred!");
+          }
   }
 
 }

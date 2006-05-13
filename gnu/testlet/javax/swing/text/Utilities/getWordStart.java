@@ -1,4 +1,4 @@
-/* getNextWord.java
+/* getPreviousWord.java
    Copyright (C) 2006  Robert Schuster <robertschuster@fsfe.org>
 This file is part of Mauve.
 
@@ -31,39 +31,48 @@ import javax.swing.JTextField;
 import javax.swing.text.Utilities;
 import javax.swing.text.BadLocationException;
 
-public class getNextWord implements Testlet
+public class getWordStart implements Testlet
 {
-  String text1 = "GNU Classpath, Essential Libraries for Java, " +
-                 "is a GNU project to create free core class " +
-                 "libraries for use with virtual machines and " +
-                 "compilers for the java programming language.";
+  String text = "GNU Classpath, Essential Libraries for Java, " +
+                "is a GNU project to create free core class " +
+                "libraries for use with virtual machines and " +
+                "compilers for the java programming language.";
 
-  JTextField tf = new JTextField(text1);
+  JTextField tf = new JTextField(text);
 
-  int[] expected1 = new int[] { 0, 4, 13, 15, 25, 35, 39, 43, 45, 48, 50, 54,
-                               62, 65, 72, 77, 82, 88, 98, 102, 106, 111, 119,
-                               128, 132, 142, 146, 150, 155, 167, 175 };
-
-  String text2 = "foo 333 . **777.1)/&";
-
-  int[] expected2 = new int[] { 0, 4, 8, 10, 11, 12, 17, 18, 19 };
+  int[] expected = new int[] { 0, 0, 0, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 13, 14,
+                               15, 15, 15, 15, 15, 15, 15, 15, 15, 24, 25, 25,
+                               25, 25, 25, 25, 25, 25, 25, 34, 35, 35, 35, 38,
+                               39, 39, 39, 39, 43, 44, 45, 45, 47, 48, 49, 50,
+                               50, 50, 53, 54, 54, 54, 54, 54, 54, 54, 61, 62,
+                               62, 64, 65, 65, 65, 65, 65, 65, 71, 72, 72, 72,
+                               72, 76, 77, 77, 77, 77, 81, 82, 82, 82, 82, 82,
+                               87, 88, 88, 88, 88, 88, 88, 88, 88, 88, 97, 98,
+                               98, 98, 101, 102, 102, 102, 105, 106, 106, 106,
+                               106, 110, 111, 111, 111, 111, 111, 111, 111,
+                               118, 119, 119, 119, 119, 119, 119, 119, 119,
+                               127, 128, 128, 128, 131, 132, 132, 132, 132,
+                               132, 132, 132, 132, 132, 141, 142, 142, 142,
+                               145, 146, 146, 146, 149, 150, 150, 150, 150,
+                               154, 155, 155, 155, 155, 155, 155, 155, 155,
+                               155, 155, 155, 166, 167, 167, 167, 167, 167,
+                               167, 167, 167, 175, 175
+                             };
 
   /**
    * Runs the test using the specified harness.
    * 
    * @param harness  the test harness (<code>null</code> not permitted).
    */
-  public void test(TestHarness harness)      
+  public void test(TestHarness harness)
   {
-	int pos = 0;
-
         // At first Utilities.getNextWord() has to return the correct offsets
         // for the given text.
         harness.checkPoint("indices");
         try
           {
-            for ( int i=0; i < expected1.length - 1; i++)
-	      harness.check(Utilities.getNextWord(tf, expected1[i]), expected1[i+1]);
+            for ( int i=0; i <= text.length(); i++)
+	      harness.check(Utilities.getWordStart(tf, i), expected[i]);
           }
         catch (BadLocationException ble)
           {
@@ -72,13 +81,26 @@ public class getNextWord implements Testlet
             harness.fail("BadLocationException occurred!");
           }
 
-        // Given an offset >= 175 the method should throw a BadLocationException
-        // as there are no more words.
+        // Given an offset > text.length() the method should throw a
+        // BadLocationException.
         harness.checkPoint("exception");
         boolean correctException = false;
         try
           {
-	      Utilities.getNextWord(tf, 175);
+	      Utilities.getPreviousWord(tf, 180);
+          }
+        catch (Exception e)
+          {
+            correctException = e instanceof BadLocationException;
+          }
+        harness.check(correctException);
+
+	// Given an offset <= 0 the method should throw a
+        // BadLocationException..
+	correctException = false;
+        try
+          {
+	      Utilities.getPreviousWord(tf, 0);
           }
         catch (Exception e)
           {
@@ -89,39 +111,13 @@ public class getNextWord implements Testlet
 	correctException = false;
         try
           {
-	      Utilities.getNextWord(tf, 176);
+	      Utilities.getPreviousWord(tf, -1);
           }
         catch (Exception e)
           {
             correctException = e instanceof BadLocationException;
           }
         harness.check(correctException);
-        
-	correctException = false;
-        try
-          {
-	      Utilities.getNextWord(tf, 177);
-          }
-        catch (Exception e)
-          {
-            correctException = e instanceof BadLocationException;
-          }
-        harness.check(correctException);
-
-        tf.setText(text2);
-        harness.checkPoint("indices-tricky");
-        try
-          {
-            for ( int i=0; i < expected2.length - 1; i++)
-	      harness.check(Utilities.getNextWord(tf, expected2[i]), expected2[i+1]);
-          }
-        catch (BadLocationException ble)
-          {
-            ble.printStackTrace();
-	    harness.verbose("index: "  + ble.offsetRequested());
-            harness.fail("BadLocationException occurred!");
-          }
-
   }
 
 }

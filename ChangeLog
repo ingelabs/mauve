@@ -1,3 +1,10 @@
+2006-05-13  Robert Schuster  <robertschuster@fsfe.org>
+
+	* gnu/testlet/javax/swing/text/Utilities/getWordStart.java: New test.
+	* gnu/testlet/javax/swing/text/Utilities/getPreviousWord.java: Renamed
+	fields, added second string to check.
+	* gnu/testlet/javax/swing/text/Utilities/getNextWord.java: Dito.
+
 2006-05-12  Robert Schuster  <robertschuster@fsfe.org>
 
 	* gnu/testlet/javax/swing/text/Utilities/getPreviousWord.java:
