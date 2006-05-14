@@ -1,3 +1,7 @@
+2006-05-14  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/net/ServerSocket/AcceptTimeout.java: New test.
+
 2006-05-13  Robert Schuster  <robertschuster@fsfe.org>
 
 	* gnu/testlet/javax/swing/text/Utilities/getWordStart.java: New test.
