@@ -1,3 +1,14 @@
+2006-05-16  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/SizeSequence/constructors.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/getIndex.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/getSize.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/getSizes.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/insertEntries.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/removeEntries.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/setSize.java: New test,
+	* gnu/testlet/javax/swing/SizeSequence/setSizes.java: New test.	
+
 2006-05-14  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/net/ServerSocket/AcceptTimeout.java: New test.
