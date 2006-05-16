@@ -1,5 +1,29 @@
 2006-05-16  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/DefaultButtonModel/addActionListener.java: 
+	New file,
+	* gnu/testlet/javax/swing/DefaultButtonModel/constants.java: Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/constructor.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/getSelectedObjects.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/MyDefaultButtonModel.java:
+	Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setActionCommand.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setArmed.java: Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setEnabled.java: Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setGroup.java: Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setMnemonic.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setPressed.java: Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setRollover.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/DefaultButtonModel/setSelected.java: 
+	Likewise.
+
+2006-05-16  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/SizeSequence/constructors.java: New test,
 	* gnu/testlet/javax/swing/SizeSequence/getIndex.java: New test,
 	* gnu/testlet/javax/swing/SizeSequence/getSize.java: New test,
