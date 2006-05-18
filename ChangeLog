@@ -1,3 +1,7 @@
+2006-05-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/tree/TreePath/PR27651.java: New test.
+
 2006-05-17  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* gnu/testlet/javax/imageio/stream/MemoryCacheImageInputStream/TestImageInputStreamImpl.java:
