@@ -1,3 +1,12 @@
+2006-05-18  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
+	(getBootClassPath): Changed location of DetectBootclasspath because it
+	is now an inner class of Harness rather than a separate source file
+	in gnu/testlet.
+	(Harness.DetectBootclasspath): New inner class.
+	* gnu/testlet/DetectBootclasspath.java: Removed this file.
+
 2006-05-18  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/font/ShapeGraphicAttribute: New directory.
