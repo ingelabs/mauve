@@ -1,3 +1,10 @@
+2006-05-18  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/font/ShapeGraphicAttribute: New directory.
+	* gnu/testlet/java/awt/font/ShapeGraphicAttribute/ShapeGraphicAttributeTest: New test.
+	* gnu/testlet/java/awt/font/ImageGraphicAttribute/ImageGraphicAttributeTest.java: Added
+	equals test.
+
 2006-05-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/tree/TreePath/PR27651.java: New test.

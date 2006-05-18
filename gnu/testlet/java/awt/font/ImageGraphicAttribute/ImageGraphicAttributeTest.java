@@ -1,5 +1,5 @@
 /* ImageGraphicAttributeTest.java --
-   Copyright (C) 2006 FIXME: your info here
+   Copyright (C) 2006 Red Hat
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -63,6 +63,8 @@ public class ImageGraphicAttributeTest
                                                              (float) 1202.0,
                                                              (float) 127.0,
                                                              (float) 64.0));
+        
+        harness.check(iga.equals(iga2), false);
       }
     catch (Exception e)
     {
