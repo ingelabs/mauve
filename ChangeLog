@@ -1,5 +1,10 @@
 2006-05-18  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* Makefile.in: Regenerated.
+	* aclocal.m4: Regenerated.
+
+2006-05-18  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java:
 	(getBootClassPath): Changed location of DetectBootclasspath because it
 	is now an inner class of Harness rather than a separate source file
