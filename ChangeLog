@@ -1,5 +1,13 @@
 2006-05-21  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
+	* gnu/testlet/java/lang/Character/Blocks.java,
+	* gnu/testlet/java/lang/Character/Blocks15.java:
+	New files to test Character blocks.
+	* gnu/testlet/java/beans/beancontext/Add.java:
+	Add more readable checkpoints.
+	
+2006-05-21  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
 	* gnu/testlet/java/beans/beancontext/Add.java:
 	New file. Tests the semantics of adding a bean
 	to a context.

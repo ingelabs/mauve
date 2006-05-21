@@ -51,41 +51,41 @@ public class Add
   public void test(TestHarness h)
   {
     /* Check child is contextless */
-    h.check(child.getBeanContext() == null);
+    h.check(child.getBeanContext() == null, "Contextless check");
     /* Check initial empty status of context */
-    h.check(context.isEmpty());
-    h.check(context.size() == 0);
+    h.check(context.isEmpty(), "Empty check");
+    h.check(context.size() == 0, "Size of 0 check");
     /* Add child */
-    h.check(context.add(child));
+    h.check(context.add(child), "Child addition check");
     /* Check child is added to context */
-    h.check(context.isEmpty() == false);
-    h.check(context.size() == 1);
+    h.check(context.isEmpty() == false, "Non-empty check");
+    h.check(context.size() == 1, "Size of 1 check");
     /* Check child now knows about context */
-    h.check(child.getBeanContext() == context);
+    h.check(child.getBeanContext() == context, "Correct context check");
     /* Check that context maintains set semantics */
-    h.check(context.add(child) == false);
-    h.check(context.size() == 1);
+    h.check(context.add(child) == false, "Set check");
+    h.check(context.size() == 1, "Same size after failed addition check");
     /* Check that context catches null */
     try
       {
 	context.add(null);
-	h.check(false);
+	h.fail("Failed to catch null child");
       }
     catch (Exception e)
       {
-	h.check(e instanceof IllegalArgumentException);
+	h.check(e instanceof IllegalArgumentException, "Caught null child");
       }
     /* Check correct handling of veto from child */
     try
       {
 	context.add(brokenChild);
-	h.check(false);
+	h.fail("Failed to catch veto by child");
       }
     catch (Exception e)
       {
-	h.check(e instanceof IllegalStateException);
+	h.check(e instanceof IllegalStateException, "Caught veto from child");
 	/* Check that child has not been added */
-	h.check(context.size() == 1);
+	h.check(context.size() == 1, "Same size after veto check");
       }	
   }
 
