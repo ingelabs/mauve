@@ -42,8 +42,7 @@ public class InstantiateChild
 	h.check(context.isEmpty(), "Empty check");
 	h.check(context.size() == 0, "Size of 0 check");
 	/* Add child */
-	h.check(context.instantiateChild("java.beans.beancontext.BeanContextChildSupport"), 
-		"Child instantiated addition check");
+	context.instantiateChild("java.beans.beancontext.BeanContextChildSupport");
 	/* Check child is added to context */
 	h.check(context.isEmpty() == false, "Non-empty check");
 	h.check(context.size() == 1, "Size of 1 check");
