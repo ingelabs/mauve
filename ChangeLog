@@ -1,3 +1,7 @@
+2006-05-26  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/math/BigInteger/modPow.java: New file.
+
 2006-05-23  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/awt/Window/security.java: New test.
