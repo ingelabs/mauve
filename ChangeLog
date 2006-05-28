@@ -1,3 +1,22 @@
+2006-05-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/constructor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getBackgroundNonSelectionColor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getBackgroundSelectionColor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getBorderSelectionColor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getClosedIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getDefaultClosedIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getDefaultLeafIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getDefaultOpenIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getLeafIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getOpenIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/setBackgroundNonSelectionColor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/setBackgroundSelectionColor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/setBorderSelectionColor.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/setClosedIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/setLeafIcon.java: New file,
+	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/setOpenIcon.java: New file.
+
 2006-05-26  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/math/BigInteger/modPow.java: New file.
