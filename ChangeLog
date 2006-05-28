@@ -1,5 +1,11 @@
 2006-05-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JSplitPane/MyJSplitPane.java: New file,
+	* gnu/testlet/javax/swing/JSplitPane/paramString.java: New file,
+	* gnu/testlet/javax/swing/JSplitPane/setResizeWeight.java: New file.
+
+2006-05-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/constructor.java: New file,
 	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getBackgroundNonSelectionColor.java: New file,
 	* gnu/testlet/javax/swing/tree/DefaultTreeCellRenderer/getBackgroundSelectionColor.java: New file,
