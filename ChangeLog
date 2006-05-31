@@ -1,5 +1,15 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getAccessibleName.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getAccessibleRole.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getAccessibleValue.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getCurrentAccessibleValue.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getMaximumAccessibleValue.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getMinimumAccessibleValue.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/setMaximumAccessibleValue.java: New file.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JInternalFrame/setClosable.java
 	(TestPropertyChangeHandler): Removed,
 	(lastEvent): New field,
