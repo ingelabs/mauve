@@ -1,5 +1,12 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JLabel/getAccessibleContext.java: New file,
+	* gnu/testlet/javax/swing/JLabel/paramString.java: New file,
+	* gnu/testlet/javax/swing/JLabel/setLabelFor.java: New file,
+	* gnu/testlet/javax/swing/JLabel/MyJLabel.java: New file.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JToolTip/getAccessibleContext.java: New file,
 	* gnu/testlet/javax/swing/JToolTip/getComponent.java: New file,
 	* gnu/testlet/javax/swing/JToolTip/getTipText.java: New file,
