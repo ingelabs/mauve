@@ -1,5 +1,20 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JProgressBar/getAccessibleContext.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/getPercentComplete.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/getString.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/isStringPainted.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/MyJProgressBar.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/paramString.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/setBorderPainted.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/setModel.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/setOrientation.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/setString.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/setStringPainted.java: New file,
+	* gnu/testlet/javax/swing/JProgressBar/setValue.java: New file.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/DefaultListSelectionModel/addListSelectionListener.java: New file,
 	* gnu/testlet/javax/swing/DefaultListSelectionModel/addSelectionInterval.java: New file,
 	* gnu/testlet/javax/swing/DefaultListSelectionModel/clearSelection.java: New file,
