@@ -26,6 +26,7 @@ public interface config
   public static final String autoCompile = "@AUTO_COMPILE@";
   public static final String testJava = "@TEST_JAVA@";
   public static final String ecjJar = "@ECJ_JAR@";
+  public static final String emmaString = "@EMMA@";
   public static final String srcdir = "@SRCDIR@";
   public static final String tmpdir = "@TMPDIR@";
   public static final String pathSeparator = "@CHECK_PATH_SEPARATOR@";
@@ -36,6 +37,7 @@ public interface config
   public abstract String getAutoCompile ();
   public abstract String getTestJava ();
   public abstract String getEcjJar ();
+  public abstract String getEmmaString ();
   public abstract String getSourceDirectory ();
   public abstract String getTempDirectory ();
   public abstract String getPathSeparator ();

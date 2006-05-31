@@ -295,6 +295,11 @@ public abstract class TestHarness
   {
     return ecjJar;
   }
+  
+  public String getEmmaString()
+  {
+    return emmaString;
+  }
 
   public String getTestJava()
   {

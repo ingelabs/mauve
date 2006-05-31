@@ -1,3 +1,35 @@
+2006-05-31  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
+	(getBootclasspath): Accept output to console from the auto detector.
+	(finalize): Dump the coverage data.
+	(initProces): Confirm that the RunnerProcess started properly.
+	(runTest): Use a invalidTest flag to suppress output when -showpasses 
+	is used and a file is run that is "not-a-test".  If the RunnerProcess 
+	startup confirmation fails, print a message and exit.  Handle the 
+	statup confirmation and coverage dump confirmatino from the 
+	RunnerProcess.
+	* Makefile.in: Regenerated.
+	* RunnerProcess.java: 
+	(emmaJarLocation): New field.
+	(useEMMA): New field.
+	(emmaMethod): New field.
+	(main): Accept the -emma command line argument to specify the emma.jar 
+	location. Setup the EMMA coverage dumping facilities.  Handle the 
+	messages from the Harness indicating we should confirm startup or force
+	a coverage dump.
+	(setupEMMA): New method.
+	(dumpCoverageData): New method.
+	* configure: Regenerated.
+	* configure.in: Added -with-emma method to allow optional setting of 
+	emma.jar location.
+	* gnu/testlet/TestHarness.java:
+	(getEmmaString): New method.
+	* gnu/testlet/config.java.in:
+	(emmaString): New field.
+	(getEmmaString): New method.
+	
+	
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JTable/getAccessibleContext.java: New file,

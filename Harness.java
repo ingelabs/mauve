@@ -508,14 +508,13 @@ public class Harness
           if (br.ready())
             {
               bcpOutput = br.readLine();
+              if (bcpOutput == null)
+                // This means the auto-detection failed.
+                return null;
               if (bcpOutput.startsWith("BCP_FINDER:"))
                 return bcpOutput.substring(11);
               else
-                {
-                  // This means the auto-detection failed.
-                  System.out.println(bcpOutput);
-                  return null;
-                }
+                System.out.println(bcpOutput);
             }
         }
     }
@@ -620,8 +619,9 @@ public class Harness
     //Clean up 
     try
       {
+        runTest("_dump_data_");
         runner_in.close();
-        runner_out.close();
+        runner_out.close();        
         runnerProcess.destroy();
       } 
     catch (IOException e) 
@@ -651,8 +651,7 @@ public class Harness
         runner_out = new PrintWriter(runnerProcess.getOutputStream(), true);
         runner_in = 
           new BufferedReader
-          (new InputStreamReader(runnerProcess.getInputStream()));
-        
+          (new InputStreamReader(runnerProcess.getInputStream()));                
         // Create a timer to watch this new process.
         runner_watcher = new TimeoutWatcher(runner_timeout);
       }
@@ -661,6 +660,8 @@ public class Harness
         System.err.println("Problems invoking RunnerProcess: " + e);
         System.exit(1);
       }
+    
+    runTest("_confirm_startup_");
   }
   
   /**
@@ -749,6 +750,7 @@ public class Harness
   {
     String tn = stripPrefix(testName.replace(File.separatorChar, '.'));
     String outputFromTest;
+    boolean invalidTest = false;
     int temp = -1;
 
     // Start the timeout watcher
@@ -768,6 +770,11 @@ public class Harness
         // thread has declared the test hung and if so ends the process.
         if (testIsHung)
           {
+            if (testName.equals("_confirm_startup_"))
+              {
+                System.out.println("ERROR: Cannot create test runner process.  Exit");
+                System.exit(1);
+              }
             synchronized (runner_lock)
             {
               testIsHung = false;
@@ -793,6 +800,7 @@ public class Harness
               outputFromTest = runner_in.readLine();              
               if (outputFromTest.startsWith("RunnerProcess:"))
                 {
+                  invalidTest = false;
                   // This means the test finished properly, now have to see if
                   // it passed or failed.
                   if (outputFromTest.endsWith("pass"))
@@ -804,11 +812,15 @@ public class Harness
                       // Temporarily decrease the total number of tests,
                       // because it will be incremented later even 
                       // though the test was not a real test.
+                      invalidTest = true;
                       total_tests--;
                       temp = 0;
                     }
                   break;
-                }                
+                } 
+              else if (outputFromTest.equals("_startup_okay_") || 
+                  outputFromTest.equals("_data_dump_okay_"))
+                return;
               else
                 // This means it was just output from the test, like a 
                 // System.out.println within the test itself, we should
@@ -839,7 +851,7 @@ public class Harness
     total_tests ++;
     
     // If the test passed and the user wants to know about passes, tell them.
-    if (showPasses && temp == 0 && !verbose)
+    if (showPasses && temp == 0 && !verbose && !invalidTest)
       System.out.println ("PASS: "+tn);
   }  
   
@@ -917,7 +929,7 @@ public class Harness
    * 3) run those tests.
    * @param folderName
    */
-  private static void processFolder(String folderName)
+  private static void processFolder(String folderName)  
   {
     File dir = new File(folderName);
     String dirPath = dir.getPath();    

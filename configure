@@ -272,7 +272,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
 ac_unique_file="gnu/testlet/Testlet.java"
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA USE_GCJ_TRUE USE_GCJ_FALSE CP_INSTALL_DIR ECJ_JAR AUTO_COMPILE CLASS_FILES_TRUE CLASS_FILES_FALSE JAVA JAVAC GCJ GCJFLAGS GCJDEPMODE am__fastdepGCJ_TRUE am__fastdepGCJ_FALSE SRCDIR TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA USE_GCJ_TRUE USE_GCJ_FALSE CP_INSTALL_DIR EMMA ECJ_JAR AUTO_COMPILE CLASS_FILES_TRUE CLASS_FILES_FALSE JAVA JAVAC GCJ GCJFLAGS GCJDEPMODE am__fastdepGCJ_TRUE am__fastdepGCJ_FALSE SRCDIR TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -820,7 +820,10 @@ Optional Packages:
   --with-vm=TESTJVM  				Run the tests with TESTJVM
   --with-gcj                       Use gcj to compile .class files
   --with-bootclasspath=BOOTCP   Specify the bootclasspath for the compiler
-  --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for auto-compilation
+  --with-emma(=JARLOCATION)       Use emma, either unpacked in classpath
+folder or at the specified JARLOCATION
+  --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for
+auto-compilation
 
   --with-tmpdir=DIR                Put temporary files in DIR /tmp
 
@@ -2940,6 +2943,19 @@ fi;
 
 
 
+# Check whether --with-emma or --without-emma was given.
+if test "${with_emma+set}" = set; then
+  withval="$with_emma"
+  EMMA="$with_emma"
+else
+  EMMA="yes"
+fi;
+if test "$EMMA" = "yes"
+then
+EMMA="_auto_detect_emma_"
+fi
+
+
 
 # Check whether --with-ecj-jar or --without-ecj-jar was given.
 if test "${with_ecj_jar+set}" = set; then
@@ -4014,6 +4030,7 @@ s,@TEST_JAVA@,$TEST_JAVA,;t t
 s,@USE_GCJ_TRUE@,$USE_GCJ_TRUE,;t t
 s,@USE_GCJ_FALSE@,$USE_GCJ_FALSE,;t t
 s,@CP_INSTALL_DIR@,$CP_INSTALL_DIR,;t t
+s,@EMMA@,$EMMA,;t t
 s,@ECJ_JAR@,$ECJ_JAR,;t t
 s,@AUTO_COMPILE@,$AUTO_COMPILE,;t t
 s,@CLASS_FILES_TRUE@,$CLASS_FILES_TRUE,;t t

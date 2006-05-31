@@ -29,6 +29,7 @@ import gnu.testlet.TestReport;
 import gnu.testlet.TestResult;
 import gnu.testlet.TestSecurityManager;
 import gnu.testlet.Testlet;
+import gnu.testlet.config;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,6 +40,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Vector;
 
 public class RunnerProcess
@@ -49,6 +54,12 @@ public class RunnerProcess
   
   // Total number of harness.check calls since the last checkpoint
   private int count = 0;
+  
+  // The location of the emma.jar file
+  private static String emmaJarLocation = null;
+  
+  // Whether or not to use EMMA
+  private static boolean useEMMA = true;
 
   // Total number of harness.check fails plus harness.fail calls
   private int failures = 0;
@@ -66,8 +77,7 @@ public class RunnerProcess
   private int total = 0;
 
   // True if we should run in verbose (noisy) mode
-  private static boolean verbose = false;
-  
+  private static boolean verbose = false;  
 
   // True if failing calls to harness.check(Object, Object) should print the
   // toString methods of each Object
@@ -91,6 +101,8 @@ public class RunnerProcess
   // The result of the current test
   private TestResult currentResult = null;
   
+  // The EMMA forced data dump method
+  private static Method emmaMethod = null;
   
   protected RunnerProcess()
   {    
@@ -113,7 +125,7 @@ public class RunnerProcess
       }
   }
 
-  public static void main(String[] args) throws Exception
+  public static void main(String[] args)
   {    
     // The test that Harness wants us to run.
     String testname = null;
@@ -141,13 +153,39 @@ public class RunnerProcess
               throw new RuntimeException("No file path after '-xmlout'.");
             xmlfile = args[i];
           }
+        else if (args[i].equalsIgnoreCase("-emma"))
+          {
+            // User is specifying the location of the eclipse-ecj.jar file
+            // to use for compilation.
+            if (++i >= args.length)
+              throw new RuntimeException("No file path " +
+                    "after '-emma'.  Exit");
+            emmaJarLocation = args[i];
+          }
       }
     // If the user wants an xml report, create a new TestReport.
     if (xmlfile != null)
       {
         report = new TestReport(System.getProperties());
       }
-
+    
+    // Setup the data coverage dumping mechanism.  The default configuration
+    // is to auto-detect EMMA, meaning if the emma classes are found on the 
+    // classpath then we should force a dump of coverage data.  Also, the user
+    // can configure with -with-emma=JARLOCATION or can specify -emma 
+    // JARLOCATION on the command line to explicitly specify an emma.jar to use
+    // to dump coverage data.
+    if (emmaJarLocation == null)
+      emmaJarLocation = config.emmaString;
+    try
+    {
+      setupEMMA(!emmaJarLocation.equals("_auto_detect_emma_"));
+    }
+    catch (Exception emmaException)
+    {
+      useEMMA = false;
+    }
+    
     while (true)
       {
         // Ask Harness for a test to run, run it, report back to Harness, and
@@ -155,8 +193,20 @@ public class RunnerProcess
         try
         {
           testname = in.readLine();
-          RunnerProcess harness = new RunnerProcess();
-          runAndReport(harness, testname);
+          if (testname.equals("_dump_data_"))
+            {
+              if (useEMMA)
+                dumpCoverageData();
+              else
+                System.out.println("_data_dump_okay_");
+            }
+          else if (testname.equals("_confirm_startup_"))
+            System.out.println("_startup_okay_");
+          else
+            {
+              RunnerProcess harness = new RunnerProcess();
+              runAndReport(harness, testname);
+            }
         }
         catch (IOException ioe)
         {          
@@ -732,5 +782,75 @@ public class RunnerProcess
       System.out.println(xfailures + " of " + total
                          + " tests expectedly failed");
     return failures > 0 ? 1 : 0;
+  }
+  
+  /**
+   * Sets up the compiler by reflection, sets up the compiler options,
+   * and the PrintWriters to get error messages from the compiler.
+   * 
+   * @throws Exception if the emma jar can't be found and the sources
+   * aren't in the proper place.
+   */
+  private static void setupEMMA(boolean useJar) throws Exception
+  {
+    ClassNotFoundException cnfe = null;
+    Class klass = null;
+    String classname = "com.vladium.emma.rt.RT";
+    if (!useJar)
+      {                
+        try
+        {
+          klass = Class.forName(classname);
+        }
+        catch (ClassNotFoundException e)
+        {
+          cnfe = e;
+          useJar = true;
+        }
+      }
+    
+    if (useJar)
+      {
+        File jar = new File(emmaJarLocation);
+        if (! jar.exists() || ! jar.canRead())
+          throw cnfe;
+        
+        ClassLoader loader = new URLClassLoader(new URL[] { jar.toURL() });
+        try
+        {
+          klass = loader.loadClass(classname);
+        }
+        catch (ClassNotFoundException f)
+        {
+          throw cnfe;
+        }
+      }
+    
+    emmaMethod = 
+      klass.getMethod
+      ("dumpCoverageData", new Class[] 
+          { File.class, boolean.class, boolean.class });
+  }  
+  
+  /**
+   * This method forces EMMA to dump its coverage data.  We do this
+   * when all tests have been completed and only if the user either
+   * configured with --with-emma-jar or specified -emma-jar on the
+   * command line.
+   */
+  private static void dumpCoverageData()
+  {
+    try
+    {
+      emmaMethod.invoke(null, new Object[] {
+                                            new File("coverage.ec"),
+                                            Boolean.TRUE,
+                                            Boolean.TRUE });
+    }
+    catch (Exception e)
+    {
+      // This shouldn't happen.
+    }
+    System.out.println("_data_dump_okay_");
   }
 }

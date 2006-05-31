@@ -26,9 +26,19 @@ AC_ARG_WITH(bootclasspath,
 CP_INSTALL_DIR="$with_bootclasspath")
 AC_SUBST(CP_INSTALL_DIR)
 
+AC_ARG_WITH(emma,
+[  --with-emma(=JARLOCATION)       Use emma, either unpacked in classpath 
+folder or at the specified JARLOCATION],
+EMMA="$with_emma", EMMA="yes")
+if test "$EMMA" = "yes"
+then
+EMMA="_auto_detect_emma_"
+fi
+AC_SUBST(EMMA)
 
 AC_ARG_WITH(ecj-jar,
-[  --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for auto-compilation],
+[  --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for 
+auto-compilation],
 ECJ_JAR="$with_ecj_jar", ECJ_JAR=yes)
 if test "$ECJ_JAR" = "yes"
 then
