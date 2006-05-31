@@ -32,7 +32,6 @@ import javax.swing.JInternalFrame;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import gnu.testlet.javax.swing.JInternalFrame.setResizable.TestPropertyChangeHandler;
 
 /**
  * Tests the functionality of the setSelected() method in JInternalFrame.
@@ -89,7 +88,7 @@ public class setSelected implements Testlet
   /**
    * Tests if setSelected should trigger a repaint.
    *
-   * @param harness the test harness to use
+   * @param h the test harness to use
    */
   public void testRepaint(TestHarness h)
   {

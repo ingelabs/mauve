@@ -1,5 +1,10 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JInternalFrame/setSelected.java: Removed 
+	unnecessary import and fixed API doc warning.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getAccessibleName.java: New file,
 	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getAccessibleRole.java: New file,
 	* gnu/testlet/javax/swing/JInternalFrame/AccessibleJInternalFrame/getAccessibleValue.java: New file,
