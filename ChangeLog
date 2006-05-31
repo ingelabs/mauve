@@ -1,5 +1,15 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/DefaultListSelectionModel/setLeadSelectionIndex.java
+	(lastEvent): New field,
+	(valueChanged): New method,
+	(test): Call new test methods,
+	(testSingleSelection): New method,
+	(testSingleIntervalSelection): New method,
+	(testMultipleIntervalSelection): New method.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JScrollBar/MyJScrollBar.java: New file,
 	* gnu/testlet/javax/swing/JScrollBar/getAccessibleContext.java: 
 	New file,
