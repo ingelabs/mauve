@@ -1,5 +1,10 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JTable/getAccessibleContext.java: New file,
+	* gnu/testlet/javax/swing/JTable/getCellEditor.java: New file.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JInternalFrame/setSelected.java: Removed 
 	unnecessary import and fixed API doc warning.
 
