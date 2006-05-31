@@ -1,5 +1,6 @@
 /* setClosable.java -- Checks the setClosable method
    Copyright (C) 2006 Roman Kennke (kennke@aicas.com)
+       and David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -31,51 +32,25 @@ import javax.swing.JInternalFrame;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-public class setClosable implements Testlet
+public class setClosable implements Testlet, PropertyChangeListener
 {
-
-  /**
-   * Catches property changes and stores the property name.
-   */
-  class TestPropertyChangeHandler
-    implements PropertyChangeListener
+  PropertyChangeEvent lastEvent;
+  
+  public void propertyChange(PropertyChangeEvent e)
   {
-
-    public void propertyChange(PropertyChangeEvent e)
-    {
-      propertyChanged = e.getPropertyName();
-    }
-    
+    lastEvent = e;
   }
-
-  /**
-   * Stores the name of the last changed property.
-   */
-  String propertyChanged;
-
-  /**
-   * The entry point in this test.
-   *
-   * @param harness the test harness to use
-   */
+  
   public void test(TestHarness harness)
   {
-    testBoundProperty(harness);
-  }
-
-  /**
-   * Tests if this is a bound property.
-   *
-   * @param h the test harness to use
-   */
-  private void testBoundProperty(TestHarness h)
-  {
-    h.checkPoint("testBoundProperty");
-    JInternalFrame t = new JInternalFrame();
-    t.addPropertyChangeListener(new TestPropertyChangeHandler());
-    t.setClosable(false);
-    propertyChanged = null;
-    t.setClosable(true);
-    h.check(propertyChanged, "closable");
+    JInternalFrame f = new JInternalFrame("F1");
+    harness.check(!f.isClosable());
+    f.addPropertyChangeListener(this);
+    f.setClosable(true);
+    harness.check(f.isClosable());
+    harness.check(lastEvent.getPropertyName(), "closable");
+    harness.check(lastEvent.getSource(), f);
+    harness.check(lastEvent.getOldValue(), Boolean.FALSE);
+    harness.check(lastEvent.getNewValue(), Boolean.TRUE);
   }
 }

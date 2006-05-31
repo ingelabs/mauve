@@ -1,5 +1,24 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JInternalFrame/setClosable.java
+	(TestPropertyChangeHandler): Removed,
+	(lastEvent): New field,
+	(propertyChange): New method,
+	(test): Rewritten,
+	* gnu/testlet/javax/swing/JInternalFrame/setIconifiable.java
+	(TestPropertyChangeHandler): Removed,
+	(lastEvent): New field,
+	(propertyChange): New method,
+	(test): Rewritten,
+	* gnu/testlet/javax/swing/JInternalFrame/setResizable.java
+	(TestPropertyChangeHandler): Removed,
+	(lastEvent): New field,
+	(propertyChange): New method,
+	(test): Rewritten,
+	* gnu/testlet/javax/swing/JInternalFrame/setSelected2.java: New file.
+
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JInternalFrame/constructors.java: New file,
 	* gnu/testlet/javax/swing/JInternalFrame/dispose.java: New file,
 	* gnu/testlet/javax/swing/JInternalFrame/getDesktopIcon.java: New file,

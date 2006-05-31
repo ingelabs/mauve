@@ -1,5 +1,6 @@
 /* setIconifiable.java -- Checks the setIconifiable method
    Copyright (C) 2006 Roman Kennke (kennke@aicas.com)
+       and David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -31,51 +32,25 @@ import javax.swing.JInternalFrame;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-public class setIconifiable implements Testlet
+public class setIconifiable implements Testlet, PropertyChangeListener
 {
-
-  /**
-   * Catches property changes and stores the property name.
-   */
-  class TestPropertyChangeHandler
-    implements PropertyChangeListener
+  PropertyChangeEvent lastEvent;
+  
+  public void propertyChange(PropertyChangeEvent e)
   {
-
-    public void propertyChange(PropertyChangeEvent e)
-    {
-      propertyChanged = e.getPropertyName();
-    }
-    
+    lastEvent = e;
   }
-
-  /**
-   * Stores the name of the last changed property.
-   */
-  String propertyChanged;
-
-  /**
-   * The entry point in this test.
-   *
-   * @param harness the test harness to use
-   */
+  
   public void test(TestHarness harness)
   {
-    testBoundProperty(harness);
-  }
-
-  /**
-   * Tests if this is a bound property.
-   *
-   * @param h the test harness to use
-   */
-  private void testBoundProperty(TestHarness h)
-  {
-    h.checkPoint("testBoundProperty");
-    JInternalFrame t = new JInternalFrame();
-    t.addPropertyChangeListener(new TestPropertyChangeHandler());
-    t.setIconifiable(false);
-    propertyChanged = null;
-    t.setIconifiable(true);
-    h.check(propertyChanged, "iconable");
+    JInternalFrame f = new JInternalFrame("F1");
+    harness.check(!f.isIconifiable());
+    f.addPropertyChangeListener(this);
+    f.setIconifiable(true);
+    harness.check(f.isIconifiable());
+    harness.check(lastEvent.getPropertyName(), "iconable");
+    harness.check(lastEvent.getSource(), f);
+    harness.check(lastEvent.getOldValue(), Boolean.FALSE);
+    harness.check(lastEvent.getNewValue(), Boolean.TRUE);
   }
 }
