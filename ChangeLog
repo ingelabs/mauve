@@ -1,3 +1,10 @@
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JScrollBar/MyJScrollBar.java: New file,
+	* gnu/testlet/javax/swing/JScrollBar/getAccessibleContext.java: 
+	New file,
+	* gnu/testlet/javax/swing/JScrollBar/paramString.java: New file.
+
 2006-05-28  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JSplitPane/MyJSplitPane.java: New file,
