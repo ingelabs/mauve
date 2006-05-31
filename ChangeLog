@@ -1,5 +1,25 @@
 2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JInternalFrame/constructors.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/dispose.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/getDesktopIcon.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/getNormalBounds.java: 
+	New file,
+	* gnu/testlet/javax/swing/JInternalFrame/isIconifiable.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/isResizable.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/MyJInternalFrame.java: 
+	New file,
+	* gnu/testlet/javax/swing/JInternalFrame/paramString.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/setDefaultCloseOperation.java:
+	New file,
+	* gnu/testlet/javax/swing/JInternalFrame/setDesktopIcon.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/setFrameIcon.java: New file,
+	* gnu/testlet/javax/swing/JInternalFrame/setNormalBounds.java: 
+	New file,
+	* gnu/testlet/javax/swing/JInternalFrame/setTitle.java: New file.
+	
+2006-05-31  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JLabel/AccessibleJLabel/getAccessibleName: 
 	New file.
 
