@@ -1,3 +1,10 @@
+2006-06-01  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JInternalFrame/MyJInternalFrame.java: 
+	Fixed tag,
+	* gnu/testlet/javax/swing/JLabel/MyJLabel.java: Likewise,
+	* gnu/testlet/javax/swing/JToolTip/MyJToolTip.java: Likewise.
+	
 2006-05-31  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:
