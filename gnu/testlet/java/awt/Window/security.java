@@ -39,7 +39,6 @@ public class security implements Testlet
   {
     try {
       Toolkit.getDefaultToolkit();
-      //Math.log(1);
 
       Frame frame = new Frame();
       Window window = new Window(frame);
@@ -52,7 +51,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
-	// throwpoint: java.awt.Window(Frame)
+	// throwpoint: java.awt.Window-Window(Frame)
 	harness.checkPoint("Window(Frame)");
 	try {
 	  sm.prepareChecks(showWindowWithoutWarningBanner);
@@ -64,7 +63,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// throwpoint: java.awt.Window(Window)
+	// throwpoint: java.awt.Window-Window(Window)
 	harness.checkPoint("Window(Window)");
 	try {
 	  sm.prepareChecks(showWindowWithoutWarningBanner);
@@ -76,7 +75,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// throwpoint: java.awt.Window(Window, GraphicsConfiguration)
+	// throwpoint: java.awt.Window-Window(Window, GraphicsConfiguration)
 	harness.checkPoint("Window(Window, GraphicsConfiguration)");
 	try {
 	  sm.prepareChecks(showWindowWithoutWarningBanner);

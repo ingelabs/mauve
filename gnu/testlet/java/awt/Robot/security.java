@@ -56,7 +56,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
-	// throwpoint: java.awt.Robot()
+	// throwpoint: java.awt.Robot-Robot()
 	harness.checkPoint("0-arg constructor");
 	try {
 	  sm.prepareChecks(createRobot, readProperty);
@@ -68,7 +68,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// throwpoint: java.awt.Robot(GraphicsDevice)
+	// throwpoint: java.awt.Robot-Robot(GraphicsDevice)
 	harness.checkPoint("1-arg constructor");
 	try {
 	  sm.prepareChecks(createRobot, readProperty);
