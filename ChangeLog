@@ -1,3 +1,7 @@
+2006-06-05  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/javax/swing/JFrame/constructors.java: New test.
+
 2006-06-03  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfPR27853.java: New test.
