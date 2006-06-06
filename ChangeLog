@@ -1,5 +1,9 @@
 2006-06-06  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JComponent/getInputMap.java: New test.
+
+2006-06-06  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JTable/AccessibleJTable/getAccessibleColumnHeader.java: New file,
 	* gnu/testlet/javax/swing/JTable/AccessibleJTable/AccessibleJTableCell/getAccessibleRole.java: New file,
 	* gnu/testlet/javax/swing/JTable/AccessibleJTable/AccessibleJTableCell/MyBooleanTableCellRenderer.java: New file,
