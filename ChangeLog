@@ -1,3 +1,10 @@
+2006-06-06  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JTable/AccessibleJTable/getAccessibleColumnHeader.java: New file,
+	* gnu/testlet/javax/swing/JTable/AccessibleJTable/AccessibleJTableCell/getAccessibleRole.java: New file,
+	* gnu/testlet/javax/swing/JTable/AccessibleJTable/AccessibleJTableCell/MyBooleanTableCellRenderer.java: New file,
+	* gnu/testlet/javax/swing/JTable/AccessibleJTable/AccessibleJTableHeaderCell/getAccessibleRole.java: New file.
+
 2006-06-05  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JFrame/constructors.java: New test.
