@@ -1,3 +1,7 @@
+2006-06-06  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/javax/swing/JFrame/constructors.java: Fixed copyright comments.
+
 2006-06-06  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JTable/AccessibleJTable/AccessibleJTableCell/MyBooleanTableCellRenderer.java: 
