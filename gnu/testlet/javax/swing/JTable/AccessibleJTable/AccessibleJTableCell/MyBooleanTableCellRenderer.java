@@ -1,5 +1,6 @@
-/* MyBooleanTableCellRenderer.java -- FIXME: describe
-   Copyright (C) 2006 FIXME: your info here
+/* MyBooleanTableCellRenderer.java -- a custom renderer used for testing 
+       purposes.
+   Copyright (C) 2006 David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -19,7 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: FIXME
+// Tags: not-a-test
 
 package gnu.testlet.javax.swing.JTable.AccessibleJTable.AccessibleJTableCell;
 
