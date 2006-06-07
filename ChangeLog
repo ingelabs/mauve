@@ -1,3 +1,11 @@
+2006-06-07  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/javax/swing/JMenuBar/basic.java: New tests.
+	* gnu/testlet/javax/swing/JMenuBar/constructors.java: New tests.
+	* gnu/testlet/javax/swing/JMenuBar/getComponentIndex.java: New tests.
+	* gnu/testlet/javax/swing/JMenuBar/getMenu.java: New tests.
+	* gnu/testlet/javax/swing/JMenuBar/getSubElements.java: New tests.
+
 2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JInternalFrame/getInputMap.java: New file,
