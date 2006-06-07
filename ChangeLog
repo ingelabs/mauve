@@ -1,3 +1,20 @@
+2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JInternalFrame/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JLabel/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JMenu/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JMenuBar/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JOptionPane/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JOptionPane/MyJOptionPane.java: New file,
+	* gnu/testlet/javax/swing/JPopupMenu/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JScrollBar/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JScrollPane/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JSplitPane/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JTabbedPane/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JTable/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JTableHeader/getInputMap.java: New file,
+	* gnu/testlet/javax/swing/JToolBar/getInputMap.java: New file.
+
 2006-06-06  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JList/getInputMap.java: New file.
