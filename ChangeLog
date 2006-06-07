@@ -1,5 +1,29 @@
 2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/table/JTableHeader/getAccessibleContext.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/getAccessibleChild.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/getAccessibleChildrenCount.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/getAccessibleRole.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleChild.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleChildrenCount.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleComponent.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleContext.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleDescription.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleIndexInParent.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleName.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleRole.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getAccessibleValue.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getBackground.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getFont.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getForeground.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/getLocale.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/isFocusTraversable.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/isVisible.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/MyTableCellRenderer.java: New file,
+	* gnu/testlet/javax/swing/table/JTableHeader/AccessibleJTableHeader/AccessibleJTableHeaderEntry/setAccessibleName.java: New file.	
+
+2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/event/InternalFrameEvent/constructor.java:
 	New file,
 	* gnu/testlet/javax/swing/event/InternalFrameEvent/getInternalFrame.java:
