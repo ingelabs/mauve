@@ -1,3 +1,12 @@
+2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/event/InternalFrameEvent/constructor.java:
+	New file,
+	* gnu/testlet/javax/swing/event/InternalFrameEvent/getInternalFrame.java:
+	New file,
+	* gnu/testlet/javax/swing/event/InternalFrameEvent/paramString.java:
+	New file.
+
 2006-06-07  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JButton/constructors.java: New file.
