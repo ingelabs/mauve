@@ -1,3 +1,7 @@
+2006-06-08  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JScrollPane/getActionMap.java: New file.
+
 2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/table/JTableHeader/getAccessibleContext.java: New file,
