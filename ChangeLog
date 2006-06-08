@@ -1,5 +1,12 @@
 2006-06-08  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Graphics2D/clip.java: New file,
+	* gnu/testlet/java/awt/Graphics2D/getClip.java: New file,
+	* gnu/testlet/java/awt/Graphics2D/getClipBounds.java: New file,
+	* gnu/testlet/java/awt/Graphics2D/setClipBounds.java: New file.
+
+2006-06-08  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Graphics2D/setTransform.java: New file,
 	* gnu/testlet/java/awt/Graphics2D/transform.java: New file.
 
