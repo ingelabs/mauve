@@ -1,5 +1,10 @@
 2006-06-08  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Graphics2D/setTransform.java: New file,
+	* gnu/testlet/java/awt/Graphics2D/transform.java: New file.
+
+2006-06-08  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JScrollPane/getActionMap.java: New file.
 
 2006-06-07  David Gilbert  <david.gilbert@object-refinery.com>
