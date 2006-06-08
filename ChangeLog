@@ -1,3 +1,8 @@
+2006-06-08  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicComboBoxUI/getPreferredSize.java:
+	Additional tests for null and empty elements.
+
 2006-06-08  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/Graphics2D/clip.java: New file,

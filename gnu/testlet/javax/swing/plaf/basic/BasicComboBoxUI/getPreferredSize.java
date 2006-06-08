@@ -75,6 +75,12 @@ public class getPreferredSize implements Testlet
     harness.check(ui.getPreferredSize(cb), 
             new Dimension(width + height, height));
     
+    cb.setModel(new DefaultComboBoxModel(new Object[] {null}));
+    harness.check(ui.getPreferredSize(cb).height, height);
+    
+    cb.setModel(new DefaultComboBoxModel(new Object[] {""}));
+    harness.check(ui.getPreferredSize(cb).height, height);
+    
     cb.setPrototypeDisplayValue("XX");    
     width = fm.stringWidth("XX") + additionalWidth;
     harness.check(ui.getPreferredSize(cb), 
