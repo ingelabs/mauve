@@ -176,14 +176,10 @@ public class TestOfCipher implements Testlet
     Cipher jce;
     byte[] kb = new byte[32];
     for (int i = 0; i < kb.length; i++)
-      {
-        kb[i] = (byte) i;
-      }
+      kb[i] = (byte) i;
     byte[] pt = new byte[42];
     for (int i = 0; i < pt.length; i++)
-      {
-        pt[i] = (byte) i;
-      }
+      pt[i] = (byte) i;
     byte[] ppt = new byte[48]; // padded plaintext.
     System.arraycopy(pt, 0, ppt, 0, 42);
     byte[] ct1 = new byte[48], ct2 = new byte[48];
@@ -198,9 +194,8 @@ public class TestOfCipher implements Testlet
             // skip EME-PKCS1-V1.5 padding since it's not a true block cipher
             // padding algorithm
             if (padName.equalsIgnoreCase(Registry.EME_PKCS1_V1_5_PAD))
-              {
-                continue;
-              }
+              continue;
+
             pad = PadFactory.getInstance(padName);
             pad.reset();
             pad.init(16);
@@ -211,36 +206,29 @@ public class TestOfCipher implements Testlet
             gnu.reset();
             gnu.init(attrib);
             for (int i = 0; i < ppt.length; i += 16)
-              {
-                gnu.update(ppt, i, ct1, i);
-              }
+              gnu.update(ppt, i, ct1, i);
 
             jce = Cipher.getInstance("AES/ECB/" + padName, Registry.GNU_CRYPTO);
+            jce.init(Cipher.DECRYPT_MODE, new SecretKeySpec(kb, "AES"));
+            jce.doFinal(ct1, 0, ct1.length, cpt1, 0);
+            harness.check(Arrays.equals(pt, cpt1),
+                          "testPadding(" + padName + ")");
+
             jce.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(kb, "AES"));
             jce.doFinal(pt, 0, pt.length, ct2, 0);
-
-            harness.check(Arrays.equals(ct1, ct2), "testPadding(" + padName
-                                                   + ")");
 
             attrib.put(IMode.STATE, new Integer(IMode.DECRYPTION));
             gnu.reset();
             gnu.init(attrib);
             byte[] pcpt = new byte[48];
-            for (int i = 0; i < ct1.length; i += 16)
-              {
-                gnu.update(ct1, i, pcpt, i);
-              }
+            for (int i = 0; i < ct2.length; i += 16)
+              gnu.update(ct2, i, pcpt, i);
+
             int trim = pad.unpad(pcpt, 0, pcpt.length);
-            System.arraycopy(pcpt, 0, cpt1, 0, pcpt.length - trim);
+            System.arraycopy(pcpt, 0, cpt2, 0, pcpt.length - trim);
 
-            jce.init(Cipher.DECRYPT_MODE, new SecretKeySpec(kb, "AES"));
-            jce.doFinal(ct2, 0, ct2.length, cpt2, 0);
-
-            harness.check(Arrays.equals(cpt1, cpt2), "testPadding(" + padName
-                                                     + ")");
-
-            harness.check(Arrays.equals(cpt1, pt), "testPadding(" + padName
-                                                   + ")");
+            harness.check(Arrays.equals(pt, cpt2),
+                          "testPadding(" + padName + ")");
           }
       }
     catch (Exception x)
