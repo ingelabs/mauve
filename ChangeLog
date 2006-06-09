@@ -1,5 +1,9 @@
 2006-06-09  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/gnu/javax/crypto/pad/TestOfISO10126.java: New test.
+
+2006-06-09  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipher.java (testPadding):
 	Re-wrote to cater for padding schemes using random data.
 
