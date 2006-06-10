@@ -1,3 +1,8 @@
+2006-06-11  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/jce/TestOfProvider.java (setUp): Remove
+	other other than GNU providers.
+
 2006-06-09  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/ColorModel/MyColorModel.java: New file,

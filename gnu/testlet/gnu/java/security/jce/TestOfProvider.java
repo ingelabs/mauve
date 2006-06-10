@@ -130,7 +130,6 @@ public class TestOfProvider implements Testlet
     harness.checkPoint("testGNUSecureRandoms");
     String rand;
     Random algorithm;
-//    for (Iterator it = Gnu.getSecureRandomNames().iterator(); it.hasNext();)
     for (Iterator it = Security.getAlgorithms("SecureRandom").iterator(); it.hasNext();)
       {
         rand = (String) it.next();
@@ -157,5 +156,7 @@ public class TestOfProvider implements Testlet
   private void setUp()
   {
     Security.addProvider(new Gnu()); // dynamically adds our provider
+    Security.removeProvider(Registry.GNU_CRYPTO);
+    Security.removeProvider(Registry.GNU_SASL);
   }
 }
