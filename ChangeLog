@@ -1,5 +1,12 @@
 2006-06-11  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/gnu/java/security/sig/dss/TestOfDSSSignature.java: Use pre-
+	computed DSA keys.
+	* gnu/testlet/gnu/java/security/sig/dss/TestOfDSSSignatureCodec.java:
+	Likewise.
+
+2006-06-11  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfPR27853.java: Remove unused import.
 	(setUp): Use the same format for both public and private keys.
 

@@ -23,7 +23,9 @@
 
 package gnu.testlet.gnu.java.security.sig.dss;
 
-import gnu.java.security.key.dss.DSSKeyPairGenerator;
+import gnu.java.security.Registry;
+import gnu.java.security.key.dss.DSSPrivateKey;
+import gnu.java.security.key.dss.DSSPublicKey;
 import gnu.java.security.sig.BaseSignature;
 import gnu.java.security.sig.ISignatureCodec;
 import gnu.java.security.sig.dss.DSSSignature;
@@ -32,7 +34,7 @@ import gnu.java.security.sig.dss.DSSSignatureX509Codec;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.security.KeyPair;
+import java.math.BigInteger;
 import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.DSAPublicKey;
 import java.util.HashMap;
@@ -43,9 +45,34 @@ import java.util.HashMap;
  */
 public class TestOfDSSSignatureCodec implements Testlet
 {
-  private DSSKeyPairGenerator kpg = new DSSKeyPairGenerator();
-
-  private KeyPair kp;
+  /** Common DSA key material - p. */
+  private static final BigInteger p = new BigInteger(
+      "fd7f53811d75122952df4a9c2eece4e7f611b7523cef4400c31e3f80b6512669455d4"
+      + "02251fb593d8d58fabfc5f5ba30f6cb9b556cd7813b801d346ff26660b76b9950a5"
+      + "a49f9fe8047b1022c24fbba9d7feb7c61bf83b57e7c6a8a6150f04fb83f6d3c51ec"
+      + "3023554135a169132f675f3ae2b61d72aeff22203199dd14801c7", 16);
+  /** Common DSA key material - q. */
+  private static final BigInteger q = new BigInteger(
+      "9760508f15230bccb292b982a2eb840bf0581cf5", 16);
+  /** Common DSA key material - g. */
+  private static final BigInteger g = new BigInteger(
+      "f7e1a085d69b3ddecbbcab5c36b857b97994afbbfa3aea82f9574c0b3d07826751595"
+      + "78ebad4594fe67107108180b449167123e84c281613b7cf09328cc8a6e13c167a8b"
+      + "547c8d28e0a3ae1e2bb3a675916ea37f0bfa213562f1fb627a01243bcca4f1bea85"
+      + "19089a883dfe15ae59f06928b665e807b552564014c3bfecf492a", 16);
+  /** Public DSA key part. */
+  private static final BigInteger x = new BigInteger(
+      "631305a19984821b95a8c776d38167a4ea2ceb8", 16);
+  /** Private DSA key part. */
+  private static final BigInteger y = new BigInteger(
+      "cc1045a7550205a581ec3a9fed50c6d4aaae9ef2512c066f0d52617e0d462895c00bd"
+      + "f2d329c53a9c0f690e406d49e21beb557d47436df9cdda5ad2f532620a5260704c5"
+      + "91920ff674666e2166066727051f3d515aedf03a4bdb2d69dd13bbd9b5e7941ff37"
+      + "fb35f2d9138b4172e64393b04afdcc630739fbe6993f27f467e17", 16);
+  /** The DSA public key. */
+  private DSAPublicKey publicK;
+  /** The DSA private key. */
+  private DSAPrivateKey privateK;
 
   public void test(TestHarness harness)
   {
@@ -55,12 +82,8 @@ public class TestOfDSSSignatureCodec implements Testlet
 
   public void testSignatureRawCodec(TestHarness harness)
   {
-    harness.checkPoint("TestOfDSSSignatureCodec.testSignatureRawCodec");
+    harness.checkPoint("testSignatureRawCodec");
     setUp();
-
-    DSAPublicKey publicK = (DSAPublicKey) kp.getPublic();
-    DSAPrivateKey privateK = (DSAPrivateKey) kp.getPrivate();
-
     DSSSignature alice = new DSSSignature();
     DSSSignature bob = (DSSSignature) alice.clone();
 
@@ -89,10 +112,6 @@ public class TestOfDSSSignatureCodec implements Testlet
   {
     harness.checkPoint("testSignatureASN1Codec");
     setUp();
-
-    DSAPublicKey publicK = (DSAPublicKey) kp.getPublic();
-    DSAPrivateKey privateK = (DSAPrivateKey) kp.getPrivate();
-
     DSSSignature alice = new DSSSignature();
     DSSSignature bob = (DSSSignature) alice.clone();
 
@@ -117,15 +136,9 @@ public class TestOfDSSSignatureCodec implements Testlet
                   "Signature X.509 encoder/decoder test");
   }
 
-  // helper methods ----------------------------------------------------------
-
   private void setUp()
   {
-    HashMap map = new HashMap();
-    map.put(DSSKeyPairGenerator.MODULUS_LENGTH, new Integer(512));
-    map.put(DSSKeyPairGenerator.USE_DEFAULTS, new Boolean(false));
-
-    kpg.setup(map);
-    kp = kpg.generate();
+    publicK = new DSSPublicKey(Registry.ASN1_ENCODING_ID, p, q, g, y);
+    privateK = new DSSPrivateKey(Registry.ASN1_ENCODING_ID, p, q, g, x);
   }
 }
