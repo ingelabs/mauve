@@ -25,7 +25,6 @@ package gnu.testlet.gnu.javax.crypto.jce;
 
 import gnu.java.security.key.rsa.GnuRSAPrivateKey;
 import gnu.java.security.key.rsa.GnuRSAPublicKey;
-import gnu.java.security.util.Util;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -97,7 +96,7 @@ public class TestOfPR27853
 
   private void setUp() throws Exception
   {
-    publicK = new GnuRSAPublicKey(n, e);
+    publicK = new GnuRSAPublicKey(1, n, e);
     privateK = new GnuRSAPrivateKey(1, n, e, d, p, q, dP, dQ, qInv);
     cipher = Cipher.getInstance(transformation, GNU);
   }

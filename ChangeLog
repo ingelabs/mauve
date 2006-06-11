@@ -1,5 +1,10 @@
 2006-06-11  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/gnu/javax/crypto/jce/TestOfPR27853.java: Remove unused import.
+	(setUp): Use the same format for both public and private keys.
+
+2006-06-11  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/gnu/java/security/jce/TestOfProvider.java (setUp): Remove
 	other other than GNU providers.
 
