@@ -1,3 +1,9 @@
+2006-06-12  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/javax/swing/JComboBox/basic.java:
+	(test): added new test
+	(testTogglingVisibility): new test for mouse clicks
+
 2006-06-11  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/sig/dss/TestOfDSSSignature.java: Use pre-

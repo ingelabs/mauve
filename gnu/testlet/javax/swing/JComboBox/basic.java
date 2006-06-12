@@ -24,12 +24,18 @@ package gnu.testlet.javax.swing.JComboBox;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 
 /**
  * The the basic JComboBox features (including listeners).
@@ -52,6 +58,8 @@ public class basic
     testItemRemoving(harness, box);
 
     testAddingItems(harness, box);
+    
+    testTogglingVisibility(harness);
   }
 
   private void testAddingItems(TestHarness harness, JComboBox box) {
@@ -159,6 +167,51 @@ public class basic
                  );
 
     command = UNASSIGNED;
+  }
+
+  private void testTogglingVisibility(TestHarness harness)
+  {
+    JFrame frame = new JFrame();
+    frame.setSize(200, 100);
+    Container contentPane = frame.getContentPane();
+    
+    JComboBox box = new JComboBox();
+    box.addItem("123");
+    box.addItem("aaa");
+    box.addItem("abc");
+    
+    contentPane.add(box, BorderLayout.SOUTH);
+    frame.show();
+    
+    // A new box should not be visible
+    harness.check(box.isPopupVisible() == false);
+
+    // Prepare robot to perform mouse click; position in middle of box
+    Robot r = harness.createRobot ();
+    r.waitForIdle ();
+    r.delay (100);
+    r.mouseMove(box.getLocationOnScreen().x + (box.getSize().width / 2),
+                box.getLocationOnScreen().y + (box.getSize().height / 2));
+
+    // Simulate user click on button; popup should now be visible
+    r.waitForIdle ();
+    r.delay (100);
+    r.mousePress(InputEvent.BUTTON1_MASK);
+    r.mouseRelease(InputEvent.BUTTON1_MASK);
+    
+    r.waitForIdle ();
+    r.delay (100);
+    harness.check(box.isPopupVisible());
+    
+    // Click it again - this should toggle the popup and make it invisible
+    r.waitForIdle ();
+    r.delay (100);
+    r.mousePress(InputEvent.BUTTON1_MASK);
+    r.mouseRelease(InputEvent.BUTTON1_MASK);
+    
+    r.waitForIdle ();
+    r.delay (100);
+    harness.check(box.isPopupVisible() == false);
   }
 
   public void actionPerformed(ActionEvent e)
