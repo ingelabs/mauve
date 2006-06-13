@@ -28,6 +28,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.awt.Graphics2D;
+import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -65,10 +66,10 @@ public class transform implements Testlet
     // applied...
     g2.setTransform(new AffineTransform());
     g2.setClip(1, 2, 3, 4);
-    Rectangle2D currentClip = (Rectangle2D) g2.getClip();
+    Shape currentClip = g2.getClip();
     harness.check(currentClip, new Rectangle2D.Double(1, 2, 3, 4));
     g2.transform(AffineTransform.getTranslateInstance(10.0, 20.0));
-    currentClip = (Rectangle2D) g2.getClip();
+    currentClip = g2.getClip();
     harness.check(currentClip, new Rectangle2D.Double(-9, -18, 3, 4));
   }
 }

@@ -1,3 +1,9 @@
+2006-06-13  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/awt/Graphics2D/setTransform.java:
+	getClip() returns a Shape.
+	* gnu/testlet/java/awt/Graphics2D/transform.java: Likewise.
+
 2006-06-12  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/javax/swing/JComboBox/basic.java:
