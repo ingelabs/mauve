@@ -1,3 +1,8 @@
+2006-06-13  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/awt/Robot/security.java: Minor cleanup.
+	* gnu/testlet/java/awt/Window/security.java: Likewise.
+
 2006-06-13  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfPR27849.java: New test.

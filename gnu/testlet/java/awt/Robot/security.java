@@ -26,7 +26,6 @@ import java.awt.AWTPermission;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Robot;
-import java.awt.Toolkit;
 import java.security.Permission;
 import java.util.PropertyPermission;
 
@@ -39,9 +38,6 @@ public class security implements Testlet
   public void test(TestHarness harness)
   {
     try {
-      Toolkit.getDefaultToolkit();
-      Math.log(1);
-
       GraphicsDevice gd =
 	GraphicsEnvironment.getLocalGraphicsEnvironment()
 	                   .getDefaultScreenDevice();

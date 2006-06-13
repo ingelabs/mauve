@@ -25,7 +25,6 @@ package gnu.testlet.java.awt.Window;
 import java.awt.AWTPermission;
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
-import java.awt.Toolkit;
 import java.awt.Window;
 import java.security.Permission;
 
@@ -38,8 +37,6 @@ public class security implements Testlet
   public void test(TestHarness harness)
   {
     try {
-      Toolkit.getDefaultToolkit();
-
       Frame frame = new Frame();
       Window window = new Window(frame);
       GraphicsConfiguration gc = window.getGraphicsConfiguration();
