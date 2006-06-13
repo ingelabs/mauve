@@ -1,3 +1,7 @@
+2006-06-13  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/javax/swing/JCheckBoxMenuItem/constructors.java: New test.
+
 2006-06-13  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/awt/Robot/security.java: Minor cleanup.
