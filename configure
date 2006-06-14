@@ -272,7 +272,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
 ac_unique_file="gnu/testlet/Testlet.java"
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA USE_GCJ_TRUE USE_GCJ_FALSE CP_INSTALL_DIR EMMA ECJ_JAR AUTO_COMPILE CLASS_FILES_TRUE CLASS_FILES_FALSE JAVA JAVAC GCJ GCJFLAGS GCJDEPMODE am__fastdepGCJ_TRUE am__fastdepGCJ_FALSE SRCDIR TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA EMMA ECJ_JAR AUTO_COMPILE JAVA JAVAC TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -811,15 +811,11 @@ Optional Features:
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
   --enable-auto-compilation            Use ecj to compile tests on the fly
-  --enable-gcj-classes             Use gcj, not javac, to build class files
-  --enable-class-files             Create class files when using gcj
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-vm=TESTJVM  				Run the tests with TESTJVM
-  --with-gcj                       Use gcj to compile .class files
-  --with-bootclasspath=BOOTCP   Specify the bootclasspath for the compiler
   --with-emma(=JARLOCATION)       Use emma, either unpacked in classpath
 folder or at the specified JARLOCATION
   --with-ecj-jar=JARLOCATION       Use the ecj jar found at JARLOCATION for
@@ -2913,33 +2909,6 @@ else
   TEST_JAVA="java"
 fi;
 
-export MAUVEVM="$TEST_JAVA"
-
-
-
-# Check whether --with-gcj or --without-gcj was given.
-if test "${with_gcj+set}" = set; then
-  withval="$with_gcj"
-
-fi;
-
-
-if test "$with_gcj" = yes; then
-  USE_GCJ_TRUE=
-  USE_GCJ_FALSE='#'
-else
-  USE_GCJ_TRUE='#'
-  USE_GCJ_FALSE=
-fi
-
-
-
-
-# Check whether --with-bootclasspath or --without-bootclasspath was given.
-if test "${with_bootclasspath+set}" = set; then
-  withval="$with_bootclasspath"
-  CP_INSTALL_DIR="$with_bootclasspath"
-fi;
 
 
 
@@ -2980,289 +2949,11 @@ else
 fi;
 
 
-# Check whether --enable-gcj-classes or --disable-gcj-classes was given.
-if test "${enable_gcj_classes+set}" = set; then
-  enableval="$enable_gcj_classes"
-  gcj_classes="$enable_gcj_classes"
-else
-  gcj_classes=maybe
-fi;
-if test "$gcj_classes" = yes \
-   || (test "$gcj_classes" = maybe && test "$with_gcj" = yes); then
-   JAVAC='$(GCJ) -C'
-fi
-
-# Check whether --enable-class-files or --disable-class-files was given.
-if test "${enable_class_files+set}" = set; then
-  enableval="$enable_class_files"
-  class_files="$enable_class_files"
-else
-  if test "$with_gcj" = yes; then
-      class_files=no
-   else
-      class_files=yes
-   fi
-fi;
-
-
-if test "$class_files" = yes; then
-  CLASS_FILES_TRUE=
-  CLASS_FILES_FALSE='#'
-else
-  CLASS_FILES_TRUE='#'
-  CLASS_FILES_FALSE=
-fi
-
 
 JAVA=${JAVA-java}
 
 JAVAC=${JAVAC-javac}
 
-
-
-for ac_prog in gcj
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_prog_GCJ+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  if test -n "$GCJ"; then
-  ac_cv_prog_GCJ="$GCJ" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_GCJ="$ac_prog"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-fi
-fi
-GCJ=$ac_cv_prog_GCJ
-if test -n "$GCJ"; then
-  echo "$as_me:$LINENO: result: $GCJ" >&5
-echo "${ECHO_T}$GCJ" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
-  test -n "$GCJ" && break
-done
-test -n "$GCJ" || GCJ="gcj"
-
-test -z "$GCJ" && { { echo "$as_me:$LINENO: error: no acceptable gcj found in \$PATH" >&5
-echo "$as_me: error: no acceptable gcj found in \$PATH" >&2;}
-   { (exit 1); exit 1; }; }
-if test "x${GCJFLAGS-unset}" = xunset; then
-   GCJFLAGS="-g -O2"
-fi
-
-
-depcc="$GCJ"  am_compiler_list='gcc3 gcc'
-
-echo "$as_me:$LINENO: checking dependency style of $depcc" >&5
-echo $ECHO_N "checking dependency style of $depcc... $ECHO_C" >&6
-if test "${am_cv_GCJ_dependencies_compiler_type+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
-  # We make a subdir and do the tests there.  Otherwise we can end up
-  # making bogus files that we don't know about and never remove.  For
-  # instance it was reported that on HP-UX the gcc test will end up
-  # making a dummy file named `D' -- because `-MD' means `put the output
-  # in D'.
-  mkdir conftest.dir
-  # Copy depcomp to subdir because otherwise we won't find it if we're
-  # using a relative directory.
-  cp "$am_depcomp" conftest.dir
-  cd conftest.dir
-  # We will build objects and dependencies in a subdirectory because
-  # it helps to detect inapplicable dependency modes.  For instance
-  # both Tru64's cc and ICC support -MD to output dependencies as a
-  # side effect of compilation, but ICC will put the dependencies in
-  # the current directory while Tru64 will put them in the object
-  # directory.
-  mkdir sub
-
-  am_cv_GCJ_dependencies_compiler_type=none
-  if test "$am_compiler_list" = ""; then
-     am_compiler_list=`sed -n 's/^#*\([a-zA-Z0-9]*\))$/\1/p' < ./depcomp`
-  fi
-  for depmode in $am_compiler_list; do
-    # Setup a source with many dependencies, because some compilers
-    # like to wrap large dependency lists on column 80 (with \), and
-    # we should not choose a depcomp mode which is confused by this.
-    #
-    # We need to recreate these files for each test, as the compiler may
-    # overwrite some of them when testing with obscure command lines.
-    # This happens at least with the AIX C compiler.
-    : > sub/conftest.c
-    for i in 1 2 3 4 5 6; do
-      echo '#include "conftst'$i'.h"' >> sub/conftest.c
-      # Using `: > sub/conftst$i.h' creates only sub/conftst1.h with
-      # Solaris 8's {/usr,}/bin/sh.
-      touch sub/conftst$i.h
-    done
-    echo "${am__include} ${am__quote}sub/conftest.Po${am__quote}" > confmf
-
-    case $depmode in
-    nosideeffect)
-      # after this tag, mechanisms are not by side-effect, so they'll
-      # only be used when explicitly requested
-      if test "x$enable_dependency_tracking" = xyes; then
-	continue
-      else
-	break
-      fi
-      ;;
-    none) break ;;
-    esac
-    # We check with `-c' and `-o' for the sake of the "dashmstdout"
-    # mode.  It turns out that the SunPro C++ compiler does not properly
-    # handle `-M -o', and we need to detect this.
-    if depmode=$depmode \
-       source=sub/conftest.c object=sub/conftest.${OBJEXT-o} \
-       depfile=sub/conftest.Po tmpdepfile=sub/conftest.TPo \
-       $SHELL ./depcomp $depcc -c -o sub/conftest.${OBJEXT-o} sub/conftest.c \
-         >/dev/null 2>conftest.err &&
-       grep sub/conftst6.h sub/conftest.Po > /dev/null 2>&1 &&
-       grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
-       ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
-      # icc doesn't choke on unknown options, it will just issue warnings
-      # or remarks (even with -Werror).  So we grep stderr for any message
-      # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
-      #   icc: Command line warning: ignoring option '-M'; no argument required
-      # The diagnosis changed in icc 8.0:
-      #   icc: Command line remark: option '-MP' not supported
-      if (grep 'ignoring option' conftest.err ||
-          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
-        am_cv_GCJ_dependencies_compiler_type=$depmode
-        break
-      fi
-    fi
-  done
-
-  cd ..
-  rm -rf conftest.dir
-else
-  am_cv_GCJ_dependencies_compiler_type=none
-fi
-
-fi
-echo "$as_me:$LINENO: result: $am_cv_GCJ_dependencies_compiler_type" >&5
-echo "${ECHO_T}$am_cv_GCJ_dependencies_compiler_type" >&6
-GCJDEPMODE=depmode=$am_cv_GCJ_dependencies_compiler_type
-
-
-
-if
-  test "x$enable_dependency_tracking" != xno \
-  && test "$am_cv_GCJ_dependencies_compiler_type" = gcc3; then
-  am__fastdepGCJ_TRUE=
-  am__fastdepGCJ_FALSE='#'
-else
-  am__fastdepGCJ_TRUE='#'
-  am__fastdepGCJ_FALSE=
-fi
-
-
-
-
-# Find a good install program.  We prefer a C program (faster),
-# so one script is as good as another.  But avoid the broken or
-# incompatible versions:
-# SysV /etc/install, /usr/sbin/install
-# SunOS /usr/etc/install
-# IRIX /sbin/install
-# AIX /bin/install
-# AmigaOS /C/install, which installs bootblocks on floppy discs
-# AIX 4 /usr/bin/installbsd, which doesn't work without a -g flag
-# AFS /usr/afsws/bin/install, which mishandles nonexistent args
-# SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
-# OS/2's system install, which has a completely different semantic
-# ./install, which can be erroneously created by make from ./install.sh.
-echo "$as_me:$LINENO: checking for a BSD-compatible install" >&5
-echo $ECHO_N "checking for a BSD-compatible install... $ECHO_C" >&6
-if test -z "$INSTALL"; then
-if test "${ac_cv_path_install+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  # Account for people who put trailing slashes in PATH elements.
-case $as_dir/ in
-  ./ | .// | /cC/* | \
-  /etc/* | /usr/sbin/* | /usr/etc/* | /sbin/* | /usr/afsws/bin/* | \
-  ?:\\/os2\\/install\\/* | ?:\\/OS2\\/INSTALL\\/* | \
-  /usr/ucb/* ) ;;
-  *)
-    # OSF1 and SCO ODT 3.0 have their own names for install.
-    # Don't use installbsd from OSF since it installs stuff as root
-    # by default.
-    for ac_prog in ginstall scoinst install; do
-      for ac_exec_ext in '' $ac_executable_extensions; do
-	if $as_executable_p "$as_dir/$ac_prog$ac_exec_ext"; then
-	  if test $ac_prog = install &&
-	    grep dspmsg "$as_dir/$ac_prog$ac_exec_ext" >/dev/null 2>&1; then
-	    # AIX install.  It has an incompatible calling convention.
-	    :
-	  elif test $ac_prog = install &&
-	    grep pwplus "$as_dir/$ac_prog$ac_exec_ext" >/dev/null 2>&1; then
-	    # program-specific install script used by HP pwplus--don't use.
-	    :
-	  else
-	    ac_cv_path_install="$as_dir/$ac_prog$ac_exec_ext -c"
-	    break 3
-	  fi
-	fi
-      done
-    done
-    ;;
-esac
-done
-
-
-fi
-  if test "${ac_cv_path_install+set}" = set; then
-    INSTALL=$ac_cv_path_install
-  else
-    # As a last resort, use the slow shell script.  We don't cache a
-    # path for INSTALL within a source directory, because that will
-    # break other packages using the cache if that directory is
-    # removed, or if the path is relative.
-    INSTALL=$ac_install_sh
-  fi
-fi
-echo "$as_me:$LINENO: result: $INSTALL" >&5
-echo "${ECHO_T}$INSTALL" >&6
-
-# Use test -z because SunOS4 sh mishandles braces in ${var-val}.
-# It thinks the first close brace ends the variable substitution.
-test -z "$INSTALL_PROGRAM" && INSTALL_PROGRAM='${INSTALL}'
-
-test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL}'
-
-test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
-
-
-
-
-SRCDIR=`(cd $srcdir; pwd)`
 
 
 
@@ -3428,27 +3119,6 @@ if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
   { { echo "$as_me:$LINENO: error: conditional \"am__fastdepCC\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"am__fastdepCC\" was never defined.
-Usually this means the macro was only invoked conditionally." >&2;}
-   { (exit 1); exit 1; }; }
-fi
-if test -z "${USE_GCJ_TRUE}" && test -z "${USE_GCJ_FALSE}"; then
-  { { echo "$as_me:$LINENO: error: conditional \"USE_GCJ\" was never defined.
-Usually this means the macro was only invoked conditionally." >&5
-echo "$as_me: error: conditional \"USE_GCJ\" was never defined.
-Usually this means the macro was only invoked conditionally." >&2;}
-   { (exit 1); exit 1; }; }
-fi
-if test -z "${CLASS_FILES_TRUE}" && test -z "${CLASS_FILES_FALSE}"; then
-  { { echo "$as_me:$LINENO: error: conditional \"CLASS_FILES\" was never defined.
-Usually this means the macro was only invoked conditionally." >&5
-echo "$as_me: error: conditional \"CLASS_FILES\" was never defined.
-Usually this means the macro was only invoked conditionally." >&2;}
-   { (exit 1); exit 1; }; }
-fi
-if test -z "${am__fastdepGCJ_TRUE}" && test -z "${am__fastdepGCJ_FALSE}"; then
-  { { echo "$as_me:$LINENO: error: conditional \"am__fastdepGCJ\" was never defined.
-Usually this means the macro was only invoked conditionally." >&5
-echo "$as_me: error: conditional \"am__fastdepGCJ\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -4027,22 +3697,11 @@ s,@CCDEPMODE@,$CCDEPMODE,;t t
 s,@am__fastdepCC_TRUE@,$am__fastdepCC_TRUE,;t t
 s,@am__fastdepCC_FALSE@,$am__fastdepCC_FALSE,;t t
 s,@TEST_JAVA@,$TEST_JAVA,;t t
-s,@USE_GCJ_TRUE@,$USE_GCJ_TRUE,;t t
-s,@USE_GCJ_FALSE@,$USE_GCJ_FALSE,;t t
-s,@CP_INSTALL_DIR@,$CP_INSTALL_DIR,;t t
 s,@EMMA@,$EMMA,;t t
 s,@ECJ_JAR@,$ECJ_JAR,;t t
 s,@AUTO_COMPILE@,$AUTO_COMPILE,;t t
-s,@CLASS_FILES_TRUE@,$CLASS_FILES_TRUE,;t t
-s,@CLASS_FILES_FALSE@,$CLASS_FILES_FALSE,;t t
 s,@JAVA@,$JAVA,;t t
 s,@JAVAC@,$JAVAC,;t t
-s,@GCJ@,$GCJ,;t t
-s,@GCJFLAGS@,$GCJFLAGS,;t t
-s,@GCJDEPMODE@,$GCJDEPMODE,;t t
-s,@am__fastdepGCJ_TRUE@,$am__fastdepGCJ_TRUE,;t t
-s,@am__fastdepGCJ_FALSE@,$am__fastdepGCJ_FALSE,;t t
-s,@SRCDIR@,$SRCDIR,;t t
 s,@TMPDIR@,$TMPDIR,;t t
 s,@MAIL_HOST@,$MAIL_HOST,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t

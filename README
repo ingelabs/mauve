@@ -210,7 +210,7 @@ section provides instructions on how to perform the following tasks:
 5.  Changing the information displayed during test runs
 
   By default the Harness prints only messages for those tests that fail, and 
-  only prints minimal information about uncaught exceptions. The following
+  prints full stack traces for uncaught exceptions. The following
   options affect what is printed:
   
   -hidecompilefails: hides failures from the compiler.  These can still be 
@@ -219,7 +219,7 @@ section provides instructions on how to perform the following tasks:
   -verbose: 		 prints information about each passing harness.check() call
 					 within the tests, whether they pass or fail.
   
-  -exceptions: 		 prints full stack traces for uncaught exceptions
+  -noexceptions: 		 suppress full stack traces for uncaught exceptions
   
   -showpasses: 		 prints one-line summaries for passing tests
   

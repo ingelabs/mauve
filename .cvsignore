@@ -21,5 +21,3 @@ doc
 SimpleTestHarness
 mauve-classpath
 mauve.out
-.ecjOut
-.ecjErr

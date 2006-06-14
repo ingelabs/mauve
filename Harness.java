@@ -28,10 +28,10 @@ import gnu.testlet.config;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -48,7 +48,7 @@ import java.util.Vector;
  *
  */
 public class Harness
-{    
+{ 
   // The compile method for the embedded ecj
   private static Method ecjMethod = null;
   
@@ -63,6 +63,12 @@ public class Harness
   // The writers for ecj's out and err streams.
   private static PrintWriter ecjWriterOut = null;
   private static PrintWriter ecjWriterErr = null;
+  
+  // The name of the most recent test that failed to compile.
+  private static String lastFailingCompile = "";
+  
+  // The number of compile fails in the current folder.
+  private static int numCompileFailsInFolder = 0;
   
   // The constructor for the embedded ecj
   private static Constructor ecjConstructor = null;
@@ -94,9 +100,6 @@ public class Harness
   
   // Whether we should compile tests before running them
   private static boolean compileTests = true;
-  
-  // Whether we should display information for failing compilations
-  private static boolean showCompilationErrors = true;
   
   // The total number of tests run
   private static int total_tests = 0;
@@ -247,8 +250,6 @@ public class Harness
             else if (args[i].equals("no") || args[i].equals("false"))
               compileTests = false;
           }
-        else if (args[i].equals("-hidecompilefails"))
-          showCompilationErrors = false;
         else if (args[i].equals("-help") || args[i].equals("--help")
                  || args[i].equals("-h"))
           printHelpMessage();
@@ -387,27 +388,15 @@ public class Harness
     ecjMethod = 
       klass.getMethod
       ("compile", new Class[] 
-          { String.class, PrintWriter.class, PrintWriter.class });    
-    ecjWriterOut = new PrintWriter(new FileOutputStream(".ecjOut"));
-    ecjWriterErr = new PrintWriter(new FileOutputStream(".ecjErr"));        
+          { String.class, PrintWriter.class, PrintWriter.class });
+    
+    ecjWriterErr = new CompilerErrorWriter(System.out);
+    ecjWriterOut = new PrintWriter(System.out);
     
     // Set up the compiler options now that we know whether or not we are
-    // compiling, and print a header to the compiler error file.
+    // compiling.
     compileStringBase += getClasspathInstallString();
-    ecjWriterErr.println("This file lists the compiler errors.\n" +
-                         "Weird things will happen if the compiler's " +
-                         "bootclasspath isn't properly set.\nIf the errors" +
-                         " listed here seem odd, like:\n\n" +
-                         "    'The type java.lang.Object cannot be resolved." +
-                         " It is indirectly\n    referenced from required " +
-                         ".class files,'\n\nthen try setting the " +
-                         "bootclasspath by using the\n" +
-                         "--with-bootclasspath=CPINSTALLDIR option " +
-                         "in configure.");
-    ecjWriterErr.println("\nThe compiler command used was: \n    " +
-                         compileStringBase + "\n");
-    
-  }
+  }  
   
   /**
    * Removes the "gnu.testlet." from the start of a String.
@@ -433,25 +422,18 @@ public class Harness
     
     // If classpathInstallDir is null that means no bootclasspath was 
     // specified on the command line using -bootclasspath.  In this case
-    // check if anything was supplied to configure with --with-bootclasspath.
+    // auto-detect the bootclasspath.
     if (temp == null)
       {
-        temp = config.cpInstallDir;
+        temp = getBootClassPath();
         
-        // If temp is the empty string then nothing was supplied to configure
-        // so auto-detect the bootclasspath using getBootClasspath().
-        if (temp.equals(""))
-          {
-            temp = getBootClassPath();
-            
-            // If auto-detect returned null we cannot auto-detect the 
-            // bootclasspath and we should try invoking the compiler without
-            // specifying the bootclasspath.  Otherwise, we should add
-            // " -bootclasspath " followed by the detected path.
-            if (temp != null)              
-              return " -bootclasspath " + temp;
-            return temp;
-          }
+        // If auto-detect returned null we cannot auto-detect the 
+        // bootclasspath and we should try invoking the compiler without
+        // specifying the bootclasspath.  Otherwise, we should add
+        // " -bootclasspath " followed by the detected path.
+        if (temp != null)              
+          return " -bootclasspath " + temp;
+        return temp;
       }
     
     // This section is for bootclasspath's specified with
@@ -600,7 +582,7 @@ public class Harness
       "ones\n" +
       "  -hidecompilefails:       hide errors from the compiler when " +
       "tests fail to compile\n" +
-      "  -exceptions:             print stack traces for uncaught " +
+      "  -noexceptions:           suppress stack traces for uncaught " +
       "exceptions\n" +
       "  -verbose:                run in noisy mode, displaying extra " +
       "information\n" +
@@ -989,7 +971,6 @@ public class Harness
   private static boolean compileFolder(StringBuffer sb, String folderName)
   {
     int result = - 1;
-    int compileFailsInFolder = 0;
     compileString = compileStringBase + sb.toString();
     try
       {
@@ -1001,124 +982,7 @@ public class Harness
         e.printStackTrace();
         result = - 1;
       }
-
-    if (result != 0)
-      {
-        // The compilation was not successful. Since the -nowarn option was
-        // used to compile the tests and output was sent to the ".ecjErr"
-        // file, we can parse that file, exclude the tests that did not 
-        // compile properly, and print out the errors to the user if they
-        // asked to see them.
-        try
-        {
-          BufferedReader errReader = 
-            new BufferedReader(new FileReader(".ecjErr"));
-          String lastFailingTest = null;
-          String temp;
-          String prev = null;
-          int loc;
-          
-          // Go to the part in the file that relates to this folder 
-          // specifically.
-          temp = errReader.readLine();
-          int len = folderName.length();
-          int index;
-          while (temp != null)
-            {
-              index = temp.indexOf(folderName);
-              if (index != -1 && 
-                  (temp.lastIndexOf((int)File.separatorChar) == len + index))
-                break;
-              temp = errReader.readLine();
-            }            
-          
-          // If temp is null, we didn't find it.  Otherwise, look for each
-          // individual failing compilation, count it as a fail, exclude it
-          // from the test run, and print out the info.
-          while (temp != null)
-            {
-              // If we've reached a part of the file that pertains to another
-              // folder then break out of the loop.
-              if (temp.indexOf("gnu" + File.separatorChar + "testlet") != - 1
-                  && temp.indexOf(folderName) == - 1)
-                break;
-                            
-              // Look for test names for failing tests, so we can exclude
-              // them from the run.  
-              loc = temp.indexOf("gnu" + File.separatorChar + "testlet");
-              if (loc != - 1)
-                {
-                  compileFailsInFolder++;
-                  String name = temp.substring(loc);                  
-                  if (!name.equals(prev))
-                    {
-                      String shortName = 
-                        stripPrefix(name).replace(File.separatorChar, '.');
-                      if (shortName.endsWith(".java"))
-                        shortName = 
-                          shortName.substring(0, shortName.length() - 5);
-                      if (verbose && lastFailingTest != null)
-                        System.out.println
-                        ("TEST FAILED: compilation failed " + lastFailingTest);
-                      lastFailingTest = shortName;
-                      
-                      if (verbose)
-                        System.out.println
-                        ("TEST: " + shortName + "\n  FAIL: " +
-                                "compilation failed.");
-                      else
-                        System.out.println("FAIL: " + shortName
-                                           + ": compilation failed");
-                      if (!showCompilationErrors)
-                        System.out.println
-                        ("  Read .ecjErr for details or don't run with" +
-                        " -hidecompilefails");
-                      
-                      // When a test fails to compile, we count it as failing
-                      // but we do not run it.                      
-                      total_test_fails++;
-                      total_tests++;
-                      excludeTests.add(name);
-                    }
-                  prev = name;
-                }
-              
-              // Unless -hidecompilefails was used, print out the info. Do not
-              // print the compiler summer (e.g. '3 problems (3 errors)').
-              if (showCompilationErrors && 
-                  temp.indexOf(problemsString(compileFailsInFolder)) == -1)
-                System.out.println("  " + temp);
-              
-              // Read the next line in the file.
-              temp = errReader.readLine();
-            }
-          if (verbose && lastFailingTest != null)
-            System.out.println
-              ("TEST FAILED: compilation failed " + lastFailingTest);
-        }
-        catch (FileNotFoundException fnfe)
-        {
-        }
-        catch (IOException ioe)
-        {          
-        }
-      }
     return result == 0;
-  }
-  
-  /**
-   * This method returns a String that the compiler prints as a summary
-   * after a batch compile (e.g. '3 problems (3 errors)').  This is so 
-   * we can ignore it when printing compiler errors to the screen.
-   * @param fails the number of fails in the batch compilation
-   * @return the summary String
-   */
-  private static String problemsString(int fails)
-  {
-    if (fails == 1)
-      return "1 problem (1 error)";
-    else
-      return fails + " problems (" + fails + " errors)";
   }
   
   /**
@@ -1181,57 +1045,28 @@ public class Harness
       }
     catch (Exception e)
       {
-        result = - 1;
-      }
-    if (result != 0)
-      {
-        String shortName = stripPrefix(testName);
-        if (verbose)
-          System.out.println
-            ("TEST: " + shortName + "\n  FAIL: compilation failed.");
-        else
-          System.out.println("FAIL: " + stripPrefix(testName)
-                             + ": compilation failed");
-        if (!showCompilationErrors)
-          System.out.println
-            ("  Read .ecjErr for details or don't run with -hidecompilefails");
-        else
-          {
-            try
-            {
-              BufferedReader errReader = 
-                new BufferedReader(new FileReader(".ecjErr"));
-              String temp = errReader.readLine();
-              while(temp != null && temp.indexOf(testName) == -1)
-                temp = errReader.readLine();
-              System.out.println("  " + temp);
-              temp = errReader.readLine();
-              while (temp != null && 
-                     temp.indexOf("gnu" + File.separatorChar + "teslet") == -1)
-                {
-                  System.out.println("  " + temp);
-                  temp = errReader.readLine();
-                }
-            }
-            catch (FileNotFoundException fnfe)
-            {          
-            }
-            catch (IOException ioe)
-            {              
-            }
-          }
-        if (config.cpInstallDir.equals(""))
-          System.out.println("  Try setting --with-bootclasspath " +
-                "when running configure.\n  See the README file for details");
-        if (verbose)
-          System.out.println("TEST FAILED: compilation failed " + shortName);
-        
-        total_test_fails++;
-        total_tests++;
-        result = - 1;
+        result = -1;
       }
     return result;
   }  
+  
+  /**
+   * Returns true if the String argument passed is in the format of a
+   * compiler summary of errors in a folder.
+   * @param x the String to inspect
+   * @return true if the String is in the correct format
+   */
+  private static boolean isCompileSummary(String x)
+  {
+    if (numCompileFailsInFolder == 1)
+      return x.startsWith("1 problem (1 error)");
+    else
+      {
+        String s = "" + numCompileFailsInFolder + " problems (";
+        s += "" + numCompileFailsInFolder + " errors)";
+        return x.startsWith(s);
+      }
+  }
 
   /**
    * This class is used for our timer to cancel tests that have hung.
@@ -1359,4 +1194,118 @@ public class Harness
     }
   }
 
+  /**
+   * A class used as a PrintWriter for the compiler to send error output to.
+   * This class formats the output and also affects the test run by parsing 
+   * the output.
+   * @author Anthony Balkissoon abalkiss at redhat dot com
+   *
+   */
+  private class CompilerErrorWriter extends PrintWriter
+  {
+    public CompilerErrorWriter(OutputStream out)
+    {
+      super(out);
+    }
+    
+    /**
+     * This method is overridden for several reasons.  It formats
+     * text to fit into the test report, adds tests that fail to compile
+     * to the list of tests to exclude from the run, prints header
+     * information for the failing tests, and properly increments
+     * the total test number and total failing test number.
+     * 
+     * Basically, this method now parses the text its passed and causes
+     * side effects.  It (sometimes) prints that text as well, after 
+     * formatting and indenting.
+     */
+    public void println(String x)
+    {
+      // Ignore incorrect classpath errors, since we detect this 
+      // automatically, a proper classpath should be found in 
+      // addition to any incorrect ones.
+      if (x.startsWith("incorrect classpath:") ||
+          x.startsWith("----------"))
+        return;
+      
+      // Look for "gnu/testlet" to indicate we might be talking about a 
+      // new file.
+      int loc = x.indexOf("gnu/testlet");        
+      if (loc != -1)
+        {
+          String temp = x.substring(loc);
+          String shortName = 
+            stripPrefix(temp).replace(File.separatorChar, '.');
+          if (shortName.endsWith(".java"))
+            shortName = 
+              shortName.substring(0, shortName.length() - 5);
+
+          // Check if the name is different than the last file with 
+          // compilation errors, so we're not dealing with multiple errors
+          // in one file.
+          if (!lastFailingCompile.equals(shortName))
+            {                
+              // Print out a message saying the test failed.
+              if (verbose)
+                super.println("TEST: " + shortName
+                              + "\n  FAIL: compilation errors:");
+              else
+                super.println("FAIL: " + shortName
+                                   + ": compilation errors:");
+                                    
+              // Increment and set the relevant variables.
+              numCompileFailsInFolder = 1;
+              excludeTests.add(temp);
+              total_test_fails++;
+              total_tests++;
+              lastFailingCompile = shortName;
+            }
+          else
+            numCompileFailsInFolder++;
+          return;
+        }
+      
+      // Get the line number from the compiler output and print
+      // it out to look like our other line numbers for failures.
+      loc = x.indexOf("(at line ");
+      if (loc != -1)
+        {
+          int endBracket = x.indexOf(')', loc);
+          String line = x.substring(loc + 4, endBracket) + ":";
+          
+          // Print the line numbers with appropriate indentation.
+          if (verbose)
+            super.println("    "+line);
+          else
+            super.println("  "+line);
+          
+          // Print the line from the test that caused the problem.
+          super.println(x.substring(endBracket + 2));
+          return;
+        }
+      
+      // Print the lines with appropriate indentation.
+      if (verbose)
+        super.println("    " + x);
+      else
+        super.println("  " + x);
+    }
+    
+    /**
+     * This method is overridden so that the compiler summary isn't
+     * printed out and also so that if the output is verbose we print
+     * our own summary.
+     */
+    public void print(String x)
+    {
+      if (isCompileSummary(x))
+        {
+          if (verbose)
+            super.println("TEST FAILED: compile failed for "
+                          + lastFailingCompile);
+        }
+      else
+        super.print(x);
+    }
+  }
 }

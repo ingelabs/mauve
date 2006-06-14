@@ -1,3 +1,48 @@
+2006-06-14  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* .cvsignore: Removed .ecjOut and .ecjErr from this file.
+	* Harness.java: 
+	(lastFailingCompile): New field.
+	(numCompileFailsInFolder): New field.
+	(showCompilationErrors): Removed this field.
+	(main): Removed the handling of showCompilationErrors.
+	(setupCompiler): Changed ecjWriterOut and ecjWriterErr to use custom 
+	PrintWriters instead of writing to .ecjOut and .ecjErr.
+	(getClasspathInstallString): Do not look for the property in 
+	config.java, the -with-bootclasspath option has been removed from
+	configuration.
+	(printHelpMessage): Changed the "exceptions" message to indicate that
+	full stack traces are now printed by default.
+	(compileFolder): Removed the code that reads the compiler output and
+	parses it, this is now done in the custom PrintWriter used by the 
+	compiler.
+	(compileTest): Likewise.
+	(problemsString): Removed this method.
+	(isCompileSummary): New method.
+	(CompilerErrorWriter): New class.
+	* Makefile.am: Removed SimpleTestHarness.java from harness_files 
+	target, removed references to the old harness structure, added 
+	check_local and clean_local targets.
+	* Makefile.in: Regenerated.
+	* README: Mentioned that exceptions are now printed by default and 
+	-noexceptions is the option to turn them off.
+	* README.OldHarness: Removed this file.
+	* README.TestletToAPI: Likewise.
+	* RunnerProcess.java:
+	(exceptions): Changed from false by default to true by default.
+	(main): Changed -exceptions to -noexceptions.
+	* aclocal.m4: Regenerated.
+	* batch_run: Removed this file.
+	* build.xml: Likewise.
+	* choose: Likewise.
+	* choose-classes: Likewise.
+	* configure: Regenerated.
+	* configure.in: Do not export MAUVEVM, removed --with-gcj option, 
+	removed --with-bootclasspath option, removed --enable-gcj-classes 
+	option, removed --enable-class-files option.
+	* runner: Removed this file.
+	* uses-list: Likewise.	
+
 2006-06-14  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/TextComponent/ignoreOldMouseEvents.java: New test.

@@ -84,7 +84,7 @@ public class RunnerProcess
   private static boolean debug = false;
 
   // True if stack traces should be printed for uncaught exceptions
-  private static boolean exceptions = false;
+  private static boolean exceptions = true;
 
   // A description of the test
   private String description;
@@ -143,9 +143,9 @@ public class RunnerProcess
         else if (args[i].equals("-debug"))
           // User wants extra debug info.
           debug = true;
-        else if (args[i].equals("-exceptions"))
+        else if (args[i].equals("-noexceptions"))
           // User wants stack traces for uncaught exceptions.
-          exceptions = true;
+          exceptions = false;
         else if (args[i].equals("-xmlout"))
           {
             // User wants a report.

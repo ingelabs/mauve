@@ -9,117 +9,30 @@ TESTFLAGS =
 
 check_DATA = $(STAMP)
 
-harness_files = Harness.java \
+harness_files = \
+	Harness.java \
 	RunnerProcess.java \
-	gnu/testlet/SimpleTestHarness.java \
-	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
+	gnu/testlet/TestHarness.java \
+	gnu/testlet/Testlet.java \
 	gnu/testlet/TestSecurityManager.java \
 	gnu/testlet/TestSecurityManager2.java \
 	gnu/testlet/ResourceNotFoundException.java \
 	gnu/testlet/TestReport.java \
 	gnu/testlet/TestResult.java
 
-harness: FORCE
+harness:
 	$(JAVAC) $(harness_files)
 	$(JAVAC) gnu/testlet/config.java
 
 all-local: harness
 
-## FIXME: leading space makes automake ignore this.  Bleah.
- include choices
-
-classes.stamp: choices $(CHOICES)  gnu/testlet/config.class
-	here=`/bin/pwd`; cd $(srcdir); \
-	  CLASSPATH=$$CLASSPATH:$$here:`/bin/pwd` $(JAVAC) $(JAVACFLAGS) -d $$here \
-	    $(harness_files) $(CHOICES)
-	touch classes.stamp
-
 gnu/testlet/config.class: gnu/testlet/config.java
 	$(JAVAC) $(JAVACFLAGS) gnu/testlet/config.java
 
-KEYS =
-choices: FORCE
-	ok=no; \
-	if test -f .save-keys && test -f choices && test "`cat .save-keys`" = "$(KEYS)"; then \
-	  ok=yes; \
-	fi; \
-	here=`/bin/pwd`; \
-	if test "$$ok" = no; then \
-	  echo "$(KEYS)" > .save-keys; \
-	  cd $(srcdir) && $(SHELL) choose $$here $(KEYS); \
-	fi
-
-FORCE:
-
-if USE_GCJ
-
-if CLASS_FILES
-STAMP = classes.stamp
-
-$(javao_files): classes.stamp
-
-%.o: %.class classes.stamp
-	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(GCJFLAGS) -c -o $@ $<
-
-else # CLASS_FILES
-
-%.o: %.java
-## Eww.
-	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
-	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(GCJFLAGS) -c -o $@ $<
-
-endif # CLASS_FILES
-
-java_files = $(harness_files) $(CHOICES)
-class_files = $(patsubst %.java,%.class,$(java_files)) \
-	gnu/testlet/config.class
-javao_files = $(patsubst %.java,%.o,$(CHOICES))
-
-check_PROGRAMS = SimpleTestHarness
-
-AM_GCJFLAGS = -I. -I$(srcdir)
-
-SimpleTestHarness_SOURCES = gnu/testlet/config.java $(harness_files)
-SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files) 
-SimpleTestHarness_LDADD = $(javao_files)
-SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
-
-check-local: $(check_PROGRAMS) $(CHOICES) cleanup-env
-	cat classes | GCJ="$(GCJ)" JAVA= ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)
-
-recheck:
-	test -f .save-keys || : > .save-keys
-## Always remove the test program to force a relink.
-	@rm -f SimpleTestHarness$(EXEEXT)
-	$(MAKE) KEYS="`cat .save-keys`" check
-
-MOSTLYCLEANFILES = $(javao_files)
-CLEANFILES = $(class_files) classes.stamp
-
-else  ## USE_GCJ
-
-STAMP = classes.stamp
-
-check-local: classes.stamp cleanup-env
-	cat classes | \
-	CLASSPATH=$$CLASSPATH:`/bin/pwd` JAVAC="$(JAVAC)" JAVA="$(JAVA)" $(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
-
-recheck:
-	test -f .save-keys || : > .save-keys
-	$(MAKE) KEYS="`cat .save-keys`" check
-
-CLEANFILES = classes.stamp
-
-endif ## USE_GCJ
-
-# Cleanup files, directories and other stuff left over from previous
-# test runs that will interfere with this one.  (Ideally a testcase
-# should do this for itself.)
-cleanup-env: 
-	if test -d /tmp/mauve-testdir ; then \
-	  chmod -R 777 /tmp/mauve-testdir ; \
-	  rm -rf /tmp/mauve-testdir ; \
-	fi
-
+check-local:
+	$(JAVA) Harness
+ 
 ## For now can't define this conditionally.
 SUFFIXES = .class .java
+clean-local:
+	find . -name '*.class' -print | xargs rm -f

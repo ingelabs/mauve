@@ -35,7 +35,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-@USE_GCJ_TRUE@check_PROGRAMS = SimpleTestHarness$(EXEEXT)
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(top_srcdir)/configure \
 	$(top_srcdir)/gnu/testlet/config.java.in COPYING ChangeLog \
@@ -51,39 +50,10 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno configure.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = gnu/testlet/config.java
-am__SimpleTestHarness_SOURCES_DIST = gnu/testlet/config.java \
-	Harness.java RunnerProcess.java \
-	gnu/testlet/SimpleTestHarness.java \
-	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
-	gnu/testlet/TestSecurityManager.java \
-	gnu/testlet/TestSecurityManager2.java \
-	gnu/testlet/ResourceNotFoundException.java \
-	gnu/testlet/TestReport.java gnu/testlet/TestResult.java
-am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = Harness.$(OBJEXT) RunnerProcess.$(OBJEXT) \
-	gnu/testlet/SimpleTestHarness.$(OBJEXT) \
-	gnu/testlet/TestHarness.$(OBJEXT) \
-	gnu/testlet/Testlet.$(OBJEXT) \
-	gnu/testlet/TestSecurityManager.$(OBJEXT) \
-	gnu/testlet/TestSecurityManager2.$(OBJEXT) \
-	gnu/testlet/ResourceNotFoundException.$(OBJEXT) \
-	gnu/testlet/TestReport.$(OBJEXT) \
-	gnu/testlet/TestResult.$(OBJEXT)
-@USE_GCJ_TRUE@am_SimpleTestHarness_OBJECTS =  \
-@USE_GCJ_TRUE@	gnu/testlet/config.$(OBJEXT) $(am__objects_1)
-SimpleTestHarness_OBJECTS = $(am_SimpleTestHarness_OBJECTS)
-@USE_GCJ_TRUE@am__DEPENDENCIES_1 = $(patsubst %.java,%.o,$(CHOICES))
-DEFAULT_INCLUDES = -I. -I$(srcdir)
 depcomp =
 am__depfiles_maybe =
-GCJCOMPILE = $(GCJ) $(AM_GCJFLAGS) $(GCJFLAGS)
-GCJLD = $(GCJ)
-GCJLINK = $(GCJLD) $(AM_GCJFLAGS) $(GCJFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
-	-o $@
-SOURCES = $(SimpleTestHarness_SOURCES)
-DIST_SOURCES = $(am__SimpleTestHarness_SOURCES_DIST)
-ETAGS = etags
-CTAGS = ctags
+SOURCES =
+DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -109,10 +79,7 @@ CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CHECK_FILE_SEPARATOR = @CHECK_FILE_SEPARATOR@
 CHECK_PATH_SEPARATOR = @CHECK_PATH_SEPARATOR@
-CLASS_FILES_FALSE = @CLASS_FILES_FALSE@
-CLASS_FILES_TRUE = @CLASS_FILES_TRUE@
 CPPFLAGS = @CPPFLAGS@
-CP_INSTALL_DIR = @CP_INSTALL_DIR@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
@@ -122,9 +89,6 @@ ECHO_T = @ECHO_T@
 ECJ_JAR = @ECJ_JAR@
 EMMA = @EMMA@
 EXEEXT = @EXEEXT@
-GCJ = @GCJ@
-GCJDEPMODE = @GCJDEPMODE@
-GCJFLAGS = @GCJFLAGS@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -147,19 +111,14 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
-SRCDIR = @SRCDIR@
 STRIP = @STRIP@
 TEST_JAVA = @TEST_JAVA@
 TMPDIR = @TMPDIR@
-USE_GCJ_FALSE = @USE_GCJ_FALSE@
-USE_GCJ_TRUE = @USE_GCJ_TRUE@
 VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
-am__fastdepGCJ_FALSE = @am__fastdepGCJ_FALSE@
-am__fastdepGCJ_TRUE = @am__fastdepGCJ_TRUE@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -197,37 +156,22 @@ AUTOMAKE_OPTIONS = foreign subdir-objects no-dependencies
 JAVACFLAGS = -g
 TESTFLAGS = 
 check_DATA = $(STAMP)
-harness_files = Harness.java \
+harness_files = \
+	Harness.java \
 	RunnerProcess.java \
-	gnu/testlet/SimpleTestHarness.java \
-	gnu/testlet/TestHarness.java gnu/testlet/Testlet.java \
+	gnu/testlet/TestHarness.java \
+	gnu/testlet/Testlet.java \
 	gnu/testlet/TestSecurityManager.java \
 	gnu/testlet/TestSecurityManager2.java \
 	gnu/testlet/ResourceNotFoundException.java \
 	gnu/testlet/TestReport.java \
 	gnu/testlet/TestResult.java
 
-KEYS = 
-@CLASS_FILES_TRUE@@USE_GCJ_TRUE@STAMP = classes.stamp
-@USE_GCJ_FALSE@STAMP = classes.stamp
-@USE_GCJ_TRUE@java_files = $(harness_files) $(CHOICES)
-@USE_GCJ_TRUE@class_files = $(patsubst %.java,%.class,$(java_files)) \
-@USE_GCJ_TRUE@	gnu/testlet/config.class
-
-@USE_GCJ_TRUE@javao_files = $(patsubst %.java,%.o,$(CHOICES))
-@USE_GCJ_TRUE@AM_GCJFLAGS = -I. -I$(srcdir)
-@USE_GCJ_TRUE@SimpleTestHarness_SOURCES = gnu/testlet/config.java $(harness_files)
-@USE_GCJ_TRUE@SimpleTestHarness_DEPENDENCIES = $(STAMP) $(javao_files) 
-@USE_GCJ_TRUE@SimpleTestHarness_LDADD = $(javao_files)
-@USE_GCJ_TRUE@SimpleTestHarness_LDFLAGS = --main=gnu.testlet.SimpleTestHarness
-@USE_GCJ_TRUE@MOSTLYCLEANFILES = $(javao_files)
-@USE_GCJ_FALSE@CLEANFILES = classes.stamp
-@USE_GCJ_TRUE@CLEANFILES = $(class_files) classes.stamp
 SUFFIXES = .class .java
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .class .java .o .obj
+.SUFFIXES: .class .java
 am--refresh:
 	@:
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
@@ -263,97 +207,13 @@ $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 gnu/testlet/config.java: $(top_builddir)/config.status $(top_srcdir)/gnu/testlet/config.java.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
-
-clean-checkPROGRAMS:
-	-test -z "$(check_PROGRAMS)" || rm -f $(check_PROGRAMS)
-gnu/testlet/$(am__dirstamp):
-	@$(mkdir_p) gnu/testlet
-	@: > gnu/testlet/$(am__dirstamp)
-gnu/testlet/config.$(OBJEXT): gnu/testlet/$(am__dirstamp)
-gnu/testlet/SimpleTestHarness.$(OBJEXT): gnu/testlet/$(am__dirstamp)
-gnu/testlet/TestHarness.$(OBJEXT): gnu/testlet/$(am__dirstamp)
-gnu/testlet/Testlet.$(OBJEXT): gnu/testlet/$(am__dirstamp)
-gnu/testlet/TestSecurityManager.$(OBJEXT):  \
-	gnu/testlet/$(am__dirstamp)
-gnu/testlet/TestSecurityManager2.$(OBJEXT):  \
-	gnu/testlet/$(am__dirstamp)
-gnu/testlet/ResourceNotFoundException.$(OBJEXT):  \
-	gnu/testlet/$(am__dirstamp)
-gnu/testlet/TestReport.$(OBJEXT): gnu/testlet/$(am__dirstamp)
-gnu/testlet/TestResult.$(OBJEXT): gnu/testlet/$(am__dirstamp)
-SimpleTestHarness$(EXEEXT): $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_DEPENDENCIES) 
-	@rm -f SimpleTestHarness$(EXEEXT)
-	$(GCJLINK) $(SimpleTestHarness_LDFLAGS) $(SimpleTestHarness_OBJECTS) $(SimpleTestHarness_LDADD) $(LIBS)
-
-mostlyclean-compile:
-	-rm -f *.$(OBJEXT)
-	-rm -f gnu/testlet/ResourceNotFoundException.$(OBJEXT)
-	-rm -f gnu/testlet/SimpleTestHarness.$(OBJEXT)
-	-rm -f gnu/testlet/TestHarness.$(OBJEXT)
-	-rm -f gnu/testlet/TestReport.$(OBJEXT)
-	-rm -f gnu/testlet/TestResult.$(OBJEXT)
-	-rm -f gnu/testlet/TestSecurityManager.$(OBJEXT)
-	-rm -f gnu/testlet/TestSecurityManager2.$(OBJEXT)
-	-rm -f gnu/testlet/Testlet.$(OBJEXT)
-	-rm -f gnu/testlet/config.$(OBJEXT)
-
-distclean-compile:
-	-rm -f *.tab.c
-
-.java.o:
-	$(GCJCOMPILE) -c -o $@ $<
-
-.java.obj:
-	$(GCJCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 uninstall-info-am:
-
-ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
-	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
-	unique=`for i in $$list; do \
-	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
-	  done | \
-	  $(AWK) '    { files[$$0] = 1; } \
-	       END { for (i in files) print i; }'`; \
-	mkid -fID $$unique
 tags: TAGS
+TAGS:
 
-TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
-		$(TAGS_FILES) $(LISP)
-	tags=; \
-	here=`pwd`; \
-	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
-	unique=`for i in $$list; do \
-	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
-	  done | \
-	  $(AWK) '    { files[$$0] = 1; } \
-	       END { for (i in files) print i; }'`; \
-	if test -z "$(ETAGS_ARGS)$$tags$$unique"; then :; else \
-	  test -n "$$unique" || unique=$$empty_fix; \
-	  $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
-	    $$tags $$unique; \
-	fi
 ctags: CTAGS
-CTAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
-		$(TAGS_FILES) $(LISP)
-	tags=; \
-	here=`pwd`; \
-	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
-	unique=`for i in $$list; do \
-	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
-	  done | \
-	  $(AWK) '    { files[$$0] = 1; } \
-	       END { for (i in files) print i; }'`; \
-	test -z "$(CTAGS_ARGS)$$tags$$unique" \
-	  || $(CTAGS) $(CTAGSFLAGS) $(AM_CTAGSFLAGS) $(CTAGS_ARGS) \
-	     $$tags $$unique
+CTAGS:
 
-GTAGS:
-	here=`$(am__cd) $(top_builddir) && pwd` \
-	  && cd $(top_srcdir) \
-	  && gtags -i $(GTAGS_ARGS) $$here
-
-distclean-tags:
-	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
@@ -483,7 +343,7 @@ distcleancheck: distclean
 	       $(distcleancheck_listfiles) ; \
 	       exit 1; } >&2
 check-am: all-am
-	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS) $(check_DATA)
+	$(MAKE) $(AM_MAKEFLAGS) $(check_DATA)
 	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
 all-am: Makefile all-local
@@ -503,27 +363,23 @@ install-strip:
 	  `test -z '$(STRIP)' || \
 	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
 mostlyclean-generic:
-	-test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
 
 clean-generic:
-	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
-	-rm -f gnu/testlet/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-checkPROGRAMS clean-generic mostlyclean-am
+clean-am: clean-generic clean-local mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -f Makefile
-distclean-am: clean-am distclean-compile distclean-generic \
-	distclean-tags
+distclean-am: clean-am distclean-generic
 
 dvi: dvi-am
 
@@ -553,7 +409,7 @@ maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic
+mostlyclean-am: mostlyclean-generic
 
 pdf: pdf-am
 
@@ -565,82 +421,31 @@ ps-am:
 
 uninstall-am: uninstall-info-am
 
-.PHONY: CTAGS GTAGS all all-am all-local am--refresh check check-am \
-	check-local clean clean-checkPROGRAMS clean-generic ctags dist \
-	dist-all dist-bzip2 dist-gzip dist-shar dist-tarZ dist-zip \
-	distcheck distclean distclean-compile distclean-generic \
-	distclean-tags distcleancheck distdir distuninstallcheck dvi \
-	dvi-am html html-am info info-am install install-am \
+.PHONY: all all-am all-local am--refresh check check-am check-local \
+	clean clean-generic clean-local dist dist-all dist-bzip2 \
+	dist-gzip dist-shar dist-tarZ dist-zip distcheck distclean \
+	distclean-generic distcleancheck distdir distuninstallcheck \
+	dvi dvi-am html html-am info info-am install install-am \
 	install-data install-data-am install-exec install-exec-am \
 	install-info install-info-am install-man install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-info-am
+	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
+	pdf-am ps ps-am uninstall uninstall-am uninstall-info-am
 
 
-harness: FORCE
+harness:
 	$(JAVAC) $(harness_files)
 	$(JAVAC) gnu/testlet/config.java
 
 all-local: harness
 
- include choices
-
-classes.stamp: choices $(CHOICES)  gnu/testlet/config.class
-	here=`/bin/pwd`; cd $(srcdir); \
-	  CLASSPATH=$$CLASSPATH:$$here:`/bin/pwd` $(JAVAC) $(JAVACFLAGS) -d $$here \
-	    $(harness_files) $(CHOICES)
-	touch classes.stamp
-
 gnu/testlet/config.class: gnu/testlet/config.java
 	$(JAVAC) $(JAVACFLAGS) gnu/testlet/config.java
-choices: FORCE
-	ok=no; \
-	if test -f .save-keys && test -f choices && test "`cat .save-keys`" = "$(KEYS)"; then \
-	  ok=yes; \
-	fi; \
-	here=`/bin/pwd`; \
-	if test "$$ok" = no; then \
-	  echo "$(KEYS)" > .save-keys; \
-	  cd $(srcdir) && $(SHELL) choose $$here $(KEYS); \
-	fi
 
-FORCE:
-
-@CLASS_FILES_TRUE@@USE_GCJ_TRUE@$(javao_files): classes.stamp
-
-@CLASS_FILES_TRUE@@USE_GCJ_TRUE@%.o: %.class classes.stamp
-@CLASS_FILES_TRUE@@USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(GCJFLAGS) -c -o $@ $<
-
-@CLASS_FILES_FALSE@@USE_GCJ_TRUE@%.o: %.java
-@CLASS_FILES_FALSE@@USE_GCJ_TRUE@	@-$(mkinstalldirs) $(dir $@) > /dev/null 2>&1
-@CLASS_FILES_FALSE@@USE_GCJ_TRUE@	CLASSPATH=.:$(srcdir) $(GCJ) -fassume-compiled $(GCJFLAGS) -c -o $@ $<
-
-@USE_GCJ_TRUE@check-local: $(check_PROGRAMS) $(CHOICES) cleanup-env
-@USE_GCJ_TRUE@	cat classes | GCJ="$(GCJ)" JAVA= ./SimpleTestHarness$(EXEEXT) $(TESTFLAGS)
-
-@USE_GCJ_TRUE@recheck:
-@USE_GCJ_TRUE@	test -f .save-keys || : > .save-keys
-@USE_GCJ_TRUE@	@rm -f SimpleTestHarness$(EXEEXT)
-@USE_GCJ_TRUE@	$(MAKE) KEYS="`cat .save-keys`" check
-
-@USE_GCJ_FALSE@check-local: classes.stamp cleanup-env
-@USE_GCJ_FALSE@	cat classes | \
-@USE_GCJ_FALSE@	CLASSPATH=$$CLASSPATH:`/bin/pwd` JAVAC="$(JAVAC)" JAVA="$(JAVA)" $(JAVA) gnu.testlet.SimpleTestHarness $(TESTFLAGS)
-
-@USE_GCJ_FALSE@recheck:
-@USE_GCJ_FALSE@	test -f .save-keys || : > .save-keys
-@USE_GCJ_FALSE@	$(MAKE) KEYS="`cat .save-keys`" check
-
-# Cleanup files, directories and other stuff left over from previous
-# test runs that will interfere with this one.  (Ideally a testcase
-# should do this for itself.)
-cleanup-env: 
-	if test -d /tmp/mauve-testdir ; then \
-	  chmod -R 777 /tmp/mauve-testdir ; \
-	  rm -rf /tmp/mauve-testdir ; \
-	fi
+check-local:
+	$(JAVA) Harness
+clean-local:
+	find . -name '*.class' -print | xargs rm -f
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
