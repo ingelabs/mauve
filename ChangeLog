@@ -1,3 +1,7 @@
+2006-06-14  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Polygon/getPathIterator.java: New test.
+
 2006-06-14  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* .cvsignore: Removed .ecjOut and .ecjErr from this file.
