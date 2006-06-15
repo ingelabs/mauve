@@ -1,5 +1,9 @@
 2006-06-15  Tania Bento  <tbento@redhat.com>
 
+	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/isFocusable.java: New test.
+
+2006-06-15  Tania Bento  <tbento@redhat.com>
+
 	* gnu/testlet/javax/swing/JRadioButtonMenuItem/isFocusable.java: New test.
 
 2006-06-15  Tania Bento  <tbento@redhat.com>
