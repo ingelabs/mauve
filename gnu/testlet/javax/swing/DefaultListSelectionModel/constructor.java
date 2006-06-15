@@ -42,5 +42,7 @@ public class constructor implements Testlet
     harness.check(m.getLeadSelectionIndex(), -1);
     harness.check(m.getMaxSelectionIndex(), -1);
     harness.check(m.getMinSelectionIndex(), -1);
+    harness.check(m.isSelectionEmpty(), true);
+    harness.check(m.getValueIsAdjusting(), false);
   }
 }

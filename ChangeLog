@@ -1,3 +1,14 @@
+2006-06-15  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/javax/swing/JCheckBoxMenuItem/constructors.java
+	(testConstructor1): Added 'focusable' check.
+	(testConstructor2): Added 'focusable' check.
+	(testConstructor4): Added 'focusable' check.
+	(testConstructor6): Added 'focusable' check.
+	(testConstructor8): Added 'focusable' check.
+	(testConstructor10): Added 'focusable' check.
+	(testConstructor12): Added 'focusable' check.
+
 2006-06-15  Vivek Lakshmanan  <vivekl@redhat.com>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherEngineInit.java: Add

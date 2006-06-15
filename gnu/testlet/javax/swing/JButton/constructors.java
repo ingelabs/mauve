@@ -70,6 +70,7 @@ public class constructors
     JButton b = new JButton();
     harness.check(b.getText(), "");
     harness.check(b.getIcon(), null);
+    harness.check(b.isFocusable(), true);
   }
 
   /**
@@ -87,6 +88,7 @@ public class constructors
     };
     JButton b = new JButton(myAction);
     harness.check(b.getAction(), myAction);
+    harness.check(b.isFocusable(), true);
   }
 
   /**
@@ -107,6 +109,7 @@ public class constructors
     ImageIcon i = new ImageIcon();
     JButton b = new JButton(i);
     harness.check(b.getIcon(), i);
+    harness.check(b.isFocusable(), true);
   }
 
   /**
@@ -126,6 +129,7 @@ public class constructors
   {
     JButton b = new JButton("Button Text");
     harness.check(b.getText(), "Button Text");
+    harness.check(b.isFocusable(), true);
   }
 
   /**
@@ -156,6 +160,7 @@ public class constructors
     JButton b = new JButton("Button Text", i);
     harness.check(b.getText(), "Button Text");
     harness.check(b.getIcon(), i);
+    harness.check(b.isFocusable(), true);
   }
 
   /**
@@ -202,7 +207,7 @@ public class constructors
     harness.check(b.getUIClassID(), "ButtonUI");
     harness.check(b.getModel() instanceof ButtonModel);
     harness.check(b.getModel() != null);
-
+    
     harness.check(b.getActionCommand(), "");
     harness.check(b.isBorderPainted(), true);
     harness.check(b.isContentAreaFilled(), true);

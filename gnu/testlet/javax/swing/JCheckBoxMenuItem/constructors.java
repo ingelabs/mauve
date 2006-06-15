@@ -76,6 +76,7 @@ public class constructors
     JCheckBoxMenuItem m = new JCheckBoxMenuItem();
     harness.check(m.getText(), "");
     harness.check(m.getIcon(), null);
+    harness.check(m.isFocusable(), false);
   }
 
   /**
@@ -87,6 +88,7 @@ public class constructors
     JCheckBoxMenuItem m = new JCheckBoxMenuItem(i);
     harness.check(m.getText(), "");
     harness.check(m.getIcon(), i);
+    harness.check(m.isFocusable(), false);
   }
 
   /**
@@ -108,6 +110,7 @@ public class constructors
     JCheckBoxMenuItem m = new JCheckBoxMenuItem("Label");
     harness.check(m.getText(), "Label");
     harness.check(m.getIcon(), null);
+    harness.check(m.isFocusable(), false);
   }
 
   /**
@@ -136,6 +139,7 @@ public class constructors
     };
     JCheckBoxMenuItem m = new JCheckBoxMenuItem(myAction);
     harness.check(m.getAction(), myAction);
+    harness.check(m.isFocusable(), false);
   }
 
   /**
@@ -158,6 +162,7 @@ public class constructors
     harness.check(m.getText(), "Label");
     harness.check(m.getIcon(), i);
     harness.check(m.getState(), false);
+    harness.check(m.isFocusable(), false);
   }
 
   /**
@@ -180,6 +185,7 @@ public class constructors
     harness.check(m.getText(), "Label");
     harness.check(m.getIcon(), null);
     harness.check(m.getState(), true);
+    harness.check(m.isFocusable(), false);
   }
 
   /**
@@ -204,6 +210,7 @@ public class constructors
     harness.check(m.getText(), "Label");
     harness.check(m.getIcon(), i);
     harness.check(m.getState(), true);
+    harness.check(m.isFocusable(), false);
   }
 
   /**

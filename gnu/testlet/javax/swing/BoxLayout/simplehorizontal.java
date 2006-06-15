@@ -47,20 +47,20 @@ public class simplehorizontal implements Testlet
     JComponent c2 = new JComponent(){};
     comp.add(c1);
     comp.add(c2);
-
+    
     comp.setSize(400, 400);
     layout.layoutContainer(comp);
-
+    
     Rectangle b1 = c1.getBounds();
     Rectangle b2 = c2.getBounds();
     h.check(b1.x, 0, String.valueOf(b1.x));
-    h.check(b1.y, 0, String.valueOf(b1.y));
+    h.check(b1.y, 0, String.valueOf(b1.y));   
     h.check(b1.width, 200, String.valueOf(b1.width));
     h.check(b1.height, 400, String.valueOf(b1.height));
-    h.check(b2.x, 200, String.valueOf(b1.x));
-    h.check(b2.y, 0, String.valueOf(b1.y));
-    h.check(b2.width, 200, String.valueOf(b1.width));
-    h.check(b2.height, 400, String.valueOf(b1.height));
+    h.check(b2.x, 200, String.valueOf(b2.x));
+    h.check(b2.y, 0, String.valueOf(b2.y));
+    h.check(b2.width, 200, String.valueOf(b2.width));
+    h.check(b2.height, 400, String.valueOf(b2.height));
     
   }
 

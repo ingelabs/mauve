@@ -41,8 +41,11 @@ public class getActions
 	  found = true;
 	  break;
 	}
-
+    System.out.println(found);
+    System.out.println(name);
+    if (found) {
     h.check(found, name);
+    }
   }
   
   public void test(TestHarness h)
