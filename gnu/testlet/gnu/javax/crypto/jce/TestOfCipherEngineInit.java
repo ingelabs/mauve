@@ -28,6 +28,7 @@ import gnu.javax.crypto.jce.spec.BlockCipherParameterSpec;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.SecureRandom;
@@ -165,13 +166,15 @@ public class TestOfCipherEngineInit
   // If param is null, and the cipher needs algorithm parameters to
   // function then init should create random/default parameters provided
   // the cipher is in ENCRYPT or WRAP mode, if in DECRYPT or UNWRAP mode
-  // the function must throw an InvalidKeyException.
+  // the function must throw an InvalidAlgorithmParameterException.
   // Extrapolation: If algorithm does not require additional params
   // then none should be created?
   private void testInitWithParameterSpec(TestHarness harness)
   {
     try
       {
+        // This cipher does not need extra algorithm parameters like
+        // an IV to be provided so it should not generate one.
         cipher = Cipher.getInstance("DESede/ECB/NoPadding");
         String input = "Does this work ?";
 
@@ -184,6 +187,7 @@ public class TestOfCipherEngineInit
         byte[] ciphertext = cipher.doFinal(plaintext);
 
         iv = null;
+        // No need for an IV so none should be generated in decrypt mode either.
         cipher.init(Cipher.DECRYPT_MODE, key, (AlgorithmParameterSpec) null);
         iv = cipher.getIV();
         harness.check(
@@ -192,6 +196,7 @@ public class TestOfCipherEngineInit
         byte[] plaintext2 = cipher.doFinal(ciphertext);
         String recovered = new String(plaintext2);
 
+        // Encryption and decryption should still work.
         harness.check(input.equals(recovered),
                       "Original and recovered texts MUST be equal");
       }
@@ -206,6 +211,8 @@ public class TestOfCipherEngineInit
         cipher = Cipher.getInstance("DESede/CBC/NoPadding");
         String input = "Does this work ?";
 
+        // null param for CBC should result in random algorithm params being
+        // generated
         cipher.init(Cipher.ENCRYPT_MODE, key, (AlgorithmParameterSpec) null);
         iv = cipher.getIV();
         harness.check(
@@ -220,21 +227,25 @@ public class TestOfCipherEngineInit
 
         AlgorithmParameterSpec backupAlg = cipher.getParameters().getParameterSpec(
                                                                                    BlockCipherParameterSpec.class);
-
         try
           {
+            // Should not be able to init a DECRYPT cipher for CBC without
+            // params.
             cipher.init(Cipher.DECRYPT_MODE, key, (AlgorithmParameterSpec) null);
             harness.fail("(Decrypting - NULL AlgorithmParameterSpec) init of CBC with NULL IV NOT possible");
           }
         catch (Exception e)
           {
+            // The exception must be InvalidAlgorithmParameterException
             String type = e.getClass().getName();
             harness.check(
-                          type.equals(InvalidKeyException.class.getName()),
+                          type.equals(InvalidAlgorithmParameterException.class.getName()),
                           "(Decrypting - NULL AlgorithmParameterSpec) CBC init with NULL IV MUST throw exception");
           }
         try
           {
+            // Now use a proper algorithm parameter and test init.
+            // This should pass!!
             cipher.init(Cipher.DECRYPT_MODE, key, backupAlg);
           }
         catch (Exception e)
@@ -245,9 +256,9 @@ public class TestOfCipherEngineInit
         iv = cipher.getIV();
         harness.check(
                       iv != null,
-                      "(Decrypting - Valid AlgorithmParameterSpec) cipher.getIV() for CBC init with NULL params MUST NOT return null");
+                      "(Decrypting - Valid AlgorithmParameterSpec) cipher.getIV() for CBC init with valid params MUST NOT return null");
         harness.check(iv.length == 8,
-                      "(Decrypting - NULL AlgorithmParameterSpec) IV length for CBC should be 8");
+                      "(Decrypting - Valid AlgorithmParameterSpec) IV length for CBC should be 8");
         byte[] plaintext2 = cipher.doFinal(ciphertext);
         String recovered = new String(plaintext2);
 
@@ -264,7 +275,7 @@ public class TestOfCipherEngineInit
   }
 
   
-  //TODO: Add tests for WRAP and UNWRAP too.
+  // TODO: Add tests for WRAP and UNWRAP too.
   
 
 }

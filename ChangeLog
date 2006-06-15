@@ -1,3 +1,9 @@
+2006-06-15  Vivek Lakshmanan  <vivekl@redhat.com>
+
+	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherEngineInit.java
+	(testInitWithParameterSpec): More comments and look for 
+	InvalidAlgorithmParameterException instead of InvalidKeyException.
+
 2006-06-15  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JRadioButton/isFocusable.java: New test.
