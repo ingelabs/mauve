@@ -1,4 +1,7 @@
 2006-06-15  Tania Bento  <tbento@redhat.com>
+	* gnu/testlet/javax/swing/JToggleButton/isFocusable.java: New test.
+
+2006-06-15  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JButton/constructors.java
 	(testConstructor1): Added 'focusable' test.
@@ -9,7 +12,7 @@
 
 2006-06-15  Tania Bento  <tbento@redhat.com>
 
-	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/isFocusable.java:  New test.
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollButton/isFocusable.java: New test.
 
 2006-06-15  Tania Bento  <tbento@redhat.com>
 
