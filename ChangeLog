@@ -1,6 +1,6 @@
 2006-06-16  David Gilbert  <david.gilbert@object-refinery.com>
 
-	* gnu/testlet/javax/swing/DefaultComboBoxModel.java
+	* gnu/testlet/javax/swing/DefaultComboBoxModel/removeElement.java
 	(events): New field,
 	(index0): Removed,
 	(index1): Removed,

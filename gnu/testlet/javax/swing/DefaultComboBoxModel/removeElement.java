@@ -22,6 +22,9 @@ package gnu.testlet.javax.swing.DefaultComboBoxModel;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
@@ -33,29 +36,21 @@ import javax.swing.event.ListDataListener;
 public class removeElement 
   implements Testlet, ListDataListener 
 {
-  int index0;
-  int index1;
-  int eventType;
+  List events = new ArrayList();
   
   public void contentsChanged(ListDataEvent event) 
   {
-    eventType = event.getType();
-    index0 = event.getIndex0();
-    index1 = event.getIndex1();
+    events.add(event);
   }
   
   public void intervalAdded(ListDataEvent event) 
   {
-    eventType = event.getType();
-    index0 = event.getIndex0();
-    index1 = event.getIndex1();
+    events.add(event);
   }
   
   public void intervalRemoved(ListDataEvent event) 
   {
-    eventType = event.getType();
-    index0 = event.getIndex0();
-    index1 = event.getIndex1();
+    events.add(event);
   }
 
   /**
@@ -72,27 +67,34 @@ public class removeElement
     harness.check(m.getSize(), 2);
     harness.check(m.getElementAt(0), "B");
     harness.check(m.getSelectedItem(), "B");
-    harness.check(eventType, ListDataEvent.INTERVAL_REMOVED);
-    harness.check(index0, 0);
-    harness.check(index1, 0);
-    
+    harness.check(events.size(), 2);
+    ListDataEvent e0 = (ListDataEvent) events.get(0);
+    harness.check(e0.getType(), ListDataEvent.CONTENTS_CHANGED);
+    harness.check(e0.getIndex0(), -1);
+    harness.check(e0.getIndex1(), -1);
+    ListDataEvent e1 = (ListDataEvent) events.get(1);
+    harness.check(e1.getType(), ListDataEvent.INTERVAL_REMOVED);
+    harness.check(e1.getIndex0(), 0);
+    harness.check(e1.getIndex1(), 0);
+
+    events.clear();
     m.removeElement("C");
     harness.check(m.getSize(), 1);
     harness.check(m.getElementAt(0), "B");
     harness.check(m.getSelectedItem(), "B");
-    harness.check(eventType, ListDataEvent.INTERVAL_REMOVED);
-    harness.check(index0, 1);
-    harness.check(index1, 1);
+    harness.check(events.size(), 1);
+    e0 = (ListDataEvent) events.get(0);
+    harness.check(e0.getType(), ListDataEvent.INTERVAL_REMOVED);
+    harness.check(e0.getIndex0(), 1);
+    harness.check(e0.getIndex1(), 1);
+
     
-    eventType = -1;
-    index0 = -1;
-    index1 = -1;
+    events.clear();
+
     m.removeElement("Z");
     harness.check(m.getSize(), 1);
     harness.check(m.getSelectedItem(), "B");
-    harness.check(eventType, -1);
-    harness.check(index0, -1);
-    harness.check(index1, -1);
+    harness.check(events.size(), 0);
     
   }
 }
