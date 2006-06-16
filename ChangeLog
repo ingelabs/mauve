@@ -1,5 +1,17 @@
 2006-06-16  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/DefaultComboBoxModel.java
+	(events): New field,
+	(index0): Removed,
+	(index1): Removed,
+	(type): Removed,
+	(contentsChanged): Add event to list,
+	(intervalAdded): Likewise,
+	(intervalRemoved): Likewise,
+	(test): Updated checks to look for event or events in list.
+
+2006-06-16  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/DefaultButtonModel/setSelected.java
 	(lastItemEvent): New field,
 	(itemChanged): New method,
