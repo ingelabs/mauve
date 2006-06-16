@@ -1,5 +1,12 @@
 2006-06-16  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/DefaultButtonModel/setSelected.java
+	(lastItemEvent): New field,
+	(itemChanged): New method,
+	(test): Check for required item event.
+
+2006-06-16  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/event/ListDataEvent/constructor.java: New file,
 	* gnu/testlet/javax/swing/event/ListDataEvent/getIndex0.java: New file,
 	* gnu/testlet/javax/swing/event/ListDataEvent/getIndex1.java: New file,

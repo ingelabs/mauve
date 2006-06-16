@@ -30,16 +30,21 @@ import gnu.testlet.Testlet;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.DefaultButtonModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class setSelected implements Testlet, ActionListener, ChangeListener
+public class setSelected 
+  implements Testlet, ActionListener, ChangeListener, ItemListener
 {
   ChangeEvent lastChangeEvent;
   
   ActionEvent lastActionEvent;
+  
+  ItemEvent lastItemEvent;
   
   public void stateChanged(ChangeEvent e) {
     lastChangeEvent = e;
@@ -49,20 +54,30 @@ public class setSelected implements Testlet, ActionListener, ChangeListener
     lastActionEvent = e;
   }
 
+  public void itemStateChanged(ItemEvent e) 
+  {
+    lastItemEvent = e;
+  }
+  
   public void test(TestHarness harness) 
   {
     DefaultButtonModel m = new DefaultButtonModel();
     m.addActionListener(this);
     m.addChangeListener(this);
+    m.addItemListener(this);
     m.setSelected(true);
     harness.check(m.isSelected(), true);
     harness.check(lastChangeEvent.getSource(), m);
     harness.check(lastActionEvent, null);
+    harness.check(lastItemEvent.getSource(), m);
+    harness.check(lastItemEvent.getItem(), m);
     
     // setting the same again causes no event
     lastChangeEvent = null;
+    lastItemEvent = null;
     m.setSelected(true);
     harness.check(lastChangeEvent, null);
+    harness.check(lastItemEvent, null);
     
     // are the states independent?  Seems so.
     m.setPressed(true);
@@ -72,4 +87,6 @@ public class setSelected implements Testlet, ActionListener, ChangeListener
     m.setEnabled(true);
     harness.check(m.isSelected(), true);
   }
+
+
 }
