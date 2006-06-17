@@ -28,6 +28,7 @@ import gnu.javax.crypto.jce.spec.BlockCipherParameterSpec;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.security.AlgorithmParameters;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -38,25 +39,26 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 
 /**
- * Regression test for logic around CipherSpi.engineInit()s. If the 
- * cipher being initialized requires parameters not derivable from 
- * the key, then defaults/random parameters must be generated, provide
- * the opmode is ENCRYPT and WRAP. If the opmode is DECRYPT or UNWRAP 
- * then an exception should be thrown. Refer to javadoc for 
- * javax.crypto.CipherSpi for more information.
+ * Regression tests for logic around CipherSpi.engineInit()s. If the cipher
+ * being initialized requires parameters not derivable from the key, then
+ * defaults/random parameters must be generated, provided the opmode is ENCRYPT
+ * or WRAP. If the opmode is DECRYPT or UNWRAP then an exception is expected to
+ * be thrown.
+ * <p>
+ * Refer to the class documentation of {@link javax.crypto.CipherSpi} for more
+ * information.
  */
 public class TestOfCipherEngineInit
     implements Testlet
 {
+  private static final String input = "Does this work ?";
   private Key key;
 
   private Cipher cipher;
 
   byte[] iv;
 
-  /*
-   * (non-Javadoc)
-   * 
+  /* (non-Javadoc)
    * @see gnu.testlet.Testlet#test(gnu.testlet.TestHarness)
    */
   public void test(TestHarness harness)
@@ -65,7 +67,8 @@ public class TestOfCipherEngineInit
     testECB(harness);
     testNotECB(harness);
     testInitWithParameterSpec(harness);
-    
+
+    // TODO: Add tests for WRAP and UNWRAP too
   }
 
   private void setUp(TestHarness harness)
@@ -81,7 +84,6 @@ public class TestOfCipherEngineInit
         harness.debug(e);
         harness.fail(String.valueOf(e));
       }
-
   }
 
   private void testECB(TestHarness harness)
@@ -89,20 +91,17 @@ public class TestOfCipherEngineInit
     try
       {
         cipher = Cipher.getInstance("DESede/ECB/NoPadding");
-        String input = "Does this work ?";
 
         cipher.init(Cipher.ENCRYPT_MODE, key);
         iv = cipher.getIV();
-        harness.check(iv == null,
-                      "(Encrypting) cipher.getIV() for ECB MUST return null");
+        harness.check(iv == null, "(ECB Encrypt) getIV() MUST return null");
         byte[] plaintext = input.getBytes();
         byte[] ciphertext = cipher.doFinal(plaintext);
 
         iv = null;
         cipher.init(Cipher.DECRYPT_MODE, key);
         iv = cipher.getIV();
-        harness.check(iv == null,
-                      "(Decrypting) cipher.getIV() for ECB MUST return null");
+        harness.check(iv == null, "(ECB Decrypt) getIV() MUST return null");
         byte[] plaintext2 = cipher.doFinal(ciphertext);
         String recovered = new String(plaintext2);
 
@@ -121,33 +120,30 @@ public class TestOfCipherEngineInit
     try
       {
         cipher = Cipher.getInstance("DESede/CBC/NoPadding");
-        String input = "Does this work ?";
 
         cipher.init(Cipher.ENCRYPT_MODE, key);
         iv = cipher.getIV();
-        harness.check(iv != null,
-                      "(Encrypting) cipher.getIV() for CBC MUST NOT return null");
-        harness.check(iv.length == 8, "(Encrypting) IV length for MUST be 8");
+        harness.check(iv != null, "(CBC Encrypt) getIV() MUST NOT return null");
+        harness.check(iv.length == 8, "(CBC Encrypt) IV length MUST be 8");
         byte[] plaintext = input.getBytes();
         byte[] ciphertext = cipher.doFinal(plaintext);
 
         iv = null;
+        String msg = "(CBC Decrypt) init(2) MUST throw InvalidKeyException";
         try
           {
             cipher.init(Cipher.DECRYPT_MODE, key);
-            harness.fail("(Decrypting) init of CBC without IV NOT possible");
+            harness.fail(msg);
           }
         catch (Exception e)
           {
             String type = e.getClass().getName();
-            harness.check(type.equals(InvalidKeyException.class.getName()),
-                          "(Decrypt) No exception at CBC init without IV");
+            harness.check(type.equals(InvalidKeyException.class.getName()), msg);
           }
         cipher.init(Cipher.DECRYPT_MODE, key, cipher.getParameters());
         iv = cipher.getIV();
-        harness.check(iv != null,
-                      "(Decrypting) cipher.getIV() for CBC MUST NOT return null");
-        harness.check(iv.length == 8, "(Decrypt) IV length for CBC should be 8");
+        harness.check(iv != null, "(CBC Decrypt) getIV() MUST NOT return null");
+        harness.check(iv.length == 8, "(CBC Decrypt) IV length MUST be 8");
         byte[] plaintext2 = cipher.doFinal(ciphertext);
         String recovered = new String(plaintext2);
 
@@ -163,40 +159,38 @@ public class TestOfCipherEngineInit
 
   // Similar test to above but tests the behaviour for:
   // Cipher.init(int i, Key k, AlgorithmParameterSpec param)
-  // If param is null, and the cipher needs algorithm parameters to
-  // function then init should create random/default parameters provided
-  // the cipher is in ENCRYPT or WRAP mode, if in DECRYPT or UNWRAP mode
-  // the function must throw an InvalidAlgorithmParameterException.
-  // Extrapolation: If algorithm does not require additional params
-  // then none should be created?
+  // If param is null, and the cipher needs algorithm parameters to function
+  // then init should create random/default parameters provided the cipher is
+  // in ENCRYPT or WRAP mode, if in DECRYPT or UNWRAP mode the function must
+  // throw an InvalidAlgorithmParameterException.
+  //
+  // Extrapolation: If algorithm does not require additional params then none
+  // should be created!
   private void testInitWithParameterSpec(TestHarness harness)
   {
     try
       {
         // This cipher does not need extra algorithm parameters like
-        // an IV to be provided so it should not generate one.
+        // an IV to be provided so it should not generate one
         cipher = Cipher.getInstance("DESede/ECB/NoPadding");
-        String input = "Does this work ?";
 
         cipher.init(Cipher.ENCRYPT_MODE, key, (AlgorithmParameterSpec) null);
         iv = cipher.getIV();
-        harness.check(
-                      iv == null,
-                      "(Encrypting - NULL AlgorithmParameterSpec) cipher.getIV() for ECB MUST return null");
+        harness.check(iv == null,
+                      "(ECB Encrypt + null AlgorithmParameterSpec) getIV() MUST return null");
         byte[] plaintext = input.getBytes();
         byte[] ciphertext = cipher.doFinal(plaintext);
 
         iv = null;
-        // No need for an IV so none should be generated in decrypt mode either.
+        // No need for an IV so none should be generated in decrypt mode either
         cipher.init(Cipher.DECRYPT_MODE, key, (AlgorithmParameterSpec) null);
         iv = cipher.getIV();
-        harness.check(
-                      iv == null,
-                      "(Decrypting - NULL AlgorithmParameterSpec) cipher.getIV() for ECB MUST return null");
+        harness.check(iv == null,
+                      "(ECB Decrypt + null AlgorithmParameterSpec) getIV() MUST return null");
         byte[] plaintext2 = cipher.doFinal(ciphertext);
         String recovered = new String(plaintext2);
 
-        // Encryption and decryption should still work.
+        // Encryption and decryption should still work
         harness.check(input.equals(recovered),
                       "Original and recovered texts MUST be equal");
       }
@@ -209,38 +203,37 @@ public class TestOfCipherEngineInit
     try
       {
         cipher = Cipher.getInstance("DESede/CBC/NoPadding");
-        String input = "Does this work ?";
 
-        // null param for CBC should result in random algorithm params being
-        // generated
+        // null param for CBC should result in random IV being generated
         cipher.init(Cipher.ENCRYPT_MODE, key, (AlgorithmParameterSpec) null);
         iv = cipher.getIV();
-        harness.check(
-                      iv != null,
-                      "(Encrypting - NULL AlgorithmParameterSpec) cipher.getIV() MUST return random IV if none provided");
+        harness.check(iv != null,
+                      "(CBC Encrypt + null AlgorithmParameterSpec) getIV() MUST return non-null IV");
         harness.check(iv.length == 8,
-                      "(Encrypting - NULL AlgorithmParameterSpec) IV length for MUST be 8");
+                      "(CBC Encrypt + null AlgorithmParameterSpec) IV length MUST be 8");
+        // test for non-uniformity of IV; i.e. not all the bytes are the same
+        harness.check(iv[0] != iv[1],
+                      "(CBC Encrypt + null AlgorithmParameterSpec) IV MUST be random");
         byte[] plaintext = input.getBytes();
         byte[] ciphertext = cipher.doFinal(plaintext);
 
         iv = null;
 
-        AlgorithmParameterSpec backupAlg = cipher.getParameters().getParameterSpec(
-                                                                                   BlockCipherParameterSpec.class);
+        AlgorithmParameters ap = cipher.getParameters();
+        AlgorithmParameterSpec backupAlg = ap.getParameterSpec(BlockCipherParameterSpec.class);
+        String msg = "(CBC Decrypt + null AlgorithmParameterSpec) init(3) MUST throw InvalidAlgorithmParameterException";
         try
           {
-            // Should not be able to init a DECRYPT cipher for CBC without
-            // params.
+            // Should not be able to init a CBC cipher in DECRYPT opmode without
+            // params
             cipher.init(Cipher.DECRYPT_MODE, key, (AlgorithmParameterSpec) null);
-            harness.fail("(Decrypting - NULL AlgorithmParameterSpec) init of CBC with NULL IV NOT possible");
+            harness.fail(msg);
           }
         catch (Exception e)
           {
-            // The exception must be InvalidAlgorithmParameterException
             String type = e.getClass().getName();
-            harness.check(
-                          type.equals(InvalidAlgorithmParameterException.class.getName()),
-                          "(Decrypting - NULL AlgorithmParameterSpec) CBC init with NULL IV MUST throw exception");
+            harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
+                          msg);
           }
         try
           {
@@ -250,32 +243,26 @@ public class TestOfCipherEngineInit
           }
         catch (Exception e)
           {
-            harness.fail("(Decrypting - Valid AlgorithmParameterSpec) Exception not expected -init with proper parameters");
+            harness.fail("(CBC Decrypt + non-null AlgorithmParameterSpec) init(3) MUST NOT throw an exception");
           }
 
         iv = cipher.getIV();
-        harness.check(
-                      iv != null,
-                      "(Decrypting - Valid AlgorithmParameterSpec) cipher.getIV() for CBC init with valid params MUST NOT return null");
+        harness.check(iv != null,
+                      "(CBC Decrypt + valid AlgorithmParameterSpec) getIV() MUST NOT return null");
         harness.check(iv.length == 8,
-                      "(Decrypting - Valid AlgorithmParameterSpec) IV length for CBC should be 8");
+                      "(CBC Decrypt + valid AlgorithmParameterSpec) IV length MUST be 8");
+        harness.check(iv[0] != iv[1],
+                      "(CBC Encrypt + null AlgorithmParameterSpec) IV MUST be random");
         byte[] plaintext2 = cipher.doFinal(ciphertext);
         String recovered = new String(plaintext2);
 
         harness.check(input.equals(recovered),
-                      "(Valid AlgorithmParameterSpec) Original and recovered texts MUST be equal");
-
+                      "Original and recovered texts MUST be equal");
       }
     catch (Exception x)
       {
         harness.debug(x);
         harness.fail(String.valueOf(x));
       }
-
   }
-
-  
-  // TODO: Add tests for WRAP and UNWRAP too.
-  
-
 }

@@ -1,3 +1,12 @@
+2006-06-17  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherEngineInit.java (input):
+	New field.
+	(testECB): Shortned the messages.
+	Use above field.
+	(testNotECB): Likewise.
+	(testInitWithParameterSpec): Added checks for non-uniformity of IVs.
+
 2006-06-16  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/DefaultComboBoxModel/removeElement.java
