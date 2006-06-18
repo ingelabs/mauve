@@ -1,5 +1,11 @@
 2006-06-18  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
+	* Makefile.am (harness_files): Add gnu/testlet/config.java.
+	(gnu/testlet/config.class): Remove target.
+	* Makefile.in: Regenerate.
+
+2006-06-18  Thomas Fitzsimmons  <fitzsim@redhat.com>
+
 	* gnu/testlet/java/awt/GridBagLayout/AdjustForGravity.java: New
 	test.
 

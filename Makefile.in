@@ -159,6 +159,7 @@ check_DATA = $(STAMP)
 harness_files = \
 	Harness.java \
 	RunnerProcess.java \
+	gnu/testlet/config.java \
 	gnu/testlet/TestHarness.java \
 	gnu/testlet/Testlet.java \
 	gnu/testlet/TestSecurityManager.java \
@@ -435,12 +436,8 @@ uninstall-am: uninstall-info-am
 
 harness:
 	$(JAVAC) $(harness_files)
-	$(JAVAC) gnu/testlet/config.java
 
 all-local: harness
-
-gnu/testlet/config.class: gnu/testlet/config.java
-	$(JAVAC) $(JAVACFLAGS) gnu/testlet/config.java
 
 check-local:
 	$(JAVA) Harness
