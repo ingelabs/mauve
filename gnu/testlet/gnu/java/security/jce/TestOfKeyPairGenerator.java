@@ -25,7 +25,6 @@ package gnu.testlet.gnu.java.security.jce;
 
 import gnu.java.security.Registry;
 import gnu.java.security.provider.Gnu;
-import gnu.java.security.util.Prime2;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -97,12 +96,12 @@ public class TestOfKeyPairGenerator implements Testlet
         KeyPair kp = kpg.generateKeyPair();
 
         BigInteger p1 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
-        harness.check(Prime2.isProbablePrime(p1), "p is probable prime - 512-bit");
+        harness.check(p1.isProbablePrime(80), "p is probable prime - 512-bit");
         BigInteger p2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getP();
         harness.check(p1.equals(p2), "p1.equals(p2) - 512-bit");
 
         BigInteger q1 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
-        harness.check(Prime2.isProbablePrime(q1), "q is probable prime - 512-bit");
+        harness.check(q1.isProbablePrime(80), "q is probable prime - 512-bit");
         BigInteger q2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getQ();
         harness.check(q1.equals(q2), "q1.equals(q2) - 512-bit");
 
@@ -112,23 +111,23 @@ public class TestOfKeyPairGenerator implements Testlet
 
         kp = kpg.generateKeyPair();
         p2 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
-        harness.check(p1.equals(p2), "MUST provide deault params for L = 512-bit (p)");
+        harness.check(p1.equals(p2), "MUST provide default params for L = 512-bit (p)");
         q2 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
-        harness.check(p1.equals(p2), "MUST provide deault params for L = 512-bit (q)");
+        harness.check(p1.equals(p2), "MUST provide default params for L = 512-bit (q)");
         g2 = ((DSAPublicKey) kp.getPublic()).getParams().getG();
-        harness.check(p1.equals(p2), "MUST provide deault params for L = 512-bit (g)");
+        harness.check(p1.equals(p2), "MUST provide default params for L = 512-bit (g)");
 
 
         kpg.initialize(1024);
         kp = kpg.generateKeyPair();
 
         p1 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
-        harness.check(Prime2.isProbablePrime(p1), "p is probable prime - 1024-bit");
+        harness.check(p1.isProbablePrime(80), "p is probable prime - 1024-bit");
         p2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getP();
         harness.check(p1.equals(p2), "p1.equals(p2) - 1024-bit");
 
         q1 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
-        harness.check(Prime2.isProbablePrime(q1), "q is probable prime - 1024-bit");
+        harness.check(q1.isProbablePrime(80), "q is probable prime - 1024-bit");
         q2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getQ();
         harness.check(q1.equals(q2), "q1.equals(q2) - 1024-bit");
 
@@ -138,11 +137,11 @@ public class TestOfKeyPairGenerator implements Testlet
 
         kp = kpg.generateKeyPair();
         p2 = ((DSAPublicKey) kp.getPublic()).getParams().getP();
-        harness.check(p1.equals(p2), "MUST provide deault params for L = 1024-bit (p)");
+        harness.check(p1.equals(p2), "MUST provide default params for L = 1024-bit (p)");
         q2 = ((DSAPublicKey) kp.getPublic()).getParams().getQ();
-        harness.check(p1.equals(p2), "MUST provide deault params for L = 1024-bit (q)");
+        harness.check(p1.equals(p2), "MUST provide default params for L = 1024-bit (q)");
         g2 = ((DSAPublicKey) kp.getPublic()).getParams().getG();
-        harness.check(p1.equals(p2), "MUST provide deault params for L = 1024-bit (g)");
+        harness.check(p1.equals(p2), "MUST provide default params for L = 1024-bit (g)");
       }
     catch (Exception x)
       {

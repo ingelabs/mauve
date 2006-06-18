@@ -24,7 +24,6 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 package gnu.testlet.gnu.java.security.key.dss;
 
 import gnu.java.security.key.dss.DSSKeyPairGenerator;
-import gnu.java.security.util.Prime2;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -73,7 +72,7 @@ public class TestOfDSSKeyGeneration implements Testlet
     BigInteger g2 = ((DSAPrivateKey) kp.getPrivate()).getParams().getG();
     harness.check(g1.equals(g2), "g1.equals(g2)");
 
-    harness.check(Prime2.isProbablePrime(q1), "q is probable prime");
-    harness.check(Prime2.isProbablePrime(p1), "p is probable prime");
+    harness.check(q1.isProbablePrime(80), "q is probable prime");
+    harness.check(p1.isProbablePrime(80), "p is probable prime");
   }
 }

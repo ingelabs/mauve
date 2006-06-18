@@ -25,7 +25,6 @@ package gnu.testlet.gnu.java.security.key.rsa;
 
 import gnu.java.security.key.rsa.RSAKeyPairGenerator;
 import gnu.java.security.sig.rsa.RSA;
-import gnu.java.security.util.Prime2;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -126,8 +125,8 @@ public class TestOfRSAKeyGeneration implements Testlet
 
         // In a valid RSA private key with this representation, the two factors p
         // and q are the prime factors of the modulus n,
-        harness.check(Prime2.isProbablePrime(p), "p is prime");
-        harness.check(Prime2.isProbablePrime(q), "q is prime");
+        harness.check(p.isProbablePrime(80), "p is prime");
+        harness.check(q.isProbablePrime(80), "q is prime");
         harness.check(n1.equals(p.multiply(q)), "n == pq");
 
         // dP and dQ are positive integers less than p and q respectively

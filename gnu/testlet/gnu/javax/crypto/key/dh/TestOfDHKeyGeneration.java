@@ -23,7 +23,6 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 package gnu.testlet.gnu.javax.crypto.key.dh;
 
-import gnu.java.security.util.Prime2;
 import gnu.javax.crypto.key.dh.GnuDHKeyPairGenerator;
 import gnu.javax.crypto.key.dh.GnuDHPrivateKey;
 import gnu.javax.crypto.key.dh.GnuDHPublicKey;
@@ -73,6 +72,6 @@ public class TestOfDHKeyGeneration implements Testlet
     BigInteger g2 = ((GnuDHPrivateKey) kp.getPrivate()).getParams().getG();
     harness.check(g1.equals(g2), "g1.equals(g2)");
 
-    harness.check(Prime2.isProbablePrime(p1), "p is probable prime");
+    harness.check(p1.isProbablePrime(80), "p is probable prime");
   }
 }

@@ -23,7 +23,6 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 package gnu.testlet.gnu.javax.crypto.key.srp6;
 
-import gnu.java.security.util.Prime2;
 import gnu.javax.crypto.key.srp6.SRPKeyPairGenerator;
 import gnu.javax.crypto.key.srp6.SRPPrivateKey;
 import gnu.javax.crypto.key.srp6.SRPPublicKey;
@@ -72,7 +71,7 @@ public class TestOfSRPKeyGeneration implements Testlet
     BigInteger g2 = ((SRPPrivateKey) kp.getPrivate()).getG();
     harness.check(g1.equals(g2), "g1.equals(g2)");
 
-    harness.check(Prime2.isProbablePrime(N1), "N is probable prime");
-    harness.check(Prime2.isProbablePrime(q), "q is probable prime");
+    harness.check(N1.isProbablePrime(80), "N is probable prime");
+    harness.check(q.isProbablePrime(80), "q is probable prime");
   }
 }

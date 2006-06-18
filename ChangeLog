@@ -1,3 +1,14 @@
+2006-06-18  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/util/TestOfPrime2.java: Removed.
+	* gnu/testlet/gnu/java/security/jce/TestOfKeyPairGenerator.java:
+	Remove unused imports.
+	Use isProbablePrime() in BigInteger instead of Prime2.
+	* gnu/testlet/gnu/java/security/key/dss/TestOfDSSKeyGeneration.java: Likewise.
+	* gnu/testlet/gnu/javax/crypto/key/srp6/TestOfSRPKeyGeneration.java: Likewise.
+	* gnu/testlet/gnu/javax/crypto/key/dh/TestOfDHKeyGeneration.java: Likewise.
+	* gnu/testlet/gnu/java/security/key/rsa/TestOfRSAKeyGeneration.java: Likewise.
+
 2006-06-17  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherEngineInit.java (input):
