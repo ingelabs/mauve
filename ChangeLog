@@ -1,3 +1,8 @@
+2006-06-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/IconUIResource/constructor.java: 
+	New test.
+
 2006-06-18  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* Makefile.am (harness_files): Add gnu/testlet/config.java.
