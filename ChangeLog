@@ -5,7 +5,7 @@
 	watcher.
 	(printHelpMessage): Replaced reference to old --with-test-java with the
 	correct --with-vm.
-	(initProces): Replace the runner_watcher after confirming the startup 
+	(initProcess): Replace the runner_watcher after confirming the startup 
 	of the RunnerProcess.  This way the runner_watcher will not time out 
 	before the first real test is run.
 	(runTest): Added code to handle a timer reset request from the 
