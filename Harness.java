@@ -491,10 +491,16 @@ public class Harness
             {
               bcpOutput = br.readLine();
               if (bcpOutput == null)
-                // This means the auto-detection failed.
-                return null;
+                {
+                  // This means the auto-detection failed.
+                  tw.stop();
+                  return null;
+                }
               if (bcpOutput.startsWith("BCP_FINDER:"))
-                return bcpOutput.substring(11);
+                {
+                  tw.stop();
+                  return bcpOutput.substring(11);
+                }
               else
                 System.out.println(bcpOutput);
             }
@@ -554,9 +560,9 @@ public class Harness
       
       // Test Run Options.
       "Test Run Options:\n" +      
-      "  -vm [vmpath]:        specify the vm on which to run the tests." +
+      "  -vm [vmpath]:            specify the vm on which to run the tests." +
       "It is strongly recommended" + align + "that you use this option or " +
-      "use the --with-test-java option when running" + align + "configure.  " +
+      "use the --with-vm option when running" + align + "configure.  " +
       "See the README file for more details.\n" +      
       "  -compile [yes|no]:       specify whether or not to compile the " +
       "tests before running them.  This" + align + "overrides the configure" +
@@ -634,16 +640,21 @@ public class Harness
         runner_in = 
           new BufferedReader
           (new InputStreamReader(runnerProcess.getInputStream()));                
-        // Create a timer to watch this new process.
-        runner_watcher = new TimeoutWatcher(runner_timeout);
       }
     catch (IOException e)
       {
         System.err.println("Problems invoking RunnerProcess: " + e);
         System.exit(1);
       }
-    
+
+    // Create a timer to watch this new process.  After confirming the
+    // RunnerProcess started properly, we create a new runner_watcher 
+    // because it may be a while before we run the next test (due to 
+    // preprocessing and compilation) and we don't want the runner_watcher
+    // to time out.
+    runner_watcher = new TimeoutWatcher(runner_timeout);    
     runTest("_confirm_startup_");
+    runner_watcher = new TimeoutWatcher(runner_timeout);
   }
   
   /**
@@ -783,12 +794,22 @@ public class Harness
               if (outputFromTest.startsWith("RunnerProcess:"))
                 {
                   invalidTest = false;
-                  // This means the test finished properly, now have to see if
-                  // it passed or failed.
-                  if (outputFromTest.endsWith("pass"))
-                    temp = 0;
+                  // This means the RunnerProcess has sent us back some
+                  // information.  This could be telling us that a check() call
+                  // was made and we should reset the timer, or that the 
+                  // test passed, or failed, or that it wasn't a test.
+                  if (outputFromTest.endsWith("restart-timer"))
+                    runner_watcher.reset();
+                  else if (outputFromTest.endsWith("pass"))
+                    {
+                      temp = 0;
+                      break;
+                    }
                   else if (outputFromTest.endsWith("fail"))
-                    temp = 1;
+                    {
+                      temp = 1;
+                      break;
+                    }
                   else if (outputFromTest.endsWith("not-a-test"))
                     {
                       // Temporarily decrease the total number of tests,
@@ -797,8 +818,8 @@ public class Harness
                       invalidTest = true;
                       total_tests--;
                       temp = 0;
-                    }
-                  break;
+                      break;
+                    }                  
                 } 
               else if (outputFromTest.equals("_startup_okay_") || 
                   outputFromTest.equals("_data_dump_okay_"))
@@ -1077,7 +1098,8 @@ public class Harness
   {
     private long millisToWait;
     private Thread watcherThread;
-    boolean loop = true;
+    private boolean loop = true;
+    private boolean shouldContinue = true;
     
     /**
      * Creates a new TimeoutWatcher that will wait for <code>millis</code>
@@ -1097,6 +1119,16 @@ public class Harness
     public void start()
     {
       watcherThread.start();      
+    }
+    
+    /**
+     * Stops the run() method.
+     *
+     */
+    public synchronized void stop()
+    {
+      shouldContinue = false;
+      notify();
     }
     
     /**
@@ -1121,7 +1153,7 @@ public class Harness
     public synchronized void run()
     {
       Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-      while (loop)
+      while (loop && shouldContinue)
         {
           // We set loop to false here, it will get reset to true if 
           // reset() is called from the main Harness thread.
@@ -1133,11 +1165,14 @@ public class Harness
           catch (InterruptedException ie)
           {}
         }
-      // The test is hung, set testIsHung to true so the process will be 
-      // destroyed and restarted.
-      synchronized (runner_lock)
+      if (shouldContinue)
         {
-          testIsHung = true;
+          // The test is hung, set testIsHung to true so the process will be 
+          // destroyed and restarted.      
+          synchronized (runner_lock)
+          {
+            testIsHung = true;
+          }
         }
     }
   }

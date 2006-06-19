@@ -1,3 +1,23 @@
+2006-06-19  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
+	(getBootclasspath): When the auto detector returns, stop the timeout
+	watcher.
+	(printHelpMessage): Replaced reference to old --with-test-java with the
+	correct --with-vm.
+	(initProces): Replace the runner_watcher after confirming the startup 
+	of the RunnerProcess.  This way the runner_watcher will not time out 
+	before the first real test is run.
+	(runTest): Added code to handle a timer reset request from the 
+	RunnerProcess.
+	(TimeoutWatcher.shouldContinue): New field.
+	(TimeoutWatcher.stop): New method.
+	(TimeoutWatcher.run): Added reference to shouldContinue to allow this 
+	method to be stopped.
+	* RunnerProcess.java:
+	(check2): Send a message to the Harness requesting a reset of the
+	timer.
+
 2006-06-19  Mario Torre  <neugens@limasoftware.net>
 
 	* gnu/testlet/java/util/prefs: New package added.

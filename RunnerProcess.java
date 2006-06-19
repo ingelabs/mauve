@@ -40,7 +40,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -556,6 +555,10 @@ public class RunnerProcess
    */
   private void check2(boolean result)
   {
+    // Send a message to the Harness to let it know the current test
+    // isn't hung, to restart the timer.
+    System.out.println("RunnerProcess:restart-timer");
+    
     // If the test failed we have to print out some explanation.
     StackTraceElement[] st = new Throwable().getStackTrace();
     String desc = getDescription(st);
