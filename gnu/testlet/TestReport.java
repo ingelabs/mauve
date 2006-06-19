@@ -79,26 +79,34 @@ public class TestReport
       {
         TestResult tr = (TestResult) results.next();
         String[] failures = tr.getFailMessags();
-        out.write("  <testresult testlet='" + escAttrib(tr.getTestletName())
-                  + "' passcount='" + tr.getPassCount());
-        if (failures.length > 0 || tr.getException() != null)
+        String[] passes = tr.getPassMessages();
+        out.write("  <testresult testlet='" + escAttrib(tr.getTestletName()));
+        if (failures.length > 0 || passes.length > 0
+            || tr.getException() != null)
           out.write("'>\n");
         else
           out.write("'/>\n");
 
         for (int i = 0; i < failures.length; i++)
           out.write("    <failure>" + esc(failures[i]) + "</failure>\n");
-
+        
         if (tr.getException() != null)
           {
             Throwable t = tr.getException();
-            out.write("    <exception class='"
+            out.write("    <failure>\n      <exception class='"
                       + escAttrib(t.getClass().getName())
-                      + "'>\n      <reason>" + esc(tr.getExceptionMessage())
-                      + "</reason>\n      <message>" + esc(t.getMessage())
-                      + "</message>\n    </exception>\n");
+                      + "'>\n        <reason>" + esc(tr.getExceptionMessage())
+                      + "</reason>\n        <message>\n" 
+                      + esc(tr.getExceptionReason())
+                      + "\n        </message>\n      </exception>" 
+                      + "\n    </failure>\n");
           }
-        if (failures.length > 0 || tr.getException() != null)
+
+        for (int i = 0; i < passes.length; i++)
+          out.write("    <pass>" + esc(passes[i]) + "</pass>\n");
+
+        if (failures.length > 0 || passes.length > 0
+            || tr.getException() != null)
           out.write("  </testresult>\n");
       }
     out.write("</testreport>\n");

@@ -103,6 +103,9 @@ public class RunnerProcess
   // The EMMA forced data dump method
   private static Method emmaMethod = null;
   
+  // The failure message for the last failing check()
+  private String lastFailureMessage = null;
+  
   protected RunnerProcess()
   {    
     try
@@ -234,7 +237,7 @@ public class RunnerProcess
     System.gc();
     System.runFinalization();
 
-    currentResult = new TestResult(name);
+    currentResult = new TestResult(name.substring(12));
 
     checkPoint(null);
 
@@ -281,7 +284,8 @@ public class RunnerProcess
         
         String d = "FAIL: " + stripPrefix(name)
                    + "uncaught exception when loading";
-        currentResult.addException(ex, "failed loading class " + name);
+        currentResult.addException(ex, "failed loading class ",
+                                   "couldn't load: " + name);
         if (verbose || exceptions)
           d += ": " + ex.toString();
 
@@ -312,13 +316,12 @@ public class RunnerProcess
             if (failures == 0 && !verbose)
               System.out.println ("FAIL: " + stripPrefix(name) + ":");
             removeSecurityManager();
-            String s = (last_check == null ? "" : " at " + last_check + " ["
-                                                  + (count + 1) + "]");
             String d = exceptionDetails(ex, name, exceptions);
-            currentResult.addException(ex, "uncaught exception" + s);
+            String r = getStackTraceString(ex, "          ");
+            currentResult.addException(ex, d, r);
             System.out.println(d);
             if (exceptions)
-              ex.printStackTrace(System.out);
+              System.out.println(getStackTraceString(ex, "   "));
             debug(ex);
             ++failures;
             ++total;
@@ -328,6 +331,22 @@ public class RunnerProcess
       report.addTestResult(currentResult);
   }
 
+  /**
+   * Returns the stack trace associated with the given Throwable as
+   * a String.
+   * @param ex the Throwable
+   * @return a String representing the stack trace for the given Throwable.
+   */
+  private static String getStackTraceString(Throwable ex, String pad)  
+  {
+    StackTraceElement[] st = ex.getStackTrace();
+    StringBuffer sb = new StringBuffer(pad + ex.getClass().getName() + "\n");
+    for (int i = 0; i < st.length; i++)
+      sb.append(pad + "at " + st[i].toString() + "\n");
+    sb.setLength(sb.length() - 1);
+    return sb.toString();
+  }
+  
   /**
    * This method runs a single test in a new Harness and increments the
    * total tests run and total failures, if the test fails.  Prints
@@ -417,8 +436,10 @@ public class RunnerProcess
   public void fail(String name)
   {
     checkPoint(name);
-    check2(false);
-    System.out.println ("forced fail");
+    String desc = check2(false);    
+    lastFailureMessage = "forced fail";
+    currentResult.addFail(desc + " -- " +lastFailureMessage);
+    System.out.println(lastFailureMessage);
   }
   
   /**
@@ -431,7 +452,7 @@ public class RunnerProcess
   public void check(Object result, Object expected)
   {
     boolean ok = (result == null ? expected == null : result.equals(expected));
-    check2(ok);
+    String desc = check2(ok);
     // This debug message may be misleading, depending on whether
     // string conversion produces same results for unequal objects.
     if (! ok)
@@ -452,19 +473,23 @@ public class RunnerProcess
               {
                 gotString = result.toString();
                 expString = expected.toString();
-                System.out.println("\n           got " + gotString
+                lastFailureMessage = "\n           got " + gotString
                                    + "\n\n           but expected " + expString
-                                   + "\n\n");
+                                   + "\n\n";
+                System.out.println(lastFailureMessage);
                 return;
               }
             else
               {
+                lastFailureMessage = "Objects were not equal";
                 System.out.println("objects were not equal.  " +
                         "Use -debug for more information.");
                 return;
               }
           }
-        System.out.println("got " + gotString + " but expected " + expString);
+        lastFailureMessage = "got " + gotString + " but expected " + expString;
+        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        System.out.println(lastFailureMessage);
       }
   }
 
@@ -478,9 +503,13 @@ public class RunnerProcess
   public void check(boolean result, boolean expected)
   {
     boolean ok = (result == expected);
-    check2(ok);
+    String desc = check2(ok);
     if (! ok)
-      System.out.println("got " + result + " but expected " + expected);
+      {
+        lastFailureMessage = "got " + result + " but expected " + expected;
+        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        System.out.println(lastFailureMessage);
+      }
   }
 
   /**
@@ -493,9 +522,13 @@ public class RunnerProcess
   public void check(int result, int expected)
   {
     boolean ok = (result == expected);
-    check2(ok);
+    String desc = check2(ok);
     if (! ok)
-      System.out.println("got " + result + " but expected " + expected);
+      {
+        lastFailureMessage = "got " + result + " but expected " + expected;
+        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        System.out.println(lastFailureMessage);
+      }
   }
 
   /**
@@ -508,9 +541,13 @@ public class RunnerProcess
   public void check(long result, long expected)
   {
     boolean ok = (result == expected);
-    check2(ok);
+    String desc = check2(ok);
     if (! ok)
-      System.out.println("got " + result + " but expected " + expected);
+      {
+        lastFailureMessage = "got " + result + " but expected " + expected;
+        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        System.out.println(lastFailureMessage);
+      }
   }
 
   /**
@@ -532,9 +569,13 @@ public class RunnerProcess
                                        || (1 / result == 1 / expected)
                                     : (result != result)
                                       && (expected != expected));
-    check2(ok);
+    String desc = check2(ok);
     if (! ok)
-      System.out.println("got " + result + " but expected " + expected);
+      {
+        lastFailureMessage = "got " + result + " but expected " + expected;
+        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        System.out.println(lastFailureMessage);
+      }
   }
   
   /**
@@ -544,16 +585,20 @@ public class RunnerProcess
    */
   public void check(boolean result)
   {
-    check2(result);
+    String desc = check2(result);
     if (!result)
-      System.out.println ("boolean passed to check was false");
+      {
+        lastFailureMessage = "boolean passed to check was false";
+        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        System.out.println(lastFailureMessage);
+      }
   }
   
   /**
    * This method prints out failures and checks the XFAILS file.
    * @param result true if the test passed, false if it failed
    */
-  private void check2(boolean result)
+  private String check2(boolean result)
   {
     // Send a message to the Harness to let it know the current test
     // isn't hung, to restart the timer.
@@ -563,12 +608,8 @@ public class RunnerProcess
     StackTraceElement[] st = new Throwable().getStackTrace();
     String desc = getDescription(st);
 
-
     if (! result)
-      {
-        
-        currentResult.addFail((last_check == null ? "" : last_check)
-                              + " (number " + (count + 1) + ")");
+      {        
         if (! expected_xfails.contains(desc))
           {
             // If the failure wasn't expected, we need to print it to the
@@ -583,14 +624,14 @@ public class RunnerProcess
         else if (verbose)
           {
             // If it was expected but verbose is true, we also print it.
-            System.out.println("X" + desc  + " -- ");
+            System.out.println("X" + desc + " -- ");
             ++xfailures;
           }
       }
     else
       {
-        // The test passed.  Only print info if verbose is true
-        currentResult.addPass();
+        // The test passed.  Only print info if verbose is true        
+        currentResult.addPass(desc);
         if (verbose)
           {
             if (expected_xfails.contains(desc))
@@ -604,6 +645,7 @@ public class RunnerProcess
       }
     ++count;
     ++total;
+    return desc;
   }
 
   public Reader getResourceReader(String name) throws ResourceNotFoundException

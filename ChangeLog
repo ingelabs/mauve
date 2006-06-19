@@ -1,5 +1,41 @@
 2006-06-19  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* RunnerProcess.java:
+	(lastFailureMessage): New field.
+	(runtest): Strip the "gnu.testlet" from the name passed to the 
+	TestResult.  Also use the new 3 parameter TestResult.addException to 
+	pass the stack trace to the TestResult.  Properly indent the stack 
+	trace when printing exception details.
+	(getStackTraceString): New method.
+	(fail): Get the description from check2 and add the full failure 
+	string to the TestResult.
+	(check(Object, Object)): Likewise.
+	(check(boolean, boolean)): Likewise.
+	(check(int, int)): Likewise.
+	(check(long, long)): Likewise.
+	(check(boolean)): Likewise.
+	(check2): Return the description.  Do not add the failure description 
+	to the TestResult here, do it in the individual check() methods so that
+	a full description can be added. Use the new TestResult.addPass(String)
+	method instead of the old no argument method.
+	* TestReport.java:
+	(writeXML): Do not write the passCount value, write the passes as well
+	as the fails, and write the stack traces for exceptions. Properly 
+	indent the xml.
+	* TestResult.java:
+	(passCount): Removed this field.
+	(passMessages): New field.
+	(exceptionReason): New field.
+	(addPass): Now takes in a String argument, acts just like addFail(). 
+	Descriptions are taken in for passes as well as fails.
+	(addException): Now takes 3 arguments instead of 2, the new argument is
+	the stack trace for the exception.
+	(getPassCount): Returns the size of the passMessages ArrayList.
+	(getPassMessages): New method.
+	(getExceptionReason): Likewise.
+
+2006-06-19  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java:
 	(total_check_fails): New field.
 	(main): Print a summary even if only one test failed.  Include the 

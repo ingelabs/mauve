@@ -33,9 +33,10 @@ public class TestResult
   implements Comparable
 {
   private String testletName = null;
-  private int passCount = 0;
   private List failMessages = new ArrayList();
+  private List passMessages = new ArrayList();
   private Throwable exception = null;
+  private String exceptionReason = null;
   private String exceptionMessage = null;
 
   /**
@@ -51,12 +52,14 @@ public class TestResult
   }
 
   /**
-   * Adds one to the counter of the number of tests that has passed. Should
-   * be called when a test passses.
+   * Adds a pass message identifying a passing test.  Should be called 
+   * when a test passes.
+   * 
+   * @param message a String that identifies the test that passed
    */
-  public void addPass()
+  public void addPass(String message)
   {
-    passCount++;
+    passMessages.add(message);
   }
 
   /**
@@ -78,15 +81,17 @@ public class TestResult
    *
    * @param exception The exception that was thrown
    * @param message A message that identifies the test that caused the
+   * @param reason the stack trace for the Exception
    * exception to be thrown
    */
-  public void addException(Throwable exception, String message)
+  public void addException(Throwable exception, String message, String reason)
   {
     if (this.exception != null)
       throw new IllegalArgumentException("trying to add more than one " +
                "exception to TestResult");           
     this.exception = exception;
     this.exceptionMessage = message;
+    this.exceptionReason = reason;
   }
 
   /**
@@ -94,7 +99,7 @@ public class TestResult
    */
   public int getPassCount()
   {
-    return passCount;
+    return passMessages.size();
   }
 
   /**
@@ -106,6 +111,17 @@ public class TestResult
     return (String[]) failMessages.toArray(new String[0]);
   }
 
+  /**
+   * An array of Strings that holds the identifying messages for all
+   * passing tests.
+   * 
+   * @return an array of Strings holding the messages for passing tests.
+   */
+  public String[] getPassMessages()
+  {
+    return (String[]) passMessages.toArray(new String[0]);
+  }
+  
   /**
    * The name of the Testlet that this TestResult holds information about.
    */
@@ -130,6 +146,17 @@ public class TestResult
   public String getExceptionMessage()
   {
     return exceptionMessage;
+  }
+  
+  /**
+   * If an Exception was thrown when the Testlet was instantiated or run,
+   * this String is the stack trace associated with the Exception.
+   * 
+   * @return the stack trace associated with the Exception
+   */
+  public String getExceptionReason()
+  {
+    return exceptionReason;
   }
 
   /**
