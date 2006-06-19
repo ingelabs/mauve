@@ -106,6 +106,9 @@ public class Harness
 
   // The total number of failing tests (not harness.check() calls)
   private static int total_test_fails = 0;
+  
+  // The total number of harness.check() calls that fail
+  private static int total_check_fails = 0;
 
   // All the tests that were specified on the command line rather than
   // through standard input or an input file
@@ -167,10 +170,11 @@ public class Harness
     runAllTests();
 
     // If more than one test was run, print a summary.
-    if (total_tests > 1)
+    if (total_tests > 0)
       System.out.println("\nTEST RESULTS:\n" + total_test_fails + " of "
-                         + total_tests + " tests failed.");
-    else if (total_tests == 0)
+                         + total_tests + " tests failed.  " + total_check_fails
+                         + " total calls to harness.check() failed.");
+    else
       {
         // If no tests were run, try to help the user out by suggesting what
         // the problem might have been.
@@ -201,10 +205,6 @@ public class Harness
                                 "no tests? \n");
           }          
       }
-    else if (total_test_fails == 0 && !showPasses && !verbose)
-      // Finally, if a single test was run and the passing result wasn't
-      // displayed, display it for the user.
-      System.out.println ("TEST RESULT: pass");
     harness.finalize();
     System.exit(total_test_fails > 0 ? 1 : 0);
   }
@@ -805,8 +805,10 @@ public class Harness
                       temp = 0;
                       break;
                     }
-                  else if (outputFromTest.endsWith("fail"))
+                  else if (outputFromTest.indexOf("fail-") != -1)
                     {
+                      total_check_fails += 
+                        Integer.parseInt(outputFromTest.substring(19));
                       temp = 1;
                       break;
                     }

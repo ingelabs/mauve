@@ -1,6 +1,23 @@
 2006-06-19  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:
+	(total_check_fails): New field.
+	(main): Print a summary even if only one test failed.  Include the 
+	total number of failing check() calls in the summary.
+	(runTest): When a test fails, increment total_check_fails by the 
+	number of checks in that test that failed, which is passed back from
+	the RunnerProcess.
+	* RunnerProcess.java:
+	(main): If a test fails to load, report the failure and count 0 total
+	check() fails.
+	(runAndReport): When a test fails, report the number of calls to
+	check() that failed.
+	(done): If the test failed, return the number of calls to check() 
+	that failed.
+
+2006-06-19  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
 	(getBootclasspath): When the auto detector returns, stop the timeout
 	watcher.
 	(printHelpMessage): Replaced reference to old --with-test-java with the

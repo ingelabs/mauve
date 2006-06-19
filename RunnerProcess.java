@@ -218,7 +218,7 @@ public class RunnerProcess
           else
             System.out.println("FAIL: " + stripPrefix(testname)
                                  + ": failed to load");
-          System.out.println("RunnerProcess:fail");
+          System.out.println("RunnerProcess:fail-0");
         }
       }
   }
@@ -371,7 +371,7 @@ public class RunnerProcess
     if (temp == 0)
       System.out.println ("RunnerProcess:pass");
     else
-      System.out.println("RunnerProcess:fail");
+      System.out.println("RunnerProcess:fail-" + temp);
   }
   
   private final String getDescription(StackTraceElement[] st)
@@ -784,7 +784,7 @@ public class RunnerProcess
     if (xfailures > 0)
       System.out.println(xfailures + " of " + total
                          + " tests expectedly failed");
-    return failures > 0 ? 1 : 0;
+    return failures;
   }
   
   /**
