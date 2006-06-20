@@ -1,5 +1,9 @@
 2006-06-20  Tania Bento  <tbento@redhat.com>
 
+	* gnu/testlet/javax/swing/JMenu/remove.java: New test.
+
+2006-06-20  Tania Bento  <tbento@redhat.com>
+
 	* gnu/testlet/javax/swing/JMenu/getPopUpMenu.java: New test.
 
 2006-06-20  Tania Bento  <tbento@redhat.com>
