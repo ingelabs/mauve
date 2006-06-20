@@ -1,3 +1,7 @@
+2006-06-20  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/awt/Toolkit/security.java: New test.
+
 2006-06-19  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* RunnerProcess.java:
