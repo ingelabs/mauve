@@ -81,7 +81,7 @@ public class remove implements Testlet
     boolean fail = false;
     try
       {
-        menu.remove(-1);
+        menu.remove(1);
       }
     catch (Exception e)
       {
