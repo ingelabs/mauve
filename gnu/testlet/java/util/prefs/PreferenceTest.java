@@ -93,6 +93,7 @@ public class PreferenceTest implements Testlet
 
        testPut();
        testByte();
+       testBoolean();
        
        testListener();
        testChildren();
@@ -317,6 +318,35 @@ public class PreferenceTest implements Testlet
            print(e.getLocalizedMessage());
            this.harness.fail("call to testByte() - ClassNotFoundException");
        }
+   }
+   
+   private void testBoolean()
+   {
+	   this.harness.checkPoint("testBoolean()");
+	   
+	   String key = "boolean_key";
+	   String _true = "TrUe";
+	   
+	   // test "normal" booleans
+	   this.prefs.putBoolean(key, true);
+	   boolean result = this.prefs.getBoolean(key, false);
+	   
+	   this.harness.check(result, true);
+	   
+	   // test String as boolean
+	   this.prefs.remove(key);
+	   try {
+		   this.prefs.flush();
+		   
+	   } catch (BackingStoreException e) {
+		   print(e.getLocalizedMessage());
+           this.harness.fail("call to testBoolean() - fail to flush");
+	   }
+	   
+	   this.prefs.put(key, _true);
+	   result = this.prefs.getBoolean(key, false);
+	   
+	   this.harness.check(result, true);
    }
    
    private void testListener()

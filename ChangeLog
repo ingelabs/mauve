@@ -1,3 +1,9 @@
+2006-06-21  neugens  <neugens@limasoftware.net>
+
+        * gnu/testlet/java/util/prefs/PreferenceTest.java (testBoolean): new
+        test method.
+        (test): call to enable new test.
+
 2006-06-21  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* README: Added info about new -vmarg option for the Harness.
