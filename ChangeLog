@@ -1,3 +1,7 @@
+2006-06-21  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/SimpleTestHarness.java: Removed this file.
+
 2006-06-21  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/lang/reflect/AccessibleObject/security.java: New test.
