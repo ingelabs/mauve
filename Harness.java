@@ -88,6 +88,9 @@ public class Harness
   // The command to invoke for the VM on which we will run the tests.
   private static String vmCommand = null;
   
+  // Arguments to be passed to the VM
+  private static String vmArgs = "";
+  
   // Whether or not we should recurse into directories when a folder is
   // specified to be tested
   private static boolean recursion = true;
@@ -268,6 +271,16 @@ public class Harness
               throw new RuntimeException("No file path " +
                     "after '-bootclasspath'.  Exit");
             classpathInstallDir = args[i];
+          }
+        else if (args[i].equalsIgnoreCase("-vmarg"))
+          {
+            // User is specifying arguments to be passed to the VM of the
+            // RunnerProcess.
+            if (++i >= args.length)
+              throw new RuntimeException("No argument after -vmarg.  Exit");
+            {
+              vmArgs += " " + args[i];
+            }            
           }
         else if (args[i].equalsIgnoreCase("-ecj-jar"))
           {
@@ -630,7 +643,7 @@ public class Harness
     StringBuffer sb = new StringBuffer(" RunnerProcess");
     for (int i = 0; i < args.length; i++)      
       sb.append(" " + args[i]);      
-    sb.insert(0, vmCommand);
+    sb.insert(0, vmCommand + vmArgs);
     
     try
       {

@@ -1,5 +1,14 @@
 2006-06-21  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* README: Added info about new -vmarg option for the Harness.
+	* Harness.java: 
+	(vmArgs): New field.
+	(main): Handle new -vmarg option.
+	(initProcess): Concatenate the vmArgs to the vmCommand before running
+	exec.
+
+2006-06-21  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* gnu/testlet/SimpleTestHarness.java: Removed this file.
 
 2006-06-21  Gary Benson  <gbenson@redhat.com>
