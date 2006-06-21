@@ -1,5 +1,9 @@
 2006-06-21  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/lang/reflect/AccessibleObject/security.java: New test.
+
+2006-06-21  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/awt/Graphics2D/security.java: New test.
 
 2006-06-20  Tom Tromey  <tromey@redhat.com>
