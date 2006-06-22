@@ -1,4 +1,13 @@
-2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
+2006-06-22  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/PlainDocument/getDocumentProperties.java:
+	New test class.
+	* gnu/testlet/javax/swing/text/AbstractDocument/getDocumentProperties.java:
+	New test class.
+	* gnu/testlet/javax/swing/text/AbstractDocument/TestAbstractDocument.java:
+	New auxiliary class.
+
+2006-06-22  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/PlainDocument/insertUpdate.java
 	New test class.
