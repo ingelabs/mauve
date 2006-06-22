@@ -40,28 +40,38 @@ import gnu.testlet.Testlet;
 public class insertUpdate implements Testlet
 {
 
+  private class TestListener
+    implements DocumentListener
+  {
+    public void changedUpdate(DocumentEvent e)
+    {
+      ev = e;
+    }
+    public void insertUpdate(DocumentEvent e)
+    {
+      ev = e;
+    }
+    public void removeUpdate(DocumentEvent e)
+    {
+      ev = e;
+    }
+
+  }
+
   DocumentEvent ev;
 
   public void test(TestHarness harness)
   {
     test01(harness);
+    test02(harness);
+    test03(harness);
   }
 
   private void test01(TestHarness h)
   {
     h.checkPoint("test01");
     PlainDocument doc = new PlainDocument();
-    doc.addDocumentListener(new DocumentListener() {
-        public void changedUpdate(DocumentEvent e) {
-          ev = e;
-        }
-        public void insertUpdate(DocumentEvent e) {
-          ev = e;
-        }
-        public void removeUpdate(DocumentEvent e) {
-          ev = e;
-        }
-      });
+    doc.addDocumentListener(new TestListener());
 
     try
       {
@@ -75,9 +85,9 @@ public class insertUpdate implements Testlet
 
     DocumentEvent.ElementChange change = ev.getChange(doc.getDefaultRootElement());
 
-    Element[] added = change.getChildrenAdded();
     h.check(change.getIndex(), 2);
 
+    Element[] added = change.getChildrenAdded();
     h.check(added.length, 2);
     h.check(added[0].getStartOffset(), 13);
     h.check(added[0].getEndOffset(), 30);
@@ -89,4 +99,79 @@ public class insertUpdate implements Testlet
     h.check(removed[0].getStartOffset(), 13);
     h.check(removed[0].getEndOffset(), 34);
   }
+
+  private void test02(TestHarness h)
+  {
+    h.checkPoint("test02");
+    PlainDocument doc = new PlainDocument();
+    doc.addDocumentListener(new TestListener());
+
+    try
+      {
+        doc.insertString(0, "abcde\nabcdef\nabcde\n", null);
+        doc.insertString(13, "\nabc", null);
+      }
+    catch (BadLocationException ex)
+      {
+        h.fail("Unexpected BadLocationException");
+      }
+
+    DocumentEvent.ElementChange change = ev.getChange(doc.getDefaultRootElement());
+
+    h.check(change.getIndex(), 1);
+
+    Element[] added = change.getChildrenAdded();
+    h.check(added.length, 3);
+    h.check(added[0].getStartOffset(), 6);
+    h.check(added[0].getEndOffset(), 13);
+    h.check(added[1].getStartOffset(), 13);
+    h.check(added[1].getEndOffset(), 14);
+    h.check(added[2].getStartOffset(), 14);
+    h.check(added[2].getEndOffset(), 23);
+
+    Element[] removed = change.getChildrenRemoved();
+    h.check(removed.length, 2);
+    h.check(removed[0].getStartOffset(), 6);
+    h.check(removed[0].getEndOffset(), 17);
+    h.check(removed[1].getStartOffset(), 17);
+    h.check(removed[1].getEndOffset(), 23);
+  }
+
+  private void test03(TestHarness h)
+  {
+    h.checkPoint("test03");
+    PlainDocument doc = new PlainDocument();
+    doc.addDocumentListener(new TestListener());
+
+    try
+      {
+        doc.insertString(0, "abcd", null);
+        doc.insertString(0, "abcde\nabcdef\nabcde\n", null);
+      }
+    catch (BadLocationException ex)
+      {
+        h.fail("Unexpected BadLocationException");
+      }
+
+    DocumentEvent.ElementChange change = ev.getChange(doc.getDefaultRootElement());
+
+    h.check(change.getIndex(), 0);
+
+    Element[] added = change.getChildrenAdded();
+    h.check(added.length, 4);
+    h.check(added[0].getStartOffset(), 0);
+    h.check(added[0].getEndOffset(), 6);
+    h.check(added[1].getStartOffset(), 6);
+    h.check(added[1].getEndOffset(), 13);
+    h.check(added[2].getStartOffset(), 13);
+    h.check(added[2].getEndOffset(), 19);
+    h.check(added[3].getStartOffset(), 19);
+    h.check(added[3].getEndOffset(), 24);
+
+    Element[] removed = change.getChildrenRemoved();
+    h.check(removed.length, 1);
+    h.check(removed[0].getStartOffset(), 0);
+    h.check(removed[0].getEndOffset(), 24);
+  }
+  
 }

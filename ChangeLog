@@ -1,5 +1,12 @@
 2006-06-22  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/text/PlainDocument/insertUpdate.java
+	(test02): New test method.
+	(test03): New test method.
+	(test04): New test method.
+
+2006-06-22  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/text/PlainDocument/getDocumentProperties.java:
 	New test class.
 	* gnu/testlet/javax/swing/text/AbstractDocument/getDocumentProperties.java:
