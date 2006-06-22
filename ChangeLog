@@ -1,5 +1,16 @@
 2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonic.java:
+	(displayedMnemonicWhenEventFired): New field,
+	(propertyChange): Record mnemonic value at time of event,
+	(testMethod1): Check mnemonic at event time,
+	(testMethod2): Added new checks,
+	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonicIndex.java:
+	(propertyChange): Only record index for a specific event,
+	(test): Added new checks.
+
+2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonic.java: 
 	New test,
 	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonicIndex.java: 

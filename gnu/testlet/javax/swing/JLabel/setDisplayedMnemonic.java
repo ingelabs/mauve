@@ -38,9 +38,17 @@ public class setDisplayedMnemonic implements Testlet, PropertyChangeListener
 
   List events = new java.util.ArrayList();
   
+  int displayedMnemonicWhenEventFired;
+  
   public void propertyChange(PropertyChangeEvent e) 
   {
     events.add(e);
+    if (e.getPropertyName().equals("displayedMnemonic") 
+            && e.getSource() instanceof JLabel)
+    {
+      JLabel label = (JLabel) e.getSource();
+      displayedMnemonicWhenEventFired = label.getDisplayedMnemonic();
+    }
   }
 
   public void test(TestHarness harness) 
@@ -58,6 +66,7 @@ public class setDisplayedMnemonic implements Testlet, PropertyChangeListener
     harness.check(label.getDisplayedMnemonic(), 68);
     harness.check(label.getDisplayedMnemonicIndex(), 4);
     harness.check(events.size(), 2);
+    harness.check(displayedMnemonicWhenEventFired, 68);
     PropertyChangeEvent e0 = (PropertyChangeEvent) events.get(0);
     harness.check(e0.getSource(), label);
     harness.check(e0.getPropertyName(), "displayedMnemonic");
@@ -90,6 +99,40 @@ public class setDisplayedMnemonic implements Testlet, PropertyChangeListener
   public void testMethod2(TestHarness harness) 
   {
     harness.checkPoint("(int)");
+    events.clear();
     JLabel label = new JLabel("Abc Def");
+    label.addPropertyChangeListener(this);
+    label.setDisplayedMnemonic(68);
+    harness.check(label.getDisplayedMnemonic(), 68);
+    harness.check(label.getDisplayedMnemonicIndex(), 4);
+    harness.check(events.size(), 2);
+    harness.check(displayedMnemonicWhenEventFired, 68);
+    PropertyChangeEvent e0 = (PropertyChangeEvent) events.get(0);
+    harness.check(e0.getSource(), label);
+    harness.check(e0.getPropertyName(), "displayedMnemonic");
+    harness.check(e0.getOldValue(), new Integer(0));
+    harness.check(e0.getNewValue(), new Integer(68));
+    PropertyChangeEvent e1 = (PropertyChangeEvent) events.get(1);
+    harness.check(e1.getSource(), label);
+    harness.check(e1.getPropertyName(), "displayedMnemonicIndex");
+    harness.check(e1.getOldValue(), new Integer(-1));
+    harness.check(e1.getNewValue(), new Integer(4));
+    
+    // try a character that isn't in the text
+    events.clear();
+    label.setDisplayedMnemonic(90);
+    harness.check(label.getDisplayedMnemonic(), 90);
+    harness.check(label.getDisplayedMnemonicIndex(), -1);
+    harness.check(events.size(), 2);
+    e0 = (PropertyChangeEvent) events.get(0);
+    harness.check(e0.getSource(), label);
+    harness.check(e0.getPropertyName(), "displayedMnemonic");
+    harness.check(e0.getOldValue(), new Integer(68));
+    harness.check(e0.getNewValue(), new Integer(90));
+    e1 = (PropertyChangeEvent) events.get(1);
+    harness.check(e1.getSource(), label);
+    harness.check(e1.getPropertyName(), "displayedMnemonicIndex");
+    harness.check(e1.getOldValue(), new Integer(4));
+    harness.check(e1.getNewValue(), new Integer(-1));
   }
 }

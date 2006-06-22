@@ -43,7 +43,8 @@ public class setDisplayedMnemonicIndex
   public void propertyChange(PropertyChangeEvent e) 
   {
     events.add(e);
-    if (e.getSource() instanceof JLabel)
+    if (e.getPropertyName().equals("displayedMnemonicIndex") 
+            && e.getSource() instanceof JLabel)
       {
         JLabel l = (JLabel) e.getSource();
         mnemonicIndexWhenEventFired = l.getDisplayedMnemonicIndex();
@@ -100,6 +101,34 @@ public class setDisplayedMnemonicIndex
     try
     {
       label.setDisplayedMnemonicIndex(label.getText().length());
+    }
+    catch (IllegalArgumentException ex)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // setting the index to zero or greater when the text is null should 
+    // generate an IllegalArgumentException
+    label.setText(null);
+    harness.check(label.getDisplayedMnemonicIndex(), -1);
+    pass = false;
+    try
+    {
+      label.setDisplayedMnemonicIndex(0);
+    }
+    catch (IllegalArgumentException ex)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    label.setText("");
+    harness.check(label.getDisplayedMnemonicIndex(), -1);
+    pass = false;
+    try
+    {
+      label.setDisplayedMnemonicIndex(0);
     }
     catch (IllegalArgumentException ex)
     {
