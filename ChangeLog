@@ -1,5 +1,10 @@
 2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/text/PlainDocument/insertUpdate.java
+	New test class.
+
+2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonic.java:
 	(displayedMnemonicWhenEventFired): New field,
 	(propertyChange): Record mnemonic value at time of event,
