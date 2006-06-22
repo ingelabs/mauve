@@ -1,5 +1,13 @@
 2006-06-22  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* Harness.java:
+	(runTest): If the RunnerProcess cannot be instantiated, print the 
+	message to stderr not stdout.
+	(getBootClassPath): If the bootclasspath cannot be detected, print the 
+	message to stderr not stdout.
+
+2006-06-22  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java: 
 	(runner_in_err): New field.
 	(getBootClassPath): Use the vmArgs when forking the detector.

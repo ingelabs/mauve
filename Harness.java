@@ -783,9 +783,10 @@ public class Harness
         // thread has declared the test hung and if so ends the process.
         if (testIsHung)
           {
+            System.err.print(sb.toString());
             if (testName.equals("_confirm_startup_"))
               {
-                System.out.println("ERROR: Cannot create test runner process.  Exit");
+                System.err.println("ERROR: Cannot create test runner process.  Exit");
                 System.exit(1);
               }
             synchronized (runner_lock)
@@ -1250,7 +1251,7 @@ public class Harness
             temp = System.getProperty(key);
           else
             {
-              System.out.println("WARNING: Cannot auto-detect the " +
+              System.err.println("WARNING: Cannot auto-detect the " +
                       "bootclasspath for your VM, please file a bug report" +
                       " specifying which VM you are testing.");
               return;
