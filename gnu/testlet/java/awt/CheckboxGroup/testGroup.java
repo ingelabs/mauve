@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: FIXME
+// Tags: JDK1.4
 
 package gnu.testlet.java.awt.CheckboxGroup;
 

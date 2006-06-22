@@ -1,5 +1,10 @@
 2006-06-22  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/java/awt/CheckboxGroup/testGroup.java: Fixed Tag, 
+	removed FIXME.
+
+2006-06-22  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/java/awt/CheckboxGroup/testGroup.java: New test.
 
 2006-06-22  Roman Kennke  <kennke@aicas.com>
