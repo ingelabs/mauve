@@ -27,11 +27,16 @@ package gnu.testlet.javax.swing.JLabel;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.KeyStroke;
 
 public class setDisplayedMnemonic implements Testlet, PropertyChangeListener
 {
@@ -55,6 +60,7 @@ public class setDisplayedMnemonic implements Testlet, PropertyChangeListener
   {
     testMethod1(harness);
     testMethod2(harness);
+    testKeyMap(harness);
   }
   
   public void testMethod1(TestHarness harness) 
@@ -134,5 +140,18 @@ public class setDisplayedMnemonic implements Testlet, PropertyChangeListener
     harness.check(e1.getPropertyName(), "displayedMnemonicIndex");
     harness.check(e1.getOldValue(), new Integer(4));
     harness.check(e1.getNewValue(), new Integer(-1));
+  }
+  
+  public void testKeyMap(TestHarness harness)
+  {
+    JLabel label = new JLabel("ABC");
+    label.setDisplayedMnemonic('B');
+    InputMap m = label.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    harness.check(m.get(KeyStroke.getKeyStroke(KeyEvent.VK_B, 
+            KeyEvent.ALT_DOWN_MASK)), null);
+    label.setLabelFor(new JButton());
+    m = label.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    harness.check(m.get(KeyStroke.getKeyStroke(KeyEvent.VK_B, 
+            KeyEvent.ALT_DOWN_MASK)), "press");  
   }
 }

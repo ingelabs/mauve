@@ -28,8 +28,10 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.InputMap;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.KeyStroke;
 
 /**
  * Checks the input maps defined for a JLabel - this is really testing
@@ -67,5 +69,25 @@ public class getInputMap implements Testlet
     InputMap m3 = label.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
     harness.check(m3.keys(), null);
     harness.check(m3.getParent(), null);
+
+    // now make a label that is the label for a component
+    JLabel label2 = new JLabel("Test");
+    JButton button = new JButton("Target");
+    label2.setLabelFor(button);
+    label2.setDisplayedMnemonic('A');
+
+    m1 = label2.getInputMap(JComponent.WHEN_FOCUSED);
+    harness.check(m1.keys(), null);
+    m1p = m1.getParent();
+    harness.check(m1p, null);
+    m2 = label2.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);   
+    harness.check(m2.keys(), null);
+    harness.check(m2.getParent(), null);
+    m3 = label2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    harness.check(m3.keys(), null);
+    InputMap m3p = m3.getParent();
+    harness.check(m3p.get(KeyStroke.getKeyStroke("alt pressed A")), "press");
+    label2.setDisplayedMnemonic('B');
+    harness.check(m3p.get(KeyStroke.getKeyStroke("alt pressed B")), "press");
   }
 }

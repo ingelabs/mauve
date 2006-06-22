@@ -1,3 +1,20 @@
+2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JLabel/getActionMap.java: New file,
+	* gnu/testlet/javax/swing/JLabel/getInputMap.java
+	(testMethod2): Added new checks,
+	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonic.java
+	(testKeyMap): New method,
+	* gnu/testlet/javax/swing/JLabel/setFont.java: New file,
+	* gnu/testlet/javax/swing/JLabel/setHorizontalAlignment.java: New file,
+	* gnu/testlet/javax/swing/JLabel/setIconTextGap.java: New file,
+	* gnu/testlet/javax/swing/JLabel/setText.java
+	(events): New field,
+	(propertyChange): New method,
+	(testGeneral): New method,
+	(testGeneralWithMnemonic): New method,
+	* gnu/testlet/javax/swing/JLabel/setVerticalAlignment.java: New file.
+	
 2006-06-22  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/CheckboxGroup/testGroup.java: Fixed Tag, 
