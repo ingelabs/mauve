@@ -128,6 +128,9 @@ public class Harness
 
   // A way to listen to the runner process
   private static BufferedReader runner_in = null;
+  
+  // A way to listen to the runner process' standard error stream
+  private static BufferedReader runner_in_err = null;
 
   // The process that will run the tests for us
   private static Process runnerProcess = null;
@@ -393,7 +396,6 @@ public class Harness
         throw e;
       }
     }
-    
     // Set up the compiler and the PrintWriters for the compile errors.
     ecjConstructor = 
       klass.getConstructor 
@@ -405,7 +407,6 @@ public class Harness
     
     ecjWriterErr = new CompilerErrorWriter(System.out);
     ecjWriterOut = new PrintWriter(System.out);
-    
     // Set up the compiler options now that we know whether or not we are
     // compiling.
     compileStringBase += getClasspathInstallString();
@@ -477,7 +478,7 @@ public class Harness
   {
     try
     {
-      String c = vmCommand + " Harness$DetectBootclasspath";
+      String c = vmCommand + vmArgs + " Harness$DetectBootclasspath";      
       Process p = Runtime.getRuntime().exec(c);
       BufferedReader br = 
         new BufferedReader
@@ -622,6 +623,7 @@ public class Harness
       {
         runTest("_dump_data_");
         runner_in.close();
+        runner_in_err.close();
         runner_out.close();        
         runnerProcess.destroy();
       } 
@@ -652,7 +654,10 @@ public class Harness
         runner_out = new PrintWriter(runnerProcess.getOutputStream(), true);
         runner_in = 
           new BufferedReader
-          (new InputStreamReader(runnerProcess.getInputStream()));                
+          (new InputStreamReader(runnerProcess.getInputStream()));
+        runner_in_err = 
+            new BufferedReader
+            (new InputStreamReader(runnerProcess.getErrorStream()));                
       }
     catch (IOException e)
       {
@@ -667,6 +672,7 @@ public class Harness
     // to time out.
     runner_watcher = new TimeoutWatcher(runner_timeout);    
     runTest("_confirm_startup_");
+    runner_watcher.stop();
     runner_watcher = new TimeoutWatcher(runner_timeout);
   }
   
@@ -756,6 +762,7 @@ public class Harness
   {
     String tn = stripPrefix(testName.replace(File.separatorChar, '.'));
     String outputFromTest;
+    StringBuffer sb = new StringBuffer();
     boolean invalidTest = false;
     int temp = -1;
 
@@ -788,6 +795,7 @@ public class Harness
             try
               {
                 runner_in.close();
+                runner_in_err.close();
                 runner_out.close();
                 runnerProcess.destroy();
               }
@@ -801,6 +809,8 @@ public class Harness
           }
         try
         {
+          if (runner_in_err.ready())
+            sb.append(runner_in_err.readLine() + "\n");
           if (runner_in.ready())
             {
               outputFromTest = runner_in.readLine();              
@@ -845,11 +855,17 @@ public class Harness
                 // pass these on to stdout.
                 System.out.println(outputFromTest);
             }
+          else
+            {
+              System.err.print(sb.toString());
+              sb = new StringBuffer();
+            }
         }
         catch (IOException e)
         {
         }
       }
+    System.err.print(sb.toString());
     if (temp == -1)
       {        
         // This means the watcher thread had to stop the process 

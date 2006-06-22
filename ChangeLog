@@ -1,3 +1,15 @@
+2006-06-22  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java: 
+	(runner_in_err): New field.
+	(getBootClassPath): Use the vmArgs when forking the detector.
+	(finalize): Close the pipe to the RunnerProcess' error stream.
+	(initProcess): Set up the pipe to the RunnerProcess' error stream. 
+	Stop the watcher after confirming startup.
+	(runTest): Collect error stream output from the RunnerProcess in a 
+	StringBuffer and print it when there's no new regular output from the 
+	test.  Also print it after the test has completed.
+
 2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JLabel/getActionMap.java: New file,

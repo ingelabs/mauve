@@ -96,7 +96,7 @@ The Mauve tests are run using the harness script in the top directory.  This
 section provides instructions on how to perform the following tasks:
 
   0.  Running all the tests.
-  1.  Specify the VM on which to run the tests
+  1.  Specify the VM on which to run the tests and any VM arguments
   2.  Select a subset of the tests to run
   3.  Use an input file to specify the tests to run
   4.  Change the timeout interval
@@ -113,7 +113,7 @@ section provides instructions on how to perform the following tasks:
   You can also run all the tests by typing 'HARNESSVM Harness gnu.testlet'.
   
 
-1.  Specifying the VM on which to run the tests
+1.  Specifying the VM on which to run the tests and any VM arguments
 
   The VM on which to run the tests can be specified by configure as described
   in the first section, CONFIGURING AND BUILDING THE TESTSUITE.  It can also be
@@ -136,6 +136,15 @@ section provides instructions on how to perform the following tasks:
   again that HARNESSVM is just the VM used to run the harness, and not the tests.
   This is done for performance considerations to allow the Harness to be natively
   compiled and ran while testing a variety of VMs.
+  
+  To specify arguments for the VM, use:
+  
+  -vmarg ARGUMENT
+  
+  For example, the following command will run the JTable tests on JamVM with
+  the -Xnocompact argument:
+  
+  HARNESSVM Harness javax.swing.JTable -vm jamvm -vmarg -Xnocompact
 
 
 2.  Selecting a subset of the tests to run
