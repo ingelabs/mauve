@@ -1,3 +1,10 @@
+2006-06-22  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonic.java: 
+	New test,
+	* gnu/testlet/javax/swing/JLabel/setDisplayedMnemonicIndex.java: 
+	New test.
+	
 2006-06-21  neugens  <neugens@limasoftware.net>
 
         * gnu/testlet/java/util/prefs/PreferenceTest.java (testBoolean): new
