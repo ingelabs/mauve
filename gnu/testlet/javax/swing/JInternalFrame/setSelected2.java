@@ -34,6 +34,7 @@ import java.beans.VetoableChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
@@ -62,6 +63,15 @@ public class setSelected2
   {
     JInternalFrame f = new JInternalFrame("F1");
     harness.check(!f.isSelected());
+
+    // setSelected() only has an effect if the internal frame
+    // is showing.
+    JFrame fr = new JFrame();
+    fr.getContentPane().add(f);
+    f.setVisible(true);
+    fr.pack();
+    fr.setVisible(true);
+
     f.addVetoableChangeListener(this);
     f.addPropertyChangeListener(this);
     f.addInternalFrameListener(this);
@@ -91,7 +101,7 @@ public class setSelected2
     harness.check(events.size(), 1);
     InternalFrameEvent event = (InternalFrameEvent) events.get(0);
     harness.check(event.getSource(), f);
-    harness.check(event.getID(), InternalFrameEvent.INTERNAL_FRAME_DEACTIVATED);
+    harness.check(event.getID(), InternalFrameEvent.INTERNAL_FRAME_ACTIVATED);
     
     // set selected to true
     events.clear();
@@ -104,11 +114,8 @@ public class setSelected2
         // ignore  
       }
     harness.check(f.isSelected());
-    harness.check(events.size(), 1);
-    event = (InternalFrameEvent) events.get(0);
-    harness.check(event.getSource(), f);
-    harness.check(event.getID(), InternalFrameEvent.INTERNAL_FRAME_ACTIVATED);
-    
+    harness.check(events.size(), 0);
+
   }
 
   public void internalFrameActivated(InternalFrameEvent event) {
