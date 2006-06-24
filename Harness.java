@@ -518,6 +518,18 @@ public class Harness
               else
                 System.out.println(bcpOutput);
             }
+	  else
+	    {
+	      // FIXME - Quickworkaround for busy-waiting, needs proper FIX.
+	      try
+	        {
+		  Thread.sleep(100);
+		}
+	      catch (InterruptedException ie)
+	        {
+		  // ignore
+		}
+	    }
         }
     }
     catch (IOException ioe)
@@ -858,8 +870,21 @@ public class Harness
             }
           else
             {
-              System.err.print(sb.toString());
-              sb = new StringBuffer();
+	      if (sb.length() != 0)
+	        {
+                  System.err.print(sb.toString());
+                  sb = new StringBuffer();
+		}
+
+              // FIXME - Quickworkaround for busy-waiting, needs proper FIX.
+              try
+                {
+                  Thread.sleep(100);
+                }
+              catch (InterruptedException ie)
+                {
+                  // ignore
+                }
             }
         }
         catch (IOException e)
