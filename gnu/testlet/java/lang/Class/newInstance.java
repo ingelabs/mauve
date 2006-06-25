@@ -3,6 +3,7 @@
 // Uses: pkg/test1 pkg/test2 pkg/test3 pkg/test4
 
 // Copyright (C) 2005 Jeroen Frijters
+// Copyright (C) 2006 Mark J. Wielaard
 
 // This file is part of Mauve.
 
@@ -198,6 +199,104 @@ public class newInstance implements Testlet
       }
     
     test6.check(harness);
+
+    boolean thrown;
+    // Interfaces cannot be instantiated
+    try
+      {
+        Runnable.class.newInstance();
+        thrown = false;
+      }
+    catch (IllegalAccessException iae)
+      {
+        thrown = false; // Wrong one
+      }
+    catch (InstantiationException ie)
+      {
+        thrown = true;
+      }
+    harness.check(thrown);
+
+    // Abstract classes cannot be instantiated
+    try
+      {
+        Number.class.newInstance();
+        thrown = false;
+      }
+    catch (IllegalAccessException iae)
+      {
+        thrown = false; // Wrong one
+      }
+    catch (InstantiationException ie)
+      {
+        thrown = true;
+      }
+    harness.check(thrown);
+
+    // Array classes cannot be instantiated
+    try
+      {
+        new Object[1].getClass().newInstance();
+        thrown = false;
+      }
+    catch (IllegalAccessException iae)
+      {
+        thrown = false; // Wrong one
+      }
+    catch (InstantiationException ie)
+      {
+        thrown = true;
+      }
+    harness.check(thrown);
+
+    // Primitive classes cannot be instantiated
+    try
+      {
+        Byte.TYPE.newInstance();
+        thrown = false;
+      }
+    catch (IllegalAccessException iae)
+      {
+        thrown = false; // Wrong one
+      }
+    catch (InstantiationException ie)
+      {
+        thrown = true;
+      }
+    harness.check(thrown);
+
+    // Void cannot be instantiated
+    try
+      {
+        Void.TYPE.newInstance();
+        thrown = false;
+      }
+    catch (IllegalAccessException iae)
+      {
+        thrown = false; // Wrong one
+      }
+    catch (InstantiationException ie)
+      {
+        thrown = true;
+      }
+    harness.check(thrown);
+
+    // No nullary constructor cannot be instantiated
+    try
+      {
+        Integer.class.newInstance();
+        thrown = false;
+      }
+    catch (IllegalAccessException iae)
+      {
+        thrown = false; // Wrong one
+      }
+    catch (InstantiationException ie)
+      {
+        thrown = true;
+      }
+    harness.check(thrown);
+
   }
 
   static void checkSuccess(TestHarness harness, Class c)
