@@ -1,5 +1,10 @@
 2006-06-24  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
+	* gnu/testlet/java/lang/management/ClassLoadingMXBeanTest.java:
+	New test to ensure security of setVerbose is maintained.
+	
+2006-06-24  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
 	* gnu/testlet/java/lang/management/BadGuy.java:
 	Restrictive security manager used for testing
 	the management beans.
