@@ -1,5 +1,9 @@
 2006-06-26  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JList/getNextMatch.java: New test.
+
+2006-06-26  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JList/setValueIsAdjusting.java: New test,
 	* gnu/testlet/javax/swing/JList/setVisibleRowCount.java: New test.
 
