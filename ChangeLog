@@ -1,3 +1,8 @@
+2006-06-26  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicHTML/isHTMLString.java:
+	New test.
+
 2006-06-26  Anthony Balkissoon  <abalkiss@redhat.com>
 
         * gnu/testlet/javax/rmi/CORBA/Tie/RMI_test.java: Marked not-a-test.
