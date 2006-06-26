@@ -1,4 +1,4 @@
-// Copyright (C) 2005 Red Hat, Inc.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
 // Written by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
@@ -37,18 +37,19 @@ public class security implements Testlet
     File file = new File(harness.getSourceDirectory(), "ChangeLog");
     String path = file.getPath();
     
-    Permission perm = new FilePermission(path, "read");
-    Permission fdPerm = new RuntimePermission("readFileDescriptor");
+    Permission[] perm = new Permission[] {
+	new FilePermission(path, "read")};
+    Permission[] fdPerm = new Permission[] {
+	new RuntimePermission("readFileDescriptor")};
     
     TestSecurityManager2 sm = new TestSecurityManager2(harness);
-
     try {
       sm.install();
 	
       // throwpoint: java.io.FileInputStream-FileInputStream(File)
       harness.checkPoint("File constructor");
       try {
-	sm.prepareChecks(new Permission[] {perm});
+	sm.prepareChecks(perm);
 	new FileInputStream(file);
 	sm.checkAllChecked(harness);
       }
@@ -60,7 +61,7 @@ public class security implements Testlet
       // throwpoint: java.io.FileInputStream-FileInputStream(String)
       harness.checkPoint("String constructor");
       try {
-	sm.prepareChecks(new Permission[] {perm});
+	sm.prepareChecks(perm);
 	new FileInputStream(path);
 	sm.checkAllChecked(harness);
       }
@@ -72,7 +73,7 @@ public class security implements Testlet
       // throwpoint: java.io.FileInputStream-FileInputStream(FileDescriptor)
       harness.checkPoint("FileDescriptor constructor");
       try {
-	sm.prepareChecks(new Permission[] {fdPerm});
+	sm.prepareChecks(fdPerm);
 	new FileInputStream(FileDescriptor.in);
 	sm.checkAllChecked(harness);
       }

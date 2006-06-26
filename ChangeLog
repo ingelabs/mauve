@@ -1,3 +1,7 @@
+2006-06-26  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/FileInputStream/security.java: Minor tweaks.
+
 2006-06-25  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/lang/Class/newInstance.java: Add checks for
