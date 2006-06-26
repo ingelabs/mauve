@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (C) 2004 Thomas Zander <zander@kde.org>
 
 // This file is part of Mauve.

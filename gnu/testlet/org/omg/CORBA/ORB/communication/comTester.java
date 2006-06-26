@@ -1,3 +1,4 @@
+// Tags: not-a-test
 /* comTester.java --
    Copyright (C) 2005 Free Software Foundation, Inc.
 

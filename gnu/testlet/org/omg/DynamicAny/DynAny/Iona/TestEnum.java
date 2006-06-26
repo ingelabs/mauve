@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (c) IONA Technologies, 2001.
 
 // Adapted for Mauve by Audrius Meskauskas <audriusa@bluewin.ch>

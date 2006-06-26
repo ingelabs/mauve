@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (C) 2004 by Object Refinery Limited
 // Written by David Gilbert (david.gilbert@object-refinery.com)
 

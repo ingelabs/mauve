@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 
 // Mauve is free software; you can redistribute it and/or modify

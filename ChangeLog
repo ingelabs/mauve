@@ -1,3 +1,65 @@
+2006-06-26  Anthony Balkissoon  <abalkiss@redhat.com>
+
+        * gnu/testlet/javax/rmi/CORBA/Tie/RMI_test.java: Marked not-a-test.
+        * gnu/testlet/javax/xml/parsers/DocumentBuilder/Verifyer.java: 
+        Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/Asynchron/_asyncImplBase.java:
+        Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/Asynchron/_asyncStub.java: Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/Asynchron/assServant.java: Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/Asynchron/async.java: Likewise. 
+        * gnu/testlet/org/omg/CORBA/ORB/RF11/B.java: Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/RF11/NEC_RF11.java: Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/RF11/rf11Operations.java: Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/communication/comTester.java: Likewise.
+        * gnu/testlet/org/omg/CORBA/ORB/communication/ourUserException.java: 
+        Likewise.
+        * gnu/testlet/org/omg/CORBA/portable/OutputStream/mirror.java: 
+        Likewise.
+        * gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/Greetings.java: Likewise.
+        * gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoValueFactory.java: 
+        Likewise.
+        * gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoValueFactory.java: 
+        Likewise.
+        * gnu/testlet/org/omg/DynamicAny/DynAny/Iona/TestEnum.java: Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/Test.java: Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/TestDSIRef_impl.java: 
+        Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/TestDSI_impl.java: Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/TestLocationForward.java: 
+        Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POA/TestLocationForwardActivator_impl.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POA/TestLocationForwardOperations.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POA/TestLocationForwardServer.java:Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POA/TestLocationForwardServerMain.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POA/TestLocationForwardServerOperations.java: Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/TestLocationForward_impl.java:
+        Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/TestOperations.java: Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/TestUtil.java: Likewise.
+        * gnu/testlet/org/omg/PortableServer/POA/Test_impl.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POAOperations/communication/poa_comTester.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POAOperations/communication/poa_comTesterOperations.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POAOperations/communication/remotePoaControl.java: Likewise.
+        *
+gnu/testlet/org/omg/PortableServer/POAOperations/communication/remotePoaControlOperations.java: Likewise.
+        * gnu/testlet/runner/CheckResult.java: Likewise.
+        * gnu/testlet/runner/ClassResult.java: Likewise.
+        * gnu/testlet/runner/PackageResult.java: Likewise.
+        * gnu/testlet/runner/RunResult.java: Likewise.
+        * gnu/testlet/runner/Tags.java: Likewise.
+        * gnu/testlet/runner/TestResult.java: Likewise.
+        * gnu/testlet/runner/XMLGenerator.java: Likewise.
+
+
 2006-06-26  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JList/setLayoutOrientation.java: New test.

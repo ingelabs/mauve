@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Not a test, required by RMI_IIOP.java.
 
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)

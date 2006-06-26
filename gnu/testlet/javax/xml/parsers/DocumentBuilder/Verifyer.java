@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (C) 2004 Audrius Meskauskas <audriusa@bluewin.ch>
 
 // This file is part of Mauve.

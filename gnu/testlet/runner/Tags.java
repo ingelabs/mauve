@@ -1,3 +1,4 @@
+// Tags: not-a-test
 /*
 Copyright (c) 2004, 2005 Thomas Zander <zander@kde.org>
 
