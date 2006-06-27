@@ -162,7 +162,7 @@ public class insecurity implements Testlet
 	// corresponding throwpoint: java.lang.Thread-stop()
 	harness.checkPoint("stop()");
 	try {
-	  sm.prepareChecks(noChecks);
+	  sm.prepareChecks(stopThread);
 	  testThread.stop();
 	  sm.checkAllChecked(harness);
 	}

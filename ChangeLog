@@ -1,5 +1,9 @@
 2006-06-27  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/lang/Thread/insecurity.java: Minor fix.
+
+2006-06-27  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/lang/ThreadGroup/insecurity.java:
 	Removed some unused stuff.
 
