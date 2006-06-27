@@ -163,7 +163,6 @@ harness_files = \
 	gnu/testlet/TestHarness.java \
 	gnu/testlet/Testlet.java \
 	gnu/testlet/TestSecurityManager.java \
-	gnu/testlet/TestSecurityManager2.java \
 	gnu/testlet/ResourceNotFoundException.java \
 	gnu/testlet/TestReport.java \
 	gnu/testlet/TestResult.java
