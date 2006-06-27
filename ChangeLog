@@ -1,3 +1,10 @@
+2006-06-27  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Component/setComponentOrientation.java: 
+	New test,
+	* gnu/testlet/java/awt/Container/applyComponentOrientation.java:
+	New test.
+
 2006-06-26  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JList/getNextMatch.java: New test.
