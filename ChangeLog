@@ -1,5 +1,32 @@
 2006-06-27  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* Harness.java:
+	(bcp_timeout): Removed this field.
+	(testIsHung): Likewise.
+	(runner_lock): Likewise.
+	(getClasspathInstallString): Return an empty string instead of null 
+	when no bootclasspath is detected.
+	(getBootClassPath): Removed the TimeoutWatcher and replaced the busy 
+	waiting with a blocking readLine().
+	(finalize): Moved runnerProcess.destroy() to before the closing of the
+	io pipes.
+	(runTest): Redesigned to replace busy waiting with blocking readLine() 
+	call.
+	(TimeoutWatcher.run): If the timeout occurs, kill the RunnerProcess and
+	restart it instead of notifying the Harness and letting the Harness do 
+	the work.
+	(DetectBootclasspath.main): If the bootclasspath isn't detectable, 
+	return a String saying so.
+	* RunnerProcess.java:
+	(FAILED_TO_LOAD_DESCRIPTION): New field.
+	(UNCAUGHT_EXCEPTION_DESCRIPTION): Likewise.
+	(main): If the testname is null, call System.exit.
+	(runtest): Set the description earlier to avoid NPE.  Handle loading 
+	exceptions and uncaught exceptions better.
+	(runAndReport): Handle loading exceptions and uncaught exceptions.
+
+2006-06-27  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Makefile.am: Removed reference to 
 	gnu/testlet/TestSecurityManager2.java which no longer exists.
 	* Makefile.in: Regenerated.

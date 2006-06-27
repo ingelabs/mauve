@@ -79,9 +79,6 @@ public class Harness
   // The location of the eclipse-ecj.jar file
   private static String ecjJarLocation = null;
   
-  // How long the bootclasspath finder program can run before termination
-  private static long bcp_timeout = 60000;
-  
   // How long a test may run before it is considered hung
   private static long runner_timeout = 60000;
 
@@ -137,12 +134,6 @@ public class Harness
 
   // A watcher to determine if runnerProcess is hung
   private static TimeoutWatcher runner_watcher = null;
-  
-  // A flag indicating whether or not runnerProcess is hung
-  private static boolean testIsHung = false;
-  
-  // A lock used for synchronizing access to testIsHung
-  private static Object runner_lock = new Object();
   
   // The arguments used when this Harness was invoked, we use this to create an
   // appropriate RunnerProcess
@@ -447,7 +438,7 @@ public class Harness
         // " -bootclasspath " followed by the detected path.
         if (temp != null)              
           return " -bootclasspath " + temp;
-        return temp;
+        return "";
       }
     
     // This section is for bootclasspath's specified with
@@ -484,52 +475,22 @@ public class Harness
         new BufferedReader
         (new InputStreamReader(p.getInputStream()));
       String bcpOutput = null;
-      // Create a timer to watch this new process.
-      TimeoutWatcher tw = new TimeoutWatcher(bcp_timeout);
-      tw.start();
       while (true)
         {
-          // If for some reason the process hangs, return null, indicating we
-          // cannot auto-detect the bootclasspath.
-          if (testIsHung)
+          // This readLine() is a blocking call.  This will hang if the 
+          // bootclasspath finder hangs.
+          bcpOutput = br.readLine();
+          if (bcpOutput.equals("BCP_FINDER:can't_find_bcp_"))
             {
-              synchronized (runner_lock)
-              {
-                testIsHung = false;
-              }
-              br.close();
-              p.destroy();
+              // This means the auto-detection failed.
               return null;
             }
-          if (br.ready())
+          else if (bcpOutput.startsWith("BCP_FINDER:"))
             {
-              bcpOutput = br.readLine();
-              if (bcpOutput == null)
-                {
-                  // This means the auto-detection failed.
-                  tw.stop();
-                  return null;
-                }
-              if (bcpOutput.startsWith("BCP_FINDER:"))
-                {
-                  tw.stop();
-                  return bcpOutput.substring(11);
-                }
-              else
-                System.out.println(bcpOutput);
+              return bcpOutput.substring(11);
             }
-	  else
-	    {
-	      // FIXME - Quickworkaround for busy-waiting, needs proper FIX.
-	      try
-	        {
-		  Thread.sleep(100);
-		}
-	      catch (InterruptedException ie)
-	        {
-		  // ignore
-		}
-	    }
+          else
+            System.out.println(bcpOutput);
         }
     }
     catch (IOException ioe)
@@ -634,10 +595,10 @@ public class Harness
     try
       {
         runTest("_dump_data_");
+        runnerProcess.destroy();
         runner_in.close();
         runner_in_err.close();
-        runner_out.close();        
-        runnerProcess.destroy();
+        runner_out.close();                
       } 
     catch (IOException e) 
       {
@@ -682,6 +643,8 @@ public class Harness
     // because it may be a while before we run the next test (due to 
     // preprocessing and compilation) and we don't want the runner_watcher
     // to time out.
+    if (runner_watcher != null)
+      runner_watcher.stop();
     runner_watcher = new TimeoutWatcher(runner_timeout);    
     runTest("_confirm_startup_");
     runner_watcher.stop();
@@ -774,9 +737,8 @@ public class Harness
   {
     String tn = stripPrefix(testName.replace(File.separatorChar, '.'));
     String outputFromTest;
-    StringBuffer sb = new StringBuffer();
     boolean invalidTest = false;
-    int temp = -1;
+    int temp = -99;
 
     // Start the timeout watcher
     if (runner_watcher.isAlive())
@@ -789,113 +751,72 @@ public class Harness
     
     while (true)
       {
-        // This while loop polls for output from the test process and 
-        // passes it to System.out unless it is the signal that the 
-        // test finished properly.  Also checks to see if the watcher
-        // thread has declared the test hung and if so ends the process.
-        if (testIsHung)
-          {
-            System.err.print(sb.toString());
-            if (testName.equals("_confirm_startup_"))
-              {
-                System.err.println("ERROR: Cannot create test runner process.  Exit");
-                System.exit(1);
-              }
-            synchronized (runner_lock)
-            {
-              testIsHung = false;
-            }
-            try
-              {
-                runner_in.close();
-                runner_in_err.close();
-                runner_out.close();
-                runnerProcess.destroy();
-              }
-            catch (IOException e)
-              {
-                System.err.println("Could not close the interprocess pipes.");
-                System.exit(- 1);
-              }
-            initProcess(harnessArgs);
-            break;
-          }
+        // Continue getting output from the RunnerProcess until it
+        // signals the test completed or was invalid, or until the
+        // TimeoutWatcher stops the RunnerProcess forcefully.
         try
         {
-          if (runner_in_err.ready())
-            sb.append(runner_in_err.readLine() + "\n");
-          if (runner_in.ready())
+          outputFromTest = runner_in.readLine();
+          if (outputFromTest == null)
             {
-              outputFromTest = runner_in.readLine();              
-              if (outputFromTest.startsWith("RunnerProcess:"))
-                {
-                  invalidTest = false;
-                  // This means the RunnerProcess has sent us back some
-                  // information.  This could be telling us that a check() call
-                  // was made and we should reset the timer, or that the 
-                  // test passed, or failed, or that it wasn't a test.
-                  if (outputFromTest.endsWith("restart-timer"))
-                    runner_watcher.reset();
-                  else if (outputFromTest.endsWith("pass"))
-                    {
-                      temp = 0;
-                      break;
-                    }
-                  else if (outputFromTest.indexOf("fail-") != -1)
-                    {
-                      total_check_fails += 
-                        Integer.parseInt(outputFromTest.substring(19));
-                      temp = 1;
-                      break;
-                    }
-                  else if (outputFromTest.endsWith("not-a-test"))
-                    {
-                      // Temporarily decrease the total number of tests,
-                      // because it will be incremented later even 
-                      // though the test was not a real test.
-                      invalidTest = true;
-                      total_tests--;
-                      temp = 0;
-                      break;
-                    }                  
-                } 
-              else if (outputFromTest.equals("_startup_okay_") || 
-                  outputFromTest.equals("_data_dump_okay_"))
-                return;
-              else
-                // This means it was just output from the test, like a 
-                // System.out.println within the test itself, we should
-                // pass these on to stdout.
-                System.out.println(outputFromTest);
+              // This means the test hung.
+              initProcess(harnessArgs);
+              temp = - 1;              
+              break;
             }
+          else if (outputFromTest.startsWith("RunnerProcess:"))
+            {
+              invalidTest = false;
+              // This means the RunnerProcess has sent us back some
+              // information. This could be telling us that a check() call
+              // was made and we should reset the timer, or that the
+              // test passed, or failed, or that it wasn't a test.
+              if (outputFromTest.endsWith("restart-timer"))
+                runner_watcher.reset();
+              else if (outputFromTest.endsWith("pass"))
+                {
+                  temp = 0;
+                  break;
+                }
+              else if (outputFromTest.indexOf("fail-loading") != -1)
+                {
+                  temp = 1;
+                  System.out.println(outputFromTest.substring(27));
+                }
+              else if (outputFromTest.indexOf("fail-") != - 1)
+                {
+                  total_check_fails += Integer.parseInt(outputFromTest.substring(19));
+                  temp = 1;
+                  break;
+                }
+              else if (outputFromTest.endsWith("not-a-test"))
+                {
+                  // Temporarily decrease the total number of tests,
+                  // because it will be incremented later even
+                  // though the test was not a real test.
+                  invalidTest = true;
+                  total_tests--;
+                  temp = 0;
+                  break;
+                }
+            }
+          else if (outputFromTest.equals("_startup_okay_")
+              || outputFromTest.equals("_data_dump_okay_"))
+            return;
           else
-            {
-	      if (sb.length() != 0)
-	        {
-                  System.err.print(sb.toString());
-                  sb = new StringBuffer();
-		}
-
-              // FIXME - Quickworkaround for busy-waiting, needs proper FIX.
-              try
-                {
-                  Thread.sleep(100);
-                }
-              catch (InterruptedException ie)
-                {
-                  // ignore
-                }
-            }
+            // This means it was just output from the test, like a
+            // System.out.println within the test itself, we should
+            // pass these on to stdout.
+            System.out.println(outputFromTest);
         }
         catch (IOException e)
         {
         }
       }
-    System.err.print(sb.toString());
     if (temp == -1)
       {        
-        // This means the watcher thread had to stop the process 
-        // from running.  So this is a fail.
+        // This means the watcher thread had to stop the process
+        // from running. So this is a fail.
         if (verbose)
           System.out.println("  FAIL: timed out. \nTEST FAILED: timeout " + 
                              tn);
@@ -1224,12 +1145,19 @@ public class Harness
         }
       if (shouldContinue)
         {
-          // The test is hung, set testIsHung to true so the process will be 
-          // destroyed and restarted.      
-          synchronized (runner_lock)
+          // The test is hung, destroy and restart the RunnerProcess.      
+          try
           {
-            testIsHung = true;
+            runnerProcess.destroy();
+            runner_in.close();
+            runner_in_err.close();
+            runner_out.close();
           }
+          catch (IOException e)
+          {
+            System.err.println("Could not close the interprocess pipes.");
+            System.exit(- 1);
+          }          
         }
     }
   }
@@ -1279,7 +1207,7 @@ public class Harness
               System.err.println("WARNING: Cannot auto-detect the " +
                       "bootclasspath for your VM, please file a bug report" +
                       " specifying which VM you are testing.");
-              return;
+              temp = "can't_find_bcp_";              
             }
         }
       System.out.println(result + temp);

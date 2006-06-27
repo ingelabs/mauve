@@ -51,6 +51,12 @@ public class RunnerProcess
   // A description of files that are not tests
   private static final String NOT_A_TEST_DESCRIPTION = "not-a-test";
   
+  // A description of files that fail to load
+  private static final String FAIL_TO_LOAD_DESCRIPTION = "failed-to-load";
+  
+  // A description of a test that throws an uncaught exception
+  private static final String UNCAUGHT_EXCEPTION_DESCRIPTION = "uncaught-exception";
+  
   // Total number of harness.check calls since the last checkpoint
   private int count = 0;
   
@@ -195,8 +201,10 @@ public class RunnerProcess
         try
         {
           testname = in.readLine();
+          if (testname == null)
+            System.exit(0);
           if (testname.equals("_dump_data_"))
-            {
+            {              
               if (useEMMA)
                 dumpCoverageData();
               else
@@ -238,6 +246,7 @@ public class RunnerProcess
     System.runFinalization();
 
     currentResult = new TestResult(name.substring(12));
+    description = name;
 
     checkPoint(null);
 
@@ -256,6 +265,7 @@ public class RunnerProcess
       }
     catch (Throwable ex)
       {
+        description = FAIL_TO_LOAD_DESCRIPTION;
         // Maybe the file was marked not-a-test, check that before we report
         // it as an error
         try
@@ -282,28 +292,35 @@ public class RunnerProcess
         {          
         }
         
-        String d = "FAIL: " + stripPrefix(name)
-                   + "uncaught exception when loading";
-        currentResult.addException(ex, "failed loading class ",
-                                   "couldn't load: " + name);
-        if (verbose || exceptions)
-          d += ": " + ex.toString();
-
-        if (exceptions)
-          ex.printStackTrace(System.out);
+        String r = getStackTraceString(ex, "          ");
+        currentResult.addException(ex, "failed loading class ", r);
+        
         debug(ex);
         if (ex instanceof InstantiationException
             || ex instanceof IllegalAccessException)
           debug("Hint: is the code we just loaded a public non-abstract "
                 + "class with a public nullary constructor???");
-        ++failures;
-        ++total;
+
+        
+        if (!verbose)
+          System.out.println ("FAIL: " + stripPrefix(name) + ": exception when loading:");
+        else
+          {
+            System.out.println ("TEST: "+stripPrefix(name));
+            System.out.println("  FAIL: exception when loading");
+          }
+        if (exceptions)
+          System.out.println(getStackTraceString(ex, "   "));
+        
+        if (verbose)
+          System.out.println("TEST FAILED: exception when loading "
+                             + stripPrefix(name));
+        return;
       }
 
     // If the harness started okay, now we run the test.
     if (t != null)
       {
-        description = name;
         try
           {
             if (verbose)
@@ -313,18 +330,24 @@ public class RunnerProcess
           }
         catch (Throwable ex)
           {
-            if (failures == 0 && !verbose)
-              System.out.println ("FAIL: " + stripPrefix(name) + ":");
-            removeSecurityManager();
+            
             String d = exceptionDetails(ex, name, exceptions);
             String r = getStackTraceString(ex, "          ");
-            currentResult.addException(ex, d, r);
+
+            if (failures == 0 && !verbose)
+                System.out.println ("FAIL: " + stripPrefix(name) + ":");
             System.out.println(d);
+            removeSecurityManager();
+            currentResult.addException(ex, d, r);
+            
             if (exceptions)
               System.out.println(getStackTraceString(ex, "   "));
             debug(ex);
-            ++failures;
-            ++total;
+            
+            if (verbose)
+              System.out.println("TEST FAILED: uncaught exception "
+                                 + stripPrefix(description));
+            description = UNCAUGHT_EXCEPTION_DESCRIPTION;
           }
       }
     if (report != null)
@@ -365,6 +388,17 @@ public class RunnerProcess
         System.out.println("RunnerProcess:not-a-test");
         return;
       }
+    else if (harness.description.equals(FAIL_TO_LOAD_DESCRIPTION))
+      {
+        System.out.println("RunnerProcess:fail-0");
+        return;
+      }
+    else if (harness.description.equals(UNCAUGHT_EXCEPTION_DESCRIPTION))
+      {
+        System.out.println("RunnerProcess:fail-0");
+        return;
+      }
+    
     // Print out a summary.
     int temp = harness.done();
     // Print the report if necessary.
