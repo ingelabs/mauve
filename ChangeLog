@@ -1,5 +1,9 @@
 2006-06-27  Gary Benson  <gbenson@redhat.com>
 
+	* RunnerProcess.java (removeSecurityManager): Updated.
+
+2006-06-27  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/TestSecurityManager.java: Replaced with a
 	refactored, javadocced version of what was TestSecurityManager2.
 	* gnu/testlet/java/awt/Graphics2D/security.java: Use the above.

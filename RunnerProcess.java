@@ -743,12 +743,13 @@ public class RunnerProcess
 
   private void removeSecurityManager()
   {
-    SecurityManager m = System.getSecurityManager();
-    if (m instanceof TestSecurityManager)
+    while (true)
       {
-        TestSecurityManager tsm = (TestSecurityManager) m;
-        tsm.setRunChecks(false);
-        System.setSecurityManager(null);
+	SecurityManager sm = System.getSecurityManager();
+	if (!(sm instanceof TestSecurityManager))
+	  break;
+	debug("warning: TestSecurityManager was not uninstalled");
+	((TestSecurityManager) sm).uninstall();
       }
   }
 
