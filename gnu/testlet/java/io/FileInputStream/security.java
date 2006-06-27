@@ -28,7 +28,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -42,7 +42,7 @@ public class security implements Testlet
     Permission[] fdPerm = new Permission[] {
 	new RuntimePermission("readFileDescriptor")};
     
-    TestSecurityManager2 sm = new TestSecurityManager2(harness);
+    TestSecurityManager sm = new TestSecurityManager(harness);
     try {
       sm.install();
 	
@@ -51,7 +51,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(perm);
 	new FileInputStream(file);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
@@ -63,7 +63,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(perm);
 	new FileInputStream(path);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
@@ -75,14 +75,14 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(fdPerm);
 	new FileInputStream(FileDescriptor.in);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
 	harness.check(false, "Unexpected check");
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }

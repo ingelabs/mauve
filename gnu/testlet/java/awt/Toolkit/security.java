@@ -34,7 +34,7 @@ import java.util.Properties;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -63,7 +63,7 @@ public class security implements Testlet
       Permission[] accessEventQueue = new Permission[] {
 	new AWTPermission("accessEventQueue")};
 
-      TestSecurityManager2 sm = new TestSecurityManager2(harness);
+      TestSecurityManager sm = new TestSecurityManager(harness);
       try {
 	sm.install();
 
@@ -72,7 +72,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(listenToAllAWTEvents);
 	  toolkit.addAWTEventListener(listener, AWTEvent.KEY_EVENT_MASK);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -84,7 +84,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(listenToAllAWTEvents);
 	  toolkit.removeAWTEventListener(listener);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -94,35 +94,31 @@ public class security implements Testlet
 	// throwpoint: java.awt.Toolkit-getPrintJob(Frame, String, Properties)
 	harness.checkPoint("getPrintJob(3-arg)");
 	try {
-	  sm.prepareChecks(queuePrintJob, true);
+	  sm.prepareHaltingChecks(queuePrintJob);
 	  toolkit.getPrintJob(frame, "Test job", props);
 	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
 
 	// throwpoint: java.awt.Toolkit-getPrintJob(Frame, String, JobAttributes, PageAttributes)
 	harness.checkPoint("getPrintJob(4-arg)");
 	try {
-	  sm.prepareChecks(queuePrintJob, true);
+	  sm.prepareHaltingChecks(queuePrintJob);
 	  toolkit.getPrintJob(frame, "Test job", jobattrs, pageattrs);
 	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
 
 	// throwpoint: java.awt.Toolkit-getSystemClipboard
@@ -130,7 +126,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(accessClipboard);
 	  toolkit.getSystemClipboard();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -142,7 +138,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(accessEventQueue);
 	  toolkit.getSystemEventQueue();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);

@@ -2,8 +2,10 @@
 
 // Copyright (C) 2003 Red Hat, Inc.
 // Copyright (C) 2004 Stephen Crawley.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
 // Written by Tom Tromey <tromey@redhat.com>
 // Extensively modified by Stephen Crawley <crawley@dstc.edu.au>
+// Further modified by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
 
@@ -33,7 +35,7 @@ import java.util.PropertyPermission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -83,11 +85,11 @@ public class security implements Testlet
     Permission tmpdirPropPerm =
       new PropertyPermission("java.io.tmpdir", "read");
 
-    TestSecurityManager2 sm = new TestSecurityManager2(harness);
-
     // Keep a record of created temp files so we can delete them later.
     File tf1 = null;
     File tf2 = null;
+
+    TestSecurityManager sm = new TestSecurityManager(harness);
     try {
       sm.install();
 	
@@ -96,7 +98,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
 	tmpdir.canWrite();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
@@ -108,7 +110,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.canRead();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
@@ -120,7 +122,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpfileWritePerm}, noPerms);
 	tmpfile.createNewFile();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -132,7 +134,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpfileDeletePerm}, noPerms);
 	tmpfile.delete();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -144,7 +146,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.list(null);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -156,7 +158,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.list();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -168,7 +170,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.listFiles();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -180,7 +182,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.listFiles((FilenameFilter) null);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -193,7 +195,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
 	tmpdir.listFiles((FileFilter) null);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -207,7 +209,7 @@ public class security implements Testlet
 	sm.prepareChecks(new Permission[]{tmpallWritePerm},
 			 new Permission[]{tmpdirPropPerm});
 	tf1 = File.createTempFile("pfx", "sfx");
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -219,7 +221,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirallWritePerm}, noPerms);
 	tf2 = File.createTempFile("pfx", "sfx", tmpdir);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -231,7 +233,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdir2WritePerm}, noPerms);
 	tmpdir2.setReadOnly();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -244,7 +246,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdir2DeletePerm}, noPerms);
 	tmpdir2.delete();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -257,7 +259,7 @@ public class security implements Testlet
 	sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
 	File[] roots = File.listRoots();
 	harness.check(roots.length >= 1, "File.listRoots()");
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -271,7 +273,7 @@ public class security implements Testlet
 					  tmpfile2WritePerm}, 
 			 noPerms);
 	tmpfile.renameTo(tmpfile2);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -283,7 +285,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
 	tmpdir.setLastModified(0);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -295,7 +297,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpdirDeletePerm}, noPerms);
 	tmpdir.deleteOnExit();
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (Exception ex) {
 	harness.debug(ex);
@@ -315,7 +317,7 @@ public class security implements Testlet
       // throwpoint: TODO: java.io.File-mkdirs
       // throwpoint: TODO: java.io.File-setLastModified-FILE
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "outer handler - unexpected exception");
     }

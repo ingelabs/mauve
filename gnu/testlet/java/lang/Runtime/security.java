@@ -26,7 +26,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -63,7 +63,7 @@ public class security implements Testlet
       Permission[] loadLibrary_path = new Permission[] {
 	new RuntimePermission("loadLibrary." + library_path)};
 
-      TestSecurityManager2 sm = new TestSecurityManager2(harness);
+      TestSecurityManager sm = new TestSecurityManager(harness);
       try {
 	sm.install();
 
@@ -72,7 +72,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(sCommand).waitFor();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -84,7 +84,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(sCommand, null).waitFor();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -96,7 +96,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(sCommand, null, null).waitFor();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -108,7 +108,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(aCommand).waitFor();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -120,7 +120,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(aCommand, null).waitFor();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -132,7 +132,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(aCommand, null, null).waitFor();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -142,26 +142,24 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exit
 	harness.checkPoint("exit");
 	try {
-	  sm.prepareChecks(exitVM, true);
+	  sm.prepareHaltingChecks(exitVM);
 	  runtime.exit(0);
-	  harness.check(false, "shouldn't be reached");	  
+	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
-	
+
 	// throwpoint: java.lang.Runtime-runFinalizersOnExit
 	harness.checkPoint("runFinalizersOnExit");
 	try {
 	  sm.prepareChecks(exitVM);
 	  Runtime.runFinalizersOnExit(false);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -173,7 +171,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(shutdownHooks);
 	  runtime.addShutdownHook(thread);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -185,7 +183,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(shutdownHooks);
 	  runtime.removeShutdownHook(thread);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -195,42 +193,38 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-load
 	harness.checkPoint("load");
 	try {
-	  sm.prepareChecks(loadLibrary_name, true);
+	  sm.prepareHaltingChecks(loadLibrary_name);
 	  runtime.load(library_name);
-	  harness.check(false, "shouldn't be reached");	  
+	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
 
 	// throwpoint: java.lang.Runtime-loadLibrary
 	harness.checkPoint("loadLibrary");
 	try {
-	  sm.prepareChecks(loadLibrary_path, true);
+	  sm.prepareHaltingChecks(loadLibrary_path);
 	  runtime.loadLibrary(library_path);
-	  harness.check(false, "shouldn't be reached");	  
+	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
       }
       finally {
 	sm.uninstall();
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }

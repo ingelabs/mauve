@@ -24,7 +24,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -47,7 +47,7 @@ public class security implements Testlet
       testThread.start();
       testThread.join();
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }
@@ -81,7 +81,7 @@ public class security implements Testlet
 	  new RuntimePermission("modifyThread"),
 	  new RuntimePermission("stopThread")};
 
-	TestSecurityManager2 sm = new TestSecurityManager2(harness);
+	TestSecurityManager sm = new TestSecurityManager(harness);
 	try {
 	  sm.install();
 
@@ -90,7 +90,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    new ThreadGroup("test");
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -102,7 +102,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    new ThreadGroup(testGroup, "test");
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -114,7 +114,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    testGroup.checkAccess();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -126,7 +126,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    testGroup.enumerate(new Thread[0]);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -139,7 +139,7 @@ public class security implements Testlet
 	    try {
 	      sm.prepareChecks(modifyThreadGroup);
 	      testGroup.enumerate(new Thread[0], i == 1);
-	      sm.checkAllChecked(harness);
+	      sm.checkAllChecked();
 	    }
 	    catch (SecurityException ex) {
 	      harness.debug(ex);
@@ -152,7 +152,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    testGroup.enumerate(new ThreadGroup[0]);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -165,7 +165,7 @@ public class security implements Testlet
 	    try {
 	      sm.prepareChecks(modifyThreadGroup);
 	      testGroup.enumerate(new ThreadGroup[0], i == 1);
-	      sm.checkAllChecked(harness);
+	      sm.checkAllChecked();
 	    }
 	    catch (SecurityException ex) {
 	      harness.debug(ex);
@@ -178,7 +178,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    nonSystemGroup.getParent();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -190,7 +190,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    testGroup.setDaemon(false);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -203,7 +203,7 @@ public class security implements Testlet
 	    int priority = testGroup.getMaxPriority();
 	    sm.prepareChecks(modifyThreadGroup);
 	    testGroup.setMaxPriority(priority);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -213,35 +213,31 @@ public class security implements Testlet
 	  // throwpoint: java.lang.ThreadGroup-suspend
 	  harness.checkPoint("suspend");
 	  try {
-	    sm.prepareChecks(modifyThreadGroup, modifyThread, true);
+	    sm.prepareHaltingChecks(modifyThreadGroup, modifyThread);
 	    testGroup.suspend();
-	    harness.check(false, "shouldn't be reached");
+	    harness.check(false);
 	  }
+	  catch (TestSecurityManager.SuccessException ex) {
+	    harness.check(true);
+	  } 
 	  catch (SecurityException ex) {
-	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	      harness.check(true);
-	    }
-	    else {
-	      harness.debug(ex);
-	      harness.check(false, "unexpected check");
-	    }
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
 	  }
 
 	  // throwpoint: java.lang.ThreadGroup-resume
 	  harness.checkPoint("resume");
 	  try {
-	    sm.prepareChecks(modifyThreadGroup, modifyThread, true);
+	    sm.prepareHaltingChecks(modifyThreadGroup, modifyThread);
 	    testGroup.resume();
-	    harness.check(false, "shouldn't be reached");
+	    harness.check(false);
 	  }
+	  catch (TestSecurityManager.SuccessException ex) {
+	    harness.check(true);
+	  } 
 	  catch (SecurityException ex) {
-	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	      harness.check(true);
-	    }
-	    else {
-	      harness.debug(ex);
-	      harness.check(false, "unexpected check");
-	    }
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
 	  }
 
 	  // throwpoint: TODO: java.lang.ThreadGroup-destroy
@@ -253,35 +249,31 @@ public class security implements Testlet
 	  // throwpoint: java.lang.ThreadGroup-interrupt
 	  harness.checkPoint("interrupt");
 	  try {
-	    sm.prepareChecks(modifyThreadGroup, modifyThread, true);
+	    sm.prepareHaltingChecks(modifyThreadGroup, modifyThread);
 	    testGroup.interrupt();
-	    harness.check(false, "shouldn't be reached");
+	    harness.check(false);
 	  }
+	  catch (TestSecurityManager.SuccessException ex) {
+	    harness.check(true);
+	  } 
 	  catch (SecurityException ex) {
-	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	      harness.check(true);
-	    }
-	    else {
-	      harness.debug(ex);
-	      harness.check(false, "unexpected check");
-	    }
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
 	  }
 
 	  // throwpoint: java.lang.ThreadGroup-stop
 	  harness.checkPoint("stop");
 	  try {
-	    sm.prepareChecks(modifyThreadGroup, stopThread, true);
+	    sm.prepareHaltingChecks(modifyThreadGroup, stopThread);
 	    testGroup.stop();
-	    harness.check(false, "shouldn't be reached");
+	    harness.check(false);
 	  }
+	  catch (TestSecurityManager.SuccessException ex) {
+	    harness.check(true);
+	  } 
 	  catch (SecurityException ex) {
-	    if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	      harness.check(true);
-	    }
-	    else {
-	      harness.debug(ex);
-	      harness.check(false, "unexpected check");
-	    }
+	    harness.debug(ex);
+	    harness.check(false, "unexpected check");
 	  }
 	}
 	finally {
@@ -297,7 +289,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(modifyThreadGroup);
 	    nonSystemGroup.destroy();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -308,14 +300,14 @@ public class security implements Testlet
 	  sm.uninstall();
 	}
       }
-      catch (Throwable ex) {
+      catch (Exception ex) {
 	harness.debug(ex);
 	harness.check(false, "Unexpected exception");
       }
     }
   }
 
-  public static class SpecialSecurityManager extends TestSecurityManager2
+  public static class SpecialSecurityManager extends TestSecurityManager
   {
     public SpecialSecurityManager(TestHarness harness)
     {

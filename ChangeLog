@@ -1,5 +1,32 @@
 2006-06-27  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/TestSecurityManager.java: Replaced with a
+	refactored, javadocced version of what was TestSecurityManager2.
+	* gnu/testlet/java/awt/Graphics2D/security.java: Use the above.
+	* gnu/testlet/java/awt/Robot/security.java: Likewise.
+	* gnu/testlet/java/awt/Toolkit/security.java: Likewise.
+	* gnu/testlet/java/awt/Window/security.java: Likewise.
+	* gnu/testlet/java/io/File/security.java: Likewise.
+	* gnu/testlet/java/io/FileInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/FileOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/RandomAccessFile/security.java: Likewise.
+	* gnu/testlet/java/lang/Class/security.java: Likewise.
+	* gnu/testlet/java/lang/ClassLoader/security.java: Likewise.
+	* gnu/testlet/java/lang/Runtime/security.java: Likewise.
+	* gnu/testlet/java/lang/SecurityManager/thread.java: Likewise.
+	* gnu/testlet/java/lang/System/security.java: Likewise.
+	* gnu/testlet/java/lang/Thread/insecurity.java: Likewise.
+	* gnu/testlet/java/lang/Thread/security.java: Likewise.
+	* gnu/testlet/java/lang/ThreadGroup/insecurity.java: Likewise.
+	* gnu/testlet/java/lang/ThreadGroup/security.java: Likewise.
+	* gnu/testlet/java/lang/reflect/AccessibleObject/security.java:
+	Likewise.
+	* gnu/testlet/TestSecurityManager2.java: Removed.
+
+2006-06-27  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/lang/Runtime/security.java: Classpath now
 	also checks modifyThreadGroup on thread creation.
 

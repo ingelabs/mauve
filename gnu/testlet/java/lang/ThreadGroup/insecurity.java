@@ -24,7 +24,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class insecurity implements Testlet
 {
@@ -49,7 +49,7 @@ public class insecurity implements Testlet
       testThread.start();
       testThread.join();
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }
@@ -75,7 +75,7 @@ public class insecurity implements Testlet
 	
 	Permission[] noChecks = new Permission[0];
 
-	TestSecurityManager2 sm = new TestSecurityManager2(harness);
+	TestSecurityManager sm = new TestSecurityManager(harness);
 	try {
 	  sm.install();
 
@@ -85,7 +85,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    new ThreadGroup("test");
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -98,7 +98,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    new ThreadGroup(testGroup, "test");
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -110,7 +110,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    testGroup.checkAccess();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -123,7 +123,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    testGroup.enumerate(new Thread[0]);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -137,7 +137,7 @@ public class insecurity implements Testlet
 	    try {
 	      sm.prepareChecks(noChecks);
 	      testGroup.enumerate(new Thread[0], i == 1);
-	      sm.checkAllChecked(harness);
+	      sm.checkAllChecked();
 	    }
 	    catch (SecurityException ex) {
 	      harness.debug(ex);
@@ -151,7 +151,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    testGroup.enumerate(new ThreadGroup[0]);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -165,7 +165,7 @@ public class insecurity implements Testlet
 	    try {
 	      sm.prepareChecks(noChecks);
 	      testGroup.enumerate(new ThreadGroup[0], i == 1);
-	      sm.checkAllChecked(harness);
+	      sm.checkAllChecked();
 	    }
 	    catch (SecurityException ex) {
 	      harness.debug(ex);
@@ -178,7 +178,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    nonSystemGroup.getParent();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -190,7 +190,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    testGroup.setDaemon(false);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -203,7 +203,7 @@ public class insecurity implements Testlet
 	    int priority = testGroup.getMaxPriority();
 	    sm.prepareChecks(noChecks);
 	    testGroup.setMaxPriority(priority);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -215,7 +215,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    nonSystemGroup.suspend();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -227,7 +227,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    nonSystemGroup.resume();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -239,7 +239,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    nonSystemGroup.interrupt();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -251,7 +251,7 @@ public class insecurity implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    nonSystemGroup.stop();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -262,7 +262,7 @@ public class insecurity implements Testlet
 	  sm.uninstall();
 	}
       }
-      catch (Throwable ex) {
+      catch (Exception ex) {
 	harness.debug(ex);
 	harness.check(false, "Unexpected exception");
       }

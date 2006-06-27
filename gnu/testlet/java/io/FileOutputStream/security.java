@@ -1,4 +1,4 @@
-// Copyright (C) 2005 Red Hat, Inc.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
 // Written by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
@@ -28,7 +28,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -44,8 +44,7 @@ public class security implements Testlet
     Permission wperm = new FilePermission(path, "write");
     Permission fdPerm = new RuntimePermission("writeFileDescriptor");
     
-    TestSecurityManager2 sm = new TestSecurityManager2(harness);
-
+    TestSecurityManager sm = new TestSecurityManager(harness);
     try {
       sm.install();
 	
@@ -54,7 +53,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
 	new FileOutputStream(file);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
@@ -67,7 +66,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
 	  new FileOutputStream(file, i == 1);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -80,7 +79,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
 	new FileOutputStream(path);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
@@ -93,7 +92,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(new Permission[] {wperm}, new Permission[] {rperm});
 	  new FileOutputStream(path, i == 1);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -106,14 +105,14 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[] {fdPerm});
 	new FileOutputStream(FileDescriptor.out);
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
       }
       catch (SecurityException ex) {
 	harness.debug(ex);
 	harness.check(false, "Unexpected check");
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }

@@ -26,7 +26,7 @@ import java.util.PropertyPermission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -82,25 +82,23 @@ public class security implements Testlet
       Permission[] setSecurityManager = new Permission[] {
 	new RuntimePermission("setSecurityManager")};
       
-      TestSecurityManager2 sm = new TestSecurityManager2(harness);
+      TestSecurityManager sm = new TestSecurityManager(harness);
       try {
 	sm.install();
 
 	// throwpoint: java.lang.System-exit
 	harness.checkPoint("exit");
 	try {
-	  sm.prepareChecks(exitVM, true);
+	  sm.prepareHaltingChecks(exitVM);
 	  System.exit(0);
-	  harness.check(false, "shouldn't be reached");	  
+	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
 	
 	// throwpoint: java.lang.System-runFinalizersOnExit
@@ -108,7 +106,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(exitVM);
 	  System.runFinalizersOnExit(false);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -118,35 +116,31 @@ public class security implements Testlet
 	// throwpoint: java.lang.System-load
 	harness.checkPoint("load");
 	try {
-	  sm.prepareChecks(loadLibrary_name, true);
+	  sm.prepareHaltingChecks(loadLibrary_name);
 	  System.load(library_name);
-	  harness.check(false, "shouldn't be reached");	  
+	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
 
 	// throwpoint: java.lang.System-loadLibrary
 	harness.checkPoint("loadLibrary");
 	try {
-	  sm.prepareChecks(loadLibrary_path, true);
+	  sm.prepareHaltingChecks(loadLibrary_path);
 	  System.loadLibrary(library_path);
-	  harness.check(false, "shouldn't be reached");	  
+	  harness.check(false);	  
 	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
-	  if (ex.getMessage().equals(TestSecurityManager2.successMessage)) {
-	    harness.check(true);
-	  }
-	  else {
-	    harness.debug(ex);
-	    harness.check(false, "unexpected check");
-	  }
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
 	}
 
 	// throwpoint: TODO: java.lang.System-getenv()
@@ -156,7 +150,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readVariable);
 	  System.getenv(a_variable);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -165,7 +159,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readNonVariable);
 	  System.getenv(not_a_variable);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -177,7 +171,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readWriteAllProperties);
 	  System.getProperties();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -189,7 +183,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readWriteAllProperties);
 	  System.setProperties(properties);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -201,7 +195,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readProperty);
 	  System.getProperty(a_property);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -210,7 +204,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readNonProperty);
 	  System.getProperty(not_a_property);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -222,7 +216,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readProperty);
 	  System.getProperty(a_property, "quadrant");
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -231,7 +225,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(readNonProperty);
 	  System.getProperty(not_a_property, "blade");
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -243,7 +237,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(setIO);
 	  System.setIn(System.in);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -255,7 +249,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(setIO);
 	  System.setOut(System.out);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -267,7 +261,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(setIO);
 	  System.setErr(System.err);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -279,7 +273,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(writeProperty);
 	  System.setProperty(a_property, properties.getProperty(a_property));
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -288,7 +282,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(writeNonProperty);
 	  System.setProperty(not_a_property, "hello mum");
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -302,7 +296,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(setSecurityManager);
 	  System.setSecurityManager(sm);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -313,7 +307,7 @@ public class security implements Testlet
 	sm.uninstall();
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }

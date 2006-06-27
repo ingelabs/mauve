@@ -1,4 +1,4 @@
-// Copyright (C) 2005, Red Hat, Inc.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
 //
 // This file is part of Mauve.
 //
@@ -25,7 +25,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class thread implements Testlet
 {
@@ -52,16 +52,16 @@ public class thread implements Testlet
       thread = new Thread(group, "dummy");
 
     // Check we're checking
-    TestSecurityManager2 sm = new TestSecurityManager2(harness);
+    TestSecurityManager sm = new TestSecurityManager(harness);
 
     sm.prepareChecks(new Permission[] {
       new RuntimePermission("modifyThread")});
     sm.checkAccess(thread);
-    sm.checkAllChecked(harness);
+    sm.checkAllChecked();
 
     sm.prepareChecks(new Permission[] {
       new RuntimePermission("modifyThreadGroup")});
     sm.checkAccess(group);
-    sm.checkAllChecked(harness);
+    sm.checkAllChecked();
   }
 }

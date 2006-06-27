@@ -1,5 +1,7 @@
-// Copyright (c) 2003  Red Hat, Inc.
-// Written by Tom Tromey <tromey@redhat.com>
+// Copyright (C) 2004 Stephen Crawley.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
+// Written by Stephen Crawley <crawley@dstc.edu.au>
+// Extensively modified by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
 
@@ -21,45 +23,274 @@
 package gnu.testlet;
 
 import java.security.Permission;
+import java.security.SecurityPermission;
+import java.util.PropertyPermission;
 
+/**
+ * A security manager for testing that security checks are performed.
+ *
+ * Typically a testcase would call <code>prepareChecks()</code> to
+ * specify permissions that are expected to be checked during this
+ * test.  Next you call whatever should perform the checks, and
+ * finally you call <code>checkAllChecked()</code> to check that the
+ * permissions you specified were checked.  Any unexpected checks
+ * cause a {@link SecurityException} to be thrown.
+ *
+ * As well as the permissions that must be checked it is possible to
+ * supply <code>prepareChecks()</code> with a list of permissions that
+ * may be checked.  This allows some cases where proprietary JVMs
+ * check something incidental that Classpath does not to be checked.
+ * There are also halting versions of <code>prepareChecks()</code>
+ * which will cause an exception to be thrown when all permissions
+ * have been checked.  This allows throwpoints on things like
+ * <code>System.exit()</code> to be tested.
+ *
+ * @author Stephen Crawley (crawley@dstc.edu.au)
+ * @author Gary Benson (gbenson@redhat.com)
+ */
 public class TestSecurityManager extends SecurityManager
 {
-  public boolean runChecks = true;
+  /**
+   * The security manager that was in force before we were installed.
+   */
+  private SecurityManager oldManager;
 
-  public void setRunChecks(boolean runChecks)
+  /**
+   * Permissions that must be checked for this test to pass.
+   */
+  private Permission[] mustCheck;
+
+  /**
+   * Permissions that may be checked during this test.
+   */
+  private Permission[] mayCheck;
+
+  /**
+   * Must-check permissions are flagged as they are checked.
+   */
+  private boolean[] checked;
+
+  /**
+   * The test harness in use.
+   */
+  private final TestHarness harness;
+  
+  /**
+   * Should we halt after all checks have occurred?
+   */
+  private boolean isHalting;
+
+  /**
+   * The exception to throw when halting.
+   */
+  public static class SuccessException extends SecurityException
   {
-    this.runChecks = runChecks;
+    private static final long serialVersionUID = 23;
+  };
+  private final SuccessException successException = new SuccessException();
+
+  /**
+   * An empty list of checks, for convenience.
+   */
+  private final Permission[] noChecks = new Permission[0];
+
+  /**
+   * Create a new test security manager.
+   *
+   * @param harness <code>TestHarness</code> the tests will be run by
+   */
+  public TestSecurityManager(TestHarness harness)
+  {
+    super();
+    this.harness = harness;
   }
 
-  public void checkPermission(Permission perm)
+  /**
+   * Install this test security manager.
+   */
+  public void install()
   {
-    if (runChecks && ! checkContext())
-      super.checkPermission(perm);
+    SecurityManager oldsm = System.getSecurityManager();
+    if (oldsm == this)
+      throw new IllegalStateException("already installed");
+    oldManager = oldsm;
+
+    // On some JVMs, setting the security manager for the first time
+    // triggers some initialization that reads system properties.
+    prepareChecks(noChecks, new Permission[] {
+	new SecurityPermission("getProperty.*"),
+	new PropertyPermission("*", "read")});
+
+    System.setSecurityManager(this);
   }
 
-  public void checkPermission(Permission perm, Object context)
+  /**
+   * Uninstall this test security manager, replacing it with whatever
+   * was in force before it was installed.
+   */
+  public void uninstall()
   {
-    if (runChecks && ! checkContext())
-      super.checkPermission(perm, context);
+    SecurityManager oldsm = System.getSecurityManager();
+    if (oldsm != this)
+      throw new IllegalStateException("not installed");
+
+    prepareChecks(noChecks, new Permission[] {
+	new RuntimePermission("setSecurityManager")});
+
+    System.setSecurityManager(oldManager);
   }
 
-  private boolean checkContext()
+  /**
+   * Prepare this test security manager for a series of checks.
+   * <code>checkAllChecked()</code> should be called after the
+   * test to check that the specified permissions were checked. 
+   *
+   * @param mustCheck permissions that must be checked in order for
+   *        the test to pass
+   */
+  public void prepareChecks(Permission[] mustCheck)
   {
-    Class[] stack = getClassContext();
-    // stack[0] is this class.
-    // stack[1] is another method in TestSecurityManager.
-    // stack[2] is the class that inspired the security check.
-    // We apply a fairly simple test.
-    // First, we skip any frames after stack[2] that come from the
-    // same class as stack[2].  This lets us skip implementation
-    // details of that class.  Then if the next stack element is
-    // a testlet, we fail.  Otherwise, we pass.  This way things like
-    // class initializers automatically pass.
-    // This is a bogus approach.  More work here is needed.
-    int i;
-    for (i = 3; i < stack.length && stack[i] == stack[2]; ++i)
-      ;
-    return (i >= stack.length
-	    || stack[i].getName().indexOf("gnu.testlet") == -1);
+    prepareChecks(mustCheck, noChecks);
+  }
+
+  /**
+   * Prepare this test security manager for a series of checks.
+   * <code>checkAllChecked()</code> should be called after the
+   * test to check that the specified permissions were checked. 
+   *
+   * @param mustCheck permissions that must be checked in order for
+   *        the test to pass
+   * @param mayCheck permissions that may be checked during the test
+   *        but are not required in order for the test to pass
+   */
+  public void prepareChecks(Permission[] mustCheck, Permission[] mayCheck)
+  {
+    prepareChecks(mustCheck, mayCheck, false);
+  }
+
+  /**
+   * Prepare this test security manager for a series of checks.
+   * A <code>SuccessException</code> will be thrown when the
+   * final permission is checked, halting the test.
+   *
+   * @param mustCheck permissions that must be checked in order for
+   *        the test to pass
+   */
+  public void prepareHaltingChecks(Permission[] mustCheck)
+  {
+    prepareHaltingChecks(mustCheck, noChecks);
+  }
+
+  /**
+   * Prepare this test security manager for a series of checks.
+   * A <code>SuccessException</code> will be thrown when the
+   * final permission is checked, halting the test.
+   *
+   * @param mustCheck permissions that must be checked in order for
+   *        the test to pass
+   * @param mayCheck permissions that may be checked during the test
+   *        but are not required in order for the test to pass
+   */
+  public void prepareHaltingChecks(Permission[] mustCheck,
+				   Permission[] mayCheck)
+  {
+    prepareChecks(mustCheck, mayCheck, true);
+  }
+
+  /**
+   * Prepare this test security manager for a series of checks.
+   *
+   * @param mustCheck permissions that must be checked in order for
+   *        the test to pass
+   * @param mayCheck permissions that may be checked during the test
+   *        but are not required in order for the test to pass
+   * @param isHalting whether to throw a <code>SuccessException</code>
+   *        when the final permission is checked
+   */
+  protected void prepareChecks(Permission[] mustCheck,
+			       Permission[] mayCheck,
+			       boolean isHalting)
+  {
+    this.mayCheck = mayCheck;
+    this.mustCheck = mustCheck;
+    this.checked = new boolean[mustCheck.length];
+    this.isHalting = isHalting;
+  }
+
+  /**
+   * Check that this permission is one that we should be checking.
+   * 
+   * @param perm the permission to be checked
+   * @throws SuccessException if all <code>mustCheck</code>
+   *         permissions have been checked and <code>isHalting</code>
+   *         is true.
+   * @throws SecurityException if none of the <code>mustCheck</code>
+   *         or <code>mayCheck</code> permissions implies
+   *         <code>perm</code>.
+   */
+  public void checkPermission(Permission perm) throws SecurityException
+  {
+    if (harness != null)
+      harness.debug("checkPermission(" + perm + ")");
+
+    boolean matched = false;
+    for (int i = 0; i < mustCheck.length; i++) {
+      if (mustCheck[i].implies(perm))
+	matched = checked[i] = true;
+    }
+
+    if (!matched) {
+      for (int i = 0; i < mayCheck.length; i++) {
+	if (mayCheck[i].implies(perm))
+	  matched = true;
+      }
+    }
+
+    if (!matched) {
+      harness.debug("unexpected check: " + perm);
+
+      if (mustCheck.length != 0) {
+	StringBuffer expected = new StringBuffer();
+	for (int i = 0; i < mustCheck.length; i++)
+	  expected.append(' ').append(mustCheck[i]);
+	harness.debug("expected: mustCheck:" + expected.toString());
+      }
+
+      if (mayCheck.length != 0) {
+	StringBuffer expected = new StringBuffer();
+	for (int i = 0; i < mayCheck.length; i++)
+	  expected.append(' ').append(mayCheck[i]);
+	harness.debug("expected: mayCheck:" + expected.toString());
+      }
+
+      throw new SecurityException("unexpected check: " + perm);
+    }
+    
+    if (isHalting) {
+      boolean allChecked = true;
+      for (int i = 0; i < checked.length; i++) {
+	if (!checked[i])
+	  allChecked = false;
+      }
+      if (allChecked)
+	throw successException;
+    }
+  }
+
+  /**
+   * Check that all <code>mustCheck</code> permissions were checked,
+   * calling <code>TestHarness.check()</code> with the result.
+   */
+  public void checkAllChecked()
+  {
+    boolean allChecked = true;
+    for (int i = 0; i < checked.length; i++) {
+      if (!checked[i]) {
+	harness.debug("Unchecked permission: " + mustCheck[i]);
+	allChecked = false;
+      }
+    }
+    
+    harness.check(allChecked);
   }
 }

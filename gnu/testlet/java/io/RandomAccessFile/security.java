@@ -1,4 +1,4 @@
-// Copyright (C) 2005 Red Hat, Inc.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
 // Written by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
@@ -30,7 +30,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -56,8 +56,7 @@ public class security implements Testlet
 
     String[] modes = new String[] {"r", "rw", "rws", "rwd"};
     
-    TestSecurityManager2 sm = new TestSecurityManager2(harness);
-
+    TestSecurityManager sm = new TestSecurityManager(harness);
     try {
       sm.install();
 
@@ -81,7 +80,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(mustCheck, mayCheck);
 	  raf = new RandomAccessFile(file, mode);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	  if (mode == "r")
 	    ensureUnwritable(harness, raf);
 	}
@@ -95,7 +94,7 @@ public class security implements Testlet
 	try {
 	  sm.prepareChecks(mustCheck, mayCheck);
 	  raf = new RandomAccessFile(path, mode);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	  if (mode == "r")
 	    ensureUnwritable(harness, raf);
 	}
@@ -105,7 +104,7 @@ public class security implements Testlet
 	}
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }

@@ -1,4 +1,4 @@
-// Copyright (C) 2005 Red Hat, Inc.
+// Copyright (C) 2005, 2006 Red Hat, Inc.
 // Written by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
@@ -29,7 +29,7 @@ import java.security.Security;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class security implements Testlet
 {
@@ -76,7 +76,7 @@ public class security implements Testlet
 	Permission[] getProtectionDomain = new Permission[] {
 	  new RuntimePermission("getProtectionDomain")};
 	
-	TestSecurityManager2 sm = new TestSecurityManager2(harness);
+	TestSecurityManager sm = new TestSecurityManager(harness);
 	try {
 	  sm.install();
 
@@ -85,7 +85,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(getClassLoader);
 	    Class.forName("java.lang.Class", false, null);
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -97,7 +97,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(getClassLoader);
 	    testClass.getClassLoader();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -109,7 +109,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(noChecks);
 	    Thread.class.getClassLoader();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -124,7 +124,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(getProtectionDomain);
 	    testClass.getProtectionDomain();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -133,7 +133,7 @@ public class security implements Testlet
 	  try {
 	    sm.prepareChecks(getProtectionDomain);
 	    getClass().getProtectionDomain();
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -160,13 +160,13 @@ public class security implements Testlet
 	Security.setProperty("package.access", oldrestrictions);
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }
   }
 
-  private void getMemberChecks(TestHarness harness, TestSecurityManager2 sm,
+  private void getMemberChecks(TestHarness harness, TestSecurityManager sm,
 			       Class testClass, boolean declared,
 			       Permission[] mustCheck)
   {
@@ -184,7 +184,7 @@ public class security implements Testlet
 	testClass.getDeclaredClasses();
       else
 	testClass.getClasses();
-      sm.checkAllChecked(harness);
+      sm.checkAllChecked();
     }
     catch (SecurityException ex) {
       harness.debug(ex);
@@ -203,7 +203,7 @@ public class security implements Testlet
 	testClass.getDeclaredFields();
       else
 	testClass.getFields();
-      sm.checkAllChecked(harness);
+      sm.checkAllChecked();
     }
     catch (SecurityException ex) {
       harness.debug(ex);
@@ -222,7 +222,7 @@ public class security implements Testlet
 	testClass.getDeclaredMethods();
       else
 	testClass.getMethods();
-      sm.checkAllChecked(harness);
+      sm.checkAllChecked();
     }
     catch (SecurityException ex) {
       harness.debug(ex);
@@ -241,7 +241,7 @@ public class security implements Testlet
 	testClass.getDeclaredConstructors();
       else
 	testClass.getConstructors();
-      sm.checkAllChecked(harness);
+      sm.checkAllChecked();
     }
     catch (SecurityException ex) {
       harness.debug(ex);
@@ -274,7 +274,7 @@ public class security implements Testlet
 	  catch (NoSuchFieldException e) {
 	    exists = false;
 	  }
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	  harness.check(exists == (j > level));
 	}
       }
@@ -307,7 +307,7 @@ public class security implements Testlet
 	    catch (NoSuchMethodException e) {
 	      exists = false;
 	    }
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	    harness.check(exists == (j > level && k > 0));
 	  }
 	}
@@ -342,7 +342,7 @@ public class security implements Testlet
 	catch (NoSuchMethodException e) {
 	  exists = false;
 	}
-	sm.checkAllChecked(harness);
+	sm.checkAllChecked();
 	harness.check(exists == (i > level));
       }
     }
@@ -422,7 +422,7 @@ public class security implements Testlet
   // checks no permissions if memberType is Member.PUBLIC.  This class
   // changes this, allowing us to test get{Field,Method,Constructor}.
   // No other tests should use this class.
-  private static class TestSecurityManager3 extends TestSecurityManager2
+  private static class TestSecurityManager3 extends TestSecurityManager
   {
     TestSecurityManager3(TestHarness harness)
     {

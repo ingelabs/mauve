@@ -24,7 +24,7 @@ import java.security.Permission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
-import gnu.testlet.TestSecurityManager2;
+import gnu.testlet.TestSecurityManager;
 
 public class insecurity implements Testlet
 {
@@ -35,7 +35,7 @@ public class insecurity implements Testlet
     try {
       harness.checkPoint("setup");
 
-      TestSecurityManager2 sm = new TestSecurityManager2(harness);
+      TestSecurityManager sm = new TestSecurityManager(harness);
 
       // The default SecurityManager.checkAccess(Thread) method should
       // only check permissions when the thread in question is a system
@@ -79,7 +79,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  testThread.checkAccess();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -91,7 +91,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  testThread.interrupt();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -103,7 +103,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  testThread.suspend();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -115,7 +115,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  testThread.resume();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -128,7 +128,7 @@ public class insecurity implements Testlet
 	  int priority = testThread.getPriority();
 	  sm.prepareChecks(noChecks);
 	  testThread.setPriority(priority);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -140,7 +140,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  testThread.setName("a test thread");
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -152,7 +152,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  testThread.setDaemon(false);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -164,7 +164,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(stopThread);
 	  testThread.stop();
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -176,7 +176,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(stopThread);
 	  testThread.stop(threadDeath);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -186,7 +186,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(stopThread);
 	  testThread.stop(notThreadDeath);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -216,7 +216,7 @@ public class insecurity implements Testlet
 	      new Thread(nonSystemGroup, "test thread");
 	      break;
 	    }
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
@@ -228,7 +228,7 @@ public class insecurity implements Testlet
 	sm.uninstall();
       }
     }
-    catch (Throwable ex) {
+    catch (Exception ex) {
       harness.debug(ex);
       harness.check(false, "Unexpected exception");
     }
@@ -238,7 +238,7 @@ public class insecurity implements Testlet
   public static class SysTestRunner implements Runnable
   {
     private TestHarness harness;
-    private TestSecurityManager2 sm;
+    private TestSecurityManager sm;
 
     private static Runnable runnable = new Runnable()
     {
@@ -247,7 +247,7 @@ public class insecurity implements Testlet
       }
     };
 
-    public SysTestRunner(TestHarness harness, TestSecurityManager2 sm)
+    public SysTestRunner(TestHarness harness, TestSecurityManager sm)
     {
       this.harness = harness;
       this.sm = sm;
@@ -261,7 +261,7 @@ public class insecurity implements Testlet
 	try {
 	  sm.prepareChecks(noChecks);
 	  Thread.enumerate(new Thread[0]);
-	  sm.checkAllChecked(harness);
+	  sm.checkAllChecked();
 	}
 	catch (SecurityException ex) {
 	  harness.debug(ex);
@@ -290,7 +290,7 @@ public class insecurity implements Testlet
 	      new Thread(runnable, "test thread");
 	      break;
 	    }
-	    sm.checkAllChecked(harness);
+	    sm.checkAllChecked();
 	  }
 	  catch (SecurityException ex) {
 	    harness.debug(ex);
