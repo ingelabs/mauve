@@ -1,3 +1,8 @@
+2006-06-27  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/lang/ThreadGroup/insecurity.java:
+	Removed some unused stuff.
+
 2006-06-27  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/Component/setComponentOrientation.java: 

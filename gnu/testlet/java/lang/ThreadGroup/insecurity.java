@@ -75,16 +75,6 @@ public class insecurity implements Testlet
 	
 	Permission[] noChecks = new Permission[0];
 
-	Permission[] modifyThreadGroup = new Permission[] {
-	  new RuntimePermission("modifyThreadGroup")};
-
-	Permission[] modifyThread = new Permission[] {
-	  new RuntimePermission("modifyThread")};
-
-	Permission[] stopThread = new Permission[] {
-	  new RuntimePermission("modifyThread"),
-	  new RuntimePermission("stopThread")};
-
 	TestSecurityManager2 sm = new TestSecurityManager2(harness);
 	try {
 	  sm.install();
