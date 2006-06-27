@@ -48,8 +48,9 @@ public class security implements Testlet
 
       Permission[] executeCommand = new Permission[] {
 	new FilePermission(sCommand, "execute")};
-      Permission[] modifyThread = new Permission[] {
-	new RuntimePermission("modifyThread")};
+      Permission[] modifyThreadOrGroup = new Permission[] {
+	new RuntimePermission("modifyThread"),
+	new RuntimePermission("modifyThreadGroup")};
 
       Permission[] exitVM = new Permission[] {
 	new RuntimePermission("exitVM")};
@@ -69,7 +70,7 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exec(String)
 	harness.checkPoint("exec(String)");
 	try {
-	  sm.prepareChecks(executeCommand, modifyThread);
+	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(sCommand).waitFor();
 	  sm.checkAllChecked(harness);
 	}
@@ -81,7 +82,7 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exec(String, String[])
 	harness.checkPoint("exec(String, String[])");
 	try {
-	  sm.prepareChecks(executeCommand, modifyThread);
+	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(sCommand, null).waitFor();
 	  sm.checkAllChecked(harness);
 	}
@@ -93,7 +94,7 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exec(String, String[], File)
 	harness.checkPoint("exec(String, String[], File)");
 	try {
-	  sm.prepareChecks(executeCommand, modifyThread);
+	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(sCommand, null, null).waitFor();
 	  sm.checkAllChecked(harness);
 	}
@@ -105,7 +106,7 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exec(String[])
 	harness.checkPoint("exec(String[])");
 	try {
-	  sm.prepareChecks(executeCommand, modifyThread);
+	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(aCommand).waitFor();
 	  sm.checkAllChecked(harness);
 	}
@@ -117,7 +118,7 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exec(String[], String[])
 	harness.checkPoint("exec(String[], String[])");
 	try {
-	  sm.prepareChecks(executeCommand, modifyThread);
+	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(aCommand, null).waitFor();
 	  sm.checkAllChecked(harness);
 	}
@@ -129,7 +130,7 @@ public class security implements Testlet
 	// throwpoint: java.lang.Runtime-exec(String[], String[], File)
 	harness.checkPoint("exec(String[], String[], File)");
 	try {
-	  sm.prepareChecks(executeCommand, modifyThread);
+	  sm.prepareChecks(executeCommand, modifyThreadOrGroup);
 	  runtime.exec(aCommand, null, null).waitFor();
 	  sm.checkAllChecked(harness);
 	}
