@@ -1,6 +1,6 @@
 // Tags: JDK1.1
 
-// Copyright (C) 2004 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2004, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,9 +13,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.java.awt.Point;
 
@@ -62,9 +62,30 @@ public class setLocation implements Testlet {
     p.setLocation(1.2, 2.3);
     harness.check(p.x, 1);
     harness.check(p.y, 2);
+    
+    p.setLocation(1.51, 2.7);
+    harness.check(p.x, 2);
+    harness.check(p.y, 3);
+    
+    p.setLocation(1.5, 2.5);
+    harness.check(p.x, 2);
+    harness.check(p.y, 3);    
+
+    p.setLocation(-1.5, -2.5);
+    harness.check(p.x, -1);
+    harness.check(p.y, -2);    
+
+    p.setLocation(1.499, 2.499);
+    harness.check(p.x, 1);
+    harness.check(p.y, 2);  
+    
+    p.setLocation(Double.NaN, Double.NaN);
+    harness.check(p.x, 0);
+    harness.check(p.y, 0);      
 
     double bigPos = Integer.MAX_VALUE + 10000.0;
     double bigNeg = Integer.MIN_VALUE - 10000.0;
+    
     p.setLocation(bigPos, bigPos);
     harness.check(p.x, Integer.MAX_VALUE);
     harness.check(p.y, Integer.MAX_VALUE);  

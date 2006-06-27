@@ -1,5 +1,10 @@
 2006-06-27  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/Point/setLocation.java
+	(test): Added new checks.
+
+2006-06-27  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Component/setName.java: New test.
 	
 2006-06-27  Gary Benson  <gbenson@redhat.com>
