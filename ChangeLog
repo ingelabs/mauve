@@ -1,5 +1,11 @@
 2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JComponent/getComponentPopupMenu.java: New test,
+	* gnu/testlet/javax/swing/JComponent/setComponentPopupMenu.java: New test,
+	* gnu/testlet/javax/swing/JComponent/setInheritsPopupMenu.java: New test.
+
+2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Component/setMaximumSize.java: New test,
 	* gnu/testlet/java/awt/Component/setMinimumSize.java: New test,
 	* gnu/testlet/java/awt/Component/setPreferredSize.java: New test.
