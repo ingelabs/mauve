@@ -1,5 +1,10 @@
 2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JComponent/getVerifyInputWhenFocusTarget.java: New test,
+	* gnu/testlet/javax/swing/JComponent/setVerifyInputWhenFocusTarget.java: New test.
+
+2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/beans/VetoableChangeSupport/addVetoableChangeListener.java: New test,
 	* gnu/testlet/javax/swing/JComponent/addVetoableChangeListener.java: New test,
 	* gnu/testlet/javax/swing/JComponent/getListeners.java
