@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.DefaultListSelectionModel;
-import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableColumnModel;
 
 /**
@@ -41,9 +41,17 @@ public class setSelectionModel implements Testlet
   public void test(TestHarness harness)      
   {
     DefaultTableColumnModel m1 = new DefaultTableColumnModel();
-    ListSelectionModel lsm = new DefaultListSelectionModel();
+    DefaultListSelectionModel lsm = new DefaultListSelectionModel();
     m1.setSelectionModel(lsm);
     harness.check(m1.getSelectionModel(), lsm);
+    ListSelectionListener[] listeners = lsm.getListSelectionListeners();
+    harness.check(listeners[0], m1);
+    
+    DefaultListSelectionModel lsm2 = new DefaultListSelectionModel();
+    m1.setSelectionModel(lsm2);
+    harness.check(m1.getSelectionModel(), lsm2);
+    listeners = lsm.getListSelectionListeners();
+    harness.check(listeners.length, 0);
     
     boolean pass = false;
     try

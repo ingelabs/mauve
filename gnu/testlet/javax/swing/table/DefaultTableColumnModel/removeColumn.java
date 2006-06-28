@@ -1,7 +1,7 @@
 // Tags: JDK1.2
 // Uses: MyListener
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -50,7 +50,14 @@ public class removeColumn implements Testlet
 
     m1.removeColumn(c1);
     harness.check(m1.getColumnCount(), 2);
+    harness.check(c1.getPropertyChangeListeners().length, 0);
+    
+    // remove a column that isn't there
+    TableColumn c3 = new TableColumn(3, 99);
+    m1.removeColumn(c3);
+    harness.check(m1.getColumnCount(), 2);
 
+    // remove a null column
     m1.removeColumn(null);
     harness.check(m1.getColumnCount(), 2);
  

@@ -42,6 +42,6 @@ public class getColumnSelectionAllowed implements Testlet
     harness.check(m1.getColumnSelectionAllowed(), false);
     m1.setColumnSelectionAllowed(true);
     harness.check(m1.getColumnSelectionAllowed(), true);
-}
+  }
 
 }

@@ -1,3 +1,25 @@
+2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/addColumn.java
+	(test): Check that no listeners are added to the column,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/constructor.java
+	(test): Call new test methods,
+	(testGeneral): Code from original test method,
+	(testChangeEventInitialization): Checks for initialization of 
+	changeEvent,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumn.java
+	(test): Add checks for bad arguments,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/getColumnSelectionAllowed: 
+	Minor reformat,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/getTotalColumnWidth.java:
+	New test,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/MyDefaultTableColumnModel.java:
+	New support class,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/removeColumn.java
+	(test): Add a check for column not in model,
+	* gnu/testlet/javax/swing/table/DefaultTableColumnModel/setSelectionModel.java
+	(test): Added new listener checks.
+
 2006-06-27  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:
