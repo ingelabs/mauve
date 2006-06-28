@@ -25,6 +25,8 @@ import gnu.testlet.Testlet;
 import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyVetoException;
+import java.beans.VetoableChangeListener;
 import java.util.EventListener;
 
 import javax.swing.JComponent;
@@ -45,6 +47,15 @@ public class getListeners implements Testlet, AncestorListener {
     implements PropertyChangeListener
   {
     public void propertyChange(PropertyChangeEvent e) 
+    {
+      // ignore
+    }
+  }
+  
+  class MyVetoableChangeListener implements VetoableChangeListener
+  {
+    public void vetoableChange(PropertyChangeEvent e) 
+      throws PropertyVetoException 
     {
       // ignore
     }
@@ -77,6 +88,16 @@ public class getListeners implements Testlet, AncestorListener {
     harness.check(listeners.length, 1);
     if (listeners.length > 0) 
       harness.check(listeners[0], pcl);
+    else
+      harness.check(false);
+    
+    // try a VetoableChangeListener
+    VetoableChangeListener vcl = new MyVetoableChangeListener();
+    c.addVetoableChangeListener(vcl);
+    listeners = c.getListeners(VetoableChangeListener.class);
+    harness.check(listeners.length, 1);
+    if (listeners.length > 0) 
+      harness.check(listeners[0], vcl);
     else
       harness.check(false);
     

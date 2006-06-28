@@ -1,5 +1,15 @@
 2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/beans/VetoableChangeSupport/addVetoableChangeListener.java: New test,
+	* gnu/testlet/javax/swing/JComponent/addVetoableChangeListener.java: New test,
+	* gnu/testlet/javax/swing/JComponent/getListeners.java
+	(MyVetoableChangeListener): New inner class,
+	(test): Extended to check for VetoableChangeListeners,
+	* gnu/testlet/javax/swing/JComponent/getVetoableChangeListener.java: New test,
+	* gnu/testlet/javax/swing/JComponent/removeVetoableChangeListener.java: New test.
+
+2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JComponent/getComponentPopupMenu.java: New test,
 	* gnu/testlet/javax/swing/JComponent/setComponentPopupMenu.java: New test,
 	* gnu/testlet/javax/swing/JComponent/setInheritsPopupMenu.java: New test.
