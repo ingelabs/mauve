@@ -1,5 +1,12 @@
 2006-06-29  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/JMenuBar/getActionMap.java: New test,
+	* gnu/testlet/javax/swing/JMenuBar/getHelpMenu.java: New test,
+	* gnu/testlet/javax/swing/JMenuBar/setHelpMenu.java: New test,
+	* gnu/testlet/javax/swing/JMenuBar/setMargin.java: New test.
+
+2006-06-29  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/JComponent/getActionForKeyStroke.java: New test,
 	* gnu/testlet/javax/swing/JComponent/getRegisteredKeyStrokes.java: New test,
 	* gnu/testlet/javax/swing/JComponent/registerKeyboardAction.java: New test,
