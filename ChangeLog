@@ -1,3 +1,9 @@
+2006-06-29  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* RunnerProcess.java:
+	(runtest): Check if the class is abstract (and therefore not a test) 
+	and mark it as NOT_A_TEST_DESCRIPTION if so.
+
 2006-06-29  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JMenuBar/getActionMap.java: New test,

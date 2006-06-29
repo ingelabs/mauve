@@ -41,6 +41,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Vector;
@@ -254,6 +255,13 @@ public class RunnerProcess
     try
       {
         Class k = Class.forName(name);
+        int mods = k.getModifiers();
+        if (Modifier.isAbstract(mods))
+          {
+            description = NOT_A_TEST_DESCRIPTION;
+            return;
+          }
+        
         Object o = k.newInstance();
         if (! (o instanceof Testlet))
           {
