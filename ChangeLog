@@ -1,3 +1,10 @@
+2006-06-29  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JComponent/getActionForKeyStroke.java: New test,
+	* gnu/testlet/javax/swing/JComponent/getRegisteredKeyStrokes.java: New test,
+	* gnu/testlet/javax/swing/JComponent/registerKeyboardAction.java: New test,
+	* gnu/testlet/javax/swing/JComponent/setDefaultLocale.java: New test.
+
 2006-06-28  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JComponent/getVerifyInputWhenFocusTarget.java: New test,
