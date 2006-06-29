@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (c) 2000, 2001 NEC Corporation.
 
 // Adapted for Mauve by Audrius Meskauskas <audriusa@bluewin.ch>

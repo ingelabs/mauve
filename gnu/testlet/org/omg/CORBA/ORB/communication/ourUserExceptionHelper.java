@@ -1,3 +1,4 @@
+// Tags: not-a-test
 /* ourUserExceptionHelper.java --
    Copyright (C) 2005 Free Software Foundation, Inc.
 

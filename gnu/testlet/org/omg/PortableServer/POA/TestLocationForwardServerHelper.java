@@ -1,3 +1,4 @@
+// Tags: not-a-test
 // Copyright (c) Object Oriented Concepts, Inc. Billerica, MA, USA
 
 // Adapted for Mauve by Audrius Meskauskas <audriusa@bluewin.ch>
