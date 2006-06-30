@@ -1,3 +1,8 @@
+2006-06-30  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/TextArea/constructors.java: New test,
+	* gnu/testlet/java/awt/TextField/constructors.java: New test.
+	
 2006-06-29  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* gnu/testlet/org/omg/CORBA/ORB/RF11/A_except1Helper.java,
