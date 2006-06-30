@@ -645,10 +645,10 @@ public class Harness
     // to time out.
     if (runner_watcher != null)
       runner_watcher.stop();
-    runner_watcher = new TimeoutWatcher(runner_timeout);    
+    runner_watcher = new TimeoutWatcher(runner_timeout, runnerProcess);
     runTest("_confirm_startup_");
     runner_watcher.stop();
-    runner_watcher = new TimeoutWatcher(runner_timeout);
+    runner_watcher = new TimeoutWatcher(runner_timeout, runnerProcess);
   }
   
   /**
@@ -811,6 +811,9 @@ public class Harness
         }
         catch (IOException e)
         {
+          initProcess(harnessArgs);
+          temp = -1;
+          break;
         }
       }
     if (temp == -1)
@@ -1079,16 +1082,19 @@ public class Harness
     private boolean loop = true;
     private boolean shouldContinue = true;
     
+    private final Process runnerProcess;
+
     /**
      * Creates a new TimeoutWatcher that will wait for <code>millis</code>
      * milliseconds once started.
      * @param millis the number of milliseconds to wait before declaring the 
      * test as hung
      */
-    public TimeoutWatcher(long millis)
+    public TimeoutWatcher(long millis, Process runnerProcess)
     {
       millisToWait = millis;
       watcherThread = new Thread(this);
+      this.runnerProcess = runnerProcess;
     }
     
     /**
@@ -1148,10 +1154,10 @@ public class Harness
           // The test is hung, destroy and restart the RunnerProcess.      
           try
           {
-            runnerProcess.destroy();
-            runner_in.close();
-            runner_in_err.close();
-            runner_out.close();
+            this.runnerProcess.destroy();
+            this.runnerProcess.getInputStream().close();
+            this.runnerProcess.getErrorStream().close();
+            this.runnerProcess.getOutputStream().close();
           }
           catch (IOException e)
           {
