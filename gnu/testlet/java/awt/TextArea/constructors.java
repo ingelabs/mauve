@@ -37,6 +37,7 @@ public class constructors implements Testlet
       testConstructor2(harness);
       testConstructor3(harness);
       testConstructor4(harness);
+      testConstructor5(harness);
   }
   
   public void testConstructor1(TestHarness harness)
@@ -171,8 +172,6 @@ public class constructors implements Testlet
     harness.check(ta.getRows(), 3);
     harness.check(ta.getColumns(), 0);
     harness.check(ta.getScrollbarVisibility(), TextArea.SCROLLBARS_BOTH);
-
-  
   }
 
 }

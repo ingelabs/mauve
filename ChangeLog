@@ -1,5 +1,10 @@
 2006-06-30  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/TextArea/constructors.java
+	(test): Call testConstructor5().
+	
+2006-06-30  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/TextArea/constructors.java: New test,
 	* gnu/testlet/java/awt/TextField/constructors.java: New test.
 	
