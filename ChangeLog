@@ -1,5 +1,9 @@
 2006-07-04  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
 
+	* gnu/testlet/javax/swing/JComboBox/ComboRobot.java: New test.
+
+2006-07-04  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
+
 	* gnu/testlet/javax/swing/JTable/TableRobot.java: Added GUI tag.
 	* gnu/testlet/javax/swing/JTree/TreeRobot.java: New test.
 
