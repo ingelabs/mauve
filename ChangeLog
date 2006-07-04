@@ -1,3 +1,9 @@
+2006-07-05  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
+
+	* gnu/testlet/javax/swing/JTable/TableRobot.java
+	(vTestArrowKeyNavigation): New test case.
+	(testTable): Call vTestArrowKeyNavigation. 
+
 2006-07-04  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:

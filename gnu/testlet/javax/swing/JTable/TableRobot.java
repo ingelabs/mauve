@@ -175,6 +175,7 @@ public class TableRobot extends Asserter implements Testlet
     vCreateEditing();
     testMultipleSelection();
     vEditing();
+    vTestArrowKeyNavigation();    
     vDeleteOneByOne();
   }
 
@@ -300,6 +301,60 @@ public class TableRobot extends Asserter implements Testlet
       }
 
     verifyTableContent(records);
+  }
+  
+  private void vTestArrowKeyNavigation()
+  {
+    clickCell(table, 0,0);
+    assertEquals("First click", table.getSelectedRow(), 0);
+    
+    for (int i = 1; i < table.getRowCount(); i++)
+      {
+        r.keyPress(KeyEvent.VK_DOWN);
+        r.keyRelease(KeyEvent.VK_DOWN);
+        assertEquals("VK_DOWN", table.getSelectedRow(), i);
+      }
+    
+    for (int i = table.getRowCount()-2; i >=0; i--)
+      {
+        r.keyPress(KeyEvent.VK_UP);
+        r.keyRelease(KeyEvent.VK_UP);
+        assertEquals("VK_UP", table.getSelectedRow(), i);
+      }
+    
+    for (int i = 1; i < table.getColumnCount(); i++)
+      {
+        r.keyPress(KeyEvent.VK_RIGHT);
+        r.keyRelease(KeyEvent.VK_RIGHT);
+        assertEquals("VK_DOWN", table.getSelectedColumn(), i);
+      }
+    
+    for (int i = table.getColumnCount()-2; i >=0; i--)
+      {
+        r.keyPress(KeyEvent.VK_LEFT);
+        r.keyRelease(KeyEvent.VK_LEFT);
+        assertEquals("VK_RIGHT", table.getSelectedColumn(), i);
+      }
+    
+    // Test multiple row selection with shift.
+    r.keyPress(KeyEvent.VK_SHIFT);
+    
+    for (int i = 1; i < table.getRowCount(); i++)
+      {
+        r.keyPress(KeyEvent.VK_DOWN);
+        r.keyRelease(KeyEvent.VK_DOWN);
+        assertEquals("VK_DOWN+shift", table.getSelectedRowCount(), i+1);
+      }
+    
+    for (int i = table.getRowCount()-2; i >=0; i--)
+      {
+        r.keyPress(KeyEvent.VK_UP);
+        r.keyRelease(KeyEvent.VK_UP);
+        assertEquals("VK_UP+shift", table.getSelectedRowCount(), i+1);
+      }
+    
+    // Test multiple row selection with shift.
+    r.keyRelease(KeyEvent.VK_SHIFT);    
   }
 
   protected void setUp() throws Exception
