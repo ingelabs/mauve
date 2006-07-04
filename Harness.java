@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -126,9 +127,13 @@ public class Harness
   // A way to listen to the runner process
   private static BufferedReader runner_in = null;
   
-  // A way to listen to the runner process' standard error stream
-  private static BufferedReader runner_in_err = null;
-
+  // A thread listening to the error stream of the RunnerProcess
+  private static ErrorStreamPrinter runner_esp = null;
+  
+  // A flag indicating whether or not we shoudl restart the error stream
+  // printer when we enter the runTest method
+  private static boolean restartESP = false;
+  
   // The process that will run the tests for us
   private static Process runnerProcess = null;
 
@@ -597,7 +602,6 @@ public class Harness
         runTest("_dump_data_");
         runnerProcess.destroy();
         runner_in.close();
-        runner_in_err.close();
         runner_out.close();                
       } 
     catch (IOException e) 
@@ -628,9 +632,9 @@ public class Harness
         runner_in = 
           new BufferedReader
           (new InputStreamReader(runnerProcess.getInputStream()));
-        runner_in_err = 
-            new BufferedReader
-            (new InputStreamReader(runnerProcess.getErrorStream()));                
+        runner_esp = new ErrorStreamPrinter(runnerProcess.getErrorStream());
+        runner_esp.start();
+        
       }
     catch (IOException e)
       {
@@ -739,6 +743,13 @@ public class Harness
     String outputFromTest;
     boolean invalidTest = false;
     int temp = -99;
+    
+    // Restart the error stream printer if necessary
+    if (restartESP)
+    {
+    	restartESP = false;
+    	runner_esp = new ErrorStreamPrinter(runnerProcess.getErrorStream());
+    }
 
     // Start the timeout watcher
     if (runner_watcher.isAlive())
@@ -1068,6 +1079,54 @@ public class Harness
         s += "" + numCompileFailsInFolder + " errors)";
         return x.startsWith(s);
       }
+  }
+  
+  /**
+   * A class that implements Runnable and simply reads from an InputStream
+   * and redirects it to System.err.
+   * @author Anthony Balkissoon abalkiss at redhat dot com
+   *
+   */
+  private static class ErrorStreamPrinter
+  implements Runnable
+  {
+    private static BufferedReader in;    
+    private Thread printerThread;
+    
+    public ErrorStreamPrinter(InputStream input)
+    {
+      in = new BufferedReader
+        (new InputStreamReader(runnerProcess.getErrorStream()));
+      printerThread = new Thread(this);
+    }
+    
+    /**
+     * Starts the thread that reads and redirects input.
+     *
+     */
+    public void start()
+    {
+      printerThread.start();
+    }
+    
+    /**
+     * Reads from the error stream of the runnerProcess and redirects to
+     * System.err.
+     */
+    public void run()
+    {
+      try
+      {
+        while (true)
+          System.err.println(in.readLine());
+      }
+      catch (IOException ioe)
+      {
+        // Restart the runner error stream printer upon running
+        // the next test
+        restartESP = true;
+      }
+    }
   }
 
   /**

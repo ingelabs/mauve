@@ -1,3 +1,16 @@
+2006-07-04  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
+	(runner_in_err): Removed this field.
+	(runner_esp): New field.
+	(restartESP): New field.
+	(finalize): Removed reference to runner_in_err.
+	(initProcess): Removed reference to runner_in_err and created a new 
+	ErrorStreamPrinter.
+	(runTest): Restart the ErrorStreamPrinter if an IOException was caught
+	during the last test run.
+	(ErrorStreamPrinter): New class.
+
 2006-07-04  Audrius Meskauskas  <AudriusA@Bioinformatics.org> 
 
 	* gnu/testlet/javax/swing/JComboBox/ComboRobot.java: New test.
