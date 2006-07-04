@@ -1,4 +1,4 @@
-/* TableRobot.java -- FIXME: describe
+/* TableRobot.java -- JTable test
  Copyright (C) 2006 Audrius Meskauskas
  This file is part of Mauve.
 
@@ -19,7 +19,7 @@
 
  */
 
-// Tags: JDK1.4
+// Tags: JDK1.4 GUI
 
 
 package gnu.testlet.javax.swing.JTable;
