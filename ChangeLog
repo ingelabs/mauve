@@ -1,3 +1,9 @@
+2006-07-05  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java:
+	(ErrorStreamPrinter.run): If the readLine() returns null restart the 
+	error stream printer.
+
 2006-07-05  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/InputMap/allKeys.java: New test,

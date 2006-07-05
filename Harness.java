@@ -1118,7 +1118,17 @@ public class Harness
       try
       {
         while (true)
-          System.err.println(in.readLine());
+          {
+            String temp = in.readLine();
+            if (temp == null)
+              {
+                // This means the RunnerProcess was restarted (because of a 
+                // timeout) and we need to restart the error stream writer.
+                restartESP = true;
+                break;
+              }
+            System.err.println(temp);
+          }
       }
       catch (IOException ioe)
       {
