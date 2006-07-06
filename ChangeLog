@@ -1,3 +1,7 @@
+2006-07-06  Audrius Meskauskas  <AudriusA@Bioinformatics.or
+
+	* gnu/testlet/java/rmi/server/UID/Uniqueness.java: New test.
+
 2006-07-05  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:
