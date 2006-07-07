@@ -1,3 +1,15 @@
+2006-07-07  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/awt/Component/setFont.java: New file.
+	* gnu/testlet/java/awt/Component/isValid.java: New file.
+
+2006-06-23  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JInternalFrame/setSelected2.java
+	(test): Make sure the internal frame is showing, otherwise
+	setSelected doesn't work on JDK5. Fixed some tests to
+	PASS with JDK5.
+
 2006-07-07  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getCheckBoxIcon.java
@@ -49,6 +61,7 @@
 	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getVerticalSliderThumbIcon.java
 	(test): Add check for UIResource, change test for cached result.
 	
+>>>>>>> 1.1773
 2006-07-07  Matt Wringe <mwringe@redhat.com>
 
 	* gnu/testlet/javax/crypto/spec/TestOfPBEKeySpec.java: New test.
@@ -505,6 +518,7 @@ gnu/testlet/org/omg/PortableServer/POAOperations/communication/remotePoaControlO
 	* Harness.java (getBootClassPath): Add Thread.sleep().
 	(runTest): Likewise.
 
+>>>>>>> 1.1771
 2006-06-22  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:
