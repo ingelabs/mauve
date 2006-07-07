@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -49,6 +49,11 @@ public class getMinimumSize implements Testlet
     // setting the minimum size explicitly has no effect
     b.setMinimumSize(new Dimension(12, 34));
     harness.check(b.getMinimumSize(), new Dimension(5, 5));
+
+    // modifying the returned value should not affect the button
+    Dimension m = b.getMinimumSize();
+    m.setSize(1, 2);
+    harness.check(b.getMinimumSize(), new Dimension(5, 5));    
   }
 
 }

@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -50,8 +50,13 @@ public class getMaximumSize implements Testlet
     // setting the maximum size explicitly has no effect
     b.setMaximumSize(new Dimension(12, 34));
     harness.check(b.getMaximumSize(), new Dimension(Integer.MAX_VALUE, 
-            Integer.MAX_VALUE));  
+            Integer.MAX_VALUE));
     
+    // modifying the returned value should not affect the button
+    Dimension m = b.getMaximumSize();
+    m.setSize(1, 2);
+    harness.check(b.getMaximumSize(), new Dimension(Integer.MAX_VALUE, 
+            Integer.MAX_VALUE));    
   }
 
 }

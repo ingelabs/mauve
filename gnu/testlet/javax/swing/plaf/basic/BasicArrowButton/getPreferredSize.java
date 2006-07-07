@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -49,6 +49,11 @@ public class getPreferredSize implements Testlet
     // setting the preferred size explicitly has no effect
     b.setPreferredSize(new Dimension(12, 34));
     harness.check(b.getPreferredSize(), new Dimension(16, 16));
+    
+    // modifying the returned value should not affect the button
+    Dimension p = b.getPreferredSize();
+    p.setSize(1, 2);
+    harness.check(b.getPreferredSize(), new Dimension(16, 16));    
   }
 
 }
