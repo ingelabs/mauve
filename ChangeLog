@@ -1,5 +1,10 @@
 2006-07-07  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/AbstractButton/setRolloverIcon.java: New test,
+	* gnu/testlet/javax/swing/AbstractButton/setRolloverSelectedIcon.java: Likewise.
+
+2006-07-07  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getMaximumSize.java
 	(test): Check modification of return value,
 	* gnu/testlet/javax/swing/plaf/basic/BasicArrowButton/getMinimumSize.java
