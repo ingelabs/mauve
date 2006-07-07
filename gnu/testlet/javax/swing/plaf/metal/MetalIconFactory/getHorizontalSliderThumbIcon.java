@@ -1,6 +1,6 @@
 // Tags: JDK1.2 
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -25,6 +25,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.Icon;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
@@ -43,10 +44,11 @@ public class getHorizontalSliderThumbIcon implements Testlet
     Icon icon = MetalIconFactory.getHorizontalSliderThumbIcon();
     harness.check(icon.getIconWidth(), 15);
     harness.check(icon.getIconHeight(), 16);
+    harness.check(icon instanceof UIResource);
 
-    // check that a new instance is returned each time
+    // check that the same instance is returned each time
     Icon icon2 = MetalIconFactory.getHorizontalSliderThumbIcon();
-    harness.check(icon != icon2);
+    harness.check(icon == icon2);
   }
 
 }

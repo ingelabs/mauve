@@ -1,3 +1,54 @@
+2006-07-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getCheckBoxIcon.java
+	(test): Add check for UIResource,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getCheckBoxMenuItemIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserDetailViewIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserHomeFolderIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserListViewIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserNewFolderIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getFileChooserUpFolderIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getHorizontalSliderThumbIcon.java
+	(test): Add check for UIResource, change test for cached result,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameAltMaximizeIcon.java
+	(test): Add check for UIResource,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameCloseIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameDefaultMenuIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameMaximizeIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getInternalFrameMinimizeIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getMenuArrowIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getMenuItemArrowIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getRadioButtonIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getRadioButtonMenuItemIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeComputerIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeControlIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeFloppyDriveIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeFolderIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeHardDriveIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getTreeLeafIcon.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/MetalIconFactory/getVerticalSliderThumbIcon.java
+	(test): Add check for UIResource, change test for cached result.
+	
 2006-07-07  Matt Wringe <mwringe@redhat.com>
 
 	* gnu/testlet/javax/crypto/spec/TestOfPBEKeySpec.java: New test.

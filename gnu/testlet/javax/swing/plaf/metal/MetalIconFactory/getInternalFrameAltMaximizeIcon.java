@@ -1,6 +1,6 @@
 // Tags: JDK1.2 
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -25,6 +25,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.Icon;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
@@ -43,6 +44,7 @@ public class getInternalFrameAltMaximizeIcon implements Testlet
     Icon icon = MetalIconFactory.getInternalFrameAltMaximizeIcon(12);
     harness.check(icon.getIconWidth(), 12);
     harness.check(icon.getIconHeight(), 12);
+    harness.check(icon instanceof UIResource);
     // check that a new instance is returned each time
     Icon icon2 = MetalIconFactory.getInternalFrameAltMaximizeIcon(12);
     harness.check(icon != icon2);

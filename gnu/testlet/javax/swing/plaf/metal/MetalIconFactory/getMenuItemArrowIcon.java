@@ -1,6 +1,6 @@
 // Tags: JDK1.2 
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -27,6 +27,7 @@ import gnu.testlet.Testlet;
 import javax.swing.Icon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalIconFactory;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
@@ -47,6 +48,7 @@ public class getMenuItemArrowIcon implements Testlet
     Icon icon = MetalIconFactory.getMenuItemArrowIcon();
     harness.check(icon.getIconWidth(), 4);
     harness.check(icon.getIconHeight(), 8);
+    harness.check(icon instanceof UIResource);
     // check that a shared instance is returned each time
     Icon icon2 = MetalIconFactory.getMenuItemArrowIcon();
     harness.check(icon == icon2);

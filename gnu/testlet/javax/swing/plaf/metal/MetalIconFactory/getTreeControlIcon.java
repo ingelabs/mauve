@@ -1,6 +1,6 @@
 // Tags: JDK1.2 
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -25,6 +25,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import javax.swing.Icon;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
@@ -43,9 +44,11 @@ public class getTreeControlIcon implements Testlet
     Icon icon1 = MetalIconFactory.getTreeControlIcon(false);
     harness.check(icon1.getIconWidth(), 18);
     harness.check(icon1.getIconHeight(), 18);
+    harness.check(!(icon1 instanceof UIResource));
     Icon icon2 = MetalIconFactory.getTreeControlIcon(true);
     harness.check(icon2.getIconWidth(), 18);
     harness.check(icon2.getIconHeight(), 18);
+    harness.check(!(icon2 instanceof UIResource));
   }
 
 }
