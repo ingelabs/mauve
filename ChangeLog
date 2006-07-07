@@ -1,5 +1,9 @@
 2006-07-07  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/java/awt/Container/setLayout.java: New file.
+
+2006-07-07  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/java/awt/Component/setFont.java: New file.
 	* gnu/testlet/java/awt/Component/isValid.java: New file.
 
