@@ -1,3 +1,13 @@
+2006-07-10  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/AbstractButton/setHorizontalTextPosition.java: New file,
+	* gnu/testlet/javax/swing/AbstractButton/setVerticalTextPosition.java: New file,
+	* gnu/testlet/javax/swing/Timer/setDelay.java: New file,
+	* gnu/testlet/javax/swing/Timer/setInitialDelay.java: New file,
+	* gnu/testlet/javax/swing/ToolTipManager/setDismissDelay.java: New file,
+	* gnu/testlet/javax/swing/ToolTipManager/setInitialDelay.java: New file,
+	* gnu/testlet/javax/swing/ToolTipManager/setReshowDelay.java: New file.
+	
 2006-07-07  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/awt/testName.java: New test.
