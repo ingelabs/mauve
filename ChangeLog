@@ -1,3 +1,7 @@
+2006-07-11  Matt Wringe  <mwringe@redhat.com>
+
+	* gnu/testlet/javax/crypto/spec/TestOfSecretKeySpec.java: New file.
+
 2006-07-11  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JTable/setColumnSelectionAllowed.java: New test,
