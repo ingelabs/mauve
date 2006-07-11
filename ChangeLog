@@ -1,3 +1,14 @@
+2006-07-11  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/ButtonGroup/add.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/constructor.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/getButtonCount.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/getElements.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/getSelection.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/isSelected.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/remove.java: New file,
+	* gnu/testlet/javax/swing/ButtonGroup/setSelected.java: New file.
+
 2006-07-11  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/TestSecurityManager.java: Add new "enabled" flag.
