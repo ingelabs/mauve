@@ -1,5 +1,15 @@
 2006-07-11  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/TestSecurityManager.java: Add new "enabled" flag.
+	(install): Disable self before setting security manager.
+	(uninstall): Likewise.
+	(prepareChecks): Enable self after preparing checks.
+	(checkPermission): Don't check unless enabled, and disable self
+	before throwing exceptions.
+	(checkAllChecked): Disable self before checking.
+
+2006-07-11  Gary Benson  <gbenson@redhat.com>
+
 	* configure.in: Reinstated SRCDIR.
 	* configure: Regenerated.
 

@@ -23,8 +23,6 @@
 package gnu.testlet;
 
 import java.security.Permission;
-import java.security.SecurityPermission;
-import java.util.PropertyPermission;
 
 /**
  * A security manager for testing that security checks are performed.
@@ -65,6 +63,11 @@ public class TestSecurityManager extends SecurityManager
    */
   private Permission[] mayCheck;
 
+  /**
+   * Whether we are enabled or not.
+   */
+  private boolean enabled;
+  
   /**
    * Must-check permissions are flagged as they are checked.
    */
@@ -115,12 +118,7 @@ public class TestSecurityManager extends SecurityManager
       throw new IllegalStateException("already installed");
     oldManager = oldsm;
 
-    // On some JVMs, setting the security manager for the first time
-    // triggers some initialization that reads system properties.
-    prepareChecks(noChecks, new Permission[] {
-	new SecurityPermission("getProperty.*"),
-	new PropertyPermission("*", "read")});
-
+    enabled = false;
     System.setSecurityManager(this);
   }
 
@@ -134,9 +132,7 @@ public class TestSecurityManager extends SecurityManager
     if (oldsm != this)
       throw new IllegalStateException("not installed");
 
-    prepareChecks(noChecks, new Permission[] {
-	new RuntimePermission("setSecurityManager")});
-
+    enabled = false;
     System.setSecurityManager(oldManager);
   }
 
@@ -213,8 +209,10 @@ public class TestSecurityManager extends SecurityManager
   {
     this.mayCheck = mayCheck;
     this.mustCheck = mustCheck;
-    this.checked = new boolean[mustCheck.length];
     this.isHalting = isHalting;
+
+    checked = new boolean[mustCheck.length];
+    enabled = true;
   }
 
   /**
@@ -230,6 +228,9 @@ public class TestSecurityManager extends SecurityManager
    */
   public void checkPermission(Permission perm) throws SecurityException
   {
+    if (!enabled)
+      return;
+
     if (harness != null)
       harness.debug("checkPermission(" + perm + ")");
 
@@ -247,6 +248,8 @@ public class TestSecurityManager extends SecurityManager
     }
 
     if (!matched) {
+      enabled = false;
+      
       harness.debug("unexpected check: " + perm);
 
       if (mustCheck.length != 0) {
@@ -272,8 +275,10 @@ public class TestSecurityManager extends SecurityManager
 	if (!checked[i])
 	  allChecked = false;
       }
-      if (allChecked)
+      if (allChecked) {
+	enabled = false;
 	throw successException;
+      }
     }
   }
 
@@ -283,6 +288,8 @@ public class TestSecurityManager extends SecurityManager
    */
   public void checkAllChecked()
   {
+    enabled = false;
+
     boolean allChecked = true;
     for (int i = 0; i < checked.length; i++) {
       if (!checked[i]) {
