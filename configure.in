@@ -53,6 +53,8 @@ AC_SUBST(JAVA)
 JAVAC=${JAVAC-javac}
 AC_SUBST(JAVAC)
 
+SRCDIR=`(cd $srcdir; pwd)`
+AC_SUBST(SRCDIR)
 
 dnl Specify the tempdir.
 AC_ARG_WITH(tmpdir,

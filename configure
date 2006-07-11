@@ -272,7 +272,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
 ac_unique_file="gnu/testlet/Testlet.java"
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA EMMA ECJ_JAR AUTO_COMPILE JAVA JAVAC TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar build build_cpu build_vendor build_os host host_cpu host_vendor host_os CHECK_PATH_SEPARATOR CHECK_FILE_SEPARATOR CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE TEST_JAVA EMMA ECJ_JAR AUTO_COMPILE JAVA JAVAC SRCDIR TMPDIR MAIL_HOST LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -2955,6 +2955,8 @@ JAVA=${JAVA-java}
 JAVAC=${JAVAC-javac}
 
 
+SRCDIR=`(cd $srcdir; pwd)`
+
 
 
 # Check whether --with-tmpdir or --without-tmpdir was given.
@@ -3702,6 +3704,7 @@ s,@ECJ_JAR@,$ECJ_JAR,;t t
 s,@AUTO_COMPILE@,$AUTO_COMPILE,;t t
 s,@JAVA@,$JAVA,;t t
 s,@JAVAC@,$JAVAC,;t t
+s,@SRCDIR@,$SRCDIR,;t t
 s,@TMPDIR@,$TMPDIR,;t t
 s,@MAIL_HOST@,$MAIL_HOST,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
