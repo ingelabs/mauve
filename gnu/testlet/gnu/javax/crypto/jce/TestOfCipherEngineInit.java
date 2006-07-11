@@ -34,9 +34,11 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
+import java.util.Arrays;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
+import javax.crypto.spec.IvParameterSpec;
 
 /**
  * Regression tests for logic around CipherSpi.engineInit()s. If the cipher
@@ -67,6 +69,7 @@ public class TestOfCipherEngineInit
     testECB(harness);
     testNotECB(harness);
     testInitWithParameterSpec(harness);
+    testInitWithIVParameterSpec(harness);
 
     // TODO: Add tests for WRAP and UNWRAP too
   }
@@ -220,7 +223,7 @@ public class TestOfCipherEngineInit
         iv = null;
 
         AlgorithmParameters ap = cipher.getParameters();
-        AlgorithmParameterSpec backupAlg = ap.getParameterSpec(BlockCipherParameterSpec.class);
+        AlgorithmParameterSpec backupAlg = ap.getParameterSpec(IvParameterSpec.class);
         String msg = "(CBC Decrypt + null AlgorithmParameterSpec) init(3) MUST throw InvalidAlgorithmParameterException";
         try
           {
@@ -265,4 +268,94 @@ public class TestOfCipherEngineInit
         harness.fail(String.valueOf(x));
       }
   }
+  
+  // Similar test to above but tests the behaviour for:
+  // Cipher.init(int i, Key k, IVParameterSpec param)
+  // If the IV passed to the algorithm is too short or too long
+  // then a InvalidAlgorithmParameterException should be thrown
+  private void testInitWithIVParameterSpec(TestHarness harness)
+  {
+    try
+      {
+        cipher = Cipher.getInstance("DESede/CBC/NoPadding");
+        
+        // Blocksize for CBC
+        int blocksize = 8;
+   
+        IvParameterSpec IVSpec = new IvParameterSpec(new byte[blocksize -1]);
+ 
+        // check if short IV are properly throwing exceptions
+        try{
+          cipher.init(Cipher.ENCRYPT_MODE, key, IVSpec);
+        } catch (Exception e) {
+          String type = e.getClass().getName();
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
+                        "(CBC Encrypt + short IV) MUST throw InvalidAlgorithmParameterException");
+        }
+        try {
+          cipher.init(Cipher.DECRYPT_MODE, key, IVSpec);
+        } catch (Exception e) {
+          String type = e.getClass().getName();
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
+                        "(CBC Decrypt + short IV) MUST throw InvalidAlgorithmParameterException");
+        }
+        
+        IVSpec = new IvParameterSpec(new byte[blocksize +1]);
+        
+        // check if long IV are properly throwing exceptions
+        try{
+          cipher.init(Cipher.ENCRYPT_MODE, key, IVSpec);
+        } catch (Exception e) {
+          String type = e.getClass().getName();
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
+                        "(CBC Encrypt + long IV) MUST throw InvalidAlgorithmParameterException");
+        }
+                
+        try {
+          cipher.init(Cipher.DECRYPT_MODE, key, IVSpec);
+        } catch (Exception e) {
+          String type = e.getClass().getName();
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
+                        "(CBC Decrypt + long IV) MUST throw InvalidAlgorithmParameterException");
+        }
+        
+        byte[] iv = new byte[] { '0', '1', '1', '2', '3', '5', '8', '9'};
+        IVSpec = new IvParameterSpec(iv);
+        
+        // check if no exceptions are being called for a properly sized IV
+        try{
+          cipher.init(Cipher.ENCRYPT_MODE, key, IVSpec);
+        } catch (Exception e){
+          harness.fail("(CBC Encrypt + IV of lenght 8) MUST NOT throw an exception");
+        }
+        
+        byte[] plaintext = input.getBytes();
+        byte[] ciphertext = cipher.doFinal(plaintext);
+        
+        try{
+          cipher.init(Cipher.DECRYPT_MODE, key, IVSpec);
+        } catch (Exception e){
+          harness.fail("(CBC Decrypt + IV of lenght 8) MUST NOT throw an exception");
+        }
+        
+        byte[] plaintext2 = cipher.doFinal(ciphertext);
+        String recovered = new String(plaintext2);
+        harness.check(input.equals(recovered),
+                      "Original and recovered texts MUST be equal");
+                
+        byte[] cipherIV = cipher.getIV();
+        harness.check(iv != null,
+                       "(CBC Decrypt + valid IvParameterSpec) getIV() MUST NOT return null");
+        harness.check(iv.length == 8,
+                      "(CBC Decrypt + valid IvParameterSpec) IV length MUST be 8");
+        harness.check(Arrays.equals(cipherIV, iv), 
+                      "(CBC Decrypt + valid IvParameter) Cipher IV MUST match specified IV");
+                
+      } catch (Exception x){
+        harness.debug(x);
+        harness.fail(String.valueOf(x));
+      }
+  }
+  
+  
 }
