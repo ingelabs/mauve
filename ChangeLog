@@ -1,7 +1,11 @@
-2006-07-10 Matt Wringe  <mwringe@redhat.com>
+2006-07-11  David Gilbert  <david.gilbert@object-refinery.com>
 
-    * gnu/testlet/java/security/Engine/getInstance.java
-    (testAlgorithmCase): New Test. Tests algorithm name case insensitivity.
+	* gnu/testlet/java/awt/image/BufferedImage/constructors.java: New file.
+
+2006-07-10  Matt Wringe  <mwringe@redhat.com>
+
+	* gnu/testlet/java/security/Engine/getInstance.java
+	(testAlgorithmCase): New Test. Tests algorithm name case insensitivity.
 
 2006-07-10  David Gilbert  <david.gilbert@object-refinery.com>
 
