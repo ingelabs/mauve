@@ -31,7 +31,7 @@ import gnu.testlet.TestHarness;
  *
  * @author Sascha Brawer (brawer@dandelis.ch)
  */
-public class DefaultBoundedRangeModel
+public class general
   implements Testlet
 {
   public void test(TestHarness harness)
