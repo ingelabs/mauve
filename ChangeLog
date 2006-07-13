@@ -1,5 +1,10 @@
 2006-07-13  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/Create.java:
+	New test.
+
+2006-07-13  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/Insert.java:
 	New test.
 
