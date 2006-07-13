@@ -1,3 +1,10 @@
+2006-07-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/MultiPixelPackedSample/constructors.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSample/createCompatibleSampleModel.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSample/createDataBuffer.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSample/equals.java: New test.
+
 2006-07-13  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
 	* gnu/testlet/javax/swing/text/DefaultStyledDocument/Create.java:
