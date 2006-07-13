@@ -1,3 +1,11 @@
+2006-07-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel/getSampleSize.java
+	(test): Moved existing test code to test1(), now calls test1() and
+	test2();
+	(test1): New method,
+	(test2): New method.
+
 2006-07-13  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
 	* gnu/testlet/javax/swing/text/html/HTMLDocument/FindById.java:

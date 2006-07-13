@@ -1,6 +1,7 @@
 // Tags: JDK1.2
 
 // Copyright (C) 2004 Sascha Brawer <brawer@dandelis.ch>
+// Copyright (C) 2006 David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -15,9 +16,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.java.awt.image.SinglePixelPackedSampleModel;
 
@@ -36,10 +37,16 @@ import java.awt.image.SinglePixelPackedSampleModel;
 public class getSampleSize
   implements Testlet
 {
+  
   public void test(TestHarness harness)
   {
+    test1(harness);
+    test2(harness);
+  }
+  
+  public void test1(TestHarness harness)
+  {
     SinglePixelPackedSampleModel sm;
-    DataBuffer dbuf;
     int[] bitMasks;
 
     bitMasks = new int[] { 0xf0, 0x08, 0x6, 0x1 };
@@ -96,5 +103,18 @@ public class getSampleSize
 
     // Check #11
     harness.check(sizes[3], 1);
+  }
+  
+  public void test2(TestHarness harness)
+  {
+    SinglePixelPackedSampleModel m = new SinglePixelPackedSampleModel(
+        DataBuffer.TYPE_INT, 10, 20, new int[] {0xFF, 0xFF00, 0xFF0000, 
+                0xFF000000});
+    int[] sizes = m.getSampleSize();
+    harness.check(sizes.length, 4);
+    harness.check(sizes[0], 8);
+    harness.check(sizes[1], 8);
+    harness.check(sizes[2], 8);
+    harness.check(sizes[3], 8);
   }
 }
