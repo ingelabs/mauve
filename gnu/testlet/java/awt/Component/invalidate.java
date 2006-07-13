@@ -74,10 +74,19 @@ public class invalidate implements Testlet
       super.invalidate();
     }
   }
+  
+  /**
+   * Subclass of Component to allow  test.
+   */
+  public class myComponent
+      extends Component
+  {
+  }
 
   public void test (TestHarness harness)
   {
     test1(harness);
+    test2(harness);
     testInvalidateInvalidComponent(harness);
   }
 
@@ -105,6 +114,22 @@ public class invalidate implements Testlet
     harness.check(comp.invalidated, true);
 
     frame.dispose();
+  }
+  
+  private void test2(TestHarness harness)
+  {
+    myComponent c = new myComponent();
+    harness.check(c.isPreferredSizeSet(), false);
+    
+    c.setPreferredSize(new Dimension(400, 500));
+    Dimension prefSizeOld = c.getPreferredSize();
+    harness.check(c.isPreferredSizeSet(), true);
+    
+    c.invalidate();
+    harness.check(c.isPreferredSizeSet(), true);
+    Dimension prefSizeNew = c.getPreferredSize();
+    harness.check(prefSizeOld != prefSizeNew);
+    harness.check(prefSizeOld.equals(prefSizeNew));
   }
 
   private void testInvalidateInvalidComponent(TestHarness harness)
@@ -138,4 +163,5 @@ public class invalidate implements Testlet
     harness.check(c2.invalidated, true);
     f.dispose();
   }
+
 }
