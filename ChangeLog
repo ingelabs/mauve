@@ -1,3 +1,19 @@
+2006-07-13  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/SampleModel/createDataBuffer.java: 
+	New file,
+	* gnu/testlet/java/awt/image/SampleModel/getPixel.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/getPixels.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/getSample.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/getSampleDouble.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/getSampleFloat.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/getSamples.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/getSampleSize.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/setPixel.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/setPixels.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/setSample.java: Likewise,
+	* gnu/testlet/java/awt/image/SampleModel/setSamples.java: Likewise.
+
 2006-07-11  Matt Wringe  <mwringe@redhat.com>
 
 	* gnu/testlet/javax/crypto/spec/TestOfSecretKeySpec.java: New file.
