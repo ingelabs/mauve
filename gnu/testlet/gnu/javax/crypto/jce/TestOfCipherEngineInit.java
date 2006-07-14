@@ -285,38 +285,44 @@ public class TestOfCipherEngineInit
         IvParameterSpec IVSpec = new IvParameterSpec(new byte[blocksize -1]);
  
         // check if short IV are properly throwing exceptions
+        String msg = "(CBC Encrypt + short IV) MUST throw InvalidAlgorithmParameterException";
         try{
           cipher.init(Cipher.ENCRYPT_MODE, key, IVSpec);
+          harness.fail(msg);
         } catch (Exception e) {
           String type = e.getClass().getName();
-          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
-                        "(CBC Encrypt + short IV) MUST throw InvalidAlgorithmParameterException");
+          harness.debug(e);
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),msg);
         }
+        
+        msg = "(CBC Decrypt + short IV) MUST throw InvalidAlgorithmParameterException";
         try {
           cipher.init(Cipher.DECRYPT_MODE, key, IVSpec);
+          harness.fail(msg);
         } catch (Exception e) {
           String type = e.getClass().getName();
-          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
-                        "(CBC Decrypt + short IV) MUST throw InvalidAlgorithmParameterException");
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),msg);
         }
         
         IVSpec = new IvParameterSpec(new byte[blocksize +1]);
         
         // check if long IV are properly throwing exceptions
+        msg = "(CBC Encrypt + long IV) MUST throw InvalidAlgorithmParameterException";
         try{
           cipher.init(Cipher.ENCRYPT_MODE, key, IVSpec);
+          harness.fail(msg);
         } catch (Exception e) {
           String type = e.getClass().getName();
-          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
-                        "(CBC Encrypt + long IV) MUST throw InvalidAlgorithmParameterException");
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()), msg);
         }
-                
+        
+        msg = "(CBC Decrypt + long IV) MUST throw InvalidAlgorithmParameterException";
         try {
           cipher.init(Cipher.DECRYPT_MODE, key, IVSpec);
+          harness.fail(msg);
         } catch (Exception e) {
           String type = e.getClass().getName();
-          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()),
-                        "(CBC Decrypt + long IV) MUST throw InvalidAlgorithmParameterException");
+          harness.check(type.equals(InvalidAlgorithmParameterException.class.getName()), msg);
         }
         
         byte[] iv = new byte[] { '0', '1', '1', '2', '3', '5', '8', '9'};

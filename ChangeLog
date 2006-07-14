@@ -1,3 +1,9 @@
+2006-07-14  Matt Wringe  <mwringe@redhat.com>
+
+	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherEngineInit.java 
+	(testInitWithIVParameterSpec): Properly fail when expected 
+	exception does not occur.
+
 2006-07-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/createSubsetSampleModel.java: New test,
