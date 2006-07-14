@@ -1,3 +1,7 @@
+2006-07-14  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/File/security.java: Remove dummy mayCheck stuff.
+
 2006-07-14  raif  <raif@solomon.tng.com.au>
 
 	* gnu/testlet/gnu/javax/crypto/kwa/TestOfAESKeyWrap.java: New test.

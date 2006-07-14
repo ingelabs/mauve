@@ -52,9 +52,6 @@ public class security implements Testlet
     File tmpfile2 = new File(tmpdir, "testfile2");
     harness.check(tmpfile2.delete() || !tmpfile2.exists());
 
-    Permission[] noPerms = new Permission[1];
-    noPerms[0] = new RuntimePermission("shutdownHooks");
-
     Permission tmpdirReadPerm =
       new FilePermission(tmpdir.toString(), "read");
     Permission tmpdirWritePerm =
@@ -96,7 +93,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-canWrite-DIR
       harness.checkPoint("dir.canWrite");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirWritePerm});
 	tmpdir.canWrite();
 	sm.checkAllChecked();
       }
@@ -108,7 +105,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-canRead-DIR
       harness.checkPoint("dir.canRead");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm});
 	tmpdir.canRead();
 	sm.checkAllChecked();
       }
@@ -120,7 +117,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-createNewFile
       harness.checkPoint("file.createNewFile");
       try {
-	sm.prepareChecks(new Permission[]{tmpfileWritePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpfileWritePerm});
 	tmpfile.createNewFile();
 	sm.checkAllChecked();
       }
@@ -132,7 +129,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-delete-FILE
       harness.checkPoint("file.delete");
       try {
-	sm.prepareChecks(new Permission[]{tmpfileDeletePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpfileDeletePerm});
 	tmpfile.delete();
 	sm.checkAllChecked();
       }
@@ -144,7 +141,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-list(FilenameFilter)
       harness.checkPoint("dir.list(null)");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm});
 	tmpdir.list(null);
 	sm.checkAllChecked();
       }
@@ -156,7 +153,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-list
       harness.checkPoint("dir.list()");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm});
 	tmpdir.list();
 	sm.checkAllChecked();
       }
@@ -168,7 +165,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-listFiles
       harness.checkPoint("dir.listFiles()");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm});
 	tmpdir.listFiles();
 	sm.checkAllChecked();
       }
@@ -180,7 +177,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-listFiles(FilenameFilter)
       harness.checkPoint("dir.listFiles(FilenameFilter)");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm});
 	tmpdir.listFiles((FilenameFilter) null);
 	sm.checkAllChecked();
       }
@@ -193,7 +190,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-listFiles(FileFilter)
       harness.checkPoint("dir.listFiles(FileFilter)");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirReadPerm});
 	tmpdir.listFiles((FileFilter) null);
 	sm.checkAllChecked();
       }
@@ -219,7 +216,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-createTempFile(String, String, File)
       harness.checkPoint("createTempFile(3-args)");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirallWritePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirallWritePerm});
 	tf2 = File.createTempFile("pfx", "sfx", tmpdir);
 	sm.checkAllChecked();
       }
@@ -231,7 +228,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-setReadOnly-DIR
       harness.checkPoint("dir.setReadOnly");
       try {
-	sm.prepareChecks(new Permission[]{tmpdir2WritePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdir2WritePerm});
 	tmpdir2.setReadOnly();
 	sm.checkAllChecked();
       }
@@ -244,7 +241,7 @@ public class security implements Testlet
       // Make sure we remove the read only temp dir
       harness.checkPoint("dir.delete");
       try {
-	sm.prepareChecks(new Permission[]{tmpdir2DeletePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdir2DeletePerm});
 	tmpdir2.delete();
 	sm.checkAllChecked();
       }
@@ -256,7 +253,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-listRoots
       harness.checkPoint("listRoots()");
       try {
-	sm.prepareChecks(new Permission[]{rootReadPerm}, noPerms);
+	sm.prepareChecks(new Permission[]{rootReadPerm});
 	File[] roots = File.listRoots();
 	harness.check(roots.length >= 1, "File.listRoots()");
 	sm.checkAllChecked();
@@ -270,8 +267,7 @@ public class security implements Testlet
       harness.checkPoint("file.renameTo");
       try {
 	sm.prepareChecks(new Permission[]{tmpfileWritePerm, 
-					  tmpfile2WritePerm}, 
-			 noPerms);
+					  tmpfile2WritePerm});
 	tmpfile.renameTo(tmpfile2);
 	sm.checkAllChecked();
       }
@@ -283,7 +279,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-setLastModified-DIR
       harness.checkPoint("dir.setLastModified()");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirWritePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirWritePerm});
 	tmpdir.setLastModified(0);
 	sm.checkAllChecked();
       }
@@ -295,7 +291,7 @@ public class security implements Testlet
       // throwpoint: java.io.File-deleteOnExit-DIR
       harness.checkPoint("dir.deleteOnExit()");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirDeletePerm}, noPerms);
+	sm.prepareChecks(new Permission[]{tmpdirDeletePerm});
 	tmpdir.deleteOnExit();
 	sm.checkAllChecked();
       }
