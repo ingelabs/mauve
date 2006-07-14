@@ -1,5 +1,21 @@
 2006-07-14  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/createSubsetSampleModel.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getBitOffset.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getDataBitOffset.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getOffset.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getPixel.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getPixelBitStride.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getSample.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getSampleSize.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getScanlineStride.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getTransferType.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/hashCode.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/setPixel.java: New test,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/setSample.java: New test.
+
+2006-07-14  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/createDataBuffer.java
 	(test): Added new checks.
 
