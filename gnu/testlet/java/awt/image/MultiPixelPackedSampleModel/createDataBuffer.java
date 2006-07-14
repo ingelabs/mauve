@@ -40,5 +40,40 @@ public class createDataBuffer implements Testlet
     harness.check(db.getDataType(), DataBuffer.TYPE_INT);
     harness.check(db.getNumBanks(), 1);
     harness.check(db.getSize(), 60);
+
+    MultiPixelPackedSampleModel m2 = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_INT, 10, 20, 8, 4, 16);
+    DataBuffer db2 = m2.createDataBuffer();
+    harness.check(db2.getDataType(), DataBuffer.TYPE_INT);
+    harness.check(db2.getNumBanks(), 1);
+    harness.check(db2.getSize(), 81);
+
+    MultiPixelPackedSampleModel m3 = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_BYTE, 10, 20, 8);
+    DataBuffer db3 = m3.createDataBuffer();
+    harness.check(db3.getDataType(), DataBuffer.TYPE_BYTE);
+    harness.check(db3.getNumBanks(), 1);
+    harness.check(db3.getSize(), 200);
+
+    MultiPixelPackedSampleModel m4 = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_BYTE, 10, 20, 8, 11, 16);
+    DataBuffer db4 = m4.createDataBuffer();
+    harness.check(db4.getDataType(), DataBuffer.TYPE_BYTE);
+    harness.check(db4.getNumBanks(), 1);
+    harness.check(db4.getSize(), 222);
+  
+    MultiPixelPackedSampleModel m5 = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_USHORT, 10, 20, 8);
+    DataBuffer db5 = m5.createDataBuffer();
+    harness.check(db5.getDataType(), DataBuffer.TYPE_USHORT);
+    harness.check(db5.getNumBanks(), 1);
+    harness.check(db5.getSize(), 100);
+
+    MultiPixelPackedSampleModel m6 = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_USHORT, 10, 20, 8, 6, 16);
+    DataBuffer db6 = m6.createDataBuffer();
+    harness.check(db6.getDataType(), DataBuffer.TYPE_USHORT);
+    harness.check(db6.getNumBanks(), 1);
+    harness.check(db6.getSize(), 121);
   }
 }
