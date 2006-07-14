@@ -1,3 +1,8 @@
+2006-07-14  raif  <raif@solomon.tng.com.au>
+
+	* gnu/testlet/gnu/javax/crypto/kwa/TestOfAESKeyWrap.java: New test.
+	* gnu/testlet/gnu/javax/crypto/kwa/TestOfTripleDESKeyWrap.java: Likewise.
+
 2006-07-13  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/MultiPixelPackedSample/constructors.java: New test,
