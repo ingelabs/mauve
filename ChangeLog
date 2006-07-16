@@ -1,3 +1,11 @@
+2006-07-16  Mark Wielaard  <mark@klomp.org>
+
+	* Harness.java (runTest): Just reset runner_watcher.
+	(TimerWatcher.started): New boolean field.
+	(TimerWatcher.start): Removed method.
+	(TimerWatcher.isAlive): Removed method.
+	(reset): Start Thread if not yet started.
+
 2006-07-16  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherWrapUnwrap.java: New test.
@@ -710,7 +718,6 @@ gnu/testlet/org/omg/PortableServer/POAOperations/communication/remotePoaControlO
 	* Harness.java (getBootClassPath): Add Thread.sleep().
 	(runTest): Likewise.
 
->>>>>>> 1.1771
 2006-06-22  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* Harness.java:

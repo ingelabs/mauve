@@ -751,11 +751,8 @@ public class Harness
     	runner_esp = new ErrorStreamPrinter(runnerProcess.getErrorStream());
     }
 
-    // Start the timeout watcher
-    if (runner_watcher.isAlive())
-      runner_watcher.reset();
-    else
-      runner_watcher.start();
+    // (Re)start the timeout watcher
+    runner_watcher.reset();
     
     // Tell the RunnerProcess to run test with name testName
     runner_out.println(testName);
@@ -1148,6 +1145,7 @@ public class Harness
   {
     private long millisToWait;
     private Thread watcherThread;
+    private boolean started;
     private boolean loop = true;
     private boolean shouldContinue = true;
     
@@ -1163,15 +1161,8 @@ public class Harness
     {
       millisToWait = millis;
       watcherThread = new Thread(this);
+      started = false;
       this.runnerProcess = runnerProcess;
-    }
-    
-    /**
-     * Start the watcher thread, ie start the countdown.     
-     */
-    public void start()
-    {
-      watcherThread.start();      
     }
     
     /**
@@ -1185,22 +1176,21 @@ public class Harness
     }
     
     /**
-     * Return true if the watcher thread is currently counting down.
-     * @return true if the watcher thread is alive
-     */
-    public boolean isAlive()
-    {
-      return watcherThread.isAlive();
-    }
-    
-    /**
      * Reset the counter and wait another <code>millisToWait</code>
-     * milliseconds before declaring the test as hung.     
+     * milliseconds before declaring the test as hung.
      */
     public synchronized void reset()
     {
-      loop = true;
-      notify();
+      if (!started)
+        {
+	  watcherThread.start();
+	  started = true;
+	}
+      else
+        {
+	  loop = true;
+	  notify();
+        }
     }
     
     public synchronized void run()
