@@ -1,5 +1,13 @@
 2006-07-17  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/ComponentSampleModel/constructors.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/createDataBuffer.java: New file
+	* gnu/testlet/java/awt/image/ComponentSampleModel/equals.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/hashCode.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/MyComponentSampleModel.java: New file.
+	
+2006-07-17  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getBitOffset.java
 	(test): Added new checks,
 	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/setDataElements.java
