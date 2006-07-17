@@ -62,5 +62,18 @@ public class getBitOffset implements Testlet
     harness.check(m2.getBitOffset(9), 24);
     harness.check(m2.getBitOffset(-1), 8);
 
+    MultiPixelPackedSampleModel m3 = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_INT, 10, 20, 16);
+    harness.check(m3.getBitOffset(0), 0);
+    harness.check(m3.getBitOffset(1), 16);
+    harness.check(m3.getBitOffset(2), 0);
+    harness.check(m3.getBitOffset(3), 16);
+    harness.check(m3.getBitOffset(4), 0);
+    harness.check(m3.getBitOffset(5), 16);
+    harness.check(m3.getBitOffset(6), 0);
+    harness.check(m3.getBitOffset(7), 16);
+    harness.check(m3.getBitOffset(8), 0);
+    harness.check(m3.getBitOffset(9), 16);
+    harness.check(m3.getBitOffset(-1), -16);
   }
 }

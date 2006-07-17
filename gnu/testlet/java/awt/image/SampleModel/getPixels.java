@@ -28,6 +28,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.awt.image.DataBuffer;
+import java.awt.image.MultiPixelPackedSampleModel;
 import java.awt.image.SampleModel;
 import java.awt.image.SinglePixelPackedSampleModel;
 import java.util.Arrays;
@@ -39,6 +40,7 @@ public class getPixels implements Testlet
     testMethod1(harness);
     testMethod2(harness);
     testMethod3(harness);
+    testMethod1MultiPixelPackedSampleModel(harness);
   }
   
   public void testMethod1(TestHarness harness)
@@ -142,4 +144,37 @@ public class getPixels implements Testlet
     }
     harness.check(pass);
   }
+  
+  public void testMethod1MultiPixelPackedSampleModel(TestHarness harness)
+  {
+    harness.checkPoint("(int, int, int, int, int[], DataBuffer)");
+    SampleModel m = new MultiPixelPackedSampleModel(DataBuffer.TYPE_BYTE, 10, 
+            20, 2);
+    DataBuffer db = m.createDataBuffer();
+    int[] pixel = new int[6];
+    m.getPixels(1, 2, 2, 3, pixel, db);
+    harness.check(Arrays.equals(pixel, new int[] {0, 0, 0, 0, 0, 0}));
+    db.setElem(6, 0x18);
+    db.setElem(9, 0x30);
+    db.setElem(12, 0x1C);
+    m.getPixels(1, 2, 2, 3, pixel, db);
+    harness.check(Arrays.equals(pixel, new int[] {1, 2, 3, 0, 1, 3}));
+    
+    // if the incoming array is null, a new one is created
+    pixel = m.getPixels(1, 2, 2, 3, (int[]) null, db);
+    harness.check(Arrays.equals(pixel, new int[] {1, 2, 3, 0, 1, 3}));
+    
+    // try null data buffer
+    boolean pass = false;
+    try
+    {
+      m.getPixels(1, 2, 2, 3, pixel, null);
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+  }
+
 }

@@ -116,5 +116,11 @@ public class getSampleSize
     harness.check(sizes[1], 8);
     harness.check(sizes[2], 8);
     harness.check(sizes[3], 8);
+    
+    // if we alter the returned array, does that affect the model's state
+    sizes[0] = 99;
+    int[] sizes2 = m.getSampleSize();
+    harness.check(sizes2 != sizes);
+    harness.check(sizes2[0], 8);
   }
 }

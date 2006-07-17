@@ -28,6 +28,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.awt.image.DataBuffer;
+import java.awt.image.MultiPixelPackedSampleModel;
 import java.awt.image.SampleModel;
 import java.awt.image.SinglePixelPackedSampleModel;
 import java.util.Arrays;
@@ -69,6 +70,29 @@ public class getPixel implements Testlet
       pass = true;
     }
     harness.check(pass);
+    
+    // try with a MultiPixelPackedSampleModel
+    m = new MultiPixelPackedSampleModel(DataBuffer.TYPE_BYTE, 10, 20, 2);
+    db = m.createDataBuffer();
+    db.setElem(0, 27);
+    harness.check(m.getPixel(0, 0, (int[]) null, db)[0], 0);
+    harness.check(m.getPixel(1, 0, (int[]) null, db)[0], 1);
+    harness.check(m.getPixel(2, 0, (int[]) null, db)[0], 2);
+    harness.check(m.getPixel(3, 0, (int[]) null, db)[0], 3);
+    db.setElem(3, 27);
+    harness.check(m.getPixel(0, 1, (int[]) null, db)[0], 0);
+    harness.check(m.getPixel(1, 1, (int[]) null, db)[0], 1);
+    harness.check(m.getPixel(2, 1, (int[]) null, db)[0], 2);
+    harness.check(m.getPixel(3, 1, (int[]) null, db)[0], 3);
+    db.setElem(6, 0x18);
+    db.setElem(9, 0x30);
+    db.setElem(12, 0x1C);
+    harness.check(m.getPixel(1, 2, (int[]) null, db)[0], 1);
+    harness.check(m.getPixel(2, 2, (int[]) null, db)[0], 2);
+    harness.check(m.getPixel(1, 3, (int[]) null, db)[0], 3);
+    harness.check(m.getPixel(2, 3, (int[]) null, db)[0], 0);
+    harness.check(m.getPixel(1, 4, (int[]) null, db)[0], 1);
+    harness.check(m.getPixel(2, 4, (int[]) null, db)[0], 3);
   }
   
   public void testMethod2(TestHarness harness)

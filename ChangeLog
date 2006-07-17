@@ -1,3 +1,23 @@
+2006-07-17  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/getBitOffset.java
+	(test): Added new checks,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/setDataElements.java
+	(test): Call new test methods,
+	(testBadTransferArray): New method,
+	(testNullTransferArray): New method,
+	* gnu/testlet/java/awt/image/MultiPixelPackedSampleModel/setSample.java
+	(test): Call new test methods,
+	(testTYPE_USHORT): New method,
+	(testTYPE_BYTE): New method,
+	* gnu/testlet/java/awt/image/SampleModel/getPixel.java
+	(testMethod1): Add new checks,
+	* gnu/testlet/java/awt/image/SampleModel/getPixels.java
+	(test): Call new test method,
+	(testMethod1MultiPixelPackedSampleModel): New method,
+	* gnu/testlet/java/awt/image/SinglePixelPackedSampleModel.java
+	(test2): Added new check.
+
 2006-07-16  Mark Wielaard  <mark@klomp.org>
 
 	* Harness.java (runTest): Just reset runner_watcher.

@@ -36,6 +36,8 @@ public class setSample implements Testlet
   {
     test1(harness);
     test2(harness);
+    testTYPE_USHORT(harness);
+    testTYPE_BYTE(harness);
   }
     
   public void test1(TestHarness harness)
@@ -73,5 +75,36 @@ public class setSample implements Testlet
     m.setSample(5, 1, 0, 0xDD, db);
     harness.check(db.getElem(5), 0xAABBCCDD);
   }
+  
+  public void testTYPE_USHORT(TestHarness harness)
+  {
+    harness.checkPoint("TYPE_USHORT");
+    MultiPixelPackedSampleModel m = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_USHORT, 10, 20, 8);
+    DataBuffer db = m.createDataBuffer();
+    m.setSample(0, 0, 0, 0x12, db);
+    harness.check(db.getElem(0), 0x1200);
+    m.setSample(1, 0, 0, 0x34, db);
+    harness.check(db.getElem(0), 0x1234);
+    m.setSample(2, 1, 0, 0xAB, db);
+    harness.check(db.getElem(6), 0xAB00);
+    m.setSample(3, 1, 0, 0xCD, db);
+    harness.check(db.getElem(6), 0xABCD);
+  }
 
+  public void testTYPE_BYTE(TestHarness harness)
+  {
+    harness.checkPoint("TYPE_BYTE");
+    MultiPixelPackedSampleModel m = new MultiPixelPackedSampleModel(
+            DataBuffer.TYPE_BYTE, 10, 20, 2);
+    DataBuffer db = m.createDataBuffer();
+    m.setSample(0, 0, 0, 0x01, db);
+    harness.check(db.getElem(0), 0x40);
+    m.setSample(1, 0, 0, 0x02, db);
+    harness.check(db.getElem(0), 0x60);
+    m.setSample(2, 1, 0, 0x03, db);
+    harness.check(db.getElem(3), 0x0C);
+    m.setSample(3, 1, 0, 0x04, db);
+    harness.check(db.getElem(3), 0x0C);
+  }
 }
