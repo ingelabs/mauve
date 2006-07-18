@@ -1,3 +1,8 @@
+2006-07-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/LookupTable/MyLookupTable.java: Changed
+	tag to 'not-a-test'.
+
 2006-07-18  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/javax/swing/JComboBox/ComboRobot.java

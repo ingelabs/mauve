@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: JDK1.4
+// Tags: not-a-test
 
 package gnu.testlet.java.awt.image.LookupTable;
 
