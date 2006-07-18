@@ -1,5 +1,11 @@
 2006-07-18  Francis Kung  <fkung@redhat.com>
 
+	* gnu/testlet/javax/swing/JComboBox/ComboRobot.java
+	(testCombo): Added parameter for editable comboboxes
+	(test): Added iteration for editable comboboxes.
+        
+2006-07-18  Francis Kung  <fkung@redhat.com>
+
 	* gnu/testlet/javax/swing/JComboBox/ComboRobot.java: organized
 	imports
 	(combo): Added item to combo box.

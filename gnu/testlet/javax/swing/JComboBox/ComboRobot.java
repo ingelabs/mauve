@@ -118,7 +118,7 @@ public class ComboRobot extends Asserter implements Testlet
     r.keyRelease(code);
   }
   
-  public void testCombo() throws Exception
+  public void testCombo(boolean editable) throws Exception
   {
     // Click on combo box to give it focus
     click(combo, combo.getWidth() / 2, combo.getHeight() / 2);
@@ -141,36 +141,42 @@ public class ComboRobot extends Asserter implements Testlet
     type(KeyEvent.VK_ENTER);
     assertEquals("Selecting forth component with keyboard", "d", getFocus());
     
-    // Reset to top & test the key selection manager
-    combo.setSelectedIndex(-1);
-
-    for (char i = 'a'; i <= 'f'; i++)
+    // Reset to top & test the key selection manager (only if not editable)
+    if (!editable)
       {
+        combo.setSelectedIndex(-1);
+    
+        for (char i = 'a'; i <= 'f'; i++)
+          {
+            type(KeyEvent.VK_DOWN);
+            type(KeyEvent.VK_A + (i-'a'));
+            type(KeyEvent.VK_ENTER);
+            assertEquals("Selecting with letter key, " + i,
+                         new String(new char[] { i }), getFocus());
+          }
+        
+        // Reset to top & test duplicate letters in key selection manager
+        combo.setSelectedIndex(-1);
+    
         type(KeyEvent.VK_DOWN);
-        type(KeyEvent.VK_A + (i-'a'));
+        type(KeyEvent.VK_A);
         type(KeyEvent.VK_ENTER);
-        assertEquals("Selecting with letter key, " + i,
-                     new String(new char[] { i }), getFocus());
+        assertEquals("Selecting with letter key (duplicate)", "a", getFocus());
+        
+        type(KeyEvent.VK_DOWN);
+        type(KeyEvent.VK_A);
+        type(KeyEvent.VK_ENTER);
+        assertEquals("Selecting with letter key (duplicate)", "a234", getFocus());
       }
-    
-    // Reset to top & test duplicate letters in key selection manager
-    combo.setSelectedIndex(-1);
-
-    type(KeyEvent.VK_DOWN);
-    type(KeyEvent.VK_A);
-    type(KeyEvent.VK_ENTER);
-    assertEquals("Selecting with letter key (duplicate)", "a", getFocus());
-    
-    type(KeyEvent.VK_DOWN);
-    type(KeyEvent.VK_A);
-    type(KeyEvent.VK_ENTER);
-    assertEquals("Selecting with letter key (duplicate)", "a234", getFocus());
     
     // Test the escape button too, for cancelling the popup
     type(KeyEvent.VK_DOWN);
     type(KeyEvent.VK_ESCAPE);
     assertEquals("Cancelling popup with escape key", false, combo.isPopupVisible());
 
+    // Reset to top
+    combo.setSelectedIndex(0);
+    
     Thread.sleep(5000);
   }
   
@@ -187,7 +193,12 @@ public class ComboRobot extends Asserter implements Testlet
         setUp();
         try
           {
-            testCombo();
+            // Test with regular combo box...
+            testCombo(false);
+            
+            // And editable combo box
+            combo.setEditable(true);
+            testCombo(true);
           }
         finally
           {
