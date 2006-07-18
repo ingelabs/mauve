@@ -162,10 +162,10 @@ public class constructors implements Testlet
     int[] bankIndices = new int[] {0, 0, 0};
     MyComponentSampleModel m2 = new MyComponentSampleModel(DataBuffer.TYPE_BYTE,
             10, 20, 3, 30, bandOffsets, bankIndices);
-    harness.check(bandOffsets != m.getBandOffsetsDirect());
-    harness.check(Arrays.equals(bandOffsets, m.getBandOffsetsDirect()));
-    harness.check(bankIndices != m.getBankIndicesDirect());
-    harness.check(Arrays.equals(bankIndices, m.getBankIndicesDirect()));
+    harness.check(bandOffsets != m2.getBandOffsetsDirect());
+    harness.check(Arrays.equals(bandOffsets, m2.getBandOffsetsDirect()));
+    harness.check(bankIndices != m2.getBankIndicesDirect());
+    harness.check(Arrays.equals(bankIndices, m2.getBankIndicesDirect()));
 
   }
 }

@@ -1,3 +1,31 @@
+2006-07-18  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/ByteLookupTable/constructors.java: New test,
+	* gnu/testlet/java/awt/image/ByteLookupTable/getTable.java: New test,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/constructors.java
+	(testDefensiveCopies): Check m2 not m,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/createDataBuffer.java
+	(test): Call new methods,
+	(testSingleBand): New method,
+	(testMultiBand): New method,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getOffset.java: New test,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getPixel.java: New test,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getSample.java: New test,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getSampleDouble.java: New test,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getSampleFloat.java: New test,
+	* gnu/testlet/java/awt/image/LookupOp/constructor.java: New test,
+	* gnu/testlet/java/awt/image/LookupOp/createCompatibleDestRaster.java: New test,
+	* gnu/testlet/java/awt/image/LookupOp/getBounds2D.java: New test,
+	* gnu/testlet/java/awt/image/LookupOp/getPoint2D.java: New test,
+	* gnu/testlet/java/awt/image/LookupOp/getRenderingHints.java: New test,
+	* gnu/testlet/java/awt/image/LookupOp/getTable.java: New test,
+	* gnu/testlet/java/awt/image/LookupTable/constructor.java: New test,
+	* gnu/testlet/java/awt/image/LookupTable/getNumComponents.java: New test,
+	* gnu/testlet/java/awt/image/LookupTable/getOffset.java: New test,
+	* gnu/testlet/java/awt/image/LookupTable/MyLookupTable.java: New class,
+	* gnu/testlet/java/awt/image/ShortLookupTable/constructors.java: New test,
+	* gnu/testlet/java/awt/image/ShortLookupTable/getTable.java: New test.
+
 2006-07-18  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/io/File/security.java: Fix deleteOnExit test.

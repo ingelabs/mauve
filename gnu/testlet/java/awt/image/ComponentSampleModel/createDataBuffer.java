@@ -34,11 +34,50 @@ public class createDataBuffer implements Testlet
 {
   public void test(TestHarness harness)
   {
+    testSingleBand(harness);
+    testMultiBand(harness);
+  }
+  
+  public void testSingleBand(TestHarness harness)
+  {
     ComponentSampleModel m = new ComponentSampleModel(DataBuffer.TYPE_BYTE, 10, 
-            20, 3, 30, new int[] {0, 1, 2});
+            20, 1, 30, new int[] {0, 1, 2});
     DataBuffer db = m.createDataBuffer();
     harness.check(db.getDataType(), DataBuffer.TYPE_BYTE);
     harness.check(db.getNumBanks(), 1);
-    harness.check(db.getSize(), 600);
+    harness.check(db.getSize(), 582);
+    
+    m = new ComponentSampleModel(DataBuffer.TYPE_INT, 5, 10, 1, 5, 
+            new int[] {0, 1, 2});
+    db = m.createDataBuffer();
+    harness.check(db.getDataType(), DataBuffer.TYPE_INT);
+    harness.check(db.getNumBanks(), 1);
+    harness.check(db.getSize(), 52);
+
+    m = new ComponentSampleModel(DataBuffer.TYPE_INT, 5, 10, 1, 6, 
+            new int[] {0, 1, 2});
+    db = m.createDataBuffer();
+    harness.check(db.getDataType(), DataBuffer.TYPE_INT);
+    harness.check(db.getNumBanks(), 1);
+    harness.check(db.getSize(), 61);  
+
+    m = new ComponentSampleModel(DataBuffer.TYPE_INT, 5, 10, 2, 10, 
+            new int[] {0, 1});
+    db = m.createDataBuffer();
+    harness.check(db.getDataType(), DataBuffer.TYPE_INT);
+    harness.check(db.getNumBanks(), 1);
+    harness.check(db.getSize(), 100);    
+  }
+  
+  public void testMultiBand(TestHarness harness)
+  {
+    harness.checkPoint("testMultiBand()");
+    ComponentSampleModel m = new ComponentSampleModel(DataBuffer.TYPE_BYTE, 10, 
+            20, 1, 10, new int[] {0, 1, 2}, new int[] {0, 0, 0});
+    DataBuffer db = m.createDataBuffer();
+    harness.check(db.getDataType(), DataBuffer.TYPE_BYTE);
+    harness.check(db.getNumBanks(), 3);
+    harness.check(db.getSize(), 200);
+    
   }
 }
