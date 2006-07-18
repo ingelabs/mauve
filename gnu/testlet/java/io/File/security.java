@@ -82,6 +82,11 @@ public class security implements Testlet
     Permission tmpdirPropPerm =
       new PropertyPermission("java.io.tmpdir", "read");
 
+    Permission modifyThreadGroup =
+      new RuntimePermission("modifyThreadGroup");
+    Permission shutdownHooks =
+      new RuntimePermission("shutdownHooks");
+
     // Keep a record of created temp files so we can delete them later.
     File tf1 = null;
     File tf2 = null;
@@ -291,7 +296,8 @@ public class security implements Testlet
       // throwpoint: java.io.File-deleteOnExit-DIR
       harness.checkPoint("dir.deleteOnExit()");
       try {
-	sm.prepareChecks(new Permission[]{tmpdirDeletePerm});
+	sm.prepareChecks(new Permission[]{tmpdirDeletePerm},
+			 new Permission[]{modifyThreadGroup, shutdownHooks});
 	tmpdir.deleteOnExit();
 	sm.checkAllChecked();
       }

@@ -1,3 +1,7 @@
+2006-07-18  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/File/security.java: Fix deleteOnExit test.
+
 2006-07-17  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/ComponentSampleModel/constructors.java: New file,
