@@ -1,3 +1,10 @@
+2006-07-18  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/javax/swing/JComboBox/ComboRobot.java: organized
+	imports
+	(combo): Added item to combo box.
+	(testCombo): Added additional tests for key selector.
+
 2006-07-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/ByteLookupTable/constructors.java: New test,

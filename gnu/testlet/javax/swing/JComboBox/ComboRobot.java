@@ -33,19 +33,13 @@ import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.util.BitSet;
 import java.util.Random;
-import java.util.TreeSet;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 /**
@@ -56,7 +50,7 @@ public class ComboRobot extends Asserter implements Testlet
   /**
    * The tree being tested.
    */
-  JComboBox combo = new JComboBox(new String[] {"a", "b", "c", "d", "e", "f"});
+  JComboBox combo = new JComboBox(new String[] {"a", "b", "c", "d", "e", "f", "a234"});
 
   JFrame frame;
 
@@ -126,6 +120,11 @@ public class ComboRobot extends Asserter implements Testlet
   
   public void testCombo() throws Exception
   {
+    // Click on combo box to give it focus
+    click(combo, combo.getWidth() / 2, combo.getHeight() / 2);
+    click(combo, combo.getWidth() / 2, combo.getHeight() / 2);
+
+    // Test up/down navigation
     type(KeyEvent.VK_DOWN);
     type(KeyEvent.VK_ENTER);
     assertEquals("Selecting first component with keyboard", "a", getFocus());
@@ -141,6 +140,9 @@ public class ComboRobot extends Asserter implements Testlet
 
     type(KeyEvent.VK_ENTER);
     assertEquals("Selecting forth component with keyboard", "d", getFocus());
+    
+    // Reset to top & test the key selection manager
+    combo.setSelectedIndex(-1);
 
     for (char i = 'a'; i <= 'f'; i++)
       {
@@ -150,8 +152,26 @@ public class ComboRobot extends Asserter implements Testlet
         assertEquals("Selecting with letter key, " + i,
                      new String(new char[] { i }), getFocus());
       }
+    
+    // Reset to top & test duplicate letters in key selection manager
+    combo.setSelectedIndex(-1);
 
-    Thread.sleep(50000);
+    type(KeyEvent.VK_DOWN);
+    type(KeyEvent.VK_A);
+    type(KeyEvent.VK_ENTER);
+    assertEquals("Selecting with letter key (duplicate)", "a", getFocus());
+    
+    type(KeyEvent.VK_DOWN);
+    type(KeyEvent.VK_A);
+    type(KeyEvent.VK_ENTER);
+    assertEquals("Selecting with letter key (duplicate)", "a234", getFocus());
+    
+    // Test the escape button too, for cancelling the popup
+    type(KeyEvent.VK_DOWN);
+    type(KeyEvent.VK_ESCAPE);
+    assertEquals("Cancelling popup with escape key", false, combo.isPopupVisible());
+
+    Thread.sleep(5000);
   }
   
   public Object getFocus()
