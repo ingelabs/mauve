@@ -1,3 +1,22 @@
+2006-07-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/ComponentSampleModel/createCompatibleSampleModel.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/createSubsetSampleModel.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getBandOffsets.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getDataElements.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getNumDataElements.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getPixel.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getPixels.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getPixelStride.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getSamples.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getSampleSize.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getScanlineStride.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/setDataElements.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/setPixel.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/setPixels.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/setSample.java: New file,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/setSamples.java: New file.
+	
 2006-07-18  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/LookupTable/MyLookupTable.java: Changed
