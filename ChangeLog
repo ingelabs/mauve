@@ -1,5 +1,12 @@
 2006-07-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/ComponentSampleModel/constructors.java
+	(testConstructor2): Added checks,
+	* gnu/testlet/java/awt/image/ComponentSampleModel/getPixel.java
+	(testMethod1): Restore IllegalArgumentException checks.
+
+2006-07-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/image/ComponentSampleModel/createCompatibleSampleModel.java: New file,
 	* gnu/testlet/java/awt/image/ComponentSampleModel/createSubsetSampleModel.java: New file,
 	* gnu/testlet/java/awt/image/ComponentSampleModel/getBandOffsets.java: New file,

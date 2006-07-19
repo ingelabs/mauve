@@ -59,26 +59,26 @@ public class getPixel implements Testlet
     harness.check(Arrays.equals(pixel, new int[] {1, 2, 3}));
     
     // try x < 0
-    boolean pass = true;
+    boolean pass = false;
     try
     {
       m.getPixel(-1, 1, (int[]) null, db);
     }
     catch (ArrayIndexOutOfBoundsException e)
     {
-      pass = false;
+      pass = true;
     }
     harness.check(pass);
     
     // try x == width
-    pass = true;
+    pass = false;
     try
     {
       m.getPixel(5, 1, (int[]) null, db);
     }
     catch (ArrayIndexOutOfBoundsException e)
     {
-      pass = false;
+      pass = true;
     }
     harness.check(pass);
     
