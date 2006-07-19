@@ -1,5 +1,13 @@
 2006-07-19  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/awt/image/ConvolveOp/filter.java: New test,
+	* gnu/testlet/java/awt/image/ConvolveOp/getBounds2D.java: New test,
+	* gnu/testlet/java/awt/image/ConvolveOp/getEdgeCondition.java: New test,
+	* gnu/testlet/java/awt/image/ConvolveOp/getPoint2D.java: New test,
+	* gnu/testlet/java/awt/image/ConvolveOp/getRenderingHints.java: New test.
+
+2006-07-19  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/image/ComponentSampleModel/constructors.java
 	(testConstructor2): Added checks,
 	* gnu/testlet/java/awt/image/ComponentSampleModel/getPixel.java
