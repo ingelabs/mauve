@@ -1,3 +1,7 @@
+2006-07-20  Carsten Neumann  <cn-develop@gmx.net>
+
+	* gnu/testlet/java/lang/StrictMath/cbrt.java: New test.
+
 2006-07-19  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/ConvolveOp/filter.java: New test,
