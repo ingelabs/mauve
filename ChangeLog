@@ -1,3 +1,16 @@
+2006-07-22  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/javax/crypto/cipher/TestOfTripleDES.java (E_TV): Re-wrote
+	to show the individual DES keys dependency.
+	(D_TV): Likewise.
+	(attributes): New field.
+	(des1KeyTest): New method.
+	(des2KeyTest): Likewise.
+	(test): Call above two methods.
+	(encryptTest): Likewise.
+	(decryptTest): Likewise.
+	(vectorsTest): Re-factored to use above new (refactored) methods.
+
 2006-07-21  David Gilbert  <david.gilbet@object-refinery.com>
 
 	* gnu/testlet/java/awt/image/Kernel/constructor.java: New test,
