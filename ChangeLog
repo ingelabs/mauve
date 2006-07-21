@@ -1,3 +1,12 @@
+2006-07-21  David Gilbert  <david.gilbet@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/Kernel/constructor.java: New test,
+	* gnu/testlet/java/awt/image/Kernel/getHeight.java: New test,
+	* gnu/testlet/java/awt/image/Kernel/getKernelData.java: New test,
+	* gnu/testlet/java/awt/image/Kernel/getWidth.java: New test,
+	* gnu/testlet/java/awt/image/Kernel/getXOrigin.java: New test,
+	* gnu/testlet/java/awt/image/Kernel/getYOrigin.java: New test.
+
 2006-07-20  Carsten Neumann  <cn-develop@gmx.net>
 
 	* gnu/testlet/java/lang/StrictMath/cbrt.java: New test.

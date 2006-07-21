@@ -21,8 +21,8 @@
 
 package gnu.testlet.java.awt.image.Kernel;
 
-import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
+import gnu.testlet.Testlet;
 
 import java.awt.image.Kernel;
 
