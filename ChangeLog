@@ -1,3 +1,7 @@
+2006-07-22  Carsten Neumann  <cn-develop@gmx.net>
+
+	* gnu/testlet/java/lang/StrictMath/expm1.java: New test.
+
 2006-07-22  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/java/security/util/TestOfIntegerUtil.java: New test.
