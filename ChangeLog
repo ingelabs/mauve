@@ -1,5 +1,9 @@
 2006-07-22  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/gnu/java/security/util/TestOfIntegerUtil.java: New test.
+
+2006-07-22  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/gnu/javax/crypto/cipher/TestOfTripleDES.java (E_TV): Re-wrote
 	to show the individual DES keys dependency.
 	(D_TV): Likewise.
