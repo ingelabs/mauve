@@ -27,6 +27,7 @@ package gnu.testlet.java.text.DecimalFormat;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -37,6 +38,7 @@ public class format implements Testlet
     testGeneral(harness);
     testRounding(harness);
     testMiscellaneous(harness);
+    testBigInteger(harness);
   }
   
   public void apply (TestHarness harness, DecimalFormat df, String pattern)
@@ -209,5 +211,21 @@ public class format implements Testlet
     harness.check(pass);
     
     Locale.setDefault(original);
+  }
+  
+  /**
+   * See PR 28462.
+   */
+  private void testBigInteger(TestHarness harness)
+  {
+    Locale orig = Locale.getDefault();
+    Locale.setDefault(Locale.US);
+    harness.checkPoint("BigInteger format");
+    String expect = "123,456,789,012,345,678,901,234,567,890";
+    BigInteger bi = new BigInteger("123456789012345678901234567890", 10);
+    
+    DecimalFormat df = new DecimalFormat();
+    harness.check(df.format(bi), expect);
+    Locale.setDefault(orig);
   }
 }
