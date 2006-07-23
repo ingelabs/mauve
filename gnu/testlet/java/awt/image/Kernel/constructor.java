@@ -50,7 +50,10 @@ public class constructor implements Testlet
     float[] d2 = k1.getKernelData(null);
     harness.check(!Float.isNaN(d2[0]));
     
-    // try negative width
+    // try negative width - the required behaviour is not specified, the 
+    // reference implementation throws a NegativeArraySizeException, but that 
+    // seems like an implementation detail so this test is going to allow an
+    // IllegalArgumentException as well (which is what GNU Classpath does).
     boolean pass = false;
     try
     {
@@ -60,9 +63,16 @@ public class constructor implements Testlet
     {
       pass = true;   
     }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
     harness.check(pass);
     
-    // try negative height
+    // try negative height - the required behaviour is not specified, the 
+    // reference implementation throws a NegativeArraySizeException, but that 
+    // seems like an implementation detail so this test is going to allow an
+    // IllegalArgumentException as well (which is what GNU Classpath does).
     pass = false;
     try
     {
@@ -71,6 +81,10 @@ public class constructor implements Testlet
     catch (NegativeArraySizeException e)
     {
       pass = true;   
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
     }
     harness.check(pass);
     

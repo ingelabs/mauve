@@ -1,3 +1,8 @@
+2006-07-23  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/image/Kernel/constructor.java
+	(test): Allow IllegalArgumentException for null width or height.
+
 2006-07-22  Carsten Neumann  <cn-develop@gmx.net>
 
 	* gnu/testlet/java/lang/StrictMath/expm1.java: New test.
