@@ -77,7 +77,6 @@ public class constructors implements Testlet {
     // some private class is listening and passing on events
     EventListener[] mListeners = m.getListeners(ChangeListener.class);
     harness.check(mListeners.length, 1);
-    System.out.println(mListeners[0]);
     harness.check(!Arrays.asList(mListeners).contains(spinner));
     harness.check(!Arrays.asList(mListeners).contains(spinner.getUI()));
     harness.check(!Arrays.asList(mListeners).contains(spinner.getEditor()));

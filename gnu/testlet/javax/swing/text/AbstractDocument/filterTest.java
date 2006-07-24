@@ -103,6 +103,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -121,6 +122,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -139,6 +141,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -158,6 +161,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -175,6 +179,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -195,6 +200,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -236,6 +242,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -257,6 +264,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -277,6 +285,7 @@ public class filterTest
     catch (BadLocationException ble)
       {
         testException = ble;
+	harness.debug(ble);
       }
 
     harness.check(testException, null);
@@ -298,6 +307,7 @@ public class filterTest
       }
     catch(BadLocationException ble)
      {
+       harness.debug(ble);
        harness.fail("replace6");
      }
 

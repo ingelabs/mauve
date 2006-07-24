@@ -1,6 +1,6 @@
 // Tags: JDK1.4
 
-// Copyright (C) 2004 Michael Koch <konqueror@gmx.de>
+// Copyright (C) 2004, 2006 Michael Koch <konqueror@gmx.de>
 
 // This file is part of Mauve.
 
@@ -41,8 +41,7 @@ public class getActions
 	  found = true;
 	  break;
 	}
-    System.out.println(found);
-    System.out.println(name);
+
     if (found) {
     h.check(found, name);
     }
