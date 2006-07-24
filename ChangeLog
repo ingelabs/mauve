@@ -1,3 +1,10 @@
+2006-07-24  Mario Torre  <neugens@limasoftware.net>
+
+	* gnu/testlet/java/text/DecimalFormat/format.java: class reformatted.
+	(test): added two new tests: testNaN and testInfinity.
+	(testInfinity): new test.
+	(testNaN): new test.
+
 2006-07-23  Casey Marshall  <csm@gnu.org>
 
 	* gnu/testlet/java/text/DecimalFormat/format.java (test): call

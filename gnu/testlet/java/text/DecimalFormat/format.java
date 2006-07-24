@@ -31,7 +31,8 @@ import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
-public class format implements Testlet
+public class format
+    implements Testlet
 {
   public void test(TestHarness harness)
   {
@@ -39,106 +40,108 @@ public class format implements Testlet
     testRounding(harness);
     testMiscellaneous(harness);
     testBigInteger(harness);
+    testNaN(harness);
+    testInfinity(harness);
   }
-  
-  public void apply (TestHarness harness, DecimalFormat df, String pattern)
-    {
-      harness.checkPoint("pattern " + pattern);
-      boolean ok = true;
-      try
-	{
-	  df.applyPattern(pattern);
-	}
-      catch (IllegalArgumentException x)
-	{
-	  ok = false;
-	}
-      harness.check (ok);
-    }
+
+  public void apply(TestHarness harness, DecimalFormat df, String pattern)
+  {
+    harness.checkPoint("pattern " + pattern);
+    boolean ok = true;
+    try
+      {
+        df.applyPattern(pattern);
+      }
+    catch (IllegalArgumentException x)
+      {
+        ok = false;
+      }
+    harness.check(ok);
+  }
 
   public void testGeneral(TestHarness harness)
-    {
-      // Just to be explicit: we're only testing the US locale here.
-      Locale loc = Locale.US;
-      Locale.setDefault (loc);
+  {
+    // Just to be explicit: we're only testing the US locale here.
+    Locale loc = Locale.US;
+    Locale.setDefault(loc);
 
-      // Some tests taken from JCL book.
-      DecimalFormat df = new DecimalFormat ("0.##;-0.##");
-      harness.check (df.format (-1234.56), "-1234.56");
-      harness.check (df.format (1234.56), "1234.56");
+    // Some tests taken from JCL book.
+    DecimalFormat df = new DecimalFormat("0.##;-0.##");
+    harness.check(df.format(- 1234.56), "-1234.56");
+    harness.check(df.format(1234.56), "1234.56");
 
-      apply (harness, df, "0.#");
-      harness.check (df.format (-1234.56), "-1234.6");
-      harness.check (df.format (1234.56), "1234.6");
+    apply(harness, df, "0.#");
+    harness.check(df.format(- 1234.56), "-1234.6");
+    harness.check(df.format(1234.56), "1234.6");
 
-      apply (harness, df, "#,##0.##;-#");
-      harness.check (df.format (-1234.56), "-1,234.56");
-      harness.check (df.format (1234.56), "1,234.56");
+    apply(harness, df, "#,##0.##;-#");
+    harness.check(df.format(- 1234.56), "-1,234.56");
+    harness.check(df.format(1234.56), "1,234.56");
 
-      apply (harness, df, "00,000.000;-00,000.000");
-      harness.check (df.format (-1234.56), "-01,234.560");
-      harness.check (df.format (1234.56), "01,234.560");
+    apply(harness, df, "00,000.000;-00,000.000");
+    harness.check(df.format(- 1234.56), "-01,234.560");
+    harness.check(df.format(1234.56), "01,234.560");
 
-      apply (harness, df, "##,###,####.");
-      df.setDecimalSeparatorAlwaysShown(true);
-      harness.check (df.format (-1234.56), "-1235.");
-      harness.check (df.format (1234.56), "1235.");
+    apply(harness, df, "##,###,####.");
+    df.setDecimalSeparatorAlwaysShown(true);
+    harness.check(df.format(- 1234.56), "-1235.");
+    harness.check(df.format(1234.56), "1235.");
 
-      apply (harness, df, "0");
-      harness.check (df.format (-1234.56), "-1235");
-      harness.check (df.format (1234.56), "1235");
+    apply(harness, df, "0");
+    harness.check(df.format(- 1234.56), "-1235");
+    harness.check(df.format(1234.56), "1235");
 
-      harness.check (df.format (Long.MIN_VALUE), "-9223372036854775808");
+    harness.check(df.format(Long.MIN_VALUE), "-9223372036854775808");
 
-      apply (harness, df, "#");
-      harness.check (df.format (0), "0");
-      harness.check (df.format (0.0), "0");
+    apply(harness, df, "#");
+    harness.check(df.format(0), "0");
+    harness.check(df.format(0.0), "0");
 
-      apply (harness, df, "###0.#;(###0.#)");
-      harness.check (df.format (-1234.56), "(1234.6)");
-      harness.check (df.format (1234.56), "1234.6");
+    apply(harness, df, "###0.#;(###0.#)");
+    harness.check(df.format(- 1234.56), "(1234.6)");
+    harness.check(df.format(1234.56), "1234.6");
 
-      apply (harness, df, "###0.#;###0.#-");
-      harness.check (df.format (-1234.56), "1234.6-");
-      harness.check (df.format (1234.56), "1234.6");
+    apply(harness, df, "###0.#;###0.#-");
+    harness.check(df.format(- 1234.56), "1234.6-");
+    harness.check(df.format(1234.56), "1234.6");
 
-      apply (harness, df, "#,##0%;-#,##0%");
-      harness.check (df.format (-1234.56), "-123,456%");
-      harness.check (df.format (1234.56), "123,456%");
+    apply(harness, df, "#,##0%;-#,##0%");
+    harness.check(df.format(- 1234.56), "-123,456%");
+    harness.check(df.format(1234.56), "123,456%");
 
-      apply (harness, df, "#.#");
-      harness.check (df.format (0.2), "0.2");
+    apply(harness, df, "#.#");
+    harness.check(df.format(0.2), "0.2");
 
-      apply (harness, df, "'#'#.#");
-      harness.check (df.format (30), "#30");
+    apply(harness, df, "'#'#.#");
+    harness.check(df.format(30), "#30");
 
-      // grouping size of zero might cause a failure - see bug parade 4088503
-      harness.checkPoint("regression tests for setGroupingSize");
-      df = new DecimalFormat();
-      df.setGroupingSize(0);
-      harness.check (df.format (100000), "100000");
-      harness.check (df.isGroupingUsed());
-      harness.check (df.getGroupingSize(), 0);
+    // grouping size of zero might cause a failure - see bug parade 4088503
+    harness.checkPoint("regression tests for setGroupingSize");
+    df = new DecimalFormat();
+    df.setGroupingSize(0);
+    harness.check(df.format(100000), "100000");
+    harness.check(df.isGroupingUsed());
+    harness.check(df.getGroupingSize(), 0);
 
-      // FIXME: we don't actually know the right result here, because
-      // neither the JCL book nor the JDK 1.2 docs explain what should
-      // happen.  The below represents how I think things ought to
-      // work.  However, Sun has a different (and more confusing)
-      // idea.  E.g., JDK1.1 prints "200000.0000E" in the first case.
-//       apply (harness, df, "0.0000E#");
-//       harness.check (df.format (200000), "2.0000E+5");
+    // FIXME: we don't actually know the right result here, because
+    // neither the JCL book nor the JDK 1.2 docs explain what should
+    // happen. The below represents how I think things ought to
+    // work. However, Sun has a different (and more confusing)
+    // idea. E.g., JDK1.1 prints "200000.0000E" in the first case.
+    // apply (harness, df, "0.0000E#");
+    // harness.check (df.format (200000), "2.0000E+5");
 
-//       apply (harness, df, "00.00E00");
-//       harness.check (df.format (200000), "20.00E+04");
-    }
-  
+    // apply (harness, df, "00.00E00");
+    // harness.check (df.format (200000), "20.00E+04");
+  }
+
   /**
-   * Checks that rounding behaviour follows "half-even" rounding.  For example,
+   * Checks that rounding behaviour follows "half-even" rounding. For example,
    * see bug parade 4763975.
    * 
-   * @param harness  the harness.
+   * @param harness the harness.
    */
-  private void testRounding(TestHarness harness) 
+  private void testRounding(TestHarness harness)
   {
     harness.checkPoint("DecimalFormat rounding");
     Locale original = Locale.getDefault();
@@ -148,71 +151,75 @@ public class format implements Testlet
     harness.check(f.format(1.235), "1.24");
     Locale.setDefault(original);
   }
-  
-  private void testMiscellaneous(TestHarness harness) 
+
+  private void testMiscellaneous(TestHarness harness)
   {
     harness.checkPoint("DecimalFormat: misc");
     Locale original = Locale.getDefault();
     Locale.setDefault(Locale.UK);
-    
+
     DecimalFormat f = new DecimalFormat("0");
-    
+
     // try formatting a null object
     boolean pass = false;
     try
-    {
-      f.format(null);   
-    }
-    catch (IllegalArgumentException e) 
-    {
-      pass = true;   
-    }
+      {
+        f.format(null);
+      }
+    catch (IllegalArgumentException e)
+      {
+        pass = true;
+      }
     harness.check(pass);
-    
+
     // try formatting an object that is not a Number
     pass = false;
     try
-    {
-      f.format("XYZ");   
-    }
-    catch (IllegalArgumentException e) 
-    {
-      pass = true;   
-    }
+      {
+        f.format("XYZ");
+      }
+    catch (IllegalArgumentException e)
+      {
+        pass = true;
+      }
     harness.check(pass);
-    
+
     // some implementations can't handle custom subclasses of Number
     pass = true;
     try
-    {
-      f.format(new Number() {
-        public float floatValue() 
+      {
+        f.format(new Number()
         {
-          return 0.0f;   
-        }
-        public double doubleValue() 
-        {
-          return 0.0f;   
-        }   
-        public long longValue()
-        {
-          return 0l; 
-        }
-        public int intValue()
-        {
-          return 0; 
-        }
-      });
-    }
+          public float floatValue()
+          {
+            return 0.0f;
+          }
+
+          public double doubleValue()
+          {
+            return 0.0f;
+          }
+
+          public long longValue()
+          {
+            return 0l;
+          }
+
+          public int intValue()
+          {
+            return 0;
+          }
+        });
+      }
     catch (Exception e)
-    {
-      pass = false;   
-    }
+      {
+        pass = false;
+      }
     harness.check(pass);
-    
+
     Locale.setDefault(original);
   }
-  
+
   /**
    * See PR 28462.
    */
@@ -223,9 +230,53 @@ public class format implements Testlet
     harness.checkPoint("BigInteger format");
     String expect = "123,456,789,012,345,678,901,234,567,890";
     BigInteger bi = new BigInteger("123456789012345678901234567890", 10);
-    
+
     DecimalFormat df = new DecimalFormat();
     harness.check(df.format(bi), expect);
+    Locale.setDefault(orig);
+  }
+  
+  /**
+   * @param harness
+   */
+  private void testInfinity(TestHarness harness)
+  {
+    Locale orig = Locale.getDefault();
+    Locale.setDefault(Locale.US);
+    
+    harness.checkPoint("testInfinity");
+    String expectPositive = "\u221E";
+    String expectNegative = "-\u221E";
+    
+    double positiveInf = Double.longBitsToDouble(0x7ff0000000000000L);
+    double negativeInf = Double.longBitsToDouble(0xfff0000000000000L);
+    
+    DecimalFormat df = new DecimalFormat();
+    harness.check(df.format(positiveInf), expectPositive, "positive inf.");
+    harness.check(df.format(negativeInf), expectNegative, "negative inf.");
+    
+    Locale.setDefault(orig);
+  }
+
+  /**
+   * @param harness
+   */
+  private void testNaN(TestHarness harness)
+  {
+    Locale orig = Locale.getDefault();
+    Locale.setDefault(Locale.US);
+    
+    harness.checkPoint("testNaN");
+    String expect = "\uFFFD";
+    
+    double nan = Double.longBitsToDouble(0x7ff8000000000000L);
+    
+    DecimalFormat df = new DecimalFormat();
+    
+    // NaN does not have prefixes and suffixes
+    harness.check(df.format(nan), expect);
+    harness.check(df.format(-nan), expect, "NaN with a negative sign as pefix");
+    
     Locale.setDefault(orig);
   }
 }
