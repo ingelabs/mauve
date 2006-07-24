@@ -24,10 +24,12 @@ package gnu.testlet.java.lang.StrictMath;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-public class cbrt implements Testlet
+public class cosh implements Testlet
 {
   /**
    * These values are used as arguments to cbrt.
+   * The values are somewhat arbitrary, but ensure that all code paths
+   * are tested.
    */
   private static double[] inputValues =
     {
@@ -35,41 +37,57 @@ public class cbrt implements Testlet
       Double.NaN,
       Double.POSITIVE_INFINITY,
       Double.NEGATIVE_INFINITY,
-      123456789e-9,
-      -123456789e-6,
-      123456789e+2,
-      -123456789e+4,
-      987654321e-7,
-      -987654321e-4,
-      987654321e+3,
-      -987654321e+5,
-      1234509876e-320,  // subnormal number
-      9756272385e-325,  // subnormal number
-      Math.PI,
-      Math.E
+      0.123456789,
+      -0.123456789,
+      0.234242656456,
+      -0.234242656456,
+      1.23456789,
+      -1.23456789,
+      9.87654321,
+      -9.87654321,
+      21.9999,
+      -21.9999,
+      567.891234,
+      -567.891234,
+      708.742342,
+      -708.742342,
+      709.7827128,
+      -709.7827128,
+      710.475860073943,
+      710.4755859375,
+      723.6787676346,
+      -723.6787676346,
     };
 
-  /**
+    /**
    * These values are the expected results, obtained from the RI.
    */
   private static double[] outputValues =
     {
-      0.0,
+      1.0,
       Double.NaN,
       Double.POSITIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      0.49793385921817446,
-      -4.979338592181745,
-      2311.204240824796,
-      -10727.659796410873,
-      4.622408495690158,
-      -46.224084956901585,
-      9958.677214612972,
-      -46224.08495690158,
-      2.3111680380625372e-104,
-      9.918088333941088e-106,
-      1.4645918875615231,
-      1.3956124250860895
+      Double.POSITIVE_INFINITY,
+      1.0076304736991977,
+      1.0076304736991977,
+      1.0275604855232756,
+      1.0275604855232756,
+      1.8639267730274125,
+      1.8639267730274125,
+      9734.154204183918,
+      9734.154204183918,
+      1.792277186385473e9,
+      1.792277186385473e9,
+      2.1428869091881118e246,
+      2.1428869091881118e246,
+      3.1758371607555525e307,
+      3.1758371607555525e307,
+      8.988464834932886e307,
+      8.988464834932886e307,
+      1.7976931348605396e308,
+      1.7972003892018829e308,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY
     };
 
   public void test(TestHarness harness)
@@ -78,7 +96,7 @@ public class cbrt implements Testlet
 
     for (int i = 0; i < inputValues.length; ++i)
       {
-	res = StrictMath.cbrt(inputValues[i]);
+	res = StrictMath.cosh(inputValues[i]);
 
 	// exact equality seems appropriate for StrictMath
 	harness.check(res, outputValues[i]);
@@ -94,7 +112,7 @@ public class cbrt implements Testlet
 
     for (int i = 0; i < inputValues.length; ++i)
       {
-	res = StrictMath.cbrt(inputValues[i]);
+	res = StrictMath.cosh(inputValues[i]);
 
 	System.out.println(Double.toString(res));
       }

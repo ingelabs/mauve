@@ -1,3 +1,9 @@
+2006-07-24  Carsten Neumann  <cn-develop@gmx.net>
+
+	* gnu/testlet/java/lang/StrictMath/cosh.java: New test.
+	* gnu/testlet/java/lang/StrictMath/cbrt.java
+	(main): New method.
+
 2006-07-24  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfPR27228.java: New test.
