@@ -1,6 +1,6 @@
 // Tags: GUI JDK1.2
 
-// Copyright (C) 2005 Red Hat
+// Copyright (C) 2005, 2006, Red Hat
 
 // This file is part of Mauve.
 
@@ -15,20 +15,27 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.java.awt.Component;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.awt.*;
-import java.awt.dnd.*;
-import java.util.*;
-import java.beans.*;
-
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.dnd.DropTarget;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Locale;
 
 /**
  * Check if bound properties are firing PropertyChangeEvents and
@@ -118,10 +125,10 @@ public class properties implements Testlet
     comp.setLocation(new Point(123, 456));
     harness.check(propertyName, null, "Property: location");
 
-    // check 'name' property (must not be fired)
+    // check 'name' property (must be fired)
     propertyName = null;
     comp.setName("Obelix");
-    harness.check(propertyName, null, "Property: name");
+    harness.check(propertyName, "name", "Property: name");
 
     // check 'size' property (must not be fired)
     propertyName = null;
@@ -133,7 +140,6 @@ public class properties implements Testlet
     comp.setVisible(true);
     comp.setVisible(false);
     harness.check(propertyName, null, "Property: visible");
-
 
   }
 }

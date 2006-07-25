@@ -1,3 +1,8 @@
+2006-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Component/properties.java
+	(test): 'name' property should fire an event.
+
 2006-07-23  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/javax/swing/JSpinner/constructors.java:
