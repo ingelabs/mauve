@@ -1,3 +1,10 @@
+2006-07-25  Casey Marshall  <csm@gnu.org>
+
+	Import free PKITS test and test files.
+	New files in gnu/testlet/java/security/cert/pkix/pkits. Too many
+	files to include here.
+	* README.PKITS: new file.
+
 2006-07-25  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/security/AccessController/contexts.java: New test.

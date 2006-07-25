@@ -1,0 +1,21 @@
+The PKITS test suite.
+
+In the package gnu.testlet.java.security.cert.pkix.pkits is an implementation of the
+PKITS test suite, created by NIST, as a conformance test for the Internet X.509
+profile (PKIX) path-checking algorithms. In Java, these path-checking algorithms are
+implemented using the CertPathValidator interface.
+
+This version of the test suite was formerly included in the GNU Crypto project;
+these tests are copyright (C) 2003 The Free Software Foundation, and are licensed
+under the GNU General Public License.
+
+The test data files under the data/certs and data/crls directories were originally
+developed by NIST for this test suite. Files developed by NIST are subject to U.S.
+code Title 17, section 105, and are public domain. They additionally contain data
+developed by DigitalNet, under contract for the NSA. This message to the PKITS
+mailing list:
+
+  http://cio.nist.gov/esd/emaildir/lists/pkits/msg00048.html
+  
+seems to indicate that these test files are freely redistributable. We believe that
+we can redistribute these files with Mauve.
