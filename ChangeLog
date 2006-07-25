@@ -1,5 +1,17 @@
 2006-07-25  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/text/TabSet/constructor.java: New test,
+	* gnu/testlet/javax/swing/text/TabSet/equals.java: New test,
+	* gnu/testlet/javax/swing/text/TabSet/getTab.java: New test,
+	* gnu/testlet/javax/swing/text/TabSet/getTabCount.java: New test,
+	* gnu/testlet/javax/swing/text/TabSet/getTabIndex.java: New test,
+	* gnu/testlet/javax/swing/text/TabSet/getTabIndexAfter.java: New test,
+	* gnu/testlet/javax/swing/text/TabSet/toString.java: New test,
+	* gnu/testlet/javax/swing/text/TabStop/constructor.java: New test,
+	* gnu/testlet/javax/swing/text/TabStop/toString.java: New test.
+
+2006-07-25  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/awt/Component/properties.java
 	(test): 'name' property should fire an event.
 
