@@ -229,7 +229,7 @@ public class RunnerProcess
                                 shortName);
           else
             System.out.println("FAIL: " + stripPrefix(testname)
-                                 + ": failed to load");
+                                 + "\n  failed to load");
           System.out.println("RunnerProcess:fail-0");
         }
       }
@@ -311,7 +311,8 @@ public class RunnerProcess
 
         
         if (!verbose)
-          System.out.println ("FAIL: " + stripPrefix(name) + ": exception when loading:");
+          System.out.println ("FAIL: " + stripPrefix(name)
+				+ "\n  exception when loading:");
         else
           {
             System.out.println ("TEST: "+stripPrefix(name));
@@ -343,7 +344,7 @@ public class RunnerProcess
             String r = getStackTraceString(ex, "          ");
 
             if (failures == 0 && !verbose)
-                System.out.println ("FAIL: " + stripPrefix(name) + ":");
+                System.out.println ("FAIL: " + stripPrefix(name));
             System.out.println(d);
             removeSecurityManager();
             currentResult.addException(ex, d, r);
@@ -657,7 +658,7 @@ public class RunnerProcess
             // If the failure wasn't expected, we need to print it to the
             // screen.
             if (failures == 0 && !verbose)
-              System.out.println ("FAIL: " + stripPrefix(description) + ":");
+              System.out.println ("FAIL: " + stripPrefix(description));
             if (verbose)
               System.out.print("  FAIL:");
             System.out.print(desc + " -- ");

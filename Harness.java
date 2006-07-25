@@ -1336,7 +1336,7 @@ public class Harness
                               + "\n  FAIL: compilation errors:");
               else
                 super.println("FAIL: " + shortName
-                                   + ": compilation errors:");
+                                   + "\n  compilation errors:");
                                     
               // Increment and set the relevant variables.
               numCompileFailsInFolder = 1;
