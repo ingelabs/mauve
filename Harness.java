@@ -742,7 +742,7 @@ public class Harness
     String tn = stripPrefix(testName.replace(File.separatorChar, '.'));
     String outputFromTest;
     boolean invalidTest = false;
-    int temp = -99;
+    int temp;
     
     // Restart the error stream printer if necessary
     if (restartESP)
@@ -1201,12 +1201,20 @@ public class Harness
           // We set loop to false here, it will get reset to true if 
           // reset() is called from the main Harness thread.
           loop = false;
-          try
-          {
-            wait(millisToWait);
-          }
-          catch (InterruptedException ie)
-          {}
+	  long start = System.currentTimeMillis();
+	  long waited = 0;
+	  while (waited < millisToWait)
+            {
+              try
+                {
+                  wait(millisToWait - waited);
+                }
+              catch (InterruptedException ie)
+                {
+                  // ignored.
+                }
+              waited = System.currentTimeMillis() - start;
+            }
         }
       if (shouldContinue)
         {
