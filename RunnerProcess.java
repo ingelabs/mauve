@@ -821,8 +821,7 @@ public class RunnerProcess
     // exception.
     for (int i = 0; i < st.length; i++)
       {
-        if (st[i].getClassName().equals(name)
-            && st[i].getMethodName().equals("test"))
+        if (st[i].getClassName().equals(name))
           {
             lineOrigin = st[i].getLineNumber();
             break;

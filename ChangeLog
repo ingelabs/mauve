@@ -1,3 +1,9 @@
+2006-07-26  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* RunnerProcess.java:
+	(exceptionDetails): Line number doesn't need to come from the test() 
+	method, removed that "if".
+
 2006-07-26  Mark Wielaard  <mark@klomp.org>
 
 	* Harness.java (TimeoutWatcher.run): Keep track of timeout wait
