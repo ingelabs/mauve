@@ -1,3 +1,9 @@
+2006-07-27  Tom Tromey  <tromey@redhat.com>
+
+	PR classpath/28486:
+	* gnu/testlet/java/net/URL/URLTest.java (test_Basics): Added 'equals'
+	test.
+
 2006-07-26  Anthony Balkissoon  <abalkiss@redhat.com>
 
 	* RunnerProcess.java:

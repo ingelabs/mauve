@@ -114,8 +114,11 @@ public class URLTest implements Testlet
 			harness.check (url.getFile(), "/index.html");
 			harness.check (url.equals(new URL("http://sources.redhat.com/index.html")));
 
-			URL url1 = new URL ( "http", "sources.redhat.com", 80,  "index.html");
+			URL url1 = new URL ( "http", "sources.redhat.com", 80,  "/index.html");
 			harness.check (url1.getPort(), 80);
+			harness.check(url.equals(url1));
+			harness.check(url1.toExternalForm(),
+					"http://sources.redhat.com:80/index.html");
 		}
 		catch ( MalformedURLException e ){
 				harness.fail(" Error in test_Basics  - 16 " + 
