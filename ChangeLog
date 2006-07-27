@@ -1,3 +1,10 @@
+2006-07-28  Mario Torre  <neugens@limasoftware.net>
+
+	* gnu/testlet/java/text/DecimalFormat/format.java (test): Added new
+	test 'testMaximumDigits'.
+	(testMaximumDigits): New test for some configuration of
+	setMaximumIntegerDigits and setMaximumFractionDigits.
+
 2006-07-27  Tom Tromey  <tromey@redhat.com>
 
 	PR classpath/28486:

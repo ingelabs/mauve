@@ -42,6 +42,7 @@ public class format
     testBigInteger(harness);
     testNaN(harness);
     testInfinity(harness);
+    testMaximumDigits(harness);
   }
 
   public void apply(TestHarness harness, DecimalFormat df, String pattern)
@@ -276,6 +277,49 @@ public class format
     // NaN does not have prefixes and suffixes
     harness.check(df.format(nan), expect);
     harness.check(df.format(-nan), expect, "NaN with a negative sign as pefix");
+    
+    Locale.setDefault(orig);
+  }
+  
+  private void testMaximumDigits(TestHarness harness)
+  {
+    Locale orig = Locale.getDefault();
+    Locale.setDefault(Locale.US);
+    
+    harness.checkPoint("testMaxAndMinDigits");
+
+    double number = 123456789.987654321;
+    
+    DecimalFormat df = new DecimalFormat();
+    
+    df.setGroupingUsed(false);
+    df.setGroupingSize(3);
+    
+    df.setMaximumIntegerDigits(2);
+    df.setMaximumFractionDigits(4);
+          
+    // NaN does not have prefixes and suffixes
+    harness.check(df.format(number), "89.9877");
+    
+    df.setMaximumIntegerDigits(5);
+    df.setMaximumFractionDigits(0);
+
+    harness.check(df.format(number), "56790");
+    
+    df.setMaximumIntegerDigits(0);
+    df.setMaximumFractionDigits(5);
+
+    harness.check(df.format(number), ".98765");
+    
+    df.setMaximumIntegerDigits(-1);
+    df.setMaximumFractionDigits(-1);
+    
+    harness.check(df.format(number), "0");
+    
+    df.setMaximumIntegerDigits(390);
+    df.setMaximumFractionDigits(340);
+    
+    harness.check(df.format(number), "123456789.98765433");
     
     Locale.setDefault(orig);
   }
