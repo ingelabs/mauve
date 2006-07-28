@@ -1,3 +1,7 @@
+2006-07-28  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* gnu/testlet/java/awt/List/testSelected.java: Added more checks.
+
 2006-07-28  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/security/AccessController/contexts.java

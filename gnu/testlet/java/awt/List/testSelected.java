@@ -60,6 +60,7 @@ public class testSelected
     // Testing that only one item can be selected when 
     // multipleMode is set to false.
     list = new List();
+    harness.check (list.getSelectedIndex() == -1);
     list.setMultipleMode(false);
     list.add("item1");
     list.add("item2");
@@ -252,15 +253,28 @@ public class testSelected
     list.add("item1");
     list.add("item2");
     list.add("item3");
-    list.select(1);
+    list.select(2);
     harness.check(list.getItemCount(), 3);
     harness.check(list.isSelected(0), false);
-    harness.check(list.isSelected(1), true);
-    harness.check(list.isSelected(2), false);
-    list.delItem(1);
+    harness.check(list.isSelected(1), false);
+    harness.check(list.isSelected(2), true);
+    list.delItem(2);
     harness.check(list.getItemCount(), 2);
     harness.check(list.isSelected(0), false);
-    harness.check(list.isSelected(1), true);
+    harness.check(list.isSelected(1), false);
+    harness.check(list.isSelected(2), true);
+    boolean exceptionCaught = false;
+    try
+    {
+    	// This will throw an exception, you cannot call getItem(2)
+    	// despite the fact that isSelected(2) returns true.
+    	list.getItem(2);
+    }
+    catch (ArrayIndexOutOfBoundsException ex)
+    {
+    	exceptionCaught = true;
+    }
+    harness.check(exceptionCaught);
   }
 
   public void test12(TestHarness harness)
