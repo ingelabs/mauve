@@ -1,3 +1,16 @@
+2006-07-28  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/awt/Component/getLocationOnScreen.java:
+	New test.
+
+2006-07-28  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/java/awt/KeyboardFocusManager/TestKeyboardFocusManager.java,
+	* gnu/testlet/java/awt/KeyboardFocusManager/getFocusOwner.java,
+	* gnu/testlet/java/awt/KeyboardFocusManager/getGlobalFocusOwner.java,
+	* gnu/testlet/java/awt/KeyboardFocusManager/getGlobalPermanentFocusOwner.java:
+	New tests.
+
 2006-07-28  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* Harness.java (MAUVE): New constant.
