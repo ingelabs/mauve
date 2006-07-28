@@ -1,3 +1,10 @@
+2006-07-28  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/security/AccessController/contexts.java
+	(copyClass): Copy inner classes too.
+	(callListJarsOf, callPrivilegedListJarsOf): New methods.
+	(test): Extend to test AccessController.doPrivileged().
+
 2006-07-28  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/AbstractDocument/getDocumentProperties.java:

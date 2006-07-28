@@ -22,6 +22,7 @@ package gnu.testlet.java.security.AccessController;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FilePermission;
 import java.lang.reflect.Constructor;
@@ -33,6 +34,7 @@ import java.security.AccessController;
 import java.security.AccessControlContext;
 import java.security.Permission;
 import java.security.PermissionCollection;
+import java.security.PrivilegedAction;
 import java.security.ProtectionDomain;
 import java.util.Enumeration;
 import java.util.LinkedList;
@@ -45,9 +47,9 @@ import gnu.testlet.TestHarness;
 // In this test we load three different instances of ourself from
 // three different jarfiles with three different classloaders.  Each
 // classloader has a different protection domain in which that
-// classloader's jarfile is readable.  Some context-hopping is done,
-// and we determine success by checking our protection domains to see
-// which jarfile read permissions we find.
+// classloader's jarfile is readable.  All kinds of context-hopping is
+// performed, and we infer which protection domains are in our stack
+// by seeing which jarfile read permissions we can see.
 
 public class contexts implements Testlet
 {
@@ -57,7 +59,7 @@ public class contexts implements Testlet
     if (System.getProperty("gnu.classpath.version") == null)
       return;
 
-    File jars[] = new File[] {null, null};
+    File jars[] = new File[] {null, null, null};
     try {
       harness.checkPoint("setup");
 
@@ -68,7 +70,6 @@ public class contexts implements Testlet
       JarOutputStream jos = new JarOutputStream(new FileOutputStream(jars[0]));
       copyClass(harness.getSourceDirectory(), jos, getClass());
       copyClass(harness.getSourceDirectory(), jos, TestHarness.class);
-      copyClass(harness.getSourceDirectory(), jos, TestObject.class);
       jos.close();
 
       for (int i = 1; i < jars.length; i++) {
@@ -88,7 +89,7 @@ public class contexts implements Testlet
       }
 
       // Run the tests
-      test(harness, testObjects[0], testObjects[1]);
+      test(harness, testObjects);
     }
     catch (Exception ex) {
       harness.debug(ex);
@@ -106,17 +107,34 @@ public class contexts implements Testlet
   private static void copyClass(String srcdir, JarOutputStream jos, Class cls)
     throws Exception
   {
-    String relpath = cls.getName().replace(".", File.separator) + ".class";
+    File root = new File(srcdir, cls.getName().replace(".", File.separator));
+    final String rootpath = root.getPath();
+    int chop = srcdir.length() + File.separator.length();
 
-    File file = new File(srcdir, relpath);
-    if (file.exists()) {
-      byte[] bytes = new byte[(int) file.length()];
-      FileInputStream fis = new FileInputStream(file);
-      fis.read(bytes);
-      fis.close();
+    File dir = root.getParentFile();
+    if (dir.isDirectory()) {
+      File[] files = dir.listFiles(new FileFilter() {
+	public boolean accept(File file) {
+	  String path = file.getPath();
+	  if (path.endsWith(".class")) {
+	    path = path.substring(0, path.length() - 6);
+	    if (path.equals(rootpath))
+	      return true;
+	    if (path.startsWith(rootpath + "$"))
+	      return true;
+	  }
+	  return false;
+	}
+      });
+      for (int i = 0; i < files.length; i++) {
+	byte[] bytes = new byte[(int) files[i].length()];
+	FileInputStream fis = new FileInputStream(files[i]);
+	fis.read(bytes);
+	fis.close();
 
-      jos.putNextEntry(new JarEntry(relpath));
-      jos.write(bytes, 0, bytes.length);
+	jos.putNextEntry(new JarEntry(files[i].getPath().substring(chop)));
+	jos.write(bytes, 0, bytes.length);
+      }
     }
 
     Class superclass = cls.getSuperclass();
@@ -168,12 +186,62 @@ public class contexts implements Testlet
 	"listJarsOf", new Class[] {Object.class});
       return (String[]) method.invoke(object, new Object[] {other.object});
     }
+
+    public String[] callListJarsOf(TestObject caller, TestObject callee)
+      throws Exception
+    {
+      Method method = object.getClass().getMethod(
+	"callListJarsOf", new Class[] {Object.class, Object.class});
+      return (String[]) method.invoke(
+	object, new Object[] {caller.object, callee.object});
+    }
+
+    public String[] callPrivilegedListJarsOf(
+      TestObject caller, TestObject callee) throws Exception
+    {
+      Method method = object.getClass().getMethod(
+	"callPrivilegedListJarsOf", new Class[] {Object.class, Object.class});
+      return (String[]) method.invoke(
+	object, new Object[] {caller.object, callee.object});
+    }
   }
 
   public String[] listJarsOf(Object object) throws Exception
   {
     Method method = object.getClass().getMethod("listJars", new Class[0]);
     return (String[]) method.invoke(object, new Object[0]);
+  }
+
+  public String[] callListJarsOf(Object caller, Object callee)
+    throws Exception
+  {
+    Method method = caller.getClass().getMethod(
+      "listJarsOf", new Class[] {Object.class});
+    return (String[]) method.invoke(caller, new Object[] {callee});
+  }
+
+  public String[] callPrivilegedListJarsOf(Object caller, Object callee)
+    throws Exception
+  {
+    Method method = caller.getClass().getMethod(
+      "privilegedListJarsOf", new Class[] {Object.class});
+    return (String[]) method.invoke(caller, new Object[] {callee});
+  }
+
+  public String[] privilegedListJarsOf(final Object object) throws Exception
+  {
+    final Method method = object.getClass().getMethod(
+      "listJars", new Class[0]);
+    return (String[]) AccessController.doPrivileged(new PrivilegedAction() {
+      public Object run() {
+	try {
+	  return method.invoke(object, new Object[0]);
+	}
+	catch (Exception e) {
+	  return e;
+	}
+      }
+    });
   }
 
   public String[] listJars() throws Exception
@@ -204,36 +272,74 @@ public class contexts implements Testlet
   }
   
   // Perform the tests
-  private static void test(
-    TestHarness harness, TestObject caller, TestObject callee)
+  private static void test(TestHarness harness, TestObject[] objects)
     throws Exception
   {
-    // Each object should see only its own jar when listing itself
+    // Each object should see only its own protection domain
     harness.checkPoint("self-listing");
 
-    String[] jars = caller.listJarsOf(caller);
-    harness.check(jars.length == 1);
-    String caller_jar = jars[0];
-
-    jars = callee.listJarsOf(callee);
-    harness.check(jars.length == 1);
-    String callee_jar = jars[0];
-
-    harness.check(!caller_jar.equals(callee_jar));
-
-    // When one object calls another's lister both object's jars
-    // should be visible.
+    String[] jars = new String[objects.length];
+    for (int i = 0; i < objects.length; i++) {
+      String[] result = objects[i].listJarsOf(objects[i]);
+      harness.check(result.length == 1);
+      jars[i] = result[0];
+    }
+    for (int i = 0; i < objects.length; i++) {
+      for (int j = i + 1; j < objects.length; j++)
+	harness.check(!jars[i].equals(jars[j]));
+    }
+    
+    // When one object calls another both objects' protection domains
+    // should be present.
     harness.checkPoint("straight other-listing");
 
-    jars = caller.listJarsOf(callee);
-    boolean caller_seen = false;
-    boolean callee_seen = false;
-    for (int i = 0; i < jars.length; i++) {
-      if (jars[i].equals(caller_jar))
-	caller_seen = true;
-      else if (jars[i].equals(callee_jar))
-	callee_seen = true;
+    boolean[] seen = new boolean[jars.length];
+    String[] result = objects[0].listJarsOf(objects[1]);
+    harness.check(result.length == 2);
+    for (int i = 0; i < seen.length; i++) {
+      seen[i] = false;
+      for (int j = 0; j < result.length; j++) {
+	if (result[j].equals(jars[i])) {
+	  harness.check(!seen[i]);
+	  seen[i] = true;
+	}
+      }
     }
-    harness.check(jars.length == 2 && caller_seen && callee_seen);
+    harness.check(seen[0] && seen[1] && !seen[2]);
+
+    // When one object calls another that calls another all three
+    // objects' protection domains should be present.
+    harness.checkPoint("straight other-other-listing");
+
+    result = objects[0].callListJarsOf(objects[1], objects[2]);
+    harness.check(result.length == 3);
+    for (int i = 0; i < seen.length; i++) {
+      seen[i] = false;
+      for (int j = 0; j < result.length; j++) {
+	if (result[j].equals(jars[i])) {
+	  harness.check(!seen[i]);
+	  seen[i] = true;
+	}
+      }
+    }
+    harness.check(seen[0] && seen[1] && seen[2]);
+
+    // When one object calls another that uses doPrivileged to call
+    // a third then the first object's protection domain should not
+    // be present.
+    harness.checkPoint("privileged other-other-listing");
+
+    result = objects[0].callPrivilegedListJarsOf(objects[1], objects[2]);
+    harness.check(result.length == 2);
+    for (int i = 0; i < seen.length; i++) {
+      seen[i] = false;
+      for (int j = 0; j < result.length; j++) {
+	if (result[j].equals(jars[i])) {
+	  harness.check(!seen[i]);
+	  seen[i] = true;
+	}
+      }
+    }
+    harness.check(!seen[0] && seen[1] && seen[2]);
   }
 }
