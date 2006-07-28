@@ -151,7 +151,16 @@ public class Harness
   // A convenience String for ensuring tests all have the same name format
   private static final String gnuTestletHeader2 = gnuTestletHeader1
                                                   + File.separatorChar;
-  
+
+  // The usual name of the CVS project containing this resource surrounded
+  // with file-separator strings
+  private static final String MAUVE = File.separator
+                                      + System.getenv("MAUVE_PROJECT_NAME")
+                                      + File.separator;
+  // When a folder is selected from Eclipse this is what usually gets
+  // prepended to the folder name
+  private static final String MAUVE_GNU_TESTLET = MAUVE + gnuTestletHeader2;
+
   /**
    * The main method for the Harness.  Parses through the compile line
    * options and sets up the internals, sets up the compiler options, 
@@ -526,12 +535,14 @@ public class Harness
         val = val.replace('.', File.separatorChar);
         if (val.endsWith("" + File.separatorChar))
           val = val.substring(0, val.length() - 1);
-        if (! val.startsWith(gnuTestletHeader1))
+        if (val.startsWith(MAUVE_GNU_TESTLET))
+          val = val.substring(MAUVE.length());
+        else if (! val.startsWith(gnuTestletHeader1))
           val = gnuTestletHeader2 + val;        
       }
     return val;
   }
-  
+
   /**
    * This method prints a help screen to the console and then exits.
    */
