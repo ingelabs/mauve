@@ -23,9 +23,18 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 package gnu.testlet.javax.swing.text.FlowView;
 
+import gnu.testlet.javax.swing.text.FlowView.FlowStrategy.TestView;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Shape;
+
+import javax.swing.text.BadLocationException;
+import javax.swing.text.BoxView;
 import javax.swing.text.Element;
 import javax.swing.text.FlowView;
 import javax.swing.text.View;
+import javax.swing.text.Position.Bias;
 
 /**
  * A concrete subclass of FlowView that can be used to test the FlowView.
@@ -34,6 +43,66 @@ import javax.swing.text.View;
  */
 public class TestFlowView extends FlowView
 {
+
+  public class TestFlowStrategy extends FlowStrategy
+  {
+    public void adjustRow(FlowView fv, int rowIndex, int desiredSpan, int x)
+    {
+      super.adjustRow(fv, rowIndex, desiredSpan, x);
+    }
+  }
+
+  public class TestRow extends BoxView
+  {
+    public int preferred = 200;
+    public TestRow break1;
+    public TestRow break2;
+    public int breakWeight = View.BadBreakWeight;
+
+    public TestRow(Element el)
+    {
+      super(el, View.X_AXIS);
+    }
+
+    public float getPreferredSpan(int axis)
+    {
+      System.err.println("preferredSpan called");
+      return preferred;
+    }
+
+    public float getMinimumSpan(int axis)
+    {
+      System.err.println("minimumSpan called");
+      return preferred;
+    }
+
+    /**
+     * This is implemented to return <code>breakWeight</code> when pos + len >
+     * <code>preferred / 2</code>, that means it returns the break weight
+     * specified by the testing code when the desired break location is beyond
+     * the middle of the view.
+     */
+    public int getBreakWeight(int axis, float pos, float len)
+    {System.err.println("getBreakWeight called");
+      if (pos + len > preferred)
+        return breakWeight;
+      else
+        return View.BadBreakWeight;
+    }
+
+    public View breakView(int axis, int offset, float pos, float len)
+    {System.err.println("breakView called");
+      break1 = new TestRow(getElement());
+      break1.preferred = preferred / 2;
+      break2 = new TestRow(getElement());
+      break2.preferred = preferred / 2;
+      if (offset < preferred / 2)
+        return break1;
+      else
+        return break2;
+    }
+
+  }
 
   /**
    * Constructs a new TestFlowView by calling super.
@@ -44,6 +113,7 @@ public class TestFlowView extends FlowView
   public TestFlowView(Element element, int axis)
   {
     super(element, axis);
+    strategy = new TestFlowStrategy();
   }
 
   /**
@@ -51,9 +121,13 @@ public class TestFlowView extends FlowView
    *
    * @return a view for one row
    */
-  protected View createRow()
+  public View createRow()
   {
-    return null;
+    return new TestRow(getElement());
   }
 
+  public TestFlowStrategy getFlowStragy()
+  {
+    return (TestFlowStrategy) strategy;
+  }
 }

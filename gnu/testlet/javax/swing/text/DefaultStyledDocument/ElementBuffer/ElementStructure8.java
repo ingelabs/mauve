@@ -214,24 +214,19 @@ public class ElementStructure8 extends DefaultStyledDocument implements Testlet
         harness.check(root.getElementCount() == 1);
         harness.check(root.getElement(0).getStartOffset() == 0);
         harness.check(root.getElement(0).getEndOffset() == 20);
-        doc.insertString(20, "\n third line of text.", null);
-        harness.check(root.getElementCount() == 3);
-        harness.check(root.getElement(0).getElementCount() == 1);
-        harness.check(root.getElement(1).getElementCount() == 1);
-        harness.check(root.getElement(2).getElementCount() == 1);
+        doc.insertString(19, "\n third line of text.", null);
+        harness.check(root.getElementCount(), 2);
+        harness.check(root.getElement(0).getElementCount(), 1);
+        harness.check(root.getElement(1).getElementCount(), 1);
 
         first = root.getElement(0).getElement(0);
-        harness.check(first.getStartOffset() == 0);
-        harness.check(first.getEndOffset() == 20);
+        harness.check(first.getStartOffset(), 0);
+        harness.check(first.getEndOffset(), 20);
 
         second = root.getElement(1).getElement(0);
-        harness.check(second.getStartOffset() == 20);
-        harness.check(second.getEndOffset() == 21);
+        harness.check(second.getStartOffset(), 20);
+        harness.check(second.getEndOffset(), 41);
 
-        third = root.getElement(2).getElement(0);
-        harness.check(third.getStartOffset() == 21);
-        harness.check(third.getEndOffset() == 41);
-        
         //printElements(doc.getDefaultRootElement(), 0);
       }
     catch (Exception t)
@@ -328,8 +323,8 @@ public class ElementStructure8 extends DefaultStyledDocument implements Testlet
     else if (numInserts == 10)
       {
         h2.checkPoint("eleventh doc event");
-        h2.check(o == 20);      
-        h2.check(l == 21);
+        h2.check(o, 19);      
+        h2.check(l, 21);
       } 
 
     else
@@ -653,36 +648,27 @@ public class ElementStructure8 extends DefaultStyledDocument implements Testlet
       else if (numInserts == 11)
         {
           h2.checkPoint("ElementBuffer insertUpdate: eleventh insertion");
-          h2.check (data.length == 6);
-          h2.check(data[0].getType() == ElementSpec.EndTagType);
-          h2.check(data[0].getDirection() == ElementSpec.OriginateDirection);
-          h2.check(data[0].getOffset() == 0);
-          h2.check(data[0].getLength() == 0);
+          h2.check (data.length, 4);
+          h2.check(data[0].getType(), ElementSpec.ContentType);
+          h2.check(data[0].getDirection(), ElementSpec.JoinPreviousDirection);
+          h2.check(data[0].getOffset(), 0);
+          h2.check(data[0].getLength(), 1);
           
-          h2.check(data[1].getType() == ElementSpec.StartTagType);
-          h2.check(data[1].getDirection() == ElementSpec.OriginateDirection);
-          h2.check(data[1].getOffset() == 0);
-          h2.check(data[1].getLength() == 0);          
+          h2.check(data[1].getType(), ElementSpec.EndTagType);
+          h2.check(data[1].getDirection(), ElementSpec.OriginateDirection);
+          h2.check(data[1].getOffset(), 0);
+          h2.check(data[1].getLength(), 0);          
           
-          h2.check(data[2].getType() == ElementSpec.ContentType);
-          h2.check(data[2].getDirection() == ElementSpec.OriginateDirection);
-          h2.check(data[2].getOffset() == 0);
-          h2.check(data[2].getLength() == 1);
+          h2.check(data[2].getType(), ElementSpec.StartTagType);
+          h2.check(data[2].getDirection(), ElementSpec.JoinFractureDirection);
+          h2.check(data[2].getOffset(), 0);
+          h2.check(data[2].getLength(), 0);
           
-          h2.check(data[3].getType() == ElementSpec.EndTagType);
-          h2.check(data[3].getDirection() == ElementSpec.OriginateDirection);
-          h2.check(data[3].getOffset() == 0);
-          h2.check(data[3].getLength() == 0);
-          
-          h2.check(data[4].getType() == ElementSpec.StartTagType);
-          h2.check(data[4].getDirection() == ElementSpec.OriginateDirection);
-          h2.check(data[4].getOffset() == 0);
-          h2.check(data[4].getLength() == 0);
-          
-          h2.check(data[5].getType() == ElementSpec.ContentType);
-          h2.check(data[5].getDirection() == ElementSpec.OriginateDirection);
-          h2.check(data[5].getOffset() == 0);
-          h2.check(data[5].getLength() == 20);          
+          h2.check(data[3].getType(), ElementSpec.ContentType);
+          h2.check(data[3].getDirection(), ElementSpec.JoinNextDirection);
+          h2.check(data[3].getOffset(), 0);
+          h2.check(data[3].getLength(), 20);
+
         }
 
       else

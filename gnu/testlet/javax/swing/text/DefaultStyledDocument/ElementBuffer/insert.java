@@ -102,6 +102,7 @@ public class insert implements Testlet, DocumentListener
     testEndTag5(harness);
 
     testNewlines(harness);
+    testNewlines2(harness);
   }
 
   /**
@@ -961,7 +962,7 @@ public class insert implements Testlet, DocumentListener
     specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
     specs[2] =
       new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
-    specs[1].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
+    specs[2].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
     doc.insert(1, specs);
 
     // The second 'a'
@@ -976,7 +977,7 @@ public class insert implements Testlet, DocumentListener
     specs[2] =
       new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
                                    text, 0, 1);
-    specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[2].setDirection(TestDocument.ElementSpec.OriginateDirection);
     doc.insert(2, specs);
 
     // The second '\n'
@@ -991,7 +992,7 @@ public class insert implements Testlet, DocumentListener
     specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
     specs[2] =
       new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
-    specs[1].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
+    specs[2].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
     doc.insert(3, specs);
 
     // We have one paragraph in the root element.
@@ -1018,6 +1019,119 @@ public class insert implements Testlet, DocumentListener
     el = par.getElement(0);
     h.check(el.getStartOffset(), 4);
     h.check(el.getEndOffset(), 5);
+
+  }
+
+
+  /**
+   * Inserts 'a\na\na' and checks the results. The characters are inserted
+   * one by one, as if somebody typed it in by keyboard.
+   *
+   * @param h the test harness to use
+   */
+  private void testNewlines2(TestHarness h)
+  {
+    h.checkPoint("testNewlines2");
+    TestDocument doc = new TestDocument();
+    doc.addDocumentListener(this);
+
+    // The first 'a'
+    char[] text = new char[] {'a'};
+    SimpleAttributeSet atts = new SimpleAttributeSet();
+    TestDocument.ElementSpec[] specs = new TestDocument.ElementSpec[1];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[0].setDirection(TestDocument.ElementSpec.JoinPreviousDirection);
+    doc.insert(0, specs);
+
+    // The first '\n'
+    text = new char[] {'\n'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[0].setDirection(TestDocument.ElementSpec.JoinPreviousDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[2].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
+    doc.insert(1, specs);
+
+    // The second 'a'
+    text = new char[] {'a'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[0].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.JoinNextDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[2].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    doc.insert(2, specs);
+
+    // The second '\n'
+    text = new char[] {'\n'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[0].setDirection(TestDocument.ElementSpec.JoinPreviousDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[2].setDirection(TestDocument.ElementSpec.JoinFractureDirection);
+    doc.insert(3, specs);
+
+    // The 3rd 'a'
+    text = new char[] {'a'};
+    specs = new TestDocument.ElementSpec[3];
+    specs[0] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.EndTagType);
+    specs[0].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    specs[1] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.StartTagType);
+    specs[1].setDirection(TestDocument.ElementSpec.JoinNextDirection);
+    specs[2] =
+      new TestDocument.ElementSpec(atts, TestDocument.ElementSpec.ContentType,
+                                   text, 0, 1);
+    specs[2].setDirection(TestDocument.ElementSpec.OriginateDirection);
+    doc.insert(4, specs);
+
+    // We have 3 paragraph in the root element.
+    Element root = doc.getDefaultRootElement();
+    h.check(root.getElementCount(), 3);
+
+    // We should now have 1 child in the 1st paragraph.
+    Element par = root.getElement(0);
+    h.check(par.getElementCount(), 1);
+    Element el = par.getElement(0);
+    h.check(el.getStartOffset(), 0);
+    h.check(el.getEndOffset(), 2);
+
+    // We should now have 1 child in the 2nd paragraph.
+    par = root.getElement(1);
+    h.check(par.getElementCount(), 1);
+    el = par.getElement(0);
+    h.check(el.getStartOffset(), 2);
+    h.check(el.getEndOffset(), 4);
+
+    // We should now have 2 children in the 3rd paragraph.
+    par = root.getElement(2);
+    h.check(par.getElementCount(), 2);
+    el = par.getElement(0);
+    h.check(el.getStartOffset(), 4);
+    h.check(el.getEndOffset(), 5);
+    el = par.getElement(1);
+    h.check(el.getStartOffset(), 5);
+    h.check(el.getEndOffset(), 6);
 
   }
 

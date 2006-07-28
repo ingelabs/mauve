@@ -42,7 +42,7 @@ public class getRootElements implements Testlet
   {
     PlainDocument d = new PlainDocument();
     Element[] e = d.getRootElements();
-    harness.check(e.length, 1);
+    harness.check(e.length, 2);
     harness.check(e[0], d.getDefaultRootElement());
   }
 

@@ -1,4 +1,4 @@
-/* getDocumentProperties.java -- FIXME: describe
+/* getBreakLocation.java -- FIXME: describe
    Copyright (C) 2006 FIXME: your info here
 This file is part of Mauve.
 
@@ -21,36 +21,18 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 // Tags: FIXME
 
-package gnu.testlet.javax.swing.text.AbstractDocument;
-
-import java.util.Dictionary;
-import java.util.Enumeration;
-
-import javax.swing.text.AbstractDocument;
+package gnu.testlet.javax.swing.text.Utilities;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-public class getDocumentProperties implements Testlet
+public class getBreakLocation implements Testlet
 {
 
   public void test(TestHarness harness)
   {
-    testDefault(harness);
+    // TODO Auto-generated method stub
 
-  }
-
-  private void testDefault(TestHarness h)
-  {
-    AbstractDocument doc = new TestAbstractDocument();
-    Dictionary props = doc.getDocumentProperties();
-    Enumeration keys = props.keys();
-    while (keys.hasMoreElements())
-      {
-        Object key = keys.nextElement();
-      }
-    h.check(props.size(), 1);
-    h.check(props.get("i18n"), Boolean.FALSE);
   }
 
 }

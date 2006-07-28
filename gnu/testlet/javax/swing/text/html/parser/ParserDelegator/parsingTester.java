@@ -105,7 +105,7 @@ public class parsingTester
     // Test subsequent tags.
     verify("<b><i><u>text</b><i></u>",
       "<html _implied_='true'><head _implied_='true'></head>"+
-      "<body _implied_='true'><b><i><u>[text]</b><i></u></i>"+
+      "<body _implied_='true'><b><i><u>'text'</u></i></b><i>"+
       "</i></body></html>", "subseqent tags");
 
 
@@ -119,7 +119,7 @@ public class parsingTester
     // Test entities in attributes.
     verify("<hr id='id_&#41;&#90' class= \"&#89;_&amp;\" >",
            "<html _implied_='true'><head _implied_='true'></head>" +
-           "<body _implied_='true'><hr class='Y_&' id='id_)Z'/></body></html>",
+           "<body _implied_='true'><hr class='y_&' id='id_)Z'/></body></html>",
            "Numeric and named entities in attributes"
           );
 
@@ -142,7 +142,7 @@ public class parsingTester
            "selected class=cC><input checked>",
            "<html _implied_='true'><head _implied_='true'></head>" +
            "<body _implied_='true'><option id='a' selected='selected'>" +
-           "</option><option class='cC' id='b' selected='selected'></option>" +
+           "</option><option class='cc' id='b' selected='selected'></option>" +
            "<input checked='checked'/></body></html>",
            "Attributes without value"
           );

@@ -1,5 +1,35 @@
 2006-07-28  Roman Kennke  <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/text/AbstractDocument/getDocumentProperties.java:
+	Removed debug output.
+	* gnu/testlet/javax/swing/text/AbstractDocument/BranchElement/getElementIndex.java:
+	New test.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure4.java:
+	Changed tests to do check(x, y) rather than check(x == y), so
+	that the wrong value gets recognized by Mauve.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/ElementStructure8.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/StyledDocument2.java:
+	Likewise.
+	* gnu/testlet/javax/swing/text/DefaultStyledDocument/ElementBuffer/insert.java
+	(testNewlines2): New test.
+	* gnu/testlet/javax/swing/text/FlowView/FlowStrategy/TestView.java:
+	New helper class.
+	* gnu/testlet/javax/swing/text/FlowView/FlowStrategy/adjustRow.java:
+	New test.
+	* gnu/testlet/javax/swing/text/FlowView/TestFlowView.java:
+	Fixed.
+	* gnu/testlet/javax/swing/text/PlainDocument/getRootElements.java:
+	Fixed test.
+	* gnu/testlet/javax/swing/text/Utilities/getBreakLocation.java:
+	New test.
+	* gnu/testlet/javax/swing/text/View/getMaximumSpan.java:
+	Added comment.
+	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/parsingTester.java:
+	Fixed test.
+
+2006-07-28  Roman Kennke  <kennke@aicas.com>
+
 	* gnu/testlet/java/awt/Component/getLocationOnScreen.java:
 	New test.
 

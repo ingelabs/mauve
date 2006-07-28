@@ -92,6 +92,11 @@ public class getMaximumSpan implements Testlet
     harness.check(v.getMaximumSpan(View.Y_AXIS), 123F);
   }
 
+  /**
+   * Tests the maximumSpan with a positive resizeWeight.
+   *
+   * @param harness the test harness to use
+   */
   private void testPositiveResizeWeight(TestHarness harness)
   {
     PositiveResizeWeightView v = new PositiveResizeWeightView();

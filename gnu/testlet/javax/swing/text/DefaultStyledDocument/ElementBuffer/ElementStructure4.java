@@ -24,9 +24,7 @@ package gnu.testlet.javax.swing.text.DefaultStyledDocument.ElementBuffer;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
@@ -53,11 +51,11 @@ public class ElementStructure4 extends DefaultStyledDocument implements Testlet
         doc.insertString(0, "Strike through text.\n", atts);
         atts.removeAttributes(atts);
         harness.checkPoint("after first insertion");
-        harness.check(root.getElementCount() == 2);
-        harness.check(root.getElement(0).getStartOffset() == 0);
-        harness.check(root.getElement(0).getEndOffset() == 21);
-        harness.check(root.getElement(1).getStartOffset() == 21);
-        harness.check(root.getElement(1).getEndOffset() == 22);
+        harness.check(root.getElementCount(), 2);
+        harness.check(root.getElement(0).getStartOffset(), 0);
+        harness.check(root.getElement(0).getEndOffset(), 21);
+        harness.check(root.getElement(1).getStartOffset(), 21);
+        harness.check(root.getElement(1).getEndOffset(), 22);
 
         // Add plain text in front.
         doc.insertString(0, "a", null);

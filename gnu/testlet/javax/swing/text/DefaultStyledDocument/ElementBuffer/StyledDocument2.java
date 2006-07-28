@@ -109,12 +109,12 @@ public class StyledDocument2 extends DefaultStyledDocument implements Testlet
     if (numLeaves== 1)
       {
         h2.checkPoint ("create first leaf element");
-        h2.check (p0 == 0);
-        h2.check (p1 == 5);
+        h2.check (p0, 0);
+        h2.check (p1, 5);
         try
         {
-          h2.check (parent.getStartOffset() == 0);
-          h2.check (parent.getEndOffset() == 6);
+          h2.check (parent.getStartOffset(), 0);
+          h2.check (parent.getEndOffset(), 6);
         }
         catch (Exception e)
         {
