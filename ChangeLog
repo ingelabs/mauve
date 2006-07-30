@@ -1,3 +1,17 @@
+2006-07-30  Casey Marshall  <csm@gnu.org>
+
+	* gnu/testlet/javax/net/ssl/SSLContext/TestDefaultInit.java,
+	* gnu/testlet/javax/net/ssl/SSLContext/TestGetInstance.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/AbstractEngineTest.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/SimplePSKKeyManager.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/SimpleX509KeyManager.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/SimpleX509TrustManager.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/TestGNUHandshake.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/TestHandshake.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/TestNoCiphersuites.java,
+	* gnu/testlet/javax/net/ssl/SSLEngine/TestNoProtocols.java:
+	New tests.
+
 2006-07-30  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/GregorianCalendar/setWeekOfMonth.java:
