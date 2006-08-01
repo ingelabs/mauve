@@ -1,3 +1,8 @@
+2006-08-01  Roman Kennke  <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/plaf/basic/BasicOptionPaneUI/PropertyChangeHandler/propertyChange.java:
+	New test.
+
 2006-08-01  Tania Bento  <tbento@redhat.com>
 	
 	* gnu/testlet/java/awt/Choice/remove.java: New test.
