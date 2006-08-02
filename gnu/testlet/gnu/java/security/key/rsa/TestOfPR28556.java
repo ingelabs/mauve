@@ -27,8 +27,6 @@ import gnu.java.security.util.Util;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.security.KeyFactory;
 import java.security.spec.PKCS8EncodedKeySpec;
 
