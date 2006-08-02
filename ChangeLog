@@ -1,3 +1,7 @@
+2006-08-02  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/gnu/java/security/key/rsa/TestOfPR28556.java: New test.
+
 2006-08-01  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/plaf/basic/BasicOptionPaneUI/PropertyChangeHandler/propertyChange.java:
