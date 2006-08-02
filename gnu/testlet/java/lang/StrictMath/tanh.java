@@ -27,7 +27,7 @@ import gnu.testlet.TestHarness;
 public class tanh implements Testlet
 {
   /**
-   * These values are used as arguments to cbrt.
+   * These values are used as arguments to tanh.
    * The values are somewhat arbitrary, but ensure that all code paths
    * are tested.
    */

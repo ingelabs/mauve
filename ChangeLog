@@ -1,3 +1,10 @@
+2006-08-02  Carsten Neumann  <cn-develop@gmx.net>
+
+	* gnu/testlet/java/lang/StrictMath/tanh.java: Fixed comment.
+	* gnu/testlet/java/lang/StrictMath/cosh.java: Likewise.
+	* gnu/testlet/java/lang/StrictMath/sinh.java: Likewise.
+	* gnu/testlet/java/lang/StrictMath/expm1.java: Likewise.
+
 2006-08-02  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/java/awt/image/AffineTransformOp/constructors.java,
