@@ -1,5 +1,9 @@
 2006-08-02  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/java/security/SecureRandom/TestOfPR23899.java: New test.
+
+2006-08-02  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/gnu/java/security/key/rsa/TestOfPR28556.java: Removed unused
 	imports.
 
