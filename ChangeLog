@@ -1,3 +1,13 @@
+2006-08-02  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/dnd/DragSource/Constructors.java,
+	* gnu/testlet/java/awt/dnd/DragSource/CreateDragGestureRecognizerTest.java,
+	* gnu/testlet/java/awt/dnd/DragSource/FlavourMapTest.java,
+	* gnu/testlet/java/awt/dnd/DragSource/getDragThresholdTest.java,
+	* gnu/testlet/java/awt/dnd/DragSource/isDragImageSupportedTest.java,
+	* gnu/testlet/java/awt/dnd/DropTarget/Constructors.java:
+	New tests.
+
 2006-08-02  Carsten Neumann  <cn-develop@gmx.net>
 
 	* gnu/testlet/java/lang/StrictMath/tanh.java: Fixed comment.
