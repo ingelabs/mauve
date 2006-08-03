@@ -90,7 +90,20 @@ public class expm1 implements Testlet
       -1.0
     };
 
-  public void test(TestHarness harness)
+  private static long[] NaNValues =
+    {
+      0x7fff800000000000L,
+      0xffff800000000000L,
+      0x7fff812345abcdefL,
+      0xffff812345abcdefL,
+
+      0x7fff000000000001L,
+      0xffff000000000001L,
+      0x7fff7654321fedcbL,
+      0xffff7654321fedcbL
+    };
+
+  private void testInputValues(TestHarness harness)
   {
     double res;
 
@@ -101,6 +114,30 @@ public class expm1 implements Testlet
 	// exact equality seems appropriate for StrictMath
 	harness.check(res, outputValues[i]);
       }
+  }
+
+  /**
+   * Test if input NaN is returned unchanged.
+   */
+  private void testNaN(TestHarness harness)
+  {
+    long   bitsNaN;
+    double valNaN;
+
+    for (int i = 0; i < NaNValues.length; ++i)
+      {
+	bitsNaN = NaNValues[i];
+	valNaN  = Double.longBitsToDouble(bitsNaN);
+
+	harness.check(Double.doubleToRawLongBits(StrictMath.expm1(valNaN)),
+		      bitsNaN);
+      }
+  }
+
+  public void test(TestHarness harness)
+  {
+    testInputValues(harness);
+    testNaN(harness);
   }
 
   /**
