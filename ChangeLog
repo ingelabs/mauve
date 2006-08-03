@@ -1,3 +1,18 @@
+2006-08-03  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/AffineTransformOp/constructors.java,
+	* gnu/testlet/java/awt/image/AffineTransformOp/createCompatibleDestImage.java,
+	* gnu/testlet/java/awt/image/AffineTransformOp/filterImage.java,
+	* gnu/testlet/java/awt/image/AffineTransformOp/filterRaster.java,
+	* gnu/testlet/java/awt/image/AffineTransformOp/getBounds2D.java,
+	* gnu/testlet/java/awt/image/AffineTransformOp/getPoint2D.java,
+	* gnu/testlet/java/awt/image/BandCombineOp/constructors.java,
+	* gnu/testlet/java/awt/image/BandCombineOp/createCompatibleDestRaster.java,
+	* gnu/testlet/java/awt/image/BandCombineOp/filter.java,
+	* gnu/testlet/java/awt/image/BandComgineOp/getBounds2D.java,
+	* gnu/testlet/java/awt/image/BandCombineOp/getPoint2D.java:
+	Fixed GPL notice.
+
 2006-08-02  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/dnd/DragSource/Constructors.java,
