@@ -1,3 +1,10 @@
+2006-08-04  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* RunnerProcess.java:
+	(getStackTraceString): Return the first line number in the stack trace 
+	that is in the Mauve test file that was run.
+	(exceptionDetails): Likewise.
+
 2006-08-03  Carsten Neumann  <cn-develop@gmx.net>
 
 	* gnu/testlet/java/lang/StrictMath/cbrt.java

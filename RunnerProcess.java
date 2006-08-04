@@ -440,9 +440,12 @@ public class RunnerProcess
   {
     // Find the line number of the check() call that failed.
     int line = -1;
+    String fileName = description.substring(description.lastIndexOf('.') + 1);
+    fileName += ".java";
     for (int i = 0; i < st.length; i++)
       {
-        if (st[i].getClassName().equals(description))
+        if (st[i].getClassName().startsWith((description))
+					&& st[i].getFileName().equals(fileName))
           {
             line = st[i].getLineNumber();
             break;
@@ -817,11 +820,16 @@ public class RunnerProcess
     // the exception.
     int lineOrigin = -1;
     
+    // fileName is the name of the Mauve test file
+    String fileName = name.substring(name.lastIndexOf('.') + 1);
+    fileName += ".java";
+    
     // This for loop looks for the line within the test method that caused the
     // exception.
     for (int i = 0; i < st.length; i++)
       {
-        if (st[i].getClassName().equals(name))
+        if (st[i].getClassName().startsWith(name)
+					&& st[i].getFileName().equals(fileName))
           {
             lineOrigin = st[i].getLineNumber();
             break;
