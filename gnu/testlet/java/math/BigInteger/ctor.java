@@ -39,6 +39,7 @@ public class ctor
   {
     testCtorStringInt(harness);
     testCtorIntIntRandom(harness);
+    testCtorIntRandom(harness);
   }
 
   private void testCtorStringInt(TestHarness harness)
@@ -133,6 +134,28 @@ public class ctor
       {
         harness.verbose(x.getMessage());
         harness.fail("testCtorIntIntRandom: " + x);
+      }
+  }
+
+  private void testCtorIntRandom(TestHarness harness)
+  {
+    harness.checkPoint("testCtorIntRandom");
+    Random prng = new Random();
+    BigInteger bi;
+    try
+      {
+        for (int numBits = 8; numBits < 2048; numBits++)
+          {
+            bi = new BigInteger(numBits, prng);
+            harness.check(bi.bitLength() <= numBits,
+                          "Constructed BigInteger MUST be, at most, "
+                          + numBits + "-bit long");
+          }
+      }
+    catch (Exception x)
+      {
+        harness.verbose(x.getMessage());
+        harness.fail("testCtorIntRandom: " + x);
       }
   }
 }
