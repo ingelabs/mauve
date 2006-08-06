@@ -1,5 +1,9 @@
 2006-08-06  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/java/math/BigInteger/TestOfPR27372.java: New test.
+
+2006-08-06  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/java/math/BigInteger/ctor.java: New test.
 
 2006-08-04  Anthony Balkissoon  <abalkiss@redhat.com>
