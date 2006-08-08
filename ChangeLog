@@ -1,3 +1,7 @@
+2006-08-08  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/dnd/DnDTest.java: New test.
+
 2006-08-06  C. Scott Marshall  <csm@gnu.org>
 
 	* gnu/testlet/java/nio/ByteBuffer/TestAllocateDirect.java: new test.
