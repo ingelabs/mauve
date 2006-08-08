@@ -139,7 +139,6 @@ public class DnDTest
       r.delay(1000);
       r.mouseMove(tLoc.x + tSize.width/2, tLoc.y + tSize.height/2);
       
-      // FIXME: Fix values, see http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4363409
       start = tLoc.y + tSize.height/2;
       end = start + 5;
         
