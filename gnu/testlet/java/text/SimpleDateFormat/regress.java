@@ -118,5 +118,20 @@ public class regress implements Testlet
      sdf.setTimeZone(TimeZone.getTimeZone("America/New_York"));
      someTime = 1098968427000L; // 04-10-28 14:00:27 GMT
      harness.check(sdf.format(new Date(someTime)), "04-10-28 09:00:27 -0400");
+
+     harness.checkPoint("PR 28658");
+     sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.US);
+     try
+     {
+    	 Date d1 = sdf.parse("Sun Nov 6 08:49:37 1994");
+    	 Date d2 = sdf.parse("Sun Nov  6 08:49:37 1994");
+    	 harness.check(d1, d2);
+     }
+     catch (ParseException _)
+     {
+    	 harness.debug(_);
+    	 harness.debug("index: " + _.getErrorOffset());
+    	 harness.check(false);
+     }
   }
 }

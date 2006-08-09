@@ -1,3 +1,9 @@
+2006-08-09  Tom Tromey  <tromey@redhat.com>
+
+	PR classpath/28658:
+	* gnu/testlet/java/text/SimpleDateFormat/regress.java (test): Added
+	regression test.
+
 2006-08-08  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/dnd/DnDTest.java
