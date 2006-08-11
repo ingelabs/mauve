@@ -60,12 +60,14 @@ public class getPoint2D implements Testlet
     harness.check(op.getPoint2D(new Point2D.Double(5, 5), null), new Point2D.Double(5,5));
     
     Point2D pt = null;
-    op.getPoint2D(new Point2D.Double(10,-5), pt);
+    Point2D pt2 = op.getPoint2D(new Point2D.Double(10,-5), pt);
     harness.check(pt, null);        // this is what the ref impl does...
+    harness.check(pt2, new Point2D.Double(10, -5));
     
     pt = new Point2D.Double(0,0);
-    op.getPoint2D(new Point2D.Double(10,-5), pt);
+    pt2 = op.getPoint2D(new Point2D.Double(10,-5), pt);
     harness.check(pt, new Point2D.Double(10, -5));
+    harness.check(pt, pt2);
     
     pt = new Point2D.Float(0,0);
     op.getPoint2D(new Point2D.Float(-10,-5), pt);
@@ -107,7 +109,7 @@ public class getPoint2D implements Testlet
   
   private void testShear(TestHarness harness)
   {
-    harness.checkPoint("testHarness");
+    harness.checkPoint("testShear");
     
     AffineTransform xform = AffineTransform.getShearInstance(1.5, 3.25);
     AffineTransformOp op = new AffineTransformOp(xform, AffineTransformOp.TYPE_BICUBIC);

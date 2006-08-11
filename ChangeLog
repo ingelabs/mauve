@@ -1,3 +1,33 @@
+2006-08-11  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/AffineTransformOp/createCompatibleDestImage.java
+	(colorModelTest): New method.
+	(simpleTest): New method.
+	(test): Added more tests and split into two methods.
+	* gnu/testlet/java/awt/image/AffineTransformOp/createCompatibleDestRaster.java:
+	New file.
+	* gnu/testlet/java/awt/image/AffineTransformOp/filterImage.java
+	(test): Removed a bad test.
+	(testDefaults): Added more tests.
+	(testTransform): Removed.
+	* gnu/testlet/java/awt/image/AffineTransformOp/filterRaster.java
+	(test): Removed a bad test.
+	(testDefaults): Added more tests.
+	(testTransform): Removed.
+	* gnu/testlet/java/awt/image/AffineTransformOp/getPoint2D.java
+	(testIdentity): Added more tests.
+	* gnu/testlet/java/awt/image/BandCombineOp/constructors.java
+	(basicTest): New method.
+	(emptyMatrix): New method.
+	(invalidMatrix): New method.
+	(test): Added more tests and split into multiple methods.
+	* gnu/testlet/java/awt/image/BandCombineOp/createCompatibleDestRaster.java:
+	(basicTest): New method.
+	(impossibleTets): New method.
+	(test): Added more tests and split into multiple methods.
+	(test2): New method.
+	(test3): New method.
+
 2006-08-11  David Daney  <ddaney@avtrex.com>
 
 	* gnu/testlet/java/net/HttpURLConnection/reuseConnection.java: New
