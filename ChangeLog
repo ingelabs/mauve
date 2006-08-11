@@ -1,5 +1,10 @@
 2006-08-11  David Daney  <ddaney@avtrex.com>
 
+	* gnu/testlet/java/net/HttpURLConnection/reuseConnection.java: New
+	test.
+
+2006-08-11  David Daney  <ddaney@avtrex.com>
+
 	* gnu/testlet/java/net/HttpURLConnection/TestHttpServer.java: Rewrote.
 	* gnu/testlet/java/net/HttpURLConnection/responseCodeTest.java (test):
 	Rewrote to use new TestHttpServer.
