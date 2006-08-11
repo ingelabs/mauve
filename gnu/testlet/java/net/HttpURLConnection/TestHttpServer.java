@@ -22,7 +22,6 @@
 
 package gnu.testlet.java.net.HttpURLConnection;
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +29,8 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -46,108 +47,95 @@ import java.util.List;
  */
 public final class TestHttpServer implements Runnable
 { 
-  /**
-   * The interface to be implemented if checking
-   * of the serverside received headers and body
-   * is desired.
-   */
-  interface CheckReceivedRequest 
+  
+  public interface ConnectionHandlerFactory
   {
-    /**
-     * Will be called with a List of headers in 
-     * the sequence received by the test server.
-     * 
-     * @param headers List of headers
-     */
-    public void checkHeaders(List headers);
-    
-    /**
-     * Will be called with the body if one was
-     * received.
-     * 
-     * @param body the body
-     */
-    public void checkBody(byte[] body);    
+    ConnectionHandler newConnectionHandler(Socket s) throws IOException;
   }
   
   /**
-   * The actual request handler.
-   * It always returns what is set in the TestHttpServer
-   * for the response headers and response body.
+   * The request handler skeleton.
    */
-  class TestHttpRequestHandler implements Runnable
+  public static abstract class ConnectionHandler implements Runnable
   {  
-    Socket socket;
-    OutputStream output;
-    InputStream input;
-  
-    public TestHttpRequestHandler(Socket socket) throws Exception
+    protected Socket socket;
+    protected OutputStream output;
+    protected InputStream input;
+
+    ConnectionHandler(Socket socket) throws IOException
     {
       this.socket = socket;
       output = socket.getOutputStream();
       input = socket.getInputStream();
     }
-  
+
+    /**
+     * Process one request on the connection.
+     * 
+     * @param headers
+     * @param body
+     * @return true if another request should be read from the connection.
+     * @throws IOException
+     */
+    protected abstract boolean processConnection(List headers, byte[] body)
+      throws IOException;
+    
     public void run()
     {
       try
         {
-          // Read the whole request into a byte array
-          ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-          
-          byte[] b = new byte[1024];
-          int bytes = 0 ;
-          while ((bytes = input.read(b)) != -1)
-            { 
-              buffer.write(b, 0, bytes);
-              if (bytes < 1024)
-                break;
-            }
-          
-          byte[] request = buffer.toByteArray();
-
-          // Parse the request headers from the byte array          
-          List headerList = new ArrayList();
-          
-          ByteArrayOutputStream line;
-          int i = 0;
-          line = new ByteArrayOutputStream();
-          for (; i < request.length; i++)
+          List headerList;
+          int contentLength = -1;
+          byte[] body;
+          do
             {
-              if (request[i] != (byte) 0x0a) // LF
-                line.write(request[i]);
-              else
+              headerList = new ArrayList();
+
+              ByteArrayOutputStream line;
+              line = new ByteArrayOutputStream();
+              for (;;)
                 {
-                  byte[] array = line.toByteArray();
-                  if (array.length == 1) // the last is only a LF
-                    break;
-
-                  String headerLine = new String(array);
-                  headerList.add(headerLine);
-                  line = new ByteArrayOutputStream();
+                  int ch = input.read();
+                  if (-1 == ch)
+                    break; // EOF
+              
+                  if (ch !=  0x0a) // LF
+                    line.write(ch);
+                  else
+                    {
+                      byte[] array = line.toByteArray();
+                      if (array.length == 1) // the last is only a LF
+                        break;
+        	
+                      String headerLine = new String(array);
+                      if (headerLine.length() > 15 &&
+                          "Content-Length:".equalsIgnoreCase(headerLine.substring(0,15)))
+                        {
+                          contentLength = Integer.parseInt(headerLine.substring(15).trim());
+                        }
+                      headerList.add(headerLine);
+                      line = new ByteArrayOutputStream();
+                    }
                 }
-            }
 
-          // Put the remaining bytes into the request body 
-          byte[] body = new byte[(request.length - (i + 1))];
-          System.arraycopy(request, i + 1, body, 0, body.length);
-          
-          // Check everything          
-          if (check != null)
-            {
-              check.checkHeaders(headerList);
-              if (body.length > 0)
-                check.checkBody(body);
-            }         
-             
-          // Response writing          
-          // write the response headers
-          output.write(responseHeader);
-          
-          // write the body 
-          if (responseBody != null)
-            output.write(responseBody);
-          
+              if (contentLength > 0) 
+                {
+                  body = new byte[contentLength];
+                  int pos = 0;
+                  while (pos < contentLength)
+                    {
+                      int nr = input.read(body, pos, body.length - pos);
+                      if (-1 == nr)
+                        break;
+                      pos += nr;
+                    }
+                }
+              else
+                body = null;
+              contentLength = -1;
+              // Check everything
+            } while (processConnection(headerList, body));
+
           // Clean up
           output.close();
           input.close();
@@ -158,52 +146,46 @@ public final class TestHttpServer implements Runnable
           // ignore
         }
     }
+
+    protected void forceClosed()
+    {
+      try
+        {
+          socket.close();
+        }
+      catch (IOException ioe)
+        {
+          // Ignore.
+        }
+    }
   }
 
-  int port;
-  byte[] responseHeader;
-  byte[] responseBody;
-  CheckReceivedRequest check;
   boolean kill = false;
   ServerSocket serverSocket;  
-
+  ConnectionHandlerFactory connectionHandlerFactory;
+  
   /**
-   * Create a TestHttpServer on given port
-   * @param port the port to use.
+   * Create a TestHttpServer on an unused port.
    */
-  public TestHttpServer(int port)
+  public TestHttpServer() throws IOException
   {
-    this.port = port;
+    serverSocket = new ServerSocket(0);
+    Thread t = new Thread(this, "TestHttpServer");
+    t.start();
   }
   
   /**
-   * An object implementing the CheckReceivedRequest
-   * interface. The methods will be called to enable
-   * checks of the serverside received request.
-   * 
-   * @param responseBody the byte[] of the body
+   * The local port on which the test server is listening for connections.
+   * @return the port
    */
-  public void setCheckReceivedRequest(CheckReceivedRequest object)
+  public int getPort()
   {
-    this.check = object;
+    return serverSocket.getLocalPort();
   }
   
-  /**
-   * The bytes which should be sent as the response body.
-   * @param responseBody the byte[] of the body
-   */
-  public void setResponseBody(byte[] responseBody)
+  public synchronized void setConnectionHandlerFactory(ConnectionHandlerFactory f)
   {
-    this.responseBody = responseBody;
-  }
-  
-  /**
-   * The bytes which should be sent as the response headers. 
-   * @param responseHeaders the byte[] of the headers
-   */
-  public void setResponseHeaders(byte[] responseHeaders)
-  {
-    this.responseHeader = responseHeaders;
+    connectionHandlerFactory = f;
   }
   
   /**
@@ -213,6 +195,7 @@ public final class TestHttpServer implements Runnable
   public void killTestServer()
   {
     kill = true;
+    closeAllConnections();
     try
       {
         serverSocket.close();
@@ -223,6 +206,8 @@ public final class TestHttpServer implements Runnable
       }
   }
   
+  private List activeConnections = new LinkedList();
+  
   /**
    * Listens on the port and creates a Handler for
    * incoming connections.
@@ -231,17 +216,23 @@ public final class TestHttpServer implements Runnable
   {   
     try
       {
-        serverSocket = new ServerSocket(port);
         while (! kill)
           {
             Socket socket = serverSocket.accept();
             try
               {
-                TestHttpRequestHandler request = 
-                  new TestHttpRequestHandler(socket);
+                ConnectionHandlerFactory f;
+                synchronized(this)
+                  {
+                    f = connectionHandlerFactory;
+                  }
+                ConnectionHandler request = f.newConnectionHandler(socket);
                 Thread thread = new Thread(request);
-                
                 thread.start();
+                synchronized(activeConnections)
+                  {
+                    activeConnections.add(request);
+                  }
               }
             catch (Exception e)
               {
@@ -252,6 +243,20 @@ public final class TestHttpServer implements Runnable
     catch (IOException e)
       {
         // ignore
+      }
+  }
+  
+  public void closeAllConnections()
+  {
+    synchronized (activeConnections)
+      {
+        Iterator it = activeConnections.iterator();
+        while (it.hasNext())
+          {
+            ConnectionHandler request = (ConnectionHandler)it.next();
+            request.forceClosed();
+            it.remove();
+          }
       }
   }
 }

@@ -26,65 +26,100 @@ package gnu.testlet.java.net.HttpURLConnection;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.HttpURLConnection;
+import java.net.Socket;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
 public class responseHeadersTest implements Testlet
 {
-
   public void test(TestHarness harness)
   {
     TestHttpServer server = null;
     try
       {
-        server = new TestHttpServer(8080);
-        Thread thread = new Thread(server);
-        thread.start();
-        try
-          {
-            // SUN JDK needs some time to open sockets
-            Thread.sleep(100);
-          }
-        catch (InterruptedException e1)
-          {
-          }
-        
+    	try
+    	  {
+            server = new TestHttpServer();
+    	  }
+    	catch (IOException ioe)
+    	  {
+    	    harness.debug(ioe);
+    	    harness.fail("Could not start server");
+    	    return;
+    	  }
         test_MultiHeaders(harness, server);
         test_LowerUpperCaseHeaders(harness, server);
       }
     finally
       {
         server.killTestServer();
-      }   
+      }
   }
-  
+
+  static class Factory implements TestHttpServer.ConnectionHandlerFactory
+  {
+    private String headers;
+    Factory(String headers)
+    {
+      this.headers = headers;
+    }
+
+    public TestHttpServer.ConnectionHandler newConnectionHandler(Socket s)
+      throws IOException
+    {
+       return new Handler(s, headers);
+    }
+  }
+
+  static class Handler extends TestHttpServer.ConnectionHandler
+  {
+    private String responseHeaders;
+    private Writer sink;
+
+    Handler(Socket socket, String headers) throws IOException
+    {
+      super(socket);
+      this.responseHeaders = headers;
+      sink = new OutputStreamWriter(output,"US-ASCII");
+    }
+
+    protected boolean processConnection(List headers, byte[] body)
+      throws IOException
+    {
+      sink.write(responseHeaders);
+      sink.close();
+      return false;
+    }
+  }
+
   public void test_MultiHeaders(TestHarness h, TestHttpServer server)
   {    
     try
-      {        
-        URL url = new URL("http://localhost:8080/");
+      {
+        Factory f = new Factory(
+           "HTTP/1.0 200 OK\r\n" +
+           "Server: TestServer\r\n" +
+           "Key1: value, value2\r\n" +
+           // set the header a second time with different values
+           // these values must be prepended to key1
+           "Key1: value3\r\n" +
+           "IntHeader: 1234\r\n" +
+           "IntHeaderMalformed: 1234XY\r\n" +
+           "DateHeader: Thu, 02 Mar 2006 14:34:55 +0000\r\n" +
+           "DateHeaderMalformed: Thu, 02 Mar 2006V 14:13:07 +0000\r\n\r\n"
+           );
+
+        server.setConnectionHandlerFactory(f);
+
+        URL url = new URL("http://localhost:" + server.getPort() + "/");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
 
-        // construct what should be returned by the test server as headers
-        ByteArrayOutputStream headers = new ByteArrayOutputStream();
-        headers.write("HTTP/1.0 200 OK\r\n".getBytes());
-        headers.write("Server: TestServer\r\n".getBytes());
-        headers.write("Key1: value, value2\r\n".getBytes());
-        // set the header a second time with different values
-        // these values must be prepended to key1
-        headers.write("Key1: value3\r\n".getBytes());
-        headers.write("IntHeader: 1234\r\n".getBytes());
-        headers.write("IntHeaderMalformed: 1234XY\r\n".getBytes());
-        headers.write("DateHeader: Thu, 02 Mar 2006 14:34:55 +0000\r\n".getBytes());
-        headers.write("DateHeaderMalformed: Thu, 02 Mar 2006V 14:13:07 +0000\r\n\r\n".getBytes());
-
-        server.setResponseHeaders(headers.toByteArray());
-        
         h.checkPoint("getHeaderFields()");
         Map fields = conn.getHeaderFields();
         
@@ -226,23 +261,22 @@ public class responseHeadersTest implements Testlet
   public void test_LowerUpperCaseHeaders(TestHarness h, TestHttpServer server)
   {    
     try
-      {        
-        URL url = new URL("http://localhost:8080/");
+      {
+        Factory f = new Factory(
+           "HTTP/1.0 200 OK\r\n" +
+           "Server: TestServer\r\n" +
+           "AnotherKey: value\r\n" +
+           "Key: value\r\n" +
+           "Key: value1\r\n" +
+           "key: value2\r\n" +
+           "key: value3\r\n\r\n"
+        );
+        server.setConnectionHandlerFactory(f);
+      
+        URL url = new URL("http://localhost:" + server.getPort() + "/");        
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
 
-        // construct what should be returned by the test server as headers
-        ByteArrayOutputStream headers = new ByteArrayOutputStream();
-        headers.write("HTTP/1.0 200 OK\r\n".getBytes());
-        headers.write("Server: TestServer\r\n".getBytes());  
-        headers.write("AnotherKey: value\r\n".getBytes());
-        headers.write("Key: value\r\n".getBytes());
-        headers.write("Key: value1\r\n".getBytes());
-        headers.write("key: value2\r\n".getBytes());
-        headers.write("key: value3\r\n\r\n".getBytes());
-        
-        server.setResponseHeaders(headers.toByteArray());
-        
         h.checkPoint("LowerUpperCase header fields tests");
         
         Map fields = conn.getHeaderFields();  

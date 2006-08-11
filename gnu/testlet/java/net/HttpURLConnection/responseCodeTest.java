@@ -25,12 +25,16 @@ package gnu.testlet.java.net.HttpURLConnection;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import java.io.ByteArrayOutputStream;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.HttpURLConnection;
+import java.net.Socket;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Tests correct behaviour of getInputStream(), getErrorStream()
@@ -39,7 +43,7 @@ import java.net.URL;
 public class responseCodeTest implements Testlet
 {
   /**
-   * Starts an HTTP server on port 8080 and calls
+   * Starts an HTTP server and calls
    * the test_ResponseCode for the error codes.
    */
   public void test(TestHarness h) 
@@ -47,18 +51,17 @@ public class responseCodeTest implements Testlet
     TestHttpServer server = null;
     try
       {
-        server = new TestHttpServer(8080);
-        Thread thread = new Thread(server);
-        thread.start();
-        try
-          {
-//          SUN JDK needs some time to open sockets
-            Thread.sleep(100);
-          }
-        catch (InterruptedException e1)
-          {
-          }
-        
+      	try
+      	  {
+            server = new TestHttpServer();
+      	  }
+      	catch (IOException ioe)
+      	  {
+      	    h.debug(ioe);
+      	    h.fail("Could not start server");
+      	    return;
+      	  }
+
         for (int i=400; i < 418; i++)
           test_ResponseCode(i, h, server);
         
@@ -67,30 +70,60 @@ public class responseCodeTest implements Testlet
       }
     finally
       {
-        server.killTestServer();
-      }   
+        if (server != null)
+          server.killTestServer();
+      }
+  }
+  
+  static class Factory implements TestHttpServer.ConnectionHandlerFactory
+  {
+    private int responseCode;
+    Factory(int responseCode)
+    {
+      this.responseCode = responseCode;
+    }
+    
+    public TestHttpServer.ConnectionHandler newConnectionHandler(Socket s)
+      throws IOException
+    {
+       return new Handler(s, responseCode);
+    }
+  }
+  
+  static class Handler extends TestHttpServer.ConnectionHandler
+  {
+    private int responseCode;
+    private Writer sink;
+    
+    Handler(Socket socket, int responseCode) throws IOException
+    {
+      super(socket);
+      this.responseCode = responseCode;
+      sink = new OutputStreamWriter(output,"US-ASCII");
+    }
+
+    protected boolean processConnection(List headers, byte[] body)
+      throws IOException
+    {
+      sink.write("HTTP/1.0 " + responseCode + " OK\r\n");
+      sink.write("Server: TestServer\r\n\r\n");
+      sink.close();
+      return false;
+    }
   }
   
   public void test_ResponseCode(int responseCode, 
       TestHarness h, TestHttpServer server)
   {    
     try
-      {        
-        URL url = new URL("http://localhost:8080/");        
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();        
+      {
+        server.setConnectionHandlerFactory(new Factory(responseCode));
+        URL url = new URL("http://localhost:" + server.getPort() + "/");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         
         h.checkPoint("Test " + responseCode + " response");
 
-        // construct what should be returned by the test server as headers        
-        ByteArrayOutputStream headers = new ByteArrayOutputStream();
-
-        // status line (the responsecode encoded for the test)
-        headers.write(new String("HTTP/1.0 " + responseCode + " OK\r\n").getBytes());
-        headers.write("Server: TestServer\r\n\r\n".getBytes());
-
-        server.setResponseHeaders(headers.toByteArray());
-        
         // test the responsecode
         int code = conn.getResponseCode();
         h.check(code == responseCode);
