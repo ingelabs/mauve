@@ -41,6 +41,7 @@ import java.security.Security;
 import java.security.Signature;
 import java.security.cert.CertPathBuilder;
 import java.security.cert.CertPathValidator;
+import java.security.cert.CertStore;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 
@@ -103,6 +104,7 @@ public class TestOfPR28678
         testCertificateFactory(harness);
         testCertPathBuilder(harness);
         testCertPathValidator(harness);
+        testCertStore(harness);
       }
     finally
       {
@@ -701,6 +703,34 @@ public class TestOfPR28678
       }
   }
 
+  private void testCertStore(TestHarness harness)
+  {
+    String msg;
+    msg = "MUST NOT be able to instantiate CertStore algorithm from designated provider";
+    try
+      {
+        CertStore.getInstance("foo", null, "P1");
+        harness.fail(msg);
+      }
+    catch (Exception x)
+      {
+        harness.check(true, msg);
+        checkClassNotFoundException(harness, x);
+      }
+
+    msg = "MUST NOT be able to instantiate CertStore algorithm from any provider";
+    try
+      {
+        CertStore.getInstance("foo", null);
+        harness.fail(msg);
+      }
+    catch (Exception x)
+      {
+        harness.check(true, msg);
+        checkClassNotFoundException(harness, x);
+      }
+  }
+
   private void checkClassNotFoundException(TestHarness harness, Exception x)
   {
     Throwable t = x.getCause();
@@ -762,6 +792,7 @@ public class TestOfPR28678
       put("CertificateFactory.foo", "a.b.c");
       put("CertPathBuilder.foo", "a.b.c");
       put("CertPathValidator.foo", "a.b.c");
+      put("CertStore.foo", "a.b.c");
     }
   }
 }

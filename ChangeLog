@@ -1,5 +1,12 @@
 2006-08-13  Raif S. Naffah  <raif@swiftdsl.com.au>
 
+	* gnu/testlet/gnu/java/security/TestOfPR28678.java (FakeProvider): Added
+	a CertStore mapping.
+	(testCertStore): New method.
+	(test): Call method above.
+
+2006-08-13  Raif S. Naffah  <raif@swiftdsl.com.au>
+
 	* gnu/testlet/gnu/java/security/TestOfPR28678.java: New test.
 
 2006-08-11  Francis Kung  <fkung@redhat.com>
