@@ -70,6 +70,11 @@ public class DnDTest
   boolean dragOverTar;
   boolean drop;
   boolean finished;
+  boolean actionPerformed;
+  boolean dragExit;
+  boolean dropActionChanged;
+  boolean dragExitTar;
+  boolean dropActionChangedTar;
   
   public synchronized void test(TestHarness h)
   {
@@ -118,6 +123,11 @@ public class DnDTest
       harness.check(dragOver);
       harness.check(dragOverTar);
       harness.check(drop);
+      harness.check(!actionPerformed);
+      harness.check(!dragExit);
+      harness.check(!dropActionChanged);
+      harness.check(!dragExitTar);
+      harness.check(!dropActionChangedTar);
     }
     
     void doDnD()
@@ -182,7 +192,6 @@ public class DnDTest
             {
                 System.out.println(e);
             }
-
         }
     }
     
@@ -191,6 +200,7 @@ public class DnDTest
       Button b = (Button) e.getSource();
       b.setLabel("");
       source.setText("Drag and drop me to the following Button");
+      actionPerformed = true;
     }
 
     public void dragEnter(DropTargetDragEvent e)
@@ -200,6 +210,7 @@ public class DnDTest
 
     public void dragExit(DropTargetEvent e)
     {
+      dragExit = true;
     }
 
     public void dragOver(DropTargetDragEvent e)
@@ -243,6 +254,7 @@ public class DnDTest
 
     public void dropActionChanged(DropTargetDragEvent e)
     {
+      dropActionChanged = true;
     }
   }
 
@@ -301,6 +313,7 @@ public class DnDTest
 
     public void dragExit(DragSourceEvent e)
     {
+      dragExitTar = true;
     }
 
     public void dragOver(DragSourceDragEvent e)
@@ -310,6 +323,7 @@ public class DnDTest
 
     public void dropActionChanged(DragSourceDragEvent e)
     {
+      dropActionChangedTar = true;
     }
   }
 }
