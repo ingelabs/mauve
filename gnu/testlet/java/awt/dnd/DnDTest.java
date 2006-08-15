@@ -160,39 +160,45 @@ public class DnDTest
       r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
     
-    class MouseThread extends Thread
+    class MouseThread
+        extends Thread
     {
-        public boolean shouldStop;
-        public void run()
-        {
-            try
-            {
-                shouldStop=false;
-                Robot robot=new Robot();
+      public boolean shouldStop;
 
-                for(;;)
-                {
+      public void run()
+      {
+        try
+          {
+            shouldStop = false;
+            Robot robot = new Robot();
 
-                    for(int i=start;i<end;i++)
-                    {
-                        if(shouldStop)break;
-                        robot.mouseMove(150,i);
-                        yield();
-                    }
-                    for(int i=end;i>start;i--)
-                    {
-                        if(shouldStop)break;
-                        robot.mouseMove(150,i);
-                        yield();
-                    }
-                    if(shouldStop)break;
-                }
-            }
-            catch(Exception e)
-            {
-                System.out.println(e);
-            }
-        }
+            for (;;)
+              {
+                for (int i = start; i < end; i++)
+                  {
+                    if (shouldStop)
+                      break;
+                    
+                    robot.mouseMove(150, i);
+                    yield();
+                  }
+                for (int i = end; i > start; i--)
+                  {
+                    if (shouldStop)
+                      break;
+                    
+                    robot.mouseMove(150, i);
+                    yield();
+                  }
+                if (shouldStop)
+                  break;
+              }
+          }
+        catch (Exception e)
+          {
+            unsuccessful = true;
+          }
+      }
     }
     
     public void actionPerformed(ActionEvent e)

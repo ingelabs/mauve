@@ -1,3 +1,9 @@
+2006-08-13  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/awt/dnd/DnDTest.java:
+	(MouseThread.run): Reformatted and set unsuccessful
+	field to true in catch-block.
+
 2006-08-15  Roman Kennke  <kennke@aicas.com>
 
 	* gnu/testlet/java/util/Vector/removeAll.java: New test.
