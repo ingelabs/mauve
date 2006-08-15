@@ -1,3 +1,14 @@
+2006-08-15  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/ColorConvertOp/constructors.java,
+	* gnu/testlet/java/awt/image/ColorConvertOp/createCompatibleDestImage.java,
+	* gnu/testlet/java/awt/image/ColorConvertOp/createCompatibleDestRaster.java,
+	* gnu/testlet/java/awt/image/ColorConvertOp/filterImage.java,
+	* gnu/testlet/java/awt/image/ColorConvertOp/filterRaster.java,
+	* gnu/testlet/java/awt/image/ColorConvertOp/getBounds2D.java,
+	* gnu/testlet/java/awt/image/ColorConvertOp/getPoint2D.java:
+	New tests.
+
 2006-08-13  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/dnd/DropTargetDragEvent/Constructors.java:
