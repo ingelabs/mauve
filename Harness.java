@@ -950,7 +950,6 @@ public class Harness
     	                    depend = depend.substring(0, depend.length() - 6);
     	                  if (! depend.endsWith(".java"))
     	                    depend += ".java";
-    	                  System.out.println("compile: " + depend);
     	                  if (compileTest(depend) != 0)
                             {
                               // One of the dependencies failed to compile, so
