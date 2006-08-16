@@ -1,3 +1,10 @@
+2006-08-16  Anthony Balkissoon  <abalkiss@redhat.com>
+
+	* Harness.java: 
+	(processFolder): Look for "Uses" tag and "not-a-test" tag and handle 
+	them appropriately.
+	(processSingleTest): Likewise.
+
 2006-08-16  Ito Kazumitsu  <kaz@maczuka.gcd.org>
 	* gnu/testlet/java/util/regex/Matcher/hitEnd.java: New test.
 

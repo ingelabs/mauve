@@ -916,6 +916,85 @@ public class Harness
       }
     else
       {
+    	// This section of code reads the file, looking for the "Uses" tag
+        // and compiles any files it finds listed there.
+    	String base = jf.getAbsolutePath();
+    	base = base.substring(0, base.lastIndexOf(File.separatorChar));
+    	try
+    	{
+    	  BufferedReader r = new BufferedReader(new FileReader(jf));
+    	  String temp = null;
+    	  temp = r.readLine();
+    	  while (temp != null)
+    	    {
+    	      if (temp.contains("//"))
+    	        {
+    	          if (temp.contains("Uses:"))
+    	            {
+    	              StringTokenizer st = 
+                        new StringTokenizer
+                          (temp.substring(temp.indexOf("Uses:") + 5));
+    	              while (st.hasMoreTokens())
+    	                {
+    	                  String depend = base;
+    	                  String t = st.nextToken();
+    	                  while (t.startsWith(".." + File.separator))
+    	                    {
+    	                      t = t.substring(3);
+    	                      depend = 
+                                depend.substring
+                                  (0,depend.lastIndexOf(File.separatorChar));
+    	                    }
+    	                  depend += File.separator + t;
+    	                  if (depend.endsWith(".class"))
+    	                    depend = depend.substring(0, depend.length() - 6);
+    	                  if (! depend.endsWith(".java"))
+    	                    depend += ".java";
+    	                  System.out.println("compile: " + depend);
+    	                  if (compileTest(depend) != 0)
+                            {
+                              // One of the dependencies failed to compile, so
+                              // we report the test as failing and don't try to 
+                              // run it.
+                              
+                              String shortName = 
+                                cname.substring(12).
+                                  replace(File.separatorChar, '.');
+                              if (verbose)
+                                {
+                                  System.out.println("TEST: " + shortName);
+                                  System.out.println("  FAIL: One of the " +
+                                        "dependencies failed to compile.");
+                                }
+                              else
+                                {
+                                  System.out.println("FAIL: " + shortName);
+                                  System.out.println("  One of the " +
+                                        "dependencies failed to compile.");
+                                }
+                              total_test_fails++;
+                              total_tests++;
+                              return -1;
+                            }
+    	                }
+    	              break;
+    	            }
+    	          else if (temp.contains("not-a-test"))
+    	            return - 1;
+    	        }
+              else if (temp.contains("implements Testlet"))
+                // Don't read through the entire test once we've hit real code.
+                // Note that this doesn't work for all files, only ones that 
+                // implement Testlet, but that is most files.
+                break;
+    	      temp = r.readLine();
+    	    }
+    	}
+    	catch (IOException ioe)
+    	{
+    		// This shouldn't happen.
+    	}
+    	
         // If compilation of the test fails, don't try to run it.
         if (compileTest(cname + ".java") != 0)
           return -1;
@@ -962,6 +1041,91 @@ public class Harness
           {            
             count ++;
             sb.append(' ' + fullPath);
+            
+            // Read the file, looking for the Uses: tag, and adding
+            // any files listed to a list of files to be compiled.
+            // This section of code reads the file, looking for the "Uses" tag
+            // and compiles any files it finds listed there.
+            String base = dirPath;
+            try
+            {
+              BufferedReader r = new BufferedReader(new FileReader(fullPath));
+              String temp = null;
+              temp = r.readLine();
+              while (temp != null)
+                {
+                  if (temp.contains("//"))
+                    {
+                      if (temp.contains("Uses:"))
+                        {
+                          StringTokenizer st = 
+                            new StringTokenizer
+                            (temp.substring(temp.indexOf("Uses:") + 5));
+                          while (st.hasMoreTokens())
+                            {
+                              String depend = base;
+                              String t = st.nextToken();
+                              while (t.startsWith(".." + File.separator))
+                                {
+                                  t = t.substring(3);
+                                  depend = 
+                                    depend.substring
+                                    (0,
+                                     depend.lastIndexOf(File.separatorChar));
+                                }
+                              depend += File.separator + t;
+                              if (depend.endsWith(".class"))
+                                depend = 
+                                  depend.substring(0, depend.length() - 6);
+                              if (! depend.endsWith(".java"))
+                                depend += ".java";
+                              
+                              if (compileTest(depend) != 0)
+                                {
+                                  // One of the dependencies failed to compile, 
+                                  // so we report the test as failing and don't
+                                  // try to run it.                                  
+                                  String shortName = fullPath.substring(12, fullPath.length() - 5).
+                                  replace(File.separatorChar, '.'); 
+                                  
+                                  if (verbose)
+                                    {
+                                      System.out.println("TEST: " + shortName);
+                                      System.out.println("  FAIL: One of the " +
+                                      "dependencies failed to compile.");
+                                    }
+                                  else
+                                    {
+                                      System.out.println("FAIL: " + shortName);
+                                      System.out.println("  One of the " +
+                                      "dependencies failed to compile.");
+                                    }
+                                  total_test_fails++;
+                                  total_tests++;
+                                  sb.setLength(sb.length() - fullPath.length() - 1);
+                                  count --;
+                                }
+                            }
+                          break;
+                        }
+                      else if (temp.contains("not-a-test"))
+                        {
+                          sb.setLength(sb.length() - fullPath.length() - 1);
+                          count --;
+                        }
+                    }
+                  else if (temp.contains("implements Testlet"))
+                    // Don't read through the entire test once we've hit real code.
+                    // Note that this doesn't work for all files, only ones that 
+                    // implement Testlet, but that is most files.
+                    break;
+                  temp = r.readLine();
+                }
+            }
+            catch (IOException ioe)
+            {
+              // This shouldn't happen.
+            }
           }
         else
           {
@@ -984,7 +1148,7 @@ public class Harness
     // -nocompile option was used.
     if (compileTests)
       compilepassed = compileFolder(sb, folderName);
-    
+
     // And now run those tests.
     runFolder(sb, compilepassed);
   }
