@@ -1,5 +1,9 @@
 2006-08-16  Anthony Balkissoon  <abalkiss@redhat.com>
 
+	* gnu/testlet/java/security/Engine/getInstance.java: Fixed Uses tag.
+
+2006-08-16  Anthony Balkissoon  <abalkiss@redhat.com>
+
 	* Harness.java: 
 	(processFolder): Look for "Uses" tag and "not-a-test" tag and handle 
 	them appropriately.
