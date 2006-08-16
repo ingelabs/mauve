@@ -1,3 +1,6 @@
+2006-08-16  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+	* gnu/testlet/java/util/regex/Matcher/hitEnd.java: New test.
+
 2006-08-15  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/java/awt/image/ColorConvertOp/constructors.java,
