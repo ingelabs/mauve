@@ -31,7 +31,10 @@ import java.awt.color.ColorSpace;
 import java.awt.color.ICC_Profile;
 import java.awt.image.ColorConvertOp;
 import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferByte;
+import java.awt.image.PixelInterleavedSampleModel;
 import java.awt.image.Raster;
+import java.util.Arrays;
 
 /**
  * Checks for the createCompatibleDestRaster method in the
@@ -52,17 +55,15 @@ public class createCompatibleDestRaster implements Testlet
     simpleTest(harness);
 
     // Try with all possible colorspaces
-    colorModelTest(harness, ColorSpace.CS_sRGB, ColorSpace.CS_sRGB);
-    colorModelTest(harness, ColorSpace.CS_CIEXYZ, ColorSpace.CS_sRGB);
-    colorModelTest(harness, ColorSpace.CS_GRAY, ColorSpace.CS_sRGB);
-    colorModelTest(harness, ColorSpace.CS_LINEAR_RGB, ColorSpace.CS_sRGB);
-    colorModelTest(harness, ColorSpace.CS_PYCC, ColorSpace.CS_sRGB);
+    int[] models = new int[] {ColorSpace.CS_sRGB,
+                              ColorSpace.CS_CIEXYZ,
+                              ColorSpace.CS_GRAY,
+                              ColorSpace.CS_LINEAR_RGB,
+                              ColorSpace.CS_PYCC};
     
-    colorModelTest(harness, ColorSpace.CS_sRGB, ColorSpace.CS_GRAY);
-    colorModelTest(harness, ColorSpace.CS_CIEXYZ, ColorSpace.CS_GRAY);
-    colorModelTest(harness, ColorSpace.CS_GRAY, ColorSpace.CS_GRAY);
-    colorModelTest(harness, ColorSpace.CS_LINEAR_RGB, ColorSpace.CS_GRAY);
-    colorModelTest(harness, ColorSpace.CS_PYCC, ColorSpace.CS_GRAY);
+    for (int i = 0; i < models.length; i++)
+      for (int j = 0; j < models.length; j++)
+        colorModelTest(harness, models[i], models[j]);
     
     // Specify profile list
     profileTest(harness, new ICC_Profile[] {ICC_Profile.getInstance(ColorSpace.CS_LINEAR_RGB),
@@ -127,6 +128,23 @@ public class createCompatibleDestRaster implements Testlet
       harness.check(dst.getTransferType(), DataBuffer.TYPE_BYTE);
       harness.check(dst.getDataBuffer().getDataType(), DataBuffer.TYPE_BYTE);
       harness.check(dst.getNumDataElements(), cs2.getNumComponents());
+      harness.check(dst.getSampleModel() instanceof PixelInterleavedSampleModel);
+      harness.check(dst.getDataBuffer() instanceof DataBufferByte);
+      
+      PixelInterleavedSampleModel sm = (PixelInterleavedSampleModel)dst.getSampleModel();
+
+      harness.check(sm.getPixelStride(), cs2.getNumComponents());
+      harness.check(sm.getScanlineStride(), cs2.getNumComponents() * src.getWidth());
+      int[] expected = new int[cs2.getNumComponents()];
+      
+      for (int i = 0; i < expected.length; i++)
+        expected[i] = i;
+      harness.check(Arrays.equals(sm.getBandOffsets(), expected));
+      
+      harness.check(dst.getDataBuffer().getNumBanks(), 1);
+      harness.check(dst.getDataBuffer().getOffset(), 0);
+      harness.check(dst.getDataBuffer().getSize(), src.getHeight() * src.getWidth() * cs2.getNumComponents());
+      
     }
     catch (IllegalArgumentException e)
     {
@@ -142,13 +160,15 @@ public class createCompatibleDestRaster implements Testlet
       harness.check(dst.getTransferType(), DataBuffer.TYPE_BYTE);
       harness.check(dst.getDataBuffer().getDataType(), DataBuffer.TYPE_BYTE);
       harness.check(dst.getNumDataElements(), cs2.getNumComponents());
+      harness.check(dst.getSampleModel() instanceof PixelInterleavedSampleModel);
+      harness.check(dst.getDataBuffer() instanceof DataBufferByte);
     }
     catch (IllegalArgumentException e)
     {
       harness.check(false);
     }
     
-    // Try different number of bands in the source; the destination will
+    // Try different number of bands in the source; the destination should
     // ignore this and always have ColorSpace.getNumComponents() bands
     for (int i = 1; i < bands + 5; i++)
       {
@@ -157,8 +177,6 @@ public class createCompatibleDestRaster implements Testlet
         {
           Raster dst = op.createCompatibleDestRaster(src);
           harness.check(dst.getNumBands(), cs2.getNumComponents());
-          harness.check(dst.getTransferType(), DataBuffer.TYPE_BYTE);
-          harness.check(dst.getDataBuffer().getDataType(), DataBuffer.TYPE_BYTE);
           harness.check(dst.getNumDataElements(), cs2.getNumComponents());
         }
         catch (IllegalArgumentException e)
@@ -203,11 +221,11 @@ public class createCompatibleDestRaster implements Testlet
       harness.check(false);
     }
     
-    // Try different number of bands in the source; the destination will
+    // Try different numbers of bands in the source; the destination will
     // ignore this and always have ColorSpace.getNumComponents() bands
     
     // Essentially the dest raster will be identical to the case above, 
-    // regardless of number of source bands (this makes sense)
+    // regardless of number of source bands (which makes sense)
     for (int i = 1; i < 5; i++)
       {
         src = Raster.createBandedRaster(DataBuffer.TYPE_INT, 25, 40, i, new Point(5, 5));

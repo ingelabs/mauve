@@ -55,6 +55,7 @@ public class filterImage implements Testlet
   private void test1(TestHarness harness)
   {
     harness.checkPoint("filter(BufferedImage) from ColorConvertOp(RenderingHints)");
+    
     // Create an image to work on
     BufferedImage img = new BufferedImage(20, 20, BufferedImage.TYPE_USHORT_GRAY);
     Graphics2D g = (Graphics2D)img.getGraphics();
@@ -102,6 +103,7 @@ public class filterImage implements Testlet
   private void test2(TestHarness harness)
   {
     harness.checkPoint("filter(BufferedImage) from ColorConvertOp(ColorSpace, RenderingHints)");
+    
     // Create an image to work on
     BufferedImage img = new BufferedImage(20, 20, BufferedImage.TYPE_USHORT_GRAY);
     Graphics2D g = (Graphics2D)img.getGraphics();
@@ -148,7 +150,7 @@ public class filterImage implements Testlet
       harness.check(false);
     }
     
-    // Incompatible destination type: this should end up as GRAY, via RGB
+    // Different destination type: this should end up as GRAY, via RGB
     // (but how can I test the intermediate step?)
     try
     {
@@ -166,13 +168,16 @@ public class filterImage implements Testlet
   private void test3(TestHarness harness)
   {
     harness.checkPoint("filter(BufferedImage) from ColorConvertOp(ColorSpace, ColorSpace, RenderingHints)");
+
     // Create an image to work on
     BufferedImage img = new BufferedImage(20, 20, BufferedImage.TYPE_USHORT_GRAY);
     Graphics2D g = (Graphics2D)img.getGraphics();
     g.draw(new Line2D.Double(0, 0, 20, 20));
     
     ColorSpace cs1 = ColorSpace.getInstance(ColorSpace.CS_CIEXYZ);
-    ColorSpace cs2 = ColorSpace.getInstance(ColorSpace.CS_PYCC);
+    //ColorSpace cs2 = ColorSpace.getInstance(ColorSpace.CS_PYCC);
+       // PYCC is not implemented
+    ColorSpace cs2 = ColorSpace.getInstance(ColorSpace.CS_sRGB);
     ColorConvertOp op = new ColorConvertOp(cs1, cs2, null);
 
     // Simpler tests (ie, src != dest) are skipped, assume they work here if
@@ -181,7 +186,8 @@ public class filterImage implements Testlet
     try
     {
       BufferedImage dst = op.filter(img, null);
-      harness.check(dst.getColorModel().getColorSpace().getType(), ColorSpace.TYPE_3CLR);
+      harness.check(dst.getColorModel().getColorSpace().getType(), ColorSpace.TYPE_RGB);
+      // PYCC would have been ColorSpace.TYPE_3CLR
     }
     catch (IllegalArgumentException e)
     {

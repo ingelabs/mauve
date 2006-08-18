@@ -1,3 +1,15 @@
+2006-08-18  Francis Kung  <fkung@redhat.com>
+	* gnu/testlet/java/awt/image/ColorConvertOp/createCompatibleDestImage.java:
+	(colorModelTest): Expand tests.
+	(profileTest): Expand tests.
+	(test): Clean up looping.
+	* gnu/testlet/java/awt/image/ColorConvertOp/createCompatibleDestRaster.java:
+	(colorModelTest): Expand tests.
+	(profileTest): Expand tests.
+	(test): Clean up looping.
+	* gnu/testlet/java/awt/image/ColorConvertOp/filterImage.java:
+	(test3): Remove test of feature that is not implemented yet.
+
 2006-08-17  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/awt/dnd/DropTargetDropEvent/Constructors.java:
