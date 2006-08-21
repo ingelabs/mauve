@@ -118,15 +118,50 @@ public class parse implements Testlet
       harness.check (num instanceof Long);
       harness.check (num.longValue (), -303);
 
+      num = parseIt (df, "1.", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue (), 1);
+      
+      num = parseIt (df, "1.0", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue (), 1);
+      
+      num = parseIt (df, ".01", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.longValue (), 0);
+      
       num = parseIt (df, "9223372036854775808-", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue(), Long.MIN_VALUE);
 
+      apply (harness, df, "0.###;0.###-");
+      num = parseIt (df, ".01", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.doubleValue(), 0.01);
+      
+      num = parseIt (df, ".05", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.doubleValue(), 0.05);
+      
+      num = parseIt (df, ".5", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.doubleValue(), 0.5);
+      
       apply (harness, df, "#,##0.00");
       num = parseIt (df, "3,110.00", pp);
       harness.check (num instanceof Long);
       harness.check (num.longValue(), 3110);
 
+      apply (harness, df, "#,##0.00");
+      num = parseIt (df, "31,10.00", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue(), 3110);
+      
+      apply (harness, df, "#,##0.00");
+      num = parseIt (df, "3110", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.longValue(), 3110);
+      
       apply (harness, df, "#,##0X");
       num = parseIt (df, "3,110X", pp);
       harness.check (num instanceof Long);

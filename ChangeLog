@@ -1,3 +1,10 @@
+2006-08-18  Mario Torre  <neugens@limasoftware.net>
+
+	* gnu/testlet/java/text/DecimalFormat/parse.java (test): 
+	added new tests.
+	* gnu/testlet/java/text/DecimalFormat/applyPattern.java (test):
+	fixed checkpoint for "grouping" test.
+
 2006-08-18  Francis Kung  <fkung@redhat.com>
 	* gnu/testlet/java/awt/image/ColorConvertOp/createCompatibleDestImage.java:
 	(colorModelTest): Expand tests.

@@ -67,6 +67,7 @@ public class applyPattern implements Testlet
     harness.check(f1.getMinimumFractionDigits(), 2);
     
     // grouping
+    harness.checkPoint("grouping");
     f1.applyPattern("0.00");
     harness.check(f1.getGroupingSize(), 0);
     f1.applyPattern("#0.00");
