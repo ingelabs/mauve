@@ -94,6 +94,8 @@ public class createCompatibleDestImage implements Testlet
     harness.check(dest.getHeight(), 40);
     harness.check(dest.getWidth(), 25);
     harness.check(dest.getColorModel(), img.getColorModel());
+    harness.check(dest.getSampleModel().getTransferType(),
+                  img.getColorModel().getTransferType());
     
     // Try a different colour model
     img = new BufferedImage(25, 40, BufferedImage.TYPE_BYTE_GRAY);
@@ -103,12 +105,15 @@ public class createCompatibleDestImage implements Testlet
     harness.check(dest.getHeight(), 40);
     harness.check(dest.getWidth(), 25);
     harness.check(dest.getColorModel(), cm);
+    harness.check(dest.getSampleModel().getTransferType(), cm.getTransferType());
 
     op = new ColorConvertOp(null);
     dest = op.createCompatibleDestImage(img, img.getColorModel());
     harness.check(dest.getHeight(), 40);
     harness.check(dest.getWidth(), 25);
     harness.check(dest.getColorModel(), img.getColorModel());
+    harness.check(dest.getSampleModel().getTransferType(),
+                  img.getColorModel().getTransferType());
 
     // ColorConvertOp's ColorModel can be null, or createCompatibleDestImage's
     // ColorModel can be null, but not both
@@ -193,6 +198,9 @@ public class createCompatibleDestImage implements Testlet
                       dest.getColorModel().getNumComponents());
         harness.check(dest.getRaster().getNumBands(),
                       dest.getRaster().getNumDataElements());
+        
+        harness.check(dest.getSampleModel().getTransferType(),
+                      DataBuffer.TYPE_BYTE);
         
         // This ensures that we have the same defaults as the reference implementation
         switch (type)

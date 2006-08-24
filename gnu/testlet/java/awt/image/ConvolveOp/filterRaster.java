@@ -1,4 +1,4 @@
-/* filter.java -- some checks for the filter() methods in the ConvolveOp class.
+/* filterRaster.java -- some checks for the filter() methods in the ConvolveOp class.
    Copyright (C) 2006 David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
@@ -32,7 +32,7 @@ import java.awt.image.Kernel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-public class filter implements Testlet
+public class filterRaster implements Testlet
 {
   public void test(TestHarness harness)
   {
@@ -258,6 +258,7 @@ public class filter implements Testlet
     harness.check(dest.getSample(1, 3, 2), 37);
     harness.check(dest.getSample(2, 3, 2), 38);
     harness.check(dest.getSample(3, 3, 2), 39);
+
     harness.check(dest.getSample(4, 3, 2), 40);
   }
 

@@ -1,3 +1,14 @@
+2006-08-24  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/ColorConvertOp/createCompatibleDestImage.java:
+	(colorModelTest): Add tests for value of transferType.
+	(simpleTest): Add tests for value of transferType.
+	* gnu/testlet/java/awt/image/ConvolveOp/createCompatibleDestImage.java,
+	* gnu/testlet/java/awt/image/ConvolveOp/createCompatibleDestRaster.java,
+	* gnu/testlet/java/awt/image/ConvolveOp/filterImage.java: New tests.
+	* gnu/testlet/java/awt/image/ConvolveOp/filter.java: Renamed to filterRaster.java.
+	* gnu/testlet/java/awt/image/ConvolveOp/filterRaster.java: Renamed from filter.java.
+
 2006-08-23  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/awt/ColorClass/brighter: New file.
