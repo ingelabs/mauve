@@ -20,16 +20,87 @@
 
 package gnu.testlet.java.net.SocketPermission;
 
+import java.net.InetAddress;
 import java.net.SocketPermission;
+import java.net.UnknownHostException;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 public class implies implements Testlet
 {
+  static String redhat_com_addr = null;
+  static {
+    try {
+      redhat_com_addr =
+	InetAddress.getByName("www.redhat.com").getHostAddress();
+    }
+    catch (UnknownHostException e) {
+    }
+  }
+  
   private Test[] hosts = new Test[] {
     new Test("", "", true),
-    new Test("localhost", "localhost", true), // XXX need more!
+    new Test("localhost", "localhost", true),
+    new Test("127.0.0.1", "localhost", true),
+    new Test("localhost", "127.0.0.1", true),
+    new Test("www.redhat.com", "www.redhat.com", true),
+    new Test("*.redhat.com", "www.redhat.com", true),
+    new Test("www.redhat.com", "*.redhat.com", false),
+    new Test(redhat_com_addr, redhat_com_addr, true),
+    new Test("www.redhat.com", redhat_com_addr, true),
+    new Test(redhat_com_addr, "www.redhat.com", true),
+    new Test("*.redhat.com", redhat_com_addr, true),
+    new Test(redhat_com_addr, "*.redhat.com", false),
+    new Test("209.132.177.50", "209.132.177.51", false),
+    new Test("209.132.177.50", "209.132.178.50", false),
+    new Test("209.132.177.50", "209.131.177.50", false),
+    new Test("209.132.177.50", "208.132.177.50", false),
+    // full uncompressed IPv6 addresses
+    new Test("[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]",
+	     "[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]", true),
+    new Test("[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]",
+	     "FEDC:BA98:7654:3210:FEDC:BA98:7654:3210", true),
+    new Test("FEDC:BA98:7654:3210:FEDC:BA98:7654:3210",
+	     "[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]", true),
+    new Test("FEDC:BA98:7654:3210:FEDC:BA98:7654:3210",
+	     "FEDC:BA98:7654:3210:FEDC:BA98:7654:3210", true),
+    new Test("[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]",
+	     "[fedc:ba98:7654:3210:fedc:ba98:7654:3210]", true),
+    new Test("[FEDC:Bb98:7654:3210:FEDC:BA98:7654:3210]",
+	     "[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]", false),
+    // compressed IPv6 addresses
+    new Test("[1080:0:0:0:8:800:200C:417A]",
+	     "[1080:0000:0:0:8:800:200C:417A]", true),
+    new Test("[1080::8:800:200C:417A]", "[1080::8:800:200C:417A]", true),
+    new Test("[1080::8:800:200C:417A]", "[1080::8:800:200C:417a]", true),
+    new Test("[1080::8:800:200C:417A]", "[1080:0:0:0:8:800:200C:417A]", true),
+    new Test("[1080:0:0:0:8:800:200C:417A]", "[1080::8:800:200C:417A]", true),
+    new Test("[1080::8:800:200C:417B]", "[1080:0:0:0:8:800:200C:417A]", false),
+    new Test("[1080:0:0:0:8:800:200C:417A]", "[1080::8:800:200C:417B]", false),
+    new Test("[FF01::101]", "[FF01:0:0:0:0:0:0:101]", true),
+    new Test("[FF01:0:0:0:0:0:0:101]", "[FF01::101]", true),
+    new Test("[::1]", "[0:0:0:0:0:0:0:1]", true),
+    new Test("[0:0:0:0:0:0:0:1]", "[::1]", true),
+    new Test("[::]", "[0:0:0:0:0:0:0:0]", true),
+    new Test("[0:0:0:0:0:0:0:0]", "[::]", true),
+    // alternative IPv6 addresses
+    new Test("[0:0:0:0:0:0:13.1.68.3]", "[0:0:0:0:0:0:13.1.68.3]", true),
+    new Test("[::13.1.68.3]", "[0:0:0:0:0:0:13.1.68.3]", true),
+    new Test("[0:0:0:0:0:0:13.1.68.3]", "[::13.1.68.3]", true),
+    new Test("[::13.1.68.3]", "[::13.1.68.3]", true),
+    new Test("[::13.1.68.3]", "[::D01:4403]", true),
+    new Test("[::D01:4403]", "[::13.1.68.3]", true),
+    new Test("[::D01:4403]", "[::D01:4403]", true),
+    new Test("[::D01:4403]", "[0:0:0:0:0:0:13.1.68.3]", true),
+    new Test("[0:0:0:0:0:0:13.1.68.3]", "[::D01:4403]", true),
+    new Test("[0:0:0:0:0:FFFF:129.144.52.38]",
+	     "[0:0:0:0:0:FFFF:129.144.52.38]", true),
+    new Test("[::FFFF:129.144.52.38]", "[0:0:0:0:0:FFFF:129.144.52.38]", true),
+    new Test("[0:0:0:0:0:FFFF:129.144.52.38]", "[::FFFF:129.144.52.38]", true),
+    new Test("[::FFFF:129.144.52.38]", "[::FFFF:129.144.52.38]", true),
+    new Test("[::13.1.68.3]", "[::FFFF:13.1.68.3]", false),    
+    new Test("[::FFFF:13.1.68.3]", "[::13.1.68.3]", false),
   };
 
   private Test[] ports = new Test[] {
@@ -109,6 +180,7 @@ public class implies implements Testlet
   public void test(TestHarness harness)
   {
     harness.checkPoint("hostport checking");
+    harness.check(redhat_com_addr != null);
     
     for (int i = 0; i < hosts.length; i++) {
       for (int j = 0; j < ports.length; j++) {
@@ -117,7 +189,14 @@ public class implies implements Testlet
 	SocketPermission px = new SocketPermission(test.x, "connect");
 	SocketPermission py = new SocketPermission(test.y, "connect");
 
-	harness.check(px.implies(py) == test.expect);
+	try {
+	  harness.check(px.implies(py) == test.expect, test.x + " should"
+			+ (test.expect ? "" : " not") + " imply " + test.y);
+	}
+	catch (Exception e) {
+	  harness.check(false, test.x + " implies " + test.y + " failed");
+	  harness.debug(e);
+	}
       }
     }
 
