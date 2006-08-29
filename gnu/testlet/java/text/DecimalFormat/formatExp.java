@@ -73,5 +73,24 @@ public class formatExp implements Testlet
       apply (harness, df, "00.###E0");
       harness.check (df.format (12345), "12.345E3");
       harness.check (df.format (1234), "12.34E2");
+      
+      apply(harness, df, "0E0");
+      harness.check(df.format(-1234.567), "-1E3");
+      
+      apply(harness, df, "00E00");
+      harness.check(df.format(-1234.567), "-12E02");
+      
+      apply(harness, df, "000E00");
+      harness.check(df.format(-1234.567), "-123E01");
+      
+      apply(harness, df, "0000000000E0");
+      harness.check(df.format(-1234.567), "-1234567000E-6");
+     
+      apply(harness, df, "0.0E0");
+      harness.check(df.format(-1234.567), "-1.2E3");
+      
+      apply(harness, df, "00.00E0");
+      harness.check(df.format(-1234.567), "-12.35E2");
+      harness.check(df.format(-.1234567), "-12.35E-2");
     }
 }

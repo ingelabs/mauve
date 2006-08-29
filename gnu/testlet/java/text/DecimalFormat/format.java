@@ -87,7 +87,11 @@ public class format
     df.setDecimalSeparatorAlwaysShown(true);
     harness.check(df.format(- 1234.56), "-1235.");
     harness.check(df.format(1234.56), "1235.");
-
+    harness.check(df.format(-1234567.890), "-123,4568.");
+    
+    apply(harness, df, "#,###,###");
+    harness.check(df.format(-1234567.890), "-1,234,568");
+    
     apply(harness, df, "0");
     harness.check(df.format(- 1234.56), "-1235");
     harness.check(df.format(1234.56), "1235");
@@ -116,6 +120,38 @@ public class format
     apply(harness, df, "'#'#.#");
     harness.check(df.format(30), "#30");
 
+    apply(harness, df, "000000");
+    harness.check(df.format(-1234.567), "-001235");
+    
+    apply(harness, df, "##");
+    harness.check(df.format(-1234.567), "-1235");
+    
+    harness.check(df.format(0), "0");
+    
+    apply(harness, df, "##00");
+    harness.check(df.format(0), "00");
+    
+    apply(harness, df, ".00");
+    harness.check(df.format(-.567), "-.57");
+    
+    apply(harness, df, "0.00");
+    harness.check(df.format(-.567), "-0.57");
+    
+    apply(harness, df, ".######");
+    harness.check(df.format(-1234.567), "-1234.567");
+    
+    apply(harness, df, "#.000000");
+    harness.check(df.format(-1234.567), "-1234.567000");
+    
+    apply(harness, df, "'#'#");
+    harness.check(df.format(-1234.567), "-#1235");
+    
+    apply(harness, df, "'abc'#");
+    harness.check(df.format(-1234.567), "-abc1235");
+    
+    apply(harness, df, "'positive'#;'negative' -");
+    harness.check(df.format(-1234.567), "negative -1235");
+    
     // grouping size of zero might cause a failure - see bug parade 4088503
     harness.checkPoint("regression tests for setGroupingSize");
     df = new DecimalFormat();
@@ -123,7 +159,7 @@ public class format
     harness.check(df.format(100000), "100000");
     harness.check(df.isGroupingUsed());
     harness.check(df.getGroupingSize(), 0);
-
+    
     // FIXME: we don't actually know the right result here, because
     // neither the JCL book nor the JDK 1.2 docs explain what should
     // happen. The below represents how I think things ought to
@@ -131,7 +167,6 @@ public class format
     // idea. E.g., JDK1.1 prints "200000.0000E" in the first case.
     // apply (harness, df, "0.0000E#");
     // harness.check (df.format (200000), "2.0000E+5");
-
     // apply (harness, df, "00.00E00");
     // harness.check (df.format (200000), "20.00E+04");
   }

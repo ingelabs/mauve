@@ -69,6 +69,14 @@ public class parse implements Testlet
       harness.check (num instanceof Double);
       harness.check (num.doubleValue(), -1234.56);
 
+      num = parseIt (df, "-0", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.doubleValue(), -0.0);
+      
+      num = parseIt (df, "-0.0", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.doubleValue(), -0.0);
+      
       apply (harness, df, "0.#");
       num = parseIt (df, "1234.6", pp);
       harness.check (num instanceof Double);
@@ -96,6 +104,15 @@ public class parse implements Testlet
       harness.check (num instanceof Long);
       harness.check (num.longValue (), 200000);
 
+      num = parseIt (df, "2.0000E-5", pp);
+      harness.check (num instanceof Double);
+      harness.check (num.doubleValue(), 2.0E-5);
+      
+      // this one is tricky... -E5 is considered part of the suffix
+      num = parseIt (df, "2.000-E5", pp);
+      harness.check (num instanceof Long);
+      harness.check (num.doubleValue(), 2);
+      
       apply (harness, df, "0.000");
       num = parseIt (df, "2.000", pp);
       harness.check (num instanceof Long);
