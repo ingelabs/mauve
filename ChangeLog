@@ -1,3 +1,7 @@
+2006-08-30  Sven de Marothy  <sven@physto.se>
+
+	* gnu/testlet/java/util/UUID/TestAll.java: new file.
+
 2006-08-29  Mario Torre  <neugens@limasoftware.net>
 
 	* gnu/testlet/java/text/DecimalFormat/formatExp.java (test):
