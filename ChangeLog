@@ -1,3 +1,19 @@
+2006-08-29  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/ZoneView/TestView.java,
+	* gnu/testlet/javax/swing/text/ZoneView/TestZoneView.java:
+	New helper classes.
+	* gnu/testlet/javax/swing/text/ZoneView/constructor.java,
+	* gnu/testlet/javax/swing/text/ZoneView/createZone.java,
+	* gnu/testlet/javax/swing/text/ZoneView/getMaxZonesLoaded.java,
+	* gnu/testlet/javax/swing/text/ZoneView/getMaximumZoneSize.java,
+	* gnu/testlet/javax/swing/text/ZoneView/isZoneLoaded.java,
+	* gnu/testlet/javax/swing/text/ZoneView/setMaxZonesLoaded.java,
+	* gnu/testlet/javax/swing/text/ZoneView/setMaximumZoneSize.java,
+	* gnu/testlet/javax/swing/text/ZoneView/unloadZone.java,
+	* gnu/testlet/javax/swing/text/ZoneView/zoneWasLoaded.java:
+	New tests.
+
 2006-08-10  Stephane Mikaty  <stephane@mikaty.net>
 	
 	* gnu/testlet/javax/xml/xpath/XPath.java: New test.
