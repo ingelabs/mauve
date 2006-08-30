@@ -1,5 +1,16 @@
 2006-08-29  Roman Kennke <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/text/ZoneView/TestZoneView.java
+	(getViewIndexAtPosition): Overridden to make public.
+	(loadChildren): Likewise.
+	(getViewFactory): Overridden to provide a ViewFactory.
+	* gnu/testlet/javax/swing/text/ZoneView/getViewIndexAtPosition.java:
+	New tests.
+	* gnu/testlet/javax/swing/text/ZoneView/loadChildren.java:
+	New tests.
+
+2006-08-29  Roman Kennke <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/text/ZoneView/TestView.java,
 	* gnu/testlet/javax/swing/text/ZoneView/TestZoneView.java:
 	New helper classes.

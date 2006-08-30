@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import javax.swing.text.Element;
 import javax.swing.text.PlainDocument;
 import javax.swing.text.View;
+import javax.swing.text.ViewFactory;
 import javax.swing.text.ZoneView;
 
 public class TestZoneView extends ZoneView
@@ -81,5 +82,28 @@ public class TestZoneView extends ZoneView
   public View createZone(int p0, int p1)
   {
     return super.createZone(p0, p1);
+  }
+
+  public int getViewIndexAtPosition(int pos)
+  {
+    return super.getViewIndexAtPosition(pos);
+  }
+
+  public void loadChildren(ViewFactory vf)
+  {
+    super.loadChildren(vf);
+  }
+
+  public ViewFactory getViewFactory()
+  {
+    return new ViewFactory()
+    {
+
+      public View create(Element elem)
+      {
+        return new TestView(elem, View.X_AXIS);
+      }
+      
+    };
   }
 }
