@@ -44,13 +44,13 @@ public class argument implements Testlet
     new Test("[3ffe:2a00:100:7031::1]", true),
     new Test("[1080::8:800:200C:417A]", true),
     new Test("[::192.9.5.5]", true),
-    new Test("[:FFFF:129.144.52.38]", true), // XXX try broken addresses
+    new Test("[::FFFF:129.144.52.38]", true), // XXX try broken addresses
 
     new Test("FEDC:BA98:7654:3210:FEDC:BA98:7654:3210", true),
     new Test("3ffe:2a00:100:7031::1", false),
     new Test("1080::8:800:200C:417A", false),
     new Test("::192.9.5.5", false),
-    new Test(":FFFF:129.144.52.38", false),
+    new Test("::FFFF:129.144.52.38", false),
   };
 
   private Test[] ports = new Test[] {

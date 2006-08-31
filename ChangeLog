@@ -1,6 +1,11 @@
 2006-08-31  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/argument.java:
+	Fix a pair of broken addresses.
+
+2006-08-31  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/net/SocketPermission/argument.java:
 	More meaningful failure messages.
 	
 2006-08-29  Roman Kennke <kennke@aicas.com>
