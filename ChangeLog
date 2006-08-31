@@ -44,7 +44,7 @@
 	
 2006-08-25  Gary Benson  <gbenson@redhat.com>
 
-	gnu/testlet/java/net/SocketPermission/implies.java:
+	* gnu/testlet/java/net/SocketPermission/implies.java:
 	Add many more host checks, and catch exceptions within checks.
 
 2006-08-25  Gary Benson  <gbenson@redhat.com>
