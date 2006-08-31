@@ -101,7 +101,8 @@ public class argument implements Testlet
 	  success = false;
 	}
 
-	harness.check(success == test.expect);
+	harness.check(success == test.expect, test.hostport + " should "
+		      + (test.expect ? "be ok" : "fail"));
       }
     }
   }
