@@ -101,6 +101,15 @@ public class implies implements Testlet
     new Test("[::FFFF:129.144.52.38]", "[::FFFF:129.144.52.38]", true),
     new Test("[::13.1.68.3]", "[::FFFF:13.1.68.3]", false),    
     new Test("[::FFFF:13.1.68.3]", "[::13.1.68.3]", false),
+    // IPv6-mapped IPv4 addresses
+    new Test("[::FFFF:13.1.68.3]", "13.1.68.3", true),
+    new Test("13.1.68.3", "[::FFFF:13.1.68.3]", true),
+    new Test("[::FFFF:D01:4403]", "13.1.68.3", true),
+    new Test("13.1.68.3", "[::FFFF:D01:4403]", true),
+    new Test("[::13.1.68.3]", "13.1.68.3", false),
+    new Test("13.1.68.3", "[::13.1.68.3]", false),
+    new Test("[::D01:4403]", "13.1.68.3", false),
+    new Test("13.1.68.3", "[::D01:4403]", false),
   };
 
   private Test[] ports = new Test[] {

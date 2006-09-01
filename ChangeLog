@@ -1,3 +1,8 @@
+2006-09-01  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/net/SocketPermission/implies.java:
+	Check that IPv6-mapped IPv4 addresses imply their counterparts.
+
 2006-08-31  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/argument.java:
