@@ -28,6 +28,7 @@ import gnu.testlet.Testlet;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 /**
  * Regression test for PR Classpath/27372
@@ -35,6 +36,12 @@ import java.security.SecureRandom;
 public class TestOfPR27372
     implements Testlet
 {
+  /** A control value. */
+  private static final byte[] BYTES = { 0x12, 0x34, 0x56, 0x78 };
+  /** Set to <code>true</code> if BigInteger is using the GNU MP native code. */
+  private boolean usingNativeImpl = Arrays.equals(BYTES,
+                                                  new BigInteger(BYTES).toByteArray());
+
   public void test(TestHarness harness)
   {
     harness.checkPoint("TestOfPR27372");
@@ -67,18 +74,12 @@ public class TestOfPR27372
   }
 
   /**
-   * Special byte array comparison method used to compare the result of
-   * <code>byte[] a = new BigInteger(numBits, random).toByteArray()</code> with
-   * a byte array filled with randomly generated values.
-   * <p>
-   * This method takes into consideration how an array of bytes is used to
-   * fill the <code>BigInteger</code>'s internal data structure. As an example,
-   * here is what the two byte arrays may look like from the outside:
-   * 
-   * <pre>
-   *   a = 009ECB38BFD4C6
-   *   b = CB9EC6D4BF38
-   * </pre>
+   * In both cases --the pure Java implementation, and the native one based on
+   * the GNU MP library-- a BigInteger's toByteArray(), can produce an extra
+   * 0x00 byte as the most significant byte.  This method ensures that there
+   * is no more than just one zero-byte at the high end, and then channels the
+   * call to the appropriate are-equal method depending on the type of the
+   * underlying implementation of the MPI.
    * 
    * @param a the result of a {@link BigInteger#toByteArray()} of an instance
    *          constructed with {@link BigInteger#BigInteger(int, Random)}.
@@ -102,6 +103,37 @@ public class TestOfPR27372
       default:
         return false;
     }
+    if (usingNativeImpl)
+      return areEqualNativeBI(a, offset, b);
+    return areEqualJavaBI(a, offset, b);
+  }
+
+  /**
+   * Special byte array comparison method used to compare the result of
+   * <code>byte[] a = new BigInteger(numBits, random).toByteArray()</code> with
+   * a byte array filled with randomly generated values.
+   * <p>
+   * This method takes into consideration how an array of bytes is used to
+   * fill the (pure java) <code>BigInteger</code>'s internal data structure. As
+   * an example, here is what the two byte arrays may look like from the
+   * outside:
+   * 
+   * <pre>
+   *   a = 009ECB38BFD4C6
+   *   b = CB9EC6D4BF38
+   * </pre>
+   * 
+   * @param a the result of a {@link BigInteger#toByteArray()} of an instance
+   *          constructed with {@link BigInteger#BigInteger(int, Random)}.
+   * @param <code>0</code> or <code>1</code> depending on the value of the
+   *          leftmost byte (at index #0) of <code>a</code>.
+   * @param b a non-null byte array filled with randomly generated values.
+   * @return <code>true</code> if the two byte arrays contain the same values
+   *         taking into consideration how our BigInteger constructs its
+   *         internal data structures.
+   */
+  private boolean areEqualJavaBI(byte[] a, int offset, byte[] b)
+  {
     for (int i = b.length - 1, j, k; i >= 0; )
       {
         j = i - 3;
@@ -116,5 +148,29 @@ public class TestOfPR27372
           }
       }
     return true;
+  }
+
+  /**
+   * Straight equality check, byte-for-byte, of the two designated arrays. The
+   * first starting from either <code>0</code> or <code>1</code>, while the
+   * second always starting from <code>0</code>. This is used with GMP-based
+   * MPIs.
+   * 
+   * @param a the result of a {@link BigInteger#toByteArray()} of an instance
+   *          constructed with {@link BigInteger#BigInteger(int, Random)}.
+   * @param <code>0</code> or <code>1</code> depending on the value of the
+   *          leftmost byte (at index #0) of <code>a</code>.
+   * @param b a non-null byte array filled with randomly generated values.
+   * @return <code>true</code> if the two byte arrays contain the same values
+   *         taking into consideration how our BigInteger constructs its
+   *         internal data structures.
+   */
+  private boolean areEqualNativeBI(byte[] a, int offset, byte[] b)
+  {
+    for (int i = 0; i < b.length; i++)
+      if (a[offset + i] != b[i])
+        return false;
+    return true;
+    
   }
 }

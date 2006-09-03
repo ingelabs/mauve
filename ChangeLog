@@ -1,3 +1,14 @@
+2006-09-03  Raif S. Naffah  <raif@swiftdsl.com.au>
+
+	* gnu/testlet/java/math/BigInteger/ctor.java (testCtorByteArray): New method.
+	(test): Added call to new method.
+	* gnu/testlet/java/math/BigInteger/TestOfPR27372.java (usingNativeImpl):
+	New field.
+	(areEqualJavaBI): New method.
+	(areEqualNativeBI): New method.
+	(areEqual): Call one of the two above methods depending on BI's nature.
+	* gnu/testlet/java/math/BigInteger/TestOfToByteArray.java: New test.
+
 2006-09-01  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/implies.java:

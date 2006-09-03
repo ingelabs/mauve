@@ -40,6 +40,7 @@ public class ctor
     testCtorStringInt(harness);
     testCtorIntIntRandom(harness);
     testCtorIntRandom(harness);
+    testCtorByteArray(harness);
   }
 
   private void testCtorStringInt(TestHarness harness)
@@ -144,12 +145,13 @@ public class ctor
     BigInteger bi;
     try
       {
-        for (int numBits = 8; numBits < 2048; numBits++)
+        for (int realNumBits, numBits = 8; numBits < 2048; numBits++)
           {
             bi = new BigInteger(numBits, prng);
-            harness.check(bi.bitLength() <= numBits,
-                          "Constructed BigInteger MUST be, at most, "
-                          + numBits + "-bit long");
+            realNumBits = bi.bitLength();
+            if (realNumBits > numBits)
+              harness.fail("Constructed BigInteger has " + realNumBits
+                          + " bits when it SHOULD be <= " + numBits);
           }
       }
     catch (Exception x)
@@ -157,5 +159,34 @@ public class ctor
         harness.verbose(x.getMessage());
         harness.fail("testCtorIntRandom: " + x);
       }
+    harness.check(true, "BigInteger(numBits, prng) MUST generate MPIs shorter "
+                  + "than numBits bits");
+  }
+
+  private void testCtorByteArray(TestHarness harness)
+  {
+    harness.checkPoint("testCtorByteArray");
+    BigInteger b1, b2;
+    byte[] ba;
+    long val;
+    try
+      {
+        for (int nValue = -0x8000; nValue < 0x8000; nValue += 8)
+          {
+            b1 = BigInteger.valueOf(nValue);
+            ba = b1.toByteArray();
+            b2 = new BigInteger(ba);
+            val = b2.longValue();
+            if (val != nValue)
+              harness.fail("Re-constructed BigInteger long value was expected to be "
+                           + nValue + " but was found to be " + val);
+          }
+      }
+    catch (Exception x)
+      {
+        harness.verbose(x.getMessage());
+        harness.fail("testCtorByteArray: " + x);
+      }
+    harness.check(true, "Re-constructed BigIntegers have expected long values");
   }
 }
