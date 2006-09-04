@@ -1,3 +1,8 @@
+2006-09-04  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/awt/Rectangle/setRect.java
+	(test): Added new checks for input rounding.
+
 2006-09-03  Raif S. Naffah  <raif@swiftdsl.com.au>
 
 	* gnu/testlet/java/math/BigInteger/ctor.java (testCtorByteArray): New method.
