@@ -39,6 +39,7 @@ public class lookupPixel implements Testlet
   {
     testInt(harness);
     testByte(harness);
+    testFailure(harness);
   }
 
   private void testInt(TestHarness harness) 
@@ -233,6 +234,38 @@ public class lookupPixel implements Testlet
     catch (ArrayIndexOutOfBoundsException e) {
         harness.check(true);
     }
+  }
+  
+  // Test failures, ie, if the requested pixel is not in the table.
+  // It should throw array index out of bounds exceptions.
+  private void testFailure(TestHarness harness)
+  {
+    harness.checkPoint("not in table");
+    byte[] data = {105, 104, 103, 102, 101, 100};
+    ByteLookupTable t = new ByteLookupTable(100, data);
+    
+    try
+    {
+      int[] src = new int[] {100, 102, 101, 120};
+      t.lookupPixel(src, null);
+      harness.check(false);
+    }
+    catch (ArrayIndexOutOfBoundsException ex)
+    {
+      harness.check(true);
+    }
+    
+    try
+    {
+      byte[] src = new byte[] {120};
+      t.lookupPixel(src, null);
+      harness.check(false);
+    }
+    catch (ArrayIndexOutOfBoundsException ex)
+    {
+      harness.check(true);
+    }
+   
   }
 
 }

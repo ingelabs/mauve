@@ -27,6 +27,7 @@ package gnu.testlet.java.awt.image.LookupOp;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.awt.Point;
 import java.awt.image.ByteLookupTable;
 import java.awt.image.DataBuffer;
 import java.awt.image.LookupOp;
@@ -47,6 +48,9 @@ public class createCompatibleDestRaster implements Testlet
     harness.check(dest.getHeight(), 20);
     harness.check(dest.getNumBands(), 1);
     harness.check(dest.getSampleModel() instanceof MultiPixelPackedSampleModel);
+    harness.check(dest.getTransferType(), raster.getTransferType());
+    harness.check(dest.getDataBuffer().getDataType(), raster.getDataBuffer().getDataType());
+    harness.check(dest.getNumDataElements(), raster.getNumDataElements());
   
     // try null argument
     boolean pass = false;
@@ -59,5 +63,21 @@ public class createCompatibleDestRaster implements Testlet
       pass = true;
     }
     harness.check(pass);
+    
+    // Try a different type
+    raster = Raster.createBandedRaster(DataBuffer.TYPE_BYTE, 25, 40, 3, new Point(5, 5));
+    Raster dst = op.createCompatibleDestRaster(raster);
+    harness.check(dst.getNumBands(), raster.getNumBands());
+    harness.check(dst.getTransferType(), raster.getTransferType());
+    harness.check(dst.getDataBuffer().getDataType(), raster.getDataBuffer().getDataType());
+    harness.check(dst.getNumDataElements(), raster.getNumDataElements());
+    
+    // Try a different number of bands
+    raster = Raster.createBandedRaster(DataBuffer.TYPE_INT, 25, 40, 5, new Point(5, 5));
+    dst = op.createCompatibleDestRaster(raster);
+    harness.check(dst.getNumBands(), raster.getNumBands());
+    harness.check(dst.getTransferType(), raster.getTransferType());
+    harness.check(dst.getDataBuffer().getDataType(), raster.getDataBuffer().getDataType());
+    harness.check(dst.getNumDataElements(), raster.getNumDataElements());
   }
 }
