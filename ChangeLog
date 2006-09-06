@@ -1,3 +1,15 @@
+2006-09-06  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/UIManager/getBoolean.java: New file,
+	* gnu/testlet/javax/swing/UIManager/getBorder.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getColor.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getDimension.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getFont.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getIcon.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getInsets.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getInt.java: Likewise,
+	* gnu/testlet/javax/swing/UIManager/getString.java: Likewise.
+
 2006-09-06  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/implies.java: Correctly
