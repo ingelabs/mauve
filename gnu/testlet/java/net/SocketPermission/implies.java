@@ -40,7 +40,7 @@ public class implies implements Testlet
   }
   
   private Test[] hosts = new Test[] {
-    new Test("", "", true),
+    new Test("", "", false),
     new Test("localhost", "localhost", true),
     new Test("127.0.0.1", "localhost", true),
     new Test("localhost", "127.0.0.1", true),
@@ -101,7 +101,7 @@ public class implies implements Testlet
     new Test("[::FFFF:129.144.52.38]", "[::FFFF:129.144.52.38]", true),
     new Test("[::13.1.68.3]", "[::FFFF:13.1.68.3]", false),    
     new Test("[::FFFF:13.1.68.3]", "[::13.1.68.3]", false),
-    // IPv6-mapped IPv4 addresses
+    // IPv4-mapped IPv6 addresses
     new Test("[::FFFF:13.1.68.3]", "13.1.68.3", true),
     new Test("13.1.68.3", "[::FFFF:13.1.68.3]", true),
     new Test("[::FFFF:D01:4403]", "13.1.68.3", true),
@@ -237,7 +237,10 @@ public class implies implements Testlet
     {
       x = host.x + port.x;
       y = host.y + port.y;
-      expect = host.expect && port.expect;
+      if (x.length() == 0 && y.length() == 0)
+	expect = true;
+      else
+	expect = host.expect && port.expect;
     }
   }
 
