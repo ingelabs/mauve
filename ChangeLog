@@ -1,3 +1,10 @@
+2006-09-06  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalLookAndFeel/getDefaults.java
+	(TestTheme.getControlTextFont): New method,
+	(TestTheme.getMenuTextFont): Likewise,
+	(test): Updated checks for font settings.
+
 2006-09-05  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/java/awt/image/ByteLookupTable/lookupPixel.java

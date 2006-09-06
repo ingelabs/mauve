@@ -1,7 +1,7 @@
 // Tags: JDK1.3
 // Uses: MyMetalLookAndFeel
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -17,8 +17,8 @@
 
 // You should have received a copy of the GNU General Public License
 // along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+// Boston, MA 02110-1301 USA.
 
 package gnu.testlet.javax.swing.plaf.metal.MetalLookAndFeel;
 
@@ -207,6 +207,14 @@ public class getDefaults implements Testlet
     {
       return new ColorUIResource(0, 0, 35);
     }
+    public FontUIResource getControlTextFont() 
+    {
+      return new FontUIResource("Dialog", Font.PLAIN, 13);
+    }
+    public FontUIResource getMenuTextFont() 
+    {
+      return new FontUIResource("Dialog", Font.PLAIN, 15);
+    }
   }
 
   /**
@@ -244,7 +252,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Button.disabledToolBarBorderBackground"), null);
     harness.check(defaults.get("Button.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("Button.focusInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("Button.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Button.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("Button.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("Button.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("Button.light"), new ColorUIResource(0, 0, 7));
@@ -263,7 +271,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("CheckBox.disabledText"), new ColorUIResource(0, 0, 35));
     harness.check(defaults.get("CheckBox.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("CheckBox.focusInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("CheckBox.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("CheckBox.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("CheckBox.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("CheckBox.icon") instanceof Icon);
     harness.check(defaults.get("CheckBox.margin"), new InsetsUIResource(2, 2, 2, 2));
@@ -282,7 +290,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("CheckBoxMenuItem.checkIcon") instanceof Icon);
     harness.check(defaults.get("CheckBoxMenuItem.commandSound"), "sounds/MenuItemCommand.wav");
     harness.check(defaults.get("CheckBoxMenuItem.disabledForeground"), new ColorUIResource(0, 0, 16));
-    harness.check(defaults.get("CheckBoxMenuItem.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("CheckBoxMenuItem.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("CheckBoxMenuItem.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("CheckBoxMenuItem.margin"), new InsetsUIResource(2, 2, 2, 2));
     harness.check(defaults.get("CheckBoxMenuItem.selectionBackground"), new ColorUIResource(0, 0, 18));
@@ -309,7 +317,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("ComboBox.buttonShadow"), new ColorUIResource(0, 0, 9));
     harness.check(defaults.get("ComboBox.disabledBackground"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("ComboBox.disabledForeground"), new ColorUIResource(0, 0, 14));
-    harness.check(defaults.get("ComboBox.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("ComboBox.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("ComboBox.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("ComboBox.selectionBackground"), new ColorUIResource(0, 0, 24));
     harness.check(defaults.get("ComboBox.selectionForeground"), new ColorUIResource(0, 0, 10));
@@ -321,7 +329,7 @@ public class getDefaults implements Testlet
     harness.checkPoint("DesktopIcon");
     harness.check(defaults.get("DesktopIcon.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("DesktopIcon.border") instanceof BorderUIResource.CompoundBorderUIResource); 
-    harness.check(defaults.get("DesktopIcon.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("DesktopIcon.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("DesktopIcon.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.getInt("DesktopIcon.width"), 160);
     
@@ -407,7 +415,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Label.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Label.disabledForeground"), new ColorUIResource(0, 0, 14));
     harness.check(defaults.get("Label.disabledShadow"), new ColorUIResource(0, 0, 9));
-    harness.check(defaults.get("Label.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Label.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("Label.foreground"), new ColorUIResource(0, 0, 27));
     
     harness.checkPoint("List");
@@ -419,7 +427,7 @@ public class getDefaults implements Testlet
     harness.check(lb.getLineColor(), MetalLookAndFeel.getFocusColor());
     harness.check(defaults.get("List.focusInputMap") instanceof InputMapUIResource);
     harness.check(defaults.get("List.focusInputMap.RightToLeft") instanceof InputMapUIResource);
-    harness.check(defaults.get("List.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("List.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("List.foreground"), new ColorUIResource(0, 0, 29));
     harness.check(defaults.get("List.selectionBackground"), new ColorUIResource(0, 0, 28));
     harness.check(defaults.get("List.selectionForeground"), new ColorUIResource(0, 0, 13));
@@ -435,7 +443,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Menu.checkIcon"), null);
     harness.check(defaults.get("Menu.crossMenuMnemonic"), Boolean.TRUE);
     harness.check(defaults.get("Menu.disabledForeground"), new ColorUIResource(0, 0, 16));
-    harness.check(defaults.get("Menu.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Menu.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("Menu.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("Menu.margin"), new InsetsUIResource(2, 2, 2, 2));
     harness.check(defaults.getInt("Menu.menuPopupOffsetX"), 0);
@@ -452,7 +460,7 @@ public class getDefaults implements Testlet
 //    harness.check(defaults.get("MenuBar.border") instanceof MetalBorders.MenuBarBorder);
     harness.check(defaults.get("MenuBar.background"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("MenuBar.borderColor"), null);
-    harness.check(defaults.get("MenuBar.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("MenuBar.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("MenuBar.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("MenuBar.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("MenuBar.shadow"), new ColorUIResource(0, 0, 9));
@@ -473,7 +481,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("MenuItem.checkIcon"), null);
     harness.check(defaults.get("MenuItem.commandSound"), "sounds/MenuItemCommand.wav");
     harness.check(defaults.get("MenuItem.disabledForeground"), new ColorUIResource(0, 0, 16));
-    harness.check(defaults.get("MenuItem.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("MenuItem.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("MenuItem.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("MenuItem.margin"), new InsetsUIResource(2, 2, 2, 2));
     harness.check(defaults.get("MenuItem.selectionBackground"), new ColorUIResource(0, 0, 18));
@@ -536,7 +544,7 @@ public class getDefaults implements Testlet
     harness.checkPoint("PopupMenu");
     harness.check(defaults.get("PopupMenu.background"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("PopupMenu.border") instanceof MetalBorders.PopupMenuBorder);
-    harness.check(defaults.get("PopupMenu.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("PopupMenu.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("PopupMenu.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("PopupMenu.popupSound"), "sounds/PopupMenuPopup.wav");
     harness.check(defaults.get("PopupMenu.selectedWindowInputMapBindings") instanceof Object[]);
@@ -550,7 +558,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.getInt("ProgressBar.cellLength"), 1);
     harness.check(defaults.getInt("ProgressBar.cellSpacing"), 0);
     harness.check(defaults.getInt("ProgressBar.cycleTime"), 3000);
-    harness.check(defaults.get("ProgressBar.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("ProgressBar.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("ProgressBar.foreground"), new ColorUIResource(0, 0, 24));
     harness.check(defaults.getInt("ProgressBar.repaintInterval"), 50);
     harness.check(defaults.get("ProgressBar.selectionBackground"), new ColorUIResource(0, 0, 21));
@@ -563,7 +571,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("RadioButton.disabledText"), new ColorUIResource(0, 0, 35));
     harness.check(defaults.get("RadioButton.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("RadioButton.focusInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("RadioButton.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("RadioButton.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("RadioButton.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("RadioButton.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("RadioButton.icon") instanceof Icon);
@@ -585,7 +593,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("RadioButtonMenuItem.checkIcon") instanceof Icon);
     harness.check(defaults.get("RadioButtonMenuItem.commandSound"), "sounds/MenuItemCommand.wav");
     harness.check(defaults.get("RadioButtonMenuItem.disabledForeground"), new ColorUIResource(0, 0, 16));
-    harness.check(defaults.get("RadioButtonMenuItem.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("RadioButtonMenuItem.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("RadioButtonMenuItem.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("RadioButtonMenuItem.margin"), new InsetsUIResource(2, 2, 2, 2));
     harness.check(defaults.get("RadioButtonMenuItem.selectionBackground"), new ColorUIResource(0, 0, 18));
@@ -710,7 +718,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("Spinner.border") instanceof Border);
     harness.check(defaults.get("Spinner.background"), new ColorUIResource(0, 0, 4));
     harness.check(defaults.get("Spinner.editorBorderPainted"), Boolean.FALSE);
-    harness.check(defaults.get("Spinner.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("Spinner.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("Spinner.foreground"), new ColorUIResource(0, 0, 4));
     
     harness.checkPoint("SplitPane");
@@ -736,7 +744,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("TabbedPane.darkShadow"), new ColorUIResource(0, 0, 5));
     harness.check(defaults.get("TabbedPane.focus"), new ColorUIResource(0, 0, 21));
     harness.check(defaults.get("TabbedPane.focusInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("TabbedPane.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("TabbedPane.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("TabbedPane.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("TabbedPane.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("TabbedPane.light"), new ColorUIResource(0, 0, 4));
@@ -816,7 +824,7 @@ public class getDefaults implements Testlet
     
     harness.checkPoint("TitledBorder");
     harness.check(defaults.get("TitledBorder.border") instanceof LineBorderUIResource);
-    harness.check(defaults.get("TitledBorder.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("TitledBorder.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("TitledBorder.titleColor"), new ColorUIResource(0, 0, 27));
     
     harness.checkPoint("ToggleButton");
@@ -826,7 +834,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("ToggleButton.disabledText"), new ColorUIResource(0, 0, 35));
     harness.check(defaults.get("ToggleButton.focus"), new ColorUIResource(0, 0, 12));
     harness.check(defaults.get("ToggleButton.focusInputMap") instanceof InputMapUIResource);
-    harness.check(defaults.get("ToggleButton.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("ToggleButton.font"), new FontUIResource("Dialog", Font.PLAIN, 13));
     harness.check(defaults.get("ToggleButton.foreground"), new ColorUIResource(0, 0, 10));
     harness.check(defaults.get("ToggleButton.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ToggleButton.light"), new ColorUIResource(0, 0, 7));
@@ -846,7 +854,7 @@ public class getDefaults implements Testlet
     harness.check(defaults.get("ToolBar.dockingForeground"), new ColorUIResource(0, 0, 21));
     harness.check(defaults.get("ToolBar.floatingBackground"), new ColorUIResource(0, 0, 15));
     harness.check(defaults.get("ToolBar.floatingForeground"), new ColorUIResource(0, 0, 20));
-    harness.check(defaults.get("ToolBar.font"), new FontUIResource("Dialog", Font.BOLD, 12));
+    harness.check(defaults.get("ToolBar.font"), new FontUIResource("Dialog", Font.PLAIN, 15));
     harness.check(defaults.get("ToolBar.foreground"), new ColorUIResource(0, 0, 17));
     harness.check(defaults.get("ToolBar.highlight"), new ColorUIResource(0, 0, 7));
     harness.check(defaults.get("ToolBar.light"), new ColorUIResource(0, 0, 7));
