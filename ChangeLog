@@ -1,3 +1,17 @@
+2006-09-06  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/RescaleOp/constructors.java,
+	* gnu/testlet/java/awt/image/RescaleOp/createCompatibleDestImage.java,
+	* gnu/testlet/java/awt/image/RescaleOp/createCompatibleDestRaster.java,
+	* gnu/testlet/java/awt/image/RescaleOp/filterImage.java,
+	* gnu/testlet/java/awt/image/RescaleOp/filterRaster.java,
+	* gnu/testlet/java/awt/image/RescaleOp/getBounds2D.java,
+	* gnu/testlet/java/awt/image/RescaleOp/getNumFactors.java,
+	* gnu/testlet/java/awt/image/RescaleOp/getOffsets.java,
+	* gnu/testlet/java/awt/image/RescaleOp/getPoint2D.java,
+	* gnu/testlet/java/awt/image/RescaleOp/getRenderingHints.java,
+	* gnu/testlet/java/awt/image/RescaleOp/getScaleFactors.java: New files.
+
 2006-09-06  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/UIManager/getBoolean.java: New file,
