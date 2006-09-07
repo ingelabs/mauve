@@ -1,3 +1,15 @@
+2006-09-07  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/constructor.java
+	(test): Add a check for the default value of the scrollBarWidth field,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/installDefaults.java:
+	New file,
+	* gnu/testlet/javax/swing/plaf/metal/MetalScrollBarUI/MyMetalScrollBarUI.java
+	(MyMetalScrollBarUI): Call super(),
+	(installDefaults): New method,
+	(setScrollbar): Likewise,
+	(getScrollBarWidthField): Likewise.
+
 2006-09-06  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/SocketPermission/implies.java: More tests.

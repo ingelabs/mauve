@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -58,6 +58,7 @@ public class constructor implements Testlet
     MyMetalScrollBarUI ui = new MyMetalScrollBarUI();
     harness.check(ui.getTrackBounds(), null);
     harness.check(ui.getThumbBounds(), null);
+    harness.check(ui.getScrollBarWidthField(), 0);
     
     JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
     scrollBar.setUI(ui);

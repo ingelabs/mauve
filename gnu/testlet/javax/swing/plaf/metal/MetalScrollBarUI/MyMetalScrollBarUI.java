@@ -1,6 +1,6 @@
 // Tags: not-a-test
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -24,15 +24,40 @@ package gnu.testlet.javax.swing.plaf.metal.MetalScrollBarUI;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
+import javax.swing.JScrollBar;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 
 /**
- * Provides access to protected methods.
+ * Provides access to protected methods for testing purposes.
  */
 public class MyMetalScrollBarUI extends MetalScrollBarUI {
 
   public MyMetalScrollBarUI() 
   {
+    super();
+  }
+  
+  /**
+   * Overrides installDefaults() to enable public access in tests.
+   */
+  public void installDefaults()
+  {
+    super.installDefaults();
+  }
+  
+  /**
+   * Sets the value of the (otherwise protected) field scrollbar.
+   *
+   * @param sb the scrollbar to set
+   */
+  public void setScrollbar(JScrollBar sb)
+  {
+    scrollbar = sb;
+  }
+
+  public int getScrollBarWidthField()
+  {
+    return this.scrollBarWidth;
   }
   
   public Dimension getMinimumThumbSize()
