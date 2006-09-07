@@ -110,6 +110,16 @@ public class implies implements Testlet
     new Test("13.1.68.3", "[::13.1.68.3]", false),
     new Test("[::D01:4403]", "13.1.68.3", false),
     new Test("13.1.68.3", "[::D01:4403]", false),
+    // Unconventional IPv4 addresses
+    new Test("13.1.68.3", "13.1.17411", true),
+    new Test("13.1.17411", "13.1.68.3", true),
+    new Test("13.1.68.3", "13.82947", true),
+    new Test("13.82947", "13.1.68.3", true),
+    new Test("13.1.68.3", "13.82947", true),
+    new Test("13.1.68.3",
+	     String.valueOf((13 << 24) + (1 << 16) + (68 << 8) + 3), true),
+    new Test(String.valueOf((13 << 24) + (1 << 16) + (68 << 8) + 3),
+	     "13.1.68.3", true),
   };
 
   private Test[] ports = new Test[] {
