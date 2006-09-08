@@ -43,52 +43,10 @@ public class getAllByName implements Testlet
       harness.fail(x.toString());
     }
 
-    // getAllByName("") also should return the loopback address
+    // so should getAllByName("")
     try
       {
         InetAddress[] addr = InetAddress.getAllByName("");
-        harness.check(addr != null);
-        InetAddress loopback = addr[0];
-        harness.check(loopback != null);
-        harness.check(loopback.isLoopbackAddress());
-      }
-    catch (UnknownHostException x)
-      {
-        harness.fail(x.toString());
-      }
-
-    // so should getAllByName("  ")
-    try
-      {
-        InetAddress[] addr = InetAddress.getAllByName("  ");
-        harness.check(addr != null);
-        InetAddress loopback = addr[0];
-        harness.check(loopback != null);
-        harness.check(loopback.isLoopbackAddress());
-      }
-    catch (UnknownHostException x)
-      {
-        harness.fail(x.toString());
-      }
-
-    // so should getAllByName("localhost")
-    try
-      {
-        InetAddress[] addr = InetAddress.getAllByName("localhost");
-        harness.check(addr != null);
-        InetAddress loopback = addr[0];
-        harness.check(loopback != null);
-        harness.check(loopback.isLoopbackAddress());
-      }
-    catch (UnknownHostException x)
-      {
-        harness.fail(x.toString());
-      }
-
-    // so should getAllByName("  localhost  ")
-    try
-      {
-        InetAddress[] addr = InetAddress.getAllByName("  localhost  ");
         harness.check(addr != null);
         InetAddress loopback = addr[0];
         harness.check(loopback != null);
