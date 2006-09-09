@@ -46,21 +46,12 @@ public class getByName
     }
     
     try {
-      netif = NetworkInterface.getByName("lo");
-      
-      h.check(netif != null, "- 2 - return value expected to be non-null");
+      netif = NetworkInterface.getByName("abcde");
+
+      h.check(netif == null, "- 2 - return value expected to be null");
     }
     catch (Exception e) {
       h.fail("- 2 - no exeption expected");
-    }
-
-    try {
-      netif = NetworkInterface.getByName("abcde");
-
-      h.check(netif == null, "- 3 - return value expected to be null");
-    }
-    catch (Exception e) {
-      h.fail("- 3 - no exeption expected");
     }
   }
 }

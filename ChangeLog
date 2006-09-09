@@ -1,3 +1,10 @@
+2006-09-09  Casey Marshall  <csm@gnu.org>
+
+	* gnu/testlet/java/net/NetworkInterface/Consistency.java: new
+	test.
+	* gnu/testlet/java/net/NetworkInterface/getByName.java (test):
+	don't test for interfaces named "lo".
+
 2006-09-08  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/InetAddress/getAllByName.java: Do not test
