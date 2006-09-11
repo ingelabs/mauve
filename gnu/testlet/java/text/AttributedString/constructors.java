@@ -1,6 +1,6 @@
 // Tags: JDK1.2
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -24,6 +24,8 @@ package gnu.testlet.java.text.AttributedString;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.awt.Color;
+import java.awt.font.TextAttribute;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.HashMap;
@@ -116,7 +118,89 @@ public class constructors implements Testlet
 
   private void testConstructor3(TestHarness harness) 
   {
-    harness.checkPoint("AttributedString(AttributedCharacterIterator, int, int, AttributedCharacterIterator.Attribute[]);"); 
+    harness.checkPoint("AttributedString(AttributedCharacterIterator, int, int," +
+                "AttributedCharacterIterator.Attribute[]);");
+    
+    AttributedString as0 = new AttributedString("ABCDEFGHIJ");
+    as0.addAttribute(TextAttribute.LANGUAGE, "English");
+    as0.addAttribute(TextAttribute.FOREGROUND, Color.red, 2, 4);
+    as0.addAttribute(TextAttribute.BACKGROUND, Color.yellow, 3, 5);
+    
+    // try extracting no attributes...
+    AttributedString as = new AttributedString(as0.getIterator(), 1, 8, 
+            new AttributedCharacterIterator.Attribute[] {});
+    AttributedCharacterIterator aci = as.getIterator();
+    harness.check(aci.getRunLimit(TextAttribute.LANGUAGE), 7);
+    harness.check(aci.getRunLimit(TextAttribute.FOREGROUND), 7);
+    harness.check(aci.getRunLimit(TextAttribute.BACKGROUND), 7);
+    
+    // try extracting just one attribute...
+    as = new AttributedString(as0.getIterator(), 1, 8, 
+            new AttributedCharacterIterator.Attribute[] {TextAttribute.FOREGROUND});
+    aci = as.getIterator();
+    harness.check(aci.getRunLimit(TextAttribute.LANGUAGE), 7);
+    harness.check(aci.getRunLimit(TextAttribute.FOREGROUND), 1);
+    aci.setIndex(1);
+    harness.check(aci.getRunLimit(TextAttribute.LANGUAGE), 7);
+    harness.check(aci.getRunLimit(TextAttribute.FOREGROUND), 3);
+    aci.setIndex(3);
+    harness.check(aci.getRunLimit(TextAttribute.LANGUAGE), 7);
+    harness.check(aci.getRunLimit(TextAttribute.FOREGROUND), 7);
+    
+    // null iterator should throw NullPointerException
+    boolean pass = false;
+    try
+    {
+      /*AttributedString as =*/ new AttributedString(null, 0, 3, 
+            new AttributedCharacterIterator.Attribute[] {TextAttribute.FONT});
+    }
+    catch (NullPointerException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // try start > string length
+    AttributedString as1 = new AttributedString("ABC");
+    
+    pass = false;
+    try
+    {
+      /*AttributedString as =*/ new AttributedString(as1.getIterator(), 3, 4, 
+            new AttributedCharacterIterator.Attribute[] {TextAttribute.FONT});
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+
+    // try end > string length
+    pass = false;
+    try
+    {
+      /*AttributedString as =*/ new AttributedString(as1.getIterator(), 1, 4, 
+            new AttributedCharacterIterator.Attribute[] {TextAttribute.FONT});
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+    
+    // try start > end
+    pass = false;
+    try
+    {
+      /*AttributedString as =*/ new AttributedString(as1.getIterator(), 1, 0, 
+            new AttributedCharacterIterator.Attribute[] {TextAttribute.FONT});
+    }
+    catch (IllegalArgumentException e)
+    {
+      pass = true;
+    }
+    harness.check(pass);
+  
   }
 
   private void testConstructor4(TestHarness harness) 
