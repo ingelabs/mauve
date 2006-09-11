@@ -49,11 +49,16 @@ public class getRunLimit implements Testlet
     AttributedString as = new AttributedString("ABCDEFGHIJ");
     as.addAttribute(TextAttribute.LANGUAGE, "English");
     as.addAttribute(TextAttribute.FOREGROUND, Color.red, 2, 4);
+    as.addAttribute(TextAttribute.BACKGROUND, Color.blue, 7, 8);
     AttributedCharacterIterator aci = as.getIterator();
     harness.check(aci.getRunLimit(), 2);
     aci.setIndex(2);
     harness.check(aci.getRunLimit(), 4);
     aci.setIndex(5);
+    harness.check(aci.getRunLimit(), 7);
+    aci.setIndex(7);
+    harness.check(aci.getRunLimit(), 8);
+    aci.setIndex(8);
     harness.check(aci.getRunLimit(), 10);
     
     // try an empty string

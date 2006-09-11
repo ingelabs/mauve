@@ -1,5 +1,12 @@
 2006-09-11  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/text/AttributedCharacterIterator/getRunLimit.java
+	(test1): Added checks,
+	* gnu/testlet/java/text/AttributedCharacterIterator/Attribute/toString.java:
+	New test.
+
+2006-09-11  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/text/AttributedCharacterIterator/getRunLimit.java:
 	New test,
 	* gnu/testlet/java/text/AttributedString/constructors.java
