@@ -1,5 +1,20 @@
 2006-09-12  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getControlTextFont.java
+	(test): Add checks for 'swing.boldMetal' UI default setting,
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getMenuTextFont.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getSubTextFont.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getSystemTextFont.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getUserTextFont.java
+	(test): Likewise,
+	* gnu/testlet/javax/swing/plaf/metal/DefaultMetalTheme/getWindowTitleFont.java
+	(test): Likewise.
+
+2006-09-12  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/javax/swing/plaf/metal/OceanTheme/addCustomEntriesToTable.java:
 	New test.
 

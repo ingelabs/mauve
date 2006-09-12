@@ -1,6 +1,6 @@
-// Tags: JDK1.2 
+// Tags: JDK1.5 
 
-// Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+// Copyright (C) 2005, 2006, David Gilbert <david.gilbert@object-refinery.com>
 
 // This file is part of Mauve.
 
@@ -15,9 +15,9 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License
-// along with Mauve; see the file COPYING.  If not, write to
-// the Free Software Foundation, 59 Temple Place - Suite 330,
-// Boston, MA 02111-1307, USA.  */
+// along with Mauve; see the file COPYING.  If not, write to the
+// Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA.
 
 package gnu.testlet.javax.swing.plaf.metal.DefaultMetalTheme;
 
@@ -26,6 +26,7 @@ import gnu.testlet.Testlet;
 
 import java.awt.Font;
 
+import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 
@@ -45,6 +46,29 @@ public class getUserTextFont implements Testlet
     DefaultMetalTheme t = new DefaultMetalTheme();
     FontUIResource f = t.getUserTextFont();
     harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 12));
+    FontUIResource f2 = t.getUserTextFont();
+    harness.check(f == f2);
+    
+    // setting defaults property doesn't affect this font...
+    UIManager.put("swing.boldMetal", Boolean.TRUE);
+    f = t.getUserTextFont();
+    harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 12));
+    // ...but is picked up by new themes
+    DefaultMetalTheme t2 = new DefaultMetalTheme();
+    f = t2.getUserTextFont();
+    harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 12)); 
+    
+    // set it to false
+    UIManager.put("swing.boldMetal", Boolean.FALSE);
+    DefaultMetalTheme t3 = new DefaultMetalTheme();
+    f = t3.getUserTextFont();
+    harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 12)); 
+
+    // clear it again
+    UIManager.put("swing.boldMetal", null);
+    DefaultMetalTheme t4 = new DefaultMetalTheme();
+    f = t4.getUserTextFont();
+    harness.check(f, new FontUIResource("Dialog", Font.PLAIN, 12)); 
   }  
 
 }
