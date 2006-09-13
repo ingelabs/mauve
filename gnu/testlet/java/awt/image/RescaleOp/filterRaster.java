@@ -28,7 +28,6 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
 import java.awt.image.RescaleOp;
 import java.awt.image.WritableRaster;
 
@@ -92,7 +91,7 @@ public class filterRaster implements Testlet
     img.getRaster().setSample(1, 1, 0, 1500);
     op = new RescaleOp(100, 0, null);
     dstRast = op.filter(r, null);
-    double maxValue = Math.pow(2, DataBuffer.getDataTypeSize(r.getDataBuffer().getDataType())) - 1;
+    double maxValue = Math.pow(2, r.getSampleModel().getSampleSize(0)) - 1;
     harness.check(dstRast.getSample(1, 1, 0), maxValue);
     
     op = new RescaleOp(1, -2000, null);
