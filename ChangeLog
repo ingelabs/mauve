@@ -1,4 +1,8 @@
 2006-09-13  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/javax/swing/JTable/getCellRect.java: Fixed documentation.
+
+2006-09-13  Tania Bento  <tbento@redhat.com>
 	
 	* gnu/testlet/javax/swing/JTable/getCellRect.java: New test.
 

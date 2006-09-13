@@ -1,5 +1,5 @@
-/* test.java -- FIXME: describe
-   Copyright (C) 2006 FIXME: your info here
+/* getCellRect.java 
+   Copyright (C) 2006 Red Hat
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: FIXME
+// Tags: JDK1.2
 
 package gnu.testlet.javax.swing.JTable;
 
@@ -35,13 +35,13 @@ public class getCellRect implements Testlet
 
   public void test(TestHarness harness)
   {   
-    JTable table = new JTable(0, 1);
+    JTable table = new JTable(0, 0);
     Rectangle rectangle = table.getCellRect(0, 0, false);
     harness.check(rectangle.x, 0);
     harness.check(rectangle.y, 0);
     harness.check(rectangle.width, 75);
     harness.check(rectangle.height, 0);
-      
+    
     table = new JTable(2, 3);
     rectangle = table.getCellRect(1, 2, false);
     harness.check(rectangle.x, 150);
