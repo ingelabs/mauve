@@ -54,7 +54,7 @@ public class implies implements Testlet
     new Test(redhat_com_addr, "*.redhat.com", false),
     new Test("209.132.177.50", "209.132.177.51", false),
     new Test("209.132.177.50", "209.132.178.50", false),
-    new Test("209.132.177.50", "209.131.177.50", false),
+    new Test("209.132.177.50", "209.130.177.50", false),
     new Test("209.132.177.50", "208.132.177.50", false),
     // full uncompressed IPv6 addresses
     new Test("[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]",
