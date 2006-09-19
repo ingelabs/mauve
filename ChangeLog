@@ -1,3 +1,7 @@
+2006-09-19  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/logging/Logger/getParent.java: New test.
+
 2006-09-14  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/awt/Menu/insert.java: New test.
