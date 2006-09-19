@@ -1,3 +1,23 @@
+2006-09-19  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/JButton/model.java: New test,
+	* gnu/testlet/javax/swing/JButton/uidelegate.java: Likewise,
+	* gnu/testlet/javax/swing/JCheckBox/model.java: Likewise,
+	* gnu/testlet/javax/swing/JCheckBox/uidelegate.java: Likewise,
+	* gnu/testlet/javax/swing/JCheckBoxMenuItem/model.java: Likewise,
+	* gnu/testlet/javax/swing/JCheckBoxMenuItem/uidelegate.java: Likewise,
+	* gnu/testlet/javax/swing/JMenu/model.java: Likewise,
+	* gnu/testlet/javax/swing/JMenu/uidelegate.java: Likewise,
+	* gnu/testlet/javax/swing/JMenuItem/model.java: Likewise,
+	* gnu/testlet/javax/swing/JMenuItem/uidelegate.java: Likewise,
+	* gnu/testlet/javax/swing/JRadioButton/model.java: Likewise,
+	* gnu/testlet/javax/swing/JRadioButton/uidelegate.java: Likewise,
+	* gnu/testlet/javax/swing/JRadioButtonMenuItem/model.java: Likewise,
+	* gnu/testlet/javax/swing/JRadioButtonMenuItem/uidelegate.java: 
+	Likewise,
+	* gnu/testlet/javax/swing/JToggleButton/model.java: Likewise,
+	* gnu/testlet/javax/swing/JToggleButton/uidelegate.java: Likewise.
+
 2006-09-19  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/logging/Logger/getParent.java: New test.
