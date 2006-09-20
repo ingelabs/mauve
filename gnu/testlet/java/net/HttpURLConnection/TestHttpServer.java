@@ -79,7 +79,21 @@ public final class TestHttpServer implements Runnable
      */
     protected abstract boolean processConnection(List headers, byte[] body)
       throws IOException;
-    
+
+    protected String getHeaderFromList(List headers, String h)
+    {
+      String search = (h + ":").toLowerCase();
+      Iterator it = headers.iterator();
+      while (it.hasNext())
+        {
+          String v = (String)it.next();
+          String k = v.toLowerCase();
+          if (k.startsWith(search))
+            return v.substring(search.length()).trim();
+        }
+      return null;
+    }
+
     public void run()
     {
       try
