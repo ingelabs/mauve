@@ -39,7 +39,7 @@ public class getCellRect implements Testlet
     Rectangle rectangle = table.getCellRect(0, 0, false);
     harness.check(rectangle.x, 0);
     harness.check(rectangle.y, 0);
-    harness.check(rectangle.width, 75);
+    harness.check(rectangle.width, 0);
     harness.check(rectangle.height, 0);
     
     table = new JTable(2, 3);
