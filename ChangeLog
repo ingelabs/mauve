@@ -1,3 +1,8 @@
+2006-09-21  Casey Marshall  <csm@gnu.org>
+
+	* gnu/testlet/java/nio/channels/Selector/testEmptySelect.java:
+	new test.
+
 2006-09-21  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JTable/getCellRect.java: Changed
