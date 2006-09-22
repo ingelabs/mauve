@@ -43,6 +43,13 @@ public class getPositivePrefix implements Testlet
     DecimalFormat f1 = new DecimalFormat();
     f1.setPositivePrefix("XYZ");
     harness.check(f1.getPositivePrefix(), "XYZ");
+    
+    // this means: "no one understand a thing here"
+    String longPrefix = "'#'1'.' ''nessuno ci capisce niente qui";
+    String longPrefixCheck = "#1. 'nessuno ci capisce niente qui";
+    
+    DecimalFormat f2 = new DecimalFormat(longPrefix + "#0.00;(#0.00)");
+    harness.check(f2.getPositivePrefix(), longPrefixCheck);
   }
 
 }

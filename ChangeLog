@@ -1,3 +1,17 @@
+2006-09-22  Mario Torre  <neugens@limasoftware.net>
+
+	* gnu/testlet/java/text/DecimalFormat/toPattern14.java:
+	new file; this test is an update of toPattern for 1.4.
+	* gnu/testlet/java/text/DecimalFormat/parse.java (test):
+	small fix to the last test to help debugging: now uses the
+	mauve check(results, expected) method.
+	* gnu/testlet/java/text/DecimalFormat/MaximumAndMinimumDigits.java:
+	new file.
+	* gnu/testlet/java/text/DecimalFormat/getPositivePrefix.java (test):
+	new tests
+	* gnu/testlet/java/text/DecimalFormat/formatExp.java (test):
+	new test added.
+
 2006-09-22  Tom Tromey  <tromey@redhat.com>
 
 	PR libgcj/29178:

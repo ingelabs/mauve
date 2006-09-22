@@ -192,6 +192,6 @@ public class parse implements Testlet
       apply (harness, df, "#,##0X");
       num = parseIt (df, "3,110Y", pp);
       harness.check (num == null);
-      harness.check (pp.getErrorIndex() == 5);
+      harness.check (pp.getErrorIndex(), 5);
     }
 }
