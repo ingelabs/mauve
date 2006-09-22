@@ -1,5 +1,9 @@
 2006-09-22  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/net/NetworkInterface/security.java: New test.
+	
+2006-09-22  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/net/SocketPermission/argument.java:
 	Check that unquoted IPv6 addresses with one-digit first
 	components are not incorrectly flagged as errors.
