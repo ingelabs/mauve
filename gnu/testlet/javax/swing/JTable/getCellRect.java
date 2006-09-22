@@ -90,6 +90,43 @@ public class getCellRect implements Testlet
     harness.check(rectangle.y, 16);
     harness.check(rectangle.width, 75);
     harness.check(rectangle.height, 16);
+    
+    // try varying the row heights
+    table = new JTable(2, 3);
+    table.setRowHeight(0, 11);
+    table.setRowHeight(1, 12);
+    harness.check(table.getCellRect(0, 2, false), 
+            new Rectangle(150, 0, 74, 10));
+    harness.check(table.getCellRect(1, 2, false), 
+            new Rectangle(150, 11, 74, 11));
+    
+    // try varying the column widths
+    table = new JTable(2, 3);
+    table.getColumnModel().getColumn(0).setWidth(11);
+    table.getColumnModel().getColumn(1).setWidth(15);
+    table.getColumnModel().getColumn(2).setWidth(17);
+    harness.check(table.getCellRect(0, 0, false), new Rectangle(0, 0, 14, 15));
+    harness.check(table.getCellRect(1, 1, false), 
+            new Rectangle(15, 16, 14, 15));
+    harness.check(table.getCellRect(0, 2, false), new Rectangle(30, 0, 16, 15));
+    harness.check(table.getCellRect(1, 0, false), new Rectangle(0, 16, 14, 15));
+    harness.check(table.getCellRect(0, 1, false), new Rectangle(15, 0, 14, 15));
+    harness.check(table.getCellRect(1, 2, false), 
+            new Rectangle(30, 16, 16, 15));
+    
+    // try negative row
+    table = new JTable(2, 3);
+    harness.check(table.getCellRect(-1, 0, true), new Rectangle(0, 0, 75, 0));
+    
+    // try row index too large
+    table = new JTable(2, 3);
+    harness.check(table.getCellRect(99, 0, true), new Rectangle(0, 0, 75, 0));
+    
+    // try negative column
+    harness.check(table.getCellRect(0, -1, true), new Rectangle(0, 0, 0, 16));
+    
+    // try column index too large
+    harness.check(table.getCellRect(0, 99, true), new Rectangle(0, 0, 0, 16));
   }
 
 }
