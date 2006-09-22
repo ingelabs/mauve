@@ -1,3 +1,10 @@
+2006-09-22  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/javax/swing/SizeSequence/getSize.java
+	(test): Check indices out of bounds,
+	* gnu/testlet/javax/swing/JTable/getRowHeight.java: New test,
+	* gnu/testlet/javax/swing/JTable/setRowHeight.java: New test.
+
 2006-09-22  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/TestSecurityManager.java:

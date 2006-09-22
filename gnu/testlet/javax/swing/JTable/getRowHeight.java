@@ -1,5 +1,5 @@
-/* getSize.java -- some checks for the getSize() method in the SizeSequence
-       class.
+/* getRowHeight.java -- some checks for the getRowHeight() method in the 
+       JTable class.
    Copyright (C) 2006 David Gilbert <david.gilbert@object-refinery.com>
 This file is part of Mauve.
 
@@ -20,31 +20,46 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: JDK1.2
+// Tags: JDK1.5
 
-package gnu.testlet.javax.swing.SizeSequence;
+package gnu.testlet.javax.swing.JTable;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import javax.swing.SizeSequence;
+import javax.swing.JTable;
 
-public class getSize implements Testlet
+public class getRowHeight implements Testlet
 {
   public void test(TestHarness harness)
   {
-    SizeSequence s = new SizeSequence(new int[] {1, 2, 3});
-    harness.check(s.getSize(0), 1);
-    harness.check(s.getSize(1), 2);
-    harness.check(s.getSize(2), 3);
-    
-    // the spec states that indices outside the valued range have no specified
-    // behaviour, but they seem to return zero...
+    test1(harness);
+    test2(harness);
+  }
+  
+  public void test1(TestHarness harness)
+  {
+    harness.checkPoint("()");
+    JTable t = new JTable(4, 3);
+    harness.check(t.getRowHeight(), 16);
+    t.setRowHeight(99);
+    harness.check(t.getRowHeight(), 99);
+  }
+  
+  public void test2(TestHarness harness)
+  {
+    harness.checkPoint("(int)");
+    JTable t = new JTable(4, 3);
+    harness.check(t.getRowHeight(0), 16);
+    t.setRowHeight(99);
+    harness.check(t.getRowHeight(0), 99);
+    t.setRowHeight(0, 12);
+    harness.check(t.getRowHeight(0), 12);
     
     // try negative index
-    harness.check(s.getSize(-1), 0);
+    harness.check(t.getRowHeight(-1), 0);
     
     // try index too large
-    harness.check(s.getSize(3), 0);
+    harness.check(t.getRowHeight(4), 0);
   }
 }
