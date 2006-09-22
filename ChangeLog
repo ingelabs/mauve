@@ -32,7 +32,6 @@
 	* gnu/testlet/java/net/HttpURLConnection/TestHttpServer.java
 	(ConnectionHandler.getHeaderFromList): New method.
 	* gnu/testlet/java/net/HttpURLConnection/postHeaders.java: New test.
-	
 
 2006-09-19  David Gilbert  <david.gilbert@object-refinery.com>
 
