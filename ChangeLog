@@ -1,3 +1,11 @@
+2006-09-22  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/TestSecurityManager.java:
+	Compare permissions using equals() rather than implies().
+	Provide a way for tests to specify that they need implies().
+	* gnu/testlet/java/io/File/security.java:
+	Use implies() comparisons for temp file tests.
+
 2006-09-21  Casey Marshall  <csm@gnu.org>
 
 	* gnu/testlet/java/nio/channels/Selector/testEmptySelect.java:

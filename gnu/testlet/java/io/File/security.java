@@ -210,6 +210,7 @@ public class security implements Testlet
       try {
 	sm.prepareChecks(new Permission[]{tmpallWritePerm},
 			 new Permission[]{tmpdirPropPerm});
+	sm.setComparisonStyle(TestSecurityManager.IMPLIES);
 	tf1 = File.createTempFile("pfx", "sfx");
 	sm.checkAllChecked();
       }
@@ -222,6 +223,7 @@ public class security implements Testlet
       harness.checkPoint("createTempFile(3-args)");
       try {
 	sm.prepareChecks(new Permission[]{tmpdirallWritePerm});
+	sm.setComparisonStyle(TestSecurityManager.IMPLIES);
 	tf2 = File.createTempFile("pfx", "sfx", tmpdir);
 	sm.checkAllChecked();
       }

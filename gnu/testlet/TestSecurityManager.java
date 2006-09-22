@@ -93,6 +93,21 @@ public class TestSecurityManager extends SecurityManager
   private final SuccessException successException = new SuccessException();
 
   /**
+   * How should permissions be compared?
+   */
+  private int compare;
+
+  /**
+   * Compare permissions using <code>p1.equals(p2)</code>.
+   */
+  public static final int EQUALS = 1;
+  
+  /**
+   * Compare permissions using <code>p1.implies(p2)</code>.
+   */
+  public static final int IMPLIES = 2;
+   
+ /**
    * An empty list of checks, for convenience.
    */
   private final Permission[] noChecks = new Permission[0];
@@ -213,8 +228,41 @@ public class TestSecurityManager extends SecurityManager
 
     checked = new boolean[mustCheck.length];
     enabled = true;
+    compare = EQUALS;
   }
 
+  /**
+   * Under normal circumstances permissions are compared using
+   * <code>p1.equals(p2)</code> to ensure that the permission being
+   * checked is exactly the permission that is expected.  Sometimes it
+   * is not possible to know in advance the exact permission that will
+   * be checked -- the best you can do is some kind of wildcard -- and
+   * in such cases tests can specify that permissions should be
+   * compared using <code>p1.implies(p2)</code> using this method.
+   *
+   * @param style the desired comparison style (<code>EQUALS</code> or
+   *              <code>IMPLIES</code>).
+   */
+  public void setComparisonStyle(int style)
+  {
+    compare = style;
+  }
+
+  /**
+   * Compare two permissions.
+   */
+  private boolean permissionsMatch(Permission p1, Permission p2)
+  {
+    switch (compare) {
+    case EQUALS:
+      return p1.equals(p2);
+    case IMPLIES:
+      return p1.implies(p2);
+    default:
+      throw new IllegalArgumentException();
+    }      
+  }
+  
   /**
    * Check that this permission is one that we should be checking.
    * 
@@ -223,7 +271,7 @@ public class TestSecurityManager extends SecurityManager
    *         permissions have been checked and <code>isHalting</code>
    *         is true.
    * @throws SecurityException if none of the <code>mustCheck</code>
-   *         or <code>mayCheck</code> permissions implies
+   *         or <code>mayCheck</code> permissions matches
    *         <code>perm</code>.
    */
   public void checkPermission(Permission perm) throws SecurityException
@@ -236,13 +284,13 @@ public class TestSecurityManager extends SecurityManager
 
     boolean matched = false;
     for (int i = 0; i < mustCheck.length; i++) {
-      if (mustCheck[i].implies(perm))
+      if (permissionsMatch(mustCheck[i], perm))
 	matched = checked[i] = true;
     }
 
     if (!matched) {
       for (int i = 0; i < mayCheck.length; i++) {
-	if (mayCheck[i].implies(perm))
+	if (permissionsMatch(mayCheck[i], perm))
 	  matched = true;
       }
     }
