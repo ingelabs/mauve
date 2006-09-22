@@ -1,3 +1,8 @@
+2006-09-22  Tom Tromey  <tromey@redhat.com>
+
+	PR libgcj/29178:
+	* gnu/testlet/java/nio/charset/Charset/canEncode.java: New file.
+
 2006-09-22  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/NetworkInterface/security.java: New test.
