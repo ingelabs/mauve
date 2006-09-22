@@ -51,6 +51,7 @@ public class argument implements Testlet
     new Test("1080::8:800:200C:417A", false),
     new Test("::192.9.5.5", false),
     new Test("::FFFF:129.144.52.38", false),
+    new Test("0:0:0:0:0:0:0:1", true),
   };
 
   private Test[] ports = new Test[] {

@@ -1,3 +1,9 @@
+2006-09-22  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/net/SocketPermission/argument.java:
+	Check that unquoted IPv6 addresses with one-digit first
+	components are not incorrectly flagged as errors.
+
 2006-09-22  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/javax/swing/JTable/getCellRect.java
