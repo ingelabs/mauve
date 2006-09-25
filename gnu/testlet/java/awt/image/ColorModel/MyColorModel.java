@@ -25,6 +25,7 @@ package gnu.testlet.java.awt.image.ColorModel;
 
 import java.awt.color.ColorSpace;
 import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 
 public class MyColorModel extends ColorModel
 {
@@ -55,5 +56,12 @@ public class MyColorModel extends ColorModel
 
     public int getRed(int pixel) {
         return 0;
+    }
+    
+    public ColorModel coerceData(WritableRaster raster,
+                                 boolean isAlphaPremultiplied)
+    {
+      coerceDataWorker(raster, isAlphaPremultiplied);
+      return this;
     }
 }

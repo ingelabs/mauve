@@ -1,3 +1,11 @@
+2006-09-25  Francis Kung  <fkung@redhat.com
+
+	* gnu/testlet/java/awt/image/ColorModel/MyColorModel.java
+	(coerceData): New method.
+	* gnu/testlet/java/awt/image/ComponentColorModel/coerceData.java,
+	* gnu/testlet/java/awt/image/DirectColorModel/coerceData.java:
+	New files.
+
 2006-09-22  Mario Torre  <neugens@limasoftware.net>
 
 	* gnu/testlet/java/text/DecimalFormat/toPattern14.java:
