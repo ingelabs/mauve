@@ -54,7 +54,11 @@ public class simple implements Testlet
     // Now remove some elements and recheck.
     harness.checkPoint ("remove");
     for (int i = 0; i < 1000; i += 2)
-      map.remove (is[i]);
+      {
+    	Object v = map.remove (is[i]);
+    	harness.check(v, vs[i]);
+      }
+    harness.checkPoint("post remove");
     for (int i = 1; i < 1000; i += 2)
       {
 	Object k = map.get (is[i]);
