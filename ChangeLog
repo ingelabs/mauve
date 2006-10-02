@@ -1,3 +1,7 @@
+2006-10-02  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/Graphics/clearRect.java: New file.
+
 2006-09-28  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/util/IdentityHashMap/simple.java (test): Check
