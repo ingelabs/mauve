@@ -1,3 +1,8 @@
+2006-10-04  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/tree/VariableHeightLayoutCache/getBounds.java:
+	New test.
+
 2006-10-02  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/java/awt/Graphics/clearRect.java: New file.
