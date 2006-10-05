@@ -47,7 +47,7 @@ public class security implements Testlet
       try {
 	sm.install();
 
- 	// throwpoint: java.net.InetAddress-getHostName()
+ 	// throwpoint: java.net.InetAddress-getHostName
 	harness.checkPoint("getHostName");
 	try {
 	  sm.prepareChecks(checkConnect);
@@ -59,7 +59,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
- 	// throwpoint: java.net.InetAddress-getCanonicalHostName()
+ 	// throwpoint: java.net.InetAddress-getCanonicalHostName
 	harness.checkPoint("getCanonicalHostName");
 	try {
 	  sm.prepareChecks(checkConnect);
@@ -71,7 +71,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
- 	// throwpoint: java.net.InetAddress-getByName()
+ 	// throwpoint: java.net.InetAddress-getByName
 	harness.checkPoint("getByName");
 	try {
 	  sm.prepareChecks(checkConnect);
@@ -83,7 +83,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// throwpoint: java.net.InetAddress-getAllByName()
+	// throwpoint: java.net.InetAddress-getAllByName
 	harness.checkPoint("getAllByName");
 	try {
 	  sm.prepareChecks(checkConnect);
@@ -95,7 +95,7 @@ public class security implements Testlet
 	  harness.check(false, "unexpected check");
 	}
 
-	// throwpoint: java.net.InetAddress-getLocalHost()
+	// throwpoint: java.net.InetAddress-getLocalHost
 	harness.checkPoint("getLocalHost");
 	try {
 	  sm.prepareChecks(checkConnect);
