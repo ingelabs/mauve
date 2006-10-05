@@ -1,5 +1,9 @@
 2006-10-05  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/net/Socket/security.java: New test.
+
+2006-10-05  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/net/InetAddress/security.java: Comment fixes.
 
 2006-10-04  Roman Kennke <kennke@aicas.com>
