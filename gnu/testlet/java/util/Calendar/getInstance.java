@@ -48,6 +48,10 @@ public class getInstance implements Testlet
     harness.checkPoint("()");
     Calendar c = Calendar.getInstance();
     harness.check(c.getTimeZone(), java.util.TimeZone.getDefault());
+    
+    // check that the method returns a new instance each time
+    Calendar c2 = Calendar.getInstance();
+    harness.check(c != c2);
   }
   
   public void testMethod2(TestHarness harness) 
@@ -56,6 +60,10 @@ public class getInstance implements Testlet
     Calendar c = Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT"));
     harness.check(c.getTimeZone(), java.util.TimeZone.getTimeZone("GMT"));
     
+    // check that the method returns a new instance each time
+    Calendar c2 = Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT"));
+    harness.check(c != c2);
+
     // try null
     boolean pass = false;
     try 
@@ -72,6 +80,9 @@ public class getInstance implements Testlet
   public void testMethod3(TestHarness harness) 
   {
     harness.checkPoint("(Locale)");       
+    Calendar c = Calendar.getInstance(Locale.UK);
+    Calendar c2 = Calendar.getInstance(Locale.UK);
+    harness.check(c != c2);
         
     // try null
     boolean pass = false;
@@ -89,6 +100,11 @@ public class getInstance implements Testlet
   public void testMethod4(TestHarness harness) 
   {
     harness.checkPoint("(TimeZone, Locale)");   
+    Calendar c = Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT"), 
+            Locale.UK);
+    Calendar c2 = Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT"), 
+            Locale.UK);
+    harness.check(c != c2);
 
     // try null TimeZone
     boolean pass = false;
