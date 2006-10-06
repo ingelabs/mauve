@@ -1,3 +1,21 @@
+2006-10-06  Roman Kennke <kennke@aicas.com>
+
+	* junit/framework/Assert.java
+	* junit/framework/AssertionFailedError.java
+	* junit/framework/ComparisonFailure.java
+	* junit/framework/Protectable.java
+	* junit/framework/Test.java
+	* junit/framework/TestCase.java
+	* junit/framework/TestFailure.java
+	* junit/framework/TestListener.java
+	* junit/framework/TestResult.java
+	* junit/framework/TestSuite.java
+	* junit/runner/BaseTestRunner.java
+	* junit/textui/TestRunner.java:
+	New classes. Implements the core JUnit API for bridging JUnit into
+	Mauve.
+	* junit/framework/package.html: New file.
+
 2006-10-06  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/util/Calendar/getInstance.java:
