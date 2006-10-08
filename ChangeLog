@@ -1,3 +1,7 @@
+2006-10-09  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JTree/isRowSelected.java: New test.
+
 2006-10-06  Roman Kennke <kennke@aicas.com>
 
 	* junit/framework/Assert.java
