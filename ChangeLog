@@ -1,5 +1,18 @@
 2006-10-09  Roman Kennke <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JTree/isRowSelected.java
+	(TestTree.isPathSelected): New overridden method for testing.
+	(TestTree.getRowForPath): Removed.
+	(TestTree.getPathForRow): New overridden method for testing.
+	(isPathSelectedCalled): New field.
+	(getPathForRowCalled): Renamed old getRowForPathCalled field.
+	(test): Include new isPathSelected() test.
+	(testGetRowForPath): Renamed method and check getPathForRow() instead
+	of getRowForPath().
+	(testCallIsRowSelected): New test method.
+
+2006-10-09  Roman Kennke <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JTree/isRowSelected.java: New test.
 
 2006-10-06  Roman Kennke <kennke@aicas.com>

@@ -39,7 +39,12 @@ public class isRowSelected implements Testlet
   /**
    * Indicates if JTree.getRowForPath() is called during a test.
    */
-  boolean getRowForPathCalled;
+  boolean getPathForRowCalled;
+
+  /**
+   * Indicates if JTree.isPathSelected() is called during a test.
+   */
+  boolean isPathSelectedCalled;
 
   /**
    * Indicates if a tree's selection model isRowSelected() is called
@@ -57,10 +62,15 @@ public class isRowSelected implements Testlet
     {
       super(data);
     }
-    public int getRowForPath(TreePath p)
+    public TreePath getPathForRow(int r)
     {
-      getRowForPathCalled = true;
-      return super.getRowForPath(p);
+      getPathForRowCalled = true;
+      return super.getPathForRow(r);
+    }
+    public boolean isPathSelected(TreePath p)
+    {
+      isPathSelectedCalled = true;
+      return super.isPathSelected(p);
     }
   }
 
@@ -82,7 +92,8 @@ public class isRowSelected implements Testlet
    */
   public void test(TestHarness harness)
   {
-    testCallGetRowForPath(harness);
+    testCallGetPathForRow(harness);
+    testCallIsPathSelected(harness);
     testCallModelIsRowSelected(harness);
   }
 
@@ -92,14 +103,30 @@ public class isRowSelected implements Testlet
    *
    * @param h the test harness
    */
-  private void testCallGetRowForPath(TestHarness h)
+  private void testCallGetPathForRow(TestHarness h)
   {
-    h.checkPoint("testCallGetRowForPath");
+    h.checkPoint("testCallGetPathForRow");
     Object[] data = new Object[]{ "Hello", "World" };
     TestTree t = new TestTree(data);
-    getRowForPathCalled = false;
+    getPathForRowCalled = false;
     t.isRowSelected(0);
-    h.check(getRowForPathCalled, false);
+    h.check(getPathForRowCalled, false);
+  }
+
+  /**
+   * Tests if isRowSelected should call JTree.isPathSelected, or if it
+   * should leave the row->path mapping to the selection model.
+   *
+   * @param h the test harness
+   */
+  private void testCallIsPathSelected(TestHarness h)
+  {
+    h.checkPoint("testCallIsPathSelected");
+    Object[] data = new Object[]{ "Hello", "World" };
+    TestTree t = new TestTree(data);
+    isPathSelectedCalled = false;
+    t.isRowSelected(0);
+    h.check(isPathSelectedCalled, false);
   }
 
   /**
