@@ -1,5 +1,12 @@
 2006-10-09  Roman Kennke <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/JSplitPane/getDividerLocation.java,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSplitPaneUI/getDividerLocation.java,
+	* gnu/testlet/javax/swing/plaf/basic/BasicSplitPaneUI/BasicHorizontalLayoutManager/layoutContainer.java:
+	New tests.
+
+2006-10-09  Roman Kennke <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JTree/isRowSelected.java
 	(TestTree.isPathSelected): New overridden method for testing.
 	(TestTree.getRowForPath): Removed.
