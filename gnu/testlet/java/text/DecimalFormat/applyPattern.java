@@ -78,6 +78,11 @@ public class applyPattern implements Testlet
     harness.check(f1.getGroupingSize(), 3);
     f1.applyPattern("#,#,##0.00");
     
+    harness.checkPoint("null pattern");
+    f1.applyPattern("");
+    harness.check(f1.format(123456789.123456789), "123.456.789,12345679");
+    
+    harness.checkPoint("invalid pattern");
     // try null argument
     boolean pass = false;
     try

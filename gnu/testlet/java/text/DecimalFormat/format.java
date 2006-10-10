@@ -151,6 +151,7 @@ public class format
     
     apply(harness, df, "'positive'#;'negative' -");
     harness.check(df.format(-1234.567), "negative -1235");
+    harness.check(df.format(1234.567), "positive1235");
     
     // grouping size of zero might cause a failure - see bug parade 4088503
     harness.checkPoint("regression tests for setGroupingSize");

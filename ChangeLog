@@ -1,3 +1,12 @@
+2006-10-11  Mario Torre  <neugens@limasoftware.net>
+
+	* gnu/testlet/java/text/DecimalFormat/PR23996.java:
+	Test for PR23996.
+	* gnu/testlet/java/text/DecimalFormat/format.java
+	(testGeneral): new test.
+	* gnu/testlet/java/text/DecimalFormat/applyPattern.java (test):
+	test added.
+	
 2006-10-09  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/ServerSocket/security.java: New test.
