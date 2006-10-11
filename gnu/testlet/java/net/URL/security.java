@@ -43,6 +43,9 @@ public class security implements Testlet
       Permission[] specifyStreamHandler = new Permission[] {
 	new NetPermission("specifyStreamHandler")};
 
+      Permission[] checkSetFactory = new Permission[] {
+	new RuntimePermission("setFactory")};
+
       TestSecurityManager sm = new TestSecurityManager(harness);
       try {
 	sm.install();
@@ -66,6 +69,21 @@ public class security implements Testlet
 	  new URL(context, "/red/hat/", handler);
 	  sm.checkAllChecked();
 	}
+	catch (SecurityException ex) {
+	  harness.debug(ex);
+	  harness.check(false, "unexpected check");
+	}
+
+	// throwpoint: java.net.URL-setURLStreamHandlerFactory
+	harness.checkPoint("setURLStreamHandlerFactory");
+	try {
+	  sm.prepareHaltingChecks(checkSetFactory);
+	  URL.setURLStreamHandlerFactory(null);
+	  harness.check(false);	  
+	}
+	catch (TestSecurityManager.SuccessException ex) {
+	  harness.check(true);
+	} 
 	catch (SecurityException ex) {
 	  harness.debug(ex);
 	  harness.check(false, "unexpected check");

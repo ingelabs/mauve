@@ -1,5 +1,9 @@
 2006-10-11  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/net/URL/security.java: Add a test I missed.
+
+2006-10-11  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/net/URL/security.java: New test.
 
 2006-10-11  Gary Benson  <gbenson@redhat.com>
