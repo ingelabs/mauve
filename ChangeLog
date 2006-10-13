@@ -1,3 +1,20 @@
+2006-10-03  Roman Kennke <kennke@aicas.com>
+
+	* Harness.java
+	(InputPiperThread): New inner class. Forwards the input from
+	the outside process to the inside (test) process.
+	(initProcess): Set up piping.
+	(printHelpMessage): Added description of -interactive option.
+	* RunnerProcess.java
+	(interactive): New field. This is set to true when we are running
+	interactive tests only.
+	(main): Interpret -interactive option.
+	(runtest): Filter tests based on the -interactive flag.
+	* gnu/testlet/VisualTestlet.java: New class. This is the
+	base class for visual (interactive) tests.
+	* gnu/testlet/javax/swing/JMenuItem/DragSelectTest.java: New
+	interactive test.
+
 2006-10-13  Thomas Fitzsimmons  <fitzsim@redhat.com>
 
 	* gnu/testlet/javax/swing/DefaultComboBoxModel/setSelectedItem.java

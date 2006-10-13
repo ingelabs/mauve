@@ -29,6 +29,7 @@ import gnu.testlet.TestReport;
 import gnu.testlet.TestResult;
 import gnu.testlet.TestSecurityManager;
 import gnu.testlet.Testlet;
+import gnu.testlet.VisualTestlet;
 import gnu.testlet.config;
 
 import java.io.BufferedReader;
@@ -51,7 +52,7 @@ public class RunnerProcess
 {
   // A description of files that are not tests
   private static final String NOT_A_TEST_DESCRIPTION = "not-a-test";
-  
+
   // A description of files that fail to load
   private static final String FAIL_TO_LOAD_DESCRIPTION = "failed-to-load";
   
@@ -112,7 +113,12 @@ public class RunnerProcess
   
   // The failure message for the last failing check()
   private String lastFailureMessage = null;
-  
+
+  /**
+   * Should we run interactive or non-interactive tests ?
+   */
+  private static boolean interactive;
+
   protected RunnerProcess()
   {    
     try
@@ -171,6 +177,8 @@ public class RunnerProcess
                     "after '-emma'.  Exit");
             emmaJarLocation = args[i];
           }
+        else if (args[i].equals("-interactive"))
+          interactive = true;
       }
     // If the user wants an xml report, create a new TestReport.
     if (xmlfile != null)
@@ -268,7 +276,22 @@ public class RunnerProcess
             description = NOT_A_TEST_DESCRIPTION;
             return;
           }
-
+        if (o instanceof VisualTestlet)
+          {
+            if (! interactive)
+              {
+                description = NOT_A_TEST_DESCRIPTION;
+                return;
+              }
+          }
+        else
+          {
+            if (interactive)
+              {
+                description = NOT_A_TEST_DESCRIPTION;
+                return;
+              }
+          }
         t = (Testlet) o;
       }
     catch (Throwable ex)

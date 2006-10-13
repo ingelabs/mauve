@@ -583,8 +583,9 @@ public class Harness
       "  -norecursion:            if a folder is specified to be run, don't " +
       "run the tests in its subfolders\n" +
       "  -file [filename]:        specifies a file that contains the names " +
-      "of tests to be run (one per line)" +
-
+      "of tests to be run (one per line)\n" +
+      "  -interactive:            only run interavtice tests, if not set, " +
+      "only run non-interactive tests\n" +
       // Output Options.
       "\n\nOutput Options:\n" +
       "  -showpasses:             display passing tests as well as failing " +
@@ -644,6 +645,9 @@ public class Harness
           new BufferedReader
           (new InputStreamReader(runnerProcess.getInputStream()));
         runner_esp = new ErrorStreamPrinter(runnerProcess.getErrorStream());
+        InputPiperThread pipe = new InputPiperThread(System.in,
+                                                     runnerProcess.getOutputStream());
+        pipe.start();
         runner_esp.start();
         
       }
@@ -1573,6 +1577,49 @@ public class Harness
         }
       else
         super.print(x);
+    }
+  }
+
+  /**
+   * Reads from one stream and writes this to another. This is used to pipe
+   * the input (System.in) from the outside process to the test process. 
+   */
+  private static class InputPiperThread
+    extends Thread
+  {
+    InputStream in;
+    OutputStream out;
+    InputPiperThread(InputStream i, OutputStream o)
+    {
+      in = i;
+      out = o;
+    }
+    public void run()
+    {
+      int ch = 0;
+      do
+        {
+          try
+            {
+              if (in.available() > 0)
+                {
+                  ch = in.read();
+                  if (ch != '\n') // Skip the trailing newline.
+                    out.write(ch);
+                  out.flush();
+                }
+              else
+                Thread.sleep(200);
+            }
+          catch (IOException ex)
+            {
+              ex.printStackTrace();
+            }
+          catch (InterruptedException ex)
+            {
+              ch = -1; // Jump outside.
+            }
+        } while (ch != -1);
     }
   }
 }
