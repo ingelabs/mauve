@@ -87,16 +87,13 @@ public class setSelectedItem
 
     // now set the selected item to something not in the list...
     m.setSelectedItem("Z");
-    harness.check(m.getSelectedItem(), "Z");
+    // confirm that setSelectedItem simply returned without doing
+    // anything...
+    harness.check(m.getSelectedItem(), null);
     harness.check(m.getSize(), 3);
     harness.check(m.getIndexOf("Z"), -1);
-    harness.check(events.size(), 1);
-    event = (ListDataEvent) events.get(0);
-    harness.check(event.getType(), ListDataEvent.CONTENTS_CHANGED);
-    harness.check(event.getIndex0(), -1);
-    harness.check(event.getIndex1(), -1);
-    events.clear();
-    
+    harness.check(events.size(), 0);
+
     // now set the selected item to the same value - no event should be 
     // generated...
     m.setSelectedItem("Z");
