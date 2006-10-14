@@ -1,8 +1,14 @@
+2006-10-14  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/ToolTipManager/DynamicToolTipTest.java:
+	New test. This is a regression test
+	for http://gcc.gnu.org/bugzilla/show_bug.cgi?id=27957 .
+
 2006-10-13  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/awt/ScrollPane/testSetLayout.java: New test.
 
-2006-10-03  Roman Kennke <kennke@aicas.com>
+2006-10-12  Roman Kennke <kennke@aicas.com>
 
 	* Harness.java
 	(InputPiperThread): New inner class. Forwards the input from
