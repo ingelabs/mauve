@@ -1,5 +1,9 @@
 2006-10-16  Roman Kennke <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/TransferHandler/canImport.java: New test.
+
+2006-10-16  Roman Kennke <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/JLabel/AccessibleJLabel/getCharacterBounds.java,
 	* gnu/testlet/javax/swing/JLabel/AccessibleJLabel/getIndexAtPoint.java:
 	New tests.
