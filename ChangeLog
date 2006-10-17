@@ -1,5 +1,10 @@
 2006-10-17  Roman Kennke <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/TransferHandler/exportToClipboard.java:
+	New test.
+
+2006-10-17  Roman Kennke <kennke@aicas.com>
+
 	* gnu/testlet/javax/swing/TransferHandler/createTransferable.java:
 	New test.
 
