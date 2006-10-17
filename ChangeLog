@@ -1,3 +1,10 @@
+2006-10-17  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/BufferedImage/getSubimage.java,
+	* gnu/testlet/java/awt/image/Raster/createChild.java,
+	* gnu/testlet/java/awt/image/WritableRaster/createWritableChild.java:
+	New tests.
+
 2006-10-16  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/TransferHandler/canImport.java: New test.
