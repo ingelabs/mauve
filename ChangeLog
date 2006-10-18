@@ -1,3 +1,8 @@
+2006-10-18  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/awt/CardLayout/testMaximumLayoutSize.java: New test.
+	* gnu/testlet/java/awt/CardLayout/testMinimumLayoutSize.java: New test.
+
 2006-10-17  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/TransferHandler/exportToClipboard.java:
