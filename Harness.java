@@ -85,6 +85,9 @@ public class Harness
 
   // The command to invoke for the VM on which we will run the tests.
   private static String vmCommand = null;
+
+  // A command that is prepended to the test commandline (e.g. strace, gdb, time)
+  private static String vmPrefix = null;
   
   // Arguments to be passed to the VM
   private static String vmArgs = "";
@@ -314,6 +317,14 @@ public class Harness
               throw new RuntimeException ("No VMPATH" +
                     "given after '-vm'.  Exit");
             vmCommand = args[i];
+          }
+        else if (args[i].equals("-vmprefix"))
+          {
+            // User wants to prepend a certain command.
+            if (++i >= args.length)
+              throw new RuntimeException ("No file" +
+                    "given after '-vmprefix'.  Exit");
+            vmPrefix = args[i] + " ";
           }
         else if (args[i].equals("-timeout"))
           {
@@ -634,7 +645,11 @@ public class Harness
     StringBuffer sb = new StringBuffer(" RunnerProcess");
     for (int i = 0; i < args.length; i++)      
       sb.append(" " + args[i]);      
-    sb.insert(0, vmCommand + vmArgs);
+
+    if (vmPrefix != null)
+      sb.insert(0, vmPrefix + vmCommand + vmArgs);
+    else
+      sb.insert(0, vmCommand + vmArgs);
     
     try
       {

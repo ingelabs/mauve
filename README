@@ -146,6 +146,17 @@ section provides instructions on how to perform the following tasks:
   
   HARNESSVM Harness javax.swing.JTable -vm jamvm -vmarg -Xnocompact
 
+  For debugging purposes it may be helpful to run the testprocess with a
+  special program like strace, time or gdb. To prepend such a command before
+  the VM use the -vmprefix argument and specify a path to the program you want
+  to run:
+
+  -vmprefix [prefixpath]
+
+  For example, the following command will run a Socket test with strace on
+  Cacao:
+
+  HARNESSVM Harness java.net.Socket -vm cacao -vmprefix strace
 
 2.  Selecting a subset of the tests to run
 

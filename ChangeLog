@@ -1,3 +1,10 @@
+2006-10-20  Robert Schuster  <robertschuster@fsfe.org>
+
+	* Harness.java: Added vmExtra field.
+	(setupHarness): Examine -vmprefix argument.
+	(initProcess): Use vmPrefix field if non-null.
+	* README: Added info about -vmprefix switch.
+
 2006-10-19  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/java/awt/image/BufferedImage/constants.java: New test.
