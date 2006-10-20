@@ -1,3 +1,9 @@
+2006-10-20  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/awt/Scrollbar/testSetBlockIncrement: New test.
+	* gnu/testlet/java/awt/Scrollbar/testSetValues.java: New test.
+	* gnu/testlet/java/awt/Scrollbar/testSetUnitIncrement: New test.
+
 2006-10-20  Robert Schuster  <robertschuster@fsfe.org>
 
 	* Harness.java: Added vmExtra field.
