@@ -1,3 +1,11 @@
+2006-10-24  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/awt/Scrollbar/testSetValues: Added a new test.
+	* gnu/testlet/java/awt/Scrollbar/testSetBlockIncrement: Added a 
+	new test.
+	* gnu/testlet/java/awt/Scrollbar/testSetUnitIncrement: Added a 
+	new test.
+
 2006-10-23  Raif S. Naffah  <classpath@naffah-raif.name>
 
 	* gnu/testlet/gnu/javax/crypto/jce/TestOfCipherOutputStream.java: New test.

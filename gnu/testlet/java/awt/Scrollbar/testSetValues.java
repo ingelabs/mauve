@@ -1,4 +1,4 @@
-/* testSetValues.java 
+/* testSetValues.java
    Copyright (C) 2006 Red Hat
 This file is part of Mauve.
 
@@ -42,6 +42,8 @@ public class testSetValues implements Testlet
     test7(harness);
     test8(harness);
     test9(harness);
+    test10(harness);
+    test11(harness);
   }
 
   public void test1(TestHarness harness)
@@ -157,5 +159,41 @@ public class testSetValues implements Testlet
     harness.check(bar.getVisibleAmount(), 10);
     harness.check(bar.getMinimum(), Integer.MIN_VALUE);
     harness.check(bar.getMaximum(), -1);
+  }
+
+  public void test10(TestHarness harness)
+  {
+    // This test ensures that lineIncrement is not effected
+    // if it is greater than the range.
+    Scrollbar bar = new Scrollbar();
+    bar.setValues(1, 1, 1, 2);
+    harness.check(bar.getValue(), 1);
+    harness.check(bar.getVisibleAmount(), 1);
+    harness.check(bar.getMinimum(), 1);
+    harness.check(bar.getMaximum(), 2);
+    bar.setUnitIncrement(4);
+    harness.check(bar.getUnitIncrement() > 
+                    (bar.getMaximum() - bar.getMinimum()));
+    harness.check(bar.getUnitIncrement() == 4);
+    harness.check(bar.getUnitIncrement() != 
+                    (bar.getMaximum() - bar.getMinimum()));
+  }
+  
+  public void test11(TestHarness harness)
+  {
+    // This test ensures that pageIncrement is not effected
+    // if it is greater than the range.
+    Scrollbar bar = new Scrollbar();
+    bar.setValues(1,1,1,2);
+    harness.check(bar.getValue(), 1);
+    harness.check(bar.getVisibleAmount(), 1);
+    harness.check(bar.getMinimum(), 1);
+    harness.check(bar.getMaximum(), 2);
+    bar.setBlockIncrement(4);
+    harness.check(bar.getBlockIncrement() > 
+                    (bar.getMaximum() - bar.getMinimum()));
+    harness.check(bar.getBlockIncrement() == 4);
+    harness.check(bar.getBlockIncrement() != 
+                    (bar.getMaximum() - bar.getMinimum()));
   }
 }

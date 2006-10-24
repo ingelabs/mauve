@@ -60,6 +60,20 @@ public class testSetUnitIncrement implements Testlet
     bar.setUnitIncrement(30);
     harness.check(bar.getUnitIncrement(), 30);
     harness.check(bar.getUnitIncrement() != 9);    
+    
+    // This test ensures that pageIncrement is not effected
+    // if it is greater than the range.
+    bar.setValues(1,1,1,2);
+    harness.check(bar.getValue(), 1);
+    harness.check(bar.getVisibleAmount(), 1);
+    harness.check(bar.getMinimum(), 1);
+    harness.check(bar.getMaximum(), 2);
+    bar.setBlockIncrement(4);
+    harness.check(bar.getBlockIncrement() > 
+                    (bar.getMaximum() - bar.getMinimum()));
+    harness.check(bar.getBlockIncrement() == 4);
+    harness.check(bar.getBlockIncrement() != 
+                    (bar.getMaximum() - bar.getMinimum()));
   }
   
 }
