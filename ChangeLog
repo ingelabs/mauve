@@ -1,3 +1,9 @@
+2006-10-30  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/java/awt/datatransfer/DataFlavor/readExternal.java,
+	* gnu/testlet/java/awt/datatransfer/DataFlavor/writeExternal.java:
+	New tests.
+
 2006-10-28  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/TransferHandler/importData.java:
