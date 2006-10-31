@@ -47,6 +47,7 @@ public class fireActionPerformed implements Testlet
   protected void setUp(final TestHarness harness) throws Exception
   {    
     text = new JTextField();
+    text.setActionCommand(null);
     text.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent event)
       {
