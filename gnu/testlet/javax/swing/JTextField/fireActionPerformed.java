@@ -44,7 +44,7 @@ public class fireActionPerformed implements Testlet
   JTextField text;
   Robot robot;
   
-  protected void setUp(final TestHarness harness) throws Exception
+  protected void setUp1(final TestHarness harness) throws Exception
   {    
     text = new JTextField();
     text.setActionCommand(null);
@@ -53,6 +53,29 @@ public class fireActionPerformed implements Testlet
       {
         harness.check(event.getActionCommand() != null);
         harness.check(event.getActionCommand(), text.getText());
+      }
+    });
+    
+    frame = new JFrame();
+    frame.setSize(200, 200);
+    frame.getContentPane().add(text);
+    frame.show();
+    
+    robot = new Robot();
+    robot.setAutoDelay(50);
+    robot.delay(500);
+  }
+  
+  protected void setUp2(final TestHarness harness) throws Exception
+  {    
+    text = new JTextField();
+    text.setActionCommand("Action Command");
+    text.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent event)
+      {
+        harness.check(event.getActionCommand() != null);
+        harness.check(event.getActionCommand() != text.getText());
+        harness.check(event.getActionCommand() == "Action Command");
       }
     });
     
@@ -106,9 +129,11 @@ public class fireActionPerformed implements Testlet
   
   public void test(TestHarness harness) 
   {
+    // This test ensures that if actionCommand == null,
+    // then the user's input is used as the actionCommand.
     try
       {
-        setUp(harness);
+        setUp1(harness);
         try 
           {
             click(text, text.getWidth() / 2, text.getHeight() / 2);
@@ -124,6 +149,27 @@ public class fireActionPerformed implements Testlet
         e.printStackTrace();
         harness.fail("Exception: " + e);
       }
+    
+    // This test ensures that if actionCommand != null,
+    // then the actionCommand is used.
+    try
+    {
+      setUp2(harness);
+      try 
+        {
+          click(text, text.getWidth() / 2, text.getHeight() / 2);
+          enterInput(harness);
+        }
+      finally
+        {
+          tearDown();
+        }
+    }
+  catch (Exception e)
+    {
+      e.printStackTrace();
+      harness.fail("Exception: " + e);
+    }
   }
  
 }
