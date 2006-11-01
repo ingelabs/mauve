@@ -1,5 +1,9 @@
 2006-11-01  Tania Bento  <tbento@redhat.com>
 
+	* gnu/testlet/java/awt/ScrollPaneAdjustable/paramString.java: New test.
+
+2006-11-01  Tania Bento  <tbento@redhat.com>
+
 	* gnu/testlet/java/awt/GridBagLayout/toString.java: New test.
 
 2006-11-01  Tania Bento  <tbento@redhat.com>
