@@ -1,3 +1,8 @@
+2006-11-03  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/awt/TextArea/getMinimumSize.java: New test.
+	* gnu/testlet/java/awt/TextArea/getPreferredSize.java: New test.
+
 2006-11-03  Audrius Meskauskas  <Audrius.Meskauskas@spectraseis.com>
    
 	* gnu/testlet/javax/swing/text/html/parser/ParserDelegator/
