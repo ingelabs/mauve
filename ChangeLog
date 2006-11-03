@@ -1,5 +1,10 @@
 2006-11-03  Tania Bento  <tbento@redhat.com>
 
+	* gnu/testlet/java/awt/event/ComponentEvent/paramString.java: Changed
+	tag documentation to JDK1.1.
+
+2006-11-03  Tania Bento  <tbento@redhat.com>
+
 	* gnu/testlet/java/awt/event/ComponentEvent/paramString.java: New test.
 
 2006-11-01  Tania Bento  <tbento@redhat.com>

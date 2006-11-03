@@ -20,7 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: 1.4
+// Tags: JDK1.1
 
 package gnu.testlet.java.awt.event.ComponentEvent;
 
