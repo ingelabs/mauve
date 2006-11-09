@@ -1,3 +1,20 @@
+2006-11-09  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/beans/SimpleBeanInfo/getAdditionalBeanInfo.java: 
+	New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/getBeanDescriptor.java: 
+	New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/getDefaultEventIndex.java: 
+	New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/getDefaultPropertyIndex.java: 
+	New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/getEventSetDescriptors.java: 
+	New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/getIcon.java: New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/loadImage.java: New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/MySimpleBeanInfo.java: New file,
+	* gnu/testlet/java/beans/SimpleBeanInfo/testImage1.gif: New file.
+
 2006-11-07  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/awt/FlowLayout/minimumLayoutSize.java: New test.
