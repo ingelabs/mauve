@@ -1,5 +1,10 @@
 2006-11-10  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/net/Socket/security.java:
+	Removed more unused imports.
+
+2006-11-10  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/net/ServerSocket/security.java:
 	Always use localhost regardless of the actual hostname
 	of the address being listened on.

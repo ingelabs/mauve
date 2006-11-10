@@ -21,10 +21,8 @@
 package gnu.testlet.java.net.Socket;
 
 import java.net.InetAddress;
-import java.net.NetPermission;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.SocketPermission;
 import java.security.Permission;
 
