@@ -1,3 +1,12 @@
+2006-11-10  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/net/ServerSocket/security.java:
+	Always use localhost regardless of the actual hostname
+	of the address being listened on.
+
+	* gnu/testlet/java/net/Socket/security.java:
+	Removed an unused import.
+
 2006-11-09  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JLabel/constructor.java: Added new tests.

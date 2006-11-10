@@ -20,8 +20,8 @@
 
 package gnu.testlet.java.net.ServerSocket;
 
-import java.net.InetAddress;
 import java.net.BindException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketPermission;
@@ -39,9 +39,7 @@ public class security implements Testlet
       harness.checkPoint("setup");
 
       InetAddress inetaddr = InetAddress.getByName(null);
-      String hostname = inetaddr.getHostName();
       String hostaddr = inetaddr.getHostAddress();
-      harness.check(!hostname.equals(hostaddr));
 
       ServerSocket ssocket = new ServerSocket(0, 50, inetaddr);
       int sport = ssocket.getLocalPort();
@@ -49,10 +47,10 @@ public class security implements Testlet
       int cport = csocket.getLocalPort();
       
       Permission[] checkListen80 = new Permission[] {
- 	new SocketPermission(hostname + ":80", "listen")};
+ 	new SocketPermission("localhost:80", "listen")};
 
       Permission[] checkListen1024plus = new Permission[] {
- 	new SocketPermission(hostname + ":1024-", "listen")};
+ 	new SocketPermission("localhost:1024-", "listen")};
 
       Permission[] checkAccept = new Permission[] {
  	new SocketPermission(hostaddr + ":" + cport, "accept")};

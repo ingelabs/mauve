@@ -27,7 +27,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketPermission;
 import java.security.Permission;
-import java.util.PropertyPermission;
 
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
