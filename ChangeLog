@@ -1,3 +1,7 @@
+2006-11-16  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/beans/DesignMode/constants.java: New file.
+
 2006-11-11  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildBeanContextChild.java: New file,
