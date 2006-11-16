@@ -1,5 +1,19 @@
 2006-11-16  David Gilbert  <david.gilbert@object-refinery.com>
 
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildBeanContextMembershipListener.java: New test,
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildPropertyChangeListener.java: New test,
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildSerializable.java: New test,
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildVetoableChangeListener.java: New test,
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildVisibility.java: New test,
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/MyBeanContextSupport.java
+	(getChildBeanContextMembershipListenerX): New method,
+	(getChildPropertyChangeListenerX): New method,
+	(getChildSerializableX): New method,
+	(getChildVetoableChangeListenerX): New method,
+	(getChildVisibilityX): New method.
+
+2006-11-16  David Gilbert  <david.gilbert@object-refinery.com>
+
 	* gnu/testlet/java/beans/beancontext/BeanContextSupport/setDesignTime.java:
 	New test.
 

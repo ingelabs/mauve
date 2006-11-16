@@ -23,8 +23,13 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 package gnu.testlet.java.beans.beancontext.BeanContextSupport;
 
+import java.beans.PropertyChangeListener;
+import java.beans.VetoableChangeListener;
+import java.beans.Visibility;
 import java.beans.beancontext.BeanContextChild;
+import java.beans.beancontext.BeanContextMembershipListener;
 import java.beans.beancontext.BeanContextSupport;
+import java.io.Serializable;
 
 public class MyBeanContextSupport extends BeanContextSupport
 {
@@ -37,4 +42,33 @@ public class MyBeanContextSupport extends BeanContextSupport
   {
     return BeanContextSupport.getChildBeanContextChild(child);
   }
+  
+  public static BeanContextMembershipListener getChildBeanContextMembershipListenerX(
+          Object child)
+  {
+    return BeanContextSupport.getChildBeanContextMembershipListener(child);
+  }
+
+  public static PropertyChangeListener getChildPropertyChangeListenerX(
+          Object child)
+  {
+    return BeanContextSupport.getChildPropertyChangeListener(child);
+  }
+
+  public static Serializable getChildSerializableX(Object child)
+  {
+    return BeanContextSupport.getChildSerializable(child);
+  }
+
+  public static VetoableChangeListener getChildVetoableChangeListenerX(
+          Object child)
+  {
+    return BeanContextSupport.getChildVetoableChangeListener(child);
+  }
+
+  public static Visibility getChildVisibilityX(Object child)
+  {
+    return BeanContextSupport.getChildVisibility(child);
+  }
+
 }
