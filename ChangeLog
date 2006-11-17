@@ -1,3 +1,7 @@
+2006-11-17  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/net/DatagramSocket/security.java: New test.
+
 2006-11-16  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildBeanContextMembershipListener.java: New test,
