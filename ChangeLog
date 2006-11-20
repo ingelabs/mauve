@@ -1,3 +1,8 @@
+2006-11-20  Marco Trudel <mtrudel@gmx.ch>
+
+	* gnu/testlet/java/util/jar/JarFile/TestOfManifest.java: New test.
+	* gnu/testlet/java/util/jar/JarFile/jfaceSmall.jar: New (data) file.
+
 2006-11-17  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/net/DatagramSocket/security.java: New test.
