@@ -1,3 +1,7 @@
+2006-11-20  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/javax/swing/JSlider/setLabelTable.java: Added a new test.
+
 2006-11-20  Marco Trudel <mtrudel@gmx.ch>
 
 	* gnu/testlet/java/util/jar/JarFile/TestOfManifest.java: New test.

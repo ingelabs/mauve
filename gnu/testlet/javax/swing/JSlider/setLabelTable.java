@@ -2,6 +2,7 @@
 // Uses: MyChangeListener MyPropertyChangeListener
 
 // Copyright (C) 2005 David Gilbert <david.gilbert@object-refinery.com>
+//               2006 Red Hat
 
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,6 +24,7 @@ package gnu.testlet.javax.swing.JSlider;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
+import java.util.Dictionary;
 import java.util.Hashtable;
 
 import javax.swing.JLabel;
@@ -69,6 +71,23 @@ public class setLabelTable implements Testlet {
     // try null table
     slider.setLabelTable(null);
     harness.check(slider.getLabelTable(), null);
+    
+    // This next test shows that it is not necessary to cast 
+    // "list.nextElement()" to type JLabel.
+    // NOTE:  With the casting, a ClassCastException was thrown.
+    boolean pass = false;
+    Dictionary labelTable = new Hashtable();
+    labelTable.put("a", "b");
+    try
+      {
+        slider.setLabelTable(labelTable);
+        pass = true;
+      }
+    catch (ClassCastException e)
+      {
+        // Do nothing.
+      }
+    harness.check(pass);
   }
 
 }
