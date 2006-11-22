@@ -1,3 +1,8 @@
+2006-11-22  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/toArray.java:
+	New file.
+
 2006-11-22  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/javax/swing/JRootPane/setLayeredPane.java: New test.
