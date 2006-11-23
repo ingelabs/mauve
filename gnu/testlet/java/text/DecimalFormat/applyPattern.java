@@ -25,6 +25,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 /**
  * Some checks for the applyPattern() method in the {@link DecimalFormat} class.
@@ -39,6 +40,9 @@ public class applyPattern implements Testlet
    */
   public void test(TestHarness harness) 
   {
+    Locale orig = Locale.getDefault();
+    Locale.setDefault(Locale.US);
+    
     DecimalFormat f1 = new DecimalFormat();
     
     // negativePrefix
@@ -80,7 +84,7 @@ public class applyPattern implements Testlet
     
     harness.checkPoint("null pattern");
     f1.applyPattern("");
-    harness.check(f1.format(123456789.123456789), "123.456.789,12345679");
+    harness.check(f1.format(123456789.123456789), "123,456,789.12345679");
     
     harness.checkPoint("invalid pattern");
     // try null argument
@@ -107,6 +111,7 @@ public class applyPattern implements Testlet
     }
     harness.check(pass);
     
+    Locale.setDefault(orig);
   }
 
 }

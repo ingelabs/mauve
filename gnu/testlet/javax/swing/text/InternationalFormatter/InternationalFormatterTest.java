@@ -1,4 +1,4 @@
-// Tags: JDK1.2
+// Tags: JDK1.4
 
 // Copyright (C) 2005 Red Hat.
 
@@ -24,7 +24,6 @@ package gnu.testlet.javax.swing.text.InternationalFormatter;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
-import java.text.ParseException;
 import javax.swing.text.InternationalFormatter;
 
 /**

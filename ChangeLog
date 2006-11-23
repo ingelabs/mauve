@@ -1,3 +1,14 @@
+2006-11-23  Mario Torre  <neugens@nirvana.limasoftware.net>
+
+	* gnu/testlet/java/text/DecimalFormat/formatToCharacterIterator.java (test): 
+	Code reformatted, added test for Format.Field attributes.
+	* gnu/testlet/java/text/DecimalFormat/formatExp.java (test):
+	New tests.
+	* gnu/testlet/java/text/DecimalFormat/applyPattern.java (test): 
+	fix broken test, plus explicity set the locale for the test.
+	* gnu/testlet/javax/swing/text/InternationalFormatter/InternationalFormatterTest.java:
+	fix test tag, moved to 1.4.
+
 2006-11-23  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/beans/beancontext/BeanContextSupport/MyBeanContextSupport.java
