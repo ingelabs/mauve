@@ -1,3 +1,11 @@
+2006-11-23  David Gilbert  <david.gilbert@object-refinery.com>
+
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/MyBeanContextSupport.java
+	(deserializeX): New method,
+	(serializeX): New method,
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/serialize.java:
+	New test.
+
 2006-11-22  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/beans/beancontext/BeanContextSupport/toArray.java:
