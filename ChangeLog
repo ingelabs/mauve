@@ -1,3 +1,18 @@
+2006-11-24  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/awt/font/TextHitInfo/afterOffset.java: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/beforeOffset.java: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/equals.java: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/getCharIndex: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/getInsertionIndex: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/getOtherHit: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/getOffsetHit: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/hashCode: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/isLeadingEdge.java: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/leading.java: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/toString.java: New file.
+	* gnu/testlet/java/awt/font/TextHitInfo/trailing.java: New file.
+
 2006-11-24  David Gilbert  <david.gilbert@object-refinery.com>
 
 	* gnu/testlet/java/beans/beancontext/BeanContextServicesSupport/getChildBeanContextServicesListener.java: New file,
