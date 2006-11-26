@@ -111,6 +111,7 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SRCDIR = @SRCDIR@
 STRIP = @STRIP@
 TEST_JAVA = @TEST_JAVA@
 TMPDIR = @TMPDIR@
@@ -165,7 +166,8 @@ harness_files = \
 	gnu/testlet/TestSecurityManager.java \
 	gnu/testlet/ResourceNotFoundException.java \
 	gnu/testlet/TestReport.java \
-	gnu/testlet/TestResult.java
+	gnu/testlet/TestResult.java \
+	gnu/testlet/VisualTestlet.java
 
 SUFFIXES = .class .java
 all: all-am

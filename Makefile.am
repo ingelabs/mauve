@@ -18,7 +18,8 @@ harness_files = \
 	gnu/testlet/TestSecurityManager.java \
 	gnu/testlet/ResourceNotFoundException.java \
 	gnu/testlet/TestReport.java \
-	gnu/testlet/TestResult.java
+	gnu/testlet/TestResult.java \
+	gnu/testlet/VisualTestlet.java
 
 harness:
 	$(JAVAC) $(harness_files)

@@ -1,3 +1,8 @@
+2006-11-26  Paul Jenner  <psj@harker.dyndns.org>
+
+	* Makefile.am (harness_files): Add VisualTestlet.java.
+	* Makefile.in: Regenerated.
+
 2006-11-26  Raif S. Naffah  <mauve@naffah-raif.name>
 
 	* gnu/testlet/java/util/jar/JarFile/TestOfManifest.java (ENTRYNAME): New field.
