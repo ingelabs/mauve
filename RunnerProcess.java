@@ -395,7 +395,7 @@ public class RunnerProcess
   private static String getStackTraceString(Throwable ex, String pad)  
   {
     StackTraceElement[] st = ex.getStackTrace();
-    StringBuffer sb = new StringBuffer(pad + ex.getClass().getName() + "\n");
+    StringBuffer sb = new StringBuffer(pad + ex.toString() + "\n");
     for (int i = 0; i < st.length; i++)
       sb.append(pad + "at " + st[i].toString() + "\n");
     sb.setLength(sb.length() - 1);
