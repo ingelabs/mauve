@@ -1,5 +1,5 @@
 /* createChild.java -- some checks for the createChild() method
-       in the Raster class.
+       in the WritableRaster class.
    Copyright (C) 2006 Francis Kung <fkung@redhat.com>
 This file is part of Mauve.
 
@@ -22,7 +22,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 // Tags: JDK1.4
 
-package gnu.testlet.java.awt.image.Raster;
+package gnu.testlet.java.awt.image.WritableRaster;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -49,7 +49,7 @@ public class createChild implements Testlet
     
     // Child raster
     Raster rst2 = rst.createChild(10, 20, 25, 15, 0, 0, null);
-    harness.check(!(rst2 instanceof WritableRaster));
+    harness.check(rst2 instanceof WritableRaster);
     harness.check(rst2.getMinX(), 0);
     harness.check(rst2.getMinY(), 0);
     harness.check(rst2.getWidth(), 25);
@@ -168,11 +168,6 @@ public class createChild implements Testlet
         for (int b = 0; b < 3; b++)
           rst.setSample(x, y, b, x+y+b);
     
-    // Get non-writable version with the same data
-    Raster rst2 = new MyRaster(rst.getSampleModel(),
-                               rst.getDataBuffer(),
-                               new Point(0, 0));
-    harness.check(!(rst2 instanceof WritableRaster));
-    return rst2;
+    return rst;
   }
 }

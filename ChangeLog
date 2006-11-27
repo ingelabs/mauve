@@ -1,3 +1,12 @@
+2006-11-27  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/awt/image/Raster/createChild.java
+	(createRaster): Add harness parameter, ensure that returned raster
+	is not writable.
+	(testData): Add check for class of child raster.
+	* gnu/testlet/java/awt/image/Raster/MyRaster.java: New file.
+	* gnu/testlet/java/awt/image/WritableRaster/createChild.java: New file.
+
 2006-11-27  Mark Wielaard  <mark@klomp.org>
 
 	* gnu/testlet/java/util/Vector/AcuniaVectorTest.java: Don't demand
