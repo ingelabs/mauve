@@ -1,3 +1,9 @@
+2006-11-27  Mark Wielaard  <mark@klomp.org>
+
+	* gnu/testlet/java/util/Vector/AcuniaVectorTest.java: Don't demand
+	a NullPointerException when doing a removeAll(null) or a
+	retainAll(null) on an empty Vector.
+
 2006-11-26  Mark Wielaard  <mark@klomp.org>
 
 	* RunnerProcess.java (getStackTraceString): Use whole exception
