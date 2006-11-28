@@ -63,7 +63,7 @@ public class getBorderInsets implements Testlet
     harness.check(insets, new Insets(5, 6, 7, 8));
     
     FontMetrics fm = p.getFontMetrics(p.getFont());
-    int fontHeight = fm.getHeight();
+    int fontHeight = fm.getAscent() + fm.getDescent();
     b.setTitle("XYZ");
     insets = b.getBorderInsets(p);
     harness.check(insets, new Insets(5 + fontHeight, 6, 7, 8));
@@ -71,7 +71,7 @@ public class getBorderInsets implements Testlet
     b.setTitleFont(new Font("Dialog", Font.PLAIN, 24));
     p.setFont(b.getTitleFont());
     fm = p.getFontMetrics(p.getFont());
-    fontHeight = fm.getHeight();
+    fontHeight = fm.getAscent() + fm.getDescent();
     insets = b.getBorderInsets(p);
     harness.check(insets, new Insets(5 + fontHeight, 6, 7, 8));
 
@@ -97,7 +97,7 @@ public class getBorderInsets implements Testlet
 
     b.setTitlePosition(TitledBorder.BELOW_BOTTOM);
     insets = b.getBorderInsets(p);
-    harness.check(insets, new Insets(5, 6, 7 + fontHeight, 8));
+    harness.check(insets, new Insets(5, 6, 7 + fm.getHeight(), 8));
   }
 
 }
