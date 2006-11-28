@@ -57,14 +57,24 @@ public class putClientProperty implements Testlet, PropertyChangeListener
   {   
     JComponent label = new JLabel("Test");
     label.addPropertyChangeListener(this);
-    
+
     // add a new property
     label.putClientProperty("Property1", Boolean.TRUE);
     harness.check(label.getClientProperty("Property1"), Boolean.TRUE);
     harness.check(name, "Property1");
     harness.check(oldValue, null);
     harness.check(newValue, Boolean.TRUE);
-    
+
+    // Set testnull to null. No event is fired.
+    label.putClientProperty("testnull", null);
+    name = null;
+    oldValue = null;
+    newValue = null;
+    label.putClientProperty("testnull", null);
+    harness.check(name, null);
+    harness.check(oldValue, null);
+    harness.check(newValue, null);
+
     // overwrite an existing property
     label.putClientProperty("Property1", Boolean.FALSE);
     harness.check(label.getClientProperty("Property1"), Boolean.FALSE);
