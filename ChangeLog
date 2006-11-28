@@ -1,5 +1,11 @@
 2006-11-28  Roman Kennke <kennke@aicas.com>
 
+	* gnu/testlet/javax/swing/border/TitledBorder/getBorderInsets.java:
+	Fixed test for differentiation between font ascent+descent and
+	height.
+
+2006-11-28  Roman Kennke <kennke@aicas.com>
+
 	* gnu/testlet/java/beans/PropertyChangeSupport/firePropertyChange.java:
 	New test.
 	* gnu/testlet/javax/swing/JComponent/putClientProperty.java:
