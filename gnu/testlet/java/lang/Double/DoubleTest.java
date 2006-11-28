@@ -217,11 +217,18 @@ public class DoubleTest implements Testlet
 			System.out.println("Got: " + 
 				(new Double(str)).toString());
 		}
-		str = Double.toString(-23.43E33);
-/*		if ( !(new Double( str)).equals(new Double(-23.43E33)))
-			harness.fail("test_toString - 14" );
+		str = Double.toString(Double.MIN_VALUE);
+		if ( !str.equals("4.9E-324")) {
+			harness.fail("test_toString - 15" );
+			harness.debug("Expected: 4.9E-324");
+			harness.debug("Got: " + str);
+		}
 
-*/
+		/*
+		str = Double.toString(-23.43E33);
+		if ( !(new Double( str)).equals(new Double(-23.43E33)))
+			harness.fail("test_toString - 16" );
+		*/
 		
 	}
 

@@ -1,3 +1,11 @@
+2006-11-28  Dalibor Topic  <robilad@kaffe.org>
+
+	* gnu/testlet/java/lang/Double/DoubleTest.java: Added test for
+	Double.toString(Double.MIN_VALUE).
+
+	* gnu/testlet/java/lang/Float/FloatTest.java: Added test for 
+	Float.toString(Float.MIN_VALUE).
+
 2006-11-28  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/border/TitledBorder/getBorderInsets.java:

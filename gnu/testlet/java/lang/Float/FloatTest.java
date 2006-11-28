@@ -182,6 +182,12 @@ public class FloatTest implements Testlet
 		harness.check(!( !(new Float( str)).equals(new Float(-23.43E33f))), 
 			"test_toString - 14" );
 
+		str = Float.toString(Float.MIN_VALUE);
+		if(!str.equals("1.4E-45")) {
+		    harness.fail("test_toString - 15" );
+		    harness.debug("Expected : 1.4E-45");
+		    harness.debug("Got: " + str);
+		}
 	}
 
 	public void test_equals()
