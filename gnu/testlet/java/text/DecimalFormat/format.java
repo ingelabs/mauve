@@ -43,6 +43,7 @@ public class format
     testNaN(harness);
     testInfinity(harness);
     testMaximumDigits(harness);
+    testLocale(harness);
   }
 
   public void apply(TestHarness harness, DecimalFormat df, String pattern)
@@ -79,6 +80,9 @@ public class format
     harness.check(df.format(- 1234.56), "-1,234.56");
     harness.check(df.format(1234.56), "1,234.56");
 
+    apply(harness, df, "#,##0.###");
+    harness.check(df.format(Double.valueOf(80).doubleValue()), "80");
+    
     apply(harness, df, "00,000.000;-00,000.000");
     harness.check(df.format(- 1234.56), "-01,234.560");
     harness.check(df.format(1234.56), "01,234.560");
@@ -152,6 +156,15 @@ public class format
     apply(harness, df, "'positive'#;'negative' -");
     harness.check(df.format(-1234.567), "negative -1235");
     harness.check(df.format(1234.567), "positive1235");
+    
+    apply(harness, df, "#,##0%");
+    harness.check(df.format(10000000.1234d), "1,000,000,012%");
+     
+    apply(harness, df, "\u00A4#,##0.00;(\u00A4#,##0.00)");
+    harness.check(df.format(10000), "$10,000.00");
+    
+    apply(harness, df, "$#,##0.00;($#,##0.00)");
+    harness.check(df.format(10000), "$10,000.00");
     
     // grouping size of zero might cause a failure - see bug parade 4088503
     harness.checkPoint("regression tests for setGroupingSize");
@@ -358,5 +371,30 @@ public class format
     harness.check(df.format(number), "123456789.98765433");
     
     Locale.setDefault(orig);
+  }
+  
+  private void testLocale(TestHarness harness)
+  {
+	  // just two tests, other are in gnu.testlet.locales.LocaleTest
+	  
+	  harness.checkPoint("locale: GERMANY");
+	  
+	  // by default, calls DecimalFormat
+	  java.text.NumberFormat nf
+	  	= java.text.NumberFormat.getCurrencyInstance(Locale.GERMANY);
+	      
+	  harness.check(nf.format(5000.25), "5.000,25 €");
+	  
+	  harness.checkPoint("locale: ITALY");
+	  
+	  nf = java.text.NumberFormat.getCurrencyInstance(Locale.ITALY);
+	  harness.check(nf.format(5000.25), "€ 5.000,25");
+	  
+	  java.text.DecimalFormatSymbols symbols
+	  	= ((DecimalFormat)nf).getDecimalFormatSymbols();
+	  
+	  harness.check(',', symbols.getDecimalSeparator());
+	  harness.check(',', symbols.getMonetaryDecimalSeparator());
+	  harness.check('.', symbols.getGroupingSeparator());
   }
 }
