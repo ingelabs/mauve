@@ -27,8 +27,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 /**
- * Test whether adding a child to a ScrollPane causes layout to be
- * called.
+ * Test ScrollPane's add method.
  */
 public class add implements Testlet
 {
@@ -36,7 +35,7 @@ public class add implements Testlet
 
   public void test(TestHarness harness)
   {
-    ScrollPane pane = new ScrollPane()
+    ScrollPane pane = new ScrollPane(ScrollPane.SCROLLBARS_ALWAYS)
       {
         public void layout()
         {
@@ -44,10 +43,53 @@ public class add implements Testlet
         };
       };
 
-    Button child = new Button ("Hello");
-
-    pane.add(child);
+    Button b = new Button ("Hello");
+    b.setSize(400, 400);
+    pane.add(b);
 
     harness.check(!layoutCalled);
+
+    Frame f = new Frame("add");
+
+    f.setSize(300, 300);
+    f.add(pane);
+
+    harness.check(!layoutCalled);
+
+    f.show();
+
+    harness.check(layoutCalled);
+
+    harness.check(!(b.getParent() instanceof Panel));
+
+    // Check parent when adding a Panel.
+    ScrollPane pane2 = new ScrollPane(ScrollPane.SCROLLBARS_ALWAYS);
+
+    Frame f2 = new Frame("add2");
+
+    Panel p = new Panel();
+
+    p.setSize(400, 400);
+    pane2.add(p);
+    f2.setSize(300, 300);
+    f2.add(pane2);
+
+    f2.show();
+    harness.check(!(p.getParent() instanceof Panel));
+
+    // Check parent when adding a lightweight component.
+    ScrollPane pane3 = new ScrollPane(ScrollPane.SCROLLBARS_ALWAYS);
+
+    Frame f3 = new Frame("add2");
+
+    Component c = new Component() {};
+
+    c.setSize(400, 400);
+    pane3.add(c);
+    f3.setSize(300, 300);
+    f3.add(pane3);
+
+    f3.show();
+    harness.check(c.getParent() instanceof Panel);
   }
 }
