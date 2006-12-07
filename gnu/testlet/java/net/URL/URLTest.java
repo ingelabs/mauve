@@ -340,6 +340,17 @@ public class URLTest implements Testlet
 			harness.check(false);
 			harness.debug(_);
 		}
+
+		harness.checkPoint("jar base with full http spec");
+		try {
+		    URL base = new URL("jar:file:///test.jar!/foo/bar.txt");
+		    URL other = new URL(base, "http://planet.classpath.org/");
+		    harness.check(other.toString(),
+		    		"http://planet.classpath.org/");
+		} catch (IOException _) {
+			harness.check(false);
+			harness.debug(_);
+		}
 	}
 
 
