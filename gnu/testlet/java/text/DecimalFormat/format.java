@@ -375,26 +375,26 @@ public class format
   
   private void testLocale(TestHarness harness)
   {
-	  // just two tests, other are in gnu.testlet.locales.LocaleTest
+    // just two tests, other are in gnu.testlet.locales.LocaleTest
+    
+    harness.checkPoint("locale: GERMANY");
+    
+    // by default, calls DecimalFormat
+    java.text.NumberFormat nf
+      = java.text.NumberFormat.getCurrencyInstance(Locale.GERMANY);
+    
+    harness.check(nf.format(5000.25), "5.000,25 €");
+    
+    harness.checkPoint("locale: ITALY");
+      
+    nf = java.text.NumberFormat.getCurrencyInstance(Locale.ITALY);
+    harness.check(nf.format(5000.25), "€ 5.000,25");
 	  
-	  harness.checkPoint("locale: GERMANY");
-	  
-	  // by default, calls DecimalFormat
-	  java.text.NumberFormat nf
-	  	= java.text.NumberFormat.getCurrencyInstance(Locale.GERMANY);
-	      
-	  harness.check(nf.format(5000.25), "5.000,25 €");
-	  
-	  harness.checkPoint("locale: ITALY");
-	  
-	  nf = java.text.NumberFormat.getCurrencyInstance(Locale.ITALY);
-	  harness.check(nf.format(5000.25), "€ 5.000,25");
-	  
-	  java.text.DecimalFormatSymbols symbols
-	  	= ((DecimalFormat)nf).getDecimalFormatSymbols();
-	  
-	  harness.check(',', symbols.getDecimalSeparator());
-	  harness.check(',', symbols.getMonetaryDecimalSeparator());
-	  harness.check('.', symbols.getGroupingSeparator());
+    java.text.DecimalFormatSymbols symbols
+      = ((DecimalFormat)nf).getDecimalFormatSymbols();
+    
+    harness.check(',', symbols.getDecimalSeparator());
+    harness.check(',', symbols.getMonetaryDecimalSeparator());
+    harness.check('.', symbols.getGroupingSeparator());
   }
 }
