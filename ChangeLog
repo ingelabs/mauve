@@ -1,5 +1,9 @@
 2006-12-08  Tania Bento  <tbento@redhat.com>
 
+	* gnu/testlet/java/awt/ScrollPane/doLayout.java: New test.
+
+2006-12-08  Tania Bento  <tbento@redhat.com>
+
 	* gnu/testlet/java/awt/ScrollPane/getScrollPosition.java: New test.
 	* gnu/testlet/java/awt/ScrollPane/setScrollPosition.java: New test.
 
