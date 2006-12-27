@@ -101,7 +101,7 @@ public class compareTo implements Testlet
     boolean pass = false;
     try 
     {
-      d1.compareTo((Object) null);
+      ((Comparable)d1).compareTo((Object) null);
     }
     catch (NullPointerException e) 
     {
@@ -112,7 +112,7 @@ public class compareTo implements Testlet
     pass = false;
     try 
     {
-      d1.compareTo("Not a Date!");
+      ((Comparable)d1).compareTo("Not a Date!");
     }
     catch (ClassCastException e) 
     {

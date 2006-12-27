@@ -51,6 +51,7 @@ public class getListeners implements Testlet, ListSelectionListener
         m.getListeners(ListSelectionListener.class); 
     harness.check(listeners[0], this);
     
+  /* Doesn't compile with 1.5
     boolean pass = false;
     try
       {
@@ -61,6 +62,7 @@ public class getListeners implements Testlet, ListSelectionListener
         pass = true;
       }
     harness.check(pass);
+  */
   }
   
 }

@@ -3,7 +3,7 @@
 ## FIXME: dependencies
 AUTOMAKE_OPTIONS = foreign subdir-objects no-dependencies
 
-JAVACFLAGS = -g
+JAVACFLAGS = -g -1.5
 
 TESTFLAGS =
 

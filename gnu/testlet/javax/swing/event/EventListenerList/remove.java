@@ -47,7 +47,7 @@ public class remove
   {
     EventListenerList ell = new EventListenerList();
     EventListener l1 = new L();
-    EventListener l2 = new L();
+    L l2 = new L();
     Object[] list;
     Throwable caught;
 
@@ -108,6 +108,7 @@ public class remove
       }
     harness.check(caught, null);
 
+  /* Doesn't compile with 1.5
     // Check #8: Removing non-instance.
     // Classpath bug #7105.
     caught = null;
@@ -120,6 +121,7 @@ public class remove
         caught = ex;
       }
     harness.check(caught instanceof IllegalArgumentException);
+  */
 
     // Unsuccessful attempts should not change the list.
     list = ell.getListenerList();    

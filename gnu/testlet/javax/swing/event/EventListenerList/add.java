@@ -51,8 +51,8 @@ public class add
   public void test(TestHarness harness)
   {
     EventListenerList ell = new EventListenerList();
-    EventListener l1 = new L();
-    EventListener l2 = new L();
+    L l1 = new L();
+    L l2 = new L();
     Object[] list;
 
     // Check #1.

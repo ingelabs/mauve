@@ -43,7 +43,7 @@ public class getListenerList
   {
     EventListenerList ell = new EventListenerList();
     EventListener l1 = new L();
-    EventListener l2 = new L();
+    L l2 = new L();
     Object[] list;
 
     // Check #1.

@@ -69,7 +69,8 @@ public class getListeners implements Testlet, ContainerListener {
       pass = true;    
     }
     harness.check(pass);
-    
+
+  /* Doesn't compile with 1.5    
     // try a class that isn't a listener
     pass = false;
     try
@@ -81,6 +82,7 @@ public class getListeners implements Testlet, ContainerListener {
       pass = true;
     }
     harness.check(pass);
+  */
   }
   
   public void componentAdded(ContainerEvent e) 

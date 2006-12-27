@@ -58,10 +58,10 @@ public class getListeners
   public void test(TestHarness harness)
   {
     EventListenerList ell = new EventListenerList();
-    EventListener l1a = new L1();
-    EventListener l1b = new L1();
-    EventListener l2 = new L2();
-    EventListener l3 = new L3();
+    L1 l1a = new L1();
+    L1 l1b = new L1();
+    L2 l2 = new L2();
+    L3 l3 = new L3();
     EventListener[] list;
     Throwable caught;
 
@@ -105,6 +105,7 @@ public class getListeners
       }
     harness.check(caught instanceof NullPointerException);
 
+  /* Doesn't compile with 1.5
     // Check #15.
     caught = null;
     try
@@ -116,5 +117,6 @@ public class getListeners
         caught = ex;
       }
     harness.check(caught instanceof ClassCastException);
+  */
   }
 }

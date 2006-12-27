@@ -58,7 +58,7 @@ public class setOrdering
     caught = null;
     try
       {
-        registry.setOrdering(List.class, "foo", "bar");
+        registry.setOrdering(String.class, "foo",  null);
       }
     catch (Exception ex)
       {

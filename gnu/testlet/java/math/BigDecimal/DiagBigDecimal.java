@@ -1856,16 +1856,16 @@ public class DiagBigDecimal implements Testlet {
   BigDecimal long2;
   
   d=new BigDecimal(17);
-  harness.check ((d.compareTo((java.lang.Object)(new BigDecimal(66))))==(-1), "cto001");
-  harness.check ((d.compareTo((java.lang.Object)((new BigDecimal(10)).add(new BigDecimal(7)))))==0, "cto002");
-  harness.check ((d.compareTo((java.lang.Object)(new BigDecimal(10))))==1, "cto003");
+  harness.check ((((Comparable)d).compareTo((java.lang.Object)(new BigDecimal(66))))==(-1), "cto001");
+  harness.check ((((Comparable)d).compareTo((java.lang.Object)((new BigDecimal(10)).add(new BigDecimal(7)))))==0, "cto002");
+  harness.check ((((Comparable)d).compareTo((java.lang.Object)(new BigDecimal(10))))==1, "cto003");
   long1=new BigDecimal("12345678903");
   long2=new BigDecimal("12345678900");
-  harness.check ((long1.compareTo((java.lang.Object)long2))==1, "cto004");
-  harness.check ((long2.compareTo((java.lang.Object)long1))==(-1), "cto005");
-  harness.check ((long2.compareTo((java.lang.Object)long2))==0, "cto006");
+  harness.check ((((Comparable)long1).compareTo((java.lang.Object)long2))==1, "cto004");
+  harness.check ((((Comparable)long2).compareTo((java.lang.Object)long1))==(-1), "cto005");
+  harness.check ((((Comparable)long2).compareTo((java.lang.Object)long2))==0, "cto006");
   try{
-   d.compareTo((java.lang.Object)null);
+   ((Comparable)d).compareTo((java.lang.Object)null);
    flag=false;
   }
   catch (java.lang.NullPointerException xx92){
@@ -1873,7 +1873,7 @@ public class DiagBigDecimal implements Testlet {
   }
   harness.check (flag, "cto101");
   try{
-   d.compareTo((java.lang.Object)"foo");
+   ((Comparable)d).compareTo((java.lang.Object)"foo");
    flag=false;
   }
   catch (java.lang.ClassCastException xx93){

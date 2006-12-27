@@ -95,7 +95,7 @@ public class compareTo implements Testlet
 
     Object o = zero;
     boolean ok;
-    harness.check(zero.compareTo(o) == 0);
+    harness.check(((Comparable)zero).compareTo(o) == 0);
 
     ok = false;
     try
@@ -111,7 +111,7 @@ public class compareTo implements Testlet
     ok = false;
     try
       {
-	zero.compareTo((Object) null);
+	((Comparable)zero).compareTo((Object) null);
       }
     catch (NullPointerException e)
       {
@@ -122,7 +122,7 @@ public class compareTo implements Testlet
     ok = false;
     try
       {
-	zero.compareTo(new Object());
+	((Comparable)zero).compareTo(new Object());
       }
     catch (ClassCastException e)
       {

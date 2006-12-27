@@ -83,7 +83,7 @@ public class compareTo implements Testlet
     boolean pass = false;
     try 
     {
-      d1.compareTo((Float) null);
+      ((Comparable)d1).compareTo((Float) null);
     }
     catch (NullPointerException e) 
     {
@@ -100,7 +100,7 @@ public class compareTo implements Testlet
     boolean pass = false;
     try 
     {
-      d1.compareTo((Object) null);
+      ((Comparable)d1).compareTo((Object) null);
     }
     catch (NullPointerException e) 
     {
@@ -111,7 +111,7 @@ public class compareTo implements Testlet
     pass = false;
     try 
     {
-      d1.compareTo("Not a Double!");
+      ((Comparable)d1).compareTo("Not a Double!");
     }
     catch (ClassCastException e) 
     {

@@ -62,6 +62,7 @@ public class getListeners implements Testlet
     }
     harness.check(pass);
     
+  /* Doesn't compile with 1.5.
     pass = false;
     try
     {
@@ -72,6 +73,7 @@ public class getListeners implements Testlet
       pass = true;  
     }
     harness.check(pass);
+  */
   }
 
 }

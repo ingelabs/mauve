@@ -40,10 +40,10 @@ public class getListenerCount
   public void test(TestHarness harness)
   {
     EventListenerList ell = new EventListenerList();
-    EventListener l1 = new L1();
-    EventListener l2 = new L2();
-    EventListener l3_1 = new L3();
-    EventListener l3_2 = new L3();
+    L1 l1 = new L1();
+    L2 l2 = new L2();
+    L3 l3_1 = new L3();
+    L3 l3_2 = new L3();
 
     // Check #1.
     harness.check(ell.getListenerCount(), 0);

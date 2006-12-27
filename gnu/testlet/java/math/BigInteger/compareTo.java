@@ -76,7 +76,7 @@ public class compareTo implements Testlet
     boolean pass = false;
     try
     {
-      a.compareTo(new Integer(1));
+      ((Comparable)a).compareTo(new Integer(1));
     }
     catch (ClassCastException ee) 
     {
