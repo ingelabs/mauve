@@ -127,6 +127,32 @@ public abstract class TestHarness
       debug("got " + result + " but expected " + expected);
   }
 
+  /**
+   * Checks if <code>result</code> is equal to <code>expected</code> and
+   * take a rounding delta into account.
+   * 
+   * @param result the actual result
+   * @param expected the expected value
+   * @param delta the rounding delta
+   */
+  public void check(double result, double expected, double delta)
+  {
+    boolean ok = true;
+    if (Double.isInfinite(expected))
+      {
+        if (result != expected)
+          ok = false;
+      }
+    else if (! (Math.abs(expected - result) <= delta))
+      ok = false;
+
+    check(ok);
+    if (! ok)
+      // If Double.toString() is buggy, this debug statement may
+      // accidentally show the same string for two different doubles!
+      debug("got " + result + " but expected " + expected);
+  }
+
   // These methods are like the above, but checkpoint first.
   public void check(boolean result, String name)
   {
