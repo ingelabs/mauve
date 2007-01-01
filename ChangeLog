@@ -1,3 +1,8 @@
+2007-01-01 Audrius Meskauskas <Audrius.Meskauskas@spectraseis.com>
+
+        * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Entities.java:
+        New test.
+
 2006-12-28  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/TestHarness.java
