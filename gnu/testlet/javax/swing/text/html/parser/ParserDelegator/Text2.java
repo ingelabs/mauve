@@ -1,4 +1,4 @@
-// Tags: JDK1.2 GNU
+// Tags: JDK1.2
 
 // Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
@@ -19,10 +19,12 @@
 // the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
 // Boston, MA 02110-1301 USA.
 
-package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
+package gnu.testlet.javax.swing.text.html.parser.ParserDelegator;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser.Parser_Test;
+import gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser.TestCase;
 
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.html.HTML;
@@ -30,7 +32,7 @@ import javax.swing.text.html.HTML;
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
  */
-public class Text
+public class Text2
   extends TestCase
   implements Testlet
 {

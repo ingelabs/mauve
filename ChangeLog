@@ -1,3 +1,20 @@
+2007-01-01  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/
+	AttributeList_test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/
+	DTD_test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/
+	TagElement_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/
+	Text.java: Removed (tests moved).
+	gnu/testlet/javax/swing/text/html/parser/AttributeList/
+	AttributeListTest2.java,
+	gnu/testlet/javax/swing/text/html/parser/DTD/DtdTest2.java,
+	gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Text2.java,
+	gnu/testlet/javax/swing/text/html/parser/TagElement/
+	TagElementTest2.java: New files.
+
 2007-01-01 Audrius Meskauskas <Audrius.Meskauskas@spectraseis.com>
 
         * gnu/testlet/javax/swing/text/html/parser/ParserDelegator/Entities.java:

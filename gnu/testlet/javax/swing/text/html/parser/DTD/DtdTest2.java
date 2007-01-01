@@ -1,6 +1,6 @@
-// Tags: JDK1.2 GNU
+// Tags: JDK1.2
 
-// Copyright (C) 2005 Audrius Meskauskas <audriusa@bluewin.ch>
+// Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
 // This file is part of Mauve.
 
@@ -20,59 +20,67 @@
 // Boston, MA 02110-1301 USA.
 
 
-package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
+package gnu.testlet.javax.swing.text.html.parser.DTD;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser.TestCase;
 
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.parser.DTD;
 import javax.swing.text.html.parser.Element;
-import javax.swing.text.html.parser.TagElement;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
  */
-public class TagElement_Test
+public class DtdTest2
   extends TestCase
   implements Testlet
 {
+  static class D
+    extends DTD
+  {
+    public D()
+    {
+      super("audrius");
+    }
+
+    public Element createElement(String n)
+    {
+      return getElement(n);
+    }
+  }
+
   public void test(TestHarness harness)
   {
     h = harness;
-    try
-      {
-        testTagElement();
-      }
-    catch (Exception ex)
-      {
-        ex.printStackTrace();
-        harness.fail("Exception: " + ex);
-      }
+    testGetElement();
   }
 
-  public void testTagElement()
-                      throws Exception
+  public void testGetElement()
   {
+    D d = new D();
     HTML.Tag[] tags = HTML.getAllTags();
+
+    Element prehead = d.createElement("head");
 
     for (int i = 0; i < tags.length; i++)
       {
-        HTML.Tag t = tags [ i ];
-        String tn = t.toString();
-        Element e = DTD.getDTD("test").getElement("e");
-        e.name = tn;
-
-        TagElement te = new TagElement(e, true);
-        assertTrue(" must be fictional", te.fictional());
-
-        te = new TagElement(e);
-        assertFalse("must be non fictional", te.fictional());
-
-        assertEquals(te.getHTMLTag().toString(), t.toString());
-        assertEquals(t.breaksFlow(), te.breaksFlow());
-        assertEquals(t.isPreformatted(), te.isPreformatted());
+        Element e = d.createElement(tags [ i ].toString());
+        String name = tags [ i ].toString();
+        assertNotNull("Element creation", e);
+        assertTrue("Element name", e.getName().equalsIgnoreCase(name));
       }
+
+    // Test upper/lowercase
+    Element e = d.createElement("head");
+
+    assertNotNull("Element creation", e);
+    assertTrue("Element name", e.getName().equalsIgnoreCase("head"));
+    assertEquals(HTML.Tag.HEAD, HTML.getTag(e.name));
+    assertEquals("Field assignment", d.head, e);
+
+    assertEquals(prehead, e);
   }
 
   protected void setUp()

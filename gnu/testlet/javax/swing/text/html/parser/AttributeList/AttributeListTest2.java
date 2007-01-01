@@ -1,4 +1,4 @@
-// Tags: JDK1.2 GNU
+// Tags: JDK1.2
 
 // Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
@@ -20,17 +20,18 @@
 // Boston, MA 02111-1307, USA.
 
 
-package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
+package gnu.testlet.javax.swing.text.html.parser.AttributeList;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser.TestCase;
 
 import javax.swing.text.html.parser.AttributeList;
 
 /**
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
  */
-public class AttributeList_test
+public class AttributeListTest2
   extends TestCase
   implements Testlet
 {
