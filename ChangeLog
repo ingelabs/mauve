@@ -1,5 +1,10 @@
 2007-01-02  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
+	* .settings/org.eclipse.jdt.core.prefs:
+	Set the compiler compliance level to 1.5
+
+2007-01-02  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
 	* gnu/testlet/javax/swing/event/EventListenerList/add.java:
 	Cast L.class into Class. 
 
