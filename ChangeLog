@@ -1,5 +1,10 @@
 2007-01-02  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
+	* gnu/testlet/javax/swing/event/EventListenerList/add.java:
+	Cast L.class into Class. 
+
+2007-01-02  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
 	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/
 	Entity_Test.java: Removed (moved)
 	javax/swing/text/html/parser/ParserDelegator/Entities2.java: New test.

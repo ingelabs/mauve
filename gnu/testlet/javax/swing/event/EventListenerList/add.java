@@ -124,7 +124,7 @@ public class add
     caught = null;
     try
       {
-        ell.add(L.class, new L2());
+        ell.add( (Class) L.class, new L2());
       }
     catch (Exception ex)
       {
