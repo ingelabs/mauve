@@ -1,5 +1,10 @@
 2007-01-02  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
+	* javax/swing/text/html/parser/ParserDelegator/Text3.java: New test.
+	* javax/swing/text/html/parser/ParserDelegator/Text4.java: New test.	
+
+2007-01-02  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
+
 	* .settings/org.eclipse.jdt.core.prefs:
 	Set the compiler compliance level to 1.5
 
@@ -12,7 +17,7 @@
 
 	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/
 	Entity_Test.java: Removed (moved)
-	javax/swing/text/html/parser/ParserDelegator/Entities2.java: New test.
+	* javax/swing/text/html/parser/ParserDelegator/Entities2.java: New test.
 
 2007-01-01  Audrius Meskauskas  <AudriusA@Bioinformatics.org>
 
