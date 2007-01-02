@@ -1,4 +1,4 @@
-// Tags: JDK1.2 GNU
+// Tags: JDK1.2
 
 // Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
@@ -20,24 +20,24 @@
 // Boston, MA 02110-1301 USA.
 
 
-package gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser;
+package gnu.testlet.javax.swing.text.html.parser.ParserDelegator;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
+import gnu.testlet.gnu.javax.swing.text.html.parser.support.Parser.TestCase;
 
 import javax.swing.text.html.parser.DTDConstants;
-import javax.swing.text.html.parser.Element;
 import javax.swing.text.html.parser.Entity;
 
 /**
+ * Entity test, with Sun passes since 1.5.0 
+ * 
  * @author Audrius Meskauskas (AudriusA@Bioinformatics.org)
  */
-public class Entity_Test
+public class Entities2
   extends TestCase
   implements Testlet
 {
-  private Element element = null;
-
   public void test(TestHarness harness)
   {
     h = harness;
@@ -108,7 +108,6 @@ public class Entity_Test
   protected void tearDown()
                    throws Exception
   {
-    element = null;
     super.tearDown();
   }
 }
