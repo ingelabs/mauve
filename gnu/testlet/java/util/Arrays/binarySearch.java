@@ -69,6 +69,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+    
+    b1 = new byte[0];
+    harness.check(Arrays.binarySearch(b1, (byte)0), -1);
   }
 
   private void testChar(TestHarness harness)
@@ -91,6 +94,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+    
+    b1 = new char[0];
+    harness.check(Arrays.binarySearch(b1, '0'), -1);
   }
 
   private void testDouble(TestHarness harness)
@@ -113,6 +119,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+    
+    b1 = new double[0];
+    harness.check(Arrays.binarySearch(b1, 0.0), -1);
   }
 
   private void testFloat(TestHarness harness)
@@ -135,6 +144,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+
+    b1 = new float[0];
+    harness.check(Arrays.binarySearch(b1, 0.0f), -1);
   }
 
   private void testInt(TestHarness harness)
@@ -157,6 +169,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+
+    b1 = new int[0];
+    harness.check(Arrays.binarySearch(b1, 0), -1);
   }
 
   private void testLong(TestHarness harness)
@@ -179,6 +194,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+
+    b1 = new long[0];
+    harness.check(Arrays.binarySearch(b1, 0), -1);
   }
 
   private void testObject(TestHarness harness)
@@ -227,6 +245,9 @@ public class binarySearch implements Testlet
     harness.check(Arrays.binarySearch(b1, "2", new ReverseComparator()) == 1);
     harness.check(Arrays.binarySearch(b1, "3", new ReverseComparator()) == 0);
     harness.check(Arrays.binarySearch(b1, "4", new ReverseComparator()) == -1);
+  
+    b1 = new Object[0];
+    harness.check(Arrays.binarySearch(b1, ""), -1);
   }
 
   private void testShort(TestHarness harness)
@@ -249,6 +270,9 @@ public class binarySearch implements Testlet
       pass = true;
     }
     harness.check(pass);
+
+    b1 = new short[0];
+    harness.check(Arrays.binarySearch(b1, (short)0), -1);
   }
 
   static class ReverseComparator implements Comparator {

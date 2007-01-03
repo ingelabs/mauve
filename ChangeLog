@@ -1,3 +1,15 @@
+2007-01-03  Francis Kung  <fkung@redhat.com>
+
+	* gnu/testlet/java/util/Arrays/binarySearch.java:
+	(testByte): Added check for empty array.
+	(testChar): Likewise.
+	(testDouble): Likewise.
+	(testFloat): Likewise.
+	(testInt): Likewise.
+	(testLong): Likewise.
+	(testObject): Likewise.
+	(testShort): Likewise.
+
 2007-01-03  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/awt/CardLayout/testMaximumLayoutSize.java: Added 
