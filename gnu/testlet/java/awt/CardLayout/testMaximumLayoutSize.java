@@ -1,5 +1,5 @@
 /* testMaximumLayout.java 
-   Copyright (C) 2006 Red Hat
+   Copyright (C) 2006 Red Hat, 2007 Red Hat
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@ package gnu.testlet.java.awt.CardLayout;
 
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.Frame;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -37,6 +38,11 @@ public class testMaximumLayoutSize implements Testlet
     CardLayout layout = new CardLayout();
     harness.check(layout.maximumLayoutSize(null), 
                   new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE)); 
+    
+    Frame frame = new Frame();
+    harness.check(frame.getComponentCount(), 0);
+    harness.check(layout.maximumLayoutSize(frame),
+                  new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
   }
 
 }
