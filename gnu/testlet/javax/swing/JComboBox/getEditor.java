@@ -24,6 +24,7 @@ import gnu.testlet.Testlet;
 
 import javax.swing.ComboBoxEditor;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.metal.MetalComboBoxEditor;
@@ -42,6 +43,17 @@ public class getEditor
    */
   public void test(TestHarness harness)      
   {   
+    testDefault(harness);
+    testPR30337(harness);
+  }
+
+  /**
+   * Tests the default value.
+   *
+   * @param harness the test harness to use
+   */
+  private void testDefault(TestHarness harness)
+  {
     // use a known look and feel
     try
       {
@@ -60,6 +72,60 @@ public class getEditor
     
     c1.setEditor(new MetalComboBoxEditor());
     harness.check(!(c1.getEditor() instanceof UIResource));
+
+  }
+
+  /**
+   * A combo box that returns null for getEditor(). This is used in the
+   * following test.
+   */
+  private class TestComboBox extends JComboBox
+  {
+    public ComboBoxEditor getEditor()
+    {
+      return null;
+    }
+  }
+
+  /**
+   * The Classpath PR30337 overrides getEditor() to return null and expects
+   * the JComboBox to not throw an NPE.
+   *
+   * @param h the test harness
+   */
+  private void testPR30337(TestHarness h)
+  {
+    // Test with default (non-editable) combo box. No NPE is thrown.
+    JComboBox cb = new TestComboBox();
+    JFrame f = new JFrame();
+    boolean pass = true;
+    try
+      {
+        f.getContentPane().add(cb);
+        f.setVisible(true);
+      }
+    catch (NullPointerException ex)
+      {
+        pass = false;
+      }
+    h.check(pass);
+
+    // Test with editable combo box (NPE is thrown).
+    cb = new TestComboBox();
+    f = new JFrame();
+    pass = false;
+    try
+      {
+        cb.setEditable(true);
+        f.getContentPane().add(cb);
+        f.setVisible(true);
+      }
+    catch (NullPointerException ex)
+      {
+        pass = true;
+      }
+    h.check(pass);
+
   }
   
 }

@@ -1,3 +1,11 @@
+2007-01-07  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/JComboBox/getEditor.java
+	(TestComboBox): New inner class for testing.
+	(test): Moved code to testDefault() and add testPR30337().
+	(testDefault): Code moved from test() to here.
+	(testPR30337): New test.
+
 2007-01-03  Francis Kung  <fkung@redhat.com>
 
 	* gnu/testlet/java/util/Arrays/binarySearch.java:
