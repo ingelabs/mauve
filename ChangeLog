@@ -1,3 +1,7 @@
+2007-01-09  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/awt/AWTPermission/constructor.java: New test.
+
 2007-01-07  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/JComboBox/getEditor.java
