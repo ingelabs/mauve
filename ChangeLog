@@ -1,3 +1,7 @@
+2007-01-18  Ito Kazumitsu  <kaz@maczuka.gcd.org>
+
+	* gnu/testlet/java/text/NumberFormat/position.java: New Test
+
 2007-01-09  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/awt/AWTPermission/constructor.java: New test.
