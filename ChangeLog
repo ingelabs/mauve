@@ -1,3 +1,34 @@
+2007-02-06  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/io/FileInputStream/security.java: Tagged.
+	* gnu/testlet/java/io/FileOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/FilePermission/traversal2.java: Likewise.
+	* gnu/testlet/java/io/FilePermission/traversal.java: Likewise.
+	* gnu/testlet/java/io/ObjectInputStream/security.java: Likewise.
+	* gnu/testlet/java/io/ObjectOutputStream/security.java: Likewise.
+	* gnu/testlet/java/io/RandomAccessFile/security.java: Likewise.
+	* gnu/testlet/java/lang/ClassLoader/security.java: Likewise.
+	* gnu/testlet/java/lang/Class/security.java: Likewise.
+	* gnu/testlet/java/lang/reflect/AccessibleObject/security.java:
+	Likewise.
+	* gnu/testlet/java/lang/Runtime/security.java: Likewise.
+	* gnu/testlet/java/lang/System/security.java: Likewise.
+	* gnu/testlet/java/lang/ThreadGroup/insecurity.java: Likewise.
+	* gnu/testlet/java/lang/ThreadGroup/security.java: Likewise.
+	* gnu/testlet/java/lang/Thread/insecurity.java: Likewise.
+	* gnu/testlet/java/lang/Thread/security.java: Likewise.
+	* gnu/testlet/java/net/DatagramSocket/security.java: Likewise.
+	* gnu/testlet/java/net/InetAddress/security.java: Likewise.
+	* gnu/testlet/java/net/NetworkInterface/security.java: Likewise.
+	* gnu/testlet/java/net/ServerSocket/security.java: Likewise.
+	* gnu/testlet/java/net/SocketPermission/argument.java: Likewise.
+	* gnu/testlet/java/net/SocketPermission/implies.java: Likewise.
+	* gnu/testlet/java/net/SocketPermission/serialization.java: Likewise.
+	* gnu/testlet/java/net/Socket/security.java: Likewise.
+	* gnu/testlet/java/net/URLClassLoader/security.java: Likewise.
+	* gnu/testlet/java/net/URL/security.java: Likewise.
+	* gnu/testlet/java/security/AccessController/contexts.java: Likewise.
+
 2007-02-05  Tom Tromey  <tromey@redhat.com>
 
 	* gnu/testlet/java/lang/ProcessBuilder/simple.java: New file.

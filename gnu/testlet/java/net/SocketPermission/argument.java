@@ -1,4 +1,4 @@
-// Copyright (C) 2006 Red Hat, Inc.
+// Copyright (C) 2006, 2007 Red Hat, Inc.
 // Written by Gary Benson <gbenson@redhat.com>
 
 // This file is part of Mauve.
@@ -17,6 +17,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
+
+// Tags: JDK1.2
 
 package gnu.testlet.java.net.SocketPermission;
 
