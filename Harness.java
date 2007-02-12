@@ -1,4 +1,4 @@
-// Copyright (c) 2006  Red Hat, Inc.
+// Copyright (c) 2006, 2007  Red Hat, Inc.
 // Written by Anthony Balkissoon <abalkiss@redhat.com>
 
 // This file is part of Mauve.
@@ -595,7 +595,7 @@ public class Harness
       "run the tests in its subfolders\n" +
       "  -file [filename]:        specifies a file that contains the names " +
       "of tests to be run (one per line)\n" +
-      "  -interactive:            only run interavtice tests, if not set, " +
+      "  -interactive:            only run interactive tests, if not set, " +
       "only run non-interactive tests\n" +
       // Output Options.
       "\n\nOutput Options:\n" +

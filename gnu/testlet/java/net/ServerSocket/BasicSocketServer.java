@@ -1,7 +1,7 @@
 // Tags: not-a-test
 
 /*
-   Copyright (C) 1999 Hewlett-Packard Company
+   Copyright (C) 1999, 2007 Hewlett-Packard Company
 
    This file is part of Mauve.
 
@@ -42,6 +42,7 @@ class BasicSocketServer extends Thread {
     catch (Exception e) {
       System.out.println("Error : BasicSocketServer::init failed " + 
 			 "exception in new ServerSocket(...) " + e);
+      harness.debug(e);
     }
   }
   
@@ -68,6 +69,7 @@ class BasicSocketServer extends Thread {
       catch (Exception e) {
 	System.out.println("Error : BasicSocketServer::run failed - 2" + 
 			   "exception was thrown");
+	harness.debug(e);
       }
     }
     try {
@@ -77,6 +79,7 @@ class BasicSocketServer extends Thread {
     catch (Exception e) {
       System.out.println("Error : BasicSocketServer::run failed - 3" + 
 			 "exception was thrown");
+      harness.debug(e);
     }
   }
 }

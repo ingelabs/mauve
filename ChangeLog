@@ -1,3 +1,10 @@
+2007-02-12  Tom Tromey  <tromey@redhat.com>
+
+	* gnu/testlet/java/net/ServerSocket/BasicSocketServer.java (init):
+	Print exception.
+	(run): Likewise.
+	* Harness.java (printHelpMessage): Typo fix.
+
 2007-02-09  Mario Torre  <neugens@limasoftware.net>
 
 	* gnu/testlet/java/io/File/ReadMethods.java: 
