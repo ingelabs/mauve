@@ -26,6 +26,7 @@ import gnu.testlet.Testlet;
 
 import java.util.Calendar;
 import java.util.SimpleTimeZone;
+import java.util.TimeZone;
 
 /**
  * Some checks for the equals() method in the SimpleTimeZone class.
@@ -39,6 +40,12 @@ public class equals
    * @param harness  the test harness.
    */
   public void test(TestHarness harness)
+  {
+    test1(harness);
+    test2(harness);
+  }
+
+  private void test1(TestHarness harness) 
   {
     SimpleTimeZone z1 = new SimpleTimeZone(5 * 60 * 60 * 1000, "Z1");
     harness.check(!z1.equals(null));
@@ -101,6 +108,37 @@ public class equals
 	z2 = new SimpleTimeZone(rawOffset2, "Z2", Calendar.MAY, 6, 0, time2, Calendar.OCTOBER, 16, 0, time1, 3600001);
 	harness.check(z1.equals(z2));    // check 21
   
+  }
+
+  // Tests converted from the SimpleTimeZoneTest.java attachment
+  // of http://gcc.gnu.org/ml/java-patches/2007-q1/msg00587.html.
+  private void test2(TestHarness harness) 
+  {
+    TimeZone utc = (TimeZone) new SimpleTimeZone(0, "GMT");
+    TimeZone.setDefault(utc);
+    Calendar cal = Calendar.getInstance(utc);
+
+    TimeZone tz2 = new SimpleTimeZone(
+      -12600000, "Test1",
+      Calendar.MARCH, 8, -Calendar.SUNDAY, 60000,
+      SimpleTimeZone.WALL_TIME,
+      Calendar.NOVEMBER, 1, -Calendar.SUNDAY, 60000,
+      SimpleTimeZone.STANDARD_TIME,
+      3600000);
+
+    TimeZone tz3 = new SimpleTimeZone(
+      -12600000, "Test2",
+      Calendar.MARCH, 8, -Calendar.SUNDAY, 60000,
+      Calendar.NOVEMBER, 1, -Calendar.SUNDAY, 3660000,
+      3600000);
+
+    harness.check(!tz2.equals(tz3));
+
+    ((SimpleTimeZone) tz2).setEndRule(
+      Calendar.NOVEMBER, 1, -Calendar.SUNDAY, 3660000);
+    tz3.setID("Test1");
+
+    harness.check(tz2.equals(tz3));
   }
 
 }
