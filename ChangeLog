@@ -1,3 +1,24 @@
+2007-03-05  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/Colour.java:
+	Test enumeration.
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/MBeanProxy.java:
+	Test for proxying.
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/Test.java:
+	Implementation of TestMBean.
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/TestC.java:
+	Implementation of TestCMXBean.
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/TestCMXBean.java:
+	Interface for an MXBean for conversion testing.	
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/TestMBean.java:
+	Interface for a test bean.
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/TestX.java:
+	Implementation of TestXMBean.
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/TestXMBean.java:
+	Interface for a test bean that extends Object's methods.
+	* gnu/testlet/javax/management/MBeanServerPermission/Constructor.java:
+	Test for MBeanServerPermission.
+	
 2007-02-22  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/util/TimeZone/zdump.java: New test.
