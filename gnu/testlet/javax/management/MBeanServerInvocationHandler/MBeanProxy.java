@@ -24,13 +24,12 @@ package gnu.testlet.javax.management.MBeanServerInvocationHandler;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.lang.management.ManagementFactory;
-
 import java.lang.reflect.Proxy;
 
 import javax.management.JMX;
 import javax.management.MalformedObjectNameException;
 import javax.management.MBeanServer;
+import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
 
 import java.util.HashMap;
@@ -67,7 +66,7 @@ public class MBeanProxy
       {
 	h.debug(e);
       }
-    MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+    MBeanServer server = MBeanServerFactory.createMBeanServer();
     try
       {
 	server.registerMBean(new Test("GNU Classpath"), name);
