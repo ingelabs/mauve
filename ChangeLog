@@ -1,3 +1,10 @@
+2007-04-05  Gary Benson  <gbenson@redhat.com>
+
+	* gnu/testlet/java/util/GregorianCalendar/first.java:
+	Remove "day one is in week one" checks.
+	* gnu/testlet/java/util/GregorianCalendar/dayOfWeekInMonth.java:
+	New test.
+
 2007-04-03  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/util/Calendar/dstOffset.java: New test.

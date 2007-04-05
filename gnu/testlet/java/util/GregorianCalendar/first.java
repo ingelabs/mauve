@@ -27,8 +27,7 @@ import gnu.testlet.TestHarness;
 import java.util.*;
 
 /**
- * Checks that the first day of the month is day one and that the
- * first week is week one.
+ * Checks that the first day of the month is day one.
  */
 public class first implements Testlet
 {
@@ -53,8 +52,6 @@ public class first implements Testlet
 	  GregorianCalendar cal = new GregorianCalendar(year, month, 1);
 	  harness.check(cal.get(Calendar.DAY_OF_MONTH), 1,
 			"day 1-" + month + "-" + year);
-	  harness.check(cal.get(Calendar.WEEK_OF_MONTH), 1,
-			"week 1-" + month + "-" + year);
 	}
   }
 }
