@@ -1,5 +1,10 @@
 2007-04-05  Gary Benson  <gbenson@redhat.com>
 
+	* gnu/testlet/java/util/GregorianCalendar/dayOfWeekInMonth.java:
+	Test in the opposite direction too.
+
+2007-04-05  Gary Benson  <gbenson@redhat.com>
+
 	* gnu/testlet/java/util/GregorianCalendar/first.java:
 	Remove "day one is in week one" checks.
 	* gnu/testlet/java/util/GregorianCalendar/dayOfWeekInMonth.java:

@@ -34,6 +34,8 @@ public class dayOfWeekInMonth implements Testlet
   public void test(TestHarness harness)
   {
     GregorianCalendar c = new GregorianCalendar();
+    GregorianCalendar d = new GregorianCalendar();
+    GregorianCalendar e = new GregorianCalendar();
 
     // 31 day months whose first days are the specified weekdays
     int testMonths[][] =
@@ -49,11 +51,15 @@ public class dayOfWeekInMonth implements Testlet
 	 minimalDaysInFirstWeek <= 7; minimalDaysInFirstWeek++) {
 
       c.setMinimalDaysInFirstWeek(minimalDaysInFirstWeek);
+      d.setMinimalDaysInFirstWeek(minimalDaysInFirstWeek);
+      e.setMinimalDaysInFirstWeek(minimalDaysInFirstWeek);
 
       for (int firstDayOfWeek = Calendar.SUNDAY;
 	   firstDayOfWeek <= Calendar.SATURDAY; firstDayOfWeek++) {
 
 	c.setFirstDayOfWeek(firstDayOfWeek);
+	d.setFirstDayOfWeek(firstDayOfWeek);
+	e.setFirstDayOfWeek(firstDayOfWeek);
 
 	for (int i = 0; i < testMonths.length; i++) {
 	  int month = testMonths[i][0];
@@ -61,8 +67,14 @@ public class dayOfWeekInMonth implements Testlet
 	  int first = testMonths[i][2];
 
 	  for (int day = 1; day <= 31; day++) {
+	    // First we set YEAR + MONTH + DAY_OF_MONTH and check we
+	    // have DAY_OF_WEEK_IN_MONTH and WEEK_OF_MONTH correct.
+
 	    c.set(year, month, day);
-	    harness.check(c.get(Calendar.DAY_OF_WEEK_IN_MONTH) == (day+6) / 7);
+	    int dayOfWeekInMonth = (day + 6) / 7;
+
+	    harness.check(
+	      c.get(Calendar.DAY_OF_WEEK_IN_MONTH) == dayOfWeekInMonth);
 
 	    int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 	    if (day == 1)
@@ -85,6 +97,26 @@ public class dayOfWeekInMonth implements Testlet
 	      (day + relativeDayOfFirst - 1) / 7 + weekOfFirst;
 
 	    harness.check(c.get(Calendar.WEEK_OF_MONTH) == weekOfMonth);
+
+	    // Then we set YEAR + MONTH + DAY_OF_WEEK_IN_MONTH +
+	    // DAY_OF_WEEK and check we have DAY_OF_MONTH correct.
+
+	    d.clear();
+	    d.set(Calendar.YEAR, year);
+	    d.set(Calendar.MONTH, month);
+	    d.set(Calendar.DAY_OF_WEEK_IN_MONTH, dayOfWeekInMonth);
+	    d.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+	    harness.check(d.get(Calendar.DAY_OF_MONTH) == day);
+
+	    // Finally we set YEAR + MONTH + WEEK_OF_MONTH + DAY_OF_WEEK
+	    // and check we have DAY_OF_MONTH correct.
+
+	    e.clear();
+	    e.set(Calendar.YEAR, year);
+	    e.set(Calendar.MONTH, month);
+	    e.set(Calendar.WEEK_OF_MONTH, weekOfMonth);
+	    e.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+	    harness.check(e.get(Calendar.DAY_OF_MONTH) == day);
 	  }
 	}
       }
