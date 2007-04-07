@@ -59,7 +59,7 @@ public class Harness
   
   // The options to pass to the compiler, needs to be augmented by the
   // bootclasspath, which should be the classpath installation directory
-  private static String compileStringBase = "-proceedOnError -nowarn";
+  private static String compileStringBase = "-proceedOnError -nowarn -1.5";
   
   // The writers for ecj's out and err streams.
   private static PrintWriter ecjWriterOut = null;
