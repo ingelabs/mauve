@@ -57,6 +57,8 @@ public class TestC
 
   private SortedMap<String, Integer> sortedNumbers;
 
+  private ChildMXBean child;
+
   public int getId()
   {
     return id;
@@ -156,4 +158,15 @@ public class TestC
   {
     sortedNumbers = numbers;
   }
+
+  public ChildMXBean getChild()
+  {
+    return child;
+  }
+
+  public void setChild(ChildMXBean child)
+  {
+    this.child = child;
+  }
+
 }

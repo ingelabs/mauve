@@ -75,4 +75,9 @@ public interface TestCMXBean
   SortedMap<String, Integer> getSortedPhoneNumbers();
 
   void setSortedPhoneNumbers(SortedMap<String, Integer> numbers);
+
+  ChildMXBean getChild();
+
+  void setChild(ChildMXBean bean);
+
 }

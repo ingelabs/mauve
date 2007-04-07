@@ -56,11 +56,13 @@ public class MBeanProxy
     ObjectName name = null;
     ObjectName namex = null;
     ObjectName namec = null;
+    ObjectName namecc = null;
     try
       {
 	name = new ObjectName("mauve:test=go");
 	namex = new ObjectName("mauve:test=gox");
 	namec = new ObjectName("mauve:test=goc");
+	namecc = new ObjectName("mauve:test=gocc");
       }
     catch (MalformedObjectNameException e)
       {
@@ -94,7 +96,7 @@ public class MBeanProxy
     h.checkPoint("Calling toString");
     testx.toString();
     h.check(testx.getLastMethodCalled(), "toString");
-    TestCMXBean testc = JMX.newMXBeanProxy(server, namec, TestCMXBean.class);
+    final TestCMXBean testc = JMX.newMXBeanProxy(server, namec, TestCMXBean.class);
     h.checkPoint("Setting id");
     testc.setId(42);
     h.check(testc.getId(), 42, "Getting id");
@@ -142,6 +144,22 @@ public class MBeanProxy
     snumbers.put("Sam",55);
     testc.setSortedPhoneNumbers(snumbers);
     h.check(testc.getSortedPhoneNumbers(), numbers, "Getting sorted phone numbers");
+    h.checkPoint("Creating and setting child");
+    ChildMXBean child = new ChildMXBean() {
+	public TestCMXBean getParent() { return testc; }
+	public void setParent(TestCMXBean bean) { }
+      };
+    try
+      {
+	server.registerMBean(child, namecc);
+      }
+    catch (Exception e)
+      {
+	h.debug(e);
+      }
+    ChildMXBean cproxy = JMX.newMXBeanProxy(server, namecc, ChildMXBean.class);
+    testc.setChild(cproxy);
+    h.check(testc.getChild(), cproxy, "Getting child"); 
   }
 
 }
