@@ -1,6 +1,5 @@
 // Copyright (C) 2007 Red Hat, Inc.
 // Written by Gary Benson <gbenson@redhat.com>
-// Including some tests by Bryce McKinlay.
 
 // This file is part of Mauve.
 
