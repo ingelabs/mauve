@@ -1,3 +1,8 @@
+2007-04-12  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/java/nio/CharBuffer/CharSequenceWrapper.java:
+	New testcase for testing wrapped CharSequences.
+
 2007-04-12  Gary Benson  <gbenson@redhat.com>
 
 	* gnu/testlet/java/util/GregorianCalendar/weekOfYear.java:
