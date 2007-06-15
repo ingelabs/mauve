@@ -114,7 +114,8 @@ public class LocaleTest
 
     // Force GERMAN as default locale.
     Locale.setDefault(Locale.GERMAN);
-    
+    TimeZone.setDefault(TimeZone.getTimeZone("GMT"));   
+ 
     // Locale
     
     if (expected != null)

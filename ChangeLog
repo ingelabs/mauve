@@ -1,5 +1,9 @@
 2007-06-15  Joshua Sumali  <jsumali@redhat.com>
 
+	* gnu/testlet/locales/LocaleTest.java: Fixed TimeZone issue.
+
+2007-06-15  Joshua Sumali  <jsumali@redhat.com>
+
 	* gnu/testlet/locales/LocaleTest.java: Fixed language errors. Now
 	passes on openJDK. 
 
