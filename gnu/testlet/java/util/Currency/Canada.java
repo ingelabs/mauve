@@ -43,6 +43,8 @@ public class Canada implements Testlet
   {
     Currency currency;
 
+    /* Set the default Locale for the JVM */
+    Locale.setDefault(TEST_LOCALE);
     /* Get an instance of the currency */
     currency = Currency.getInstance(TEST_LOCALE);
     /* Check for the correct currency code */

@@ -43,6 +43,8 @@ public class UK implements Testlet
   {
     Currency currency;
 
+    /* Set default Locale for the JVM */
+    Locale.setDefault(TEST_LOCALE);
     /* Get an instance of the UK currency */
     currency = Currency.getInstance(TEST_LOCALE);
     /* Check for the correct currency code */

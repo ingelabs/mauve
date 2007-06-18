@@ -1,3 +1,17 @@
+2007-06-18  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/util/Currency/Canada.java:
+	* gnu/testlet/java/util/Currency/CanadaFrench.java:
+	* gnu/testlet/java/util/Currency/China.java:
+	* gnu/testlet/java/util/Currency/France.java:
+	* gnu/testlet/java/util/Currency/Germany.java:
+	* gnu/testlet/java/util/Currency/Italy.java:
+	* gnu/testlet/java/util/Currency/Japan.java:
+	* gnu/testlet/java/util/Currency/Korea.java:
+	* gnu/testlet/java/util/Currency/PRC.java:
+	* gnu/testlet/java/util/Currency/Taiwan.java:
+	* gnu/testlet/java/util/Currency/UK.java: Set default locale.
+
 2007-06-15  Joshua Sumali  <jsumali@redhat.com>
 
 	* gnu/testlet/locales/LocaleTest.java: Fixed TimeZone issue.

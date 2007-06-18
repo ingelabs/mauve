@@ -52,6 +52,8 @@ public class Germany implements Testlet
     Calendar calendar;
     Calendar euroCalendar;
 
+    /* Set default Locale for the JVM */
+    Locale.setDefault(TEST_LOCALE);
     /* Get an instance of the currency */
     currency = Currency.getInstance(TEST_LOCALE);
     /* Get the current time in the locale */
