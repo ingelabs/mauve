@@ -46,6 +46,17 @@ length() throws SQLException
   return(0);
 }
 
+public void
+free() throws SQLException
+{
+}
+
+public Reader 
+getCharacterStream (long a, long b) throws SQLException
+{
+  return(null);
+}
+
 public String
 getSubString(long offset, int length) throws SQLException
 {

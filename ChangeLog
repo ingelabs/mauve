@@ -1,5 +1,11 @@
 2007-06-18  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/java/sql/Array/ArrayTest.java: Added missing functions
+	* gnu/testlet/java/sql/Blob/BlobTest.java: Likewise
+	* gnu/testlet/java/sql/Clob/ClobTest.java: Likewise
+
+2007-06-18  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/java/math/BigInteger/TestOfToByteArray.java: Removed
 	verbose call to prevent compilation error.
 

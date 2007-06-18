@@ -42,6 +42,11 @@ getBaseTypeName() throws SQLException
   return(null);
 }
 
+public void
+free() throws SQLException
+{
+}
+
 public int
 getBaseType() throws SQLException
 {

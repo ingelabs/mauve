@@ -38,6 +38,17 @@ test(TestHarness harness)
   harness.check(true, "java.sql.Blob");
 }
 
+public void
+free() throws SQLException
+{
+}
+
+public InputStream 
+getBinaryStream (long a, long b) throws SQLException
+{
+  return(null);
+}
+
 public long
 length() throws SQLException
 {
