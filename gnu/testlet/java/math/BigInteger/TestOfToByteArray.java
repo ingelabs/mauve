@@ -45,7 +45,6 @@ public class TestOfToByteArray
       BigInteger x = new BigInteger(BYTES);
       harness.verbose("*** x = 0x" + x.toString(16));
       byte[] ba = x.toByteArray();
-      harness.verbose("*** y = 0x" + gnu.java.security.util.Util.dumpString(ba));
       harness.check(Arrays.equals(ba, BYTES), true, "Byte arrays MUST be equal");
     }
   catch (Exception x)

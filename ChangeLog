@@ -1,5 +1,10 @@
 2007-06-18  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/java/math/BigInteger/TestOfToByteArray.java: Removed
+	verbose call to prevent compilation error.
+
+2007-06-18  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/java/util/Properties/AcuniaPropertiesTest.java: Added
 	casts to prevent compilation errors.
 
