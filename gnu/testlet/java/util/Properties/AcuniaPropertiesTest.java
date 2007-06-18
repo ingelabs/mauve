@@ -250,7 +250,7 @@ public class AcuniaPropertiesTest implements Testlet
   public void test_load(){
     th.checkPoint("load(java.io.InputStream)void");
     Properties p = new Properties();
-    try  { p.load(null);
+    try  { p.load((ByteArrayInputStream) null);
     	   th.fail("should throw NullPointerException");
          }
     catch (NullPointerException ne) { th.check(true); }
@@ -397,7 +397,7 @@ public class AcuniaPropertiesTest implements Testlet
   public void test_store(){
     th.checkPoint("store(java.io.OutputStream,java.lang.String)void");
     Properties p = new Properties(defProps);
-    try  { p.store(null , "no comment");
+    try  { p.store((ByteArrayOutputStream) null , "no comment");
     	   th.fail("should throw NullPointerException");
          }
     catch (NullPointerException ne) { th.check(true); }
