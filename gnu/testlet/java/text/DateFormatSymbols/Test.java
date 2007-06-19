@@ -126,11 +126,18 @@ test(TestHarness harness)
       dfs.setAmPmStrings(my_ampms);
       harness.check(arrayEquals(dfs.getAmPmStrings(), my_ampms), "am/pm");
 
-      dfs.setZoneStrings(my_zonestrings);
-      harness.check(arrayEquals(dfs.getZoneStrings(), my_zonestrings), "zones");
-
       dfs.setLocalPatternChars(my_patternchars);
       harness.check(dfs.getLocalPatternChars(), my_patternchars, "patterns");
+      
+      /* Invalid Argument */
+      boolean fail = false;
+      try {
+    	  dfs.setZoneStrings(my_zonestrings);
+      } catch (IllegalArgumentException e) {
+		fail = true;
+      }
+      harness.check(fail, true, "InvalidArgumentException is thrown.");
+      
     }
   catch(MissingResourceException e)
     {

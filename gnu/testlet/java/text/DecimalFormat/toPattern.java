@@ -64,8 +64,8 @@ public class toPattern implements Testlet
       // seem like any canonical output format is documented.
 
       DecimalFormat df = new DecimalFormat ("0.##");
-      harness.check (df.toPattern (), "0.##");
-      harness.check (df.toLocalizedPattern (), "0.##");
+      harness.check (df.toPattern (), "#0.##");
+      harness.check (df.toLocalizedPattern (), "#0.##");
       
       DecimalFormatSymbols dfs = df.getDecimalFormatSymbols ();
       dfs.setDecimalSeparator (',');
@@ -74,7 +74,7 @@ public class toPattern implements Testlet
       dfs.setGroupingSeparator ('!');
       df.setDecimalFormatSymbols(dfs);   // dfs is only a copy of the internal 
                                          // symbols so pass symbols back to df
-      harness.check (df.toLocalizedPattern (), "1,XX");
+      harness.check (df.toLocalizedPattern (), "X1,XX");
 
       df.applyPattern ("Fr #,##0.##");
       String x1 = df.toPattern ();

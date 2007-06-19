@@ -117,7 +117,7 @@ public class toPattern14
     DecimalFormat f2 =
       new DecimalFormat("'#'1'.' ''nessuno ci capisce niente qui #0.00;(#0.00)");
     harness.check(f2.toPattern(),
-                  "'#'1'.' ''nessuno ci capisce niente qui #0.00;(#0.00)");
+                  "'#1. '''nessuno ci capisce niente qui #0.00;(#0.00)");
   }
   
   public void test3(TestHarness harness)
@@ -132,7 +132,7 @@ public class toPattern14
     harness.check(f1.toPattern(), "#.00");
     
     DecimalFormat f2 = new DecimalFormat("#0.#E0");
-    harness.check(f2.toPattern(), "0.#E0");
+    harness.check(f2.toPattern(), "#0.#E0");
     
     DecimalFormat f3 = new DecimalFormat("0.#E0");
     harness.check(f3.toPattern(), "0.#E0");

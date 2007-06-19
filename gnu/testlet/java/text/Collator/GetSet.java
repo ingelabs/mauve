@@ -36,7 +36,7 @@ test(TestHarness harness)
   Collator col = Collator.getInstance(Locale.US);
 
   harness.check(col.getStrength(), Collator.TERTIARY, "default strength");
-  harness.check(col.getDecomposition(), Collator.CANONICAL_DECOMPOSITION, 
+  harness.check(col.getDecomposition(), Collator.NO_DECOMPOSITION, 
                 "default decomposition");
 
   col.setStrength(Collator.PRIMARY);
@@ -46,7 +46,7 @@ test(TestHarness harness)
   harness.check(col.getDecomposition(), Collator.NO_DECOMPOSITION, 
                 "set/get decomposition");
 
-  try
+  try 
     {
       col.setStrength(999);
       harness.check(false, "invalid strength value");

@@ -62,9 +62,8 @@ public class MaximumAndMinimumDigits implements Testlet
   
   private void doTest()
   {
-    // this value is invalid on the RI, as of 1.5.0_08,
-    // it should be 2147483647
-    int MAX = 309;
+    // this value is 2147483647
+    int MAX = Integer.MAX_VALUE;
     
     harness.checkPoint("default pattern");
     DecimalFormat format = new DecimalFormat();

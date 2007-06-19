@@ -52,18 +52,16 @@ public class setDecimalFormatSymbols implements Testlet
     symbols.setDecimalSeparator('y');
     harness.check(f1.getDecimalFormatSymbols().getDecimalSeparator(), 'x');
     
-    // try null argument. Behaviour is not specified, but it would be 
-    // consistent with the rest of the API to throw a NullPointerException.
-    // In fact, in Sun's implementation, null is ignored (see bug parade 
-    // 4329360).
+    // try null argument. 
     boolean pass = false;
     try
     {
-      f1.setDecimalFormatSymbols(null);   
+      f1.setDecimalFormatSymbols(null);
+      pass = true;
     }
     catch (NullPointerException e) 
     {
-      pass = true;   
+    	// do nothing.
     }
     harness.check(pass);
   }
