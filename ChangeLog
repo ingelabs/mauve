@@ -1,5 +1,15 @@
 2007-06-19  Lillian Angel  <langel@redhat.com>
 
+	* gnu/testlet/java/lang/Character/Blocks15.java
+	(test): Removed checks. SURROGATES_AREA is deprecated and will cause
+	fails in 1.5.
+	* gnu/testlet/java/lang/Character/classify12.java
+	(test): Fixed incorrect test.
+	* gnu/testlet/java/lang/Character/getType.java
+	(test): Removed incorrect checks. Encoding has changed in 1.5.
+
+2007-06-19  Lillian Angel  <langel@redhat.com>
+
 	* gnu/testlet/java/math/BigDecimal/setScale.java
 	(test): Changed constant used.
 	* gnu/testlet/java/math/BigDecimal/construct.java

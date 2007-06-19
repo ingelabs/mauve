@@ -43,12 +43,6 @@ public class Blocks15
 		   Character.UnicodeBlock.MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B);
      harness.check(Character.UnicodeBlock.forName("Miscellaneous_Mathematical_Symbols_B"),
 		   Character.UnicodeBlock.MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B);
-     harness.check(Character.UnicodeBlock.forName("Surrogates Area"),
-		   Character.UnicodeBlock.SURROGATES_AREA);
-     harness.check(Character.UnicodeBlock.forName("SurrogatesArea"),
-		   Character.UnicodeBlock.SURROGATES_AREA);
-     harness.check(Character.UnicodeBlock.forName("Surrogates_Area"),
-		   Character.UnicodeBlock.SURROGATES_AREA);
      try
        {
 	 Character.UnicodeBlock.forName(null);

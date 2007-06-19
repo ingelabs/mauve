@@ -134,7 +134,7 @@ public class getType implements Testlet
       p (harness, '\u1fe4', "lowercase_letter");
       p (harness, '\u01c5', "titlecase_letter");
       p (harness, '\u3005', "modifier_letter");
-      p (harness, '\u01bf', "other_letter");
+      p (harness, '\u01bf', "lowercase_letter");
       p (harness, '\u0666', "decimal_digit_number");
       p (harness, '\u216f', "letter_number");
       p (harness, '\u0f32', "other_number");
@@ -143,9 +143,7 @@ public class getType implements Testlet
       p (harness, '\u0903', "combining_spacing_mark");
       p (harness, '-', "dash_punctuation");
       p (harness, '\ufe59', "start_punctuation");
-      p (harness, '\u00ab', "start_punctuation");
       p (harness, '\u0f3b', "end_punctuation");
-      p (harness, '\u2019', "end_punctuation");
       p (harness, '\uff3f', "connector_punctuation");
       p (harness, '\u2202', "math_symbol");
       p (harness, '\u20ab', "currency_symbol");

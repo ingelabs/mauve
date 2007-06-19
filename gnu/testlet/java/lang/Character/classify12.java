@@ -27,6 +27,6 @@ public class classify12 implements Testlet
 {
   public void test (TestHarness harness)
     {
-      harness.check (! Character.isUpperCase('\u2102'));
+      harness.check (Character.isUpperCase('\u2102'));
     }
 }
