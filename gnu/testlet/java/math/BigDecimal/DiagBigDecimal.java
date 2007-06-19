@@ -1309,10 +1309,10 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("-56267E-2")).add(zero).toString()).equals("-562.67"), "add095");
   harness.check (((new BigDecimal("-56267E-1")).add(zero).toString()).equals("-5626.7"), "add096");
   harness.check (((new BigDecimal("-56267E-0")).add(zero).toString()).equals("-56267"), "add097");
-  harness.check (((new BigDecimal("-5E-10")).add(zero).toString()).equals("-0.0000000005"), "add098");
+  harness.check (((new BigDecimal("-5E-10")).add(zero).toString()).equals("-5E-10"), "add098");
   harness.check (((new BigDecimal("-5E-5")).add(zero).toString()).equals("-0.00005"), "add099");
   harness.check (((new BigDecimal("-5E-1")).add(zero).toString()).equals("-0.5"), "add100");
-  harness.check (((new BigDecimal("-5E-10")).add(zero).toString()).equals("-0.0000000005"), "add101");
+  harness.check (((new BigDecimal("-5E-10")).add(zero).toString()).equals("-5E-10"), "add101");
   harness.check (((new BigDecimal("-5E-5")).add(zero).toString()).equals("-0.00005"), "add102");
   harness.check (((new BigDecimal("-5E-1")).add(zero).toString()).equals("-0.5"), "add103");
   harness.check (((new BigDecimal("-5E10")).add(zero).toString()).equals("-50000000000"), "add104");
@@ -1329,10 +1329,10 @@ public class DiagBigDecimal implements Testlet {
   harness.check ((zero.add(new BigDecimal("-56267E-2")).toString()).equals("-562.67"), "add113");
   harness.check ((zero.add(new BigDecimal("-56267E-1")).toString()).equals("-5626.7"), "add114");
   harness.check ((zero.add(new BigDecimal("-56267E-0")).toString()).equals("-56267"), "add115");
-  harness.check ((zero.add(new BigDecimal("-5E-10")).toString()).equals("-0.0000000005"), "add116");
+  harness.check ((zero.add(new BigDecimal("-5E-10")).toString()).equals("-5E-10"), "add116");
   harness.check ((zero.add(new BigDecimal("-5E-5")).toString()).equals("-0.00005"), "add117");
   harness.check ((zero.add(new BigDecimal("-5E-1")).toString()).equals("-0.5"), "add118");
-  harness.check ((zero.add(new BigDecimal("-5E-10")).toString()).equals("-0.0000000005"), "add129");
+  harness.check ((zero.add(new BigDecimal("-5E-10")).toString()).equals("-5E-10"), "add129");
   harness.check ((zero.add(new BigDecimal("-5E-5")).toString()).equals("-0.00005"), "add130");
   harness.check ((zero.add(new BigDecimal("-5E-1")).toString()).equals("-0.5"), "add131");
   harness.check ((zero.add(new BigDecimal("-5E10")).toString()).equals("-50000000000"), "add132");
@@ -1431,23 +1431,13 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("999999999.5")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("999999999.5"), "div373");
   harness.check (((new BigDecimal("999999999.9")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("999999999.9"), "div374");
   harness.check (((new BigDecimal("999999999.999")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("999999999.999"), "div375");
-  harness.check (((new BigDecimal("0.0000E-5")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("0"), "div376");
-  harness.check (((new BigDecimal("0.000000000")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("0.000000000"), "div377");
+  harness.check (((new BigDecimal("0.0000E-5")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("0E-9"), "div376");
+  harness.check (((new BigDecimal("0.000000000")).divide(new BigDecimal("1"), BigDecimal.ROUND_HALF_UP).toString()).equals("0E-9"), "div377");
   
   //- Fixed point; explicit scales & rounds [old BigDecimal divides]
   harness.check (((new BigDecimal("0")).divide(new BigDecimal("3"), BigDecimal.ROUND_HALF_UP).toString()).equals("0"), "div001");
   harness.check (((new BigDecimal("1")).divide(new BigDecimal("3"), BigDecimal.ROUND_HALF_UP).toString()).equals("0"), "div008");
   harness.check (((new BigDecimal("2")).divide(new BigDecimal("3"), BigDecimal.ROUND_HALF_UP).toString()).equals("1"), "div015");
-  
-  //- error conditions ---
-  try{checkscale:do{
-   (new BigDecimal("1")).divide(new BigDecimal("3"),-8,0);
-   flag=false;
-  }while(false);}
-  catch (java.lang.ArithmeticException xx34){e=xx34;
-   flag=checkMessage(e, "Negative scale: -8");
-  }/*checkscale*/
-  harness.check (flag, "div203");
   
   try{div0:do{
    (new BigDecimal("5")).divide(new BigDecimal("0.00"), BigDecimal.ROUND_HALF_UP);
@@ -1472,8 +1462,8 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("5")).max(new BigDecimal("2")).toString()).equals("5"), "max001");
   harness.check (((new BigDecimal("5")).max(new BigDecimal("5")).toString()).equals("5"), "max002");
   harness.check (((new BigDecimal("2")).max(new BigDecimal("7")).toString()).equals("7"), "max003");
-  harness.check (((new BigDecimal("2E+3")).max(new BigDecimal("7")).toString()).equals("2000"), "max006");
-  harness.check (((new BigDecimal("7")).max(new BigDecimal("2E+3")).toString()).equals("2000"), "max008");
+  harness.check (((new BigDecimal("2E+3")).max(new BigDecimal("7")).toString()).equals("2E+3"), "max006");
+  harness.check (((new BigDecimal("7")).max(new BigDecimal("2E+3")).toString()).equals("2E+3"), "max008");
 
   try{checknull:do{
    ten.max((BigDecimal)null);
@@ -1497,8 +1487,8 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("5")).min(new BigDecimal("2")).toString()).equals("2"), "min001");
   harness.check (((new BigDecimal("5")).min(new BigDecimal("5")).toString()).equals("5"), "min002");
   harness.check (((new BigDecimal("2")).min(new BigDecimal("7")).toString()).equals("2"), "min003");
-  harness.check (((new BigDecimal("-2E+3")).min(new BigDecimal("7")).toString()).equals("-2000"), "min006");
-  harness.check (((new BigDecimal("7")).min(new BigDecimal("-2E+3")).toString()).equals("-2000"), "min008");
+  harness.check (((new BigDecimal("-2E+3")).min(new BigDecimal("7")).toString()).equals("-2E+3"), "min006");
+  harness.check (((new BigDecimal("7")).min(new BigDecimal("-2E+3")).toString()).equals("-2E+3"), "min008");
   try{checknull:do{
    minx=ten;
    minx.min((BigDecimal)null);
@@ -1550,14 +1540,14 @@ public class DiagBigDecimal implements Testlet {
   
   harness.check (((new BigDecimal("5.00")).multiply(new BigDecimal("1E-3")).toString()).equals("0.00500"), "mul036");
   harness.check (((new BigDecimal("00.00")).multiply(new BigDecimal("0.000")).toString()).equals("0.00000"), "mul037");
-  harness.check (((new BigDecimal("00.00")).multiply(new BigDecimal("0E-3")).toString()).equals("0.00"), "mul038");
+  harness.check (((new BigDecimal("00.00")).multiply(new BigDecimal("0E-3")).toString()).equals("0.00000"), "mul038");
   // 1999.12.21: next one is a edge case if intermediate longs are used
   harness.check (((new BigDecimal("999999999999")).multiply(new BigDecimal("9765625")).toString()).equals("9765624999990234375"), "mul039");
   
   l9=new BigDecimal("123456789E+10");
   l77e=new BigDecimal("77E-20");
-  harness.check ((l9.multiply(new BigDecimal("3456757")).toString()).equals("4267601195732730000000000"), "mul040");
-  harness.check ((l9.multiply(l77e).toString()).equals("0.95061727530000000000"), "mul042");
+  harness.check ((l9.multiply(new BigDecimal("3456757")).toString()).equals("4.26760119573273E+24"), "mul040");
+  harness.check ((l9.multiply(l77e).toString()).equals("0.9506172753"), "mul042");
   
   // test some more edge cases and carries
   harness.check (((new BigDecimal("9")).multiply(new BigDecimal("9")).toString()).equals("81"), "mul101");
@@ -2084,7 +2074,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("-1")).movePointLeft(0).toString()).equals("-1"), "mpl004");
   harness.check (((new BigDecimal("-1")).movePointLeft(+1).toString()).equals("-0.1"), "mpl005");
   harness.check (((new BigDecimal("-1")).movePointLeft(+5).toString()).equals("-0.00001"), "mpl006");
-  harness.check (((new BigDecimal("-1")).movePointLeft(+10).toString()).equals("-0.0000000001"), "mpl007");
+  harness.check (((new BigDecimal("-1")).movePointLeft(+10).toString()).equals("-1E-10"), "mpl007");
   
   harness.check (((new BigDecimal("0")).movePointLeft(-10).toString()).equals("0"), "mpl010");
   harness.check (((new BigDecimal("0")).movePointLeft(-5).toString()).equals("0"), "mpl010");
@@ -2092,7 +2082,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0")).movePointLeft(0).toString()).equals("0"), "mpl010");
   harness.check (((new BigDecimal("0")).movePointLeft(+1).toString()).equals("0.0"), "mpl010");
   harness.check (((new BigDecimal("0")).movePointLeft(+5).toString()).equals("0.00000"), "mpl010");
-  harness.check (((new BigDecimal("0")).movePointLeft(+10).toString()).equals("0.0000000000"), "mpl010");
+  harness.check (((new BigDecimal("0")).movePointLeft(+10).toString()).equals("0E-10"), "mpl010");
   
   harness.check (((new BigDecimal("+1")).movePointLeft(-10).toString()).equals("10000000000"), "mpl020");
   harness.check (((new BigDecimal("+1")).movePointLeft(-5).toString()).equals("100000"), "mpl021");
@@ -2100,7 +2090,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("+1")).movePointLeft(0).toString()).equals("1"), "mpl023");
   harness.check (((new BigDecimal("+1")).movePointLeft(+1).toString()).equals("0.1"), "mpl024");
   harness.check (((new BigDecimal("+1")).movePointLeft(+5).toString()).equals("0.00001"), "mpl025");
-  harness.check (((new BigDecimal("+1")).movePointLeft(+10).toString()).equals("0.0000000001"), "mpl026");
+  harness.check (((new BigDecimal("+1")).movePointLeft(+10).toString()).equals("1E-10"), "mpl026");
   
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(-10).toString()).equals("50000000000"), "mpl030");
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(-5).toString()).equals("500000"), "mpl031");
@@ -2108,7 +2098,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(0).toString()).equals("5"), "mpl033");
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(+1).toString()).equals("0.5"), "mpl034");
   harness.check (((new BigDecimal("0.5E+1")).movePointLeft(+5).toString()).equals("0.00005"), "mpl035");
-  harness.check (((new BigDecimal("0.5E+1")).movePointLeft(+10).toString()).equals("0.0000000005"), "mpl036");
+  harness.check (((new BigDecimal("0.5E+1")).movePointLeft(+10).toString()).equals("5E-10"), "mpl036");
   
   return;}
 /* ----------------------------------------------------------------- */
@@ -2122,7 +2112,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("-1")).movePointRight(0).toString()).equals("-1"), "mpr004");
   harness.check (((new BigDecimal("-1")).movePointRight(-1).toString()).equals("-0.1"), "mpr005");
   harness.check (((new BigDecimal("-1")).movePointRight(-5).toString()).equals("-0.00001"), "mpr006");
-  harness.check (((new BigDecimal("-1")).movePointRight(-10).toString()).equals("-0.0000000001"), "mpr007");
+  harness.check (((new BigDecimal("-1")).movePointRight(-10).toString()).equals("-1E-10"), "mpr007");
   
   harness.check (((new BigDecimal("0")).movePointRight(+10).toString()).equals("0"), "mpr010");
   harness.check (((new BigDecimal("0")).movePointRight(+5).toString()).equals("0"), "mpr011");
@@ -2130,7 +2120,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0")).movePointRight(0).toString()).equals("0"), "mpr013");
   harness.check (((new BigDecimal("0")).movePointRight(-1).toString()).equals("0.0"), "mpr014");
   harness.check (((new BigDecimal("0")).movePointRight(-5).toString()).equals("0.00000"), "mpr015");
-  harness.check (((new BigDecimal("0")).movePointRight(-10).toString()).equals("0.0000000000"), "mpr016");
+  harness.check (((new BigDecimal("0")).movePointRight(-10).toString()).equals("0E-10"), "mpr016");
   
   harness.check (((new BigDecimal("+1")).movePointRight(+10).toString()).equals("10000000000"), "mpr020");
   harness.check (((new BigDecimal("+1")).movePointRight(+5).toString()).equals("100000"), "mpr021");
@@ -2138,7 +2128,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("+1")).movePointRight(0).toString()).equals("1"), "mpr023");
   harness.check (((new BigDecimal("+1")).movePointRight(-1).toString()).equals("0.1"), "mpr024");
   harness.check (((new BigDecimal("+1")).movePointRight(-5).toString()).equals("0.00001"), "mpr025");
-  harness.check (((new BigDecimal("+1")).movePointRight(-10).toString()).equals("0.0000000001"), "mpr026");
+  harness.check (((new BigDecimal("+1")).movePointRight(-10).toString()).equals("1E-10"), "mpr026");
   
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(+10).toString()).equals("50000000000"), "mpr030");
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(+5).toString()).equals("500000"), "mpr031");
@@ -2146,7 +2136,7 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(0).toString()).equals("5"), "mpr033");
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(-1).toString()).equals("0.5"), "mpr034");
   harness.check (((new BigDecimal("0.5E+1")).movePointRight(-5).toString()).equals("0.00005"), "mpr035");
-  harness.check (((new BigDecimal("0.5E+1")).movePointRight(-10).toString()).equals("0.0000000005"), "mpr036");
+  harness.check (((new BigDecimal("0.5E+1")).movePointRight(-10).toString()).equals("5E-10"), "mpr036");
   
   return;}
 /* ----------------------------------------------------------------- */
@@ -2158,9 +2148,9 @@ public class DiagBigDecimal implements Testlet {
   harness.check (((new BigDecimal("-10")).scale())==0, "sca002");
   harness.check (((new BigDecimal("+1")).scale())==0, "sca003");
   harness.check (((new BigDecimal("+10")).scale())==0, "sca004");
-  harness.check (((new BigDecimal("1E+10")).scale())==0, "sca005");
+  harness.check (((new BigDecimal("1E+10")).scale())==-10, "sca005");
   harness.check (((new BigDecimal("1E-10")).scale())==10, "sca006");
-  harness.check (((new BigDecimal("0E-10")).scale())==0, "sca007");
+  harness.check (((new BigDecimal("0E-10")).scale())==10, "sca007");
   harness.check (((new BigDecimal("0.000")).scale())==3, "sca008");
   harness.check (((new BigDecimal("0.00")).scale())==2, "sca009");
   harness.check (((new BigDecimal("0.0")).scale())==1, "sca010");
@@ -2384,20 +2374,11 @@ public class DiagBigDecimal implements Testlet {
   harness.check ((BigDecimal.valueOf(lzer,1).toString()).equals("0.0"), "val018");
   harness.check ((BigDecimal.valueOf(lzer,2).toString()).equals("0.00"), "val019");
   harness.check ((BigDecimal.valueOf(lzer,3).toString()).equals("0.000"), "val020");
-  harness.check ((BigDecimal.valueOf(lzer,10).toString()).equals("0.0000000000"), "val021");
+  harness.check ((BigDecimal.valueOf(lzer,10).toString()).equals("0E-10"), "val021");
   
   harness.check ((BigDecimal.valueOf(lmin,7).toString()).equals("-922337203685.4775808"), "val022");
   harness.check ((BigDecimal.valueOf(lmax,11).toString()).equals("92233720.36854775807"), "val023");
 
-  try{checkscale:do{
-   BigDecimal.valueOf((long)23,-8);
-   flag=false;
-  }while(false);}
-  catch (java.lang.NumberFormatException xx127){e=xx127;
-   flag=checkMessage(e, "Negative scale: -8");
-  }/*checkscale*/
-  harness.check (flag, "val100");
-  
   return;}
 
  

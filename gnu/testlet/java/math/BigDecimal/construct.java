@@ -34,8 +34,14 @@ public class construct implements Testlet
     // This example comes from the documentation.
     harness.check(new BigDecimal (0.1).toString (),
 		  "0.1000000000000000055511151231257827021181583404541015625");
-    harness.check(new BigDecimal ("0.01E5").toString (), "1000");
-    harness.check(new BigDecimal ("1000E-5").toString (), "0.01000");
+    
+    try {
+       harness.check(new BigDecimal ("0.01E5").toString (), "1E+3");
+       harness.check(new BigDecimal ("1000E-5").toString (), "0.01000");
+    } 
+    catch (Exception e) {
+       harness.fail("Exception should not be thrown here." + e);
+    }
     // Add more as needed.
   }
 }

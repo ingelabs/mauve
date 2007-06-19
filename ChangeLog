@@ -1,3 +1,18 @@
+2007-06-19  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/setScale.java
+	(test): Changed constant used.
+	* gnu/testlet/java/math/BigDecimal/construct.java
+	(test): Added try/catch block.
+	* gnu/testlet/java/math/BigDecimal/DiagBigDecimal.java
+	(diagadd): Fixed expected value. toString has changed in JDK 1.5.0
+	(diagmin): Likewise.
+	(diagmax): Likewise.
+	(diagmultiply): Likewise.
+	(diagmovepointleft): Likewise.
+	(diagmovepointright): Likewise.
+	(diagscale): Likewise.
+
 2007-06-19  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/text/Collator/GetSet.java: Fixed failing test.

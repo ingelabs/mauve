@@ -34,7 +34,7 @@ public class setScale implements Testlet
     BigDecimal result = amount.multiply (rate);
     try
       {
-        BigDecimal foo = result.setScale(-1, BigDecimal.ROUND_HALF_UP);
+        BigDecimal foo = result.setScale(-1, BigDecimal.ROUND_UNNECESSARY);
 	harness.fail ("Failed to catch ArithmeticException");
       }
     catch (ArithmeticException e)
