@@ -1,3 +1,15 @@
+2007-06-19  Tania Bento  <tbento@redhat.com>
+
+	* gnu/testlet/java/text/Collator/GetSet.java: Fixed failing test.
+	* gnu/testlet/java/text/DateFormatSymbols/Test.java: Likewise.
+	* gnu/testlet/java/text/DecimalFormat/MaximumAndMinimumDigits.java: 
+	Likewise.
+	* gnu/testlet/java/text/DecimalFormat/digits.java: Likewise.
+	* gnu/testlet/java/text/DecimalFormat/setDecimalFormatSymbols.java:
+	Likewise.
+	* gnu/testlet/java/text/DecimalFormat/toPattern.java: Likewise.
+	* gnu/testlet/java/text/DecimalFormat/toPattern14.java: Likewise.	
+
 2007-06-19  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/io/FilePermission/simple.java: Removed invalid
