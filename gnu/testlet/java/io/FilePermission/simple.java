@@ -112,13 +112,6 @@ public class simple implements Testlet
     catch (java.lang.IllegalArgumentException ex) {
       harness.check(true);
     }
-    // The following case fails under JDK 1.4.2.  IMO, its a bug.
-    try {
-      harness.check(new FilePermission("/tmp/p", ",read") == null);
-    }
-    catch (java.lang.IllegalArgumentException ex) {
-      harness.check(true);
-    }
     try {
       harness.check(new FilePermission("/tmp/p", "read,") == null);
     }

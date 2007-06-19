@@ -1,3 +1,8 @@
+2007-06-19  Lillian Angel  <langel@redhat.com>
+
+	* gnu/testlet/java/io/FilePermission/simple.java: Removed invalid
+	test. Bug has been fixed in the JDK.
+
 2007-06-18  Lillian Angel  <langel@redhat.com>
 
 	* gnu/testlet/java/sql/Array/ArrayTest.java: Added missing functions
