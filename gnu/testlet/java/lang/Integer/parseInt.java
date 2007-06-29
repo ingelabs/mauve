@@ -95,14 +95,15 @@ public class parseInt implements Testlet
 	harness.check(true);
       }
 
+    // In JDK1.7, '+' is considered a valid character.
     try
       {
         i = Integer.parseInt("+10");
-	harness.fail("Leading '+' must throw NumberFormatException");
+        harness.check(true);
       }
     catch (NumberFormatException nfe)
       {
-	harness.check(true);
+    	harness.fail("Leading '+' does not throw NumberFormatException");
       }
 
     try
