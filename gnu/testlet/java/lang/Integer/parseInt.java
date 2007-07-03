@@ -95,6 +95,16 @@ public class parseInt implements Testlet
 	harness.check(true);
       }
 
+    try
+    {
+      i = Integer.parseInt("+");
+	harness.fail("Single '+' must throw NumberFormatException");
+    }
+  catch (NumberFormatException nfe)
+    {
+	harness.check(true);
+    }
+  
     // In JDK1.7, '+' is considered a valid character.
     try
       {
