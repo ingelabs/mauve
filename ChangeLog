@@ -1,3 +1,12 @@
+2007-07-06  Mario Torre  <neugens@limasoftware.net>
+
+	* gnu/testlet/javax/sound/sampled: new package.
+	* gnu/testlet/javax/sound/sampled/AudioProperties.java: 
+	new file.
+	* gnu/testlet/javax/sound/sampled/data/k3b_success1.wav: 
+	new file. This is a binary audio file needed by the test.
+	The file is from the k3b-1.0.1-1.fc7.2 package (GPL, fedora 7)
+
 2007-07-03  Tania Bento  <tbento@redhat.com>
 
 	* gnu/testlet/java/lang/Integer/parseInt.java:
