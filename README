@@ -10,7 +10,7 @@ given runtime.
 This file has two main sections:
 0) CONFIGURING AND BUILDING THE TESTSUITE
 1) RUNNING THE TESTS
-
+2) NOTES
 
 
 ******CONFIGURING AND BUILDING THE TESTSUITE*******
@@ -279,3 +279,21 @@ section provides instructions on how to perform the following tasks:
   will run with auto-compilation enabled with the ecj jar being 
   /usr/share/java/eclipse-ecj.jar and the bootclasspath found automatically.
 
+
+
+
+******NOTES*******
+This section explains some additional notes to take into account when using
+Mauve. It has the following subsections:
+  0. External Data
+  
+0. External Data
+
+  Tests can have additional data included. Usually, data is located either
+  in the same package of the test, or in a subpackage.
+  The following files come from external sources. The list includes the
+  last known license at time the file was added, the source and the location
+  in Mauve. For details on the use see the corresponding tests.
+  
+  * gnu/testlet/javax/sound/sampled/data/k3b_success1.wav, GPL,
+  k3b-1.0.1-1.fc7.2 (fedora 7)

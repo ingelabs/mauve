@@ -1,5 +1,9 @@
 2007-07-06  Mario Torre  <neugens@limasoftware.net>
 
+	* README: added "NOTES" section.
+
+2007-07-06  Mario Torre  <neugens@limasoftware.net>
+
 	* gnu/testlet/javax/sound/sampled: new package.
 	* gnu/testlet/javax/sound/sampled/AudioProperties.java: 
 	new file.
