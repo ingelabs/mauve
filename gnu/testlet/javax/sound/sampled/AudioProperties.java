@@ -27,7 +27,6 @@ package gnu.testlet.javax.sound.sampled;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -46,6 +45,7 @@ public class AudioProperties implements Testlet
   private static final String BASE_PATH =
     "gnu#testlet#javax#sound#sampled#data#";
   private static final String WAV = BASE_PATH + "k3b_success1.wav";
+  private static final String AU = BASE_PATH + "k3b_success1.au";
   
   protected TestHarness harness = null;
 
@@ -53,6 +53,7 @@ public class AudioProperties implements Testlet
   {
     this.harness = harness;
     this.testWav();
+    this.testAU();
   }
   
   private void processWaveStream(AudioInputStream stream)
@@ -69,7 +70,50 @@ public class AudioProperties implements Testlet
     this.harness.check(format.getFrameRate() == 8000.0);
     this.harness.check(format.getSampleSizeInBits() == 8);
   }
+  
+  private void processAUStream(AudioInputStream stream)
+  {
+    AudioFormat format = stream.getFormat();
 
+    // NOTE: we don't check for encoding, because our backend is unable
+    // to get the correct encoding as defined by AudioFormat.Encoding
+    // this is not a problem, because the encodings specified do not
+    // make sense in most cases.
+    this.harness.check(format.getFrameSize() == 2);        
+    this.harness.check(format.getChannels() == 1);
+    this.harness.check(format.getSampleRate() == 8000.0);
+    this.harness.check(format.getFrameRate() == 8000.0);
+    this.harness.check(format.getSampleSizeInBits() == 16);
+  }
+  
+  private AudioInputStream getAudioStream(String filepath, boolean stream)
+    throws IOException, UnsupportedAudioFileException
+  {
+    File file = null;
+    try
+      {
+        file = this.harness.getResourceFile(filepath);
+      }
+    catch (ResourceNotFoundException e1)
+      {
+        throw new IOException("ResourceNotFoundException: check the correct " +
+                              "input file location");
+      }
+    
+    AudioInputStream audioInputStream = null;  
+    if (stream)
+      {
+        audioInputStream =
+          AudioSystem.getAudioInputStream(new FileInputStream(file));
+      }
+    else
+      {
+        audioInputStream = AudioSystem.getAudioInputStream(file);
+      }
+    
+    return audioInputStream;
+  }
+  
   /**
    * Read a wav file and check if the expected properties match
    * the actual result.
@@ -77,30 +121,16 @@ public class AudioProperties implements Testlet
   private void testWav()
   {
     this.harness.checkPoint("testWav()");
-    
-    File wav = null;
-    try
-      {
-        wav = this.harness.getResourceFile(WAV);
-      }
-    catch (ResourceNotFoundException e1)
-      {
-        this.harness.fail("ResourceNotFoundException: check the correct " +
-                          "input file location");
-        return;
-      }
-    
+     
     try
       {
         this.harness.checkPoint("testWav() - FILE");
-        AudioInputStream audioInputStream =
-          AudioSystem.getAudioInputStream(wav);
+        AudioInputStream audioInputStream = getAudioStream(WAV, false);
         
         processWaveStream(audioInputStream);
         
         this.harness.checkPoint("testWav() - STREAM");
-        AudioInputStream audioInputStream2 =
-          AudioSystem.getAudioInputStream(new FileInputStream(wav));
+        AudioInputStream audioInputStream2 = getAudioStream(WAV, true);
         
         processWaveStream(audioInputStream2);
       }
@@ -111,7 +141,34 @@ public class AudioProperties implements Testlet
       }
     catch (IOException e)
       {
-        this.harness.fail("IOException: check the correct input file location");
+        this.harness.fail(e.getMessage());
+      }
+  }
+  
+  private void testAU()
+  {
+    this.harness.checkPoint("testAU()");
+    
+    try
+      {
+        this.harness.checkPoint("testAU() - FILE");
+        AudioInputStream audioInputStream = getAudioStream(AU, false);
+      
+        processAUStream(audioInputStream);
+      
+        this.harness.checkPoint("testAU() - STREAM");
+        AudioInputStream audioInputStream2 = getAudioStream(AU, true);
+      
+        processAUStream(audioInputStream2);
+      }
+    catch (UnsupportedAudioFileException e)
+      {
+        this.harness.fail("AU files should be supported by any" +
+                        " implementation");
+      }
+    catch (IOException e)
+      {
+        this.harness.fail(e.getMessage());
       }
   }
 }

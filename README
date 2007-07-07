@@ -297,3 +297,5 @@ Mauve. It has the following subsections:
   
   * gnu/testlet/javax/sound/sampled/data/k3b_success1.wav, GPL,
   k3b-1.0.1-1.fc7.2 (fedora 7)
+  * gnu/testlet/javax/sound/sampled/data/k3b_success1.au, GPL,
+  converted from k3b_success1.wav.
