@@ -30,7 +30,7 @@ public class parse implements Testlet
 {
   public void test(TestHarness harness)
   {
-    SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.US);
+    SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.UK);
     sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 
     Map toTest = new HashMap();
@@ -59,16 +59,18 @@ public class parse implements Testlet
     doParse(harness, sdf, toTest);
 
     // long and short names should both work.
-    sdf.applyPattern("EEE MMM");
+    sdf = new SimpleDateFormat("EEE MMM", Locale.UK);
+    sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
     toTest.clear();
-    toTest.put("Sat Jun", new Date(13478400000L));
+    toTest.put("Sat Jun", new Date(13478400000L)); //saturday, june 6th, 1970, 02:00:00
     toTest.put("Saturday June", new Date(13478400000L));
     doParse(harness, sdf, toTest);
     sdf.applyPattern("EEEE MMMM");
     doParse(harness, sdf, toTest);
 
     /* Test case from bug #11583 */
-    SimpleDateFormat sdf1 = new SimpleDateFormat("MMM dd, yyyy");
+    SimpleDateFormat sdf1 = new SimpleDateFormat("MMM dd, yyyy", Locale.UK);
+    sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
     toTest = new HashMap();
     toTest.put("dec 31, 2004", new Date(1104451200000L));
     doParse(harness, sdf1, toTest);
