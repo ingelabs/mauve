@@ -44,6 +44,9 @@ import java.text.*;
 import java.util.Date;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
+import java.util.TimeZone;
+
 
 public class attribute implements Testlet {
 
@@ -109,11 +112,15 @@ public class attribute implements Testlet {
     try
       {
 	Date date = new Date(1471228928L);
-	SimpleDateFormat format2 = new SimpleDateFormat("yyyy.MM.dd hh:kk:mm:ss 'zone' zzzz");
+	SimpleDateFormat format2 = new SimpleDateFormat("yyyy.MM.dd hh:kk:mm:ss 'zone' zzzz", Locale.UK);
+	format2.setTimeZone(TimeZone.getTimeZone("UTC"));
 	AttributedCharacterIterator iterator = 
 	  format2.formatToCharacterIterator(date);
+	
+	//Needed a larger range since time zones can have extended formats
+	//i.e. 'Coordinated Universal Time' or UTC, GMT, etc.
 	int[] range = new int[]
-	  { 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20, 22, 28, 37};
+	  { 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20, 22, 28, 70};
 	Object[] attrs = new Object[] {
 	  DateFormat.Field.YEAR, null, DateFormat.Field.MONTH, null, DateFormat.Field.DAY_OF_MONTH,
 	  null, DateFormat.Field.HOUR1, null, DateFormat.Field.HOUR_OF_DAY1, null,
