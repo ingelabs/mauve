@@ -4,7 +4,7 @@
 	(test):	Added a timezone change to match the test date
 	* gnu/testlet/java/text/SimpleDateFormat/parse.java:
 	(test): Added a timezone change and Locale to match test
-	* gnu/testlet/java/text/SimpleDateFormat/cloning.java:
+	* gnu/testlet/java/text/SimpleDateFormat/Cloning.java:
 	(test): Changed equality operator from != to .equals
 
 2007-07-07  Mario Torre  <neugens@limasoftware.net>
