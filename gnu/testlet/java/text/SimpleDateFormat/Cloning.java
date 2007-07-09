@@ -25,6 +25,7 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Check for correct cloning behaviour in the SimpleDateFormat
@@ -46,8 +47,8 @@ public class Cloning
     harness.check(format1.getDateFormatSymbols() !=
 		  format2.getDateFormatSymbols(),
 		  "Cloned symbols");
-    harness.check(format1.get2DigitYearStart() !=
-		  format2.get2DigitYearStart(),
+
+	harness.check(format1.get2DigitYearStart().equals(format2.get2DigitYearStart()),
 		  "Cloned 2 digit year start date");
   }
 
