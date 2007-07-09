@@ -1,3 +1,12 @@
+2007-07-09	Joshua Sumali	<jsumali@redhat.com>
+
+	* gnu/testlet/java/text/SimpleDateFormat/attribute.java:
+	(test):	Added a timezone change to match the test date
+	* gnu/testlet/java/text/SimpleDateFormat/parse.java:
+	(test): Added a timezone change and Locale to match test
+	* gnu/testlet/java/text/SimpleDateFormat/cloning.java:
+	(test): Changed equality operator from != to .equals
+
 2007-07-07  Mario Torre  <neugens@limasoftware.net>
 
 	* gnu/testlet/javax/sound/sampled/AudioProperties.java: 
