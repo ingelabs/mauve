@@ -145,9 +145,9 @@ public class check implements Testlet
       {
 	harness.fail("Expression set failed");
       }
-    harness.check(res4 instanceof Integer);
-    harness.check(((Integer)res4).intValue() == 3,
-		  "Test Expression of array and method named set");
+    //Array.set is public static void and should have no return value
+    harness.check(res4 == null);
+
     harness.check(iarray[2] == 6);
 
     Object arg5[] = { new Integer(2) };

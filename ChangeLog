@@ -1,3 +1,8 @@
+2007-07-10	Joshua Sumali	<jsumali@redhat.com>
+
+	* gnu/testlet/java/beans/Expression/check.java:
+	(test):	Fixed incorrect test.
+
 2007-07-09	Joshua Sumali	<jsumali@redhat.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/attribute.java:
