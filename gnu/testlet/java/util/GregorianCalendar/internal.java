@@ -394,15 +394,17 @@ public class internal implements Testlet
 		if (setOrder[i] == Calendar.WEEK_OF_YEAR)
 		  {
 		    // YEAR + DAY_OF_WEEK + WEEK_OF_YEAR
-		    // (the rest)
 		    expectTime = 1176361200000L;
 		  }
-		else
+		else if (setOrder[i] == Calendar.WEEK_OF_MONTH)
 		  {
 		    // YEAR + MONTH + WEEK_OF_MONTH + DAY_OF_WEEK
-		    // (some of them)
 		    expectTime = 1177570800000L;
 		  }
+		else {
+			// rest of them
+			expectTime = 1178175600000L;
+		}
 		break;
 	      }
 	  }
