@@ -1,5 +1,12 @@
 2007-07-13	Joshua Sumali	<jsumali@redhat.com>
 
+	* gnu/testlet/java/text/SimpleDateFormat/getDateFormatSymbols.java
+	(test): Fixed incorrect test.
+	* gnu/testlet/java/text/SimpleDateFormat/setDateFormatSymbols.java
+	(test): Fixed incorrect test.
+
+2007-07-13	Joshua Sumali	<jsumali@redhat.com>
+
 	* gnu/testlet/java/util/GregorianCalendar/internal.java
 	(test): Fixed incorrect test.
 

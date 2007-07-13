@@ -28,6 +28,7 @@ import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Some checks for the getDateFormatSymbols() method in the SimpleDateFormat
@@ -47,6 +48,7 @@ public class getDateFormatSymbols implements Testlet
     // symbols, so updating them should not affect the results of the
     // date formatter...
     SimpleDateFormat sdf = new SimpleDateFormat("E", Locale.UK);
+    sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
     Date jan1_2005 = new Date(1104537600000L);
     harness.check(sdf.format(jan1_2005), "Sat");
     DateFormatSymbols s = sdf.getDateFormatSymbols();

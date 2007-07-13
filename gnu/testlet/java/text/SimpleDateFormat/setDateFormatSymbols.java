@@ -28,6 +28,7 @@ import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Some checks for the setDateFormatSymbols() method in the SimpleDateFormat
@@ -45,6 +46,7 @@ public class setDateFormatSymbols implements Testlet
   {
     // check that changing the short weekdays does work...
     SimpleDateFormat sdf = new SimpleDateFormat("E", Locale.UK);
+    sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
     Date jan1_2005 = new Date(1104537600000L);
     harness.check(sdf.format(jan1_2005), "Sat");
     DateFormatSymbols s = sdf.getDateFormatSymbols();
