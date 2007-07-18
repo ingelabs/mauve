@@ -85,7 +85,6 @@ public abstract class UnicodeBase implements Testlet {
 			// 0 - Code value
 			str = getNext(bir);
 			int code = Integer.parseInt(str, 16);
-			//harness.debug(""+code);
 			ci.code = code;
 
 			// 1 - Character name
