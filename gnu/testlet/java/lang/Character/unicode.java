@@ -51,7 +51,7 @@ public class unicode extends UnicodeBase implements Testlet
 
   public void test(TestHarness harness)
   {
-    String fileName = "UnicodeData-3.0.0.txt";
+    String fileName = "UnicodeData-4.0.0.txt";
     long start = System.currentTimeMillis();
     try
       {
