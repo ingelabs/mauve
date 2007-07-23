@@ -1,14 +1,14 @@
-2007-07-18   Joshua Sumali   <jsumali@redhat.com>
+2007-07-18	Joshua Sumali	<jsumali@redhat.com>
 
-   * gnu/testlet/java/lang/Character/CharInfo.java:
-   Added a new instance variable to store Unicode character code
-   * gnu/testlet/java/lang/Character/unicode.java:
-   (test): Changed the Unicode file to use from version 3 to 4
-   * gnu/testlet/java/lang/Character/UnicodeBase.java:
-   Changed implementation of the test to work with Unicode version 4.
-   * gnu/testlet/java/lang/Character/UnicodeData-4.0.0.txt:
-   Added new Unicode data file (version 4).
-
+	* gnu/testlet/java/lang/Character/CharInfo.java:
+	Added a new instance variable to store Unicode character code
+	* gnu/testlet/java/lang/Character/unicode.java:
+	(test): Changed the Unicode file to use from version 3 to 4
+	* gnu/testlet/java/lang/Character/UnicodeBase.java:
+	Changed implementation of the test to work with Unicode version 4.
+	* gnu/testlet/java/lang/Character/UnicodeData-4.0.0.txt:
+	Added new Unicode data file (version 4).
+	
 2007-07-13	Joshua Sumali	<jsumali@redhat.com>
 
 	* gnu/testlet/java/text/SimpleDateFormat/getDateFormatSymbols.java
