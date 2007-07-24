@@ -1,3 +1,8 @@
+2007-07-24	Joshua Sumali	<jsumali@redhat.com>
+
+	* gnu/testlet/java/net/HttpURLConnection/timeout.java:
+	(testConnectTimeout): Fixed test.
+
 2007-07-18	Joshua Sumali	<jsumali@redhat.com>
 
 	* gnu/testlet/java/lang/Character/CharInfo.java:
