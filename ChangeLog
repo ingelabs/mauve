@@ -1,5 +1,10 @@
 2007-07-24	Joshua Sumali	<jsumali@redhat.com>
 
+	* gnu/testlet/java/util/logging/XMLFormatter/formatMessage.java:
+	(EXPECTED_PREFIX): Fixed expected string.
+
+2007-07-24	Joshua Sumali	<jsumali@redhat.com>
+
 	* gnu/testlet/java/net/HttpURLConnection/timeout.java:
 	(testConnectTimeout): Fixed test.
 

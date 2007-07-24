@@ -28,6 +28,7 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.XMLFormatter;
 
+import java.util.TimeZone;
 
 /**
  * @author <a href="mailto:brawer@dandelis.ch">Sascha Brawer</a>
@@ -58,6 +59,11 @@ public class formatMessage
 
     // Check #2.
     rec = new LogRecord(Level.INFO, "foobar");
+    
+    //Need to force the default time zone to UTC or else
+    //the comparison uses system time zone and makes the tests
+    //break.
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     rec.setMillis(1234567);
     rec.setSequenceNumber(42);
     rec.setThreadID(21);
@@ -124,9 +130,11 @@ public class formatMessage
   }
 
 
+  //1234567 milliseconds is only 20 minutes and 
+  //34 seconds (past the Epoch, UTC time).
   private static final String EXPECTED_PREFIX =
      "<record>\n"
-    + "  <date>1970-01-01T01:20:34</date>\n"
+    + "  <date>1970-01-01T00:20:34</date>\n"
     + "  <millis>1234567</millis>\n"
     + "  <sequence>42</sequence>\n"
     + "  <level>INFO</level>\n";
