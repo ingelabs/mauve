@@ -9,6 +9,10 @@ TESTFLAGS =
 
 check_DATA = $(STAMP)
 
+EXTRA_DIST =  Harness.java RunnerProcess.java gnu junit
+
+VERSION = ${shell date +%F}
+
 harness_files = \
 	Harness.java \
 	RunnerProcess.java \

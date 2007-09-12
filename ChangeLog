@@ -1,3 +1,12 @@
+2007-09-12	Joshua Sumali	<jsumali@redhat.com>
+
+	* Makefile.am: Added source files for 'make dist' target.
+	* Makefile.in: Regenerated.
+	* aclocal.m4: Regenerated.
+	* configure.in: Added tar-pax check, needed for long filenames
+	included in the dist tarball.
+	* configure: Regenerated.	
+
 2007-07-24	Joshua Sumali	<jsumali@redhat.com>
 
 	* gnu/testlet/java/util/logging/XMLFormatter/formatMessage.java:

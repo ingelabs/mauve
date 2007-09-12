@@ -1,6 +1,7 @@
 dnl Process this with autoconf to create configure
-AC_INIT(gnu/testlet/Testlet.java)
-AM_INIT_AUTOMAKE(mauve, 0.0)
+AC_INIT([mauve],[0.0])
+AC_CONFIG_SRCDIR([gnu/testlet/Testlet.java])
+AM_INIT_AUTOMAKE([tar-pax])
 
 dnl Check path and file separator types
 ACX_CHECK_PATHNAME_STYLE_DOS
