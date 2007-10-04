@@ -1,3 +1,9 @@
+2007-10-03  Steve McKay  <smckay@google.com>
+	
+	* gnu/testlet/java/awt/Component/keyPressTest.java: Fixed test so
+	event is not created and dispatched. Completely waits for the frame to
+	receive and respond keypress events.
+
 2007-09-12	Joshua Sumali	<jsumali@redhat.com>
 
 	* Makefile.am: Added source files for 'make dist' target.
