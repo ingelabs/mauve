@@ -1,3 +1,21 @@
+2007-11-24  Mario Torre  <neugens@limasoftware.net>
+
+    * gnu/testlet/java/util/concurrent/CopyOnWriteArrayList: new package.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/RemoveAllTest.java:
+	test.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/RemoveTest.java:
+	likewise.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/AddAllAbsentTest.java:
+	likewise.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/SubListTest.java:
+	likewise.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/RetainAllTest.java:
+	likewise.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/TestIterators.java:
+	likewise.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/AddAllTest.java:
+	likewise.
+
 2007-10-03  Steve McKay  <smckay@google.com>
 	
 	* gnu/testlet/java/awt/Component/keyPressTest.java: Fixed test so
