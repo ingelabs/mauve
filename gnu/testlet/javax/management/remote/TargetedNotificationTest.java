@@ -34,7 +34,7 @@ public class TargetedNotificationTest
   public void test(TestHarness h)
   {
     TargetedNotification tn;
-    Notification n = new Notification("", null, 1);
+    Notification n = new Notification("", this, 1);
     h.checkPoint("Constructor tests");
     try
       {
