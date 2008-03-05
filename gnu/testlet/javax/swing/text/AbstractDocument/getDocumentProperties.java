@@ -1,5 +1,5 @@
-/* getDocumentProperties.java -- FIXME: describe
-   Copyright (C) 2006 FIXME: your info here
+/* getDocumentProperties.java -- Tests AbstractDocument.getDocumentProperties()
+   Copyright (C) 2006 Roman Kennke <roman@kennke.org>
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 */
 
-// Tags: FIXME
+// Tags: JDK1.2
 
 package gnu.testlet.javax.swing.text.AbstractDocument;
 

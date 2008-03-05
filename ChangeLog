@@ -1,3 +1,10 @@
+2008-03-05  Roman Kennke <kennke@aicas.com>
+
+	* gnu/testlet/javax/swing/text/AbstractDocument/getDocumentProperties.java:
+	Fixed copyright notice.
+	* gnu/testlet/javax/swing/text/Utilities/getBreakLocation.java:
+	Removed bogus test.
+
 2008-02-29  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/java/lang/StringBuffer/PR34840.java:
