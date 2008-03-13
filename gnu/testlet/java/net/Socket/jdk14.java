@@ -78,5 +78,29 @@ public class jdk14 implements Testlet
 	server.close();
       } catch(IOException ignored) {}
     }
+
+    try
+      {
+        harness.checkPoint("bind to any local address");
+	sock = new Socket();
+	InetAddress ia = null;
+	InetSocketAddress sa = new InetSocketAddress(ia, 30006);
+	sock.bind(sa);
+	harness.check(true);
+      }
+    catch (Exception e)
+      {
+	harness.debug(e);
+	harness.fail("unexpected error: bind() threw an exception");
+      }
+    finally
+      {
+	try
+	  {
+	    if (sock != null)
+	      sock.close();
+	  }
+	catch(IOException ignored) {}
+      }
   }
 }

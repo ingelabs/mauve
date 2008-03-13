@@ -1,3 +1,8 @@
+2008-03-12  David Daney  <ddaney@avtrex.com>
+
+	* gnu/testlet/java/net/Socket/jdk14.java (test): Add 'bind to any
+	local address' test.
+
 2008-03-05  Roman Kennke <kennke@aicas.com>
 
 	* gnu/testlet/javax/swing/text/AbstractDocument/getDocumentProperties.java:
