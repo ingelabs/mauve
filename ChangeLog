@@ -1,3 +1,10 @@
+2008-03-25  Mario Torre  <neugens@aicas.com>
+
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/Clone.java:
+	New test.
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/Equals.java:
+	likewise.
+
 2008-03-12  David Daney  <ddaney@avtrex.com>
 
 	* gnu/testlet/java/net/Socket/jdk14.java (test): Add 'bind to any
