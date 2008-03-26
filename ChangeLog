@@ -1,3 +1,8 @@
+2008-03-26  Mario Torre  <neugens@aicas.com>
+
+	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/SubListTest.java (test): 
+	new test implemented.
+
 2008-03-25  Mario Torre  <neugens@aicas.com>
 
 	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/Clone.java:
