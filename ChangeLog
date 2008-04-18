@@ -1,3 +1,8 @@
+2008-04-18  Mario Torre  <neugens@aicas.com>
+
+	* gnu/testlet/java/util/logging/Logger/ConcurrentLogging.java: test for
+	PR35974.
+
 2008-03-26  Mario Torre  <neugens@aicas.com>
 
 	* gnu/testlet/java/util/concurrent/CopyOnWriteArrayList/SubListTest.java (test): 
