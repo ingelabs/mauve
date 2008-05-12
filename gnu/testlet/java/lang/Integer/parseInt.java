@@ -110,6 +110,7 @@ public class parseInt implements Testlet
       {
         i = Integer.parseInt("+10");
         harness.check(true);
+	harness.check(i, 10);
       }
     catch (NumberFormatException nfe)
       {
