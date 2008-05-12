@@ -64,7 +64,7 @@ public class regress implements Testlet
 	  }
 	catch (ParseException _)
 	  {
-	    harness.debug (_);
+	    harness.debug ("At index " + _.getErrorOffset() + " " + _);
 	    harness.check (false, tz);
 	  }
       }
