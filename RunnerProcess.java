@@ -214,6 +214,21 @@ public class RunnerProcess
             System.exit(0);
           if (testname.equals("_dump_data_"))
             {              
+              // Print the report if necessary.
+              if (report != null)
+                {
+                  File f = new File(xmlfile);
+                  try
+                    {
+                      report.writeXml(f);
+                    }
+                  catch (IOException e)
+                    {
+                      throw new Error("Failed to write data to xml file: "
+                                      + e.getMessage());
+                    }
+                }
+
               if (useEMMA)
                 dumpCoverageData();
               else
@@ -433,20 +448,6 @@ public class RunnerProcess
     
     // Print out a summary.
     int temp = harness.done();
-    // Print the report if necessary.
-    if (report != null)
-      {
-        File f = new File(xmlfile);
-        try
-          {
-            report.writeXml(f);
-          }
-        catch (IOException e)
-          {
-            throw new Error("Failed to write data to xml file: "
-                            + e.getMessage());
-          }
-      }
     
     // Report back to Harness that we've finished properly, whether the test
     // passed or failed.  Harness will wait for a message starting with 

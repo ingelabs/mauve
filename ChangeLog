@@ -1,5 +1,11 @@
 2008-05-19  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* RunnerProcess.java (runAndReport): Moved XML writing from
+	here...
+	(main): ...to here, so the XML file is only written once.
+
+2008-05-19  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/TestReport.java (esc): Filter invalid XML character
 	from java.util.regex.Pattern.pcrematches.
 
