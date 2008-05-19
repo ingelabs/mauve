@@ -124,6 +124,8 @@ public class TestReport
     str = str.replaceAll("&", "&amp;");
     str = str.replaceAll("<", "&lt;");
     str = str.replaceAll(">", "&gt;");
+    // This is a workaround for java.util.regex.Pattern.pcrematches.
+    str = str.replace('', '?');
     return str;
   }
 
