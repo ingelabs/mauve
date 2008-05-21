@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: JDK1.2
+// Uses: MyBeanContextSupport
 
 package gnu.testlet.java.beans.beancontext.BeanContextSupport;
 

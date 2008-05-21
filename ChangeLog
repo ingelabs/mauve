@@ -1,5 +1,17 @@
 2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* gnu/testlet/java/beans/beancontext/BeanContextServicesSupport/getChildBeanContextServicesListener.java:
+	Added appropriate Uses tag.
+	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildBeanContextChild.java,
+	gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildBeanContextMembershipListener.java,
+	gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildPropertyChangeListener.java,
+	gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildSerializable.java,
+	gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildVetoableChangeListener.java,
+	gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildVisibility.java,
+	gnu/testlet/java/beans/beancontext/BeanContextSupport/serialize.java: Likewise.
+
+2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/java/lang/management/ClassLoadingMXBeanTest.java:
 	Added appropriate Uses tag.
 	* gnu/testlet/java/lang/management/OperatingSystemMXBeanTest.java,
