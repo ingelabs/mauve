@@ -1,5 +1,18 @@
 2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* gnu/testlet/java/awt/Button/PaintTest.java: Added appropriate
+	Uses tag.
+	* gnu/testlet/java/awt/Canvas/PaintTest.java,
+	gnu/testlet/java/awt/Checkbox/PaintTest.java,
+	gnu/testlet/java/awt/Choice/PaintTest.java,
+	gnu/testlet/java/awt/List/testSetMultipleMode.java,
+	gnu/testlet/java/awt/image/ColorModel/constructors.java,
+	gnu/testlet/java/awt/image/ComponentSampleModel/constructors.java,
+	gnu/testlet/java/awt/image/LookupTable/constructor.java,
+	gnu/testlet/java/awt/image/Raster/createChild.java: Likewise.
+
+2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/java/awt/KeyboardFocusManager/getFocusOwner.java:
 	Added appropriate Uses tag.
 	* gnu/testlet/java/awt/KeyboardFocusManager/getGlobalFocusOwner.java,

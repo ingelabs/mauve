@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: JDK1.4
+// Uses: MyLookupTable
 
 package gnu.testlet.java.awt.image.LookupTable;
 

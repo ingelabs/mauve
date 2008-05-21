@@ -20,6 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: GUI, JDK 1.0
+// Uses: ../LocationTests
 
 package gnu.testlet.java.awt.Choice;
 

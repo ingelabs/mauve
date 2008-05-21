@@ -20,6 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: FIXME
+// Uses: ../../../javax/swing/ButtonGroup/isSelected
 
 package gnu.testlet.java.awt.List;
 
