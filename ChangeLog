@@ -1,5 +1,12 @@
 2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* gnu/testlet/java/awt/KeyboardFocusManager/getFocusOwner.java:
+	Added appropriate Uses tag.
+	* gnu/testlet/java/awt/KeyboardFocusManager/getGlobalFocusOwner.java,
+	gnu/testlet/java/awt/KeyboardFocusManager/getGlobalPermanentFocusOwner.java: Likewise.
+
+2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	*
 	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Element_Test.java:
 	Added appropriate Uses tag.
