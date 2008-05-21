@@ -1,5 +1,11 @@
 2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* gnu/testlet/javax/management/MBeanServerInvocationHandler/MBeanProxy.java:
+	Added appropriate Uses tag.
+	* gnu/testlet/javax/management/openmbean/CompositeDataInvocationHandler/Test.java: Likewise.
+
+2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/java/beans/beancontext/BeanContextServicesSupport/getChildBeanContextServicesListener.java:
 	Added appropriate Uses tag.
 	* gnu/testlet/java/beans/beancontext/BeanContextSupport/getChildBeanContextChild.java,

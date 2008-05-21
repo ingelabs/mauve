@@ -1,4 +1,5 @@
 // Tags: JDK1.5
+// Uses: ChildMXBean Colour Test TestX TestC TestMBean TestXMBean TestCMXBean
 
 // Copyright (C) 2007 Andrew John Hughes <gnu_andrew@member.fsf.org>
 

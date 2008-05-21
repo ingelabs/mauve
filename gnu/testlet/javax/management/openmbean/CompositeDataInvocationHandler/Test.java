@@ -1,4 +1,5 @@
 // Tags: JDK1.5
+// Uses: Person
 
 // Copyright (C) 2007 Andrew John Hughes <gnu_andrew@member.fsf.org>
 
