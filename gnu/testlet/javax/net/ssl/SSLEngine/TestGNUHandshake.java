@@ -20,6 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: GNU JESSIE
+// Uses: AbstractEngineTest SimpleX509KeyManager SimplePSKKeyManager SimpleX509TrustManager
 
 package gnu.testlet.javax.net.ssl.SSLEngine;
 
