@@ -1,5 +1,10 @@
 2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* gnu/testlet/java/util/EnumSet/ComplementOf.java: Added
+	appropriate Uses tag.
+
+2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/javax/net/ssl/SSLEngine/TestGNUHandshake.java: Added
 	appropriate Uses tag.
 	* gnu/testlet/javax/net/ssl/SSLEngine/TestHandshake.java,
