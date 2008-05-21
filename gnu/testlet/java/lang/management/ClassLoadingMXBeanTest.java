@@ -1,4 +1,5 @@
 // Tags: JDK1.5
+// Uses: BadGuy
 
 // Copyright (C) 2006 Andrew John Hughes <gnu_andrew@member.fsf.org>
 
