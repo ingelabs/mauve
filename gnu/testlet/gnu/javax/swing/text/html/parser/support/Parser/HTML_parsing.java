@@ -1,4 +1,5 @@
 // Tags: JDK1.2 GNU
+// Uses: TestCase Parser_Test
 
 // Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 

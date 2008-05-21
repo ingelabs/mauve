@@ -1,5 +1,19 @@
 2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	*
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Element_Test.java:
+	Added appropriate Uses tag.
+	* gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/HTML_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/HTML_parsing.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/HTML_randomTable.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/ParserEntityResolverTest.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/Token_locations.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/parameterDefaulter_Test.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/supplementaryNotifications.java,
+	gnu/testlet/gnu/javax/swing/text/html/parser/support/Parser/textPreProcessor_Test.java: Likewise.
+
+2008-05-21  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/javax/swing/DefaultButtonModel/setArmed.java: Added
 	appropriate Uses tag.
 	* gnu/testlet/javax/swing/DefaultButtonModel/setEnabled.java,

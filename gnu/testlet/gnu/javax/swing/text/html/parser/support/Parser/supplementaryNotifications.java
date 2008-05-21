@@ -1,4 +1,6 @@
 // Tags: JDK1.2 GNU
+// Uses: TestCase Parser_Test
+
 // supplementaryNotifications.java --
 //   Copyright (C) 2005, 2006 Free Software Foundation, Inc.
 
