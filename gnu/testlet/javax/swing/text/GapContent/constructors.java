@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: 1.2
+// Uses: MyGapContent
 
 package gnu.testlet.javax.swing.text.GapContent;
 

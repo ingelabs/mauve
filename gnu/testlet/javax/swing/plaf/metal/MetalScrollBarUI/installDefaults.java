@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: JDK1.5
+// Uses: MyMetalScrollBarUI
 
 package gnu.testlet.javax.swing.plaf.metal.MetalScrollBarUI;
 

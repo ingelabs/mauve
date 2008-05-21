@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: MyBasicComboBoxUILAF
 
 // Copyright (C) 2005, 2006 David Gilbert <david.gilbert@object-refinery.com>
 

@@ -1,4 +1,5 @@
 // Tags: JDK1.2 GUI
+// Uses: ../../../java/awt/LocationTests
 
 // Copyright (C) 2006 Red Hat
 

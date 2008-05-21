@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: JDK1.5
+// Uses: ../AccessibleJTableCell/MyBooleanTableCellRenderer
 
 package gnu.testlet.javax.swing.JTable.AccessibleJTable.AccessibleJTableHeaderCell;
 

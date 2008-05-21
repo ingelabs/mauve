@@ -20,7 +20,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: JDK1.2
-// Uses: TestFlowView
+// Uses: TestFlowView FlowStrategy/TestView
 
 package gnu.testlet.javax.swing.text.FlowView;
 

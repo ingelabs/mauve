@@ -21,6 +21,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: FIXME
+// Uses: MyDefaultEditor
 
 package gnu.testlet.javax.swing.JSpinner.DefaultEditor;
 

@@ -1,4 +1,5 @@
 // Tags: JDK1.5
+// Uses: MyBasicScrollBarUI
 
 // Copyright (C) 2006 Roman Kennke <kennke@aicas.com>
 

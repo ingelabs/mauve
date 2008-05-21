@@ -20,7 +20,7 @@
  */
 
 // Tags: JDK1.4 GUI
-
+// Uses: ../../../org/omg/CORBA/Asserter
 
 package gnu.testlet.javax.swing.JComboBox;
 

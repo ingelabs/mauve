@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: ../../../../../../gnu/javax/swing/text/html/parser/support/Parser/Parser_Test ../../../../../../gnu/javax/swing/text/html/parser/support/Parser/TestCase
 
 // Copyright (C) 2005, 2006 Audrius Meskauskas <audriusa@bluewin.ch>
 
