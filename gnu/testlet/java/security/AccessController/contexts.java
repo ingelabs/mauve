@@ -66,7 +66,8 @@ public class contexts implements Testlet
       harness.checkPoint("setup");
 
       // Make jarfiles containing this class and its dependencies
-      String base = new File(harness.getTempDirectory(), "ac").getPath();
+      String base =
+          new File(harness.getTempDirectory(), "ac").getCanonicalPath();
 
       jars[0] = new File(base + "1.jar");
       JarOutputStream jos = new JarOutputStream(new FileOutputStream(jars[0]));
