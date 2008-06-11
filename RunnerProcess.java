@@ -546,19 +546,19 @@ public class RunnerProcess
                 lastFailureMessage = "\n           got " + gotString
                                    + "\n\n           but expected " + expString
                                    + "\n\n";
-                System.out.println(lastFailureMessage);
-                return;
               }
             else
               {
-                lastFailureMessage = "Objects were not equal";
-                System.out.println("objects were not equal.  " +
-                        "Use -debug for more information.");
-                return;
+                lastFailureMessage = "Objects were not equal.  " +
+                        "Use -debug for more information.";
               }
           }
-        lastFailureMessage = "got " + gotString + " but expected " + expString;
-        currentResult.addFail(desc + " -- " +lastFailureMessage);
+        else
+          {
+            lastFailureMessage =
+              "got " + gotString + " but expected " + expString;
+          }
+        currentResult.addFail(desc + " -- " + lastFailureMessage);
         System.out.println(lastFailureMessage);
       }
   }

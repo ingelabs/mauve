@@ -1,3 +1,9 @@
+2008-06-11  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
+	* RunnerProcess.java (check(Object, Object)): Changed code so we
+	don't have early returns and miss currentResult.addFail() calls.
+	This fixes a bug in missing failures in the XML output.
+
 2008-06-09  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
 	* gnu/testlet/java/security/AccessController/contexts.java (test):
