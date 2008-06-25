@@ -1,4 +1,5 @@
 // Tags: JDK1.4
+// Uses: RMI_test RMI_testImpl ../../../../org/omg/CORBA_2_3/ORB/Valtype/Info ../../../../org/omg/CORBA_2_3/ORB/Valtype/InfoImpl ../../../../org/omg/CORBA_2_3/ORB/Valtype/cmInfo ../../../../org/omg/CORBA_2_3/ORB/Valtype/cmInfoImpl ../../../../org/omg/CORBA_2_3/ORB/Valtype/cmInfoHelper
 
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 

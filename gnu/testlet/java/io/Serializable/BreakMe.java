@@ -1,5 +1,6 @@
 // Tags: JDK1.4
 // Uses: MyBreakMe
+// Files: MyBreakMe.ser
 
 // Copyright (C) 2005 Mark J. Wielaard <mark@klomp.org>
 // Based on an idea by Jeroen Frijters

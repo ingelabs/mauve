@@ -21,7 +21,9 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 */
 
 // Tags: JDK1.2
-
+// Uses: MySimpleBeanInfo
+// Files: testImage1.gif
+ 
 package gnu.testlet.java.beans.SimpleBeanInfo;
 
 import gnu.testlet.TestHarness;

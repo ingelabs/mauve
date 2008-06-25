@@ -1,3 +1,5 @@
+// Files: logging.properties
+
 package gnu.testlet.java.util.logging.LogManager;
 
 import gnu.testlet.*;
