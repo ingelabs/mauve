@@ -1,4 +1,6 @@
 // Tags: not-a-test
+// Uses: poa_comTesterStub
+
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 
 // Mauve is free software; you can redistribute it and/or modify

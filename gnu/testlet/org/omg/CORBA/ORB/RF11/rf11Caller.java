@@ -1,3 +1,6 @@
+// Tags: not-a-test
+// Uses: ../../Asserter
+
 // Copyright (c) 2000, 2001 NEC Corporation.
 
 // Adapted for Mauve by Audrius Meskauskas <audriusa@bluewin.ch>

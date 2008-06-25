@@ -1,4 +1,5 @@
 // Tags: JDK1.4
+// Uses: ../../PortableServer/POA/TestBase
 
 // Copyright (c) IONA Technologies, 2001.
 

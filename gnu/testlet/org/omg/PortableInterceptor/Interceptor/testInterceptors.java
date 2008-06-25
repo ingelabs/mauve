@@ -1,4 +1,6 @@
 // Tags: JDK1.4
+// Uses: ../../CORBA/Asserter ../../PortableServer/POAOperations/communication/ourUserException ../../PortableServer/POAOperations/communication/poa_Servant ../../PortableServer/POAOperations/communication/poa_comTester ../../PortableServer/POAOperations/communication/poa_comTesterHelper
+
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 // Mauve is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

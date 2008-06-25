@@ -1,5 +1,27 @@
 2008-06-25  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* gnu/testlet/org/omg/CORBA/Any/testAny.java,
+	gnu/testlet/org/omg/CORBA/ORB/DirectTest.java,
+	gnu/testlet/org/omg/CORBA/ORB/comServer.java,
+	gnu/testlet/org/omg/CORBA/ORB/RF11/rf11Caller.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/GreetingsServant.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/Info.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoHelper.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/InfoHolder.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/_GreetingsImplBase.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/_GreetingsStub.java,
+	gnu/testlet/org/omg/CORBA_2_3/ORB/Valtype/cmInfoHolder.java,
+	gnu/testlet/org/omg/DynamicAny/DynAny/BasicTest.java,
+	gnu/testlet/org/omg/PortableInterceptor/Interceptor/testInterceptors.java,
+	gnu/testlet/org/omg/PortableServer/POAOperations/poa_POA_test.java,
+	gnu/testlet/org/omg/PortableServer/POAOperations/communication/poa_Servant.java,
+	gnu/testlet/org/omg/PortableServer/POAOperations/communication/poa_Server.java,
+	gnu/testlet/org/omg/PortableServer/POAOperations/communication/poa_comTesterHelper.java,
+	gnu/testlet/org/omg/PortableServer/POAOperations/communication/poa_comTesterPOA.java:
+	Added Uses tag.
+
+2008-06-25  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/java/security/cert/pkix/pkits/AllCertificatesAnyPolicyTest11_1.java,
 	gnu/testlet/java/security/cert/pkix/pkits/AllCertificatesAnyPolicyTest11_2.java,
 	gnu/testlet/java/security/cert/pkix/pkits/AllCertificatesSamePoliciesTest10_1.java,

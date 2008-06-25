@@ -1,4 +1,5 @@
 // Tags: JDK1.4
+// Uses: ../../CORBA/Asserter
 
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 

@@ -1,3 +1,6 @@
+// Tags: not-a-test
+// Uses: ../../CORBA_2_3/ORB/Valtype/GreetingsServant
+
 /* comServer.java --
    Copyright (C) 2005 Free Software Foundation, Inc.
 

@@ -1,4 +1,6 @@
 // Tags: JDK1.2
+// Uses: ../Asserter
+
 /* DirectTest.java --
    Copyright (C) 2005 Free Software Foundation, Inc.
 

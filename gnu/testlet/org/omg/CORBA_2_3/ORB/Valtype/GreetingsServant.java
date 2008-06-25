@@ -1,3 +1,6 @@
+// Tags: not-a-test
+// Uses: _GreetingsImplBase Greetings cmInfoHolder InfoHolder
+
 /*
 * This file is part of the CORBA 2_3 tests, the test executable
 * class being gnu.testlet.org.omg.CORBA_2_3.ORB.ValueTypeTest.

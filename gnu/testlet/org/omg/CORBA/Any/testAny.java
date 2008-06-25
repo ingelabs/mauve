@@ -1,4 +1,5 @@
 // Tags: JDK1.2
+// Uses: ../Asserter
 
 // Copyright (C) 2005 Audrius Meskauskas (AudriusA@Bioinformatics.org)
 

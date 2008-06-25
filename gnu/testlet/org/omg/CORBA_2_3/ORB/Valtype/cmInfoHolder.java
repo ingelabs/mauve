@@ -1,3 +1,6 @@
+// Tags: not-a-test
+// Uses: cmInfo cmInfoHelper
+
 /*
 * This file is part of the CORBA 2_3 tests, the test executable
 * class being gnu.testlet.org.omg.CORBA_2_3.ORB.ValueTypeTest.
