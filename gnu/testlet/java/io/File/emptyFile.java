@@ -39,7 +39,7 @@ public class emptyFile implements Testlet
   {
     try
       {
-        String srcdirstr = harness.getSourceDirectory();
+        String srcdirstr = harness.getBuildDirectory();
         String pathseperator = File.separator;
 
         // the empty test file

@@ -71,8 +71,8 @@ public class contexts implements Testlet
 
       jars[0] = new File(base + "1.jar");
       JarOutputStream jos = new JarOutputStream(new FileOutputStream(jars[0]));
-      copyClass(harness.getSourceDirectory(), jos, getClass());
-      copyClass(harness.getSourceDirectory(), jos, TestHarness.class);
+      copyClass(harness.getBuildDirectory(), jos, getClass());
+      copyClass(harness.getBuildDirectory(), jos, TestHarness.class);
       jos.close();
 
       for (int i = 1; i < jars.length; i++) {

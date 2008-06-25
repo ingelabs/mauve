@@ -27,6 +27,8 @@ import gnu.testlet.config;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,6 +40,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.LinkedHashSet;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -59,7 +63,7 @@ public class Harness
   
   // The options to pass to the compiler, needs to be augmented by the
   // bootclasspath, which should be the classpath installation directory
-  private static String compileStringBase = "-proceedOnError -nowarn -1.5";
+  private static String compileStringBase = "-proceedOnError -nowarn -1.5 -d " + config.builddir;
   
   // The writers for ecj's out and err streams.
   private static PrintWriter ecjWriterOut = null;
@@ -429,6 +433,21 @@ public class Harness
   }  
   
   /**
+   * Removes the config.srcdir + File.separatorChar from the start of
+   * a String.
+   * @param val the String
+   * @return the String with config.srcdir + File.separatorChar
+   * removed
+   */
+  private static String stripSourcePath(String val)
+  {
+    if (val.startsWith(config.srcdir + File.separatorChar)
+        || val.startsWith(config.srcdir.replace('/', '.') + "."))
+      val = val.substring(config.srcdir.length() + ".".length());
+    return val;
+  }
+  
+  /**
    * Removes the "gnu.testlet." from the start of a String.
    * @param val the String
    * @return the String with "gnu.testlet." removed
@@ -437,7 +456,7 @@ public class Harness
   {
     if (val.startsWith("gnu" + File.separatorChar + "testlet")
         || val.startsWith("gnu.testlet."))
-      val = val.substring(12);
+      val = val.substring("gnu.testlet.".length());
     return val;
   }
   
@@ -898,7 +917,221 @@ public class Harness
       if (processSingleTest(cname) == 1)
         processFolder(cname);    
   }
-  
+
+  /**
+   * Checks if the corresponding classfile for the given test needs to
+   * be compiled, or exists and needs to be updated.
+   *
+   * @param test name or path of the test
+   * @return true if the classfile needs to be compiled
+   */
+  private static boolean testNeedsToBeCompiled(String testname)
+  {
+    String filename = stripSourcePath(testname);
+
+    if (filename.endsWith(".java"))
+      filename =
+        filename.substring(0, filename.length() - ".java".length());
+
+    String sourcefile =
+      config.srcdir + File.separatorChar + filename + ".java";
+    String classfile =
+      config.builddir + File.separatorChar + filename + ".class";
+
+    File sf = new File(sourcefile);
+    File cf = new File(classfile);
+
+    if (!sf.exists())
+      throw new RuntimeException(sourcefile + " does not exists!");
+
+    if (!cf.exists())
+      return true;
+
+    return (sf.lastModified() > cf.lastModified());
+  }
+
+  /**
+   * Parse and process tags in the source file.
+   *
+   * @param sourcefile path of the source file
+   * @param filesToCompile LinkedHashSet of the files to compile
+   *
+   * @return true on success, false on error
+   */
+  private static boolean parseTags(String sourcefile, LinkedHashSet filesToCompile, LinkedHashSet filesToCopy, LinkedHashSet testsToRun)
+  {
+    File f = new File(sourcefile);
+
+    String base = f.getAbsolutePath();
+    base = base.substring(0, base.lastIndexOf(File.separatorChar));
+
+    try
+      {
+        BufferedReader r = new BufferedReader(new FileReader(f));
+        String line = null;
+        line = r.readLine();
+        while (line != null)
+          {
+            if (line.contains("//"))
+              {
+                if (line.contains("Uses:"))
+                  {
+                    processUsesTag(line, base, filesToCompile, filesToCopy, testsToRun);
+                  }
+                else if (line.contains("Files:"))
+                  {
+                    processFilesTag(line, base, filesToCopy);
+                  }
+                else if (line.contains("not-a-test"))
+                  {
+                    // Don't run this one but parse it's tags.
+                    testsToRun.remove(sourcefile);
+                  }
+              }
+            else if (line.contains("implements Testlet"))
+              {
+                // Don't read through the entire test once we've hit
+                // real code.  Note that this doesn't work for all
+                // files, only ones that implement Testlet, but that
+                // is most files.
+                break;
+              }
+
+            line = r.readLine();
+          }
+      }
+    catch (IOException ioe)
+      {
+        // This shouldn't happen.
+        ioe.printStackTrace();
+        return false;
+      }
+
+    return true;
+  }
+
+  /**
+   * Processes the // Uses: tag in a testlet's source.
+   *
+   * @param line string of the current source line
+   * @param base base directory of the current test
+   * @param filesToCompile LinkedHashSet of the current files to be compiled
+   */
+  private static void processUsesTag(String line, String base, LinkedHashSet filesToCompile, LinkedHashSet filesToCopy, LinkedHashSet testsToRun)
+  {
+    StringTokenizer st =
+      new StringTokenizer(line.substring(line.indexOf("Uses:") + 5));
+
+    while (st.hasMoreTokens())
+      {
+        String depend = base;
+        String t = st.nextToken();
+        while (t.startsWith(".." + File.separator))
+          {
+            t = t.substring(3);
+            depend = 
+              depend.substring(0, depend.lastIndexOf(File.separatorChar));
+          }
+        depend += File.separator + t;
+        if (depend.endsWith(".class"))
+          depend = depend.substring(0, depend.length() - 6);
+        if (!depend.endsWith(".java"))
+          depend += ".java";
+
+        // Check if the current dependency needs to be compiled (NOTE:
+        // This check does not include inner classes).
+        if (testNeedsToBeCompiled(depend))
+          {
+            // Add the current dependency.
+            filesToCompile.add(depend);
+          }
+
+        // Now parse the tags of the dependency.
+        parseTags(depend, filesToCompile, filesToCopy, testsToRun);
+      }
+  }
+
+  /**
+   * Processes the // Files: tag in a testlet's source.
+   *
+   * @param base base directory of the current test
+   * @param line string of the current source line
+   */
+  private static void processFilesTag(String line, String base, LinkedHashSet filesToCopy)
+  {
+    StringTokenizer st =
+      new StringTokenizer(line.substring(line.indexOf("Files:") + 6));
+
+    while (st.hasMoreTokens())
+      {
+        String src = base;
+        String t = st.nextToken();
+        while (t.startsWith(".." + File.separator))
+          {
+            t = t.substring(3);
+            src = 
+              src.substring(0, src.lastIndexOf(File.separatorChar));
+          }
+        src += File.separator + t;
+
+        filesToCopy.add(src);
+      }
+  }
+
+  /**
+   * Copy the given files from the source directory to the build
+   * directory.
+   *
+   * @param filesToCopy files to copy
+   *
+   * @return true on success, false on error
+   */
+  private static boolean copyFiles(LinkedHashSet filesToCopy)
+  {
+    if (filesToCopy.size() == 0)
+      return true;
+
+    for (Iterator it = filesToCopy.iterator(); it.hasNext(); )
+      {
+        String src = (String) it.next();
+        String dest =
+          config.builddir + File.separatorChar + stripSourcePath(src);
+
+        try
+          {
+            File inputFile  = new File(src);
+            File outputFile = new File(dest);
+
+            // Only copy newer files.
+            if (inputFile.lastModified() <= outputFile.lastModified())
+              continue;
+
+            // Create directories up to the new file.
+            outputFile.getParentFile().mkdirs();
+
+            FileInputStream fis  = new FileInputStream(inputFile);
+            FileOutputStream fos = new FileOutputStream(outputFile);
+            byte[] buf = new byte[1024];
+            int i = 0;
+
+            while((i = fis.read(buf)) != -1)
+              {
+                fos.write(buf, 0, i);
+              }
+
+            fis.close();
+            fos.close();
+          }
+        catch (IOException ioe)
+          {
+            ioe.printStackTrace();
+            return false;
+          }
+      }
+
+    return true;
+  }
+
   /**
    * This method is used to potentially run a single test.  If runAnyway is
    * false we've reached here as a result of processing a directory and we
@@ -912,6 +1145,10 @@ public class Harness
    */  
   private static int processSingleTest(String cname)
   {
+    LinkedHashSet filesToCompile = new LinkedHashSet();
+    LinkedHashSet filesToCopy = new LinkedHashSet();
+    LinkedHashSet testsToRun = new LinkedHashSet();
+
     // If the test should be excluded return -1, this is a signal
     // to processTest that it should quit.    
     if (excludeTests.contains(cname))
@@ -919,14 +1156,14 @@ public class Harness
 
     // If it's not a single test, return 1, processTest will then try
     // to process it as a directory.
-    File jf = new File(cname + ".java");
+    String sourcefile = config.srcdir + File.separatorChar + cname + ".java";
+    File jf = new File(sourcefile);
     if (!jf.exists())
       return 1;
     
     if (!compileTests)
       {
-        File cf = new File(cname + ".class");
-        if (!cf.exists())
+        if (testNeedsToBeCompiled(cname))
           {
             // There is an uncompiled test, but the -nocompile option was given
             // so we just skip it
@@ -935,90 +1172,24 @@ public class Harness
       }
     else
       {
-    	// This section of code reads the file, looking for the "Uses" tag
-        // and compiles any files it finds listed there.
-    	String base = jf.getAbsolutePath();
-    	base = base.substring(0, base.lastIndexOf(File.separatorChar));
-    	try
-    	{
-    	  BufferedReader r = new BufferedReader(new FileReader(jf));
-    	  String temp = null;
-    	  temp = r.readLine();
-    	  while (temp != null)
-    	    {
-    	      if (temp.contains("//"))
-    	        {
-    	          if (temp.contains("Uses:"))
-    	            {
-    	              StringTokenizer st = 
-                        new StringTokenizer
-                          (temp.substring(temp.indexOf("Uses:") + 5));
-    	              while (st.hasMoreTokens())
-    	                {
-    	                  String depend = base;
-    	                  String t = st.nextToken();
-    	                  while (t.startsWith(".." + File.separator))
-    	                    {
-    	                      t = t.substring(3);
-    	                      depend = 
-                                depend.substring
-                                  (0,depend.lastIndexOf(File.separatorChar));
-    	                    }
-    	                  depend += File.separator + t;
-    	                  if (depend.endsWith(".class"))
-    	                    depend = depend.substring(0, depend.length() - 6);
-    	                  if (! depend.endsWith(".java"))
-    	                    depend += ".java";
-    	                  if (compileTest(depend) != 0)
-                            {
-                              // One of the dependencies failed to compile, so
-                              // we report the test as failing and don't try to 
-                              // run it.
-                              
-                              String shortName = 
-                                cname.substring(12).
-                                  replace(File.separatorChar, '.');
-                              if (verbose)
-                                {
-                                  System.out.println("TEST: " + shortName);
-                                  System.out.println("  FAIL: One of the " +
-                                        "dependencies failed to compile.");
-                                }
-                              else
-                                {
-                                  System.out.println("FAIL: " + shortName);
-                                  System.out.println("  One of the " +
-                                        "dependencies failed to compile.");
-                                }
-                              total_test_fails++;
-                              total_tests++;
-                              return -1;
-                            }
-    	                }
-    	              break;
-    	            }
-    	          else if (temp.contains("not-a-test"))
-    	            return - 1;
-    	        }
-              else if (temp.contains("implements Testlet"))
-                // Don't read through the entire test once we've hit real code.
-                // Note that this doesn't work for all files, only ones that 
-                // implement Testlet, but that is most files.
-                break;
-    	      temp = r.readLine();
-    	    }
-    	}
-    	catch (IOException ioe)
-    	{
-    		// This shouldn't happen.
-    	}
-    	
+        if (testNeedsToBeCompiled(cname))
+          filesToCompile.add(sourcefile);
+        testsToRun.add(sourcefile);
+
+    	// Process all tags in the source file.
+        if (!parseTags(sourcefile, filesToCompile, filesToCopy, testsToRun))
+          return -1;
+
+        if (!copyFiles(filesToCopy))
+          return -1;
+
         // If compilation of the test fails, don't try to run it.
-        if (compileTest(cname + ".java") != 0)
+        if (!compileFiles(filesToCompile))
           return -1;
       }
        
     runTest(cname);
+
     return 0;
   }
   
@@ -1031,10 +1202,12 @@ public class Harness
    */
   private static void processFolder(String folderName)  
   {
-    File dir = new File(folderName);
+    File dir = new File(config.srcdir + File.separatorChar + folderName);
     String dirPath = dir.getPath();    
     File[] files = dir.listFiles();
-    StringBuffer sb = new StringBuffer();
+    LinkedHashSet filesToCompile = new LinkedHashSet();
+    LinkedHashSet filesToCopy = new LinkedHashSet();
+    LinkedHashSet testsToRun = new LinkedHashSet();
     String fullPath = null;
     boolean compilepassed = true;
     
@@ -1044,173 +1217,82 @@ public class Harness
       return;
     
     // First, compile the list of .java files.    
-    int count = 0;
     for (int i = 0; i < files.length; i++)
       {        
         // Ignore the CVS folders.
         String name = files[i].getName();
         fullPath = dirPath + File.separatorChar + name;
-        if (name.equals("CVS") || excludeTests.contains(fullPath))
+        String testName = stripSourcePath(fullPath);
+        if (name.equals("CVS") || excludeTests.contains(testName))
           continue;
                 
         if (name.endsWith(".java") && 
-            !excludeTests.contains(fullPath.
-                                   substring(0, fullPath.length() - 5)))
+            !excludeTests.contains(testName.
+                                   substring(0, testName.length() - 5)))
           {            
-            count ++;
-            sb.append(' ' + fullPath);
-            
-            // Read the file, looking for the Uses: tag, and adding
-            // any files listed to a list of files to be compiled.
-            // This section of code reads the file, looking for the "Uses" tag
-            // and compiles any files it finds listed there.
-            String base = dirPath;
-            try
-            {
-              BufferedReader r = new BufferedReader(new FileReader(fullPath));
-              String temp = null;
-              temp = r.readLine();
-              while (temp != null)
-                {
-                  if (temp.contains("//"))
-                    {
-                      if (temp.contains("Uses:"))
-                        {
-                          StringTokenizer st = 
-                            new StringTokenizer
-                            (temp.substring(temp.indexOf("Uses:") + 5));
-                          while (st.hasMoreTokens())
-                            {
-                              String depend = base;
-                              String t = st.nextToken();
-                              while (t.startsWith(".." + File.separator))
-                                {
-                                  t = t.substring(3);
-                                  depend = 
-                                    depend.substring
-                                    (0,
-                                     depend.lastIndexOf(File.separatorChar));
-                                }
-                              depend += File.separator + t;
-                              if (depend.endsWith(".class"))
-                                depend = 
-                                  depend.substring(0, depend.length() - 6);
-                              if (! depend.endsWith(".java"))
-                                depend += ".java";
-                              
-                              if (compileTest(depend) != 0)
-                                {
-                                  // One of the dependencies failed to compile, 
-                                  // so we report the test as failing and don't
-                                  // try to run it.                                  
-                                  String shortName = fullPath.substring(12, fullPath.length() - 5).
-                                  replace(File.separatorChar, '.'); 
-                                  
-                                  if (verbose)
-                                    {
-                                      System.out.println("TEST: " + shortName);
-                                      System.out.println("  FAIL: One of the " +
-                                      "dependencies failed to compile.");
-                                    }
-                                  else
-                                    {
-                                      System.out.println("FAIL: " + shortName);
-                                      System.out.println("  One of the " +
-                                      "dependencies failed to compile.");
-                                    }
-                                  total_test_fails++;
-                                  total_tests++;
-                                  sb.setLength(sb.length() - fullPath.length() - 1);
-                                  count --;
-                                }
-                            }
-                          break;
-                        }
-                      else if (temp.contains("not-a-test"))
-                        {
-                          sb.setLength(sb.length() - fullPath.length() - 1);
-                          count --;
-                        }
-                    }
-                  else if (temp.contains("implements Testlet"))
-                    // Don't read through the entire test once we've hit real code.
-                    // Note that this doesn't work for all files, only ones that 
-                    // implement Testlet, but that is most files.
-                    break;
-                  temp = r.readLine();
-                }
-            }
-            catch (IOException ioe)
-            {
-              // This shouldn't happen.
-            }
+            if (testNeedsToBeCompiled(testName))
+              filesToCompile.add(fullPath);
+            testsToRun.add(fullPath);
+
+            // Process all tags in the source file.
+            if (!parseTags(fullPath, filesToCompile, filesToCopy, testsToRun))
+              continue;
           }
         else
           {
             // Check if it's a folder, if so, call this method on it.
             if (files[i].isDirectory() && recursion
-                && ! excludeTests.contains(fullPath))
-              processFolder(fullPath);
+                && ! excludeTests.contains(testName))
+              processFolder(testName);
           }
       }
     
+    if (!copyFiles(filesToCopy))
+      return;
+
     // Exit if there were no .java files in this folder.
-    if (count == 0)
+    if (testsToRun.size() == 0)
       return;
     
-    // Ignore the .java files in top level gnu/teslet folder.
-    if (dirPath.equals("gnu" + File.separatorChar + "testlet"))
+    // Ignore the .java files in top level gnu/testlet folder.
+    if (dirPath.equals(config.srcdir + File.separatorChar +
+                       "gnu" + File.separatorChar + "testlet"))
       return;
     
     // Now compile all those tests in a batch compilation, unless the
     // -nocompile option was used.
     if (compileTests)
-      compilepassed = compileFolder(sb, folderName);
+      compilepassed = compileFiles(filesToCompile);
 
     // And now run those tests.
-    runFolder(sb, compilepassed);
-  }
-  
-  private static boolean compileFolder(StringBuffer sb, String folderName)
-  {
-    int result = - 1;
-    compileString = compileStringBase + sb.toString();
-    try
-      {
-        result = compile();
-      }
-    catch (Exception e)
-      {
-        System.err.println("compilation exception");
-        e.printStackTrace();
-        result = - 1;
-      }
-    return result == 0;
+    runFolder(testsToRun, compilepassed);
   }
   
   /**
    * Runs all the tests in a folder.  If the tests were compiled by 
    * compileFolder, and the compilation failed, then we must check to 
    * see if each individual test compiled before running it.
-   * @param sb the StringBuffer holding a space delimited list of all the 
-   * tests to run
+   *
+   * @param testsToRun a list of all the tests to run
    * @param compilepassed true if the compilation step happened and all 
    * tests passed or if compilation didn't happen (because of -nocompile).
    */
-  private static void runFolder(StringBuffer sb, boolean compilepassed)
+  private static void runFolder(LinkedHashSet testsToRun, boolean compilepassed)
   {
-    StringTokenizer st = new StringTokenizer(sb.toString());
     String nextTest = null;
-    boolean classExists;
-    while (st.hasMoreTokens())
+
+    for (Iterator it = testsToRun.iterator(); it.hasNext(); )
       {
-        nextTest = st.nextToken();
-        nextTest = nextTest.substring(0, nextTest.length() - 5);
-        classExists = (new File(nextTest + ".class")).exists();
-        if (classExists
-            && (compilepassed || ! excludeTests.contains(nextTest + ".java")))
-          runTest(nextTest);
-      } 
+        nextTest = (String) it.next();
+        nextTest = stripSourcePath(nextTest);
+
+        if (!testNeedsToBeCompiled(nextTest)
+            && (compilepassed || !excludeTests.contains(nextTest)))
+          {
+            nextTest = nextTest.substring(0, nextTest.length() - 5);
+            runTest(nextTest);
+          }
+      }
   }
   
   /**
@@ -1219,7 +1301,7 @@ public class Harness
    * @return the return value from the compiler
    * @throws Exception
    */
-  public static int compile () throws Exception
+  public static int compile() throws Exception
   {
     /*
      * This code depends on the patch in Comment #10 in this bug
@@ -1235,23 +1317,34 @@ public class Harness
     return ((Boolean) ecjMethod.invoke (ecjInstance, new Object[] {
         compileString, ecjWriterOut, ecjWriterErr})).booleanValue() ? 0 : -1;
   }
-  
-  private static int compileTest(String testName)  
+
+  /**
+   * Compile the given files.
+   *
+   * @param filesToCompile LinkedHashSet of the files to compile
+   * @return true if compilation was successful
+   */
+  private static boolean compileFiles(LinkedHashSet filesToCompile)
   {
-    int result = -1;
-    // Compile the tests before running them, and if compilation fails report
-    // it as a test failure.
+    if (filesToCompile.size() == 0)
+      return true;
+
+    int result = - 1;
+    compileString = compileStringBase;
+    for (Iterator it = filesToCompile.iterator(); it.hasNext(); )
+      compileString += " " + (String) it.next();
     try
       {
-        compileString = compileStringBase + " " + testName;
         result = compile();
       }
     catch (Exception e)
       {
-        result = -1;
+        System.err.println("compilation exception");
+        e.printStackTrace();
+        result = - 1;
       }
-    return result;
-  }  
+    return result == 0;
+  }
   
   /**
    * Returns true if the String argument passed is in the format of a

@@ -77,6 +77,10 @@ public class TestReport
     Iterator results = testResults.iterator();
     while (results.hasNext())
       {
+        // Send a message to the Harness to let it know that we are
+        // still writing the XML file.
+        System.out.println("RunnerProcess:restart-timer");
+
         TestResult tr = (TestResult) results.next();
         String[] failures = tr.getFailMessags();
         String[] passes = tr.getPassMessages();
@@ -87,9 +91,12 @@ public class TestReport
         else
           out.write("'/>\n");
 
-        for (int i = 0; i < failures.length; i++)
+        for (int i = 0; i < failures.length; i++) {
+          // Restart timer.
+          System.out.println("RunnerProcess:restart-timer");
           out.write("    <failure>" + esc(failures[i]) + "</failure>\n");
-        
+        }
+
         if (tr.getException() != null)
           {
             Throwable t = tr.getException();
@@ -102,8 +109,11 @@ public class TestReport
                       + "\n    </failure>\n");
           }
 
-        for (int i = 0; i < passes.length; i++)
+        for (int i = 0; i < passes.length; i++) {
+          // Restart timer.
+          System.out.println("RunnerProcess:restart-timer");
           out.write("    <pass>" + esc(passes[i]) + "</pass>\n");
+        }
 
         if (failures.length > 0 || passes.length > 0
             || tr.getException() != null)

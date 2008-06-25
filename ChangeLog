@@ -1,5 +1,39 @@
 2008-06-25  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
+	* Harness.java (compileStringBase): Set target directory to build
+	directory.
+	(stripSourcePath): New method.
+	(testNeedsToBeCompiled): Likewise.
+	(parseTags): Likewise.
+	(processUsesTag): Likewise.
+	(processFilesTag): Likewise.
+	(copyFiles): Likewise.
+	(processSingleTest): Removed a lot of stuff now in the new methods
+	above.
+	(processFolder): Likewise.
+	(compileFolder): Removed.
+	(runFolder): Pass test in a LinkedHashSet.
+	(compileTest): Removed.
+	(compileFiles): New method.
+	* Makefile.am (harness_files): Prefixed with $(srcdir).
+	(harness): Added -d .
+	* Makefile.in: Regenerated.
+	* aclocal.m4: Likewise.
+	* configure: Likewise.
+	* configure.in (BUILDDIR): Added.
+	* gnu/testlet/TestHarness.java (getBuildDirectory): New method.
+	* gnu/testlet/TestReport.java (writeXml): Restart the timer after
+	each write as this could cause problems on faulty NFS.
+	* gnu/testlet/config.java.in (builddir): New variable.
+	(getBuildDirectory): New method.
+	* gnu/testlet/java/io/File/emptyFile.java,
+	gnu/testlet/java/lang/Class/security.java,
+	gnu/testlet/java/lang/Thread/security.java,
+	gnu/testlet/java/security/AccessController/contexts.java: Use
+	getBuildDirectory() instead of getSourceDirectory().
+
+2008-06-25  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
 	* gnu/testlet/java/beans/SimpleBeanInfo/loadImage.java: Addes Uses
 	and Files tags.
 	* gnu/testlet/java/io/Serializable/BreakMe.java: Added Files tag.

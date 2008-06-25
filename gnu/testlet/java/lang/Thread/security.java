@@ -47,7 +47,7 @@ public class security implements Testlet
 
       // we need a different classloader for some of the checks to occur.
       Class testClass = new URLClassLoader(new URL[] {
-	new File(harness.getSourceDirectory()).toURL()}, null).loadClass(
+	new File(harness.getBuildDirectory()).toURL()}, null).loadClass(
 	  getClass().getName());
       harness.check(getClass().getClassLoader() != testClass.getClassLoader());
 

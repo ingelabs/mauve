@@ -14,19 +14,24 @@ EXTRA_DIST =  Harness.java RunnerProcess.java gnu junit
 VERSION = ${shell date +%F}
 
 harness_files = \
-	Harness.java \
-	RunnerProcess.java \
+	$(srcdir)/Harness.java \
+	$(srcdir)/RunnerProcess.java \
+	$(srcdir)/gnu/testlet/TestHarness.java \
+	$(srcdir)/gnu/testlet/Testlet.java \
+	$(srcdir)/gnu/testlet/TestSecurityManager.java \
+	$(srcdir)/gnu/testlet/ResourceNotFoundException.java \
+	$(srcdir)/gnu/testlet/TestReport.java \
+	$(srcdir)/gnu/testlet/TestResult.java \
+	$(srcdir)/gnu/testlet/VisualTestlet.java \
+	\
 	gnu/testlet/config.java \
-	gnu/testlet/TestHarness.java \
-	gnu/testlet/Testlet.java \
-	gnu/testlet/TestSecurityManager.java \
-	gnu/testlet/ResourceNotFoundException.java \
-	gnu/testlet/TestReport.java \
-	gnu/testlet/TestResult.java \
-	gnu/testlet/VisualTestlet.java
+	\
+	$(srcdir)/junit/framework/*.java \
+	$(srcdir)/junit/runner/*.java \
+	$(srcdir)/junit/textui/*.java
 
 harness:
-	$(JAVAC) $(harness_files)
+	$(JAVAC) -d . $(harness_files)
 
 all-local: harness
 

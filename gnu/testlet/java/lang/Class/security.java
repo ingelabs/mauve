@@ -43,7 +43,7 @@ public class security implements Testlet
       // we need a class with a different loader for most of the
       // checks to occur.
       Class testClass = new URLClassLoader(new URL[] {
-	new File(harness.getSourceDirectory()).toURL()}, null).loadClass(
+	new File(harness.getBuildDirectory()).toURL()}, null).loadClass(
 	  getClass().getName());
       harness.check(getClass().getClassLoader() != testClass.getClassLoader());
 
@@ -51,7 +51,7 @@ public class security implements Testlet
       // classes during tests and the extra checks will make us fail.
       testClass.getDeclaredClasses();
       testClass.getDeclaredMethods();
- 
+
       // we need to restrict access to some packages for some of the
       // checks to occur.
       String oldrestrictions = Security.getProperty("package.access");

@@ -281,6 +281,11 @@ public abstract class TestHarness
   {
     return srcdir;
   }
+
+  public String getBuildDirectory ()
+  {
+    return builddir;
+  }
   
   /**
    * Provide a directory name for writing temporary files.
