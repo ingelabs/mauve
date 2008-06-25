@@ -4,6 +4,8 @@
    Distributed under the GPL; see the file `COPYING' */
 
 // Tags: JDK1.4
+// Uses: BaseValidTest
+// Files: data/certs/AllCertificatesSamePoliciesTest13EE.crt data/certs/PoliciesP123CACert.crt data/crls/PoliciesP123CACRL.crl
 
 package gnu.testlet.java.security.cert.pkix.pkits;
 

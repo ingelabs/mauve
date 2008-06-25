@@ -4,6 +4,8 @@
    Distributed under the GPL; see the file `COPYING' */
 
 // Tags: not-a-test
+// Uses: PKITS
+// Files: data/certs/TrustAnchorRootCertificate.crt data/crls/TrustAnchorRootCRL.crl
 
 package gnu.testlet.java.security.cert.pkix.pkits;
 

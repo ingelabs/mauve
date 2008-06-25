@@ -4,6 +4,8 @@
    Distributed under the GPL. See the file `COPYING' */
 
 // Tags: JDK1.4
+// Uses: BaseInvalidTest
+// Files: data/certs/InvalidNameChainingOrderTest2EE.crt data/certs/NameOrderingCACert.crt data/crls/NameOrderCACRL.crl
 
 package gnu.testlet.java.security.cert.pkix.pkits;
 

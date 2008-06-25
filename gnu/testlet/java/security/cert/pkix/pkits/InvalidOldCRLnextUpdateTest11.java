@@ -4,6 +4,8 @@
    Distributed under the GPL. See the file `COPYING' */
 
 // Tags: JDK1.4
+// Uses: BaseInvalidTest
+// Files: data/certs/InvalidOldCRLnextUpdateTest11EE.crt data/certs/OldCRLnextUpdateCACert.crt data/crls/OldCRLnextUpdateCACRL.crl
 
 package gnu.testlet.java.security.cert.pkix.pkits;
 

@@ -4,6 +4,8 @@
    Distributed under the GPL. See the file `COPYING' */
 
 // Tags: JDK1.4
+// Uses: BaseInvalidTest
+// Files: data/certs/InvalidDSASignatureTest6EE.crt data/certs/DSACACert.crt data/crls/DSACACRL.crl
 
 package gnu.testlet.java.security.cert.pkix.pkits;
 

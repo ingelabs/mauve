@@ -4,6 +4,8 @@
    Distributed under the GPL; see the file `COPYING' */
 
 // Tags: JDK1.4
+// Uses: BaseInvalidTest
+// Files: data/certs/DifferentPoliciesTest7EE.crt data/certs/PoliciesP123subsubCAP12P1Cert.crt data/certs/PoliciesP123subCAP12Cert.crt data/certs/PoliciesP123CACert.crt data/crls/PoliciesP123subsubCAP12P1CRL.crl data/crls/PoliciesP123subCAP12CRL.crl data/crls/PoliciesP123CACRL.crl
 
 package gnu.testlet.java.security.cert.pkix.pkits;
 
