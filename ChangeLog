@@ -1,3 +1,7 @@
+2008-07-01  Christian Thalinger  <twisti@complang.tuwien.ac.at>
+
+	* gnu/testlet/java/lang/Integer/Tests15.java: New file.
+
 2008-06-25  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
 	* Harness.java (compileStringBase): Set target directory to build
