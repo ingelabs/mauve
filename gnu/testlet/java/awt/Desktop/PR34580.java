@@ -19,7 +19,7 @@
 // the Free Software Foundation, 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-package gnu.testlet.javax.swing.JFrame;
+package gnu.testlet.java.awt.Desktop;
 
 import java.awt.Desktop;
 
