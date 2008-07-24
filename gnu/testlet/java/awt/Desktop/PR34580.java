@@ -23,6 +23,9 @@ package gnu.testlet.javax.swing.JFrame;
 
 import java.awt.Desktop;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
+
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
@@ -40,14 +43,25 @@ public class PR34580
   {
     try
       {
-	Desktop.isDesktopSupported();
-	h.check(true, "isDesktopSupported() accessed succesfully.");
-	}
-      catch (IllegalAccessException e)
-	{
-	  h.debug(e);
-	  h.fail("isDesktopSupported() could not be accessed.");
-	}
+	Method m = Desktop.class.getMethod("isDesktopSupported");
+	m.invoke(null);
+	h.check(true, "isDesktopSupported() accessed successfully.");
+      }
+    catch (IllegalAccessException e)
+      {
+	h.debug(e);
+	h.fail("isDesktopSupported() could not be accessed.");
+      }
+    catch (NoSuchMethodException e)
+      {
+	h.debug(e);
+	h.fail("isDesktopSupported() is not implemented.");
+      }
+    catch (InvocationTargetException e)
+      {
+	h.debug(e);
+	h.fail("isDesktopSupported() threw an exception: " + e);
+      }
   }
 
 }
