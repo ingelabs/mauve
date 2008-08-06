@@ -965,9 +965,10 @@ public class Harness
     String base = f.getAbsolutePath();
     base = base.substring(0, base.lastIndexOf(File.separatorChar));
 
+    BufferedReader r = null;
     try
       {
-        BufferedReader r = new BufferedReader(new FileReader(f));
+        r = new BufferedReader(new FileReader(f));
         String line = null;
         line = r.readLine();
         while (line != null)
@@ -1005,6 +1006,19 @@ public class Harness
         // This shouldn't happen.
         ioe.printStackTrace();
         return false;
+      }
+    finally
+      {
+        try
+          {
+            r.close();
+          }
+        catch (IOException ioe)
+          {
+            // This shouldn't happen.
+            ioe.printStackTrace();
+            return false;
+          }
       }
 
     return true;
