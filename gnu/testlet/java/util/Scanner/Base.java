@@ -69,6 +69,7 @@ public abstract class Base implements Testlet
     catch (Throwable e)
     {
       e.printStackTrace ();
+      myHarness.fail(e.toString());
     }
   }
 

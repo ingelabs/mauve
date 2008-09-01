@@ -69,72 +69,33 @@ public class BigDecimalInteger extends Base
       {
 	decimals[i] = new BigDecimal (rand.nextDouble () - 0.5);
 	integers[i] = BigInteger.valueOf (rand.nextInt ());
-//                      if (i % 100 == 0)
-//                              System.out.println(i);
       }
 
     sBuff.append (decimals[0] + " " + integers[0]);
     for (i = 1; i < decimals.length; i++)
       {
 	sBuff.append (" " + decimals[i] + " " + integers[i]);
-//                      if (i % 100 == 0)
-//                              System.out.println(i);
       }
 
     inStr = sBuff.toString ();
-//              Scanner s = new Scanner (inStr);
     Scanner s = new Scanner (inStr);
-    //s.setUseLocale (false);
-//              System.out.println(inStr);
-
-//              System.out.println("len : " + inStr.length());
 
     i = 0;
     while (s.hasNext () && runsLeft > 0)
       {
-	fund = false;
 	failed = false;
-	if (s.hasNextBigDecimal ())
-	  {
-	    tmpDec = s.nextBigDecimal ();
-	    if (!tmpDec.equals (decimals[i]))
-	      {
-		failed = true;
-		this.myHarness.fail ("#" + i +
-				     " : bad result by nextBigDeciaml() : (" +
-				     tmpDec + " != " + decimals[i] +
-				     ") possibly needed : \"" + s.next () +
-				     "\"");
-	      }
-	    fund = true;
-	  }
-	else
-	  {
-	    this.myHarness.fail ("no BigDecimal found...");
-	  }
-	if (s.hasNextBigInteger ())
-	  {
-	    tmpInt = s.nextBigInteger ();
-	    if (!tmpInt.equals (integers[i]))
-	      {
-		failed = true;
-		this.myHarness.fail ("#" + i +
-				     " : bad result by nextBigInteger() : " +
-				     tmpInt + " != " + integers[i]);
-	      }
-	    fund = true;
-	  }
-	else
-	  {
-	    this.myHarness.fail ("no BigInteger found...");
-	  }
-
-//                      if (i % 100 == 0)
-//                              System.out.println(i);
+	fund = s.hasNextBigDecimal();
+	myHarness.check(fund, "hasNextBigDecimal()");
+	tmpDec = s.nextBigDecimal ();
+	myHarness.check(tmpDec, decimals[i], tmpDec + " == " + decimals[i]);
+	fund = s.hasNextBigInteger();
+	myHarness.check(fund, "hasNextBigInteger()");
+	tmpInt = s.nextBigInteger ();
+	myHarness.check(tmpInt, integers[i], tmpInt + " == " + integers[i]);
 	if (!fund)
 	  {
 	    this.myHarness.fail ("\"" + s.next () +
-				 "\" is neighter BigDecimal nor BigInteger");
+				 "\" is neither BigDecimal nor BigInteger");
 	  }
 	i++;
 	if (failed)
