@@ -39,7 +39,7 @@ public class AcceptTimeout implements Testlet, Runnable
     try
       {
 	ServerSocket ss = new ServerSocket(port);
-	ss.setSoTimeout(200);
+	ss.setSoTimeout(2000);
 	Socket s = ss.accept();
 	harness.check(s.getSoTimeout(), 0);
 	s.close();
