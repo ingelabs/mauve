@@ -1,3 +1,8 @@
+2008-09-01  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* gnu/testlet/java/lang/String/replaceAll.java:
+	New test for PRclasspath/36085.
+
 2008-09-01  Christian Thalinger  <twisti@complang.tuwien.ac.at>
 
 	* gnu/testlet/java/net/ServerSocket/AcceptTimeout.java (test):
