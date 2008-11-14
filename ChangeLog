@@ -1,3 +1,9 @@
+2008-11-14  Fabien DUMINY  <fduminy@jnode.org>
+    
+    * gnu/testlet/SingleTestHarness.java : 
+    Added '-v' option to enabled verbose mode. default is not verbose.
+    Replaced "Class.forName" by use of context classloader
+
 2008-09-01  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/java/util/Scanner/Base.java:

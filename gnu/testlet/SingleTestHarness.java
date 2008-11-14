@@ -2,6 +2,8 @@
    Copyright (C) 2005 Mark J. Wielaard
 This file is part of Mauve.
 
+ Modified by Ewout Prangsma (epr@jnode.org)
+ 
 Mauve is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2, or (at your option)
@@ -32,10 +34,13 @@ public class SingleTestHarness extends TestHarness
 {  
   private int count;
   private String className;
+  private boolean verbose = false;
+
   private String last_check;
 
-  public SingleTestHarness(Testlet t)
+  public SingleTestHarness(Testlet t, boolean verbose)
   {
+  	this.verbose = verbose;
     className = t.getClass().getName();
   }
 
@@ -94,9 +99,10 @@ public class SingleTestHarness extends TestHarness
     count = 0;
   }
   
-  public void verbose (String message)
-  {
-    System.out.println(message);
+  public void verbose(String message) {
+      if (verbose) {
+          System.out.println(message);
+      }
   }
   
   public void debug (String message)
@@ -134,12 +140,25 @@ public class SingleTestHarness extends TestHarness
     }
   }
 
-  public static void main(String[] args) throws Exception
-  {
-    String name = args[0];
-    Class k = Class.forName(name);    
-    Testlet t = (Testlet) k.newInstance();
-    TestHarness h = new SingleTestHarness(t);
-    t.test(h);
+    public static void main(String[] args) throws Exception {
+        if (args.length > 0) {
+        	final boolean verbose;
+		    final String name;
+	        if ((args.length > 1) && "-v".equals(args[0])) {
+        		verbose = true;
+        		name = args[1];
+    	    } else {
+	        	verbose = false;
+    			name = args[0];
+    		}
+    		
+	        Class k = Thread.currentThread().getContextClassLoader().loadClass(
+            	    name);
+    		Testlet t = (Testlet) k.newInstance();
+			TestHarness h = new SingleTestHarness(t, verbose);
+	    	t.test(h);
+        } else {
+            System.out.println("Usage: mauve-simple [-v] <test-class>");
+        }
   }
 }
