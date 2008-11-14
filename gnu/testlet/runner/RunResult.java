@@ -1,6 +1,7 @@
 // Tags: not-a-test
 // Copyright (C) 2004 by Object Refinery Limited
 // Written by David Gilbert (david.gilbert@object-refinery.com)
+// Modified by Fabien DUMINY (fduminy@jnode.org)
 
 // This file is part of Mauve Reporter.
 
@@ -27,7 +28,7 @@ import java.util.List;
 /**
  * Represents the result of running a collection of Mauve tests.
  */
-public class RunResult {
+public class RunResult implements Result {
 
     /** The name of the run. */
     private String name;
@@ -45,7 +46,7 @@ public class RunResult {
      *
      * @param name  the class name.
      */
-    RunResult(String name) {
+    public RunResult(String name) {
         this.name = name;
         packageResults = new ArrayList();
     }

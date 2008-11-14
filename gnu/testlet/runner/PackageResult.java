@@ -1,6 +1,7 @@
 // Tags: not-a-test
 // Copyright (C) 2004 by Object Refinery Limited
 // Written by David Gilbert (david.gilbert@object-refinery.com)
+// Modified by Fabien DUMINY (fduminy@jnode.org)
 
 // This file is part of Mauve Reporter.
 
@@ -27,7 +28,7 @@ import java.util.List;
 /**
  * Represents the result of running all the tests for a particular package.
  */
-public class PackageResult implements Comparable {
+public class PackageResult implements Comparable, Result {
 
     /** The name of the package. */
     private String name;

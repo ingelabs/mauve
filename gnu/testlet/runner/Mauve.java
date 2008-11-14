@@ -2,6 +2,7 @@
 // Copyright (C) 2005 by <zander@kde.org>
 // Written by David Gilbert (david.gilbert@object-refinery.com)
 // Written by Thomas Zander <zander@kde.org>
+// Modified by Fabien DUMINY (fduminy@jnode.org)
 
 // This file is part of Mauve.
 
@@ -191,7 +192,9 @@ public class Mauve extends TestHarness
     System.out.println("Creating XML report...");
     try 
     {
-      new XMLGenerator(result).generate(new File(out, "results.xml"));
+        File fx = new File(out, "results.xml");
+        new XMLReportWriter(true).write(result, fx);
+        System.out.println("XML file written to " + fx.getAbsolutePath());
     } 
     catch (IOException e) 
     {

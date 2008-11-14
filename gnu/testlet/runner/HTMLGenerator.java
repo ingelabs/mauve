@@ -1,5 +1,6 @@
 // Copyright (C) 2004 by Object Refinery Limited
 // Written by David Gilbert (david.gilbert@object-refinery.com)
+// Modified by Peter Barth (peda@jnode.org)
 
 // This file is part of Mauve Reporter.
 
@@ -18,7 +19,14 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package gnu.testlet.runner;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -123,7 +131,16 @@ public class HTMLGenerator {
             writer.println("</tr>");
             // (2) generate an HTML page for the test and subfiles
             //     for the tests
+            try {
             HTMLGenerator.createPackageReport(packageResult, rootDirectory);
+            } catch (Exception e) {
+                String temp = packageResult.getName().replace('.', '/');
+                System.err.println("Couldn't create package report for " + temp);
+                File tempDir = new File(rootDirectory, packageName);
+                tempDir.mkdirs();
+                File tempFile = new File(tempDir, "package_index.html");
+                tempFile.createNewFile();
+        }
         }
         writer.println("</table>");
         writer.println("</td>");
@@ -366,7 +383,13 @@ public class HTMLGenerator {
                     check.getPassed() + "</td><td bgcolor=\"white\">" + check.getExpected() +
                     "</td><td bgcolor=\"white\">" + check.getActual() + "</td>");
             if (!check.getPassed()) {
+                try {
                 createLogReport(check, className, testResult.getName(), classDirectory);
+                } catch (Exception e) {
+                    System.err.println("Couldn't write report for class " + className);
+                    File temp = new File(classDirectory, testResult.getName() + "_log.html");
+                    temp.createNewFile();
+                }
             }
             writer.println("</td>");
             writer.println("</tr>");

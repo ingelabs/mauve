@@ -1,6 +1,7 @@
 // Tags: not-a-test
 // Copyright (C) 2004 by Object Refinery Limited
 // Written by David Gilbert (david.gilbert@object-refinery.com)
+// Modified by Fabien DUMINY (fduminy@jnode.org)
 
 // This file is part of Mauve Reporter.
 
@@ -27,7 +28,7 @@ import java.io.*;
  * checks and corresponds to a single method in the API being tested.  There
  * are exceptions of course.
  */
-public class TestResult implements Comparable {
+public class TestResult implements Comparable, Result  {
 
     /** The name of the test (usually the method name). */
     private String name;
@@ -135,5 +136,9 @@ public class TestResult implements Comparable {
 
     public String getFailedMessage() {
         return error;
+    }
+
+    public void setFailedMessage(String error) {
+        this.error = error;        
     }
 }

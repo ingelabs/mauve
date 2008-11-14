@@ -1,5 +1,41 @@
 2008-11-14  Fabien DUMINY  <fduminy@jnode.org>
     
+    * gnu/testlet/runner/CheckResult.java 
+    * gnu/testlet/runner/ClassResult.java 
+    * gnu/testlet/runner/HTMLGenerator.java 
+    * gnu/testlet/runner/Mauve.java 
+    * gnu/testlet/runner/MauveTests.java     Added
+    * gnu/testlet/runner/PackageResult.java 
+    * gnu/testlet/runner/Result.java         Added
+    * gnu/testlet/runner/RunResult.java 
+    * gnu/testlet/runner/TestResult.java 
+    * gnu/testlet/runner/XMLReportConstants.java  Added 
+    * gnu/testlet/runner/XMLReportParser.java     Added
+    * gnu/testlet/runner/XMLReportWriter.java     Added
+    * gnu/testlet/runner/compare/ClassComparison.java       Added
+    * gnu/testlet/runner/compare/Comparison.java            Added
+    * gnu/testlet/runner/compare/ComparisonVisitor.java     Added
+    * gnu/testlet/runner/compare/ComparisonWriter.java      Added
+    * gnu/testlet/runner/compare/EvolutionType.java         Added
+    * gnu/testlet/runner/compare/EvolutionTypeVisitor.java  Added
+    * gnu/testlet/runner/compare/HTMLComparisonWriter.java  Added
+    * gnu/testlet/runner/compare/PackageComparison.java     Added
+    * gnu/testlet/runner/compare/ReportComparator.java      Added 
+    * gnu/testlet/runner/compare/RunComparison.java         Added 
+    * gnu/testlet/runner/compare/TestComparison.java        Added 
+    * gnu/testlet/runner/compare/TextComparisonWriter.java  Added
+    * net/sourceforge/nanoxml/XMLElement.java               Added, Copied from icedtea6-1.3.1.tar.gz
+    * net/sourceforge/nanoxml/XMLParseException.java        Added, Copied from icedtea6-1.3.1.tar.gz
+    
+    Added features :
+    - an XML report generator
+    - an XML report parser (using nanoxml version from icedtea 6-1.3.1
+    - a comparator of 2 mauve runs (through their xml report) : result can be in html 
+    or in plain text format
+    - In addition to the HTML report, Mauve now generate an xml report
+
+2008-11-14  Fabien DUMINY  <fduminy@jnode.org>
+    
     * gnu/testlet/SingleTestHarness.java : 
     Added '-v' option to enabled verbose mode. default is not verbose.
     Replaced "Class.forName" by use of context classloader
