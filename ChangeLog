@@ -1,3 +1,10 @@
+2008-11-17  Fabien DUMINY  <fduminy@jnode.org>
+    
+    * gnu/testlet/runner/Filter.java :
+    To allow custom filtering outside of Mauve, 
+    externalized code reading the test list + added LineProcessor interface
+    Also slightly optimized use of memory by StringBuffer.   
+
 2008-11-14  Fabien DUMINY  <fduminy@jnode.org>
     
     * gnu/testlet/runner/CheckResult.java 

@@ -33,15 +33,11 @@ public class Filter {
         System.out.println("");
         //System.out.println("parsing classlist");
 
-        Vector options = new Vector();
-        TreeSet sorted = new TreeSet();
-        InputStream in = Filter.class.getResourceAsStream("/testslists");
-        StringBuffer buf = new StringBuffer();
-        while(true) {
-            int character = in.read();
-            if(character == -1)
-                break;
-            if(character == '\n') {
+        final Vector options = new Vector();
+        final TreeSet sorted = new TreeSet();
+        
+        readTestList(new LineProcessor() {
+            public void processLine(StringBuffer buf) {        
                 if(buf.indexOf("[") == 0 && buf.charAt(buf.length()-1) == ']') {
                     String token = buf.substring(1, buf.length()-1);
                     if(token.startsWith("JDK"))
@@ -49,14 +45,12 @@ public class Filter {
                     else
                         options.add(token);
                 }
-                buf = new StringBuffer();
             }
-            else
-                buf.append((char) character);
-        }
+        });
+        
         //System.out.println("done");
         System.out.println("Please pick one:");
-        buf = new StringBuffer();
+        final StringBuffer buf = new StringBuffer();
         int i=1;
         Iterator iter = sorted.iterator();
         while(iter.hasNext()) {
@@ -69,7 +63,7 @@ public class Filter {
                 buf.append("? ");
         }
         String answer = ask(buf.toString());
-        String which;
+        final String which;
         try {
             int index = Integer.parseInt(answer);
             which = (String) new ArrayList(sorted).get(index-1);
@@ -84,34 +78,29 @@ public class Filter {
         }
 
         Iterator opsIter = new Vector(options).iterator();
-        options = new Vector();
+        final List choosedOptions = new Vector();
         while(opsIter.hasNext()) {
             String option = (String) opsIter.next();
             answer = ask("Use classes with option: "+ option +"? [yN] ");
             if("y".equalsIgnoreCase(answer))
-                options.add(option);
+                choosedOptions.add(option);
         }
 
         System.out.println("Writing all tests for "+ which +" to 'tests'");
 
-        Set tests = new TreeSet();
-        in = Filter.class.getResourceAsStream("/testslists");
-        buf = new StringBuffer();
-        boolean valid=true;
-        while(true) {
-            int character = in.read();
-            if(character == -1)
-                break;
-            if(character == '\n') {
-                if(buf.length() == 0)
-                    continue;
+        final Set tests = new TreeSet();
+        
+        readTestList(new LineProcessor() {
+            private boolean valid=true;
+            
+            public void processLine(StringBuffer buf) {
                 if(buf.charAt(0) == '[') {
                     String newVer = buf.substring(1, buf.length()-1);
                     if(newVer.startsWith("JDK")) {
                         if(which.compareTo(newVer) < 0)
                             valid=false;
                     } else
-                        valid= options.contains(newVer);
+                        valid= choosedOptions.contains(newVer);
                 }
                 else if(valid && buf.charAt(0) == '-')
                     tests.remove(buf.substring(1));
@@ -119,12 +108,9 @@ public class Filter {
                     tests.add(buf.toString());
                 else
                     tests.remove(buf.toString());
-                buf = new StringBuffer();
             }
-            else
-                buf.append((char) character);
-        }
-
+        });
+        
         PrintWriter writer = new PrintWriter(new FileOutputStream(new File("tests")));
         iter = tests.iterator();
         while(iter.hasNext())
@@ -132,6 +118,28 @@ public class Filter {
         writer.close();
     }
 
+    public static interface LineProcessor {
+        void processLine(StringBuffer buf);
+    }
+
+    public static void readTestList(LineProcessor processor) throws IOException {
+        InputStream in = Filter.class.getResourceAsStream("/testslists");
+        StringBuffer buf = new StringBuffer();
+        while(true) {
+            int character = in.read();
+            if(character == -1)
+                break;
+            if(character == '\n') {
+                if(buf.length() == 0)
+                    continue;
+                processor.processLine(buf);
+                buf.setLength(0); // clear buffer
+            }
+            else
+                buf.append((char) character);
+        }
+    }
+    
     private static String ask(String question) throws IOException {
         System.out.write(question.getBytes());
 
