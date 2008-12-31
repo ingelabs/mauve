@@ -13,13 +13,14 @@ import java.util.*;
 
 public class ampm implements Testlet
 {
-  private DateFormat format;
+  private SimpleDateFormat format;
   private TestHarness harness;
 
   public void test (TestHarness harness)
   {
     // AM/PM mark is locale-dependent.  We use Locale.US.
     format = new SimpleDateFormat("hh:mm a", Locale.US);
+    String[] ampm = format.getDateFormatSymbols().getAmPmStrings();
     this.harness = harness;
 
     // According to the API document of java.util.Calendar,
@@ -31,19 +32,19 @@ public class ampm implements Testlet
     // Whereas the 'h' flag is 1-12 time
     // I.e. 12 AM (midnight), 1 AM, .. , 12 PM (midday), 1 PM, .. 11 PM
 
-    checkTime("12:00 AM", "12:00 AM");
-    checkTime("12:10 AM", "12:10 AM");
-    checkTime(0, 0, Calendar.AM, "12:00 AM");
-    checkTime("0:00 AM", "12:00 AM");
-    checkTime(0, 10, Calendar.AM, "12:10 AM");
-    checkTime("0:10 AM", "12:10 AM");
+    checkTime("12:00 " + ampm[0], "12:00 " + ampm[0]);
+    checkTime("12:10 " + ampm[0], "12:10 " + ampm[0]);
+    checkTime(0, 0, Calendar.AM, "12:00 " + ampm[0]);
+    checkTime("0:00 " + ampm[0], "12:00 " + ampm[0]);
+    checkTime(0, 10, Calendar.AM, "12:10 " + ampm[0]);
+    checkTime("0:10 " + ampm[0], "12:10 " + ampm[0]);
 
-    checkTime("12:00 PM", "12:00 PM");
-    checkTime("12:10 PM", "12:10 PM");
-    checkTime(0, 0, Calendar.PM, "12:00 PM");
-    checkTime("0:00 PM", "12:00 PM");
-    checkTime(0, 10, Calendar.PM, "12:10 PM");
-    checkTime("0:10 PM", "12:10 PM");
+    checkTime("12:00 " + ampm[1], "12:00 " + ampm[1]);
+    checkTime("12:10 " + ampm[1], "12:10 " + ampm[1]);
+    checkTime(0, 0, Calendar.PM, "12:00 " + ampm[1]);
+    checkTime("0:00 " + ampm[1], "12:00 " + ampm[1]);
+    checkTime(0, 10, Calendar.PM, "12:10 " + ampm[1]);
+    checkTime("0:10 " + ampm[1], "12:10 " + ampm[1]);
   }
 
   private void checkTime(int hh, int mm, int ampm, String expect)
