@@ -160,8 +160,8 @@ public class format14 implements Testlet
     
     try
     {
-      s = MessageFormat.format("{0,choice,0#zero|1#one|1>many}", new Object[]{new Double(2.0)});
-      expected = new ChoiceFormat("0#zero|1#one|1>many").format(new Double(2.0));
+      s = MessageFormat.format("{0,choice,0#zero|1#one|1<many}", new Object[]{new Double(2.0)});
+      expected = new ChoiceFormat("0#zero|1#one|1<many").format(new Double(2.0));
       harness.check(s, expected);
     }
     catch (Exception e)
