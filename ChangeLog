@@ -1,11 +1,17 @@
-2009-01-02  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+2009-01-26  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/lang/String/ConsCharset.java:
+	New test for constructor which takes a
+	java.nio.charset.Charset as an argument.
+	
+2009-01-02  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/text/ChoiceFormat/Bad.java:
 	New test for bad ChoiceFormats.
 	* gnu/testlet/java/text/MessageFormat/format14.java:
 	Correct ChoiceFormat used.
 
-2008-12-31  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+2008-12-31  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/util/Calendar/ampm.java:
 	Use the localised am/pm strings from DateFormatSymbols
