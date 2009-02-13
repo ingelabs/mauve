@@ -1,3 +1,7 @@
+2009-02-13  Omair Majid  <omajid@redhat.com>
+
+	* Harness.java (setupHarness): Check for -xmlout file argument.
+
 2009-01-26  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/lang/String/ConsCharset.java:

@@ -338,6 +338,14 @@ public class Harness
                     "after '-timeout'.  Exit");
             runner_timeout = Long.parseLong(args[i]);
           }
+        else if (args[i].equals("-xmlout"))
+          {
+            // User wants output in an xml file
+            if (++i >= args.length)
+              throw new RuntimeException ("No file " +
+                    "given after '-xmlout'.  Exit");
+            // the filename is used directly from args
+          }
         else if (args[i].charAt(0) == '-')
           {
             // One of the ignored options (handled by RunnerProcess)
