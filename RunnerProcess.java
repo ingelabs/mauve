@@ -362,6 +362,10 @@ public class RunnerProcess
         if (verbose)
           System.out.println("TEST FAILED: exception when loading "
                              + stripPrefix(name));
+
+        if (report != null)
+          report.addTestResult(currentResult);
+
         return;
       }
 

@@ -1,3 +1,8 @@
+2009-02-19  Omair Majid  <omajid@redhat.com>
+
+	* RunnerProcess (runtest): If a test fails to start, include it in the xml
+	report as a failure.
+
 2009-02-13  Omair Majid  <omajid@redhat.com>
 
 	* Harness.java (setupHarness): Check for -xmlout file argument.
