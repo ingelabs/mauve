@@ -48,13 +48,13 @@ import java.util.Locale;
  */
 public class Mauve extends TestHarness 
 {
-  private String lastCheckPoint;
-  private int checksSinceLastCheckPoint;
-  private ClassResult classResult;
-  private TestResult currentTest;
-  private CheckResult currentCheck;
-  private RunResult result;
-
+  protected String lastCheckPoint;
+  protected int checksSinceLastCheckPoint;
+  protected ClassResult classResult;
+  protected TestResult currentTest;
+  protected CheckResult currentCheck;
+  protected RunResult result;
+  
   /**
    * runs tests
    *
@@ -85,86 +85,7 @@ public class Mauve extends TestHarness
         while (r.ready()) 
           {
             String line = r.readLine();
-            if ("".equals(line)) 
-              continue;
-            System.out.println(line);
-            // check the line is not commented
-            // load the listed class
-            try 
-              {
-                Class c = Class.forName(line);
-                // strip prefix ('gnu.testlet.') from front of name
-                String temp = line.substring(prefix.length());
-                // suffix is the name for the TestResult
-                String testName = temp.substring(temp.lastIndexOf('.') + 1);
-
-                temp = temp.substring(0, temp.lastIndexOf('.'));
-                String className = temp.substring(temp.lastIndexOf('.') + 1);
-                if (className.equals("Double") || className.equals("Float") 
-                        || className.equals("Key")) 
-                  {
-                    if (!temp.startsWith("java.lang.")) 
-                      {
-                        temp = temp.substring(0, temp.lastIndexOf('.'));
-                        className = temp.substring(temp.lastIndexOf('.') + 1) 
-                            + '.' + className;
-                      }
-                  }
-
-                String packageName = "default package";
-                int index = temp.lastIndexOf('.');
-                if (index >= 0)
-                  packageName = temp.substring(0, temp.lastIndexOf('.'));
-                // remaining suffix is name for ClassResult
-                // rest of text is name for PackageResult
-                PackageResult pr = result.getPackageResult(packageName);
-                if (pr == null)
-                  pr = new PackageResult(packageName);
-                classResult = pr.getClassResult(className);
-                if (classResult == null)
-                  classResult = new ClassResult(className);
-
-                Testlet testlet;
-                try 
-                {
-                  testlet = (Testlet) c.newInstance();
-                }
-                catch (ClassCastException e) 
-                {
-                  System.err.println("Not a test (does not implement Testlet): "
-                          + line);
-                  result.addFaultyTest(line, "Does not implement Testlet");
-                  continue; // not a test
-                } 
-                catch (Throwable t) 
-                { // instanciation errors etc..
-                  t.printStackTrace(System.out);
-                  result.addFaultyTest(line, t.getMessage());
-                  continue;
-                }
-                currentTest = new TestResult(testName);
-                checksSinceLastCheckPoint = 0;
-                lastCheckPoint = "-";
-                try 
-                {
-                  testlet.test(this);
-                } 
-                catch (Throwable t) 
-                {
-                  t.printStackTrace(System.out);
-                  currentTest.failed(t);
-                }
-                classResult.add(currentTest);
-                if (pr.indexOf(classResult) < 0)
-                  pr.add(classResult);
-                if (result.indexOf(pr) == -1)
-                  result.add(pr);
-            } 
-            catch (ClassNotFoundException e) 
-            {
-              System.err.println("Could not load test: "+ line);
-              result.addMissingTest(line);
-            }
+            executeLine(prefix, line);
         }
     }
     catch (FileNotFoundException e) 
@@ -178,30 +99,137 @@ public class Mauve extends TestHarness
     // tests are complete so restore the default locale
     Locale.setDefault(savedLocale);
     
-    // write results to HTML
-    System.out.println("Creating HTML report...");
-    try 
-    {
-      HTMLGenerator.createReport(result, out);
-    } 
-    catch (IOException e) 
-    {
-      System.out.println("failed to write HTML due to following error:");
-      e.printStackTrace(System.out);
-    }
-    System.out.println("Creating XML report...");
-    try 
-    {
-        File fx = new File(out, "results.xml");
-        new XMLReportWriter(true).write(result, fx);
-        System.out.println("XML file written to " + fx.getAbsolutePath());
-    } 
-    catch (IOException e) 
-    {
-      System.out.println("failed to write XML due to following error:");
-      e.printStackTrace(System.out);
-    }
+    writeHTMLReport(out);
+    writeXMLReport(out);
     System.out.println("DONE!");
+  }
+  
+  protected void executeLine(String prefix, String line) {
+        if ((line == null) || (line.trim().length() == 0)) { 
+            return;
+        }
+  
+        System.out.println(line);
+        // check the line is not commented
+        // load the listed class
+        try 
+          {
+            Class c = Class.forName(line);
+            // strip prefix ('gnu.testlet.') from front of name
+            String temp = line.substring(prefix.length());
+            // suffix is the name for the TestResult
+            String testName = temp.substring(temp.lastIndexOf('.') + 1);
+
+            temp = temp.substring(0, temp.lastIndexOf('.'));
+            String className = temp.substring(temp.lastIndexOf('.') + 1);
+            if (className.equals("Double") || className.equals("Float") 
+                    || className.equals("Key")) 
+              {
+                if (!temp.startsWith("java.lang.")) 
+                  {
+                    temp = temp.substring(0, temp.lastIndexOf('.'));
+                    className = temp.substring(temp.lastIndexOf('.') + 1) 
+                        + '.' + className;
+                  }
+              }
+
+            String packageName = "default package";
+            int index = temp.lastIndexOf('.');
+            if (index >= 0)
+              packageName = temp.substring(0, temp.lastIndexOf('.'));
+            // remaining suffix is name for ClassResult
+            // rest of text is name for PackageResult
+            PackageResult pr = result.getPackageResult(packageName);
+            if (pr == null)
+              pr = new PackageResult(packageName);
+            classResult = pr.getClassResult(className);
+            if (classResult == null)
+              classResult = new ClassResult(className);
+
+            Testlet testlet = createTestlet(c, line);
+            if (testlet != null) {
+                runTestlet(testlet, pr, testName);
+            }
+        } 
+        catch (ClassNotFoundException e) 
+        {
+          System.err.println("Could not load test: "+ line);
+          result.addMissingTest(line);
+        }
+  }
+  
+  protected void runTestlet(Testlet testlet, PackageResult pr, String testName) {
+      currentTest = new TestResult(testName);
+      checksSinceLastCheckPoint = 0;
+      lastCheckPoint = "-";
+      try 
+      {
+        testlet.test(this);
+      } 
+      catch (Throwable t) 
+      {
+        t.printStackTrace(System.out);
+        currentTest.failed(t);
+      }
+      classResult.add(currentTest);
+      if (pr.indexOf(classResult) < 0)
+        pr.add(classResult);
+      if (result.indexOf(pr) == -1)
+        result.add(pr);      
+  }
+  
+  protected RunResult getResult() {
+      return result;
+  }
+  
+  protected Testlet createTestlet(Class c, String line) {
+      Testlet testlet = null;
+      try 
+      {
+        testlet = (Testlet) c.newInstance();
+      }
+      catch (ClassCastException e) 
+      {
+        System.err.println("Not a test (does not implement Testlet): "
+                + line);
+        result.addFaultyTest(line, "Does not implement Testlet");
+        // not a test
+      } 
+      catch (Throwable t) 
+      { // instanciation errors etc..
+        t.printStackTrace(System.out);
+        result.addFaultyTest(line, t.getMessage());
+      }
+      return testlet;
+  }
+
+  protected void writeHTMLReport(File outputDir) {
+      // write results to HTML
+      System.out.println("Creating HTML report...");
+      try 
+      {
+        HTMLGenerator.createReport(result, outputDir);
+      } 
+      catch (IOException e) 
+      {
+        System.out.println("failed to write HTML due to following error:");
+        e.printStackTrace(System.out);
+      }      
+  }
+  
+  protected void writeXMLReport(File outputDir) {
+      System.out.println("Creating XML report...");
+      try 
+      {
+          File fx = new File(outputDir, "results.xml");
+          new XMLReportWriter(true).write(result, fx);
+          System.out.println("XML file written to " + fx.getAbsolutePath());
+      } 
+      catch (IOException e) 
+      {
+        System.out.println("failed to write XML due to following error:");
+        e.printStackTrace(System.out);
+      }
   }
 
   /**

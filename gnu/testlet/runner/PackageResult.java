@@ -70,7 +70,7 @@ public class PackageResult implements Comparable, Result {
      *
      * @param result  the test result.
      */
-    void add(ClassResult result) {
+    public void add(ClassResult result) {
         classResults.add(result);
         sorted = false;
     }

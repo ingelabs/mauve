@@ -74,7 +74,7 @@ public class RunResult implements Result {
      *
      * @param result  the package result.
      */
-    void add(PackageResult result) {
+    public void add(PackageResult result) {
         packageResults.add(result);
         sorted =false;
     }

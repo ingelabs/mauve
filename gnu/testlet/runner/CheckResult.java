@@ -49,7 +49,7 @@ public class CheckResult implements Result {
      * @param number  the check number.
      * @param passed  a flag that indicates whether or not the check passed.
      */
-    CheckResult(int number, boolean passed) {
+    public CheckResult(int number, boolean passed) {
         this.number = number;
         this.passed = passed;
     }

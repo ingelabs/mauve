@@ -24,8 +24,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.Enumeration;
-import java.util.List;
 
 import net.sourceforge.nanoxml.XMLElement;
 import net.sourceforge.nanoxml.XMLParseException;
@@ -46,11 +46,23 @@ public class XMLReportParser implements XMLReportConstants {
      * @throws IOException
      */
     public RunResult parse(File input) throws XMLParseException, IOException {
+        return parse(new FileReader(input));
+    }
+    
+    /**
+     * Parse the given reader and return the corresponding mauve result. 
+     * 
+     * @param r
+     * @return
+     * @throws XMLParseException
+     * @throws IOException
+     */
+    public RunResult parse(Reader r) throws XMLParseException, IOException {
         XMLElement xmlRun = new XMLElement();
         BufferedReader reader = null;
         
         try {
-            reader = new BufferedReader(new FileReader(input));
+            reader = new BufferedReader(r);
             xmlRun.parseFromReader(reader);
     
             checkTag(xmlRun, RUN_RESULT);

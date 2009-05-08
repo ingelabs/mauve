@@ -1,3 +1,15 @@
+2009-05-09  Fabien DUMINY  <fduminy@jnode.org>
+    * gnu/testlet/runner/Mauve.java : 
+            split of execute(...) method for clarity and better reusability (in jnode).
+            changed visibility of instance variables to 'protected' for reusability.
+    * gnu/testlet/runner/XMLReportParser.java : 
+            added another parse method, which take a Reader to allow something else than
+            a File as input
+    * gnu/testlet/runner/CheckResult.java :
+            changed visibility of constructor to 'public' for reusability
+    * gnu/testlet/runner/PackageResult.java & RunResult.java :
+            changed visibility of add method to public for reusability
+    
 2009-02-19  Omair Majid  <omajid@redhat.com>
 
 	* RunnerProcess (runtest): If a test fails to start, include it in the xml
