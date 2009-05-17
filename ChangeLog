@@ -1,3 +1,26 @@
+2009-05-17  Fabien DUMINY  <fduminy@jnode.org>
+    * gnu/testlet/runner/HTMLGenerator.java
+      gnu/testlet/runner/Mauve.java
+      gnu/testlet/runner/RunResult.java
+      gnu/testlet/runner/XMLReportConstants.java
+      gnu/testlet/runner/XMLReportParser.java
+      gnu/testlet/runner/XMLReportWriter.java :
+            Moved getting of system properties from Mauve to RunResult to allow exportation
+            in xml and html format (or any other format ...) 
+            + added support for custom system properties (for people using mauve APIs for their specific needs).
+    
+    * gnu/testlet/runner/MauveTests.java :
+            Added tests for the above features
+    
+    * gnu/testlet/runner/compare/ComparisonWriter.java
+      gnu/testlet/runner/compare/HTMLComparisonWriter.java
+      gnu/testlet/runner/compare/ReportComparator.java
+      gnu/testlet/runner/compare/RunComparison.java
+      gnu/testlet/runner/compare/TextComparisonWriter.java :
+            Added comparison of (default and custom) system properties
+    
+    * Added javadoc to some of the above java classes.
+
 2009-05-09  Fabien DUMINY  <fduminy@jnode.org>
     * gnu/testlet/runner/Mauve.java : 
             split of execute(...) method for clarity and better reusability (in jnode).

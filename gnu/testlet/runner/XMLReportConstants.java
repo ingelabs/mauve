@@ -30,6 +30,10 @@ public interface XMLReportConstants {
     public static final String RUN_RESULT = "run";
     public static final String RUN_NAME = "name";
     
+    public static final String PROPERTY = "property";
+    public static final String PROPERTY_NAME = "name";
+    public static final String PROPERTY_VALUE = "value";
+    
     public static final String PACKAGE_RESULT = "package";
     public static final String PACKAGE_NAME = "name";
     

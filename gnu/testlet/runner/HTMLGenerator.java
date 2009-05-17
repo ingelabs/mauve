@@ -72,23 +72,11 @@ public class HTMLGenerator {
         writer.println("<td bgcolor=\"lightGray\">Value:</td>");
         writer.println("</tr>");
 
-        writePropertyRow("java.version", System.getProperty("java.version"), writer);
-        writePropertyRow("java.vendor", System.getProperty("java.vendor"), writer);
-        writePropertyRow("java.vendor.url", System.getProperty("java.vendor.url"), writer);
-        writePropertyRow("os.name", System.getProperty("os.name"), writer);
-        writePropertyRow("os.arch", System.getProperty("os.arch"), writer);
-        writePropertyRow("os.version", System.getProperty("os.version"), writer);
-
-        writePropertyRow("java.vm.specification.version", System.getProperty("java.vm.specification.version"), writer);
-        writePropertyRow("java.vm.specification.vendor", System.getProperty("java.vm.specification.vendor"), writer);
-        writePropertyRow("java.vm.specification.name", System.getProperty("java.vm.specification.name"), writer);
-        writePropertyRow("java.vm.version", System.getProperty("java.vm.version"), writer);
-        writePropertyRow("java.vm.vendor", System.getProperty("java.vm.vendor"), writer);
-        writePropertyRow("java.vm.name", System.getProperty("java.vm.name"), writer);
-        writePropertyRow("java.specification.version", System.getProperty("java.specification.version"), writer);
-        writePropertyRow("java.specification.vendor", System.getProperty("java.specification.vendor"), writer);
-        writePropertyRow("java.specification.name", System.getProperty("java.specification.name"), writer);
-        writePropertyRow("java.class.version", System.getProperty("java.class.version"), writer);
+        String[] propertyNames = run.getSystemPropertyNames();
+        for (int i = 0; i < propertyNames.length; i++) {
+            String name = propertyNames[i];
+            writePropertyRow(name, run.getSystemProperty(name), writer);
+        }
 
         writer.println("</table>");
         writer.println("</td>");

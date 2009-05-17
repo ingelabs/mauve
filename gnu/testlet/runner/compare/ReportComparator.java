@@ -30,6 +30,7 @@ import gnu.testlet.runner.XMLReportParser;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -104,6 +105,8 @@ public class ReportComparator {
     public RunComparison compare() {
         RunComparison cr = new RunComparison(result1, result2);
         
+        addSystemProperties(cr);
+        
         for (Iterator itPackage1 = result1.getPackageIterator(); itPackage1.hasNext(); ) {
             PackageResult pkg1 = (PackageResult) itPackage1.next();
             PackageResult pkg2 = (PackageResult) getResult(pkg1, result2.getPackageIterator()); 
@@ -130,6 +133,24 @@ public class ReportComparator {
         }
         
         return cr;
+    }
+    
+    private void addSystemProperties(RunComparison runComparison) {
+        List names1 = Arrays.asList(result1.getSystemPropertyNames());
+        for (int i = 0; i < names1.size(); i++) {
+            String name = (String) names1.get(i);
+            runComparison.addSystemProperty(name, result1.getSystemProperty(name),
+                    result2.getSystemProperty(name));
+        }
+        
+        String[] names2 = result2.getSystemPropertyNames();
+        for (int i = 0; i < names2.length; i++) {
+            String name = names2[i];
+            if (!names1.contains(name)) {
+                runComparison.addSystemProperty(name, result1.getSystemProperty(name),
+                        result2.getSystemProperty(name));
+            }
+        }
     }
     
     private void compare(TestResult test1, PackageResult pkg2, ClassResult cls2, TestResult test2,

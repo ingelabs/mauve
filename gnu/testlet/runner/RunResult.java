@@ -22,8 +22,11 @@ package gnu.testlet.runner;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * Represents the result of running a collection of Mauve tests.
@@ -40,6 +43,14 @@ public class RunResult implements Result {
     private List missingTests = new ArrayList();
     private List faultyTests = new ArrayList();
     private boolean sorted=true;
+    
+    /**
+     * System properties in which mauve tests are run.
+     * The list is actually of list of couples(name, value), which make it a
+     * kind of order Map.
+     * Example of list content : "name1", "value1", "name2", "value2" 
+     */
+    private final List systemProperties;
 
     /**
      * Creates a new result, initially empty.
@@ -49,6 +60,57 @@ public class RunResult implements Result {
     public RunResult(String name) {
         this.name = name;
         packageResults = new ArrayList();
+        systemProperties = new ArrayList();
+    }
+
+    /**
+     * Set a system property.
+     * @param name Name of the system property.
+     * @param value Value of the system property.
+     */
+    public void setSystemProperty(String name, String value) {
+        boolean found = false;
+        for (int i = 0; i < systemProperties.size(); i += 2) {
+            if (name.equals((String) systemProperties.get(i))) {
+                systemProperties.set(i + 1, value);
+                found = true;
+                break;
+            }
+        }
+        
+        if (!found) {
+            systemProperties.add(name);
+            systemProperties.add(value);
+        }
+    }
+
+    /**
+     * Get a system property.
+     * @param name Name of the system property.
+     * @return value Value of the system property.
+     */
+    public String getSystemProperty(String name) {
+        String value = "";
+        for (int i = 0; i < systemProperties.size(); i += 2) {
+            if (name.equals((String) systemProperties.get(i))) {
+                value = (String) systemProperties.get(i + 1);
+                break;
+            }
+        }
+        return value;
+    }
+
+    /**
+     * Get a system property names.
+     * @return array of system property names.
+     */
+    public String[] getSystemPropertyNames() {
+        String[] names = new String[systemProperties.size() / 2];
+        int j = 0;
+        for (int i = 0; i < systemProperties.size(); i += 2) {
+            names[j++] = (String) systemProperties.get(i);
+        }
+        return names;
     }
 
     /**

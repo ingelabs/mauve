@@ -25,15 +25,23 @@ import gnu.testlet.runner.PackageResult;
 import gnu.testlet.runner.RunResult;
 import gnu.testlet.runner.TestResult;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Result of the comparison of 2 {@link RunResult}s
  * @author fabien
  *
  */
 public class RunComparison extends Comparison {
+    private final List systemProperties = new ArrayList();
+    private final String result1Name;
+    private final String result2Name;
     
     RunComparison(RunResult result1, RunResult result2) {
         super(new RunResult("Comparison of '" + result1.getName() + "' and '" + result2.getName() + "'"));
+        result1Name = result1.getName();
+        result2Name = result2.getName();
     }
 
     /**
@@ -69,5 +77,28 @@ public class RunComparison extends Comparison {
     public void accept(ComparisonVisitor visitor) {
         visitor.visit(this);
         acceptChildren(visitor);
+    }
+
+    /**
+     * @param name
+     * @param value1
+     * @param value2
+     */
+    public void addSystemProperty(String name, String value1, String value2) {
+        systemProperties.add(name);
+        systemProperties.add(value1);
+        systemProperties.add(value2);
+    }
+    
+    public List getSystemProperties() {
+        return systemProperties;
+    }
+
+    public String getResult1Name() {
+        return result1Name;
+    }
+
+    public String getResult2Name() {
+        return result2Name;
     }
 }

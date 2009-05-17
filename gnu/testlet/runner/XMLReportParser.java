@@ -72,7 +72,14 @@ public class XMLReportParser implements XMLReportConstants {
             
             for (Enumeration enumPkg = xmlRun.enumerateChildren(); enumPkg.hasMoreElements(); ) {
                 XMLElement xmlPkg = (XMLElement) enumPkg.nextElement();
-                checkTag(xmlPkg, PACKAGE_RESULT);
+                int indexTag = checkTag(xmlPkg, new String[]{PACKAGE_RESULT, PROPERTY});
+                
+                if (indexTag == 1) {
+                    String name  = getValue(xmlPkg, PROPERTY_NAME, "");
+                    String value  = getValue(xmlPkg, PROPERTY_VALUE, "");
+                    run.setSystemProperty(name, value);
+                    continue;
+                }
                 
                 attr = getValue(xmlPkg, PACKAGE_NAME, "");
                 PackageResult pkg = new PackageResult(attr);             
@@ -148,15 +155,61 @@ public class XMLReportParser implements XMLReportConstants {
         return check;
     }
 
+    /**
+     * Get the value of an xml element's attribute and return the given default
+     * value if the attribute is not defined. 
+     * @param xml The xml element for which we want an attribute.
+     * @param attributeName The name of the attribute.
+     * @param defaultValue The default value to return if the attribute is not defined.
+     * @return The value of the xml element's attribute or, if not defined, the given
+     * <code>defaultValue</code> parameter. 
+     */
     private String getValue(XMLElement xml, String attributeName, String defaultValue) {
         Object attr = xml.getAttribute(attributeName);
         return (attr == null) ? defaultValue : String.valueOf(attr);
     }
     
+    /**
+     * Checks that the xml element represents the given tag.
+     * @param xml The xml element to check.
+     * @param tag The tag which is expected.
+     * @throws XMLParseException if the xml element doesn't represent the given tag.
+     */
     private void checkTag(XMLElement xml, String tag) {
         final String actualTag = xml.getName();
         if (!tag.equals(actualTag)) {
             throw new XMLParseException("", "tag is not '" + tag + "' (actual: '" + actualTag + "')");
         }        
+    }
+    
+    /**
+     * Checks that the xml element represents one of the given tags.
+     * @param xml The xml element to check.
+     * @param tag The tags which are expected.
+     * @throws XMLParseException if the xml element doesn't represent one of the given tags.
+     */
+    private int checkTag(XMLElement xml, String[] tags) {
+        final String actualTag = xml.getName();
+        int indexTag = -1;
+        for (int i = 0; i < tags.length; i++) {
+            if (tags[i].equals(actualTag)) {
+                indexTag = i;
+                break;
+            }
+        }
+        
+        if (indexTag < 0) {
+            StringBuffer sb = new StringBuffer('(');
+            for (int i = 0; i < tags.length; i++) {
+                if (i > 0) {
+                    sb.append(',');
+                }
+                sb.append(tags[i]);
+            }
+            sb.append(')');
+            throw new XMLParseException("", "tag is not one of " + sb.toString() + " (actual: '" + actualTag + "')");
+        }
+        
+        return indexTag;
     }
 }

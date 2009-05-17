@@ -22,6 +22,7 @@ package gnu.testlet.runner.compare;
 import gnu.testlet.runner.XMLReportWriter;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Writer in HTML format for a {@link Comparison}
@@ -47,10 +48,29 @@ public class HTMLComparisonWriter extends ComparisonWriter {
             appendLink(nbStagnations, EvolutionType.STAGNATION, " stagnations. ");
         }
         
+        protected void writeSystemProperties(List systemProperties, String result1Name, String result2Name) {
+            pw.append("<br/><h2>System properties</h2><br/>");            
+            pw.append("<table border=\"1\" cellspacing=\"1\" cellpadding=\"1\"><tr>");
+            
+            writeCell("th", 0, 1, "Name");            
+            writeCell("th", 0, 1, result1Name);
+            writeCell("th", 0, 1, result2Name);
+            
+            pw.append("</tr>\n");
+            for (int i = 0; i < systemProperties.size(); ) {
+                pw.append("<tr>");
+                writeCell("td", 0, 1, (String) systemProperties.get(i++));
+                writeCell("td", 0, 1, (String) systemProperties.get(i++));
+                writeCell("td", 0, 1, (String) systemProperties.get(i++));
+                pw.append("</tr>");
+            }
+            pw.append("</table><br/>");
+        }
+        
         private void appendLink(int value, EvolutionType type, String label) {
             pw.append("<a href=\"#").append(type.toString()).append("\">");
             pw.append(Integer.toString(value)).append(label);
-            pw.append("</a>").append("&nbsp;&nbsp;&nbsp;");;
+            pw.append("</a>").append("&nbsp;&nbsp;&nbsp;");
         }
         
         public void writeBegin() {

@@ -20,6 +20,7 @@
 package gnu.testlet.runner.compare;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Writer in Text format for a {@link Comparison}
@@ -43,6 +44,16 @@ public class TextComparisonWriter extends ComparisonWriter {
             pw.append(Integer.toString(nbProgressions)).append(" progressions. ");
             pw.append(Integer.toString(nbStagnations)).append(" stagnations.\n");
         }
+        
+        protected void writeSystemProperties(List systemProperties, String result1Name, String result2Name) {
+            pw.append("\nSystem properties\n");
+            pw.append("Name\t").append(result1Name).append('\t').append(result2Name).append('\n');
+            for (int i = 0; i < systemProperties.size(); ) {
+                pw.append((String) systemProperties.get(i++)).append('\t');
+                pw.append((String) systemProperties.get(i++)).append('\t');
+                pw.append((String) systemProperties.get(i++)).append('\n');
+            }
+        }        
         
         public void writeBeginTable() {
             pw.append("\n").append(evolutionLabel).append("\n");

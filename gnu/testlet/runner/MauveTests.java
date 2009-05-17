@@ -78,6 +78,9 @@ public class MauveTests {
         String runName = "run" + runNumber;
         System.out.println("\n--- creating '" + runName + "' ---");        
         RunResult runResult = new RunResult(runName);
+        
+        runResult.setSystemProperty("name1", "value1");
+        runResult.setSystemProperty("name2", "value2");
 
         PackageResult pkg = new PackageResult("package");
         runResult.add(pkg);

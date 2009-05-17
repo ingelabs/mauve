@@ -36,13 +36,26 @@ public class XMLReportWriter implements XMLReportConstants {
     private static final String INDENT = "  ";
     private static final String NOT_APPLIABLE = "n/a";
     
+    /**
+     * Do we write the xml report in compact mode ?
+     * The compact mode is producing unformatted xml, which means that there
+     * is no indentations nor carriage returns (except in <code>log</code>
+     * attributes because they can contain stacktraces).
+     */
     private final boolean compactMode;
 
+    /**
+     * Constructor to write a formatted xml report.
+     */
     public XMLReportWriter() {
         // by default, not in compact mode
         this(false);
     }
-    
+
+    /**
+     * Constructor to write an xml report.
+     * @param compactMode true to write the xml report in compact mode.
+     */
     public XMLReportWriter(boolean compactMode) {
         this.compactMode = compactMode;
     }
@@ -114,6 +127,12 @@ public class XMLReportWriter implements XMLReportConstants {
         ps.flush();
     }
     
+    /**
+     * Write a check tag.
+     * @param ps
+     * @param level
+     * @param check
+     */
     private void check(PrintWriter ps, int level, CheckResult check) {
         String log = getNullIfBlank(check.getLog());
         boolean closeTag = (log == null);
@@ -131,23 +150,63 @@ public class XMLReportWriter implements XMLReportConstants {
         }
     }
 
+    /**
+     * Write a test tag.
+     * @param ps
+     * @param level
+     * @param test
+     */
     private void test(PrintWriter ps, int level, TestResult test) {
         beginTag(ps, level, TEST_RESULT, false, new Object[]{TEST_NAME, test.getName()});
         text(ps, level + 1, TEST_ERROR, test.getFailedMessage());
     }
 
+    /**
+     * Write a classresult tag.
+     * @param ps
+     * @param level
+     * @param cr
+     */
     private void classResult(PrintWriter ps, int level, ClassResult cr) {
         beginTag(ps, level, CLASS_RESULT, false, new Object[]{CLASS_NAME, cr.getName()});
     }
 
+    /**
+     * Write a package result tag.
+     * @param ps
+     * @param level
+     * @param pr
+     */
     private void packageResult(PrintWriter ps, int level, PackageResult pr) {
         beginTag(ps, level, PACKAGE_RESULT, false, new Object[]{PACKAGE_NAME, pr.getName()});
     }
 
+    /**
+     * Write a run result tag.
+     * @param ps
+     * @param level
+     * @param rr
+     */
     private void runResult(PrintWriter ps, int level, RunResult rr) {
         beginTag(ps, level, RUN_RESULT, false, new Object[]{RUN_NAME, rr.getName()});
+        
+        String[] propertyNames = rr.getSystemPropertyNames();
+        int subLevel = level + 1;
+        for (int i = 0; i < propertyNames.length; i++) {
+            String name = propertyNames[i];
+            String value = rr.getSystemProperty(name);
+            beginTag(ps, subLevel, PROPERTY, true, new Object[]{PROPERTY_NAME, name, PROPERTY_VALUE, value});
+        }
     }
     
+    /**
+     * Write a tag with the provided content (text parameter), if any.
+     * @param ps
+     * @param level
+     * @param tag
+     * @param text
+     * @return
+     */
     private PrintWriter text(PrintWriter ps, int level, String tag, String text) {
         text = getNullIfBlank(text);
         if (text != null) {
@@ -160,6 +219,15 @@ public class XMLReportWriter implements XMLReportConstants {
         return ps;
     }
 
+    /**
+     * Write the begin of a tag with the given attributes and optionally close the tag.
+     * @param ps
+     * @param level The level of indentation of the tag (ignored if {@link XMLReportWriter#compactMode} is true).
+     * @param tag The name of the tag.
+     * @param closeTag true to also close the tag.
+     * @param attributes The attributes of the tag.
+     * @return
+     */
     private PrintWriter beginTag(PrintWriter ps, int level, String tag, boolean closeTag, Object[] attributes) {
         tag(ps, level, tag, true);
         for (int i = 0; i < attributes.length; i += 2) {
@@ -178,6 +246,11 @@ public class XMLReportWriter implements XMLReportConstants {
         return ps;
     }
     
+    /**
+     * Replace all characters with the appropriate xml escape sequences when needed. 
+     * @param text
+     * @return
+     */
     public static String protect(String text) {
         if (text == null) {
             return text;
@@ -222,10 +295,25 @@ public class XMLReportWriter implements XMLReportConstants {
         return changed ? sb.toString() : text;
     }
     
+    /**
+     * Write the end of a tag.
+     * @param ps
+     * @param level
+     * @param tag
+     * @return
+     */
     private PrintWriter endTag(PrintWriter ps, int level, String tag) {
         return tag(ps, level, tag, false);
     }
     
+    /**
+     * Write the end or the begin of a tag.
+     * @param ps
+     * @param level
+     * @param tag
+     * @param begin
+     * @return
+     */
     private PrintWriter tag(PrintWriter ps, int level, String tag, boolean begin) {
         indent(ps, level).append(begin ? "<" : "</").append(tag);
         if (!begin) {
@@ -236,6 +324,11 @@ public class XMLReportWriter implements XMLReportConstants {
         return ps;
     }
     
+    /**
+     * Write a carriage return if {@link XMLReportWriter#compactMode} is false.
+     * @param pw
+     * @return
+     */
     private PrintWriter appendCarriageReturn(PrintWriter pw) {
         if (!compactMode) {
             pw.append('\n');
@@ -244,6 +337,12 @@ public class XMLReportWriter implements XMLReportConstants {
         return pw;
     }
 
+    /**
+     * Write an indentation if {@link XMLReportWriter#compactMode} is false.
+     * @param ps
+     * @param level
+     * @return
+     */
     private PrintWriter indent(PrintWriter ps, int level) {
         if (!compactMode) {
             for (int i = 0; i < level; i++) {
@@ -254,6 +353,11 @@ public class XMLReportWriter implements XMLReportConstants {
         return ps;
     }
     
+    /**
+     * Return null if the given string is blank.
+     * @param text
+     * @return
+     */
     private String getNullIfBlank(Object text) {
         String result = null;
         

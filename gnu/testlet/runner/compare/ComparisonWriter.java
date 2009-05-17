@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Abstract class for writing a {@link Comparison}
@@ -129,6 +130,7 @@ public abstract class ComparisonWriter {
         }
 
         protected abstract void writeSummary(int nbRegressions, int nbProgressions, int nbStagnations);
+        protected abstract void writeSystemProperties(List systemProperties, String result1Name, String result2Name);
         
         private void writeSummary(RunComparison run) {
             EvolutionTypeVisitor evolTypeVisitor = new EvolutionTypeVisitor();
@@ -137,6 +139,7 @@ public abstract class ComparisonWriter {
             writeSummary(evolTypeVisitor.getCounter(EvolutionType.REGRESSION), 
                     evolTypeVisitor.getCounter(EvolutionType.PROGRESSION),
                     evolTypeVisitor.getCounter(EvolutionType.STAGNATION));
+            writeSystemProperties(run.getSystemProperties(), run.getResult1Name(), run.getResult2Name());
         }
         
         public void writeBegin() {

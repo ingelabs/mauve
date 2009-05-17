@@ -74,6 +74,7 @@ public class Mauve extends TestHarness
       out.mkdirs();
 
     result = new RunResult("Mauve Test Run");
+    addSystemProperties(result);
     currentCheck = new CheckResult(0, false);
     // initialize
     // run tests and collect results
@@ -104,6 +105,38 @@ public class Mauve extends TestHarness
     System.out.println("DONE!");
   }
   
+  /**
+   * Add the most interesting system properties to describe the virtual machine
+   * being tested. Developers using Mauve APIs can also add their own (specific)
+   * properties by calling {@link RunResult#setSystemProperty(String, String)}.
+   * @param runResult The RunResult to which add system properties.
+   */
+  protected void addSystemProperties(RunResult runResult) {
+      runResult.setSystemProperty("java.version", System.getProperty("java.version"));
+      runResult.setSystemProperty("java.vendor", System.getProperty("java.vendor"));
+      runResult.setSystemProperty("java.vendor.url", System.getProperty("java.vendor.url"));
+      runResult.setSystemProperty("os.name", System.getProperty("os.name"));
+      runResult.setSystemProperty("os.arch", System.getProperty("os.arch"));
+      runResult.setSystemProperty("os.version", System.getProperty("os.version"));
+
+      runResult.setSystemProperty("java.vm.specification.version", System.getProperty("java.vm.specification.version"));
+      runResult.setSystemProperty("java.vm.specification.vendor", System.getProperty("java.vm.specification.vendor"));
+      runResult.setSystemProperty("java.vm.specification.name", System.getProperty("java.vm.specification.name"));
+      runResult.setSystemProperty("java.vm.version", System.getProperty("java.vm.version"));
+      runResult.setSystemProperty("java.vm.vendor", System.getProperty("java.vm.vendor"));
+      runResult.setSystemProperty("java.vm.name", System.getProperty("java.vm.name"));
+      runResult.setSystemProperty("java.specification.version", System.getProperty("java.specification.version"));
+      runResult.setSystemProperty("java.specification.vendor", System.getProperty("java.specification.vendor"));
+      runResult.setSystemProperty("java.specification.name", System.getProperty("java.specification.name"));
+      runResult.setSystemProperty("java.class.version", System.getProperty("java.class.version"));
+  }
+  
+  /**
+   * Execute a single line of a stream, which might or might not be the name of
+   * a mauve test (testlet).
+   * @param prefix
+   * @param line The line to execute.
+   */
   protected void executeLine(String prefix, String line) {
         if ((line == null) || (line.trim().length() == 0)) { 
             return;
@@ -158,6 +191,12 @@ public class Mauve extends TestHarness
         }
   }
   
+  /**
+   * Execute a testlet.
+   * @param testlet The {@link Testlet} to execute. 
+   * @param pr The name of the {@link PackageResult} to which the testlet belong. 
+   * @param testName The name used to describe the associated {@link TestResult}.
+   */
   protected void runTestlet(Testlet testlet, PackageResult pr, String testName) {
       currentTest = new TestResult(testName);
       checksSinceLastCheckPoint = 0;
@@ -178,10 +217,21 @@ public class Mauve extends TestHarness
         result.add(pr);      
   }
   
+  /**
+   * Get the result of a mauve run.
+   * @return The {@RunResult} describing the results of a mauve run.
+   */
   protected RunResult getResult() {
       return result;
   }
   
+  /**
+   * Creates a new testlet instancen given by its class name.
+   * @param c The class to instanciate, which should be a child class
+   * of {@link Testlet}.
+   * @param line The line giving the name of the testlet (used for error reporting).
+   * @return an instance of the given testlet.
+   */
   protected Testlet createTestlet(Class c, String line) {
       Testlet testlet = null;
       try 
@@ -203,6 +253,10 @@ public class Mauve extends TestHarness
       return testlet;
   }
 
+  /**
+   * Write the results to an HTML report in the given output directory.
+   * @param outputDir The output directory used to put the HTML report.
+   */
   protected void writeHTMLReport(File outputDir) {
       // write results to HTML
       System.out.println("Creating HTML report...");
@@ -217,6 +271,10 @@ public class Mauve extends TestHarness
       }      
   }
   
+  /**
+   * Write the results to an XML report in the given output directory.
+   * @param outputDir The output directory used to put the XML report.
+   */
   protected void writeXMLReport(File outputDir) {
       System.out.println("Creating XML report...");
       try 
@@ -330,6 +388,9 @@ public class Mauve extends TestHarness
     checksSinceLastCheckPoint = 0;
   }
 
+  /**
+   * Method called when a checkpoint has been reached.
+   */
   private void checkDone() 
   {
     currentCheck.setNumber(++checksSinceLastCheckPoint);
@@ -381,7 +442,11 @@ public class Mauve extends TestHarness
     currentCheck.appendToLog("\n");
   }
 
-  // recursive helper method for debug(Object[], String)
+  /**
+   * recursive helper method for debug(Object[], String)
+   * @param array
+   * @param buf
+   */
   private void expand(Object[] array, StringBuffer buf) 
   {
     for (int i = 0; i < array.length; i++) 
