@@ -580,9 +580,21 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
     catch(ConcurrentModificationException ioobe) { th.check(true); }
     ArrayList al = buildAL();
     it = al.iterator();
-    al.get(0);
     al.trimToSize();
+    try {
+    	it.next();
+        th.fail("should throw a ConcurrentModificationException -- 3");
+    } catch(ConcurrentModificationException ioobe) { th.check(true); }
+
+    it = al.iterator();
     al.ensureCapacity(25);
+    try {
+    	it.next();
+        th.fail("should throw a ConcurrentModificationException -- 3");
+    } catch(ConcurrentModificationException ioobe) { th.check(true); }
+
+    it = al.iterator();
+    al.get(0);
     al.contains(null);
     al.isEmpty();
     al.indexOf(null);
@@ -596,6 +608,7 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
     	th.check(true);
         }
     catch(ConcurrentModificationException ioobe) { th.fail("should not throw a ConcurrentModificationException -- 2"); }
+
     it = al.iterator();
     al.add("b");
     try {
@@ -603,6 +616,7 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
         th.fail("should throw a ConcurrentModificationException -- 3");
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
+
     it = al.iterator();
     al.add(3,"b");
     try {
@@ -610,6 +624,7 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
         th.fail("should throw a ConcurrentModificationException -- 4");
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
+
     it = al.iterator();
     al.addAll(xal);
     try {
@@ -617,6 +632,7 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
         th.fail("should throw a ConcurrentModificationException -- 5");
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
+
     it = al.iterator();
     al.addAll(2,xal);
     try {
@@ -624,6 +640,7 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
         th.fail("should throw a ConcurrentModificationException -- 6");
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
+
     it = al.iterator();
     al.remove(2);
     try {
@@ -631,6 +648,7 @@ public class AcuniaArrayListTest extends ArrayList implements Testlet
         th.fail("should throw a ConcurrentModificationException -- 8");
         }
     catch(ConcurrentModificationException ioobe) { th.check(true); }
+
     it = al.iterator();
     al.clear();
     try {
