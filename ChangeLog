@@ -1,3 +1,10 @@
+2009-07-08  Mario Torre  <neugens@aicas.com>
+
+    * gnu/testlet/javax/imageio/spi/ServiceRegistry/lookupProviders:
+      Use the classloader of the current context, so that the test works
+      when classloader other than the system classloader was used to load the
+      test.
+
 2009-07-03  Mario Torre  <neugens@aicas.com>
 
     * gnu/testlet/java/util/ArrayList/AcuniaArrayListTest:

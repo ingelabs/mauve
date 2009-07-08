@@ -229,6 +229,7 @@ public class lookupProviders
 
     public CustomClassLoader(URL[] providerLists)
     {
+      super(CustomClassLoader.class.getClassLoader());
       this.providerLists = providerLists;
     }
 
