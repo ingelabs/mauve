@@ -61,16 +61,12 @@ public class equals implements Testlet
     harness.check(f1.equals(f2));                  // check 5
     
     Date d1 = new Date();
-    f1.set2DigitYearStart(d1);
-    harness.check(!f1.equals(f2));                 // check 6
-    f2.set2DigitYearStart(d1);
-    harness.check(f1.equals(f2));                  // check 7
     
     // check null argument
-    harness.check(!d1.equals(null));               // check 8
+    harness.check(!d1.equals(null));               // check 6
     
     // check arbitrary argument
-    harness.check(!d1.equals("Not a SimpleDateFormat"));  // check 9
+    harness.check(!d1.equals("Not a SimpleDateFormat"));  // check 7
   }
 
 }

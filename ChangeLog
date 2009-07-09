@@ -1,3 +1,8 @@
+2009-07-09  Mario Torre  <neugens@aicas.com>
+
+    * gnu/testlet/java/text/SimpleDateFormat/equals:
+      Remove obsolete check.
+
 2009-07-08  Mario Torre  <neugens@aicas.com>
 
     * gnu/testlet/javax/imageio/spi/ServiceRegistry/lookupProviders:
