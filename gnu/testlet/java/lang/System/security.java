@@ -34,6 +34,7 @@ public class security implements Testlet
 {
   public void test(TestHarness harness)
   {
+    String not_a_property = "java.monkey.flump";
     try {
       harness.checkPoint("setup");
 
@@ -48,12 +49,12 @@ public class security implements Testlet
       Properties properties = System.getProperties();
 
       String a_property = "java.vm.name";
-      String not_a_property = "java.monkey.flump";
       harness.check(properties.containsKey(a_property));
       harness.check(!properties.containsKey(not_a_property));
       
+      //exitVM.0 or set compare style to implies
       Permission[] exitVM = new Permission[] {
-	new RuntimePermission("exitVM")};
+	new RuntimePermission("exitVM.0")};
 
       Permission[] loadLibrary_name = new Permission[] {
 	new RuntimePermission("loadLibrary." + library_name)};
@@ -307,6 +308,7 @@ public class security implements Testlet
       }
       finally {
 	sm.uninstall();
+        System.clearProperty(not_a_property);
       }
     }
     catch (Exception ex) {

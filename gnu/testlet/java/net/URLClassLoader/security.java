@@ -22,8 +22,10 @@
 
 package gnu.testlet.java.net.URLClassLoader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.net.URLConnection;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.security.Permission;
@@ -97,7 +99,13 @@ public class security implements Testlet
   {
     public URLStreamHandler createURLStreamHandler(String protocol)
     {
-      throw new RuntimeException("not implemented");
+      return new URLStreamHandler()
+        {
+          protected URLConnection openConnection(URL u) throws IOException
+          {
+            throw new RuntimeException("not implemented");
+          }
+        };
     }
   }
 }

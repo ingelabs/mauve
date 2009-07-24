@@ -54,14 +54,23 @@ public class thread implements Testlet
     // Check we're checking
     TestSecurityManager sm = new TestSecurityManager(harness);
 
-    sm.prepareChecks(new Permission[] {
-      new RuntimePermission("modifyThread")});
-    sm.checkAccess(thread);
-    sm.checkAllChecked();
-
-    sm.prepareChecks(new Permission[] {
-      new RuntimePermission("modifyThreadGroup")});
-    sm.checkAccess(group);
-    sm.checkAllChecked();
+    try
+      {
+        sm.install();
+        
+        sm.prepareChecks(new Permission[] {
+                           new RuntimePermission("modifyThread")});
+        sm.checkAccess(thread);
+        sm.checkAllChecked();
+        
+        sm.prepareChecks(new Permission[] {
+                           new RuntimePermission("modifyThreadGroup")});
+        sm.checkAccess(group);
+        sm.checkAllChecked();
+      }
+    finally
+      {
+        sm.uninstall();
+      }
   }
 }

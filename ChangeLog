@@ -1,5 +1,17 @@
 2009-07-09  Mario Torre  <neugens@aicas.com>
 
+    * gnu/testlet/java/lang/SecurityManager/thread.java:
+    make sure SecurityManager is installed.
+    * gnu/testlet/java/lang/System/security.java:
+    clear property that we assume to be non existing
+    (needed if test runs several time without exiting the vm).
+    * gnu/testlet/java/net/URLClassLoader/security.java:
+    * gnu/testlet/java/lang/Thread/security10.java
+    Thread.enumerate does checks on ThreadGroup, but not on Thread
+    create fake URLStreamHandler
+
+2009-07-09  Mario Torre  <neugens@aicas.com>
+
     * gnu/testlet/TestSecurityManager:
       TestSecurityManager has to delegate some functionality to the
       Policy to make sure privileged system code works.

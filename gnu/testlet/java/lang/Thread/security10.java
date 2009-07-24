@@ -34,6 +34,10 @@ public class security10 implements Testlet
     {
       throw new SecurityException();
     }
+    public void checkAccess(ThreadGroup thread)
+    {
+      throw new SecurityException();
+    }
 
     public void checkPermission(Permission perm)
     {
@@ -62,7 +66,9 @@ public class security10 implements Testlet
     h.checkPoint("Thread creation");
     
     Thread testThread = new Thread();
-    
+
+    ThreadGroup group = new ThreadGroup("MyGroup");
+
     System.setSecurityManager(new MySecurityManager());
     
     Runnable run = new Runnable()
@@ -115,8 +121,6 @@ public class security10 implements Testlet
 
     h.checkPoint("Thread creation with ThreadGroup");
     
-    ThreadGroup group = new ThreadGroup("MyGroup");
-
     try
       {
 	Thread thread = new Thread(group, "MyThread");
@@ -267,9 +271,12 @@ public class security10 implements Testlet
 
     try
       {
+        /**
+         * does not call checkAccess(Thread) but
+         * checkAccess(ThreadGroup)
+         */
 	Thread[] array = new Thread[1];
-	array[0] = Thread.currentThread();
-	testThread.enumerate(array);
+	Thread.enumerate(array);
 	h.check(false);
       }
     catch (SecurityException e)
