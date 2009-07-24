@@ -22,7 +22,12 @@
 
 package gnu.testlet;
 
+import java.security.CodeSource;
 import java.security.Permission;
+import java.security.PermissionCollection;
+import java.security.Policy;
+import java.security.ProtectionDomain;
+import java.util.PropertyPermission;
 
 /**
  * A security manager for testing that security checks are performed.
@@ -52,6 +57,11 @@ public class TestSecurityManager extends SecurityManager
    * The security manager that was in force before we were installed.
    */
   private SecurityManager oldManager;
+
+  /**
+   * The policy in force before we were installed
+   */
+  private Policy oldPolicy;
 
   /**
    * Permissions that must be checked for this test to pass.
@@ -134,6 +144,97 @@ public class TestSecurityManager extends SecurityManager
     oldManager = oldsm;
 
     enabled = false;
+
+    oldPolicy = Policy.getPolicy();
+    Policy.setPolicy(new Policy()
+      {
+        public PermissionCollection getPermissions(CodeSource codesource)
+        {
+          return null;
+        }
+        /**
+         * Check that this permission is one that we should be checking.
+         * This code used to be in TestSecurityManager.checkPermission,
+         * but doing the same here allows us to easily skip doPrivileged
+         * actions like reading some properties in system code.
+         *
+         * @param perm the permission to be checked
+         * @throws SuccessException if all <code>mustCheck</code>
+         *         permissions have been checked and <code>isHalting</code>
+         *         is true.
+         * @return returns false if and only if none of the <code>mustCheck</code>
+         *         or <code>mayCheck</code> permissions matches
+         *         <code>perm</code>. else true
+         */
+        public boolean implies(ProtectionDomain domain,
+                               Permission perm)
+        {
+          if (!enabled)
+            return true;
+          
+          if (harness != null)
+            harness.debug("checkPermission(" + perm + ")");
+          
+          boolean matched = false;
+          
+          if (!matched) {
+            for (int i = 0; i < mustCheck.length; i++) {
+              if (permissionsMatch(mustCheck[i], perm)) {
+                checked[i] = true;
+                matched = true;
+              }
+            }
+          }
+          
+          if (!matched) {
+            for (int i = 0; i < mayCheck.length; i++) {
+              if (permissionsMatch(mayCheck[i], perm)) {
+                matched = true;
+              }
+            }
+          }
+          
+          if (!matched) {
+            enabled = false;
+            
+            harness.debug("unexpected check: " + perm);
+            
+            if (mustCheck.length != 0) {
+              StringBuffer expected = new StringBuffer();
+              for (int i = 0; i < mustCheck.length; i++)
+                expected.append(' ').append(mustCheck[i]);
+              harness.debug("expected: mustCheck:" + expected.toString());
+            }
+            
+            if (mayCheck.length != 0) {
+              StringBuffer expected = new StringBuffer();
+              for (int i = 0; i < mayCheck.length; i++)
+                expected.append(' ').append(mayCheck[i]);
+              harness.debug("expected: mayCheck:" + expected.toString());
+            }
+            
+            return false;
+          }
+          
+          if (isHalting) {
+            boolean allChecked = true;
+            for (int i = 0; i < checked.length; i++) {
+              if (!checked[i])
+                allChecked = false;
+            }
+            if (allChecked) {
+              enabled = false;
+              throw successException;
+            }
+          }
+          return true;
+        }
+        public void refresh()
+        {
+          return;
+        }
+      });
+
     System.setSecurityManager(this);
   }
 
@@ -149,6 +250,7 @@ public class TestSecurityManager extends SecurityManager
 
     enabled = false;
     System.setSecurityManager(oldManager);
+    Policy.setPolicy(oldPolicy);
   }
 
   /**
@@ -260,73 +362,6 @@ public class TestSecurityManager extends SecurityManager
       return p1.implies(p2);
     default:
       throw new IllegalArgumentException();
-    }      
-  }
-  
-  /**
-   * Check that this permission is one that we should be checking.
-   * 
-   * @param perm the permission to be checked
-   * @throws SuccessException if all <code>mustCheck</code>
-   *         permissions have been checked and <code>isHalting</code>
-   *         is true.
-   * @throws SecurityException if none of the <code>mustCheck</code>
-   *         or <code>mayCheck</code> permissions matches
-   *         <code>perm</code>.
-   */
-  public void checkPermission(Permission perm) throws SecurityException
-  {
-    if (!enabled)
-      return;
-
-    if (harness != null)
-      harness.debug("checkPermission(" + perm + ")");
-
-    boolean matched = false;
-    for (int i = 0; i < mustCheck.length; i++) {
-      if (permissionsMatch(mustCheck[i], perm))
-	matched = checked[i] = true;
-    }
-
-    if (!matched) {
-      for (int i = 0; i < mayCheck.length; i++) {
-	if (permissionsMatch(mayCheck[i], perm))
-	  matched = true;
-      }
-    }
-
-    if (!matched) {
-      enabled = false;
-      
-      harness.debug("unexpected check: " + perm);
-
-      if (mustCheck.length != 0) {
-	StringBuffer expected = new StringBuffer();
-	for (int i = 0; i < mustCheck.length; i++)
-	  expected.append(' ').append(mustCheck[i]);
-	harness.debug("expected: mustCheck:" + expected.toString());
-      }
-
-      if (mayCheck.length != 0) {
-	StringBuffer expected = new StringBuffer();
-	for (int i = 0; i < mayCheck.length; i++)
-	  expected.append(' ').append(mayCheck[i]);
-	harness.debug("expected: mayCheck:" + expected.toString());
-      }
-
-      throw new SecurityException("unexpected check: " + perm);
-    }
-    
-    if (isHalting) {
-      boolean allChecked = true;
-      for (int i = 0; i < checked.length; i++) {
-	if (!checked[i])
-	  allChecked = false;
-      }
-      if (allChecked) {
-	enabled = false;
-	throw successException;
-      }
     }
   }
 
