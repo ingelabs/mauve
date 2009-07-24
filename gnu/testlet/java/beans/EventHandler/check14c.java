@@ -81,19 +81,18 @@ public class check14c implements Testlet {
 
 	public void test(TestHarness harness) {
 
-		// The first test checks whether a ArrayIndexOutOfBoundsException is
-		// thrown
+		// The first test checks whether a RuntimeException is thrown
 		// when the targetMethod cannot be found (Especially because of missing
-		// access
-		// rights).
-		Listener l = (Listener) EventHandler.create(Listener.class, this,
+		// access rights).
+                // JDK 1.4 and 1.5 erroneously throw an ArrayIndexOutOfBoundsException.
+            Listener l = (Listener) EventHandler.create(Listener.class, this,
 				"targetMethod");
 
 		boolean correctException = false;
 		try {
 			l.listen();
 		} catch (Exception e) {
-			correctException = e.getClass() == ArrayIndexOutOfBoundsException.class;
+			correctException = e.getClass() == RuntimeException.class;
 		}
 		harness.check(correctException, true, "missing target method");
 
@@ -146,10 +145,11 @@ public class check14c implements Testlet {
 		// One may think that a creation like this will forward the Event
 		// instance to the 'setEventProperty'
 		// method but this is wrong and will cause a
-		// ArrayIndexOutOfBoundsException to be as if could not
+		// RuntimeException to be as if could not
 		// find a method. In other words: If no property is defined action will
 		// never be treated as a
 		// property but always like a method name.
+                // JDK 1.4 and 1.5 erroneously throw an ArrayIndexOutOfBoundsException.
 		l2 = (Listener2) EventHandler.create(Listener2.class, this,
 				"eventProperty");
 
@@ -157,7 +157,7 @@ public class check14c implements Testlet {
 		try {
 			l2.listen(new Event());
 		} catch (Exception e) {
-			correctException = e.getClass() == ArrayIndexOutOfBoundsException.class;
+			correctException = e.getClass() == RuntimeException.class;
 		}
 		harness.check(correctException, true, "action is method");
 

@@ -1,5 +1,10 @@
 2009-07-09  Mario Torre  <neugens@aicas.com>
 
+    * gnu/testlet/java/beans/EventHandler/check14c.java:
+    Update test to follow 1.6 specification behaviour.
+
+2009-07-09  Mario Torre  <neugens@aicas.com>
+
     * gnu/testlet/java/lang/Class/security:
     Don't call setProperty if getProperty return null.
 
