@@ -138,7 +138,7 @@ public class check14 implements Testlet
 
     // Static create tests
     Listener o1 = (Listener) EventHandler.create(Listener.class,
-						 target, "action");
+						 target, "action", "");
 	try 
 	  {
     o1.listen1(ev);
