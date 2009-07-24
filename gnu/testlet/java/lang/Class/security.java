@@ -159,7 +159,10 @@ public class security implements Testlet
 	}
       }
       finally {
-	Security.setProperty("package.access", oldrestrictions);
+        if (oldrestrictions != null)
+          {
+            Security.setProperty("package.access", oldrestrictions);
+          }
       }
     }
     catch (Exception ex) {
