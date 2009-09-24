@@ -287,10 +287,6 @@ public class testInterceptors extends Asserter implements Testlet
         assertTrue("Destroyed", ucClientRequestInterceptor.destroyed);
         assertTrue("Destroyed", ucIorInterceptor.destroyed);
         assertTrue("Destroyed", ucServerRequestInterceptor.destroyed);
-
-        // Test the policy. Sun's 1.5.0_04 still does not operates
-        // properly (Sun's bug 6314176).
-        assertTrue("Sun's ACCEPTED bug 6314176", ucIorInterceptor.policyOK);
       }
     catch (Exception e)
       {

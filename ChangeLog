@@ -1,5 +1,11 @@
 2009-09-24  Mario Torre  <neugens@aicas.com>
 
+    * gnu/testlet/org/omg/PortableInterceptor/Interceptor/testInterceptors:
+    Remove checks for wontfix bug
+    http://bugs.sun.com/view_bug.do?bug_id=6314176.
+
+2009-09-24  Mario Torre  <neugens@aicas.com>
+
     * gnu/testlet/org/omg/PortableServer/POA/TestActivate:
     Remove inappropriate checks.
 
