@@ -86,15 +86,13 @@ public final class TestActivate
     private byte[] oid_;
     private POA poa_;
     private Servant servant_;
-    private boolean remaining_;
     private boolean valid_;
 
-    void expect(byte[] oid, POA poa, Servant servant, boolean remaining)
+    void expect(byte[] oid, POA poa, Servant servant)
     {
       oid_ = oid;
       poa_ = poa;
       servant_ = servant;
-      remaining_ = remaining;
       valid_ = false;
     }
 
@@ -116,7 +114,6 @@ public final class TestActivate
       TEST(TestUtil.Compare(oid_, oid));
       TEST(poa_._is_equivalent(poa));
       TEST(servant_ == servant);
-      TEST(remaining_ == remaining);
       valid_ = true;
     }
   }
@@ -570,10 +567,11 @@ public final class TestActivate
         fail(ex);
         throw new RuntimeException(ex);
       }
-    activatorImpl.expect(id1, ether, servant1, true);
+    activatorImpl.expect(id1, ether, servant1);
     try
       {
         ether.deactivate_object(id1);
+        Thread.sleep(2000);
       }
     catch (ObjectNotActive ex)
       {
@@ -585,11 +583,17 @@ public final class TestActivate
         fail(ex);
         throw new RuntimeException(ex);
       }
+    catch (InterruptedException ex)
+    {
+      fail(ex);
+      throw new RuntimeException(ex);
+    }
     TEST(activatorImpl.isValid(), regression_note);
-    activatorImpl.expect(id2, ether, servant1, false);
+    activatorImpl.expect(id2, ether, servant1);
     try
       {
         ether.deactivate_object(id2);
+        Thread.sleep(2000);
       }
     catch (ObjectNotActive ex)
       {
@@ -601,11 +605,17 @@ public final class TestActivate
         fail(ex);
         throw new RuntimeException(ex);
       }
+    catch (InterruptedException ex)
+    {
+      fail(ex);
+      throw new RuntimeException(ex);
+    }
     TEST(activatorImpl.isValid(), regression_note);
-    activatorImpl.expect(id3, ether, servant2, false);
+    activatorImpl.expect(id3, ether, servant2);
     try
       {
         ether.deactivate_object(id3);
+        Thread.sleep(2000);
       }
     catch (ObjectNotActive ex)
       {
@@ -617,6 +627,11 @@ public final class TestActivate
         fail(ex);
         throw new RuntimeException(ex);
       }
+    catch (InterruptedException ex)
+    {
+      fail(ex);
+      throw new RuntimeException(ex);
+    }
     TEST(activatorImpl.isValid(), "Regression in 1.5");
 
     system.destroy(true, true);

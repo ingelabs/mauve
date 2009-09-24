@@ -1,3 +1,8 @@
+2009-09-24  Mario Torre  <neugens@aicas.com>
+
+    * gnu/testlet/org/omg/PortableServer/POA/TestActivate:
+    Remove inappropriate checks.
+
 2009-07-09  Mario Torre  <neugens@aicas.com>
 
     * gnu/testlet/locales/LocaleTest:
