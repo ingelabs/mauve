@@ -304,7 +304,7 @@ public class LocaleTest
 		new ExpectedNumberValues("-1.000,00 \u20ac", "-1.000.000,00 \u20ac", "-100,00 \u20ac", "-100,12 \u20ac", "-10.000.000,12 \u20ac"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
-		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
+		new ExpectedNumberValues("100.000 %", "100.000.000 %", "10.000 %", "10.012 %", "1.000.000.012 %"));
     // Locale: Greece
     // FIXME: Disabled for now due to pattern problems.
     /*
@@ -451,7 +451,7 @@ public class LocaleTest
 		new ExpectedNumberValues("-1.000,00 YTL", "-1.000.000,00 YTL", "-100,00 YTL", "-100,12 YTL", "-10.000.000,12 YTL"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100", "10.000.000"),
 		new ExpectedNumberValues("1.000", "1.000.000", "100", "100,123", "10.000.000,123"),
-		new ExpectedNumberValues("100.000%", "100.000.000%", "10.000%", "10.012%", "1.000.000.012%"));
+		new ExpectedNumberValues("% 100.000", "% 100.000.000", "% 10.000", "% 10.012", "% 1.000.000.012"));
     // Locale: Kazakstan
     checkLocale(h, new Locale("kk", "KZ"),
 		new ExpectedValues("kk", "KZ", "", "kk_KZ", "kaz", "KAZ",
