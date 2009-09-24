@@ -215,7 +215,9 @@ public class getBundle implements Testlet
       try
 	{
 	  URL u = harness.getResourceFile ("").toURL ();
-	  URLClassLoader loader = new URLClassLoader (new URL[] { u });
+	  URLClassLoader loader =
+                  new URLClassLoader(new URL[] { u },
+                                     getBundle.class.getClassLoader());
 	  harness.check (loadCheck (c ("Resource11"), loader), "Maude");
 	}
       catch (MalformedURLException _)
