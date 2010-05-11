@@ -1,3 +1,10 @@
+2010-05-11  Andrew John Hughes  <ahughes@redhat.com>
+
+	PR classpath/43536
+	* gnu/testlet/java/util/Collection/Test.java:
+	New test ensuring all Collection implementations meet
+	the requirements of remove(Object).
+
 2009-09-24  Mario Torre  <neugens@aicas.com>
 
     * gnu/testlet/java/util/ResourceBundle/getBundle:
