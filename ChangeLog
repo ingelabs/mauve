@@ -1,6 +1,13 @@
 2010-11-15  Andrew John Hughes  <ahughes@redhat.com>
 
 	PR classpath/42390
+	* gnu/testlet/java/util/logging/LogManager/Security.java:
+	Add test for addPropertyChangeListener and
+	removePropertyChangeListener SecurityManager checks.
+
+2010-11-15  Andrew John Hughes  <ahughes@redhat.com>
+
+	PR classpath/42390
 	* Makefile.in,
 	* aclocal.m4,
 	* configure: Regenerated.
