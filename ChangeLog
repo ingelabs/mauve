@@ -1,6 +1,15 @@
 2010-11-15  Andrew John Hughes  <ahughes@redhat.com>
 
 	PR classpath/42390
+	* gnu/testlet/java/io/File/security.java:
+	Add security manager checks for deleteOnExit,
+	exists, canRead, isFile, isDirectory, isHidden,
+	lastModified, length, canWrite, mkdir, mkdirs,
+	setLastModified.
+
+2010-11-15  Andrew John Hughes  <ahughes@redhat.com>
+
+	PR classpath/42390
 	* gnu/testlet/java/util/logging/LogManager/Security.java:
 	Add test for addPropertyChangeListener and
 	removePropertyChangeListener SecurityManager checks.
