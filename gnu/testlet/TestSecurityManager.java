@@ -77,7 +77,7 @@ public class TestSecurityManager extends SecurityManager
    * Whether we are enabled or not.
    */
   private boolean enabled;
-  
+
   /**
    * Must-check permissions are flagged as they are checked.
    */
@@ -87,7 +87,7 @@ public class TestSecurityManager extends SecurityManager
    * The test harness in use.
    */
   private final TestHarness harness;
-  
+
   /**
    * Should we halt after all checks have occurred?
    */
@@ -111,12 +111,12 @@ public class TestSecurityManager extends SecurityManager
    * Compare permissions using <code>p1.equals(p2)</code>.
    */
   public static final int EQUALS = 1;
-  
+
   /**
    * Compare permissions using <code>p1.implies(p2)</code>.
    */
   public static final int IMPLIES = 2;
-   
+
  /**
    * An empty list of checks, for convenience.
    */
@@ -171,12 +171,12 @@ public class TestSecurityManager extends SecurityManager
         {
           if (!enabled)
             return true;
-          
+
           if (harness != null)
             harness.debug("checkPermission(" + perm + ")");
-          
+
           boolean matched = false;
-          
+
           if (!matched) {
             for (int i = 0; i < mustCheck.length; i++) {
               if (permissionsMatch(mustCheck[i], perm)) {
@@ -185,7 +185,7 @@ public class TestSecurityManager extends SecurityManager
               }
             }
           }
-          
+
           if (!matched) {
             for (int i = 0; i < mayCheck.length; i++) {
               if (permissionsMatch(mayCheck[i], perm)) {
@@ -193,29 +193,29 @@ public class TestSecurityManager extends SecurityManager
               }
             }
           }
-          
+
           if (!matched) {
             enabled = false;
-            
+
             harness.debug("unexpected check: " + perm);
-            
+
             if (mustCheck.length != 0) {
               StringBuffer expected = new StringBuffer();
               for (int i = 0; i < mustCheck.length; i++)
                 expected.append(' ').append(mustCheck[i]);
               harness.debug("expected: mustCheck:" + expected.toString());
             }
-            
+
             if (mayCheck.length != 0) {
               StringBuffer expected = new StringBuffer();
               for (int i = 0; i < mayCheck.length; i++)
                 expected.append(' ').append(mayCheck[i]);
               harness.debug("expected: mayCheck:" + expected.toString());
             }
-            
+
             return false;
           }
-          
+
           if (isHalting) {
             boolean allChecked = true;
             for (int i = 0; i < checked.length; i++) {
@@ -256,7 +256,7 @@ public class TestSecurityManager extends SecurityManager
   /**
    * Prepare this test security manager for a series of checks.
    * <code>checkAllChecked()</code> should be called after the
-   * test to check that the specified permissions were checked. 
+   * test to check that the specified permissions were checked.
    *
    * @param mustCheck permissions that must be checked in order for
    *        the test to pass
@@ -269,7 +269,7 @@ public class TestSecurityManager extends SecurityManager
   /**
    * Prepare this test security manager for a series of checks.
    * <code>checkAllChecked()</code> should be called after the
-   * test to check that the specified permissions were checked. 
+   * test to check that the specified permissions were checked.
    *
    * @param mustCheck permissions that must be checked in order for
    *        the test to pass
@@ -305,7 +305,7 @@ public class TestSecurityManager extends SecurityManager
    *        but are not required in order for the test to pass
    */
   public void prepareHaltingChecks(Permission[] mustCheck,
-				   Permission[] mayCheck)
+                                   Permission[] mayCheck)
   {
     prepareChecks(mustCheck, mayCheck, true);
   }
@@ -321,8 +321,8 @@ public class TestSecurityManager extends SecurityManager
    *        when the final permission is checked
    */
   protected void prepareChecks(Permission[] mustCheck,
-			       Permission[] mayCheck,
-			       boolean isHalting)
+                               Permission[] mayCheck,
+                               boolean isHalting)
   {
     this.mayCheck = mayCheck;
     this.mustCheck = mustCheck;
@@ -376,11 +376,12 @@ public class TestSecurityManager extends SecurityManager
     boolean allChecked = true;
     for (int i = 0; i < checked.length; i++) {
       if (!checked[i]) {
-	harness.debug("Unchecked permission: " + mustCheck[i]);
-	allChecked = false;
+        harness.debug("Unchecked permission: " + mustCheck[i]);
+        allChecked = false;
       }
     }
-    
+
     harness.check(allChecked);
   }
+
 }
