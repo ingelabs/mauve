@@ -1,3 +1,14 @@
+2010-12-13  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/lang/Class/GetSimpleName.java:
+	Add tests for anonymous classes.
+
+2010-12-12  Pekka Enberg  <penberg@kernel.org>
+
+	* gnu/testlet/java/lang/Class/GetSimpleName.java:
+	Add tests for primitive, Object, array and inner
+	classes.
+
 2010-12-01  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/TestSecurityManager.java:
