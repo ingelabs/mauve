@@ -1,3 +1,8 @@
+2010-12-21  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/lang/Class/IsAnonymousClass.java:
+	Add tests for java.lang.Class#isAnonymousClass().
+
 2010-12-13  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/lang/Class/GetSimpleName.java:
