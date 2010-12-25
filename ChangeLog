@@ -1,3 +1,9 @@
+2010-12-24  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/security/ProtectionDomain/Implies.java:
+	Check if Policy.implies(Permission) is called if the
+	protection domain is already known to have AllPermission.
+
 2010-12-21  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/lang/Class/IsAnonymousClass.java:
