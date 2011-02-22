@@ -1,3 +1,11 @@
+2011-02-22  Andrew John Hughes  <ahughes@redhat.com>
+
+	PR classpath/42390
+	* gnu/testlet/java/security/Policy/Security.java,
+	Test whether the toString() of a ProtectionDomain
+	object includes the Policy's permissions when
+	getPolicy is denied by the SecurityManager.
+
 2010-12-24  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/security/ProtectionDomain/Implies.java:
