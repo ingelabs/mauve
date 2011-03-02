@@ -1,3 +1,9 @@
+2011-03-02  Pekka Enberg  <penberg@kernel.org>
+
+	* gnu/testlet/java/lang/String/split.java:
+	Add test for String.split() that caused infinite loop
+	with GNU Classpath.
+
 2011-02-22  Andrew John Hughes  <ahughes@redhat.com>
 
 	PR classpath/42390

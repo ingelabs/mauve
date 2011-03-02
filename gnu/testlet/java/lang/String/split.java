@@ -94,5 +94,9 @@ public class split implements Testlet
     harness.check(s2[9], "");
     harness.check(s2[10], "");
     harness.check(s2[11], "C");
+
+    String[] s3 = "hello, world".split("\uFFFF");
+    harness.check(s3.length, 1);
+    harness.check(s3[0], "hello, world");
   }
 }
