@@ -1,3 +1,10 @@
+2011-03-14  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/net/Socket/security.java:
+	Add test for connect(SocketAddress, int).
+	* gnu/testlet/java/net/Socket/setSocketImplFactory.java:
+	Add tests for when null is specified.
+
 2011-03-02  Pekka Enberg  <penberg@kernel.org>
 
 	* gnu/testlet/java/lang/String/split.java:

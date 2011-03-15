@@ -23,6 +23,7 @@
 package gnu.testlet.java.net.Socket;
 
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketPermission;
@@ -36,7 +37,9 @@ public class security implements Testlet
 {
   public void test(TestHarness harness)
   {
-    try {
+    try
+    {
+
       harness.checkPoint("setup");
 
       InetAddress inetaddr = InetAddress.getByName(null);
@@ -47,145 +50,161 @@ public class security implements Testlet
       ServerSocket socket = new ServerSocket(0, 50, inetaddr);
       int hostport = socket.getLocalPort();
 
+      InetSocketAddress sockaddr = new InetSocketAddress(inetaddr, hostport);
+
       Permission[] checkConnect = new Permission[] {
-	new SocketPermission(hostaddr + ":" + hostport, "connect")};
+        new SocketPermission(hostaddr + ":" + hostport, "connect")};
 
       Permission[] checkResolveConnect = new Permission[] {
-	new SocketPermission(hostname, "resolve"),
-	new SocketPermission(hostaddr + ":" + hostport, "connect")};
+        new SocketPermission(hostname, "resolve"),
+        new SocketPermission(hostaddr + ":" + hostport, "connect")};
 
       Permission[] checkSelectorProvider = new Permission[] {
-	new RuntimePermission("selectorProvider")};
+        new RuntimePermission("selectorProvider")};
 
       Permission[] checkSetFactory = new Permission[] {
-	new RuntimePermission("setFactory")};
+        new RuntimePermission("setFactory")};
 
       TestSecurityManager sm = new TestSecurityManager(harness);
       try {
-	sm.install();
+        sm.install();
 
- 	// throwpoint: java.net.Socket-Socket(InetAddress, int)
-	harness.checkPoint("Socket(InetAddress, int)");
-	try {
-	  sm.prepareChecks(checkConnect, checkSelectorProvider);
-	  new Socket(inetaddr, hostport).close();
-	  sm.checkAllChecked();
-	}
-	catch (SecurityException e) {
-	  harness.debug(e);
-	  harness.check(false, "unexpected check");
-	}
+        // throwpoint: java.net.Socket-Socket(InetAddress, int)
+        try {
+          harness.checkPoint("Socket(InetAddress, int)");
+          sm.prepareChecks(checkConnect, checkSelectorProvider);
+          new Socket(inetaddr, hostport).close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
 
- 	// throwpoint: java.net.Socket-Socket(String, int)
-	harness.checkPoint("Socket(String, int)");
-	try {
-	  sm.prepareChecks(checkConnect, checkSelectorProvider);
-	  new Socket(hostaddr, hostport).close();
-	  sm.checkAllChecked();
-	}
-	catch (SecurityException e) {
-	  harness.debug(e);
-	  harness.check(false, "unexpected check");
-	}
-	try {
-	  sm.prepareChecks(checkResolveConnect, checkSelectorProvider);
-	  new Socket(hostname, hostport).close();
-	  sm.checkAllChecked();
-	}
-	catch (SecurityException e) {
-	  harness.debug(e);
-	  harness.check(false, "unexpected check");
-	}
+        // throwpoint: java.net.Socket-Socket(String, int)
+        harness.checkPoint("Socket(String, int)");
+        try {
+          sm.prepareChecks(checkConnect, checkSelectorProvider);
+          new Socket(hostaddr, hostport).close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
+        try {
+          sm.prepareChecks(checkResolveConnect, checkSelectorProvider);
+          new Socket(hostname, hostport).close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
 
-	// throwpoint: java.net.Socket-Socket(InetAddress, int, boolean)
-	harness.checkPoint("Socket(InetAddress, int, boolean)");
-	for (int i = 0; i < 2; i++) {	
-	  try {
-	    sm.prepareChecks(checkConnect, checkSelectorProvider);
-	    new Socket(inetaddr, hostport, i == 0).close();
-	    sm.checkAllChecked();
-	  }
-	  catch (SecurityException e) {
-	    harness.debug(e);
-	    harness.check(false, "unexpected check");
-	  }
-	}
+        // throwpoint: java.net.Socket-Socket(InetAddress, int, boolean)
+        harness.checkPoint("Socket(InetAddress, int, boolean)");
+        for (int i = 0; i < 2; i++) {
+          try {
+            sm.prepareChecks(checkConnect, checkSelectorProvider);
+            new Socket(inetaddr, hostport, i == 0).close();
+            sm.checkAllChecked();
+          }
+          catch (SecurityException e) {
+            harness.debug(e);
+            harness.check(false, "unexpected check");
+          }
+        }
 
-	// throwpoint: java.net.Socket-Socket(String, int, boolean)
-	harness.checkPoint("Socket(String, int, boolean)");
-	for (int i = 0; i < 2; i++) {	
-	  try {
-	    sm.prepareChecks(checkConnect, checkSelectorProvider);
-	    new Socket(hostaddr, hostport, i == 0).close();
-	    sm.checkAllChecked();
-	  }
-	  catch (SecurityException e) {
-	    harness.debug(e);
-	    harness.check(false, "unexpected check");
-	  }
-	  try {
-	    sm.prepareChecks(checkResolveConnect, checkSelectorProvider);
-	    new Socket(hostname, hostport, i == 0).close();
-	    sm.checkAllChecked();
-	  }
-	  catch (SecurityException e) {
-	    harness.debug(e);
-	    harness.check(false, "unexpected check");
-	  }
-	}
+        // throwpoint: java.net.Socket-Socket(String, int, boolean)
+        harness.checkPoint("Socket(String, int, boolean)");
+        for (int i = 0; i < 2; i++) {
+          try {
+            sm.prepareChecks(checkConnect, checkSelectorProvider);
+            new Socket(hostaddr, hostport, i == 0).close();
+            sm.checkAllChecked();
+          }
+          catch (SecurityException e) {
+            harness.debug(e);
+            harness.check(false, "unexpected check");
+          }
+          try {
+            sm.prepareChecks(checkResolveConnect, checkSelectorProvider);
+            new Socket(hostname, hostport, i == 0).close();
+            sm.checkAllChecked();
+          }
+          catch (SecurityException e) {
+            harness.debug(e);
+            harness.check(false, "unexpected check");
+          }
+        }
 
-	// throwpoint: java.net.Socket-Socket(InetAddress,int,InetAddress,int)
-	harness.checkPoint("Socket(InetAddress, int, InetAddress, int)");
-	try {
-	  sm.prepareChecks(checkConnect, checkSelectorProvider);
-	  new Socket(inetaddr, hostport, inetaddr, 0).close();
-	  sm.checkAllChecked();
-	}
-	catch (SecurityException e) {
-	  harness.debug(e);
-	  harness.check(false, "unexpected check");
-	}
+        // throwpoint: java.net.Socket-Socket(InetAddress,int,InetAddress,int)
+        harness.checkPoint("Socket(InetAddress, int, InetAddress, int)");
+        try {
+          sm.prepareChecks(checkConnect, checkSelectorProvider);
+          new Socket(inetaddr, hostport, inetaddr, 0).close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
 
- 	// throwpoint: java.net.Socket-Socket(String, int, InetAddress, int)
-	harness.checkPoint("Socket(String, int, InetAddress, int)");
-	try {
-	  sm.prepareChecks(checkConnect, checkSelectorProvider);
-	  new Socket(hostaddr, hostport, inetaddr, 0).close();
-	  sm.checkAllChecked();
-	}
-	catch (SecurityException e) {
-	  harness.debug(e);
-	  harness.check(false, "unexpected check");
-	}
-	try {
-	  sm.prepareChecks(checkResolveConnect, checkSelectorProvider);
-	  new Socket(hostname, hostport, inetaddr, 0).close();
-	  sm.checkAllChecked();
-	}
-	catch (SecurityException e) {
-	  harness.debug(e);
-	  harness.check(false, "unexpected check");
-	}
+        // throwpoint: java.net.Socket-Socket(String, int, InetAddress, int)
+        harness.checkPoint("Socket(String, int, InetAddress, int)");
+        try {
+          sm.prepareChecks(checkConnect, checkSelectorProvider);
+          new Socket(hostaddr, hostport, inetaddr, 0).close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
+        try {
+          sm.prepareChecks(checkResolveConnect, checkSelectorProvider);
+          new Socket(hostname, hostport, inetaddr, 0).close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
 
-	// throwpoint: TODO: java.net.Socket-Socket(Proxy)	
+        // throwpoint: TODO: java.net.Socket-Socket(Proxy)
 
-	// throwpoint: java.net.Socket-setSocketImplFactory
-	harness.checkPoint("setSocketImplFactory");
-	try {
-	  sm.prepareHaltingChecks(checkSetFactory);
-	  Socket.setSocketImplFactory(null);
-	  harness.check(false);	  
-	}
-	catch (TestSecurityManager.SuccessException ex) {
-	  harness.check(true);
-	} 
-	catch (SecurityException ex) {
-	  harness.debug(ex);
-	  harness.check(false, "unexpected check");
-	}
+        // throwpoint: java.net.Socket-connect(InetSocketAddress)
+        harness.checkPoint("connect(InetSocketAddress)");
+        try {
+          sm.prepareChecks(checkConnect, checkSelectorProvider);
+          Socket sock = new Socket();
+          sock.connect(sockaddr, hostport);
+          sock.close();
+          sm.checkAllChecked();
+        }
+        catch (SecurityException e) {
+          harness.debug(e);
+          harness.check(false, "unexpected check");
+        }
+
+        // throwpoint: java.net.Socket-setSocketImplFactory
+        harness.checkPoint("setSocketImplFactory");
+        try {
+          sm.prepareHaltingChecks(checkSetFactory);
+          Socket.setSocketImplFactory(null);
+          harness.check(false);
+        }
+        catch (TestSecurityManager.SuccessException ex) {
+          harness.check(true);
+        }
+        catch (SecurityException ex) {
+          harness.debug(ex);
+          harness.check(false, "unexpected check");
+        }
       }
       finally {
-	sm.uninstall();
+        sm.uninstall();
       }
     }
     catch (Exception e) {
@@ -194,3 +213,4 @@ public class security implements Testlet
     }
   }
 }
+
