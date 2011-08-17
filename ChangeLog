@@ -1,3 +1,9 @@
+2011-08-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/File/security.java:
+	Fixed cleaning phase of this test, it now deletes all its
+	work files and directories.
+
 2011-04-25  Pekka Enberg  <penberg@kernel.org>
 
 	* gnu/testlet/java/util/regex/Matcher/quoteReplacement.java:

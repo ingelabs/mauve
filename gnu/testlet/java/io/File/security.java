@@ -526,8 +526,9 @@ public class security implements Testlet
       if (tmpfile2 != null) tmpfile2.delete();
       if (tf1 != null) tf1.delete();
       if (tf2 != null) tf2.delete();
-      if (tmpdir != null) tmpdir.delete();
+      if (tmpdir3 != null) tmpdir3.delete();
       if (tmpdir2 != null) tmpdir2.delete();
+      if (tmpdir != null) tmpdir.delete();
     }
   }
 }
