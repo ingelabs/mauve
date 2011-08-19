@@ -27,6 +27,21 @@ import gnu.testlet.TestHarness;
 
 public class parseInt implements Testlet
 {
+  /**
+    * Returns true if tested JRE conformns to JDK 1.7.
+    */
+  private static boolean conformToJDK17()
+  {
+    String[] javaVersion = System.getProperty("java.version").split("\\.");
+    String vendorID = System.getProperty("java.vendor");
+    // test of OpenJDK
+    if ("Sun Microsystems Inc.".equals(vendorID))
+      {
+        return Integer.parseInt(javaVersion[1]) >= 7;
+      }
+    return true;
+  }
+
   public void test(TestHarness harness)
   {
     int i;
@@ -106,15 +121,30 @@ public class parseInt implements Testlet
     }
   
     // In JDK1.7, '+' is considered a valid character.
-    try
-      {
-        i = Integer.parseInt("+10");
-        harness.check(true);
-	harness.check(i, 10);
+    // it means that the following step should be divided
+    // for pre JDK1.7 case and >= JDK1.7
+    if (conformToJDK17()) {
+      try
+        {
+          i = Integer.parseInt("+10");
+          harness.check(true);
+          harness.check(i, 10);
+        }
+      catch (NumberFormatException nfe)
+        {
+          harness.fail("'+10' string is not parsed correctly as expected in JDK1.7");
+        }
       }
-    catch (NumberFormatException nfe)
-      {
-    	harness.fail("Leading '+' does not throw NumberFormatException");
+    else { // pre JDK1.7 branch
+      try
+        {
+          i = Integer.parseInt("+10");
+          harness.fail("'+10' must throw NumberFormatException");
+        }
+      catch (NumberFormatException nfe)
+        {
+          harness.check(true);
+        }
       }
 
     try
