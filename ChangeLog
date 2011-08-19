@@ -1,5 +1,11 @@
 2011-08-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* gnu/testlet/java/util/Currency/
+	(Czech.java): New class of tests for the Czech currency (CZK).
+	(Slovak.java): New class of tests for the Slovak currency (SKK).
+
+2011-08-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* gnu/testlet/java/lang/Integer/parseInt.java:
 	Fixed the test to work correctly on OpenJDK6 JRE.
 
