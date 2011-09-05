@@ -81,7 +81,15 @@ public class new_Integer implements Testlet
       harness.check (Integer.toString(Integer.MAX_VALUE, 36),
 		     "zik0zj");
       harness.check (Integer.toString(12345, 1), "12345");
+      harness.check (Integer.toString(-12345, 1), "-12345");
       harness.check (Integer.toString(12345, 37), "12345");
+      harness.check (Integer.toString(-12345, 37), "-12345");
+      harness.check (Integer.toString(12345, 0), "12345");
+      harness.check (Integer.toString(-12345, 0), "-12345");
+      harness.check (Integer.toString(12345, -1), "12345");
+      harness.check (Integer.toString(-12345, -1), "-12345");
+      harness.check (Integer.toString(12345, Character.MIN_RADIX - 1), "12345");
+      harness.check (Integer.toString(12345, Character.MAX_RADIX + 1), "12345");
 
       harness.checkPoint ("exceptions");
       Integer bad = null;
