@@ -82,6 +82,16 @@ public class new_Long implements Testlet
 		     "-1y2p0ij32e8e8");
       harness.check (Long.toString(Long.MAX_VALUE, 36),
 		     "1y2p0ij32e8e7");
+      harness.check (Long.toString(12345, 1), "12345");
+      harness.check (Long.toString(-12345, 1), "-12345");
+      harness.check (Long.toString(12345, 37), "12345");
+      harness.check (Long.toString(-12345, 37), "-12345");
+      harness.check (Long.toString(12345, 0), "12345");
+      harness.check (Long.toString(-12345, 0), "-12345");
+      harness.check (Long.toString(12345, -1), "12345");
+      harness.check (Long.toString(-12345, -1), "-12345");
+      harness.check (Long.toString(12345, Character.MIN_RADIX - 1), "12345");
+      harness.check (Long.toString(12345, Character.MAX_RADIX + 1), "12345");
 
       Long bad = null;
       try
