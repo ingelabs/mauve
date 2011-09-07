@@ -1,3 +1,18 @@
+2011-09-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/ColorClass/constants.java:
+	Add more tests.
+	* gnu/testlet/java/awt/ColorClass/decode.java:
+	Add more tests.
+	* gnu/testlet/java/awt/ColorClass/getBlue.java:
+	Add more tests.
+	* gnu/testlet/java/awt/ColorClass/getGreen.java:
+	Add more tests.
+	* gnu/testlet/java/awt/ColorClass/getRed.java:
+	Add more tests.
+	* gnu/testlet/java/awt/ColorClass/hashCode.java:
+	Add more tests.
+
 2011-09-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Long/new_Long.java (test): 

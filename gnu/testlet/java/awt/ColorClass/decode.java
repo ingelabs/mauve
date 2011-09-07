@@ -33,17 +33,62 @@ public class decode implements Testlet
 {
 
   /**
+   * Parse the given string, create Color object using this string
+   * and check if all three color component are set correcty.
+   */
+  private void checkColorDecode(TestHarness harness, String str, int red, int green, int blue)
+  {
+    Color c = Color.decode(str);
+    harness.check(c.getRed(), red);
+    harness.check(c.getGreen(), green);
+    harness.check(c.getBlue(), blue);
+  }
+
+  /**
    * Runs the test using the specified harness.
    * 
    * @param harness  the test harness (<code>null</code> not permitted).
    */
   public void test(TestHarness harness)  
   {
-    Color c = Color.decode("0x010203");
-    harness.check(c.getRed(), 1);
-    harness.check(c.getGreen(), 2);
-    harness.check(c.getBlue(), 3);
+    // hexadecimal numbers interpretation
+    checkColorDecode(harness, "0x0", 0, 0, 0);
+    checkColorDecode(harness, "0X0", 0, 0, 0);
+    checkColorDecode(harness, "#0", 0, 0, 0);
+    checkColorDecode(harness, "0x010203", 1, 2, 3);
+    checkColorDecode(harness, "0X010203", 1, 2, 3);
+    checkColorDecode(harness, "#010203", 1, 2, 3);
+    checkColorDecode(harness, "0xffffff", 255, 255, 255);
+    checkColorDecode(harness, "0Xffffff", 255, 255, 255);
+    checkColorDecode(harness, "#ffffff", 255, 255, 255);
+
+    // negative hexadecimal numbers
+    checkColorDecode(harness, "-0x0", 0, 0, 0);
+    checkColorDecode(harness, "-0X0", 0, 0, 0);
+    checkColorDecode(harness, "-#0", 0, 0, 0);
+    checkColorDecode(harness, "-0x1", 255, 255, 255);
+    checkColorDecode(harness, "-0X1", 255, 255, 255);
+    checkColorDecode(harness, "-#1", 255, 255, 255);
+    checkColorDecode(harness, "-0xffffff", 0, 0, 1);
+    checkColorDecode(harness, "-0Xffffff", 0, 0, 1);
+    checkColorDecode(harness, "-#ffffff", 0, 0, 1);
   
+    // decimal numbers interpretation
+    checkColorDecode(harness, "0", 0, 0, 0);
+    checkColorDecode(harness, "255", 0, 0, 255);
+    checkColorDecode(harness, "256", 0, 1, 0);
+    checkColorDecode(harness, "65535", 0, 255, 255);
+    checkColorDecode(harness, "65536", 1, 0, 0);
+    checkColorDecode(harness, "16777215", 255, 255, 255);
+    checkColorDecode(harness, "-16777215", 0, 0, 1);
+    checkColorDecode(harness, "-1", 255, 255, 255);
+
+    // octal numbers interpretation
+    checkColorDecode(harness, "00", 0, 0, 0);
+    checkColorDecode(harness, "0777", 0, 1, 255);
+    checkColorDecode(harness, "077777777", 255, 255, 255);
+    checkColorDecode(harness, "-01", 255, 255, 255);
+
     // try a null argument - see bug parade 6211249
     boolean pass = false;
     try
@@ -61,6 +106,18 @@ public class decode implements Testlet
     try
     {
       Color.decode("XYZ");
+    }
+    catch (NumberFormatException e) 
+    {
+      pass = true;   
+    }
+    harness.check(pass);
+
+    // try a bad octal value
+    pass = false;
+    try
+    {
+      Color.decode("0778");
     }
     catch (NumberFormatException e) 
     {

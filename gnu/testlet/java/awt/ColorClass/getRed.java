@@ -44,6 +44,26 @@ public class getRed implements Testlet
  
     c = new Color(243, 244, 245);
     harness.check(c.getRed(), 243);
+
+    thoroughTest(harness);
   }
 
+  /**
+    * This test checks some RGB combinations, ie. subset of 2^24 colors
+    * It tooks 1-5 seconds to complete on a reasonable hardware.
+    */
+  private void thoroughTest(TestHarness harness)
+  {
+    for (int red = 0; red < 256; red+=8)
+      {
+        for (int green = 0; green < 256; green+=8)
+          {
+            for (int blue = 0; blue < 256; blue+=8)
+              {
+                Color c = new Color(red, green, blue);
+                harness.check(c.getRed(), red);
+              }
+          }
+      }
+  }
 }
