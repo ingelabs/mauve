@@ -1,3 +1,14 @@
+2011-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-1Bit.png:
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-4Bit.png:
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-8Bit.png:
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-24Bit.png:
+	* gnu/testlet/javax/imageio/ImageIO/Bitmap-32Bit.png:
+	New bitmaps used in test ImageIOTest.
+	* gnu/testlet/javax/imageio/ImageIO/ImageIOTest.java:
+	Add more tests.
+
 2011-09-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/ColorClass/constants.java:

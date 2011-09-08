@@ -34,6 +34,7 @@ import javax.imageio.ImageIO;
 /**
  * @author Michael Koch (konqueror@gmx.de)
  * @author Lillian Angel (langel at redhat dot com)
+ * @author Pavel Tisnovsky (ptisnovs at redhat dot com)
  */
 public class ImageIOTest
   implements Testlet
@@ -52,6 +53,13 @@ public class ImageIOTest
     testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-1Bit.bmp");
     testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-RLE8.bmp");
     testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-RLE4.bmp");
+
+    // Test also working with PNG file format
+    testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-1Bit.png");
+    testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-4Bit.png");
+    testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-8Bit.png");
+    testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-24Bit.png");
+    testReadWrite(h, "gnu/testlet/javax/imageio/ImageIO/Bitmap-32Bit.png");
   }
   
   private void testStringData(TestHarness h)
@@ -89,18 +97,20 @@ public class ImageIOTest
         int[] outPixels = new int[size];
         String path = "gnu/testlet/javax/imageio/ImageIO/outputBitmap.bmp";
 
-        ImageIO.write(image, "bmp", new File(path));
+        // do pixel-by-pixel check only if proper writer is found and used
+        if (ImageIO.write(image, "bmp", new File(path)))
+          {
+            BufferedImage outImage = ImageIO.read(new File(path));
+            PixelGrabber pg1 = new PixelGrabber(outImage,
+                                                0, 0, width, height, outPixels, 0,
+                                                width);
+            PixelGrabber pg2 = new PixelGrabber(image, 0, 0, width, height, pixels,
+                                                0, width);
+            pg1.grabPixels();
+            pg2.grabPixels();
 
-        BufferedImage outImage = ImageIO.read(new File(path));
-        PixelGrabber pg1 = new PixelGrabber(outImage,
-                                            0, 0, width, height, outPixels, 0,
-                                            width);
-        PixelGrabber pg2 = new PixelGrabber(image, 0, 0, width, height, pixels,
-                                            0, width);
-        pg1.grabPixels();
-        pg2.grabPixels();
-
-        h.check(comparePixels(pixels, outPixels, size));
+            h.check(comparePixels(pixels, outPixels, size));
+          }
       }
     catch (Exception e)
       {
