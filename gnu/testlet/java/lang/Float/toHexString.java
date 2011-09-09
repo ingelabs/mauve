@@ -28,15 +28,38 @@ import gnu.testlet.Testlet;
 
 /**
  * @author Tom Tromey
+ * @author Pavel Tisnovsky (ptisnovs at redhat dot com)
  */
 public class toHexString implements Testlet {
 	public void test(TestHarness harness) {
+        // special cases
 		harness.check(Float.toHexString(Float.NaN), "NaN");
 		harness.check(Float.toHexString(Float.POSITIVE_INFINITY), "Infinity");
 		harness.check(Float.toHexString(Float.NEGATIVE_INFINITY), "-Infinity");
 		harness.check(Float.toHexString(0.0f), "0x0.0p0");
 		harness.check(Float.toHexString(-0.0f), "-0x0.0p0");
-		harness.check(Float.toHexString(1.0f), "0x1.0p0");
+
+		// normalized values
+		harness.check(Float.toHexString(0.125f),        "0x1.0p-3");
+		harness.check(Float.toHexString(0.25f),         "0x1.0p-2");
+		harness.check(Float.toHexString(0.5f),          "0x1.0p-1");
+		harness.check(Float.toHexString(1.0f),          "0x1.0p0");
+		harness.check(Float.toHexString(2.0f),          "0x1.0p1");
+		harness.check(Float.toHexString(4.0f),          "0x1.0p2");
+		harness.check(Float.toHexString(8.0f),          "0x1.0p3");
+		harness.check(Float.toHexString(65536.0f),      "0x1.0p16");
+        // 2^10
+		harness.check(Float.toHexString(1024.0f),       "0x1.0p10");
+        // 2^20
+		harness.check(Float.toHexString(1048576.0f),    "0x1.0p20");
+        // 2^30
+		harness.check(Float.toHexString(1073741824.0f), "0x1.0p30");
+
+		// subnormalized values
+		harness.check(Float.toHexString( Float.intBitsToFloat(0x00800000)), "0x1.0p-126");
+		harness.check(Float.toHexString(-Float.intBitsToFloat(0x00800000)), "-0x1.0p-126");
+
+		// max and min representable values
 		harness.check(Float.toHexString(Float.MAX_VALUE), "0x1.fffffep127");
 		harness.check(Float.toHexString(Float.MIN_VALUE), "0x0.000002p-126");
 	}

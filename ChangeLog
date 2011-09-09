@@ -1,3 +1,10 @@
+2011-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Float/toHexString.java:
+	Add more tests.
+	* gnu/testlet/java/lang/Double/toHexString.java:
+	Add more tests.
+
 2011-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/javax/imageio/ImageIO/Bitmap-1Bit.png:
