@@ -51,14 +51,14 @@ public class preferredSize implements Testlet
         ta2.setLineWrap(true);
         ta2.setWrapStyleWord(true);
 
-        harness.check (ta2.getPreferredSize().width == 100);
-        harness.check (view.getPreferredSpan(View.HORIZONTAL) == 100);
+        harness.check (ta2.getPreferredSize().width == 0);
+        harness.check (view.getPreferredSpan(View.HORIZONTAL) == 0);
         ta2.setText("");
-        harness.check (ta2.getPreferredSize().width == 100);
-        harness.check (view.getPreferredSpan(View.HORIZONTAL) == 100);
+        harness.check (ta2.getPreferredSize().width == 0);
+        harness.check (view.getPreferredSpan(View.HORIZONTAL) == 0);
         ta2.setText("\n\n\n\n\n\n\n\n\n");
-        harness.check (ta2.getPreferredSize().width == 100);
-        harness.check (view.getPreferredSpan(View.HORIZONTAL) == 100);
+        harness.check (ta2.getPreferredSize().width == 0);
+        harness.check (view.getPreferredSpan(View.HORIZONTAL) == 0);
       }
     catch (Exception e)
       {
