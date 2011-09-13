@@ -37,7 +37,7 @@ public class Taiwan implements Testlet
   private static final Locale TEST_LOCALE = Locale.TAIWAN;
   private static final String ISO4217_CODE = "TWD";
   private static final String CURRENCY_SYMBOL = "NT$";
-  private static final int FRACTION_DIGITS = 0;
+  private static final int FRACTION_DIGITS = 2;
 
   public void test(TestHarness harness)
   {

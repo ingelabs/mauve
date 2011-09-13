@@ -1,3 +1,7 @@
+2011-09-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+	* gnu/testlet/java/util/Currency/Taiwan.java:
+	Update number of fraction digits to match the real use.
+
 2011-09-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 	* gnu/testlet/javax/swing/JTextArea/preferredSize.java:
 	Fixed this test in a way discussed here:
