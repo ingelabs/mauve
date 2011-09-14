@@ -77,7 +77,7 @@ public class constructors implements Testlet
     harness.check(tb.getTitleColor(), c);
     Font f = UIManager.getLookAndFeelDefaults().getFont("TitledBorder.font");
     harness.check(tb.getTitleFont(), f);
-    harness.check(tb.getTitlePosition(), TitledBorder.TOP);
+    harness.check(tb.getTitlePosition(), TitledBorder.DEFAULT_POSITION);
     harness.check(tb.getTitleJustification(), TitledBorder.LEADING);
     
     tb = new TitledBorder((Border) null);
@@ -98,7 +98,7 @@ public class constructors implements Testlet
     harness.check(tb.getTitleColor(), c);
     Font f = UIManager.getLookAndFeelDefaults().getFont("TitledBorder.font");
     harness.check(tb.getTitleFont(), f);
-    harness.check(tb.getTitlePosition(), TitledBorder.TOP);
+    harness.check(tb.getTitlePosition(), TitledBorder.DEFAULT_POSITION);
     harness.check(tb.getTitleJustification(), TitledBorder.LEADING);
     
     tb = new TitledBorder((Border) null, "XYZ");
@@ -202,7 +202,7 @@ public class constructors implements Testlet
     harness.check(tb.getTitleColor(), c);
     Font f = UIManager.getLookAndFeelDefaults().getFont("TitledBorder.font");
     harness.check(tb.getTitleFont(), f);
-    harness.check(tb.getTitlePosition(), TitledBorder.TOP);
+    harness.check(tb.getTitlePosition(), TitledBorder.DEFAULT_POSITION);
     harness.check(tb.getTitleJustification(), TitledBorder.LEADING);
     
     tb = new TitledBorder((String) null);
