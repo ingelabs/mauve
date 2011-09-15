@@ -1,3 +1,13 @@
+2011-09-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/StrictMath/acos.java:
+	* gnu/testlet/java/lang/StrictMath/acos_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/asin.java:
+	* gnu/testlet/java/lang/StrictMath/asin_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/atan.java:
+	* gnu/testlet/java/lang/StrictMath/atan_strictfp.java:
+	New tests used for checking methods included in StrictMath class.
+
 2011-09-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/javax/swing/border/TitledBorder/constructors.java:
