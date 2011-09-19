@@ -39,7 +39,7 @@ public class setTitlePosition implements Testlet {
   public void test(TestHarness harness)       
   {
     TitledBorder b = new TitledBorder(new EmptyBorder(1, 1, 1, 1));
-    harness.check(b.getTitlePosition(), TitledBorder.TOP);
+    harness.check(b.getTitlePosition(), TitledBorder.DEFAULT_POSITION);
     b.setTitlePosition(TitledBorder.BELOW_BOTTOM);
     harness.check(b.getTitlePosition(), TitledBorder.BELOW_BOTTOM);
     boolean pass = false;
