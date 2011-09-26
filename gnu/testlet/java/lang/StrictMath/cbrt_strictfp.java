@@ -1,6 +1,4 @@
-// Tags: JDK1.3
-
-//  Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Tags: JDK1.5
 
 //  This file is part of Mauve.
 
@@ -25,49 +23,32 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 /**
-  * Test for a static method StrictMath.atan()
+  * Test for a static method StrictMath.cbrt()
   * by using strictfp modifier.
   */
-public strictfp class atan_strictfp implements Testlet
+public strictfp class cbrt_strictfp implements Testlet
 {
   /**
-   * Function (=static method) checked by this test.
-   */
-  private static double testedFunction(double input)
-    {
-      return StrictMath.atan(input);
-    }
-
-  /**
-   * These values are used as arguments to compute atan using StrictMath.
+   * These values are used as arguments to cbrt.
    */
   private static double[] inputValues =
     {
+      0.0,
       Double.NaN,
       Double.POSITIVE_INFINITY,
       Double.NEGATIVE_INFINITY,
-      Double.MAX_VALUE,
-      Double.MIN_VALUE,
-      0.0,
-      0.2,
-      0.4,
-      0.5,
-      0.6,
-      0.8,
-      1.0,
-      2.0,
-      1e10,
-      1e-10,
-      -0.0,
-      -0.2,
-      -0.4,
-      -0.5,
-      -0.6,
-      -0.8,
-      -1.0,
-      -2.0,
-      -1e10,
-      -1e-10,
+      123456789e-9,
+      -123456789e-6,
+      123456789e+2,
+      -123456789e+4,
+      987654321e-7,
+      -987654321e-4,
+      987654321e+3,
+      -987654321e+5,
+      1234509876e-320,  // subnormal number
+      9756272385e-325,  // subnormal number
+      Math.PI,
+      Math.E
     };
 
   /**
@@ -75,37 +56,27 @@ public strictfp class atan_strictfp implements Testlet
    */
   private static double[] outputValues =
     {
-      // output value      input value
-      Double.NaN,          // NaN
-      StrictMath.PI/2.0,   // Infinity
-      -StrictMath.PI/2.0,  // -Infinity
-      1.5707963267948966,  // 1.7976931348623157E308
-      4.9E-324,            // 4.9E-324
-      0.0,                 // 0.0
-      0.19739555984988078, // 0.2
-      0.3805063771123649,  // 0.4
-      0.4636476090008061,  // 0.5
-      0.5404195002705842,  // 0.6
-      0.6747409422235527,  // 0.8
-      0.7853981633974483,  // 1.0
-      1.1071487177940904,  // 2.0
-      1.5707963266948965,  // 1.0E10
-      1.0E-10,             // 1.0E-10
-      -0.0,                // -0.0
-      -0.19739555984988078,// -0.2
-      -0.3805063771123649, // -0.4
-      -0.4636476090008061, // -0.5
-      -0.5404195002705842, // -0.6
-      -0.6747409422235527, // -0.8
-      -0.7853981633974483, // -1.0
-      -1.1071487177940904, // -2.0
-      -1.5707963266948965, // -1.0E10
-      -1.0E-10,            // -1.0E-10
+      0.0,
+      Double.NaN,
+      Double.POSITIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      0.49793385921817446,
+      -4.979338592181745,
+      2311.204240824796,
+      -10727.659796410873,
+      4.622408495690158,
+      -46.224084956901585,
+      9958.677214612972,
+      -46224.08495690158,
+      2.3111680380625372e-104,
+      9.918088333941088e-106,
+      1.4645918875615231,
+      1.3956124250860895
     };
 
   /**
-    * These values represent various NaN
-    */
+   * Test if input NaN is returned unchanged.
+   */
   private static long[] NaNValues =
     {
       0x7fff800000000000L,
@@ -128,7 +99,7 @@ public strictfp class atan_strictfp implements Testlet
 
     for (int i = 0; i < inputValues.length; ++i)
       {
-	res = testedFunction(inputValues[i]);
+	res = StrictMath.cbrt(inputValues[i]);
 
 	// exact equality seems appropriate for StrictMath
 	harness.check(res, outputValues[i]);
@@ -148,7 +119,7 @@ public strictfp class atan_strictfp implements Testlet
 	bitsNaN = NaNValues[i];
 	valNaN  = Double.longBitsToDouble(bitsNaN);
 
-	harness.check(Double.doubleToRawLongBits(testedFunction(valNaN)),
+	harness.check(Double.doubleToRawLongBits(StrictMath.cbrt(valNaN)),
 		      bitsNaN);
       }
   }
@@ -167,11 +138,13 @@ public strictfp class atan_strictfp implements Testlet
    */
   public static void main(String[] argv)
   {
+    double res;
+
     for (int i = 0; i < inputValues.length; ++i)
       {
-    double input = inputValues[i];
-    double output = testedFunction(inputValues[i]);
-	System.out.println("      " + Double.toString(output) + ", // " + input);
+	res = StrictMath.cbrt(inputValues[i]);
+
+	System.out.println(Double.toString(res));
       }
   }
 }

@@ -1,11 +1,35 @@
+2011-09-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/StrictMath/API_coverage.txt:
+	Added text file containing test coverage for StrictMath class.
+	* gnu/testlet/java/lang/StrictMath/cbrt_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/expm1_strictfp.java:
+	Added two new tests
+	* gnu/testlet/java/lang/StrictMath/acos.java:
+	* gnu/testlet/java/lang/StrictMath/acos_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/asin.java:
+	* gnu/testlet/java/lang/StrictMath/asin_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/atan.java:
+	* gnu/testlet/java/lang/StrictMath/atan_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/cos.java:
+	* gnu/testlet/java/lang/StrictMath/cos_strictfp.java
+	* gnu/testlet/java/lang/StrictMath/sin.java:
+	* gnu/testlet/java/lang/StrictMath/sin_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/tan.java:
+	* gnu/testlet/java/lang/StrictMath/tan_strictfp.java:
+	Changed tag value to run these tests when at least Java 1.3 API is used
+	* gnu/testlet/java/lang/StrictMath/cbrt.java:
+	* gnu/testlet/java/lang/StrictMath/expm1.java:
+	Fixed JavaDoc
+
 2011-09-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
-	*  gnu/testlet/java/lang/StrictMath/cos.java:
-	*  gnu/testlet/java/lang/StrictMath/cos_strictfp.java:
-	*  gnu/testlet/java/lang/StrictMath/sin.java:
-	*  gnu/testlet/java/lang/StrictMath/sin_strictfp.java:
-	*  gnu/testlet/java/lang/StrictMath/tan.java:
-	*  gnu/testlet/java/lang/StrictMath/tan_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/cos.java:
+	* gnu/testlet/java/lang/StrictMath/cos_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/sin.java:
+	* gnu/testlet/java/lang/StrictMath/sin_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/tan.java:
+	* gnu/testlet/java/lang/StrictMath/tan_strictfp.java:
 	Added 6 new tests used for checking methods included in StrictMath class.
 
 2011-09-19  Pavel Tisnovsky  <ptisnovs@redhat.com>

@@ -24,6 +24,9 @@ package gnu.testlet.java.lang.StrictMath;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+/**
+  * Test for a static method StrictMath.cbrt()
+  */
 public class cbrt implements Testlet
 {
   /**
@@ -72,6 +75,9 @@ public class cbrt implements Testlet
       1.3956124250860895
     };
 
+  /**
+   * Test if input NaN is returned unchanged.
+   */
   private static long[] NaNValues =
     {
       0x7fff800000000000L,
@@ -85,6 +91,9 @@ public class cbrt implements Testlet
       0xffff7654321fedcbL
     };
 
+  /**
+   * Test not NaN values.
+   */
   private void testInputValues(TestHarness harness)
   {
     double res;
@@ -116,6 +125,9 @@ public class cbrt implements Testlet
       }
   }
 
+  /**
+    * Entry point to a test.
+    */
   public void test(TestHarness harness)
   {
     testInputValues(harness);

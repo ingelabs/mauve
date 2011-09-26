@@ -1,4 +1,4 @@
-// Tags: JDK1.5
+// Tags: JDK1.3
 
 //  Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 

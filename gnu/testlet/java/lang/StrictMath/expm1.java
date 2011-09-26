@@ -24,8 +24,19 @@ package gnu.testlet.java.lang.StrictMath;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
+/**
+  * Test for a static method StrictMath.expm1()
+  */
 public class expm1 implements Testlet
 {
+  /**
+   * Function (=static method) checked by this test.
+   */
+  private static double testedFunction(double input)
+    {
+      return StrictMath.expm1(input);
+    }
+
   /**
    * These values are used as arguments to expm1.
    * The values are somewhat arbitrary, but ensure that all code paths
@@ -90,6 +101,9 @@ public class expm1 implements Testlet
       -1.0
     };
 
+  /**
+    * These values represent various NaN
+    */
   private static long[] NaNValues =
     {
       0x7fff800000000000L,
@@ -103,13 +117,16 @@ public class expm1 implements Testlet
       0xffff7654321fedcbL
     };
 
+  /**
+   * Test not NaN values.
+   */
   private void testInputValues(TestHarness harness)
   {
     double res;
 
     for (int i = 0; i < inputValues.length; ++i)
       {
-	res = StrictMath.expm1(inputValues[i]);
+	res = testedFunction(inputValues[i]);
 
 	// exact equality seems appropriate for StrictMath
 	harness.check(res, outputValues[i]);
@@ -129,11 +146,14 @@ public class expm1 implements Testlet
 	bitsNaN = NaNValues[i];
 	valNaN  = Double.longBitsToDouble(bitsNaN);
 
-	harness.check(Double.doubleToRawLongBits(StrictMath.expm1(valNaN)),
+	harness.check(Double.doubleToRawLongBits(testedFunction(valNaN)),
 		      bitsNaN);
       }
   }
 
+  /**
+    * Entry point to a test.
+    */
   public void test(TestHarness harness)
   {
     testInputValues(harness);
@@ -145,13 +165,12 @@ public class expm1 implements Testlet
    */
   public static void main(String[] argv)
   {
-    double res;
-
     for (int i = 0; i < inputValues.length; ++i)
       {
-	res = StrictMath.expm1(inputValues[i]);
-
-	System.out.println(Double.toString(res));
+    double input = inputValues[i];
+    double output = testedFunction(inputValues[i]);
+	System.out.println("      " + Double.toString(output) + ", // " + input);
       }
   }
 }
+

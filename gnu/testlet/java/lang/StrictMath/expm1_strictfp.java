@@ -1,6 +1,4 @@
-// Tags: JDK1.3
-
-//  Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Tags: JDK1.5
 
 //  This file is part of Mauve.
 
@@ -25,49 +23,50 @@ import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
 /**
-  * Test for a static method StrictMath.atan()
+  * Test for a static method StrictMath.expm1()
   * by using strictfp modifier.
   */
-public strictfp class atan_strictfp implements Testlet
+public strictfp class expm1_strictfp implements Testlet
 {
   /**
    * Function (=static method) checked by this test.
    */
   private static double testedFunction(double input)
     {
-      return StrictMath.atan(input);
+      return StrictMath.expm1(input);
     }
 
   /**
-   * These values are used as arguments to compute atan using StrictMath.
+   * These values are used as arguments to expm1.
+   * The values are somewhat arbitrary, but ensure that all code paths
+   * are tested.
    */
   private static double[] inputValues =
     {
+      0.0,
       Double.NaN,
       Double.POSITIVE_INFINITY,
       Double.NEGATIVE_INFINITY,
-      Double.MAX_VALUE,
-      Double.MIN_VALUE,
-      0.0,
-      0.2,
-      0.4,
-      0.5,
-      0.6,
-      0.8,
-      1.0,
-      2.0,
-      1e10,
-      1e-10,
-      -0.0,
-      -0.2,
-      -0.4,
-      -0.5,
-      -0.6,
-      -0.8,
-      -1.0,
-      -2.0,
-      -1e10,
-      -1e-10,
+      0.0000000000000000277555756156289135105,   // ~ 2^-55
+      -0.0000000000000000277555756156289135105,  // ~ -2^55
+      0.6 * 0.6931471805599453 + 0.05,           // 0.6 * ln(2) + 0.05
+      -0.6 * 0.6931471805599453 - 0.05,          // -0.6 * ln(2) - 0.05
+      0.25 * 0.6931471805599453 + 0.03,          // 0.25 * ln(2) + 0.03
+      -0.25 * 0.6931471805599453 - 0.03,         // -0.25 * ln(2) - 0.03
+      0.44,
+      -0.44,
+      2.3 * 0.6931471805599453 + 0.05,           // 2.3 * ln(2) + 0.05
+      -2.3 * 0.6931471805599453 - 0.05,          // -2.3 * ln(2) - 0.05
+      7 * 0.6931471805599453 + 0.03,             // 7 * ln(2) + 0.03
+      -9 * 0.6931471805599453 - 0.03,            // -9 * ln(2) - 0.03
+      29 * 0.6931471805599453 + 0.03,            // 29 * ln(2) + 0.03
+      -27 * 0.6931471805599453 - 0.03,           // -27 * ln(2) - 0.03
+      709.782712893384,                          //  EXP_LIMIT_H
+      709.782712893384 + 3.423e-5,               //  EXP_LIMIT_H + 3.423e-5
+      709.782712893384 - 3.423e-5,               //  EXP_LIMIT_H - 3.423e-5
+      -709.782712893384,                         // -EXP_LIMIT_H
+      -709.782712893384 - 3.423e-5,              // -EXP_LIMIT_H - 3.423e-5
+      -709.782712893384 + 3.423e-5               // -EXP_LIMIT_H + 3.423e-5
     };
 
   /**
@@ -75,32 +74,30 @@ public strictfp class atan_strictfp implements Testlet
    */
   private static double[] outputValues =
     {
-      // output value      input value
-      Double.NaN,          // NaN
-      StrictMath.PI/2.0,   // Infinity
-      -StrictMath.PI/2.0,  // -Infinity
-      1.5707963267948966,  // 1.7976931348623157E308
-      4.9E-324,            // 4.9E-324
-      0.0,                 // 0.0
-      0.19739555984988078, // 0.2
-      0.3805063771123649,  // 0.4
-      0.4636476090008061,  // 0.5
-      0.5404195002705842,  // 0.6
-      0.6747409422235527,  // 0.8
-      0.7853981633974483,  // 1.0
-      1.1071487177940904,  // 2.0
-      1.5707963266948965,  // 1.0E10
-      1.0E-10,             // 1.0E-10
-      -0.0,                // -0.0
-      -0.19739555984988078,// -0.2
-      -0.3805063771123649, // -0.4
-      -0.4636476090008061, // -0.5
-      -0.5404195002705842, // -0.6
-      -0.6747409422235527, // -0.8
-      -0.7853981633974483, // -1.0
-      -1.1071487177940904, // -2.0
-      -1.5707963266948965, // -1.0E10
-      -1.0E-10,            // -1.0E-10
+      0.0,
+      Double.NaN,
+      Double.POSITIVE_INFINITY,
+      -1.0,
+      2.7755575615628914E-17,
+      -2.7755575615628914E-17,
+      0.5934290166706889,
+      -0.3724226247056801,
+      0.22542386346433524,
+      -0.1839558296400811,
+      0.5527072185113361,
+      -0.35596357891685865,
+      4.177066148857307,
+      -0.806840405116183,
+      130.89818034605017,
+      -0.9981045985672881,
+      5.532210644181606E8,
+      -0.9999999927696174,
+      1.7976931348622732E308,
+      Double.POSITIVE_INFINITY,
+      1.7976316008794578E308,
+      -1.0,
+      -1.0,
+      -1.0
     };
 
   /**
@@ -175,3 +172,4 @@ public strictfp class atan_strictfp implements Testlet
       }
   }
 }
+
