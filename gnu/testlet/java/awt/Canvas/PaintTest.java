@@ -1,5 +1,5 @@
 /* PaintTest.java -- 
-   Copyright (C) 2006 Red Hat
+   Copyright (C) 2006, 2011 Red Hat
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -60,13 +60,24 @@ public class PaintTest
     f.add(this);
     f.pack();
     f.show();
+
+    Robot r = harness.createRobot();
+
+    // we should wait a moment before the computations
+    // and pixel checks
+    r.waitForIdle();
+
     Point loc = f.getLocationOnScreen();
     Rectangle bounds = c.getBounds();
     Insets i = f.getInsets();
     bounds.x += i.left + loc.x;
     bounds.y += i.top + loc.y;
     
-    Robot r = harness.createRobot();
+    // check the color of a pixel located in the canvas centre
+    Color but = r.getPixelColor(bounds.x + bounds.width/2, bounds.y + bounds.height/2);
+    harness.check(but.equals(Color.blue));
+
+    // and also check color in all four canvas corners
     LocationTests.checkRectangleCornerColors(harness, r, bounds, Color.blue, true);
     
     // There is a delay to avoid any race conditions    

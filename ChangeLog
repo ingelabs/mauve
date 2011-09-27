@@ -1,3 +1,12 @@
+2011-09-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Canvas/PaintTest.java:
+	Fixed this test in a way discussed here:
+	http://www.cygwin.com/ml/mauve-discuss/2011-q3/msg00027.html
+	Added a small delay before computation of canvas size and its
+	absolute position on the screen is done. There's also added a test
+	for a color of a pixel located inside the canvas.
+
 2011-09-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/StrictMath/API_coverage.txt:
