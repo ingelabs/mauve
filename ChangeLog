@@ -1,3 +1,15 @@
+2011-09-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Button/PaintTest.java:
+	* gnu/testlet/java/awt/Canvas/PaintTest.java:
+	* gnu/testlet/java/awt/Checkbox/PaintTest.java:
+	* gnu/testlet/java/awt/Choice/PaintTest.java:
+	* gnu/testlet/java/awt/Label/PaintTest.java:
+	* gnu/testlet/java/awt/TextField/PaintTest.java:
+	Fixed these tests: added calling of robot.waitForIdle() method before
+	all checks, added more accurate checking of pixel colors in some cases,
+	comments for a new code.
+
 2011-09-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Canvas/PaintTest.java:

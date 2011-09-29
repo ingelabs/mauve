@@ -1,5 +1,5 @@
 /* PaintTest.java -- 
-   Copyright (C) 2006 Red Hat
+   Copyright (C) 2006, 2011 Red Hat
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -58,14 +58,32 @@ public class PaintTest
     f.add(this);
     f.pack();
     f.show();
+
+    // AWT robot is used for reading pixel colors
+    // from a screen and also to wait for all
+    // widgets to stabilize theirs size and position.
+    Robot r = harness.createRobot();
+
+    // we should wait a moment before the computations
+    // and pixel checks
+    r.waitForIdle();
+
     Point loc = f.getLocationOnScreen();
     Rectangle bounds = c.getBounds();
     Insets i = f.getInsets();
     bounds.x += loc.x + i.left;
     bounds.y += loc.y + i.top;
-    
-    Robot r = harness.createRobot();
-    Color label = r.getPixelColor(bounds.x + bounds.width/2 ,bounds.y + bounds.height/2 + 5);
+
+    // position of checked pixel
+    int checkedPixelX = bounds.x + bounds.width / 2;
+    int checkedPixelY = bounds.y + bounds.height / 2 + 5;
+
+    // move the mouse cursor to a tested pixel to show users what's checked
+    r.mouseMove(checkedPixelX, checkedPixelY);
+    r.waitForIdle();
+
+    // check the color of a pixel located in the button center
+    Color label = r.getPixelColor(checkedPixelX, checkedPixelY);
     harness.check(label.equals(Color.blue));
     
     // There is a delay to avoid any race conditions    
