@@ -43,5 +43,9 @@ public class requestFocus implements Testlet {
       {
         harness.fail("Call to requestFocus generated a NPE");
       }
+    finally
+      {
+        jf.dispose();
+      }
   }
 }

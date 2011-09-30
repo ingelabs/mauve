@@ -1,6 +1,6 @@
 // Tags: GUI JDK1.0
 
-// Copyright (C) 2005 Red Hat
+// Copyright (C) 2005, 2011 Red Hat
 
 // This file is part of Mauve.
 
@@ -74,5 +74,8 @@ public class isDisplayable6 implements Testlet
     harness.check (b.getParent(), f);
     harness.check (f.isDisplayable (), true);
     harness.check (b.isDisplayable (), true);
+
+    // time to clean up the frame from desktop
+    f.dispose();
   }
 }

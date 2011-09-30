@@ -46,5 +46,7 @@ public class getFont implements Testlet {
     f.setSize(100, 100);
     f.setVisible(true);
     harness.check(c.getFont(), c.getGraphics().getFont());
+    // time to clean up
+    f.dispose();
   }
 }

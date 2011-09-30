@@ -1,3 +1,24 @@
+2011-09-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Component/getFont.java:
+	* gnu/testlet/java/awt/Component/requestFocus.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable1.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable2.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable3.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable4.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable5.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable6.java:
+	* gnu/testlet/java/awt/Frame/isDisplayable7.java:
+	Fixed these tests: all test frames are disposed in the finish phase.
+	* gnu/testlet/java/awt/Button/PaintTest.java:
+	* gnu/testlet/java/awt/Canvas/PaintTest.java:
+	* gnu/testlet/java/awt/Checkbox/PaintTest.java:
+	* gnu/testlet/java/awt/Choice/PaintTest.java:
+	* gnu/testlet/java/awt/Label/PaintTest.java:
+	* gnu/testlet/java/awt/TextField/PaintTest.java:
+	Make these tests more robust - tests should not fail or freeze even
+	if they are run sequentially.
+
 2011-09-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Button/PaintTest.java:

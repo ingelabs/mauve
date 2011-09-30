@@ -66,6 +66,7 @@ public class PaintTest
     // we should wait a moment before the computations
     // and pixel checks
     r.waitForIdle();
+    r.delay(1000);
 
     Rectangle bounds = b.getBounds();
     Point loc = f.getLocationOnScreen();
@@ -89,6 +90,9 @@ public class PaintTest
     // and so user can see frame
     r.waitForIdle();
     r.delay(1000);
+
+    // it's necesarry to clean up the component from desktop
+    f.dispose();
   }
 
   public void paint(Graphics g)
