@@ -91,5 +91,10 @@ public class add implements Testlet
 
     f3.show();
     harness.check(c.getParent() instanceof Panel);
+
+    // it's necesarry to clean up
+    f.dispose();
+    f2.dispose();
+    f3.dispose();
   }
 }

@@ -62,5 +62,8 @@ public class getComponentAt implements Testlet
     harness.check(f.isVisible(), true);
     harness.check(l.isVisible(), false);
     harness.check(f.getComponentAt(po.x, po.y) == l);
+
+    // time to clean up
+    f.dispose();
   }
 }

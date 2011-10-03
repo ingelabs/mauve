@@ -63,6 +63,9 @@ public class TestPanelRepaint
     // There is a delay so the tester can see the result.
     r.delay(3000);
     harness.check(updateCalled);
+
+    // time to clean up
+    f.dispose();
   }
 
   public class myPanel

@@ -56,15 +56,26 @@ public class ScrollbarPaintTest
     f.add(this);
     f.pack();
     f.show();
+
+    // AWT robot is used for reading pixel colors
+    // from a screen and also to wait for all
+    // widgets to stabilize theirs size and position.
+    Robot r = harness.createRobot();
+
+    // we should wait a moment before the computations
+    // and pixel checks
+    r.waitForIdle();
+    r.delay(1000);
+
     Rectangle bounds = c.getBounds();
-    Insets i = f.getInsets();
     Point loc = f.getLocationOnScreen();
+    Insets i = f.getInsets();
     loc.x += i.left + bounds.x;
     loc.y += i.top + bounds.y;
     bounds.width -= (i.left + i.right);
     bounds.height -= (i.top + i.bottom);
     
-    Robot r = harness.createRobot();
+    // check the color of a pixel located in the button center
     Color scroll = r.getPixelColor(loc.x + bounds.width, loc.y + bounds.height/2);
     harness.check(!(scroll.equals(Color.red)));
     
@@ -72,6 +83,9 @@ public class ScrollbarPaintTest
     // and so user can see frame
     r.waitForIdle();
     r.delay(2000);
+
+    // it's necesarry to clean up
+    f.dispose();
   }
 
   public void paint(Graphics g)

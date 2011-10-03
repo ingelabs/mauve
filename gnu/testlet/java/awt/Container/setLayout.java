@@ -88,5 +88,7 @@ public class setLayout implements Testlet
     c.setLayout(new FlowLayout());
     h.check(! invalidated);
 
+    // time to clean up
+    f.dispose();
   }
 }
