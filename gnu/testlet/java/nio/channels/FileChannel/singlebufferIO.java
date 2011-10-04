@@ -73,6 +73,14 @@ public class singlebufferIO
       {
         harness.fail("Unexpected exception: " + e);
       }
+    finally
+      {
+        // delete the work file and check if deletion were successfull
+        if (tmpfile != null)
+          {
+            new File(tmpfile).delete();
+          }
+      }
   }
 
 }

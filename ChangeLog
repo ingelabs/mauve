@@ -1,3 +1,18 @@
+2011-10-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Button/constructors.java:
+	* gnu/testlet/java/awt/Canvas/constructors.java:
+	* gnu/testlet/java/awt/Checkbox/constructors.java:
+	* gnu/testlet/java/awt/Label/constructors.java:
+	Added new tests for checking constructors behaviour of various AWT
+	widgets.
+	* gnu/testlet/java/nio/channels/FileChannel/map.java:
+	* gnu/testlet/java/nio/channels/FileChannel/singlebufferIO.java:
+	Fixed cleaning phase of these tests, they now delete all its
+	work files and directories.
+	* gnu/testlet/javax/swing/JComboBox/getEditor.java:
+	Fixed these tests: all test frames are disposed in the finish phase.
+
 2011-10-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Panel/TestPanelRepaint.java:

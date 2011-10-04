@@ -110,6 +110,9 @@ public class getEditor
       }
     h.check(pass);
 
+    // remove frame from the desktop
+    f.dispose();
+
     // Test with editable combo box (NPE is thrown).
     cb = new TestComboBox();
     f = new JFrame();
@@ -125,6 +128,9 @@ public class getEditor
         pass = true;
       }
     h.check(pass);
+
+    // remove frame from the desktop
+    f.dispose();
 
   }
   

@@ -34,9 +34,10 @@ public class map implements Testlet
 
   public void test(TestHarness harness)
   {
+    String filename = null;
     try
     {
-        String filename = harness.getTempDirectory() + File.separator + "mauvemap.txt";
+        filename = harness.getTempDirectory() + File.separator + "mauvemap.txt";
         FileOutputStream fos = new FileOutputStream(filename);
         FileChannel chan = fos.getChannel();
         try
@@ -73,6 +74,14 @@ public class map implements Testlet
     {
         harness.debug(x);
         harness.check(false);
+    }
+    finally
+    {
+        // delete the work file and check if deletion were successfull
+        if (filename != null)
+        {
+            harness.check(new File(filename).delete());
+        }
     }
   }
 
