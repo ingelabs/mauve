@@ -1,3 +1,14 @@
+2011-10-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Button/addActionListener.java:
+	* gnu/testlet/java/awt/Button/addActionListenerNegativeTestcase1.java:
+	* gnu/testlet/java/awt/Button/addActionListenerNegativeTestcase2.java:
+	Added new tests for checking ActionListener functionality for AWT Button
+	widget.
+	* gnu/testlet/java/awt/Choice/constructors.java:
+	Added new test for checking constructor behaviour of various AWT
+	widgets.
+
 2011-10-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Button/constructors.java:
