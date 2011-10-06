@@ -1,4 +1,4 @@
-// addActionListener.java -- 
+// addMouseWheelListener.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -32,9 +32,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
-  * Check if ActionListener could be registered for an AWT Button.
+  * Check if MouseWheelListener could be registered for an AWT Button.
   */
-public class addActionListener
+public class addMouseWheelListener
     implements Testlet
 {
 
@@ -48,35 +48,36 @@ public class addActionListener
     Button button = new Button("xyzzy");
     button.setBackground(Color.blue);
 
-    // array which will be filled by registered action listeners
-    ActionListener[] actionListeners;
+    // array which will be filled by registered listeners
+    MouseWheelListener[] mouseWheelListeners;
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 0);
+    // get all registered listeners
+    mouseWheelListeners = button.getMouseWheelListeners();
+    harness.check(mouseWheelListeners.length, 0);
 
-    // register new action listener
-    button.addActionListener(
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e)
+    // register new listener
+    button.addMouseWheelListener(
+      new MouseWheelListener() {
+
+        public void mouseWheelMoved(MouseWheelEvent e)
         {
-        // empty
+          // empty
         }
 
         @Override
         public String toString()
         {
-          return "myActionListener";
+          return "myMouseWheelListener";
         }
       }
     );
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 1);
+    // get all registered listeners
+    mouseWheelListeners = button.getMouseWheelListeners();
+    harness.check(mouseWheelListeners.length, 1);
 
     // check if the proper listener is used
-    harness.check(actionListeners[0].toString(), "myActionListener");
+    harness.check(mouseWheelListeners[0].toString(), "myMouseWheelListener");
   }
 }
 

@@ -1,4 +1,4 @@
-// addActionListener.java -- 
+// ActionListenerPositiveTest.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -33,9 +33,9 @@ import java.awt.event.*;
 
 /**
   * Check if ActionListener could be registered for an AWT Button
-  * and if action is *not* performed when second mouse button is pressed.
+  * and if action is performed when left mouse button is pressed.
   */
-public class addActionListenerNegativeTestcase1
+public class ActionListenerPositiveTest
     extends Panel
     implements Testlet
 {
@@ -53,6 +53,8 @@ public class addActionListenerNegativeTestcase1
     Button button = new Button("xyzzy");
     button.setBackground(Color.blue);
     add(button);
+    ActionListener[] actionListeners = button.getActionListeners();
+    harness.check(actionListeners.length, 0);
     button.addActionListener(
       new ActionListener() {
         public void actionPerformed(ActionEvent e)
@@ -89,9 +91,9 @@ public class addActionListenerNegativeTestcase1
     // move the mouse cursor to a tested pixel to show users what's checked
     robot.mouseMove(checkedPixelX, checkedPixelY);
     robot.waitForIdle();
-    robot.mousePress(InputEvent.BUTTON2_MASK);
+    robot.mousePress(InputEvent.BUTTON1_MASK);
     robot.delay(100);
-    robot.mouseRelease(InputEvent.BUTTON2_MASK);
+    robot.mouseRelease(InputEvent.BUTTON1_MASK);
 
     // There is a delay to avoid any race conditions    
     // and so user can see frame
@@ -102,7 +104,7 @@ public class addActionListenerNegativeTestcase1
     frame.dispose();
 
     // check if action was performed
-    harness.check(!actionPerformedFlag);
+    harness.check(actionPerformedFlag);
   }
 
   public void paint(Graphics g)

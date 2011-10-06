@@ -1,4 +1,4 @@
-// addActionListener.java -- 
+// addMouseListener.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -32,9 +32,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
-  * Check if ActionListener could be registered for an AWT Button.
+  * Check if MouseListener could be registered for an AWT Button.
   */
-public class addActionListener
+public class addMouseListener
     implements Testlet
 {
 
@@ -48,35 +48,56 @@ public class addActionListener
     Button button = new Button("xyzzy");
     button.setBackground(Color.blue);
 
-    // array which will be filled by registered action listeners
-    ActionListener[] actionListeners;
+    // array which will be filled by registered mouse listeners
+    MouseListener[] mouseListeners;
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 0);
+    // get all registered mouse listeners
+    mouseListeners = button.getMouseListeners();
+    harness.check(mouseListeners.length, 0);
 
-    // register new action listener
-    button.addActionListener(
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e)
+    // register new mouse listener
+    button.addMouseListener(
+      new MouseListener() {
+
+        public void mouseClicked(MouseEvent e) 
         {
-        // empty
+          // empty
+        }
+
+        public void mouseEntered(MouseEvent e) 
+        {
+          // empty
+        }
+
+        public void mouseExited(MouseEvent e) 
+        {
+          // empty
+        }
+
+        public void mousePressed(MouseEvent e) 
+        {
+          // empty
+        }
+
+        public void mouseReleased(MouseEvent e) 
+        {
+          // empty
         }
 
         @Override
         public String toString()
         {
-          return "myActionListener";
+          return "myMouseListener";
         }
       }
     );
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 1);
+    // get all registered mouse listeners
+    mouseListeners = button.getMouseListeners();
+    harness.check(mouseListeners.length, 1);
 
     // check if the proper listener is used
-    harness.check(actionListeners[0].toString(), "myActionListener");
+    harness.check(mouseListeners[0].toString(), "myMouseListener");
   }
 }
 

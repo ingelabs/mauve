@@ -1,4 +1,4 @@
-// addActionListener.java -- 
+// addHierarchyBoundsListener.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -32,9 +32,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
-  * Check if ActionListener could be registered for an AWT Button.
+  * Check if HierarchyBoundsListener could be registered for an AWT Button.
   */
-public class addActionListener
+public class addHierarchyBoundsListener
     implements Testlet
 {
 
@@ -48,35 +48,41 @@ public class addActionListener
     Button button = new Button("xyzzy");
     button.setBackground(Color.blue);
 
-    // array which will be filled by registered action listeners
-    ActionListener[] actionListeners;
+    // array which will be filled by registered listeners
+    HierarchyBoundsListener[] hierarchyBoundsListeners;
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 0);
+    // get all registered listeners
+    hierarchyBoundsListeners = button.getHierarchyBoundsListeners();
+    harness.check(hierarchyBoundsListeners.length, 0);
 
-    // register new action listener
-    button.addActionListener(
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e)
+    // register new listener
+    button.addHierarchyBoundsListener(
+      new HierarchyBoundsListener() {
+
+        public void ancestorMoved(HierarchyEvent e) 
         {
-        // empty
+          // empty
+        }
+                        
+        public void ancestorResized(HierarchyEvent e) 
+        {
+          // empty
         }
 
         @Override
         public String toString()
         {
-          return "myActionListener";
+          return "myHierarchyBoundsListener";
         }
       }
     );
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 1);
+    // get all registered listeners
+    hierarchyBoundsListeners = button.getHierarchyBoundsListeners();
+    harness.check(hierarchyBoundsListeners.length, 1);
 
     // check if the proper listener is used
-    harness.check(actionListeners[0].toString(), "myActionListener");
+    harness.check(hierarchyBoundsListeners[0].toString(), "myHierarchyBoundsListener");
   }
 }
 

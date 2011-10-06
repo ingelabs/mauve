@@ -1,3 +1,28 @@
+2011-10-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Button/addComponentListener.java:
+	* gnu/testlet/java/awt/Button/addFocusListener.java:
+	* gnu/testlet/java/awt/Button/addHierarchyBoundsListener.java:
+	* gnu/testlet/java/awt/Button/addHierarchyListener.java:
+	* gnu/testlet/java/awt/Button/addInputMethodListener.java:
+	* gnu/testlet/java/awt/Button/addKeyListener.java:
+	* gnu/testlet/java/awt/Button/addMouseListener.java:
+	* gnu/testlet/java/awt/Button/addMouseMotionListener.java:
+	* gnu/testlet/java/awt/Button/addMouseWheelListener.java:
+	Added new tests for checking if various listeners could be
+	registered for a given AWT Button object.
+	* gnu/testlet/java/awt/Button/ActionListenerPositiveTest.java:
+	Added new test for checking ActionListener functionality
+	* gnu/testlet/java/awt/Button/addActionListener.java:
+	Added new checks to this test and removed some checks which are
+	par of ActionListenerPositiveTest
+	* gnu/testlet/java/awt/Button/addActionListenerNegativeTestcase1.java:
+	* gnu/testlet/java/awt/Button/ActionListenerNegativeTest1.java:
+	Renamed
+	* gnu/testlet/java/awt/Button/addActionListenerNegativeTestcase2.java:
+	* gnu/testlet/java/awt/Button/ActionListenerNegativeTest2.java:
+	Renamed
+
 2011-10-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Button/addActionListener.java:

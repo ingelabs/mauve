@@ -1,4 +1,4 @@
-// addActionListener.java -- 
+// ActionListenerNegativeTest2.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -35,7 +35,7 @@ import java.awt.event.*;
   * Check if ActionListener could be registered for an AWT Button
   * and if action is *not* performed when third mouse button is pressed.
   */
-public class addActionListenerNegativeTestcase2
+public class ActionListenerNegativeTest2
     extends Panel
     implements Testlet
 {

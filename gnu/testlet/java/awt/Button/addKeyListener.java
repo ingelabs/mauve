@@ -1,4 +1,4 @@
-// addActionListener.java -- 
+// addKeyListener.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -32,9 +32,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
-  * Check if ActionListener could be registered for an AWT Button.
+  * Check if KeyListener could be registered for an AWT Button.
   */
-public class addActionListener
+public class addKeyListener
     implements Testlet
 {
 
@@ -48,35 +48,46 @@ public class addActionListener
     Button button = new Button("xyzzy");
     button.setBackground(Color.blue);
 
-    // array which will be filled by registered action listeners
-    ActionListener[] actionListeners;
+    // array which will be filled by registered listeners
+    KeyListener[] keyListeners;
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 0);
+    // get all registered listeners
+    keyListeners = button.getKeyListeners();
+    harness.check(keyListeners.length, 0);
 
-    // register new action listener
-    button.addActionListener(
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e)
+    // register new listener
+    button.addKeyListener(
+      new KeyListener() {
+
+        public void keyPressed(KeyEvent e) 
         {
-        // empty
+          // empty
+        }
+
+        public void keyReleased(KeyEvent e) 
+        {
+          // empty
+        }
+
+        public void keyTyped(KeyEvent e) 
+        {
+          // empty
         }
 
         @Override
         public String toString()
         {
-          return "myActionListener";
+          return "myKeyListener";
         }
       }
     );
 
-    // get all registered action listeners
-    actionListeners = button.getActionListeners();
-    harness.check(actionListeners.length, 1);
+    // get all registered listeners
+    keyListeners = button.getKeyListeners();
+    harness.check(keyListeners.length, 1);
 
     // check if the proper listener is used
-    harness.check(actionListeners[0].toString(), "myActionListener");
+    harness.check(keyListeners[0].toString(), "myKeyListener");
   }
 }
 
