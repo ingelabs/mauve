@@ -1,4 +1,4 @@
-// ActionListenerNegativeTest2.java -- 
+// MouseWheelListenerTest.java -- 
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -32,14 +32,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
-  * Check if ActionListener could be registered for an AWT Button
-  * and if action is *not* performed when third mouse button is pressed.
+  * Check if MouseWheelListener could be registered for an AWT Button
+  * and if action is performed when mouse wheel is rotated up and down.
   */
-public class ActionListenerNegativeTest2
+public class MouseWheelListenerTest
     extends Panel
     implements Testlet
 {
-  boolean actionPerformedFlag = false;
+  // these flags are set by MouseWheelListener
+  boolean mouseWheelScrollUpFlag = false;
+  boolean mouseWheelScrollDownFlag = false;
 
   /**
    * Runs the test using the specified harness. 
@@ -53,12 +55,18 @@ public class ActionListenerNegativeTest2
     Button button = new Button("xyzzy");
     button.setBackground(Color.blue);
     add(button);
-    button.addActionListener(
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e)
+
+    // register new mouse wheel listener
+    button.addMouseWheelListener(
+      new MouseWheelListener() {
+
+        public void mouseWheelMoved(MouseWheelEvent e)
         {
-          actionPerformedFlag = true;
+          // figure out if mouse wheel is scrolled up or down
+          mouseWheelScrollUpFlag |= e.getWheelRotation() < 0;
+          mouseWheelScrollDownFlag |= e.getWheelRotation() > 0;
         }
+
       }
     );
 
@@ -76,6 +84,7 @@ public class ActionListenerNegativeTest2
     robot.waitForIdle();
     robot.delay(1000);
 
+    // compute absolute coordinations of button on a screen
     Rectangle bounds = button.getBounds();
     Point loc = frame.getLocationOnScreen();
     Insets i = frame.getInsets();
@@ -89,9 +98,10 @@ public class ActionListenerNegativeTest2
     // move the mouse cursor to a tested pixel to show users what's checked
     robot.mouseMove(checkedPixelX, checkedPixelY);
     robot.waitForIdle();
-    robot.mousePress(InputEvent.BUTTON3_MASK);
     robot.delay(250);
-    robot.mouseRelease(InputEvent.BUTTON3_MASK);
+    robot.mouseWheel(+1);
+    robot.delay(250);
+    robot.mouseWheel(-1);
     robot.delay(250);
 
     // There is a delay to avoid any race conditions    
@@ -102,10 +112,14 @@ public class ActionListenerNegativeTest2
     // it's necesarry to clean up the component from desktop
     frame.dispose();
 
-    // check if action was performed
-    harness.check(!actionPerformedFlag);
+    // check if all actions were performed
+    harness.check(mouseWheelScrollUpFlag);
+    harness.check(mouseWheelScrollDownFlag);
   }
 
+  /**
+    * Paint method for our implementation of a Panel
+    */
   public void paint(Graphics g)
   {
     Image offScr = createImage(getSize().width, getSize().height);

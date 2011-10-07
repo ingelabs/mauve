@@ -92,8 +92,9 @@ public class ActionListenerPositiveTest
     robot.mouseMove(checkedPixelX, checkedPixelY);
     robot.waitForIdle();
     robot.mousePress(InputEvent.BUTTON1_MASK);
-    robot.delay(100);
+    robot.delay(250);
     robot.mouseRelease(InputEvent.BUTTON1_MASK);
+    robot.delay(250);
 
     // There is a delay to avoid any race conditions    
     // and so user can see frame
