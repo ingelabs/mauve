@@ -1,3 +1,23 @@
+2011-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Canvas/MouseListenerTest.java:
+	* gnu/testlet/java/awt/Canvas/MouseMotionListenerTest.java:
+	* gnu/testlet/java/awt/Canvas/MouseWheelListenerTest.java:
+	Added new tests for checking MouseListener, MouseMotionListener and
+	MouseWheelListener registered for a Canvas class.
+	* gnu/testlet/java/awt/Canvas/addComponentListener.java:
+	* gnu/testlet/java/awt/Canvas/addFocusListener.java:
+	* gnu/testlet/java/awt/Canvas/addHierarchyListener.java:
+	* gnu/testlet/java/awt/Canvas/addInputMethodListener.java:
+	* gnu/testlet/java/awt/Canvas/addKeyListener.java:
+	* gnu/testlet/java/awt/Canvas/addMouseListener.java:
+	* gnu/testlet/java/awt/Canvas/addMouseMotionListener.java:
+	* gnu/testlet/java/awt/Canvas/addMouseWheelListener.java:
+	Added new tests for checking if various listeners could be
+	registered for a given AWT Canvas object.
+	* gnu/testlet/java/awt/Canvas/list.java:
+	Added new test checking the method list() for a Canvas object.
+
 2011-10-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Button/ActionListenerNegativeTest1.java:
