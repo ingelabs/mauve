@@ -1,3 +1,18 @@
+2011-10-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Button/KeyboardListenerAsciiKeys.java:
+	* gnu/testlet/java/awt/Button/KeyboardListenerCursorKeys.java:
+	* gnu/testlet/java/awt/Button/KeyboardListenerFunctionKeys.java:
+	* gnu/testlet/java/awt/Button/KeyboardListenerTest.java:
+	Added new tests for checking KeyboardListener functionality for an AWT
+	Button class.
+	* gnu/testlet/java/awt/Button/list.java:
+	Added new test checking the method list() for a Button object.
+	* gnu/testlet/java/awt/Canvas/addHierarchyBoundsListener.java:
+	Added missing test.
+	* gnu/testlet/java/awt/Checkbox/list.java:
+	Added new test checking the method list() for a Checkbox object.
+
 2011-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Canvas/MouseListenerTest.java:
