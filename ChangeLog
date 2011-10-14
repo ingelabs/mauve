@@ -1,3 +1,29 @@
+2011-10-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Checkbox/ItemListenerNegativeTest1.java:
+	* gnu/testlet/java/awt/Checkbox/ItemListenerNegativeTest2.java:
+	* gnu/testlet/java/awt/Checkbox/ItemListenerPositiveTest.java:
+	Added new tests for checking ItemListener functionality for an AWT
+	Checkbox class.
+	* gnu/testlet/java/awt/Checkbox/KeyboardListenerAsciiKeys.java:
+	* gnu/testlet/java/awt/Checkbox/KeyboardListenerCursorKeys.java:
+	* gnu/testlet/java/awt/Checkbox/KeyboardListenerFunctionKeys.java:
+	* gnu/testlet/java/awt/Checkbox/KeyboardListenerTest.java:
+	Added new tests for checking KeyboardListener functionality for an AWT
+	Checkbox class.
+	* gnu/testlet/java/awt/Checkbox/addComponentListener.java:
+	* gnu/testlet/java/awt/Checkbox/addFocusListener.java:
+	* gnu/testlet/java/awt/Checkbox/addHierarchyBoundsListener.java:
+	* gnu/testlet/java/awt/Checkbox/addHierarchyListener.java:
+	* gnu/testlet/java/awt/Checkbox/addInputMethodListener.java:
+	* gnu/testlet/java/awt/Checkbox/addItemListener.java:
+	* gnu/testlet/java/awt/Checkbox/addKeyListener.java:
+	* gnu/testlet/java/awt/Checkbox/addMouseListener.java:
+	* gnu/testlet/java/awt/Checkbox/addMouseMotionListener.java:
+	* gnu/testlet/java/awt/Checkbox/addMouseWheelListener.java:
+	Added new tests for checking if various listeners could be
+	registered for a given AWT Checkbox object.
+
 2011-10-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Button/KeyboardListenerAsciiKeys.java:
