@@ -1,3 +1,16 @@
+2011-10-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Checkbox/MouseListenerTest.java:
+	* gnu/testlet/java/awt/Checkbox/MouseMotionListenerTest.java:
+	* gnu/testlet/java/awt/Checkbox/MouseWheelListenerTest.java:
+	Added new tests for checking Mouse*Listener functionality for an AWT
+	Checkbox class.
+	* gnu/testlet/java/awt/Choice/ItemListenerNegativeTest1.java:
+	* gnu/testlet/java/awt/Choice/ItemListenerNegativeTest2.java:
+	* gnu/testlet/java/awt/Choice/ItemListenerPositiveTest.java:
+	Added new tests for checking ItemListener functionality for an AWT
+	Choice class.
+
 2011-10-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Checkbox/ItemListenerNegativeTest1.java:
