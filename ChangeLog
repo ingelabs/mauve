@@ -1,3 +1,15 @@
+2011-10-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerGap.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerHGap.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerVGap.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestFiveButtons.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestFiveCanvases.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestZeroGaps.java:
+	Added six new tests for checking proper behaviour of BorderLayout.
+	These tests renders frame containing some widgets and then check
+	widget position.
+
 2011-10-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Checkbox/MouseListenerTest.java:
