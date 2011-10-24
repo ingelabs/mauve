@@ -1,3 +1,12 @@
+2011-10-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/FlowLayout/PaintTestBasicSetup1.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestBasicSetup2.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestBasicSetup3.java:
+	Added three new tests for checking proper behaviour of FlowLayout
+	manager. These tests renders frame containing two widgets and then
+	check widget position.
+
 2011-10-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerGap.java:
