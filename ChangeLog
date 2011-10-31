@@ -1,3 +1,20 @@
+2011-10-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Choice/addComponentListener.java:
+	* gnu/testlet/java/awt/Choice/addFocusListener.java:
+	* gnu/testlet/java/awt/Choice/addHierarchyBoundsListener.java:
+	* gnu/testlet/java/awt/Choice/addHierarchyListener.java:
+	* gnu/testlet/java/awt/Choice/addInputMethodListener.java:
+	* gnu/testlet/java/awt/Choice/addItemListener.java:
+	* gnu/testlet/java/awt/Choice/addKeyListener.java:
+	* gnu/testlet/java/awt/Choice/addMouseListener.java:
+	* gnu/testlet/java/awt/Choice/addMouseMotionListener.java:
+	* gnu/testlet/java/awt/Choice/addMouseWheelListener.java:
+	Added new tests for checking if various listeners could be
+	registered for a given AWT Choice object.
+	* gnu/testlet/java/awt/Choice/list.java:
+	Added simple new test checking the method list() for a Choice object.
+
 2011-10-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/FlowLayout/PaintTestBasicSetup1.java:
