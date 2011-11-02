@@ -1,3 +1,19 @@
+2011-11-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/FlowLayout/PaintTestBiggerGaps.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestBiggerHgap.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestBiggerVgap.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestCenterAlign.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestLeftAlign.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestRightAlign.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestZeroGaps.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestZeroHgap.java:
+	* gnu/testlet/java/awt/FlowLayout/PaintTestZeroVgap.java:
+	Added nine new tests for checking proper behaviour of FlowLayout
+	manager.
+	* gnu/testlet/java/awt/FlowLayout/toString.java:
+	Simple test checking overrided method toString().
+
 2011-10-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Choice/addComponentListener.java:
