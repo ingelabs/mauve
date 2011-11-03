@@ -1,3 +1,11 @@
+2011-11-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/GridLayout/PaintTestZeroGaps.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestZeroHgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestZeroVgap.java:
+	Added three new tests for checking proper behaviour of GridLayout
+	manager.
+
 2011-11-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/FlowLayout/PaintTestBiggerGaps.java:
