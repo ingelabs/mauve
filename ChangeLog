@@ -1,3 +1,13 @@
+2011-11-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Label/getAlignment.java:
+	* gnu/testlet/java/awt/Label/list.java:
+	* gnu/testlet/java/awt/Label/setAlignment.java:
+	Added new tests which check correct behaviour of Label class.
+	* gnu/testlet/java/awt/BorderLayout/toString.java:
+	* gnu/testlet/java/awt/GridLayout/toString.java:
+	Simple test checking overrided method toString().
+
 2011-11-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/GridLayout/PaintTestZeroGaps.java:
