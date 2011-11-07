@@ -43,15 +43,48 @@ import java.awt.GridLayout;
 
 /**
   * Test if five canvases are positioned correctly to a frame using GridLayout.
+  * GridLayout object is constructed using zero horizontal gaps and default
+  * vertical gaps between components (this should be also zero).
+  *
+  * Frame has following layout:
+  * <pre>
+  * +----------------+----------------+----------------+
+  * |                |                |                |
+  * |    Canvas 1    |    Canvas 2    |    Canvas 3    |
+  * |                |                |                |
+  * +----------------+----------------+----------------+
+  * |                |                |   background   |
+  * |    Canvas 4    |    Canvas 5    |     color      |
+  * |                |                |                |
+  * +----------------+----------------+----------------+
+  * </pre>
+  *
+  * Position of five canvases is tested by checking pixel colors in places
+  * marked by a star:
+  * <pre>
+  * +----------------+----------------+----------------+
+  * |                |                |                |
+  * |       *        *       *        *       *        |
+  * |                |                |                |
+  * +-------*--------*-------*--------+----------------+
+  * |                |                |                |
+  * |       *        *       *        |       *        |
+  * |                |                |                |
+  * +----------------+----------------+----------------+
+  * </pre>
   */
 public class PaintTestZeroHgap
     extends Panel
     implements Testlet
 {
+  /**
+   * Serial version UID because Panel is serializable.
+   */
+  private static final long serialVersionUID = 42L;
 
   /**
-    * Delay (pause times) for an AWT robot.
-    */
+   * Delay (pause times) for an AWT robot.
+   */
   public static int DELAY_AMOUNT=250;
 
   /**
@@ -98,7 +131,7 @@ public class PaintTestZeroHgap
 
     frame.add(this);
     frame.pack();
-    frame.show();
+    frame.setVisible(true);
 
     // AWT robot is used for reading pixel colors
     // from a screen and also to wait for all
@@ -134,6 +167,27 @@ public class PaintTestZeroHgap
     harness.checkPoint("background");
     harness.check(getBackgroundColor(robot, frame, canvas3, canvas5), Color.red);
 
+    // horizontal spaces between components
+    // these are negative tests - background should not be visible between components
+    harness.checkPoint("space check #1");
+    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas2) != Color.red);
+    harness.checkPoint("space check #2");
+    harness.check(getColorBetweenComponents(robot, frame, canvas2, canvas3) != Color.red);
+    harness.checkPoint("space check #3");
+    harness.check(getColorBetweenComponents(robot, frame, canvas4, canvas5) != Color.red);
+
+    // vertical spaces between components
+    // these are negative tests - background should not be visible between components
+    harness.checkPoint("space check #4");
+    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas4) != Color.red);
+    harness.checkPoint("space check #5");
+    harness.check(getColorBetweenComponents(robot, frame, canvas2, canvas5) != Color.red);
+
+    // other spaces between components
+    // this is negative test too
+    harness.checkPoint("space check #6");
+    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas5) != Color.red);
+
     // There is a delay to avoid any race conditions    
     // and so user can see frame
     robot.waitForIdle();
@@ -141,6 +195,31 @@ public class PaintTestZeroHgap
 
     // it's necesarry to clean up the component from desktop
     frame.dispose();
+  }
+
+
+
+  /**
+    * Get color of a pixel located in the middle of the component.
+    *
+    * @param robot instance of AWT robot
+    * @param frame frame where component is used
+    * @param component tested component
+    */
+  private Color getColorForComponent(Robot robot, Frame frame, Component component)
+  {
+    // compute the absolute coordinates of a component inside the frame
+    Rectangle bounds = computeBounds(frame, component);
+
+    // position of checked pixel
+    int checkedPixelX = bounds.x + bounds.width / 2;
+    int checkedPixelY = bounds.y + bounds.height / 2;
+
+    // move mouse cursor to center of a rectangle
+    moveCursorToGivenPosition(robot, checkedPixelX, checkedPixelY);
+
+    // check the color of a pixel located in the canvas center
+    return robot.getPixelColor(checkedPixelX, checkedPixelY);
   }
 
 
@@ -172,13 +251,39 @@ public class PaintTestZeroHgap
 
 
   /**
-    * Get color of a pixel located in the middle of the component.
+    * Get color of a pixel located between two components.
     *
     * @param robot instance of AWT robot
     * @param frame frame where component is used
+    * @param component1 first tested component
+    * @param component2 second tested component
+    */
+  private Color getColorBetweenComponents(Robot robot, Frame frame, Component component1, Component component2)
+  {
+    // compute center of the first component
+    Point p1 = computeCenterOfComponent(frame, component1);
+    // compute center of the second component
+    Point p2 = computeCenterOfComponent(frame, component2);
+
+    // compute position of checked pixel
+    int checkedPixelX = (p1.x + p2.x) >> 1;
+    int checkedPixelY = (p1.y + p2.y) >> 1;
+
+    // move mouse cursor to center of a rectangle
+    moveCursorToGivenPosition(robot, checkedPixelX, checkedPixelY);
+
+    // check the color of a pixel located in the canvas center
+    return robot.getPixelColor(checkedPixelX, checkedPixelY);
+  }
+
+
+  /**
+    * Compute coordinates of a pixel located in the middle of the component.
+    *
+    * @param frame frame where component is used
     * @param component tested component
     */
-  private Color getColorForComponent(Robot robot, Frame frame, Component component)
+  private Point computeCenterOfComponent(Frame frame, Component component)
   {
     // compute the absolute coordinates of a component inside the frame
     Rectangle bounds = computeBounds(frame, component);
@@ -187,11 +292,8 @@ public class PaintTestZeroHgap
     int checkedPixelX = bounds.x + bounds.width / 2;
     int checkedPixelY = bounds.y + bounds.height / 2;
 
-    // move mouse cursor to center of a rectangle
-    moveCursorToGivenPosition(robot, checkedPixelX, checkedPixelY);
-
-    // check the color of a pixel located in the canvas center
-    return robot.getPixelColor(checkedPixelX, checkedPixelY);
+    // return computed center (position of a checked pixel)
+    return new Point(checkedPixelX, checkedPixelY);
   }
 
 
@@ -252,5 +354,6 @@ public class PaintTestZeroHgap
 
     offG.dispose();
   }
+
 }
 

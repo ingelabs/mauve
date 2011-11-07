@@ -43,8 +43,8 @@ import java.awt.GridLayout;
 
 /**
   * Test if five canvases are positioned correctly to a frame using GridLayout.
-  * GridLayout object is constructed using zero vertical gaps and default
-  * horizontal gaps between components (this should be also zero).
+  * GridLayout object is constructed using bigger vertical gaps
+  * between components.
   *
   * Frame has following layout:
   * <pre>
@@ -53,6 +53,8 @@ import java.awt.GridLayout;
   * |    Canvas 1    |    Canvas 2    |    Canvas 3    |
   * |                |                |                |
   * +----------------+----------------+----------------+
+  * |     Space            Space            Space      |
+  * +----------------+----------------+                |
   * |                |                |   background   |
   * |    Canvas 4    |    Canvas 5    |     color      |
   * |                |                |                |
@@ -66,14 +68,16 @@ import java.awt.GridLayout;
   * |                |                |                |
   * |       *        *       *        *       *        |
   * |                |                |                |
-  * +-------*--------*-------*--------+----------------+
+  * +----------------+----------------+----------------+
+  * |       *        *       *        *                |
+  * +----------------+----------------+                |
   * |                |                |                |
   * |       *        *       *        |       *        |
   * |                |                |                |
   * +----------------+----------------+----------------+
   * </pre>
   */
-public class PaintTestZeroVgap
+public class PaintTestBiggerVgap
     extends Panel
     implements Testlet
 {
@@ -95,7 +99,7 @@ public class PaintTestZeroVgap
   public void test(TestHarness harness)
   {
     GridLayout layout = new GridLayout(2, 3);
-    layout.setVgap(0);
+    layout.setVgap(50);
 
     this.setLayout(layout);
     setBackground(Color.red);
@@ -177,16 +181,18 @@ public class PaintTestZeroVgap
     harness.check(getColorBetweenComponents(robot, frame, canvas4, canvas5) != Color.red);
 
     // vertical spaces between components
-    // these are negative tests - background should not be visible between components
+    // these are positive tests - background should be visible between components
     harness.checkPoint("space check #4");
-    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas4) != Color.red);
+    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas4), Color.red);
     harness.checkPoint("space check #5");
-    harness.check(getColorBetweenComponents(robot, frame, canvas2, canvas5) != Color.red);
+    harness.check(getColorBetweenComponents(robot, frame, canvas2, canvas5), Color.red);
 
     // other spaces between components
-    // this is negative test too
+    // these are positive tests - background should be visible between components
     harness.checkPoint("space check #6");
-    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas5) != Color.red);
+    harness.check(getColorBetweenComponents(robot, frame, canvas1, canvas5), Color.red);
+    harness.checkPoint("space check #7");
+    harness.check(getColorBetweenComponents(robot, frame, canvas3, canvas5), Color.red);
 
     // There is a delay to avoid any race conditions    
     // and so user can see frame
@@ -275,6 +281,7 @@ public class PaintTestZeroVgap
     // check the color of a pixel located in the canvas center
     return robot.getPixelColor(checkedPixelX, checkedPixelY);
   }
+
 
 
   /**
