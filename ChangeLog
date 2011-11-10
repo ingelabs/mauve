@@ -1,3 +1,12 @@
+2011-11-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/GridLayout/PaintTestFiveRowsBiggerVgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestFiveRowsFiveCanvases.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestOneRowBiggerHgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestOneRowFiveCanvases.java:
+	Added four new tests for checking proper behaviour of GridLayout
+	manager.
+
 2011-11-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/GridLayout/PaintTestBiggerGaps.java:
