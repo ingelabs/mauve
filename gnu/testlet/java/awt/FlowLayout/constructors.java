@@ -26,9 +26,10 @@ import gnu.testlet.Testlet;
 
 import java.awt.FlowLayout;
 
-// test of method toString()
-public class toString
-  implements Testlet
+/**
+ * Tests which checks constructors in the {@link FlowLayout} class.  
+ */
+public class constructors implements Testlet 
 {
 
   /**
@@ -41,6 +42,14 @@ public class toString
     testConstructorNoParams(harness);
     testConstructorOneParam(harness);
     testConstructorThreeParams(harness);
+    testConstructorThreeParamsNegativeGaps(harness);
+  }
+
+  private void doCheck(TestHarness harness, FlowLayout flowLayout, int alignment, int hgap, int vgap)
+  {
+    harness.check(flowLayout.getAlignment(), alignment);
+    harness.check(flowLayout.getHgap(), hgap);
+    harness.check(flowLayout.getVgap(), vgap);
   }
 
   /**
@@ -52,9 +61,7 @@ public class toString
   {
     harness.checkPoint("()");
     FlowLayout flowLayout1 = new FlowLayout();
-    flowLayout1.toString();
-    harness.check(flowLayout1.toString() != null);
-    harness.check(flowLayout1.toString(), "java.awt.FlowLayout[hgap=5,vgap=5,align=center]");
+    doCheck(harness, flowLayout1, FlowLayout.CENTER, 5, 5);
   }
 
   /**
@@ -66,19 +73,14 @@ public class toString
   {
     harness.checkPoint("(int align)");
     FlowLayout flowLayout2 = new FlowLayout(FlowLayout.CENTER);
-    flowLayout2.toString();
-    harness.check(flowLayout2.toString() != null);
-    harness.check(flowLayout2.toString(), "java.awt.FlowLayout[hgap=5,vgap=5,align=center]");
+    doCheck(harness, flowLayout2, FlowLayout.CENTER, 5, 5);
 
     flowLayout2 = new FlowLayout(FlowLayout.LEFT);
-    flowLayout2.toString();
-    harness.check(flowLayout2.toString() != null);
-    harness.check(flowLayout2.toString(), "java.awt.FlowLayout[hgap=5,vgap=5,align=left]");
+    doCheck(harness, flowLayout2, FlowLayout.LEFT, 5, 5);
 
     flowLayout2 = new FlowLayout(FlowLayout.RIGHT);
-    flowLayout2.toString();
-    harness.check(flowLayout2.toString() != null);
-    harness.check(flowLayout2.toString(), "java.awt.FlowLayout[hgap=5,vgap=5,align=right]");
+    harness.check(flowLayout2.getAlignment(), FlowLayout.RIGHT);
+    doCheck(harness, flowLayout2, FlowLayout.RIGHT, 5, 5);
   }
 
   /**
@@ -90,9 +92,25 @@ public class toString
   {
     harness.checkPoint("(int align, int hgap, int vgap)");
     FlowLayout flowLayout3 = new FlowLayout(FlowLayout.CENTER, 50, 50);
-    flowLayout3.toString();
-    harness.check(flowLayout3.toString() != null);
-    harness.check(flowLayout3.toString(), "java.awt.FlowLayout[hgap=50,vgap=50,align=center]");
+    doCheck(harness, flowLayout3, FlowLayout.CENTER, 50, 50);
   }
-}
 
+  /**
+   * Test layout manager constructed using constructor with three parameters.
+   *
+   * @param harness  the test harness (<code>null</code> not permitted).
+   */
+  private void testConstructorThreeParamsNegativeGaps(TestHarness harness)
+  {
+    harness.checkPoint("(int align, int -hgap, int -vgap)");
+    FlowLayout flowLayout4 = new FlowLayout(FlowLayout.CENTER, -50, 50);
+    doCheck(harness, flowLayout4, FlowLayout.CENTER, -50, 50);
+
+    flowLayout4 = new FlowLayout(FlowLayout.CENTER, 50, -50);
+    doCheck(harness, flowLayout4, FlowLayout.CENTER, 50, -50);
+
+    flowLayout4 = new FlowLayout(FlowLayout.CENTER, -50, -50);
+    doCheck(harness, flowLayout4, FlowLayout.CENTER, -50, -50);
+  }
+
+}

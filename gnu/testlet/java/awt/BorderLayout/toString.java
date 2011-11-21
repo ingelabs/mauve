@@ -41,10 +41,14 @@ public class toString
     // test constructor without any parameter
     BorderLayout borderLayout1 = new BorderLayout();
     borderLayout1.toString();
+    harness.check(borderLayout1.toString() != null);
+    harness.check(borderLayout1.toString(), "java.awt.BorderLayout[hgap=0,vgap=0]");
 
     // test constructor with two parameters
     BorderLayout borderLayout2 = new BorderLayout(50, 50);
     borderLayout2.toString();
+    harness.check(borderLayout1.toString() != null);
+    harness.check(borderLayout2.toString(), "java.awt.BorderLayout[hgap=50,vgap=50]");
   }
 }
 

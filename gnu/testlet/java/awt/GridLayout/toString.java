@@ -41,10 +41,17 @@ public class toString
     // test constructor without any parameter
     GridLayout gridLayout1 = new GridLayout();
     gridLayout1.toString();
+    harness.check(gridLayout1.toString(), "java.awt.GridLayout[hgap=0,vgap=0,rows=1,cols=0]");
 
     // test constructor with two parameters
     GridLayout gridLayout2 = new GridLayout(50, 50);
     gridLayout2.toString();
+    harness.check(gridLayout2.toString(), "java.awt.GridLayout[hgap=0,vgap=0,rows=50,cols=50]");
+
+    // test constructor with four parameters
+    GridLayout gridLayout3 = new GridLayout(50, 50, 10, 20);
+    gridLayout3.toString();
+    harness.check(gridLayout3.toString(), "java.awt.GridLayout[hgap=10,vgap=20,rows=50,cols=50]");
   }
 }
 

@@ -1,3 +1,15 @@
+2011-11-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/BorderLayout/toString.java:
+	* gnu/testlet/java/awt/FlowLayout/toString.java:
+	* gnu/testlet/java/awt/GridLayout/toString.java:
+	Updated.
+	* gnu/testlet/java/awt/FlowLayout/constructors.java:
+	Added new test for checking constructor behaviour of FlowLayout
+	manager.
+	* gnu/testlet/java/awt/GridLayout/PaintTestTwoRowsFiveCanvases.java:
+	Added new test for checking proper behaviour of GridLayout manager.
+
 2011-11-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/GridLayout/PaintTestFiveRowsBiggerVgap.java:
