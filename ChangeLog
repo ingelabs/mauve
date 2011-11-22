@@ -1,3 +1,13 @@
+2011-11-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/FlowLayout/getAlignment.java:
+	* gnu/testlet/java/awt/FlowLayout/getHgap.java:
+	* gnu/testlet/java/awt/FlowLayout/getVgap.java:
+	* gnu/testlet/java/awt/FlowLayout/setAlignment.java:
+	* gnu/testlet/java/awt/FlowLayout/setHgap.java:
+	* gnu/testlet/java/awt/FlowLayout/setVgap.java:
+	New tests for checking FlowLayout manager API.
+
 2011-11-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/BorderLayout/toString.java:
