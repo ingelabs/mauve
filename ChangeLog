@@ -1,3 +1,12 @@
+2011-11-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/GridLayout/getHgap.java:
+	* gnu/testlet/java/awt/GridLayout/getVgap.java:
+	* gnu/testlet/java/awt/GridLayout/minimumLayoutSize.java:
+	* gnu/testlet/java/awt/GridLayout/setHgap.java:
+	* gnu/testlet/java/awt/GridLayout/setVgap.java:
+	New tests for checking GridLayout manager API.
+
 2011-11-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/FlowLayout/getAlignment.java:
