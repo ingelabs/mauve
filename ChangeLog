@@ -1,3 +1,13 @@
+2011-11-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/BorderLayout/removeLayoutComponent.java:
+	* gnu/testlet/java/awt/CardLayout/addLayoutComponent.java:
+	* gnu/testlet/java/awt/CardLayout/removeLayoutComponent.java:
+	* gnu/testlet/java/awt/GridLayout/addLayoutComponent.java:
+	* gnu/testlet/java/awt/GridLayout/removeLayoutComponent.java:
+	New tests for checking Layout managers API: methods
+	addLayoutComponent and removeLayoutComponent.
+
 2011-11-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/GridLayout/getHgap.java:
