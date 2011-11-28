@@ -1,3 +1,12 @@
+2011-11-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/CardLayout/getHgap.java:
+	* gnu/testlet/java/awt/CardLayout/getVgap.java:
+	* gnu/testlet/java/awt/CardLayout/setHgap.java:
+	* gnu/testlet/java/awt/CardLayout/setVgap.java:
+	New tests for checking Layout managers API: basic
+	setters for CardLayout manager.
+
 2011-11-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/BorderLayout/removeLayoutComponent.java:
