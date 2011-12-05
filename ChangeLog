@@ -1,5 +1,10 @@
 2011-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* LightweightContainer.java:
+	Fixed this test to correctly close its frames.
+
+2011-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* gnu/testlet/java/awt/CardLayout/PaintTestBiggerGaps.java:
 	* gnu/testlet/java/awt/CardLayout/PaintTestZeroGaps.java:
 	Two new tests for checking Layout managers API: basic

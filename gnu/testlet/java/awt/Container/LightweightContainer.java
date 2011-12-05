@@ -67,7 +67,11 @@ public class LightweightContainer implements Testlet
     LocationTests.checkRectangleCornerColors(harness, r, bounds2, Color.red, false);
     
     // There is a delay so the tester can see the result.
+    r.waitForIdle();
     r.delay(3000);
+
+    // frame is no longer needed and should be disposed
+    f.dispose();
   }
   
   // Tests the location of a Lightweight Container containing
@@ -131,7 +135,11 @@ public class LightweightContainer implements Testlet
     LocationTests.checkRectangleOuterColors(harness, r, new Rectangle(fgLW_x, fgLW_y, fgLW_w, fgLW_h), bgHW_c, true);
     
     // There is a delay so the tester can see the result.
+    r.waitForIdle();
     r.delay(3000);
+
+    // frame is no longer needed and should be disposed
+    f.dispose();
   }
   
   // Tests the location of a Lightweight Container next to
@@ -165,7 +173,11 @@ public class LightweightContainer implements Testlet
     harness.check(pt2.y, (pt.y + 50));
     	    
     // There is a delay so the tester can see the result.
+    r.waitForIdle();
     r.delay(3000);
+
+    // frame is no longer needed and should be disposed
+    f.dispose();
   }
   
   class testPanel extends Panel
