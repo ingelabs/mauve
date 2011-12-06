@@ -1,3 +1,12 @@
+2011-12-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/CardLayout/PaintTest.java:
+	* gnu/testlet/java/awt/CardLayout/getLayoutAlignmentX.java:
+	* gnu/testlet/java/awt/CardLayout/getLayoutAlignmentY.java:
+	* gnu/testlet/java/awt/CardLayout/toString.java:
+	Four new tests for checking Layout managers API:
+	tests for CardLayout manager.
+
 2011-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* LightweightContainer.java:
