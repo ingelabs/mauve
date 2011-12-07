@@ -1,3 +1,11 @@
+2011-12-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/CardLayout/PaintTestBiggerHGap.java:
+	* gnu/testlet/java/awt/CardLayout/PaintTestBiggerVGap.java:
+	* gnu/testlet/java/awt/CardLayout/PaintTestFirstNextComb.java:
+	Three new tests for checking Layout managers API:
+	tests for CardLayout manager.
+
 2011-12-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/CardLayout/PaintTest.java:
