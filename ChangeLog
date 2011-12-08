@@ -1,3 +1,21 @@
+2011-12-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/BasicStroke/getMiterLimit.java:
+	New test checking method BasicStroke.getMiterLimit();
+	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerGap.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerHGap.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestBiggerVGap.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestFiveButtons.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestFiveCanvases.java:
+	* gnu/testlet/java/awt/BorderLayout/PaintTestZeroGaps.java:
+	* gnu/testlet/java/awt/BorderLayout/Test15.java:
+	* gnu/testlet/java/awt/BorderLayout/getLayoutAlignmentX.java:
+	* gnu/testlet/java/awt/BorderLayout/getLayoutAlignmentY.java:
+	* gnu/testlet/java/awt/BorderLayout/setHgap.java:
+	* gnu/testlet/java/awt/BorderLayout/setVgap.java:
+	* gnu/testlet/java/awt/BorderLayout/toString.java:
+	Get rid of compiler warnings, improved javadoc.
+
 2011-12-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/CardLayout/PaintTestBiggerHGap.java:

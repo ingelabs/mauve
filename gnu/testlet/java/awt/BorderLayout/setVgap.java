@@ -27,7 +27,7 @@ import gnu.testlet.Testlet;
 import java.awt.BorderLayout;
 
 /**
- * Some checks for the setVgap() method in the {@link BorderLayout} class.  
+ * Some checks for the {@link BorderLayout#setVgap()} method in the {@link BorderLayout} class.  
  */
 public class setVgap implements Testlet 
 {

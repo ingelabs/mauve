@@ -26,7 +26,6 @@ package gnu.testlet.java.awt.BorderLayout;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import gnu.testlet.java.awt.LocationTests;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -50,6 +49,10 @@ public class PaintTestBiggerGap
     extends Panel
     implements Testlet
 {
+  /**
+    * Generated serial version UID.
+    */
+  private static final long serialVersionUID = 1330012649157973134L;
 
   /**
     * Delay (pause times) for an AWT robot.
@@ -108,7 +111,7 @@ public class PaintTestBiggerGap
     // setup for a frame
     frame.add(this);
     frame.pack();
-    frame.show();
+    frame.setVisible(true);
 
     // AWT robot is used for reading pixel colors
     // from a screen and also to wait for all
@@ -305,16 +308,17 @@ public class PaintTestBiggerGap
   /**
     * Paint method for a panel where components are tested.
     *
-    * @param g the graphics context to use for painting
+    * @param graphics the graphics context to use for painting
     */
-  public void paint(Graphics g)
+  @Override
+  public void paint(Graphics graphics)
   {
     Image offScr = createImage(getSize().width, getSize().height);
     Graphics offG = offScr.getGraphics();
     offG.setClip(0, 0, getSize().width, getSize().height);
 
     super.paint(offG);
-    g.drawImage(offScr, 0, 0, null);
+    graphics.drawImage(offScr, 0, 0, null);
 
     offG.dispose();
   }

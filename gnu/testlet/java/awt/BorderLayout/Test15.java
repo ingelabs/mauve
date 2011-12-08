@@ -33,7 +33,8 @@ import gnu.testlet.Testlet;
 
 public class Test15 implements Testlet {
 
-	public void test(TestHarness harness) {
+	@SuppressWarnings("deprecation")
+    public void test(TestHarness harness) {
 		BorderLayout layout = new BorderLayout();
 		JPanel center = new JPanel();
 		JPanel left = new JPanel();

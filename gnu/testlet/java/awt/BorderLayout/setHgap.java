@@ -27,7 +27,7 @@ import gnu.testlet.Testlet;
 import java.awt.BorderLayout;
 
 /**
- * Some checks for the setHgap() method in the {@link BorderLayout} class.  
+ * Some checks for the {@link BorderLayout#setHgap()} method in the {@link BorderLayout} class.  
  */
 public class setHgap implements Testlet 
 {

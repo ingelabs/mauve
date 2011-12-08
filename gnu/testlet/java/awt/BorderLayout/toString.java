@@ -26,7 +26,10 @@ import gnu.testlet.Testlet;
 
 import java.awt.BorderLayout;
 
-// test of method toString()
+/**
+ * Check for the {@link BorderLayout#toString()} method in the {@link BorderLayout} class.  
+ *
+ */
 public class toString
   implements Testlet
 {

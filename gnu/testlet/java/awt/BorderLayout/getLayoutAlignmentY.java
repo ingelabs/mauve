@@ -31,10 +31,13 @@ import gnu.testlet.Testlet;
 public class getLayoutAlignmentY implements Testlet
 {
 
+  @SuppressWarnings("serial")
   public void test(TestHarness harness)
   {
     // We use a JComponent here so we can modify the alignment property.
-    JComponent rp = new JComponent(){};
+    JComponent rp = new JComponent(){
+        // empty block is expected here
+    };
     BorderLayout lm2 = new BorderLayout();
 
     // Check for the value when nothing is touched.
