@@ -27,13 +27,14 @@ package gnu.testlet.java.awt.GridLayout;
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.awt.Button;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.List;
 
 
+/**
+ * Check the method {@link GridLayout#minimumLayoutSize(Container)}
+ */
 public class minimumLayoutSize implements Testlet
 {
 

@@ -39,12 +39,18 @@ public class clone implements Testlet {
   {
     // clone an empty area
     Area area1 = new Area();
-    Area area2 = (Area) area1.clone();;
+    Area area2 = (Area) area1.clone();
     harness.check(area1.equals(area2));
     harness.check(area1 != area2);
   
     // try a simple case
     area1 = new Area(new Rectangle2D.Double(1.0, 2.0, 3.0, 4.0));
+    area2 = (Area) area1.clone();
+    harness.check(area1.equals(area2));
+    harness.check(area1 != area2);
+
+    // ditto for different factory method
+    area1 = new Area(new Rectangle2D.Float(1.0f, 2.0f, 3.0f, 4.0f));
     area2 = (Area) area1.clone();
     harness.check(area1.equals(area2));
     harness.check(area1 != area2);

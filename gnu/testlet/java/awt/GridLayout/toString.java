@@ -26,7 +26,9 @@ import gnu.testlet.Testlet;
 
 import java.awt.GridLayout;
 
-// test of method toString()
+/**
+ * Test of method {@link GridLayout#toString()}
+ */
 public class toString
   implements Testlet
 {
@@ -54,4 +56,3 @@ public class toString
     harness.check(gridLayout3.toString(), "java.awt.GridLayout[hgap=10,vgap=20,rows=50,cols=50]");
   }
 }
-

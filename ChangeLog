@@ -1,3 +1,30 @@
+2011-12-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/BasicStroke/getEndCap.java:
+	* gnu/testlet/java/awt/BasicStroke/getLineJoin.java:
+	* gnu/testlet/java/awt/BasicStroke/getMiterLimit.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestBiggerGaps.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestBiggerHgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestBiggerVgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestFiveRowsBiggerVgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestFiveRowsFiveCanvases.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestOneRowBiggerHgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestOneRowFiveCanvases.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestTwoRowsFiveCanvases.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestZeroGaps.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestZeroHgap.java:
+	* gnu/testlet/java/awt/GridLayout/PaintTestZeroVgap.java:
+	* gnu/testlet/java/awt/GridLayout/getHgap.java:
+	* gnu/testlet/java/awt/GridLayout/getVgap.java:
+	* gnu/testlet/java/awt/GridLayout/minimumLayoutSize.java:
+	* gnu/testlet/java/awt/GridLayout/setHgap.java:
+	* gnu/testlet/java/awt/GridLayout/setVgap.java:
+	* gnu/testlet/java/awt/GridLayout/toString.java:
+	* gnu/testlet/java/awt/geom/AffineTransform/createInverse.java:
+	Get rid of compiler warnings, improved javadoc, changed version tag.
+	* gnu/testlet/java/awt/geom/Area/clone.java:
+	Added new test case.
+
 2011-12-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/BasicStroke/getMiterLimit.java:

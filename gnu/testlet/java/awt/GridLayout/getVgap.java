@@ -27,7 +27,7 @@ import gnu.testlet.Testlet;
 import java.awt.GridLayout;
 
 /**
- * Basic checks for the getVgap() method in the {@link GridLayout} class.  
+ * Basic checks for the {@link GridLayout#getVgap()} method in the {@link GridLayout} class.  
  */
 public class getVgap implements Testlet 
 {

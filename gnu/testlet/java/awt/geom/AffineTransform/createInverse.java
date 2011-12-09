@@ -70,6 +70,7 @@ public class createInverse implements Testlet
     AffineTransform t4 = new AffineTransform(3.0, 3.0, 3.0, 3.0, 3.0, 3.0);
     try 
     {
+      @SuppressWarnings("unused")
       AffineTransform t5 = t4.createInverse();
       harness.check(false);
     }

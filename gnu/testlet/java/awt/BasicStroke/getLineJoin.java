@@ -1,4 +1,4 @@
-// Tags: JDK1.4
+// Tags: JDK1.5
 
 // Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -108,6 +108,7 @@ public class getLineJoin implements Testlet
     harness.checkPoint("positive tests");
 
     // tested object
+    @SuppressWarnings("unused")
     BasicStroke stroke;
 
     // join code is outside the range 0..2
