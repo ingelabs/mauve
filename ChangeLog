@@ -1,12 +1,21 @@
+2011-12-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Canvas/addPropertyChangeListener.java:
+	* gnu/testlet/java/awt/Canvas/addPropertyChangeListenerString.java:
+	Two new tests for Canvas class - addPropertyChangeListener() method.
+	* gnu/testlet/java/awt/Checkbox/addPropertyChangeListener.java:
+	* gnu/testlet/java/awt/Checkbox/addPropertyChangeListenerString.java:
+	Two new tests for Checkbox class - addPropertyChangeListener() method.
+
 2011-12-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
-	*  gnu/testlet/java/awt/Button/addPropertyChangeListener.java:
-	*  gnu/testlet/java/awt/Button/addPropertyChangeListenerString.java:
+	* gnu/testlet/java/awt/Button/addPropertyChangeListener.java:
+	* gnu/testlet/java/awt/Button/addPropertyChangeListenerString.java:
 	Two new tests for Button class - addPropertyChangeListener() method.
-	*  gnu/testlet/java/awt/GridLayout/getColumns.java:
-	*  gnu/testlet/java/awt/GridLayout/getRows.java:
-	*  gnu/testlet/java/awt/GridLayout/setColumns.java:
-	*  gnu/testlet/java/awt/GridLayout/setRows.java:
+	* gnu/testlet/java/awt/GridLayout/getColumns.java:
+	* gnu/testlet/java/awt/GridLayout/getRows.java:
+	* gnu/testlet/java/awt/GridLayout/setColumns.java:
+	* gnu/testlet/java/awt/GridLayout/setRows.java:
 	Four new tests for checking Layout managers API: remaining getters and setters.
 
 2011-12-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
