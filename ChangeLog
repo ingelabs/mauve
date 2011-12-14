@@ -1,3 +1,23 @@
+2011-12-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Choice/addPropertyChangeListener.java:
+	* gnu/testlet/java/awt/Choice/addPropertyChangeListenerString.java:
+	Two new tests for Choice class - addPropertyChangeListener() method.
+	* gnu/testlet/java/awt/Container/addImpl.java:
+	Fixed.
+	* gnu/testlet/java/awt/Label/addComponentListener.java:
+	* gnu/testlet/java/awt/Label/addFocusListener.java:
+	* gnu/testlet/java/awt/Label/addHierarchyBoundsListener.java:
+	* gnu/testlet/java/awt/Label/addHierarchyListener.java:
+	* gnu/testlet/java/awt/Label/addInputMethodListener.java:
+	* gnu/testlet/java/awt/Label/addKeyListener.java:
+	* gnu/testlet/java/awt/Label/addMouseListener.java:
+	* gnu/testlet/java/awt/Label/addMouseMotionListener.java:
+	* gnu/testlet/java/awt/Label/addMouseWheelListener.java:
+	* gnu/testlet/java/awt/Label/addPropertyChangeListener.java:
+	* gnu/testlet/java/awt/Label/addPropertyChangeListenerString.java:
+	Added new tests for Label class - various listeners.
+
 2011-12-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Canvas/addPropertyChangeListener.java:

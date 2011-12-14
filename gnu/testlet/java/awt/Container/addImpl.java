@@ -233,7 +233,8 @@ public class addImpl implements Testlet
     c.setSize(100,100);
     f.add(a);
     f.pack();
-    f.show();    
+    f.show();
+
     harness.check(a.isShowing(), true);
     harness.check(c.isShowing(), true);
     harness.check(l.isShowing(), true);
@@ -241,5 +242,8 @@ public class addImpl implements Testlet
     harness.check(c.isLightweight(), true);
     harness.check(a.isLightweight(), false);
     harness.check(l.isLightweight(), false);
+
+    // clean up the frame from desktop
+    f.dispose();
   }
 }
