@@ -50,34 +50,47 @@ public class ScrollbarPaintTest
   public void test(TestHarness harness)
   {
     setBackground(Color.red);
-    Frame f = new Frame();
-    List c = new List(2);
-    c.add("1");
-    c.add("2");
-    c.add("3");
-    add(c);
-    f.add(this);
-    f.pack();
-    f.show();
-    Rectangle bounds = c.getBounds();
-    Insets i = f.getInsets();
-    Point loc = f.getLocationOnScreen();
+    Frame frame = new Frame();
+    List list = new List(2);
+    list.add("1");
+    list.add("2");
+    list.add("3");
+    add(list);
+    frame.add(this);
+    frame.pack();
+    frame.setVisible(true);
+
+    Rectangle bounds = list.getBounds();
+    Insets i = frame.getInsets();
+    Point loc = frame.getLocationOnScreen();
     loc.x += i.left + bounds.x;
     loc.y += i.top + bounds.y;
     bounds.x += i.left;
     bounds.y += i.top;
-    
-    Robot r = harness.createRobot();
-    Color scroll = r.getPixelColor(loc.x + bounds.width - i.left, loc.y + bounds.height/2);
-    
+
+    Robot robot = harness.createRobot();
+
+    // position of checked pixel
+    int checkedPixelX = loc.x + bounds.width - i.left;
+    int checkedPixelY = loc.y + bounds.height / 2;
+
+    // move the mouse cursor to a tested pixel to show users what's checked
+    robot.mouseMove(checkedPixelX, checkedPixelY);
+    robot.waitForIdle();
+
+    Color scroll = robot.getPixelColor(checkedPixelX, checkedPixelY);
+
     // Check if scrollbar was painted.
     harness.check(!(scroll.equals(Color.white)));
     harness.check(!(scroll.equals(Color.red)));
     
     // There is a delay to avoid any race conditions    
     // and so user can see frame
-    r.waitForIdle();
-    r.delay(1000);
+    robot.waitForIdle();
+    robot.delay(1000);
+
+    // it's necessary to clean up the component from desktop
+    frame.dispose();
   }
 
   public void paint(Graphics g)

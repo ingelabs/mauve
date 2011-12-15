@@ -1,3 +1,11 @@
+2011-12-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/List/PaintTestEmptyList.java
+	* gnu/testlet/java/awt/List/PaintTestFilledList.java
+	Two new test for AWT List class.
+	* gnu/testlet/java/awt/List/ScrollbarPaintTest.java:
+	Fixed
+
 2011-12-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Choice/addPropertyChangeListener.java:
