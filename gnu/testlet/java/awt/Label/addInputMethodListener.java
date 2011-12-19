@@ -26,13 +26,12 @@ package gnu.testlet.java.awt.Label;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import gnu.testlet.java.awt.LocationTests;
 
 import java.awt.*;
 import java.awt.event.*;
 
 /**
-  * Check if InputMethodListener could be registered for an AWT Label.
+  * Check if {@link InputMethodListener} could be registered for an AWT {@link Label}.
   */
 public class addInputMethodListener
     implements Testlet

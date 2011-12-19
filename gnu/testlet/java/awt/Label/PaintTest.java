@@ -25,7 +25,6 @@ package gnu.testlet.java.awt.Label;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
-import gnu.testlet.java.awt.LocationTests;
 
 import java.awt.Color;
 import java.awt.Frame;
@@ -38,10 +37,18 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Robot;
 
+/**
+ * Test if Label could be painted correctly.
+ */
 public class PaintTest
     extends Panel
     implements Testlet
 {
+
+  /**
+   * Generated serial version UID.
+   */
+  private static final long serialVersionUID = 4737615313184489246L;
 
   /**
    * Runs the test using the specified harness. 
@@ -51,27 +58,27 @@ public class PaintTest
   public void test(TestHarness harness)
   {
     setBackground(Color.red);
-    Frame f = new Frame();
-    Label c = new Label("label");
-    c.setBackground(Color.blue);
-    add(c);
-    f.add(this);
-    f.pack();
-    f.show();
+    Frame frame = new Frame();
+    Label label = new Label("label");
+    label.setBackground(Color.blue);
+    add(label);
+    frame.add(this);
+    frame.pack();
+    frame.setVisible(true);
 
     // AWT robot is used for reading pixel colors
     // from a screen and also to wait for all
     // widgets to stabilize theirs size and position.
-    Robot r = harness.createRobot();
+    Robot robot = harness.createRobot();
 
     // we should wait a moment before the computations
     // and pixel checks
-    r.waitForIdle();
-    r.delay(1000);
+    robot.waitForIdle();
+    robot.delay(1000);
 
-    Point loc = f.getLocationOnScreen();
-    Rectangle bounds = c.getBounds();
-    Insets i = f.getInsets();
+    Point loc = frame.getLocationOnScreen();
+    Rectangle bounds = label.getBounds();
+    Insets i = frame.getInsets();
     bounds.x += loc.x + i.left;
     bounds.y += loc.y + i.top;
 
@@ -80,33 +87,32 @@ public class PaintTest
     int checkedPixelY = bounds.y + bounds.height / 2 + 5;
 
     // move the mouse cursor to a tested pixel to show users what's checked
-    r.mouseMove(checkedPixelX, checkedPixelY);
-    r.waitForIdle();
+    robot.mouseMove(checkedPixelX, checkedPixelY);
+    robot.waitForIdle();
 
     // check the color of a pixel located in the button center
-    Color label = r.getPixelColor(checkedPixelX, checkedPixelY);
-    harness.check(label.equals(Color.blue));
+    Color labelColor = robot.getPixelColor(checkedPixelX, checkedPixelY);
+    harness.check(labelColor.equals(Color.blue));
     
     // There is a delay to avoid any race conditions    
     // and so user can see frame
-    r.waitForIdle();
-    r.delay(1000);
+    robot.waitForIdle();
+    robot.delay(1000);
 
-    // it's necesarry to clean up the component from desktop
-    f.dispose();
+    // it's necessary to clean up the component from desktop
+    frame.dispose();
   }
 
-  public void paint(Graphics g)
+  @Override
+  public void paint(Graphics graphics)
   {
     Image offScr = createImage(getSize().width, getSize().height);
     Graphics offG = offScr.getGraphics();
     offG.setClip(0, 0, getSize().width, getSize().height);
 
     super.paint(offG);
-    g.drawImage(offScr, 0, 0, null);
+    graphics.drawImage(offScr, 0, 0, null);
 
     offG.dispose();
   }
 }
-
-

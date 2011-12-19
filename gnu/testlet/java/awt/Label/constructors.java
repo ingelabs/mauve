@@ -26,7 +26,9 @@ import gnu.testlet.Testlet;
 
 import java.awt.Label;
 
-// Label constructors test
+/**
+ * {@link Label} constructors test
+ */
 public class constructors
   implements Testlet
 {

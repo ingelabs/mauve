@@ -1,3 +1,23 @@
+2011-12-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/Label/MouseListenerTest.java:
+	* gnu/testlet/java/awt/Label/MouseMotionListenerTest.java:
+	* gnu/testlet/java/awt/Label/MouseWheelListenerTest.java:
+	Added new tests for a AWT Label class.
+	* gnu/testlet/java/awt/Label/PaintTest.java:
+	* gnu/testlet/java/awt/Label/addComponentListener.java:
+	* gnu/testlet/java/awt/Label/addFocusListener.java:
+	* gnu/testlet/java/awt/Label/addHierarchyBoundsListener.java:
+	* gnu/testlet/java/awt/Label/addHierarchyListener.java:
+	* gnu/testlet/java/awt/Label/addInputMethodListener.java:
+	* gnu/testlet/java/awt/Label/addKeyListener.java:
+	* gnu/testlet/java/awt/Label/addMouseListener.java:
+	* gnu/testlet/java/awt/Label/addMouseMotionListener.java:
+	* gnu/testlet/java/awt/Label/addMouseWheelListener.java:
+	* gnu/testlet/java/awt/Label/addPropertyChangeListener.java:
+	* gnu/testlet/java/awt/Label/constructors.java:
+	Minor fixes - javadoc, fixed compiler warnings etc.
+
 2011-12-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/List/PaintTestEmptyList.java
