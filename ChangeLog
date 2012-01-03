@@ -1,9 +1,15 @@
+2012-01-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/List/addActionListener.java:
+	* gnu/testlet/java/awt/List/addItemListener.java:
+	Added new tests for an AWT List class.
+
 2011-12-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/Label/MouseListenerTest.java:
 	* gnu/testlet/java/awt/Label/MouseMotionListenerTest.java:
 	* gnu/testlet/java/awt/Label/MouseWheelListenerTest.java:
-	Added new tests for a AWT Label class.
+	Added new tests for an AWT Label class.
 	* gnu/testlet/java/awt/Label/PaintTest.java:
 	* gnu/testlet/java/awt/Label/addComponentListener.java:
 	* gnu/testlet/java/awt/Label/addFocusListener.java:
