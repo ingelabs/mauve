@@ -1,3 +1,9 @@
+2012-01-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/constructorInt.java:
+	* gnu/testlet/java/math/BigDecimal/constructorLong.java:
+	New tests checking constructors introduced in Java 1.5 API.
+
 2012-01-03  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/text/DateFormatSymbols/SanityCheck.java:
