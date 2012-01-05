@@ -1,3 +1,9 @@
+2012-01-03  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/text/DateFormatSymbols/SanityCheck.java:
+	New test to check the arrays returned by DateFormatSymbols
+	for each locale are the right size.  See RH#712013.
+
 2012-01-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/List/addActionListener.java:
