@@ -1,3 +1,17 @@
+2012-01-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/constructorBigInteger.java:
+	New test for constructor BigDecimal(BigInteter).
+	* gnu/testlet/java/math/BigDecimal/byteValue.java:
+	* gnu/testlet/java/math/BigDecimal/byteValueExact.java:
+	* gnu/testlet/java/math/BigDecimal/intValue.java:
+	* gnu/testlet/java/math/BigDecimal/intValueExact.java:
+	* gnu/testlet/java/math/BigDecimal/longValue.java:
+	* gnu/testlet/java/math/BigDecimal/longValueExact.java:
+	* gnu/testlet/java/math/BigDecimal/shortValue.java:
+	* gnu/testlet/java/math/BigDecimal/shortValueExact.java:
+	Add new tests for a class BigDecimal.
+
 2012-01-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/math/BigDecimal/constructorCharacterSequence.java:
