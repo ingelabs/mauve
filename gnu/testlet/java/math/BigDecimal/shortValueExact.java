@@ -1,4 +1,4 @@
-// Test of BigDecimal constructors.
+// Test of the method BigDecimal.shortValueExact()
 
 // Copyright 2012 Red Hat, Inc.
 // Written by Pavel Tisnovsky <ptisnovs@redhat.com>

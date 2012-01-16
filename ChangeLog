@@ -1,3 +1,20 @@
+2012-01-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/byteValue.java:
+	* gnu/testlet/java/math/BigDecimal/byteValueExact.java:
+	* gnu/testlet/java/math/BigDecimal/intValue.java:
+	* gnu/testlet/java/math/BigDecimal/intValueExact.java:
+	* gnu/testlet/java/math/BigDecimal/longValue.java:
+	* gnu/testlet/java/math/BigDecimal/longValueExact.java:
+	* gnu/testlet/java/math/BigDecimal/shortValue.java:
+	* gnu/testlet/java/math/BigDecimal/shortValueExact.java:
+	Fixed bad title comments for these tests.
+	* gnu/testlet/java/math/BigDecimal/hashCode.java:
+	* gnu/testlet/java/math/BigDecimal/precision.java:
+	* gnu/testlet/java/math/BigDecimal/toEngineeringString.java:
+	* gnu/testlet/java/math/BigDecimal/toPlainString.java:
+	Add new tests for a class BigDecimal.
+
 2012-01-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/math/BigDecimal/constructorBigInteger.java:
