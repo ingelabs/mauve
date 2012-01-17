@@ -65,6 +65,9 @@ public class Harness
   // bootclasspath, which should be the classpath installation directory
   private static String compileStringBase = "-proceedOnError -nowarn -1.5 -d " + config.builddir;
   
+  // Options specified in a test which is passed to a compiler
+  private static String compileOptions = "";
+
   // The writers for ecj's out and err streams.
   private static PrintWriter ecjWriterOut = null;
   private static PrintWriter ecjWriterErr = null;
@@ -991,6 +994,10 @@ public class Harness
                   {
                     processFilesTag(line, base, filesToCopy);
                   }
+                else if (line.contains("CompileOptions:"))
+                  {
+                    processCompileOptions(line);
+                  }
                 else if (line.contains("not-a-test"))
                   {
                     // Don't run this one but parse it's tags.
@@ -1071,6 +1078,17 @@ public class Harness
         // Now parse the tags of the dependency.
         parseTags(depend, filesToCompile, filesToCopy, testsToRun);
       }
+  }
+
+  /**
+   * Processes the // CompileOptions: tag in a testlet's source.
+   *
+   * @param line string of the current source line
+   */
+  private static void processCompileOptions(String line)
+  {
+    compileOptions = line.substring(line.indexOf("CompileOptions:") + "CompileOptions:".length()); 
+    compileOptions += " "; // add separator to a command line
   }
 
   /**
@@ -1352,7 +1370,7 @@ public class Harness
       return true;
 
     int result = - 1;
-    compileString = compileStringBase;
+    compileString = compileStringBase + compileOptions;
     for (Iterator it = filesToCompile.iterator(); it.hasNext(); )
       compileString += " " + (String) it.next();
     try
