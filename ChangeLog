@@ -1,3 +1,16 @@
+2012-01-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/abs.java:
+	* gnu/testlet/java/math/BigDecimal/add.java:
+	* gnu/testlet/java/math/BigDecimal/divide.java:
+	* gnu/testlet/java/math/BigDecimal/multiply.java:
+	* gnu/testlet/java/math/BigDecimal/negate.java:
+	* gnu/testlet/java/math/BigDecimal/plus.java:
+	* gnu/testlet/java/math/BigDecimal/subtract.java:
+	Add new tests for a class BigDecimal.
+	* gnu/testlet/java/math/BigDecimal/divide.java:
+	Add new test case.
+
 2012-01-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* Harness.java: Added support for the new tag with name

@@ -50,10 +50,23 @@ public class divide implements Testlet
     harness.check(a.divide(b, BigDecimal.ROUND_CEILING), a);
     */
 
+    harness.checkPoint("basic tests");
+    a = new BigDecimal("10");
+    b = new BigDecimal("2");
+    BigDecimal result = new BigDecimal("5");
+    harness.check(a.divide(b), result);
+    a = a.negate();
+    b = b.negate();
+    result = new BigDecimal("5");
+    harness.check(a.divide(b), result);
+    b = b.negate();
+    result = new BigDecimal("-5");
+    harness.check(a.divide(b), result);
+
     harness.checkPoint("unrounded zero");
     a = new BigDecimal("9");
     b = new BigDecimal("-100");
-    BigDecimal result = new BigDecimal("0");
+    result = new BigDecimal("0");
     harness.check(a.divide(b, BigDecimal.ROUND_CEILING), result);
     result = new BigDecimal("-1");
     harness.check(a.divide(b, BigDecimal.ROUND_FLOOR), result);
