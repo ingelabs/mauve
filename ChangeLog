@@ -1,3 +1,12 @@
+2012-01-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/compareToObject.java:
+	* gnu/testlet/java/math/BigDecimal/divideMathContext.java:
+	* gnu/testlet/java/math/BigDecimal/divideRoundingMode.java:
+	* gnu/testlet/java/math/BigDecimal/divideRoundingModeScale.java:
+	* gnu/testlet/java/math/BigDecimal/divideToIntegralValue.java:
+	Add new tests for a class BigDecimal.
+
 2012-01-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/math/BigDecimal/abs.java:
