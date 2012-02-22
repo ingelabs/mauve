@@ -119,6 +119,16 @@ public class RunnerProcess
    */
   private static boolean interactive;
 
+  /**
+   * To Generate an XML file for individual tests executed
+   */
+  private static boolean isAutoXml;
+
+  /*
+   * Base Directory for XML files
+   */
+  private static String autoXmlDir = null;
+
   protected RunnerProcess()
   {    
     try
@@ -179,6 +189,19 @@ public class RunnerProcess
           }
         else if (args[i].equals("-interactive"))
           interactive = true;
+
+       else if ( args[ i ].equals("-autoxml") )
+         {
+           // -xmlout flag takes precedence over -autoxml
+           if (xmlfile == null )
+             {
+               isAutoXml = true;
+               if (++i >= args.length)
+                 throw new RuntimeException("No file path after '-autoxml'.");
+               autoXmlDir = args[i];
+             }
+         }
+
       }
     // If the user wants an xml report, create a new TestReport.
     if (xmlfile != null)
@@ -212,6 +235,14 @@ public class RunnerProcess
           testname = in.readLine();
           if (testname == null)
             System.exit(0);
+
+          if ( isAutoXml  && !(testname.equals("_dump_data_")) && ! (testname.equals("_confirm_startup_")))
+            {
+              report = null;
+              xmlfile = getReportFileReady(testname);
+              report = new TestReport(System.getProperties());
+            }
+
           if (testname.equals("_dump_data_"))
             {              
               // Print the report if necessary.
@@ -255,6 +286,21 @@ public class RunnerProcess
                                  + "\n  failed to load");
           System.out.println("RunnerProcess:fail-0");
         }
+        // Print the report if using -autoxml.
+        if (report != null && isAutoXml)
+          {
+            File f = new File(xmlfile);
+            try
+              {
+                report.writeXml(f);
+              }
+            catch (IOException e)
+              {
+                throw new Error("Failed to write data to xml file: "
+                                + e.getMessage());
+              }
+          }
+
       }
   }
   
@@ -976,5 +1022,22 @@ public class RunnerProcess
       // This shouldn't happen.
     }
     System.out.println("_data_dump_okay_");
+  }
+
+  /**
+   * Generates the path to store the test XML result file
+   * @param the name of the test
+   * @return String representing the full path to the XML file
+   * @throws exception if unable to make parent Directories for XML file
+   */
+  private static String getReportFileReady(String testcase) {
+      testcase = testcase.replace( "gnu/testlet" , autoXmlDir);
+      try{
+          new File ( testcase.substring( 0 , testcase.lastIndexOf("/") ) ).mkdirs();
+      } catch (Exception ex){
+            System.err.println("Unable to create XML file path: " + ex);
+            System.exit(1);
+        }
+      return testcase + ".xml";
   }
 }

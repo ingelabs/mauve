@@ -102,6 +102,7 @@ section provides instructions on how to perform the following tasks:
   4.  Change the timeout interval
   5.  Change the information displayed when tests are run
   6.  Turn on (or off) test auto-compilation.
+  7.  Test output format
   
 
 0. Running all the tests
@@ -280,6 +281,17 @@ section provides instructions on how to perform the following tasks:
   /usr/share/java/eclipse-ecj.jar and the bootclasspath found automatically.
 
 
+7.  Test output format
+  Test results are available in xml format by use of the '-xmlout' and '-autoxml' flags
+
+  '-xmlout' is supplied with the xml file name where the total test run data will be stored:
+
+    HARNESSVM Harness -xmlout XML_FILE
+
+  '-autoxml' is supplied with the directory name, where individual xml files will be generated
+  and stored for each test executed:
+
+    HARNESSVM Harness -autoxml RESULTS_DIRECTORY
 
 
 ******NOTES*******

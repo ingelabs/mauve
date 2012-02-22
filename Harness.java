@@ -349,6 +349,14 @@ public class Harness
                     "given after '-xmlout'.  Exit");
             // the filename is used directly from args
           }
+          else if (args[i].equals("-autoxml"))
+          {
+            // Path to store xml files
+            if (++i >= args.length)
+              throw new RuntimeException ("No path " +
+                    "specified after '-autoxml'.  Exit");
+            // the dirname is used directly from args
+          }
         else if (args[i].charAt(0) == '-')
           {
             // One of the ignored options (handled by RunnerProcess)
@@ -641,6 +649,7 @@ public class Harness
       "failing tests that " +
       "use the" + align + "harness.check(Object, Object) method\n" +
       "  -xmlout [filename]:      specifies a file to use for xml output\n" +
+      "  -autoxml [folder]:       generate individual xml output, for each test case \n" +
       "\nOther Options:\n" +
       "  -help:                   display this help message\n";
       System.out.println(message);
