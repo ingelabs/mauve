@@ -1,3 +1,11 @@
+2012-03-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/math/BigDecimal/pow.java:
+	Make this test compatible with 1.4 syntax (counted for loop is used
+	instead of for-each loop)
+	* gnu/testlet/java/lang/Integer/compareToObject.java:
+	Added new test to improve test coverage.
+
 2012-03-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/math/BigDecimal/pow.java:

@@ -81,7 +81,8 @@ public class pow implements Testlet
       new TestCase("-2.00", 2, "4.0000"),
       new TestCase("-2.000", 2, "4.000000"),
     };
-    for (TestCase testCase : testCases) {
+    for (int i = 0; i < testCases.length; i++) {
+      TestCase testCase = testCases[i];
       // System.out.println(testCase.input + "\t" + testCase.power + "\t" + new BigDecimal(testCase.input).pow(testCase.power).toString());
       harness.check(((new BigDecimal(testCase.input)).pow(testCase.power).toString()).equals(testCase.output));
     }
@@ -113,7 +114,8 @@ public class pow implements Testlet
       new TestCase("-2.00", 2, "4.0000"),
       new TestCase("-2.000", 2, "4.000000"),
     };
-    for (TestCase testCase : testCases) {
+    for (int i = 0; i < testCases.length; i++) {
+      TestCase testCase = testCases[i];
       // System.out.println(testCase.input + "\t" + testCase.power + "\t" + new BigDecimal(testCase.input).pow(testCase.power).toString());
       harness.check(((new BigDecimal(testCase.input)).pow(testCase.power).toString()).equals(testCase.output));
     }
@@ -145,7 +147,8 @@ public class pow implements Testlet
       new TestCase("-2.00", 2, "4.0000"),
       new TestCase("-2.000", 2, "4.000000"),
     };
-    for (TestCase testCase : testCases) {
+    for (int i = 0; i < testCases.length; i++) {
+      TestCase testCase = testCases[i];
       // System.out.println(testCase.input + "\t" + testCase.power + "\t" + new BigDecimal(testCase.input).pow(testCase.power).toString());
       harness.check(((new BigDecimal(testCase.input)).pow(testCase.power).toString()).equals(testCase.output));
     }
