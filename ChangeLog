@@ -1,3 +1,10 @@
+2012-03-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Long/compareTo.java:
+	* gnu/testlet/java/lang/Long/compareToObject.java:
+	* gnu/testlet/java/lang/Long/decode.java:
+	Added new tests to improve test coverage of java.lang.Long class.
+
 2012-03-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/math/BigDecimal/pow.java:
