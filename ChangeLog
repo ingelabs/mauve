@@ -1,3 +1,10 @@
+2012-03-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Byte/compareToObject.java:
+	* gnu/testlet/java/lang/Byte/parseByte.java:
+	* gnu/testlet/java/lang/Byte/parseByteRadix.java:
+	Added new tests to improve test coverage of java.lang.Byte class.
+
 2012-03-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Long/compareTo.java:
