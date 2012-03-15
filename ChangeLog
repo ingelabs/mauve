@@ -1,5 +1,15 @@
 2012-03-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* gnu/testlet/java/awt/TextArea/MouseListenerTest.java:
+	* gnu/testlet/java/awt/TextArea/MouseMotionListenerTest.java:
+	* gnu/testlet/java/awt/TextArea/MouseWheelListenerTest.java:
+	Added new tests to improve test coverage of java.awt.TextArea class.
+	* gnu/testlet/javax/swing/JComponent/setVisible.java:
+	* gnu/testlet/javax/swing/JInternalFrame/setSelected2.java:
+	Fixed these tests to correctly close its frames.
+
+2012-03-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* gnu/testlet/java/lang/Byte/valueOfByte.java:
 	* gnu/testlet/java/lang/Byte/valueOfString.java:
 	* gnu/testlet/java/lang/Byte/valueOfStringRadix.java:

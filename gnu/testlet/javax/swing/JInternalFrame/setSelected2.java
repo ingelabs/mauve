@@ -116,6 +116,9 @@ public class setSelected2
     harness.check(f.isSelected());
     harness.check(events.size(), 0);
 
+    // clean up frame from desktop
+    f.dispose();
+    fr.dispose();
   }
 
   public void internalFrameActivated(InternalFrameEvent event) {

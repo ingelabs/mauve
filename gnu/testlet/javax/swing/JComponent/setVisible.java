@@ -75,6 +75,8 @@ public class setVisible implements Testlet
     c.repaintCalled = false;
     c.setVisible(false);
     harness.check(c.repaintCalled, false);
+    // clean up the frame from desktop
+    f.dispose();
   }
   
   /**
