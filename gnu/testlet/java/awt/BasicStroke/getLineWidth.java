@@ -71,10 +71,6 @@ public class getLineWidth implements Testlet
     // constructor(width, endCap, lineJoin, mitterLimit)
     stroke = new BasicStroke(10.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f);
     harness.check(stroke.getLineWidth(), 10.0f);
-
-    // constructor(width, endCap, lineJoin, dash[], mitterLimit)
-    stroke = new BasicStroke(10.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, new float[] {1.0f, 1.0f}, 1.0f);
-    harness.check(stroke.getLineWidth(), 10.0f);
   }
 
   /**
@@ -115,17 +111,6 @@ public class getLineWidth implements Testlet
     // constructor(width, endCap, lineJoin, mitterLimit)
     try {
       stroke = new BasicStroke(-10.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f);
-      // should not happen
-      harness.check(false);
-    }
-    catch (IllegalArgumentException e) {
-      harness.check(true);
-    }
-
-    // negative width value
-    // constructor(width, endCap, lineJoin, dash[], mitterLimit)
-    try {
-      stroke = new BasicStroke(-10.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, new float[] {1.0f, 1.0f}, 1.0f);
       // should not happen
       harness.check(false);
     }

@@ -1,3 +1,12 @@
+2012-03-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Byte/valueOfByte.java:
+	* gnu/testlet/java/lang/Byte/valueOfString.java:
+	* gnu/testlet/java/lang/Byte/valueOfStringRadix.java:
+	Added new tests to improve test coverage of java.lang.Byte class.
+	* gnu/testlet/java/awt/BasicStroke/getLineWidth.java:
+	Fixed this test.
+
 2012-03-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/BasicStroke/getLineWidth.java:
