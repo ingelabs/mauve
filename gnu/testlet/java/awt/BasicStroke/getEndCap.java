@@ -108,7 +108,6 @@ public class getEndCap implements Testlet
     harness.checkPoint("positive tests");
 
     // tested object
-    @SuppressWarnings("unused")
     BasicStroke stroke;
 
     // cap code is outside the range 0..2

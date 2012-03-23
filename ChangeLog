@@ -1,3 +1,18 @@
+2012-03-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/AWTError/constructor.java:
+	* gnu/testlet/java/awt/AWTException/constructor.java:
+	* gnu/testlet/java/awt/FontFormatException/constructor.java:
+	* gnu/testlet/java/awt/HeadlessException/constructor.java:
+	* gnu/testlet/java/awt/IllegalComponentStateException/constructor.java:
+	Added new tests to improve test coverage of java.awt package.
+	* gnu/testlet/java/awt/BasicStroke/getEndCap.java:
+	Removed unecessary annotations.
+	* gnu/testlet/java/awt/BasicStroke/getMiterLimit.java:
+	Removed unecessary annotations.
+	* gnu/testlet/java/awt/BasicStroke/getLineWidth.java:
+	Added missing import.
+
 2012-03-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/TextArea/MouseListenerTest.java:

@@ -21,6 +21,8 @@
 
 package gnu.testlet.java.awt.BasicStroke;
 
+import java.awt.BasicStroke;
+
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 

@@ -97,7 +97,6 @@ public class getMiterLimit implements Testlet
     harness.checkPoint("positive tests");
 
     // tested object
-    @SuppressWarnings("unused")
     BasicStroke stroke = null;
 
     // miter limit is below 1.0
@@ -176,7 +175,6 @@ public class getMiterLimit implements Testlet
     harness.checkPoint("positive tests");
 
     // tested object
-    @SuppressWarnings("unused")
     BasicStroke stroke = null;
 
     // miter limit is below 1.0
