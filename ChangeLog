@@ -1,3 +1,13 @@
+2012-01-12  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/text/DateFormatSymbols/SanityCheck.java:
+	Extend test to also check array content for null/empty values.
+	(checkArray(TestHarness, Locale, String, String[], int)):
+	Helper method for checking locale data.  Runs harness checks
+	to ensure the array is the right size and has all non-null
+	non-empty values (except where empty values are allowed
+	for weekday[0] and month[12]).
+
 2012-03-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/AWTError/constructor.java:

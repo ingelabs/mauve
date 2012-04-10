@@ -25,6 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.text.DateFormatSymbols;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Locale;
 
 /**
@@ -46,12 +48,40 @@ public class SanityCheck
     for (int a = 0; a < locales.length; ++a)
       {
         DateFormatSymbols dfs = DateFormatSymbols.getInstance(locales[a]);
-        harness.check(dfs.getAmPmStrings().length == 2, "AM/PM check (" + locales[a] + ")");
-        harness.check(dfs.getEras().length == 2, "Eras check (" + locales[a] + ")");
-        harness.check(dfs.getMonths().length == 13, "Months check (" + locales[a] + ")");
-        harness.check(dfs.getShortMonths().length == 13, "Short months check (" + locales[a] + ")");
-        harness.check(dfs.getShortWeekdays().length == 8, "Short weekdays check (" + locales[a] + ")");
-        harness.check(dfs.getWeekdays().length == 8, "Weekdays check (" + locales[a] + ")");
+        checkArray(harness, locales[a], "AM/PM", dfs.getAmPmStrings(), 2);
+        checkArray(harness, locales[a], "Eras", dfs.getEras(), 2);
+        checkArray(harness, locales[a], "Months", dfs.getMonths(), 13);
+        checkArray(harness, locales[a], "Short months", dfs.getShortMonths(), 13);
+        checkArray(harness, locales[a], "Weekdays", dfs.getWeekdays(), 8);
+        checkArray(harness, locales[a], "Short weekdays", dfs.getShortWeekdays(), 8);
+      }
+  }
+
+  /**
+   * Checks an array of locale data is of the correct size.
+   *
+   * @param harness the test harness.
+   * @param locale the locale being tested (for display purposes).
+   * @param type the type of data (for display purposes).
+   * @param array the array of strings.
+   * @param size the expected size of the array.
+   */
+  private void checkArray(TestHarness harness, Locale locale, String type,
+                          String[] array, int size)
+  {
+    harness.check(array.length == size, type + "check (" + locale + ")");
+    harness.debug(locale + ": " + type + "=" + Arrays.toString(array));
+    // Check entries are non-null and also non-empty (unless allowed).
+    for (int a = 0; a < array.length; ++a)
+      {
+        harness.check(array[a] != null, type + "[" + a + "] null check (" +
+                      locale + ")");
+        // Weekdays are indexed 1 to 7 not 0 to 6.  The 13th month is not
+        // used by the Gregorian calendar.
+        if (!(type.contains("onths") && a == Calendar.UNDECIMBER) &&
+            !(type.contains("days") && a == 0))
+          harness.check(!array[a].isEmpty(), type + "[" + a + "] empty check (" +
+                        locale + ")");
       }
   }
 
