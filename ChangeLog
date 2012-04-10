@@ -1,3 +1,9 @@
+2012-04-03  Andrew John Hughes  <ahughes@redhat.com>
+
+	* gnu/testlet/java/util/regex/Matcher/usePattern.java:
+	Add testcase for new java.util.regex.Matcher.usePattern(Pattern)
+	method.
+
 2012-01-12  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/text/DateFormatSymbols/SanityCheck.java:
