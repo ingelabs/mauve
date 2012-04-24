@@ -1,3 +1,78 @@
+2012-04-13  Andrew John Hughes  <ahughes@redhat.com>
+
+	* Harness.java:
+	(ecjConstructor): Add wildcard.
+	(commandLineTests): Convert to generified List.
+	(excludeTests): Likewise.
+	(klass): Add wildcard.
+	(setupCompiler()): Use varargs rather than an array
+	when calling getConstructor/getMethod.
+	(runAllTests()): Remove redundant cast.
+	(parseTags(String,LinkedHashSet,LinkedHashSet,LinkedHashSet)):
+	Add types to sets.
+	(processUsesTag(String,String,LinkedHashSet,LinkedHashSet,LinkedHashSet)):
+	Likewise.
+	(processFilesTag(String,String,LinkedHashSet)): Likewise.
+	(copyFiles(LinkedHashSet)): Likewise.
+	(processSingleTest(String)): Likewise.
+	(processFolder(String)): Likewise.
+	(runFolder(LinkedHashSet,boolean)): Likewise.
+	(compileFiles(LinkedHashSet)): Likewise.
+	* Makefile.am:
+	(JAVACFLAGS): Expand to -source/-target and turn on warnings if javac is used.
+	(harness): Actually use JAVACFLAGS.
+	* RunnerProcess.java:
+	(expectedXFails): Add generic type.  Use standard
+	naming conventions.
+	(runtest(String)): Add missing wildcard to Class.
+	(setupEMMA(boolean)): Likewise.
+	* gnu/testlet/TestReport.java:
+	(testResults): Add generic type.
+	(TestReport(Properties)): Likewise.
+	(writeXml(File)): Likewise.
+	* gnu/testlet/TestResult.java:
+	(failMessages): Add generic type.
+	(passMessages): Likewise.
+	(getFailMessags()): Likewise.
+	(getPassMessages()): Likewise.
+	(compareTo(TestResult)): Convert to Comparable<TestResult>
+	to avoid explicit cast.
+	* gnu/testlet/TestSecurityManager.java:
+	Remove unused import.
+	* junit/framework/AssertionFailedError.java,
+	* junit/framework/ComparisonFailure.java:
+	Add serialVersionUID.
+	* junit/framework/TestCase.java:
+	(getTest()): Use Class<?>.  Use varargs for getMethod.
+	Capture returned value.
+	* junit/framework/TestResult.java:
+	(fErrors): Add generic type.
+	(fFailures): Likewise.
+	(fListeners): Likewise.
+	(TestResult()): Likewsie.
+	(startTest(Test)): Likewise.
+	(endTest(Test)): Likewise.
+	(addFailure(Test,AssertionFailedError)): Likewise.
+	(addError(Test,Throwable)): Likewise.
+	(errors()): Likewise.
+	(failures()): Likewise.
+	(cloneListeners()): Likewise.
+	* junit/framework/TestSuite.java:
+	(fTests): Add generic types.
+	(TestSuite()): Likewise.
+	(TestSuite(Class<?>)): Likewise.
+	(TestSuite(Class<?>,String)): Likewise.
+	(addTestMethod(Method,List,Class<?>)): Likewise.
+	(isTestMethod(Method)): Likewise.
+	(createTest(Class<?>,String)): Likewise.
+	(getTestConstructor(Class<?>)): Likewise.
+	(countTestCases()): Likewise.
+	(run(TestResult)): Likewise.
+	(addTestSuite(Class<?>)): Likewise.
+	(test(TestHarness)): Likewise.
+	* junit/textui/TestRunner.java:
+	(run(Class<?>)): Add generic type.
+
 2012-04-03  Andrew John Hughes  <ahughes@redhat.com>
 
 	* gnu/testlet/java/util/regex/Matcher/usePattern.java:

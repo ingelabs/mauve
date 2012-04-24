@@ -3,7 +3,7 @@
 ## FIXME: dependencies
 AUTOMAKE_OPTIONS = foreign subdir-objects no-dependencies
 
-JAVACFLAGS = -g -1.5
+JAVACFLAGS = -g -source 1.5 -target 1.5 -Xlint:all
 
 TESTFLAGS =
 
@@ -31,13 +31,13 @@ harness_files = \
 	$(srcdir)/junit/textui/*.java
 
 harness:
-	$(JAVAC) -d . $(harness_files)
+	$(JAVAC) $(JAVACFLAGS) -d . $(harness_files)
 
 all-local: harness
 
 check-local:
 	$(JAVA) Harness
- 
+
 ## For now can't define this conditionally.
 SUFFIXES = .class .java
 clean-local:

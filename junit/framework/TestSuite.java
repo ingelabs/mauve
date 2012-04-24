@@ -50,14 +50,14 @@ public class TestSuite
   /**
    * The tests in this test suite.
    */
-  private Vector fTests;
+  private Vector<Test> fTests;
 
   /**
    * Creates a new test suite.
    */
   public TestSuite()
   {
-    fTests = new Vector();
+    fTests = new Vector<Test>();
   }
 
   /**
@@ -65,12 +65,12 @@ public class TestSuite
    *
    * @param theClass the class to load the tests from
    */
-  public TestSuite(Class theClass)
+  public TestSuite(Class<?> theClass)
   {
     this();
     fName = theClass.getName();
-    Class clazz = theClass;
-    List names = new ArrayList();
+    Class<?> clazz = theClass;
+    List<String> names = new ArrayList<String>();
     while (Test.class.isAssignableFrom(clazz))
       {
         Method[] methods = clazz.getDeclaredMethods();
@@ -99,7 +99,7 @@ public class TestSuite
    * @param theClass the class to load the tests from
    * @param name the name of the test suite
    */
-  public TestSuite(Class theClass, String name)
+  public TestSuite(Class<?> theClass, String name)
   {
     this(theClass);
     setName(name);
@@ -112,7 +112,7 @@ public class TestSuite
    * @param names the list of names of already added methods
    * @param theClass the test class
    */
-  private void addTestMethod(Method method, List names, Class theClass)
+  private void addTestMethod(Method method, List<String> names, Class<?> theClass)
   {
     String name = method.getName();
     if (! names.contains(name))
@@ -149,8 +149,8 @@ public class TestSuite
   private boolean isTestMethod(Method method)
   {
     String name = method.getName();
-    Class[] params = method.getParameterTypes();
-    Class ret = method.getReturnType();
+    Class<?>[] params = method.getParameterTypes();
+    Class<?> ret = method.getReturnType();
     return params.length == 0 && name.startsWith("test")
            && ret.equals(Void.TYPE);
   }
@@ -164,9 +164,9 @@ public class TestSuite
    *
    * @return the test instance
    */
-  public static Test createTest(Class theClass, String name)
+  public static Test createTest(Class<?> theClass, String name)
   {
-    Constructor constructor = null;
+    Constructor<?> constructor = null;
     Test test = null;
     try
       {
@@ -218,19 +218,18 @@ public class TestSuite
    *
    * @throws NoSuchMethodException if no suitable constructor exists
    */
-  public static Constructor getTestConstructor(Class theClass)
+  public static Constructor<?> getTestConstructor(Class<?> theClass)
     throws NoSuchMethodException
   {
-    Class[] args = { String.class };
     try
       {
-        return theClass.getConstructor(args);
+        return theClass.getConstructor(String.class);
       }
     catch (NoSuchMethodException ex)
       {
         // Search for a no-arg constructor below.
       }
-    return theClass.getConstructor(new Class[0]);
+    return theClass.getConstructor();
   }
 
   /**
@@ -241,9 +240,9 @@ public class TestSuite
   public int countTestCases()
   {
     int count = 0;
-    for (Iterator i = fTests.iterator(); i.hasNext();)
+    for (Iterator<Test> i = fTests.iterator(); i.hasNext();)
       {
-        Test test = (Test) i.next();
+        Test test = i.next();
         count += test.countTestCases();
       }
     return count;
@@ -256,11 +255,11 @@ public class TestSuite
    */
   public void run(TestResult result)
   {
-    for (Iterator i = fTests.iterator(); i.hasNext();)
+    for (Iterator<Test> i = fTests.iterator(); i.hasNext();)
       {
         if (! result.shouldStop())
           {
-            Test test = (Test) i.next();
+            Test test = i.next();
             runTest(test, result);
           }
       }
@@ -292,7 +291,7 @@ public class TestSuite
    *
    * @param testClass the class from which to load tests to add
    */
-  public void addTestSuite(Class testClass)
+  public void addTestSuite(Class<?> testClass)
   {
     fTests.add(new TestSuite(testClass));
   }
@@ -325,9 +324,9 @@ public class TestSuite
    */
   public void test(TestHarness harness)
   {
-    for (Iterator i = fTests.iterator(); i.hasNext();)
+    for (Iterator<Test> i = fTests.iterator(); i.hasNext();)
       {
-        Test test = (Test) i.next();
+        Test test = i.next();
         if (test instanceof TestCase)
           ((TestCase) test).testSingle(harness);
         else if (test instanceof Testlet)

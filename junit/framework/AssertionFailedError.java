@@ -30,6 +30,8 @@ public class AssertionFailedError
   extends Error
 {
 
+  private static final long serialVersionUID = -6907951573723054750L;
+
   /**
    * Creates an AssertionFailedError without message.
    */

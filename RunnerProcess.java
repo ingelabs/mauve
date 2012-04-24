@@ -72,7 +72,7 @@ public class RunnerProcess
   private int failures = 0;
 
   // The expected fails
-  private static Vector expected_xfails = new Vector();
+  private static Vector<String> expectedXfails = new Vector<String>();
 
   // The number of expected failures that did fail
   private int xfailures = 0;
@@ -137,7 +137,7 @@ public class RunnerProcess
         String str;
         while ((str = xfile.readLine()) != null)
           {
-            expected_xfails.addElement(str);
+            expectedXfails.addElement(str);
           }
       }
     catch (FileNotFoundException ex)
@@ -323,7 +323,7 @@ public class RunnerProcess
     Testlet t = null;
     try
       {
-        Class k = Class.forName(name);
+        Class<?> k = Class.forName(name);
         int mods = k.getModifiers();
         if (Modifier.isAbstract(mods))
           {
@@ -730,7 +730,7 @@ public class RunnerProcess
 
     if (! result)
       {        
-        if (! expected_xfails.contains(desc))
+        if (! expectedXfails.contains(desc))
           {
             // If the failure wasn't expected, we need to print it to the
             // screen.
@@ -754,7 +754,7 @@ public class RunnerProcess
         currentResult.addPass(desc);
         if (verbose)
           {
-            if (expected_xfails.contains(desc))
+            if (expectedXfails.contains(desc))
               {
                 System.out.println("XPASS: " + desc);
                 ++xpasses;
@@ -964,7 +964,7 @@ public class RunnerProcess
   private static void setupEMMA(boolean useJar) throws Exception
   {
     ClassNotFoundException cnfe = null;
-    Class klass = null;
+    Class<?> klass = null;
     String classname = "com.vladium.emma.rt.RT";
     if (!useJar)
       {                
@@ -998,8 +998,7 @@ public class RunnerProcess
     
     emmaMethod = 
       klass.getMethod
-      ("dumpCoverageData", new Class[] 
-          { File.class, boolean.class, boolean.class });
+      ("dumpCoverageData", File.class, boolean.class, boolean.class );
   }  
   
   /**

@@ -1,4 +1,4 @@
-// Copyright (c) 2006, 2007  Red Hat, Inc.
+// Copyright (c) 2006, 2007, 2012  Red Hat, Inc.
 // Written by Anthony Balkissoon <abalkiss@redhat.com>
 
 // This file is part of Mauve.
@@ -40,10 +40,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Iterator;
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 /**
  * The Mauve Harness.  This class parses command line input and standard
@@ -79,7 +80,7 @@ public class Harness
   private static int numCompileFailsInFolder = 0;
   
   // The constructor for the embedded ecj
-  private static Constructor ecjConstructor = null;
+  private static Constructor<?> ecjConstructor = null;
 
   // The classpath installation location, used for the compiler's bootcalsspath
   private static String classpathInstallDir = null;
@@ -123,13 +124,13 @@ public class Harness
 
   // All the tests that were specified on the command line rather than
   // through standard input or an input file
-  private static Vector commandLineTests = null;
+  private static List<String> commandLineTests = null;
   
   // The input file (possibly) supplied by the user
   private static String inputFile = null;
 
   // All the tests that were explicitly excluded via the -exclude option
-  private static Vector excludeTests = new Vector();
+  private static List<String> excludeTests = new ArrayList<String>();
   
   // A way to speak to the runner process
   private static PrintWriter runner_out = null;
@@ -368,7 +369,7 @@ public class Harness
           {
             // This is a command-line (not standard input) test or directory.
             if (commandLineTests == null)
-              commandLineTests = new Vector();
+              commandLineTests = new ArrayList<String>();
             commandLineTests.add(startingFormat(args[i]));
           }          
       }
@@ -414,7 +415,7 @@ public class Harness
   private void setupCompiler() throws Exception
   {
     String classname = "org.eclipse.jdt.internal.compiler.batch.Main";
-    Class klass = null;
+    Class<?> klass = null;
     try
     {
       klass = Class.forName(classname);
@@ -438,11 +439,10 @@ public class Harness
     // Set up the compiler and the PrintWriters for the compile errors.
     ecjConstructor = 
       klass.getConstructor 
-      (new Class[] { PrintWriter.class, PrintWriter.class, Boolean.TYPE});
+      (PrintWriter.class, PrintWriter.class, Boolean.TYPE);
     ecjMethod = 
       klass.getMethod
-      ("compile", new Class[] 
-          { String.class, PrintWriter.class, PrintWriter.class });
+      ("compile", String.class, PrintWriter.class, PrintWriter.class );
     
     ecjWriterErr = new CompilerErrorWriter(System.out);
     ecjWriterOut = new PrintWriter(System.out);
@@ -739,7 +739,7 @@ public class Harness
         for (int i = 0; i < commandLineTests.size(); i++)
           {
             String cname = null;
-            cname = (String) commandLineTests.elementAt(i);
+            cname = commandLineTests.get(i);
             if (cname == null)
               break;
             processTest(cname);
@@ -978,7 +978,8 @@ public class Harness
    *
    * @return true on success, false on error
    */
-  private static boolean parseTags(String sourcefile, LinkedHashSet filesToCompile, LinkedHashSet filesToCopy, LinkedHashSet testsToRun)
+  private static boolean parseTags(String sourcefile, LinkedHashSet<String> filesToCompile,
+				   LinkedHashSet<String> filesToCopy, LinkedHashSet<String> testsToRun)
   {
     File f = new File(sourcefile);
 
@@ -1055,7 +1056,10 @@ public class Harness
    * @param base base directory of the current test
    * @param filesToCompile LinkedHashSet of the current files to be compiled
    */
-  private static void processUsesTag(String line, String base, LinkedHashSet filesToCompile, LinkedHashSet filesToCopy, LinkedHashSet testsToRun)
+  private static void processUsesTag(String line, String base,
+				     LinkedHashSet<String> filesToCompile,
+				     LinkedHashSet<String> filesToCopy,
+				     LinkedHashSet<String> testsToRun)
   {
     StringTokenizer st =
       new StringTokenizer(line.substring(line.indexOf("Uses:") + 5));
@@ -1106,7 +1110,8 @@ public class Harness
    * @param base base directory of the current test
    * @param line string of the current source line
    */
-  private static void processFilesTag(String line, String base, LinkedHashSet filesToCopy)
+  private static void processFilesTag(String line, String base,
+				      LinkedHashSet<String> filesToCopy)
   {
     StringTokenizer st =
       new StringTokenizer(line.substring(line.indexOf("Files:") + 6));
@@ -1135,14 +1140,14 @@ public class Harness
    *
    * @return true on success, false on error
    */
-  private static boolean copyFiles(LinkedHashSet filesToCopy)
+  private static boolean copyFiles(LinkedHashSet<String> filesToCopy)
   {
     if (filesToCopy.size() == 0)
       return true;
 
-    for (Iterator it = filesToCopy.iterator(); it.hasNext(); )
+    for (Iterator<String> it = filesToCopy.iterator(); it.hasNext(); )
       {
-        String src = (String) it.next();
+        String src = it.next();
         String dest =
           config.builddir + File.separatorChar + stripSourcePath(src);
 
@@ -1194,9 +1199,9 @@ public class Harness
    */  
   private static int processSingleTest(String cname)
   {
-    LinkedHashSet filesToCompile = new LinkedHashSet();
-    LinkedHashSet filesToCopy = new LinkedHashSet();
-    LinkedHashSet testsToRun = new LinkedHashSet();
+    LinkedHashSet<String> filesToCompile = new LinkedHashSet<String>();
+    LinkedHashSet<String> filesToCopy = new LinkedHashSet<String>();
+    LinkedHashSet<String> testsToRun = new LinkedHashSet<String>();
 
     // If the test should be excluded return -1, this is a signal
     // to processTest that it should quit.    
@@ -1254,9 +1259,9 @@ public class Harness
     File dir = new File(config.srcdir + File.separatorChar + folderName);
     String dirPath = dir.getPath();    
     File[] files = dir.listFiles();
-    LinkedHashSet filesToCompile = new LinkedHashSet();
-    LinkedHashSet filesToCopy = new LinkedHashSet();
-    LinkedHashSet testsToRun = new LinkedHashSet();
+    LinkedHashSet<String> filesToCompile = new LinkedHashSet<String>();
+    LinkedHashSet<String> filesToCopy = new LinkedHashSet<String>();
+    LinkedHashSet<String> testsToRun = new LinkedHashSet<String>();
     String fullPath = null;
     boolean compilepassed = true;
     
@@ -1326,13 +1331,13 @@ public class Harness
    * @param compilepassed true if the compilation step happened and all 
    * tests passed or if compilation didn't happen (because of -nocompile).
    */
-  private static void runFolder(LinkedHashSet testsToRun, boolean compilepassed)
+  private static void runFolder(LinkedHashSet<String> testsToRun, boolean compilepassed)
   {
     String nextTest = null;
 
-    for (Iterator it = testsToRun.iterator(); it.hasNext(); )
+    for (Iterator<String> it = testsToRun.iterator(); it.hasNext(); )
       {
-        nextTest = (String) it.next();
+        nextTest = it.next();
         nextTest = stripSourcePath(nextTest);
 
         if (!testNeedsToBeCompiled(nextTest)
@@ -1373,15 +1378,15 @@ public class Harness
    * @param filesToCompile LinkedHashSet of the files to compile
    * @return true if compilation was successful
    */
-  private static boolean compileFiles(LinkedHashSet filesToCompile)
+  private static boolean compileFiles(LinkedHashSet<String> filesToCompile)
   {
     if (filesToCompile.size() == 0)
       return true;
 
     int result = - 1;
     compileString = compileStringBase + compileOptions;
-    for (Iterator it = filesToCompile.iterator(); it.hasNext(); )
-      compileString += " " + (String) it.next();
+    for (Iterator<String> it = filesToCompile.iterator(); it.hasNext(); )
+      compileString += " " + it.next();
     try
       {
         result = compile();

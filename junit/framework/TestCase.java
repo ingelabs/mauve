@@ -282,12 +282,12 @@ public abstract class TestCase
    */
   private Test getTest()
   {
-    Class clazz = getClass();
+    Class<?> clazz = getClass();
     Method suiteMethod = null;
     Test test = null;
     try
       {
-        clazz.getMethod("suite", new Class[0]);
+        suiteMethod = clazz.getMethod("suite");
       }
     catch (Exception ex)
       {

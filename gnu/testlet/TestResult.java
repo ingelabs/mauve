@@ -30,11 +30,11 @@ import java.util.ArrayList;
  * respective testletName field.
  */
 public class TestResult
-  implements Comparable
+  implements Comparable<TestResult>
 {
   private String testletName = null;
-  private List failMessages = new ArrayList();
-  private List passMessages = new ArrayList();
+  private List<String> failMessages = new ArrayList<String>();
+  private List<String> passMessages = new ArrayList<String>();
   private Throwable exception = null;
   private String exceptionReason = null;
   private String exceptionMessage = null;
@@ -108,7 +108,7 @@ public class TestResult
    */
   public String[] getFailMessags()
   {
-    return (String[]) failMessages.toArray(new String[0]);
+    return failMessages.toArray(new String[failMessages.size()]);
   }
 
   /**
@@ -119,7 +119,7 @@ public class TestResult
    */
   public String[] getPassMessages()
   {
-    return (String[]) passMessages.toArray(new String[0]);
+    return passMessages.toArray(new String[passMessages.size()]);
   }
   
   /**
@@ -163,9 +163,8 @@ public class TestResult
    * Compares one TestResult object to another. TestResult objects compare
    * the same as their testletName fields.
    */ 
-  public int compareTo(Object o)
+  public int compareTo(TestResult other)
   {
-    TestResult other = (TestResult)o;
     return testletName.compareTo(other.testletName);
   }
 }

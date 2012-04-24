@@ -32,6 +32,8 @@ package junit.framework;
 public class ComparisonFailure extends AssertionFailedError
 {
 
+  private static final long serialVersionUID = 2747813684729318422L;
+
   /**
    * Creates a new ComparisonFailure with an error message.
    *

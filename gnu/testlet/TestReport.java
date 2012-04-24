@@ -30,7 +30,7 @@ import java.io.*;
 public class TestReport
 {
   private Properties systemProperties;
-  private List testResults;
+  private List<TestResult> testResults;
 
   private static final String ENCODING = "UTF-8";
 
@@ -44,7 +44,7 @@ public class TestReport
   public TestReport(Properties systemProperties)
   {
     this.systemProperties = systemProperties;
-    this.testResults = new ArrayList();
+    this.testResults = new ArrayList<TestResult>();
   }
 
   /**
@@ -74,14 +74,14 @@ public class TestReport
               + escAttrib(systemProperties.get("os.version")) + " "
               + escAttrib(systemProperties.get("os.arch")) + "' />\n");
     Collections.sort(testResults);
-    Iterator results = testResults.iterator();
+    Iterator<TestResult> results = testResults.iterator();
     while (results.hasNext())
       {
         // Send a message to the Harness to let it know that we are
         // still writing the XML file.
         System.out.println("RunnerProcess:restart-timer");
 
-        TestResult tr = (TestResult) results.next();
+        TestResult tr = results.next();
         String[] failures = tr.getFailMessags();
         String[] passes = tr.getPassMessages();
         out.write("  <testresult testlet='" + escAttrib(tr.getTestletName()));

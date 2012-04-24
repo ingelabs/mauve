@@ -38,17 +38,17 @@ public class TestResult
   /**
    * The errors from the test run.
    */
-  protected List fErrors;
+  protected List<TestFailure> fErrors;
 
   /**
    * The failures from the test run.
    */
-  protected List fFailures;
+  protected List<TestFailure> fFailures;
 
   /**
    * The test listeners.
    */
-  protected List fListeners;
+  protected List<TestListener> fListeners;
 
   /**
    * The number of tests that have been run.
@@ -65,9 +65,9 @@ public class TestResult
    */
   public TestResult()
   {
-    fErrors = new ArrayList();
-    fFailures = new ArrayList();
-    fListeners = new ArrayList();
+    fErrors = new ArrayList<TestFailure>();
+    fFailures = new ArrayList<TestFailure>();
+    fListeners = new ArrayList<TestListener>();
     fRunTests = 0;
     fStop = false;
   }
@@ -131,9 +131,9 @@ public class TestResult
       {
         fRunTests += count;
       }
-    for (Iterator i = cloneListeners().iterator(); i.hasNext();)
+    for (Iterator<TestListener> i = cloneListeners().iterator(); i.hasNext();)
       {
-        TestListener l = (TestListener) i.next();
+        TestListener l = i.next();
         l.startTest(test);
       }
   }
@@ -145,9 +145,9 @@ public class TestResult
    */
   public void endTest(Test test)
   {
-    for (Iterator i = cloneListeners().iterator(); i.hasNext();)
+    for (Iterator<TestListener> i = cloneListeners().iterator(); i.hasNext();)
       {
-        TestListener l = (TestListener) i.next();
+        TestListener l = i.next();
         l.endTest(test);
       }
   }
@@ -161,9 +161,9 @@ public class TestResult
   public synchronized void addFailure(Test test, AssertionFailedError failure)
   {
     fFailures.add(new TestFailure(test, failure));
-    for (Iterator i = cloneListeners().iterator(); i.hasNext();)
+    for (Iterator<TestListener> i = cloneListeners().iterator(); i.hasNext();)
       {
-        TestListener l = (TestListener) i.next();
+        TestListener l = i.next();
         l.addFailure(test, failure);
       }
   }
@@ -177,9 +177,9 @@ public class TestResult
   public synchronized void addError(Test test, Throwable failure)
   {
     fErrors.add(new TestFailure(test, failure));
-    for (Iterator i = cloneListeners().iterator(); i.hasNext();)
+    for (Iterator<TestListener> i = cloneListeners().iterator(); i.hasNext();)
       {
-        TestListener l = (TestListener) i.next();
+        TestListener l = i.next();
         l.addError(test, failure);
       }
   }
@@ -219,7 +219,7 @@ public class TestResult
    *
    * @return the errors in this test result
    */
-  public synchronized Enumeration errors()
+  public synchronized Enumeration<TestFailure> errors()
   {
     return Collections.enumeration(fErrors);
   }
@@ -239,7 +239,7 @@ public class TestResult
    *
    * @return the failures in this test result
    */
-  public synchronized Enumeration failures()
+  public synchronized Enumeration<TestFailure> failures()
   {
     return Collections.enumeration(fFailures);
   }
@@ -291,9 +291,9 @@ public class TestResult
    *
    * @return a cloned listener list
    */
-  private synchronized List cloneListeners()
+  private synchronized List<TestListener> cloneListeners()
   {
-    List copy = new ArrayList();
+    List<TestListener> copy = new ArrayList<TestListener>();
     copy.addAll(fListeners);
     return copy;
   }

@@ -32,7 +32,7 @@ public class TestRunner
   extends BaseTestRunner
 {
 
-  public static void run(Class testClass)
+  public static void run(Class<?> testClass)
   {
     run(new TestSuite(testClass));
   }
