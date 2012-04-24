@@ -1,3 +1,15 @@
+2012-04-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeLine2DDouble.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeLine2DFloat.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapePolygon.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeRectangle.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeRectangle2DDouble.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeRectangle2DFloat.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeRoundRectangle2DDouble.java:
+	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeRoundRectangle2DFloat.java:
+	Added new tests for BasicStroke class.
+
 2012-04-13  Andrew John Hughes  <ahughes@redhat.com>
 
 	* Harness.java:
