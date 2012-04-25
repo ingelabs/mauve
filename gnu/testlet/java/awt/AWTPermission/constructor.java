@@ -1,5 +1,5 @@
 /* constructor.java 
-   Copyright (C) 2007 Red Hat
+   Copyright (C) 2007, 2012 Red Hat
 This file is part of Mauve.
 
 Mauve is free software; you can redistribute it and/or modify
@@ -36,7 +36,14 @@ public class constructor implements Testlet
     AWTPermission permission = new AWTPermission("String");
     harness.check(permission.getActions(), "");
     harness.check(permission.getName(), "String");
-    harness.check(permission.toString(), "(java.awt.AWTPermission String)");
+    if (conformToJDK17())
+      {
+        harness.check(permission.toString(), "(\"java.awt.AWTPermission\" \"String\")");
+      }
+    else
+      {
+        harness.check(permission.toString(), "(java.awt.AWTPermission String)");
+      }
     
     // String cannot be the empty string.
     boolean fail = false;
@@ -61,6 +68,22 @@ public class constructor implements Testlet
         fail = true;
       }
     harness.check(fail);
+  }
+
+  /**
+    * Returns true if tested JRE conformns to JDK 1.7.
+    * @author: Mark Wielaard
+    */
+  private static boolean conformToJDK17()
+  {
+    String[] javaVersion = System.getProperty("java.version").split("\\.");
+    String vendorID = System.getProperty("java.vendor");
+    // test of OpenJDK
+    if ("Sun Microsystems Inc.".equals(vendorID))
+      {
+        return Long.parseLong(javaVersion[1]) >= 7;
+      }
+    return true;
   }
 
 }

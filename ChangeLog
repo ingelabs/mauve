@@ -1,3 +1,8 @@
+2012-04-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/awt/AWTPermission/constructor.java:
+	Made this test compatible with JDK7.
+
 2012-04-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/BasicStroke/createStrokeShapeLine2DDouble.java:
