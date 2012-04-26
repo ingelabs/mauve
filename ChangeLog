@@ -1,3 +1,11 @@
+2012-04-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Character/getType.java:
+	Made this test compatible with JDK7 and added
+	new Unicode characters to test.
+	* gnu/testlet/java/text/SimpleDateFormat/applyPattern.java:
+	Made this test compatible with JDK7.
+
 2012-04-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/awt/AWTPermission/constructor.java:

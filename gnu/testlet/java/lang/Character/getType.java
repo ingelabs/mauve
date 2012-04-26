@@ -139,7 +139,20 @@ public class getType implements Testlet
       p (harness, '\u216f', "letter_number");
       p (harness, '\u0f32', "other_number");
       p (harness, '\u0f35', "non_spacing_mark");
-      p (harness, '\u06de', "enclosing_mark");
+      p (harness, '\u0488', "enclosing_mark");
+      p (harness, '\u0488', "enclosing_mark");
+      p (harness, '\u0489', "enclosing_mark");
+      // Unicode character 06de should fall into other letters/symbols
+      // according to changes in Unicode
+      p (harness, '\u06de', conformToJDK17() ? "other_symbol" : "enclosing_mark");
+      p (harness, '\u20DD', "enclosing_mark");
+      p (harness, '\u20DE', "enclosing_mark");
+      p (harness, '\u20DF', "enclosing_mark");
+      p (harness, '\u20E0', "enclosing_mark");
+      p (harness, '\u20E2', "enclosing_mark");
+      p (harness, '\u20E3', "enclosing_mark");
+      p (harness, '\u20E4', "enclosing_mark");
+    
       p (harness, '\u0903', "combining_spacing_mark");
       p (harness, '-', "dash_punctuation");
       p (harness, '\ufe59', "start_punctuation");
@@ -159,4 +172,21 @@ public class getType implements Testlet
       p (harness, '\u249f', "other_symbol");
       p (harness, '\u2102', "uppercase_letter");
     }
+
+  /**
+    * Returns true if tested JRE conformns to JDK 1.7.
+    * @author: Mark Wielaard
+    */
+  private static boolean conformToJDK17()
+  {
+    String[] javaVersion = System.getProperty("java.version").split("\\.");
+    String vendorID = System.getProperty("java.vendor");
+    // test of OpenJDK
+    if ("Sun Microsystems Inc.".equals(vendorID))
+      {
+        return Long.parseLong(javaVersion[1]) >= 7;
+      }
+    return true;
+  }
+
 }

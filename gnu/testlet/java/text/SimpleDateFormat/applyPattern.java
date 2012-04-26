@@ -50,7 +50,9 @@ public class applyPattern implements Testlet
     // try invalid argument
     try
     {
-      f.applyPattern("XYZ");
+      // "XYZ" was used here, but incidentally "X" and "Z"
+      // are now correct patterns in JDK7
+      f.applyPattern("QYZ");
       harness.check(false);
     }
     catch (IllegalArgumentException e) 
