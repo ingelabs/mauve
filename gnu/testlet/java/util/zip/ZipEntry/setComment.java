@@ -30,6 +30,7 @@ public class setComment implements Testlet
 {
   public void test (TestHarness harness)
   {
+    boolean jdk7 = conformToJDK17();
     ZipEntry entry = new ZipEntry("test");
     harness.check(entry.getComment(), null, "default comment is null");
 
@@ -40,15 +41,39 @@ public class setComment implements Testlet
     try
       {
 	entry.setComment(new String (new char [0xFFFF + 1]));
-	exception = false;
+	if (jdk7) {
+	  // should be 0xFFFF in case of JDK7
+	  exception = entry.getComment().length() != 0xFFFF;
+	}
+	else
+	{
+	  exception = false;
+	}
       }
     catch (IllegalArgumentException _)
       {
-	exception = true;
+	// JDK6 should throw this exception, but JDK7 can not
+	exception = !jdk7;
       }
     harness.check(exception, "comment larger then 65535 chars");
 
     entry.setComment(null);
     harness.check(entry.getComment(), null, "get and set null comment");
+  }
+
+  /**
+    * Returns true if tested JRE conformns to JDK 1.7.
+    * @author: Mark Wielaard
+    */
+  private static boolean conformToJDK17()
+  {
+    String[] javaVersion = System.getProperty("java.version").split("\\.");
+    String vendorID = System.getProperty("java.vendor");
+    // test of OpenJDK
+    if ("Sun Microsystems Inc.".equals(vendorID))
+      {
+        return Long.parseLong(javaVersion[1]) >= 7;
+      }
+    return true;
   }
 }

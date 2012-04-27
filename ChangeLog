@@ -1,3 +1,8 @@
+2012-04-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/zip/ZipEntry/setComment.java:
+	Made this test compatible with JDK7.
+
 2012-04-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Character/getType.java:
