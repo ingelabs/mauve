@@ -1,3 +1,37 @@
+2012-05-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Double/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Double/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Double/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Double/classInfo/getName.java:
+	* gnu/testlet/java/lang/Double/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Double/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Double/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Double/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Double/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Double/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Double/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Double/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Double/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Double/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/Float/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Float/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Float/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Float/classInfo/getName.java:
+	* gnu/testlet/java/lang/Float/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Float/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Float/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Float/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Float/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Float/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Float/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Float/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Float/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Float/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.
+
 2012-04-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/zip/ZipEntry/setComment.java:
