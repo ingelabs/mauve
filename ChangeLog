@@ -1,3 +1,37 @@
+2012-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Boolean/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/getName.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/Byte/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Byte/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Byte/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Byte/classInfo/getName.java:
+	* gnu/testlet/java/lang/Byte/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Byte/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Byte/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.
+
 2012-05-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Double/classInfo/InstanceOf.java:
