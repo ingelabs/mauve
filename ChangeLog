@@ -1,3 +1,37 @@
+2012-05-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Character/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Character/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Character/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Character/classInfo/getName.java:
+	* gnu/testlet/java/lang/Character/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Character/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Character/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Character/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Character/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Character/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Character/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Character/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Character/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Character/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/Integer/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Integer/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Integer/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Integer/classInfo/getName.java:
+	* gnu/testlet/java/lang/Integer/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Integer/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Integer/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.:
+
 2012-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Boolean/classInfo/InstanceOf.java:
