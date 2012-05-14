@@ -1,3 +1,37 @@
+2012-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Long/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Long/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Long/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Long/classInfo/getName.java:
+	* gnu/testlet/java/lang/Long/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Long/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Long/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Long/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Long/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Long/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Long/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Long/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Long/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Long/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/Short/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Short/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Short/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Short/classInfo/getName.java:
+	* gnu/testlet/java/lang/Short/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Short/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Short/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Short/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Short/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Short/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Short/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Short/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Short/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Short/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.:
+
 2012-05-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Character/classInfo/InstanceOf.java:
