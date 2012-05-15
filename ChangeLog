@@ -1,3 +1,28 @@
+2012-05-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AbstractMethodError/TryCatch.java:
+	* gnu/testlet/java/lang/AssertionError/TryCatch.java:
+	* gnu/testlet/java/lang/ClassCircularityError/TryCatch.java:
+	* gnu/testlet/java/lang/ClassFormatError/TryCatch.java:
+	* gnu/testlet/java/lang/Error/TryCatch.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/TryCatch.java:
+	* gnu/testlet/java/lang/IllegalAccessError/TryCatch.java:
+	* gnu/testlet/java/lang/IncompatibleClassChangeError/TryCatch.java:
+	* gnu/testlet/java/lang/InstantiationError/TryCatch.java:
+	* gnu/testlet/java/lang/InternalError/TryCatch.java:
+	* gnu/testlet/java/lang/LinkageError/TryCatch.java:
+	* gnu/testlet/java/lang/NoClassDefFoundError/TryCatch.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/TryCatch.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/TryCatch.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/TryCatch.java:
+	* gnu/testlet/java/lang/StackOverflowError/TryCatch.java:
+	* gnu/testlet/java/lang/ThreadDeath/TryCatch.java:
+	* gnu/testlet/java/lang/UnknownError/TryCatch.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/TryCatch.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/TryCatch.java:
+	* gnu/testlet/java/lang/VerifyError/TryCatch.java:
+	Added new basic tests for java.lang.*Error classes.
+
 2012-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Long/classInfo/InstanceOf.java:
