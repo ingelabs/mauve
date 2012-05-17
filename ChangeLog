@@ -1,3 +1,51 @@
+2012-05-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/String/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/String/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/String/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/String/classInfo/getName.java:
+	* gnu/testlet/java/lang/String/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/String/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/String/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/String/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/String/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/String/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/String/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/String/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/String/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/String/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/getName.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/StringBuffer/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/getName.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/StringBuilder/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.:
+
 2012-05-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/TryCatch.java:
