@@ -1,3 +1,21 @@
+2012-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Package/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Package/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Package/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Package/classInfo/getName.java:
+	* gnu/testlet/java/lang/Package/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Package/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Package/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Package/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Package/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Package/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Package/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Package/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Package/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Package/classInfo/isSynthetic.java:
+	Added new tests for java.lang.Package class.
+
 2012-05-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/String/classInfo/InstanceOf.java:
