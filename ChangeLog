@@ -1,3 +1,36 @@
+2012-05-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isSynthetic.java:
+	Added new tests for java.lang.AbstractMethodError class.
+	* gnu/testlet/java/lang/AssertionError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isSynthetic.java:
+	Added new tests for java.lang.AssertionError class.
+
 2012-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Package/classInfo/InstanceOf.java:
