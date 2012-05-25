@@ -1,3 +1,36 @@
+2012-05-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getName.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isSynthetic.java:
+	Added new tests for java.lang.ClassCircularityError class.
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/getName.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassFormatError/classInfo/isSynthetic.java:
+	Added new tests for java.lang.ClassFormatError class.
+
 2012-05-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/classInfo/InstanceOf.java:
