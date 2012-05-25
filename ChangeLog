@@ -1,5 +1,19 @@
 2012-05-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* gnu/testlet/java/lang/Boolean/compareToBoolean.java:
+	* gnu/testlet/java/lang/Boolean/compareToObject.java:
+	* gnu/testlet/java/lang/Boolean/parseBoolean.java:
+	* gnu/testlet/java/lang/Boolean/toString.java:
+	* gnu/testlet/java/lang/Boolean/valueOfBoolean.java:
+	* gnu/testlet/java/lang/Boolean/valueOfString.java:
+	* gnu/testlet/java/lang/Byte/toString.java:
+	* gnu/testlet/java/lang/Integer/toString.java:
+	* gnu/testlet/java/lang/Long/toString.java:
+	* gnu/testlet/java/lang/Short/toString.java:
+	Added new tests for wrapper classes.
+
+2012-05-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* gnu/testlet/java/lang/ClassCircularityError/classInfo/InstanceOf.java:
 	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getInterfaces.java:
 	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getModifiers.java:
