@@ -1,3 +1,13 @@
+2012-05-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AbstractMethodError/constructor.java:
+	* gnu/testlet/java/lang/AssertionError/constructor.java:
+	* gnu/testlet/java/lang/ClassCircularityError/constructor.java:
+	* gnu/testlet/java/lang/ClassFormatError/constructor.java:
+	* gnu/testlet/java/lang/Error/constructor.java:
+	* gnu/testlet/java/lang/InstantiationError/constructor.java:
+	Added new constructor tests for these classes.
+
 2012-05-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Boolean/compareToBoolean.java:
