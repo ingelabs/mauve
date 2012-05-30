@@ -1,3 +1,51 @@
+2012-05-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Error/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Error/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Error/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Error/classInfo/getName.java:
+	* gnu/testlet/java/lang/Error/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Error/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Error/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Error/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Error/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Error/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Error/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Error/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Error/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Error/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/getName.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ExceptionInInitializerError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/getName.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/IllegalAccessError/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.
+
 2012-05-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/constructor.java:
@@ -152,7 +200,7 @@
 	* gnu/testlet/java/lang/StringBuilder/classInfo/isSynthetic.java:
 	Added new tests for check runtime behaviour of a "Class"
 	class retrieved using Object.getClass(). Added test of
-	instanceof operator runtime behaviour.:
+	instanceof operator runtime behaviour.
 
 2012-05-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -211,7 +259,7 @@
 	* gnu/testlet/java/lang/Short/classInfo/isSynthetic.java:
 	Added new tests for check runtime behaviour of a "Class"
 	class retrieved using Object.getClass(). Added test of
-	instanceof operator runtime behaviour.:
+	instanceof operator runtime behaviour.
 
 2012-05-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -245,7 +293,7 @@
 	* gnu/testlet/java/lang/Integer/classInfo/isSynthetic.java:
 	Added new tests for check runtime behaviour of a "Class"
 	class retrieved using Object.getClass(). Added test of
-	instanceof operator runtime behaviour.:
+	instanceof operator runtime behaviour.
 
 2012-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
