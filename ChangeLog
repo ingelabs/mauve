@@ -1,3 +1,51 @@
+2012-05-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/getName.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/getName.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/getName.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/StackOverflowError/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.
+
 2012-05-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Error/classInfo/InstanceOf.java:
