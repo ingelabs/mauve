@@ -1,3 +1,10 @@
+2012-06-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/StrictMath/cosh_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/sinh_strictfp.java:
+	* gnu/testlet/java/lang/StrictMath/tanh_strictfp.java:
+	Added 3 new tests used for checking methods included in StrictMath class.
+
 2012-05-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/NoSuchMethodError/classInfo/InstanceOf.java:

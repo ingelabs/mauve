@@ -1,6 +1,7 @@
 // Tags: JDK1.3
 
 //  Copyright (C) 2011 Pavel Tisnovsky <ptisnovs@redhat.com>
+//  update for strictfp class Pavel Tisnovsky <ptisnovs@redhat.com>
 
 //  This file is part of Mauve.
 
