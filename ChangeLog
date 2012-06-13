@@ -1,3 +1,51 @@
+2012-06-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getName.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.
+
 2012-06-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/StrictMath/cosh_strictfp.java:
