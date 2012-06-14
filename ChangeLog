@@ -1,3 +1,51 @@
+2012-06-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/getName.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getName.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isSynthetic.java:
+	Added new tests for check runtime behaviour of a "Class"
+	class retrieved using Object.getClass(). Added test of
+	instanceof operator runtime behaviour.
+
 2012-06-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/UnsatisfiedLinkError/classInfo/InstanceOf.java:
