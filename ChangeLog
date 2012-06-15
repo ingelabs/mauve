@@ -1,3 +1,21 @@
+2012-06-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ExceptionInInitializerError/constructor.java:
+	* gnu/testlet/java/lang/IllegalAccessError/constructor.java:
+	* gnu/testlet/java/lang/IncompatibleClassChangeError/constructor.java:
+	* gnu/testlet/java/lang/InternalError/constructor.java:
+	* gnu/testlet/java/lang/LinkageError/constructor.java:
+	* gnu/testlet/java/lang/NoClassDefFoundError/constructor.java:
+	* gnu/testlet/java/lang/NoSuchFieldError/constructor.java:
+	* gnu/testlet/java/lang/NoSuchMethodError/constructor.java:
+	* gnu/testlet/java/lang/OutOfMemoryError/constructor.java:
+	* gnu/testlet/java/lang/StackOverflowError/constructor.java:
+	* gnu/testlet/java/lang/UnknownError/constructor.java:
+	* gnu/testlet/java/lang/UnsatisfiedLinkError/constructor.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/constructor.java:
+	* gnu/testlet/java/lang/VerifyError/constructor.java:
+	Added new constructor tests for these basic classes.
+
 2012-06-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/NoSuchFieldError/classInfo/InstanceOf.java:
