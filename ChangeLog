@@ -1,3 +1,55 @@
+2012-06-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArithmeticException/TryCatch.java:
+	* gnu/testlet/java/lang/ArithmeticException/constructor.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/TryCatch.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/constructor.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/ArrayStoreException/TryCatch.java:
+	* gnu/testlet/java/lang/ArrayStoreException/constructor.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isSynthetic.java:
+	Added new tests for classes from a package java.lang.
+
 2012-06-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ExceptionInInitializerError/constructor.java:
