@@ -1,3 +1,73 @@
+2012-06-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassNotFoundException/TryCatch.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/constructor.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/getCause.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/getException.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassNotFoundException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/TryCatch.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/constructor.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getName.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/TryCatch.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/constructor.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/getName.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/Exception/TryCatch.java:
+	* gnu/testlet/java/lang/Exception/constructor.java:
+	* gnu/testlet/java/lang/Exception/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Exception/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Exception/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Exception/classInfo/getName.java:
+	* gnu/testlet/java/lang/Exception/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Exception/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Exception/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Exception/classInfo/isSynthetic.java:
+	Added new tests for classes from a package java.lang.
+
 2012-06-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArithmeticException/TryCatch.java:
