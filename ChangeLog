@@ -1,3 +1,70 @@
+2012-06-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/SecurityException/TryCatch.java:
+	* gnu/testlet/java/lang/SecurityException/constructor.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/getName.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/SecurityException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/TryCatch.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/constructor.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/TryCatch.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getName.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/TryCatch.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/constructor.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isSynthetic.java:
+	Added new tests for classes from a package java.lang.
+
 2012-06-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassNotFoundException/TryCatch.java:
