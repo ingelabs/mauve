@@ -1,3 +1,71 @@
+2012-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/TryCatch.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/constructor.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/IndexOutOfBoundsException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/InstantiationException/TryCatch.java:
+	* gnu/testlet/java/lang/InstantiationException/constructor.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/getName.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/InstantiationException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/InterruptedException/TryCatch.java:
+	* gnu/testlet/java/lang/InterruptedException/constructor.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/getName.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/InterruptedException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/RuntimeException/TryCatch.java:
+	* gnu/testlet/java/lang/RuntimeException/constructor.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getName.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isSynthetic.java:
+	Added new tests for classes from a package java.lang.
+
 2012-07-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCastException/TryCatch.java:
