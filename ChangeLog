@@ -1,3 +1,87 @@
+2012-07-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/NegativeArraySizeException/TryCatch.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/constructor.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/getName.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NegativeArraySizeException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/TryCatch.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/constructor.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/getName.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NoSuchFieldException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/TryCatch.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/constructor.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/getName.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NoSuchMethodException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/NullPointerException/TryCatch.java:
+	* gnu/testlet/java/lang/NullPointerException/constructor.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/getName.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NullPointerException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/NumberFormatException/TryCatch.java:
+	* gnu/testlet/java/lang/NumberFormatException/constructor.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/getName.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/NumberFormatException/classInfo/isSynthetic.java:
+	Added new tests for classes from a package java.lang.
+
 2012-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/IndexOutOfBoundsException/TryCatch.java:
