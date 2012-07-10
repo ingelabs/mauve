@@ -1,3 +1,21 @@
+2012-07-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Class/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Class/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Class/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Class/classInfo/getName.java:
+	* gnu/testlet/java/lang/Class/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Class/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Class/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Class/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Class/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Class/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Class/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Class/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Class/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Class/classInfo/isSynthetic.java:
+	Added new tests for classes from a package java.lang.
+
 2012-07-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/NegativeArraySizeException/TryCatch.java:
