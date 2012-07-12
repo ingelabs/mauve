@@ -1,3 +1,25 @@
+2012-07-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/TryCatch.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/constructor.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/getFlags.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/getMessage.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/getName.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/DuplicateFormatFlagsException/classInfo/isSynthetic.java:
+	Added new tests for a class java.util.DuplicateFormatFlagsException.
+
 2012-07-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/ConcurrentModificationException/TryCatch.java:
