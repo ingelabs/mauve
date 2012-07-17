@@ -1,3 +1,40 @@
+2012-07-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/EmptyStackException/TryCatch.java:
+	* gnu/testlet/java/util/EmptyStackException/constructor.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/getName.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/EmptyStackException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/TryCatch.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/constructor.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/getName.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/classInfo/isSynthetic.java:
+	Added new tests for classes java.util.EmptyStackException and
+	java.util.FormatFlagsConversionMismatchException.
+
 2012-07-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/DuplicateFormatFlagsException/TryCatch.java:
