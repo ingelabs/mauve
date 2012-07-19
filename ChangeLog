@@ -1,3 +1,40 @@
+2012-07-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatCodePointException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isSynthetic.java:
+	Added new tests for classes java.util.IllegalFormatCodePointException and
+	java.util.IllegalFormatCodePointException.
+
 2012-07-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/EmptyStackException/TryCatch.java:
