@@ -1,3 +1,32 @@
+2012-07-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/getConversion.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/getFlags.java:
+	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/getMessage.java:
+	* gnu/testlet/java/util/FormatterClosedException/TryCatch.java:
+	* gnu/testlet/java/util/FormatterClosedException/constructor.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/getName.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/FormatterClosedException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/getCodePoint.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/getMessage.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/TryCatchNPE.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/getArgumentClass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/getConversion.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/getMessage.java:
+	Added new tests for classes from java.util package.
+
 2012-07-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatCodePointException/TryCatch.java:
