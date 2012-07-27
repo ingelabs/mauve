@@ -1,3 +1,27 @@
+2012-07-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatException/classInfo/InstanceOf.java:
+	Added new test for a class java.util.IllegalFormatException.
+	* gnu/testlet/java/util/IllegalFormatFlagsException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/getFlags.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/getMessage.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isSynthetic.java:
+	Added new tests for a class java.util.IllegalFormatFlagsException.
+
 2012-07-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/FormatFlagsConversionMismatchException/getConversion.java:
