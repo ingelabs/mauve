@@ -1,3 +1,23 @@
+2012-08-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/CharConversionException/TryCatch.java
+	* gnu/testlet/java/io/CharConversionException/constructor.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/InstanceOf.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/getInterfaces.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/getModifiers.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/getName.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/getPackage.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/getSimpleName.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/getSuperclass.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isAssignableFrom.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isInstance.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isInterface.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isLocalClass.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isMemberClass.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isPrimitive.java
+	* gnu/testlet/java/io/CharConversionException/classInfo/isSynthetic.java
+	Added 16 new tests for a class java.io.CharConversionException.
+
 2012-07-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatException/classInfo/InstanceOf.java:
