@@ -1,21 +1,45 @@
+2012-08-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredMethods.java:
+	Added six new tests for a class AbstractMethodError.
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isSynthetic.java:
+	Fixed typo in comments.
+
 2012-08-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
-	* gnu/testlet/java/io/CharConversionException/TryCatch.java
-	* gnu/testlet/java/io/CharConversionException/constructor.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/InstanceOf.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/getInterfaces.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/getModifiers.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/getName.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/getPackage.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/getSimpleName.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/getSuperclass.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isAssignableFrom.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isInstance.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isInterface.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isLocalClass.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isMemberClass.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isPrimitive.java
-	* gnu/testlet/java/io/CharConversionException/classInfo/isSynthetic.java
+	* gnu/testlet/java/io/CharConversionException/TryCatch.java:
+	* gnu/testlet/java/io/CharConversionException/constructor.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/getName.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/CharConversionException/classInfo/isSynthetic.java:
 	Added 16 new tests for a class java.io.CharConversionException.
 
 2012-07-27  Pavel Tisnovsky  <ptisnovs@redhat.com>

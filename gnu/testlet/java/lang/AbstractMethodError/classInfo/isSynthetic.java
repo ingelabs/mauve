@@ -41,7 +41,7 @@ public class isSynthetic implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
+        // create instance of a class AbstractMethodError
         Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"

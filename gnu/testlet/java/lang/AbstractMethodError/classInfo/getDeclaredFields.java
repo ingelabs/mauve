@@ -1,4 +1,4 @@
-// Test for method java.lang.AbstractMethodError.getClass().getPackage()
+// Test for method java.lang.AbstractMethodError.getClass().getDeclaredFields()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -25,13 +25,14 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.AbstractMethodError;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.AbstractMethodError.getClass().getPackage()
+ * Test for method java.lang.AbstractMethodError.getClass().getDeclaredFields()
  */
-public class getPackage implements Testlet
+public class getDeclaredFields implements Testlet
 {
 
     /**
@@ -41,14 +42,22 @@ public class getPackage implements Testlet
      */
     public void test(TestHarness harness)
     {
+        String[] fieldNames = new String[] {
+        };
+        java.util.Arrays.sort(fieldNames);
+
+        String[] fieldStrings = new String[] {
+        };
+        java.util.Arrays.sort(fieldStrings);
+
         // create instance of a class AbstractMethodError
         Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        Package p = c.getPackage();
-        harness.check(p.getName(), "java.lang");
+        java.lang.reflect.Field[] fields = c.getDeclaredFields();
+        harness.check(fields.length, 0);
     }
 }
 
