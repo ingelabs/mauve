@@ -1,4 +1,4 @@
-// Test for method java.lang.ArithmeticException.getClass().getInterfaces()
+// Test for method java.lang.ArithmeticException.getClass().getDeclaredMethods()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -25,15 +25,14 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ArithmeticException;
-import java.util.List;
-import java.util.Arrays;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.ArithmeticException.getClass().getInterfaces()
+ * Test for method java.lang.ArithmeticException.getClass().getDeclaredMethods()
  */
-public class getInterfaces implements Testlet
+public class getDeclaredMethods implements Testlet
 {
 
     /**
@@ -43,13 +42,22 @@ public class getInterfaces implements Testlet
      */
     public void test(TestHarness harness)
     {
+        String[] methodNames = new String[] {
+        };
+        java.util.Arrays.sort(methodNames);
+
+        String[] methodStrings = new String[] {
+        };
+        java.util.Arrays.sort(methodStrings);
+
         // create instance of a class ArithmeticException
         Object o = new ArithmeticException("ArithmeticException");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        List interfaces = Arrays.asList(c.getInterfaces());
+        java.lang.reflect.Method[] methods = c.getDeclaredMethods();
+        harness.check(methods.length, 0);
     }
 }
 
