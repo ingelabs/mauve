@@ -41,7 +41,7 @@ public class getPackage implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
+        // create instance of a class ArrayIndexOutOfBoundsException
         Object o = new ArrayIndexOutOfBoundsException("ArrayIndexOutOfBoundsException");
 
         // get a runtime class of an object "o"

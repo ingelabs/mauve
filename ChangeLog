@@ -1,3 +1,27 @@
+2012-08-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getMethods.java:
+	Added six new tests for a class ArrayIndexOutOfBoundsException.
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isSynthetic.java:
+	Fixed typo in comments.
+
 2012-08-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getConstructors.java:
@@ -6,7 +30,7 @@
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getDeclaredMethods.java:
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getFields.java:
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getMethods.java:
-	Added six new tests for a class AbstractMethodError.
+	Added six new tests for a class ArithmeticException.
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getInterfaces.java:
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getModifiers.java:
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getName.java:
