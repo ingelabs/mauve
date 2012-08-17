@@ -1,4 +1,4 @@
-// Test for method java.lang.ArrayStoreException.getClass().isInstance(Object)
+// Test for method java.lang.ArrayStoreException.getClass().getFields()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -25,13 +25,14 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ArrayStoreException;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.ArrayStoreException.getClass().isInstance()
+ * Test for method java.lang.ArrayStoreException.getClass().getFields()
  */
-public class isInstance implements Testlet
+public class getFields implements Testlet
 {
 
     /**
@@ -41,13 +42,22 @@ public class isInstance implements Testlet
      */
     public void test(TestHarness harness)
     {
+        String[] fieldNames = new String[] {
+        };
+        java.util.Arrays.sort(fieldNames);
+
+        String[] fieldStrings = new String[] {
+        };
+        java.util.Arrays.sort(fieldStrings);
+
         // create instance of a class ArrayStoreException
         Object o = new ArrayStoreException("ArrayStoreException");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        harness.check(c.isInstance(new ArrayStoreException("ArrayStoreException")));
+        java.lang.reflect.Field[] fields = c.getFields();
+        harness.check(fields.length, 0);
     }
 }
 

@@ -1,3 +1,27 @@
+2012-08-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getMethods.java:
+	Added six new tests for a class ArrayStoreExceptionException.
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArrayStoreExceptionException/classInfo/isSynthetic.java:
+	Fixed typo in comments.
+
 2012-08-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getConstructors.java:
