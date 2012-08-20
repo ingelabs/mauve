@@ -43,6 +43,8 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
@@ -1050,6 +1052,61 @@ public class Harness
   }
 
   /**
+   * Parse and process compile options tag which can be specified
+   * in the test source file.
+   *
+   * @param sourcefile path of the source file
+   * @return compile options for given source file or null
+   *         if none option is specified
+   */
+  private static String parseCompileOptions(String sourcefile)
+  {
+    String compileOptions = null;
+    File f = new File(sourcefile);
+
+    String base = f.getAbsolutePath();
+    base = base.substring(0, base.lastIndexOf(File.separatorChar));
+
+    BufferedReader r = null;
+    try
+      {
+        r = new BufferedReader(new FileReader(f));
+        String line = null;
+        while ( (line = r.readLine()) != null)
+          {
+            if (line.contains("//"))
+              {
+                if (line.contains("CompileOptions:"))
+                  {
+                    compileOptions = line.substring(line.indexOf("CompileOptions:") + "CompileOptions:".length()) + " "; 
+                  }
+              }
+          }
+      }
+    catch (IOException ioe)
+      {
+        // This shouldn't happen.
+        ioe.printStackTrace();
+        return null;
+      }
+    finally
+      {
+        try
+          {
+            r.close();
+          }
+        catch (IOException ioe)
+          {
+            // This shouldn't happen.
+            ioe.printStackTrace();
+            return null;
+          }
+      }
+
+    return compileOptions;
+  }
+
+  /**
    * Processes the // Uses: tag in a testlet's source.
    *
    * @param line string of the current source line
@@ -1238,7 +1295,7 @@ public class Harness
           return -1;
 
         // If compilation of the test fails, don't try to run it.
-        if (!compileFiles(filesToCompile))
+        if (!compileFiles(filesToCompile, null))
           return -1;
       }
        
@@ -1262,6 +1319,9 @@ public class Harness
     LinkedHashSet<String> filesToCompile = new LinkedHashSet<String>();
     LinkedHashSet<String> filesToCopy = new LinkedHashSet<String>();
     LinkedHashSet<String> testsToRun = new LinkedHashSet<String>();
+    // map containing compile options for given test, but only if
+    // explicit compile options are defined in the test source
+    Map<String, String> compileOptions = new HashMap<String, String>();
     String fullPath = null;
     boolean compilepassed = true;
     
@@ -1284,8 +1344,16 @@ public class Harness
             !excludeTests.contains(testName.
                                    substring(0, testName.length() - 5)))
           {            
-            if (testNeedsToBeCompiled(testName))
+            if (testNeedsToBeCompiled(testName)) {
+              // test needs to be compiled
               filesToCompile.add(fullPath);
+              // we have to know its compile options (if there are any)
+              String options = parseCompileOptions(fullPath);
+              if (options != null)
+              {
+                compileOptions.put(fullPath, options);
+              }
+            }
             testsToRun.add(fullPath);
 
             // Process all tags in the source file.
@@ -1316,7 +1384,7 @@ public class Harness
     // Now compile all those tests in a batch compilation, unless the
     // -nocompile option was used.
     if (compileTests)
-      compilepassed = compileFiles(filesToCompile);
+      compilepassed = compileFiles(filesToCompile, compileOptions);
 
     // And now run those tests.
     runFolder(testsToRun, compilepassed);
@@ -1376,20 +1444,46 @@ public class Harness
    * Compile the given files.
    *
    * @param filesToCompile LinkedHashSet of the files to compile
+   * @param testCompileOptions map containing compile options from given test(s), may be null
    * @return true if compilation was successful
    */
-  private static boolean compileFiles(LinkedHashSet<String> filesToCompile)
+  private static boolean compileFiles(LinkedHashSet<String> filesToCompile, Map<String, String> testCompileOptions)
   {
     if (filesToCompile.size() == 0)
       return true;
 
     int result = - 1;
+    // tests without specific compile options can be compiled as a whole group
+    boolean doGroupCompile = false;
+
     compileString = compileStringBase + compileOptions;
     for (Iterator<String> it = filesToCompile.iterator(); it.hasNext(); )
-      compileString += " " + it.next();
+    {
+      String testName = it.next();
+      // only test without specific compile options can be added to a "compile group"
+      if (testCompileOptions == null || !testCompileOptions.containsKey(testName))
+      {
+        compileString += " " + testName;
+        doGroupCompile = true;
+      }
+    }
     try
       {
-        result = compile();
+        if (doGroupCompile)
+        {
+          result = compile();
+        }
+        // try to compile other tests - in this case test by test
+        if (testCompileOptions != null)
+        {
+          for (Map.Entry<String, String> test : testCompileOptions.entrySet())
+          {
+            String oldCompileString = compileStringBase + compileOptions;
+            compileString = compileStringBase + test.getValue() + " " + test.getKey();
+            result = result == -1 ? -1 : compile();
+            compileString = oldCompileString;
+          }
+        }
       }
     catch (Exception e)
       {

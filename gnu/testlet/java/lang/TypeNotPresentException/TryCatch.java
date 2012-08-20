@@ -44,7 +44,7 @@ public class TryCatch implements Testlet
         // flag that is set when exception is caught
         boolean caught = false;
         try {
-            throw new TypeNotPresentException("TypeNotPresentException");
+            throw new TypeNotPresentException("TypeNotPresentException", new Throwable());
         }
         catch (TypeNotPresentException e) {
             // correct exception was caught

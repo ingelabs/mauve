@@ -46,7 +46,7 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class TypeNotPresentException
-        TypeNotPresentException o = new TypeNotPresentException("TypeNotPresentException");
+        TypeNotPresentException o = new TypeNotPresentException("TypeNotPresentException", new Throwable());
 
         // basic check of instanceof operator
         harness.check(o instanceof TypeNotPresentException);
