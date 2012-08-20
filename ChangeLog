@@ -1,5 +1,11 @@
 2012-08-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getMethods.java:
+	Make these tests compatible with JDK 1.7.
+
+2012-08-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* Harness.java: fix - tests with specific command line options are
 	now compiled separately, not in one group with other tests.
 	* gnu/testlet/java/lang/TypeNotPresentException/TryCatch.java:
