@@ -1,3 +1,14 @@
+2012-08-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Double/compareToObject.java:
+	Test of Double method compareTo(Object).
+	* gnu/testlet/java/lang/Double/doubleToLongBits.java:
+	Test of Double method doubleToLongBits(double).
+	* gnu/testlet/java/lang/Double/doubleToRawLongBits.java:
+	Test of Double method doubleToRawLongBits(double).
+	* gnu/testlet/java/lang/Double/valueOfDouble.java:
+	Test of Double method valueOf(double).
+
 2012-08-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredFields.java:
