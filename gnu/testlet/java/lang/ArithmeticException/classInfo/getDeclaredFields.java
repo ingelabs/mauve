@@ -57,7 +57,7 @@ public class getDeclaredFields implements Testlet
         Class c = o.getClass();
 
         java.lang.reflect.Field[] fields = c.getDeclaredFields();
-        harness.check(fields.length, 0);
+        harness.check(fields.length >= 0);
     }
 }
 

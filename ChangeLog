@@ -1,3 +1,9 @@
+2012-08-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getMethods.java:
+	Make these two tests compatible with JDK 1.7.
+
 2012-08-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Double/compareToObject.java:
