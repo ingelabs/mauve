@@ -1,3 +1,9 @@
+2012-08-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Math/cos.java:
+	* gnu/testlet/java/lang/Math/sin.java:
+	Added more test cases into these tests.
+
 2012-08-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/getDeclaredFields.java:
