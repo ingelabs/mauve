@@ -1,3 +1,16 @@
+2012-08-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Math/acos.java:
+	* gnu/testlet/java/lang/Math/asin.java:
+	* gnu/testlet/java/lang/Math/atan.java:
+	* gnu/testlet/java/lang/Math/cbrt.java:
+	* gnu/testlet/java/lang/Math/cosh.java:
+	* gnu/testlet/java/lang/Math/expm1.java:
+	* gnu/testlet/java/lang/Math/sinh.java:
+	* gnu/testlet/java/lang/Math/tan.java:
+	* gnu/testlet/java/lang/Math/tanh.java:
+	Added more tests for the package java.lang.Math.
+
 2012-08-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Math/cos.java:
