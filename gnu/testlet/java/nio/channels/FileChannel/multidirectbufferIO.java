@@ -1,5 +1,6 @@
 /* mulitdirectbufferIO.java -- Scatter/Gather IO using direct buffers
  Copyright (C) 2006 Michael Barker
+ Updated for OpenJDK7 Pavel Tisnovsky
  This file is part of Mauve.
 
  Mauve is free software; you can redistribute it and/or modify
@@ -76,7 +77,8 @@ public class multidirectbufferIO
         long numWritten = fcOut.write(out);
         fcOut.close();
         /* The SUN JDK limits the number of buffers to 16 */
-        harness.check(numWritten, (MAX_BUFFERS * data.length));
+        /* This has been fixed in OpenJDK 7u8 */
+        harness.check(numWritten, conformToJDK17_u8() ? (BUF_LEN * data.length) : (MAX_BUFFERS * data.length));
         for (int i = 0; i < MAX_BUFFERS; i++)
           {
             harness.check(out[i].position() == out[i].limit(), "Position - Limit mismatch");
@@ -85,7 +87,8 @@ public class multidirectbufferIO
         FileChannel fcIn = new FileInputStream(f).getChannel();
         long numRead = fcIn.read(in);
         /* The SUN JDK limits the number of buffers to 16 */
-        harness.check(numRead, (16 * data.length));
+        /* This has been fixed in OpenJDK 7u8 */
+        harness.check(numRead, conformToJDK17_u8() ? (BUF_LEN * data.length) : (MAX_BUFFERS * data.length));
 
         for (int i = 0; i < MAX_BUFFERS; i++)
           {
@@ -104,6 +107,30 @@ public class multidirectbufferIO
       {
         harness.fail("Unexpected exception: " + e);
       }
+  }
+
+  /**
+    * Returns true if tested JRE conformns to JDK 1.7 update 8 or higher.
+    * @author: Pavel Tisnovsky
+    */
+  private static boolean conformToJDK17_u8()
+  {
+    String[] javaVersion = System.getProperty("java.version").split("\\.");
+    String vendorID = System.getProperty("java.vendor");
+    // test of OpenJDK
+    if ("Sun Microsystems Inc.".equals(vendorID) || "Oracle Corporation".equals(vendorID) )
+    {
+      int version = Integer.parseInt(javaVersion[1]);
+      if (version > 7) {
+        return true;
+      }
+      if (version == 7) {
+        String[] splitstr = javaVersion[2].split("_");
+        int update = Integer.parseInt(splitstr[1]);
+        return update >= 8;
+      }
+    }
+    return false;
   }
 
 }

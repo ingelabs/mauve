@@ -1,5 +1,10 @@
 2012-08-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* gnu/testlet/java/nio/channels/FileChannel/multidirectbufferIO.java:
+	Update this test to reflect changes in OpenJDK 7u8.
+
+2012-08-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* gnu/testlet/java/lang/Math/strictfp_modifier/acos.java:
 	* gnu/testlet/java/lang/Math/strictfp_modifier/asin.java:
 	* gnu/testlet/java/lang/Math/strictfp_modifier/atan.java:
