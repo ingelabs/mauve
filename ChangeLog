@@ -1,3 +1,19 @@
+2012-08-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Math/strictfp_modifier/acos.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/asin.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/atan.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/cbrt.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/cos.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/cosh.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/expm1.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/sin.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/sinh.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/tan.java:
+	* gnu/testlet/java/lang/Math/strictfp_modifier/tanh.java:
+	Added more tests for the package java.lang.Math. These tests
+	use strictfp class modifier.
+
 2012-08-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Math/acos.java:
