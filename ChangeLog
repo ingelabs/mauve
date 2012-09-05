@@ -1,3 +1,23 @@
+2012-09-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/EOFException/TryCatch.java:
+	* gnu/testlet/java/io/EOFException/constructor.java:
+	* gnu/testlet/java/io/EOFException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/EOFException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/EOFException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/EOFException/classInfo/getName.java:
+	* gnu/testlet/java/io/EOFException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/EOFException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/EOFException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/EOFException/classInfo/isSynthetic.java:
+	Added new tests for the class java.io.EOFException.
+
 2012-08-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/nio/channels/FileChannel/multidirectbufferIO.java:
