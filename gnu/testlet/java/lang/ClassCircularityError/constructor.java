@@ -1,4 +1,4 @@
-// Test if constructor is working properly for a class java.lang.ClassCircularityError
+// Test if instances of a class java.lang.ClassCircularityError could be properly constructed
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -29,7 +29,8 @@ import java.lang.ClassCircularityError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.ClassCircularityError
+ * Test if instances of a class java.lang.ClassCircularityError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -41,17 +42,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        ClassCircularityError error1 = new ClassCircularityError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.ClassCircularityError");
+        ClassCircularityError object1 = new ClassCircularityError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.ClassCircularityError");
 
-        ClassCircularityError error2 = new ClassCircularityError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.ClassCircularityError: nothing happens");
+        ClassCircularityError object2 = new ClassCircularityError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.ClassCircularityError: nothing happens");
 
-        ClassCircularityError error3 = new ClassCircularityError(null);
-        harness.check(error3 != null);
-        harness.check(error3.toString(), "java.lang.ClassCircularityError");
+        ClassCircularityError object3 = new ClassCircularityError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.ClassCircularityError");
+
     }
 }
 

@@ -1,4 +1,4 @@
-// Test for method java.lang.ClassCastException.getClass().isInstance(Object)
+// Test for method java.lang.ClassCircularityError.getClass().getDeclaredMethods()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -19,19 +19,20 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
-package gnu.testlet.java.lang.ClassCastException.classInfo;
+package gnu.testlet.java.lang.ClassCircularityError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.lang.ClassCastException;
+import java.lang.ClassCircularityError;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.ClassCastException.getClass().isInstance()
+ * Test for method java.lang.ClassCircularityError.getClass().getDeclaredMethods()
  */
-public class isInstance implements Testlet
+public class getDeclaredMethods implements Testlet
 {
 
     /**
@@ -41,13 +42,22 @@ public class isInstance implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class ClassCastException
-        Object o = new ClassCastException("ClassCastException");
+        String[] methodNames = new String[] {
+        };
+        java.util.Arrays.sort(methodNames);
+
+        String[] methodStrings = new String[] {
+        };
+        java.util.Arrays.sort(methodStrings);
+
+        // create instance of a class ClassCircularityError
+        Object o = new ClassCircularityError("ClassCircularityError");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        harness.check(c.isInstance(new ClassCastException("ClassCastException")));
+        java.lang.reflect.Method[] methods = c.getDeclaredMethods();
+        harness.check(methods.length, 0);
     }
 }
 

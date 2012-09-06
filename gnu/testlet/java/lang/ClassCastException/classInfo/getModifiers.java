@@ -42,7 +42,7 @@ public class getModifiers implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
+        // create instance of a class ClassCastException
         Object o = new ClassCastException("ClassCastException");
 
         // get a runtime class of an object "o"

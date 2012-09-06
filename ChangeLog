@@ -1,3 +1,49 @@
+2012-09-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredMethods.java:
+	New tests for a class java.lang.ClassCastException.
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getDeclaredMethods.java:
+	New tests for a class java.lang.CircularityError.
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isSynthetic.java:
+	Fixed comments.
+	* gnu/testlet/java/lang/ClassCircularityError/constructor.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getName.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isSynthetic.java:
+	Fixed comments.
+
 2012-09-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/EOFException/TryCatch.java:
