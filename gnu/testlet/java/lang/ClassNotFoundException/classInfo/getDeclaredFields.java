@@ -1,4 +1,4 @@
-// Test for method java.lang.ClassNotFoundException.getClass().isInterface(Object)
+// Test for method java.lang.ClassNotFoundException.getClass().getDeclaredFields()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -25,13 +25,14 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ClassNotFoundException;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.ClassNotFoundException.getClass().isInterface()
+ * Test for method java.lang.ClassNotFoundException.getClass().getDeclaredFields()
  */
-public class isInterface implements Testlet
+public class getDeclaredFields implements Testlet
 {
 
     /**
@@ -41,13 +42,40 @@ public class isInterface implements Testlet
      */
     public void test(TestHarness harness)
     {
+        String[] fieldNames = new String[] {
+            "serialVersionUID",
+            "ex",
+        };
+        java.util.Arrays.sort(fieldNames);
+
+        String[] fieldStrings = new String[] {
+            "private static final long java.lang.ClassNotFoundException.serialVersionUID",
+            "private java.lang.Throwable java.lang.ClassNotFoundException.ex",
+        };
+        java.util.Arrays.sort(fieldStrings);
+
         // create instance of a class ClassNotFoundException
         Object o = new ClassNotFoundException("ClassNotFoundException");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        harness.check(!c.isInterface());
+        java.lang.reflect.Field[] fields = c.getDeclaredFields();
+        harness.check(fields.length, 2);
+
+        String fieldName;
+        String fieldString;
+
+        fieldName = fields[0].getName();
+        fieldString = fields[0].toString();
+        harness.check(java.util.Arrays.binarySearch(fieldNames, fieldName) >= 0);
+        harness.check(java.util.Arrays.binarySearch(fieldStrings, fieldString) >= 0);
+
+        fieldName = fields[1].getName();
+        fieldString = fields[1].toString();
+        harness.check(java.util.Arrays.binarySearch(fieldNames, fieldName) >= 0);
+        harness.check(java.util.Arrays.binarySearch(fieldStrings, fieldString) >= 0);
+
     }
 }
 

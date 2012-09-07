@@ -1,4 +1,4 @@
-// Test for method java.lang.ClassNotFoundException.getClass().isInterface(Object)
+// Test for method java.lang.ClassNotFoundException.getClass().getDeclaredMethods()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -25,13 +25,14 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ClassNotFoundException;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.ClassNotFoundException.getClass().isInterface()
+ * Test for method java.lang.ClassNotFoundException.getClass().getDeclaredMethods()
  */
-public class isInterface implements Testlet
+public class getDeclaredMethods implements Testlet
 {
 
     /**
@@ -41,13 +42,40 @@ public class isInterface implements Testlet
      */
     public void test(TestHarness harness)
     {
+        String[] methodNames = new String[] {
+            "getCause",
+            "getException",
+        };
+        java.util.Arrays.sort(methodNames);
+
+        String[] methodStrings = new String[] {
+            "public java.lang.Throwable java.lang.ClassNotFoundException.getCause()",
+            "public java.lang.Throwable java.lang.ClassNotFoundException.getException()",
+        };
+        java.util.Arrays.sort(methodStrings);
+
         // create instance of a class ClassNotFoundException
         Object o = new ClassNotFoundException("ClassNotFoundException");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        harness.check(!c.isInterface());
+        java.lang.reflect.Method[] methods = c.getDeclaredMethods();
+        harness.check(methods.length, 2);
+
+        String methodName;
+        String methodString;
+
+        methodName = methods[0].getName();
+        methodString = methods[0].toString();
+        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
+        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
+
+        methodName = methods[1].getName();
+        methodString = methods[1].toString();
+        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
+        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
+
     }
 }
 

@@ -1,4 +1,4 @@
-// Test for method java.lang.ClassNotFoundException.getClass().isInterface(Object)
+// Test for method java.lang.ClassFormatError.getClass().getDeclaredMethods()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -19,19 +19,20 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
-package gnu.testlet.java.lang.ClassNotFoundException.classInfo;
+package gnu.testlet.java.lang.ClassFormatError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.lang.ClassNotFoundException;
+import java.lang.ClassFormatError;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.ClassNotFoundException.getClass().isInterface()
+ * Test for method java.lang.ClassFormatError.getClass().getDeclaredMethods()
  */
-public class isInterface implements Testlet
+public class getDeclaredMethods implements Testlet
 {
 
     /**
@@ -41,13 +42,22 @@ public class isInterface implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class ClassNotFoundException
-        Object o = new ClassNotFoundException("ClassNotFoundException");
+        String[] methodNames = new String[] {
+        };
+        java.util.Arrays.sort(methodNames);
+
+        String[] methodStrings = new String[] {
+        };
+        java.util.Arrays.sort(methodStrings);
+
+        // create instance of a class ClassFormatError
+        Object o = new ClassFormatError("ClassFormatError");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        harness.check(!c.isInterface());
+        java.lang.reflect.Method[] methods = c.getDeclaredMethods();
+        harness.check(methods.length, 0);
     }
 }
 

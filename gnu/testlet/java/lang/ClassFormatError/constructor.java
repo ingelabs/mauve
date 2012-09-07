@@ -1,4 +1,4 @@
-// Test if constructor is working properly for a class java.lang.ClassFormatError
+// Test if instances of a class java.lang.ClassFormatError could be properly constructed
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -29,7 +29,8 @@ import java.lang.ClassFormatError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.ClassFormatError
+ * Test if instances of a class java.lang.ClassFormatError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -41,17 +42,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        ClassFormatError error1 = new ClassFormatError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.ClassFormatError");
+        ClassFormatError object1 = new ClassFormatError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.ClassFormatError");
 
-        ClassFormatError error2 = new ClassFormatError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.ClassFormatError: nothing happens");
+        ClassFormatError object2 = new ClassFormatError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.ClassFormatError: nothing happens");
 
-        ClassFormatError error3 = new ClassFormatError(null);
-        harness.check(error3 != null);
-        harness.check(error3.toString(), "java.lang.ClassFormatError");
+        ClassFormatError object3 = new ClassFormatError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.ClassFormatError");
+
     }
 }
 

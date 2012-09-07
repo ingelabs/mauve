@@ -41,7 +41,7 @@ public class getName implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
+        // create instance of a class ClassNotFoundException
         Object o = new ClassNotFoundException("ClassNotFoundException");
 
         // get a runtime class of an object "o"
