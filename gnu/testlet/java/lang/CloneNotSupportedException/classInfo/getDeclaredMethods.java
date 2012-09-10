@@ -1,4 +1,4 @@
-// Test for method java.lang.CloneNotSupportedException.getClass().getSuperclass()
+// Test for method java.lang.CloneNotSupportedException.getClass().getDeclaredMethods()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -25,13 +25,14 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.CloneNotSupportedException;
+import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.CloneNotSupportedException.getClass().getSuperclass()
+ * Test for method java.lang.CloneNotSupportedException.getClass().getDeclaredMethods()
  */
-public class getSuperclass implements Testlet
+public class getDeclaredMethods implements Testlet
 {
 
     /**
@@ -41,14 +42,22 @@ public class getSuperclass implements Testlet
      */
     public void test(TestHarness harness)
     {
+        String[] methodNames = new String[] {
+        };
+        java.util.Arrays.sort(methodNames);
+
+        String[] methodStrings = new String[] {
+        };
+        java.util.Arrays.sort(methodStrings);
+
         // create instance of a class CloneNotSupportedException
         Object o = new CloneNotSupportedException("CloneNotSupportedException");
 
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        Class superClass = c.getSuperclass();
-        harness.check(superClass.getName(), "java.lang.Exception");
+        java.lang.reflect.Method[] methods = c.getDeclaredMethods();
+        harness.check(methods.length, 0);
     }
 }
 

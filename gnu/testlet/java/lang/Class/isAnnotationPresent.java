@@ -1,4 +1,4 @@
-// Test for method java.lang.CloneNotSupportedException.getClass().getSuperclass()
+// Test for method java.lang.Class.isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -19,19 +19,19 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
-package gnu.testlet.java.lang.CloneNotSupportedException.classInfo;
+package gnu.testlet.java.lang.Class;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.lang.CloneNotSupportedException;
+import java.lang.Class;
 
 
 
 /**
- * Test for method java.lang.CloneNotSupportedException.getClass().getSuperclass()
+ * Test for method java.lang.Class.isAnnotation()
  */
-public class getSuperclass implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -41,14 +41,16 @@ public class getSuperclass implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class CloneNotSupportedException
-        Object o = new CloneNotSupportedException("CloneNotSupportedException");
+        // get a runtime class of an Class
+        Class c1 = Class.class;
+        harness.check(!c1.isAnnotationPresent(java.lang.annotation.Annotation.class));
 
-        // get a runtime class of an object "o"
-        Class c = o.getClass();
-
-        Class superClass = c.getSuperclass();
-        harness.check(superClass.getName(), "java.lang.Exception");
+        // get a runtime class of an Identify
+        Class c2 = java.security.Identity.class;
+        harness.check(!c2.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c2.isAnnotationPresent(java.lang.annotation.Documented.class));
+        // this class is deprecated!
+        harness.check(c2.isAnnotationPresent(java.lang.Deprecated.class));
     }
 }
 

@@ -41,7 +41,7 @@ public class isInstance implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
+        // create instance of a class CloneNotSupportedException
         Object o = new CloneNotSupportedException("CloneNotSupportedException");
 
         // get a runtime class of an object "o"

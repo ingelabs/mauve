@@ -1,3 +1,32 @@
+2012-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Class/isAnnotation.java:
+	* gnu/testlet/java/lang/Class/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Class/isArray.java:
+	* gnu/testlet/java/lang/Class/isPrimitive.java:
+	Added new tests for a basic class Class.
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredMethods.java:
+	New tests for a class java.lang.CloneNotSupportedException.
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getName.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/isSynthetic.java:
+	Fixed comments.
+
 2012-09-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassFormatError/classInfo/getConstructors.java:
