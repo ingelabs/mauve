@@ -1,3 +1,26 @@
+2012-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isSynthetic.java:
+	Updated tests for a class AssertionError.
+
 2012-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Class/isAnnotation.java:
