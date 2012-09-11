@@ -1,3 +1,12 @@
+2012-09-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isEnum.java:
+	Added five new tests for a class java.lang.AbstractMethodError.
+
 2012-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getConstructors.java:
