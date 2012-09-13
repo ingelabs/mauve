@@ -1,3 +1,12 @@
+2012-09-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isEnum.java:
+	Added five new tests for a class java.lang.ArrayIndexOutOfBoundsException.
+
 2012-09-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/isAnnotation.java:
