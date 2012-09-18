@@ -1,3 +1,21 @@
+2012-09-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isEnum.java:
+	Added five new tests for a class java.lang.AssertionError.
+
+2012-09-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isEnum.java:
+	Added five new tests for a class java.lang.ArrayStoreException.
+
 2012-09-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotation.java:
