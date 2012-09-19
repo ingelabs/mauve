@@ -1,3 +1,22 @@
+2012-09-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Boolean/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Boolean/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Double/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Double/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Double/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Double/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Double/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Float/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Float/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Float/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Float/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Float/classInfo/isEnum.java:
+	Added new tests for a classes java.lang.(Boolean|Double|Float).
+
 2012-09-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotation.java:
