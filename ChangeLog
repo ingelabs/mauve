@@ -1,3 +1,27 @@
+2012-09-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Byte/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Byte/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Short/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Short/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Short/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Short/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Short/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Integer/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Long/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Long/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Long/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Long/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Long/classInfo/isEnum.java:
+	Added 20 new tests for a classes java.lang.(Byte|Short|Integer|Long).
+
 2012-09-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Boolean/classInfo/isAnnotation.java:
