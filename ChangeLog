@@ -1,3 +1,23 @@
+2012-09-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/FileNotFoundException/TryCatch.java:
+	* gnu/testlet/java/io/FileNotFoundException/constructor.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/getName.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/FileNotFoundException/classInfo/isSynthetic.java:
+	Sixteen new tests for a class java.io.FileNotFoundException.
+
 2012-09-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Byte/classInfo/isAnnotation.java:
