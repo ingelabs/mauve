@@ -1,3 +1,40 @@
+2012-09-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/InterruptedIOException/TryCatch.java:
+	* gnu/testlet/java/io/InterruptedIOException/constructor.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/getName.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/InterruptedIOException/classInfo/isSynthetic.java:
+	Sixteen new tests for a class java.io.InterruptedIOException.
+	* gnu/testlet/java/io/InvalidClassException/TryCatch.java:
+	* gnu/testlet/java/io/InvalidClassException/constructor.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/getName.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/InvalidClassException/classInfo/isSynthetic.java:
+	Sixteen new tests for a class java.io.InvalidClassException.
+
 2012-09-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/FileNotFoundException/TryCatch.java:
