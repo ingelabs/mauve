@@ -1,3 +1,23 @@
+2012-09-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/InvalidObjectException/TryCatch.java:
+	* gnu/testlet/java/io/InvalidObjectException/constructor.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/getName.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/InvalidObjectException/classInfo/isSynthetic.java:
+	Added sixteen new tests for a class java.io.InvalidObjectException.
+
 2012-09-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/InterruptedIOException/TryCatch.java:
