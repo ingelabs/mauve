@@ -1,3 +1,23 @@
+2012-10-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/IOError/TryCatch.java:
+	* gnu/testlet/java/io/IOError/constructor.java:
+	* gnu/testlet/java/io/IOError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/IOError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/IOError/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/IOError/classInfo/getName.java:
+	* gnu/testlet/java/io/IOError/classInfo/getPackage.java:
+	* gnu/testlet/java/io/IOError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/IOError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/IOError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/IOError/classInfo/isInstance.java:
+	* gnu/testlet/java/io/IOError/classInfo/isInterface.java:
+	* gnu/testlet/java/io/IOError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/IOError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/IOError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/IOError/classInfo/isSynthetic.java:
+	Added sixteen new tests for a class java.io.IOError.
+
 2012-09-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/InvalidObjectException/TryCatch.java:
