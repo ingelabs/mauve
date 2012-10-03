@@ -25,7 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.AbstractMethodError;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,17 +43,22 @@ public class getDeclaredConstructors implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] constructorNames = new String[] {
-            "java.lang.AbstractMethodError",
-            "java.lang.AbstractMethodError",
-        };
-        java.util.Arrays.sort(constructorNames);
+        // map of declared constructors which should exists
+        Map<String, String> testedDeclaredConstructors = null;
 
-        String[] constructorStrings = new String[] {
-            "public java.lang.AbstractMethodError()",
-            "public java.lang.AbstractMethodError(java.lang.String)",
-        };
-        java.util.Arrays.sort(constructorStrings);
+        // map of declared constructors for (Open)JDK6
+        Map<String, String> testedDeclaredConstructors_jdk6 = new HashMap<String, String>();
+
+        // map of declared constructors for (Open)JDK7
+        Map<String, String> testedDeclaredConstructors_jdk7 = new HashMap<String, String>();
+
+        // map for constructors declared in (Open)JDK6
+        testedDeclaredConstructors_jdk6.put("public java.lang.AbstractMethodError()", "java.lang.AbstractMethodError");
+        testedDeclaredConstructors_jdk6.put("public java.lang.AbstractMethodError(java.lang.String)", "java.lang.AbstractMethodError");
+
+        // map for constructors declared in (Open)JDK7
+        testedDeclaredConstructors_jdk7.put("public java.lang.AbstractMethodError()", "java.lang.AbstractMethodError");
+        testedDeclaredConstructors_jdk7.put("public java.lang.AbstractMethodError(java.lang.String)", "java.lang.AbstractMethodError");
 
         // create instance of a class AbstractMethodError
         Object o = new AbstractMethodError("AbstractMethodError");
@@ -60,22 +66,36 @@ public class getDeclaredConstructors implements Testlet
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        java.lang.reflect.Constructor[] constructors = c.getDeclaredConstructors();
-        harness.check(constructors.length, 2);
+        // get the right map containing constructor signatures
+        testedDeclaredConstructors = getJavaVersion() < 7 ? testedDeclaredConstructors_jdk6 : testedDeclaredConstructors_jdk7;
 
-        String constructorName;
-        String constructorString;
+        // get all declared constructors for this class
+        java.lang.reflect.Constructor[] declaredConstructors = c.getDeclaredConstructors();
 
-        constructorName = constructors[0].getName();
-        constructorString = constructors[0].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // basic check for a number of constructors
+        harness.check(declaredConstructors.length, 2);
 
-        constructorName = constructors[1].getName();
-        constructorString = constructors[1].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // check if all declared constructors exist
+        for (java.lang.reflect.Constructor declaredConstructor : declaredConstructors) {
+            // constructor name should consists of package name + class name
+            String constructorName = declaredConstructor.getName();
+            // modifiers + package + class name + parameter types
+            String constructorString = declaredConstructor.toString();
+            harness.check(testedDeclaredConstructors.containsKey(constructorString));
+            harness.check(testedDeclaredConstructors.get(constructorString), constructorName);
+        }
+    }
 
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

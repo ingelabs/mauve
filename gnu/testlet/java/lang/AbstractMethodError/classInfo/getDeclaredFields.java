@@ -25,7 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.AbstractMethodError;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,13 +43,20 @@ public class getDeclaredFields implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] fieldNames = new String[] {
-        };
-        java.util.Arrays.sort(fieldNames);
+        // map of declared fields which should exists
+        Map<String, String> testedDeclaredFields = null;
 
-        String[] fieldStrings = new String[] {
-        };
-        java.util.Arrays.sort(fieldStrings);
+        // map of declared fields for (Open)JDK6
+        Map<String, String> testedDeclaredFields_jdk6 = new HashMap<String, String>();
+
+        // map for fields declared in (Open)JDK6
+        // --- empty ---
+
+        // map of declared fields for (Open)JDK7
+        Map<String, String> testedDeclaredFields_jdk7 = new HashMap<String, String>();
+
+        // map for fields declared in (Open)JDK7
+        testedDeclaredFields_jdk7.put("private static final long java.lang.AbstractMethodError.serialVersionUID", "serialVersionUID");
 
         // create instance of a class AbstractMethodError
         Object o = new AbstractMethodError("AbstractMethodError");
@@ -56,8 +64,34 @@ public class getDeclaredFields implements Testlet
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        java.lang.reflect.Field[] fields = c.getDeclaredFields();
-        harness.check(fields.length >= 0);
+        // get the right map containing declared field signatures
+        testedDeclaredFields = getJavaVersion() < 7 ? testedDeclaredFields_jdk6 : testedDeclaredFields_jdk7;
+
+        // get all declared fields for this class
+        java.lang.reflect.Field[] declaredFields = c.getDeclaredFields();
+
+        // basic check for a number of fields
+        harness.check(declaredFields.length, getJavaVersion() < 7 ? 0 : 1);
+
+        // check if all fields exist
+        for (java.lang.reflect.Field declaredField: declaredFields) {
+            String fieldName = declaredField.getName();
+            String fieldString = declaredField.toString();
+            harness.check(testedDeclaredFields.containsKey(fieldString));
+            harness.check(testedDeclaredFields.get(fieldString), fieldName);
+        }
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

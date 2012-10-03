@@ -25,7 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.AbstractMethodError;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,13 +43,17 @@ public class getDeclaredMethods implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] methodNames = new String[] {
-        };
-        java.util.Arrays.sort(methodNames);
+        // map of declared methods which should exists
+        Map<String, String> testedDeclaredMethods = null;
 
-        String[] methodStrings = new String[] {
-        };
-        java.util.Arrays.sort(methodStrings);
+        // map of declared methods for (Open)JDK6
+        Map<String, String> testedDeclaredMethods_jdk6 = new HashMap<String, String>();
+
+        // map for methods declared in (Open)JDK6
+        // --- empty ---
+
+        // map of declared methods for (Open)JDK7
+        Map<String, String> testedDeclaredMethods_jdk7 = new HashMap<String, String>();
 
         // create instance of a class AbstractMethodError
         Object o = new AbstractMethodError("AbstractMethodError");
@@ -56,8 +61,27 @@ public class getDeclaredMethods implements Testlet
         // get a runtime class of an object "o"
         Class c = o.getClass();
 
-        java.lang.reflect.Method[] methods = c.getDeclaredMethods();
-        harness.check(methods.length, 0);
+        // get the right map containing method signatures
+        testedDeclaredMethods = getJavaVersion() < 7 ? testedDeclaredMethods_jdk6 : testedDeclaredMethods_jdk7;
+
+        // get all declared methods for this class
+        java.lang.reflect.Method[] declaredMethods = c.getDeclaredMethods();
+
+        // basic check for a number of declared methods
+        harness.check(declaredMethods.length, 0);
+
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 
