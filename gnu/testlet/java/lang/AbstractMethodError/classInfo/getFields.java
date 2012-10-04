@@ -53,16 +53,16 @@ public class getFields implements Testlet
         Map<String, String> testedFields_jdk7 = new HashMap<String, String>();
 
         // map for fields declared in (Open)JDK6
-        // -- empty --
+        // --- empty ---
 
         // map for fields declared in (Open)JDK7
-        // -- empty --
+        // --- empty ---
 
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         // get the right map containing field signatures
         testedFields = getJavaVersion() < 7 ? testedFields_jdk6 : testedFields_jdk7;
@@ -70,8 +70,11 @@ public class getFields implements Testlet
         // get all fields for this class
         java.lang.reflect.Field[] fields = c.getFields();
 
+        // expected number of fields
+        final int expectedNumberOfFields = testedFields.size();
+
         // basic check for a number of fields
-        harness.check(fields.length, 0);
+        harness.check(fields.length, expectedNumberOfFields);
 
     }
 

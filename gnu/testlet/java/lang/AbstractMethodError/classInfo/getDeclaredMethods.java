@@ -49,17 +49,20 @@ public class getDeclaredMethods implements Testlet
         // map of declared methods for (Open)JDK6
         Map<String, String> testedDeclaredMethods_jdk6 = new HashMap<String, String>();
 
-        // map for methods declared in (Open)JDK6
-        // --- empty ---
-
         // map of declared methods for (Open)JDK7
         Map<String, String> testedDeclaredMethods_jdk7 = new HashMap<String, String>();
 
+        // map for methods declared in (Open)JDK6
+        // --- empty ---
+
+        // map for methods declared in (Open)JDK7
+        // --- empty ---
+
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         // get the right map containing method signatures
         testedDeclaredMethods = getJavaVersion() < 7 ? testedDeclaredMethods_jdk6 : testedDeclaredMethods_jdk7;
@@ -67,8 +70,11 @@ public class getDeclaredMethods implements Testlet
         // get all declared methods for this class
         java.lang.reflect.Method[] declaredMethods = c.getDeclaredMethods();
 
+        // expected number of declared methods
+        final int expectedNumberOfDeclaredMethods = testedDeclaredMethods.size();
+
         // basic check for a number of declared methods
-        harness.check(declaredMethods.length, 0);
+        harness.check(declaredMethods.length, expectedNumberOfDeclaredMethods);
 
     }
 

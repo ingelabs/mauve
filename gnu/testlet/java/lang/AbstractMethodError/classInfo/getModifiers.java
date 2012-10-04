@@ -43,10 +43,10 @@ public class getModifiers implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         int modifiers = c.getModifiers();
         harness.check( Modifier.isPublic(modifiers));

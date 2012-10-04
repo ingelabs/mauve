@@ -42,10 +42,10 @@ public class getPackage implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         Package p = c.getPackage();
         harness.check(p.getName(), "java.lang");

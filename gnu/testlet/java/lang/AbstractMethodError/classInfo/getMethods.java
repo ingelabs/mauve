@@ -97,10 +97,10 @@ public class getMethods implements Testlet
         testedMethods_jdk7.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
 
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         // get the right map containing method signatures
         testedMethods = getJavaVersion() < 7 ? testedMethods_jdk6 : testedMethods_jdk7;
@@ -108,8 +108,11 @@ public class getMethods implements Testlet
         // get all methods for this class
         java.lang.reflect.Method[] methods = c.getMethods();
 
+        // expected number of methods
+        final int expectedNumberOfMethods = testedMethods.size();
+
         // basic check for a number of methods
-        harness.check(methods.length, getJavaVersion() < 7 ? 19 : 21);
+        harness.check(methods.length, expectedNumberOfMethods);
 
         // check if all methods exist
         for (java.lang.reflect.Method method : methods) {

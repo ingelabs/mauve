@@ -61,10 +61,10 @@ public class getConstructors implements Testlet
         testedConstructors_jdk7.put("public java.lang.AbstractMethodError(java.lang.String)", "java.lang.AbstractMethodError");
 
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         // get the right map containing constructor signatures
         testedConstructors = getJavaVersion() < 7 ? testedConstructors_jdk6 : testedConstructors_jdk7;
@@ -72,8 +72,11 @@ public class getConstructors implements Testlet
         // get all constructors for this class
         java.lang.reflect.Constructor[] constructors = c.getConstructors();
 
+        // expected number of constructors
+        final int expectedNumberOfConstructors = testedConstructors.size();
+
         // basic check for a number of constructors
-        harness.check(constructors.length, 2);
+        harness.check(constructors.length, expectedNumberOfConstructors);
 
         // check if all constructors exist
         for (java.lang.reflect.Constructor constructor : constructors) {

@@ -49,20 +49,20 @@ public class getDeclaredFields implements Testlet
         // map of declared fields for (Open)JDK6
         Map<String, String> testedDeclaredFields_jdk6 = new HashMap<String, String>();
 
-        // map for fields declared in (Open)JDK6
-        // --- empty ---
-
         // map of declared fields for (Open)JDK7
         Map<String, String> testedDeclaredFields_jdk7 = new HashMap<String, String>();
+
+        // map for fields declared in (Open)JDK6
+        // --- empty ---
 
         // map for fields declared in (Open)JDK7
         testedDeclaredFields_jdk7.put("private static final long java.lang.AbstractMethodError.serialVersionUID", "serialVersionUID");
 
         // create instance of a class AbstractMethodError
-        Object o = new AbstractMethodError("AbstractMethodError");
+        final Object o = new AbstractMethodError("AbstractMethodError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         // get the right map containing declared field signatures
         testedDeclaredFields = getJavaVersion() < 7 ? testedDeclaredFields_jdk6 : testedDeclaredFields_jdk7;
@@ -70,8 +70,11 @@ public class getDeclaredFields implements Testlet
         // get all declared fields for this class
         java.lang.reflect.Field[] declaredFields = c.getDeclaredFields();
 
-        // basic check for a number of fields
-        harness.check(declaredFields.length, getJavaVersion() < 7 ? 0 : 1);
+        // expected number of declared fields
+        final int expectedNumberOfDeclaredFields = testedDeclaredFields.size();
+
+        // basic check for a number of declared fields
+        harness.check(declaredFields.length, expectedNumberOfDeclaredFields);
 
         // check if all fields exist
         for (java.lang.reflect.Field declaredField: declaredFields) {
