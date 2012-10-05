@@ -42,10 +42,10 @@ public class getSuperclass implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArithmeticException
-        Object o = new ArithmeticException("ArithmeticException");
+        final Object o = new ArithmeticException("java.lang.ArithmeticException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         Class superClass = c.getSuperclass();
         harness.check(superClass.getName(), "java.lang.RuntimeException");

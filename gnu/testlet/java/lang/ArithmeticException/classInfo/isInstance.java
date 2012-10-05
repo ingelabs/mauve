@@ -42,12 +42,12 @@ public class isInstance implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArithmeticException
-        Object o = new ArithmeticException("ArithmeticException");
+        final Object o = new ArithmeticException("java.lang.ArithmeticException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
-        harness.check(c.isInstance(new ArithmeticException("ArithmeticException")));
+        harness.check(c.isInstance(new ArithmeticException("java.lang.ArithmeticException")));
     }
 }
 

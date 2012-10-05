@@ -25,7 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ArithmeticException;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,40 +43,62 @@ public class getConstructors implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] constructorNames = new String[] {
-            "java.lang.ArithmeticException",
-            "java.lang.ArithmeticException",
-        };
-        java.util.Arrays.sort(constructorNames);
+        // map of constructors which should exists
+        Map<String, String> testedConstructors = null;
 
-        String[] constructorStrings = new String[] {
-            "public java.lang.ArithmeticException()",
-            "public java.lang.ArithmeticException(java.lang.String)",
-        };
-        java.util.Arrays.sort(constructorStrings);
+        // map of constructors for (Open)JDK6
+        Map<String, String> testedConstructors_jdk6 = new HashMap<String, String>();
+
+        // map of constructors for (Open)JDK7
+        Map<String, String> testedConstructors_jdk7 = new HashMap<String, String>();
+
+        // map for constructors declared in (Open)JDK6
+        testedConstructors_jdk6.put("public java.lang.ArithmeticException()", "java.lang.ArithmeticException");
+        testedConstructors_jdk6.put("public java.lang.ArithmeticException(java.lang.String)", "java.lang.ArithmeticException");
+
+        // map for constructors declared in (Open)JDK7
+        testedConstructors_jdk7.put("public java.lang.ArithmeticException()", "java.lang.ArithmeticException");
+        testedConstructors_jdk7.put("public java.lang.ArithmeticException(java.lang.String)", "java.lang.ArithmeticException");
 
         // create instance of a class ArithmeticException
-        Object o = new ArithmeticException("ArithmeticException");
+        final Object o = new ArithmeticException("java.lang.ArithmeticException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
+        // get the right map containing constructor signatures
+        testedConstructors = getJavaVersion() < 7 ? testedConstructors_jdk6 : testedConstructors_jdk7;
+
+        // get all constructors for this class
         java.lang.reflect.Constructor[] constructors = c.getConstructors();
-        harness.check(constructors.length, 2);
 
-        String constructorName;
-        String constructorString;
+        // expected number of constructors
+        final int expectedNumberOfConstructors = testedConstructors.size();
 
-        constructorName = constructors[0].getName();
-        constructorString = constructors[0].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // basic check for a number of constructors
+        harness.check(constructors.length, expectedNumberOfConstructors);
 
-        constructorName = constructors[1].getName();
-        constructorString = constructors[1].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // check if all constructors exist
+        for (java.lang.reflect.Constructor constructor : constructors) {
+            // constructor name should consists of package name + class name
+            String constructorName = constructor.getName();
+            // modifiers + package + class name + parameter types
+            String constructorString = constructor.toString();
+            harness.check(testedConstructors.containsKey(constructorString));
+            harness.check(testedConstructors.get(constructorString), constructorName);
+        }
+    }
 
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

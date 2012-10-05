@@ -46,7 +46,7 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArithmeticException
-        ArithmeticException o = new ArithmeticException("ArithmeticException");
+        ArithmeticException o = new ArithmeticException("java.lang.ArithmeticException");
 
         // basic check of instanceof operator
         harness.check(o instanceof ArithmeticException);
