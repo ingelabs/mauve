@@ -1,3 +1,23 @@
+2012-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/NotActiveException/TryCatch.java:
+	* gnu/testlet/java/io/NotActiveException/constructor.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/getName.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/NotActiveException/classInfo/isSynthetic.java:
+	Added sixteen new tests for a class java.io.NotActiveException.
+
 2012-10-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/InstanceOf.java:
