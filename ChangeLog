@@ -1,3 +1,23 @@
+2012-10-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/NotSerializableException/TryCatch.java:
+	* gnu/testlet/java/io/NotSerializableException/constructor.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/getName.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/NotSerializableException/classInfo/isSynthetic.java:
+	Added sixteen new tests for a class java.io.NotSerializableException .
+
 2012-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/NotActiveException/TryCatch.java:
