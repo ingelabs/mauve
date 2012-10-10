@@ -1,3 +1,23 @@
+2012-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/WriteAbortedException/TryCatch.java:
+	* gnu/testlet/java/io/WriteAbortedException/constructor.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/getName.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/WriteAbortedException/classInfo/isSynthetic.java:
+	Added new tests for a class java.io.WriteAbortedException.
+
 2012-10-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/NotSerializableException/TryCatch.java:
