@@ -42,10 +42,10 @@ public class isSynthetic implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArrayIndexOutOfBoundsException
-        Object o = new ArrayIndexOutOfBoundsException("ArrayIndexOutOfBoundsException");
+        final Object o = new ArrayIndexOutOfBoundsException("java.lang.ArrayIndexOutOfBoundsException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isSynthetic());
     }

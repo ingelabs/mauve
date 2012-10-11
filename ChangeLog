@@ -1,3 +1,32 @@
+2012-10-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isSynthetic.java:
+	Maked these tests compatible with JDK7 API.
+
 2012-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/WriteAbortedException/TryCatch.java:

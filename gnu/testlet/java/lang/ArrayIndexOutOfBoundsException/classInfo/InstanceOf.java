@@ -47,7 +47,7 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArrayIndexOutOfBoundsException
-        ArrayIndexOutOfBoundsException o = new ArrayIndexOutOfBoundsException("ArrayIndexOutOfBoundsException");
+        ArrayIndexOutOfBoundsException o = new ArrayIndexOutOfBoundsException("java.lang.ArrayIndexOutOfBoundsException");
 
         // basic check of instanceof operator
         harness.check(o instanceof ArrayIndexOutOfBoundsException);
