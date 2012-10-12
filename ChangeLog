@@ -1,3 +1,23 @@
+2012-10-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/StreamCorruptedException/TryCatch.java:
+	* gnu/testlet/java/io/StreamCorruptedException/constructor.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/getName.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/StreamCorruptedException/classInfo/isSynthetic.java:
+	Added 16 new tests for a class java.io.StreamCorruptedException.
+
 2012-10-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/InstanceOf.java:
@@ -25,7 +45,7 @@
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isMemberClass.java:
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isPrimitive.java:
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isSynthetic.java:
-	Maked these tests compatible with JDK7 API.
+	Made these tests compatible with JDK7 API.
 
 2012-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
