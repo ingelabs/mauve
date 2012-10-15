@@ -1,3 +1,23 @@
+2012-10-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/SyncFailedException/TryCatch.java:
+	* gnu/testlet/java/io/SyncFailedException/constructor.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/getName.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/SyncFailedException/classInfo/isSynthetic.java:
+	Added 16 new tests for a class java.io.SyncFailedException.
+
 2012-10-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/StreamCorruptedException/TryCatch.java:
