@@ -42,10 +42,10 @@ public class isEnum implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArrayStoreException
-        Object o = new ArrayStoreException("java.lang.ArrayStoreException");
+        final Object o = new ArrayStoreException("java.lang.ArrayStoreException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isEnum());
     }

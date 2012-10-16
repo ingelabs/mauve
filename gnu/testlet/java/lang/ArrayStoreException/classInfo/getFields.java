@@ -25,7 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ArrayStoreException;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,22 +43,51 @@ public class getFields implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] fieldNames = new String[] {
-        };
-        java.util.Arrays.sort(fieldNames);
+        // map of fields which should exists
+        Map<String, String> testedFields = null;
 
-        String[] fieldStrings = new String[] {
-        };
-        java.util.Arrays.sort(fieldStrings);
+        // map of fields for (Open)JDK6
+        Map<String, String> testedFields_jdk6 = new HashMap<String, String>();
+
+        // map of fields for (Open)JDK7
+        Map<String, String> testedFields_jdk7 = new HashMap<String, String>();
+
+        // map for fields declared in (Open)JDK6
+        // --- empty ---
+
+        // map for fields declared in (Open)JDK7
+        // --- empty ---
 
         // create instance of a class ArrayStoreException
-        Object o = new ArrayStoreException("ArrayStoreException");
+        final Object o = new ArrayStoreException("java.lang.ArrayStoreException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
+        // get the right map containing field signatures
+        testedFields = getJavaVersion() < 7 ? testedFields_jdk6 : testedFields_jdk7;
+
+        // get all fields for this class
         java.lang.reflect.Field[] fields = c.getFields();
-        harness.check(fields.length, 0);
+
+        // expected number of fields
+        final int expectedNumberOfFields = testedFields.size();
+
+        // basic check for a number of fields
+        harness.check(fields.length, expectedNumberOfFields);
+
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

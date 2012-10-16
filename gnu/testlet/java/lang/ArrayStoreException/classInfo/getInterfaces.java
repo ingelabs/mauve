@@ -44,10 +44,10 @@ public class getInterfaces implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ArrayStoreException
-        Object o = new ArrayStoreException("ArrayStoreException");
+        final Object o = new ArrayStoreException("java.lang.ArrayStoreException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         List interfaces = Arrays.asList(c.getInterfaces());
     }
