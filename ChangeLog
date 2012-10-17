@@ -1,3 +1,23 @@
+2012-10-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/UnsupportedEncodingException/TryCatch.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/constructor.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/getName.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/UnsupportedEncodingException/classInfo/isSynthetic.java:
+	Added 16 new tests for a class java.io.UnsupportedEncodingException.
+
 2012-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/InstanceOf.java:
