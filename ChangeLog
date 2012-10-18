@@ -1,3 +1,23 @@
+2012-10-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/io/UTFDataFormatException/TryCatch.java:
+	* gnu/testlet/java/io/UTFDataFormatException/constructor.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/getModifiers.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/getName.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/getPackage.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isInstance.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isInterface.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/io/UTFDataFormatException/classInfo/isSynthetic.java:
+	Added 16 new tests for a class java.io.UTFDataFormatException.
+
 2012-10-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/UnsupportedEncodingException/TryCatch.java:
