@@ -1,4 +1,4 @@
-// Test for method java.lang.ArrayStoreException.getClass().isArray()
+// Test for method java.lang.AssertionError.getClass().isArray()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -19,17 +19,17 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
-package gnu.testlet.java.lang.ArrayStoreException.classInfo;
+package gnu.testlet.java.lang.AssertionError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.lang.ArrayStoreException;
+import java.lang.AssertionError;
 
 
 
 /**
- * Test for method java.lang.ArrayStoreException.getClass().isArray()
+ * Test for method java.lang.AssertionError.getClass().isArray()
  */
 public class isArray implements Testlet
 {
@@ -41,11 +41,11 @@ public class isArray implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class ArrayStoreException
-        Object o = new ArrayStoreException("java.lang.ArrayStoreException");
+        // create instance of a class AssertionError
+        final Object o = new AssertionError();
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isArray());
     }

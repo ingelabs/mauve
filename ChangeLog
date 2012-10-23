@@ -1,3 +1,31 @@
+2012-10-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isSynthetic.java:
+	Made these tests compatible with JDK7 API.
+
 2012-10-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/io/UTFDataFormatException/TryCatch.java:

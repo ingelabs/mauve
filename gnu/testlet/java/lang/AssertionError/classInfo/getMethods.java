@@ -25,7 +25,8 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.AssertionError;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,159 +43,98 @@ public class getMethods implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] methodNames = new String[] {
-            "printStackTrace",
-            "printStackTrace",
-            "printStackTrace",
-            "fillInStackTrace",
-            "getCause",
-            "initCause",
-            "toString",
-            "getMessage",
-            "getLocalizedMessage",
-            "getStackTrace",
-            "setStackTrace",
-            "wait",
-            "wait",
-            "wait",
-            "hashCode",
-            "getClass",
-            "equals",
-            "notify",
-            "notifyAll",
-        };
-        java.util.Arrays.sort(methodNames);
+        // map of methods which should exists
+        Map<String, String> testedMethods = null;
 
-        String[] methodStrings = new String[] {
-            "public void java.lang.Throwable.printStackTrace()",
-            "public void java.lang.Throwable.printStackTrace(java.io.PrintStream)",
-            "public void java.lang.Throwable.printStackTrace(java.io.PrintWriter)",
-            "public synchronized native java.lang.Throwable java.lang.Throwable.fillInStackTrace()",
-            "public java.lang.Throwable java.lang.Throwable.getCause()",
-            "public synchronized java.lang.Throwable java.lang.Throwable.initCause(java.lang.Throwable)",
-            "public java.lang.String java.lang.Throwable.toString()",
-            "public java.lang.String java.lang.Throwable.getMessage()",
-            "public java.lang.String java.lang.Throwable.getLocalizedMessage()",
-            "public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace()",
-            "public void java.lang.Throwable.setStackTrace(java.lang.StackTraceElement[])",
-            "public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException",
-            "public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException",
-            "public final void java.lang.Object.wait() throws java.lang.InterruptedException",
-            "public native int java.lang.Object.hashCode()",
-            "public final native java.lang.Class java.lang.Object.getClass()",
-            "public boolean java.lang.Object.equals(java.lang.Object)",
-            "public final native void java.lang.Object.notify()",
-            "public final native void java.lang.Object.notifyAll()",
-        };
-        java.util.Arrays.sort(methodStrings);
+        // map of methods for (Open)JDK6
+        Map<String, String> testedMethods_jdk6 = new HashMap<String, String>();
+
+        // map of methods for (Open)JDK7
+        Map<String, String> testedMethods_jdk7 = new HashMap<String, String>();
+
+        // map for methods declared in (Open)JDK6
+        testedMethods_jdk6.put("public void java.lang.Throwable.printStackTrace()", "printStackTrace");
+        testedMethods_jdk6.put("public void java.lang.Throwable.printStackTrace(java.io.PrintStream)", "printStackTrace");
+        testedMethods_jdk6.put("public void java.lang.Throwable.printStackTrace(java.io.PrintWriter)", "printStackTrace");
+        testedMethods_jdk6.put("public synchronized native java.lang.Throwable java.lang.Throwable.fillInStackTrace()", "fillInStackTrace");
+        testedMethods_jdk6.put("public java.lang.Throwable java.lang.Throwable.getCause()", "getCause");
+        testedMethods_jdk6.put("public synchronized java.lang.Throwable java.lang.Throwable.initCause(java.lang.Throwable)", "initCause");
+        testedMethods_jdk6.put("public java.lang.String java.lang.Throwable.toString()", "toString");
+        testedMethods_jdk6.put("public java.lang.String java.lang.Throwable.getMessage()", "getMessage");
+        testedMethods_jdk6.put("public java.lang.String java.lang.Throwable.getLocalizedMessage()", "getLocalizedMessage");
+        testedMethods_jdk6.put("public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace()", "getStackTrace");
+        testedMethods_jdk6.put("public void java.lang.Throwable.setStackTrace(java.lang.StackTraceElement[])", "setStackTrace");
+        testedMethods_jdk6.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk6.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk6.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk6.put("public native int java.lang.Object.hashCode()", "hashCode");
+        testedMethods_jdk6.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedMethods_jdk6.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
+        testedMethods_jdk6.put("public final native void java.lang.Object.notify()", "notify");
+        testedMethods_jdk6.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+
+        // map for methods declared in (Open)JDK7
+        testedMethods_jdk7.put("public void java.lang.Throwable.printStackTrace()", "printStackTrace");
+        testedMethods_jdk7.put("public void java.lang.Throwable.printStackTrace(java.io.PrintWriter)", "printStackTrace");
+        testedMethods_jdk7.put("public void java.lang.Throwable.printStackTrace(java.io.PrintStream)", "printStackTrace");
+        testedMethods_jdk7.put("public synchronized java.lang.Throwable java.lang.Throwable.fillInStackTrace()", "fillInStackTrace");
+        testedMethods_jdk7.put("public synchronized java.lang.Throwable java.lang.Throwable.getCause()", "getCause");
+        testedMethods_jdk7.put("public synchronized java.lang.Throwable java.lang.Throwable.initCause(java.lang.Throwable)", "initCause");
+        testedMethods_jdk7.put("public java.lang.String java.lang.Throwable.toString()", "toString");
+        testedMethods_jdk7.put("public java.lang.String java.lang.Throwable.getMessage()", "getMessage");
+        testedMethods_jdk7.put("public java.lang.String java.lang.Throwable.getLocalizedMessage()", "getLocalizedMessage");
+        testedMethods_jdk7.put("public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace()", "getStackTrace");
+        testedMethods_jdk7.put("public void java.lang.Throwable.setStackTrace(java.lang.StackTraceElement[])", "setStackTrace");
+        testedMethods_jdk7.put("public final synchronized void java.lang.Throwable.addSuppressed(java.lang.Throwable)", "addSuppressed");
+        testedMethods_jdk7.put("public final synchronized java.lang.Throwable[] java.lang.Throwable.getSuppressed()", "getSuppressed");
+        testedMethods_jdk7.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk7.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk7.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk7.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
+        testedMethods_jdk7.put("public native int java.lang.Object.hashCode()", "hashCode");
+        testedMethods_jdk7.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedMethods_jdk7.put("public final native void java.lang.Object.notify()", "notify");
+        testedMethods_jdk7.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
 
         // create instance of a class AssertionError
-        Object o = new AssertionError();
+        final Object o = new AssertionError();
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
+        // get the right map containing method signatures
+        testedMethods = getJavaVersion() < 7 ? testedMethods_jdk6 : testedMethods_jdk7;
+
+        // get all methods for this class
         java.lang.reflect.Method[] methods = c.getMethods();
-        harness.check(methods.length, 19);
 
-        String methodName;
-        String methodString;
+        // expected number of methods
+        final int expectedNumberOfMethods = testedMethods.size();
 
-        methodName = methods[0].getName();
-        methodString = methods[0].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
+        // basic check for a number of methods
+        harness.check(methods.length, expectedNumberOfMethods);
 
-        methodName = methods[1].getName();
-        methodString = methods[1].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
+        // check if all methods exist
+        for (java.lang.reflect.Method method : methods) {
+            // method name should consists of package name + class name
+            String methodName = method.getName();
+            // modifiers + package + method name + parameter types
+            String methodString = method.toString();
+            harness.check(testedMethods.containsKey(methodString));
+            harness.check(testedMethods.get(methodString), methodName);
+        }
+    }
 
-        methodName = methods[2].getName();
-        methodString = methods[2].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[3].getName();
-        methodString = methods[3].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[4].getName();
-        methodString = methods[4].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[5].getName();
-        methodString = methods[5].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[6].getName();
-        methodString = methods[6].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[7].getName();
-        methodString = methods[7].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[8].getName();
-        methodString = methods[8].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[9].getName();
-        methodString = methods[9].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[10].getName();
-        methodString = methods[10].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[11].getName();
-        methodString = methods[11].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[12].getName();
-        methodString = methods[12].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[13].getName();
-        methodString = methods[13].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[14].getName();
-        methodString = methods[14].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[15].getName();
-        methodString = methods[15].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[16].getName();
-        methodString = methods[16].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[17].getName();
-        methodString = methods[17].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
-        methodName = methods[18].getName();
-        methodString = methods[18].toString();
-        harness.check(java.util.Arrays.binarySearch(methodNames, methodName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(methodStrings, methodString) >= 0);
-
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 
