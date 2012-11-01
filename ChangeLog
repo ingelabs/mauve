@@ -1,3 +1,33 @@
+2012-11-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Object/constructor.java:
+	* gnu/testlet/java/lang/Object/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Object/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/Object/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/Object/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/Object/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/Object/classInfo/getFields.java:
+	* gnu/testlet/java/lang/Object/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Object/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/Object/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Object/classInfo/getName.java:
+	* gnu/testlet/java/lang/Object/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Object/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Object/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Object/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Object/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Object/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Object/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Object/classInfo/isSynthetic.java:
+	New tests.
+
 2012-10-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getConstructors.java:
