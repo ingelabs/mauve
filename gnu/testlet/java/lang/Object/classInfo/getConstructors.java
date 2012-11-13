@@ -83,7 +83,7 @@ public class getConstructors implements Testlet
             // constructor name should consists of package name + class name
             String constructorName = constructor.getName();
             // modifiers + package + class name + parameter types
-            String constructorString = constructor.toString();
+            String constructorString = constructor.toString().replaceAll(" native ", " ");
             harness.check(testedConstructors.containsKey(constructorString));
             harness.check(testedConstructors.get(constructorString), constructorName);
         }

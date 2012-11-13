@@ -1,3 +1,31 @@
+2012-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Object/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/Object/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/Object/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/Object/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/Object/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/Object/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/Object/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/Object/classInfo/getName.java:
+	* gnu/testlet/java/lang/Object/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/Object/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/Object/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isArray.java:
+	* gnu/testlet/java/lang/Object/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/Object/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/Object/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/Object/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/Object/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/Object/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/Object/classInfo/isSynthetic.java:
+	Added missing tag to all tests, fixed the handling of "native"
+	modifier of methods and constructors.
+
 2012-11-12  Pekka Enberg  <penberg@kernel.org>
 
 	* gnu/testlet/java/lang/Object/classInfo/getConstructors.java:

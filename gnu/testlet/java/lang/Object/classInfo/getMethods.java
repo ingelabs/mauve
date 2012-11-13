@@ -55,26 +55,26 @@ public class getMethods implements Testlet
         Map<String, String> testedMethods_jdk7 = new HashMap<String, String>();
 
         // map for methods declared in (Open)JDK6
-        testedMethods_jdk6.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk6.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedMethods_jdk6.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
         testedMethods_jdk6.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
-        testedMethods_jdk6.put("public native int java.lang.Object.hashCode()", "hashCode");
-        testedMethods_jdk6.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedMethods_jdk6.put("public int java.lang.Object.hashCode()", "hashCode");
+        testedMethods_jdk6.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
         testedMethods_jdk6.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
         testedMethods_jdk6.put("public java.lang.String java.lang.Object.toString()", "toString");
-        testedMethods_jdk6.put("public final native void java.lang.Object.notify()", "notify");
-        testedMethods_jdk6.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+        testedMethods_jdk6.put("public final void java.lang.Object.notify()", "notify");
+        testedMethods_jdk6.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 
         // map for methods declared in (Open)JDK7
         testedMethods_jdk7.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
-        testedMethods_jdk7.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk7.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedMethods_jdk7.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
         testedMethods_jdk7.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
         testedMethods_jdk7.put("public java.lang.String java.lang.Object.toString()", "toString");
-        testedMethods_jdk7.put("public native int java.lang.Object.hashCode()", "hashCode");
-        testedMethods_jdk7.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
-        testedMethods_jdk7.put("public final native void java.lang.Object.notify()", "notify");
-        testedMethods_jdk7.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+        testedMethods_jdk7.put("public int java.lang.Object.hashCode()", "hashCode");
+        testedMethods_jdk7.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedMethods_jdk7.put("public final void java.lang.Object.notify()", "notify");
+        testedMethods_jdk7.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 
         // create instance of a class Object
         final Object o = new Object();
@@ -99,7 +99,7 @@ public class getMethods implements Testlet
             // method name should consists of package name + class name
             String methodName = method.getName();
             // modifiers + package + method name + parameter types
-            String methodString = method.toString();
+            String methodString = method.toString().replaceAll(" native ", " ");
             harness.check(testedMethods.containsKey(methodString));
             harness.check(testedMethods.get(methodString), methodName);
         }

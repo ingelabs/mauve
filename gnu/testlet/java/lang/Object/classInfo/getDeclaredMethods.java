@@ -56,31 +56,31 @@ public class getDeclaredMethods implements Testlet
 
         // map for methods declared in (Open)JDK6
         testedDeclaredMethods_jdk6.put("protected void java.lang.Object.finalize() throws java.lang.Throwable", "finalize");
-        testedDeclaredMethods_jdk6.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
         testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
-        testedDeclaredMethods_jdk6.put("public native int java.lang.Object.hashCode()", "hashCode");
-        testedDeclaredMethods_jdk6.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
-        testedDeclaredMethods_jdk6.put("protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException", "clone");
+        testedDeclaredMethods_jdk6.put("public int java.lang.Object.hashCode()", "hashCode");
+        testedDeclaredMethods_jdk6.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedDeclaredMethods_jdk6.put("protected java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException", "clone");
         testedDeclaredMethods_jdk6.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
-        testedDeclaredMethods_jdk6.put("private static native void java.lang.Object.registerNatives()", "registerNatives");
+        testedDeclaredMethods_jdk6.put("private static void java.lang.Object.registerNatives()", "registerNatives");
         testedDeclaredMethods_jdk6.put("public java.lang.String java.lang.Object.toString()", "toString");
-        testedDeclaredMethods_jdk6.put("public final native void java.lang.Object.notify()", "notify");
-        testedDeclaredMethods_jdk6.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+        testedDeclaredMethods_jdk6.put("public final void java.lang.Object.notify()", "notify");
+        testedDeclaredMethods_jdk6.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 
         // map for methods declared in (Open)JDK7
         testedDeclaredMethods_jdk7.put("protected void java.lang.Object.finalize() throws java.lang.Throwable", "finalize");
         testedDeclaredMethods_jdk7.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
-        testedDeclaredMethods_jdk7.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedDeclaredMethods_jdk7.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedDeclaredMethods_jdk7.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
         testedDeclaredMethods_jdk7.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
         testedDeclaredMethods_jdk7.put("public java.lang.String java.lang.Object.toString()", "toString");
-        testedDeclaredMethods_jdk7.put("public native int java.lang.Object.hashCode()", "hashCode");
-        testedDeclaredMethods_jdk7.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
-        testedDeclaredMethods_jdk7.put("protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException", "clone");
-        testedDeclaredMethods_jdk7.put("private static native void java.lang.Object.registerNatives()", "registerNatives");
-        testedDeclaredMethods_jdk7.put("public final native void java.lang.Object.notify()", "notify");
-        testedDeclaredMethods_jdk7.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+        testedDeclaredMethods_jdk7.put("public int java.lang.Object.hashCode()", "hashCode");
+        testedDeclaredMethods_jdk7.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedDeclaredMethods_jdk7.put("protected java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException", "clone");
+        testedDeclaredMethods_jdk7.put("private static void java.lang.Object.registerNatives()", "registerNatives");
+        testedDeclaredMethods_jdk7.put("public final void java.lang.Object.notify()", "notify");
+        testedDeclaredMethods_jdk7.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 
         // create instance of a class Object
         final Object o = new Object();
@@ -105,7 +105,7 @@ public class getDeclaredMethods implements Testlet
             // method name should consists of package name + class name
             String methodName = declaredMethod.getName();
             // modifiers + package + method name + parameter types
-            String methodString = declaredMethod.toString();
+            String methodString = declaredMethod.toString().replaceAll(" native ", " ");
             harness.check(testedDeclaredMethods.containsKey(methodString));
             harness.check(testedDeclaredMethods.get(methodString), methodName);
         }

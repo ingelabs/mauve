@@ -83,7 +83,7 @@ public class getDeclaredConstructors implements Testlet
             // constructor name should consists of package name + class name
             String constructorName = declaredConstructor.getName();
             // modifiers + package + class name + parameter types
-            String constructorString = declaredConstructor.toString();
+            String constructorString = declaredConstructor.toString().replaceAll(" native ", " ");
             harness.check(testedDeclaredConstructors.containsKey(constructorString));
             harness.check(testedDeclaredConstructors.get(constructorString), constructorName);
         }
