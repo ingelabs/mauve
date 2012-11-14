@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.AbstractMethodError.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -83,7 +85,7 @@ public class getConstructors implements Testlet
             // constructor name should consists of package name + class name
             String constructorName = constructor.getName();
             // modifiers + package + class name + parameter types
-            String constructorString = constructor.toString();
+            String constructorString = constructor.toString().replaceAll(" native ", " ");
             harness.check(testedConstructors.containsKey(constructorString));
             harness.check(testedConstructors.get(constructorString), constructorName);
         }

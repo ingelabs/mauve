@@ -1,3 +1,35 @@
+2012-11-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AbstractMethodError/TryCatch.java:
+	* gnu/testlet/java/lang/AbstractMethodError/constructor.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AbstractMethodError/classInfo/isSynthetic.java:
+	Added missing tag to all tests, fixed the handling of "native"
+	modifier of methods and constructors.
+
 2012-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Object/classInfo/InstanceOf.java:
