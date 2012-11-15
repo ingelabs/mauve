@@ -1,3 +1,33 @@
+2012-11-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArithmeticException/classInfo/isSynthetic.java:
+	Added missing tag to all tests, fixed the handling of "native"
+	modifier of methods and constructors.
+
 2012-11-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/TryCatch.java:

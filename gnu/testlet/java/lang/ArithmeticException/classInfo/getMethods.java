@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.ArithmeticException.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -56,7 +58,7 @@ public class getMethods implements Testlet
         testedMethods_jdk6.put("public void java.lang.Throwable.printStackTrace()", "printStackTrace");
         testedMethods_jdk6.put("public void java.lang.Throwable.printStackTrace(java.io.PrintStream)", "printStackTrace");
         testedMethods_jdk6.put("public void java.lang.Throwable.printStackTrace(java.io.PrintWriter)", "printStackTrace");
-        testedMethods_jdk6.put("public synchronized native java.lang.Throwable java.lang.Throwable.fillInStackTrace()", "fillInStackTrace");
+        testedMethods_jdk6.put("public synchronized java.lang.Throwable java.lang.Throwable.fillInStackTrace()", "fillInStackTrace");
         testedMethods_jdk6.put("public java.lang.Throwable java.lang.Throwable.getCause()", "getCause");
         testedMethods_jdk6.put("public synchronized java.lang.Throwable java.lang.Throwable.initCause(java.lang.Throwable)", "initCause");
         testedMethods_jdk6.put("public java.lang.String java.lang.Throwable.toString()", "toString");
@@ -64,14 +66,14 @@ public class getMethods implements Testlet
         testedMethods_jdk6.put("public java.lang.String java.lang.Throwable.getLocalizedMessage()", "getLocalizedMessage");
         testedMethods_jdk6.put("public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace()", "getStackTrace");
         testedMethods_jdk6.put("public void java.lang.Throwable.setStackTrace(java.lang.StackTraceElement[])", "setStackTrace");
-        testedMethods_jdk6.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk6.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedMethods_jdk6.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
         testedMethods_jdk6.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
-        testedMethods_jdk6.put("public native int java.lang.Object.hashCode()", "hashCode");
-        testedMethods_jdk6.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedMethods_jdk6.put("public int java.lang.Object.hashCode()", "hashCode");
+        testedMethods_jdk6.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
         testedMethods_jdk6.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
-        testedMethods_jdk6.put("public final native void java.lang.Object.notify()", "notify");
-        testedMethods_jdk6.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+        testedMethods_jdk6.put("public final void java.lang.Object.notify()", "notify");
+        testedMethods_jdk6.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 
         // map for methods declared in (Open)JDK7
         testedMethods_jdk7.put("public void java.lang.Throwable.printStackTrace()", "printStackTrace");
@@ -88,13 +90,13 @@ public class getMethods implements Testlet
         testedMethods_jdk7.put("public final synchronized void java.lang.Throwable.addSuppressed(java.lang.Throwable)", "addSuppressed");
         testedMethods_jdk7.put("public final synchronized java.lang.Throwable[] java.lang.Throwable.getSuppressed()", "getSuppressed");
         testedMethods_jdk7.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
-        testedMethods_jdk7.put("public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
+        testedMethods_jdk7.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedMethods_jdk7.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
         testedMethods_jdk7.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
-        testedMethods_jdk7.put("public native int java.lang.Object.hashCode()", "hashCode");
-        testedMethods_jdk7.put("public final native java.lang.Class java.lang.Object.getClass()", "getClass");
-        testedMethods_jdk7.put("public final native void java.lang.Object.notify()", "notify");
-        testedMethods_jdk7.put("public final native void java.lang.Object.notifyAll()", "notifyAll");
+        testedMethods_jdk7.put("public int java.lang.Object.hashCode()", "hashCode");
+        testedMethods_jdk7.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
+        testedMethods_jdk7.put("public final void java.lang.Object.notify()", "notify");
+        testedMethods_jdk7.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 
         // create instance of a class ArithmeticException
         final Object o = new ArithmeticException("java.lang.ArithmeticException");
@@ -119,7 +121,7 @@ public class getMethods implements Testlet
             // method name should consists of package name + class name
             String methodName = method.getName();
             // modifiers + package + method name + parameter types
-            String methodString = method.toString();
+            String methodString = method.toString().replaceAll(" native ", " ");
             harness.check(testedMethods.containsKey(methodString));
             harness.check(testedMethods.get(methodString), methodName);
         }

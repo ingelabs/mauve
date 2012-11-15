@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.ArithmeticException.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -83,7 +85,7 @@ public class getDeclaredConstructors implements Testlet
             // constructor name should consists of package name + class name
             String constructorName = declaredConstructor.getName();
             // modifiers + package + class name + parameter types
-            String constructorString = declaredConstructor.toString();
+            String constructorString = declaredConstructor.toString().replaceAll(" native ", " ");
             harness.check(testedDeclaredConstructors.containsKey(constructorString));
             harness.check(testedDeclaredConstructors.get(constructorString), constructorName);
         }
