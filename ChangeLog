@@ -1,3 +1,35 @@
+2012-11-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatCodePointException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isSynthetic.java:
+	Updated.
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getFields.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/getMethods.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isArray.java:
+	* gnu/testlet/java/util/IllegalFormatCodePointException/classInfo/isEnum.java:
+	Added new tests for a class IllegalFormatCodePointException.
+
 2012-11-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArithmeticException/classInfo/InstanceOf.java:

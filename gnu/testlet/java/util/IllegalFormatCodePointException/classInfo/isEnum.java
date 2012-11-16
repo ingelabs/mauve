@@ -1,4 +1,4 @@
-// Test for method java.util.IllegalFormatCodePointException.getClass().isSynthetic(Object)
+// Test for method java.util.IllegalFormatCodePointException.getClass().isEnum()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.util.IllegalFormatCodePointException;
 
 
 /**
- * Test for method java.util.IllegalFormatCodePointException.getClass().isSynthetic()
+ * Test for method java.util.IllegalFormatCodePointException.getClass().isEnum()
  */
-public class isSynthetic implements Testlet
+public class isEnum implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isSynthetic implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(!c.isSynthetic());
+        harness.check(!c.isEnum());
     }
 }
 
