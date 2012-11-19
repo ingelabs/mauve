@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.util.IllegalFormatConversionException.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -48,7 +50,7 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class IllegalFormatConversionException
-        IllegalFormatConversionException o = new IllegalFormatConversionException('c', Integer.class);
+        IllegalFormatConversionException o = new IllegalFormatConversionException('a', Character.class);
 
         // basic check of instanceof operator
         harness.check(o instanceof IllegalFormatConversionException);

@@ -1,4 +1,4 @@
-// Test for method java.util.IllegalFormatConversionException.getClass().isAssignableFrom(Class)
+// Test for method java.util.IllegalFormatConversionException.getClass().isArray()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.util.IllegalFormatConversionException;
 
 
 /**
- * Test for method java.util.IllegalFormatConversionException.getClass().isAssignableFrom()
+ * Test for method java.util.IllegalFormatConversionException.getClass().isArray()
  */
-public class isAssignableFrom implements Testlet
+public class isArray implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isAssignableFrom implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(IllegalFormatConversionException.class));
+        harness.check(!c.isArray());
     }
 }
 

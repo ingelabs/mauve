@@ -1,3 +1,35 @@
+2012-11-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatConversionException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getFields.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isSynthetic.java:
+	Updated.
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isArray.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/isEnum.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/util/IllegalFormatConversionException/classInfo/getMethods.java:
+	Added new tests for a class IllegalFormatConversionException.
+
 2012-11-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatCodePointException/TryCatch.java:

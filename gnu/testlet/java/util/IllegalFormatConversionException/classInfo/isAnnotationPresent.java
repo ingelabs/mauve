@@ -1,4 +1,4 @@
-// Test for method java.util.IllegalFormatConversionException.getClass().isAssignableFrom(Class)
+// Test for method java.util.IllegalFormatConversionException.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.util.IllegalFormatConversionException;
 
 
 /**
- * Test for method java.util.IllegalFormatConversionException.getClass().isAssignableFrom()
+ * Test for method java.util.IllegalFormatConversionException.getClass().isAnnotationPresent()
  */
-public class isAssignableFrom implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -49,7 +49,14 @@ public class isAssignableFrom implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(IllegalFormatConversionException.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 
