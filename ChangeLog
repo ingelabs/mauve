@@ -1,3 +1,34 @@
+2012-11-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatFlagsException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getFields.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getMethods.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isArray.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isEnum.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatFlagsException/classInfo/isSynthetic.java:
+	Updated current tests and added new tests for a class IllegalFormatFlagsException.
+
 2012-11-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatConversionException/TryCatch.java:

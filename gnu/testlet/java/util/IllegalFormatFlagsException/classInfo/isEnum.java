@@ -1,4 +1,4 @@
-// Test for method java.util.IllegalFormatFlagsException.getClass().isLocalClass(Object)
+// Test for method java.util.IllegalFormatFlagsException.getClass().isEnum()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.util.IllegalFormatFlagsException;
 
 
 /**
- * Test for method java.util.IllegalFormatFlagsException.getClass().isLocalClass()
+ * Test for method java.util.IllegalFormatFlagsException.getClass().isEnum()
  */
-public class isLocalClass implements Testlet
+public class isEnum implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isLocalClass implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(!c.isLocalClass());
+        harness.check(!c.isEnum());
     }
 }
 
