@@ -1,3 +1,34 @@
+2012-11-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getFields.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getMethods.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isArray.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isEnum.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatPrecisionException/classInfo/isSynthetic.java:
+	Added 27 new tests for a class IllegalFormatPrecisionException.
+
 2012-11-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatFlagsException/TryCatch.java:
