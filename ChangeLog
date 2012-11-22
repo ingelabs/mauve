@@ -1,3 +1,34 @@
+2012-11-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/util/IllegalFormatWidthException/TryCatch.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/constructor.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getFields.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getMethods.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getModifiers.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getName.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getPackage.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isArray.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isEnum.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isInstance.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isInterface.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/util/IllegalFormatWidthException/classInfo/isSynthetic.java:
+	Added 27 new tests for a class IllegalFormatWidthException.
+
 2012-11-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatPrecisionException/TryCatch.java:
