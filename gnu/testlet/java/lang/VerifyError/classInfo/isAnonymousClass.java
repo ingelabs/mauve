@@ -1,4 +1,4 @@
-// Test for method java.lang.VerifyError.getClass().isSynthetic(Object)
+// Test for method java.lang.VerifyError.getClass().isAnonymousClass()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.VerifyError;
 
 
 /**
- * Test for method java.lang.VerifyError.getClass().isSynthetic()
+ * Test for method java.lang.VerifyError.getClass().isAnonymousClass()
  */
-public class isSynthetic implements Testlet
+public class isAnonymousClass implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isSynthetic implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(!c.isSynthetic());
+        harness.check(!c.isAnonymousClass());
     }
 }
 

@@ -1,4 +1,4 @@
-// Test if constructor is working properly for a class java.lang.VerifyError
+// Test if instances of a class java.lang.VerifyError could be properly constructed
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.VerifyError;
 
 import gnu.testlet.TestHarness;
@@ -29,7 +31,8 @@ import java.lang.VerifyError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.VerifyError
+ * Test if instances of a class java.lang.VerifyError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -41,13 +44,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        VerifyError error1 = new VerifyError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.VerifyError");
+        VerifyError object1 = new VerifyError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.VerifyError");
 
-        VerifyError error2 = new VerifyError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.VerifyError: nothing happens");
+        VerifyError object2 = new VerifyError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.VerifyError: nothing happens");
+
+        VerifyError object3 = new VerifyError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.VerifyError");
+
     }
 }
 

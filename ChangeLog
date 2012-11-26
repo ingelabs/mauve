@@ -1,3 +1,34 @@
+2012-11-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/VerifyError/TryCatch.java:
+	* gnu/testlet/java/lang/VerifyError/constructor.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getName.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/VerifyError/classInfo/isSynthetic.java:
+	Added and updated tests for VerifyError class.
+
 2012-11-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/util/IllegalFormatWidthException/TryCatch.java:
