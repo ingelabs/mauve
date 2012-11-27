@@ -1,3 +1,34 @@
+2012-11-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/UnsupportedOperationException/TryCatch.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/constructor.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnsupportedOperationException/classInfo/isSynthetic.java:
+	Added and updated tests for UnsupportedEncodingException class.
+
 2012-11-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/VerifyError/TryCatch.java:

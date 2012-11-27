@@ -1,4 +1,4 @@
-// Test for instanceof operator applied to a class java.lang.UnsupportedOperationException
+// Test for method java.lang.UnsupportedOperationException.getClass().isEnum()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,17 +27,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.UnsupportedOperationException;
-import java.lang.RuntimeException;
-import java.lang.Exception;
-import java.lang.Throwable;
-import java.lang.Object;
 
 
 
 /**
- * Test for instanceof operator applied to a class java.lang.UnsupportedOperationException
+ * Test for method java.lang.UnsupportedOperationException.getClass().isEnum()
  */
-public class InstanceOf implements Testlet
+public class isEnum implements Testlet
 {
 
     /**
@@ -48,16 +44,12 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class UnsupportedOperationException
-        UnsupportedOperationException o = new UnsupportedOperationException("java.lang.UnsupportedOperationException");
+        final Object o = new UnsupportedOperationException("java.lang.UnsupportedOperationException");
 
-        // basic check of instanceof operator
-        harness.check(o instanceof UnsupportedOperationException);
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
 
-        // check operator instanceof against all superclasses
-        harness.check(o instanceof RuntimeException);
-        harness.check(o instanceof Exception);
-        harness.check(o instanceof Throwable);
-        harness.check(o instanceof Object);
+        harness.check(!c.isEnum());
     }
 }
 

@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.UnsupportedOperationException.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -42,11 +44,11 @@ public class getModifiers implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new UnsupportedOperationException("UnsupportedOperationException");
+        // create instance of a class UnsupportedOperationException
+        final Object o = new UnsupportedOperationException("java.lang.UnsupportedOperationException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         int modifiers = c.getModifiers();
         harness.check( Modifier.isPublic(modifiers));
