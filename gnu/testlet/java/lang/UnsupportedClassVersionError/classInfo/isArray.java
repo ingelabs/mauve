@@ -1,4 +1,4 @@
-// Test if try-catch block is working properly for a class java.lang.UnsupportedClassVersionError
+// Test for method java.lang.UnsupportedClassVersionError.getClass().isArray()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,7 +21,7 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.UnsupportedClassVersionError;
+package gnu.testlet.java.lang.UnsupportedClassVersionError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -31,9 +31,9 @@ import java.lang.UnsupportedClassVersionError;
 
 
 /**
- * Test if try-catch block is working properly for a class java.lang.UnsupportedClassVersionError
+ * Test for method java.lang.UnsupportedClassVersionError.getClass().isArray()
  */
-public class TryCatch implements Testlet
+public class isArray implements Testlet
 {
 
     /**
@@ -43,16 +43,13 @@ public class TryCatch implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // flag that is set when exception is caught
-        boolean caught = false;
-        try {
-            throw new UnsupportedClassVersionError("UnsupportedClassVersionError");
-        }
-        catch (UnsupportedClassVersionError e) {
-            // correct exception was caught
-            caught = true;
-        }
-        harness.check(caught);
+        // create instance of a class UnsupportedClassVersionError
+        final Object o = new UnsupportedClassVersionError("UnsupportedClassVersionError");
+
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
+
+        harness.check(!c.isArray());
     }
 }
 

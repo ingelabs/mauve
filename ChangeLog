@@ -1,3 +1,34 @@
+2012-11-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/TryCatch.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/constructor.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnsupportedClassVersionError/classInfo/isSynthetic.java:
+	Added and updated tests for UnsupportedClassVersionError class.
+
 2012-11-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/UnsupportedOperationException/TryCatch.java:
