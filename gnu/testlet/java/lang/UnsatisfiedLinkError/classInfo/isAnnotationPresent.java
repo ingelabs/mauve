@@ -1,4 +1,4 @@
-// Test for method java.lang.UnsatisfiedLinkError.getClass().isSynthetic(Object)
+// Test for method java.lang.UnsatisfiedLinkError.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.UnsatisfiedLinkError;
 
 
 /**
- * Test for method java.lang.UnsatisfiedLinkError.getClass().isSynthetic()
+ * Test for method java.lang.UnsatisfiedLinkError.getClass().isAnnotationPresent()
  */
-public class isSynthetic implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -49,7 +49,14 @@ public class isSynthetic implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(!c.isSynthetic());
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 
