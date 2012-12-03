@@ -1,4 +1,4 @@
-// Test if constructor is working properly for a class java.lang.UnknownError
+// Test for method java.lang.UnknownError.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,7 +21,7 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.UnknownError;
+package gnu.testlet.java.lang.UnknownError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -31,9 +31,9 @@ import java.lang.UnknownError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.UnknownError
+ * Test for method java.lang.UnknownError.getClass().isAnnotationPresent()
  */
-public class constructor implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -43,13 +43,20 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        UnknownError error1 = new UnknownError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.UnknownError");
+        // create instance of a class UnknownError
+        final Object o = new UnknownError("UnknownError");
 
-        UnknownError error2 = new UnknownError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.UnknownError: nothing happens");
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
+
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 

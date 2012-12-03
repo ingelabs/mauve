@@ -1,3 +1,34 @@
+2012-12-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/UnknownError/TryCatch.java:
+	* gnu/testlet/java/lang/UnknownError/constructor.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getName.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/UnknownError/classInfo/isSynthetic.java:
+	Added and updated tests for UnknownError class.
+
 2012-11-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/UnsatisfiedLinkError/TryCatch.java:
