@@ -1,3 +1,33 @@
+2012-12-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/TypeNotPresentException/TryCatch.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getName.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/TypeNotPresentException/classInfo/isSynthetic.java:
+	Added and updated tests for TypeNotPresentException class.
+
 2012-12-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/UnknownError/TryCatch.java:
