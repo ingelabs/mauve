@@ -1,3 +1,33 @@
+2012-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ThreadDeath/TryCatch.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getName.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isArray.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ThreadDeath/classInfo/isSynthetic.java:
+	Added and updated tests for ThreadDeath class.
+
 2012-12-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/TypeNotPresentException/TryCatch.java:

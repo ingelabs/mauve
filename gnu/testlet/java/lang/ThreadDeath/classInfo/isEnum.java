@@ -1,4 +1,4 @@
-// Test for instanceof operator applied to a class java.lang.ThreadDeath
+// Test for method java.lang.ThreadDeath.getClass().isEnum()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,16 +27,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ThreadDeath;
-import java.lang.Error;
-import java.lang.Throwable;
-import java.lang.Object;
 
 
 
 /**
- * Test for instanceof operator applied to a class java.lang.ThreadDeath
+ * Test for method java.lang.ThreadDeath.getClass().isEnum()
  */
-public class InstanceOf implements Testlet
+public class isEnum implements Testlet
 {
 
     /**
@@ -47,15 +44,12 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ThreadDeath
-        ThreadDeath o = new ThreadDeath();
+        final Object o = new ThreadDeath();
 
-        // basic check of instanceof operator
-        harness.check(o instanceof ThreadDeath);
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
 
-        // check operator instanceof against all superclasses
-        harness.check(o instanceof Error);
-        harness.check(o instanceof Throwable);
-        harness.check(o instanceof Object);
+        harness.check(!c.isEnum());
     }
 }
 
