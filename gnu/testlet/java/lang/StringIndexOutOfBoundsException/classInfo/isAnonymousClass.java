@@ -1,4 +1,4 @@
-// Test if try-catch block is working properly for a class java.lang.StringIndexOutOfBoundsException
+// Test for method java.lang.StringIndexOutOfBoundsException.getClass().isAnonymousClass()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,7 +21,7 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.StringIndexOutOfBoundsException;
+package gnu.testlet.java.lang.StringIndexOutOfBoundsException.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -31,9 +31,9 @@ import java.lang.StringIndexOutOfBoundsException;
 
 
 /**
- * Test if try-catch block is working properly for a class java.lang.StringIndexOutOfBoundsException
+ * Test for method java.lang.StringIndexOutOfBoundsException.getClass().isAnonymousClass()
  */
-public class TryCatch implements Testlet
+public class isAnonymousClass implements Testlet
 {
 
     /**
@@ -43,16 +43,13 @@ public class TryCatch implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // flag that is set when exception is caught
-        boolean caught = false;
-        try {
-            throw new StringIndexOutOfBoundsException("StringIndexOutOfBoundsException");
-        }
-        catch (StringIndexOutOfBoundsException e) {
-            // correct exception was caught
-            caught = true;
-        }
-        harness.check(caught);
+        // create instance of a class StringIndexOutOfBoundsException
+        final Object o = new StringIndexOutOfBoundsException("java.lang.StringIndexOutOfBoundsException");
+
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
+
+        harness.check(!c.isAnonymousClass());
     }
 }
 

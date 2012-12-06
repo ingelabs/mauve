@@ -1,4 +1,4 @@
-// Test for method java.lang.StringIndexOutOfBoundsException.getClass().getInterfaces()
+// Test for method java.lang.StringIndexOutOfBoundsException.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,15 +27,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.StringIndexOutOfBoundsException;
-import java.util.List;
-import java.util.Arrays;
 
 
 
 /**
- * Test for method java.lang.StringIndexOutOfBoundsException.getClass().getInterfaces()
+ * Test for method java.lang.StringIndexOutOfBoundsException.getClass().isAnnotationPresent()
  */
-public class getInterfaces implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -51,7 +49,14 @@ public class getInterfaces implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        List interfaces = Arrays.asList(c.getInterfaces());
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 

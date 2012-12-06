@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.StringIndexOutOfBoundsException.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -41,13 +43,13 @@ public class isInstance implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new StringIndexOutOfBoundsException("StringIndexOutOfBoundsException");
+        // create instance of a class StringIndexOutOfBoundsException
+        final Object o = new StringIndexOutOfBoundsException("java.lang.StringIndexOutOfBoundsException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
-        harness.check(c.isInstance(new StringIndexOutOfBoundsException("StringIndexOutOfBoundsException")));
+        harness.check(c.isInstance(new StringIndexOutOfBoundsException("java.lang.StringIndexOutOfBoundsException")));
     }
 }
 

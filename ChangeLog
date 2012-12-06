@@ -1,3 +1,34 @@
+2012-12-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/TryCatch.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/constructor.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/StringIndexOutOfBoundsException/classInfo/isSynthetic.java:
+	Added and updated tests for StringIndexOutOfBoundsException class.
+
 2012-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ThreadDeath/TryCatch.java:
