@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.SecurityException.classInfo;
 
 import gnu.testlet.TestHarness;
@@ -41,11 +43,11 @@ public class isPrimitive implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new SecurityException("SecurityException");
+        // create instance of a class SecurityException
+        final Object o = new SecurityException("java.lang.SecurityException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isPrimitive());
     }

@@ -1,4 +1,4 @@
-// Test for method java.lang.SecurityException.getClass().getModifiers()
+// Test for method java.lang.SecurityException.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,14 +27,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.SecurityException;
-import java.lang.reflect.Modifier;
 
 
 
 /**
- * Test for method java.lang.SecurityException.getClass().getModifiers()
+ * Test for method java.lang.SecurityException.getClass().isAnnotationPresent()
  */
-public class getModifiers implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -50,19 +49,14 @@ public class getModifiers implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        int modifiers = c.getModifiers();
-        harness.check( Modifier.isPublic(modifiers));
-        harness.check(!Modifier.isPrivate(modifiers));
-        harness.check(!Modifier.isProtected(modifiers));
-        harness.check(!Modifier.isAbstract(modifiers));
-        harness.check(!Modifier.isFinal(modifiers));
-        harness.check(!Modifier.isInterface(modifiers));
-        harness.check(!Modifier.isNative(modifiers));
-        harness.check(!Modifier.isStatic(modifiers));
-        harness.check(!Modifier.isStrict(modifiers));
-        harness.check(!Modifier.isSynchronized(modifiers));
-        harness.check(!Modifier.isTransient(modifiers));
-        harness.check(!Modifier.isVolatile(modifiers));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 
