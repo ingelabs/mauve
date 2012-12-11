@@ -1,3 +1,34 @@
+2012-12-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/RuntimeException/TryCatch.java:
+	* gnu/testlet/java/lang/RuntimeException/constructor.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getName.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isArray.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/RuntimeException/classInfo/isSynthetic.java:
+	Added and updated tests for RuntimeException class.
+
 2012-12-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/SecurityException/TryCatch.java:

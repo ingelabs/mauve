@@ -1,4 +1,4 @@
-// Test for method java.lang.RuntimeException.getClass().getSuperclass()
+// Test for method java.lang.RuntimeException.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.RuntimeException;
 
 
 /**
- * Test for method java.lang.RuntimeException.getClass().getSuperclass()
+ * Test for method java.lang.RuntimeException.getClass().isAnnotationPresent()
  */
-public class getSuperclass implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -49,8 +49,14 @@ public class getSuperclass implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        Class superClass = c.getSuperclass();
-        harness.check(superClass.getName(), "java.lang.Exception");
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 
