@@ -1,3 +1,8 @@
+2012-12-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/doubleToInt.java:
+	Added new test related to double to integer conversions.
+
 2012-12-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/RuntimeException/TryCatch.java:
