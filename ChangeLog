@@ -1,7 +1,14 @@
+2012-12-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Integer/integerDivide.java:
+	Fixed.
+	* gnu/testlet/java/lang/Integer/integerModulo.java:
+	Added new test related to integer modulo operation.
+
 2012-12-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/integerDivide.java:
-	Added new test related to integer division operation.
+	Added new test related to integer divide operation.
 
 2012-12-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 

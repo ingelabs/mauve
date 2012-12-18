@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software Foundation
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307 USA
 
-package gnu.testlet.java.lang.Double;
+package gnu.testlet.java.lang.Integer;
 import gnu.testlet.Testlet;
 import gnu.testlet.TestHarness;
 
@@ -60,7 +60,7 @@ public class integerDivide implements Testlet
     int x = 10;
     int y = 2;
     int z = x / y;
-    harness.check(z == 2);
+    harness.check(z == 5);
   }
 
   public void testDividePositiveByPositiveCase2(TestHarness harness)
@@ -84,7 +84,7 @@ public class integerDivide implements Testlet
     int x = 10;
     int y = -2;
     int z = x / y;
-    harness.check(z == -2);
+    harness.check(z == -5);
   }
 
   public void testDividePositiveByNegativeCase2(TestHarness harness)
@@ -108,7 +108,7 @@ public class integerDivide implements Testlet
     int x = -10;
     int y = 2;
     int z = x / y;
-    harness.check(z == -2);
+    harness.check(z == -5);
   }
 
   public void testDivideNegativeByPositiveCase2(TestHarness harness)
@@ -132,7 +132,7 @@ public class integerDivide implements Testlet
     int x = -10;
     int y = -2;
     int z = x / y;
-    harness.check(z == 2);
+    harness.check(z == 5);
   }
 
   public void testDivideNegativeByNegativeCase2(TestHarness harness)
@@ -154,17 +154,17 @@ public class integerDivide implements Testlet
   public void testDivideMaxValue(TestHarness harness)
   {
     int x = Integer.MAX_VALUE;
-    int y = 2 << 16;
+    int y = 2 << 15;
     int z = x / y;
-    harness.check(z == 65535);
+    harness.check(z == 32767);
   }
 
   public void testDivideMinValue(TestHarness harness)
   {
     int x = Integer.MIN_VALUE;
-    int y = 2 << 16;
+    int y = 2 << 15;
     int z = x / y;
-    harness.check(z == -65536);
+    harness.check(z == -32768);
   }
 
   public void testDivideByMaxValue(TestHarness harness)
@@ -189,11 +189,11 @@ public class integerDivide implements Testlet
     int y = 0;
     try { 
         int z = x / y;
+        harness.check(false);
     }
     catch(ArithmeticException e) { 
         harness.check(true);
     }
-    harness.check(false);
   }
 
   public void testDivideByZeroCase2(TestHarness harness)
@@ -202,11 +202,11 @@ public class integerDivide implements Testlet
     int y = 0;
     try { 
         int z = x / y;
+        harness.check(false);
     }
     catch(ArithmeticException e) { 
         harness.check(true);
     }
-    harness.check(false);
   }
 
   public void testDivideByZeroCase3(TestHarness harness)
@@ -215,11 +215,11 @@ public class integerDivide implements Testlet
     int y = 0;
     try { 
         int z = x / y;
+        harness.check(false);
     }
     catch(ArithmeticException e) { 
         harness.check(true);
     }
-    harness.check(false);
   }
 
   public void testDivideByZeroCase4(TestHarness harness)
@@ -228,6 +228,7 @@ public class integerDivide implements Testlet
     int y = 0;
     try { 
         int z = x / y;
+        harness.check(false);
     }
     catch(ArithmeticException e) { 
         harness.check(true);
@@ -240,6 +241,7 @@ public class integerDivide implements Testlet
     int y = 0;
     try { 
         int z = x / y;
+        harness.check(false);
     }
     catch(ArithmeticException e) { 
         harness.check(true);
