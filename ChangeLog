@@ -1,3 +1,8 @@
+2012-12-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Long/longDivide.java:
+	Added new test related to long divide operation.
+
 2012-12-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Integer/integerDivide.java:
