@@ -1,3 +1,8 @@
+2012-12-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/Byte/byteDivide.java:
+	Added new test related to byte divide operation.
+
 2012-12-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Long/longModulo.java:
