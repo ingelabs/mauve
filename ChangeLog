@@ -1,3 +1,10 @@
+2013-01-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/AbstractMethodError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getClasses.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getComponentType.java:
+	Added new tests for AbstractMethodError class.
+
 2013-01-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getAnnotation.java:
