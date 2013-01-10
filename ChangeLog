@@ -1,3 +1,10 @@
+2013-01-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/AbstractMethodError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getDeclaredMethod.java:
+	Added three new tests for AbstractMethodError class.
+
 2013-01-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AbstractMethodError/classInfo/getConstructor.java:
