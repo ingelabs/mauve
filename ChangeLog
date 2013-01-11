@@ -1,3 +1,10 @@
+2013-01-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/AbstractMethodError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getEnclosingMethod.java:
+	Added new tests for AbstractMethodError class.
+
 2013-01-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/AbstractMethodError/classInfo/getDeclaredClasses.java:
