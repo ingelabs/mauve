@@ -1,3 +1,13 @@
+2013-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/AbstractMethodError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getField.java:
+	* testlet/java/lang/AbstractMethodError/classInfo/getMethod.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getEnclosingMethod.java:
+	Added new tests for AbstractMethodError and ArithmeticException classes.
+
 2013-01-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/AbstractMethodError/classInfo/getEnclosingClass.java:
