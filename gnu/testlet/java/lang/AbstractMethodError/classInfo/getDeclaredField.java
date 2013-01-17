@@ -49,6 +49,7 @@ public class getDeclaredField implements Testlet
         final String[] fieldsThatShouldExist_jdk6 = {
         };
         final String[] fieldsThatShouldExist_jdk7 = {
+            "serialVersionUID",
         };
 
         final String[] fieldsThatShouldExist = getJavaVersion() < 7 ? fieldsThatShouldExist_jdk6 : fieldsThatShouldExist_jdk7;

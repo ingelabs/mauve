@@ -1,4 +1,4 @@
-// Test for method java.lang.AbstractMethodError.getClass().getEnclosingConstructor()
+// Test for method java.lang.ArithmeticException.getClass().getEnclosingConstructor()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,17 +21,17 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.AbstractMethodError.classInfo;
+package gnu.testlet.java.lang.ArithmeticException.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.lang.AbstractMethodError;
+import java.lang.ArithmeticException;
 
 
 
 /**
- * Test for method java.lang.AbstractMethodError.getClass().getEnclosingConstructor()
+ * Test for method java.lang.ArithmeticException.getClass().getEnclosingConstructor()
  */
 public class getEnclosingConstructor implements Testlet
 {
@@ -43,8 +43,8 @@ public class getEnclosingConstructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class AbstractMethodError
-        final Object o = new AbstractMethodError("AbstractMethodError");
+        // create instance of a class ArithmeticException
+        final Object o = new ArithmeticException("java.lang.ArithmeticException");
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();
