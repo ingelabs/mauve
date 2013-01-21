@@ -1,3 +1,10 @@
+2013-01-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ArithmeticException/classInfo/getClasses.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getComponentType.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getDeclaredClasses.java:
+	Three new tests added for ArithmeticException class.
+
 2013-01-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ArithmeticException/classInfo/getAnnotation.java:
