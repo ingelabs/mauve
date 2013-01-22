@@ -1,3 +1,12 @@
+2013-01-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ArithmeticException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/ArithmeticException/classInfo/getMethod.java:
+	Five additional new tests added for ArithmeticException class.
+
 2013-01-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ArithmeticException/classInfo/getClasses.java:
