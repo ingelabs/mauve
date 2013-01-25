@@ -1,4 +1,4 @@
-// Test if try-catch block is working properly for a class java.lang.ArrayIndexOutOfBoundsException
+// Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getSimpleName()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,7 +21,7 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.ArrayIndexOutOfBoundsException;
+package gnu.testlet.java.lang.ArrayIndexOutOfBoundsException.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -31,9 +31,9 @@ import java.lang.ArrayIndexOutOfBoundsException;
 
 
 /**
- * Test if try-catch block is working properly for a class java.lang.ArrayIndexOutOfBoundsException
+ * Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getCanonicalName()
  */
-public class TryCatch implements Testlet
+public class getCanonicalName implements Testlet
 {
 
     /**
@@ -43,16 +43,13 @@ public class TryCatch implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // flag that is set when exception is caught
-        boolean caught = false;
-        try {
-            throw new ArrayIndexOutOfBoundsException("ArrayIndexOutOfBoundsException");
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
-            // correct exception was caught
-            caught = true;
-        }
-        harness.check(caught);
+        // create instance of a class ArrayIndexOutOfBoundsException
+        final Object o = new ArrayIndexOutOfBoundsException("java.lang.ArrayIndexOutOfBoundsException");
+
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
+
+        harness.check(c.getCanonicalName(), "java.lang.ArrayIndexOutOfBoundsException");
     }
 }
 

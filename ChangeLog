@@ -1,3 +1,13 @@
+2013-01-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ArrayIndexOutOfBoundsException/TryCatch.java:
+	* testlet/java/lang/ArrayIndexOutOfBoundsException/constructor.java:
+	Updated, added JDK tag.
+	* testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getAnnotation.java:
+	* testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getAnnotations.java:
+	* testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getCanonicalName.java:
+	Three new tests added for ArrayIndexOutOfBoundsException class.
+
 2013-01-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ArithmeticException/classInfo/getDeclaredAnnotations.java:
