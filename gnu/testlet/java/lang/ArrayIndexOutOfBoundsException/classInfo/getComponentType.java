@@ -1,4 +1,4 @@
-// Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().isPrimitive(Object)
+// Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getComponentType()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.ArrayIndexOutOfBoundsException;
 
 
 /**
- * Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().isPrimitive()
+ * Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getComponentType()
  */
-public class isPrimitive implements Testlet
+public class getComponentType implements Testlet
 {
 
     /**
@@ -49,7 +49,8 @@ public class isPrimitive implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(!c.isPrimitive());
+        Class<?> cls = c.getComponentType();
+        harness.check(cls == null);
     }
 }
 

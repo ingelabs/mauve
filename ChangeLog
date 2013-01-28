@@ -1,3 +1,17 @@
+2013-01-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getClasses.java:
+	Updated, added JDK tag.
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getComponentType.java:
+	Two new tests added for ArrayIndexOutOfBoundsException class.
+
 2013-01-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ArrayIndexOutOfBoundsException/TryCatch.java:
