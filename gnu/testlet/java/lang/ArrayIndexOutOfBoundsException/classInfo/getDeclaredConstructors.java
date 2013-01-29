@@ -1,6 +1,6 @@
 // Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getDeclaredConstructors()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.ArrayIndexOutOfBoundsException.classInfo;
 
@@ -85,7 +87,7 @@ public class getDeclaredConstructors implements Testlet
             // constructor name should consists of package name + class name
             String constructorName = declaredConstructor.getName();
             // modifiers + package + class name + parameter types
-            String constructorString = declaredConstructor.toString();
+            String constructorString = declaredConstructor.toString().replaceAll(" native ", " ");
             harness.check(testedDeclaredConstructors.containsKey(constructorString));
             harness.check(testedDeclaredConstructors.get(constructorString), constructorName);
         }

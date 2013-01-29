@@ -1,4 +1,4 @@
-// Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getDeclaredFields()
+// Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getConstructor()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -33,9 +33,9 @@ import java.util.HashMap;
 
 
 /**
- * Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getDeclaredFields()
+ * Test for method java.lang.ArrayIndexOutOfBoundsException.getClass().getConstructor()
  */
-public class getDeclaredFields implements Testlet
+public class getConstructor implements Testlet
 {
 
     /**
@@ -45,20 +45,16 @@ public class getDeclaredFields implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // map of declared fields which should exists
-        Map<String, String> testedDeclaredFields = null;
+        // following constructors should exist
+        Map<String, Class[]> constructorsThatShouldExist_jdk6 = new HashMap<String, Class[]>();
+        constructorsThatShouldExist_jdk6.put("java.lang.ArrayIndexOutOfBoundsException", new Class[] {});
+        constructorsThatShouldExist_jdk6.put("java.lang.ArrayIndexOutOfBoundsException", new Class[] {int.class});
+        constructorsThatShouldExist_jdk6.put("java.lang.ArrayIndexOutOfBoundsException", new Class[] {java.lang.String.class});
 
-        // map of declared fields for (Open)JDK6
-        Map<String, String> testedDeclaredFields_jdk6 = new HashMap<String, String>();
+        Map<String, Class[]> constructorsThatShouldExist_jdk7 = new HashMap<String, Class[]>();
 
-        // map of declared fields for (Open)JDK7
-        Map<String, String> testedDeclaredFields_jdk7 = new HashMap<String, String>();
-
-        // map for fields declared in (Open)JDK6
-        // --- empty ---
-
-        // map for fields declared in (Open)JDK7
-        testedDeclaredFields_jdk7.put("private static final long java.lang.ArrayIndexOutOfBoundsException.serialVersionUID", "serialVersionUID");
+        // get the right map containing constructor signatures
+        Map<String, Class[]> constructorsThatShouldExist = getJavaVersion() < 7 ? constructorsThatShouldExist_jdk6 : constructorsThatShouldExist_jdk7;
 
         // create instance of a class ArrayIndexOutOfBoundsException
         final Object o = new ArrayIndexOutOfBoundsException("java.lang.ArrayIndexOutOfBoundsException");
@@ -66,24 +62,18 @@ public class getDeclaredFields implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        // get the right map containing declared field signatures
-        testedDeclaredFields = getJavaVersion() < 7 ? testedDeclaredFields_jdk6 : testedDeclaredFields_jdk7;
-
-        // get all declared fields for this class
-        java.lang.reflect.Field[] declaredFields = c.getDeclaredFields();
-
-        // expected number of declared fields
-        final int expectedNumberOfDeclaredFields = testedDeclaredFields.size();
-
-        // basic check for a number of declared fields
-        harness.check(declaredFields.length, expectedNumberOfDeclaredFields);
-
-        // check if all fields exist
-        for (java.lang.reflect.Field declaredField: declaredFields) {
-            String fieldName = declaredField.getName();
-            String fieldString = declaredField.toString();
-            harness.check(testedDeclaredFields.containsKey(fieldString));
-            harness.check(testedDeclaredFields.get(fieldString), fieldName);
+        // check if all required constructors really exist
+        for (Map.Entry<String, Class[]> constructorThatShouldExists : constructorsThatShouldExist.entrySet()) {
+            try {
+                java.lang.reflect.Constructor constructor = c.getConstructor(constructorThatShouldExists.getValue());
+                harness.check(constructor != null);
+                String constructorName = constructor.getName();
+                harness.check(constructorName != null);
+                harness.check(constructorName, constructorThatShouldExists.getKey());
+            }
+            catch (Exception e) {
+                harness.check(false);
+            }
         }
     }
 
