@@ -1,3 +1,10 @@
+2013-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getEnclosingMethod.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getField.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getMethod.java:
+	Three new tests added for a class ArrayIndexOutOfBoundsException.
+
 2013-01-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getDeclaredField.java:
