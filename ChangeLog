@@ -1,3 +1,17 @@
+2013-02-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/isArray.java:
+	Updated, added JDK tag.
+
 2013-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getEnclosingMethod.java:
