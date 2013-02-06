@@ -1,3 +1,13 @@
+2013-02-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/TryCatch.java:
+	* gnu/testlet/java/lang/ArrayStoreException/constructor.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isLocalClass.java:
+	Updated, added JDK tag.
+
 2013-02-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayIndexOutOfBoundsException/classInfo/getInterfaces.java:
