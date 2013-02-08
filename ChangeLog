@@ -1,3 +1,10 @@
+2013-02-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredAnnotations.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredClasses.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredConstructor.java:
+	Three new tests added for a class ArrayStoreException.
+
 2013-02-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isMemberClass.java:
