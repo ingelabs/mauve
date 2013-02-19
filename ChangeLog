@@ -1,3 +1,12 @@
+2013-02-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getAnnotation.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getAnnotations.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getCanonicalName.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getClasses.java:
+	Four new tests added for a class ArrayStoreException: getAnnotation,
+	getAnnotations, getCanonicalName and getClasses.
+
 2013-02-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/InstanceOf.java:
