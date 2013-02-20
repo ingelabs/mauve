@@ -1,3 +1,14 @@
+2013-02-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getComponentType.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getConstructor.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredField.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredMethod.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaringClass.java:
+	Five new tests added for a class ArrayStoreException:
+	getComponentType, getConstructor, getDeclaringClass, getDeclaredField
+	and getDeclaredMethod.
+
 2013-02-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getAnnotation.java:
