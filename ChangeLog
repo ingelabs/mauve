@@ -1,3 +1,11 @@
+2013-02-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getName.java:
+	Updated, modified tests bodies, added JDK tag etc.
+
 2013-02-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getComponentType.java:
