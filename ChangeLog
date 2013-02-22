@@ -1,3 +1,11 @@
+2013-02-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getEnclosingClass.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getEnclosingConstructor.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getEnclosingMethod.java:
+	Three new tests added for a class ArrayStoreException:
+	getEnclosingClass, getEnclosingConstructor and getEnclosingMethod.
+
 2013-02-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getDeclaredConstructors.java:
