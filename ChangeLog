@@ -1,3 +1,10 @@
+2013-02-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getField.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getMethod.java:
+	Two new tests added for a class ArrayStoreException:
+	getField and getMethod.
+
 2013-02-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getEnclosingClass.java:
