@@ -1,3 +1,15 @@
+2013-02-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getFields.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ArrayStoreException/classInfo/isAnnotation.java:
+	Updated, modified tests bodies, added JDK tag etc.
+
 2013-02-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getField.java:
