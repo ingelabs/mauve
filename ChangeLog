@@ -1,3 +1,8 @@
+2013-02-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ArrayStoreException/classInfo/getMethods.java:
+	Fixed the handling of "native" modifier of methods and constructors.
+
 2013-02-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ArrayStoreException/classInfo/getFields.java:
