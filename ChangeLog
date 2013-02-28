@@ -1,3 +1,13 @@
+2013-02-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/TryCatch.java:
+	* gnu/testlet/java/lang/AssertionError/constructor.java:
+	Updated, modified tests bodies, added JDK tag etc.
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredAnnotations.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredClasses.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredConstructor.java:
+	Added three new tests for AssertionError class.
+
 2013-02-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ArrayStoreException/classInfo/getMethods.java:

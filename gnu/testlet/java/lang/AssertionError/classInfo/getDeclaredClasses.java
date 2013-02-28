@@ -1,4 +1,4 @@
-// Test if try-catch block is working properly for a class java.lang.AssertionError
+// Test for method java.lang.AssertionError.getClass().getDeclaredClasses()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,7 +21,7 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.AssertionError;
+package gnu.testlet.java.lang.AssertionError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -31,9 +31,9 @@ import java.lang.AssertionError;
 
 
 /**
- * Test if try-catch block is working properly for a class java.lang.AssertionError
+ * Test for method java.lang.AssertionError.getClass().getDeclaredClasses()
  */
-public class TryCatch implements Testlet
+public class getDeclaredClasses implements Testlet
 {
 
     /**
@@ -43,16 +43,15 @@ public class TryCatch implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // flag that is set when exception is caught
-        boolean caught = false;
-        try {
-            throw new AssertionError("AssertionError");
-        }
-        catch (AssertionError e) {
-            // correct exception was caught
-            caught = true;
-        }
-        harness.check(caught);
+        // create instance of a class AssertionError
+        final Object o = new AssertionError();
+
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
+
+        Class<?>[] cls = c.getDeclaredClasses();
+        harness.check(cls != null);
+        harness.check(cls.length, 0);
     }
 }
 
