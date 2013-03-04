@@ -1,3 +1,14 @@
+2013-03-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isSynthetic.java:
+	Updated, modified tests bodies, added JDK tag etc.
+
 2013-03-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getConstructor.java:
