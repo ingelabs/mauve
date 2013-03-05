@@ -1,3 +1,11 @@
+2013-03-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getAnnotation.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getAnnotations.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getCanonicalName.java:
+	Added three new tests for AssertionError class: getAnnotation,
+	getAnnotations and getCanonicalName.
+
 2013-03-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/InstanceOf.java:
