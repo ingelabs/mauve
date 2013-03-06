@@ -1,3 +1,11 @@
+2013-03-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/AssertionError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/AssertionError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/AssertionError/classInfo/getEnclosingMethod.java:
+	Added three new tests for AssertionError class: getEnclosingClass,
+	getEnclosingConstructor and getEnclosingMethod.
+
 2013-03-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getAnnotation.java:
