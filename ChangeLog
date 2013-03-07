@@ -1,3 +1,11 @@
+2013-03-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getClasses.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getComponentType.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getField.java:
+	Added three new tests for AssertionError class: getClasses,
+	getComponentType and getField.
+
 2013-03-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/AssertionError/classInfo/getEnclosingClass.java:
