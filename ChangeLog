@@ -1,3 +1,17 @@
+2013-03-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredMethods.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getFields.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getInterfaces.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isInstance.java:
+	Updated, modified tests bodies, added JDK tag, removed check for
+	"native" modifier etc.
+
 2013-03-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getClasses.java:
