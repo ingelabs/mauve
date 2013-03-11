@@ -1,3 +1,10 @@
+2013-03-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaringClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getMethod.java:
+	Added two new tests for AssertionError class: getDeclaringClass and
+	getMethod.
+
 2013-03-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaredConstructors.java:
