@@ -1,3 +1,13 @@
+2013-03-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getModifiers.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isArray.java:
+	Updated, added JDK tag etc.
+
 2013-03-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getDeclaringClass.java:
