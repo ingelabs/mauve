@@ -1,3 +1,11 @@
+2013-03-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/AssertionError/classInfo/getMethods.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/AssertionError/classInfo/isEnum.java:
+	Updated, modified tests bodies, added JDK tag, removed check for
+	"native" modifier etc.
+
 2013-03-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getModifiers.java:
