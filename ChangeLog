@@ -1,3 +1,14 @@
+2013-03-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/TryCatch.java:
+	* gnu/testlet/java/lang/ClassCastException/constructor.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isSynthetic.java:
+	Updated, added JDK tag etc.
+
 2013-03-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/AssertionError/classInfo/getMethods.java:
