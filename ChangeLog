@@ -1,3 +1,13 @@
+2013-03-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getAnnotation.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getAnnotations.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getCanonicalName.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getClasses.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getComponentType.java:
+	Added five new tests for ClassCastException class: getAnnotation,
+	getAnnotations, getCanonicalName, getClasses and getComponentType.
+
 2013-03-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCastException/TryCatch.java:
