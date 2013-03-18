@@ -1,3 +1,12 @@
+2013-03-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getConstructor.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredField.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getField.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getMethod.java:
+	Added four new tests for ClassCastException class: getConstructor,
+	getDeclaredField, getField and getMethod.
+
 2013-03-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCastException/classInfo/getAnnotation.java:
