@@ -1,3 +1,13 @@
+2013-03-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getPackage.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getSimpleName.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getSuperclass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isAssignableFrom.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isInstance.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isInterface.java:
+	Updated, added JDK tag etc.
+
 2013-03-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCastException/classInfo/getConstructor.java:
