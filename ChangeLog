@@ -1,3 +1,13 @@
+2013-03-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredMethod.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isArray.java:
+	Added five new tests for ClassCastException class: getDeclaredMethod,
+	isAnnotation, isAnnotationPresent, isAnonymousClass and isArray.
+
 2013-03-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassCastException/classInfo/getDeclaredAnnotations.java:
