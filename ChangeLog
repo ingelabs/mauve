@@ -1,3 +1,15 @@
+2013-03-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassCircularityError/TryCatch.java:
+	* testlet/java/lang/ClassCircularityError/constructor.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/InstanceOf.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/isInterface.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/isLocalClass.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/isMemberClass.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/isPrimitive.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/isSynthetic.java:
+	Updated eight ClassCircularityError tests, added JDK tag etc.
+
 2013-03-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredMethod.java:
