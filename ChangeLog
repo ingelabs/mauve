@@ -1,22 +1,30 @@
+2013-03-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getConstructors.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredConstructors.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredFields.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredMethods.java:
+	Added new methods to test on OpenJDK7.
+
 2013-03-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
-	* testlet/java/lang/ClassCircularityError/classInfo/getAnnotation.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/getAnnotations.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/getCanonicalName.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/getClasses.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getAnnotation.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getAnnotations.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getCanonicalName.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getClasses.java:
 	Added four new tests for ClassCircularityError class: getAnnotation,
 	getAnnotations, getCanonicalName, getClasses.
 
 2013-03-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
-	* testlet/java/lang/ClassCircularityError/TryCatch.java:
-	* testlet/java/lang/ClassCircularityError/constructor.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/InstanceOf.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/isInterface.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/isLocalClass.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/isMemberClass.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/isPrimitive.java:
-	* testlet/java/lang/ClassCircularityError/classInfo/isSynthetic.java:
+	* gnu/testlet/java/lang/ClassCircularityError/TryCatch.java:
+	* gnu/testlet/java/lang/ClassCircularityError/constructor.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/InstanceOf.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isInterface.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isLocalClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isMemberClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isPrimitive.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isSynthetic.java:
 	Updated eight ClassCircularityError tests, added JDK tag etc.
 
 2013-03-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
@@ -31,10 +39,10 @@
 
 2013-03-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
-	* testlet/java/lang/ClassCastException/classInfo/getDeclaredAnnotations.java:
-	* testlet/java/lang/ClassCastException/classInfo/getDeclaredClasses.java:
-	* testlet/java/lang/ClassCastException/classInfo/getDeclaredConstructor.java:
-	* testlet/java/lang/ClassCastException/classInfo/isEnum.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredAnnotations.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredClasses.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/getDeclaredConstructor.java:
+	* gnu/testlet/java/lang/ClassCastException/classInfo/isEnum.java:
 	Added four new tests for ClassCastException class: isEnum,
 	getDeclaredAnnotations, getDeclaredClasses and getDeclaredConstructor.
 
