@@ -1,3 +1,13 @@
+2013-04-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isAnonymousClass.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isArray.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isEnum.java:
+	Added five new tests for ClassCircularityError class: isAnnotation,
+	isAnnotationPresent, isAnonymousClass, isArray and isEnum.
+
 2013-04-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCastException/classInfo/getFields.java:
