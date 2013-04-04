@@ -1,3 +1,12 @@
+2013-04-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getComponentType.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getConstructor.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getDeclaredField.java:
+	* gnu/testlet/java/lang/ClassCircularityError/classInfo/getDeclaredMethod.java:
+	Added four new tests for ClassCircularityError class: getComponentType,
+	getConstructor, getDeclaredField and getDeclaredMethod.
+
 2013-04-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/ClassCircularityError/classInfo/isAnnotation.java:
