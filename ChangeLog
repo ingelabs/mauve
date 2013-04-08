@@ -1,3 +1,12 @@
+2013-04-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassCircularityError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getEnclosingMethod.java:
+	Added five new tests for ClassCircularityError class: getDeclaringClass,
+	getEnclosingClass, getEnclosingConstructor and getEnclosingMethod.
+
 2013-04-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassCircularityError/classInfo/getDeclaredAnnotations.java:
