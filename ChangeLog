@@ -1,3 +1,12 @@
+2013-04-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassCircularityError/classInfo/getConstructors.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getFields.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-04-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassCircularityError/classInfo/getDeclaringClass.java:
