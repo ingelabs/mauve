@@ -1,6 +1,6 @@
 // Test for method java.lang.ClassCircularityError.getClass().isAssignableFrom(Class)
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.ClassCircularityError.classInfo;
 
@@ -42,10 +44,10 @@ public class isAssignableFrom implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ClassCircularityError
-        Object o = new ClassCircularityError("ClassCircularityError");
+        final Object o = new ClassCircularityError("ClassCircularityError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(c.isAssignableFrom(ClassCircularityError.class));
     }
