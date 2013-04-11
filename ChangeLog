@@ -1,3 +1,10 @@
+2013-04-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassCircularityError/classInfo/getMethods.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getName.java:
+	* testlet/java/lang/ClassCircularityError/classInfo/getPackage.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-04-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassCircularityError/classInfo/getInterfaces.java:
