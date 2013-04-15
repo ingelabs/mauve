@@ -1,6 +1,6 @@
 // Test for method java.lang.ClassFormatError.getClass().isPrimitive(Object)
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -42,10 +42,10 @@ public class isPrimitive implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class ClassFormatError
-        Object o = new ClassFormatError("ClassFormatError");
+        final Object o = new ClassFormatError("ClassFormatError");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isPrimitive());
     }
