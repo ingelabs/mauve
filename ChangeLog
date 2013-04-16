@@ -1,3 +1,13 @@
+2013-04-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassFormatError/classInfo/getAnnotation.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getAnnotations.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getClasses.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getComponentType.java:
+	Added five new tests for ClassFormatError class: getAnnotation,
+	getAnnotations, getCanonicalName, getClasses and getComponentType..
+
 2013-04-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassFormatError/TryCatch.java:
@@ -41,7 +51,7 @@
 	* testlet/java/lang/ClassCircularityError/classInfo/getEnclosingClass.java:
 	* testlet/java/lang/ClassCircularityError/classInfo/getEnclosingConstructor.java:
 	* testlet/java/lang/ClassCircularityError/classInfo/getEnclosingMethod.java:
-	Added five new tests for ClassCircularityError class: getDeclaringClass,
+	Added four new tests for ClassCircularityError class: getDeclaringClass,
 	getEnclosingClass, getEnclosingConstructor and getEnclosingMethod.
 
 2013-04-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
