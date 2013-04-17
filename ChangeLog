@@ -1,3 +1,14 @@
+2013-04-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassFormatError/classInfo/getConstructor.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getDeclaredMethod.java:
+	Added five new tests for ClassFormatError class: getConstructor,
+	getDeclaredAnnotations, getDeclaredConstructor, getDeclaredField and
+	getDeclaredMethod.
+
 2013-04-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassFormatError/classInfo/getAnnotation.java:
