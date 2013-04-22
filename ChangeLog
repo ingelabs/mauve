@@ -1,3 +1,12 @@
+2013-04-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassFormatError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getFields.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getInterfaces.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getMethods.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getModifiers.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-04-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassFormatError/classInfo/getDeclaringClass.java:
