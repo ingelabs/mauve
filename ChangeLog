@@ -1,3 +1,12 @@
+2013-04-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassFormatError/classInfo/getMethod.java:
+	* testlet/java/lang/ClassFormatError/classInfo/isAnnotation.java:
+	* testlet/java/lang/ClassFormatError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/ClassFormatError/classInfo/isArray.java:
+	* testlet/java/lang/ClassFormatError/classInfo/isEnum.java:
+	Added five new tests for the class ClassFormatError.
+
 2013-04-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassFormatError/classInfo/getSuperclass.java:
