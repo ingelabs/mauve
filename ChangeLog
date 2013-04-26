@@ -1,3 +1,13 @@
+2013-04-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassFormatError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getName.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getPackage.java:
+	* testlet/java/lang/ClassFormatError/classInfo/getSimpleName.java:
+	* testlet/java/lang/ClassFormatError/classInfo/isAnnotationPresent.java:
+	Added new tests for the class ClassFormatError, updated existing test
+	for OpenJDK7.
+
 2013-04-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassFormatError/classInfo/getMethod.java:

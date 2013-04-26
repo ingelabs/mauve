@@ -1,4 +1,4 @@
-// Test for method java.lang.ClassFormatError.getClass().getName()
+// Test for method java.lang.ClassFormatError.getClass().getDeclaredClasses()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.ClassFormatError;
 
 
 /**
- * Test for method java.lang.ClassFormatError.getClass().getName()
+ * Test for method java.lang.ClassFormatError.getClass().getDeclaredClasses()
  */
-public class getName implements Testlet
+public class getDeclaredClasses implements Testlet
 {
 
     /**
@@ -49,7 +49,9 @@ public class getName implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.getName(), "java.lang.ClassFormatError");
+        Class<?>[] cls = c.getDeclaredClasses();
+        harness.check(cls != null);
+        harness.check(cls.length, 0);
     }
 }
 
