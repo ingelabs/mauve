@@ -1,3 +1,13 @@
+2013-04-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/TryCatch.java:
+	* testlet/java/lang/ClassNotFoundException/constructor.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/InstanceOf.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isMemberClass.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isPrimitive.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-04-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassFormatError/classInfo/getConstructors.java:
