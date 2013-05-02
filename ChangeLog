@@ -1,3 +1,14 @@
+2013-05-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/classInfo/getAnnotation.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getAnnotations.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getClasses.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getComponentType.java:
+	Added five new tests for the class ClassNotFoundException:
+	getAnnotation, getAnnotations, getCanonicalName, getClasses.java and
+	getComponentType.
+
 2013-04-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassNotFoundException/TryCatch.java:
