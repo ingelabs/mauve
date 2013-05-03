@@ -1,3 +1,12 @@
+2013-05-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/classInfo/getConstructor.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getMethod.java:
+	Four new tests added for the class ClassNotFoundException:
+	getConstructor, getDeclaredConstructor, getDeclaredMethod and getMethod.
+
 2013-05-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassNotFoundException/classInfo/getAnnotation.java:
