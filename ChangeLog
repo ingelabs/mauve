@@ -1,3 +1,12 @@
+2013-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/classInfo/getSuperclass.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isInstance.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isInterface.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isLocalClass.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-05-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassNotFoundException/classInfo/getConstructor.java:
