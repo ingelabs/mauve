@@ -1,3 +1,13 @@
+2013-05-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/classInfo/isAnnotation.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isArray.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isEnum.java:
+	Five new tests added for the class ClassNotFoundException:
+	isAnnotation, isAnnotationPresent, isAnonymousClass, isArray and isEnum.
+
 2013-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassNotFoundException/classInfo/getSuperclass.java:
