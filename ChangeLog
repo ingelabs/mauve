@@ -1,3 +1,15 @@
+2013-05-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getField.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/isEnum.java:
+	Six new tests added for the class ClassNotFoundException:
+	getDeclaredAnnotations, getDeclaredClasses, getDeclaredField, getDeclaringClass,
+	getField.java and isEnum.
+
 2013-05-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassNotFoundException/classInfo/isAnnotation.java:
