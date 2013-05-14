@@ -60,6 +60,10 @@ public class ScrollbarPaintTest
     frame.pack();
     frame.setVisible(true);
 
+    Robot robot = harness.createRobot();
+    robot.delay(1000);
+    robot.waitForIdle();
+
     Rectangle bounds = list.getBounds();
     Insets i = frame.getInsets();
     Point loc = frame.getLocationOnScreen();
@@ -68,14 +72,13 @@ public class ScrollbarPaintTest
     bounds.x += i.left;
     bounds.y += i.top;
 
-    Robot robot = harness.createRobot();
-
     // position of checked pixel
-    int checkedPixelX = loc.x + bounds.width - i.left;
+    int checkedPixelX = loc.x + bounds.width - i.left - 2;
     int checkedPixelY = loc.y + bounds.height / 2;
 
     // move the mouse cursor to a tested pixel to show users what's checked
     robot.mouseMove(checkedPixelX, checkedPixelY);
+    robot.delay(1000);
     robot.waitForIdle();
 
     Color scroll = robot.getPixelColor(checkedPixelX, checkedPixelY);

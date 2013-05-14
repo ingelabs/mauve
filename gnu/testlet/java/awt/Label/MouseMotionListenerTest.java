@@ -61,7 +61,7 @@ public class MouseMotionListenerTest
   {
     setBackground(Color.red);
     Frame frame = new Frame();
-    Label label = new Label("xyzzy");
+    Label label = new Label("The quick brown fox jumps over the lazy dog.");
     label.setBackground(Color.blue);
     add(label);
 

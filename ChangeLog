@@ -1,5 +1,12 @@
 2013-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/awt/Label/MouseMotionListenerTest.java:
+	Make this test to behave properly on slower machines.
+	* testlet/java/awt/List/ScrollbarPaintTest.java:
+	Small fix to make this test more reliable.
+
+2013-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/ClassNotFoundException/classInfo/getEnclosingClass.java:
 	* testlet/java/lang/ClassNotFoundException/classInfo/getEnclosingConstructor.java:
 	* testlet/java/lang/ClassNotFoundException/classInfo/getEnclosingMethod.java:
