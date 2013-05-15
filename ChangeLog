@@ -1,3 +1,12 @@
+2013-05-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ClassNotFoundException/classInfo/getInterfaces.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getModifiers.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getName.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getPackage.java:
+	* testlet/java/lang/ClassNotFoundException/classInfo/getSimpleName.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/awt/Label/MouseMotionListenerTest.java:
