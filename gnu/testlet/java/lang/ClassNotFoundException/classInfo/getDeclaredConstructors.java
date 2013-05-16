@@ -1,6 +1,6 @@
 // Test for method java.lang.ClassNotFoundException.getClass().getDeclaredConstructors()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -19,13 +19,16 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.ClassNotFoundException.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ClassNotFoundException;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,47 +45,64 @@ public class getDeclaredConstructors implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] constructorNames = new String[] {
-            "java.lang.ClassNotFoundException",
-            "java.lang.ClassNotFoundException",
-            "java.lang.ClassNotFoundException",
-        };
-        java.util.Arrays.sort(constructorNames);
+        // map of declared constructors which should exists
+        Map<String, String> testedDeclaredConstructors = null;
 
-        String[] constructorStrings = new String[] {
-            "public java.lang.ClassNotFoundException()",
-            "public java.lang.ClassNotFoundException(java.lang.String)",
-            "public java.lang.ClassNotFoundException(java.lang.String,java.lang.Throwable)",
-        };
-        java.util.Arrays.sort(constructorStrings);
+        // map of declared constructors for (Open)JDK6
+        Map<String, String> testedDeclaredConstructors_jdk6 = new HashMap<String, String>();
+
+        // map of declared constructors for (Open)JDK7
+        Map<String, String> testedDeclaredConstructors_jdk7 = new HashMap<String, String>();
+
+        // map for constructors declared in (Open)JDK6
+        testedDeclaredConstructors_jdk6.put("public java.lang.ClassNotFoundException()", "java.lang.ClassNotFoundException");
+        testedDeclaredConstructors_jdk6.put("public java.lang.ClassNotFoundException(java.lang.String)", "java.lang.ClassNotFoundException");
+        testedDeclaredConstructors_jdk6.put("public java.lang.ClassNotFoundException(java.lang.String,java.lang.Throwable)", "java.lang.ClassNotFoundException");
+
+        // map for constructors declared in (Open)JDK7
+        testedDeclaredConstructors_jdk7.put("public java.lang.ClassNotFoundException(java.lang.String,java.lang.Throwable)", "java.lang.ClassNotFoundException");
+        testedDeclaredConstructors_jdk7.put("public java.lang.ClassNotFoundException(java.lang.String)", "java.lang.ClassNotFoundException");
+        testedDeclaredConstructors_jdk7.put("public java.lang.ClassNotFoundException()", "java.lang.ClassNotFoundException");
 
         // create instance of a class ClassNotFoundException
-        Object o = new ClassNotFoundException("ClassNotFoundException");
+        final Object o = new ClassNotFoundException("java.lang.ClassNotFoundException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
-        java.lang.reflect.Constructor[] constructors = c.getDeclaredConstructors();
-        harness.check(constructors.length, 3);
+        // get the right map containing constructor signatures
+        testedDeclaredConstructors = getJavaVersion() < 7 ? testedDeclaredConstructors_jdk6 : testedDeclaredConstructors_jdk7;
 
-        String constructorName;
-        String constructorString;
+        // get all declared constructors for this class
+        java.lang.reflect.Constructor[] declaredConstructors = c.getDeclaredConstructors();
 
-        constructorName = constructors[0].getName();
-        constructorString = constructors[0].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // expected number of constructors
+        final int expectedNumberOfConstructors = testedDeclaredConstructors.size();
 
-        constructorName = constructors[1].getName();
-        constructorString = constructors[1].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // basic check for a number of constructors
+        harness.check(declaredConstructors.length, expectedNumberOfConstructors);
 
-        constructorName = constructors[2].getName();
-        constructorString = constructors[2].toString();
-        harness.check(java.util.Arrays.binarySearch(constructorNames, constructorName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(constructorStrings, constructorString) >= 0);
+        // check if all declared constructors exist
+        for (java.lang.reflect.Constructor declaredConstructor : declaredConstructors) {
+            // constructor name should consists of package name + class name
+            String constructorName = declaredConstructor.getName();
+            // modifiers + package + class name + parameter types
+            String constructorString = declaredConstructor.toString().replaceAll(" native ", " ");
+            harness.check(testedDeclaredConstructors.containsKey(constructorString));
+            harness.check(testedDeclaredConstructors.get(constructorString), constructorName);
+        }
+    }
 
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

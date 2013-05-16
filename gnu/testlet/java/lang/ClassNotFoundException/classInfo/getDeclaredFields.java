@@ -1,6 +1,6 @@
 // Test for method java.lang.ClassNotFoundException.getClass().getDeclaredFields()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -19,13 +19,16 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.ClassNotFoundException.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.ClassNotFoundException;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
@@ -42,40 +45,60 @@ public class getDeclaredFields implements Testlet
      */
     public void test(TestHarness harness)
     {
-        String[] fieldNames = new String[] {
-            "serialVersionUID",
-            "ex",
-        };
-        java.util.Arrays.sort(fieldNames);
+        // map of declared fields which should exists
+        Map<String, String> testedDeclaredFields = null;
 
-        String[] fieldStrings = new String[] {
-            "private static final long java.lang.ClassNotFoundException.serialVersionUID",
-            "private java.lang.Throwable java.lang.ClassNotFoundException.ex",
-        };
-        java.util.Arrays.sort(fieldStrings);
+        // map of declared fields for (Open)JDK6
+        Map<String, String> testedDeclaredFields_jdk6 = new HashMap<String, String>();
+
+        // map of declared fields for (Open)JDK7
+        Map<String, String> testedDeclaredFields_jdk7 = new HashMap<String, String>();
+
+        // map for fields declared in (Open)JDK6
+        testedDeclaredFields_jdk6.put("private static final long java.lang.ClassNotFoundException.serialVersionUID", "serialVersionUID");
+        testedDeclaredFields_jdk6.put("private java.lang.Throwable java.lang.ClassNotFoundException.ex", "ex");
+
+        // map for fields declared in (Open)JDK7
+        testedDeclaredFields_jdk7.put("private static final long java.lang.ClassNotFoundException.serialVersionUID", "serialVersionUID");
+        testedDeclaredFields_jdk7.put("private java.lang.Throwable java.lang.ClassNotFoundException.ex", "ex");
 
         // create instance of a class ClassNotFoundException
-        Object o = new ClassNotFoundException("ClassNotFoundException");
+        final Object o = new ClassNotFoundException("java.lang.ClassNotFoundException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
-        java.lang.reflect.Field[] fields = c.getDeclaredFields();
-        harness.check(fields.length, 2);
+        // get the right map containing declared field signatures
+        testedDeclaredFields = getJavaVersion() < 7 ? testedDeclaredFields_jdk6 : testedDeclaredFields_jdk7;
 
-        String fieldName;
-        String fieldString;
+        // get all declared fields for this class
+        java.lang.reflect.Field[] declaredFields = c.getDeclaredFields();
 
-        fieldName = fields[0].getName();
-        fieldString = fields[0].toString();
-        harness.check(java.util.Arrays.binarySearch(fieldNames, fieldName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(fieldStrings, fieldString) >= 0);
+        // expected number of declared fields
+        final int expectedNumberOfDeclaredFields = testedDeclaredFields.size();
 
-        fieldName = fields[1].getName();
-        fieldString = fields[1].toString();
-        harness.check(java.util.Arrays.binarySearch(fieldNames, fieldName) >= 0);
-        harness.check(java.util.Arrays.binarySearch(fieldStrings, fieldString) >= 0);
+        // basic check for a number of declared fields
+        harness.check(declaredFields.length, expectedNumberOfDeclaredFields);
 
+        // check if all fields exist
+        for (java.lang.reflect.Field declaredField: declaredFields) {
+            String fieldName = declaredField.getName();
+            String fieldString = declaredField.toString();
+            harness.check(testedDeclaredFields.containsKey(fieldString));
+            harness.check(testedDeclaredFields.get(fieldString), fieldName);
+        }
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 
