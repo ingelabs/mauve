@@ -1,3 +1,16 @@
+2013-05-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/CloneNotSupportedException/TryCatch.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/constructor.java:
+	Updated, added JDK tags etc.
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getAnnotation.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getAnnotations.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getCanonicalName.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getClasses.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getComponentType.java:
+	Five new tests added for the class CloneNotSupportedException:
+	getAnnotation, getAnnotations, getCanonicalName, getClasses and getComponentType.
+
 2013-05-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ClassNotFoundException/classInfo/getConstructors.java:

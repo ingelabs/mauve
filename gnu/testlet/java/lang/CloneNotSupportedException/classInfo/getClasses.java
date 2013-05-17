@@ -1,4 +1,4 @@
-// Test if try-catch block is working properly for a class java.lang.CloneNotSupportedException
+// Test for method java.lang.CloneNotSupportedException.getClass().getClasses()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,7 +21,7 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.CloneNotSupportedException;
+package gnu.testlet.java.lang.CloneNotSupportedException.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
@@ -31,9 +31,9 @@ import java.lang.CloneNotSupportedException;
 
 
 /**
- * Test if try-catch block is working properly for a class java.lang.CloneNotSupportedException
+ * Test for method java.lang.CloneNotSupportedException.getClass().getClasses()
  */
-public class TryCatch implements Testlet
+public class getClasses implements Testlet
 {
 
     /**
@@ -43,16 +43,15 @@ public class TryCatch implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // flag that is set when exception is caught
-        boolean caught = false;
-        try {
-            throw new CloneNotSupportedException("CloneNotSupportedException");
-        }
-        catch (CloneNotSupportedException e) {
-            // correct exception was caught
-            caught = true;
-        }
-        harness.check(caught);
+        // create instance of a class CloneNotSupportedException
+        final Object o = new CloneNotSupportedException("java.lang.CloneNotSupportedException");
+
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
+
+        Class<?>[] cls = c.getClasses();
+        harness.check(cls != null);
+        harness.check(cls.length, 0);
     }
 }
 
