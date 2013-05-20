@@ -1,3 +1,14 @@
+2013-05-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getConstructor.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredConstructor.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredField.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredMethod.java:
+	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaringClass.java:
+	Five new tests added for the class CloneNotSupportedException:
+	getConstructor, getDeclaredConstructor, getDeclaredField,
+	getDeclaredMethod and getDeclaringClass.
+
 2013-05-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/CloneNotSupportedException/TryCatch.java:
