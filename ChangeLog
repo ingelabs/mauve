@@ -1,3 +1,14 @@
+2013-05-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getEnclosingMethod.java:
+	Five new tests added for the class CloneNotSupportedException:
+	getDeclaredAnnotations, getDeclaredClasses, getEnclosingClass, getEnclosingConstructor
+	and getEnclosingMethod.
+
 2013-05-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/CloneNotSupportedException/classInfo/getConstructor.java:
