@@ -1,3 +1,13 @@
+2013-05-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getField.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getMethod.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isAnnotation.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isAnonymousClass.java:
+	Five new tests added for the class CloneNotSupportedException:
+	getField, getMethod, isAnnotation, isAnnotationPresent and isAnonymousClass.
+
 2013-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/CloneNotSupportedException/classInfo/InstanceOf.java:
