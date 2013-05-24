@@ -1,4 +1,4 @@
-// Test for method java.lang.CloneNotSupportedException.getClass().isAssignableFrom(Class)
+// Test for method java.lang.CloneNotSupportedException.getClass().isEnum()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.CloneNotSupportedException;
 
 
 /**
- * Test for method java.lang.CloneNotSupportedException.getClass().isAssignableFrom()
+ * Test for method java.lang.CloneNotSupportedException.getClass().isEnum()
  */
-public class isAssignableFrom implements Testlet
+public class isEnum implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isAssignableFrom implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(CloneNotSupportedException.class));
+        harness.check(!c.isEnum());
     }
 }
 

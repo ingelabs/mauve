@@ -1,3 +1,13 @@
+2013-05-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isArray.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isEnum.java:
+	New tests.
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isInstance.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/isInterface.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-05-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/CloneNotSupportedException/classInfo/getField.java:
