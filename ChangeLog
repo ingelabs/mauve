@@ -1,3 +1,13 @@
+2013-05-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getConstructors.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getFields.java:
+	* testlet/java/lang/CloneNotSupportedException/classInfo/getMethods.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-05-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/CloneNotSupportedException/classInfo/getInterfaces.java:
