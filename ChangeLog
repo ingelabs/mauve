@@ -1,3 +1,14 @@
+2013-05-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/EnumConstantNotPresentException/TryCatch.java:
+	* testlet/java/lang/EnumConstantNotPresentException/constructor.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/InstanceOf.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/isLocalClass.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/isMemberClass.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/isPrimitive.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-05-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/CloneNotSupportedException/classInfo/getConstructors.java:
