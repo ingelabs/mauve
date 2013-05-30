@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().isAssignableFrom(Class)
+// Test for method java.lang.EnumConstantNotPresentException.getClass().isArray()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.EnumConstantNotPresentException;
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().isAssignableFrom()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().isArray()
  */
-public class isAssignableFrom implements Testlet
+public class isArray implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -44,13 +44,13 @@ public class isAssignableFrom implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
+        // create instance of a class EnumConstantNotPresentException
         final Object o = new EnumConstantNotPresentException(X.class, "EnumConstantNotPresentException");
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(EnumConstantNotPresentException.class));
+        harness.check(!c.isArray());
     }
 }
 
