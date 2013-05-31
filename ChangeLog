@@ -1,3 +1,10 @@
+2013-05-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isAnnotation.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isAnnotationPresent.java:
+	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isAnonymousClass.java:
+	Added three new tests for EnumConstantNotPresentException class.
+
 2013-05-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/EnumConstantNotPresentException/classInfo/isArray.java:
