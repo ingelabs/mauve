@@ -1,3 +1,15 @@
+2013-06-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getAnnotation.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getAnnotations.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getClasses.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getComponentType.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getInterfaces.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getName.java:
+	Added new tests for EnumConstantNotPresentException class:
+	getAnnotation, getAnnotations, getCanonicalName, getClasses and getComponentType.
+
 2013-05-31  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/EnumConstantNotPresentException/classInfo/isAnnotation.java:

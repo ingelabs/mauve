@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getName()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getAnnotation()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.EnumConstantNotPresentException;
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getName()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getAnnotation()
  */
-public class getName implements Testlet
+public class getAnnotation implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -50,7 +50,23 @@ public class getName implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.getName(), "java.lang.EnumConstantNotPresentException");
+        java.lang.annotation.Annotation annotation;
+        annotation = c.getAnnotation(java.lang.annotation.Annotation.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.annotation.Documented.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.annotation.Inherited.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.annotation.Retention.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.annotation.Target.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.Deprecated.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.Override.class);
+        harness.check(annotation == null);
+        annotation = c.getAnnotation(java.lang.SuppressWarnings.class);
+        harness.check(annotation == null);
     }
 }
 
