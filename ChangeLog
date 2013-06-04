@@ -1,3 +1,14 @@
+2013-06-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getField.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getFields.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getMethod.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getMethods.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getModifiers.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getSuperclass.java:
+	Added six new tests for EnumConstantNotPresentException class:
+	getField, getFields, getMethod, getMethods, getModifiers and getSuperclass.
+
 2013-06-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getAnnotation.java:

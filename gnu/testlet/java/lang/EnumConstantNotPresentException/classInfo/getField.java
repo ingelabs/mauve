@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getModifiers()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getField()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,14 +27,15 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.EnumConstantNotPresentException;
-import java.lang.reflect.Modifier;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getModifiers()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getField()
  */
-public class getModifiers implements Testlet
+public class getField implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -45,25 +46,45 @@ public class getModifiers implements Testlet
      */
     public void test(TestHarness harness)
     {
+        // following fields should exists
+        final String[] fieldsThatShouldExist_jdk6 = {
+        };
+        final String[] fieldsThatShouldExist_jdk7 = {
+        };
+
+        final String[] fieldsThatShouldExist = getJavaVersion() < 7 ? fieldsThatShouldExist_jdk6 : fieldsThatShouldExist_jdk7;
+
         // create instance of a class EnumConstantNotPresentException
         final Object o = new EnumConstantNotPresentException(X.class, "EnumConstantNotPresentException");
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        int modifiers = c.getModifiers();
-        harness.check( Modifier.isPublic(modifiers));
-        harness.check(!Modifier.isPrivate(modifiers));
-        harness.check(!Modifier.isProtected(modifiers));
-        harness.check(!Modifier.isAbstract(modifiers));
-        harness.check(!Modifier.isFinal(modifiers));
-        harness.check(!Modifier.isInterface(modifiers));
-        harness.check(!Modifier.isNative(modifiers));
-        harness.check(!Modifier.isStatic(modifiers));
-        harness.check(!Modifier.isStrict(modifiers));
-        harness.check(!Modifier.isSynchronized(modifiers));
-        harness.check(!Modifier.isTransient(modifiers));
-        harness.check(!Modifier.isVolatile(modifiers));
+        // check if all required fields really exists
+        for (String fieldThatShouldExists : fieldsThatShouldExist) {
+            try {
+                java.lang.reflect.Field field = c.getField(fieldThatShouldExists);
+                harness.check(field != null);
+                String fieldName = field.getName();
+                harness.check(fieldName != null);
+                harness.check(fieldName, fieldThatShouldExists);
+            }
+            catch (Exception e) {
+                harness.check(false);
+            }
+        }
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 
