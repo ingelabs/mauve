@@ -1,3 +1,14 @@
+2013-06-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getConstructor.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getConstructors.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getEnclosingMethod.java:
+	Added five new tests for EnumConstantNotPresentException class:
+	getConstructor, getConstructors, getEnclosingClass, getEnclosingConstructor and
+	getEnclosingMethod.
+
 2013-06-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getField.java:
