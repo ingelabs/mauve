@@ -53,4 +53,3 @@ public class getCanonicalName implements Testlet
         harness.check(c.getCanonicalName(), "java.lang.EnumConstantNotPresentException");
     }
 }
-

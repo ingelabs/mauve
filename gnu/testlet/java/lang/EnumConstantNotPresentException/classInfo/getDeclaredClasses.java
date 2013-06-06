@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getSimpleName()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredClasses()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.EnumConstantNotPresentException;
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getSimpleName()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredClasses()
  */
-public class getSimpleName implements Testlet
+public class getDeclaredClasses implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -50,7 +50,9 @@ public class getSimpleName implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.getSimpleName(), "EnumConstantNotPresentException");
+        Class<?>[] cls = c.getDeclaredClasses();
+        harness.check(cls != null);
+        harness.check(cls.length, 0);
     }
 }
 

@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getConstructor()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredAnnotations()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,15 +27,15 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.EnumConstantNotPresentException;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Arrays;
 
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getConstructor()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredAnnotations()
  */
-public class getConstructor implements Testlet
+public class getDeclaredAnnotations implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -46,34 +46,34 @@ public class getConstructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // following constructors should exist
-        Map<String, Class[]> constructorsThatShouldExist_jdk6 = new HashMap<String, Class[]>();
-        constructorsThatShouldExist_jdk6.put("java.lang.EnumConstantNotPresentException", new Class[] {java.lang.Class.class, java.lang.String.class});
-
-        Map<String, Class[]> constructorsThatShouldExist_jdk7 = new HashMap<String, Class[]>();
-        constructorsThatShouldExist_jdk7.put("java.lang.EnumConstantNotPresentException", new Class[] {java.lang.Class.class, java.lang.String.class});
-
-        // get the right map containing constructor signatures
-        Map<String, Class[]> constructorsThatShouldExist = getJavaVersion() < 7 ? constructorsThatShouldExist_jdk6 : constructorsThatShouldExist_jdk7;
-
         // create instance of a class EnumConstantNotPresentException
         final Object o = new EnumConstantNotPresentException(X.class, "EnumConstantNotPresentException");
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        // check if all required constructors really exist
-        for (Map.Entry<String, Class[]> constructorThatShouldExists : constructorsThatShouldExist.entrySet()) {
-            try {
-                java.lang.reflect.Constructor constructor = c.getConstructor(constructorThatShouldExists.getValue());
-                harness.check(constructor != null);
-                String constructorName = constructor.getName();
-                harness.check(constructorName != null);
-                harness.check(constructorName, constructorThatShouldExists.getKey());
-            }
-            catch (Exception e) {
-                harness.check(false);
-            }
+        // following annotations should be provided
+        final String[] annotationsThatShouldExists_jdk6 = {
+        };
+
+        final String[] annotationsThatShouldExists_jdk7 = {
+        };
+
+        // get all annotations
+        java.lang.annotation.Annotation[] annotations = c.getDeclaredAnnotations();
+
+        // and transform the array into a list of annotation names
+        List<String> annotationsAsString = new java.util.ArrayList<String>();
+
+        for (java.lang.annotation.Annotation annotation : annotations) {
+            annotationsAsString.add(annotation.toString());
+        }
+
+        String[] annotationsThatShouldExists = getJavaVersion() < 7 ? annotationsThatShouldExists_jdk6 : annotationsThatShouldExists_jdk7;
+
+        // check if all required annotations really exist
+        for (String annotationThatShouldExists : annotationsThatShouldExists) {
+            harness.check(annotationsAsString.contains(annotationThatShouldExists));
         }
     }
 

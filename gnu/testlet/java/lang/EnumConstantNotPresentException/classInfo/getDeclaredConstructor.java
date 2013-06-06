@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getConstructor()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredConstructor()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -33,9 +33,9 @@ import java.util.HashMap;
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getConstructor()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredConstructor()
  */
-public class getConstructor implements Testlet
+public class getDeclaredConstructor implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -65,7 +65,7 @@ public class getConstructor implements Testlet
         // check if all required constructors really exist
         for (Map.Entry<String, Class[]> constructorThatShouldExists : constructorsThatShouldExist.entrySet()) {
             try {
-                java.lang.reflect.Constructor constructor = c.getConstructor(constructorThatShouldExists.getValue());
+                java.lang.reflect.Constructor constructor = c.getDeclaredConstructor(constructorThatShouldExists.getValue());
                 harness.check(constructor != null);
                 String constructorName = constructor.getName();
                 harness.check(constructorName != null);

@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getConstructors()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredConstructors()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -33,9 +33,9 @@ import java.util.HashMap;
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getConstructors()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaredConstructors()
  */
-public class getConstructors implements Testlet
+public class getDeclaredConstructors implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -46,20 +46,20 @@ public class getConstructors implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // map of constructors which should exists
-        Map<String, String> testedConstructors = null;
+        // map of declared constructors which should exists
+        Map<String, String> testedDeclaredConstructors = null;
 
-        // map of constructors for (Open)JDK6
-        Map<String, String> testedConstructors_jdk6 = new HashMap<String, String>();
+        // map of declared constructors for (Open)JDK6
+        Map<String, String> testedDeclaredConstructors_jdk6 = new HashMap<String, String>();
 
-        // map of constructors for (Open)JDK7
-        Map<String, String> testedConstructors_jdk7 = new HashMap<String, String>();
+        // map of declared constructors for (Open)JDK7
+        Map<String, String> testedDeclaredConstructors_jdk7 = new HashMap<String, String>();
 
         // map for constructors declared in (Open)JDK6
-        testedConstructors_jdk6.put("public java.lang.EnumConstantNotPresentException(java.lang.Class,java.lang.String)", "java.lang.EnumConstantNotPresentException");
+        testedDeclaredConstructors_jdk6.put("public java.lang.EnumConstantNotPresentException(java.lang.Class,java.lang.String)", "java.lang.EnumConstantNotPresentException");
 
         // map for constructors declared in (Open)JDK7
-        testedConstructors_jdk7.put("public java.lang.EnumConstantNotPresentException(java.lang.Class,java.lang.String)", "java.lang.EnumConstantNotPresentException");
+        testedDeclaredConstructors_jdk7.put("public java.lang.EnumConstantNotPresentException(java.lang.Class,java.lang.String)", "java.lang.EnumConstantNotPresentException");
 
         // create instance of a class EnumConstantNotPresentException
         final Object o = new EnumConstantNotPresentException(X.class, "EnumConstantNotPresentException");
@@ -68,25 +68,25 @@ public class getConstructors implements Testlet
         final Class c = o.getClass();
 
         // get the right map containing constructor signatures
-        testedConstructors = getJavaVersion() < 7 ? testedConstructors_jdk6 : testedConstructors_jdk7;
+        testedDeclaredConstructors = getJavaVersion() < 7 ? testedDeclaredConstructors_jdk6 : testedDeclaredConstructors_jdk7;
 
-        // get all constructors for this class
-        java.lang.reflect.Constructor[] constructors = c.getConstructors();
+        // get all declared constructors for this class
+        java.lang.reflect.Constructor[] declaredConstructors = c.getDeclaredConstructors();
 
         // expected number of constructors
-        final int expectedNumberOfConstructors = testedConstructors.size();
+        final int expectedNumberOfConstructors = testedDeclaredConstructors.size();
 
         // basic check for a number of constructors
-        harness.check(constructors.length, expectedNumberOfConstructors);
+        harness.check(declaredConstructors.length, expectedNumberOfConstructors);
 
-        // check if all constructors exist
-        for (java.lang.reflect.Constructor constructor : constructors) {
+        // check if all declared constructors exist
+        for (java.lang.reflect.Constructor declaredConstructor : declaredConstructors) {
             // constructor name should consists of package name + class name
-            String constructorName = constructor.getName();
+            String constructorName = declaredConstructor.getName();
             // modifiers + package + class name + parameter types
-            String constructorString = constructor.toString().replaceAll(" native ", " ");
-            harness.check(testedConstructors.containsKey(constructorString));
-            harness.check(testedConstructors.get(constructorString), constructorName);
+            String constructorString = declaredConstructor.toString().replaceAll(" native ", " ");
+            harness.check(testedDeclaredConstructors.containsKey(constructorString));
+            harness.check(testedDeclaredConstructors.get(constructorString), constructorName);
         }
     }
 

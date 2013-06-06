@@ -1,3 +1,17 @@
+2013-06-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getConstructor.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getConstructors.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getPackage.java:
+	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getSimpleName.java:
+	More tests added for EnumConstantNotPresentException class.
+
 2013-06-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getConstructor.java:
