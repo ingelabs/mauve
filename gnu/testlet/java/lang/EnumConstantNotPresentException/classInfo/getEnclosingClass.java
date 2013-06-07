@@ -45,7 +45,7 @@ public class getEnclosingClass implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class EnumConstantNotPresentException
-        EnumConstantNotPresentException o = new EnumConstantNotPresentException(X.class, "EnumConstantNotPresentException");
+        final Object o = new EnumConstantNotPresentException(X.class, "EnumConstantNotPresentException");
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();

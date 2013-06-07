@@ -1,4 +1,4 @@
-// Test for method java.lang.EnumConstantNotPresentException.getClass().getEnclosingConstructor()
+// Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaringClass()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.EnumConstantNotPresentException;
 
 
 /**
- * Test for method java.lang.EnumConstantNotPresentException.getClass().getEnclosingConstructor()
+ * Test for method java.lang.EnumConstantNotPresentException.getClass().getDeclaringClass()
  */
-public class getEnclosingConstructor implements Testlet
+public class getDeclaringClass implements Testlet
 {
     enum X {ONE, TWO, THREE};
 
@@ -50,8 +50,8 @@ public class getEnclosingConstructor implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        java.lang.reflect.Constructor<?> cons = c.getEnclosingConstructor();
-        harness.check(cons == null);
+        Class<?> cls = c.getDeclaringClass();
+        harness.check(cls == null);
     }
 }
 
