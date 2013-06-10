@@ -1,3 +1,14 @@
+2013-06-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/TryCatch.java:
+	* testlet/java/lang/Error/constructor.java:
+	* testlet/java/lang/Error/classInfo/InstanceOf.java:
+	* testlet/java/lang/Error/classInfo/isLocalClass.java:
+	* testlet/java/lang/Error/classInfo/isMemberClass.java:
+	* testlet/java/lang/Error/classInfo/isPrimitive.java:
+	* testlet/java/lang/Error/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-06-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/EnumConstantNotPresentException/classInfo/getDeclaredFields.java:

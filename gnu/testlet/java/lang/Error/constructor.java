@@ -1,6 +1,6 @@
-// Test if constructor is working properly for a class java.lang.Error
+// Test if instances of a class java.lang.Error could be properly constructed
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.Error;
 
 import gnu.testlet.TestHarness;
@@ -29,7 +31,8 @@ import java.lang.Error;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.Error
+ * Test if instances of a class java.lang.Error
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
