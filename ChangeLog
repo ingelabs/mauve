@@ -1,3 +1,12 @@
+2013-06-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/classInfo/getAnnotation.java:
+	* testlet/java/lang/Error/classInfo/getAnnotations.java:
+	* testlet/java/lang/Error/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Error/classInfo/getClasses.java:
+	* testlet/java/lang/Error/classInfo/getComponentType.java:
+	Five more tests added for Error class.
+
 2013-06-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Error/TryCatch.java:
