@@ -1,3 +1,11 @@
+2013-06-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/classInfo/getField.java:
+	* testlet/java/lang/Error/classInfo/getFields.java:
+	* testlet/java/lang/Error/classInfo/getMethod.java:
+	* testlet/java/lang/Error/classInfo/getMethods.java:
+	Four more tests added for Error class.
+
 2013-06-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Error/classInfo/getAnnotation.java:
