@@ -1,3 +1,11 @@
+2013-06-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/classInfo/getConstructor.java:
+	* testlet/java/lang/Error/classInfo/getConstructors.java:
+	* testlet/java/lang/Error/classInfo/isAnnotation.java:
+	* testlet/java/lang/Error/classInfo/isAnnotationPresent.java:
+	Another four tests added for Error class.
+
 2013-06-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Error/classInfo/getField.java:
