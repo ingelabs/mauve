@@ -1,3 +1,11 @@
+2013-06-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Error/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Error/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Error/classInfo/getDeclaredMethods.java:
+	Four new tests added for checking Error class.
+
 2013-06-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Error/classInfo/getConstructor.java:
