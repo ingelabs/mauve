@@ -1,3 +1,10 @@
+2013-06-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Error/classInfo/isArray.java:
+	* testlet/java/lang/Error/classInfo/isEnum.java:
+	Another three new tests added for checking Error class.
+
 2013-06-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Error/classInfo/getPackage.java:
