@@ -1,3 +1,10 @@
+2013-06-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Error/classInfo/getInterfaces.java:
+	* testlet/java/lang/Error/classInfo/getModifiers.java:
+	* testlet/java/lang/Error/classInfo/getName.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-06-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Error/classInfo/isAnonymousClass.java:
