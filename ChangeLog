@@ -1,4 +1,13 @@
-2013-07-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+2013-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Exception/classInfo/getField.java:
+	* testlet/java/lang/Exception/classInfo/getFields.java:
+	* testlet/java/lang/Exception/classInfo/getMethod.java:
+	* testlet/java/lang/Exception/classInfo/getMethods.java:
+	Additional four new tests added into testlet/java/lang/Exception/classInfo
+	directory.
+
+2013-07-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Exception/classInfo/getAnnotation.java:
 	* testlet/java/lang/Exception/classInfo/getAnnotations.java:
