@@ -1,3 +1,13 @@
+2013-07-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Exception/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaringClass.java:
+	Additional five new tests added into testlet/java/lang/Exception/classInfo
+	directory.
+
 2013-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Exception/classInfo/getField.java:
