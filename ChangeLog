@@ -1,3 +1,13 @@
+2013-07-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Exception/classInfo/getConstructor.java:
+	* testlet/java/lang/Exception/classInfo/getConstructors.java:
+	* testlet/java/lang/Exception/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/Exception/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Exception/classInfo/getEnclosingMethod.java:
+	Five new tests added into testlet/java/lang/Exception/classInfo
+	directory.
+
 2013-07-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Exception/classInfo/getDeclaredField.java:
