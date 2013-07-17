@@ -1,3 +1,12 @@
+2013-07-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Exception/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Exception/classInfo/getDeclaredConstructors.java:
+	Four new tests added into testlet/java/lang/Exception/classInfo
+	directory.
+
 2013-07-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Exception/classInfo/getConstructor.java:
