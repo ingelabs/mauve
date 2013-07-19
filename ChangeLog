@@ -1,3 +1,15 @@
+2013-07-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Exception/classInfo/getSuperclass.java:
+	* testlet/java/lang/Exception/classInfo/isAnnotation.java:
+	* testlet/java/lang/Exception/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Exception/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Exception/classInfo/isArray.java:
+	* testlet/java/lang/Exception/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Exception/classInfo/isEnum.java:
+	* testlet/java/lang/Exception/classInfo/isInstance.java:
+	Added new tests and updated existing ones.
+
 2013-07-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Exception/classInfo/isInterface.java:

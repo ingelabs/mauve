@@ -1,4 +1,4 @@
-// Test for method java.lang.Exception.getClass().isInstance(Object)
+// Test for method java.lang.Exception.getClass().isAnonymousClass()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.Exception;
 
 
 /**
- * Test for method java.lang.Exception.getClass().isInstance()
+ * Test for method java.lang.Exception.getClass().isAnonymousClass()
  */
-public class isInstance implements Testlet
+public class isAnonymousClass implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isInstance implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isInstance(new Exception("java.lang.Exception")));
+        harness.check(!c.isAnonymousClass());
     }
 }
 

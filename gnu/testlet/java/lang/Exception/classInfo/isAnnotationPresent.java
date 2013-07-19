@@ -1,4 +1,4 @@
-// Test for method java.lang.Exception.getClass().isInstance(Object)
+// Test for method java.lang.Exception.getClass().isAnnotationPresent()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.Exception;
 
 
 /**
- * Test for method java.lang.Exception.getClass().isInstance()
+ * Test for method java.lang.Exception.getClass().isAnnotationPresent()
  */
-public class isInstance implements Testlet
+public class isAnnotationPresent implements Testlet
 {
 
     /**
@@ -49,7 +49,14 @@ public class isInstance implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isInstance(new Exception("java.lang.Exception")));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Annotation.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Documented.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Inherited.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Retention.class));
+        harness.check(!c.isAnnotationPresent(java.lang.annotation.Target.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Deprecated.class));
+        harness.check(!c.isAnnotationPresent(java.lang.Override.class));
+        harness.check(!c.isAnnotationPresent(java.lang.SuppressWarnings.class));
     }
 }
 
