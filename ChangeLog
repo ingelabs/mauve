@@ -1,3 +1,14 @@
+2013-07-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ExceptionInInitializerError/TryCatch.java:
+	* testlet/java/lang/ExceptionInInitializerError/constructor.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/InstanceOf.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getInterfaces.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getModifiers.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getName.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getPackage.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-07-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Exception/classInfo/getSuperclass.java:
