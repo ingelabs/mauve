@@ -1,3 +1,12 @@
+2013-07-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getClasses.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getComponentType.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getConstructor.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getConstructors.java:
+	Five new tests added into testlet/java/lang/ExceptionInInitializerError/classInfo.
+
 2013-07-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ExceptionInInitializerError/classInfo/getAnnotation.java:
