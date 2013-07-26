@@ -1,3 +1,13 @@
+2013-07-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getEnclosingMethod.java:
+	Another six new tests added into testlet/java/lang/ExceptionInInitializerError/classInfo.
+
 2013-07-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ExceptionInInitializerError/classInfo/getDeclaredConstructor.java:
