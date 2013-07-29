@@ -1,3 +1,12 @@
+2013-07-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isAnnotation.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isArray.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isEnum.java:
+	Five new tests added into testlet/java/lang/ExceptionInInitializerError/classInfo.
+
 2013-07-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ExceptionInInitializerError/classInfo/getDeclaredAnnotations.java:
