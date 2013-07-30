@@ -1,3 +1,16 @@
+2013-07-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getSimpleName.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/getSuperclass.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isInstance.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isInterface.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isLocalClass.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isMemberClass.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isPrimitive.java:
+	* testlet/java/lang/ExceptionInInitializerError/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-07-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ExceptionInInitializerError/classInfo/isAnnotation.java:
