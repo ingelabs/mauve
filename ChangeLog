@@ -1,3 +1,13 @@
+2013-08-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessError/classInfo/getClasses.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getComponentType.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getField.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getFields.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getMethod.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getMethods.java:
+	Six new tests added into testlet/java/lang/IllegalAccessError/classInfo.
+
 2013-08-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessError/classInfo/getAnnotation.java:
