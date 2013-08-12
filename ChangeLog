@@ -1,3 +1,13 @@
+2013-08-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredFields.java:
+	Six new tests added into testlet/java/lang/IllegalAccessError/classInfo.
+
 2013-08-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessError/classInfo/getClasses.java:
