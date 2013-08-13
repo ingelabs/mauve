@@ -1,3 +1,13 @@
+2013-08-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessError/classInfo/getSimpleName.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getSuperclass.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isInstance.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isInterface.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isLocalClass.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-08-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredAnnotations.java:
