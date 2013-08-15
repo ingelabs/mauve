@@ -1,3 +1,12 @@
+2013-08-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessError/classInfo/isAnnotation.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isArray.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/isEnum.java:
+	Five new tests added into testlet/java/lang/IllegalAccessError/classInfo.
+
 2013-08-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessError/classInfo/getDeclaredMethod.java:
