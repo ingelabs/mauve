@@ -1,3 +1,11 @@
+2013-08-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessError/classInfo/getInterfaces.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getModifiers.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getName.java:
+	* testlet/java/lang/IllegalAccessError/classInfo/getPackage.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-08-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessError/classInfo/isAnnotation.java:
