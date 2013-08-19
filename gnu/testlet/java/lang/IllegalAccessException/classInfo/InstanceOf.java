@@ -1,6 +1,6 @@
 // Test for instanceof operator applied to a class java.lang.IllegalAccessException
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.IllegalAccessException.classInfo;
 
@@ -45,7 +47,7 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class IllegalAccessException
-        IllegalAccessException o = new IllegalAccessException("IllegalAccessException");
+        IllegalAccessException o = new IllegalAccessException("java.lang.IllegalAccessException");
 
         // basic check of instanceof operator
         harness.check(o instanceof IllegalAccessException);
