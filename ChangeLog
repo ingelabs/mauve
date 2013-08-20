@@ -1,3 +1,13 @@
+2013-08-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessException/classInfo/getAnnotation.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getAnnotations.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getField.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getFields.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getMethod.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getMethods.java:
+	Six new tests added into testlet/java/lang/IllegalAccessException/classInfo.
+
 2013-08-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessException/TryCatch.java:
