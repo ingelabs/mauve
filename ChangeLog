@@ -1,3 +1,12 @@
+2013-08-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getClasses.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getComponentType.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getConstructor.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getConstructors.java:
+	Five new tests added into testlet/java/lang/IllegalAccessException/classInfo.
+
 2013-08-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessException/classInfo/getDeclaredAnnotations.java:
