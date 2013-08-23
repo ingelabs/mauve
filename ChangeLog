@@ -1,3 +1,13 @@
+2013-08-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getEnclosingMethod.java:
+	Six new tests added into testlet/java/lang/IllegalAccessException/classInfo.
+
 2013-08-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessException/classInfo/getCanonicalName.java:
