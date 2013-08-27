@@ -1,3 +1,12 @@
+2013-08-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessException/classInfo/getPackage.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getSimpleName.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/getSuperclass.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/isInstance.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-08-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessException/classInfo/isAnnotation.java:
