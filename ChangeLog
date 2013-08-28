@@ -1,3 +1,12 @@
+2013-08-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalAccessException/classInfo/isInterface.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/isLocalClass.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/isMemberClass.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/isPrimitive.java:
+	* testlet/java/lang/IllegalAccessException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-08-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessException/classInfo/getPackage.java:
