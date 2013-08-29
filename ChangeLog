@@ -1,3 +1,14 @@
+2013-08-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalArgumentException/TryCatch.java:
+	* testlet/java/lang/IllegalArgumentException/constructor.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/InstanceOf.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getInterfaces.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getModifiers.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getName.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getPackage.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-08-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalAccessException/classInfo/isInterface.java:
