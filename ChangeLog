@@ -1,3 +1,13 @@
+2013-08-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalArgumentException/classInfo/isInstance.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isInterface.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isLocalClass.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isMemberClass.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isPrimitive.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-08-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalArgumentException/TryCatch.java:
