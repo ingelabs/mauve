@@ -1,3 +1,12 @@
+2013-09-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalArgumentException/classInfo/getAnnotation.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getAnnotations.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getClasses.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isArray.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isEnum.java:
+	Five new tests added into testlet/java/lang/IllegalArgumentException/classInfo.
+
 2013-09-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalArgumentException/classInfo/getConstructor.java:
