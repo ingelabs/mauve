@@ -1,3 +1,12 @@
+2013-09-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalArgumentException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isAnnotation.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isAnnotationPresent.java:
+	Five new tests added into testlet/java/lang/IllegalArgumentException/classInfo.
+
 2013-09-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalArgumentException/classInfo/getCanonicalName.java:
