@@ -1,3 +1,10 @@
+2013-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalArgumentException/classInfo/getSimpleName.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/getSuperclass.java:
+	* testlet/java/lang/IllegalArgumentException/classInfo/isAssignableFrom.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-09-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalArgumentException/classInfo/getDeclaredAnnotations.java:
