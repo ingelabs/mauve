@@ -1,3 +1,8 @@
+2013-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalArgumentException/classInfo/isAnonymousClass.java:
+	New test added into testlet/java/lang/IllegalArgumentException/classInfo.
+
 2013-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalArgumentException/classInfo/getSimpleName.java:
