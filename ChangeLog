@@ -1,3 +1,14 @@
+2013-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalMonitorStateException/TryCatch.java:
+	* testlet/java/lang/IllegalMonitorStateException/constructor.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/InstanceOf.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getInterfaces.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getModifiers.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getName.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getPackage.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalArgumentException/classInfo/isAnonymousClass.java:
