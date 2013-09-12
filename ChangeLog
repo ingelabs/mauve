@@ -1,3 +1,13 @@
+2013-09-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getConstructor.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getConstructors.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getField.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getFields.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getMethod.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getMethods.java:
+	New test added into testlet/java/lang/IllegalMonitorStateException/classInfo.
+
 2013-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalMonitorStateException/TryCatch.java:
