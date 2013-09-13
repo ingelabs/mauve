@@ -1,3 +1,12 @@
+2013-09-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getAnnotation.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getAnnotations.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getClasses.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getComponentType.java:
+	Five new tests added into testlet/java/lang/IllegalMonitorStateException/classInfo.
+
 2013-09-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getConstructor.java:
@@ -6,7 +15,7 @@
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getFields.java:
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getMethod.java:
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getMethods.java:
-	New test added into testlet/java/lang/IllegalMonitorStateException/classInfo.
+	New tests added into testlet/java/lang/IllegalMonitorStateException/classInfo.
 
 2013-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
