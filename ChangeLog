@@ -1,5 +1,11 @@
 2013-09-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/ExceptionInInitializerError/getCause.java:
+	* testlet/java/lang/ExceptionInInitializerError/getException.java:
+	Two new tests added into testlet/java/lang/ExceptionInInitializerError.
+
+2013-09-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getDeclaredConstructor.java:
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getDeclaredConstructors.java:
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getDeclaredField.java:
