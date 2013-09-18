@@ -1,3 +1,13 @@
+2013-09-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getSimpleName.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/getSuperclass.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/isInstance.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/isInterface.java:
+	* testlet/java/lang/IllegalMonitorStateException/classInfo/isLocalClass.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-09-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/getDeclaredAnnotations.java:
