@@ -1,3 +1,13 @@
+2013-09-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalStateException/TryCatch.java:
+	* testlet/java/lang/IllegalStateException/constructor.java:
+	* testlet/java/lang/IllegalStateException/classInfo/InstanceOf.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getInterfaces.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getModifiers.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getName.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-09-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalMonitorStateException/classInfo/isMemberClass.java:
