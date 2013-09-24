@@ -1,3 +1,12 @@
+2013-09-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalStateException/classInfo/isInterface.java:
+	* testlet/java/lang/IllegalStateException/classInfo/isLocalClass.java:
+	* testlet/java/lang/IllegalStateException/classInfo/isMemberClass.java:
+	* testlet/java/lang/IllegalStateException/classInfo/isPrimitive.java:
+	* testlet/java/lang/IllegalStateException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-09-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalStateException/TryCatch.java:
