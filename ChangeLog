@@ -1,3 +1,13 @@
+2013-09-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalStateException/classInfo/getAnnotation.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getAnnotations.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getField.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getFields.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getMethod.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getMethods.java:
+	Six new tests added into testlet/java/lang/IllegalStateException/classInfo.
+
 2013-09-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalStateException/classInfo/isInterface.java:
