@@ -1,3 +1,13 @@
+2013-09-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredMethods.java:
+	Six new tests added into testlet/java/lang/IllegalStateException/classInfo.
+
 2013-09-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalStateException/classInfo/getCanonicalName.java:
