@@ -1,3 +1,13 @@
+2013-10-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getEnclosingMethod.java:
+	Another six new tests added into testlet/java/lang/IllegalStateException/classInfo.
+
 2013-09-30  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalStateException/classInfo/getDeclaredConstructor.java:
