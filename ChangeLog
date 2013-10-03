@@ -1,3 +1,12 @@
+2013-10-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalStateException/classInfo/getPackage.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getSimpleName.java:
+	* testlet/java/lang/IllegalStateException/classInfo/getSuperclass.java:
+	* testlet/java/lang/IllegalStateException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IllegalStateException/classInfo/isInstance.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-10-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalStateException/classInfo/isAnnotation.java:
