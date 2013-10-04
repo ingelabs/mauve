@@ -1,3 +1,13 @@
+2013-10-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalThreadStateException/TryCatch.java:
+	* testlet/java/lang/IllegalThreadStateException/constructor.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/InstanceOf.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getInterfaces.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getModifiers.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getName.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-10-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalStateException/classInfo/getPackage.java:
