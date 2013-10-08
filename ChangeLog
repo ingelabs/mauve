@@ -1,3 +1,13 @@
+2013-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getClasses.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getComponentType.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getConstructor.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getConstructors.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getDeclaredAnnotations.java:
+	Another six new tests added into testlet/java/lang/IllegalStateException/classInfo.
+
 2013-10-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalThreadStateException/classInfo/getAnnotation.java:
