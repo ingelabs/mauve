@@ -1,3 +1,12 @@
+2013-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getEnclosingMethod.java:
+	New tests added into testlet/java/lang/IllegalStateException/classInfo.
+
 2013-10-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalThreadStateException/classInfo/getDeclaredClasses.java:
