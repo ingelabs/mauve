@@ -1,3 +1,12 @@
+2013-10-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isAnnotation.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isArray.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isEnum.java:
+	New tests added into testlet/java/lang/IllegalStateException/classInfo.
+
 2013-10-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalThreadStateException/classInfo/getDeclaredMethods.java:
