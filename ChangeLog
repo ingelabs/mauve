@@ -1,3 +1,13 @@
+2013-10-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getPackage.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getSimpleName.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/getSuperclass.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isInstance.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isInterface.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-10-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalThreadStateException/classInfo/isAnnotation.java:
