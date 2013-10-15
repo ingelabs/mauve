@@ -1,3 +1,11 @@
+2013-10-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isLocalClass.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isMemberClass.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isPrimitive.java:
+	* testlet/java/lang/IllegalThreadStateException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-10-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalThreadStateException/classInfo/getPackage.java:
