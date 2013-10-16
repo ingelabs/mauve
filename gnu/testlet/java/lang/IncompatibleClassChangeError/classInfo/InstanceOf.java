@@ -1,4 +1,4 @@
-// Test if try-catch block is working properly for a class java.lang.IncompatibleClassChangeError
+// Test for instanceof operator applied to a class java.lang.IncompatibleClassChangeError
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,19 +21,23 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.IncompatibleClassChangeError;
+package gnu.testlet.java.lang.IncompatibleClassChangeError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.IncompatibleClassChangeError;
+import java.lang.LinkageError;
+import java.lang.Error;
+import java.lang.Throwable;
+import java.lang.Object;
 
 
 
 /**
- * Test if try-catch block is working properly for a class java.lang.IncompatibleClassChangeError
+ * Test for instanceof operator applied to a class java.lang.IncompatibleClassChangeError
  */
-public class TryCatch implements Testlet
+public class InstanceOf implements Testlet
 {
 
     /**
@@ -43,16 +47,17 @@ public class TryCatch implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // flag that is set when exception is caught
-        boolean caught = false;
-        try {
-            throw new IncompatibleClassChangeError("IncompatibleClassChangeError");
-        }
-        catch (IncompatibleClassChangeError e) {
-            // correct exception was caught
-            caught = true;
-        }
-        harness.check(caught);
+        // create instance of a class IncompatibleClassChangeError
+        IncompatibleClassChangeError o = new IncompatibleClassChangeError("IncompatibleClassChangeError");
+
+        // basic check of instanceof operator
+        harness.check(o instanceof IncompatibleClassChangeError);
+
+        // check operator instanceof against all superclasses
+        harness.check(o instanceof LinkageError);
+        harness.check(o instanceof Error);
+        harness.check(o instanceof Throwable);
+        harness.check(o instanceof Object);
     }
 }
 

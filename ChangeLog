@@ -1,3 +1,13 @@
+2013-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IncompatibleClassChangeError/TryCatch.java:
+	* testlet/java/lang/IncompatibleClassChangeError/constructor.java:
+	New tests added into testlet/java/lang/IncompatibleClassChangeError.
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/InstanceOf.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getAnnotation.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getAnnotations.java:
+	New tests added into testlet/java/lang/IncompatibleClassChangeError/classInfo.
+
 2013-10-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IllegalThreadStateException/classInfo/isLocalClass.java:

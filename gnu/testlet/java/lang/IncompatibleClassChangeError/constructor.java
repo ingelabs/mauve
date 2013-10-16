@@ -1,6 +1,6 @@
-// Test if constructor is working properly for a class java.lang.IncompatibleClassChangeError
+// Test if instances of a class java.lang.IncompatibleClassChangeError could be properly constructed
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.IncompatibleClassChangeError;
 
 import gnu.testlet.TestHarness;
@@ -29,7 +31,8 @@ import java.lang.IncompatibleClassChangeError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.IncompatibleClassChangeError
+ * Test if instances of a class java.lang.IncompatibleClassChangeError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -41,13 +44,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        IncompatibleClassChangeError error1 = new IncompatibleClassChangeError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.IncompatibleClassChangeError");
+        IncompatibleClassChangeError object1 = new IncompatibleClassChangeError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.IncompatibleClassChangeError");
 
-        IncompatibleClassChangeError error2 = new IncompatibleClassChangeError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.IncompatibleClassChangeError: nothing happens");
+        IncompatibleClassChangeError object2 = new IncompatibleClassChangeError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.IncompatibleClassChangeError: nothing happens");
+
+        IncompatibleClassChangeError object3 = new IncompatibleClassChangeError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.IncompatibleClassChangeError");
+
     }
 }
 
