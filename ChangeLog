@@ -1,3 +1,12 @@
+2013-10-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getClasses.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getComponentType.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getConstructor.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getConstructors.java:
+	New tests added into testlet/java/lang/IncompatibleClassChangeError/classInfo.
+
 2013-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IncompatibleClassChangeError/TryCatch.java:
