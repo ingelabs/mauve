@@ -1,3 +1,13 @@
+2013-10-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredMethods.java:
+	Six new tests added into testlet/java/lang/IncompatibleClassChangeError/classInfo.
+
 2013-10-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getCanonicalName.java:
