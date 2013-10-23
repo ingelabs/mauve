@@ -1,3 +1,13 @@
+2013-10-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isInstance.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isInterface.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isLocalClass.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isMemberClass.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isPrimitive.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isSynthetic.java:
+	Six new tests added into testlet/java/lang/IncompatibleClassChangeError/classInfo.
+
 2013-10-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaringClass.java:
