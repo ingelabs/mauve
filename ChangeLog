@@ -1,3 +1,13 @@
+2013-10-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getInterfaces.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getModifiers.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getName.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getPackage.java:
+	Another six new tests added into testlet/java/lang/IncompatibleClassChangeError/classInfo.
+
 2013-10-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isInstance.java:
