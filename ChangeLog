@@ -1,3 +1,13 @@
+2013-10-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isAnnotation.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isArray.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isEnum.java:
+	Yet another six new tests added into testlet/java/lang/IncompatibleClassChangeError/classInfo.
+
 2013-10-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IncompatibleClassChangeError/classInfo/getDeclaredAnnotations.java:
