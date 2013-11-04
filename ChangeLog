@@ -1,3 +1,13 @@
+2013-11-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IndexOutOfBoundsException/TryCatch.java:
+	* testlet/java/lang/IndexOutOfBoundsException/constructor.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/InstanceOf.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getInterfaces.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getModifiers.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getName.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-10-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IncompatibleClassChangeError/classInfo/isAnnotation.java:
