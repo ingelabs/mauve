@@ -1,3 +1,13 @@
+2013-11-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getConstructor.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getConstructors.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getField.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getFields.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getMethod.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getMethods.java:
+	Six new tests added into testlet/java/lang/IndexOutOfBoundsException/classInfo.
+
 2013-11-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IndexOutOfBoundsException/classInfo/isInterface.java:
