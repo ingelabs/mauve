@@ -1,3 +1,12 @@
+2013-11-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getAnnotation.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getAnnotations.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getClasses.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getComponentType.java:
+	New tests added into testlet/java/lang/IndexOutOfBoundsException/classInfo.
+
 2013-11-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getConstructor.java:
