@@ -1,3 +1,13 @@
+2013-11-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getEnclosingClass.java:
+	Six new tests added into testlet/java/lang/IndexOutOfBoundsException/classInfo.
+
 2013-11-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getAnnotation.java:
