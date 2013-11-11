@@ -1,3 +1,11 @@
+2013-11-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredConstructors.java:
+	Four new tests added into testlet/java/lang/IndexOutOfBoundsException/classInfo.
+
 2013-11-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getDeclaredField.java:
