@@ -1,3 +1,12 @@
+2013-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getPackage.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getSimpleName.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getSuperclass.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/IndexOutOfBoundsException/classInfo/isInstance.java:
+	Five new tests added into testlet/java/lang/IndexOutOfBoundsException/classInfo.
+
 2013-11-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getEnclosingConstructor.java:
