@@ -1,3 +1,9 @@
+2013-11-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Object/classInfo/getFields.java:
+	Added (c) year.
+
 2013-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/IndexOutOfBoundsException/classInfo/getPackage.java:
