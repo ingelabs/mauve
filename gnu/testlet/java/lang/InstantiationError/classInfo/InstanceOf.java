@@ -1,4 +1,4 @@
-// Test if instances of a class java.lang.InstantiationError could be properly constructed
+// Test for instanceof operator applied to a class java.lang.InstantiationError
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -21,20 +21,24 @@
 
 // Tags: JDK1.5
 
-package gnu.testlet.java.lang.InstantiationError;
+package gnu.testlet.java.lang.InstantiationError.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.InstantiationError;
+import java.lang.IncompatibleClassChangeError;
+import java.lang.LinkageError;
+import java.lang.Error;
+import java.lang.Throwable;
+import java.lang.Object;
 
 
 
 /**
- * Test if instances of a class java.lang.InstantiationError
- * could be properly constructed
+ * Test for instanceof operator applied to a class java.lang.InstantiationError
  */
-public class constructor implements Testlet
+public class InstanceOf implements Testlet
 {
 
     /**
@@ -44,18 +48,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        InstantiationError object1 = new InstantiationError();
-        harness.check(object1 != null);
-        harness.check(object1.toString(), "java.lang.InstantiationError");
+        // create instance of a class InstantiationError
+        InstantiationError o = new InstantiationError("InstantiationError");
 
-        InstantiationError object2 = new InstantiationError("nothing happens");
-        harness.check(object2 != null);
-        harness.check(object2.toString(), "java.lang.InstantiationError: nothing happens");
+        // basic check of instanceof operator
+        harness.check(o instanceof InstantiationError);
 
-        InstantiationError object3 = new InstantiationError(null);
-        harness.check(object3 != null);
-        harness.check(object3.toString(), "java.lang.InstantiationError");
-
+        // check operator instanceof against all superclasses
+        harness.check(o instanceof IncompatibleClassChangeError);
+        harness.check(o instanceof LinkageError);
+        harness.check(o instanceof Error);
+        harness.check(o instanceof Throwable);
+        harness.check(o instanceof Object);
     }
 }
 
