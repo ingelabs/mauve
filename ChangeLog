@@ -1,3 +1,12 @@
+2013-11-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationError/classInfo/getAnnotation.java:
+	* testlet/java/lang/InstantiationError/classInfo/getAnnotations.java:
+	* testlet/java/lang/InstantiationError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/InstantiationError/classInfo/getClasses.java:
+	* testlet/java/lang/InstantiationError/classInfo/getComponentType.java:
+	Five new tests added into testlet/java/lang/InstantiationError/classInfo.
+
 2013-11-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationError/TryCatch.java:
