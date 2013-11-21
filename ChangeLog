@@ -1,3 +1,13 @@
+2013-11-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationError/classInfo/isInstance.java:
+	* testlet/java/lang/InstantiationError/classInfo/isInterface.java:
+	* testlet/java/lang/InstantiationError/classInfo/isLocalClass.java:
+	* testlet/java/lang/InstantiationError/classInfo/isMemberClass.java:
+	* testlet/java/lang/InstantiationError/classInfo/isPrimitive.java:
+	* testlet/java/lang/InstantiationError/classInfo/isSynthetic.java:
+	Another six new tests added into testlet/java/lang/InstantiationError/classInfo.
+
 2013-11-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationError/classInfo/getDeclaredField.java:
