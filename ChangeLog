@@ -1,3 +1,13 @@
+2013-11-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationError/classInfo/isAnnotation.java:
+	* testlet/java/lang/InstantiationError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/InstantiationError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/InstantiationError/classInfo/isArray.java:
+	* testlet/java/lang/InstantiationError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/InstantiationError/classInfo/isEnum.java:
+	Six new tests added into testlet/java/lang/InstantiationError/classInfo.
+
 2013-11-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationError/classInfo/isInstance.java:
