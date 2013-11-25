@@ -1,3 +1,14 @@
+2013-11-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/InstantiationError/classInfo/getInterfaces.java:
+	* testlet/java/lang/InstantiationError/classInfo/getModifiers.java:
+	* testlet/java/lang/InstantiationError/classInfo/getName.java:
+	* testlet/java/lang/InstantiationError/classInfo/getPackage.java:
+	* testlet/java/lang/InstantiationError/classInfo/getSimpleName.java:
+	* testlet/java/lang/InstantiationError/classInfo/getSuperclass.java:
+	Seven new tests added into testlet/java/lang/InstantiationError/classInfo.
+
 2013-11-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationError/classInfo/isAnnotation.java:
