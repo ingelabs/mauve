@@ -1,3 +1,13 @@
+2013-11-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationException/classInfo/InstanceOf.java:
+	* testlet/java/lang/InstantiationException/classInfo/getInterfaces.java:
+	* testlet/java/lang/InstantiationException/classInfo/getModifiers.java:
+	* testlet/java/lang/InstantiationException/classInfo/getName.java:
+	* testlet/java/lang/InstantiationException/classInfo/getPackage.java:
+	* testlet/java/lang/InstantiationException/classInfo/getSimpleName.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-11-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationError/classInfo/getEnclosingConstructor.java:
