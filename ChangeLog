@@ -1,3 +1,13 @@
+2013-11-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationException/classInfo/getField.java:
+	* testlet/java/lang/InstantiationException/classInfo/getFields.java:
+	* testlet/java/lang/InstantiationException/classInfo/getMethod.java:
+	* testlet/java/lang/InstantiationException/classInfo/getMethods.java:
+	* testlet/java/lang/InstantiationException/classInfo/isAnnotation.java:
+	* testlet/java/lang/InstantiationException/classInfo/isAnnotationPresent.java:
+	Six new tests added into testlet/java/lang/InstantiationException/classInfo.
+
 2013-11-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationException/classInfo/InstanceOf.java:
