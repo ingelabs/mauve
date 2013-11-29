@@ -1,3 +1,13 @@
+2013-11-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/InstantiationException/classInfo/getEnclosingClass.java:
+	Six new tests added into testlet/java/lang/InstantiationException/classInfo.
+
 2013-11-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationException/classInfo/getField.java:
