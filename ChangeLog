@@ -1,3 +1,12 @@
+2013-12-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationException/classInfo/isInterface.java:
+	* testlet/java/lang/InstantiationException/classInfo/isLocalClass.java:
+	* testlet/java/lang/InstantiationException/classInfo/isMemberClass.java:
+	* testlet/java/lang/InstantiationException/classInfo/isPrimitive.java:
+	* testlet/java/lang/InstantiationException/classInfo/isSynthetic.java:
+	Updated, make these tests to work correctly with OpenJDK7, added JDK tags etc.
+
 2013-11-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationException/classInfo/getDeclaredField.java:
