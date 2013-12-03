@@ -1,3 +1,13 @@
+2013-12-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationException/classInfo/getAnnotation.java:
+	* testlet/java/lang/InstantiationException/classInfo/getAnnotations.java:
+	* testlet/java/lang/InstantiationException/classInfo/getConstructor.java:
+	* testlet/java/lang/InstantiationException/classInfo/getConstructors.java:
+	* testlet/java/lang/InstantiationException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/InstantiationException/classInfo/getEnclosingMethod.java:
+	Six new tests added into testlet/java/lang/InstantiationException/classInfo.
+
 2013-12-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationException/classInfo/isInterface.java:
