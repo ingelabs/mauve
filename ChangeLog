@@ -1,3 +1,13 @@
+2013-12-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InstantiationException/classInfo/getClasses.java:
+	* testlet/java/lang/InstantiationException/classInfo/getComponentType.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/InstantiationException/classInfo/getDeclaredConstructors.java:
+	Another six new tests added into testlet/java/lang/InstantiationException/classInfo.
+
 2013-12-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationException/classInfo/getAnnotation.java:
