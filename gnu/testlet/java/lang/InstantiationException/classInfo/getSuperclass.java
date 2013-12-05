@@ -1,6 +1,6 @@
 // Test for method java.lang.InstantiationException.getClass().getSuperclass()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.InstantiationException.classInfo;
 
@@ -41,14 +43,31 @@ public class getSuperclass implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new InstantiationException("InstantiationException");
+        // create instance of a class InstantiationException
+        final Object o = new InstantiationException("java.lang.InstantiationException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         Class superClass = c.getSuperclass();
-        harness.check(superClass.getName(), "java.lang.Exception");
+        if (getJavaVersion() >=7) {
+            harness.check(superClass.getName(), "java.lang.ReflectiveOperationException");
+        }
+        else {
+            harness.check(superClass.getName(), "java.lang.Exception");
+        }
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

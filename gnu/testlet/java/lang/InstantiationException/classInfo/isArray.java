@@ -1,4 +1,4 @@
-// Test for method java.lang.InstantiationException.getClass().isAssignableFrom(Class)
+// Test for method java.lang.InstantiationException.getClass().isArray()
 
 // Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.InstantiationException;
 
 
 /**
- * Test for method java.lang.InstantiationException.getClass().isAssignableFrom()
+ * Test for method java.lang.InstantiationException.getClass().isArray()
  */
-public class isAssignableFrom implements Testlet
+public class isArray implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isAssignableFrom implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(InstantiationException.class));
+        harness.check(!c.isArray());
     }
 }
 
