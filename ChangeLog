@@ -1,3 +1,14 @@
+2013-12-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/TryCatch.java:
+	* testlet/java/lang/InterruptedException/constructor.java:
+	* testlet/java/lang/InterruptedException/classInfo/InstanceOf.java:
+	* testlet/java/lang/InterruptedException/classInfo/getInterfaces.java:
+	* testlet/java/lang/InterruptedException/classInfo/getModifiers.java:
+	* testlet/java/lang/InterruptedException/classInfo/getName.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2013-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InstantiationException/classInfo/getCanonicalName.java:
