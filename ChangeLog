@@ -1,3 +1,15 @@
+2013-12-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/InterruptedException/classInfo/isInstance.java:
+	* testlet/java/lang/InterruptedException/classInfo/isInterface.java:
+	* testlet/java/lang/InterruptedException/classInfo/isLocalClass.java:
+	* testlet/java/lang/InterruptedException/classInfo/isMemberClass.java:
+	* testlet/java/lang/InterruptedException/classInfo/isPrimitive.java:
+	* testlet/java/lang/InterruptedException/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2013-12-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/BasicMessageDigestAlgorithms.java:
