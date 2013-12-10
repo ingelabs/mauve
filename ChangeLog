@@ -1,3 +1,13 @@
+2013-12-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/classInfo/getConstructor.java:
+	* testlet/java/lang/InterruptedException/classInfo/getConstructors.java:
+	* testlet/java/lang/InterruptedException/classInfo/getField.java:
+	* testlet/java/lang/InterruptedException/classInfo/getFields.java:
+	* testlet/java/lang/InterruptedException/classInfo/getMethod.java:
+	* testlet/java/lang/InterruptedException/classInfo/getMethods.java:
+	Added six new tests.
+
 2013-12-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InterruptedException/classInfo/isAssignableFrom.java:
