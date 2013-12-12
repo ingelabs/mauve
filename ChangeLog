@@ -1,3 +1,13 @@
+2013-12-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/InterruptedException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/InterruptedException/classInfo/getEnclosingMethod.java:
+	New tests added into InterruptedException/classInfo.
+
 2013-12-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InterruptedException/classInfo/getDeclaredField.java:
