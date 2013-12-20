@@ -1,3 +1,12 @@
+2013-12-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/classInfo/isAnnotation.java:
+	* testlet/java/lang/InterruptedException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/InterruptedException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/InterruptedException/classInfo/isArray.java:
+	* testlet/java/lang/InterruptedException/classInfo/isEnum.java:
+	Added another five new tests into InterruptedException/classInfo.
+
 2013-12-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InterruptedException/classInfo/getAnnotation.java:
