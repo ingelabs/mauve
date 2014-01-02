@@ -1,3 +1,11 @@
+2014-01-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/classInfo/getPackage.java:
+	* testlet/java/lang/InterruptedException/classInfo/getSimpleName.java:
+	* testlet/java/lang/InterruptedException/classInfo/getSuperclass.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2013-12-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InterruptedException/classInfo/isAnnotation.java:
