@@ -58,7 +58,7 @@ public class getDeclaredConstructors implements Testlet
         testedDeclaredConstructors_jdk6.put("public java.lang.InterruptedException()", "java.lang.InterruptedException");
         testedDeclaredConstructors_jdk6.put("public java.lang.InterruptedException(java.lang.String)", "java.lang.InterruptedException");
 
-        // map for constructors declared in (Open)JDK6
+        // map for constructors declared in (Open)JDK7
         testedDeclaredConstructors_jdk7.put("public java.lang.InterruptedException()", "java.lang.InterruptedException");
         testedDeclaredConstructors_jdk7.put("public java.lang.InterruptedException(java.lang.String)", "java.lang.InterruptedException");
 

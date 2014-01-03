@@ -51,6 +51,8 @@ public class getDeclaredConstructor implements Testlet
         constructorsThatShouldExist_jdk6.put("java.lang.InterruptedException", new Class[] {java.lang.String.class});
 
         Map<String, Class[]> constructorsThatShouldExist_jdk7 = new HashMap<String, Class[]>();
+        constructorsThatShouldExist_jdk7.put("java.lang.InterruptedException", new Class[] {});
+        constructorsThatShouldExist_jdk7.put("java.lang.InterruptedException", new Class[] {java.lang.String.class});
 
         // get the right map containing constructor signatures
         Map<String, Class[]> constructorsThatShouldExist = getJavaVersion() < 7 ? constructorsThatShouldExist_jdk6 : constructorsThatShouldExist_jdk7;

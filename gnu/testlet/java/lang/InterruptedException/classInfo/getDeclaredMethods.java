@@ -57,6 +57,9 @@ public class getDeclaredMethods implements Testlet
         // map for methods declared in (Open)JDK6
         // --- empty ---
 
+        // map for methods declared in (Open)JDK7
+        // --- empty ---
+
         // create instance of a class InterruptedException
         final Object o = new InterruptedException("java.lang.InterruptedException");
 

@@ -1,3 +1,15 @@
+2014-01-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InterruptedException/classInfo/getConstructor.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/InterruptedException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/InterruptedException/classInfo/getFields.java:
+	* testlet/java/lang/InterruptedException/classInfo/getMethod.java:
+	Added JDK7-related checks.
+
 2014-01-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InterruptedException/classInfo/getPackage.java:

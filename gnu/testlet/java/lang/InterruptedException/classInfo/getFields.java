@@ -57,6 +57,9 @@ public class getFields implements Testlet
         // map for fields declared in (Open)JDK6
         // --- empty ---
 
+        // map for fields declared in (Open)JDK7
+        // --- empty ---
+
         // create instance of a class InterruptedException
         final Object o = new InterruptedException("java.lang.InterruptedException");
 

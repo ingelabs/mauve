@@ -57,6 +57,9 @@ public class getDeclaredFields implements Testlet
         // map for fields declared in (Open)JDK6
         // --- empty ---
 
+        // map for fields declared in (Open)JDK7
+        testedDeclaredFields_jdk7.put("private static final long java.lang.InterruptedException.serialVersionUID", "serialVersionUID");
+
         // create instance of a class InterruptedException
         final Object o = new InterruptedException("java.lang.InterruptedException");
 

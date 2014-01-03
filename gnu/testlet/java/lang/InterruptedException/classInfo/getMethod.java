@@ -68,6 +68,27 @@ public class getMethod implements Testlet
         methodsThatShouldExist_jdk6.put("notifyAll", new Class[] {});
 
         Map<String, Class[]> methodsThatShouldExist_jdk7 = new HashMap<String, Class[]>();
+        methodsThatShouldExist_jdk7.put("printStackTrace", new Class[] {});
+        methodsThatShouldExist_jdk7.put("printStackTrace", new Class[] {java.io.PrintWriter.class});
+        methodsThatShouldExist_jdk7.put("printStackTrace", new Class[] {java.io.PrintStream.class});
+        methodsThatShouldExist_jdk7.put("fillInStackTrace", new Class[] {});
+        methodsThatShouldExist_jdk7.put("getCause", new Class[] {});
+        methodsThatShouldExist_jdk7.put("initCause", new Class[] {java.lang.Throwable.class});
+        methodsThatShouldExist_jdk7.put("toString", new Class[] {});
+        methodsThatShouldExist_jdk7.put("getMessage", new Class[] {});
+        methodsThatShouldExist_jdk7.put("getLocalizedMessage", new Class[] {});
+        methodsThatShouldExist_jdk7.put("getStackTrace", new Class[] {});
+        methodsThatShouldExist_jdk7.put("setStackTrace", new Class[] {new java.lang.StackTraceElement[0].getClass()});
+        methodsThatShouldExist_jdk7.put("addSuppressed", new Class[] {java.lang.Throwable.class});
+        methodsThatShouldExist_jdk7.put("getSuppressed", new Class[] {});
+        methodsThatShouldExist_jdk7.put("wait", new Class[] {long.class, int.class});
+        methodsThatShouldExist_jdk7.put("wait", new Class[] {long.class});
+        methodsThatShouldExist_jdk7.put("wait", new Class[] {});
+        methodsThatShouldExist_jdk7.put("equals", new Class[] {java.lang.Object.class});
+        methodsThatShouldExist_jdk7.put("hashCode", new Class[] {});
+        methodsThatShouldExist_jdk7.put("getClass", new Class[] {});
+        methodsThatShouldExist_jdk7.put("notify", new Class[] {});
+        methodsThatShouldExist_jdk7.put("notifyAll", new Class[] {});
 
         // get the right map containing method signatures
         Map<String, Class[]> methodsThatShouldExist = getJavaVersion() < 7 ? methodsThatShouldExist_jdk6 : methodsThatShouldExist_jdk7;
