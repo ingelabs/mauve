@@ -1,3 +1,12 @@
+2014-01-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InternalError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/InternalError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/InternalError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/InternalError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/InternalError/classInfo/getDeclaredMethod.java:
+	Added another five new tests into InternalError.
+
 2014-01-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/getComponentType.java:
