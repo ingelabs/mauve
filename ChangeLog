@@ -1,3 +1,12 @@
+2014-01-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InternalError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/InternalError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/InternalError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/InternalError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/InternalError/classInfo/getEnclosingMethod.java:
+	Added five new tests into InternalError.
+
 2014-01-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/getDeclaredConstructor.java:
