@@ -1,3 +1,12 @@
+2014-01-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InternalError/classInfo/getField.java:
+	* testlet/java/lang/InternalError/classInfo/getFields.java:
+	* testlet/java/lang/InternalError/classInfo/getInterfaces.java:
+	* testlet/java/lang/InternalError/classInfo/getMethod.java:
+	* testlet/java/lang/InternalError/classInfo/getMethods.java:
+	Added yet another five new tests into InternalError.
+
 2014-01-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/getDeclaredMethods.java:
