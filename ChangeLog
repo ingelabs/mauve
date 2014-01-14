@@ -1,3 +1,12 @@
+2014-01-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InternalError/classInfo/getModifiers.java:
+	* testlet/java/lang/InternalError/classInfo/getName.java:
+	* testlet/java/lang/InternalError/classInfo/getPackage.java:
+	* testlet/java/lang/InternalError/classInfo/getSimpleName.java:
+	* testlet/java/lang/InternalError/classInfo/getSuperclass.java:
+	Added five new tests into InternalError.
+
 2014-01-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/getField.java:
