@@ -1,3 +1,13 @@
+2014-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InternalError/classInfo/isAnnotation.java:
+	* testlet/java/lang/InternalError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/InternalError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/InternalError/classInfo/isArray.java:
+	* testlet/java/lang/InternalError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/InternalError/classInfo/isEnum.java:
+	Added six new tests into InternalError.
+
 2014-01-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/getModifiers.java:
