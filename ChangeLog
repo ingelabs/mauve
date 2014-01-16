@@ -1,3 +1,13 @@
+2014-01-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InternalError/classInfo/isInstance.java:
+	* testlet/java/lang/InternalError/classInfo/isInterface.java:
+	* testlet/java/lang/InternalError/classInfo/isLocalClass.java:
+	* testlet/java/lang/InternalError/classInfo/isMemberClass.java:
+	* testlet/java/lang/InternalError/classInfo/isPrimitive.java:
+	* testlet/java/lang/InternalError/classInfo/isSynthetic.java:
+	Added six new tests into InternalError.
+
 2014-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/isAnnotation.java:
