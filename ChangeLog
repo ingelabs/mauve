@@ -1,3 +1,10 @@
+2014-01-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/LinkageError/TryCatch.java:
+	* testlet/java/lang/LinkageError/constructor.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-01-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InternalError/classInfo/isInstance.java:
