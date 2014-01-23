@@ -1,3 +1,13 @@
+2014-01-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/LinkageError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/LinkageError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/LinkageError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/LinkageError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/LinkageError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/LinkageError/classInfo/getEnclosingClass.java:
+	Added another six new tests into LinkageError.
+
 2014-01-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/LinkageError/classInfo/getConstructors.java:
