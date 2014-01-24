@@ -1,3 +1,13 @@
+2014-01-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/LinkageError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/LinkageError/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/LinkageError/classInfo/getField.java:
+	* testlet/java/lang/LinkageError/classInfo/getFields.java:
+	* testlet/java/lang/LinkageError/classInfo/getInterfaces.java:
+	* testlet/java/lang/LinkageError/classInfo/getMethod.java:
+	Yet another six new tests added into LinkageError.
+
 2014-01-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/LinkageError/classInfo/getDeclaredField.java:
