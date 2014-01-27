@@ -1,3 +1,13 @@
+2014-01-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/LinkageError/classInfo/getMethods.java:
+	* testlet/java/lang/LinkageError/classInfo/getModifiers.java:
+	* testlet/java/lang/LinkageError/classInfo/getName.java:
+	* testlet/java/lang/LinkageError/classInfo/getPackage.java:
+	* testlet/java/lang/LinkageError/classInfo/getSimpleName.java:
+	* testlet/java/lang/LinkageError/classInfo/getSuperclass.java:
+	Added new tests into LinkageError.
+
 2014-01-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/LinkageError/classInfo/getEnclosingConstructor.java:
