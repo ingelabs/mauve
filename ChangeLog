@@ -1,3 +1,13 @@
+2014-01-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/LinkageError/classInfo/isAnnotation.java:
+	* testlet/java/lang/LinkageError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/LinkageError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/LinkageError/classInfo/isArray.java:
+	* testlet/java/lang/LinkageError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/LinkageError/classInfo/isEnum.java:
+	Created new tests for the class LinkageError.
+
 2014-01-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/LinkageError/classInfo/getMethods.java:
