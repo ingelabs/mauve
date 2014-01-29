@@ -1,3 +1,13 @@
+2014-01-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/LinkageError/classInfo/isInstance.java:
+	* testlet/java/lang/LinkageError/classInfo/isInterface.java:
+	* testlet/java/lang/LinkageError/classInfo/isLocalClass.java:
+	* testlet/java/lang/LinkageError/classInfo/isMemberClass.java:
+	* testlet/java/lang/LinkageError/classInfo/isPrimitive.java:
+	* testlet/java/lang/LinkageError/classInfo/isSynthetic.java:
+	Created new tests for the class LinkageError.
+
 2014-01-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/LinkageError/classInfo/isAnnotation.java:
