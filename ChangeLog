@@ -1,3 +1,14 @@
+2014-02-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NegativeArraySizeException/TryCatch.java:
+	* testlet/java/lang/NegativeArraySizeException/constructor.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/InstanceOf.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getInterfaces.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getModifiers.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getName.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-01-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/LinkageError/classInfo/isInstance.java:
