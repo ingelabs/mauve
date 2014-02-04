@@ -1,3 +1,13 @@
+2014-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getEnclosingClass.java:
+	Added six new tests into NegativeArraySizeException/classInfo.
+
 2014-02-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NegativeArraySizeException/TryCatch.java:
