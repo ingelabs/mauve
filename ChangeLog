@@ -1,3 +1,13 @@
+2014-02-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getConstructor.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getConstructors.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredConstructors.java:
+	Added another six new tests into NegativeArraySizeException/classInfo.
+
 2014-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NegativeArraySizeException/classInfo/getDeclaredField.java:
