@@ -1,3 +1,12 @@
+2014-02-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getField.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getFields.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getMethod.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/getMethods.java:
+	Added five new tests into NegativeArraySizeException/classInfo.
+
 2014-02-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NegativeArraySizeException/classInfo/getAnnotation.java:
