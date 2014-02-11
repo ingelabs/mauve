@@ -1,3 +1,14 @@
+2014-02-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NegativeArraySizeException/classInfo/isInstance.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/isInterface.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/isLocalClass.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/isMemberClass.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/isPrimitive.java:
+	* testlet/java/lang/NegativeArraySizeException/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-02-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NegativeArraySizeException/classInfo/getEnclosingMethod.java:

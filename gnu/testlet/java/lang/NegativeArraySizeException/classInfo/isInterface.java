@@ -1,6 +1,6 @@
 // Test for method java.lang.NegativeArraySizeException.getClass().isInterface(Object)
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.NegativeArraySizeException.classInfo;
 
@@ -41,11 +43,11 @@ public class isInterface implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new NegativeArraySizeException("NegativeArraySizeException");
+        // create instance of a class NegativeArraySizeException
+        final Object o = new NegativeArraySizeException("java.lang.NegativeArraySizeException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isInterface());
     }
