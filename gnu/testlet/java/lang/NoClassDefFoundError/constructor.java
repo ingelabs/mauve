@@ -1,6 +1,6 @@
-// Test if constructor is working properly for a class java.lang.NoClassDefFoundError
+// Test if instances of a class java.lang.NoClassDefFoundError could be properly constructed
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -19,6 +19,8 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.NoClassDefFoundError;
 
 import gnu.testlet.TestHarness;
@@ -29,7 +31,8 @@ import java.lang.NoClassDefFoundError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.NoClassDefFoundError
+ * Test if instances of a class java.lang.NoClassDefFoundError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -41,13 +44,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        NoClassDefFoundError error1 = new NoClassDefFoundError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.NoClassDefFoundError");
+        NoClassDefFoundError object1 = new NoClassDefFoundError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.NoClassDefFoundError");
 
-        NoClassDefFoundError error2 = new NoClassDefFoundError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.NoClassDefFoundError: nothing happens");
+        NoClassDefFoundError object2 = new NoClassDefFoundError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.NoClassDefFoundError: nothing happens");
+
+        NoClassDefFoundError object3 = new NoClassDefFoundError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.NoClassDefFoundError");
+
     }
 }
 
