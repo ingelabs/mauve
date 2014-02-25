@@ -1,3 +1,12 @@
+2014-02-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoClassDefFoundError/classInfo/InstanceOf.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getAnnotation.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getAnnotations.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getClasses.java:
+	Added five new tests into NoClassDefFoundError/classInfo.
+
 2014-02-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/TryCatch.java:
