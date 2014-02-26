@@ -1,3 +1,12 @@
+2014-02-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getComponentType.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getConstructor.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getConstructors.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getField.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getFields.java:
+	Added another five new tests into NoClassDefFoundError/classInfo.
+
 2014-02-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/classInfo/InstanceOf.java:
