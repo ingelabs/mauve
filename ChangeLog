@@ -1,3 +1,12 @@
+2014-02-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getEnclosingMethod.java:
+	Added another five new tests into NoClassDefFoundError/classInfo.
+
 2014-02-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/classInfo/getComponentType.java:
