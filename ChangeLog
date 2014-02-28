@@ -1,3 +1,12 @@
+2014-02-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaringClass.java:
+	Added another five new tests into NoClassDefFoundError/classInfo.
+
 2014-02-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/classInfo/getDeclaredAnnotations.java:
