@@ -1,3 +1,12 @@
+2014-03-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getPackage.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getSimpleName.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/getSuperclass.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/isAnnotation.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/isAnnotationPresent.java:
+	Added another five new tests into NoClassDefFoundError/classInfo.
+
 2014-03-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/classInfo/getInterfaces.java:
