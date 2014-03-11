@@ -1,3 +1,9 @@
+2014-03-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoClassDefFoundError/classInfo/isEnum.java:
+	* testlet/java/lang/NoClassDefFoundError/classInfo/isInstance.java:
+	Added two new tests into NoClassDefFoundError/classInfo.
+
 2014-03-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/classInfo/getEnclosingClass.java:
