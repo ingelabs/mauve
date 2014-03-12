@@ -1,3 +1,10 @@
+2014-03-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldError/TryCatch.java:
+	* testlet/java/lang/NoSuchFieldError/constructor.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-03-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoClassDefFoundError/classInfo/isEnum.java:
