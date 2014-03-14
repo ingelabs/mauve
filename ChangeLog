@@ -1,3 +1,13 @@
+2014-03-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldError/classInfo/isInterface.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/isLocalClass.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/isMemberClass.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/isPrimitive.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-03-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldError/classInfo/InstanceOf.java:
