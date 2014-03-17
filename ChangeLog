@@ -1,3 +1,13 @@
+2014-03-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getEnclosingClass.java:
+	Added six new tests into NoSuchFieldError/classInfo.
+
 2014-03-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldError/classInfo/isInterface.java:
