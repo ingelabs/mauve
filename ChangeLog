@@ -1,3 +1,12 @@
+2014-03-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldError/classInfo/getAnnotation.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getAnnotations.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getClasses.java:
+	* testlet/java/lang/NoSuchFieldError/classInfo/getComponentType.java:
+	Five new tests added into NoSuchFieldError/classInfo.
+
 2014-03-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldError/classInfo/getConstructor.java:
