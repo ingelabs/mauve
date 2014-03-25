@@ -1,3 +1,14 @@
+2014-03-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldException/TryCatch.java:
+	* testlet/java/lang/NoSuchFieldException/constructor.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/InstanceOf.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getInterfaces.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getModifiers.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getName.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-03-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldError/classInfo/getSuperclass.java:
