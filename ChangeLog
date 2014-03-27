@@ -1,3 +1,12 @@
+2014-03-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldException/classInfo/isAnnotation.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/isArray.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/isEnum.java:
+	Added five new tests into NoSuchFieldException/classInfo.
+
 2014-03-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldException/TryCatch.java:
