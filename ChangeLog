@@ -1,3 +1,13 @@
+2014-03-27  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getEnclosingClass.java:
+	Added six new tests into NoSuchFieldException/classInfo.
+
 2014-03-26  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldException/classInfo/isAnnotation.java:
