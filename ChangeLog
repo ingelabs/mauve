@@ -1,3 +1,13 @@
+2014-04-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getField.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getFields.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getMethod.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getMethods.java:
+	Added six new tests into NoSuchFieldException/classInfo.
+
 2014-04-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldException/classInfo/getConstructors.java:
