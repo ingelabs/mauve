@@ -1,6 +1,6 @@
 // Test for method java.lang.NoSuchFieldException.getClass().getSuperclass()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.NoSuchFieldException.classInfo;
 
@@ -41,14 +43,14 @@ public class getSuperclass implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new NoSuchFieldException("NoSuchFieldException");
+        // create instance of a class NoSuchFieldException
+        final Object o = new NoSuchFieldException("java.lang.NoSuchFieldException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         Class superClass = c.getSuperclass();
-        harness.check(superClass.getName(), "java.lang.Exception");
+        harness.check(superClass.getName().equals("java.lang.Exception") || superClass.getName().equals("java.lang.ReflectiveOperationException"));
     }
 }
 

@@ -1,3 +1,13 @@
+2014-04-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchFieldException/classInfo/getPackage.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getSimpleName.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/getSuperclass.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/NoSuchFieldException/classInfo/isInstance.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldException/classInfo/getEnclosingConstructor.java:
