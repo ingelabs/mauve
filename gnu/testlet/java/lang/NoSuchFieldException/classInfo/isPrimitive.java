@@ -1,6 +1,6 @@
 // Test for method java.lang.NoSuchFieldException.getClass().isPrimitive(Object)
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -41,11 +41,11 @@ public class isPrimitive implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new NoSuchFieldException("NoSuchFieldException");
+        // create instance of a class NoSuchFieldException
+        final Object o = new NoSuchFieldException("java.lang.NoSuchFieldException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isPrimitive());
     }
