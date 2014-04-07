@@ -1,3 +1,14 @@
+2014-04-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodError/TryCatch.java:
+	* testlet/java/lang/NoSuchMethodError/constructor.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/InstanceOf.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getInterfaces.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getModifiers.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getName.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchFieldException/classInfo/isInterface.java:
