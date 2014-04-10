@@ -1,3 +1,13 @@
+2014-04-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodError/classInfo/getAnnotation.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getAnnotations.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getClasses.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getComponentType.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getDeclaredAnnotations.java:
+	Added yet another six new tests into NoSuchMethodError/classInfo.
+
 2014-04-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodError/classInfo/getConstructor.java:
