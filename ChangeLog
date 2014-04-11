@@ -1,3 +1,14 @@
+2014-04-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodError/classInfo/isInstance.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/isInterface.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/isLocalClass.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/isMemberClass.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/isPrimitive.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodError/classInfo/getAnnotation.java:
