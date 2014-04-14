@@ -1,3 +1,12 @@
+2014-04-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getEnclosingMethod.java:
+	Five new tests added into NoSuchMethodError/classInfo.
+
 2014-04-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodError/classInfo/isInstance.java:
