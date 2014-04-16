@@ -1,3 +1,12 @@
+2014-04-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodError/classInfo/getPackage.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getSimpleName.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/getSuperclass.java:
+	* testlet/java/lang/NoSuchMethodError/classInfo/isAssignableFrom.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodError/classInfo/isAnnotation.java:
