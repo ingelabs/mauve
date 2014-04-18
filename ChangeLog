@@ -1,3 +1,12 @@
+2014-04-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodException/TryCatch.java:
+	* testlet/java/lang/NoSuchMethodException/constructor.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/InstanceOf.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodError/classInfo/getPackage.java:
