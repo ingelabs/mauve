@@ -1,3 +1,13 @@
+2014-04-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredMethods.java:
+	Six new tests added into NoSuchMethodException/classInfo.
+
 2014-04-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodException/classInfo/getAnnotation.java:
@@ -6,7 +16,7 @@
 	* testlet/java/lang/NoSuchMethodException/classInfo/getClasses.java:
 	* testlet/java/lang/NoSuchMethodException/classInfo/getComponentType.java:
 	* testlet/java/lang/NoSuchMethodException/classInfo/getConstructor.java:
-	Five new tests added into NoSuchMethodException/classInfo.
+	Six new tests added into NoSuchMethodException/classInfo.
 
 2014-04-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
