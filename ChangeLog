@@ -1,3 +1,14 @@
+2014-04-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodException/classInfo/getSuperclass.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isInstance.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isInterface.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isLocalClass.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isMemberClass.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isPrimitive.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredConstructor.java:

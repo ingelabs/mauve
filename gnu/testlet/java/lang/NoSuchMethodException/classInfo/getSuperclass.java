@@ -1,6 +1,6 @@
 // Test for method java.lang.NoSuchMethodException.getClass().getSuperclass()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -48,7 +48,26 @@ public class getSuperclass implements Testlet
         Class c = o.getClass();
 
         Class superClass = c.getSuperclass();
-        harness.check(superClass.getName(), "java.lang.Exception");
+
+        final int javaVersion = getJavaVersion();
+        if (javaVersion == 6) {
+            harness.check(superClass.getName(), "java.lang.Exception");
+        }
+        if (javaVersion == 7) {
+            harness.check(superClass.getName(), "java.lang.ReflectiveOperationException");
+        }
+    }
+
+    /**
+     * Returns version of Java. The input could have the following form: "1.7.0_06"
+     * and we are interested only in "7" in this case.
+     * 
+     * @return Java version
+     */
+    protected int getJavaVersion() {
+        String javaVersionStr = System.getProperty("java.version");
+        String[] parts = javaVersionStr.split("\\.");
+        return Integer.parseInt(parts[1]);
     }
 }
 

@@ -1,6 +1,6 @@
 // Test for method java.lang.NoSuchMethodException.getClass().isLocalClass(Object)
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.NoSuchMethodException.classInfo;
 
@@ -41,11 +43,11 @@ public class isLocalClass implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new NoSuchMethodException("NoSuchMethodException");
+        // create instance of a class NoSuchMethodException
+        final Object o = new NoSuchMethodException("java.lang.NoSuchMethodException");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         harness.check(!c.isLocalClass());
     }
