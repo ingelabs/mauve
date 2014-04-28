@@ -1,3 +1,13 @@
+2014-04-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodException/classInfo/getField.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getFields.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getMethod.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getMethods.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isAnnotation.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isAnnotationPresent.java:
+	Six new tests added into NoSuchMethodException/classInfo.
+
 2014-04-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodException/classInfo/getAnnotation.java:
