@@ -1,3 +1,16 @@
+2014-05-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getInterfaces.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/getModifiers.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-04-29  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodException/classInfo/getConstructors.java:
