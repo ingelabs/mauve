@@ -1,3 +1,11 @@
+2014-05-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isArray.java:
+	* testlet/java/lang/NoSuchMethodException/classInfo/isEnum.java:
+	Four new tests added into NoSuchMethodException/classInfo.
+
 2014-05-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaredConstructor.java:
