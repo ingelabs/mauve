@@ -1,3 +1,13 @@
+2014-05-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* lang/NoSuchMethodException/classInfo/getName.java:
+	* lang/NoSuchMethodException/classInfo/getPackage.java:
+	* lang/NoSuchMethodException/classInfo/getSimpleName.java:
+	* lang/NoSuchMethodException/classInfo/getSuperclass.java:
+	* lang/NoSuchMethodException/classInfo/isAssignableFrom.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-05-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NoSuchMethodException/classInfo/getDeclaringClass.java:
