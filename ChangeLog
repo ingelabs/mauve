@@ -1,3 +1,13 @@
+2014-05-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredFields.java:
+	Six new tests added into NullPointerException/classInfo.
+
 2014-05-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* lang/NoSuchMethodException/classInfo/getName.java:
