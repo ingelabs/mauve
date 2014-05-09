@@ -1,6 +1,6 @@
 // Test for method java.lang.NullPointerException.getClass().getDeclaredConstructor()
 
-// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 

@@ -1,3 +1,17 @@
+2014-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/TryCatch.java:
+	* testlet/java/lang/NullPointerException/constructor.java:
+	* testlet/java/lang/NullPointerException/classInfo/InstanceOf.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredFields.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-05-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/classInfo/getDeclaredAnnotations.java:
