@@ -1,3 +1,12 @@
+2014-05-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/classInfo/isAnnotation.java:
+	* testlet/java/lang/NullPointerException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/NullPointerException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/NullPointerException/classInfo/isArray.java:
+	* testlet/java/lang/NullPointerException/classInfo/isEnum.java:
+	Five new tests added into NullPointerException/classInfo.
+
 2014-05-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/TryCatch.java:
