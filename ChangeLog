@@ -1,3 +1,13 @@
+2014-05-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/classInfo/isInterface.java:
+	* testlet/java/lang/NullPointerException/classInfo/isLocalClass.java:
+	* testlet/java/lang/NullPointerException/classInfo/isMemberClass.java:
+	* testlet/java/lang/NullPointerException/classInfo/isPrimitive.java:
+	* testlet/java/lang/NullPointerException/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-05-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/classInfo/isAnnotation.java:
