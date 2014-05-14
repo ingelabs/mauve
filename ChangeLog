@@ -1,3 +1,14 @@
+2014-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/classInfo/getAnnotation.java:
+	* testlet/java/lang/NullPointerException/classInfo/getAnnotations.java:
+	* testlet/java/lang/NullPointerException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/NullPointerException/classInfo/getClasses.java:
+	* testlet/java/lang/NullPointerException/classInfo/getComponentType.java:
+	* testlet/java/lang/NullPointerException/classInfo/getConstructor.java:
+	* testlet/java/lang/NullPointerException/classInfo/getConstructors.java:
+	Seven new tests added into NullPointerException/classInfo.
+
 2014-05-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/classInfo/isInterface.java:
