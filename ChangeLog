@@ -1,3 +1,13 @@
+2014-05-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/NullPointerException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/NullPointerException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/NullPointerException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/NullPointerException/classInfo/getEnclosingMethod.java:
+	Six new tests added into NullPointerException/classInfo.
+
 2014-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/classInfo/getAnnotation.java:
