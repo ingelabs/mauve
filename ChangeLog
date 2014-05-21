@@ -1,3 +1,11 @@
+2014-05-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NullPointerException/classInfo/getField.java:
+	* testlet/java/lang/NullPointerException/classInfo/getFields.java:
+	* testlet/java/lang/NullPointerException/classInfo/getMethod.java:
+	* testlet/java/lang/NullPointerException/classInfo/getMethods.java:
+	Four new tests added into NullPointerException/classInfo.
+
 2014-05-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/classInfo/getDeclaredMethod.java:
