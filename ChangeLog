@@ -1,5 +1,18 @@
 2014-05-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/NullPointerException/classInfo/getInterfaces.java:
+	* testlet/java/lang/NullPointerException/classInfo/getModifiers.java:
+	* testlet/java/lang/NullPointerException/classInfo/getName.java:
+	* testlet/java/lang/NullPointerException/classInfo/getPackage.java:
+	* testlet/java/lang/NullPointerException/classInfo/getSimpleName.java:
+	* testlet/java/lang/NullPointerException/classInfo/getSuperclass.java:
+	* testlet/java/lang/NullPointerException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/NullPointerException/classInfo/isInstance.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
+2014-05-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/NullPointerException/classInfo/getField.java:
 	* testlet/java/lang/NullPointerException/classInfo/getFields.java:
 	* testlet/java/lang/NullPointerException/classInfo/getMethod.java:
