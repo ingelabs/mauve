@@ -1,3 +1,16 @@
+2014-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/TryCatch.java:
+	* testlet/java/lang/NumberFormatException/constructor.java:
+	* testlet/java/lang/NumberFormatException/classInfo/InstanceOf.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isInterface.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isLocalClass.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isMemberClass.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isPrimitive.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-05-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NullPointerException/classInfo/getInterfaces.java:
