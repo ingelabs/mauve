@@ -1,5 +1,11 @@
 2014-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/security/MessageDigest/MessageDigestMD2Test.java:
+	Added test for checking if JVM supports the following standard MessageDigest
+	algorithms: MD2.
+
+2014-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/NumberFormatException/TryCatch.java:
 	* testlet/java/lang/NumberFormatException/constructor.java:
 	* testlet/java/lang/NumberFormatException/classInfo/InstanceOf.java:
