@@ -1,3 +1,13 @@
+2014-05-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/classInfo/getAnnotation.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getAnnotations.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getClasses.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getComponentType.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getConstructor.java:
+	Six new tests added into NumberFormatException/classInfo.
+
 2014-05-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/MessageDigestMD2Test.java:
