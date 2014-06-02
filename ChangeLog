@@ -1,3 +1,13 @@
+2014-06-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/classInfo/getConstructors.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getField.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getFields.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getMethod.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getMethods.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isEnum.java:
+	Six new tests added into NumberFormatException/classInfo.
+
 2014-05-28  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/MessageDigestMD5Test.java:
