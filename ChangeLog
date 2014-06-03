@@ -1,3 +1,13 @@
+2014-06-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredMethods.java:
+	Another six new tests added into NumberFormatException/classInfo.
+
 2014-06-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NumberFormatException/classInfo/getConstructors.java:
