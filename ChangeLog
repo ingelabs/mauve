@@ -1,5 +1,11 @@
 2014-06-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/security/MessageDigest/MessageDigestSHA1Test.java:
+	Added test for checking if JVM supports the following standard MessageDigest
+	algorithms: SHA1.
+
+2014-06-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredAnnotations.java:
 	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredClasses.java:
 	* testlet/java/lang/NumberFormatException/classInfo/getDeclaringClass.java:
