@@ -1,3 +1,13 @@
+2014-06-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getEnclosingMethod.java:
+	Six new tests added into NumberFormatException/classInfo.
+
 2014-06-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/NumberFormatException/classInfo/getDeclaredConstructor.java:
