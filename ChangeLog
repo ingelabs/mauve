@@ -1,3 +1,16 @@
+2014-06-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/classInfo/getInterfaces.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getModifiers.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getName.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getPackage.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getSimpleName.java:
+	* testlet/java/lang/NumberFormatException/classInfo/getSuperclass.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isInstance.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-06-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/MessageDigestSHA1Test.java:
