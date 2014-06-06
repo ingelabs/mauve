@@ -1,5 +1,11 @@
 2014-06-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/security/MessageDigest/MessageDigestSHA384Test.java:
+	Added test for checking if JVM supports the following standard MessageDigest
+	algorithms: SHA384.
+
+2014-06-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/NumberFormatException/classInfo/isAnnotation.java:
 	* testlet/java/lang/NumberFormatException/classInfo/isAnnotationPresent.java:
 	* testlet/java/lang/NumberFormatException/classInfo/isAnonymousClass.java:
