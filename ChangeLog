@@ -1,3 +1,11 @@
+2014-06-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/NumberFormatException/classInfo/isAnnotation.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/NumberFormatException/classInfo/isArray.java:
+	Four new tests added into NumberFormatException/classInfo.
+
 2014-06-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/MessageDigestSHA256Test.java:
