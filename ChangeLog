@@ -1,5 +1,11 @@
 2014-06-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/security/MessageDigest/MessageDigestSHA512Test.java:
+	Added test for checking if JVM supports the following standard MessageDigest
+	algorithms: SHA512.
+
+2014-06-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/VerifyError/TryCatch.java:
 	* testlet/java/lang/VerifyError/constructor.java:
 	* testlet/java/lang/VerifyError/classInfo/InstanceOf.java:
