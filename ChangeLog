@@ -1,3 +1,17 @@
+2014-06-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/VerifyError/TryCatch.java:
+	* testlet/java/lang/VerifyError/constructor.java:
+	* testlet/java/lang/VerifyError/classInfo/InstanceOf.java:
+	* testlet/java/lang/VerifyError/classInfo/isInstance.java:
+	* testlet/java/lang/VerifyError/classInfo/isInterface.java:
+	* testlet/java/lang/VerifyError/classInfo/isLocalClass.java:
+	* testlet/java/lang/VerifyError/classInfo/isMemberClass.java:
+	* testlet/java/lang/VerifyError/classInfo/isPrimitive.java:
+	* testlet/java/lang/VerifyError/classInfo/isSynthetic.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-06-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/MessageDigestSHA384Test.java:
