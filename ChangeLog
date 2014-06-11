@@ -1,3 +1,8 @@
+2014-06-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/javax/crypto/Cipher/DESCipherTest.java:
+	Added test for DES Cipher.
+
 2014-06-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/javax/crypto/Cipher/AESCipherTest.java:
