@@ -1,5 +1,14 @@
 2014-06-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/VerifyError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/VerifyError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/VerifyError/classInfo/getEnclosingMethod.java:
+	Five new tests added into VerifyError/classInfo.
+
+2014-06-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/javax/crypto/Cipher/DESCipherTest.java:
 	Added test for DES Cipher.
 
