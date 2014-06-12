@@ -1,5 +1,14 @@
 2014-06-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/security/MessageDigest/MessageDigestMD5Test.java:
+	* testlet/java/security/MessageDigest/MessageDigestSHA1Test.java:
+	* testlet/java/security/MessageDigest/MessageDigestSHA256Test.java:
+	* testlet/java/security/MessageDigest/MessageDigestSHA384Test.java:
+	* testlet/java/security/MessageDigest/MessageDigestSHA512Test.java:
+	Updated (c) year in those five tests.
+
+2014-06-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/VerifyError/classInfo/getConstructor.java:
 	* testlet/java/lang/VerifyError/classInfo/getDeclaredAnnotations.java:
 	* testlet/java/lang/VerifyError/classInfo/getDeclaredClasses.java:
