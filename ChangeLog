@@ -1,3 +1,13 @@
+2014-06-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/VerifyError/classInfo/getConstructor.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/VerifyError/classInfo/getField.java:
+	Six new tests added into VerifyError/classInfo.
+
 2014-06-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/VerifyError/classInfo/getDeclaredField.java:
