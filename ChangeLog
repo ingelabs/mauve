@@ -1,3 +1,15 @@
+2014-06-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/VerifyError/classInfo/getSuperclass.java:
+	* testlet/java/lang/VerifyError/classInfo/isAnnotation.java:
+	* testlet/java/lang/VerifyError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/VerifyError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/VerifyError/classInfo/isArray.java:
+	* testlet/java/lang/VerifyError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/VerifyError/classInfo/isEnum.java:
+	Updated existing tests, make these tests to work correctly with
+	OpenJDK7, added JDK tags etc.
+
 2014-06-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/security/MessageDigest/MessageDigestMD5Test.java:
