@@ -1,3 +1,13 @@
+2014-06-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/VerifyError/classInfo/getConstructors.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/VerifyError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/VerifyError/classInfo/getFields.java:
+	* testlet/java/lang/VerifyError/classInfo/getInterfaces.java:
+	Updated (c) year in those six tests.
+
 2014-06-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/VerifyError/classInfo/getSuperclass.java:
