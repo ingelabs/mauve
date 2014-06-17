@@ -1,3 +1,14 @@
+2014-06-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/VerifyError/classInfo/getMethod.java:
+	Added new test.
+	* testlet/java/lang/VerifyError/classInfo/getMethods.java:
+	* testlet/java/lang/VerifyError/classInfo/getModifiers.java:
+	* testlet/java/lang/VerifyError/classInfo/getName.java:
+	* testlet/java/lang/VerifyError/classInfo/getPackage.java:
+	* testlet/java/lang/VerifyError/classInfo/getSimpleName.java:
+	Updated (c) year in those five tests.
+
 2014-06-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/VerifyError/classInfo/getConstructors.java:
