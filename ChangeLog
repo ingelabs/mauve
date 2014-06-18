@@ -1,3 +1,16 @@
+2014-06-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/TryCatch.java:
+	* testlet/java/lang/UnsupportedOperationException/constructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/InstanceOf.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getConstructors.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getFields.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getInterfaces.java:
+	Updated (c) year in those nine tests.
+
 2014-06-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/VerifyError/classInfo/getMethod.java:
