@@ -1,4 +1,4 @@
-// Test of AES crypto algorithm.
+// Test the basic usage of AES crypto algorithm.
 
 // Copyright (C) 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -40,8 +40,9 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 
+
 /**
- * Test of AES crypto algorithm.
+ * Test the basic usage of AES crypto algorithm.
  * 
  * @author Pavel Tisnovsky (ptisnovs@redhat.com)
  */

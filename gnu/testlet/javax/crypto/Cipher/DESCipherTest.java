@@ -1,4 +1,4 @@
-// Test of DES crypto algorithm.
+// Test the basic usage of DES crypto algorithm.
 
 // Copyright (C) 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -43,7 +43,7 @@ import javax.crypto.spec.DESKeySpec;
 
 
 /**
- * Test of DES crypto algorithm.
+ * Test the basic usage of DES crypto algorithm.
  * 
  * @author Pavel Tisnovsky (ptisnovs@redhat.com)
  */
@@ -246,6 +246,8 @@ public class DESCipherTest implements Testlet {
             des.init(Cipher.DECRYPT_MODE, secretKey);
             String cleartext = new String(des.doFinal(ciphertext));
 
+            //printCipherTest(ciphertext);
+
             // test if ENCRYPT_MODE is ok
             for (int i = 0; i < expectedCipherText.length; i++)
             {
@@ -275,6 +277,16 @@ public class DESCipherTest implements Testlet {
         {
             harness.fail("Failure: " + e.getMessage());
             harness.debug(e);
+        }
+    }
+
+    @SuppressWarnings({ "boxing", "unused" })
+    private static void printCipherTest(byte[] ciphertext) {
+        for (int i=0; i < ciphertext.length; i++) {
+            System.out.format("(byte)0x%02x, ", ciphertext[i]);
+            if ((i+1)%8 == 0) {
+                System.out.println();
+            }
         }
     }
 

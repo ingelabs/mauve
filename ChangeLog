@@ -1,5 +1,11 @@
 2014-07-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/javax/crypto/Cipher/AESCipherTest.java:
+	* testlet/javax/crypto/Cipher/DESCipherTest.java:
+	Updated JavaDoc.
+
+2014-07-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getComponentType.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredField.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredMethod.java:
