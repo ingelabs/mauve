@@ -1,3 +1,13 @@
+2014-07-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getConstructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getEnclosingMethod.java:
+	Six new tests added into UnsupportedOperationException/classInto.
+
 2014-07-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/javax/crypto/Cipher/AESCipherTest.java:
@@ -21,7 +31,7 @@
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getClasses.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getField.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getMethod.java:
-	Added six new test into UnsupportedOperationException/classInto.
+	Added six new tests into UnsupportedOperationException/classInto.
 
 2014-06-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
