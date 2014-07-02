@@ -1,5 +1,10 @@
 2014-07-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/javax/crypto/Cipher/RC2CipherTest.java:
+	Added new crypto tests for RC2 cipher.
+
+2014-07-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getConstructor.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredAnnotations.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredClasses.java:
