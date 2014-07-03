@@ -1,3 +1,16 @@
+2014-07-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getMethods.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getModifiers.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getName.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getPackage.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getSimpleName.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getSuperclass.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isAnnotation.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isAnonymousClass.java:
+	Updated (c) year in those nine tests.
+
 2014-07-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/javax/crypto/Cipher/RC2CipherTest.java:
