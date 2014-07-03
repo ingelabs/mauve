@@ -1,5 +1,10 @@
 2014-07-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/javax/crypto/Cipher/RC4CipherTest.java:
+	Added new crypto tests for RC4 cipher.
+
+2014-07-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getMethods.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getModifiers.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getName.java:
