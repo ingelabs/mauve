@@ -1,3 +1,16 @@
+2014-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isArray.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isEnum.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isInstance.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isInterface.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isLocalClass.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isMemberClass.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isPrimitive.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isSynthetic.java:
+	Updated (c) year in those nine tests.
+
 2014-07-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/javax/crypto/Cipher/RC4CipherTest.java:
