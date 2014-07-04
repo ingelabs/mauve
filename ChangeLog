@@ -1,5 +1,10 @@
 2014-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/javax/crypto/Cipher/RSACipherTest.java:
+	Added new crypto tests for RSA cipher.
+
+2014-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/UnsupportedOperationException/classInfo/isArray.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/isAssignableFrom.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/isEnum.java:
