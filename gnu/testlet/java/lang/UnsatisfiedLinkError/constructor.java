@@ -1,6 +1,6 @@
-// Test if constructor is working properly for a class java.lang.UnsatisfiedLinkError
+// Test if instances of a class java.lang.UnsatisfiedLinkError could be properly constructed
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -31,7 +31,8 @@ import java.lang.UnsatisfiedLinkError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.UnsatisfiedLinkError
+ * Test if instances of a class java.lang.UnsatisfiedLinkError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -43,13 +44,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        UnsatisfiedLinkError error1 = new UnsatisfiedLinkError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.UnsatisfiedLinkError");
+        UnsatisfiedLinkError object1 = new UnsatisfiedLinkError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.UnsatisfiedLinkError");
 
-        UnsatisfiedLinkError error2 = new UnsatisfiedLinkError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.UnsatisfiedLinkError: nothing happens");
+        UnsatisfiedLinkError object2 = new UnsatisfiedLinkError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.UnsatisfiedLinkError: nothing happens");
+
+        UnsatisfiedLinkError object3 = new UnsatisfiedLinkError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.UnsatisfiedLinkError");
+
     }
 }
 

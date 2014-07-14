@@ -1,3 +1,14 @@
+2014-07-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsatisfiedLinkError/TryCatch.java:
+	* testlet/java/lang/UnsatisfiedLinkError/constructor.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/InstanceOf.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isLocalClass.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isMemberClass.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isPrimitive.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isSynthetic.java:
+	Updated JavaDoc in those seven tests.
+
 2014-07-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/javax/crypto/Cipher/RSACipherTest.java:
