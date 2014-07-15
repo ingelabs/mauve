@@ -1,3 +1,13 @@
+2014-07-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isArray.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isEnum.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isInstance.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isInterface.java:
+	Updated JavaDoc in those six tests.
+
 2014-07-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsatisfiedLinkError/TryCatch.java:
