@@ -1,3 +1,13 @@
+2014-07-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getConstructors.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getPackage.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getSimpleName.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getSuperclass.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isAnnotation.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/isAnnotationPresent.java:
+	Updated JavaDoc in those six tests.
+
 2014-07-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getAnnotation.java:
