@@ -1,3 +1,13 @@
+2014-07-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getConstructor.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredMethod.java:
+	Six new tests added into UnsatisfiedLinkError/classInto.
+
 2014-07-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getConstructors.java:
