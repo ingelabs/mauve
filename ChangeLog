@@ -1,3 +1,13 @@
+2014-07-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getField.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getMethod.java:
+	Six new tests added into UnsatisfiedLinkError/classInto.
+
 2014-07-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getConstructor.java:
