@@ -1,3 +1,15 @@
+2014-07-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getFields.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getInterfaces.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getMethods.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getModifiers.java:
+	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getName.java:
+	Updated JavaDoc in those six tests.
+
 2014-07-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaringClass.java:
