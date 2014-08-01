@@ -1,3 +1,15 @@
+2014-08-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnknownError/TryCatch.java:
+	* testlet/java/lang/UnknownError/constructor.java:
+	* testlet/java/lang/UnknownError/classInfo/InstanceOf.java:
+	* testlet/java/lang/UnknownError/classInfo/isInterface.java:
+	* testlet/java/lang/UnknownError/classInfo/isLocalClass.java:
+	* testlet/java/lang/UnknownError/classInfo/isMemberClass.java:
+	* testlet/java/lang/UnknownError/classInfo/isPrimitive.java:
+	* testlet/java/lang/UnknownError/classInfo/isSynthetic.java:
+	Updated JavaDoc in those eight tests.
+
 2014-07-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsatisfiedLinkError/classInfo/getDeclaredConstructors.java:

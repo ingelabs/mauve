@@ -1,6 +1,6 @@
-// Test if constructor is working properly for a class java.lang.UnknownError
+// Test if instances of a class java.lang.UnknownError could be properly constructed
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -31,7 +31,8 @@ import java.lang.UnknownError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.UnknownError
+ * Test if instances of a class java.lang.UnknownError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -43,13 +44,18 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        UnknownError error1 = new UnknownError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.UnknownError");
+        UnknownError object1 = new UnknownError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.UnknownError");
 
-        UnknownError error2 = new UnknownError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.UnknownError: nothing happens");
+        UnknownError object2 = new UnknownError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.UnknownError: nothing happens");
+
+        UnknownError object3 = new UnknownError(null);
+        harness.check(object3 != null);
+        harness.check(object3.toString(), "java.lang.UnknownError");
+
     }
 }
 
