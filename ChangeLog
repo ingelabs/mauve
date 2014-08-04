@@ -1,3 +1,13 @@
+2014-08-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnknownError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/UnknownError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/UnknownError/classInfo/isArray.java:
+	* testlet/java/lang/UnknownError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/UnknownError/classInfo/isEnum.java:
+	* testlet/java/lang/UnknownError/classInfo/isInstance.java:
+	Updated JavaDoc in those six tests.
+
 2014-08-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnknownError/TryCatch.java:
