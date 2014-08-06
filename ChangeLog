@@ -1,3 +1,13 @@
+2014-08-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnknownError/classInfo/getAnnotation.java:
+	* testlet/java/lang/UnknownError/classInfo/getClasses.java:
+	* testlet/java/lang/UnknownError/classInfo/getComponentType.java:
+	* testlet/java/lang/UnknownError/classInfo/getConstructor.java:
+	* testlet/java/lang/UnknownError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/UnknownError/classInfo/getEnclosingConstructor.java:
+	Another six new tests added into java/lang/UnknownError/classInto.
+
 2014-08-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnknownError/classInfo/getDeclaredAnnotations.java:
