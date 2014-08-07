@@ -1,3 +1,16 @@
+2014-08-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnknownError/classInfo/getFields.java:
+	* testlet/java/lang/UnknownError/classInfo/getInterfaces.java:
+	* testlet/java/lang/UnknownError/classInfo/getMethods.java:
+	* testlet/java/lang/UnknownError/classInfo/getModifiers.java:
+	* testlet/java/lang/UnknownError/classInfo/getName.java:
+	* testlet/java/lang/UnknownError/classInfo/getPackage.java:
+	* testlet/java/lang/UnknownError/classInfo/getSimpleName.java:
+	* testlet/java/lang/UnknownError/classInfo/getSuperclass.java:
+	* testlet/java/lang/UnknownError/classInfo/isAnnotation.java:
+	Updated JavaDoc in those nine tests.
+
 2014-08-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnknownError/classInfo/getAnnotation.java:
