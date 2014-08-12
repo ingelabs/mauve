@@ -1,3 +1,11 @@
+2014-08-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnknownError/classInfo/getConstructors.java:
+	* testlet/java/lang/UnknownError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/UnknownError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/UnknownError/classInfo/getDeclaredMethods.java:
+	Updated JavaDoc in those four tests.
+
 2014-08-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnknownError/classInfo/getAnnotations.java:
