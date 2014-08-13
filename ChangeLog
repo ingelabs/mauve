@@ -1,3 +1,13 @@
+2014-08-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/TypeNotPresentException/TryCatch.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/InstanceOf.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isLocalClass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isMemberClass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isPrimitive.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isSynthetic.java:
+	Updated JavaDoc in those six tests.
+
 2014-08-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnknownError/classInfo/getConstructors.java:
