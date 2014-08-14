@@ -1,3 +1,17 @@
+2014-08-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/TypeNotPresentException/classInfo/getConstructors.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getFields.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getInterfaces.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getMethods.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getModifiers.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getName.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getPackage.java:
+	Updated JavaDoc in those tests.
+
 2014-08-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/TypeNotPresentException/TryCatch.java:
