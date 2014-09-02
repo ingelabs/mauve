@@ -1,3 +1,23 @@
+2014-09-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/TypeNotPresentException/classInfo/getAnnotation.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getAnnotations.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getClasses.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getComponentType.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getConstructor.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getSimpleName.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getSuperclass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAnnotation.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isArray.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isEnum.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isInstance.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isInterface.java:
+	Updated (c) years in those tests.
+
 2014-08-25  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/TypeNotPresentException/classInfo/getAnnotation.java:
