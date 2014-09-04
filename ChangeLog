@@ -1,3 +1,13 @@
+2014-09-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/TypeNotPresentException/constructor.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getField.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/getMethod.java:
+	Added another six new tests into java/lang/TypeNotPresentException.
+
 2014-09-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/TypeNotPresentException/classInfo/getDeclaredAnnotations.java:
