@@ -1,3 +1,14 @@
+2014-09-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/TypeNotPresentException/classInfo/getSuperclass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAnnotation.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isArray.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/TypeNotPresentException/classInfo/isEnum.java:
+	Minor changes.
+
 2014-09-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/TypeNotPresentException/constructor.java:

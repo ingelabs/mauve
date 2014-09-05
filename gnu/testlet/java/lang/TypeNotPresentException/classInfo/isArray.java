@@ -44,7 +44,7 @@ public class isArray implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class TypeNotPresentException
-        final Object o = new TypeNotPresentException("TypeNotPresentException", new Throwable());
+        final Object o = new TypeNotPresentException("java.lang.TypeNotPresentException", new Throwable());
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();
