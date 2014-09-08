@@ -1,3 +1,13 @@
+2014-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/InstanceOf.java:
+	* testlet/java/lang/Object/classInfo/isInterface.java:
+	* testlet/java/lang/Object/classInfo/isLocalClass.java:
+	* testlet/java/lang/Object/classInfo/isMemberClass.java:
+	* testlet/java/lang/Object/classInfo/isPrimitive.java:
+	* testlet/java/lang/Object/classInfo/isSynthetic.java:
+	Updated (c) years in those six tests.
+
 2014-09-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/TypeNotPresentException/classInfo/getSuperclass.java:
