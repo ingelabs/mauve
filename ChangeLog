@@ -1,3 +1,20 @@
+2014-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/getInterfaces.java:
+	* testlet/java/lang/Object/classInfo/getModifiers.java:
+	* testlet/java/lang/Object/classInfo/getName.java:
+	* testlet/java/lang/Object/classInfo/getPackage.java:
+	* testlet/java/lang/Object/classInfo/getSimpleName.java:
+	* testlet/java/lang/Object/classInfo/getSuperclass.java:
+	* testlet/java/lang/Object/classInfo/isAnnotation.java:
+	* testlet/java/lang/Object/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Object/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Object/classInfo/isArray.java:
+	* testlet/java/lang/Object/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Object/classInfo/isEnum.java:
+	* testlet/java/lang/Object/classInfo/isInstance.java:
+	Updated (c) years in those tests.
+
 2014-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/InstanceOf.java:
