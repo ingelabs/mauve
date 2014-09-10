@@ -1,3 +1,12 @@
+2014-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/getAnnotation.java:
+	* testlet/java/lang/Object/classInfo/getAnnotations.java:
+	* testlet/java/lang/Object/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Object/classInfo/getClasses.java:
+	* testlet/java/lang/Object/classInfo/getComponentType.java:
+	Added five new tests into java/lang/Object/classInfo.
+
 2014-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/getInterfaces.java:
