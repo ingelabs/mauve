@@ -1,3 +1,13 @@
+2014-10-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Object/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/Object/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Object/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/Object/classInfo/getField.java:
+	* testlet/java/lang/Object/classInfo/getMethod.java:
+	Another six new tests added into java/lang/Object/classInfo.
+
 2014-09-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/getConstructor.java:
