@@ -1,3 +1,13 @@
+2014-10-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/getConstructors.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Object/classInfo/getMethods.java:
+	* testlet/java/lang/Object/classInfo/isSynthetic.java:
+	Updated (c) years in those tests.
+
 2014-10-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/getDeclaredAnnotations.java:
