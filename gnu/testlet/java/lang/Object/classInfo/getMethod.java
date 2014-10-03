@@ -1,6 +1,6 @@
 // Test for method java.lang.Object.getClass().getMethod()
 
-// Copyright (C) 2012, 2013 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -58,6 +58,15 @@ public class getMethod implements Testlet
         methodsThatShouldExist_jdk6.put("notifyAll", new Class[] {});
 
         Map<String, Class[]> methodsThatShouldExist_jdk7 = new HashMap<String, Class[]>();
+        methodsThatShouldExist_jdk7.put("wait", new Class[] {long.class, int.class});
+        methodsThatShouldExist_jdk7.put("wait", new Class[] {long.class});
+        methodsThatShouldExist_jdk7.put("wait", new Class[] {});
+        methodsThatShouldExist_jdk7.put("equals", new Class[] {java.lang.Object.class});
+        methodsThatShouldExist_jdk7.put("toString", new Class[] {});
+        methodsThatShouldExist_jdk7.put("hashCode", new Class[] {});
+        methodsThatShouldExist_jdk7.put("getClass", new Class[] {});
+        methodsThatShouldExist_jdk7.put("notify", new Class[] {});
+        methodsThatShouldExist_jdk7.put("notifyAll", new Class[] {});
 
         // get the right map containing method signatures
         Map<String, Class[]> methodsThatShouldExist = getJavaVersion() < 7 ? methodsThatShouldExist_jdk6 : methodsThatShouldExist_jdk7;
