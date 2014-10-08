@@ -1,3 +1,13 @@
+2014-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/OutOfMemoryError/classInfo/getAnnotation.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getAnnotations.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getClasses.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getComponentType.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getConstructor.java:
+	Added six new tests into java/lang/OutOfMemoryError/classInfo.
+
 2014-10-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/OutOfMemoryError/constructor.java:
