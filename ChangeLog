@@ -1,3 +1,13 @@
+2014-10-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/OutOfMemoryError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getEnclosingConstructor.java:
+	Added six new tests into java/lang/OutOfMemoryError/classInfo.
+
 2014-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/OutOfMemoryError/classInfo/getConstructors.java:
