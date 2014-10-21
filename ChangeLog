@@ -1,3 +1,12 @@
+2014-10-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/OutOfMemoryError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isInstance.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isInterface.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isLocalClass.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isMemberClass.java:
+	Updated.
+
 2014-10-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/OutOfMemoryError/classInfo/getDeclaredFields.java:
