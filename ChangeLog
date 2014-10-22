@@ -1,3 +1,13 @@
+2014-10-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/OutOfMemoryError/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getField.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getFields.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getMethod.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getMethods.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isAnnotation.java:
+	Added six new tests into java/lang/OutOfMemoryError/classInfo.
+
 2014-10-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/OutOfMemoryError/classInfo/isAssignableFrom.java:
