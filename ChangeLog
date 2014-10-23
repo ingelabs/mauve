@@ -1,3 +1,11 @@
+2014-10-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/OutOfMemoryError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isArray.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/isEnum.java:
+	Added four new tests into java/lang/OutOfMemoryError/classInfo.
+
 2014-10-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/OutOfMemoryError/classInfo/getEnclosingMethod.java:
