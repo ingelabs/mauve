@@ -1,3 +1,12 @@
+2014-11-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/OutOfMemoryError/classInfo/getModifiers.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getName.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getPackage.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getSimpleName.java:
+	* testlet/java/lang/OutOfMemoryError/classInfo/getSuperclass.java:
+	Updated.
+
 2014-10-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/OutOfMemoryError/classInfo/isAnnotationPresent.java:
