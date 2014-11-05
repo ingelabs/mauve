@@ -1,3 +1,13 @@
+2014-11-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/RuntimeException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/RuntimeException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/RuntimeException/classInfo/isArray.java:
+	* testlet/java/lang/RuntimeException/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/RuntimeException/classInfo/isEnum.java:
+	* testlet/java/lang/RuntimeException/classInfo/isInstance.java:
+	Updated.
+
 2014-11-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/RuntimeException/TryCatch.java:
