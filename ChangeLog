@@ -1,3 +1,13 @@
+2014-11-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/RuntimeException/classInfo/getConstructors.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/RuntimeException/classInfo/getFields.java:
+	* testlet/java/lang/RuntimeException/classInfo/getMethods.java:
+	Updated.
+
 2014-11-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/RuntimeException/classInfo/isAnnotationPresent.java:
