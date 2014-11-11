@@ -1,3 +1,12 @@
+2014-11-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/RuntimeException/classInfo/getComponentType.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredField.java:
+	* testlet/java/lang/RuntimeException/classInfo/getDeclaredMethod.java:
+	Five new tests added into RuntimeException/classInfo.
+
 2014-11-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/RuntimeException/classInfo/getAnnotation.java:
