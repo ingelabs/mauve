@@ -1,3 +1,15 @@
+2014-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/RuntimeException/classInfo/getInterfaces.java:
+	* testlet/java/lang/RuntimeException/classInfo/getMethod.java:
+	* testlet/java/lang/RuntimeException/classInfo/getModifiers.java:
+	* testlet/java/lang/RuntimeException/classInfo/getName.java:
+	* testlet/java/lang/RuntimeException/classInfo/getPackage.java:
+	* testlet/java/lang/RuntimeException/classInfo/getSimpleName.java:
+	* testlet/java/lang/RuntimeException/classInfo/getSuperclass.java:
+	* testlet/java/lang/RuntimeException/classInfo/isAnnotation.java:
+	Added new test, updated existing ones.
+
 2014-11-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/RuntimeException/classInfo/getDeclaringClass.java:
