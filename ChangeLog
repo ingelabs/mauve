@@ -1,3 +1,14 @@
+2014-11-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/SecurityException/TryCatch.java:
+	* testlet/java/lang/SecurityException/constructor.java:
+	* testlet/java/lang/SecurityException/classInfo/InstanceOf.java:
+	* testlet/java/lang/SecurityException/classInfo/getConstructors.java:
+	* testlet/java/lang/SecurityException/classInfo/isMemberClass.java:
+	* testlet/java/lang/SecurityException/classInfo/isPrimitive.java:
+	* testlet/java/lang/SecurityException/classInfo/isSynthetic.java:
+	Updated.
+
 2014-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/RuntimeException/classInfo/getInterfaces.java:
