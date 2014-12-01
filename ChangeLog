@@ -1,3 +1,16 @@
+2014-12-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/SecurityException/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/SecurityException/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/SecurityException/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/SecurityException/classInfo/getFields.java:
+	* testlet/java/lang/SecurityException/classInfo/getInterfaces.java:
+	* testlet/java/lang/SecurityException/classInfo/isEnum.java:
+	* testlet/java/lang/SecurityException/classInfo/isInstance.java:
+	* testlet/java/lang/SecurityException/classInfo/isInterface.java:
+	* testlet/java/lang/SecurityException/classInfo/isLocalClass.java:
+	Updated.
+
 2014-11-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/SecurityException/classInfo/getDeclaringClass.java:

@@ -1,6 +1,6 @@
 // Test for method java.lang.SecurityException.getClass().getDeclaredFields()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -54,11 +54,11 @@ public class getDeclaredFields implements Testlet
         // map of declared fields for (Open)JDK7
         Map<String, String> testedDeclaredFields_jdk7 = new HashMap<String, String>();
 
-        // map for fields declared in (Open)JDK7
-        testedDeclaredFields_jdk7.put("private static final long java.lang.SecurityException.serialVersionUID", "serialVersionUID");
-
         // map for fields declared in (Open)JDK6
         testedDeclaredFields_jdk6.put("private static final long java.lang.SecurityException.serialVersionUID", "serialVersionUID");
+
+        // map for fields declared in (Open)JDK7
+        testedDeclaredFields_jdk7.put("private static final long java.lang.SecurityException.serialVersionUID", "serialVersionUID");
 
         // create instance of a class SecurityException
         final Object o = new SecurityException("java.lang.SecurityException");
