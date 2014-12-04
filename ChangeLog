@@ -1,3 +1,13 @@
+2014-12-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/SecurityException/classInfo/getMethods.java:
+	* testlet/java/lang/SecurityException/classInfo/getModifiers.java:
+	* testlet/java/lang/SecurityException/classInfo/getName.java:
+	* testlet/java/lang/SecurityException/classInfo/getPackage.java:
+	* testlet/java/lang/SecurityException/classInfo/getSimpleName.java:
+	* testlet/java/lang/SecurityException/classInfo/getSuperclass.java:
+	Updated.
+
 2014-12-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/SecurityException/classInfo/getField.java:
