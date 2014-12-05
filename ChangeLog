@@ -1,3 +1,12 @@
+2014-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/SecurityException/classInfo/isAnnotation.java:
+	* testlet/java/lang/SecurityException/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/SecurityException/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/SecurityException/classInfo/isArray.java:
+	* testlet/java/lang/SecurityException/classInfo/isAssignableFrom.java:
+	Updated.
+
 2014-12-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/SecurityException/classInfo/getMethods.java:
