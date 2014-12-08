@@ -1,3 +1,9 @@
+2014-12-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/StackOverflowError/TryCatch.java:
+	* testlet/java/lang/StackOverflowError/constructor.java:
+	Updated.
+
 2014-12-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/SecurityException/classInfo/isAnnotation.java:
