@@ -1,3 +1,13 @@
+2014-12-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getEnclosingMethod.java:
+	Added six new tests into testlet/java/lang/StackOverflowError/classInfo.
+
 2014-12-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/StackOverflowError/TryCatch.java:
