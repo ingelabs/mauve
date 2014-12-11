@@ -1,3 +1,13 @@
+2014-12-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/StackOverflowError/classInfo/getAnnotation.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getAnnotations.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getCanonicalName.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getClasses.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getComponentType.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getConstructor.java:
+	Added six new tests into testlet/java/lang/StackOverflowError/classInfo.
+
 2014-12-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredConstructor.java:
