@@ -1,3 +1,12 @@
+2014-12-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getField.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getMethod.java:
+	Added five new tests into testlet/java/lang/StackOverflowError/classInfo.
+
 2014-12-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/StackOverflowError/classInfo/getAnnotation.java:
