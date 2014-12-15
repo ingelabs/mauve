@@ -1,3 +1,14 @@
+2014-12-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/StackOverflowError/classInfo/InstanceOf.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getConstructors.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getFields.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getInterfaces.java:
+	Updated.
+
 2014-12-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/StackOverflowError/classInfo/getDeclaredAnnotations.java:

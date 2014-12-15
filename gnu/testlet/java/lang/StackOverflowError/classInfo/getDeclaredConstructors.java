@@ -1,6 +1,6 @@
 // Test for method java.lang.StackOverflowError.getClass().getDeclaredConstructors()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -54,13 +54,13 @@ public class getDeclaredConstructors implements Testlet
         // map of declared constructors for (Open)JDK7
         Map<String, String> testedDeclaredConstructors_jdk7 = new HashMap<String, String>();
 
-        // map for constructors declared in (Open)JDK7
-        testedDeclaredConstructors_jdk7.put("public java.lang.StackOverflowError()", "java.lang.StackOverflowError");
-        testedDeclaredConstructors_jdk7.put("public java.lang.StackOverflowError(java.lang.String)", "java.lang.StackOverflowError");
-
         // map for constructors declared in (Open)JDK6
         testedDeclaredConstructors_jdk6.put("public java.lang.StackOverflowError()", "java.lang.StackOverflowError");
         testedDeclaredConstructors_jdk6.put("public java.lang.StackOverflowError(java.lang.String)", "java.lang.StackOverflowError");
+
+        // map for constructors declared in (Open)JDK7
+        testedDeclaredConstructors_jdk7.put("public java.lang.StackOverflowError()", "java.lang.StackOverflowError");
+        testedDeclaredConstructors_jdk7.put("public java.lang.StackOverflowError(java.lang.String)", "java.lang.StackOverflowError");
 
         // create instance of a class StackOverflowError
         final Object o = new StackOverflowError("StackOverflowError");
