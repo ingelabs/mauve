@@ -1,3 +1,20 @@
+2014-12-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/StackOverflowError/classInfo/getMethods.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getModifiers.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getName.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getPackage.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getSimpleName.java:
+	* testlet/java/lang/StackOverflowError/classInfo/getSuperclass.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isAnnotation.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isArray.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isEnum.java:
+	* testlet/java/lang/StackOverflowError/classInfo/isInstance.java:
+	Updated.
+
 2014-12-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/StackOverflowError/classInfo/InstanceOf.java:
