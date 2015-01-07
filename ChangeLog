@@ -1,3 +1,14 @@
+2015-01-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Boolean/classInfo/InstanceOf.java:
+	* testlet/java/lang/Boolean/classInfo/getInterfaces.java:
+	* testlet/java/lang/Boolean/classInfo/getModifiers.java:
+	* testlet/java/lang/Boolean/classInfo/getName.java:
+	* testlet/java/lang/Boolean/classInfo/getPackage.java:
+	* testlet/java/lang/Boolean/classInfo/getSimpleName.java:
+	* testlet/java/lang/Boolean/classInfo/getSuperclass.java:
+	Updated seven tests in Boolean/classInfo.
+
 2015-01-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* gnu/testlet/java/lang/Boolean/BooleanTest.java:
