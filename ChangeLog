@@ -1,3 +1,13 @@
+2015-01-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Boolean/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Boolean/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Boolean/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Boolean/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Boolean/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Boolean/classInfo/getDeclaredFields.java:
+	Added six new tests into lang/Boolean/classInfo.
+
 2015-01-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Boolean/classInfo/getAnnotation.java:
