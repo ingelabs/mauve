@@ -1,3 +1,13 @@
+2015-01-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Boolean/classInfo/getConstructor.java:
+	* testlet/java/lang/Boolean/classInfo/getConstructors.java:
+	* testlet/java/lang/Boolean/classInfo/getField.java:
+	* testlet/java/lang/Boolean/classInfo/getFields.java:
+	* testlet/java/lang/Boolean/classInfo/getMethod.java:
+	* testlet/java/lang/Boolean/classInfo/getMethods.java:
+	Added another six new tests into lang/Boolean/classInfo.
+
 2015-01-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Boolean/classInfo/getDeclaredMethod.java:
