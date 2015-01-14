@@ -1,3 +1,13 @@
+2015-01-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Boolean/classInfo/isAnnotation.java:
+	* testlet/java/lang/Boolean/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Boolean/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Boolean/classInfo/isArray.java:
+	* testlet/java/lang/Boolean/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Boolean/classInfo/isEnum.java:
+	Updated six tests in java/lang/Boolean/classInfo.
+
 2015-01-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Boolean/classInfo/getConstructor.java:
