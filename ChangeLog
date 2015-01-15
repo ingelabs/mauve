@@ -1,3 +1,13 @@
+2015-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Boolean/classInfo/isInstance.java:
+	* testlet/java/lang/Boolean/classInfo/isInterface.java:
+	* testlet/java/lang/Boolean/classInfo/isLocalClass.java:
+	* testlet/java/lang/Boolean/classInfo/isMemberClass.java:
+	* testlet/java/lang/Boolean/classInfo/isPrimitive.java:
+	* testlet/java/lang/Boolean/classInfo/isSynthetic.java:
+	Updated six tests in java/lang/Boolean/classInfo.
+
 2015-01-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Boolean/classInfo/isAnnotation.java:
