@@ -18,7 +18,7 @@
    Boston, MA 02111-1307, USA.
 */
 
-// Tags: JDK1.0
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.Byte;
 import gnu.testlet.Testlet;

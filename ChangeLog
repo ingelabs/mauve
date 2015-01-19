@@ -1,3 +1,15 @@
+2015-01-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/ByteTest.java:
+	* testlet/java/lang/Byte/byteDivide.java:
+	* testlet/java/lang/Byte/new_Byte.java:
+	* testlet/java/lang/Byte/parseByte.java:
+	* testlet/java/lang/Byte/parseByteRadix.java:
+	* testlet/java/lang/Byte/toString.java:
+	* testlet/java/lang/Byte/valueOfString.java:
+	* testlet/java/lang/Byte/valueOfStringRadix.java:
+	Updated tags to fix compilation problems.
+
 2015-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Boolean/classInfo/isInstance.java:

@@ -1,4 +1,4 @@
-// Tags: JDK1.0
+// Tags: JDK1.5
 
 // Copyright (C) 1998 Cygnus Solutions
 
