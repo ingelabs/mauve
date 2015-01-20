@@ -1,3 +1,13 @@
+2015-01-20  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Byte/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Byte/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Byte/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Byte/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Byte/classInfo/getDeclaringClass.java:
+	Added six new tests into lang/Byte/classInfo.
+
 2015-01-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Byte/ByteTest.java:
