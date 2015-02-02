@@ -101,5 +101,8 @@ public class getInstance14 extends Provider implements Testlet
         harness.fail(signature);
         harness.debug(x);
       }
+
+    // Cleanup
+    Security.removeProvider("KeyPairGenerator");
   }
 }
