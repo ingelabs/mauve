@@ -1,3 +1,15 @@
+2015-02-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/classInfo/InstanceOf.java:
+	Updated.
+	* testlet/java/lang/Byte/classInfo/getAnnotation.java:
+	* testlet/java/lang/Byte/classInfo/getAnnotations.java:
+	* testlet/java/lang/Byte/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Byte/classInfo/getClasses.java:
+	* testlet/java/lang/Byte/classInfo/getComponentType.java:
+	* testlet/java/lang/Byte/classInfo/getConstructor.java:
+	Added six new tests into lang/Byte/classInfo.
+
 2015-02-02  Andrew John Hughes  <gnu_andrew@member.fsf.org>
 
 	* gnu/testlet/java/security/KeyPairGenerator/PR64904.java:
