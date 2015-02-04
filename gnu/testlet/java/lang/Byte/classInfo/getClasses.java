@@ -1,4 +1,4 @@
-// Test for instanceof operator applied to a class java.lang.Byte
+// Test for method java.lang.Byte.getClass().getClasses()
 
 // Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -27,15 +27,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.Byte;
-import java.lang.Number;
-import java.lang.Object;
 
 
 
 /**
- * Test for instanceof operator applied to a class java.lang.Byte
+ * Test for method java.lang.Byte.getClass().getClasses()
  */
-public class InstanceOf implements Testlet
+public class getClasses implements Testlet
 {
 
     /**
@@ -46,14 +44,14 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class Byte
-        Byte o = new Byte((byte)42);
+        final Object o = new Byte((byte)42);
 
-        // basic check of instanceof operator
-        harness.check(o instanceof Byte);
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
 
-        // check operator instanceof against all superclasses
-        harness.check(o instanceof Number);
-        harness.check(o instanceof Object);
+        Class<?>[] cls = c.getClasses();
+        harness.check(cls != null);
+        harness.check(cls.length, 0);
     }
 }
 
