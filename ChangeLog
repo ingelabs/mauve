@@ -1,3 +1,12 @@
+2015-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/Byte/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Byte/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/Byte/classInfo/getField.java:
+	* testlet/java/lang/Byte/classInfo/getFields.java:
+	Added five new tests into java/lang/Byte/classInfo.
+
 2015-02-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Byte/classInfo/getConstructors.java:
