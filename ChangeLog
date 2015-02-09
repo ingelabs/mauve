@@ -1,3 +1,13 @@
+2015-02-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/classInfo/isAnnotation.java:
+	* testlet/java/lang/Byte/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Byte/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Byte/classInfo/isArray.java:
+	* testlet/java/lang/Byte/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Byte/classInfo/isEnum.java:
+	6 tests have been updated.
+
 2015-02-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Byte/classInfo/getInterfaces.java:
