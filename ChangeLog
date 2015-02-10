@@ -1,3 +1,20 @@
+2015-02-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/classInfo/getInterfaces.java:
+	* testlet/java/lang/Byte/classInfo/getModifiers.java:
+	* testlet/java/lang/Byte/classInfo/getName.java:
+	* testlet/java/lang/Byte/classInfo/getPackage.java:
+	* testlet/java/lang/Byte/classInfo/getSimpleName.java:
+	* testlet/java/lang/Byte/classInfo/getSuperclass.java:
+	* testlet/java/lang/Byte/classInfo/isAnnotation.java:
+	* testlet/java/lang/Byte/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Byte/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Byte/classInfo/isArray.java:
+	* testlet/java/lang/Byte/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Byte/classInfo/isEnum.java:
+	* testlet/java/lang/Byte/classInfo/isInstance.java:
+	Fixed constructor issue.
+
 2015-02-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Byte/classInfo/isAnnotation.java:

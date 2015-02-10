@@ -45,7 +45,7 @@ public class getModifiers implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class Byte
-        final Object o = new Byte();
+        final Object o = new Byte((byte)42);
 
         // get a runtime class of an object "o"
         final Class c = o.getClass();
