@@ -1,3 +1,12 @@
+2015-02-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Byte/classInfo/isInterface.java:
+	* testlet/java/lang/Byte/classInfo/isLocalClass.java:
+	* testlet/java/lang/Byte/classInfo/isMemberClass.java:
+	* testlet/java/lang/Byte/classInfo/isPrimitive.java:
+	* testlet/java/lang/Byte/classInfo/isSynthetic.java:
+	Updated code and comments.
+
 2015-02-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Byte/classInfo/getInterfaces.java:
