@@ -1,3 +1,14 @@
+2015-02-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Character/classInfo/InstanceOf.java:
+	* testlet/java/lang/Character/classInfo/getInterfaces.java:
+	* testlet/java/lang/Character/classInfo/getModifiers.java:
+	* testlet/java/lang/Character/classInfo/getName.java:
+	* testlet/java/lang/Character/classInfo/getPackage.java:
+	* testlet/java/lang/Character/classInfo/getSimpleName.java:
+	* testlet/java/lang/Character/classInfo/getSuperclass.java:
+	Updated code and comments.
+
 2015-02-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Character/constructor.java:
