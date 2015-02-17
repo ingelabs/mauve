@@ -1,5 +1,15 @@
 2015-02-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/Character/classInfo/getAnnotation.java:
+	* testlet/java/lang/Character/classInfo/getAnnotations.java:
+	* testlet/java/lang/Character/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Character/classInfo/getClasses.java:
+	* testlet/java/lang/Character/classInfo/getComponentType.java:
+	* testlet/java/lang/Character/classInfo/getConstructor.java:
+	Added six new tests into Character/classInfo.
+
+2015-02-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/Character/classInfo/isInstance.java:
 	* testlet/java/lang/Character/classInfo/isInterface.java:
 	* testlet/java/lang/Character/classInfo/isLocalClass.java:
