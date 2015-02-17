@@ -1,3 +1,13 @@
+2015-02-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Character/classInfo/isInstance.java:
+	* testlet/java/lang/Character/classInfo/isInterface.java:
+	* testlet/java/lang/Character/classInfo/isLocalClass.java:
+	* testlet/java/lang/Character/classInfo/isMemberClass.java:
+	* testlet/java/lang/Character/classInfo/isPrimitive.java:
+	* testlet/java/lang/Character/classInfo/isSynthetic.java:
+	Updated code and comments.
+
 2015-02-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Character/classInfo/InstanceOf.java:
