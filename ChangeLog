@@ -1,3 +1,12 @@
+2015-03-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Character/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Character/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Character/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Character/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Character/classInfo/getDeclaringClass.java:
+	Added five new tests into Character/classInfo.
+
 2015-03-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Character/classInfo/getConstructors.java:
