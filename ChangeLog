@@ -1,3 +1,12 @@
+2015-03-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Character/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/Character/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Character/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/Character/classInfo/getField.java:
+	* testlet/java/lang/Character/classInfo/getFields.java:
+	Added another five new tests into Character/classInfo.
+
 2015-03-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Character/classInfo/getDeclaredField.java:
