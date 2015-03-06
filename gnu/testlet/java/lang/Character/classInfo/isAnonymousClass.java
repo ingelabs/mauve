@@ -1,4 +1,4 @@
-// Test for method java.lang.Character.getClass().isAssignableFrom(Class)
+// Test for method java.lang.Character.getClass().isAnonymousClass()
 
 // Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.Character;
 
 
 /**
- * Test for method java.lang.Character.getClass().isAssignableFrom()
+ * Test for method java.lang.Character.getClass().isAnonymousClass()
  */
-public class isAssignableFrom implements Testlet
+public class isAnonymousClass implements Testlet
 {
 
     /**
@@ -49,7 +49,7 @@ public class isAssignableFrom implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(Character.class));
+        harness.check(!c.isAnonymousClass());
     }
 }
 
