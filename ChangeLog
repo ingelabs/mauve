@@ -1,3 +1,12 @@
+2015-03-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/InstanceOf.java:
+	* testlet/java/lang/Class/classInfo/getInterfaces.java:
+	* testlet/java/lang/Class/classInfo/getModifiers.java:
+	* testlet/java/lang/Class/classInfo/getName.java:
+	* testlet/java/lang/Class/classInfo/getPackage.java:
+	Updated five tests in Class/classInfo.
+
 2015-03-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Character/classInfo/getMethod.java:
