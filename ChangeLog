@@ -1,3 +1,11 @@
+2015-03-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/getConstructor.java:
+	* testlet/java/lang/Class/classInfo/getConstructors.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredClasses.java:
+	Added four new tests into Character/classInfo.
+
 2015-03-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/getAnnotation.java:
