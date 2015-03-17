@@ -1,10 +1,19 @@
+2015-03-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/isInterface.java:
+	* testlet/java/lang/Class/classInfo/isLocalClass.java:
+	* testlet/java/lang/Class/classInfo/isMemberClass.java:
+	* testlet/java/lang/Class/classInfo/isPrimitive.java:
+	* testlet/java/lang/Class/classInfo/isSynthetic.java:
+	Updated five tests in Class/classInfo.
+
 2015-03-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/getConstructor.java:
 	* testlet/java/lang/Class/classInfo/getConstructors.java:
 	* testlet/java/lang/Class/classInfo/getDeclaredAnnotations.java:
 	* testlet/java/lang/Class/classInfo/getDeclaredClasses.java:
-	Added four new tests into Character/classInfo.
+	Added four new tests into Class/classInfo.
 
 2015-03-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -13,7 +22,7 @@
 	* testlet/java/lang/Class/classInfo/getCanonicalName.java:
 	* testlet/java/lang/Class/classInfo/getClasses.java:
 	* testlet/java/lang/Class/classInfo/getComponentType.java:
-	Added five new tests into Character/classInfo.
+	Added five new tests into Class/classInfo.
 
 2015-03-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
