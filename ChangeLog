@@ -1,3 +1,12 @@
+2015-03-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredMethod.java:
+	Added five new test into Class/classInfo.
+
 2015-03-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/isInterface.java:
