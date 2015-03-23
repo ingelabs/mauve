@@ -1,3 +1,12 @@
+2015-03-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Class/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/Class/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/Class/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Class/classInfo/getEnclosingMethod.java:
+	Added five new test into Class/classInfo.
+
 2015-03-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/getDeclaredConstructor.java:
