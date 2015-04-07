@@ -54,6 +54,9 @@ public class getDeclaredConstructors implements Testlet
         // map of declared constructors for (Open)JDK7
         Map<String, String> testedDeclaredConstructors_jdk7 = new HashMap<String, String>();
 
+        // map for constructors declared in (Open)JDK6
+        testedDeclaredConstructors_jdk6.put("private java.lang.Class()", "java.lang.Class");
+
         // map for constructors declared in (Open)JDK7
         testedDeclaredConstructors_jdk7.put("private java.lang.Class()", "java.lang.Class");
 
