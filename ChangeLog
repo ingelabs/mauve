@@ -1,5 +1,11 @@
 2015-04-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/Class/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Class/classInfo/getDeclaredMethods.java:
+	Updated to work correctly in JDK6.
+
+2015-04-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/Class/classInfo/getDeclaredConstructors.java:
 	Updated to work correctly in JDK7.
 
