@@ -1,3 +1,8 @@
+2015-04-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/getDeclaredConstructors.java:
+	Updated to work correctly in JDK7.
+
 2015-03-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/getDeclaredMethods.java:
