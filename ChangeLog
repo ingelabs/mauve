@@ -1,3 +1,11 @@
+2015-04-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/getField.java:
+	* testlet/java/lang/Class/classInfo/getFields.java:
+	* testlet/java/lang/Class/classInfo/getMethod.java:
+	* testlet/java/lang/Class/classInfo/getMethods.java:
+	Added five new test into Class/classInfo.
+
 2015-04-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/getDeclaredFields.java:
