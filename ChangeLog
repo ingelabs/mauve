@@ -1,3 +1,16 @@
+2015-04-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Class/classInfo/getSimpleName.java:
+	* testlet/java/lang/Class/classInfo/getSuperclass.java:
+	* testlet/java/lang/Class/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Class/classInfo/isInstance.java:
+	* testlet/java/lang/Class/classInfo/isInterface.java:
+	* testlet/java/lang/Class/classInfo/isLocalClass.java:
+	* testlet/java/lang/Class/classInfo/isMemberClass.java:
+	* testlet/java/lang/Class/classInfo/isPrimitive.java:
+	* testlet/java/lang/Class/classInfo/isSynthetic.java:
+	Updated to work correctly.
+
 2015-04-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/isAnnotation.java:

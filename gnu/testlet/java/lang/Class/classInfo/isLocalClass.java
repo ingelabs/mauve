@@ -43,11 +43,8 @@ public class isLocalClass implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Class
-        final Object o = Class.class;
-
         // get a runtime class of an object "o"
-        final Class c = o.getClass();
+        final Class c = Class.class;
 
         harness.check(!c.isLocalClass());
     }

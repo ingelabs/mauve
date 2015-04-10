@@ -41,11 +41,8 @@ public class getSuperclass implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = Class.class;
-
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        Class c = Class.class;
 
         Class superClass = c.getSuperclass();
         harness.check(superClass.getName(), "java.lang.Object");
