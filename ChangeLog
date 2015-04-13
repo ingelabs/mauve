@@ -1,3 +1,8 @@
+2015-04-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/constructor.java:
+	Added new test into java.lang.Double.
+
 2015-04-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Class/classInfo/getSimpleName.java:
