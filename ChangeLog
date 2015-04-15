@@ -1,3 +1,12 @@
+2015-04-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Double/classInfo/isEnum.java:
+	* testlet/java/lang/Double/classInfo/isInstance.java:
+	* testlet/java/lang/Double/classInfo/isInterface.java:
+	* testlet/java/lang/Double/classInfo/isLocalClass.java:
+	Updated five tests in java.lang.Double/classInfo.
+
 2015-04-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/InstanceOf.java:
