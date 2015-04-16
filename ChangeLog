@@ -1,3 +1,14 @@
+2015-04-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/classInfo/InstanceOf.java:
+	* testlet/java/lang/Double/classInfo/getAnnotation.java:
+	* testlet/java/lang/Double/classInfo/getAnnotations.java:
+	* testlet/java/lang/Double/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Double/classInfo/getClasses.java:
+	* testlet/java/lang/Double/classInfo/getComponentType.java:
+	* testlet/java/lang/Double/classInfo/getConstructor.java:
+	Added new tests into java.lang.Double/classInfo.
+
 2015-04-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/isAssignableFrom.java:

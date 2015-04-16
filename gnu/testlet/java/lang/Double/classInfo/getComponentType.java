@@ -1,4 +1,4 @@
-// Test for instanceof operator applied to a class java.lang.Double
+// Test for method java.lang.Double.getClass().getComponentType()
 
 // Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -28,15 +28,13 @@ import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
 import java.lang.Double;
-import java.lang.Number;
-import java.lang.Object;
 
 
 
 /**
- * Test for instanceof operator applied to a class java.lang.Double
+ * Test for method java.lang.Double.getClass().getComponentType()
  */
-public class InstanceOf implements Testlet
+public class getComponentType implements Testlet
 {
 
     /**
@@ -47,14 +45,13 @@ public class InstanceOf implements Testlet
     public void test(TestHarness harness)
     {
         // create instance of a class Double
-        Double o = new Double(42.0);
+        final Object o = new Double(42.0);
 
-        // basic check of instanceof operator
-        harness.check(o instanceof Double);
+        // get a runtime class of an object "o"
+        final Class c = o.getClass();
 
-        // check operator instanceof against all superclasses
-        harness.check(o instanceof Number);
-        harness.check(o instanceof Object);
+        Class<?> cls = c.getComponentType();
+        harness.check(cls == null);
     }
 }
 
