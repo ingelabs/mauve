@@ -1,3 +1,13 @@
+2015-04-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/classInfo/getConstructors.java:
+	* testlet/java/lang/Double/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Double/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Double/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Double/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Double/classInfo/getDeclaredField.java:
+	Added six new tests into java.lang.Double/classInfo.
+
 2015-04-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/InstanceOf.java:
