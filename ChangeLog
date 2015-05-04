@@ -1,3 +1,13 @@
+2015-05-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/classInfo/getSimpleName.java:
+	* testlet/java/lang/Double/classInfo/getSuperclass.java:
+	* testlet/java/lang/Double/classInfo/isAnnotation.java:
+	* testlet/java/lang/Double/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Double/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Double/classInfo/isArray.java:
+	Updated six tests in java.lang.Double/classInfo.
+
 2015-04-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/getConstructors.java:
