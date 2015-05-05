@@ -1,3 +1,10 @@
+2015-05-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/classInfo/getModifiers.java:
+	* testlet/java/lang/Double/classInfo/getName.java:
+	* testlet/java/lang/Double/classInfo/getPackage.java:
+	Updated three tests in java.lang.Double/classInfo.
+
 2015-05-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/getSimpleName.java:
