@@ -1,3 +1,12 @@
+2015-05-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Double/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/Double/classInfo/getField.java:
+	* testlet/java/lang/Double/classInfo/getFields.java:
+	* testlet/java/lang/Double/classInfo/getMethod.java:
+	* testlet/java/lang/Double/classInfo/getMethods.java:
+	Added five new tests into java.lang.Double/classInfo.
+
 2015-05-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/getDeclaredFields.java:
