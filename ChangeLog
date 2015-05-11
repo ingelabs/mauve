@@ -1,3 +1,11 @@
+2015-05-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Float/compareToObject.java:
+	* testlet/java/lang/Float/floatToIntBits.java:
+	* testlet/java/lang/Float/floatToRawIntBits.java:
+	* testlet/java/lang/Float/valueOfFloat.java:
+	Added four new tests into java.lang.Float.
+
 2015-05-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Double/classInfo/getEnclosingMethod.java:
