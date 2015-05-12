@@ -1,3 +1,13 @@
+2015-05-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Float/classInfo/InstanceOf.java:
+	* testlet/java/lang/Float/classInfo/getInterfaces.java:
+	* testlet/java/lang/Float/classInfo/getModifiers.java:
+	* testlet/java/lang/Float/classInfo/getName.java:
+	* testlet/java/lang/Float/classInfo/getPackage.java:
+	* testlet/java/lang/Float/classInfo/getSimpleName.java:
+	Updated six tests in java.lang.Float/classInfo.
+
 2015-05-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Float/compareToObject.java:
