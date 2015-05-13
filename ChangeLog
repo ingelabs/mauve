@@ -1,3 +1,13 @@
+2015-05-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Float/classInfo/isInstance.java:
+	* testlet/java/lang/Float/classInfo/isInterface.java:
+	* testlet/java/lang/Float/classInfo/isLocalClass.java:
+	* testlet/java/lang/Float/classInfo/isMemberClass.java:
+	* testlet/java/lang/Float/classInfo/isPrimitive.java:
+	* testlet/java/lang/Float/classInfo/isSynthetic.java:
+	Updated six tests in java.lang.Float/classInfo.
+
 2015-05-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Float/classInfo/InstanceOf.java:
