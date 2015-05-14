@@ -1,3 +1,13 @@
+2015-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Float/classInfo/isAnnotation.java:
+	* testlet/java/lang/Float/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Float/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Float/classInfo/isArray.java:
+	* testlet/java/lang/Float/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Float/classInfo/isEnum.java:
+	Updated six tests in java.lang.Float/classInfo.
+
 2015-05-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Float/classInfo/isInstance.java:
