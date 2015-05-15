@@ -1,3 +1,12 @@
+2015-05-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Float/classInfo/getAnnotation.java:
+	* testlet/java/lang/Float/classInfo/getAnnotations.java:
+	* testlet/java/lang/Float/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Float/classInfo/getClasses.java:
+	* testlet/java/lang/Float/classInfo/getComponentType.java:
+	Five new tests added into testlet/java/lang/Float/classInfo.
+
 2015-05-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Float/classInfo/isAnnotation.java:
