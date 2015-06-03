@@ -1,3 +1,10 @@
+2015-06-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Float/classInfo/getMethod.java:
+	* testlet/java/lang/Float/classInfo/getMethods.java:
+	* testlet/java/lang/Float/classInfo/getSuperclass.java:
+	Two new tests added into testlet/java/lang/Float/classInfo.
+
 2015-06-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Float/classInfo/getDeclaringClass.java:
