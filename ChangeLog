@@ -1,5 +1,14 @@
 2015-06-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/InheritableThreadLocal/classInfo/InstanceOf.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getAnnotation.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getAnnotations.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getCanonicalName.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getClasses.java:
+	Added five new tests for the class java.lang.InheritableThreadLocal.
+
+2015-06-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/InheritableThreadLocal/constructor.java:
 	Added new test for the class java.lang.InheritableThreadLocal.
 
