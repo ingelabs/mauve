@@ -1,3 +1,13 @@
+2015-06-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isAnnotation.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isArray.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isEnum.java:
+	Added six new tests for the class java.lang.InheritableThreadLocal.
+
 2015-06-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InheritableThreadLocal/classInfo/InstanceOf.java:
