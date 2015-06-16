@@ -1,5 +1,15 @@
 2015-06-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isInstance.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isInterface.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isLocalClass.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isMemberClass.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isPrimitive.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/isSynthetic.java:
+	Added another six new tests for the class java.lang.InheritableThreadLocal.
+
+2015-06-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/InheritableThreadLocal/classInfo/isAnnotation.java:
 	* testlet/java/lang/InheritableThreadLocal/classInfo/isAnnotationPresent.java:
 	* testlet/java/lang/InheritableThreadLocal/classInfo/isAnonymousClass.java:
