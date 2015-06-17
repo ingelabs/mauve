@@ -1,3 +1,13 @@
+2015-06-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getField.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getFields.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getInterfaces.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getMethod.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getMethods.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getModifiers.java:
+	Added another six new tests for the class java.lang.InheritableThreadLocal.
+
 2015-06-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InheritableThreadLocal/classInfo/isInstance.java:
