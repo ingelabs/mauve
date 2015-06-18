@@ -1,3 +1,11 @@
+2015-06-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getName.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getPackage.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getSimpleName.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getSuperclass.java:
+	Added four new tests for the class java.lang.InheritableThreadLocal.
+
 2015-06-17  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InheritableThreadLocal/classInfo/getField.java:
