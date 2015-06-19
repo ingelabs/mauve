@@ -1,3 +1,13 @@
+2015-06-19  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getEnclosingMethod.java:
+	Six new tests added into InheritableThreadLocal.
+
 2015-06-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InheritableThreadLocal/classInfo/getName.java:
