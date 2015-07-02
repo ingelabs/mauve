@@ -1,3 +1,11 @@
+2015-07-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaredField.java:
+	* testlet/java/lang/InheritableThreadLocal/classInfo/getDeclaredFields.java:
+	Four additional new tests added into InheritableThreadLocal.
+
 2015-07-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/InheritableThreadLocal/classInfo/getComponentType.java:
