@@ -1,3 +1,10 @@
+2015-07-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/decode.java:
+	* testlet/java/lang/Integer/integerDivide.java:
+	* testlet/java/lang/Integer/integerModulo.java:
+	Added tags into three tests.
+
 2015-07-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/constructor.java:
