@@ -1,6 +1,6 @@
 // Test for method java.lang.Integer.getClass().getModifiers()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -18,6 +18,8 @@
 // along with Mauve; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Tags: JDK1.5
 
 package gnu.testlet.java.lang.Integer.classInfo;
 
@@ -42,11 +44,11 @@ public class getModifiers implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new Integer(42);
+        // create instance of a class Integer
+        final Object o = new Integer(42);
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         int modifiers = c.getModifiers();
         harness.check( Modifier.isPublic(modifiers));
