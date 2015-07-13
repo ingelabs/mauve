@@ -1,3 +1,13 @@
+2015-07-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaredFields.java:
+	Added another six new tests into Integer/classInfo.
+
 2015-07-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/classInfo/getAnnotation.java:
