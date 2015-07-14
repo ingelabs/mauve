@@ -1,3 +1,11 @@
+2015-07-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Integer/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/Integer/classInfo/getEnclosingClass.java:
+	Added another four new tests into Integer/classInfo.
+
 2015-07-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/classInfo/getDeclaredAnnotations.java:
