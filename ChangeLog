@@ -1,3 +1,9 @@
+2015-07-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Integer/classInfo/getEnclosingMethod.java:
+	Two new tests added into Integer/classInfo.
+
 2015-07-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/classInfo/getConstructors.java:
