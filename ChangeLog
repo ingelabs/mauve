@@ -1,3 +1,12 @@
+2015-08-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/classInfo/getSimpleName.java:
+	* testlet/java/lang/Integer/classInfo/getSuperclass.java:
+	* testlet/java/lang/Integer/classInfo/isAnnotation.java:
+	* testlet/java/lang/Integer/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Integer/classInfo/isAnonymousClass.java:
+	Updated five tests.
+
 2015-07-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/classInfo/getEnclosingConstructor.java:
