@@ -1,3 +1,12 @@
+2015-08-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/classInfo/isArray.java:
+	* testlet/java/lang/Integer/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Integer/classInfo/isEnum.java:
+	* testlet/java/lang/Integer/classInfo/isInstance.java:
+	* testlet/java/lang/Integer/classInfo/isInterface.java:
+	Updated five tests.
+
 2015-08-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/classInfo/getSimpleName.java:
