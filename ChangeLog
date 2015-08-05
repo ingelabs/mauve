@@ -1,3 +1,11 @@
+2015-08-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Integer/classInfo/isLocalClass.java:
+	* testlet/java/lang/Integer/classInfo/isMemberClass.java:
+	* testlet/java/lang/Integer/classInfo/isPrimitive.java:
+	* testlet/java/lang/Integer/classInfo/isSynthetic.java:
+	Updated four tests.
+
 2015-08-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Integer/classInfo/isArray.java:
