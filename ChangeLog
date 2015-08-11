@@ -1,3 +1,13 @@
+2015-08-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Long/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Long/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Long/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Long/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Long/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Long/classInfo/getDeclaredFields.java:
+	Six new tests added into java.lang.Long/classInfo.
+
 2015-08-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Long/classInfo/InstanceOf.java:
