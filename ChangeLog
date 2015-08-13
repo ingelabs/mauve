@@ -1,3 +1,13 @@
+2015-08-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Long/classInfo/getAnnotation.java:
+	* testlet/java/lang/Long/classInfo/getAnnotations.java:
+	* testlet/java/lang/Long/classInfo/getField.java:
+	* testlet/java/lang/Long/classInfo/getFields.java:
+	* testlet/java/lang/Long/classInfo/getMethod.java:
+	* testlet/java/lang/Long/classInfo/getMethods.java:
+	Six new tests added into java.lang.Long/classInfo.
+
 2015-08-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Long/classInfo/getDeclaredMethod.java:
