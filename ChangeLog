@@ -1,3 +1,15 @@
+2015-08-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Long/classInfo/getSimpleName.java:
+	* testlet/java/lang/Long/classInfo/getSuperclass.java:
+	* testlet/java/lang/Long/classInfo/isAnnotation.java:
+	* testlet/java/lang/Long/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Long/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Long/classInfo/isArray.java:
+	* testlet/java/lang/Long/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Long/classInfo/isEnum.java:
+	Eight new tests added into java.lang.Long/classInfo.
+
 2015-08-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Long/classInfo/getCanonicalName.java:
