@@ -1,3 +1,8 @@
+2015-09-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/constructor.java:
+	Added new test into java.lang.Short.
+
 2015-09-01  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Long/classInfo/isInstance.java:
