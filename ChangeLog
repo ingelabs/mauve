@@ -1,3 +1,14 @@
+2015-09-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/classInfo/InstanceOf.java:
+	* testlet/java/lang/Short/classInfo/getInterfaces.java:
+	* testlet/java/lang/Short/classInfo/getModifiers.java:
+	* testlet/java/lang/Short/classInfo/getName.java:
+	* testlet/java/lang/Short/classInfo/getPackage.java:
+	* testlet/java/lang/Short/classInfo/getSimpleName.java:
+	* testlet/java/lang/Short/classInfo/getSuperclass.java:
+	Updated seven tests in java.lang.Short/classInfo.
+
 2015-09-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/constructor.java:
