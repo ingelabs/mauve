@@ -1,3 +1,9 @@
+2015-09-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/classInfo/getMethod.java:
+	* testlet/java/lang/Short/classInfo/getMethods.java:
+	Added two new tests into java.lang.Short.
+
 2015-09-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/classInfo/InstanceOf.java:
