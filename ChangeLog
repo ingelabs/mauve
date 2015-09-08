@@ -1,3 +1,13 @@
+2015-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Short/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Short/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Short/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Short/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Short/classInfo/getDeclaredFields.java:
+	Added six tests into java.lang.Short/classInfo.
+
 2015-09-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/classInfo/isInterface.java:
