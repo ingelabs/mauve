@@ -1,5 +1,15 @@
 2015-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/Short/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Short/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Short/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/Short/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/Short/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/Short/classInfo/getEnclosingMethod.java:
+	Yet another six tests added into java.lang.Short/classInfo.
+
+2015-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/Short/classInfo/getDeclaredAnnotations.java:
 	* testlet/java/lang/Short/classInfo/getDeclaredClasses.java:
 	* testlet/java/lang/Short/classInfo/getDeclaredConstructor.java:
