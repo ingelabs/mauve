@@ -1,3 +1,13 @@
+2015-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/classInfo/getAnnotation.java:
+	* testlet/java/lang/Short/classInfo/getAnnotations.java:
+	* testlet/java/lang/Short/classInfo/getConstructor.java:
+	* testlet/java/lang/Short/classInfo/getConstructors.java:
+	* testlet/java/lang/Short/classInfo/getField.java:
+	* testlet/java/lang/Short/classInfo/getFields.java:
+	Added six tests into java.lang.Short/classInfo.
+
 2015-09-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/classInfo/getDeclaredMethod.java:
