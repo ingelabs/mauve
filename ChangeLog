@@ -1,3 +1,10 @@
+2015-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Short/classInfo/getClasses.java:
+	* testlet/java/lang/Short/classInfo/getComponentType.java:
+	Added three tests into java.lang.Short/classInfo.
+
 2015-09-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/classInfo/getAnnotation.java:
