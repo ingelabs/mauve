@@ -1,3 +1,14 @@
+2015-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Short/classInfo/isAnnotation.java:
+	* testlet/java/lang/Short/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Short/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Short/classInfo/isArray.java:
+	* testlet/java/lang/Short/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Short/classInfo/isEnum.java:
+	* testlet/java/lang/Short/classInfo/isInstance.java:
+	Updated seven tests into java.lang.Short/classInfo.
+
 2015-09-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/classInfo/getCanonicalName.java:

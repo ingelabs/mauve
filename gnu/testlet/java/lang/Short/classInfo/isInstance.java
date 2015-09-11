@@ -1,6 +1,6 @@
 // Test for method java.lang.Short.getClass().isInstance(Object)
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -41,13 +41,13 @@ public class isInstance implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new Short((short)42);
+        // create instance of a class Short
+        final Object o = new Short("42");
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
-        harness.check(c.isInstance(new Short((short)42)));
+        harness.check(c.isInstance(new Short("42")));
     }
 }
 
