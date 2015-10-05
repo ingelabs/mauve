@@ -1,3 +1,8 @@
+2015-10-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/constructor.java:
+	Added new test: java/lang/String/constructor.java.
+
 2015-09-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Short/classInfo/isAnnotation.java:
