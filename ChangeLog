@@ -1,3 +1,12 @@
+2015-10-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/classInfo/InstanceOf.java:
+	* testlet/java/lang/String/classInfo/getAnnotation.java:
+	* testlet/java/lang/String/classInfo/getAnnotations.java:
+	* testlet/java/lang/String/classInfo/getCanonicalName.java:
+	* testlet/java/lang/String/classInfo/getClasses.java:
+	Updated five tests in: java/lang/String/classInfo/constructor.java.
+
 2015-10-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/constructor.java:
