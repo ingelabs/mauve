@@ -1,3 +1,13 @@
+2015-10-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/classInfo/isInstance.java:
+	* testlet/java/lang/String/classInfo/isInterface.java:
+	* testlet/java/lang/String/classInfo/isLocalClass.java:
+	* testlet/java/lang/String/classInfo/isMemberClass.java:
+	* testlet/java/lang/String/classInfo/isPrimitive.java:
+	* testlet/java/lang/String/classInfo/isSynthetic.java:
+	Updated six tests in: java/lang/String/classInfo/constructor.java.
+
 2015-10-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/classInfo/InstanceOf.java:
