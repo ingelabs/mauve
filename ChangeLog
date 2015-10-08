@@ -1,3 +1,14 @@
+2015-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/classInfo/getComponentType.java:
+	* testlet/java/lang/String/classInfo/getConstructor.java:
+	* testlet/java/lang/String/classInfo/getConstructors.java:
+	* testlet/java/lang/String/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/String/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/String/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/String/classInfo/getDeclaredConstructors.java:
+	Updated seven tests in: java/lang/String/classInfo/constructor.java.
+
 2015-10-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/classInfo/isInstance.java:
