@@ -1,3 +1,15 @@
+2015-10-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/classInfo/getDeclaredField.java:
+	* testlet/java/lang/String/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/String/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/String/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/String/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/String/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/String/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/String/classInfo/getEnclosingMethod.java:
+	Added new tests into: java/lang/String/classInfo/constructor.java.
+
 2015-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/classInfo/getComponentType.java:
