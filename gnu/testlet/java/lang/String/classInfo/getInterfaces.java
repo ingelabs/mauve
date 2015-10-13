@@ -1,6 +1,6 @@
 // Test for method java.lang.String.getClass().getInterfaces()
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -19,15 +19,18 @@
 // the Free Software Foundation, Inc., 51 Franklin Street,
 // Fifth Floor, Boston, MA 02110-1301 USA.
 
+// Tags: JDK1.5
+
 package gnu.testlet.java.lang.String.classInfo;
 
 import gnu.testlet.TestHarness;
 import gnu.testlet.Testlet;
 
-import java.io.Serializable;
 import java.lang.String;
 import java.util.List;
 import java.util.Arrays;
+
+import java.io.Serializable;
 
 
 
@@ -44,11 +47,11 @@ public class getInterfaces implements Testlet
      */
     public void test(TestHarness harness)
     {
-        // create instance of a class Double
-        Object o = new String("xyzzy");
+        // create instance of a class String
+        final Object o = new String();
 
         // get a runtime class of an object "o"
-        Class c = o.getClass();
+        final Class c = o.getClass();
 
         List interfaces = Arrays.asList(c.getInterfaces());
         harness.check(interfaces.contains(Serializable.class));

@@ -1,3 +1,12 @@
+2015-10-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/classInfo/getField.java:
+	* testlet/java/lang/String/classInfo/getFields.java:
+	* testlet/java/lang/String/classInfo/getInterfaces.java:
+	* testlet/java/lang/String/classInfo/getMethod.java:
+	* testlet/java/lang/String/classInfo/getMethods.java:
+	Updated five tests in: java/lang/String/classInfo/constructor.java.
+
 2015-10-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/classInfo/isAnnotation.java:
