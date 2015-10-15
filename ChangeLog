@@ -1,3 +1,12 @@
+2015-10-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/String/classInfo/getModifiers.java:
+	* testlet/java/lang/String/classInfo/getName.java:
+	* testlet/java/lang/String/classInfo/getPackage.java:
+	* testlet/java/lang/String/classInfo/getSimpleName.java:
+	* testlet/java/lang/String/classInfo/getSuperclass.java:
+	Updated five tests in: java/lang/String/classInfo/constructor.java.
+
 2015-10-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/classInfo/getField.java:
