@@ -1,6 +1,6 @@
 // Test for method java.lang.Object.getClass().getDeclaredMethods()
 
-// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -56,15 +56,15 @@ public class getDeclaredMethods implements Testlet
 
         // map for methods declared in (Open)JDK6
         testedDeclaredMethods_jdk6.put("protected void java.lang.Object.finalize() throws java.lang.Throwable", "finalize");
-        testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException", "wait");
+        testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait(long) throws java.lang.InterruptedException", "wait");
         testedDeclaredMethods_jdk6.put("public final void java.lang.Object.wait() throws java.lang.InterruptedException", "wait");
+        testedDeclaredMethods_jdk6.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
+        testedDeclaredMethods_jdk6.put("public java.lang.String java.lang.Object.toString()", "toString");
         testedDeclaredMethods_jdk6.put("public int java.lang.Object.hashCode()", "hashCode");
         testedDeclaredMethods_jdk6.put("public final java.lang.Class java.lang.Object.getClass()", "getClass");
         testedDeclaredMethods_jdk6.put("protected java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException", "clone");
-        testedDeclaredMethods_jdk6.put("public boolean java.lang.Object.equals(java.lang.Object)", "equals");
         testedDeclaredMethods_jdk6.put("private static void java.lang.Object.registerNatives()", "registerNatives");
-        testedDeclaredMethods_jdk6.put("public java.lang.String java.lang.Object.toString()", "toString");
         testedDeclaredMethods_jdk6.put("public final void java.lang.Object.notify()", "notify");
         testedDeclaredMethods_jdk6.put("public final void java.lang.Object.notifyAll()", "notifyAll");
 

@@ -1,6 +1,6 @@
 // Test for method java.lang.Object.getClass().getDeclaredMethod()
 
-// Copyright (C) 2012, 2013, 2014 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014, 2015 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -48,15 +48,15 @@ public class getDeclaredMethod implements Testlet
         // following declared methods should exist
         Map<String, Class[]> methodsThatShouldExist_jdk6 = new HashMap<String, Class[]>();
         methodsThatShouldExist_jdk6.put("finalize", new Class[] {});
-        methodsThatShouldExist_jdk6.put("wait", new Class[] {long.class});
         methodsThatShouldExist_jdk6.put("wait", new Class[] {long.class, int.class});
+        methodsThatShouldExist_jdk6.put("wait", new Class[] {long.class});
         methodsThatShouldExist_jdk6.put("wait", new Class[] {});
+        methodsThatShouldExist_jdk6.put("equals", new Class[] {java.lang.Object.class});
+        methodsThatShouldExist_jdk6.put("toString", new Class[] {});
         methodsThatShouldExist_jdk6.put("hashCode", new Class[] {});
         methodsThatShouldExist_jdk6.put("getClass", new Class[] {});
         methodsThatShouldExist_jdk6.put("clone", new Class[] {});
-        methodsThatShouldExist_jdk6.put("equals", new Class[] {java.lang.Object.class});
         methodsThatShouldExist_jdk6.put("registerNatives", new Class[] {});
-        methodsThatShouldExist_jdk6.put("toString", new Class[] {});
         methodsThatShouldExist_jdk6.put("notify", new Class[] {});
         methodsThatShouldExist_jdk6.put("notifyAll", new Class[] {});
 

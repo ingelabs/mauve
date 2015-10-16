@@ -1,5 +1,18 @@
 2015-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/Object/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Object/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Object/classInfo/getDeclaringClass.java:
+	Updated nine tests in: java/lang/Object/classInfo/.
+
+2015-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/Object/classInfo/InstanceOf.java:
 	* testlet/java/lang/Object/classInfo/getAnnotation.java:
 	* testlet/java/lang/Object/classInfo/getAnnotations.java:
