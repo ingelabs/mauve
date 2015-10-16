@@ -1,3 +1,12 @@
+2015-10-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/InstanceOf.java:
+	* testlet/java/lang/Object/classInfo/getAnnotation.java:
+	* testlet/java/lang/Object/classInfo/getAnnotations.java:
+	* testlet/java/lang/Object/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Object/classInfo/getClasses.java:
+	Updated five tests in: java/lang/Object/classInfo/.
+
 2015-10-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/String/classInfo/getModifiers.java:
@@ -5,7 +14,7 @@
 	* testlet/java/lang/String/classInfo/getPackage.java:
 	* testlet/java/lang/String/classInfo/getSimpleName.java:
 	* testlet/java/lang/String/classInfo/getSuperclass.java:
-	Updated five tests in: java/lang/String/classInfo/constructor.java.
+	Updated five tests in: java/lang/String/classInfo/.
 
 2015-10-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -14,7 +23,7 @@
 	* testlet/java/lang/String/classInfo/getInterfaces.java:
 	* testlet/java/lang/String/classInfo/getMethod.java:
 	* testlet/java/lang/String/classInfo/getMethods.java:
-	Updated five tests in: java/lang/String/classInfo/constructor.java.
+	Updated five tests in: java/lang/String/classInfo/.
 
 2015-10-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -24,7 +33,7 @@
 	* testlet/java/lang/String/classInfo/isArray.java:
 	* testlet/java/lang/String/classInfo/isAssignableFrom.java:
 	* testlet/java/lang/String/classInfo/isEnum.java:
-	Updated six tests in: java/lang/String/classInfo/constructor.java.
+	Updated six tests in: java/lang/String/classInfo/.
 
 2015-10-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -36,7 +45,7 @@
 	* testlet/java/lang/String/classInfo/getEnclosingClass.java:
 	* testlet/java/lang/String/classInfo/getEnclosingConstructor.java:
 	* testlet/java/lang/String/classInfo/getEnclosingMethod.java:
-	Added new tests into: java/lang/String/classInfo/constructor.java.
+	Added new tests into: java/lang/String/classInfo/.
 
 2015-10-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -47,7 +56,7 @@
 	* testlet/java/lang/String/classInfo/getDeclaredClasses.java:
 	* testlet/java/lang/String/classInfo/getDeclaredConstructor.java:
 	* testlet/java/lang/String/classInfo/getDeclaredConstructors.java:
-	Updated seven tests in: java/lang/String/classInfo/constructor.java.
+	Updated seven tests in: java/lang/String/classInfo/.
 
 2015-10-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -57,7 +66,7 @@
 	* testlet/java/lang/String/classInfo/isMemberClass.java:
 	* testlet/java/lang/String/classInfo/isPrimitive.java:
 	* testlet/java/lang/String/classInfo/isSynthetic.java:
-	Updated six tests in: java/lang/String/classInfo/constructor.java.
+	Updated six tests in: java/lang/String/classInfo/.
 
 2015-10-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -66,7 +75,7 @@
 	* testlet/java/lang/String/classInfo/getAnnotations.java:
 	* testlet/java/lang/String/classInfo/getCanonicalName.java:
 	* testlet/java/lang/String/classInfo/getClasses.java:
-	Updated five tests in: java/lang/String/classInfo/constructor.java.
+	Updated five tests in: java/lang/String/classInfo/.
 
 2015-10-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
