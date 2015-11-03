@@ -1,3 +1,14 @@
+2015-11-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/getMethod.java:
+	* testlet/java/lang/Object/classInfo/getMethods.java:
+	* testlet/java/lang/Object/classInfo/getModifiers.java:
+	* testlet/java/lang/Object/classInfo/getName.java:
+	* testlet/java/lang/Object/classInfo/getPackage.java:
+	* testlet/java/lang/Object/classInfo/getSimpleName.java:
+	* testlet/java/lang/Object/classInfo/getSuperclass.java:
+	Updated seven tests in: java/lang/Object/classInfo/.
+
 2015-11-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/getComponentType.java:
