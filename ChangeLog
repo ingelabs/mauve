@@ -1,3 +1,13 @@
+2015-11-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/isInstance.java:
+	* testlet/java/lang/Object/classInfo/isInterface.java:
+	* testlet/java/lang/Object/classInfo/isLocalClass.java:
+	* testlet/java/lang/Object/classInfo/isMemberClass.java:
+	* testlet/java/lang/Object/classInfo/isPrimitive.java:
+	* testlet/java/lang/Object/classInfo/isSynthetic.java:
+	Updated six tests in: java/lang/Object/classInfo/.
+
 2015-11-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/isAnnotation.java:
