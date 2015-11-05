@@ -1,3 +1,13 @@
+2015-11-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Object/classInfo/isAnnotation.java:
+	* testlet/java/lang/Object/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Object/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Object/classInfo/isArray.java:
+	* testlet/java/lang/Object/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Object/classInfo/isEnum.java:
+	Updated six tests in: java/lang/Object/classInfo/.
+
 2015-11-03  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Object/classInfo/getMethod.java:
