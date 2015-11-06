@@ -1,5 +1,11 @@
 2015-11-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/UnsupportedOperationException/TryCatch.java:
+	* testlet/java/lang/UnsupportedOperationException/constructor.java:
+	Updated two tests in: java/lang/UnsupportedOperationException/classInfo/.
+
+2015-11-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/Object/classInfo/isInstance.java:
 	* testlet/java/lang/Object/classInfo/isInterface.java:
 	* testlet/java/lang/Object/classInfo/isLocalClass.java:
