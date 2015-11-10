@@ -1,3 +1,13 @@
+2015-11-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/classInfo/InstanceOf.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getAnnotation.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getAnnotations.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getCanonicalName.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getClasses.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getComponentType.java:
+	Updated six tests in: java/lang/UnsupportedOperationException/classInfo/.
+
 2015-11-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedOperationException/TryCatch.java:
