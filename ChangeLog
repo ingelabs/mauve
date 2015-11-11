@@ -1,3 +1,13 @@
+2015-11-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getConstructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getConstructors.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredConstructors.java:
+	Updated six tests in: java/lang/UnsupportedOperationException/classInfo/.
+
 2015-11-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedOperationException/classInfo/InstanceOf.java:
