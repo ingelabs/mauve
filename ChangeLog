@@ -1,5 +1,16 @@
 2015-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isEnum.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isInstance.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isInterface.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isLocalClass.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isMemberClass.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isPrimitive.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/isSynthetic.java:
+	Updated another seven tests in: java/lang/UnsupportedOperationException/classInfo/.
+
+2015-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getEnclosingConstructor.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getEnclosingMethod.java:
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getField.java:
