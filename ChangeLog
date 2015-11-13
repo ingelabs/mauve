@@ -1,3 +1,14 @@
+2015-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getField.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getFields.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getInterfaces.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getMethod.java:
+	* testlet/java/lang/UnsupportedOperationException/classInfo/getMethods.java:
+	Updated seven tests in: java/lang/UnsupportedOperationException/classInfo/.
+
 2015-11-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedOperationException/classInfo/getDeclaredField.java:
