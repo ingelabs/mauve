@@ -1,6 +1,6 @@
-// Test if constructor is working properly for a class java.lang.UnsupportedClassVersionError
+// Test if instances of a class java.lang.UnsupportedClassVersionError could be properly constructed
 
-// Copyright (C) 2012 Pavel Tisnovsky <ptisnovs@redhat.com>
+// Copyright (C) 2012, 2013, 2014, 2015, 2016 Pavel Tisnovsky <ptisnovs@redhat.com>
 
 // This file is part of Mauve.
 
@@ -31,7 +31,8 @@ import java.lang.UnsupportedClassVersionError;
 
 
 /**
- * Test if constructor is working properly for a class java.lang.UnsupportedClassVersionError
+ * Test if instances of a class java.lang.UnsupportedClassVersionError
+ * could be properly constructed
  */
 public class constructor implements Testlet
 {
@@ -43,13 +44,13 @@ public class constructor implements Testlet
      */
     public void test(TestHarness harness)
     {
-        UnsupportedClassVersionError error1 = new UnsupportedClassVersionError();
-        harness.check(error1 != null);
-        harness.check(error1.toString(), "java.lang.UnsupportedClassVersionError");
+        UnsupportedClassVersionError object1 = new UnsupportedClassVersionError();
+        harness.check(object1 != null);
+        harness.check(object1.toString(), "java.lang.UnsupportedClassVersionError");
 
-        UnsupportedClassVersionError error2 = new UnsupportedClassVersionError("nothing happens");
-        harness.check(error2 != null);
-        harness.check(error2.toString(), "java.lang.UnsupportedClassVersionError: nothing happens");
+        UnsupportedClassVersionError object2 = new UnsupportedClassVersionError("nothing happens");
+        harness.check(object2 != null);
+        harness.check(object2.toString(), "java.lang.UnsupportedClassVersionError: nothing happens");
     }
 }
 

@@ -1,3 +1,9 @@
+2016-01-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedClassVersionError/TryCatch.java:
+	* testlet/java/lang/UnsupportedClassVersionError/constructor.java:
+	Updated.
+
 2015-11-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedOperationException/classInfo/isEnum.java:
