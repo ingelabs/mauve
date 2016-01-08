@@ -1,3 +1,13 @@
+2016-01-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getEnclosingMethod.java:
+	Added six tests for the UnsupportedClassVersionError.
+
 2016-01-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedClassVersionError/classInfo/InstanceOf.java:
