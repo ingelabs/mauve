@@ -1,3 +1,12 @@
+2016-01-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getField.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getMethod.java:
+	Added five tests for the UnsupportedClassVersionError.
+
 2016-01-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getAnnotation.java:
