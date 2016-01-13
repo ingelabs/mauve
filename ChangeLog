@@ -1,3 +1,14 @@
+2016-01-13  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getInterfaces.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getMethods.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getModifiers.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getName.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getPackage.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getSimpleName.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getSuperclass.java:
+	Updated seven tests in UnsupportedClassVersionError.
+
 2016-01-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredAnnotations.java:
