@@ -1,3 +1,32 @@
+2016-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredField.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getEnclosingClass.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getField.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getInterfaces.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getMethod.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getMethods.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getModifiers.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getName.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getPackage.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getSimpleName.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/getSuperclass.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnnotation.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isArray.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isEnum.java:
+	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isInstance.java:
+	Updated.
+
 2016-01-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/UnsupportedClassVersionError/classInfo/isAnnotation.java:
