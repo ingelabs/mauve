@@ -1,3 +1,17 @@
+2016-02-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Math/classInfo/getComponentType.java:
+	* testlet/java/lang/Math/classInfo/getConstructor.java:
+	* testlet/java/lang/Math/classInfo/getConstructors.java:
+	* testlet/java/lang/Math/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Math/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Math/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Math/classInfo/getDeclaredConstructors.java:
+	* testlet/java/lang/Math/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Math/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Math/classInfo/isSynthetic.java:
+	New tests idded into java.lang.Math.
+
 2016-01-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Math/classInfo/getAnnotation.java:
