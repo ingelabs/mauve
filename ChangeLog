@@ -1,3 +1,13 @@
+2016-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Math/classInfo/isAnnotation.java:
+	* testlet/java/lang/Math/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Math/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Math/classInfo/isArray.java:
+	* testlet/java/lang/Math/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Math/classInfo/isEnum.java:
+	Six new tests added into java.lang.Math.
+
 2016-02-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Math/classInfo/getDeclaredMethod.java:
@@ -6,7 +16,7 @@
 	* testlet/java/lang/Math/classInfo/getEnclosingClass.java:
 	* testlet/java/lang/Math/classInfo/getEnclosingConstructor.java:
 	* testlet/java/lang/Math/classInfo/getEnclosingMethod.java:
-	New tests idded into java.lang.Math.
+	New tests added into java.lang.Math.
 
 2016-02-02  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -20,7 +30,7 @@
 	* testlet/java/lang/Math/classInfo/getDeclaredField.java:
 	* testlet/java/lang/Math/classInfo/getDeclaredFields.java:
 	* testlet/java/lang/Math/classInfo/isSynthetic.java:
-	New tests idded into java.lang.Math.
+	New tests added into java.lang.Math.
 
 2016-01-18  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
@@ -28,7 +38,7 @@
 	* testlet/java/lang/Math/classInfo/getAnnotations.java:
 	* testlet/java/lang/Math/classInfo/getCanonicalName.java:
 	* testlet/java/lang/Math/classInfo/getClasses.java:
-	New tests idded into java.lang.Math.
+	New tests added into java.lang.Math.
 
 2016-01-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
