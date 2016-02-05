@@ -1,3 +1,11 @@
+2016-02-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Math/classInfo/isInterface.java:
+	* testlet/java/lang/Math/classInfo/isLocalClass.java:
+	* testlet/java/lang/Math/classInfo/isMemberClass.java:
+	* testlet/java/lang/Math/classInfo/isPrimitive.java:
+	Four new tests added into java.lang.Math.
+
 2016-02-04  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Math/classInfo/isAnnotation.java:
