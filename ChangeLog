@@ -1,3 +1,11 @@
+2016-02-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Math/classInfo/getName.java:
+	* testlet/java/lang/Math/classInfo/getPackage.java:
+	* testlet/java/lang/Math/classInfo/getSimpleName.java:
+	* testlet/java/lang/Math/classInfo/getSuperclass.java:
+	Four new tests added into java.lang.Math.
+
 2016-02-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Math/classInfo/getField.java:
