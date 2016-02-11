@@ -1,3 +1,8 @@
+2016-02-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ProcessBuilder/constructor.java:
+	Added new test for the ProcessBuilder class.
+
 2016-02-09  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Math/classInfo/getName.java:
