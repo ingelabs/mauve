@@ -52,6 +52,12 @@ public class constructor implements Testlet
 
         ProcessBuilder object3 = new ProcessBuilder((String)null);
         harness.check(object3 != null);
+
+        ProcessBuilder object4 = new ProcessBuilder("ls", "/");
+        harness.check(object4 != null);
+
+        ProcessBuilder object5 = new ProcessBuilder("unknown", "command");
+        harness.check(object5 != null);
     }
 }
 
