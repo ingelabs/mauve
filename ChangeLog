@@ -1,3 +1,13 @@
+2016-02-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ProcessBuilder/classInfo/isAnnotation.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isArray.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isEnum.java:
+	Added six tests into ProcessBuilder/classInfo.
+
 2016-02-12  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ProcessBuilder/constructor.java:
