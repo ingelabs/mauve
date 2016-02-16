@@ -1,3 +1,13 @@
+2016-02-16  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ProcessBuilder/classInfo/isInstance.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isInterface.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isLocalClass.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isMemberClass.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isPrimitive.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/isSynthetic.java:
+	Added six tests into ProcessBuilder/classInfo.
+
 2016-02-15  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ProcessBuilder/classInfo/isAnnotation.java:
