@@ -1,3 +1,13 @@
+2016-03-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ProcessBuilder/classInfo/getMethod.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getMethods.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getModifiers.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getName.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getPackage.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getSimpleName.java:
+	Added six new tests into ProcessBuilder/classInfo.
+
 2016-03-08  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ProcessBuilder/classInfo/getDeclaredConstructor.java:
