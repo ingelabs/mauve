@@ -1,3 +1,13 @@
+2016-03-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ProcessBuilder/classInfo/InstanceOf.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getCanonicalName.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getComponentType.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getEnclosingClass.java:
+	Added six new tests into ProcessBuilder/classInfo.
+
 2016-03-10  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ProcessBuilder/classInfo/getMethod.java:
