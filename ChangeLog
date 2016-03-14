@@ -1,3 +1,11 @@
+2016-03-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/ProcessBuilder/classInfo/getEnclosingConstructor.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getEnclosingMethod.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getInterfaces.java:
+	* testlet/java/lang/ProcessBuilder/classInfo/getSuperclass.java:
+	Added four new tests into ProcessBuilder/classInfo.
+
 2016-03-11  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ProcessBuilder/classInfo/InstanceOf.java:
