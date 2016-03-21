@@ -1,3 +1,19 @@
+2016-03-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Package/classInfo/InstanceOf.java:
+	* testlet/java/lang/Package/classInfo/getInterfaces.java:
+	* testlet/java/lang/Package/classInfo/getModifiers.java:
+	* testlet/java/lang/Package/classInfo/getName.java:
+	* testlet/java/lang/Package/classInfo/getPackage.java:
+	* testlet/java/lang/Package/classInfo/getSimpleName.java:
+	* testlet/java/lang/Package/classInfo/getSuperclass.java:
+	* testlet/java/lang/Package/classInfo/isInstance.java:
+	* testlet/java/lang/Package/classInfo/isInterface.java:
+	* testlet/java/lang/Package/classInfo/isLocalClass.java:
+	* testlet/java/lang/Package/classInfo/isPrimitive.java:
+	* testlet/java/lang/Package/classInfo/isSynthetic.java:
+	Updated.
+
 2016-03-14  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/ProcessBuilder/classInfo/getEnclosingConstructor.java:
