@@ -1,3 +1,14 @@
+2016-03-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Package/classInfo/getAnnotation.java:
+	* testlet/java/lang/Package/classInfo/getAnnotations.java:
+	* testlet/java/lang/Package/classInfo/getCanonicalName.java:
+	* testlet/java/lang/Package/classInfo/getClasses.java:
+	* testlet/java/lang/Package/classInfo/getComponentType.java:
+	* testlet/java/lang/Package/classInfo/getConstructor.java:
+	* testlet/java/lang/Package/classInfo/getConstructors.java:
+	Added seven new tests for Package class.
+
 2016-03-21  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Package/classInfo/InstanceOf.java:
