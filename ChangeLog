@@ -1,3 +1,13 @@
+2016-03-23  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Package/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Package/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Package/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Package/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Package/classInfo/getDeclaringClass.java:
+	* testlet/java/lang/Package/classInfo/getEnclosingClass.java:
+	Added six new tests for Package class.
+
 2016-03-22  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Package/classInfo/getAnnotation.java:
