@@ -1,4 +1,4 @@
-// Test for method java.lang.Package.getClass().isAssignableFrom(Class)
+// Test for method java.lang.Package.getClass().getDeclaredClasses()
 
 // Copyright (C) 2012, 2013, 2014, 2015, 2016 Pavel Tisnovsky <ptisnovs@redhat.com>
 
@@ -31,9 +31,9 @@ import java.lang.Package;
 
 
 /**
- * Test for method java.lang.Package.getClass().isAssignableFrom()
+ * Test for method java.lang.Package.getClass().getDeclaredClasses()
  */
-public class isAssignableFrom implements Testlet
+public class getDeclaredClasses implements Testlet
 {
 
     /**
@@ -49,7 +49,9 @@ public class isAssignableFrom implements Testlet
         // get a runtime class of an object "o"
         final Class c = o.getClass();
 
-        harness.check(c.isAssignableFrom(Package.class));
+        Class<?>[] cls = c.getDeclaredClasses();
+        harness.check(cls != null);
+        harness.check(cls.length, 0);
     }
 }
 

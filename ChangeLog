@@ -1,5 +1,19 @@
 2016-03-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
+	* testlet/java/lang/Package/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Package/classInfo/getDeclaredClasses.java:
+	* testlet/java/lang/Package/classInfo/getDeclaredConstructor.java:
+	* testlet/java/lang/Package/classInfo/isAnnotation.java:
+	* testlet/java/lang/Package/classInfo/isAnnotationPresent.java:
+	* testlet/java/lang/Package/classInfo/isAnonymousClass.java:
+	* testlet/java/lang/Package/classInfo/isArray.java:
+	* testlet/java/lang/Package/classInfo/isAssignableFrom.java:
+	* testlet/java/lang/Package/classInfo/isEnum.java:
+	* testlet/java/lang/Package/classInfo/isMemberClass.java:
+	New tests added for Package class.
+
+2016-03-24  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
 	* testlet/java/lang/Package/classInfo/getEnclosingConstructor.java:
 	* testlet/java/lang/Package/classInfo/getEnclosingMethod.java:
 	* testlet/java/lang/Package/classInfo/getField.java:
