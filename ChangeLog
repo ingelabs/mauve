@@ -1,3 +1,13 @@
+2016-04-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Runtime/classInfo/getDeclaredAnnotations.java:
+	* testlet/java/lang/Runtime/classInfo/getDeclaredField.java:
+	* testlet/java/lang/Runtime/classInfo/getDeclaredFields.java:
+	* testlet/java/lang/Runtime/classInfo/getDeclaredMethod.java:
+	* testlet/java/lang/Runtime/classInfo/getDeclaredMethods.java:
+	* testlet/java/lang/Runtime/classInfo/getDeclaringClass.java:
+	Another six new tests added for Runtime class.
+
 2016-04-05  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Runtime/classInfo/getComponentType.java:
