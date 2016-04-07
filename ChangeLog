@@ -1,3 +1,12 @@
+2016-04-07  Pavel Tisnovsky  <ptisnovs@redhat.com>
+
+	* testlet/java/lang/Runtime/classInfo/isInstance.java:
+	* testlet/java/lang/Runtime/classInfo/isInterface.java:
+	* testlet/java/lang/Runtime/classInfo/isLocalClass.java:
+	* testlet/java/lang/Runtime/classInfo/isMemberClass.java:
+	* testlet/java/lang/Runtime/classInfo/isPrimitive.java:
+	Five new tests added for Runtime class.
+
 2016-04-06  Pavel Tisnovsky  <ptisnovs@redhat.com>
 
 	* testlet/java/lang/Runtime/classInfo/getDeclaredAnnotations.java:
