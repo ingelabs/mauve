@@ -183,6 +183,11 @@ public class format
     // harness.check (df.format (200000), "2.0000E+5");
     // apply (harness, df, "00.00E00");
     // harness.check (df.format (200000), "20.00E+04");
+
+    // See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70658
+    harness.checkPoint("default suffix for negative numbers");
+    df = new DecimalFormat("0.0 unit");
+    harness.check(df.format(-4.3), "-4.3 unit");
   }
 
   /**
