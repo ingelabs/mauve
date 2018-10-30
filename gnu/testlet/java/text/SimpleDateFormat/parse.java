@@ -114,6 +114,19 @@ public class parse implements Testlet
       pass = true;   
     }
     harness.check(pass);
+
+    harness.checkPoint("Parse date string with redundant fields");
+    sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss EEE", Locale.US);
+    try
+      {
+        d = sdf.parse("2010/10/27 10:00:00 Wed"); // Wed is redundant here
+      }
+    catch (ParseException e)
+      {
+        System.err.println("Could not parse date string");
+      }
+    harness.check(d, new Date(1288166400000L)); // 2010-10-27T10:00Z
+
   }
 
   /**
