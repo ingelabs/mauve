@@ -121,6 +121,16 @@ test(TestHarness harness)
       ok = false;
     }
   harness.check(ok, "format includes '.'");
+
+  // ensure there are no strange characters at the end of strings
+  // See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=83968
+  Locale.setDefault(Locale.ENGLISH);
+  Calendar c = Calendar.getInstance();
+  c.set(2018, 0, 22, 23, 20);
+  Date date = c.getTime();
+  SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy h:mm aa");
+  harness.check(df.format(date), "01/22/2018 11:20 PM");
+
 }
 
 } // class Test
